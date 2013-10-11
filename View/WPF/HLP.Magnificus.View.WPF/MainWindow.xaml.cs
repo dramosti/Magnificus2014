@@ -21,8 +21,8 @@ namespace HLP.Magnificus.View.WPF
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
-            InitializeComponent();
+        {            
+            InitializeComponent();            
         }
     }
 }
