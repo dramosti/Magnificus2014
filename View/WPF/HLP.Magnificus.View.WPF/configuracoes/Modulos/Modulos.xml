@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Modulos>
+  <modulo nome="Cadastros"  arquivo="Cadastros.modulo" ordem="1"/>
+  <!--<modulo nome="Abastecimento"  arquivo="Abastecimento.modulo" ordem="2"/>
+  <modulo nome="Comercial"  arquivo="Comercial.modulo" ordem="3"/>
+  <modulo nome="Produção"  arquivo="Produção.modulo" ordem="4"/>
+  <modulo nome="Relatórios"  arquivo="Relatórios.modulo" ordem="5"/>-->
+  <!--<modulo nome="Utilitarios"  arquivo="Utilitarios.modulo" ordem="6"/>-->
+</Modulos>

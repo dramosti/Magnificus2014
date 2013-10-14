@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HLP.Comum.Modules;
+using HLP.Comum.Modules.Infrastructure;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -22,7 +24,9 @@ namespace HLP.Magnificus.View.WPF
     {
         public MainWindow()
         {            
-            InitializeComponent();            
+            InitializeComponent();
+            GerenciadorModulo.Instancia.InicializaSistema();
+            Window frm = GerenciadorModulo.Instancia.CarregaForm("WinUF", Comum.Modules.Interface.TipoExibeForm.Modal);
         }
     }
 }

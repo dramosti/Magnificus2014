@@ -10,17 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Comum.Modules;
-using HLP.Comum.Modules.Infrastructure;
-namespace HLP.Magnificus.View.WPF
+
+namespace HLP.Entries.View.WPF
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Interaction logic for WinUF.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class WinUF : Window
     {
-       
+        public WinUF()
+        {
+            InitializeComponent();
+        }
     }
 }
