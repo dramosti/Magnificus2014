@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HLP.Comum.Modules;
 using HLP.Comum.Modules.Infrastructure;
+using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -22,11 +23,14 @@ namespace HLP.Magnificus.View.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel objMainViewModel;
         public MainWindow()
-        {            
+        {
             InitializeComponent();
+
             GerenciadorModulo.Instancia.InicializaSistema();
-            Window frm = GerenciadorModulo.Instancia.CarregaForm("WinUF", Comum.Modules.Interface.TipoExibeForm.Modal);
+            this.objMainViewModel = new MainViewModel();
+            this.DataContext = objMainViewModel;
         }
     }
 }

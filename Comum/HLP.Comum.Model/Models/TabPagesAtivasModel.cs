@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HLP.Comum.Model.Models
 {
@@ -15,15 +16,27 @@ namespace HLP.Comum.Model.Models
         {
         }
 
-        private Window openWindow;
+        private TabItem openTab;
 
-        public Window _openWindow
+        public TabItem _openTab
         {
-            get { return openWindow; }
+            get { return openTab; }
             set
             {
-                openWindow = value;
-                base.NotifyPropertyChanged(propertyName: "_openWindows");
+                openTab = value;
+                base.NotifyPropertyChanged(propertyName: "_openTab");
+            }
+        }
+
+        private string xNomeTab;
+
+        public string _xNomeTab
+        {
+            get { return _xNomeTab; }
+            set
+            {
+                xNomeTab = value;
+                base.NotifyPropertyChanged(propertyName: "_xNomeTab");
             }
         }
     }

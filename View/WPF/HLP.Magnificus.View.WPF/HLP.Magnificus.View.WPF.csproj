@@ -101,9 +101,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Comum\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
       <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
       <Name>HLP.Comum.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
+      <Project>{4576b527-31a6-463b-8023-11760aafdcc2}</Project>
+      <Name>HLP.Comum.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.View.WPF\HLP.Entries.View.WPF.csproj">
       <Project>{f6e2fd5e-5581-4362-a072-fce5099cccc1}</Project>
