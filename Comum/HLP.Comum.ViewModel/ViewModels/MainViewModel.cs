@@ -56,7 +56,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 base.NotifyPropertyChanged(propertyName: "_lWindows");
             }
         }
-
+        
         public MainViewModel()
         {
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
@@ -70,12 +70,6 @@ namespace HLP.Comum.ViewModel.ViewModels
                 objWindow._xNome = item.xName;
                 this._lWindows.Add(item: objWindow);
             }
-
-            //this._lWindows = (from l in GerenciadorModulo.Instancia.Modulos[0].objectModulo.lFormularios
-            //                  select (new vWindows
-            //                  {
-            //                      xNome = l.xName
-            //                  })) as ObservableCollection<vWindows>;
         }
     }
 }

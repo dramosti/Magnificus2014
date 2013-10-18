@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A658E63-1DBA-4CE0-9696-5A40E292A944}</ProjectGuid>
+    <ProjectGuid>{E6F66B0B-2F2E-4908-B3FD-94A0E8BC114B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HLP.Magnificus.View.WPF</RootNamespace>
-    <AssemblyName>HLP.Magnificus.View.WPF</AssemblyName>
+    <RootNamespace>HLP.Comum.Resources</RootNamespace>
+    <AssemblyName>HLP.Comum.Resources</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,6 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,10 +65,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Content Include="configuracoes\Modulos\Modulos.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -88,9 +88,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="configuracoes\Modulos\Cadastros.modulo">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,28 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
-      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
-      <Name>HLP.Comum.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
-      <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
-      <Name>HLP.Comum.Modules</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
-      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
-      <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
-      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
-      <Name>HLP.Comum.ViewModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Entries.View.WPF\HLP.Entries.View.WPF.csproj">
-      <Project>{f6e2fd5e-5581-4362-a072-fce5099cccc1}</Project>
-      <Name>HLP.Entries.View.WPF</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
