@@ -30,6 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\EnterpriseLibrary\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\EnterpriseLibrary\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\EnterpriseLibrary\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\NInject\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,12 +57,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Gerais\CidadeModel.cs" />
+    <Compile Include="Models\Gerais\RegiaoModel.cs" />
+    <Compile Include="Models\Gerais\UFModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\RegiaoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\UFRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IRegiaoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IUFRepository.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Repository\Implementation\" />
-    <Folder Include="Repository\Interfaces\" />
+    <ProjectReference Include="..\..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
+      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
+      <Name>HLP.Comum.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
