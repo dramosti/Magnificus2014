@@ -77,6 +77,10 @@
       <Project>{CD60F2D5-6E51-417A-B50E-C4EB01EB7565}</Project>
       <Name>HLP.Comum.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

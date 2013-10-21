@@ -30,8 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\NInject\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,11 +46,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CidadeCommands.cs" />
+    <Compile Include="Commands\CidadeViewModel.cs" />
+    <Compile Include="Commands\RegiaoCommands.cs" />
+    <Compile Include="Commands\UFCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CidadeViewModel.cs" />
+    <Compile Include="ViewModels\RegiaoViewModel.cs" />
+    <Compile Include="ViewModels\UFViewModel.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
+      <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
+      <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HLP.Entries.View.WPF.Gerais;
 
 namespace HLP.Entries.View.WPF
 {
@@ -23,6 +24,20 @@ namespace HLP.Entries.View.WPF
         public MainWindow()
         {
             InitializeComponent();
+
+
+
+
+            try
+            {
+                WinUF uf = new WinUF();
+                uf.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
         }
     }
 }

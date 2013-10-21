@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HLP.Entries.ViewModel.ViewModels;
 
-namespace HLP.Entries.View.WPF
+namespace HLP.Entries.View.WPF.Gerais
 {
     /// <summary>
     /// Interaction logic for WinUF.xaml
@@ -22,6 +23,9 @@ namespace HLP.Entries.View.WPF
         public WinUF()
         {
             InitializeComponent();
+            this.DataContext = new UFViewModel();
+         
+            
         }
     }
 }
