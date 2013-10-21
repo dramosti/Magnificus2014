@@ -4,6 +4,5 @@
         Title="WinUF" Height="300" Width="300">
     <Grid>
         <Label Content="UF" HorizontalAlignment="Left" Margin="88,109,0,0" VerticalAlignment="Top"/>
-
     </Grid>
 </Window>
