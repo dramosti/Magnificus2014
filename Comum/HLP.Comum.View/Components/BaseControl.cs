@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace HLP.Comum.View.Components
 {
-    public class BaseControl : System.Windows.Controls.UserControl
+    public class BaseControl : System.Windows.Controls.UserControl, INotifyPropertyChanged
     {
         public BaseControl()
         {
@@ -18,6 +18,7 @@ namespace HLP.Comum.View.Components
         }
 
         #region Base de Dados
+        [Category("HLP")]
         public string Table
         {
             get { return (string)GetValue(TableProperty); }
@@ -29,7 +30,7 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("Table", typeof(string), typeof(BaseControl), new PropertyMetadata(string.Empty));
 
 
-
+        [Category("HLP")]
         public string Field
         {
             get { return (string)GetValue(FieldProperty); }
@@ -40,7 +41,7 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty FieldProperty =
             DependencyProperty.Register("Field", typeof(string), typeof(BaseControl), new PropertyMetadata(string.Empty));
         #endregion
-
+        [Category("HLP")]
         public string Help
         {
             get { return (string)GetValue(HelpProperty); }
@@ -50,7 +51,7 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for Help.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HelpProperty =
             DependencyProperty.Register("Help", typeof(string), typeof(BaseControl), new PropertyMetadata(string.Empty));
-
+        [Category("HLP")]
         public string Caption
         {
             get { return (string)GetValue(CaptionProperty); }
@@ -60,7 +61,7 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CaptionProperty =
             DependencyProperty.Register("Caption", typeof(string), typeof(BaseControl), new PropertyMetadata("Label"));
-
+        [Category("HLP")]
         public double WidthLabel
         {
             get { return (double)GetValue(WidthLabelProperty); }
@@ -70,5 +71,20 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for WidthLabel.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WidthLabelProperty =
             DependencyProperty.Register("WidthLabel", typeof(double), typeof(BaseControl), new PropertyMetadata(Convert.ToDouble(50)));
+
+
+
+        #region NotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
     }
 }

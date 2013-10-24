@@ -8,6 +8,8 @@
               Width="Auto" Height="Auto">
     <DockPanel LastChildFill="True">
         <Label x:Name="lblCaption" Content="Label" FontFamily="Courier New" />
-        <TextBox x:Name="txtControle"  Text=""  Margin="0"/>
+        <TextBox x:Name="txtControle"  
+                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
+                  Margin="0"/>
     </DockPanel>
 </runtime:BaseControl>

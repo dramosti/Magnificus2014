@@ -43,7 +43,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Componentes\HlpComboBoxModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

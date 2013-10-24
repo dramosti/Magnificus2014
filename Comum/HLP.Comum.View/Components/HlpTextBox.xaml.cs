@@ -26,40 +26,19 @@ namespace HLP.Comum.View.Components
             InitializeComponent();
         }
 
-        #region Properties
-
-      
-
-        #region Texto
-
-        public string Texto
+        #region TextBox's Property
+        [Category("HLP")]
+        public string Text
         {
-            get { return GetValue(TextoProperty).ToString(); }
-            set { SetValue(TextoProperty, value); }
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
 
-
-        public static readonly DependencyProperty TextoProperty =
-            DependencyProperty.Register("Texto", typeof(string), typeof(HlpTextBox),
-            new PropertyMetadata(string.Empty, OnTextoPropertyChanged));
-
-
-        private static void OnTextoPropertyChanged(DependencyObject dependencyObject,
-               DependencyPropertyChangedEventArgs e)
-        {
-            HlpTextBox txtHlp = dependencyObject as HlpTextBox;
-            //txtHlp.OnPropertyChanged("Texto");
-            txtHlp.OnTextoPropertyChanged(e);
-        }
-        private void OnTextoPropertyChanged(DependencyPropertyChangedEventArgs e)
-        {
-            //txtControle.Text = Texto.Trim().PadLeft(MarginLeftLabel, ' ');
-        }
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(HlpTextBox), new PropertyMetadata(string.Empty));
         #endregion
 
-
-      
-        #endregion
     }
 
 }
