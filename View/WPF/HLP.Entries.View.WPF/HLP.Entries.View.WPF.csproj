@@ -35,10 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="DevExpress.Data.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Core.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Mvvm.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="devexpress.xpf.ribbon.v13.1, Version=13.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -68,9 +64,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Gerais\WinRegiao.xaml.cs">
+      <DependentUpon>WinRegiao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
     </Compile>
+    <Page Include="Gerais\WinRegiao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +122,10 @@
     <ProjectReference Include="..\..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
       <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
+      <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
+      <Name>HLP.Comum.View</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ViewModel\HLP.Entries.ViewModel\HLP.Entries.ViewModel.csproj">
       <Project>{63e0a405-18c8-44fa-a436-c7e0b3d2fa7a}</Project>

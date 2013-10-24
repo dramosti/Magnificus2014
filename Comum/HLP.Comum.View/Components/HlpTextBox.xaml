@@ -1,0 +1,13 @@
+﻿<runtime:BaseControl x:Class="HLP.Comum.View.Components.HlpTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
+             mc:Ignorable="d" 
+              Width="Auto" Height="Auto">
+    <DockPanel LastChildFill="True">
+        <Label x:Name="lblCaption" Content="Label" FontFamily="Courier New" />
+        <TextBox x:Name="txtControle"  Text=""  Margin="0"/>
+    </DockPanel>
+</runtime:BaseControl>

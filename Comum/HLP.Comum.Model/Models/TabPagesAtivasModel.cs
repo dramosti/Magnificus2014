@@ -10,33 +10,40 @@ using System.Windows.Controls;
 
 namespace HLP.Comum.Model.Models
 {
-    public class TabPagesAtivasModel : ModelBase
+    public class TabPagesAtivasModel
     {
         public TabPagesAtivasModel()
         {
         }
 
-        private TabItem openTab;
+        private Window Windows;
 
-        public TabItem _openTab
+        public Window _windows
         {
-            get { return openTab; }
-            set
+            get { return Windows; }
+            set { Windows = value; }
+        }
+
+        public string _header
+        {
+            get { return this.Windows.Title; }
+        }
+
+        public UIElement _content
+        {
+            get
             {
-                openTab = value;
-                base.NotifyPropertyChanged(propertyName: "_openTab");
+                UIElement e = _windows.Content as UIElement;
+                (e as Grid).DataContext = this.Windows.DataContext;
+                return e;
             }
         }
 
-        private string xNomeTab;
-
-        public string _xNomeTab
+        public object _currentDataContext
         {
-            get { return _xNomeTab; }
-            set
+            get
             {
-                xNomeTab = value;
-                base.NotifyPropertyChanged(propertyName: "_xNomeTab");
+                return this.Windows.DataContext;
             }
         }
     }

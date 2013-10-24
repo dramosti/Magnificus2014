@@ -30,6 +30,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public RegiaoViewModel()
         {
             objRegiaoCommands = new RegiaoCommands(objRegiaoViewModel: this);
+            objRegiaoCommands.GetAll();
         }
 
         public ObservableCollection<RegiaoModel> GetAll()

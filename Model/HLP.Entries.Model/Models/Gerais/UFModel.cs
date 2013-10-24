@@ -11,7 +11,7 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public class UFModel : ModelBase
     {
-        public int? _idUF;
+        private int? _idUF;
         [ParameterOrder(Order = 1)]
 
         public int? idUF
@@ -20,7 +20,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _idUF = value; base.NotifyPropertyChanged("idUF"); }
         }
 
-        public string _xSiglaUf;
+        private string _xSiglaUf;
 
         [ParameterOrder(Order = 2)]
         public string xSiglaUf
@@ -29,7 +29,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _xSiglaUf = value; base.NotifyPropertyChanged("xSiglaUf"); }
         }
 
-        public string _xUf;
+        private string _xUf;
 
         [ParameterOrder(Order = 3)]
         public string xUf
@@ -38,7 +38,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _xUf = value; base.NotifyPropertyChanged("xUf"); }
         }
 
-        public int _cIbgeUf;
+        private int _cIbgeUf;
 
         [ParameterOrder(Order = 4)]
         public int cIbgeUf
@@ -47,7 +47,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _cIbgeUf = value; base.NotifyPropertyChanged("cIbgeUf"); }
         }
 
-        public int _idRegiao;
+        private int _idRegiao;
 
         [ParameterOrder(Order = 5)]
         public int idRegiao
