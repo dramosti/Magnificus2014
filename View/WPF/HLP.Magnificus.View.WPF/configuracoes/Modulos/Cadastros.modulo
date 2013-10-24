@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" default-lazy-init="true">
   <object id="WinUF" name="WinUF" singleton="false" scope="request"
-   type="HLP.Entries.View.WPF.WinUF, HLP.Entries.View.WPF">
-  </object>  
+   type="HLP.Entries.View.WPF.Gerais.WinUF, HLP.Entries.View.WPF">
+  </object>
+  <object id="WinCidade" name="WinCidade" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.Gerais.WinCidade, HLP.Entries.View.WPF">
+  </object>
 </objects>

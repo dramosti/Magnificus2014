@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Entries.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +12,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Entries.ViewModel.ViewModels;
-using HLP.Entries.View.WPF.UIUtilities;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
     /// <summary>
-    /// Interaction logic for WinUF.xaml
+    /// Interaction logic for WinCidade.xaml
     /// </summary>
-    public partial class WinUF : Window
+    public partial class WinCidade : Window
     {
-        public UFViewModel ViewModel
-        {
-            get { return this.DataContext as UFViewModel; }
-            set { this.DataContext = value; }
-        }
-
-        public WinUF()
+        public WinCidade()
         {
             InitializeComponent();
-            this.ViewModel = new UFViewModel();
+            this.DataContext = new CidadeViewModel();            
         }
     }
 }

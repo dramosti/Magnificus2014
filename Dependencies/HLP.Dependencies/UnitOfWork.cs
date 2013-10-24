@@ -14,11 +14,14 @@ namespace HLP.Dependencies
     {
         private Database _dbPrincipal;
 
-        private DbTransaction _transaction;
+        //private DbTransaction _transaction; **comentei esta linha pq não tem sentido uma variável privada e a mesma não ser utilizada em nenhum lugar
 
         public override Database dbPrincipal
         {
-            get { return _dbPrincipal; }
+            get
+            {
+                return _dbPrincipal;
+            }
         }
 
         public UnitOfWork()

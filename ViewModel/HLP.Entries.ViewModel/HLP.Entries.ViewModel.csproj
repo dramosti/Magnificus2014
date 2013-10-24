@@ -33,17 +33,20 @@
     <Reference Include="Ninject">
       <HintPath>..\..\Comum\HLP.Comum.Infrastructure\NInject\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Printing" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CidadeCommands.cs" />
@@ -54,6 +57,7 @@
     <Compile Include="ViewModels\CidadeViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
+    <Compile Include="VMUtilities\UserInterfaceUtilities.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -64,6 +68,10 @@
     <ProjectReference Include="..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
       <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
       <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
+      <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
+      <Name>HLP.Comum.View</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using System.ComponentModel;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class CidadeModel : ModelBase
+    public partial class CidadeModel
     {
         public int? _idCidade;
 
@@ -16,7 +17,10 @@ namespace HLP.Entries.Model.Models.Gerais
         public int? idCidade
         {
             get { return _idCidade; }
-            set { _idCidade = value; base.NotifyPropertyChanged("idCidade"); }
+            set
+            {
+                _idCidade = value;
+            }
         }
 
         public string _xCidade;
@@ -25,7 +29,10 @@ namespace HLP.Entries.Model.Models.Gerais
         public string xCidade
         {
             get { return _xCidade; }
-            set { _xCidade = value; base.NotifyPropertyChanged("xCidade"); }
+            set
+            {
+                _xCidade = value;
+            }
         }
 
         public int _cIbge;
@@ -34,7 +41,10 @@ namespace HLP.Entries.Model.Models.Gerais
         public int cIbge
         {
             get { return _cIbge; }
-            set { _cIbge = value; base.NotifyPropertyChanged("cIbge"); }
+            set
+            {
+                _cIbge = value;
+            }
         }
 
         public int _idUF;
@@ -43,7 +53,26 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idUF
         {
             get { return _idUF; }
-            set { _idUF = value; base.NotifyPropertyChanged("idUF"); }
+            set
+            {
+                _idUF = value;
+            }
+        }
+    }
+
+    public partial class CidadeModel : IDataErrorInfo
+    {
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                return null;
+            }
         }
     }
 }

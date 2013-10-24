@@ -11,7 +11,7 @@ namespace HLP.Comum.Modules
 {
     public class Modulo : IModulo
     {
-        private bool _bCarregaComponentes = true;
+        // private bool _bCarregaComponentes = true; ** variável privada não utilizada no sistema
 
         public Modulo(string arquivoConfiguracao)
         {

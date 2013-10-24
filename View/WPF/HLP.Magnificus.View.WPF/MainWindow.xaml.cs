@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using HLP.Comum.Modules;
 using HLP.Comum.Modules.Infrastructure;
 using HLP.Comum.ViewModel.ViewModels;
+using HLP.Entries.View.WPF.Gerais;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -23,14 +24,18 @@ namespace HLP.Magnificus.View.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainViewModel objMainViewModel;
         public MainWindow()
         {
             InitializeComponent();
 
             GerenciadorModulo.Instancia.InicializaSistema();
-            this.objMainViewModel = new MainViewModel();
-            this.DataContext = objMainViewModel;            
+            this._viewModel = new MainViewModel();
         }
+        public MainViewModel _viewModel
+        {
+            get { return this.DataContext as MainViewModel; }
+            set { this.DataContext = value; }
+        }
+
     }
 }

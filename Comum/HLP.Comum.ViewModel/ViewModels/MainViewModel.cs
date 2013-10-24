@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.ViewModels
@@ -56,7 +57,19 @@ namespace HLP.Comum.ViewModel.ViewModels
                 base.NotifyPropertyChanged(propertyName: "_lWindows");
             }
         }
-        
+
+        private TabPagesAtivasModel currentTab;
+
+        public TabPagesAtivasModel _currentTab
+        {
+            get { return currentTab; }
+            set
+            {
+                currentTab = value;
+                base.NotifyPropertyChanged(propertyName: "_currentTab");                  
+            }
+        }
+
         public MainViewModel()
         {
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
