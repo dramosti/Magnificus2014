@@ -53,9 +53,10 @@ namespace HLP.Comum.View.Components
         }
         private void OnTextoPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
-            txtControle.Text = Texto.Trim().PadLeft(MarginLeftLabel, ' ');
+            //txtControle.Text = Texto.Trim().PadLeft(MarginLeftLabel, ' ');
         }
         #endregion
+
 
       
         #endregion
