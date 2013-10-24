@@ -65,7 +65,7 @@
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
-    </Window.Triggers>    
+    </Window.Triggers>
 
     <Grid Name="Principal" Style="{StaticResource StylePrincipal}">
         <Grid.ColumnDefinitions>
@@ -102,7 +102,7 @@
                                             <Button Content="{Binding _xNome}" Style="{StaticResource btnListItem}" Command="{Binding DataContext.AddWindowCommand,
                                                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"
                                                     />
-                                        </Grid>                                        
+                                        </Grid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
@@ -122,47 +122,60 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Border Grid.Row="1" Margin="5,5,5,5"
-                BorderThickness="2" BorderBrush="Black">
+                BorderThickness="1" BorderBrush="Black">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
-                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="118"></ColumnDefinition>
+                        <ColumnDefinition Width="399"/>
                     </Grid.ColumnDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"></RowDefinition>
-                            <RowDefinition Height="3"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <ToolBar Style="{StaticResource toolBarCadastro}">
-                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{StaticResource StyleButton1}"></Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{StaticResource StyleButton1}"></Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"></Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" Content="Salvar" Style="{StaticResource StyleButton1}"></Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"></Button>
-                        </ToolBar>
-                        <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <Rectangle.Fill>
-                                <SolidColorBrush Color="Black"/>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
-                            <TabControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Label Content="{Binding _header}"/>
-                                </DataTemplate>
-                            </TabControl.ItemTemplate>
-                            <TabControl.ContentTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <ContentControl Content="{Binding _content}"></ContentControl>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </TabControl.ContentTemplate>
-                        </TabControl>
-                    </Grid>
-                    <StackPanel Name="stkDashBoard" Grid.Column="1">
-                    </StackPanel>
+                    <Expander x:Name="expCadastro" Header="Cadastro" Style="{StaticResource expanderMain}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="2"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <ToolBar Style="{StaticResource toolBarCadastro}">
+                                <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{StaticResource StyleButton1}"></Button>
+                                <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{StaticResource StyleButton1}"></Button>
+                                <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"></Button>
+                                <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" Content="Salvar" Style="{StaticResource StyleButton1}"></Button>
+                                <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"></Button>
+                            </ToolBar>
+                            <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="Black"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
+                                <TabControl.ItemTemplate>
+                                    <DataTemplate>                                        
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="{Binding _header}"/>
+                                            <Button Grid.Column="1" Content="X"></Button>
+                                        </Grid>                                
+                                        
+                                    </DataTemplate>
+                                </TabControl.ItemTemplate>
+                                <TabControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <ContentControl Content="{Binding _content}"></ContentControl>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </TabControl.ContentTemplate>
+                            </TabControl>
+                        </Grid>
+                    </Expander>
+                    <Expander x:Name="expDashBoard" Grid.Column="1" Header="DashBoard" Style="{StaticResource expanderMain}" Grid.ColumnSpan="2">
+                        <StackPanel Name="stkDashBoard" Grid.Column="1">
+                        </StackPanel>
+                    </Expander>
                 </Grid>
             </Border>
         </Grid>

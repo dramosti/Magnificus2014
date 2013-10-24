@@ -140,7 +140,7 @@
             </Trigger>
 
         </Style.Triggers>
-    </Style>
+    </Style>    
     <Style x:Key="LeftPanelCollpasedButtonStyle" TargetType="{x:Type ToggleButton}">
 
 
@@ -159,7 +159,6 @@
                                 <ContentPresenter RenderTransformOrigin="0.5,0.5" x:Name="con" HorizontalAlignment="Center" TextBlock.TextAlignment="Center" ContentTemplate="{TemplateBinding ContentTemplate}"
                                                       Content="{TemplateBinding Content}" 
                                                       VerticalAlignment="Center">
-
                                 </ContentPresenter>
                             </Grid>
                         </Border>
@@ -305,6 +304,47 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    <ControlTemplate x:Key="BottomExpanderMain" TargetType="{x:Type Expander}">
+        <Border SnapsToDevicePixels="true" Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                CornerRadius="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ToggleButton  Width="{TemplateBinding ActualWidth}"   Margin="0,1,0,1" MinHeight="0" MinWidth="30" x:Name="HeaderSite" 
+                                              Style="{StaticResource LeftPanelCollpasedButtonStyle}" Content="{TemplateBinding Header}" 
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                                              ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" 
+                                              FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" 
+                                              FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" 
+                                              FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" 
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Padding="{TemplateBinding Padding}" 
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                              IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" DockPanel.Dock="Top"/>
+                <Grid x:Name="contentGrid" Grid.Row="1" >
+
+                    <ContentPresenter Opacity="1"  HorizontalAlignment="Stretch" Margin="0,0,0,0" x:Name="ExpandSite" Focusable="false" Visibility="Collapsed" VerticalAlignment="Top" />
+                </Grid>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <Trigger Property="IsExpanded" Value="true">
+                <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsExpanded" Value="False">
+                <Setter TargetName="ExpandSite" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
     <Style x:Key="listMenuExpander" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="#E8E8E8"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -316,7 +356,6 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="60"/>
     </Style>
-
     <Style x:Key="btnListItem" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="180"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -324,7 +363,6 @@
     <Style x:Key="toolBarCadastro" TargetType="{x:Type ToolBar}">
         <Setter Property="Background" Value="#73778C"></Setter>
     </Style>
-
     <Style x:Key="StyleButton1" TargetType="{x:Type Button}">
         <Setter Property="Background">
             <Setter.Value>
@@ -339,6 +377,20 @@
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Calibri"/>
-    </Style>
+    </Style>    
+    <Style x:Key="expanderMain" TargetType="{x:Type Expander}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template" Value="{DynamicResource BottomExpanderMain}"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsExpanded" Value="true">
+                <Setter Property="Template" Value="{DynamicResource RightExpander}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>    
 
 </ResourceDictionary>

@@ -28,9 +28,6 @@ namespace HLP.Magnificus.View.WPF
         {
             InitializeComponent();
 
-            TESTE t = new TESTE();
-            t.ShowDialog();
-
             GerenciadorModulo.Instancia.InicializaSistema();
             this._viewModel = new MainViewModel();
         }
