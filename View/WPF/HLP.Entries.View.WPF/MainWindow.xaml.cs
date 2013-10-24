@@ -26,11 +26,8 @@ namespace HLP.Entries.View.WPF
             InitializeComponent();
             try
             {
-                //WinUF uf = new WinUF();
-                //uf.ShowDialog();
-
-                TESTE t = new TESTE();
-                t.Show();
+                WinUF uf = new WinUF();
+                uf.ShowDialog();
             }
             catch (Exception ex)
             {                

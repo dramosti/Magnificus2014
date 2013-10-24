@@ -64,9 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Gerais\TESTE.xaml.cs">
-      <DependentUpon>TESTE.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gerais\WinCidade.xaml.cs">
       <DependentUpon>WinCidade.xaml</DependentUpon>
     </Compile>
@@ -74,10 +71,6 @@
       <DependentUpon>WinUF.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIUtilities\UserInterfaceUtilities.cs" />
-    <Page Include="Gerais\TESTE.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Gerais\WinCidade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
