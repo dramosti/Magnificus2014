@@ -1,9 +1,8 @@
-﻿<Window
+﻿<Window x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
-        Title="WinUF" Height="300" Width="500">
+        Title="Uf" Height="300" Width="500">
     <Window.Resources>
         <ObjectDataProvider x:Key="odpRegiao" ObjectType="{x:Type src:RegiaoViewModel}"/>
         <ObjectDataProvider x:Key="lRegiao" ObjectInstance="{StaticResource odpRegiao}"  MethodName="GetAll"/>
@@ -20,30 +19,11 @@
         <Label Content="UF" HorizontalAlignment="Left" Margin="10,72,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="24"/>
         <Label Content="Código IBGE" HorizontalAlignment="Left" Margin="10,103,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="76"/>
         <Label Content="Região" HorizontalAlignment="Left" Margin="10,134,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="47"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="100,14,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.idUF}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,45,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.xSiglaUf}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,76,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.xUf}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,107,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.cIbgeUf}" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Salvar" HorizontalAlignment="Left" Margin="11,6,0,0" VerticalAlignment="Top" Width="75" Command="{Binding commandSalvar}" Height="20" />
-        <Button Content="Deletar" HorizontalAlignment="Left" Margin="91,6,0,0" VerticalAlignment="Top" Width="75" Command="{Binding commandDeletar}" Height="20"/>
-        <ComboBox ItemsSource="{Binding Source={StaticResource lRegiao}}" SelectedValue="{Binding currentUF.idUF}" DisplayMemberPath="xRegiao" Margin="100,141,250,10" Grid.Row="1"/>
-        <!--<ComboBox  ItemsSource="{Binding lRegiao}" SelectedValue="{Binding idUF}"   x:Name="cboRegiao" HorizontalAlignment="Left" Margin="99,138,0,0" Grid.Row="1" VerticalAlignment="Top" Width="229">
-        
-        
-                <ComboBox.Effect>
-                    <DropShadowEffect/>
-                </ComboBox.Effect>
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="txtxRegiao" Text="{Binding Path=xRegiao}"/>
-                            <TextBlock Text=" - "/>
-                            <TextBlock  Text="{Binding Path=idPais}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>-->
-
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="23" Margin="100,14,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.idUF, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,45,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,76,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.xUf, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="100,107,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding currentUF.cIbgeUf, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox ItemsSource="{Binding Source={StaticResource lRegiao}}" SelectedValuePath="idRegiao" SelectedValue="{Binding currentUF.idRegiao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" DisplayMemberPath="xRegiao" Margin="100,137,250,14" Grid.Row="1"/>
     </Grid>
 
 </Window>

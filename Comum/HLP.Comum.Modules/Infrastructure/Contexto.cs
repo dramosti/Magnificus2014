@@ -57,7 +57,7 @@ namespace HLP.Comum.Modules.Infrastructure
             {
                 return ContextRegistry.GetContext().GetObject(nome) as T;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

@@ -9,15 +9,19 @@ using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class UFModel : ModelBase
+    public partial class UFModel
     {
+        public UFModel()
+        {
+        }
+
         private int? _idUF;
         [ParameterOrder(Order = 1)]
 
         public int? idUF
         {
             get { return _idUF; }
-            set { _idUF = value; base.NotifyPropertyChanged("idUF"); }
+            set { _idUF = value; }
         }
 
         private string _xSiglaUf;
@@ -26,7 +30,10 @@ namespace HLP.Entries.Model.Models.Gerais
         public string xSiglaUf
         {
             get { return _xSiglaUf; }
-            set { _xSiglaUf = value; base.NotifyPropertyChanged("xSiglaUf"); }
+            set
+            {
+                _xSiglaUf = value;
+            }
         }
 
         private string _xUf;
@@ -35,7 +42,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public string xUf
         {
             get { return _xUf; }
-            set { _xUf = value; base.NotifyPropertyChanged("xUf"); }
+            set { _xUf = value; }
         }
 
         private int _cIbgeUf;
@@ -44,7 +51,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public int cIbgeUf
         {
             get { return _cIbgeUf; }
-            set { _cIbgeUf = value; base.NotifyPropertyChanged("cIbgeUf"); }
+            set { _cIbgeUf = value; }
         }
 
         private int _idRegiao;
@@ -53,10 +60,83 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idRegiao
         {
             get { return _idRegiao; }
-            set { _idRegiao = value; base.NotifyPropertyChanged("idRegiao"); }
+            set { _idRegiao = value; }
         }
 
+        public bool IsValid
+        {
+            get
+            {
+                foreach (string property in ValidatedProperties)
+                    if (GetValidationError(property) != null)
+                        return false;
+                return true;
+            }
+        }
 
-       
+        static readonly string[] ValidatedProperties = 
+        { 
+            "xSiglaUf", 
+            "xUf", 
+            "cIbgeUf",
+            "idRegiao",
+        };
+
+        string GetValidationError(string columnName)
+        {
+            if (columnName == "xSiglaUf")
+            {
+                if (this._xSiglaUf.Trim() == "")
+                {
+                    return "campo não pode ser vazio";
+                }
+            }
+            else if (columnName == "xUf")
+            {
+                if (this._xUf.Trim() == "")
+                {
+                    return "campo não pode ser vazio";
+                }
+            }
+            else if (columnName == "cIbgeUf")
+            {
+                if (this.cIbgeUf == 0)
+                {
+                    return "campo não pode ser vazio";
+                }
+            }
+            else if (columnName == "cIbgeUf")
+            {
+                if (this.cIbgeUf == 0)
+                {
+                    return "campo não pode ser vazio";
+                }
+            }
+            else if (columnName == "idRegiao")
+            {
+                if (this.idRegiao == 0)
+                {
+                    return "campo não pode ser vazio";
+                }
+            }
+            return null;
+        }
+    }
+
+    public partial class UFModel : IDataErrorInfo
+    {
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                return this.GetValidationError(columnName: columnName);
+            }
+        }
+
     }
 }

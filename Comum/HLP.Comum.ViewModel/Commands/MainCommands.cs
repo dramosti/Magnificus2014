@@ -42,28 +42,18 @@ namespace HLP.Comum.ViewModel.Commands
         {
             try
             {
-                if (_objTabPagesAtivasViewModel._lTabPagesAtivas.Count(
-                    predicate: i => i._xNomeTab == xNomeForm.ToString()) > 0)
-                {
-                    return;
-                }
-
                 Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xNomeForm.ToString(),
                 exibeForm: Modules.Interface.TipoExibeForm.Modal);
 
-                object o = form != null ? form.Content :
-                    new Exception("Form não existe");
-
-                StackPanel stkTemp = new StackPanel();
-                stkTemp.Children.Add(element: o as UIElement);
-
-                TabItem tabItem = new TabItem();
-                tabItem.Content = stkTemp;
-
                 TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
-                objTabPageAtivasModel._openTab = tabItem;
-                objTabPageAtivasModel._xNomeTab = (o as Window).Name;
-                this._objTabPagesAtivasViewModel._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                objTabPageAtivasModel._windows = form;
+
+                if (this._objTabPagesAtivasViewModel._lTabPagesAtivas.Count(
+                    i => i._windows.Name == form.Name) == 0)
+                {
+                    this._objTabPagesAtivasViewModel._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                }
+                this._objTabPagesAtivasViewModel._currentTab = objTabPageAtivasModel;
             }
             catch (Exception ex)
             {
@@ -80,9 +70,6 @@ namespace HLP.Comum.ViewModel.Commands
         {
             try
             {
-                TabPagesAtivasModel form = _objTabPagesAtivasViewModel
-                    ._lTabPagesAtivas.FirstOrDefault(predicate: i => i._xNomeTab == xNomeForm.ToString());
-                _objTabPagesAtivasViewModel._lTabPagesAtivas.Remove(item: form);
             }
             catch (Exception ex)
             {

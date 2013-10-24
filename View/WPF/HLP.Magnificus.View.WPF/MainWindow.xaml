@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" WindowState="Maximized">
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" WindowState="Maximized"
+        >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -64,7 +65,7 @@
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
-    </Window.Triggers>
+    </Window.Triggers>    
 
     <Grid Name="Principal" Style="{StaticResource StylePrincipal}">
         <Grid.ColumnDefinitions>
@@ -94,7 +95,16 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Expander Name="expanderContainerCadastros" Header="Cadastros" Style="{StaticResource expanderRecolher}">
-                            <ListBox ItemsSource="{Binding _lWindows}" DisplayMemberPath="_xNome" ItemContainerStyle="{StaticResource listMenuExpander}">
+                            <ListBox ItemsSource="{Binding _lWindows}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Button Content="{Binding _xNome}" Style="{StaticResource btnListItem}" Command="{Binding DataContext.AddWindowCommand,
+                                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Content}"
+                                                    />
+                                        </Grid>                                        
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
                         </Expander>
                         <Expander Name="expanderContainerFavoritos" Header="Favoritos" Grid.Row="1" Style="{StaticResource expanderRecolher}">
@@ -108,7 +118,7 @@
         </Border>
         <Grid Name="grdForms" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Border Grid.Row="1" Margin="5,5,5,5"
@@ -118,12 +128,40 @@
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Name="stkForm" Width="{Binding ElementName=grdForms, Path=Width}" Grid.Column="0">
-                        <StackPanel.Children>                            
-                        </StackPanel.Children>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="3"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ToolBar Style="{StaticResource toolBarCadastro}">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" Content="Salvar" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"></Button>
+                        </ToolBar>
+                        <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="Black"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
+                            <TabControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding _header}"/>
+                                </DataTemplate>
+                            </TabControl.ItemTemplate>
+                            <TabControl.ContentTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <ContentControl Content="{Binding _content}"></ContentControl>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </TabControl.ContentTemplate>
+                        </TabControl>
+                    </Grid>
                     <StackPanel Name="stkDashBoard" Grid.Column="1">
-                        
                     </StackPanel>
                 </Grid>
             </Border>

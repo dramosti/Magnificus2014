@@ -24,20 +24,13 @@ namespace HLP.Entries.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-
             try
             {
-               //WinUF uf = new WinUF();
-               //uf.ShowDialog();
-
-
-                WinRegiao reg = new WinRegiao();
-                reg.ShowDialog();
-
+                WinUF uf = new WinUF();
+                uf.ShowDialog();
             }
             catch (Exception ex)
-            {
-                
+            {                
                 throw ex;
             }
         }
