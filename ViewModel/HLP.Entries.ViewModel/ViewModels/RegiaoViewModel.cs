@@ -6,18 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
+using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class RegiaoViewModel : ModelBase
-    {
-       public ICommand commandTeste {get;set;}
+    public class RegiaoViewModel : ViewModelBase
+    {       
+
+        public ICommand commandTeste { get; set; }
 
         RegiaoCommands objRegiaoCommands = null;
+        
 
         private ObservableCollection<RegiaoModel> _lRegiao;
 
@@ -28,6 +30,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         }
 
         public RegiaoViewModel()
+            : base()
         {
             objRegiaoCommands = new RegiaoCommands(objRegiaoViewModel: this);
             objRegiaoCommands.GetAll();

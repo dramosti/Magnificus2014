@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
+using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class RegiaoModel : ModelBase
+    public class RegiaoModel : ViewModelBase
     {
         public int? _idRegiao;
 

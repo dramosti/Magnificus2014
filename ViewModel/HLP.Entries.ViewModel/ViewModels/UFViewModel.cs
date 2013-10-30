@@ -10,11 +10,11 @@ using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
-using HLP.Comum.View.ClassesBases;
+using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class UFViewModel : ModelBase
+    public class UFViewModel : ViewModelBase
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -24,15 +24,53 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandCancelar { get; set; }
         #endregion
 
-        public OperacaoCadastro currentOp { get; set; }
+        #region IcommandsBase
+        public ICommand commandSalvarBase
+        {
+            get
+            {
+                return base.salvarBase;
+            }
+        }
+
+        public ICommand commandDeletarBase
+        {
+            get
+            {
+                return base.deletarBase;
+            }
+        }
+        public ICommand commandNovoBase
+        {
+            get
+            {
+                return base.novoBase;
+            }
+        }
+        public ICommand commandAlterarBase
+        {
+            get
+            {
+                return base.alterarBase;
+            }
+        }
+        public ICommand commandCancelarBase
+        {
+            get
+            {
+                return base.cancelarBase;
+            }
+        }
+        #endregion
+
 
         UFCommands objUFCommand;
 
         public UFViewModel()
+            : base()
         {
-            this.currentOp = OperacaoCadastro.livre;
             objUFCommand = new UFCommands(objViewModel: this);
-        }       
+        }
 
         private UFModel _currentUF;
 
@@ -44,8 +82,8 @@ namespace HLP.Entries.ViewModel.ViewModels
             }
             set
             {
-                this._currentUF = value;                
-                base.NotifyPropertyChanged("currentUF");                
+                this._currentUF = value;
+                base.NotifyPropertyChanged("currentUF");
             }
         }
 

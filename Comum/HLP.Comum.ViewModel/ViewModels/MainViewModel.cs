@@ -13,21 +13,7 @@ using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
-    public class vWindows : ModelBase
-    {
-        private string xNome;
-
-        public string _xNome
-        {
-            get { return xNome; }
-            set
-            {
-                xNome = value;
-                this.NotifyPropertyChanged(propertyName: "_xNome");
-            }
-        }
-    }
-    public class MainViewModel : ModelBase
+    public class MainViewModel : ViewModelBase
     {
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
@@ -46,9 +32,9 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
-        private ObservableCollection<vWindows> lWindows;
+        private ObservableCollection<windowsModel> lWindows;
 
-        public ObservableCollection<vWindows> _lWindows
+        public ObservableCollection<windowsModel> _lWindows
         {
             get { return lWindows; }
             set
@@ -66,7 +52,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             set
             {
                 currentTab = value;
-                base.NotifyPropertyChanged(propertyName: "_currentTab");                  
+                base.NotifyPropertyChanged(propertyName: "_currentTab");
             }
         }
 
@@ -74,15 +60,38 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
             this._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
-            this._lWindows = new ObservableCollection<vWindows>();
-            vWindows objWindow;
+            this._lWindows = new ObservableCollection<windowsModel>();
+            windowsModel objWindow;
 
             foreach (var item in GerenciadorModulo.Instancia.Modulos[0].objectModulo.lFormularios)
             {
-                objWindow = new vWindows();
-                objWindow._xNome = item.xName;
-                this._lWindows.Add(item: objWindow);
+                objWindow = new windowsModel();
+                objWindow.xName = item.xName;
+                objWindow.xHeader = this.getHeaderWindow(xNomeForm: objWindow.xName);
+                this.lWindows.Add(item: objWindow);
             }
+        }
+
+        private string getHeaderWindow(string xNomeForm)
+        {
+            Window w;
+            try
+            {
+                w = GerenciadorModulo.Instancia.CarregaForm(nome: xNomeForm.ToString(),
+                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+                return w != null ? w.Title : xNomeForm;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                w = null;
+            }
+
+
+
         }
     }
 }

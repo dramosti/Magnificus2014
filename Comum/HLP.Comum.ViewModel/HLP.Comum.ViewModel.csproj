@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\MainCommands.cs" />
+    <Compile Include="Commands\ViewModelBaseCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -58,6 +60,10 @@
     <ProjectReference Include="..\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
       <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
       <Name>HLP.Comum.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
+      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
+      <Name>HLP.Comum.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

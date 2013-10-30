@@ -53,7 +53,7 @@ namespace HLP.Entries.ViewModel.Commands
             try
             {
                 iUFRepository.Save(objViewModel.currentUF);
-                this.objViewModel.currentOp = Comum.View.ClassesBases.OperacaoCadastro.pesquisando;
+                this.objViewModel.commandSalvarBase.Execute(parameter: null);
             }
             catch (Exception ex)
             {
@@ -63,20 +63,21 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool SaveCanExecute(object bValido)
         {
-            if (this.objViewModel.currentOp != Comum.View.ClassesBases.OperacaoCadastro.criando &&
-                this.objViewModel.currentOp != Comum.View.ClassesBases.OperacaoCadastro.alterando)
+            if (objViewModel.currentUF == null)
                 return false;
 
-            return objViewModel.currentUF.IsValid;
+            return (objViewModel.currentUF.IsValid &&
+                this.objViewModel.commandSalvarBase.CanExecute(parameter: null));
         }
 
         public void Delete(object objUFModel)
         {
             iUFRepository.Delete(Convert.ToInt32((objUFModel as UFModel).idUF));
+            this.objViewModel.commandDeletarBase.Execute(parameter: null);
         }
         private bool DeleteCanExecute()
         {
-            return this.objViewModel.currentOp == Comum.View.ClassesBases.OperacaoCadastro.pesquisando;
+            return this.objViewModel.commandDeletarBase.CanExecute(parameter: null);
         }
 
         private void Novo()
@@ -86,35 +87,31 @@ namespace HLP.Entries.ViewModel.Commands
                 xSiglaUf = "",
                 xUf = ""
             };
-            this.objViewModel.currentOp = Comum.View.ClassesBases.OperacaoCadastro.criando;
+            this.objViewModel.commandNovoBase.Execute(parameter: null);
         }
         private bool NovoCanExecute()
         {
-            return (this.objViewModel.currentOp == Comum.View.ClassesBases.OperacaoCadastro.livre
-                || this.objViewModel.currentOp == Comum.View.ClassesBases.OperacaoCadastro.pesquisando);
+            return this.objViewModel.commandNovoBase.CanExecute(parameter: null);
         }
 
         private void Alterar()
         {
-            this.objViewModel.currentOp = Comum.View.ClassesBases.OperacaoCadastro.alterando;
+            this.objViewModel.commandAlterarBase.Execute(parameter: null);
         }
         private bool AlterarCanExecute()
         {
-            return this.objViewModel.currentOp == Comum.View.ClassesBases.OperacaoCadastro.pesquisando;
+            return this.objViewModel.commandAlterarBase.CanExecute(parameter: null);
         }
-
 
         private void Cancelar()
         {
-            this.objViewModel.currentOp = Comum.View.ClassesBases.OperacaoCadastro.livre;
+            this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }
 
         private bool CancelarCanExecute()
         {
-            return (this.objViewModel.currentOp == Comum.View.ClassesBases.OperacaoCadastro.criando ||
-                this.objViewModel.currentOp == Comum.View.ClassesBases.OperacaoCadastro.alterando);
+            return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
         }
-
 
         #endregion
 

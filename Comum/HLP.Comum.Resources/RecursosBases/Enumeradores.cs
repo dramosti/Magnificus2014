@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Comum.View.ClassesBases
+namespace HLP.Comum.Resources.RecursosBases
 {
     public enum OperacaoCadastro
     {
