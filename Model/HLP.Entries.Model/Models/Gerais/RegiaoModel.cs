@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
-using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class RegiaoModel : ViewModelBase
+    public class RegiaoModel 
     {
         public int? _idRegiao;
 
@@ -20,7 +19,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _idRegiao = value;
-                base.NotifyPropertyChanged("idRegiao");
             }
         }
 
@@ -30,7 +28,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public string xRegiao
         {
             get { return _xRegiao; }
-            set { _xRegiao = value; base.NotifyPropertyChanged("xRegiao"); }
+            set { _xRegiao = value; }
         }
 
         public int _idPais;
@@ -39,7 +37,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idPais
         {
             get { return _idPais; }
-            set { _idPais = value; base.NotifyPropertyChanged("idPais"); }
+            set { _idPais = value;}
         }
 
 

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Model.Components;
+using HLP.Dependencies;
 //using HLP.Dependencies;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
@@ -83,9 +84,9 @@ namespace HLP.Comum.ViewModel.Components
             {
                 if (kernel == null)
                 {
-                    //kernel = new StandardKernel(new MagnificusDependenciesModule());
-                    //kernel.Settings.ActivationCacheDisabled = false;
-                    //kernel.Inject(this);
+                    kernel = new StandardKernel(new MagnificusDependenciesModule());
+                    kernel.Settings.ActivationCacheDisabled = false;
+                    kernel.Inject(this);
                 }
 
                 if (UndTrabalho.TableExistis(this.TableView))

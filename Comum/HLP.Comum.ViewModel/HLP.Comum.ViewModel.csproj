@@ -78,6 +78,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
+      <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
+      <Name>HLP.Dependencies</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
       <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
       <Name>HLP.Comum.Infrastructure</Name>
