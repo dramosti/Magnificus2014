@@ -26,7 +26,7 @@ namespace HLP.Comum.ViewModel.Commands
                     execute: ex => AddWindow(xNomeForm: ex),
                     canExecute: ex => AddWindowCanExecute());
                 this._objTabPagesAtivasViewModel.DelWindowCommand = new RelayCommand(
-                    execute: ex => DelWindow(xNomeForm: ex),
+                    execute: ex => DelWindow(tabItem: ex),
                     canExecute: ex => DelWindowCanExecute());
             }
             catch (Exception ex)
@@ -66,10 +66,11 @@ namespace HLP.Comum.ViewModel.Commands
             return true;
         }
 
-        private void DelWindow(object xNomeForm)
+        private void DelWindow(object tabItem)
         {
             try
             {
+                this._objTabPagesAtivasViewModel._lTabPagesAtivas.Remove(item: tabItem as TabPagesAtivasModel);
             }
             catch (Exception ex)
             {

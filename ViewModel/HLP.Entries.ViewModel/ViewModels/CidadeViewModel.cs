@@ -8,10 +8,11 @@ using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using System.Windows.Input;
+using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class CidadeViewModel : ModelBase
+    public class CidadeViewModel : ViewModelBase
     {
 
         #region ICommands

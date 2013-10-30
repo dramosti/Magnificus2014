@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -64,6 +65,10 @@
     <ProjectReference Include="..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
       <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
+      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
+      <Name>HLP.Comum.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
       <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>

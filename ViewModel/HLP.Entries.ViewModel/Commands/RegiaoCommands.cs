@@ -10,8 +10,8 @@ using HLP.Dependencies;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Repository.Interfaces;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
-using HLP.Entries.ViewModel.ViewModels;
 using Ninject;
+using HLP.Entries.ViewModel.ViewModels;
 
 namespace HLP.Entries.ViewModel.Commands
 {
