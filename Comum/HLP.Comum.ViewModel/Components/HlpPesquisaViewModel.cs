@@ -16,10 +16,18 @@ namespace HLP.Comum.ViewModel.Components
 {
     public class HlpPesquisaViewModel : ModelBase
     {
+        public HlpPesquisaViewModel(string _FieldPesquisa, string _TableView, IList _Items)
+        {
+            this.FieldPesquisa = _FieldPesquisa;
+            this.TableView = _TableView;
+            this.Items = _Items;
+        }
+
         [Inject]
         public UnitOfWorkBase UndTrabalho { get; set; }
         DataAccessor<PesquisaRapida> regAcessor = null;
 
+        private IKernel kernel = null;
 
         private PesquisaRapida _pesquisaRapida;
         public PesquisaRapida pesquisaRapida
@@ -44,70 +52,79 @@ namespace HLP.Comum.ViewModel.Components
             }
         }
 
-        private string FieldPesquisa { get; set; }
-        private string TableView { get; set; }
-        private IList Items { get; set; }
+        private string _FieldPesquisa = "";
 
-        public HlpPesquisaViewModel(string _TableView, string _FieldPesquisa, IList _Items)
+        public string FieldPesquisa
         {
-            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
-            kernel.Settings.ActivationCacheDisabled = false;
-            kernel.Inject(this);
-
-            pesquisaRapida = new PesquisaRapida();
-            this.FieldPesquisa = _FieldPesquisa;
-            this.TableView = _TableView;
-            this.Items = _Items;
+            get { return _FieldPesquisa; }
+            set { _FieldPesquisa = value; }
         }
+
+        private string _TableView = "";
+        public string TableView
+        {
+            get { return _TableView; }
+            set { _TableView = value; }
+        }
+
+        private IList _Items = new List<string>();
+        public IList Items
+        {
+            get { return _Items; }
+            set { _Items = value; }
+        }
+
+
 
 
         private void GetValorDisplay()
         {
             try
             {
+                if (kernel == null)
+                {
+                    kernel = new StandardKernel(new MagnificusDependenciesModule());
+                    kernel.Settings.ActivationCacheDisabled = false;
+                    kernel.Inject(this);
+                }
 
                 if (UndTrabalho.TableExistis(this.TableView))
                 {
-                    string sDisplay = string.Empty;
-                    foreach (string col in (this.Items as List<string>))
-                    {
-                        if (UndTrabalho.ColunaExistis(this.TableView, col.ToString()))
-                        {
-                            if (sDisplay == string.Empty)
-                                sDisplay += col;
-                            else
-                                sDisplay += " + ' - '," + col;
-                        }
-                    }
 
-                    if (sDisplay != "")
+                    if (regAcessor == null)
                     {
-                        if (regAcessor == null)
+                        string sDisplay = string.Empty;
+                        foreach (string col in (this.Items as List<string>))
                         {
-                            StringBuilder sQuery = new StringBuilder();
-                            sQuery.Append("SELECT ");
-                            sQuery.Append(this.iValorPesquisa + " as Valor ,");
-                            sQuery.Append("CONCAT(" + sDisplay + ") as Display ");
-                            sQuery.Append("FROM " + this.TableView);
-                            sQuery.Append(" WHERE ");
-                            sQuery.Append(this.FieldPesquisa + " = @FieldPesquisa ");
-                            if (UndTrabalho.ColunaExistis(this.TableView, "idEmpresa"))
-                                sQuery.Append(" AND idEmpresa = '" + CompanyData.idEmpresa + "' ");
-                            if (UndTrabalho.ColunaExistis(this.TableView, "Ativo"))
-                                sQuery.Append(" AND Ativo = 'S'");
-
-                            regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(sQuery.ToString(),
-                                new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),
-                                MapBuilder<PesquisaRapida>.MapAllProperties().Build());
+                            if (UndTrabalho.ColunaExistis(this.TableView, col.ToString()))
+                            {
+                                if (sDisplay == string.Empty)
+                                    sDisplay += string.Format("CAST({0} as varchar)", col);
+                                else
+                                    sDisplay += " + ' - '," + string.Format("CAST({0} as varchar)", col);
+                            }
                         }
 
-                        pesquisaRapida = regAcessor.Execute(this.iValorPesquisa).FirstOrDefault();
-                    }
-                    else
-                    {
-                        throw new Exception("Nenhuma coluna válida foi encontrada!");
-                    }
+                        if (sDisplay == string.Empty)
+                            throw new Exception("Nenhuma coluna válida foi encontrada!");
 
+                        StringBuilder sQuery = new StringBuilder();
+                        sQuery.Append("SELECT ");
+                        sQuery.Append(this.iValorPesquisa + " as Valor ,");
+                        sQuery.Append("CONCAT(" + sDisplay + ") as Display ");
+                        sQuery.Append("FROM " + this.TableView);
+                        sQuery.Append(" WHERE ");
+                        sQuery.Append(this.FieldPesquisa + " = @FieldPesquisa ");
+                        if (UndTrabalho.ColunaExistis(this.TableView, "idEmpresa"))
+                            sQuery.Append(" AND idEmpresa = '" + CompanyData.idEmpresa + "' ");
+                        if (UndTrabalho.ColunaExistis(this.TableView, "Ativo"))
+                            sQuery.Append(" AND Ativo = 'S'");
+
+                        regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(sQuery.ToString(),
+                            new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),
+                            MapBuilder<PesquisaRapida>.MapAllProperties().Build());
+                    }
+                    pesquisaRapida = regAcessor.Execute(this.iValorPesquisa).FirstOrDefault();
                 }
                 else
                 {

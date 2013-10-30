@@ -6,10 +6,10 @@
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
             Width="Auto" Height="Auto">
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" Loaded="DockPanel_Loaded">
         <Label x:Name="lblCaption" Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" FontFamily="Courier New"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
         <TextBox x:Name="txtID" Width="80" Text="{Binding iValorPesquisa}" />
-        <TextBox x:Name="txtDisplay" Text="{Binding pesquisaRapida.Display}"  />
+        <TextBox x:Name="txtDisplay" IsReadOnly="True" Text="{Binding pesquisaRapida.Display}"  />
     </DockPanel>
 </runtime:BaseControl>

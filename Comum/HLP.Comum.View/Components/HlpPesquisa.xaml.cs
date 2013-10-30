@@ -23,18 +23,26 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpPesquisa : BaseControl
     {
+        public HlpPesquisaViewModel ViewModel
+        {
+            get { return this.DataContext as HlpPesquisaViewModel; }
+            set { this.DataContext = value; }
+        }
+
         public HlpPesquisa()
         {
-            Items = new List<string>();
             InitializeComponent();
-            this.DataContext = new HlpPesquisaViewModel(_TableView: this.TableView, _FieldPesquisa: this.FieldPesquisa, _Items: this.Items);
+            Items = new List<string>();
         }
 
         [Category("HLP")]
         public string FieldPesquisa
         {
             get { return (string)GetValue(FieldPesquisaProperty); }
-            set { SetValue(FieldPesquisaProperty, value); }
+            set
+            {
+                SetValue(FieldPesquisaProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for FieldPesquisa.  This enables animation, styling, binding, etc...
@@ -45,7 +53,10 @@ namespace HLP.Comum.View.Components
         public string TableView
         {
             get { return (string)GetValue(TableViewProperty); }
-            set { SetValue(TableViewProperty, value); }
+            set
+            {
+                SetValue(TableViewProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for TableView.  This enables animation, styling, binding, etc...
@@ -63,10 +74,15 @@ namespace HLP.Comum.View.Components
         public IList Items
         {
             get { return (IList)GetValue(ItemsProperty); }
-            set { SetValue(ItemsProperty, value); }
+            set
+            {
+                SetValue(ItemsProperty, value);
+            }
+        }
+
+        private void DockPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel = new HlpPesquisaViewModel(_FieldPesquisa: this.FieldPesquisa, _TableView: this.TableView, _Items: this.Items);
         }
     }
-
-
-
 }

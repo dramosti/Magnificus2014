@@ -21,15 +21,22 @@
 				Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="149" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox
 				Text="{Binding currentUF.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100">               
+				Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100">
             </Components:HlpTextBox>
             <Components:HlpComboBox ItemsSource="{Binding Source={StaticResource lRegiao}}"
 				SelectedValuePath="idRegiao" SelectedValue="{Binding currentUF.idRegiao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" DisplayMemberPath="xRegiao"
 				HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>
-
+            <Components:HlpPesquisa TableView="UF" FieldPesquisa="idUf">
+                <Components:HlpPesquisa.Items>
+                    <System:String>idUf</System:String>
+                    <System:String>xSiglaUf</System:String>
+                    <System:String>xUF</System:String>
+                    <System:String>cIbgeUf</System:String>
+                </Components:HlpPesquisa.Items>
+            </Components:HlpPesquisa>
 
         </StackPanel>
-        
+
     </Grid>
 
 </Window>
