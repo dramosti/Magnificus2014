@@ -67,18 +67,11 @@
     <Compile Include="Gerais\WinCidade.xaml.cs">
       <DependentUpon>WinCidade.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gerais\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIUtilities\UserInterfaceUtilities.cs" />
     <Page Include="Gerais\WinCidade.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Gerais\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

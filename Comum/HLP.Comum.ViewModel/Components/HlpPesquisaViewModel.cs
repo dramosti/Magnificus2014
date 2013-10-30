@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
-using HLP.Comum.Model.Models.Components;
-using HLP.Dependencies;
+using HLP.Comum.Model.Components;
+//using HLP.Dependencies;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 
 namespace HLP.Comum.ViewModel.Components
 {
-    public class HlpPesquisaViewModel : ModelBase
+    public class HlpPesquisaViewModel : INotifyPropertyChanged
     {
         public HlpPesquisaViewModel(string _FieldPesquisa, string _TableView, IList _Items)
         {
@@ -33,7 +33,7 @@ namespace HLP.Comum.ViewModel.Components
         public PesquisaRapida pesquisaRapida
         {
             get { return _pesquisaRapida; }
-            set { _pesquisaRapida = value; base.NotifyPropertyChanged("pesquisaRapida"); }
+            set { _pesquisaRapida = value; this.NotifyPropertyChanged("pesquisaRapida"); }
         }
 
         private int? _iValorPesquisa;
@@ -46,7 +46,7 @@ namespace HLP.Comum.ViewModel.Components
                 if (value != _iValorPesquisa)
                 {
                     _iValorPesquisa = value;
-                    base.NotifyPropertyChanged("iValorPesquisa");
+                    this.NotifyPropertyChanged("iValorPesquisa");
                     this.GetValorDisplay();
                 }
             }
@@ -83,9 +83,9 @@ namespace HLP.Comum.ViewModel.Components
             {
                 if (kernel == null)
                 {
-                    kernel = new StandardKernel(new MagnificusDependenciesModule());
-                    kernel.Settings.ActivationCacheDisabled = false;
-                    kernel.Inject(this);
+                    //kernel = new StandardKernel(new MagnificusDependenciesModule());
+                    //kernel.Settings.ActivationCacheDisabled = false;
+                    //kernel.Inject(this);
                 }
 
                 if (UndTrabalho.TableExistis(this.TableView))
@@ -136,6 +136,18 @@ namespace HLP.Comum.ViewModel.Components
                 throw ex;
             }
         }
+
+        #region NotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
 
 
     }

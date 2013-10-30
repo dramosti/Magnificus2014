@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HLP.Comum.ViewModel.Components;
 
+
 namespace HLP.Comum.View.Components
 {
     /// <summary>
@@ -23,6 +24,7 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpPesquisa : BaseControl
     {
+
         public HlpPesquisaViewModel ViewModel
         {
             get { return this.DataContext as HlpPesquisaViewModel; }

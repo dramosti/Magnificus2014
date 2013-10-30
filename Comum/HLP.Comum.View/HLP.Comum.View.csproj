@@ -81,6 +81,20 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
+      <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
+      <Name>HLP.Comum.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

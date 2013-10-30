@@ -43,6 +43,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\PesquisaRapida.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />
     <Compile Include="Models\windowsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +53,10 @@
     <Folder Include="Repository\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
+      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
+      <Name>HLP.Comum.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
       <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
       <Name>HLP.Comum.Resources</Name>
