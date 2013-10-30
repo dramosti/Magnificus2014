@@ -101,6 +101,11 @@ namespace HLP.Comum.Infrastructure
             }
         }
 
+        /// <summary>
+        /// Verifica se uma Tabela ou uma View existe na base de dados
+        /// </summary>
+        /// <param name="nm_Table"></param>
+        /// <returns></returns>
         public bool TableExistis(string nm_Table)
         {
             int iCount = (int)this.dbPrincipal.ExecuteScalar(
@@ -116,10 +121,16 @@ namespace HLP.Comum.Infrastructure
             }
         }
 
-        public bool ViewExistis(string nm_View)
+        /// <summary>
+        /// Verifica se uma coluna existe na Tabela/View
+        /// </summary>
+        /// <param name="nm_Table"></param>
+        /// <param name="nm_Coluna"></param>
+        /// <returns></returns>
+        public bool ColunaExistis(string nm_Table, string nm_Coluna)
         {
             int iCount = (int)this.dbPrincipal.ExecuteScalar(
-              "dbo.Proc_ExistsView", nm_View);
+               "dbo.Proc_Verifica_Coluna_Existe", nm_Table, nm_Coluna);
 
             if (iCount == 0)
             {
@@ -130,9 +141,11 @@ namespace HLP.Comum.Infrastructure
                 return true;
             }
         }
-    //    BACKUP DATABASE [YourDatabase] TO  DISK = N'C:\YourPathAndFile.bak' 
-    //WITH NOFORMAT, NOINIT,  
-    //NAME = N'Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+
+
+        //    BACKUP DATABASE [YourDatabase] TO  DISK = N'C:\YourPathAndFile.bak' 
+        //WITH NOFORMAT, NOINIT,  
+        //NAME = N'Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
         public void BackupDatabase(string xPath, string xNameBackup)
         {
             SqlConnection con = new SqlConnection();
@@ -148,7 +161,7 @@ namespace HLP.Comum.Infrastructure
 
             sqlBackup.Database = con.Database;
 
-            BackupDeviceItem deviceItem = new BackupDeviceItem(xPath+"\\"+xNameBackup, DeviceType.File);
+            BackupDeviceItem deviceItem = new BackupDeviceItem(xPath + "\\" + xNameBackup, DeviceType.File);
 
             //ServerConnection connection = new ServerConnection(con.DataSource, con.Credential.UserId, con.Credential.Password);
             ServerConnection connection = new ServerConnection(con);
@@ -186,10 +199,10 @@ namespace HLP.Comum.Infrastructure
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
-            
+
 
             #region Backup Método 2
             //Podia ser feito desta forma, porém foi optado pela classe de Backup do .NET
@@ -209,7 +222,7 @@ namespace HLP.Comum.Infrastructure
             //}
             //catch (Exception ex)
             //{
-                
+
             //    throw;
             //}             
             //con.Close();
@@ -230,7 +243,7 @@ namespace HLP.Comum.Infrastructure
         {
 
             if (Complete != null)
-            Complete(sender, e);
+                Complete(sender, e);
         }
     }
 }

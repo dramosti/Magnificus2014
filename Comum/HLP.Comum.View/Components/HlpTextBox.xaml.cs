@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace HLP.Comum.View.Components
     {
         public HlpTextBox()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         #region TextBox's Property
@@ -36,7 +37,10 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(HlpTextBox), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("Text", typeof(string), typeof(HlpTextBox), new PropertyMetadata(string.Empty));      
+
+
+
         #endregion
 
     }
