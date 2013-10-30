@@ -56,6 +56,9 @@
     <Compile Include="Components\HlpComboBox.xaml.cs">
       <DependentUpon>HlpComboBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpPesquisa.xaml.cs">
+      <DependentUpon>HlpPesquisa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpTextBox.xaml.cs">
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
@@ -67,6 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Components\HlpComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpPesquisa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
