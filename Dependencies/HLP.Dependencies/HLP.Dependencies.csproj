@@ -77,6 +77,10 @@
       <Project>{CD60F2D5-6E51-417A-B50E-C4EB01EB7565}</Project>
       <Name>HLP.Comum.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
       <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
       <Name>HLP.Entries.Model</Name>

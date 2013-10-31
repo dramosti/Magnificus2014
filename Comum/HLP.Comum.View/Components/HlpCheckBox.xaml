@@ -1,11 +1,11 @@
-﻿<runtime:BaseControl x:Class="HLP.Comum.View.Components.HlpTextBox"
+﻿<runtime:BaseControl x:Class="HLP.Comum.View.Components.HlpCheckBox"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto">
+             Width="Auto" Height="Auto">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,13 +13,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    
     <DockPanel LastChildFill="True">
         <Label x:Name="lblCaption" 
                Style="{StaticResource  LabelStyleComponents}"
                Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
-        <TextBox x:Name="txtControle"  
-                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
-                  Margin="0"/>
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>        
+        <CheckBox x:Name="chkControle" VerticalAlignment="Center"
+                 IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=IsChecked}" />
     </DockPanel>
 </runtime:BaseControl>

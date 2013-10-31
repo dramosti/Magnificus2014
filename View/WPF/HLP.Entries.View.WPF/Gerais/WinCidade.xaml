@@ -1,16 +1,19 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinCidade"
-        Title="Cidade" Height="300" Width="300">
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinCidade"
+        Title="Cidade" Height="600" Width="800">
     <Grid>
-        <Label Content="Id" HorizontalAlignment="Left" Margin="45,93,0,0" VerticalAlignment="Top"/>
-        <Label Content="Cidade" HorizontalAlignment="Left" Margin="18,124,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ibge" HorizontalAlignment="Left" Margin="31,153,0,0" VerticalAlignment="Top"/>
-        <Label Content="Uf" HorizontalAlignment="Left" Margin="43,184,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.394,0.514"/>        
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="83,128,0,0" TextWrapping="Wrap" Text="{Binding _currentCidade.xCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="83,156,0,0" TextWrapping="Wrap" Text="{Binding _currentCidade.cIbge, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
-        <Components:HlpTextBox HorizontalAlignment="Left" Text="{Binding _currentCidade.idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="45,22,0,0" VerticalAlignment="Top" Width="158" Caption="Id"/>
+        <Components:HlpPesquisa  HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="395" TableView="UF" Caption="UF" FieldPesquisa="idUF" WidthLabel="80">
+            <Components:HlpPesquisa.Items>
+                <System:String>xSiglaUf</System:String>
+                <System:String>idUf</System:String>
+            </Components:HlpPesquisa.Items>
+        </Components:HlpPesquisa>
+        <Components:HlpDateTimePicker HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Caption="Data" Width="248" WidthLabel="80"/>
+        <Components:HlpCheckBox HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="248" WidthLabel="80"/>
+        <Components:HlpComboBox HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Width="248" Caption="Produtos" WidthLabel="80"/>
+        <Components:HlpTextBox HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="248" Caption="Descrição" WidthLabel="80"/>
 
 
 

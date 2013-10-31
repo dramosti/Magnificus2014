@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Model.Components;
+using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Dependencies;
 //using HLP.Dependencies;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -25,10 +26,9 @@ namespace HLP.Comum.ViewModel.Components
         }
 
         [Inject]
-        public UnitOfWorkBase UndTrabalho { get; set; }
-        DataAccessor<PesquisaRapida> regAcessor = null;
-
+        public IHlpPesquisaRapidaRepository iHlpPesquisaRapidaRepository { get; set; }
         private IKernel kernel = null;
+
 
         private PesquisaRapida _pesquisaRapida;
         public PesquisaRapida pesquisaRapida
@@ -37,18 +37,49 @@ namespace HLP.Comum.ViewModel.Components
             set { _pesquisaRapida = value; this.NotifyPropertyChanged("pesquisaRapida"); }
         }
 
-        private int? _iValorPesquisa;
+        private string _iValorPesquisa;
 
-        public int? iValorPesquisa
+        public string iValorPesquisa
         {
             get { return _iValorPesquisa; }
             set
             {
-                if (value != _iValorPesquisa)
+                if (value.Equals(""))
                 {
+                    this.pesquisaRapida = new PesquisaRapida();
                     _iValorPesquisa = value;
                     this.NotifyPropertyChanged("iValorPesquisa");
-                    this.GetValorDisplay();
+                }
+
+                int iValida;
+                if (int.TryParse(value, out iValida))
+                {
+                    if (value != _iValorPesquisa)
+                    {
+
+
+                        if (kernel == null)
+                        {
+                            kernel = new StandardKernel(new MagnificusDependenciesModule());
+                            kernel.Settings.ActivationCacheDisabled = false;
+                            kernel.Inject(this);
+                        }
+                        PesquisaRapida objRet = iHlpPesquisaRapidaRepository.GetValorDisplay
+                            (
+                            _TableView: this.TableView,
+                            _Items: this.Items,
+                            _FieldPesquisa: this.FieldPesquisa,
+                            _iValorPesquisa: Convert.ToInt32(value)
+                            );
+
+                        if (objRet != null)
+                        {
+                            this.pesquisaRapida = objRet;
+                            _iValorPesquisa = value;
+                            this.NotifyPropertyChanged("iValorPesquisa");
+                        }
+
+                    }
                 }
             }
         }
@@ -73,69 +104,6 @@ namespace HLP.Comum.ViewModel.Components
         {
             get { return _Items; }
             set { _Items = value; }
-        }
-
-
-
-
-        private void GetValorDisplay()
-        {
-            try
-            {
-                if (kernel == null)
-                {
-                    kernel = new StandardKernel(new MagnificusDependenciesModule());
-                    kernel.Settings.ActivationCacheDisabled = false;
-                    kernel.Inject(this);
-                }
-
-                if (UndTrabalho.TableExistis(this.TableView))
-                {
-
-                    if (regAcessor == null)
-                    {
-                        string sDisplay = string.Empty;
-                        foreach (string col in (this.Items as List<string>))
-                        {
-                            if (UndTrabalho.ColunaExistis(this.TableView, col.ToString()))
-                            {
-                                if (sDisplay == string.Empty)
-                                    sDisplay += string.Format("CAST({0} as varchar)", col);
-                                else
-                                    sDisplay += " + ' - '," + string.Format("CAST({0} as varchar)", col);
-                            }
-                        }
-
-                        if (sDisplay == string.Empty)
-                            throw new Exception("Nenhuma coluna válida foi encontrada!");
-
-                        StringBuilder sQuery = new StringBuilder();
-                        sQuery.Append("SELECT ");
-                        sQuery.Append(this.iValorPesquisa + " as Valor ,");
-                        sQuery.Append("CONCAT(" + sDisplay + ") as Display ");
-                        sQuery.Append("FROM " + this.TableView);
-                        sQuery.Append(" WHERE ");
-                        sQuery.Append(this.FieldPesquisa + " = @FieldPesquisa ");
-                        if (UndTrabalho.ColunaExistis(this.TableView, "idEmpresa"))
-                            sQuery.Append(" AND idEmpresa = '" + CompanyData.idEmpresa + "' ");
-                        if (UndTrabalho.ColunaExistis(this.TableView, "Ativo"))
-                            sQuery.Append(" AND Ativo = 'S'");
-
-                        regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(sQuery.ToString(),
-                            new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),
-                            MapBuilder<PesquisaRapida>.MapAllProperties().Build());
-                    }
-                    pesquisaRapida = regAcessor.Execute(this.iValorPesquisa).FirstOrDefault();
-                }
-                else
-                {
-                    throw new Exception("Tabela/View não existente na base de dados!");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
         }
 
         #region NotifyPropertyChanged

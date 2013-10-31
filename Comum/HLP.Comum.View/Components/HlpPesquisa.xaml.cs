@@ -37,7 +37,7 @@ namespace HLP.Comum.View.Components
             Items = new List<string>();
         }
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public string FieldPesquisa
         {
             get { return (string)GetValue(FieldPesquisaProperty); }
@@ -51,13 +51,14 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty FieldPesquisaProperty =
             DependencyProperty.Register("FieldPesquisa", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public string TableView
         {
             get { return (string)GetValue(TableViewProperty); }
             set
             {
                 SetValue(TableViewProperty, value);
+                
             }
         }
 
@@ -72,7 +73,7 @@ namespace HLP.Comum.View.Components
         typeof(HlpTextBox),
         new PropertyMetadata(new List<string>()));
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public IList Items
         {
             get { return (IList)GetValue(ItemsProperty); }

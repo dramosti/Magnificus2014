@@ -53,8 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\BaseControl.cs" />
+    <Compile Include="Components\HlpCheckBox.xaml.cs">
+      <DependentUpon>HlpCheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpComboBox.xaml.cs">
       <DependentUpon>HlpComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpDateTimePicker.xaml.cs">
+      <DependentUpon>HlpDateTimePicker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\HlpPesquisa.xaml.cs">
       <DependentUpon>HlpPesquisa.xaml</DependentUpon>
@@ -68,7 +74,15 @@
     <Folder Include="Formularios\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\HlpCheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\HlpComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpDateTimePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,6 +103,10 @@
     <ProjectReference Include="..\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
       <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
       <Name>HLP.Comum.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
+      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
+      <Name>HLP.Comum.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
       <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
