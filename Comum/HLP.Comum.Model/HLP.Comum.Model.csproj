@@ -67,7 +67,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\PesquisaRapida.cs" />
+    <Compile Include="Components\PesquisaPadraoModel.cs" />
+    <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\modelBase.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />
     <Compile Include="Models\windowsModel.cs" />
