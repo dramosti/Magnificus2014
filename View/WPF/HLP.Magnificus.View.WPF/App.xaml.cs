@@ -21,6 +21,34 @@ namespace HLP.Magnificus.View.WPF
     /// </summary>
     public partial class App : Application
     {
-       
+        private bool unhandledException = false;
+
+        public App()
+        {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+        }
+
+        public bool DoHandle { get; set; }
+        private void Application_DispatcherUnhandledException(object sender,
+                               System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            MessageBox.Show(messageBoxText: "Erro: " +
+                e.Exception.Message, caption: "Erro.",
+                button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            this.HandleUnhandledException(e.ExceptionObject as Exception);
+            this.unhandledException = true;
+        }
+
+        private void HandleUnhandledException(Exception target)
+        {
+            if (false == unhandledException)
+            {
+            }
+        }
     }
 }

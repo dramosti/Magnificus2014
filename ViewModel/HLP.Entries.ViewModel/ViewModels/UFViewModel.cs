@@ -22,7 +22,9 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandNovo { get; set; }
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
+        public ICommand commandPesquisar { get; set; }
         #endregion
+
 
         #region IcommandsBase
         public ICommand commandSalvarBase
@@ -61,7 +63,16 @@ namespace HLP.Entries.ViewModel.ViewModels
                 return base.cancelarBase;
             }
         }
+
+        public ICommand commandPesquisarBase
+        {
+            get
+            {
+                return base.pesquisarBase;
+            }
+        }
         #endregion
+        
 
 
         UFCommands objUFCommand;

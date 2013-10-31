@@ -59,7 +59,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 int idUF = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
               "[dbo].[Proc_save_uf]",
              ParameterBase<UFModel>.SetParameterValue(uf));
-
                 uf.idUF = idUF;
             }
             else

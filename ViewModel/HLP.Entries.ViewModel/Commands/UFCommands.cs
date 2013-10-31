@@ -11,6 +11,7 @@ using HLP.Entries.Model.Repository.Interfaces;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 using Ninject;
+using System.ComponentModel;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -43,6 +44,9 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                 canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
+                canExecute: paramCanExec => this.PesquisarCanExecute());
         }
 
 
@@ -107,10 +111,37 @@ namespace HLP.Entries.ViewModel.Commands
         {
             this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }
-
         private bool CancelarCanExecute()
         {
             return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
+        }
+
+
+        private void Pesquisar(object param)
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.GetWorkOrdersBackground);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.GetWorkOrdersBackgroundComplete);
+
+            if (param != null)
+                bw.RunWorkerAsync(argument: param);
+        }
+
+        private bool PesquisarCanExecute()
+        {
+            return this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
+        }
+
+        private void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentUF = iUFRepository.GetUF(idUF: Convert.ToInt32(e.Argument));
+        }
+
+        private void GetWorkOrdersBackgroundComplete(
+          object sender,
+          RunWorkerCompletedEventArgs e)
+        {
+            this.objViewModel.commandPesquisarBase.Execute(parameter: null);
         }
 
         #endregion

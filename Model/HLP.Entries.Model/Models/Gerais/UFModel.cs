@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public partial class UFModel
+    public partial class UFModel : modelBase
     {
         public UFModel()
         {
@@ -20,7 +21,11 @@ namespace HLP.Entries.Model.Models.Gerais
         public int? idUF
         {
             get { return _idUF; }
-            set { _idUF = value; }
+            set
+            {
+                _idUF = value;
+                base.NotifyPropertyChanged(propertyName: "idUF");
+            }
         }
 
         private string _xSiglaUf;

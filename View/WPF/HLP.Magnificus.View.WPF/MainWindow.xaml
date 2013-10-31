@@ -140,6 +140,9 @@
                             <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"></Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" Content="Salvar" Style="{StaticResource StyleButton1}"></Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}"
+                                    CommandParameter="{Binding ElementName=txtPesquisa, Path=Text}" Content="Pesquisar" Style="{StaticResource StyleButton1}"></Button>
+                            <TextBox Name="txtPesquisa" Height="25" Margin="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                         </ToolBar>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Rectangle.Fill>
