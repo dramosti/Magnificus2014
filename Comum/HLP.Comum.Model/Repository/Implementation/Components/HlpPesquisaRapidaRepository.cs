@@ -17,10 +17,10 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         [Inject]
         public UnitOfWorkBase UndTrabalho { get; set; }
 
-        DataAccessor<PesquisaRapida> regAcessor = null;
+        DataAccessor<PesquisaRapidaModel> regAcessor = null;
 
 
-        public PesquisaRapida GetValorDisplay(string _TableView, IList _Items, string _FieldPesquisa, int? _iValorPesquisa)
+        public PesquisaRapidaModel GetValorDisplay(string _TableView, IList _Items, string _FieldPesquisa, int? _iValorPesquisa)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
 
                         regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(sQuery.ToString(),
                             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),
-                            MapBuilder<PesquisaRapida>.MapAllProperties().Build());
+                            MapBuilder<PesquisaRapidaModel>.MapAllProperties().Build());
                     }
                     return regAcessor.Execute(_iValorPesquisa).FirstOrDefault();
                 }

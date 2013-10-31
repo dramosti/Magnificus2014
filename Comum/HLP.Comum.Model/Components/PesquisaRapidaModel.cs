@@ -7,7 +7,7 @@ using HLP.Comum.Infrastructure;
 
 namespace HLP.Comum.Model.Components
 {
-    public class PesquisaRapida
+    public class PesquisaRapidaModel
     {
         [ParameterOrder(Order = 1)]
         public string Display { get; set; }

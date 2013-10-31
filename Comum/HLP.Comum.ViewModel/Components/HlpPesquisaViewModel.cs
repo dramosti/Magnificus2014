@@ -30,8 +30,8 @@ namespace HLP.Comum.ViewModel.Components
         private IKernel kernel = null;
 
 
-        private PesquisaRapida _pesquisaRapida;
-        public PesquisaRapida pesquisaRapida
+        private PesquisaRapidaModel _pesquisaRapida;
+        public PesquisaRapidaModel pesquisaRapida
         {
             get { return _pesquisaRapida; }
             set { _pesquisaRapida = value; this.NotifyPropertyChanged("pesquisaRapida"); }
@@ -46,7 +46,7 @@ namespace HLP.Comum.ViewModel.Components
             {
                 if (value.Equals(""))
                 {
-                    this.pesquisaRapida = new PesquisaRapida();
+                    this.pesquisaRapida = new PesquisaRapidaModel();
                     _iValorPesquisa = value;
                     this.NotifyPropertyChanged("iValorPesquisa");
                 }
@@ -64,7 +64,7 @@ namespace HLP.Comum.ViewModel.Components
                             kernel.Settings.ActivationCacheDisabled = false;
                             kernel.Inject(this);
                         }
-                        PesquisaRapida objRet = iHlpPesquisaRapidaRepository.GetValorDisplay
+                        PesquisaRapidaModel objRet = iHlpPesquisaRapidaRepository.GetValorDisplay
                             (
                             _TableView: this.TableView,
                             _Items: this.Items,
