@@ -1,5 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Util="clr-namespace:HLP.Comum.Resources" >
+
     <Style x:Key="BackgroundBorderTitle" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush" Value="#E8E8E8"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
@@ -334,8 +336,7 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Calibri"/>
     </Style>
-
-    <!-- Estilo recolhimento lateral Obs: foi iniciado a pesquisa, porém estilo para a funcionalidade de ocultar/mostrar não foi completada-->    
+    <!-- Estilo recolhimento lateral Obs: foi iniciado a pesquisa, porém estilo para a funcionalidade de ocultar/mostrar não foi completada-->
     <ControlTemplate x:Key="SimpleExpanderButtonTemp" TargetType="{x:Type ToggleButton}">
         <Border BorderBrush="White" BorderThickness="1">
             <Border x:Name="ExpanderButtonBorder"                    
@@ -417,12 +418,12 @@
     </ControlTemplate>
     <Style x:Key="expanderPersonalizado" TargetType="{x:Type Expander}">
         <Setter Property="Template" Value="{StaticResource SimpleExpanderTemp}"></Setter>
-        <Setter Property="Foreground" Value="White"></Setter>    
+        <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
-        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>        
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
         <Style.Triggers>
             <Trigger Property="IsExpanded" Value="false">
-                <Setter Property="Height" Value="30"></Setter>                
+                <Setter Property="Height" Value="30"></Setter>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -441,9 +442,22 @@
                                   VerticalAlignment="Center" Content=" X "/>
                     </Grid>
                 </ControlTemplate>
-            </Setter.Value>            
+            </Setter.Value>
         </Setter>
         <Setter Property="Foreground" Value="#A52A2A"></Setter>
     </Style>
+
+
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
+    </Style>
+    <Style x:Key="LabelStyleComponents" TargetType="Label">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Lucida Handwriting"/>
+    </Style>
+
+
+
+
 
 </ResourceDictionary>

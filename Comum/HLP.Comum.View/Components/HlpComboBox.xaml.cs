@@ -28,7 +28,7 @@ namespace HLP.Comum.View.Components
         }
 
         #region ComboBox's Property
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public string DisplayMemberPath
         {
             get { return (string)GetValue(DisplayMemberPathProperty); }
@@ -40,7 +40,7 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("DisplayMemberPath", typeof(string), typeof(HlpComboBox), new PropertyMetadata(string.Empty));
 
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public IEnumerable ItemsSource
         {
             get { return (IEnumerable)GetValue(ItemsSourceProperty); }
@@ -52,7 +52,7 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(HlpComboBox), new PropertyMetadata());
 
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public int SelectedIndex
         {
             get { return (int)GetValue(SelectedIndexProperty); }
@@ -65,7 +65,7 @@ namespace HLP.Comum.View.Components
 
 
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public object SelectedItem
         {
             get { return (object)GetValue(SelectedItemProperty); }
@@ -77,7 +77,7 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("SelectedItem", typeof(object), typeof(HlpComboBox), new PropertyMetadata());
 
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public string SelectedValuePath
         {
             get { return (string)GetValue(SelectedValuePathProperty); }
@@ -89,7 +89,7 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("SelectedValuePath", typeof(string), typeof(HlpComboBox), new PropertyMetadata(string.Empty));
 
 
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public object SelectedValue
         {
             get { return (object)GetValue(SelectedValueProperty); }

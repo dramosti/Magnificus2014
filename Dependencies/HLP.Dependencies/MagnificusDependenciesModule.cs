@@ -1,4 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
+using HLP.Comum.Model.Repository.Implementation.Components;
+using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Entries.Model.Repository.Implementation.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject.Modules;
@@ -16,6 +18,7 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+            Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
 
             //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();

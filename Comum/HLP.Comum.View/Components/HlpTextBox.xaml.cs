@@ -28,7 +28,7 @@ namespace HLP.Comum.View.Components
         }
 
         #region TextBox's Property
-        [Category("HLP")]
+        [Category("HLP.Owner")]
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
