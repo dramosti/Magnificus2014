@@ -71,76 +71,27 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                foreach (string property in ValidatedProperties)
-                    if (GetValidationError(property) != null)
-                        return false;
                 return true;
             }
         }
 
-        static readonly string[] ValidatedProperties = 
-        { 
-            "xSiglaUf", 
-            "xUf", 
-            "cIbgeUf",
-            "idRegiao",
-        };
+        //public bool IsValid
+        //{
+        //    get
+        //    {
+        //        foreach (string property in ValidatedProperties)
+        //            if (GetValidationError(property) != null)
+        //                return false;
+        //        return true;
+        //    }
+        //}
 
-        string GetValidationError(string columnName)
-        {
-            if (columnName == "xSiglaUf")
-            {
-                if (this._xSiglaUf.Trim() == "")
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "xUf")
-            {
-                if (this._xUf.Trim() == "")
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "cIbgeUf")
-            {
-                if (this.cIbgeUf == 0)
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "cIbgeUf")
-            {
-                if (this.cIbgeUf == 0)
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "idRegiao")
-            {
-                if (this.idRegiao == 0)
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            return null;
-        }
-    }
-
-    public partial class UFModel : IDataErrorInfo
-    {
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.GetValidationError(columnName: columnName);
-            }
-        }
-
+        //static readonly string[] ValidatedProperties = 
+        //{ 
+        //    "xSiglaUf", 
+        //    "xUf", 
+        //    "cIbgeUf",
+        //    "idRegiao",
+        //};
     }
 }

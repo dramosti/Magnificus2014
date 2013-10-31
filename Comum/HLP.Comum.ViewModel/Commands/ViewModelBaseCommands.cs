@@ -37,6 +37,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void novoBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
+            this.viewModel.bIsEnabled = true;
         }
         private bool novoBaseCanExecute()
         {
@@ -47,6 +48,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void alterarBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.alterando;
+            this.viewModel.bIsEnabled = true;
         }
         private bool alterarBaseCanExecute()
         {
@@ -65,6 +67,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void salvarBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
+            this.viewModel.bIsEnabled = false;
         }
         private bool salvarBaseCanExecute()
         {
@@ -78,6 +81,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void cancelarBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
+            this.viewModel.bIsEnabled = false;
         }
         private bool cancelarBaseCanExecute()
         {

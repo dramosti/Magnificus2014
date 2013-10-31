@@ -30,7 +30,7 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinUF()
         {
             InitializeComponent();
-            this.ViewModel = new UFViewModel();            
+            this.ViewModel = new UFViewModel();
         }
 
         

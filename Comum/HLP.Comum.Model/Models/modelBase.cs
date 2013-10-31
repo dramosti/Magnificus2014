@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    public class modelBase : INotifyPropertyChanged
+    public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
         #region NotifyPropertyChanged
 
@@ -18,6 +18,29 @@ namespace HLP.Comum.Model.Models
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
+
+        #region Validação de Dados
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                return this.GetValidationErrorEmpty(columnName: columnName);
+            }
+        }
+
+        string GetValidationErrorEmpty(string columnName)
+        {
+            return null;
+        }
+
 
         #endregion
     }
