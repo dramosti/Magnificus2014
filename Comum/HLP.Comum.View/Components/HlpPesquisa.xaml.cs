@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Comum.ViewModel.Components;
+using HLP.Comum.ViewModel.ViewModels.Components;
 
 
 namespace HLP.Comum.View.Components
