@@ -6,13 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Model.Repository.Implementation.ClassesBases;
+using Ninject;
+using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class UFModel : modelBase
     {
+        modelBaseRepository _modelBaseRepository;
+
         public UFModel()
+            : base()
         {
+            this._modelBaseRepository = new modelBaseRepository();
+            base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "UF");
         }
 
         private int? _idUF;
@@ -93,5 +101,25 @@ namespace HLP.Entries.Model.Models.Gerais
         //    "cIbgeUf",
         //    "idRegiao",
         //};
+    }
+
+    public partial class UFModel : IDataErrorInfo
+    {
+        #region Validação de Dados
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                return base.GetValidationErrorEmpty(columnName: columnName, objeto: this);
+            }
+        }
+
+        #endregion
     }
 }

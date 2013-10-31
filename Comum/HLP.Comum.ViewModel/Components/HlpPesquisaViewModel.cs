@@ -56,8 +56,6 @@ namespace HLP.Comum.ViewModel.Components
                 {
                     if (value != _iValorPesquisa)
                     {
-
-
                         if (kernel == null)
                         {
                             kernel = new StandardKernel(new MagnificusDependenciesModule());

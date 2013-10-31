@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    public class modelBase : INotifyPropertyChanged, IDataErrorInfo
+    public class modelBase : INotifyPropertyChanged
     {
+        protected List<campoSqlModel> lcamposSqlNotNull;
+
+        public modelBase()
+        {
+            this.lcamposSqlNotNull = new List<campoSqlModel>();
+        }
+
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -21,27 +28,20 @@ namespace HLP.Comum.Model.Models
 
         #endregion
 
-        #region Validação de Dados
-
-        public string Error
+        protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
         {
-            get { throw new NotImplementedException(); }
-        }
+            if (lcamposSqlNotNull.Count(predicate:
+                i => i.COLUMN_NAME == columnName) > 0)
+                if (objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString() == "")
+                    return "Necessário que campo possua valor!";
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return this.GetValidationErrorEmpty(columnName: columnName);
-            }
-        }
-
-        string GetValidationErrorEmpty(string columnName)
-        {
             return null;
         }
+    }
 
-
-        #endregion
+    public class campoSqlModel
+    {
+        public string COLUMN_NAME { get; set; }
+        public byte IS_NULLABLE { get; set; }
     }
 }
