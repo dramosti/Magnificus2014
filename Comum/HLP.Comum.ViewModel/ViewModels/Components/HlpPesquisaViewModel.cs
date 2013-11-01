@@ -14,7 +14,7 @@ using HLP.Dependencies;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 
-namespace HLP.Comum.ViewModel.Components
+namespace HLP.Comum.ViewModel.ViewModels.Components
 {
     public class HlpPesquisaViewModel : INotifyPropertyChanged
     {
