@@ -22,6 +22,8 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
         [Inject]
         public IHlpPesquisaPadraoRepository iHlpPesquisaPadraoRepository { get; set; }
 
+        private IKernel kernel = null;
+
         private ObservableCollection<PesquisaPadraoModel> _lFilers;
 
         public ObservableCollection<PesquisaPadraoModel> lFilers
@@ -43,9 +45,6 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
 
         public HlpPesquisaPadraoViewModel(string sView)
         {
-            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
-            kernel.Settings.ActivationCacheDisabled = false;
-            kernel.Inject(this);
 
             this.sView = sView;
             objCommands = new HlpPesquisaPadraoCommands(objViewModel: this);
@@ -58,11 +57,18 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.GetTableInformation_Background);
             if (param != null)
-                bw.RunWorkerAsync(argument: param);
+                if (param.ToString() != string.Empty)
+                    bw.RunWorkerAsync(argument: param);
         }
 
         private void GetTableInformation_Background(object sender, DoWorkEventArgs e)
         {
+            if (kernel == null)
+            {
+                kernel = new StandardKernel(new MagnificusDependenciesModule());
+                kernel.Settings.ActivationCacheDisabled = false;
+                kernel.Inject(this);
+            }
             this.lFilers = iHlpPesquisaPadraoRepository.GetTableInformation(sViewName: e.Argument.ToString());
         }
 

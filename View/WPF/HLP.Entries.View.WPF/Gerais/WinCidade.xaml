@@ -4,18 +4,6 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinCidade"
         Title="Cidade" Height="600" Width="800">
     <Grid>
-        <Components:HlpPesquisa  HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="395" TableView="UF" Caption="UF" FieldPesquisa="idUF" WidthLabel="80">
-            <Components:HlpPesquisa.Items>
-                <System:String>xSiglaUf</System:String>
-                <System:String>idUf</System:String>
-            </Components:HlpPesquisa.Items>
-        </Components:HlpPesquisa>
-        <Components:HlpDateTimePicker HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Caption="Data" Width="248" WidthLabel="80"/>
-        <Components:HlpCheckBox HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="248" WidthLabel="80"/>
-        <Components:HlpComboBox HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Width="248" Caption="Produtos" WidthLabel="80"/>
-        <Components:HlpTextBox HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="248" Caption="Descrição" WidthLabel="80"/>
-
-
-
+        <Components:HlpPesquisaPadrao NameView="vwEmpresa" HorizontalAlignment="Left" Margin="46,20,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -22,6 +22,7 @@ namespace HLP.Dependencies
         {
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
             Bind<ImodelBaseRepository>().To<modelBaseRepository>();
+            Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
 
             //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();
