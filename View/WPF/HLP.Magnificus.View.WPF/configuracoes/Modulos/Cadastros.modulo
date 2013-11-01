@@ -6,4 +6,7 @@
   <object id="WinCidade" name="WinCidade" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Gerais.WinCidade, HLP.Entries.View.WPF">
   </object>
+  <object id="WinDecisao" name="WinDecisao" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.Crm.WinDecisao, HLP.Entries.View.WPF">
+  </object>
 </objects>

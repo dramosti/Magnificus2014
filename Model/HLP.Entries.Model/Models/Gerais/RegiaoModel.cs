@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 
-namespace HLP.Entries.Model.Models.Gerais
+namespace HLP.Entries.Model.Models.Crm
 {
     public class RegiaoModel 
     {

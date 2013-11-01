@@ -1,32 +1,17 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.ViewModels;
+using HLP.Entries.Model.Fiscal;
+using HLP.Entries.ViewModel.Commands;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Model.Models;
-using HLP.Entries.Model.Models;
-using HLP.Entries.Model.Models.Crm;
-using HLP.Entries.ViewModel.Commands;
-using HLP.Comum.ViewModel.ViewModels;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class UFViewModel : ViewModelBase
+    public class Tipo_documentoViewModel : ViewModelBase
     {
-
-        #region Icommands
-        public ICommand commandSalvar { get; set; }
-        public ICommand commandDeletar { get; set; }
-        public ICommand commandNovo { get; set; }
-        public ICommand commandAlterar { get; set; }
-        public ICommand commandCancelar { get; set; }
-        public ICommand commandPesquisar { get; set; }
-        #endregion
-        
-        
 
         #region IcommandsBase
         public ICommand commandSalvarBase
@@ -75,33 +60,32 @@ namespace HLP.Entries.ViewModel.ViewModels
         }
         #endregion
 
+        #region Icommands
+        public ICommand commandSalvar { get; set; }
+        public ICommand commandDeletar { get; set; }
+        public ICommand commandNovo { get; set; }
+        public ICommand commandAlterar { get; set; }
+        public ICommand commandCancelar { get; set; }
+        public ICommand commandPesquisar { get; set; }
+        #endregion
 
-        //public bool bIsEnable { get { return base.bIsEnabled; } }
-        UFCommands objUFCommand;
+        Tipo_documentoCommands objCommands;
 
-        public UFViewModel()
-            : base()
+        public Tipo_documentoViewModel()
         {
-            objUFCommand = new UFCommands(objViewModel: this);
+            this.objCommands = new Tipo_documentoCommands(vViewModel: this);
         }
 
-        private UFModel _currentUF;
+        private Tipo_documentoModel _currentTipo_documento;
 
-        public UFModel currentUF
+        public Tipo_documentoModel currentTipo_documento
         {
-            get
-            {
-                return this._currentUF;
-            }
+            get { return _currentTipo_documento; }
             set
             {
-                this._currentUF = value;
-                base.NotifyPropertyChanged("currentUF");
+                _currentTipo_documento = value;
+                base.NotifyPropertyChanged(propertyName: "currentTipo_documento");
             }
         }
-
-
-
-
     }
 }

@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using HLP.Entries.Model.Models.Crm;
+using HLP.Entries.Model.Repository.Interfaces.Crm;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 
-namespace HLP.Entries.Model.Repository.Implementation.Gerais
+namespace HLP.Entries.Model.Repository.Implementation.Crm
 {
     public class CidadeRepository : ICidadeRepository
     {

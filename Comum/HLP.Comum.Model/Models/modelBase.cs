@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    public class modelBase : INotifyPropertyChanged
+    public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
         protected List<campoSqlModel> lcamposSqlNotNull;
 
@@ -28,12 +28,39 @@ namespace HLP.Comum.Model.Models
 
         #endregion
 
+        #region Validação de Dados
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public virtual string this[string columnName]
+        {
+            get
+            {
+                return this.GetValidationErrorEmpty(columnName: columnName, objeto: this);
+            }
+        }
+
+        #endregion
+
+
         protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
         {
-            if (lcamposSqlNotNull.Count(predicate:
-                i => i.COLUMN_NAME == columnName) > 0)
-                if (objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString() == "")
+            campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
+                i => i.COLUMN_NAME == columnName);
+            if (campo != null)
+            {
+                string valor = objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString();
+                if (campo.TYPECONSTRAINT == "F " && valor == "0")
                     return "Necessário que campo possua valor!";
+                else if ((campo.TYPECONSTRAINT == null || campo.TYPECONSTRAINT == "UQ") 
+                    && valor == "")
+                {
+                    return "Necessário que campo possua valor!";
+                }
+            }
 
             return null;
         }
@@ -43,5 +70,6 @@ namespace HLP.Comum.Model.Models
     {
         public string COLUMN_NAME { get; set; }
         public byte IS_NULLABLE { get; set; }
+        public string TYPECONSTRAINT { get; set; }
     }
 }
