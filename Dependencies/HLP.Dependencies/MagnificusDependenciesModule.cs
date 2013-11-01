@@ -3,8 +3,10 @@ using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using HLP.Comum.Model.Repository.Implementation.Components;
 using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 using HLP.Comum.Model.Repository.Interfaces.Components;
-using HLP.Entries.Model.Repository.Implementation.Gerais;
-using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using HLP.Entries.Model.Repository.Implementation.Crm;
+using HLP.Entries.Model.Repository.Implementation.Fiscal;
+using HLP.Entries.Model.Repository.Interfaces.Crm;
+using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject.Modules;
 
 namespace HLP.Dependencies
@@ -37,7 +39,7 @@ namespace HLP.Dependencies
             //#region Fiscal
 
             //Bind<ICfopRepository>().To<CfopRepository>();
-            //Bind<ITipo_documentoRepository>().To<Tipo_documentoRepository>();
+            Bind<ITipo_documentoRepository>().To<Tipo_documentoRepository>();
             //Bind<ITipo_documento_oper_validaRepository>().To<Tipo_documento_oper_validaRepository>();
             //Bind<ITipo_operacaoRepository>().To<Tipo_operacaoRepository>();
             //Bind<IOperacao_reducao_baseRepository>().To<Operacao_reducao_baseRepository>();
@@ -156,7 +158,7 @@ namespace HLP.Dependencies
 
             //#region CRM
 
-            //Bind<IDecisaoRepository>().To<DecisaoRepository>();
+            Bind<IDecisaoRepository>().To<DecisaoRepository>();
             //Bind<IPersonalidadeRepository>().To<PersonalidadeRepository>();
             //Bind<IFidelidadeRepository>().To<FidelidadeRepository>();
 

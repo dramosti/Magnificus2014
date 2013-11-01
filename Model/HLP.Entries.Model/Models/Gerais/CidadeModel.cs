@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using System.ComponentModel;
 
-namespace HLP.Entries.Model.Models.Gerais
+namespace HLP.Entries.Model.Models.Crm
 {
     public partial class CidadeModel
     {

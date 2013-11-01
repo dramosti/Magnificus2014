@@ -10,7 +10,7 @@ using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using Ninject;
 using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 
-namespace HLP.Entries.Model.Models.Gerais
+namespace HLP.Entries.Model.Models.Crm
 {
     public partial class UFModel : modelBase
     {
@@ -82,44 +82,17 @@ namespace HLP.Entries.Model.Models.Gerais
                 return true;
             }
         }
-
-        //public bool IsValid
-        //{
-        //    get
-        //    {
-        //        foreach (string property in ValidatedProperties)
-        //            if (GetValidationError(property) != null)
-        //                return false;
-        //        return true;
-        //    }
-        //}
-
-        //static readonly string[] ValidatedProperties = 
-        //{ 
-        //    "xSiglaUf", 
-        //    "xUf", 
-        //    "cIbgeUf",
-        //    "idRegiao",
-        //};
     }
 
-    public partial class UFModel : IDataErrorInfo
+    public partial class UFModel
     {
-        #region Validação de Dados
-
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public string this[string columnName]
+        public override string this[string columnName]
         {
             get
             {
-                return base.GetValidationErrorEmpty(columnName: columnName, objeto: this);
+                
+                return base[columnName];
             }
         }
-
-        #endregion
     }
 }

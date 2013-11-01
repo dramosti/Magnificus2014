@@ -57,14 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
+    <Compile Include="Models\Crm\DecisaoModel.cs" />
     <Compile Include="Models\Gerais\RegiaoModel.cs" />
     <Compile Include="Models\Gerais\UFModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
+    <Compile Include="Repository\Implementation\Crm\DecisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\RegiaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\UFRepository.cs" />
+    <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
+    <Compile Include="Repository\Interfaces\Crm\IDecisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IRegiaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IUFRepository.cs" />
   </ItemGroup>

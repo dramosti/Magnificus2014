@@ -1,22 +1,17 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.ViewModels;
+using HLP.Entries.Model.Models.Crm;
+using HLP.Entries.ViewModel.Commands;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Model.Models;
-using HLP.Entries.Model.Models;
-using HLP.Entries.Model.Models.Crm;
-using HLP.Entries.ViewModel.Commands;
-using HLP.Comum.ViewModel.ViewModels;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class UFViewModel : ViewModelBase
+    public class DecisaoViewModel : ViewModelBase
     {
-
         #region Icommands
         public ICommand commandSalvar { get; set; }
         public ICommand commandDeletar { get; set; }
@@ -25,9 +20,6 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandCancelar { get; set; }
         public ICommand commandPesquisar { get; set; }
         #endregion
-        
-        
-
         #region IcommandsBase
         public ICommand commandSalvarBase
         {
@@ -75,33 +67,24 @@ namespace HLP.Entries.ViewModel.ViewModels
         }
         #endregion
 
+        DecisaoCommands objCommands;
 
-        //public bool bIsEnable { get { return base.bIsEnabled; } }
-        UFCommands objUFCommand;
-
-        public UFViewModel()
+        public DecisaoViewModel()
             : base()
         {
-            objUFCommand = new UFCommands(objViewModel: this);
+            objCommands = new DecisaoCommands(vViewModel: this);
         }
 
-        private UFModel _currentUF;
+        private DecisaoModel _currentDecisao;
 
-        public UFModel currentUF
+        public DecisaoModel currentDecisao
         {
-            get
-            {
-                return this._currentUF;
-            }
+            get { return _currentDecisao; }
             set
             {
-                this._currentUF = value;
-                base.NotifyPropertyChanged("currentUF");
+                _currentDecisao = value;
+                base.NotifyPropertyChanged(propertyName: "currentDecisao");
             }
         }
-
-
-
-
     }
 }

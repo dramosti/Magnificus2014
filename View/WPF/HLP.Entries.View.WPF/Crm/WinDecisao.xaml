@@ -1,0 +1,23 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Crm.WinDecisao"
+        Title="Decisão" Height="300" Width="300">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+
+            <Components:HlpTextBox Caption="ID"                                   
+                                   Text="{Binding currentDecisao.idDecisao, Mode=TwoWay}"                                   
+                                   IsEnabled="False" WidthLabel="100" Margin="0,4,98,0"/>
+            <Components:HlpTextBox Caption="Decisão"
+                                   Text="{Binding currentDecisao.xDecisao, Mode=TwoWay, 
+                                    UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                   IsEnabled="{Binding bIsEnabled}" WidthLabel="100" Margin="0,4,0,0"/>
+            <Components:HlpTextBox Caption="Descrição"
+                                   Text="{Binding currentDecisao.xDescricao, Mode=TwoWay, 
+                                    UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                   IsEnabled="{Binding bIsEnabled}" WidthLabel="100" Margin="0,4,0,0"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

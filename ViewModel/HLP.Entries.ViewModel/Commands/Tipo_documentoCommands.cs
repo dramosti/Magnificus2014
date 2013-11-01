@@ -1,36 +1,30 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.Commands;
+using HLP.Dependencies;
+using HLP.Entries.ViewModel.ViewModels;
+using Ninject;
+using System;
 using System.Collections.Generic;
+using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.ViewModel.Commands;
-using HLP.Dependencies;
-using HLP.Entries.Model.Models;
-using HLP.Entries.Model.Models.Crm;
-using HLP.Entries.Model.Repository.Interfaces;
-using HLP.Entries.Model.Repository.Interfaces.Crm;
-using HLP.Entries.ViewModel.ViewModels;
-using Ninject;
-using System.ComponentModel;
+using HLP.Entries.Model.Fiscal;
 
 namespace HLP.Entries.ViewModel.Commands
 {
-    public class UFCommands
+    public class Tipo_documentoCommands
     {
-        [Inject]
-        public IUFRepository iUFRepository { get; set; }
-
-        UFViewModel objViewModel;
-
-        public UFCommands(UFViewModel objViewModel)
+        public ITipo_documentoRepository tipo_documentoRepository { get; set; }
+        Tipo_documentoViewModel objViewModel;
+        public Tipo_documentoCommands(Tipo_documentoViewModel vViewModel)
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
             kernel.Inject(this);
 
-            this.objViewModel = objViewModel;
+            this.objViewModel = vViewModel;
 
-            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentUF),
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentTipo_documento),
                     paramCanExec => DeleteCanExecute());
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
@@ -47,7 +41,6 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
                     canExecute: paramCanExec => this.PesquisarCanExecute());
-
         }
 
 
@@ -57,7 +50,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                iUFRepository.Save(objViewModel.currentUF);
+                this.tipo_documentoRepository.Save(documento: this.objViewModel.currentTipo_documento);
                 this.objViewModel.commandSalvarBase.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -68,16 +61,15 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool SaveCanExecute(object bValido)
         {
-            if (objViewModel.currentUF == null)
+            if (this.objViewModel.currentTipo_documento == null)
                 return false;
-
-            return (objViewModel.currentUF.IsValid &&
-                this.objViewModel.commandSalvarBase.CanExecute(parameter: null));
+            return this.objViewModel.commandSalvarBase.CanExecute(parameter: null);
         }
 
-        public void Delete(object objUFModel)
+        public void Delete(object objTipo_documento)
         {
-            iUFRepository.Delete(Convert.ToInt32((objUFModel as UFModel).idUF));
+            this.tipo_documentoRepository.Delete(idTipoDocumento: Convert.ToInt32(value: (objTipo_documento as Tipo_documentoModel)
+                .idTipoDocumento));
             this.objViewModel.commandDeletarBase.Execute(parameter: null);
         }
         private bool DeleteCanExecute()
@@ -87,7 +79,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentUF = new UFModel();
+            this.objViewModel.currentTipo_documento = new Tipo_documentoModel();
             this.objViewModel.commandNovoBase.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -106,7 +98,6 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentUF = new UFModel();
             this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -116,30 +107,14 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Pesquisar(object param)
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetWorkOrdersBackground);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.GetWorkOrdersBackgroundComplete);
-
-            if (param != null)
-                bw.RunWorkerAsync(argument: param);
         }
         private bool PesquisarCanExecute()
         {
             return this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
         }
 
-        private void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
-        {
-            this.objViewModel.currentUF = iUFRepository.GetUF(idUF: Convert.ToInt32(e.Argument));
-        }
-        private void GetWorkOrdersBackgroundComplete(
-          object sender,
-          RunWorkerCompletedEventArgs e)
-        {
-            this.objViewModel.commandPesquisarBase.Execute(parameter: null);
-        }
-
         #endregion
+
 
     }
 }

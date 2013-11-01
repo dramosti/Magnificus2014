@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Models.Crm;
 
-namespace HLP.Entries.Model.Repository.Interfaces.Gerais
+namespace HLP.Entries.Model.Repository.Interfaces.Crm
 {
     public interface ICidadeRepository
     {
