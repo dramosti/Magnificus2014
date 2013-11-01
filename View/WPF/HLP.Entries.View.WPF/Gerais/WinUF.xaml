@@ -11,20 +11,21 @@
     <Grid>
         <StackPanel Orientation="Vertical">
 
-        <Components:HlpTextBox Text="{Binding currentUF.idUF, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="0,4,0,0" WidthLabel="100"/>
-        <Components:HlpTextBox
+            <Components:HlpTextBox Text="{Binding currentUF.idUF, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="0,4,0,0" WidthLabel="100"/>
+            <Components:HlpTextBox IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentUF.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
     		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="0,4,0,0" WidthLabel="100"/>
-        <Components:HlpTextBox
+            <Components:HlpTextBox IsEnabled="{Binding bIsEnabled}" 
     		Text="{Binding currentUF.xUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
     		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
-        <Components:HlpTextBox
+            <Components:HlpTextBox IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentUF.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
     		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
-        <Components:HlpComboBox ItemsSource="{Binding Source={StaticResource lRegiao}}"
+            <Components:HlpComboBox IsEnabled="{Binding bIsEnabled}"
+            ItemsSource="{Binding Source={StaticResource lRegiao}}"
         	SelectedValuePath="idRegiao" SelectedValue="{Binding currentUF.idRegiao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" DisplayMemberPath="xRegiao"
         	HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>
-    </StackPanel>
+        </StackPanel>
     </Grid>
 
 </Window>

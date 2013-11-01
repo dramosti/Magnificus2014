@@ -72,9 +72,9 @@ namespace HLP.Entries.ViewModel.ViewModels
             }
         }
         #endregion
-        
 
 
+        //public bool bIsEnable { get { return base.bIsEnabled; } }
         UFCommands objUFCommand;
 
         public UFViewModel()

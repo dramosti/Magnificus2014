@@ -6,13 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Model.Repository.Implementation.ClassesBases;
+using Ninject;
+using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class UFModel : modelBase
     {
+        modelBaseRepository _modelBaseRepository;
+
         public UFModel()
+            : base()
         {
+            this._modelBaseRepository = new modelBaseRepository();
+            base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "UF");
         }
 
         private int? _idUF;
@@ -71,64 +79,34 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                foreach (string property in ValidatedProperties)
-                    if (GetValidationError(property) != null)
-                        return false;
                 return true;
             }
         }
 
-        static readonly string[] ValidatedProperties = 
-        { 
-            "xSiglaUf", 
-            "xUf", 
-            "cIbgeUf",
-            "idRegiao",
-        };
+        //public bool IsValid
+        //{
+        //    get
+        //    {
+        //        foreach (string property in ValidatedProperties)
+        //            if (GetValidationError(property) != null)
+        //                return false;
+        //        return true;
+        //    }
+        //}
 
-        string GetValidationError(string columnName)
-        {
-            if (columnName == "xSiglaUf")
-            {
-                if (this._xSiglaUf.Trim() == "")
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "xUf")
-            {
-                if (this._xUf.Trim() == "")
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "cIbgeUf")
-            {
-                if (this.cIbgeUf == 0)
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "cIbgeUf")
-            {
-                if (this.cIbgeUf == 0)
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            else if (columnName == "idRegiao")
-            {
-                if (this.idRegiao == 0)
-                {
-                    return "campo não pode ser vazio";
-                }
-            }
-            return null;
-        }
+        //static readonly string[] ValidatedProperties = 
+        //{ 
+        //    "xSiglaUf", 
+        //    "xUf", 
+        //    "cIbgeUf",
+        //    "idRegiao",
+        //};
     }
 
     public partial class UFModel : IDataErrorInfo
     {
+        #region Validação de Dados
+
         public string Error
         {
             get { throw new NotImplementedException(); }
@@ -138,9 +116,10 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                return this.GetValidationError(columnName: columnName);
+                return base.GetValidationErrorEmpty(columnName: columnName, objeto: this);
             }
         }
 
+        #endregion
     }
 }

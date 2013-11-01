@@ -1,5 +1,7 @@
 ﻿using HLP.Comum.Infrastructure;
+using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using HLP.Comum.Model.Repository.Implementation.Components;
+using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Entries.Model.Repository.Implementation.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -19,6 +21,7 @@ namespace HLP.Dependencies
         protected void ResolveRepositories()
         {
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
+            Bind<ImodelBaseRepository>().To<modelBaseRepository>();
 
             //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();
@@ -229,7 +232,7 @@ namespace HLP.Dependencies
             //Bind<ICondicoes_entregaService>().To<Condicoes_entregaService>();
             //Bind<IRotaService>().To<RotaService>();
             //Bind<ICidadeService>().To<CidadeService>();
-             //Bind<IUFService>().To<UFService>();
+            //Bind<IUFService>().To<UFService>();
             //Bind<IEmpresaService>().To<EmpresaService>();
             //Bind<IRegiaoService>().To<RegiaoService>();
             //Bind<ISetorService>().To<SetorService>();

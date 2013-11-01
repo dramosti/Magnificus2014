@@ -73,8 +73,10 @@
     <Compile Include="Models\TabPagesAtivasModel.cs" />
     <Compile Include="Models\windowsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\ClassesBases\modelBaseRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaRapidaRepository.cs" />
+    <Compile Include="Repository\Interfaces\ClassesBases\ImodelBaseRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaRapidaRepository.cs" />
   </ItemGroup>

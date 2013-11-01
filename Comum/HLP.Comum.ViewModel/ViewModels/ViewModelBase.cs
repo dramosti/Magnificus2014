@@ -18,9 +18,23 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand alterarBase { get; set; }
         public ICommand cancelarBase { get; set; }
         public ICommand pesquisarBase { get; set; }
-        
+
+        private bool _bIsEnabled;
+        public bool bIsEnabled
+        {
+            get
+            {
+                return this._bIsEnabled;
+            }
+            set{
+                this._bIsEnabled = value;
+                this.NotifyPropertyChanged(propertyName: "bIsEnabled");
+            }
+        }
+
         public ViewModelBase()
         {
+            this.bIsEnabled = false;
             ViewModelBaseCommands viewModel = new ViewModelBaseCommands(vViewModel: this);
         }
 

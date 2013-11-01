@@ -17,5 +17,8 @@ namespace HLP.Comum.ViewModel.Commands.Components
             _objViewModel = objViewModel;
         }
 
+
+
+
     }
 }
