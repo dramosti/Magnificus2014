@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HLP.Comum.View.Formularios;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -23,7 +24,14 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinCidade()
         {
             InitializeComponent();
-            this.DataContext = new CidadeViewModel();            
+            this.DataContext = new CidadeViewModel();       
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WinPesquisaPadrao FRM = new WinPesquisaPadrao();
+            FRM.ShowDialog();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace HLP.Comum.Model.Models
             get
             {
                 UIElement e = _windows.Content as UIElement;
-                (e as Grid).DataContext = this.Windows.DataContext;
+                (e as Panel).DataContext = this.Windows.DataContext;                
                 return e;
             }
         }

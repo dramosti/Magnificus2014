@@ -469,8 +469,37 @@
         </DockPanel>
     </ControlTemplate>
 
+    <Style x:Key="columnHeaderStyle"
+             TargetType="DataGridColumnHeader">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0"
+                         EndPoint="0.5,1" >
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Color="Navy" Offset="0" />
+                        <GradientStop Color="LightBlue" Offset="1" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Height" Value="19"/>
+    </Style>
 
-
-
-
+    <Style x:Key="rowStyle" TargetType="DataGridRow">
+        <Setter Property="FontFamily" Value="Verdana" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Height" Value="19"/>
+        <Style.Triggers>
+            <Trigger Property="AlternationIndex" Value="0">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+            <Trigger Property="AlternationIndex" Value="1">
+                <Setter Property="Background" Value="#DDDDDD" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#BBBBBB" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

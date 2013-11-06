@@ -11,11 +11,30 @@ using System.Drawing.Imaging;
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
-
 namespace HLP.Comum.Infrastructure.Static
 {
-    public static class Extensions
+   public static class Extensions
     {
+
+        #region isValid
+        public static bool IsValidUrl(this string text)
+        {
+            Regex rx = new Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?");
+            return rx.IsMatch(text);
+        }
+
+        public static bool IsValidEmailAddress(this string s)
+        {
+            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+            return regex.IsMatch(s);
+        }
+
+        public static bool IsValidIPAddress(this string s)
+        {
+            return Regex.IsMatch(s, @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
+        }
+        #endregion
+
         #region Extensions string
 
         public static decimal ToDecimal(this string value)
@@ -64,17 +83,6 @@ namespace HLP.Comum.Infrastructure.Static
                 .Replace(")", "").Trim();
         }
 
-        public static bool IsValidUrl(this string text)
-        {
-            Regex rx = new Regex(@"http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=]*)?");
-            return rx.IsMatch(text);
-        }
-
-        public static bool IsValidEmailAddress(this string s)
-        {
-            Regex regex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
-            return regex.IsMatch(s);
-        }
 
         /// <summary>
         /// Envia um email
@@ -117,11 +125,6 @@ namespace HLP.Comum.Infrastructure.Static
             }
 
             return true;
-        }
-
-        public static bool IsValidIPAddress(this string s)
-        {
-            return Regex.IsMatch(s, @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
         }
 
         /// <summary>
@@ -459,6 +462,5 @@ namespace HLP.Comum.Infrastructure.Static
             return itemCheck.GetCurrentParent() as ContextMenuStrip;
         }
         #endregion
-
     }
 }
