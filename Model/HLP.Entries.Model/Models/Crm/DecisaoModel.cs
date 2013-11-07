@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.Model.Models.Crm
+namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class DecisaoModel : modelBase
     {

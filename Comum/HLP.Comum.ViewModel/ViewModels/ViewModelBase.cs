@@ -26,7 +26,8 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 return this._bIsEnabled;
             }
-            set{
+            set
+            {
                 this._bIsEnabled = value;
                 this.NotifyPropertyChanged(propertyName: "bIsEnabled");
             }

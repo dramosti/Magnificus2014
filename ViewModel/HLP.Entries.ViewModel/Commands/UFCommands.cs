@@ -6,31 +6,26 @@ using System.Threading.Tasks;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models;
-using HLP.Entries.Model.Models.Crm;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces;
-using HLP.Entries.Model.Repository.Interfaces.Crm;
+using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
-using Ninject;
 using System.ComponentModel;
 
 namespace HLP.Entries.ViewModel.Commands
 {
     public class UFCommands
     {
-        [Inject]
-        public IUFRepository iUFRepository { get; set; }
-
         UFViewModel objViewModel;
+
+        ufService.IserviceUfClient servicoUf = new ufService.IserviceUfClient();
 
         public UFCommands(UFViewModel objViewModel)
         {
-            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
-            kernel.Settings.ActivationCacheDisabled = false;
-            kernel.Inject(this);
 
             this.objViewModel = objViewModel;
 
-            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentUF),
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentModel),
                     paramCanExec => DeleteCanExecute());
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
@@ -53,11 +48,11 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
-        public void Save()
+        public async void Save()
         {
             try
             {
-                iUFRepository.Save(objViewModel.currentUF);
+                this.objViewModel.currentModel.idUF = await this.servicoUf.saveUfAsync(objModel: this.objViewModel.currentModel);
                 this.objViewModel.commandSalvarBase.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -68,26 +63,29 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool SaveCanExecute(object bValido)
         {
-            if (objViewModel.currentUF == null)
+            if (objViewModel.currentModel == null)
                 return false;
 
-            return (objViewModel.currentUF.IsValid &&
+            return (objViewModel.currentModel.IsValid &&
                 this.objViewModel.commandSalvarBase.CanExecute(parameter: null));
         }
 
         public void Delete(object objUFModel)
         {
-            iUFRepository.Delete(Convert.ToInt32((objUFModel as UFModel).idUF));
+            this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF);
             this.objViewModel.commandDeletarBase.Execute(parameter: null);
         }
         private bool DeleteCanExecute()
         {
+            if (objViewModel.currentModel == null)
+                return false;
+
             return this.objViewModel.commandDeletarBase.CanExecute(parameter: null);
         }
 
         private void Novo()
         {
-            this.objViewModel.currentUF = new UFModel();
+            this.objViewModel.currentModel = new UFModel();
             this.objViewModel.commandNovoBase.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -106,7 +104,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentUF = new UFModel();
+            this.objViewModel.currentModel = new UFModel();
             this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -128,9 +126,10 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
         }
 
-        private void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
+        private async void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentUF = iUFRepository.GetUF(idUF: Convert.ToInt32(e.Argument));
+            //this.objViewModel.currentUF = this.servicoUf.getUf(idUf: );
+            this.objViewModel.currentModel = await servicoUf.getUfAsync(idUf: Convert.ToInt32(e.Argument));
         }
         private void GetWorkOrdersBackgroundComplete(
           object sender,
@@ -141,5 +140,13 @@ namespace HLP.Entries.ViewModel.Commands
 
         #endregion
 
+        #region Chamada de métodos assyncronos
+
+        //private async Task<UFModel> getUfAsync(int idUf)
+        //{
+        //    return await servicoUf.getUfAsync(idUf: idUf);
+        //}
+
+        #endregion
     }
 }

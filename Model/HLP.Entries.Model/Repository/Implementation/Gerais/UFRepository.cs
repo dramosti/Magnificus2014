@@ -4,12 +4,12 @@ using System.Data.Common;
 using System.Linq;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
-using HLP.Entries.Model.Models.Crm;
-using HLP.Entries.Model.Repository.Interfaces.Crm;
+using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 
-namespace HLP.Entries.Model.Repository.Implementation.Crm
+namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
     public class UFRepository : IUFRepository
     {

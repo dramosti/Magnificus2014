@@ -19,7 +19,7 @@ namespace HLP.Comum.Model.Repository.Implementation.ClassesBases
         private Database _dbPrincipal;
 
         public modelBaseRepository()
-        {
+        {            
             _dbPrincipal = EnterpriseLibraryContainer.Current.GetInstance<Database>("dbPrincipal");
         }
 
@@ -41,7 +41,6 @@ namespace HLP.Comum.Model.Repository.Implementation.ClassesBases
                                 "where c.TABLE_NAME = '" + xTabela + "'"),
                                 rowMapper: MapBuilder<campoSqlModel>.MapAllProperties().Build());
             }
-
             return regAcessor.Execute().ToList();
         }
     }
