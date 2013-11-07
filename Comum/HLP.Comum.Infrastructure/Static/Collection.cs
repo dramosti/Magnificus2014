@@ -10,6 +10,8 @@ namespace HLP.Comum.Infrastructure.Static
     {
         public static ImageList LIST_IMAGELIST_TREEVIEW;
         public static List<OrdemModulo> LIST_ORDEM_MODULOS;
+        //
+
     }
 
     public struct OrdemModulo
