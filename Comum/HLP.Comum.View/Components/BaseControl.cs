@@ -17,6 +17,8 @@ namespace HLP.Comum.View.Components
 
         }
 
+        
+
         #region Base de Dados
         [Category("HLP.Base")]
         public string Table

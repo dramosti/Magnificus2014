@@ -71,6 +71,7 @@
     <Compile Include="Components\HlpTextBox.xaml.cs">
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
       <DependentUpon>WinPesquisaPadrao.xaml</DependentUpon>
     </Compile>

@@ -19,7 +19,7 @@ namespace HLP.Entries.View.WPF.Gerais
     /// <summary>
     /// Interaction logic for WinCidade.xaml
     /// </summary>
-    public partial class WinCidade : Window
+    public partial class WinCidade : WindowsBase
     {
         public WinCidade()
         {
