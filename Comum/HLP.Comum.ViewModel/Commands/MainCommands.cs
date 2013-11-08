@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Comum.Model.Models;
 using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -33,23 +34,7 @@ namespace HLP.Comum.ViewModel.Commands
                     execute: ex => ShowPesquisaExecute(),
                     canExecute: canExecute => ShowPesquisaCanEcexute());
 
-                this.objviewModel.proximoCommand = new RelayCommand(
-               execute: exec => ExecAcao(tpAcao.Proximo),
-               canExecute: CanExec => CanExecAcao());
 
-                this.objviewModel.anteriorCommand = new RelayCommand(
-                   execute: exec => ExecAcao(tpAcao.Anterior),
-                   canExecute: CanExec => CanExecAcao());
-
-                this.objviewModel.primeiroCommand = new RelayCommand(
-                   execute: exec => ExecAcao(tpAcao.Primeiro),
-                   canExecute: CanExec => CanExecAcao());
-
-                this.objviewModel.ultimoCommand = new RelayCommand(
-                   execute: exec => ExecAcao(tpAcao.Ultimo),
-                   canExecute: CanExec => CanExecAcao());
-
-                this.ExecAcao(tpAcao.Primeiro);
 
             }
             catch (Exception ex)
@@ -117,7 +102,7 @@ namespace HLP.Comum.ViewModel.Commands
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
                 {
                     objviewModel.bsPesquisa.DataSource = (winPesquisa.GetPropertyValue("lResult") as List<int>);
-                    this.ExecAcao(tpAcao.Primeiro);
+                    objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
                     objviewModel.visibilityNavegacao = Visibility.Visible;
                 }
             }
@@ -132,51 +117,9 @@ namespace HLP.Comum.ViewModel.Commands
                 else
                     bReturn = false;
             }
-            return bReturn;
+            return bReturn ;
         }
 
-        public void ExecAcao(tpAcao tipoAcao)
-        {
-            try
-            {
-                switch (tipoAcao)
-                {
-                    case tpAcao.Primeiro:
-                        objviewModel.bsPesquisa.MoveFirst();
-                        break;
-                    case tpAcao.Anterior:
-                        objviewModel.bsPesquisa.MovePrevious();
-                        break;
-                    case tpAcao.Proximo:
-                        objviewModel.bsPesquisa.MoveNext();
-                        break;
-                    case tpAcao.Ultimo:
-                        objviewModel.bsPesquisa.MoveLast();
-                        break;
-                    default:
-                        break;
-                }
-                if (objviewModel.bsPesquisa.Current != null)
-                {
-                    objviewModel._currentTab.currentID = (int)objviewModel.bsPesquisa.Current;
-                    objviewModel.sText = (objviewModel.bsPesquisa.IndexOf(objviewModel.bsPesquisa.Current) + 1).ToString() + " de " + objviewModel.bsPesquisa.Count.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-        public bool CanExecAcao()
-        {
-            if (objviewModel.bsPesquisa.DataSource != null)
-                return true;
-            else
-                return false;
-        }
-
-        public enum tpAcao { Primeiro, Anterior, Proximo, Ultimo }
 
         #endregion
     }

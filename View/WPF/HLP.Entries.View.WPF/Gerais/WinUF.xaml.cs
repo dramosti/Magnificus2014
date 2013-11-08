@@ -13,13 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels;
 using HLP.Entries.View.WPF.UIUtilities;
+using HLP.Comum.View.Formularios;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
     /// <summary>
     /// Interaction logic for WinUF.xaml
     /// </summary>
-    public partial class WinUF : Window
+    public partial class WinUF : WindowsBase
     {
         public UFViewModel ViewModel
         {
