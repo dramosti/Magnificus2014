@@ -1,12 +1,14 @@
-﻿<Window
+﻿<runtime:WindowsBase
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
         xmlns:regiao="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
+        NameView="vwUF"
         Title="Uf" Height="300" Width="500">
     <Window.Resources>
         <ObjectDataProvider x:Key="odpRegiao" ObjectType="{x:Type regiao:RegiaoViewModel}"/>
-        <ObjectDataProvider x:Key="lRegiao" ObjectInstance="{StaticResource odpRegiao}"  MethodName="GetAll"/>        
+        <ObjectDataProvider x:Key="lRegiao" ObjectInstance="{StaticResource odpRegiao}"  MethodName="GetAll"/>
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
@@ -24,12 +26,12 @@
     		Text="{Binding currentUF.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True
                 , NotifyOnValidationError=True}"
     		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
-            <Components:HlpComboBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
+            <Components:HlpComboBox x:Name="cbxRegiao" Validation.ErrorTemplate="{StaticResource exceptionComp}"  IsEnabled="{Binding bIsEnabled}"
             ItemsSource="{Binding Source={StaticResource lRegiao}}"
         	SelectedValuePath="idRegiao" SelectedValue="{Binding currentUF.idRegiao, Mode=TwoWay,
                 UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" DisplayMemberPath="xRegiao"
-        	HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>            
+        	HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>
         </StackPanel>
     </Grid>
 
-</Window>
+</runtime:WindowsBase>

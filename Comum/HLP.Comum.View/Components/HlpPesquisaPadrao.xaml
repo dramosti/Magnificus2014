@@ -114,6 +114,9 @@
                 	HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,0,0,0" Height="20"/>
             </StackPanel>
         </Border>
+        <Border DockPanel.Dock="Bottom">
+            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}"/>
+        </Border>
         <Border Margin="0,3,0,0">
             <DataGrid x:Name="dgvResult" 
                   Background="Transparent"
@@ -126,7 +129,7 @@
                   RowStyle="{StaticResource rowStyle}"
                   SelectionUnit="FullRow"
                   AlternationCount="2"                       
-                  ColumnWidth="*"  SelectedCellsChanged="dgvResult_SelectedCellsChanged" PreviewKeyDown="dgvResult_PreviewKeyDown"
+                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick"
                       >
             </DataGrid>
         </Border>

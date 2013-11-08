@@ -18,17 +18,17 @@ namespace HLP.Comum.ViewModel.Commands
         public ViewModelBaseCommands(ViewModelBase vViewModel)
         {
             this.viewModel = vViewModel;
-            this.viewModel.novoBase = new RelayCommand(execute: pExec => this.novoBase(),
+            this.viewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(),
                 canExecute: pCanExec => this.novoBaseCanExecute());
-            this.viewModel.alterarBase = new RelayCommand(execute: pExec => this.alterarBase(),
+            this.viewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
                 canExecute: pCanExec => this.alterarBaseCanExecute());
-            this.viewModel.deletarBase = new RelayCommand(execute: pExec => this.delBase(),
+            this.viewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(),
                 canExecute: pCanExec => this.delBaseCanExecute());
-            this.viewModel.salvarBase = new RelayCommand(execute: pExec => this.salvarBase(),
+            this.viewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
-            this.viewModel.cancelarBase = new RelayCommand(execute: pExec => this.cancelarBase(),
+            this.viewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-            this.viewModel.pesquisarBase = new RelayCommand(execute: pExec => this.pesquisaBase(),
+            this.viewModel.pesquisarBaseCommand = new RelayCommand(execute: pExec => this.pesquisaBase(),
                 canExecute: pCanExec => this.pesquisaBaseCanExecute());
             this.currentOp = OperacaoCadastro.livre;
         }

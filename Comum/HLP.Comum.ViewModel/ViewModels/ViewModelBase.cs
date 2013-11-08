@@ -12,12 +12,14 @@ namespace HLP.Comum.ViewModel.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public ICommand salvarBase { get; set; }
-        public ICommand deletarBase { get; set; }
-        public ICommand novoBase { get; set; }
-        public ICommand alterarBase { get; set; }
-        public ICommand cancelarBase { get; set; }
-        public ICommand pesquisarBase { get; set; }
+        public ICommand salvarBaseCommand { get; set; }
+        public ICommand deletarBaseCommand { get; set; }
+        public ICommand novoBaseCommand { get; set; }
+        public ICommand alterarBaseCommand { get; set; }
+        public ICommand cancelarBaseCommand { get; set; }
+        public ICommand pesquisarBaseCommand { get; set; }
+
+        public List<int> lResultPesquisa { get; set; }
 
         private bool _bIsEnabled;
         public bool bIsEnabled

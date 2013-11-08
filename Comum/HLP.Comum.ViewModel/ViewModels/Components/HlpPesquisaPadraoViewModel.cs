@@ -19,7 +19,7 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
     public class HlpPesquisaPadraoViewModel : modelBase
     {
         HlpPesquisaPadraoCommands objCommands;
-                
+
         public ICommand commandPesquisar { get; set; }
         public ICommand commandLimpar { get; set; }
 
@@ -46,7 +46,21 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
         public DataTable Result
         {
             get { return _Result; }
-            set { _Result = value; base.NotifyPropertyChanged("Result"); }
+            set
+            {
+                _Result = value; base.NotifyPropertyChanged("Result");
+                if (_Result != null)
+                    this.sTotalRegistro = _Result.Rows.Count.ToString();
+
+            }
+        }
+
+        private string _sTotalRegistro = "0 Registro(s)";
+
+        public string sTotalRegistro
+        {
+            get { return _sTotalRegistro; }
+            set { _sTotalRegistro = string.Format("{0} Registro(s)", value); base.NotifyPropertyChanged("sTotalRegistro"); }
         }
 
         private string _sView = string.Empty;
@@ -64,7 +78,7 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
         }
 
 
-       
+
 
 
 

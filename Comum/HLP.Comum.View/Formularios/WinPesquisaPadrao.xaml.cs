@@ -24,5 +24,36 @@ namespace HLP.Comum.View.Formularios
         {
             InitializeComponent();
         }
+
+
+
+        public string NameView
+        {
+            get { return hlpCompPesquisaPadrao.NameView; }
+            set
+            {
+                hlpCompPesquisaPadrao.NameView = value;
+            }
+        }
+
+        public List<int> lResult
+        {
+            get { return hlpCompPesquisaPadrao.lResult; }
+        }
+
+        private void hlpCompPesquisaPadrao_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (hlpCompPesquisaPadrao.Visibility == System.Windows.Visibility.Collapsed)
+            {
+                this.Close();
+            }
+        }
+
+
+
+
+
+
+
     }
 }

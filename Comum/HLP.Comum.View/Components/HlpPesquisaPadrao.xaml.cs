@@ -31,11 +31,6 @@ namespace HLP.Comum.View.Components
         public HlpPesquisaPadrao()
         {
             InitializeComponent();
-
-            DataGridCell cell = new DataGridCell();
-
-            //cell.GotFocus += cell_GotFocus;
-
         }
 
         #region Property
@@ -43,7 +38,12 @@ namespace HLP.Comum.View.Components
         public string NameView
         {
             get { return (string)GetValue(NameViewProperty); }
-            set { SetValue(NameViewProperty, value); }
+            set
+            {
+                SetValue(NameViewProperty, value);
+                if (value != string.Empty)
+                    this.ViewModel = new HlpPesquisaPadraoViewModel(value);
+            }
         }
         // Using a DependencyProperty as the backing store for NameView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameViewProperty =
@@ -64,7 +64,8 @@ namespace HLP.Comum.View.Components
         #region Events
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.ViewModel = new HlpPesquisaPadraoViewModel(NameView);
+            if (NameView != string.Empty)
+                this.ViewModel = new HlpPesquisaPadraoViewModel(NameView);
         }
         private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -98,9 +99,35 @@ namespace HLP.Comum.View.Components
                 }
             }
         }
-       
+        private void dgvResult_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                try
+                {
+                    SelectAndFinish();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        private void dgvResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (dgvResult.SelectedItems.Count == 1)
+                {
+                    SelectAndFinish();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         #endregion
-
 
         #region Methods
         static T FindVisualParent<T>(UIElement element) where T : UIElement
@@ -118,31 +145,14 @@ namespace HLP.Comum.View.Components
             }
             return null;
         }
+        private void SelectAndFinish()
+        {
+            lResult = (from c in dgvResult.SelectedItems.Cast<DataRowView>()
+                       select (int)c.Row["ID"]).ToList<int>();
+            this.Visibility = System.Windows.Visibility.Collapsed;
+        }
         #endregion
 
-        private void dgvResult_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            try
-            {                
-                lResult = (from c in dgvResult.SelectedItems.Cast<DataRowView>()
-                           select (int)c.Row["ID"]).ToList<int>();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-      
-        private void dgvResult_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == this.Name);
-            win.Close();           
-
-            
-        }
-
-
-
+        
     }
 }
