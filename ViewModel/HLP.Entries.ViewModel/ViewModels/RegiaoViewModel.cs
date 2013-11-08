@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HLP.Entries.Model.Models;
-using HLP.Entries.Model.Models.Crm;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using HLP.Comum.ViewModel.ViewModels;
 

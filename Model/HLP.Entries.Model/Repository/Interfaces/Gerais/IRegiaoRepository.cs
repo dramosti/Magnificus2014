@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using HLP.Entries.Model.Models.Crm;
+using HLP.Entries.Model.Models.Gerais;
 
-namespace HLP.Entries.Model.Repository.Interfaces.Crm
+namespace HLP.Entries.Model.Repository.Interfaces.Gerais
 {
     public interface IRegiaoRepository
     {

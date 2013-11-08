@@ -9,7 +9,7 @@ using HLP.Comum.ViewModel.Commands;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Repository.Interfaces;
-using HLP.Entries.Model.Repository.Interfaces.Crm;
+using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using HLP.Entries.ViewModel.ViewModels;
 

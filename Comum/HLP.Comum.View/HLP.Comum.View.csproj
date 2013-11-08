@@ -59,9 +59,6 @@
     <Compile Include="Components\HlpComboBox.xaml.cs">
       <DependentUpon>HlpComboBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\HlpCompTestes.xaml.cs">
-      <DependentUpon>HlpCompTestes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Components\HlpDateTimePicker.xaml.cs">
       <DependentUpon>HlpDateTimePicker.xaml</DependentUpon>
     </Compile>
@@ -87,10 +84,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpComboBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Components\HlpCompTestes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

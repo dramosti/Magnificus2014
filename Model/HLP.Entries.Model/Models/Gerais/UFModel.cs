@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
 using HLP.Comum.Model.Repository.Implementation.ClassesBases;
-using Ninject;
-using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 
-namespace HLP.Entries.Model.Models.Crm
+namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class UFModel : modelBase
     {

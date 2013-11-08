@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models;
-using HLP.Entries.Model.Models.Crm;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using HLP.Comum.ViewModel.ViewModels;
 using System.Windows.Input;
@@ -24,8 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
         public ICommand commandPesquisar { get; set; }
-        #endregion
-
+        #endregion        
 
         #region IcommandsBase
         public ICommand commandSalvarBase
@@ -84,18 +83,18 @@ namespace HLP.Entries.ViewModel.ViewModels
             objUFCommand = new UFCommands(objViewModel: this);
         }
 
-        private UFModel _currentUF;
+        private UFModel _currentModel;
 
-        public UFModel currentUF
+        public UFModel currentModel
         {
             get
             {
-                return this._currentUF;
+                return this._currentModel;
             }
             set
             {
-                this._currentUF = value;
-                base.NotifyPropertyChanged("currentUF");
+                this._currentModel = value;
+                base.NotifyPropertyChanged("currentModel");
             }
         }
 

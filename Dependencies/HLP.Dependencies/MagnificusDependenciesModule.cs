@@ -3,9 +3,9 @@ using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using HLP.Comum.Model.Repository.Implementation.Components;
 using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 using HLP.Comum.Model.Repository.Interfaces.Components;
-using HLP.Entries.Model.Repository.Implementation.Crm;
+using HLP.Entries.Model.Repository.Implementation.Gerais;
 using HLP.Entries.Model.Repository.Implementation.Fiscal;
-using HLP.Entries.Model.Repository.Interfaces.Crm;
+using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject.Modules;
 
