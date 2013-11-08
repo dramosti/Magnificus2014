@@ -31,7 +31,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         {
             get
             {
-                return base.salvarBase;
+                return base.salvarBaseCommand;
             }
         }
 
@@ -39,28 +39,28 @@ namespace HLP.Entries.ViewModel.ViewModels
         {
             get
             {
-                return base.deletarBase;
+                return base.deletarBaseCommand;
             }
         }
         public ICommand commandNovoBase
         {
             get
             {
-                return base.novoBase;
+                return base.novoBaseCommand;
             }
         }
         public ICommand commandAlterarBase
         {
             get
             {
-                return base.alterarBase;
+                return base.alterarBaseCommand;
             }
         }
         public ICommand commandCancelarBase
         {
             get
             {
-                return base.cancelarBase;
+                return base.cancelarBaseCommand;
             }
         }
 
@@ -68,7 +68,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         {
             get
             {
-                return base.pesquisarBase;
+                return base.pesquisarBaseCommand;
             }
         }
         #endregion

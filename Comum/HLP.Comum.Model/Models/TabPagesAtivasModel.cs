@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.Model.Models
 {
-    public class TabPagesAtivasModel
+    public class TabPagesAtivasModel : modelBase
     {
         public TabPagesAtivasModel()
         {
@@ -21,8 +22,30 @@ namespace HLP.Comum.Model.Models
         public Window _windows
         {
             get { return Windows; }
-            set { Windows = value; }
+            set
+            {
+                Windows = value;
+                try
+                { this.NameView = value.GetPropertyValue("NameView").ToString(); }
+                catch (Exception) { }
+            }
         }
+
+        private string _NameView = string.Empty;
+        public string NameView
+        {
+            get { return _NameView; }
+            set { _NameView = value; }
+        }
+
+        private int _currentID;
+
+        public int currentID
+        {
+            get { return _currentID; }
+            set { _currentID = value; }
+        }
+
 
         public string _header
         {
@@ -34,7 +57,7 @@ namespace HLP.Comum.Model.Models
             get
             {
                 UIElement e = _windows.Content as UIElement;
-                (e as Panel).DataContext = this.Windows.DataContext;                
+                (e as Panel).DataContext = this.Windows.DataContext;
                 return e;
             }
         }

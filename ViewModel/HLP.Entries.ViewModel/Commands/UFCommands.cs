@@ -11,10 +11,6 @@ using HLP.Entries.Model.Repository.Interfaces;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 using System.ComponentModel;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Threading;
-using System.Windows.Controls;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -44,8 +40,8 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
-                    canExecute: paramCanExec => this.PesquisarCanExecute(param: paramCanExec));
+            //this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
+            //        canExecute: paramCanExec => this.PesquisarCanExecute());
 
         }
 
@@ -65,47 +61,25 @@ namespace HLP.Entries.ViewModel.Commands
             }
 
         }
-        private bool SaveCanExecute(object objDependency)
+        private bool SaveCanExecute(object bValido)
         {
-            if (objViewModel.currentModel == null || objDependency == null)
+            if (objViewModel.currentModel == null)
                 return false;
 
-            return (this.objViewModel.commandSalvarBase.CanExecute(parameter: null)
-                && this.objViewModel.IsValid(objDependency as Grid));
+            return (objViewModel.currentModel.IsValid &&
+                this.objViewModel.commandSalvarBase.CanExecute(parameter: null));
         }
 
-        public async void Delete(object objUFModel)
+        public void Delete(object objUFModel)
         {
-            try
-            {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
-                {
-                    if (await this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF))
-                    {
-                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                this.objViewModel.commandDeletarBase.Execute(parameter: null);
-            }
+            this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF);
+            this.objViewModel.commandDeletarBase.Execute(parameter: null);
         }
         private bool DeleteCanExecute()
         {
+            if (objViewModel.currentModel == null)
+                return false;
+
             return this.objViewModel.commandDeletarBase.CanExecute(parameter: null);
         }
 
@@ -130,7 +104,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            this.objViewModel.currentModel = new UFModel();
             this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -147,18 +121,14 @@ namespace HLP.Entries.ViewModel.Commands
             if (param != null)
                 bw.RunWorkerAsync(argument: param);
         }
-        private bool PesquisarCanExecute(object param)
+        private bool PesquisarCanExecute()
         {
-            if (param == null)
-                return false;
-
-            int iResult;
-            return int.TryParse(s: param.ToString(), result: out iResult) &&
-                this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
+            return this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
         }
 
         private async void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
         {
+            //this.objViewModel.currentUF = this.servicoUf.getUf(idUf: );
             this.objViewModel.currentModel = await servicoUf.getUfAsync(idUf: Convert.ToInt32(e.Argument));
         }
         private void GetWorkOrdersBackgroundComplete(
@@ -166,8 +136,16 @@ namespace HLP.Entries.ViewModel.Commands
           RunWorkerCompletedEventArgs e)
         {
             this.objViewModel.commandPesquisarBase.Execute(parameter: null);
-            this.objViewModel.commandDeletar.CanExecute(null);
         }
+
+        #endregion
+
+        #region Chamada de métodos assyncronos
+
+        //private async Task<UFModel> getUfAsync(int idUf)
+        //{
+        //    return await servicoUf.getUfAsync(idUf: idUf);
+        //}
 
         #endregion
     }

@@ -9,7 +9,7 @@
   <object id="WinDecisao" name="WinDecisao" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Crm.WinDecisao, HLP.Entries.View.WPF">
   </object>
-  <object id="WinUnidadeMedida" name="WinUnidadeMedida" singleton="false" scope="request"
-   type="HLP.Entries.View.WPF.Gerais.WinUnidadeMedida, HLP.Entries.View.WPF">
+  <object id="WinPesquisaPadrao" name="WinPesquisaPadrao" singleton="false" scope="request"
+  type="HLP.Comum.View.Formularios.WinPesquisaPadrao, HLP.Comum.View">
   </object>
 </objects>

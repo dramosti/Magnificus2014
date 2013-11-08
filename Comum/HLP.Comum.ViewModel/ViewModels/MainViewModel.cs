@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
@@ -18,6 +19,12 @@ namespace HLP.Comum.ViewModel.ViewModels
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
         public ICommand DelWindowCommand { get; set; }
+
+        public ICommand anteriorCommand { get; set; }
+        public ICommand primeiroCommand { get; set; }
+        public ICommand proximoCommand { get; set; }
+        public ICommand ultimoCommand { get; set; }
+
         #endregion
 
         private ObservableCollection<TabPagesAtivasModel> lTabPagesAtivas;
@@ -55,6 +62,30 @@ namespace HLP.Comum.ViewModel.ViewModels
                 base.NotifyPropertyChanged(propertyName: "_currentTab");
             }
         }
+
+        private string _sText = "0 de 0";
+        public string sText
+        {
+            get { return _sText; }
+            set { _sText = value; base.NotifyPropertyChanged("sText"); }
+
+        }
+
+        private BindingSource _bsPesquisa = new BindingSource();
+        public BindingSource bsPesquisa
+        {
+            get { return _bsPesquisa; }
+            set { _bsPesquisa = value; base.NotifyPropertyChanged("bsPesquisa"); }
+        }
+
+        private Visibility _visibilityNavegacao = Visibility.Collapsed;
+
+        public Visibility visibilityNavegacao
+        {
+            get { return _visibilityNavegacao; }
+            set { _visibilityNavegacao = value; base.NotifyPropertyChanged("visibilityNavegacao"); }
+        }
+
 
         public MainViewModel()
         {
