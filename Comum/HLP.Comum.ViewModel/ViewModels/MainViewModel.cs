@@ -19,6 +19,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
         public ICommand DelWindowCommand { get; set; }
+        public ICommand pesquisarBaseCommand { get; set; }
 
         public ICommand anteriorCommand { get; set; }
         public ICommand primeiroCommand { get; set; }

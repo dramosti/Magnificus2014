@@ -9,11 +9,22 @@ namespace HLP.Comum.Model.Models
 {
     public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
-        protected List<campoSqlModel> lcamposSqlNotNull;
+        protected List<camposBaseDadosService.campoSqlModel> lcamposSqlNotNull = new List<camposBaseDadosService.campoSqlModel>();
+        camposBaseDadosService.IcamposBaseDadosServiceClient service = new camposBaseDadosService.IcamposBaseDadosServiceClient();
 
-        public modelBase()
+        public modelBase(string xTabela = "")
         {
-            this.lcamposSqlNotNull = new List<campoSqlModel>();
+            if (xTabela != "" && lcamposSqlNotNull.Count == 0)
+                this.GetCamposSqlNotNull(xTabela: xTabela);
+        }
+
+        private async void GetCamposSqlNotNull(string xTabela)
+        {
+            camposBaseDadosService.campoSqlModel[] arrayCamposSqlNotNull = await service.getCamposNotNullAsync(xTabela: xTabela);
+            foreach (camposBaseDadosService.campoSqlModel item in arrayCamposSqlNotNull)
+            {
+                lcamposSqlNotNull.Add(item: item);
+            }
         }
 
         #region NotifyPropertyChanged
@@ -48,14 +59,14 @@ namespace HLP.Comum.Model.Models
 
         protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
         {
-            campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
+            camposBaseDadosService.campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
                 i => i.COLUMN_NAME == columnName);
             if (campo != null)
             {
                 string valor = objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString();
                 if (campo.TYPE == "F " && valor == "0")
                     return "Necessário que campo possua valor!";
-                else if ((campo.TYPE == null || campo.TYPE == "UQ") 
+                else if ((campo.TYPE == null || campo.TYPE == "UQ")
                     && valor == "")
                 {
                     return "Necessário que campo possua valor!";
@@ -68,7 +79,7 @@ namespace HLP.Comum.Model.Models
 
     public class campoSqlModel
     {
-        public string COLUMN_NAME { get; set; }        
+        public string COLUMN_NAME { get; set; }
         public string TYPE { get; set; }
     }
 }

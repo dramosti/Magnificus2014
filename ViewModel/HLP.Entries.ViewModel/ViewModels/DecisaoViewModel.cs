@@ -57,14 +57,6 @@ namespace HLP.Entries.ViewModel.ViewModels
                 return base.cancelarBaseCommand;
             }
         }
-
-        public ICommand commandPesquisarBase
-        {
-            get
-            {
-                return base.pesquisarBaseCommand;
-            }
-        }
         #endregion
 
         DecisaoCommands objCommands;

@@ -8,6 +8,7 @@ using HLP.Entries.Model.Repository.Implementation.Fiscal;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject.Modules;
+using HLP.Comum.Model.camposBaseDadosService;
 
 namespace HLP.Dependencies
 {
@@ -165,10 +166,6 @@ namespace HLP.Dependencies
 
             //#endregion
 
-            #region COMUM
-            Bind<ImodelBaseRepository>().To<modelBaseRepository>();
-            #endregion
-
         }
 
         protected void ResolveServices()
@@ -306,7 +303,6 @@ namespace HLP.Dependencies
             //Bind<IPersonalidadeService>().To<PersonalidadeService>();
             //Bind<IFidelidadeService>().To<FidelidadeService>();
             //#endregion
-
         }
 
     }

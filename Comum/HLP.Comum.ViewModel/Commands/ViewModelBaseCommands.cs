@@ -45,8 +45,6 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.viewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-            this.viewModel.pesquisarBaseCommand = new RelayCommand(execute: pExec => this.pesquisaBase(),
-                canExecute: pCanExec => this.pesquisaBaseCanExecute());
             this.currentOp = OperacaoCadastro.livre;
         }
 
@@ -105,17 +103,6 @@ namespace HLP.Comum.ViewModel.Commands
             return (this.currentOp == Resources.RecursosBases.OperacaoCadastro.criando ||
                 this.currentOp == Resources.RecursosBases.OperacaoCadastro.alterando);
         }
-
-        private void pesquisaBase()
-        {
-            this.currentOp = OperacaoCadastro.pesquisando;
-        }
-        private bool pesquisaBaseCanExecute()
-        {
-            return this.currentOp == OperacaoCadastro.livre ||
-                this.currentOp == OperacaoCadastro.pesquisando;
-        }
-
 
         #endregion
 
