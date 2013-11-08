@@ -103,7 +103,7 @@ namespace HLP.Dependencies
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
             //Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
             //Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
-            //Bind<IUnidade_medidaRepository>().To<Unidade_medidaRepository>();
+            Bind<IUnidade_medidaRepository>().To<Unidade_medidaRepository>();
             //Bind<ITipo_servicoRepository>().To<Tipo_servicoRepository>();
             //Bind<IFabricanteRepository>().To<FabricanteRepository>();
             //Bind<IFamilia_ProdutoRepository>().To<Familia_produtoRepository>();
@@ -165,6 +165,9 @@ namespace HLP.Dependencies
 
             //#endregion
 
+            #region COMUM
+            Bind<ImodelBaseRepository>().To<modelBaseRepository>();
+            #endregion
 
         }
 

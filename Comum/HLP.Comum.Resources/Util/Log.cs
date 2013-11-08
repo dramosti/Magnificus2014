@@ -27,7 +27,7 @@ namespace HLP.Comum.Resources.Util
 
         public static void AddLog(string xLog)
         {
-            using (StreamWriter sw = File.AppendText(path: _xPath))
+            using (StreamWriter sw = File.AppendText(path: xPath))
             {
                 sw.WriteLine(value: DateTime.Now.ToString() + " - " + xLog);
             }

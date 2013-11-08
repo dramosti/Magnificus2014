@@ -89,9 +89,6 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 w = null;
             }
-
-
-
         }
     }
 }

@@ -139,8 +139,10 @@
                         <ToolBar Style="{StaticResource toolBarCadastro}">
                             <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{StaticResource StyleButton1}"></Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{StaticResource StyleButton1}"></Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"></Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" Content="Salvar" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}"
+                                    IsEnabled="{Binding _currentTab._currentDataContext.GetEnabledBtnDel}" 
+                                    Content="Excluir" Style="{StaticResource StyleButton1}"></Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{StaticResource StyleButton1}"></Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"></Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}"
                                     CommandParameter="{Binding ElementName=txtPesquisa, Path=Text}" Content="Pesquisar" Style="{StaticResource StyleButton1}"></Button>

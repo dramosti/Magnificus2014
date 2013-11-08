@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
+        xmlns:c="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinUnidadeMedida"
+        Title="Unidade Medida" Height="300" Width="448.872">
+    <Window.Resources>
+        <c:IntStringConverter x:Key="intStringValueConverter"></c:IntStringConverter>
+    </Window.Resources>
+    <Grid Name="gridPropriedades">
+        <StackPanel Orientation="Vertical">
+            <Components:HlpTextBox Text="{Binding currentModel.idUnidadeMedida, Mode=TwoWay}"
+                                   Width="200" Caption="ID" WidthLabel="150" Padding="0,3,0,0"
+                                   IsEnabled="False"/>
+            <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}" 
+                Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                                   Width="400" Caption="Sigla Padrão" WidthLabel="150" Padding="0,3,0,0"/>
+            <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}" 
+                Text="{Binding currentModel.xUnidadeMedida, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                                   Width="400" Caption="Unidade Medida" WidthLabel="150" Padding="0,3,0,0"/>
+            <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"               
+                                   Width="400" Caption="nº Casas Decimais" WidthLabel="150" Padding="0,3,0,0">
+                <Components:HlpTextBox.Text>
+                    <Binding Path="currentModel.nCasasDecimais"
+                                Mode="TwoWay"
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True"
+                             NotifyOnValidationError="True"
+                             Converter="{StaticResource intStringValueConverter}"
+                             >
+                        <Binding.ValidationRules>
+                            <v:NumericIntValidationRule></v:NumericIntValidationRule>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </Components:HlpTextBox.Text>
+            </Components:HlpTextBox>
+            <Button Content="Button" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

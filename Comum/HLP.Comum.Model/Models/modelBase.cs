@@ -53,9 +53,9 @@ namespace HLP.Comum.Model.Models
             if (campo != null)
             {
                 string valor = objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString();
-                if (campo.TYPECONSTRAINT == "F " && valor == "0")
+                if (campo.TYPE == "F " && valor == "0")
                     return "Necessário que campo possua valor!";
-                else if ((campo.TYPECONSTRAINT == null || campo.TYPECONSTRAINT == "UQ") 
+                else if ((campo.TYPE == null || campo.TYPE == "UQ") 
                     && valor == "")
                 {
                     return "Necessário que campo possua valor!";
@@ -68,8 +68,7 @@ namespace HLP.Comum.Model.Models
 
     public class campoSqlModel
     {
-        public string COLUMN_NAME { get; set; }
-        public byte IS_NULLABLE { get; set; }
-        public string TYPECONSTRAINT { get; set; }
+        public string COLUMN_NAME { get; set; }        
+        public string TYPE { get; set; }
     }
 }

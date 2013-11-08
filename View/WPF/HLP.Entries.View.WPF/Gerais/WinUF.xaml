@@ -8,26 +8,26 @@
         <ObjectDataProvider x:Key="odpRegiao" ObjectType="{x:Type regiao:RegiaoViewModel}"/>
         <ObjectDataProvider x:Key="lRegiao" ObjectInstance="{StaticResource odpRegiao}"  MethodName="GetAll"/>        
     </Window.Resources>
-    <Grid>
+    <Grid Name="gridPropriedades">
         <StackPanel Orientation="Vertical">
 
-            <Components:HlpTextBox Text="{Binding currentUF.idUF, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="0,4,0,0" WidthLabel="100"/>
+            <Components:HlpTextBox Text="{Binding currentModel.idUF, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
-    		Text="{Binding currentUF.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+    		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
     		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}" 
-    		Text="{Binding currentUF.xUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+    		Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
     		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
-    		Text="{Binding currentUF.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True
+    		Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True
                 , NotifyOnValidationError=True}"
     		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpComboBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
             ItemsSource="{Binding Source={StaticResource lRegiao}}"
-        	SelectedValuePath="idRegiao" SelectedValue="{Binding currentUF.idRegiao, Mode=TwoWay,
-                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" DisplayMemberPath="xRegiao"
+        	SelectedValuePath="idRegiao" SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay,
+                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" DisplayMemberPath="xRegiao"
         	HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>            
         </StackPanel>
     </Grid>

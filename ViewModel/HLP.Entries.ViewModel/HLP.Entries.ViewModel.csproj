@@ -58,7 +58,13 @@
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
+    <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\unidadeMedidaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ufService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,6 +75,7 @@
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
+    <Compile Include="ViewModels\Unidade_MedidaViewModel.cs" />
     <Compile Include="VMUtilities\UserInterfaceUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +110,20 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
+    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida.wsdl" />
+    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ufService\serviceUf.wsdl" />
     <None Include="Service References\ufService\serviceUf.xsd">
       <SubType>Designer</SubType>
@@ -118,6 +139,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +153,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ufService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\unidadeMedidaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\unidadeMedidaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\unidadeMedidaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

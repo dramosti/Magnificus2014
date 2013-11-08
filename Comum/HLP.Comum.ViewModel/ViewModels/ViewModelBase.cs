@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.ViewModels
@@ -18,6 +20,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand alterarBase { get; set; }
         public ICommand cancelarBase { get; set; }
         public ICommand pesquisarBase { get; set; }
+
 
         private bool _bIsEnabled;
         public bool bIsEnabled
@@ -49,7 +52,18 @@ namespace HLP.Comum.ViewModel.ViewModels
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion
+        #endregion       
 
+        #region Validação
+        public bool IsValid(DependencyObject obj)
+        {
+            // The dependency object is valid if it has no errors, 
+            //and all of its children (that are dependency objects) are error-free.
+            return !Validation.GetHasError(obj) &&
+                LogicalTreeHelper.GetChildren(obj)
+                .OfType<DependencyObject>()
+                .All(child => IsValid(child));
+        }
+        #endregion
     }
 }

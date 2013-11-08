@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
     <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+    <Content Include="EnterpriseLibrary\Microsoft.Practices.Prism.dll" />
     <Content Include="EnterpriseLibrary\Microsoft.Practices.ServiceLocation.dll" />
     <Content Include="EnterpriseLibrary\Microsoft.Practices.Unity.dll" />
     <Content Include="EnterpriseLibrary\Microsoft.Practices.Unity.Interception.dll" />

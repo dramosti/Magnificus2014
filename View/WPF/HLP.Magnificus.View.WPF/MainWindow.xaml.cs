@@ -16,6 +16,7 @@ using HLP.Comum.Modules;
 using HLP.Comum.Modules.Infrastructure;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.View.WPF.Gerais;
+using HLP.Comum.Resources.Util;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -27,15 +28,14 @@ namespace HLP.Magnificus.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-
             GerenciadorModulo.Instancia.InicializaSistema();
             this._viewModel = new MainViewModel();
         }
+
         public MainViewModel _viewModel
         {
             get { return this.DataContext as MainViewModel; }
             set { this.DataContext = value; }
         }
-
     }
 }

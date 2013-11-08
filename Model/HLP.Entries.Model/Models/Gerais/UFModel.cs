@@ -87,8 +87,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public override string this[string columnName]
         {
             get
-            {
-                
+            {                
                 return base[columnName];
             }
         }

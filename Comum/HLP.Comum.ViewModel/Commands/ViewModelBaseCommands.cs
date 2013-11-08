@@ -6,13 +6,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace HLP.Comum.ViewModel.Commands
 {
     public class ViewModelBaseCommands
     {
         ViewModelBase viewModel;
-        public OperacaoCadastro currentOp { get; set; }
+        private OperacaoCadastro _currentOp;
+        public OperacaoCadastro currentOp
+        {
+            get
+            { return this._currentOp; }
+            set
+            {
+                Dispatcher.CurrentDispatcher.BeginInvoke(
+                    method: new Action(() => this._currentOp = value),
+                    priority: DispatcherPriority.Background, args: null);                
+                Dispatcher.CurrentDispatcher.BeginInvoke(
+                    method: new Action(() => CommandManager.InvalidateRequerySuggested()),
+                    priority: DispatcherPriority.Background, args: null);
+            }
+        }
 
 
         public ViewModelBaseCommands(ViewModelBase vViewModel)
@@ -101,5 +118,6 @@ namespace HLP.Comum.ViewModel.Commands
 
 
         #endregion
+
     }
 }

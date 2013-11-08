@@ -73,12 +73,19 @@
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinUnidadeMedida.xaml.cs">
+      <DependentUpon>WinUnidadeMedida.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIUtilities\UserInterfaceUtilities.cs" />
     <Page Include="Crm\WinDecisao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\WinCidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinUnidadeMedida.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

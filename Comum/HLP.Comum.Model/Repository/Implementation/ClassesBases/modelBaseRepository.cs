@@ -14,13 +14,10 @@ namespace HLP.Comum.Model.Repository.Implementation.ClassesBases
 {
     public class modelBaseRepository : ImodelBaseRepository
     {
-        //[Inject]
-        //public UnitOfWorkBase UndTrabalho { get; set; }
-        private Database _dbPrincipal;
-
+        [Inject]
+        public UnitOfWorkBase UndTrabalho { get; set; }
         public modelBaseRepository()
         {            
-            _dbPrincipal = EnterpriseLibraryContainer.Current.GetInstance<Database>("dbPrincipal");
         }
 
         DataAccessor<campoSqlModel> regAcessor = null;
@@ -29,16 +26,12 @@ namespace HLP.Comum.Model.Repository.Implementation.ClassesBases
         {
             if (regAcessor == null)
             {
-                regAcessor = this._dbPrincipal.CreateSqlStringAccessor(
-                    sqlString: ("select c.COLUMN_NAME, " +
-                                "case c.IS_NULLABLE " +
-                                "when 'NO' THEN 0 " +
-                                "ELSE 1 END as IS_NULLABLE, " +
-                                "(select o.type from sys.all_objects o where o.name = " +
-                                "(select k.CONSTRAINT_NAME from INFORMATION_SCHEMA.KEY_COLUMN_USAGE k " +
-                                "where k.COLUMN_NAME = c.COLUMN_NAME and k.TABLE_NAME = '" + xTabela + "')) as TYPECONSTRAINT " +
+                regAcessor = this.UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                    sqlString: ("select c.COLUMN_NAME, (select keyC.type from sys.key_constraints keyC " +
+                                "where keyC.name = (select const.CONSTRAINT_NAME from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE const " +
+                                "where const.TABLE_NAME = c.TABLE_NAME and const.COLUMN_NAME = c.COLUMN_NAME)) as TYPE " +
                                 "from INFORMATION_SCHEMA.COLUMNS c " +
-                                "where c.TABLE_NAME = '" + xTabela + "'"),
+                                "where c.TABLE_NAME = '" + xTabela + "' and IS_NULLABLE = 'NO'"),
                                 rowMapper: MapBuilder<campoSqlModel>.MapAllProperties().Build());
             }
             return regAcessor.Execute().ToList();

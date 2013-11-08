@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceUnidadeMedida.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Unidade_medidaModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idUnidadeMedida" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nCasasDecimais" type="xs:int" />
+          <xs:element minOccurs="0" name="xSiglaPadrao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xUnidadeMedida" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Unidade_medidaModel" nillable="true" type="tns:Unidade_medidaModel" />
+</xs:schema>
