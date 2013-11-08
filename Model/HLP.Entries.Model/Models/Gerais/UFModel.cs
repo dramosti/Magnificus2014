@@ -17,8 +17,8 @@ namespace HLP.Entries.Model.Models.Gerais
         public UFModel()
             : base()
         {
-            this._modelBaseRepository = new modelBaseRepository();
-            base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "UF");
+            //this._modelBaseRepository = new modelBaseRepository();
+            //base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "UF");
         }
 
         private int? _idUF;
