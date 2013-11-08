@@ -38,13 +38,7 @@ namespace HLP.Comum.Model.Models
             set { _NameView = value; }
         }
 
-        private int _currentID;
-
-        public int currentID
-        {
-            get { return _currentID; }
-            set { _currentID = value; }
-        }
+       
 
 
         public string _header

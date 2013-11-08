@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
@@ -20,7 +21,36 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand alterarBaseCommand { get; set; }
         public ICommand cancelarBaseCommand { get; set; }
 
-        public List<int> lResultPesquisa { get; set; }
+
+        public ICommand pesquisarBaseCommand { get; set; }
+        public ICommand anteriorCommand { get; set; }
+        public ICommand primeiroCommand { get; set; }
+        public ICommand proximoCommand { get; set; }
+        public ICommand ultimoCommand { get; set; }
+
+
+        private string _sText = "0 de 0";
+        public string sText
+        {
+            get { return _sText; }
+            set { _sText = value; this.NotifyPropertyChanged("sText"); }
+
+        }
+
+        private BindingSource _bsPesquisa = new BindingSource();
+        public BindingSource bsPesquisa
+        {
+            get { return _bsPesquisa; }
+            set { _bsPesquisa = value; this.NotifyPropertyChanged("bsPesquisa"); }
+        }
+
+        private Visibility _visibilityNavegacao = Visibility.Collapsed;
+
+        public Visibility visibilityNavegacao
+        {
+            get { return _visibilityNavegacao; }
+            set { _visibilityNavegacao = value; this.NotifyPropertyChanged("visibilityNavegacao"); }
+        }
 
 
         private bool _bIsEnabled;
@@ -37,11 +67,32 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
+        private int _currentID;
+        public int currentID
+        {
+            get { return _currentID; }
+            set
+            {
+                if (value != _currentID)
+                {
+                    _currentID = value;
+                    this.Pesquisar();
+                }
+            }
+        }
+
+        public ViewModelBaseCommands viewModelBaseCommands;
+
         public ViewModelBase()
         {
             this.bIsEnabled = false;
-            ViewModelBaseCommands viewModel = new ViewModelBaseCommands(vViewModel: this);
+            viewModelBaseCommands = new ViewModelBaseCommands(vViewModel: this);
         }
+
+        public virtual void Pesquisar()
+        {
+        }
+
 
         #region NotifyPropertyChanged
 
@@ -53,7 +104,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #endregion       
+        #endregion
 
         #region Validação
         public bool IsValid(DependencyObject obj)

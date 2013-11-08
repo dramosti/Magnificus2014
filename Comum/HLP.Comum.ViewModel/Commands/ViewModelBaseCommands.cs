@@ -14,7 +14,7 @@ namespace HLP.Comum.ViewModel.Commands
 {
     public class ViewModelBaseCommands
     {
-        ViewModelBase viewModel;
+        ViewModelBase objviewModel;
         private OperacaoCadastro _currentOp;
         public OperacaoCadastro currentOp
         {
@@ -34,25 +34,87 @@ namespace HLP.Comum.ViewModel.Commands
 
         public ViewModelBaseCommands(ViewModelBase vViewModel)
         {
-            this.viewModel = vViewModel;
-            this.viewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(),
+            this.objviewModel = vViewModel;
+            this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(),
                 canExecute: pCanExec => this.novoBaseCanExecute());
-            this.viewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
+            this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
                 canExecute: pCanExec => this.alterarBaseCanExecute());
-            this.viewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(),
+            this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(),
                 canExecute: pCanExec => this.delBaseCanExecute());
-            this.viewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
+            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
-            this.viewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
+            this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
+         
             this.currentOp = OperacaoCadastro.livre;
+            this.objviewModel.proximoCommand = new RelayCommand(
+              execute: exec => ExecAcao(tpAcao.Proximo),
+              canExecute: CanExec => CanExecAcao());
+
+            this.objviewModel.anteriorCommand = new RelayCommand(
+               execute: exec => ExecAcao(tpAcao.Anterior),
+               canExecute: CanExec => CanExecAcao());
+
+            this.objviewModel.primeiroCommand = new RelayCommand(
+               execute: exec => ExecAcao(tpAcao.Primeiro),
+               canExecute: CanExec => CanExecAcao());
+
+            this.objviewModel.ultimoCommand = new RelayCommand(
+               execute: exec => ExecAcao(tpAcao.Ultimo),
+               canExecute: CanExec => CanExecAcao());
+
+            this.ExecAcao(tpAcao.Primeiro);
         }
 
         #region Executes & CanExecutes
+
+        public void ExecAcao(tpAcao tipoAcao)
+        {
+            try
+            {
+                switch (tipoAcao)
+                {
+                    case tpAcao.Primeiro:
+                        objviewModel.bsPesquisa.MoveFirst();
+                        break;
+                    case tpAcao.Anterior:
+                        objviewModel.bsPesquisa.MovePrevious();
+                        break;
+                    case tpAcao.Proximo:
+                        objviewModel.bsPesquisa.MoveNext();
+                        break;
+                    case tpAcao.Ultimo:
+                        objviewModel.bsPesquisa.MoveLast();
+                        break;
+                    default:
+                        break;
+                }
+                if (objviewModel.bsPesquisa.Current != null)
+                {
+                    objviewModel.currentID = (int)objviewModel.bsPesquisa.Current;
+                    objviewModel.sText = (objviewModel.bsPesquisa.IndexOf(objviewModel.bsPesquisa.Current) + 1).ToString() + " de " + objviewModel.bsPesquisa.Count.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        public bool CanExecAcao()
+        {
+            if (objviewModel.bsPesquisa.DataSource != null)
+                return true;
+            else
+                return false;
+        }
+
+        public enum tpAcao { Primeiro, Anterior, Proximo, Ultimo }
+
         private void novoBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
-            this.viewModel.bIsEnabled = true;
+            this.objviewModel.bIsEnabled = true;
         }
         private bool novoBaseCanExecute()
         {
@@ -63,7 +125,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void alterarBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.alterando;
-            this.viewModel.bIsEnabled = true;
+            this.objviewModel.bIsEnabled = true;
         }
         private bool alterarBaseCanExecute()
         {
@@ -82,7 +144,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void salvarBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
-            this.viewModel.bIsEnabled = false;
+            this.objviewModel.bIsEnabled = false;
         }
         private bool salvarBaseCanExecute()
         {
@@ -96,7 +158,7 @@ namespace HLP.Comum.ViewModel.Commands
         private void cancelarBase()
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
-            this.viewModel.bIsEnabled = false;
+            this.objviewModel.bIsEnabled = false;
         }
         private bool cancelarBaseCanExecute()
         {

@@ -34,7 +34,6 @@ namespace HLP.Entries.ViewModel.ViewModels
                 return base.salvarBaseCommand;
             }
         }
-
         public ICommand commandDeletarBase
         {
             get
@@ -63,15 +62,29 @@ namespace HLP.Entries.ViewModel.ViewModels
                 return base.cancelarBaseCommand;
             }
         }
+               
         #endregion
 
+
+        public override void Pesquisar()
+        {
+            base.Pesquisar();
+            if (base.currentID != 0)
+            {
+                if (base.currentID != this.currentModel.idUF)
+                {
+                    this.objUFCommands.Pesquisar(base.currentID);
+                }
+            }          
+        }
+
         //public bool bIsEnable { get { return base.bIsEnabled; } }
-        UFCommands objUFCommand;
+        UFCommands objUFCommands;
 
         public UFViewModel()
             : base()
         {
-            objUFCommand = new UFCommands(objViewModel: this);
+            objUFCommands = new UFCommands(objViewModel: this);
         }
 
         private UFModel _currentModel;

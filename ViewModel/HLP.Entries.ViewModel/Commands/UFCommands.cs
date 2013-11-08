@@ -39,10 +39,6 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
-
-            //this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
-            //        canExecute: paramCanExec => this.PesquisarCanExecute());
-
         }
 
 
@@ -112,31 +108,19 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
         }
 
-        private void Pesquisar(object param)
+        public void Pesquisar(object param)
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetWorkOrdersBackground);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.GetWorkOrdersBackgroundComplete);
+            bw.DoWork += new DoWorkEventHandler(this.GetUFBackground);
 
             if (param != null)
                 bw.RunWorkerAsync(argument: param);
         }
-        private bool PesquisarCanExecute()
-        {
-            return this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
-        }
 
-        private async void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
+        private async void GetUFBackground(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentUF = this.servicoUf.getUf(idUf: );
             this.objViewModel.currentModel = await servicoUf.getUfAsync(idUf: Convert.ToInt32(e.Argument));
-        }
-        private void GetWorkOrdersBackgroundComplete(
-          object sender,
-          RunWorkerCompletedEventArgs e)
-        {
-            this.objViewModel.commandPesquisarBase.Execute(parameter: null);
-        }
+        }       
 
         #endregion
 
