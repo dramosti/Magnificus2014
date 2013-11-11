@@ -45,7 +45,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regUfAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_uf",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idUF"),
-                                  MapBuilder<UFModel>.MapAllProperties().Build());
+                                  MapBuilder<UFModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
 
 
