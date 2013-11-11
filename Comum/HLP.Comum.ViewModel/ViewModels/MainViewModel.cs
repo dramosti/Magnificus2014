@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Forms;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
@@ -21,7 +22,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand DelWindowCommand { get; set; }
         public ICommand pesquisarBaseCommand { get; set; }
 
-       
+
 
         #endregion
 
@@ -57,11 +58,15 @@ namespace HLP.Comum.ViewModel.ViewModels
             set
             {
                 currentTab = value;
-                base.NotifyPropertyChanged(propertyName: "_currentTab");
+                this.NotifyPropertyChanged(propertyName: "_currentTab");
+                try
+                {                    
+                    currentTab._currentDataContext.SetPropertyValue("NameView", currentTab._windows.GetPropertyValue("NameView").ToString()); 
+                }
+                catch (Exception) { throw; }
+
             }
         }
-
-        
 
         public MainViewModel()
         {

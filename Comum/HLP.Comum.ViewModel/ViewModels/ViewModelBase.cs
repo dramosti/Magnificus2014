@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Forms;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
@@ -52,6 +53,18 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _visibilityNavegacao = value; this.NotifyPropertyChanged("visibilityNavegacao"); }
         }
 
+        private int _currentID;
+        public int currentID
+        {
+            get { return _currentID; }
+            set
+            {
+                if ((value != _currentID) && (value != 0))
+                {
+                    _currentID = value;
+                }
+            }
+        }
 
         private bool _bIsEnabled;
         public bool bIsEnabled
@@ -67,19 +80,14 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
-        private int _currentID;
-        public int currentID
+        private string _NameView = string.Empty;
+
+        public string NameView
         {
-            get { return _currentID; }
-            set
-            {
-                if (value != _currentID)
-                {
-                    _currentID = value;
-                    this.Pesquisar();
-                }
-            }
+            get { return _NameView; }
+            set { _NameView = value; }
         }
+
 
         public ViewModelBaseCommands viewModelBaseCommands;
 
@@ -89,9 +97,10 @@ namespace HLP.Comum.ViewModel.ViewModels
             viewModelBaseCommands = new ViewModelBaseCommands(vViewModel: this);
         }
 
-        public virtual void Pesquisar()
-        {
-        }
+      
+
+
+
 
 
         #region NotifyPropertyChanged

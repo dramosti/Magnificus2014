@@ -62,21 +62,12 @@ namespace HLP.Entries.ViewModel.ViewModels
                 return base.cancelarBaseCommand;
             }
         }
-               
+
+      
         #endregion
 
 
-        public override void Pesquisar()
-        {
-            base.Pesquisar();
-            if (base.currentID != 0)
-            {
-                if (base.currentID != this.currentModel.idUF)
-                {
-                    this.objUFCommands.Pesquisar(base.currentID);
-                }
-            }          
-        }
+       
 
         //public bool bIsEnable { get { return base.bIsEnabled; } }
         UFCommands objUFCommands;

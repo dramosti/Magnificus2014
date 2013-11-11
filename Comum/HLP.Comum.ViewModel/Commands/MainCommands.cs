@@ -30,10 +30,6 @@ namespace HLP.Comum.ViewModel.Commands
                 this.objviewModel.DelWindowCommand = new RelayCommand(
                     execute: ex => DelWindow(tabItem: ex),
                     canExecute: ex => DelWindowCanExecute());
-                this.objviewModel.pesquisarBaseCommand = new RelayCommand(
-                    execute: ex => ShowPesquisaExecute(),
-                    canExecute: canExecute => ShowPesquisaCanEcexute());
-
 
 
             }
@@ -88,38 +84,6 @@ namespace HLP.Comum.ViewModel.Commands
         {
             return true;
         }
-
-        private void ShowPesquisaExecute()
-        {
-            Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Modules.Interface.TipoExibeForm.Normal);
-            winPesquisa.WindowState = WindowState.Maximized;
-            winPesquisa.SetPropertyValue("NameView", objviewModel._currentTab.NameView);
-
-            if (winPesquisa != null)
-            {
-                winPesquisa.ShowDialog();
-
-                if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
-                {
-                    objviewModel.bsPesquisa.DataSource = (winPesquisa.GetPropertyValue("lResult") as List<int>);
-                    objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
-                    objviewModel.visibilityNavegacao = Visibility.Visible;
-                }
-            }
-        }
-        private bool ShowPesquisaCanEcexute()
-        {
-            bool bReturn = false;
-            if (objviewModel._currentTab != null)
-            {
-                if (objviewModel._currentTab.NameView != string.Empty)
-                    bReturn = true;
-                else
-                    bReturn = false;
-            }
-            return bReturn ;
-        }
-
 
         #endregion
     }
