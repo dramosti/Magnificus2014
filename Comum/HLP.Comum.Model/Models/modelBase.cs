@@ -53,17 +53,20 @@ namespace HLP.Comum.Model.Models
 
         protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
         {
-            campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
-                i => i.COLUMN_NAME == columnName);
-            if (campo != null)
+            if (lcamposSqlNotNull != null)
             {
-                string valor = objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString();
-                if (campo.TYPE == "F " && valor == "0")
-                    return "Necessário que campo possua valor!";
-                else if ((campo.TYPE == null || campo.TYPE == "UQ")
-                    && valor == "")
+                campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
+                    i => i.COLUMN_NAME == columnName);
+                if (campo != null)
                 {
-                    return "Necessário que campo possua valor!";
+                    string valor = objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString();
+                    if (campo.TYPE == "F " && valor == "0")
+                        return "Necessário que campo possua valor!";
+                    else if ((campo.TYPE == null || campo.TYPE == "UQ")
+                        && valor == "")
+                    {
+                        return "Necessário que campo possua valor!";
+                    }
                 }
             }
             return null;

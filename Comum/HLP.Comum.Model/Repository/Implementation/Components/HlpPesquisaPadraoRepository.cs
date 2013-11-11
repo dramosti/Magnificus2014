@@ -36,6 +36,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                                                                     .DoNotMap(C => C.HeaderText)
                                                                     .DoNotMap(C => C.OwnerType)
                                                                     .DoNotMap(C=> C.bEnablePesquisa)
+                                                                    .DoNotMap(C=> C.status)
                                                                     .Build());
             }
             return new ObservableCollection<PesquisaPadraoModel>(regPesquisaPadraoAccessor.Execute(sViewName).ToList());
