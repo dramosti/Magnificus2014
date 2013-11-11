@@ -12,4 +12,7 @@
   <object id="WinPesquisaPadrao" name="WinPesquisaPadrao" singleton="false" scope="request"
   type="HLP.Comum.View.Formularios.WinPesquisaPadrao, HLP.Comum.View">
   </object>
+  <object id="WinEmpresa" name="WinEmpresa" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinEmpresa, HLP.Entries.View.WPF">
+  </object>
 </objects>

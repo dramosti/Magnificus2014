@@ -13,4 +13,12 @@ namespace HLP.Comum.Resources.RecursosBases
         alterando,
         pesquisando
     }
+
+    public enum statusModel
+    {
+        nenhum,
+        criado,
+        alterado,
+        excluido
+    }
 }

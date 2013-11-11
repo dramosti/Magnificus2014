@@ -26,7 +26,7 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel = vViewModel;
 
-            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentDecisao),
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentModel),
                                 paramCanExec => DeleteCanExecute());
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
@@ -49,7 +49,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                decisaoRepository.Save(decisao: this.objViewModel.currentDecisao);
+                decisaoRepository.Save(decisao: this.objViewModel.currentModel);
                 this.objViewModel.commandSalvarBase.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -60,7 +60,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool SaveCanExecute(object bValido)
         {
-            if (this.objViewModel.currentDecisao == null)
+            if (this.objViewModel.currentModel == null)
                 return false;
 
             return this.objViewModel.commandSalvarBase.CanExecute(parameter: null);
@@ -83,7 +83,7 @@ namespace HLP.Entries.ViewModel.Commands
             //    xDecisao = "",
             //    xDescricao = ""
             //};
-            this.objViewModel.currentDecisao = new DecisaoModel();
+            this.objViewModel.currentModel = new DecisaoModel();
             this.objViewModel.commandNovoBase.Execute(parameter: null);
         }
         private bool NovoCanExecute()

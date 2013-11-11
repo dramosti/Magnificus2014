@@ -4,27 +4,17 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Comum.Model.Models
 {
     public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
-        protected List<camposBaseDadosService.campoSqlModel> lcamposSqlNotNull = new List<camposBaseDadosService.campoSqlModel>();
-        camposBaseDadosService.IcamposBaseDadosServiceClient service = new camposBaseDadosService.IcamposBaseDadosServiceClient();
+        protected List<campoSqlModel> lcamposSqlNotNull;
+        public statusModel status { get; set; }
 
-        public modelBase(string xTabela = "")
+        public modelBase()
         {
-            if (xTabela != "" && lcamposSqlNotNull.Count == 0)
-                this.GetCamposSqlNotNull(xTabela: xTabela);
-        }
-
-        private async void GetCamposSqlNotNull(string xTabela)
-        {
-            camposBaseDadosService.campoSqlModel[] arrayCamposSqlNotNull = await service.getCamposNotNullAsync(xTabela: xTabela);
-            foreach (camposBaseDadosService.campoSqlModel item in arrayCamposSqlNotNull)
-            {
-                lcamposSqlNotNull.Add(item: item);
-            }
         }
 
         #region NotifyPropertyChanged
@@ -34,7 +24,11 @@ namespace HLP.Comum.Model.Models
         protected void NotifyPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
+            {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                if (this.status == statusModel.nenhum)
+                    this.status = statusModel.alterado;
+            }
         }
 
         #endregion
@@ -59,7 +53,7 @@ namespace HLP.Comum.Model.Models
 
         protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
         {
-            camposBaseDadosService.campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
+            campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
                 i => i.COLUMN_NAME == columnName);
             if (campo != null)
             {
@@ -72,14 +66,7 @@ namespace HLP.Comum.Model.Models
                     return "Necessário que campo possua valor!";
                 }
             }
-
             return null;
         }
-    }
-
-    public class campoSqlModel
-    {
-        public string COLUMN_NAME { get; set; }
-        public string TYPE { get; set; }
     }
 }

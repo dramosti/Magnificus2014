@@ -11,10 +11,8 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class Unidade_medidaModel : modelBase
     {
-        modelBaseRepository _modelBaseRepository;
-
         public Unidade_medidaModel()
-            : base(xTabela: "Unidade_medida")
+            : base()
         {            
         }
 

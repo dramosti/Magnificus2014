@@ -11,10 +11,8 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class DecisaoModel : modelBase
     {
-        modelBaseRepository _modelBaseRepository;
-
         public DecisaoModel()
-            : base(xTabela: "Decisao")
+            : base()
         {
         }
 

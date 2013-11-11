@@ -7,14 +7,14 @@
         <StackPanel Orientation="Vertical">
 
             <Components:HlpTextBox Caption="ID"                                   
-                                   Text="{Binding currentDecisao.idDecisao, Mode=TwoWay}"                                   
+                                   Text="{Binding currentModel.idDecisao, Mode=TwoWay}"                                   
                                    IsEnabled="False" WidthLabel="100" Margin="0,4,98,0"/>
             <Components:HlpTextBox Caption="Decisão"
-                                   Text="{Binding currentDecisao.xDecisao, Mode=TwoWay, 
+                                   Text="{Binding currentModel.xDecisao, Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                    IsEnabled="{Binding bIsEnabled}" WidthLabel="100" Margin="0,4,0,0"/>
             <Components:HlpTextBox Caption="Descrição"
-                                   Text="{Binding currentDecisao.xDescricao, Mode=TwoWay, 
+                                   Text="{Binding currentModel.xDescricao, Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                    IsEnabled="{Binding bIsEnabled}" WidthLabel="100" Margin="0,4,0,0"/>
 

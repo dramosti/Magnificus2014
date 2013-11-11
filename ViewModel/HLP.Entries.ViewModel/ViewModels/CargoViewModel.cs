@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.ViewModel.ViewModels;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.Commands;
+using HLP.Entries.Model.Models.RecursosHumanos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +9,9 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class DecisaoViewModel : ViewModelBase
+    public class CargoViewModel : ViewModelBase
     {
-        #region Icommands
-        public ICommand commandSalvar { get; set; }
-        public ICommand commandDeletar { get; set; }
-        public ICommand commandNovo { get; set; }
-        public ICommand commandAlterar { get; set; }
-        public ICommand commandCancelar { get; set; }
-        public ICommand commandPesquisar { get; set; }
-        #endregion
+
         #region IcommandsBase
         public ICommand commandSalvarBase
         {
@@ -59,24 +51,24 @@ namespace HLP.Entries.ViewModel.ViewModels
         }
         #endregion
 
-        DecisaoCommands objCommands;
+        #region Icommands
+        public ICommand commandSalvar { get; set; }
+        public ICommand commandDeletar { get; set; }
+        public ICommand commandNovo { get; set; }
+        public ICommand commandAlterar { get; set; }
+        public ICommand commandCancelar { get; set; }
+        #endregion
 
-        public DecisaoViewModel()
-            : base()
-        {
-            objCommands = new DecisaoCommands(vViewModel: this);
-        }
+        CargoModel _currentModel;
 
-        private DecisaoModel _currentModel;
-
-        public DecisaoModel currentModel
+        public CargoModel currentModel
         {
             get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
+            set { _currentModel = value; }
+        }
+
+        public CargoViewModel()
+        {
         }
     }
 }

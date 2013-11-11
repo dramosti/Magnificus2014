@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="camposBaseDadosService.svc" />
+    <Content Include="serviceCargo.svc" />
+    <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Web.config" />
@@ -73,7 +75,15 @@
       <DependentUpon>camposBaseDadosService.svc</DependentUpon>
     </Compile>
     <Compile Include="IcamposBaseDadosService.cs" />
+    <Compile Include="IserviceCargo.cs" />
+    <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="serviceCargo.svc.cs">
+      <DependentUpon>serviceCargo.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceEmpresa.svc.cs">
+      <DependentUpon>serviceEmpresa.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceUf.svc.cs">
       <DependentUpon>serviceUf.svc</DependentUpon>
     </Compile>

@@ -8,7 +8,8 @@ using HLP.Entries.Model.Repository.Implementation.Fiscal;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject.Modules;
-using HLP.Comum.Model.camposBaseDadosService;
+using HLP.Entries.Model.Repository.Interfaces.RecursosHumanos;
+using HLP.Entries.Model.Repository.Implementation.RecursosHumanos;
 
 namespace HLP.Dependencies
 {
@@ -94,11 +95,10 @@ namespace HLP.Dependencies
             //Bind<IRotaRepository>().To<RotaRepository>();
             Bind<IUFRepository>().To<UFRepository>();
             Bind<ICidadeRepository>().To<CidadeRepository>();
-            //Bind<IEmpresaRepository>().To<EmpresaRepository>();
+            Bind<IEmpresaRepository>().To<EmpresaRepository>();
             Bind<IRegiaoRepository>().To<RegiaoRepository>();
             //Bind<ISetorRepository>().To<SetorRepository>();
-            //Bind<IContatoRepository>().To<ContatoRepository>();
-            //Bind<ICargoRepository>().To<CargoRepository>();
+            //Bind<IContatoRepository>().To<ContatoRepository>();            
             //Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             //Bind<ICalendarioRepository>().To<CalendarioRepository>();
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
@@ -121,7 +121,7 @@ namespace HLP.Dependencies
             //Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
             //Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
             //Bind<ITransportador_EnderecoRepository>().To<Transportador_EnderecoRepository>();
-            //Bind<IEmpresa_EnderecoRepository>().To<Empresa_EnderecoRepository>();
+            Bind<IEmpresa_EnderecoRepository>().To<Empresa_EnderecoRepository>();
             //Bind<IAcessoRepository>().To<AcessoRepository>();
             //Bind<ILog_ScriptsRepository>().To<Log_ScriptsRepository>();
             //Bind<IOrcamento_ideRepository>().To<Orcamento_ideRepository>();
@@ -165,6 +165,12 @@ namespace HLP.Dependencies
             //Bind<IFidelidadeRepository>().To<FidelidadeRepository>();
 
             //#endregion
+
+            #region Recursos Humanos
+
+            Bind<ICargoRepository>().To<CargoRepository>();
+
+            #endregion
 
         }
 

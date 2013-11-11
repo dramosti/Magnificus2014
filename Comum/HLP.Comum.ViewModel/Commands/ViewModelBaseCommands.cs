@@ -22,12 +22,7 @@ namespace HLP.Comum.ViewModel.Commands
             { return this._currentOp; }
             set
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(
-                    method: new Action(() => this._currentOp = value),
-                    priority: DispatcherPriority.Background, args: null);                
-                Dispatcher.CurrentDispatcher.BeginInvoke(
-                    method: new Action(() => CommandManager.InvalidateRequerySuggested()),
-                    priority: DispatcherPriority.Background, args: null);
+                this._currentOp = value;
             }
         }
 
@@ -45,7 +40,7 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-         
+
             this.currentOp = OperacaoCadastro.livre;
             this.objviewModel.proximoCommand = new RelayCommand(
               execute: exec => ExecAcao(tpAcao.Proximo),
