@@ -40,8 +40,8 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
-            //this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
-            //        canExecute: paramCanExec => this.PesquisarCanExecute());
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(this.objViewModel.currentID),
+                    canExecute: paramCanExec => true);
 
         }
 
@@ -114,6 +114,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         public void Pesquisar(object param)
         {
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.GetUFBackground);
 
@@ -124,7 +125,7 @@ namespace HLP.Entries.ViewModel.Commands
         private async void GetUFBackground(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = await servicoUf.getUfAsync(idUf: Convert.ToInt32(e.Argument));
-        }       
+        }
 
         #endregion
 

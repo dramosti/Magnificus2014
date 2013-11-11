@@ -9,6 +9,8 @@ using HLP.Comum.Resources.RecursosBases;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using HLP.Comum.Modules;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -24,7 +26,7 @@ namespace HLP.Comum.ViewModel.Commands
             {
                 Dispatcher.CurrentDispatcher.BeginInvoke(
                     method: new Action(() => this._currentOp = value),
-                    priority: DispatcherPriority.Background, args: null);                
+                    priority: DispatcherPriority.Background, args: null);
                 Dispatcher.CurrentDispatcher.BeginInvoke(
                     method: new Action(() => CommandManager.InvalidateRequerySuggested()),
                     priority: DispatcherPriority.Background, args: null);
@@ -45,7 +47,10 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-         
+            this.objviewModel.pesquisarBaseCommand = new RelayCommand(
+                    execute: ex => ShowPesquisaExecute(),
+                    canExecute: canExecute => ShowPesquisaCanEcexute());
+
             this.currentOp = OperacaoCadastro.livre;
             this.objviewModel.proximoCommand = new RelayCommand(
               execute: exec => ExecAcao(tpAcao.Proximo),
@@ -67,6 +72,39 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
         #region Executes & CanExecutes
+
+
+        private void ShowPesquisaExecute()
+        {
+            Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Modules.Interface.TipoExibeForm.Normal);
+            winPesquisa.WindowState = WindowState.Maximized;
+            winPesquisa.SetPropertyValue("NameView", objviewModel.NameView);
+
+            if (winPesquisa != null)
+            {
+                winPesquisa.ShowDialog();
+
+                if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
+                {
+                    objviewModel.bsPesquisa.DataSource = (winPesquisa.GetPropertyValue("lResult") as List<int>);
+                    objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
+                    objviewModel.visibilityNavegacao = Visibility.Visible;
+                }
+            }
+        }
+        private bool ShowPesquisaCanEcexute()
+        {
+            bool bReturn = false;
+
+            if (objviewModel.NameView != string.Empty)
+                bReturn = true;
+            else
+                bReturn = false;
+
+            return bReturn;
+        }
+
+
 
         public void ExecAcao(tpAcao tipoAcao)
         {
@@ -91,8 +129,16 @@ namespace HLP.Comum.ViewModel.Commands
                 }
                 if (objviewModel.bsPesquisa.Current != null)
                 {
-                    objviewModel.currentID = (int)objviewModel.bsPesquisa.Current;
-                    objviewModel.sText = (objviewModel.bsPesquisa.IndexOf(objviewModel.bsPesquisa.Current) + 1).ToString() + " de " + objviewModel.bsPesquisa.Count.ToString();
+                    try
+                    {
+                        objviewModel.currentID = (int)objviewModel.bsPesquisa.Current;
+                        objviewModel.sText = (objviewModel.bsPesquisa.IndexOf(objviewModel.bsPesquisa.Current) + 1).ToString() + " de " + objviewModel.bsPesquisa.Count.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+
                 }
             }
             catch (Exception ex)
