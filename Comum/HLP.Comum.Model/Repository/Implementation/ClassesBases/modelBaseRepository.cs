@@ -16,9 +16,6 @@ namespace HLP.Comum.Model.Repository.Implementation.ClassesBases
     {
         [Inject]
         public UnitOfWorkBase UndTrabalho { get; set; }
-        public modelBaseRepository()
-        {            
-        }
 
         DataAccessor<campoSqlModel> regAcessor = null;
 

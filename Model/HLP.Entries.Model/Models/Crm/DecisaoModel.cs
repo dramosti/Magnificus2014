@@ -14,10 +14,8 @@ namespace HLP.Entries.Model.Models.Gerais
         modelBaseRepository _modelBaseRepository;
 
         public DecisaoModel()
-            : base()
+            : base(xTabela: "Decisao")
         {
-            this._modelBaseRepository = new modelBaseRepository();
-            base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "Decisao");
         }
 
         private int? _idDecisao;

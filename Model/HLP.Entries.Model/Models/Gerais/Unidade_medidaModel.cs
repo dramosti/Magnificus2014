@@ -14,10 +14,8 @@ namespace HLP.Entries.Model.Models.Gerais
         modelBaseRepository _modelBaseRepository;
 
         public Unidade_medidaModel()
-            : base()
-        {
-            this._modelBaseRepository = new modelBaseRepository();
-            base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "UF");
+            : base(xTabela: "Unidade_medida")
+        {            
         }
 
         private int? _idUnidadeMedida;

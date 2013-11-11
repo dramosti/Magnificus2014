@@ -38,9 +38,6 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
-
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
-                    canExecute: paramCanExec => this.PesquisarCanExecute());
         }
 
 
@@ -103,14 +100,6 @@ namespace HLP.Entries.ViewModel.Commands
         private bool CancelarCanExecute()
         {
             return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
-        }
-
-        private void Pesquisar(object param)
-        {
-        }
-        private bool PesquisarCanExecute()
-        {
-            return this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
         }
 
         #endregion

@@ -13,6 +13,6 @@ namespace HLP.Wcf.Entries
     public interface IcamposBaseDadosService
     {
         [OperationContract]
-        List<campoSqlModel> getCamposNotNull(string xTabela);
+        campoSqlModel[] getCamposNotNull(string xTabela);
     }
 }

@@ -39,9 +39,6 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(param: paramExec),
-                    canExecute: paramCanExec => this.PesquisarCanExecute(param: paramCanExec));
-
         }
 
 
@@ -141,33 +138,18 @@ namespace HLP.Entries.ViewModel.Commands
         private void Pesquisar(object param)
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetWorkOrdersBackground);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.GetWorkOrdersBackgroundComplete);
+            bw.DoWork += new DoWorkEventHandler(GetUnidadeMedidaBackground);
 
             if (param != null)
                 bw.RunWorkerAsync(argument: param);
         }
-        private bool PesquisarCanExecute(object param)
-        {
-            if (param == null)
-                return false;
 
-            int iResult;
-            return int.TryParse(s: param.ToString(), result: out iResult) &&
-                this.objViewModel.commandPesquisarBase.CanExecute(parameter: null);
+        private async void GetUnidadeMedidaBackground(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = await this.servico.getUnidade_medidaAsync(idUnidadeMedida:
+                Convert.ToInt32(value: e.Argument));
         }
 
-        private async void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
-        {
-            this.objViewModel.currentModel = await this.servico.getUnidade_medidaAsync(
-                idUnidadeMedida: Convert.ToInt32(e.Argument));
-        }
-        private void GetWorkOrdersBackgroundComplete(
-          object sender,
-          RunWorkerCompletedEventArgs e)
-        {
-            this.objViewModel.commandPesquisarBase.Execute(parameter: null);
-        }
         #endregion
 
 

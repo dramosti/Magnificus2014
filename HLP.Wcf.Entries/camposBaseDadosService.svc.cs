@@ -21,17 +21,27 @@ namespace HLP.Wcf.Entries
 
         public camposBaseDadosService()
         {
-            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
-            kernel.Settings.ActivationCacheDisabled = false;
-            kernel.Inject(this);
             Log.xPath = @"C:\inetpub\wwwroot\log";
+            try
+            {
+                IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
+                kernel.Settings.ActivationCacheDisabled = false;
+                kernel.Inject(this);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw;
+            }
+
+
         }
 
-        public List<campoSqlModel> getCamposNotNull(string xTabela)
+        public campoSqlModel[] getCamposNotNull(string xTabela)
         {
             try
             {
-                return modelBaseRepository.getCamposSqlNotNull(xTabela: xTabela);
+                return modelBaseRepository.getCamposSqlNotNull(xTabela: xTabela).ToArray();
             }
             catch (Exception e)
             {
