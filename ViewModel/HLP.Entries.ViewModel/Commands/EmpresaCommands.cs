@@ -70,11 +70,11 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool SaveCanExecute(object objDependency)
         {
-            if (objViewModel.currentModel == null || objDependency == null)
+            if (objViewModel.currentModel == null && objDependency == null)
                 return false;
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
-                && this.objViewModel.IsValid(objDependency as Grid));
+                && this.objViewModel.IsValid(objDependency as Panel));
         }
 
         public async void Delete(object objUFModel)

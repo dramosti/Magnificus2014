@@ -138,7 +138,7 @@
                             <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{StaticResource StyleButton1}"/>
                             <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{StaticResource StyleButton1}"/>
                             <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" Content="Salvar" Style="{StaticResource StyleButton1}"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{StaticResource StyleButton1}"/>
                             <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"/>
                             <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Content="Pesquisar" Style="{StaticResource StyleButton1}"/>
                             <DockPanel LastChildFill="True" Width="306" Margin="20,0,0,0"  >

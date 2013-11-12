@@ -90,6 +90,7 @@ namespace HLP.Comum.ViewModel.Commands
                     objviewModel.bsPesquisa.DataSource = new ObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
                     objviewModel.visibilityNavegacao = Visibility.Visible;
+                    this.currentOp = OperacaoCadastro.pesquisando;
                 }
             }
         }
