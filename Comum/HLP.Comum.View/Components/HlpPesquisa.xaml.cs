@@ -58,14 +58,13 @@ namespace HLP.Comum.View.Components
             set
             {
                 SetValue(TableViewProperty, value);
-                
+
             }
         }
 
         // Using a DependencyProperty as the backing store for TableView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TableViewProperty =
             DependencyProperty.Register("TableView", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
-
 
         public static readonly DependencyProperty ItemsProperty =
         DependencyProperty.Register("Items",
@@ -82,6 +81,33 @@ namespace HLP.Comum.View.Components
                 SetValue(ItemsProperty, value);
             }
         }
+
+        public string Valor
+        {
+            get { return (string)GetValue(ValorProperty); }
+            set { SetValue(ValorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ValorProperty =
+            DependencyProperty.Register("Valor", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(null, new PropertyChangedCallback(OnValorChanged)));
+
+        private static void OnValorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            HlpPesquisa ctr = d as HlpPesquisa; //null checks omitted
+            String s = e.NewValue as String; //null checks omitted
+            if (s != String.Empty)
+            {
+                ctr.ViewModel.iValorPesquisa = s;
+            }
+        }
+
+        
+
+        
+
+
+
 
         private void DockPanel_Loaded(object sender, RoutedEventArgs e)
         {

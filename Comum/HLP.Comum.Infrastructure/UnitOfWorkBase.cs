@@ -109,7 +109,7 @@ namespace HLP.Comum.Infrastructure
         public bool TableExistis(string nm_Table)
         {
             int iCount = (int)this.dbPrincipal.ExecuteScalar(
-              "dbo.Proc_ExistsTable", nm_Table);
+              "dbo.Proc_ExistsView", nm_Table);
 
             if (iCount == 0)
             {

@@ -88,7 +88,7 @@ namespace HLP.Comum.ViewModel.Commands
 
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
                 {
-                    objviewModel.navigatePesquisa = new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
+                    objviewModel.navigatePesquisa = new MyObservableCollection<int>(new int[] { 1, 2, 3, 4, 5 });  //new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
                     objviewModel.visibilityNavegacao = Visibility.Visible;
                 }
