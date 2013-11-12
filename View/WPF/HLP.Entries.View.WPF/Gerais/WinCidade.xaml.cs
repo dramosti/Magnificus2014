@@ -21,35 +21,25 @@ namespace HLP.Entries.View.WPF.Gerais
     /// <summary>
     /// Interaction logic for WinCidade.xaml
     /// </summary>
-    public partial class WinCidade : Window, INotifyPropertyChanged
+    public partial class WinCidade : WindowsBase
     {
         public WinCidade()
         {
             InitializeComponent();
-            this.DataContext = this;            
+            this.ViewModel = new CidadeViewModel();            
         }
 
-
-        private string _Teste;
-
-        public string Teste
+        public CidadeViewModel ViewModel
         {
-            get { return _Teste; }
-            set { _Teste = value; this.NotifyPropertyChanged("Teste"); }
+            get
+            {
+                return this.DataContext as CidadeViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
-
-
-        #region NotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
 
     }
 }

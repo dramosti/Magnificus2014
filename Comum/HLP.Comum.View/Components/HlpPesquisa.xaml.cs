@@ -37,6 +37,29 @@ namespace HLP.Comum.View.Components
             Items = new List<string>();
         }
 
+
+
+        [Category("HLP.Owner")]
+        public string iValorPesquisaProp
+        {
+            get { return (string)GetValue(iValorPesquisaProperty); }
+            set
+            {
+                SetValue(iValorPesquisaProperty, value);
+
+
+                Dispatcher.BeginInvoke(new Action(() =>
+                this.txtID.Text = value));
+            }
+        }
+
+        // Using a DependencyProperty as the backing store for iValorPesquisa.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty iValorPesquisaProperty =
+            DependencyProperty.Register("iValorPesquisaProp", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
+        
+
+
+
         [Category("HLP.Owner")]
         public string FieldPesquisa
         {
@@ -58,7 +81,7 @@ namespace HLP.Comum.View.Components
             set
             {
                 SetValue(TableViewProperty, value);
-                
+
             }
         }
 

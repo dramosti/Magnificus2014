@@ -67,6 +67,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\cidadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\empresaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
@@ -138,6 +144,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cargoService\serviceCargo3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade.wsdl" />
+    <None Include="Service References\cidadeService\serviceCidade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
@@ -185,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\cargoService\" />
+    <WCFMetadataStorage Include="Service References\cidadeService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
@@ -245,6 +268,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\empresaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\cidadeService\serviceCidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\cidadeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\cidadeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\cidadeService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

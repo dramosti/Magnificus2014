@@ -15,8 +15,14 @@ namespace HLP.Entries.ViewModel.ViewModels
     public class CidadeViewModel : ViewModelBase
     {
 
-        #region ICommands
+        #region Icommands
+        public ICommand commandSalvar { get; set; }
+        public ICommand commandDeletar { get; set; }
         public ICommand commandNovo { get; set; }
+        public ICommand commandAlterar { get; set; }
+        public ICommand commandCancelar { get; set; }
+        public ICommand commandPesquisar { get; set; }
+        public ICommand commandCopiar { get; set; }
         #endregion
 
         private ObservableCollection<CidadeModel> _lCidade;
@@ -31,19 +37,19 @@ namespace HLP.Entries.ViewModel.ViewModels
             }
         }
 
-        private CidadeModel currentCidade;
+        private CidadeModel _currentModel;
 
-        public CidadeModel _currentCidade
+        public CidadeModel currentModel
         {
             get
             {
-                return this.currentCidade == null ?
-                    this.currentCidade = new CidadeModel() : this.currentCidade;
+                return this._currentModel == null ?
+                    this._currentModel = new CidadeModel() : this._currentModel;
             }
             set
             {
-                currentCidade = value;
-                base.NotifyPropertyChanged(propertyName: "_currentCidade");
+                _currentModel = value;
+                base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }
 
@@ -51,7 +57,7 @@ namespace HLP.Entries.ViewModel.ViewModels
 
         public CidadeViewModel()
         {
-            objCidadeCommands = new CidadeCommands(objCidadeViewModel: this);
+            objCidadeCommands = new CidadeCommands(objViewModel: this);
         }
 
         public void GetCidadeByUf(int iidUF)
