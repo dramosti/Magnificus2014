@@ -11,6 +11,7 @@ using HLP.Entries.Model.Repository.Interfaces;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 using System.ComponentModel;
+using HLP.Comum.ViewModel.Commands;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -40,8 +41,12 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(),
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
                     canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
         }
 
@@ -112,13 +117,31 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public void Pesquisar()
+        public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
+        }
+
+        private void PesquisarRegistro()
+        {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.GetUFBackground);
-
             bw.RunWorkerAsync();
+           
+        }
+
+        public void Navegar(object ContentBotao)
+        {
+            try
+            {
+                objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                this.PesquisarRegistro();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private async void GetUFBackground(object sender, DoWorkEventArgs e)

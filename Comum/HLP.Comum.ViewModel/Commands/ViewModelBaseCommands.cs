@@ -49,32 +49,21 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-            this.objviewModel.pesquisarBaseCommand = new RelayCommand(
-                    execute: ex => ShowPesquisaExecute(),
-                    canExecute: canExecute => ShowPesquisaCanEcexute());
+
 
             this.currentOp = OperacaoCadastro.livre;
-            this.objviewModel.proximoCommand = new RelayCommand(
-              execute: exec => ExecAcao(tpAcao.Proximo),
-              canExecute: CanExec => CanExecAcao(tpAcao.Proximo));
 
-            this.objviewModel.anteriorCommand = new RelayCommand(
-               execute: exec => ExecAcao(tpAcao.Anterior),
-               canExecute: CanExec => CanExecAcao(tpAcao.Anterior));
+            this.objviewModel.pesquisarBaseCommand = new RelayCommand(
+                 execute: ex => ShowPesquisaExecute(),
+                 canExecute: canExecute => ShowPesquisaCanEcexute());
 
-            this.objviewModel.primeiroCommand = new RelayCommand(
-               execute: exec => ExecAcao(tpAcao.Primeiro),
-               canExecute: CanExec => CanExecAcao(tpAcao.Primeiro));
+            this.objviewModel.navegarBaseCommand = new RelayCommand(
+               execute: exec => ExecAcao(ContentBotao: exec),
+               canExecute: CanExec => CanExecAcao(ContentBotao: CanExec));
 
-            this.objviewModel.ultimoCommand = new RelayCommand(
-               execute: exec => ExecAcao(tpAcao.Ultimo),
-               canExecute: CanExec => CanExecAcao(tpAcao.Ultimo));
-
-            //this.ExecAcao(tpAcao.Primeiro);
         }
 
         #region Executes & CanExecutes
-
 
         private void ShowPesquisaExecute()
         {
@@ -88,8 +77,8 @@ namespace HLP.Comum.ViewModel.Commands
 
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
                 {
-                    objviewModel.navigatePesquisa = new MyObservableCollection<int>(new int[] { 1, 2, 3, 4, 5 });  //new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
-                    objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
+                    objviewModel.navigatePesquisa = new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
+                    objviewModel.navegarBaseCommand.Execute("Primeiro");
                     objviewModel.visibilityNavegacao = Visibility.Visible;
                     this.currentOp = OperacaoCadastro.pesquisando;
                 }
@@ -109,22 +98,22 @@ namespace HLP.Comum.ViewModel.Commands
 
 
 
-        public void ExecAcao(tpAcao tipoAcao)
+        public void ExecAcao(object ContentBotao)
         {
             try
             {
-                switch (tipoAcao)
+                switch (ContentBotao.ToString())
                 {
-                    case tpAcao.Primeiro:
+                    case "Primeiro":
                         objviewModel.navigatePesquisa.MoveFirst();
                         break;
-                    case tpAcao.Anterior:
+                    case "Anterior":
                         objviewModel.navigatePesquisa.MovePrevious();
                         break;
-                    case tpAcao.Proximo:
+                    case "Proximo":
                         objviewModel.navigatePesquisa.MoveNext();
                         break;
-                    case tpAcao.Ultimo:
+                    case "Ultimo":
                         objviewModel.navigatePesquisa.MoveLast();
                         break;
                     default:
@@ -135,7 +124,7 @@ namespace HLP.Comum.ViewModel.Commands
                     try
                     {
                         objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
-                        objviewModel.sText = (objviewModel.navigatePesquisa.IndexOf(objviewModel.navigatePesquisa.CurrentPosition) + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
+                        objviewModel.sText = (objviewModel.navigatePesquisa.CurrentPosition + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
                     }
                     catch (Exception ex)
                     {
@@ -150,7 +139,7 @@ namespace HLP.Comum.ViewModel.Commands
             }
 
         }
-        public bool CanExecAcao(tpAcao tipoAcao)
+        public bool CanExecAcao(object ContentBotao)
         {
 
             bool bCanExecute = false;
@@ -159,24 +148,23 @@ namespace HLP.Comum.ViewModel.Commands
 
             if (objviewModel.navigatePesquisa != null)
             {
-                switch (tipoAcao)
+                switch (ContentBotao.ToString())
                 {
-                    case tpAcao.Primeiro:
+                    case "Primeiro":
                         bCanExecute = true;
                         break;
-                    case tpAcao.Anterior:
+                    case "Anterior":
                         currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
                         bCanExecute = currentPosition > 0;
                         break;
-                    case tpAcao.Proximo:
+                    case "Proximo":
                         {
                             currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
                             lastIndex = objviewModel.navigatePesquisa.Count - 1;
-
                             bCanExecute = currentPosition < lastIndex;
                         }
                         break;
-                    case tpAcao.Ultimo:
+                    case "Ultimo":
                         bCanExecute = true;
                         break;
                     default:
@@ -186,7 +174,6 @@ namespace HLP.Comum.ViewModel.Commands
             return bCanExecute;
         }
 
-        public enum tpAcao { Primeiro, Anterior, Proximo, Ultimo }
 
         private void novoBase()
         {

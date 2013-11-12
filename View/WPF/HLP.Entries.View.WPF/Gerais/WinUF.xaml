@@ -31,12 +31,7 @@
         	SelectedValuePath="idRegiao" SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay,
                 UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" DisplayMemberPath="xRegiao"
         	HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>
-            <Components:HlpPesquisa TableView="vwUF" FieldPesquisa="ID">
-                <Components:HlpPesquisa.Items>
-                    <System:String>xUf</System:String>
-                </Components:HlpPesquisa.Items>
-            </Components:HlpPesquisa>
-           
+
 
         </StackPanel>
     </Grid>

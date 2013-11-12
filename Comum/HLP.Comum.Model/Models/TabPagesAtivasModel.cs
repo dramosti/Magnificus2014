@@ -38,9 +38,6 @@ namespace HLP.Comum.Model.Models
             set { _NameView = value; }
         }
 
-       
-
-
         public string _header
         {
             get { return this.Windows.Title; }
