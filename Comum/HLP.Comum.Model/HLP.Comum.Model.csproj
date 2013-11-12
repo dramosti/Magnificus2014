@@ -74,6 +74,7 @@
     <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\camposSqlModel.cs" />
     <Compile Include="Models\modelBase.cs" />
+    <Compile Include="Models\MyObservableCollection.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />
     <Compile Include="Models\windowsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
