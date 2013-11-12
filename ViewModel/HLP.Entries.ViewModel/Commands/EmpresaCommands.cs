@@ -37,6 +37,8 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(),
+                    canExecute: paramCanExec => true);
         }
 
 
@@ -58,7 +60,7 @@ namespace HLP.Entries.ViewModel.Commands
                 }
                 this.objViewModel.currentModel.idEmpresa = await servico.saveEmpresaAsync(objEmpresa:
                     objViewModel.currentModel);
-                this.objViewModel.commandSalvarBase.Execute(parameter: null);
+                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
             {
@@ -71,7 +73,7 @@ namespace HLP.Entries.ViewModel.Commands
             if (objViewModel.currentModel == null || objDependency == null)
                 return false;
 
-            return (this.objViewModel.commandSalvarBase.CanExecute(parameter: null)
+            return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Grid));
         }
 
@@ -102,7 +104,7 @@ namespace HLP.Entries.ViewModel.Commands
             }
             finally
             {
-                this.objViewModel.commandDeletarBase.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
@@ -111,50 +113,51 @@ namespace HLP.Entries.ViewModel.Commands
             if (objViewModel.currentModel == null)
                 return false;
 
-            return this.objViewModel.commandDeletarBase.CanExecute(parameter: null);
+            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
         private void Novo()
         {
             this.objViewModel.currentModel = new EmpresaModel();
-            this.objViewModel.commandNovoBase.Execute(parameter: null);
+            this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
         {
-            return this.objViewModel.commandNovoBase.CanExecute(parameter: null);
+            return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
 
         private void Alterar()
         {
-            this.objViewModel.commandAlterarBase.Execute(parameter: null);
+            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
         }
         private bool AlterarCanExecute()
         {
-            return this.objViewModel.commandAlterarBase.CanExecute(parameter: null);
+            return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
         }
 
         private void Cancelar()
         {
             this.objViewModel.currentModel = null;
-            this.objViewModel.commandCancelarBase.Execute(parameter: null);
+            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
         {
-            return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
+            return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public void Pesquisar(int idEmpresa)
+        public void Pesquisar()
         {
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(GetEmpresasBackground);
+            bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
 
-            bw.RunWorkerAsync(argument: idEmpresa);
+            bw.RunWorkerAsync();
 
         }
 
         private async void GetEmpresasBackground(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.getEmpresaAsync(idEmpresa: Convert.ToInt32(value: e.Argument));
+            this.objViewModel.currentModel = await servico.getEmpresaAsync(idEmpresa: this.objViewModel.currentID);
         }
         #endregion
 
