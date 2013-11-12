@@ -40,27 +40,6 @@ namespace HLP.Comum.View.Components
 
 
         [Category("HLP.Owner")]
-        public string iValorPesquisaProp
-        {
-            get { return (string)GetValue(iValorPesquisaProperty); }
-            set
-            {
-                SetValue(iValorPesquisaProperty, value);
-
-
-                Dispatcher.BeginInvoke(new Action(() =>
-                this.txtID.Text = value));
-            }
-        }
-
-        // Using a DependencyProperty as the backing store for iValorPesquisa.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty iValorPesquisaProperty =
-            DependencyProperty.Register("iValorPesquisaProp", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
-        
-
-
-
-        [Category("HLP.Owner")]
         public string FieldPesquisa
         {
             get { return (string)GetValue(FieldPesquisaProperty); }
@@ -89,7 +68,6 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty TableViewProperty =
             DependencyProperty.Register("TableView", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
 
-
         public static readonly DependencyProperty ItemsProperty =
         DependencyProperty.Register("Items",
         typeof(IList),
@@ -105,6 +83,31 @@ namespace HLP.Comum.View.Components
                 SetValue(ItemsProperty, value);
             }
         }
+
+        public int Valor
+        {
+            get { return (int)GetValue(ValorProperty); }
+            set { SetValue(ValorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ValorProperty =
+            DependencyProperty.Register("Valor", typeof(int), typeof(HlpPesquisa), new PropertyMetadata(0, new PropertyChangedCallback(OnValorChanged)));
+
+        private static void OnValorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {            
+            HlpPesquisa ctr = d as HlpPesquisa; //null checks omitted
+            int s = Convert.ToInt32(value: e.NewValue.ToString()); //null checks omitted
+            if (ctr.ViewModel != null)
+                ctr.ViewModel.iValorPesquisa = s.ToString();            
+        }
+
+
+
+
+
+
+
 
         private void DockPanel_Loaded(object sender, RoutedEventArgs e)
         {

@@ -54,7 +54,10 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         StringBuilder sQuery = new StringBuilder();
                         sQuery.Append("SELECT ");
                         sQuery.Append(_iValorPesquisa + " as Valor ,");
-                        sQuery.Append("CONCAT(" + sDisplay + ") as Display ");
+                        if (sDisplay.Split('-').Count() > 1)
+                            sQuery.Append("CONCAT(" + sDisplay + ") as Display ");
+                        else
+                            sQuery.Append(" " + sDisplay + " as Display ");
                         sQuery.Append("FROM " + _TableView);
                         sQuery.Append(" WHERE ");
                         sQuery.Append(_FieldPesquisa + " = @FieldPesquisa ");

@@ -12,6 +12,7 @@ using System.Windows.Threading;
 using HLP.Comum.Modules;
 using HLP.Comum.Infrastructure.Static;
 using System.Collections.ObjectModel;
+using System.Windows.Data;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -55,21 +56,21 @@ namespace HLP.Comum.ViewModel.Commands
             this.currentOp = OperacaoCadastro.livre;
             this.objviewModel.proximoCommand = new RelayCommand(
               execute: exec => ExecAcao(tpAcao.Proximo),
-              canExecute: CanExec => CanExecAcao());
+              canExecute: CanExec => CanExecAcao(tpAcao.Proximo));
 
             this.objviewModel.anteriorCommand = new RelayCommand(
                execute: exec => ExecAcao(tpAcao.Anterior),
-               canExecute: CanExec => CanExecAcao());
+               canExecute: CanExec => CanExecAcao(tpAcao.Anterior));
 
             this.objviewModel.primeiroCommand = new RelayCommand(
                execute: exec => ExecAcao(tpAcao.Primeiro),
-               canExecute: CanExec => CanExecAcao());
+               canExecute: CanExec => CanExecAcao(tpAcao.Primeiro));
 
             this.objviewModel.ultimoCommand = new RelayCommand(
                execute: exec => ExecAcao(tpAcao.Ultimo),
-               canExecute: CanExec => CanExecAcao());
+               canExecute: CanExec => CanExecAcao(tpAcao.Ultimo));
 
-            this.ExecAcao(tpAcao.Primeiro);
+            //this.ExecAcao(tpAcao.Primeiro);
         }
 
         #region Executes & CanExecutes
@@ -87,7 +88,7 @@ namespace HLP.Comum.ViewModel.Commands
 
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
                 {
-                    objviewModel.bsPesquisa.DataSource = new ObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
+                    objviewModel.navigatePesquisa = new MyObservableCollection<int>(new int[] { 1, 2, 3, 4, 5 });  //new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
                     objviewModel.visibilityNavegacao = Visibility.Visible;
                     this.currentOp = OperacaoCadastro.pesquisando;
@@ -115,26 +116,26 @@ namespace HLP.Comum.ViewModel.Commands
                 switch (tipoAcao)
                 {
                     case tpAcao.Primeiro:
-                        objviewModel.bsPesquisa.MoveFirst();
+                        objviewModel.navigatePesquisa.MoveFirst();
                         break;
                     case tpAcao.Anterior:
-                        objviewModel.bsPesquisa.MovePrevious();
+                        objviewModel.navigatePesquisa.MovePrevious();
                         break;
                     case tpAcao.Proximo:
-                        objviewModel.bsPesquisa.MoveNext();
+                        objviewModel.navigatePesquisa.MoveNext();
                         break;
                     case tpAcao.Ultimo:
-                        objviewModel.bsPesquisa.MoveLast();
+                        objviewModel.navigatePesquisa.MoveLast();
                         break;
                     default:
                         break;
                 }
-                if (objviewModel.bsPesquisa.Current != null)
+                if (objviewModel.navigatePesquisa != null)
                 {
                     try
                     {
-                        objviewModel.currentID = (int)objviewModel.bsPesquisa.Current;
-                        objviewModel.sText = (objviewModel.bsPesquisa.IndexOf(objviewModel.bsPesquisa.Current) + 1).ToString() + " de " + objviewModel.bsPesquisa.Count.ToString();
+                        objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
+                        objviewModel.sText = (objviewModel.navigatePesquisa.IndexOf(objviewModel.navigatePesquisa.CurrentPosition) + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
                     }
                     catch (Exception ex)
                     {
@@ -149,12 +150,40 @@ namespace HLP.Comum.ViewModel.Commands
             }
 
         }
-        public bool CanExecAcao()
+        public bool CanExecAcao(tpAcao tipoAcao)
         {
-            if (objviewModel.bsPesquisa.DataSource != null)
-                return true;
-            else
-                return false;
+
+            bool bCanExecute = false;
+            int currentPosition;
+            int lastIndex;
+
+            if (objviewModel.navigatePesquisa != null)
+            {
+                switch (tipoAcao)
+                {
+                    case tpAcao.Primeiro:
+                        bCanExecute = true;
+                        break;
+                    case tpAcao.Anterior:
+                        currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
+                        bCanExecute = currentPosition > 0;
+                        break;
+                    case tpAcao.Proximo:
+                        {
+                            currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
+                            lastIndex = objviewModel.navigatePesquisa.Count - 1;
+
+                            bCanExecute = currentPosition < lastIndex;
+                        }
+                        break;
+                    case tpAcao.Ultimo:
+                        bCanExecute = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return bCanExecute;
         }
 
         public enum tpAcao { Primeiro, Anterior, Proximo, Ultimo }

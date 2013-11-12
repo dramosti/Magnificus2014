@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
+                     xmlns:v="clr-namespace:HLP.Comum.View.Validates"
              mc:Ignorable="d" 
             Width="Auto" Height="Auto">
     <UserControl.Resources>
@@ -19,8 +20,7 @@
                Style="{StaticResource  LabelStyleComponents}"
                Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
-        <TextBox x:Name="txtID" Width="80" 
-                 Text="{Binding iValorPesquisa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox x:Name="txtID" Width="80" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=Valor}"/>
         <TextBox x:Name="txtDisplay" IsReadOnly="True" Text="{Binding pesquisaRapida.Display}" Focusable="False"  />
     </DockPanel>
 </runtime:BaseControl>

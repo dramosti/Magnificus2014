@@ -41,5 +41,10 @@ namespace HLP.Entries.View.WPF.Gerais
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int v = this.teste.Valor;
+        }
+
     }
 }
