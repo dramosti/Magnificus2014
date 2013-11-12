@@ -53,7 +53,7 @@ namespace HLP.Entries.ViewModel.Commands
             try
             {
                 this.objViewModel.currentModel.idUF = await this.servicoUf.saveUfAsync(objModel: this.objViewModel.currentModel);
-                this.objViewModel.commandSalvarBase.Execute(parameter: null);
+                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
             {
@@ -67,49 +67,49 @@ namespace HLP.Entries.ViewModel.Commands
                 return false;
 
             return (objViewModel.currentModel.IsValid &&
-                this.objViewModel.commandSalvarBase.CanExecute(parameter: null));
+                this.objViewModel.salvarBaseCommand.CanExecute(parameter: null));
         }
 
         public void Delete(object objUFModel)
         {
             this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF);
-            this.objViewModel.commandDeletarBase.Execute(parameter: null);
+            this.objViewModel.deletarBaseCommand.Execute(parameter: null);
         }
         private bool DeleteCanExecute()
         {
             if (objViewModel.currentModel == null)
                 return false;
 
-            return this.objViewModel.commandDeletarBase.CanExecute(parameter: null);
+            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
         private void Novo()
         {
             this.objViewModel.currentModel = new UFModel();
-            this.objViewModel.commandNovoBase.Execute(parameter: null);
+            this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
         {
-            return this.objViewModel.commandNovoBase.CanExecute(parameter: null);
+            return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
 
         private void Alterar()
         {
-            this.objViewModel.commandAlterarBase.Execute(parameter: null);
+            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
         }
         private bool AlterarCanExecute()
         {
-            return this.objViewModel.commandAlterarBase.CanExecute(parameter: null);
+            return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
         }
 
         private void Cancelar()
         {
             this.objViewModel.currentModel = new UFModel();
-            this.objViewModel.commandCancelarBase.Execute(parameter: null);
+            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
         {
-            return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
+            return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
         public void Pesquisar()

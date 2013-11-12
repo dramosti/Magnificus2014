@@ -1,8 +1,10 @@
-﻿<Window
+﻿<runtime:WindowsBase
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
-        Title="Empresa" Height="600" Width="800">
+        Title="Empresa" Height="600" Width="800" NameView="vwEmpresa"    
+    >
     <StackPanel>
         <TabControl>
             <TabItem Header="Principal">
@@ -83,4 +85,4 @@
 
 
     </StackPanel>
-</Window>
+</runtime:WindowsBase>

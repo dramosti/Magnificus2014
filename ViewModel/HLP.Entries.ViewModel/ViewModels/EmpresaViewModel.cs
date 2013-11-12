@@ -15,61 +15,20 @@ namespace HLP.Entries.ViewModel.ViewModels
 {
     public class EmpresaViewModel : ViewModelBase
     {
-
-        #region IcommandsBase
-        public ICommand commandSalvarBase
-        {
-            get
-            {
-                return base.salvarBaseCommand;
-            }
-        }
-
-        public ICommand commandDeletarBase
-        {
-            get
-            {
-                return base.deletarBaseCommand;
-            }
-        }
-        public ICommand commandNovoBase
-        {
-            get
-            {
-                return base.novoBaseCommand;
-            }
-        }
-        public ICommand commandAlterarBase
-        {
-            get
-            {
-                return base.alterarBaseCommand;
-            }
-        }
-        public ICommand commandCancelarBase
-        {
-            get
-            {
-                return base.cancelarBaseCommand;
-            }
-        }
-        #endregion
-
-
         #region Icommands
         public ICommand commandSalvar { get; set; }
         public ICommand commandDeletar { get; set; }
         public ICommand commandNovo { get; set; }
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
+        public ICommand commandPesquisar { get; set; }
         #endregion
 
         public List<int> lItensExcluidos = new List<int>();
 
         public EmpresaViewModel()
         {
-            EmpresaCommands com = new EmpresaCommands(objViewModel: this);
-            com.Pesquisar(1);            
+            EmpresaCommands com = new EmpresaCommands(objViewModel: this);            
         }
 
         private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)

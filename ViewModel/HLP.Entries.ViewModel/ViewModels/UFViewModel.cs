@@ -25,48 +25,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandCancelar { get; set; }
         public ICommand commandPesquisar { get; set; }
         #endregion
-
-        #region IcommandsBase
-        public ICommand commandSalvarBase
-        {
-            get
-            {
-                return base.salvarBaseCommand;
-            }
-        }
-        public ICommand commandDeletarBase
-        {
-            get
-            {
-                return base.deletarBaseCommand;
-            }
-        }
-        public ICommand commandNovoBase
-        {
-            get
-            {
-                return base.novoBaseCommand;
-            }
-        }
-        public ICommand commandAlterarBase
-        {
-            get
-            {
-                return base.alterarBaseCommand;
-            }
-        }
-        public ICommand commandCancelarBase
-        {
-            get
-            {
-                return base.cancelarBaseCommand;
-            }
-        }
-
-      
-        #endregion
-
-
+        
        
 
         //public bool bIsEnable { get { return base.bIsEnabled; } }

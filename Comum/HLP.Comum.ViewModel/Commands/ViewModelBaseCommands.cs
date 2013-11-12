@@ -91,6 +91,7 @@ namespace HLP.Comum.ViewModel.Commands
                     objviewModel.navigatePesquisa = new MyObservableCollection<int>(new int[] { 1, 2, 3, 4, 5 });  //new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
                     objviewModel.visibilityNavegacao = Visibility.Visible;
+                    this.currentOp = OperacaoCadastro.pesquisando;
                 }
             }
         }
