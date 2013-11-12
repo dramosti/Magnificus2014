@@ -60,8 +60,9 @@ namespace HLP.Comum.ViewModel.ViewModels
                 currentTab = value;
                 this.NotifyPropertyChanged(propertyName: "_currentTab");
                 try
-                {                    
-                    currentTab._currentDataContext.SetPropertyValue("NameView", currentTab._windows.GetPropertyValue("NameView").ToString()); 
+                {
+                    if (currentTab != null)
+                        currentTab._currentDataContext.SetPropertyValue("NameView", currentTab._windows.GetPropertyValue("NameView").ToString());
                 }
                 catch (Exception) { throw; }
 
