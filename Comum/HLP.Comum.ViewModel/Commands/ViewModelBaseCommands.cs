@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using HLP.Comum.Modules;
 using HLP.Comum.Infrastructure.Static;
+using System.Collections.ObjectModel;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -86,7 +87,7 @@ namespace HLP.Comum.ViewModel.Commands
 
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
                 {
-                    objviewModel.bsPesquisa.DataSource = (winPesquisa.GetPropertyValue("lResult") as List<int>);
+                    objviewModel.bsPesquisa.DataSource = new ObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     objviewModel.primeiroCommand.Execute(HLP.Comum.ViewModel.Commands.ViewModelBaseCommands.tpAcao.Primeiro);
                     objviewModel.visibilityNavegacao = Visibility.Visible;
                 }

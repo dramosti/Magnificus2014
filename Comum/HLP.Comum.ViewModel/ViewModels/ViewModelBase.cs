@@ -24,6 +24,7 @@ namespace HLP.Comum.ViewModel.ViewModels
 
 
         public ICommand pesquisarBaseCommand { get; set; }
+
         public ICommand anteriorCommand { get; set; }
         public ICommand primeiroCommand { get; set; }
         public ICommand proximoCommand { get; set; }
@@ -44,6 +45,20 @@ namespace HLP.Comum.ViewModel.ViewModels
             get { return _bsPesquisa; }
             set { _bsPesquisa = value; this.NotifyPropertyChanged("bsPesquisa"); }
         }
+
+        //validar lista de pesquisa com bs
+        private List<int> _lPesquisa = new List<int>();
+
+        public List<int> lPesquisa
+        {
+            get { return _lPesquisa; }
+            set
+            {
+                _lPesquisa = value;
+
+            }
+        }
+
 
         private Visibility _visibilityNavegacao = Visibility.Collapsed;
 
@@ -97,7 +112,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             viewModelBaseCommands = new ViewModelBaseCommands(vViewModel: this);
         }
 
-      
+
 
 
 
