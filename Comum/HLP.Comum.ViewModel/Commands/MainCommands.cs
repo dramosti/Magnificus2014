@@ -26,7 +26,7 @@ namespace HLP.Comum.ViewModel.Commands
 
                 this.objviewModel.AddWindowCommand = new RelayCommand(
                     execute: ex => AddWindow(xNomeForm: ex),
-                    canExecute: ex => AddWindowCanExecute());
+                    canExecute: ex => AddWindowCanExecute(xNomeForm: ex));
                 this.objviewModel.DelWindowCommand = new RelayCommand(
                     execute: ex => DelWindow(tabItem: ex),
                     canExecute: ex => DelWindowCanExecute());
@@ -64,9 +64,14 @@ namespace HLP.Comum.ViewModel.Commands
                 throw ex;
             }
         }
-        private bool AddWindowCanExecute()
+        private bool AddWindowCanExecute(object xNomeForm)
         {
-            return true;
+            bool bReturn = true;
+            if (this.objviewModel._currentTab != null)
+                if (this.objviewModel._currentTab._windows != null)
+                    if (this.objviewModel._currentTab._windows.Name == xNomeForm.ToString())
+                        bReturn = false;
+            return bReturn;
         }
 
         private void DelWindow(object tabItem)

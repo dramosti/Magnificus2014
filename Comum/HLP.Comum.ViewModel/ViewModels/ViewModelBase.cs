@@ -24,10 +24,8 @@ namespace HLP.Comum.ViewModel.ViewModels
 
 
         public ICommand pesquisarBaseCommand { get; set; }
-        public ICommand anteriorCommand { get; set; }
-        public ICommand primeiroCommand { get; set; }
-        public ICommand proximoCommand { get; set; }
-        public ICommand ultimoCommand { get; set; }
+        public ICommand navegarBaseCommand { get; set; }
+
 
 
         private string _sText = "0 de 0";
@@ -64,6 +62,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 if ((value != _currentID) && (value != 0))
                 {
                     _currentID = value;
+                    //pesquisarBaseCommand.Execute(null);
                 }
             }
         }
