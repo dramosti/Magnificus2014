@@ -30,8 +30,13 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 3)]
         public int cIbge { get; set; }
 
+        public int _idUF;
         [ParameterOrder(Order = 4)]
-        public int idUF { get; set; }
+        public int idUF
+        {
+            get { return _idUF; }
+            set { _idUF = value; base.NotifyPropertyChanged("idUF"); }
+        }
     }
 
     public partial class CidadeModel : IDataErrorInfo

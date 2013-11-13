@@ -20,7 +20,8 @@
                Style="{StaticResource  LabelStyleComponents}"
                Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
-        <TextBox x:Name="txtID" Width="80" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=Valor}"/>
+        <TextBox x:Name="txtID" Width="80" 
+                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"/>
         <TextBox x:Name="txtDisplay" IsReadOnly="True" Text="{Binding pesquisaRapida.Display}" Focusable="False"  />
     </DockPanel>
 </runtime:BaseControl>
