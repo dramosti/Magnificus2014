@@ -13,16 +13,16 @@ using HLP.Comum.View.Formularios;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
-	/// <summary>
-	/// Interaction logic for WinFuncionario.xaml
-	/// </summary>
-	public partial class WinFuncionario : WindowBase
-	{
-		public WinFuncionario()
-		{
-			this.InitializeComponent();
-			
-			// Insert code required on object creation below this point.
-		}
-	}
+    /// <summary>
+    /// Interaction logic for WinFuncionario.xaml
+    /// </summary>
+    public partial class WinFuncionario : WindowsBase
+    {
+        public WinFuncionario()
+        {            
+            //this.InitializeComponent();
+
+            // Insert code required on object creation below this point.
+        }
+    }
 }

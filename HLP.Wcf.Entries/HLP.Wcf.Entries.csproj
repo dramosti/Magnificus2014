@@ -67,6 +67,7 @@
     <Content Include="serviceCargo.svc" />
     <Content Include="serviceCidade.svc" />
     <Content Include="serviceDecisao.svc" />
+    <Content Include="serviceDepartamento.svc" />
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
@@ -80,6 +81,7 @@
     <Compile Include="IserviceCargo.cs" />
     <Compile Include="IserviceCidade.cs" />
     <Compile Include="IserviceDecisao.cs" />
+    <Compile Include="IserviceDepartamento.cs" />
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="serviceCargo.svc.cs">
@@ -90,6 +92,9 @@
     </Compile>
     <Compile Include="serviceDecisao.svc.cs">
       <DependentUpon>serviceDecisao.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceDepartamento.svc.cs">
+      <DependentUpon>serviceDepartamento.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceEmpresa.svc.cs">
       <DependentUpon>serviceEmpresa.svc</DependentUpon>

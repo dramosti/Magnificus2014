@@ -33,7 +33,7 @@
         <Components:HlpPesquisa Validation.ErrorTemplate="{StaticResource exceptionComp}"
             x:Name="teste" Caption="UF" Width="300" Padding="0,3,0,0" WidthLabel="75" TableView="vwUF" FieldPesquisa="ID"
                                  IsEnabled="{Binding bIsEnabled}"
-                                Valor="{Binding currentModel.idUF}">            
+                                >            
             <Components:HlpPesquisa.Items>
                 <System:String>xSiglaUf</System:String>
                 <System:String>xUf</System:String>
