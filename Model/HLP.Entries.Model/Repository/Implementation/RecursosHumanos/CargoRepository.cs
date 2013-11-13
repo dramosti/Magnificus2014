@@ -26,7 +26,7 @@ namespace HLP.Entries.Model.Repository.Implementation.RecursosHumanos
                 regCargoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_cargo",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idCargo"),
-                                    MapBuilder<CargoModel>.MapAllProperties().Build());
+                                    MapBuilder<CargoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regCargoAccessor.Execute(idCargo).FirstOrDefault();
         }

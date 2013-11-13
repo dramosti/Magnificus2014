@@ -67,5 +67,18 @@ namespace HLP.Wcf.Entries
                 return false;
             }
         }
+
+        public int copyCargo(int idCargo)
+        {
+            try
+            {
+                return cargoRepository.Copy(idCargo: idCargo);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw ex;
+            }
+        }
     }
 }

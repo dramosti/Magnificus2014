@@ -34,6 +34,15 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                    canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+        canExecute: paramCanExec => this.CopyCanExecute());
         }
 
 
@@ -43,7 +52,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                await servico.saveCargoAsync(this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idCargo = await servico.saveCargoAsync(this.objViewModel.currentModel);
                 this.objViewModel.commandSalvarBase.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -58,7 +67,7 @@ namespace HLP.Entries.ViewModel.Commands
                 return false;
 
             return (this.objViewModel.commandSalvarBase.CanExecute(parameter: null)
-                && this.objViewModel.IsValid(objDependency as Grid));
+                && this.objViewModel.IsValid(objDependency as Panel));
         }
 
         public async void Delete(object objUFModel)
@@ -129,9 +138,53 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.commandCancelarBase.CanExecute(parameter: null);
         }
 
-        private async void GetWorkOrdersBackground(object sender, DoWorkEventArgs e)
+        public async void Copy()
         {
-            //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
+            try
+            {
+                //TODO: Implementar serviço de copy
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool CopyCanExecute()
+        {
+            return true;
+        }
+
+        public void Navegar(object ContentBotao)
+        {
+            try
+            {
+                objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                this.PesquisarRegistro();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ExecPesquisa()
+        {
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
+        }
+
+        private void PesquisarRegistro()
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.GetCargoBackground);
+            bw.RunWorkerAsync();
+        }
+
+        private async void GetCargoBackground(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = await this.servico.getCargoAsync(idCargo: this.objViewModel.currentID);
         }
         #endregion
 

@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.RecursosHumanos;
+using HLP.Entries.ViewModel.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,9 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandNovo { get; set; }
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
+        public ICommand commandCopiar { get; set; }
+        public ICommand commandPesquisar { get; set; }
+        public ICommand navegarCommand { get; set; }
         #endregion
 
         CargoModel _currentModel;
@@ -64,11 +68,17 @@ namespace HLP.Entries.ViewModel.ViewModels
         public CargoModel currentModel
         {
             get { return _currentModel; }
-            set { _currentModel = value; }
+            set
+            {
+                _currentModel = value;
+                base.NotifyPropertyChanged(propertyName: "currentModel");
+
+            }
         }
 
         public CargoViewModel()
         {
+            CargoCommands comm = new CargoCommands(objViewModel: this);
         }
     }
 }

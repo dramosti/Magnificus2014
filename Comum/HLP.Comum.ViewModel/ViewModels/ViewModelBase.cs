@@ -21,7 +21,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand novoBaseCommand { get; set; }
         public ICommand alterarBaseCommand { get; set; }
         public ICommand cancelarBaseCommand { get; set; }
-
+        public ICommand copyBaseCommand { get; set; }
 
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
