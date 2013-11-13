@@ -21,4 +21,10 @@
   <object id="WinDepartamento" name="WinDepartamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.RecursosHumanos.WinDepartamento, HLP.Entries.View.WPF">
   </object>
+  <object id="WinSetor" name="WinSetor" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.RecursosHumanos.WinSetor, HLP.Entries.View.WPF">
+  </object>
+<object id="WinFuncionario" name="WinFuncionario" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario, HLP.Entries.View.WPF">
+  </object>
 </objects>

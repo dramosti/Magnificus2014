@@ -15,8 +15,7 @@
 
             <Components:HlpTextBox Text="{Binding currentModel.idUF, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
-    		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+    		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
     		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}" 
     		Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
