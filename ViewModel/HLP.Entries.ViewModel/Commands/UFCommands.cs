@@ -48,6 +48,9 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+        canExecute: paramCanExec => this.CopyCanExecute());
+
         }
 
 
@@ -117,18 +120,22 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public void ExecPesquisa()
+        public async void Copy()
         {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.PesquisarRegistro();
+            try
+            {
+                //TODO: Implementar serviço de copy
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        private void PesquisarRegistro()
+        public bool CopyCanExecute()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetUFBackground);
-            bw.RunWorkerAsync();
-           
+            return true;
         }
 
         public void Navegar(object ContentBotao)
@@ -142,6 +149,20 @@ namespace HLP.Entries.ViewModel.Commands
             {
                 throw ex;
             }
+        }
+
+        public void ExecPesquisa()
+        {
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
+        }
+
+        private void PesquisarRegistro()
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.GetUFBackground);
+            bw.RunWorkerAsync();
+
         }
 
         private async void GetUFBackground(object sender, DoWorkEventArgs e)

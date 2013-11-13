@@ -1,4 +1,5 @@
-﻿using HLP.Entries.ViewModel.ViewModels;
+﻿using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
     /// <summary>
     /// Interaction logic for WinCargo.xaml
     /// </summary>
-    public partial class WinCargo : Window
+    public partial class WinCargo : WindowsBase
     {
         public WinCargo()
         {
