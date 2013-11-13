@@ -62,10 +62,11 @@ namespace HLP.Comum.ViewModel.ViewModels
                 try
                 {
                     if (currentTab != null)
-                        currentTab._currentDataContext.SetPropertyValue("NameView", currentTab._windows.GetPropertyValue("NameView").ToString());
+                        try
+                        { currentTab._currentDataContext.SetPropertyValue("NameView", currentTab._windows.GetPropertyValue("NameView").ToString()); }
+                        catch (Exception) { }
                 }
                 catch (Exception) { throw; }
-
             }
         }
 

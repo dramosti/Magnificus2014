@@ -84,24 +84,20 @@ namespace HLP.Comum.View.Components
             }
         }
 
-        public int Valor
+
+
+
+
+        [Category("HLP.Owner")]
+        public string Text
         {
-            get { return (int)GetValue(ValorProperty); }
-            set { SetValue(ValorProperty, value); }
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Valor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ValorProperty =
-            DependencyProperty.Register("Valor", typeof(int), typeof(HlpPesquisa), new PropertyMetadata(0, new PropertyChangedCallback(OnValorChanged)));
-
-        private static void OnValorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {            
-            HlpPesquisa ctr = d as HlpPesquisa; //null checks omitted
-            int s = Convert.ToInt32(value: e.NewValue.ToString()); //null checks omitted
-            if (ctr.ViewModel != null)
-                ctr.ViewModel.iValorPesquisa = s.ToString();            
-        }
-
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));      
 
 
 

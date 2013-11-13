@@ -21,5 +21,7 @@ namespace HLP.Comum.View.Validates
             return new ValidationResult(isValid: false,
                 errorContent: "Valor deve ser um número inteiro válido");
         }
+
+        
     }
 }

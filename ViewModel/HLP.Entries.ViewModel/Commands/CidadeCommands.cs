@@ -65,7 +65,6 @@ namespace HLP.Entries.ViewModel.Commands
             {
                 throw ex;
             }
-
         }
         private bool SaveCanExecute(object objDependency)
         {
