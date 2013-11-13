@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceUf.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceUf.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceUf.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceUf.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IserviceUf_getUf_InputMessage">
@@ -26,6 +27,12 @@
   <wsdl:message name="IserviceUf_deleteUf_OutputMessage">
     <wsdl:part name="parameters" element="tns:deleteUfResponse" />
   </wsdl:message>
+  <wsdl:message name="IserviceUf_copyUf_InputMessage">
+    <wsdl:part name="parameters" element="tns:copyUf" />
+  </wsdl:message>
+  <wsdl:message name="IserviceUf_copyUf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:copyUfResponse" />
+  </wsdl:message>
   <wsdl:portType name="IserviceUf">
     <wsdl:operation name="getUf">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceUf/getUf" message="tns:IserviceUf_getUf_InputMessage" />
@@ -38,6 +45,10 @@
     <wsdl:operation name="deleteUf">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceUf/deleteUf" message="tns:IserviceUf_deleteUf_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceUf/deleteUfResponse" message="tns:IserviceUf_deleteUf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="copyUf">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceUf/copyUf" message="tns:IserviceUf_copyUf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceUf/copyUfResponse" message="tns:IserviceUf_copyUf_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IserviceUf" type="tns:IserviceUf">
@@ -62,6 +73,15 @@
     </wsdl:operation>
     <wsdl:operation name="deleteUf">
       <soap:operation soapAction="http://tempuri.org/IserviceUf/deleteUf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copyUf">
+      <soap:operation soapAction="http://tempuri.org/IserviceUf/copyUf" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

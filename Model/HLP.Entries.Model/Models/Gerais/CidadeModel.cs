@@ -11,6 +11,16 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class CidadeModel : modelBase
     {
+        public CidadeModel()
+        {
+        }
+
+        public CidadeModel(campoSqlModel[] aCamposSql)
+            : base()
+        {
+            base.lcamposSqlNotNull = aCamposSql.ToList();
+        }
+
         private int? _idCidade;
 
         [ParameterOrder(Order = 1)]
@@ -36,16 +46,11 @@ namespace HLP.Entries.Model.Models.Gerais
 
     public partial class CidadeModel : IDataErrorInfo
     {
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public string this[string columnName]
+        public override string this[string columnName]
         {
             get
             {
-                return null;
+                return base[columnName];
             }
         }
     }

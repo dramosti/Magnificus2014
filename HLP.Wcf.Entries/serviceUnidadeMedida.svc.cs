@@ -67,5 +67,19 @@ namespace HLP.Wcf.Entries
                 return false;
             }
         }
+
+        public int copyUnidade_medida(int idUnidadeMedida)
+        {
+            try
+            {
+                return this.unidade_medidaRepository.Copy(idUnidadeMedida: idUnidadeMedida);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
+        }
     }
 }

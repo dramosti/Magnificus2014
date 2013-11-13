@@ -58,6 +58,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -73,13 +75,20 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Commands\ViewModelBaseCommands.cs" />
+    <Compile Include="Service References\camposBaseDadosService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Components\HlpPesquisaPadraoViewModel.cs" />
     <Compile Include="ViewModels\Components\HlpPesquisaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
@@ -101,6 +110,38 @@
       <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
       <Name>HLP.Comum.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Models.campoSqlModel.datasource" />
+    <None Include="Service References\camposBaseDadosService\camposBaseDadosService.wsdl" />
+    <None Include="Service References\camposBaseDadosService\camposBaseDadosService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\camposBaseDadosService\camposBaseDadosService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\camposBaseDadosService\camposBaseDadosService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\camposBaseDadosService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\camposBaseDadosService\camposBaseDadosService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\camposBaseDadosService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\camposBaseDadosService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\camposBaseDadosService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

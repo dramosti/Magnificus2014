@@ -56,6 +56,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public CidadeCommands objCidadeCommands;
 
         public CidadeViewModel()
+            : base(xTabela: "Cidade")
         {
             objCidadeCommands = new CidadeCommands(objViewModel: this);
         }

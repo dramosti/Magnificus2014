@@ -12,8 +12,13 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class DecisaoModel : modelBase
     {
         public DecisaoModel()
+        {
+        }
+
+        public DecisaoModel(campoSqlModel[] lcampoSql)
             : base()
         {
+            base.lcamposSqlNotNull = lcampoSql.ToList();
         }
 
         private int? _idDecisao;

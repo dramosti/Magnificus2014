@@ -1,4 +1,5 @@
-﻿using HLP.Entries.ViewModel.ViewModels;
+﻿using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace HLP.Entries.View.WPF.Gerais
     /// <summary>
     /// Interaction logic for WinUnidadeMedida.xaml
     /// </summary>
-    public partial class WinUnidadeMedida : Window
+    public partial class WinUnidadeMedida : WindowsBase
     {
         public WinUnidadeMedida()
         {

@@ -1,4 +1,5 @@
-﻿using HLP.Entries.ViewModel.ViewModels;
+﻿using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace HLP.Entries.View.WPF.Crm
     /// <summary>
     /// Interaction logic for WinDecisao.xaml
     /// </summary>
-    public partial class WinDecisao : Window
+    public partial class WinDecisao : WindowsBase
     {
         public WinDecisao()
         {

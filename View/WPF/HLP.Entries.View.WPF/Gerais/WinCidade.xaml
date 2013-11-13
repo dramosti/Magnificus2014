@@ -13,10 +13,12 @@
     <StackPanel Orientation="Vertical">
         <Components:HlpTextBox Caption="Id" Width="150" Padding="0,3,0,0" WidthLabel="75" Margin="305,0"
                                Text="{Binding currentModel.idCidade, Mode=TwoWay}" IsEnabled="False"/>
-        <Components:HlpTextBox Caption="Cidade" Width="300" Padding="0,3,0,0" WidthLabel="75"
+        <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}"
+            Caption="Cidade" Width="300" Padding="0,3,0,0" WidthLabel="75"
                                Text="{Binding currentModel.xCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsEnabled="{Binding bIsEnabled}"/>
-        <Components:HlpTextBox Caption="Ibge" Width="250" Padding="0,3,0,0" WidthLabel="75"
+        <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}"
+            Caption="Ibge" Width="250" Padding="0,3,0,0" WidthLabel="75"
                                IsEnabled="{Binding bIsEnabled}">
             <Components:HlpTextBox.Text>
                 <Binding Path="currentModel.cIbge"
@@ -28,7 +30,8 @@
                 </Binding>
             </Components:HlpTextBox.Text>
         </Components:HlpTextBox>
-        <Components:HlpPesquisa x:Name="teste" Caption="UF" Width="300" Padding="0,3,0,0" WidthLabel="75" TableView="vwUF" FieldPesquisa="ID"
+        <Components:HlpPesquisa Validation.ErrorTemplate="{StaticResource exceptionComp}"
+            x:Name="teste" Caption="UF" Width="300" Padding="0,3,0,0" WidthLabel="75" TableView="vwUF" FieldPesquisa="ID"
                                  IsEnabled="{Binding bIsEnabled}"
                                 Valor="{Binding currentModel.idUF}">            
             <Components:HlpPesquisa.Items>

@@ -43,4 +43,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="copyCargo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idCargo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="copyCargoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="copyCargoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

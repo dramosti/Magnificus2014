@@ -35,7 +35,7 @@ namespace HLP.Wcf.Entries
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
-                throw ex;
+                throw new FaultException(reason: ex.Message);
             }
         }
 
@@ -49,7 +49,7 @@ namespace HLP.Wcf.Entries
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
-                throw ex;
+                throw new FaultException(reason: ex.Message);
             }
         }
 
@@ -63,7 +63,7 @@ namespace HLP.Wcf.Entries
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
-                return false;
+                throw new FaultException(reason: ex.Message);
             }
         }
 
@@ -76,7 +76,7 @@ namespace HLP.Wcf.Entries
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
-                throw ex;
+                throw new FaultException(reason: ex.Message);
             }
         }
     }

@@ -10,6 +10,16 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
 {
     public partial class CargoModel : modelBase
     {
+        public CargoModel()
+        {
+        }
+
+        public CargoModel(campoSqlModel[] lCampos)
+            : base()
+        {
+            base.lcamposSqlNotNull = lCampos.ToList();
+        }
+
         private int? _idCargo;
         [ParameterOrder(Order = 1)]
         public int? idCargo
@@ -30,5 +40,16 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 4)]
         public int idEmpresa { get; set; }
+    }
+
+    public partial class CargoModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
     }
 }

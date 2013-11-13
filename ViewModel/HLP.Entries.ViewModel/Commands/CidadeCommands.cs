@@ -117,7 +117,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new CidadeModel();
+            this.objViewModel.currentModel = new CidadeModel(aCamposSql: this.objViewModel.lCampos);
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -164,6 +164,7 @@ namespace HLP.Entries.ViewModel.Commands
             try
             {
                 this.objViewModel.currentModel.idCidade = await servico.copyCidadeAsync(idCidade: (int)this.objViewModel.currentModel.idCidade);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
@@ -174,7 +175,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         public bool CopyCanExecute()
         {
-            return true;
+            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         #endregion
