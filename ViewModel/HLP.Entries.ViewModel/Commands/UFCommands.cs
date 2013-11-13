@@ -12,6 +12,8 @@ using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 using System.ComponentModel;
 using HLP.Comum.ViewModel.Commands;
+using System.Windows.Controls;
+using System.Windows;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -41,15 +43,14 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+                    canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
                     canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
-
-            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
-        canExecute: paramCanExec => this.CopyCanExecute());
 
         }
 
@@ -69,19 +70,45 @@ namespace HLP.Entries.ViewModel.Commands
             }
 
         }
-        private bool SaveCanExecute(object bValido)
+        private bool SaveCanExecute(object objDependency)
         {
             if (objViewModel.currentModel == null)
                 return false;
 
-            return (objViewModel.currentModel.IsValid &&
-                this.objViewModel.salvarBaseCommand.CanExecute(parameter: null));
+            return (
+                this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
+                && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public void Delete(object objUFModel)
+        public async void Delete(object objUFModel)
         {
-            this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF);
-            this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+            try
+            {
+                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
+                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
+                {
+                    if (await this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF))
+                    {
+                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.currentModel = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool DeleteCanExecute()
         {
@@ -93,7 +120,8 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new UFModel();
+            this.objViewModel.currentModel = new UFModel(aCamposSql: this.objViewModel.lCampos);
+            //this.objViewModel.currentModel.CarregaEmptyString();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -112,7 +140,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = new UFModel();
+            this.objViewModel.currentModel = null;
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -124,7 +152,8 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                //TODO: Implementar serviço de copy
+                this.objViewModel.currentModel.idUF = await this.servicoUf.copyUfAsync(idUf: (int)this.objViewModel.currentModel.idUF);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
@@ -135,7 +164,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         public bool CopyCanExecute()
         {
-            return true;
+            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public void Navegar(object ContentBotao)
@@ -169,15 +198,6 @@ namespace HLP.Entries.ViewModel.Commands
         {
             this.objViewModel.currentModel = await servicoUf.getUfAsync(idUf: Convert.ToInt32(this.objViewModel.currentID));
         }
-
-        #endregion
-
-        #region Chamada de métodos assyncronos
-
-        //private async Task<UFModel> getUfAsync(int idUf)
-        //{
-        //    return await servicoUf.getUfAsync(idUf: idUf);
-        //}
 
         #endregion
     }

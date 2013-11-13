@@ -22,6 +22,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         bool deleteUf(int idUf);
-        // TODO: Add your service operations here
+
+        [OperationContract]
+        int copyUf(int idUf);
     }
 }

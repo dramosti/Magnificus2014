@@ -32,6 +32,12 @@ namespace HLP.Entries.ViewModel.ufService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceUf/deleteUf", ReplyAction="http://tempuri.org/IserviceUf/deleteUfResponse")]
         System.Threading.Tasks.Task<bool> deleteUfAsync(int idUf);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceUf/copyUf", ReplyAction="http://tempuri.org/IserviceUf/copyUfResponse")]
+        int copyUf(int idUf);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceUf/copyUf", ReplyAction="http://tempuri.org/IserviceUf/copyUfResponse")]
+        System.Threading.Tasks.Task<int> copyUfAsync(int idUf);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace HLP.Entries.ViewModel.ufService {
         
         public System.Threading.Tasks.Task<bool> deleteUfAsync(int idUf) {
             return base.Channel.deleteUfAsync(idUf);
+        }
+        
+        public int copyUf(int idUf) {
+            return base.Channel.copyUf(idUf);
+        }
+        
+        public System.Threading.Tasks.Task<int> copyUfAsync(int idUf) {
+            return base.Channel.copyUfAsync(idUf);
         }
     }
 }

@@ -32,9 +32,21 @@ namespace HLP.Magnificus.View.WPF
         private void Application_DispatcherUnhandledException(object sender,
                                System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
+            string xMessage = "";
             e.Handled = true;
+
+            if (e.Exception.Message.Contains("Violation of UNIQUE KEY constraint"))
+            {
+                xMessage = "Não é possível inserir o valor '" + e.Exception.Message.Split('(')[1].Split(')')[0]
+                    + "' porque ele já existe na base de dados.";
+            }
+            else
+            {
+                xMessage = e.Exception.Message;
+            }
+
             MessageBox.Show(messageBoxText: "Erro: " +
-                e.Exception.Message, caption: "Erro.",
+                xMessage, caption: "Erro.",
                 button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
         }
 

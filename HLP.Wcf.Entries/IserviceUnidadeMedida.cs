@@ -20,5 +20,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         bool deleteUnidade_medida(int idUnidadeMedida);
+
+        [OperationContract]
+        int copyUnidade_medida(int idUnidadeMedida);
     }
 }

@@ -111,7 +111,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new CargoModel();
+            this.objViewModel.currentModel = new CargoModel(lCampos: this.objViewModel.lCampos);
             this.objViewModel.commandNovoBase.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -142,7 +142,8 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                //TODO: Implementar serviço de copy
+                this.objViewModel.currentModel.idCargo = await this.servico.copyCargoAsync(idCargo: (int)this.objViewModel.currentModel.idCargo);
+                this.objViewModel.copyBaseCommand.CanExecute(null);
             }
             catch (Exception ex)
             {
@@ -153,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         public bool CopyCanExecute()
         {
-            return true;
+            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public void Navegar(object ContentBotao)

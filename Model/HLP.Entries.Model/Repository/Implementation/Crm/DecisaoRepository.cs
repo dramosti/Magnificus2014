@@ -26,7 +26,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regDecisaoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_decisao",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idDecisao"),
-                                    MapBuilder<DecisaoModel>.MapAllProperties().Build());
+                                    MapBuilder<DecisaoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regDecisaoAccessor.Execute(idDecisao).FirstOrDefault();
         }

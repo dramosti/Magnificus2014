@@ -32,6 +32,12 @@ namespace HLP.Entries.ViewModel.unidadeMedidaService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceUnidadeMedida/deleteUnidade_medida", ReplyAction="http://tempuri.org/IserviceUnidadeMedida/deleteUnidade_medidaResponse")]
         System.Threading.Tasks.Task<bool> deleteUnidade_medidaAsync(int idUnidadeMedida);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceUnidadeMedida/copyUnidade_medida", ReplyAction="http://tempuri.org/IserviceUnidadeMedida/copyUnidade_medidaResponse")]
+        int copyUnidade_medida(int idUnidadeMedida);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceUnidadeMedida/copyUnidade_medida", ReplyAction="http://tempuri.org/IserviceUnidadeMedida/copyUnidade_medidaResponse")]
+        System.Threading.Tasks.Task<int> copyUnidade_medidaAsync(int idUnidadeMedida);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace HLP.Entries.ViewModel.unidadeMedidaService {
         
         public System.Threading.Tasks.Task<bool> deleteUnidade_medidaAsync(int idUnidadeMedida) {
             return base.Channel.deleteUnidade_medidaAsync(idUnidadeMedida);
+        }
+        
+        public int copyUnidade_medida(int idUnidadeMedida) {
+            return base.Channel.copyUnidade_medida(idUnidadeMedida);
+        }
+        
+        public System.Threading.Tasks.Task<int> copyUnidade_medidaAsync(int idUnidadeMedida) {
+            return base.Channel.copyUnidade_medidaAsync(idUnidadeMedida);
         }
     }
 }

@@ -32,6 +32,12 @@ namespace HLP.Entries.ViewModel.cargoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCargo/delCargo", ReplyAction="http://tempuri.org/IserviceCargo/delCargoResponse")]
         System.Threading.Tasks.Task<bool> delCargoAsync(int idCargo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCargo/copyCargo", ReplyAction="http://tempuri.org/IserviceCargo/copyCargoResponse")]
+        int copyCargo(int idCargo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCargo/copyCargo", ReplyAction="http://tempuri.org/IserviceCargo/copyCargoResponse")]
+        System.Threading.Tasks.Task<int> copyCargoAsync(int idCargo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace HLP.Entries.ViewModel.cargoService {
         
         public System.Threading.Tasks.Task<bool> delCargoAsync(int idCargo) {
             return base.Channel.delCargoAsync(idCargo);
+        }
+        
+        public int copyCargo(int idCargo) {
+            return base.Channel.copyCargo(idCargo);
+        }
+        
+        public System.Threading.Tasks.Task<int> copyCargoAsync(int idCargo) {
+            return base.Channel.copyCargoAsync(idCargo);
         }
     }
 }

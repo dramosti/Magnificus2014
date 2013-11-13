@@ -13,45 +13,6 @@ namespace HLP.Entries.ViewModel.ViewModels
     public class Unidade_MedidaViewModel : ViewModelBase
     {
 
-        #region IcommandsBase
-        public ICommand commandSalvarBase
-        {
-            get
-            {
-                return base.salvarBaseCommand;
-            }
-        }
-
-        public ICommand commandDeletarBase
-        {
-            get
-            {
-                return base.deletarBaseCommand;
-            }
-        }
-        public ICommand commandNovoBase
-        {
-            get
-            {
-                return base.novoBaseCommand;
-            }
-        }
-        public ICommand commandAlterarBase
-        {
-            get
-            {
-                return base.alterarBaseCommand;
-            }
-        }
-        public ICommand commandCancelarBase
-        {
-            get
-            {
-                return base.cancelarBaseCommand;
-            }
-        }
-        #endregion
-
 
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -60,11 +21,14 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
         public ICommand commandPesquisar { get; set; }
+        public ICommand commandCopiar { get; set; }
+        public ICommand navegarCommand { get; set; }
         #endregion
 
         Unidade_MedidaCommands objCommands;
 
         public Unidade_MedidaViewModel()
+            : base(xTabela: "Unidade_medida")
         {
             objCommands = new Unidade_MedidaCommands(this);
         }

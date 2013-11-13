@@ -28,6 +28,7 @@
     <MetadataFile FileName="serviceCargo2.xsd" MetadataType="Schema" ID="91f6547e-e79b-4c28-8ee1-156002339e8f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCargo.svc?xsd=xsd2" />
     <MetadataFile FileName="serviceCargo3.xsd" MetadataType="Schema" ID="abfb0a33-cfef-4927-97fe-38ff2c73ef11" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCargo.svc?xsd=xsd3" />
     <MetadataFile FileName="serviceCargo.wsdl" MetadataType="Wsdl" ID="e1109910-29a7-4c4f-bb12-27207311ff54" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCargo.svc?wsdl" />
+    <MetadataFile FileName="serviceCargo4.xsd" MetadataType="Schema" ID="70c61d14-6668-4be7-a749-b829fd02348a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCargo.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

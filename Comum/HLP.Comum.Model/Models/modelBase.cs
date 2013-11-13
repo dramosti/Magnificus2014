@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
+using System.Reflection;
 
 namespace HLP.Comum.Model.Models
 {
@@ -15,6 +16,7 @@ namespace HLP.Comum.Model.Models
 
         public modelBase()
         {
+
         }
 
         #region NotifyPropertyChanged
@@ -50,6 +52,16 @@ namespace HLP.Comum.Model.Models
 
         #endregion
 
+        public void CarregaEmptyString()
+        {
+            foreach (PropertyInfo pi in this.GetType().GetProperties())
+            {
+                if (pi.PropertyType == typeof(string) && pi.Name != "Item" && pi.Name != "Error")
+                {
+                    pi.SetValue(this, "");
+                }
+            }
+        }
 
         protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
         {
@@ -59,11 +71,11 @@ namespace HLP.Comum.Model.Models
                     i => i.COLUMN_NAME == columnName);
                 if (campo != null)
                 {
-                    string valor = objeto.GetType().GetProperty(columnName).GetValue(objeto).ToString();
+                    object valor = objeto.GetType().GetProperty(columnName).GetValue(objeto);
                     if (campo.TYPE == "F " && valor == "0")
                         return "Necessário que campo possua valor!";
                     else if ((campo.TYPE == null || campo.TYPE == "UQ")
-                        && valor == "")
+                        && (valor == "" || valor == null))
                     {
                         return "Necessário que campo possua valor!";
                     }

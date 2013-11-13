@@ -27,7 +27,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regUnidadeAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_unidade_medida",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idUnidadeMedida"),
-                                    MapBuilder<Unidade_medidaModel>.MapAllProperties().Build());
+                                    MapBuilder<Unidade_medidaModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regUnidadeAccessor.Execute(idUnidadeMedida).FirstOrDefault();
         }

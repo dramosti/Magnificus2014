@@ -13,10 +13,14 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class UFModel : modelBase
     {
         public UFModel()
+        {
+        }
+
+        public UFModel(campoSqlModel[] aCamposSql)
             : base()
         {
-            //this._modelBaseRepository = new modelBaseRepository();
-            //base.lcamposSqlNotNull = this._modelBaseRepository.getCamposSqlNotNull(xTabela: "UF");
+            //base.CarregaEmptyString();
+            base.lcamposSqlNotNull = aCamposSql.ToList();
         }
 
         private int? _idUF;
@@ -85,7 +89,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public override string this[string columnName]
         {
             get
-            {                
+            {
                 return base[columnName];
             }
         }

@@ -43,4 +43,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="copyUf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUf" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="copyUfResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="copyUfResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

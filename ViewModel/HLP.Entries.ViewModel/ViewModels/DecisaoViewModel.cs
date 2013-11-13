@@ -18,7 +18,9 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandNovo { get; set; }
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
+        public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
+        public ICommand navegarCommand { get; set; }
         #endregion
         #region IcommandsBase
         public ICommand commandSalvarBase
@@ -62,7 +64,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         DecisaoCommands objCommands;
 
         public DecisaoViewModel()
-            : base()
+            : base(xTabela: "Decisao")
         {
             objCommands = new DecisaoCommands(vViewModel: this);
         }
