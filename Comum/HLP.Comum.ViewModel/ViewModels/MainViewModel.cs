@@ -67,7 +67,6 @@ namespace HLP.Comum.ViewModel.ViewModels
                         catch (Exception) { }
                 }
                 catch (Exception) { throw; }
-
             }
         }
 
