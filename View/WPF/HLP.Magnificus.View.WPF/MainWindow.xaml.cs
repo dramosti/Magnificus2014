@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HLP.Comum.Modules;
 using HLP.Comum.Modules.Infrastructure;
+using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.View.WPF.Gerais;
 
@@ -27,9 +28,10 @@ namespace HLP.Magnificus.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-                      
+
             GerenciadorModulo.Instancia.InicializaSistema();
             this._viewModel = new MainViewModel();
+            CompanyData.idEmpresa = 1;
         }
         public MainViewModel _viewModel
         {

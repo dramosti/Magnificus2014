@@ -15,7 +15,10 @@
   <object id="WinEmpresa" name="WinEmpresa" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinEmpresa, HLP.Entries.View.WPF">
   </object>
-<object id="WinDepartamento" name="WinDepartamento" singleton="false" scope="request"
+  <object id="WinCargo" name="WinCargo" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.RecursosHumanos.WinCargo, HLP.Entries.View.WPF">
+  </object>
+  <object id="WinDepartamento" name="WinDepartamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.RecursosHumanos.WinDepartamento, HLP.Entries.View.WPF">
   </object>
 </objects>

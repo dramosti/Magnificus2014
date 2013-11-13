@@ -230,6 +230,16 @@ namespace HLP.Comum.ViewModel.Commands
                 this.currentOp == Resources.RecursosBases.OperacaoCadastro.alterando);
         }
 
+        
+        private void copyBase()
+        {
+        }
+
+        private bool copyBaseCanExecute()
+        {
+            return this.currentOp == OperacaoCadastro.pesquisando;
+        }
+        
         #endregion
 
     }

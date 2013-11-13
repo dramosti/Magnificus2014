@@ -20,5 +20,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         bool delCargo(int idCargo);
+
+        [OperationContract]
+        int copyCargo(int idCargo);
     }
 }
