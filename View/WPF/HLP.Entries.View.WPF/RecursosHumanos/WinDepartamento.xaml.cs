@@ -10,19 +10,41 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
-	/// <summary>
-	/// Interaction logic for WinDepartamento.xaml
-	/// </summary>
-	public partial class WinDepartamento : WindowsBase
-	{
-		public WinDepartamento()
-		{
-			this.InitializeComponent();
-			
-			// Insert code required on object creation below this point.
-		}
-	}
+    /// <summary>
+    /// Interaction logic for WinDepartamento.xaml
+    /// </summary>
+    public partial class WinDepartamento : WindowsBase
+    {
+        public WinDepartamento()
+        {
+            this.InitializeComponent();
+            try
+            {
+                this.ViewModel = new DepartamentoViewModel();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+
+        }
+
+        public DepartamentoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as DepartamentoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+    }
 }
