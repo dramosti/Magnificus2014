@@ -21,4 +21,13 @@
   <object id="WinUnidadeMedida" name="WinUnidadeMedida" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinUnidadeMedida, HLP.Entries.View.WPF">
   </object>
+ <object id="WinDepartamento" name="WinDepartamento" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinDepartamento, HLP.Entries.View.WPF">
+  </object>
+ <object id="WinSetor" name="WinSetor" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinSetor, HLP.Entries.View.WPF">
+  </object>
+ <object id="WinFuncionario" name="WinFuncionario" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinFuncionario, HLP.Entries.View.WPF">
+  </object>
 </objects>
