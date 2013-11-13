@@ -1,6 +1,9 @@
-﻿using System;
+﻿using HLP.Comum.View.Formularios;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
@@ -19,10 +21,8 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
     public partial class WinFuncionario : WindowsBase
     {
         public WinFuncionario()
-        {            
-            //this.InitializeComponent();
-
-            // Insert code required on object creation below this point.
+        {
+            InitializeComponent();
         }
     }
 }

@@ -31,6 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="Ninject, Version=2.1.0.91, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HLP.Comum.Infrastructure\NInject\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -65,9 +69,6 @@
     <Compile Include="Components\HlpPesquisa.xaml.cs">
       <DependentUpon>HlpPesquisa.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\HlpPesquisa1.xaml.cs">
-      <DependentUpon>HlpPesquisa1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Components\HlpPesquisaPadrao.xaml.cs">
       <DependentUpon>HlpPesquisaPadrao.xaml</DependentUpon>
     </Compile>
@@ -100,10 +101,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\HlpPesquisa1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Components\HlpPesquisaPadrao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +115,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
+      <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
+      <Name>HLP.Dependencies</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
       <Name>HLP.Comum.Model</Name>

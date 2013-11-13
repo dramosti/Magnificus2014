@@ -11,29 +11,21 @@
         <c:IntStringConverter x:Key="intStringConverter"></c:IntStringConverter>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <Components:HlpTextBox Caption="Id" Width="150" Padding="0,3,0,0" WidthLabel="75" Margin="305,0"
+        <Components:HlpTextBox Caption="Id" Padding="0,3,0,0" WidthLabel="75" Margin="10,26,581,0"
                                Text="{Binding currentModel.idCidade, Mode=TwoWay}" IsEnabled="False"/>
         <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}"
-            Caption="Cidade" Width="300" Padding="0,3,0,0" WidthLabel="75"
+            Caption="Cidade" Padding="0,3,0,0" WidthLabel="75"
                                Text="{Binding currentModel.xCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsEnabled="{Binding bIsEnabled}"/>
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsEnabled="{Binding bIsEnabled}" Margin="10,8,360,0"/>
         <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}"
-            Caption="Ibge" Width="250" Padding="0,3,0,0" WidthLabel="75"
-                               IsEnabled="{Binding bIsEnabled}">
-            <Components:HlpTextBox.Text>
-                <Binding Path="currentModel.cIbge"
-                         Mode="TwoWay"
-                         UpdateSourceTrigger="PropertyChanged"
-                         ValidatesOnDataErrors="True"
-                         NotifyOnValidationError="True"
-                         Converter="{StaticResource intStringConverter}">                    
-                </Binding>
-            </Components:HlpTextBox.Text>
-        </Components:HlpTextBox>
-        <Components:HlpPesquisa Validation.ErrorTemplate="{StaticResource exceptionComp}"
-            x:Name="teste" Caption="UF" Width="300" Padding="0,3,0,0" WidthLabel="75" TableView="vwUF" FieldPesquisa="ID"
-                                 IsEnabled="{Binding bIsEnabled}"
-                                >            
+            Caption="Ibge" Padding="0,3,0,0" WidthLabel="75"
+                               IsEnabled="{Binding bIsEnabled}" Margin="10,8,360,0" Text="{Binding currentModel.cIbge, Converter={StaticResource intStringConverter}, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <Components:HlpPesquisa 
+            Text="{Binding currentModel.idUF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+            Validation.ErrorTemplate="{StaticResource exceptionComp}"
+            x:Name="teste" Caption="UF" Padding="0,3,0,0" WidthLabel="75" TableView="vwUF" FieldPesquisa="ID"
+                                 IsEnabled="{Binding bIsEnabled}" Margin="10,8,360,0"
+                                 >
             <Components:HlpPesquisa.Items>
                 <System:String>xSiglaUf</System:String>
                 <System:String>xUf</System:String>

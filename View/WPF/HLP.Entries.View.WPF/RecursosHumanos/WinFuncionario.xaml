@@ -1,15 +1,35 @@
 ﻿<runtime:WindowsBase
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
-	xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
-	x:Class="HLP.Entries.View.WPF.WinFuncionario"
-	x:Name="Window"
-	Title="Funcionario"
-	Width="1024" Height="800">
-	<Grid HorizontalAlignment="Left" Height="760" Margin="0,10,0,0" VerticalAlignment="Top" Width="1014">
-		
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
+        Title="Funcionario" Height="800" Width="1024">
+	<Grid>
+		<TabControl HorizontalAlignment="Left" Height="770" VerticalAlignment="Top" Width="1016" Background="{x:Null}">
+			<TabItem Header="Geral" Background="{x:Null}">
+				<Grid>
+					<WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" >
+						<Expander Header="Identificação" Height="742" Width="335" IsExpanded="True">
+							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+								<Components:HlpTextBox Height="30" Margin="20,20,35,10" Caption="Código de Origem do Funcionário" Field="idFuncionario" Help="Chave principal do registro do Funcionário" Table="Funcionario"/>
+								<Components:HlpTextBox Height="30" Margin="20,0,35,10" Caption="Código Alternativo " Field="xCódigoAlternativo" Help="Digite um código alternativo para o Funcionário " Table="Funcionario"/>
+								<Components:HlpCheckBox Height="30" Margin="20,0,246,20" Caption="Ativo" Field="Ativo" Help="Informe o status do funcionário, se ele está ativo ou não para a empresa" Table="Funcionario"/>
+								<Components:HlpTextBox Height="30" Margin="20,0,35,10" Caption="Saudação" Field="xSaudação" Help="Especifique a forma de saudação preferencial de um funcionário" Table="Funcionario"/>
+								<Components:HlpTextBox Height="30" Margin="20,0,35,10"/>
+							</StackPanel>
+						</Expander>
+						<Expander Header="Administração" Height="742" Width="335" IsExpanded="True">
+							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+						</Expander>
+						<Expander Header="Requisição de Compras" Height="742" Width="335" IsExpanded="True">
+							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+						</Expander>
+					</WrapPanel>
+				</Grid>
+			</TabItem>
+			<TabItem Header="TabItem" Background="{x:Null}">
+				<Grid/>
+			</TabItem>
+		</TabControl>
 	</Grid>
-		
 </runtime:WindowsBase>
-

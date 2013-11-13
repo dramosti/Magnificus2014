@@ -18,6 +18,9 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
 {
     public class HlpPesquisaViewModel : INotifyPropertyChanged
     {
+
+        public HlpPesquisaViewModel() { }
+
         public HlpPesquisaViewModel(string _FieldPesquisa, string _TableView, IList _Items)
         {
             this.FieldPesquisa = _FieldPesquisa;
