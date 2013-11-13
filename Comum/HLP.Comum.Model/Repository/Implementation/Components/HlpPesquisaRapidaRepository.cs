@@ -24,7 +24,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         {
             try
             {
-
+                
                 if (UndTrabalho.TableExistis(_TableView))
                 {
                     if (regAcessor == null)
@@ -37,7 +37,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
 
 
                         string sDisplay = string.Empty;
-                        foreach (string col in (_Items as List<string>))
+                        foreach (string col in (_Items as List<string>).Distinct())
                         {
                             if (UndTrabalho.ColunaExistis(_TableView, col.ToString()))
                             {

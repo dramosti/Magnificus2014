@@ -63,8 +63,8 @@
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpPesquisa Caption="Ramo Atividade" Width="500" WidthLabel="140" Margin="0,3,0,0"
-                                            IsEnabled="{Binding bIsEnabled}"/>
+                    <!--<Components:HlpPesquisa Caption="Ramo Atividade" Width="500" WidthLabel="140" Margin="0,3,0,0"
+                                            IsEnabled="{Binding bIsEnabled}"/>-->
                     <Components:HlpCheckBox Caption="Cód. Reg. Tribut." Width="160" WidthLabel="140"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.stCodigoRegimeTributario, Mode=TwoWay,
