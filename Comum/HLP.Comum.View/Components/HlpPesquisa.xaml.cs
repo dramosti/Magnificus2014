@@ -50,7 +50,7 @@ namespace HLP.Comum.View.Components
 
         public void ExecutaPesquisa(string sValor)
         {
-            if (sValor.Equals(""))
+            if (sValor.Equals("") || sValor.Equals("0"))
             {
                 this.Display = string.Empty;
             }
