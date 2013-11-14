@@ -22,6 +22,6 @@ namespace HLP.Wcf.Entries
         bool deleteFuncionario(int idFuncionario);
 
         [OperationContract]
-        int copyFuncionario(int idFuncionario);
+        int copyFuncionario(FuncionarioModel objFuncionario);
     }
 }

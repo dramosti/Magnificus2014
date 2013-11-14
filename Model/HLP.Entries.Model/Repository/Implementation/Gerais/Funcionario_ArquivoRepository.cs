@@ -61,7 +61,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Funcionario_Arquivo]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idFuncionarioArquivo"),
-                   MapBuilder<Funcionario_ArquivoModel>.MapAllProperties().Build());
+                   MapBuilder<Funcionario_ArquivoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regAcessor.Execute(idFuncionarioArquivo).FirstOrDefault();
         }
@@ -70,7 +70,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             DataAccessor<Funcionario_ArquivoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Funcionario_Arquivo WHERE idFuncionario = @idFuncionario", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idFuncionario"),
-            MapBuilder<Funcionario_ArquivoModel>.MapAllProperties().Build());
+            MapBuilder<Funcionario_ArquivoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
 
             return reg.Execute(idFuncionario).ToList();
         }
