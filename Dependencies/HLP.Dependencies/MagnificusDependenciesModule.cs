@@ -99,7 +99,7 @@ namespace HLP.Dependencies
             Bind<IRegiaoRepository>().To<RegiaoRepository>();
             //Bind<ISetorRepository>().To<SetorRepository>();
             //Bind<IContatoRepository>().To<ContatoRepository>();            
-            //Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
+            Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             //Bind<ICalendarioRepository>().To<CalendarioRepository>();
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
             //Bind<ITransportadorReposiroty>().To<TransportadorRepository>();

@@ -12,7 +12,7 @@
         <Components:HlpTextBox 
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 			IsEnabled="{Binding bIsEnabled}" 
-			Text="{Binding currentModel.idDepertamento, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"		
+			Text="{Binding currentModel.idDepartamento, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"		
 			Caption="Código" 
 			Field="idDepartamento" 
 			Table="Departamento" 
@@ -26,15 +26,16 @@
         <Components:HlpTextBox
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 			IsEnabled="{Binding bIsEnabled}" 
-			Text="{Binding currentModel.xDescrição, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
+			Text="{Binding currentModel.xDescricao, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
 			Height="30" Margin="20,0,23,10" Caption="Descrição" Field="xDescrição" Help="Descrição do Departamento" Table="Departamento" WidthLabel="110"/>
         <Components:HlpTextBox
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 			IsEnabled="{Binding bIsEnabled}" 
 			Text="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"			
 			Height="30" Margin="20,0,23,10" Caption="Setor" Field="idSetor" Help="Selecione um setor da empresa já cadastrado, mais detalhes no formulário de Setor." Table="Departamento" WidthLabel="110"/>
-        <Components:HlpTextBox 
-			Text="{Binding currentModel.xEmail, Mode=TwoWay}"
+        <Components:HlpTextBox
+            IsEnabled="{Binding bIsEnabled}"
+			Text="{Binding currentModel.xEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
 			Height="30" Margin="20,0,23,0" Caption="E-mail" Field="xEmail" Help="Informar o e-mail padrão para o Departamento, caso haja." Table="Departamento" WidthLabel="110"/>
     </StackPanel>
 </runtime:WindowsBase>

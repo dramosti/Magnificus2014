@@ -113,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new DepartamentoModel();
+            this.objViewModel.currentModel = new DepartamentoModel(lCamposSql: this.objViewModel.lCampos);
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()

@@ -27,7 +27,7 @@ namespace HLP.Entries.Model.Repository.Implementation.RecursosHumanos
                 regDepartamentoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_departamento",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idDepartamento"),
-                                    MapBuilder<DepartamentoModel>.MapAllProperties().Build());
+                                    MapBuilder<DepartamentoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regDepartamentoAccessor.Execute(idDepartamento).FirstOrDefault();
         }
@@ -70,7 +70,7 @@ namespace HLP.Entries.Model.Repository.Implementation.RecursosHumanos
             regDepartamentoBySetorAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("select d.idDepartamento, d.xDepartamento," +
                     " d.xDescricao, d.idSetor, d.xEmail from Setor s, Departamento d " +
                     "where d.idSetor = s.idSetor and s.idSetor = " + idSetor,
-                    MapBuilder<DepartamentoModel>.MapAllProperties().Build());
+                    MapBuilder<DepartamentoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             return regDepartamentoBySetorAcessor.Execute().ToList();
         }
     }

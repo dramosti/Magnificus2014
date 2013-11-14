@@ -25,7 +25,11 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         public int? idDepartamento
         {
             get { return _idDepartamento; }
-            set { _idDepartamento = value; }
+            set
+            {
+                _idDepartamento = value;
+                base.NotifyPropertyChanged(propertyName: "idDepartamento");
+            }
         }
         [ParameterOrder(Order = 2)]
         public string xDepartamento { get; set; }

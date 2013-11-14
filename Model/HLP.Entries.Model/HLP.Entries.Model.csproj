@@ -61,6 +61,7 @@
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
+    <Compile Include="Models\Gerais\FuncionarioModel.cs" />
     <Compile Include="Models\Gerais\RegiaoModel.cs" />
     <Compile Include="Models\Gerais\UFModel.cs" />
     <Compile Include="Models\Gerais\Unidade_medidaModel.cs" />
@@ -72,6 +73,12 @@
     <Compile Include="Repository\Implementation\Crm\DecisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\EmpresaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Empresa_EnderecoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\FuncionarioRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Funcionario_ArquivoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Funcionario_CertificacaoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Funcionario_Comissao_ProdutoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Funcionario_EnderecoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Funcionario_Margem_LucroComissaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\RegiaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\UFRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Unidade_medidaRepository.cs" />
@@ -82,6 +89,12 @@
     <Compile Include="Repository\Interfaces\Crm\IDecisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresa_EnderecoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionarioRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_ArquivoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_CertificacaoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Comissao_ProdutoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_EnderecoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Margem_Lucro_ComissaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IRegiaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IUFRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IUnidade_medidaRepository.cs" />

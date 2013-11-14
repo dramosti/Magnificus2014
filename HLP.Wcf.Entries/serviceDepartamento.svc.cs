@@ -19,7 +19,7 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IDepartamentoRepository departamentoRepository { get; set; }
 
-        public void DoWork()
+        public serviceDepartamento()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
