@@ -40,13 +40,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
         }
 
-        public void Delete(FuncionarioModel objFuncionario)
+        public void Delete(int idFuncionario)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
             UndTrabalho.dbTransaction,
            "[dbo].[Proc_delete_Funcionario]",
             UserData.idUser,
-            objFuncionario.idFuncionario);
+            idFuncionario);
         }
 
         public void Copy(FuncionarioModel objFuncionario)
@@ -65,7 +65,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regFuncionarioAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Funcionario",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idFuncionario"),
-                                         MapBuilder<FuncionarioModel>.MapAllProperties().Build());
+                                         MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
 
             return regFuncionarioAccessor.Execute(idFuncionario).FirstOrDefault();
@@ -90,7 +90,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
             return lFuncionarios = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM FUNCIONARIO",
                                    new Parameters(UndTrabalho.dbPrincipal),
-                                   MapBuilder<FuncionarioModel>.MapAllProperties().Build()).Execute().ToList();
+                                   MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status).Build()).Execute().ToList();
         }
         public string GetQueryFuncionarios()
         {

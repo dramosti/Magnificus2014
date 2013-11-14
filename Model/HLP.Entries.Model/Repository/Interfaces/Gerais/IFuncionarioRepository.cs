@@ -10,7 +10,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IFuncionarioRepository
     {
         void Save(FuncionarioModel objFuncionario);
-        void Delete(FuncionarioModel objFuncionario);
+        void Delete(int idFuncionario);
         void Copy(FuncionarioModel objFuncionario);
         FuncionarioModel GetFuncionario(int idFuncionario);
         List<FuncionarioModel> GetAllFuncionario();

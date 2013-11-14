@@ -109,7 +109,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             try
             {
-                this.lCampos = await this.servico.getCamposNotNullAsync(xTabela: e.Argument.ToString());
+                this.lCampos = await this.taskGetCamposNotNull(e.Argument.ToString());
             }
             catch (Exception)
             {
@@ -118,7 +118,11 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         }
 
-
+        public async Task<campoSqlModel[]> taskGetCamposNotNull(string xTabela)
+        {
+            campoSqlModel[] aCampos = await this.servico.getCamposNotNullAsync(xTabela: xTabela);
+            return aCampos;
+        }
 
 
 

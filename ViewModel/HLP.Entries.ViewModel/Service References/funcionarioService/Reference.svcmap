@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5f7fbc33-f6a9-4780-81e2-abe9e9249d25" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceFuncionario.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceFuncionario.xsd" MetadataType="Schema" ID="12b3936c-a2d3-40c8-8352-8dae6bd7d10f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceFuncionario1.xsd" MetadataType="Schema" ID="b67bad43-32f2-4ac0-bf37-e16146bdabdf" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceFuncionario2.xsd" MetadataType="Schema" ID="0270561b-89bb-42e2-b8c4-10c309bd320c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceFuncionario.wsdl" MetadataType="Wsdl" ID="716f98d8-f338-4245-b579-c02c8017f073" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?wsdl" />
+    <MetadataFile FileName="serviceFuncionario.disco" MetadataType="Disco" ID="5be27173-de7f-432b-87f2-60b1b52a55d0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?disco" />
+    <MetadataFile FileName="serviceFuncionario3.xsd" MetadataType="Schema" ID="04c948c4-37b1-4180-b5f8-af13d541baff" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceFuncionario4.xsd" MetadataType="Schema" ID="46c25eac-9b53-424f-a896-41e9c71780d8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

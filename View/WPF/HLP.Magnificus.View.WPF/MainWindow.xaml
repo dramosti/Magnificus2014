@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.MainWindow"
         Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1029"
+        mc:Ignorable="d" WindowState="Maximized" Width="1029" Closed="Window_Closed"
         >
     <Window.Resources>
         <ResourceDictionary>

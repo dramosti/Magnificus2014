@@ -39,5 +39,10 @@ namespace HLP.Magnificus.View.WPF
             set { this.DataContext = value; }
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
     }
 }
