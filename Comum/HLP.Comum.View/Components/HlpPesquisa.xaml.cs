@@ -18,7 +18,7 @@ using HLP.Comum.Model.Components;
 using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
-using Ninject;
+using HLP.Comum.View.PesquisaRapidaService;
 
 namespace HLP.Comum.View.Components
 {
@@ -27,9 +27,8 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpPesquisa : BaseControl
     {
-        [Inject]
-        public IHlpPesquisaRapidaRepository iHlpPesquisaRapidaRepository { get; set; }
-        private IKernel kernel = null;
+
+        private IservicePesquisaRapidaClient servicoPesquisaRapida;
 
         public string Display
         {
@@ -46,9 +45,10 @@ namespace HLP.Comum.View.Components
         {
             InitializeComponent();
             //this.DataContext = this;
+
         }
 
-        public void ExecutaPesquisa(string sValor)
+        public async void ExecutaPesquisa(string sValor)
         {
             if (sValor.Equals("") || sValor.Equals("0"))
             {
@@ -58,17 +58,26 @@ namespace HLP.Comum.View.Components
             int iValida;
             if (int.TryParse(sValor, out iValida))
             {
-                PesquisaRapidaModel objRet = iHlpPesquisaRapidaRepository.GetValorDisplay
-                    (
-                    _TableView: this.TableView,
-                    _Items: this.Items,
-                    _FieldPesquisa: this.FieldPesquisa,
-                    _iValorPesquisa: Convert.ToInt32(sValor)
-                    );
+                if (this.servicoPesquisaRapida == null)
+                    this.servicoPesquisaRapida = new IservicePesquisaRapidaClient();
 
-                if (objRet != null)
+                if (!sValor.Equals("0"))
                 {
-                    this.Display = objRet.Display;
+
+                    string[] teste = ((List<string>)this.Items).ToArray();
+
+                    var objRet = await this.servicoPesquisaRapida.GetValorDisplayAsync
+                         (
+                         _TableView: this.TableView,
+                         _Items: teste,
+                         _FieldPesquisa: this.FieldPesquisa,
+                         _iValorPesquisa: Convert.ToInt32(sValor)
+                         );
+
+                    if (objRet != null)
+                    {
+                        this.Display = objRet.ToString();
+                    }
                 }
             }
         }
@@ -92,13 +101,6 @@ namespace HLP.Comum.View.Components
                 if (e.NewValue != null)
                 {
                     HlpPesquisa comp = d as HlpPesquisa;
-                    if (comp.kernel == null)
-                    {
-                        comp.kernel = new StandardKernel(new MagnificusDependenciesModule());
-                        comp.kernel.Settings.ActivationCacheDisabled = false;
-                        comp.kernel.Inject(comp);
-                    }
-
                     comp.ExecutaPesquisa(e.NewValue.ToString());
                     comp.Text = e.NewValue.ToString();
                 }

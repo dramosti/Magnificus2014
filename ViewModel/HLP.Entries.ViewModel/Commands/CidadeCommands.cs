@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
-using Ninject;
 using HLP.Dependencies;
 using HLP.Comum.ViewModel.Commands;
 using System.Windows.Controls;

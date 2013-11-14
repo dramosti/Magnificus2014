@@ -1,7 +1,6 @@
 ﻿using HLP.Comum.ViewModel.Commands;
 using HLP.Dependencies;
 using HLP.Entries.ViewModel.ViewModels;
-using Ninject;
 using System;
 using System.Collections.Generic;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
@@ -14,13 +13,11 @@ namespace HLP.Entries.ViewModel.Commands
 {
     public class Tipo_documentoCommands
     {
-        public ITipo_documentoRepository tipo_documentoRepository { get; set; }
+        private Tipo_documentoService.IserviceTipo_documentoClient servicoTipoDocumento = new Tipo_documentoService.IserviceTipo_documentoClient();
+
         Tipo_documentoViewModel objViewModel;
         public Tipo_documentoCommands(Tipo_documentoViewModel vViewModel)
-        {
-            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
-            kernel.Settings.ActivationCacheDisabled = false;
-            kernel.Inject(this);
+        {          
 
             this.objViewModel = vViewModel;
 
@@ -43,11 +40,11 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
-        public void Save()
+        public async void Save()
         {
             try
             {
-                this.tipo_documentoRepository.Save(documento: this.objViewModel.currentTipo_documento);
+                await this.servicoTipoDocumento.SaveAsync(documento: this.objViewModel.currentTipo_documento);
                 this.objViewModel.commandSalvarBase.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -63,9 +60,9 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.commandSalvarBase.CanExecute(parameter: null);
         }
 
-        public void Delete(object objTipo_documento)
+        public async void Delete(object objTipo_documento)
         {
-            this.tipo_documentoRepository.Delete(idTipoDocumento: Convert.ToInt32(value: (objTipo_documento as Tipo_documentoModel)
+            await this.servicoTipoDocumento.DeleteAsync(idTipoDocumento: Convert.ToInt32(value: (objTipo_documento as Tipo_documentoModel)
                 .idTipoDocumento));
             this.objViewModel.commandDeletarBase.Execute(parameter: null);
         }

@@ -20,7 +20,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         DataAccessor<PesquisaRapidaModel> regAcessor = null;
 
 
-        public PesquisaRapidaModel GetValorDisplay(string _TableView, IList _Items, string _FieldPesquisa, int? _iValorPesquisa)
+        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int? _iValorPesquisa)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
 
 
                         string sDisplay = string.Empty;
-                        foreach (string col in (_Items as List<string>).Distinct())
+                        foreach (string col in (_Items.ToList()).Distinct())
                         {
                             if (UndTrabalho.ColunaExistis(_TableView, col.ToString()))
                             {
@@ -70,7 +70,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),
                             MapBuilder<PesquisaRapidaModel>.MapAllProperties().Build());
                     }
-                    return regAcessor.Execute(_iValorPesquisa).FirstOrDefault();
+                    return regAcessor.Execute(_iValorPesquisa).FirstOrDefault().Display;
                 }
                 else
                 {

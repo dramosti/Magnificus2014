@@ -1,37 +1,34 @@
 ﻿<runtime:WindowsBase
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
-     xmlns:System="clr-namespace:System;assembly=mscorlib"         
+        xmlns:System="clr-namespace:System;assembly=mscorlib"         
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
-        xmlns:regiao="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
         Title="Uf" Height="300" Width="500" NameView="vwUF">
-    <Window.Resources>
-        <ObjectDataProvider x:Key="odpRegiao" ObjectType="{x:Type regiao:RegiaoViewModel}"/>
-        <ObjectDataProvider x:Key="lRegiao" ObjectInstance="{StaticResource odpRegiao}"  MethodName="GetAll"/>        
-    </Window.Resources>
     <Grid Name="gridPropriedades">
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Margin="0,8,0,0">
 
             <Components:HlpTextBox Text="{Binding currentModel.idUF, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="0,4,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-    		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="0,4,0,0" WidthLabel="100"/>
+    		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="0,8,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}" 
     		Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-    		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
+    		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,8,0,0" WidthLabel="100"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
-    		Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True
-                , NotifyOnValidationError=True}"
-    		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,4,0,0" WidthLabel="100"/>
-            <Components:HlpComboBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
-            ItemsSource="{Binding Source={StaticResource lRegiao}}"
-        	SelectedValuePath="idRegiao" SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay,
-                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" DisplayMemberPath="xRegiao"
-        	HorizontalAlignment="Left" VerticalAlignment="Top" Width="269" WidthLabel="100" Caption="Região" Margin="0,4,0,0"/>            
-           
+    		Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True                , NotifyOnValidationError=True}"
+    		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,8,0,0" WidthLabel="100"/>
+            <Components:HlpPesquisa 
+                Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="0,8,22,0">
+                <Components:HlpPesquisa.Items>
+                    <System:String>xRegiao</System:String>
+                    <System:String>xPais</System:String>
+                </Components:HlpPesquisa.Items>
+            </Components:HlpPesquisa>
+
 
         </StackPanel>
     </Grid>
-    </runtime:WindowsBase>
+</runtime:WindowsBase>

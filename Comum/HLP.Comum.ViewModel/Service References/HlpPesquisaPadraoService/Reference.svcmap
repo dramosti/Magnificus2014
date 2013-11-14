@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="eb978745-ce3a-48e7-8c33-b45e7addfbd3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceHlpPesquisaPadrao.xsd" MetadataType="Schema" ID="8980615e-bcc4-4ff8-ba73-cbd7e4453aa7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao1.xsd" MetadataType="Schema" ID="f09536bc-23f4-4fbc-b095-654caae90924" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao2.xsd" MetadataType="Schema" ID="826f43d2-9ea6-444c-a51d-3573229ce18e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao3.xsd" MetadataType="Schema" ID="df523df1-77a1-455b-baaa-af1d431305f6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao4.xsd" MetadataType="Schema" ID="88a3dd14-0655-4b6e-af84-250d65aa37c0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd6" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao.disco" MetadataType="Disco" ID="2dbe0329-174e-4f92-ba7e-31034fe2dca1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?disco" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao5.xsd" MetadataType="Schema" ID="6d91c506-325e-4775-ba3f-a7d2d359a55d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao6.xsd" MetadataType="Schema" ID="939d258e-7c06-4bca-b3c5-d9c007a288f7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao.wsdl" MetadataType="Wsdl" ID="869fc66a-8bb0-4ce2-a134-66fd03f3464b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
