@@ -5,24 +5,59 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="800" Width="1024">
 	<Grid>
-		<TabControl HorizontalAlignment="Left" Height="770" VerticalAlignment="Top" Width="1016" Background="{x:Null}">
+		<TabControl HorizontalAlignment="Left" Height="800" Width="1024" VerticalAlignment="Top" Background="{x:Null}">
 			<TabItem Header="Geral" Background="{x:Null}">
 				<Grid>
 					<WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" >
 						<Expander Header="Identificação" Height="742" Width="335" IsExpanded="True">
-							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-								<Components:HlpTextBox Height="30" Margin="20,20,35,10" Caption="Código de Origem do Funcionário" Field="idFuncionario" Help="Chave principal do registro do Funcionário" Table="Funcionario"/>
-								<Components:HlpTextBox Height="30" Margin="20,0,35,10" Caption="Código Alternativo " Field="xCódigoAlternativo" Help="Digite um código alternativo para o Funcionário " Table="Funcionario"/>
-								<Components:HlpCheckBox Height="30" Margin="20,0,246,20" Caption="Ativo" Field="Ativo" Help="Informe o status do funcionário, se ele está ativo ou não para a empresa" Table="Funcionario"/>
-								<Components:HlpTextBox Height="30" Margin="20,0,35,10" Caption="Saudação" Field="xSaudação" Help="Especifique a forma de saudação preferencial de um funcionário" Table="Funcionario"/>
-								<Components:HlpTextBox Height="30" Margin="20,0,35,10"/>
+							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ><Components:HlpTextBox
+									Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}" 
+									Height="30" Margin="10,20,35,10" Caption="Código de Origem do Funcionário" Field="idFuncionario" Help="Chave principal do registro do Funcionário" Table="Funcionario" WidthLabel="244"/>
+								<Components:HlpTextBox
+									Text="{Binding currentModel.xCodigoAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,35,10" Caption="Código Alternativo " Field="xCodigoAlternativo" Help="Digite um código alternativo para o Funcionário " Table="Funcionario" WidthLabel="142"/>
+								<Components:HlpCheckBox 
+									IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,243,20" Caption="Ativo" Field="Ativo" Help="Informe o status do funcionário, se ele está ativo ou não para a empresa" Table="Funcionario" WidthLabel="49"/>
+								<Components:HlpTextBox 
+									Text="{Binding currentModel.xSaudacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,35,10" Caption="Saudação" Field="xSaudacao" Help="Especifique a forma de saudação preferencial de um funcionário" Table="Funcionario" WidthLabel="142"/>
+								<Components:HlpTextBox 
+									Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,35,10" Caption="Nome" Field="xNome" Help="Informe o nome do funcionário." Table="Funcionario" WidthLabel="142"/>
+								<Components:HlpPesquisa 
+									Text="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,35,10" Caption="Cargo" Field="idCargo" Help="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="142"/>
+								<Components:HlpPesquisa 
+									Text="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,35,10" Caption="Departamento" Field="idDepartamento" Help="Informar o Departamento do funcionário" Table="Departamento" WidthLabel="142"/>
 							</StackPanel>
 						</Expander>
 						<Expander Header="Administração" Height="742" Width="335" IsExpanded="True">
-							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+								<Components:HlpComboBox
+									SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay,UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="9,20,10,10" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128"/>
+								<Components:HlpPesquisa
+									Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="30" Margin="10,0,10,10" Caption="Calendário" Field="idCalendário" Help="Informe um tipo de Calendário para o funcionário." Table="Calendario" WidthLabel="128"/>
+							</StackPanel>
 						</Expander>
 						<Expander Header="Requisição de Compras" Height="742" Width="335" IsExpanded="True">
-							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+							<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+								<Components:HlpPesquisa Height="30" Margin="10,20,10,10" Caption="Site Padrão" Field="idSite" Help="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." Table="Site" WidthLabel="178"/>
+								<Components:HlpPesquisa Height="30" Margin="10,0,10,10" Caption="Depósito Padrão" Field="idDeposito" Help="Selecione um depósito. Quando um funcionário criar uma requisição de compra, o depósito será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra" Table="Deposito" WidthLabel="178"/>
+								<Components:HlpTextBox Height="30" Margin="10,0,10,10" Caption="Informações de Atenção" Field="xInformacaoAtencao" Help="Insira informações sobre endereço de entrega adicional para um funcionário como, por exemplo, localização do escritório. As informações de atenção são automaticamente transferidas para o cabeçalho e para as linhas da requisição de compra" Table="Funcionario" WidthLabel="178"/>
+							</StackPanel>
 						</Expander>
 					</WrapPanel>
 				</Grid>
