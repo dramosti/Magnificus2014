@@ -10,7 +10,7 @@ namespace HLP.Comum.Model.Repository.Interfaces.Components
 {
     public interface IHlpPesquisaRapidaRepository
     {
-        PesquisaRapidaModel GetValorDisplay(string _TableView, IList _Items, string _FieldPesquisa, int? _iValorPesquisa);
+        string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int? _iValorPesquisa);
 
     }
 }

@@ -12,7 +12,6 @@ using HLP.Comum.Model.Models;
 using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.ViewModel.Commands.Components;
 using HLP.Dependencies;
-using Ninject;
 
 namespace HLP.Comum.ViewModel.ViewModels.Components
 {
@@ -23,11 +22,6 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
         public ICommand commandPesquisar { get; set; }
         public ICommand commandLimpar { get; set; }
 
-
-        [Inject]
-        public IHlpPesquisaPadraoRepository iHlpPesquisaPadraoRepository { get; set; }
-
-        private IKernel kernel = null;
 
         private ObservableCollection<PesquisaPadraoModel> _lFilers;
 

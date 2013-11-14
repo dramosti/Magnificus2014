@@ -10,23 +10,17 @@ using HLP.Dependencies;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Repository.Interfaces;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
-using Ninject;
 using HLP.Entries.ViewModel.ViewModels;
 
 namespace HLP.Entries.ViewModel.Commands
 {
     public class RegiaoCommands
     {
-        [Inject]
         public IRegiaoRepository iRegiaoRepository { get; set; }
 
         RegiaoViewModel objRegiaoViewModel;
         public RegiaoCommands(RegiaoViewModel objRegiaoViewModel)
         {
-            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
-            kernel.Settings.ActivationCacheDisabled = false;
-            kernel.Inject(this);
-
             this.objRegiaoViewModel = objRegiaoViewModel;
 
             this.objRegiaoViewModel.commandTeste = new RelayCommand(param => TESTE(), exec => true);

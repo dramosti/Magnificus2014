@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject">
-      <HintPath>..\..\Comum\HLP.Comum.Infrastructure\NInject\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -58,7 +55,6 @@
     <Compile Include="Commands\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
     <Compile Include="Commands\EmpresaCommands.cs" />
-    <Compile Include="Commands\FuncionarioCommands.cs" />
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
@@ -89,7 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\funcionarioService\Reference.cs">
+    <Compile Include="Service References\Tipo_documentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -109,7 +105,6 @@
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
-    <Compile Include="ViewModels\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
@@ -147,10 +142,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Fiscal.Tipo_documentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
-    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.CargoModel.datasource" />
@@ -235,20 +230,20 @@
     <None Include="Service References\empresaService\serviceEmpresa4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario.wsdl" />
-    <None Include="Service References\funcionarioService\serviceFuncionario.xsd">
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento.wsdl" />
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario1.xsd">
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario2.xsd">
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario3.xsd">
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario4.xsd">
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ufService\serviceUf4.xsd">
@@ -290,7 +285,7 @@
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
-    <WCFMetadataStorage Include="Service References\funcionarioService\" />
+    <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
   </ItemGroup>
@@ -400,16 +395,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\serviceFuncionario.disco" />
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\configuration91.svcinfo" />
+    <None Include="Service References\Tipo_documentoService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\configuration.svcinfo" />
+    <None Include="Service References\Tipo_documentoService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\Reference.svcmap">
+    <None Include="Service References\Tipo_documentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

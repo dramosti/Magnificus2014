@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Model.Components;
 using HLP.Comum.Model.Repository.Interfaces.Components;
+using HLP.Comum.ViewModel.HlpPesquisaPadraoService;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
-using Ninject;
 
 namespace HLP.Comum.ViewModel.Commands.Components
 {
@@ -19,12 +19,10 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         private HlpPesquisaPadraoViewModel _objViewModel;
 
-        [Inject]
-        public IHlpPesquisaPadraoRepository iHlpPesquisaPadraoRepository { get; set; }
+        private HlpPesquisaPadraoService.IserviceHlpPesquisaPadraoClient servicoPesquisaPadrao = new IserviceHlpPesquisaPadraoClient();
 
-        IKernel kernel;
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
-        {                    
+        {
 
             _objViewModel = objViewModel;
             CarregaInformationTable(_objViewModel.sView);
@@ -46,7 +44,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                     bw.RunWorkerAsync(argument: param);
         }
 
-        void ExecPesquisa(object sender, DoWorkEventArgs e)
+        async void ExecPesquisa(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -99,14 +97,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                         sql.Append(s + " ");
                     }
                 }
-                if (kernel == null)
-                {
-                    kernel = new StandardKernel(new MagnificusDependenciesModule());
-                    kernel.Settings.ActivationCacheDisabled = false;
-                    kernel.Inject(this);
-                }   
-                _objViewModel.Result = iHlpPesquisaPadraoRepository.GetData(sql.ToString());
-                //OrdenaColunasDataTable(dt);                
+                _objViewModel.Result = await servicoPesquisaPadrao.GetDataAsync(sql.ToString(), false, "", true);
             }
             catch (Exception ex)
             {
@@ -150,15 +141,18 @@ namespace HLP.Comum.ViewModel.Commands.Components
                     bw.RunWorkerAsync(argument: param);
         }
 
-        private void GetTableInformation_Background(object sender, DoWorkEventArgs e)
+        async void GetTableInformation_Background(object sender, DoWorkEventArgs e)
         {
-            if (kernel == null)
+            try
             {
-                kernel = new StandardKernel(new MagnificusDependenciesModule());
-                kernel.Settings.ActivationCacheDisabled = false;
-                kernel.Inject(this);
-            }   
-            _objViewModel.lFilers = iHlpPesquisaPadraoRepository.GetTableInformation(sViewName: e.Argument.ToString());
+                PesquisaPadraoModel[] lResult = await servicoPesquisaPadrao.GetTableInformationAsync(sViewName: e.Argument.ToString());
+                _objViewModel.lFilers = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(lResult.ToList());
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
+            
         }
 
 
