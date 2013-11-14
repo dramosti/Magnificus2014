@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public FuncionarioModel(campoSqlModel[] lCamposSql)
             : base()
         {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
+            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         private int? _idFuncionario;
@@ -183,7 +183,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public Funcionario_EnderecoModel(campoSqlModel[] lCampopsSql)
             : base()
         {
-            base.lcamposSqlNotNull = lCampopsSql.ToList();
+            lcamposSqlNotNull = lCampopsSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -226,7 +226,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Funcionario_ArquivoModel(campoSqlModel[] lCamposSql)
         {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
+            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -247,7 +247,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Funcionario_CertificacaoModel(campoSqlModel[] lCamposSql)
         {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
+            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -274,7 +274,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Funcionario_Comissao_ProdutoModel(campoSqlModel[] lCamposSql)
         {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
+            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -298,7 +298,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Funcionario_Margem_Lucro_ComissaoModel(campoSqlModel[] lCamposSql)
         {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
+            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -323,7 +323,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public Funcionario_AcessoModel(campoSqlModel[] lCamposSql)
         {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
+            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]

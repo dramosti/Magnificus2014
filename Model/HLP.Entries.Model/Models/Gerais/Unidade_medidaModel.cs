@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public Unidade_medidaModel(campoSqlModel[] lCampos)
             : base()
         {
-            base.lcamposSqlNotNull = lCampos.ToList();
+            lcamposSqlNotNull = lCampos.ToList();
         }
 
         private int? _idUnidadeMedida;

@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public CidadeModel(campoSqlModel[] aCamposSql)
             : base()
         {
-            base.lcamposSqlNotNull = aCamposSql.ToList();
+            lcamposSqlNotNull = aCamposSql.ToList();
         }
 
         private int? _idCidade;

@@ -20,7 +20,7 @@ namespace HLP.Entries.Model.Models.Gerais
             : base()
         {
             //base.CarregaEmptyString();
-            base.lcamposSqlNotNull = aCamposSql.ToList();
+            lcamposSqlNotNull = aCamposSql.ToList();
         }
 
         private int? _idUF;

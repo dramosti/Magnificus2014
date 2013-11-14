@@ -11,7 +11,7 @@ namespace HLP.Comum.Model.Models
 {
     public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
-        protected List<campoSqlModel> lcamposSqlNotNull;
+        public List<campoSqlModel> lcamposSqlNotNull;
         public statusModel status { get; set; }
 
         public modelBase()

@@ -124,6 +124,7 @@ namespace HLP.Entries.ViewModel.Commands
         private void Alterar()
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this.objViewModel.currentModel.lcamposSqlNotNull = this.objViewModel.lCampos.ToList();
         }
         private bool AlterarCanExecute()
         {
