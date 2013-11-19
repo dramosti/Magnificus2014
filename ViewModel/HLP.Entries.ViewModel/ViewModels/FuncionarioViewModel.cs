@@ -1,6 +1,7 @@
 ﻿using HLP.Comum.Model.Models;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.ViewModel.Commands;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
 using System.Collections.Generic;
