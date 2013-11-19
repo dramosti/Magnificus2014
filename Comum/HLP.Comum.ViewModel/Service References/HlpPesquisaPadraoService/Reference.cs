@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Comum.ViewModel.PesquisaPadraoService {
+namespace HLP.Comum.ViewModel.HlpPesquisaPadraoService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PesquisaPadraoService.IservicePesquisaPadrao")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HlpPesquisaPadraoService.IservicePesquisaPadrao")]
     public interface IservicePesquisaPadrao {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePesquisaPadrao/GetTableInformation", ReplyAction="http://tempuri.org/IservicePesquisaPadrao/GetTableInformationResponse")]
@@ -29,12 +29,12 @@ namespace HLP.Comum.ViewModel.PesquisaPadraoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IservicePesquisaPadraoChannel : HLP.Comum.ViewModel.PesquisaPadraoService.IservicePesquisaPadrao, System.ServiceModel.IClientChannel {
+    public interface IservicePesquisaPadraoChannel : HLP.Comum.ViewModel.HlpPesquisaPadraoService.IservicePesquisaPadrao, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IservicePesquisaPadraoClient : System.ServiceModel.ClientBase<HLP.Comum.ViewModel.PesquisaPadraoService.IservicePesquisaPadrao>, HLP.Comum.ViewModel.PesquisaPadraoService.IservicePesquisaPadrao {
+    public partial class IservicePesquisaPadraoClient : System.ServiceModel.ClientBase<HLP.Comum.ViewModel.HlpPesquisaPadraoService.IservicePesquisaPadrao>, HLP.Comum.ViewModel.HlpPesquisaPadraoService.IservicePesquisaPadrao {
         
         public IservicePesquisaPadraoClient() {
         }

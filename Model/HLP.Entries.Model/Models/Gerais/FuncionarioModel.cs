@@ -14,12 +14,6 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        public FuncionarioModel()
-            : base()
-        {
-            
-        }
-
         private int? _idFuncionario;
 
         [ParameterOrder(Order = 1)]

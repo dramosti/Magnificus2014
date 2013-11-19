@@ -109,28 +109,21 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract1.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Models.campoSqlModel.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataSet1.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.wsdl" />
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.xsd">
+    <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao.wsdl" />
+    <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao1.xsd">
+    <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao2.xsd">
+    <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao6.xsd">
+    <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -138,7 +131,7 @@
     <WCFMetadataStorage Include="Service References\HlpPesquisaPadraoService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.disco" />
+    <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\HlpPesquisaPadraoService\configuration91.svcinfo" />

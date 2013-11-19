@@ -19,7 +19,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         private HlpPesquisaPadraoViewModel _objViewModel;
 
-        private PesquisaPadraoService.IservicePesquisaPadraoClient servicoPesquisaPadrao;
+        private HlpPesquisaPadraoService.IservicePesquisaPadraoClient servicoPesquisaPadrao;
 
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
         {
@@ -98,7 +98,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                     }
                 }
                 if (servicoPesquisaPadrao == null)
-                    servicoPesquisaPadrao = new PesquisaPadraoService.IservicePesquisaPadraoClient();
+                    servicoPesquisaPadrao = new HlpPesquisaPadraoService.IservicePesquisaPadraoClient();
 
                 DataSet retorno = await servicoPesquisaPadrao.GetDataAsync(sql.ToString(), false, "", true);
                 _objViewModel.Result = retorno.Tables[0];
@@ -147,7 +147,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
             try
             {
                 if (servicoPesquisaPadrao == null)
-                    servicoPesquisaPadrao = new PesquisaPadraoService.IservicePesquisaPadraoClient();
+                    servicoPesquisaPadrao = new HlpPesquisaPadraoService.IservicePesquisaPadraoClient();
 
                 PesquisaPadraoModelContract[] lResult = await servicoPesquisaPadrao.GetTableInformationAsync(sViewName: e.Argument.ToString());
 
