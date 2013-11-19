@@ -11,13 +11,8 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
     public partial class DepartamentoModel : modelBase
     {
         public DepartamentoModel()
+            : base("Departamento")
         {
-        }
-
-        public DepartamentoModel(campoSqlModel[] lCamposSql)
-            : base()
-        {
-            base.lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         private int? _idDepartamento;

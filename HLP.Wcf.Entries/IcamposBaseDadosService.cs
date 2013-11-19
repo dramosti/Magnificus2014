@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Comum.Model.Components;
+using HLP.Comum.Model.Models;
 using System.Collections.Generic;
 using System.ServiceModel;
 
@@ -9,6 +10,6 @@ namespace HLP.Wcf.Entries
     public interface IcamposBaseDadosService
     {
         [OperationContract]
-        List<campoSqlModel> getCamposNotNull(string xTabela);
+        List<PesquisaPadraoModelContract> getCamposNotNull(string xTabela);
     }
 }

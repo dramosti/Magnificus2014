@@ -1,5 +1,4 @@
 ﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using HLP.Comum.Model.Repository.Implementation.Components;
 using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 using HLP.Comum.Model.Repository.Interfaces.Components;
@@ -25,7 +24,6 @@ namespace HLP.Dependencies
         protected void ResolveRepositories()
         {
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
-            Bind<ImodelBaseRepository>().To<modelBaseRepository>();
             Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
 
             //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();

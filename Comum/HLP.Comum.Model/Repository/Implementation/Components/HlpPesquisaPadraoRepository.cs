@@ -59,6 +59,18 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
             return regPesquisaPadraoContractAccessor.Execute(sViewName).ToArray();
         }
 
+        public List<PesquisaPadraoModelContract> getCamposSqlNotNull(string xTabela)
+        {
+            regPesquisaPadraoContractAccessor = this.UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                   sqlString: ("select c.COLUMN_NAME, (select keyC.type from sys.key_constraints keyC " +
+                               "where keyC.name = (select const.CONSTRAINT_NAME from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE const " +
+                               "where const.TABLE_NAME = c.TABLE_NAME and const.COLUMN_NAME = c.COLUMN_NAME)) as DATA_TYPE " +
+                               "from INFORMATION_SCHEMA.COLUMNS c " +
+                               "where c.TABLE_NAME = '" + xTabela + "' and IS_NULLABLE = 'NO'"),
+                               rowMapper: MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().Build());
+            return regPesquisaPadraoContractAccessor.Execute().ToList();
+        }
+
 
         public object GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
         {

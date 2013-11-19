@@ -11,6 +11,7 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class FuncionarioModel : modelBase
     {
         public FuncionarioModel()
+            : base(xTabela: "Funcionario")
         {
         }
 
@@ -174,12 +175,6 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        public Funcionario_EnderecoModel(campoSqlModel[] lCampopsSql)
-            : base()
-        {
-            lcamposSqlNotNull = lCampopsSql.ToList();
-        }
-
         [ParameterOrder(Order = 1)]
         public int? idEndereco { get; set; }
         [ParameterOrder(Order = 2)]
@@ -218,11 +213,6 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        public Funcionario_ArquivoModel(campoSqlModel[] lCamposSql)
-        {
-            lcamposSqlNotNull = lCamposSql.ToList();
-        }
-
         [ParameterOrder(Order = 1)]
         public int? idFuncionarioArquivo { get; set; }
         [ParameterOrder(Order = 2)]
@@ -237,11 +227,6 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public Funcionario_CertificacaoModel()
         {
-        }
-
-        public Funcionario_CertificacaoModel(campoSqlModel[] lCamposSql)
-        {
-            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -266,11 +251,6 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        public Funcionario_Comissao_ProdutoModel(campoSqlModel[] lCamposSql)
-        {
-            lcamposSqlNotNull = lCamposSql.ToList();
-        }
-
         [ParameterOrder(Order = 1)]
         public int? idFuncionarioComissaoProduto { get; set; }
         [ParameterOrder(Order = 2)]
@@ -288,11 +268,6 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public Funcionario_Margem_Lucro_ComissaoModel()
         {
-        }
-
-        public Funcionario_Margem_Lucro_ComissaoModel(campoSqlModel[] lCamposSql)
-        {
-            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]
@@ -313,11 +288,6 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public Funcionario_AcessoModel()
         {
-        }
-
-        public Funcionario_AcessoModel(campoSqlModel[] lCamposSql)
-        {
-            lcamposSqlNotNull = lCamposSql.ToList();
         }
 
         [ParameterOrder(Order = 1)]

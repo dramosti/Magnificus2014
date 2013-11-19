@@ -5,6 +5,9 @@ using HLP.Dependencies;
 using HLP.Comum.Resources.Util;
 using HLP.Comum.Model.Models;
 using System.Collections.Generic;
+using HLP.Comum.Model.Repository.Interfaces.Components;
+using HLP.Comum.Model.Components;
+using System.Runtime.Serialization;
 
 namespace HLP.Wcf.Entries
 {
@@ -13,7 +16,7 @@ namespace HLP.Wcf.Entries
     public class camposBaseDadosService : IcamposBaseDadosService
     {
         [Inject]
-        public ImodelBaseRepository modelBaseRepository { get; set; }
+        public IHlpPesquisaPadraoRepository pesquisaPadraoRepository { get; set; }
 
         public camposBaseDadosService()
         {
@@ -33,11 +36,11 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public List<campoSqlModel> getCamposNotNull(string xTabela)
+        public List<PesquisaPadraoModelContract> getCamposNotNull(string xTabela)
         {
             try
             {
-                return modelBaseRepository.getCamposSqlNotNull(xTabela: xTabela);
+                return pesquisaPadraoRepository.getCamposSqlNotNull(xTabela: xTabela);
             }
             catch (Exception e)
             {

@@ -17,5 +17,6 @@ namespace HLP.Comum.Model.Repository.Interfaces.Components
         object GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true);
         PesquisaPadraoModel[] GetTableInformation(string sViewName);
         PesquisaPadraoModelContract[] GetTableInformationContract(string sViewName);
+        List<PesquisaPadraoModelContract> getCamposSqlNotNull(string xTabela);
     }
 }

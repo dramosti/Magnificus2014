@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
-using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +10,8 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class DecisaoModel : modelBase
     {
-        public DecisaoModel()
+        public DecisaoModel(): base("Decisao")
         {
-        }
-
-        public DecisaoModel(campoSqlModel[] lcampoSql)
-            : base()
-        {
-            base.lcamposSqlNotNull = lcampoSql.ToList();
         }
 
         private int? _idDecisao;

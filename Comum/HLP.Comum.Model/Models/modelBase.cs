@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
 using System.Reflection;
 using HLP.Comum.Model.StaticModels;
+using HLP.Comum.Model.Components;
 
 namespace HLP.Comum.Model.Models
 {
     public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
-        public List<campoSqlModel> lcamposSqlNotNull;
-        camposBaseDadosService.IcamposBaseDadosServiceClient service = new camposBaseDadosService.IcamposBaseDadosServiceClient();
-
+        public List<PesquisaPadraoModelContract> lcamposSqlNotNull;
         public statusModel status { get; set; }
+        camposNotNullService.IcamposBaseDadosServiceClient servico = new camposNotNullService.IcamposBaseDadosServiceClient();
 
         public modelBase()
         {
@@ -28,14 +28,21 @@ namespace HLP.Comum.Model.Models
             {
                 CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
                 lCampos.xTabela = xTabela;
-                //TODO: Chamar wcf para retornar campos
+                lCampos.lCamposSqlModel = new List<PesquisaPadraoModelContract>();
+
+                foreach (var item in servico.getCamposNotNull(xTabela: xTabela))
+                {
+                    lCampos.lCamposSqlModel.Add(item: new PesquisaPadraoModelContract
+                    {
+                        COLUMN_NAME = item.COLUMN_NAME,
+                        DATA_TYPE = item.DATA_TYPE
+                    });
+                }
+
                 lCamposSqlNotNull.AddCampoSqlNotNull(objCamposSqlNotNull: lCampos);
             }
-            else
-            {
-                lcamposSqlNotNull = lCamposSqlNotNull._lCamposSqlNotNull.FirstOrDefault(i => i.xTabela
+            lcamposSqlNotNull = lCamposSqlNotNull._lCamposSqlNotNull.FirstOrDefault(i => i.xTabela
                     == xTabela).lCamposSqlModel;
-            }
         }
 
         #region NotifyPropertyChanged
@@ -86,14 +93,14 @@ namespace HLP.Comum.Model.Models
         {
             if (lcamposSqlNotNull != null)
             {
-                campoSqlModel campo = lcamposSqlNotNull.FirstOrDefault(predicate:
+                PesquisaPadraoModelContract campo = lcamposSqlNotNull.FirstOrDefault(predicate:
                     i => i.COLUMN_NAME == columnName);
                 if (campo != null)
                 {
                     object valor = objeto.GetType().GetProperty(columnName).GetValue(objeto);
-                    if (campo.TYPE == "F " && valor == "0")
+                    if (campo.DATA_TYPE == "F " && valor == "0")
                         return "Necessário que campo possua valor!";
-                    else if ((campo.TYPE == null || campo.TYPE == "UQ")
+                    else if ((campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
                         && (valor == "" || valor == null))
                     {
                         return "Necessário que campo possua valor!";

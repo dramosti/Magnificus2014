@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Comum.Model.Components;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace HLP.Comum.Model.Repository.Interfaces.ClassesBases
 {
     public interface ImodelBaseRepository
     {
-        List<campoSqlModel> getCamposSqlNotNull(string xTabela);
+        List<PesquisaPadraoModelContract> getCamposSqlNotNull(string xTabela);
     }
 }

@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Comum.Model.camposBaseDadosService {
+namespace HLP.Comum.Model.camposNotNullService {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="campoSqlModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components")]
     [System.SerializableAttribute()]
-    public partial class campoSqlModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PesquisaPadraoModelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -26,7 +26,7 @@ namespace HLP.Comum.Model.camposBaseDadosService {
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TYPEField;
+        private string DATA_TYPEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -52,14 +52,14 @@ namespace HLP.Comum.Model.camposBaseDadosService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TYPE {
+        public string DATA_TYPE {
             get {
-                return this.TYPEField;
+                return this.DATA_TYPEField;
             }
             set {
-                if ((object.ReferenceEquals(this.TYPEField, value) != true)) {
-                    this.TYPEField = value;
-                    this.RaisePropertyChanged("TYPE");
+                if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
+                    this.DATA_TYPEField = value;
+                    this.RaisePropertyChanged("DATA_TYPE");
                 }
             }
         }
@@ -75,23 +75,23 @@ namespace HLP.Comum.Model.camposBaseDadosService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="camposBaseDadosService.IcamposBaseDadosService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="camposNotNullService.IcamposBaseDadosService")]
     public interface IcamposBaseDadosService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IcamposBaseDadosService/getCamposNotNull", ReplyAction="http://tempuri.org/IcamposBaseDadosService/getCamposNotNullResponse")]
-        System.Collections.Generic.List<HLP.Comum.Model.camposBaseDadosService.campoSqlModel> getCamposNotNull(string xTabela);
+        HLP.Comum.Model.camposNotNullService.PesquisaPadraoModelContract[] getCamposNotNull(string xTabela);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IcamposBaseDadosService/getCamposNotNull", ReplyAction="http://tempuri.org/IcamposBaseDadosService/getCamposNotNullResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Comum.Model.camposBaseDadosService.campoSqlModel>> getCamposNotNullAsync(string xTabela);
+        System.Threading.Tasks.Task<HLP.Comum.Model.camposNotNullService.PesquisaPadraoModelContract[]> getCamposNotNullAsync(string xTabela);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IcamposBaseDadosServiceChannel : HLP.Comum.Model.camposBaseDadosService.IcamposBaseDadosService, System.ServiceModel.IClientChannel {
+    public interface IcamposBaseDadosServiceChannel : HLP.Comum.Model.camposNotNullService.IcamposBaseDadosService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IcamposBaseDadosServiceClient : System.ServiceModel.ClientBase<HLP.Comum.Model.camposBaseDadosService.IcamposBaseDadosService>, HLP.Comum.Model.camposBaseDadosService.IcamposBaseDadosService {
+    public partial class IcamposBaseDadosServiceClient : System.ServiceModel.ClientBase<HLP.Comum.Model.camposNotNullService.IcamposBaseDadosService>, HLP.Comum.Model.camposNotNullService.IcamposBaseDadosService {
         
         public IcamposBaseDadosServiceClient() {
         }
@@ -112,11 +112,11 @@ namespace HLP.Comum.Model.camposBaseDadosService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<HLP.Comum.Model.camposBaseDadosService.campoSqlModel> getCamposNotNull(string xTabela) {
+        public HLP.Comum.Model.camposNotNullService.PesquisaPadraoModelContract[] getCamposNotNull(string xTabela) {
             return base.Channel.getCamposNotNull(xTabela);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Comum.Model.camposBaseDadosService.campoSqlModel>> getCamposNotNullAsync(string xTabela) {
+        public System.Threading.Tasks.Task<HLP.Comum.Model.camposNotNullService.PesquisaPadraoModelContract[]> getCamposNotNullAsync(string xTabela) {
             return base.Channel.getCamposNotNullAsync(xTabela);
         }
     }

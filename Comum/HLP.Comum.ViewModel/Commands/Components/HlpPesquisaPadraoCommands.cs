@@ -19,7 +19,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         private HlpPesquisaPadraoViewModel _objViewModel;
 
-        private HlpPesquisaPadraoService.IservicePesquisaPadraoClient servicoPesquisaPadrao;
+        private HlpPesquisaPadraoService.IservicePesquisaPadraoClient servicoPesquisaPadrao;        
 
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
         {
@@ -159,13 +159,11 @@ namespace HLP.Comum.ViewModel.Commands.Components
                              }).ToList<PesquisaPadraoModel>();
 
                 _objViewModel.lFilers = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(dados);
-                              
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
 

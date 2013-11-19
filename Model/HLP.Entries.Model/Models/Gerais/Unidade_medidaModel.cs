@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
-using HLP.Comum.Model.Repository.Implementation.ClassesBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +11,8 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class Unidade_medidaModel : modelBase
     {
         public Unidade_medidaModel()
+            : base(xTabela: "Unidade_medida")
         {
-        }
-
-        public Unidade_medidaModel(campoSqlModel[] lCampos)
-            : base()
-        {
-            lcamposSqlNotNull = lCampos.ToList();
         }
 
         private int? _idUnidadeMedida;

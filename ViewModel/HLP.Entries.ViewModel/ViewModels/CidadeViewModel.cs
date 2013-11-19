@@ -43,8 +43,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         {
             get
             {
-                return this._currentModel == null ?
-                    this._currentModel = new CidadeModel() : this._currentModel;
+                return this._currentModel;
             }
             set
             {

@@ -11,13 +11,8 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
     public partial class CargoModel : modelBase
     {
         public CargoModel()
+            : base("Cargo")
         {
-        }
-
-        public CargoModel(campoSqlModel[] lCampos)
-            : base()
-        {
-            base.lcamposSqlNotNull = lCampos.ToList();
         }
 
         private int? _idCargo;
