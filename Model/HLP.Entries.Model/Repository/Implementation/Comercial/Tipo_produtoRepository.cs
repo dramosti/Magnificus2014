@@ -26,7 +26,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regCanalAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_tipo_produto",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idTipoProduto"),
-                                    MapBuilder<Tipo_produtoModel>.MapAllProperties().Build());
+                                    MapBuilder<Tipo_produtoModel>.MapAllProperties()
+                                    .DoNotMap(c=>c.status)                                    
+                                    .Build());
             }
             return regCanalAccessor.Execute(idTipoProduto).FirstOrDefault();
         }
@@ -38,6 +40,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 int idTipoProduto = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
                    "dbo.Proc_save_tipo_produto",
                   ParameterBase<Tipo_produtoModel>.SetParameterValue(tipo));
+                
 
                 tipo.idTipoProduto = idTipoProduto;
             }

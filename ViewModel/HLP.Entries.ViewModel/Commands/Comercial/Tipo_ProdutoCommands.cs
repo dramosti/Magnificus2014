@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
+using HLP.Entries.ViewModel.ViewModels;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -12,8 +13,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         Tipo_ProdutoViewModel objViewModel;
 
+        
+
         public Tipo_ProdutoCommands(Tipo_ProdutoViewModel _objViewModel) 
         {
+           
+ 
             this.objViewModel = _objViewModel;
         }
 

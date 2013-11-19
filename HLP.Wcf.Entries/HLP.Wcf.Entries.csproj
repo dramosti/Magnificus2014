@@ -95,7 +95,7 @@
     <Content Include="servicePesquisaRapida.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceTipo_documento.svc" />
-    <Content Include="serviceTipo_produto.svc" />
+    <Content Include="serviceTipoProduto.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Web.config" />
@@ -115,7 +115,7 @@
     <Compile Include="IservicePesquisaRapida.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
-    <Compile Include="IserviceTipo_produto.cs" />
+    <Compile Include="IserviceTipoProduto.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="serviceCargo.svc.cs">
       <DependentUpon>serviceCargo.svc</DependentUpon>
@@ -147,8 +147,8 @@
     <Compile Include="serviceTipo_documento.svc.cs">
       <DependentUpon>serviceTipo_documento.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceTipo_produto.svc.cs">
-      <DependentUpon>serviceTipo_produto.svc</DependentUpon>
+    <Compile Include="serviceTipoProduto.svc.cs">
+      <DependentUpon>serviceTipoProduto.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceUf.svc.cs">
       <DependentUpon>serviceUf.svc</DependentUpon>

@@ -10,7 +10,7 @@ namespace HLP.Wcf.Entries
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceTipo_produto" in both code and config file together.
     [ServiceContract]
-    public interface IserviceTipo_produto
+    public interface IserviceTipoProduto
     {
         [OperationContract]
         Tipo_produtoModel GetTipo(int idTipoProduto);

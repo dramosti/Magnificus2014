@@ -9,6 +9,8 @@ using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject.Modules;
 using HLP.Entries.Model.Repository.Interfaces.RecursosHumanos;
 using HLP.Entries.Model.Repository.Implementation.RecursosHumanos;
+using HLP.Entries.Model.Repository.Interfaces.Comercial;
+using HLP.Entries.Model.Repository.Implementation.Comercial;
 
 namespace HLP.Dependencies
 {
@@ -78,7 +80,7 @@ namespace HLP.Dependencies
             //Bind<ILista_Preco_PaiRepository>().To<Lista_Preco_PaiRepository>();
             //Bind<ILista_precoRepository>().To<Lista_precoRepository>();
             //Bind<IProdutoRepository>().To<ProdutoRepository>();
-            //Bind<ITipo_produtoRepository>().To<Tipo_produtoRepository>();
+            Bind<ITipo_produtoRepository>().To<Tipo_produtoRepository>();
             //Bind<IProduto_localizacaoRepository>().To<Produto_localizacaoRepository>();
             //Bind<ICondicao_pagamentoRepository>().To<Condicao_pagamentoRepository>();
             //Bind<IProduto_Fornecedor_HomologadoRepository>().To<Produto_Fornecedor_HomologadoRepository>();

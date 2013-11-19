@@ -25,6 +25,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         public UFCommands(UFViewModel objViewModel)
         {
+            
 
             this.objViewModel = objViewModel;
 
