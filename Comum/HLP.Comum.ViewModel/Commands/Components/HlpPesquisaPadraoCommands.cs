@@ -19,7 +19,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         private HlpPesquisaPadraoViewModel _objViewModel;
 
-        private HlpPesquisaPadraoService.IserviceHlpPesquisaPadraoClient servicoPesquisaPadrao = new IserviceHlpPesquisaPadraoClient();
+        private HlpPesquisaPadraoService.IserviceHlpPesquisaPadraoClient servicoPesquisaPadrao;
 
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
         {
@@ -97,7 +97,12 @@ namespace HLP.Comum.ViewModel.Commands.Components
                         sql.Append(s + " ");
                     }
                 }
-                _objViewModel.Result = await servicoPesquisaPadrao.GetDataAsync(sql.ToString(), false, "", true);
+                if (servicoPesquisaPadrao == null)
+                    servicoPesquisaPadrao = new IserviceHlpPesquisaPadraoClient();
+
+                var retorno = await servicoPesquisaPadrao.GetDataAsync(sql.ToString(), false, "", true);
+
+                _objViewModel.Result = retorno.TableRecord;
             }
             catch (Exception ex)
             {
@@ -132,27 +137,35 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
 
 
-        private void CarregaInformationTable(object param)
+        private async void CarregaInformationTable(object param)
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetTableInformation_Background);
-            if (param != null)
-                if (param.ToString() != string.Empty)
-                    bw.RunWorkerAsync(argument: param);
+            if (servicoPesquisaPadrao == null)
+                servicoPesquisaPadrao = new IserviceHlpPesquisaPadraoClient();
+            PesquisaPadraoModel[] lResult = await servicoPesquisaPadrao.GetTableInformationAsync(sViewName:param.ToString());
+            _objViewModel.lFilers = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(lResult.ToList());
+
+            //BackgroundWorker bw = new BackgroundWorker();
+            //bw.DoWork += new DoWorkEventHandler(this.GetTableInformation_Background);
+            //if (param != null)
+            //    if (param.ToString() != string.Empty)
+            //        bw.RunWorkerAsync(argument: param);
         }
 
         async void GetTableInformation_Background(object sender, DoWorkEventArgs e)
         {
             try
             {
+                if (servicoPesquisaPadrao == null)
+                    servicoPesquisaPadrao = new IserviceHlpPesquisaPadraoClient();
+
                 PesquisaPadraoModel[] lResult = await servicoPesquisaPadrao.GetTableInformationAsync(sViewName: e.Argument.ToString());
                 _objViewModel.lFilers = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(lResult.ToList());
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
-            
+
         }
 
 

@@ -27,6 +27,7 @@
     <MetadataFile FileName="serviceHlpPesquisaPadrao2.xsd" MetadataType="Schema" ID="826f43d2-9ea6-444c-a51d-3573229ce18e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd0" />
     <MetadataFile FileName="serviceHlpPesquisaPadrao3.xsd" MetadataType="Schema" ID="df523df1-77a1-455b-baaa-af1d431305f6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd1" />
     <MetadataFile FileName="serviceHlpPesquisaPadrao4.xsd" MetadataType="Schema" ID="88a3dd14-0655-4b6e-af84-250d65aa37c0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd6" />
+    <MetadataFile FileName="serviceHlpPesquisaPadrao7.xsd" MetadataType="Schema" ID="9285824a-179c-4be3-b08c-eee75091d433" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd7" />
     <MetadataFile FileName="serviceHlpPesquisaPadrao.disco" MetadataType="Disco" ID="2dbe0329-174e-4f92-ba7e-31034fe2dca1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?disco" />
     <MetadataFile FileName="serviceHlpPesquisaPadrao5.xsd" MetadataType="Schema" ID="6d91c506-325e-4775-ba3f-a7d2d359a55d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd5" />
     <MetadataFile FileName="serviceHlpPesquisaPadrao6.xsd" MetadataType="Schema" ID="939d258e-7c06-4bca-b3c5-d9c007a288f7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd4" />

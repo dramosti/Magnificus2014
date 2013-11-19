@@ -126,6 +126,9 @@
     <None Include="Service References\camposBaseDadosService\camposBaseDadosService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\HlpPesquisaPadraoService\HLP.Comum.ViewModel.HlpPesquisaPadraoService.DetailsView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.wsdl" />
     <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.xsd">
       <SubType>Designer</SubType>
@@ -146,6 +149,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao7.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

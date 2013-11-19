@@ -21,7 +21,9 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
 
         private DataAccessor<PesquisaPadraoModel> regPesquisaPadraoAccessor;
 
-        public ObservableCollection<PesquisaPadraoModel> GetTableInformation(string sViewName)
+        private DataAccessor<PesquisaPadraoModelContract> regPesquisaPadraoContractAccessor;
+
+        public PesquisaPadraoModel[] GetTableInformation(string sViewName)
         {
             if (regPesquisaPadraoAccessor == null)
             {
@@ -39,10 +41,26 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                                                                     .DoNotMap(C=> C.status)
                                                                     .Build());
             }
-            return new ObservableCollection<PesquisaPadraoModel>(regPesquisaPadraoAccessor.Execute(sViewName).ToList());
+            return regPesquisaPadraoAccessor.Execute(sViewName).ToArray();
         }
 
-        public DataTable GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
+        public PesquisaPadraoModelContract[] GetTableInformationContract(string sViewName)
+        {
+            if (regPesquisaPadraoAccessor == null)
+            {
+                regPesquisaPadraoContractAccessor = UndTrabalho.dbPrincipal
+                  .CreateSqlStringAccessor(@"select COLUMN_NAME, DATA_TYPE from INFORMATION_SCHEMA.COLUMNS
+                                           where TABLE_NAME = @sViewName",
+                                 new Parameters(UndTrabalho.dbPrincipal)
+                                 .AddParameter<string>("sViewName"),
+                  MapBuilder<PesquisaPadraoModelContract>.MapAllProperties()
+                                                                    .Build());
+            }
+            return regPesquisaPadraoContractAccessor.Execute(sViewName).ToArray();
+        }
+
+
+        public ResultPesquisaModelContract GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
         {
             try
             {
@@ -95,7 +113,9 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                     }
                     dt.Rows.Add(array);
                 }
-                return dt;
+                ResultPesquisaModelContract ret = new ResultPesquisaModelContract();
+                ret.ResultTable = dt;
+                return ret;
             }
             catch (Exception ex)
             {

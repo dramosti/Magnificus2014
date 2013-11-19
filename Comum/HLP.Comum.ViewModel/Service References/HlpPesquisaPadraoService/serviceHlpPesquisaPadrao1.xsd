@@ -1,40 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceHlpPesquisaPadrao.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
-  <xs:complexType name="ArrayOfPesquisaPadraoModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PesquisaPadraoModel" nillable="true" type="tns:PesquisaPadraoModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPesquisaPadraoModel" nillable="true" type="tns:ArrayOfPesquisaPadraoModel" />
-  <xs:complexType name="PesquisaPadraoModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="COLUMN_NAME" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="DATA_TYPE" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="EOU" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="HeaderText" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Operador" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="OwnerType" type="tns:Operadores.tipo" />
-          <xs:element minOccurs="0" name="Valor" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="bEnablePesquisa" type="xs:boolean" />
-          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lOperadores" nillable="true" type="q2:ArrayOfstring" />
-          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="leou" nillable="true" type="q3:ArrayOfstring" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PesquisaPadraoModel" nillable="true" type="tns:PesquisaPadraoModel" />
-  <xs:simpleType name="Operadores.tipo">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="tpInteiro" />
-      <xs:enumeration value="tpString" />
-      <xs:enumeration value="tpDecimal" />
-      <xs:enumeration value="tpData" />
-      <xs:enumeration value="tpBool" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="Operadores.tipo" nillable="true" type="tns:Operadores.tipo" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DataTable" nillable="true">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo>
+          <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+        <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

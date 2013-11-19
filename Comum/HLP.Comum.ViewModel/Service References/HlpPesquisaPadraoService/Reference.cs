@@ -9,23 +9,64 @@
 //------------------------------------------------------------------------------
 
 namespace HLP.Comum.ViewModel.HlpPesquisaPadraoService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DetailsView", Namespace="http://schemas.datacontract.org/2004/07/HLP.Wcf.Entries")]
+    [System.SerializableAttribute()]
+    public partial class DetailsView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Data.DataTable TableRecordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Data.DataTable TableRecord {
+            get {
+                return this.TableRecordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TableRecordField, value) != true)) {
+                    this.TableRecordField = value;
+                    this.RaisePropertyChanged("TableRecord");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HlpPesquisaPadraoService.IserviceHlpPesquisaPadrao")]
     public interface IserviceHlpPesquisaPadrao {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceHlpPesquisaPadrao/DoWork", ReplyAction="http://tempuri.org/IserviceHlpPesquisaPadrao/DoWorkResponse")]
-        void DoWork();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceHlpPesquisaPadrao/DoWork", ReplyAction="http://tempuri.org/IserviceHlpPesquisaPadrao/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceHlpPesquisaPadrao/GetData", ReplyAction="http://tempuri.org/IserviceHlpPesquisaPadrao/GetDataResponse")]
+        HLP.Comum.ViewModel.HlpPesquisaPadraoService.DetailsView GetData(string sSelect, bool addDefault, string sWhere, bool bOrdena);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceHlpPesquisaPadrao/GetData", ReplyAction="http://tempuri.org/IserviceHlpPesquisaPadrao/GetDataResponse")]
-        System.Data.DataTable GetData(string sSelect, bool addDefault, string sWhere, bool bOrdena);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceHlpPesquisaPadrao/GetData", ReplyAction="http://tempuri.org/IserviceHlpPesquisaPadrao/GetDataResponse")]
-        System.Threading.Tasks.Task<System.Data.DataTable> GetDataAsync(string sSelect, bool addDefault, string sWhere, bool bOrdena);
+        System.Threading.Tasks.Task<HLP.Comum.ViewModel.HlpPesquisaPadraoService.DetailsView> GetDataAsync(string sSelect, bool addDefault, string sWhere, bool bOrdena);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceHlpPesquisaPadrao/GetTableInformation", ReplyAction="http://tempuri.org/IserviceHlpPesquisaPadrao/GetTableInformationResponse")]
         HLP.Comum.Model.Components.PesquisaPadraoModel[] GetTableInformation(string sViewName);
@@ -61,19 +102,11 @@ namespace HLP.Comum.ViewModel.HlpPesquisaPadraoService {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
-        }
-        
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
-        }
-        
-        public System.Data.DataTable GetData(string sSelect, bool addDefault, string sWhere, bool bOrdena) {
+        public HLP.Comum.ViewModel.HlpPesquisaPadraoService.DetailsView GetData(string sSelect, bool addDefault, string sWhere, bool bOrdena) {
             return base.Channel.GetData(sSelect, addDefault, sWhere, bOrdena);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataTable> GetDataAsync(string sSelect, bool addDefault, string sWhere, bool bOrdena) {
+        public System.Threading.Tasks.Task<HLP.Comum.ViewModel.HlpPesquisaPadraoService.DetailsView> GetDataAsync(string sSelect, bool addDefault, string sWhere, bool bOrdena) {
             return base.Channel.GetDataAsync(sSelect, addDefault, sWhere, bOrdena);
         }
         
