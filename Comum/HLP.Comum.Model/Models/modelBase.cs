@@ -15,7 +15,7 @@ namespace HLP.Comum.Model.Models
     {
         public List<PesquisaPadraoModelContract> lcamposSqlNotNull;
         public statusModel status { get; set; }
-        camposNotNullService.IcamposBaseDadosServiceClient servico = new camposNotNullService.IcamposBaseDadosServiceClient();
+        camposNotNullService.IcamposBaseDadosServiceClient servico;
 
         public modelBase()
         {
@@ -23,6 +23,7 @@ namespace HLP.Comum.Model.Models
 
         public modelBase(string xTabela)
         {
+            servico = new camposNotNullService.IcamposBaseDadosServiceClient();
             if (lCamposSqlNotNull._lCamposSqlNotNull.Count(i => i.xTabela == xTabela)
                 == 0)
             {

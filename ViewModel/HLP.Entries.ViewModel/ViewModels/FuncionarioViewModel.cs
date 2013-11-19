@@ -1,6 +1,7 @@
 ﻿using HLP.Comum.Model.Models;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,21 +25,10 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand navegarCommand { get; set; }
         #endregion
 
-        #region Listas de Campos Not Null
-        campoSqlModel[] lCamposSqlModelAcesso;
-        campoSqlModel[] lCamposSqlModelFuncionario_Arquivo;
-        campoSqlModel[] lCamposSqlModelFuncionario_Certificacao;
-        campoSqlModel[] lCamposSqlModelFuncionario_Comissao_Produto;
-        campoSqlModel[] lCamposSqlModelFuncionario_Endereco;
-        campoSqlModel[] lCamposSqlModelFuncionario_Margem_Lucro_Comissao;
-        #endregion
 
         FuncionarioViewModel()
-            : base(xTabela: "Funcionario")
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-            bw.RunWorkerAsync();
+            FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
         }
 
         FuncionarioModel _currentModel;
@@ -51,17 +41,6 @@ namespace HLP.Entries.ViewModel.ViewModels
                 _currentModel = value;
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
-        }
-
-        async void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            lCamposSqlModelAcesso = await base.taskGetCamposNotNull(xTabela: "Acesso");
-            lCamposSqlModelFuncionario_Arquivo = await base.taskGetCamposNotNull(
-                xTabela: "Funcionario_Arquivo");
-            lCamposSqlModelFuncionario_Certificacao = await base.taskGetCamposNotNull(xTabela: "Funcionario_Certificacao");
-            lCamposSqlModelFuncionario_Comissao_Produto = await base.taskGetCamposNotNull(xTabela: "Funcionario_Comissao_Produto");
-            lCamposSqlModelFuncionario_Endereco = await base.taskGetCamposNotNull(xTabela: "Funcionario_Endereco");
-            lCamposSqlModelFuncionario_Margem_Lucro_Comissao = await base.taskGetCamposNotNull(xTabela: "Funcionario_Margem_Lucro_Comissao");
         }
     }
 }

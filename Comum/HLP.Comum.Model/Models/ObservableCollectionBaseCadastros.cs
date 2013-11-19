@@ -19,6 +19,13 @@ namespace HLP.Comum.Model.Models
             this.CollectionChanged += ObservableCollectionBaseCadastros_CollectionChanged;
         }
 
+        public ObservableCollectionBaseCadastros(IList<T> list)
+            : base(list)
+        {
+            this.idExcluidos = new List<int>();
+            this.CollectionChanged += ObservableCollectionBaseCadastros_CollectionChanged;
+        }
+
         void ObservableCollectionBaseCadastros_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)

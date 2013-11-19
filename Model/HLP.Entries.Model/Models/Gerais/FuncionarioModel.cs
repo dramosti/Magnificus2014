@@ -161,17 +161,24 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 67)]
         public bool stUsuarioAtivo { get; set; }
 
-        public List<Funcionario_ArquivoModel> lFuncionario_Arquivo = new List<Funcionario_ArquivoModel>();
-        public List<Funcionario_CertificacaoModel> lFuncionario_Certificacao = new List<Funcionario_CertificacaoModel>();
-        public List<Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto = new List<Funcionario_Comissao_ProdutoModel>();
-        public List<Funcionario_EnderecoModel> lFuncionario_Endereco = new List<Funcionario_EnderecoModel>();
-        public List<Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao = new List<Funcionario_Margem_Lucro_ComissaoModel>();
-        public List<Funcionario_AcessoModel> lFuncionario_Acesso = new List<Funcionario_AcessoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_ArquivoModel> lFuncionario_Arquivo =
+            new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel> lFuncionario_Certificacao =
+            new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto =
+            new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_EnderecoModel> lFuncionario_Endereco =
+            new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao =
+            new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_AcessoModel> lFuncionario_Acesso =
+            new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>();
     }
 
     public partial class Funcionario_EnderecoModel : modelBase
     {
         public Funcionario_EnderecoModel()
+            : base(xTabela: "Funcionario_Endereco")
         {
         }
 
@@ -210,6 +217,7 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class Funcionario_ArquivoModel : modelBase
     {
         public Funcionario_ArquivoModel()
+            : base(xTabela: "Funcionario_Arquivo")
         {
         }
 
@@ -226,6 +234,7 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class Funcionario_CertificacaoModel : modelBase
     {
         public Funcionario_CertificacaoModel()
+            : base("Funcionario_Certificacao")
         {
         }
 
@@ -248,6 +257,7 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class Funcionario_Comissao_ProdutoModel : modelBase
     {
         public Funcionario_Comissao_ProdutoModel()
+            : base("Funcionario_Comissao_Produto")
         {
         }
 
@@ -267,6 +277,7 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class Funcionario_Margem_Lucro_ComissaoModel : modelBase
     {
         public Funcionario_Margem_Lucro_ComissaoModel()
+            : base(xTabela: "Funcionario_Margem_Lucro_Comissao")
         {
         }
 
@@ -287,6 +298,7 @@ namespace HLP.Entries.Model.Models.Gerais
     public partial class Funcionario_AcessoModel : modelBase
     {
         public Funcionario_AcessoModel()
+            : base(xTabela: "Acesso")
         {
         }
 
