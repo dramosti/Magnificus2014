@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="35c2f752-890a-448b-97cf-f61f71ae10fb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceTipoProduto.xsd" MetadataType="Schema" ID="5d6becee-db95-41c8-8650-c6b86755b22c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTipoProduto1.xsd" MetadataType="Schema" ID="37e33e51-9407-468c-bf46-39d4eae12a2c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceTipoProduto2.xsd" MetadataType="Schema" ID="ae71329e-ec95-4904-9f08-ecc261609c43" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipoProduto3.xsd" MetadataType="Schema" ID="6fa0f7fc-f80e-4fc6-8451-a897fdb3c70a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTipoProduto4.xsd" MetadataType="Schema" ID="75219ecf-1c29-48d3-8616-9236204f3815" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTipoProduto.wsdl" MetadataType="Wsdl" ID="ed039081-b4a4-49ef-a1d8-5a3fe33c23ff" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?wsdl" />
+    <MetadataFile FileName="serviceTipoProduto.disco" MetadataType="Disco" ID="0acab759-8cc9-42e1-9c99-2fd19eb44c4e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?disco" />
+    <MetadataFile FileName="serviceTipoProduto5.xsd" MetadataType="Schema" ID="0eb4b952-53e3-497a-ab5b-b5d4a4d825a1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
