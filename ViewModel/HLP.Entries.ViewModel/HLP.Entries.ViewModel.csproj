@@ -86,12 +86,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Tipo_documentoService\Reference.cs">
+    <Compile Include="Service References\funcionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Tipo_ProdutoService\Reference.cs">
+    <Compile Include="Service References\Tipo_documentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -240,6 +240,28 @@
     <None Include="Service References\empresaService\serviceEmpresa4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\funcionarioService\HLP.Entries.ViewModel.funcionarioService.FuncionarioModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario.wsdl" />
+    <None Include="Service References\funcionarioService\serviceFuncionario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento.wsdl" />
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento.xsd">
       <SubType>Designer</SubType>
@@ -254,25 +276,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto.wsdl" />
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ufService\serviceUf4.xsd">
@@ -314,8 +317,8 @@
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
+    <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
-    <WCFMetadataStorage Include="Service References\Tipo_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
   </ItemGroup>
@@ -440,16 +443,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Tipo_ProdutoService\serviceTipo_produto.disco" />
+    <None Include="Service References\funcionarioService\serviceFuncionario.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Tipo_ProdutoService\configuration91.svcinfo" />
+    <None Include="Service References\funcionarioService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Tipo_ProdutoService\configuration.svcinfo" />
+    <None Include="Service References\funcionarioService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Tipo_ProdutoService\Reference.svcmap">
+    <None Include="Service References\funcionarioService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
