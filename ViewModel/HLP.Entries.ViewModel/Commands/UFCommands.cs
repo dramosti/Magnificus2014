@@ -11,9 +11,8 @@ using HLP.Entries.Model.Repository.Interfaces;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 using System.ComponentModel;
-using HLP.Comum.ViewModel.Commands;
-using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HLP.Entries.ViewModel.Commands
 {

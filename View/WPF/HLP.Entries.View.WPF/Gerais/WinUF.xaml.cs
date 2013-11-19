@@ -35,9 +35,8 @@ namespace HLP.Entries.View.WPF.Gerais
             {
                 this.ViewModel = new UFViewModel();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 throw;
             }
         }
