@@ -177,6 +177,8 @@ namespace HLP.Entries.Model.Models.Gerais
 
     public partial class Funcionario_EnderecoModel : modelBase
     {
+
+
         public Funcionario_EnderecoModel()
             : base(xTabela: "Funcionario_Endereco")
         {
