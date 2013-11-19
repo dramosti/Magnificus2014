@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.funcionarioService {
+namespace HLP.Entries.ViewModel.funcionarService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,23 +17,23 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.Funcionario_AcessoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.Funcionario_ArquivoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.Funcionario_CertificacaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.Funcionario_Comissao_ProdutoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.Funcionario_EnderecoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.Funcionario_Margem_Lucro_ComissaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.Funcionario_AcessoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.Funcionario_ArquivoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.Funcionario_CertificacaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.Funcionario_Comissao_ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.Funcionario_EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.Funcionario_Margem_Lucro_ComissaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarService.FuncionarioModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.statusModel statusField;
+        private HLP.Entries.ViewModel.funcionarService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46,7 +46,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -59,7 +59,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.statusModel status {
+        public HLP.Entries.ViewModel.funcionarService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -85,7 +85,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Funcionario_AcessoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Funcionario_AcessoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class Funcionario_AcessoModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> idAcessoField;
@@ -172,7 +172,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Funcionario_ArquivoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Funcionario_ArquivoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class Funcionario_ArquivoModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idFuncionarioField;
@@ -243,7 +243,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Funcionario_CertificacaoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Funcionario_CertificacaoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class Funcionario_CertificacaoModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime dConclusaoField;
@@ -362,7 +362,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Funcionario_Comissao_ProdutoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Funcionario_Comissao_ProdutoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class Funcionario_Comissao_ProdutoModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idFuncionarioField;
@@ -449,7 +449,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Funcionario_EnderecoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Funcionario_EnderecoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class Funcionario_EnderecoModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idCidadeField;
@@ -696,7 +696,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Funcionario_Margem_Lucro_ComissaoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Funcionario_Margem_Lucro_ComissaoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class Funcionario_Margem_Lucro_ComissaoModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idFuncionarioField;
@@ -799,7 +799,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="FuncionarioModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class FuncionarioModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class FuncionarioModel : HLP.Entries.ViewModel.funcionarService.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool AtivoField;
@@ -868,22 +868,22 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         private int idSiteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_AcessoModel> lFuncionario_AcessoField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_AcessoModel> lFuncionario_AcessoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_ArquivoModel> lFuncionario_ArquivoField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_ArquivoModel> lFuncionario_ArquivoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_CertificacaoModel> lFuncionario_CertificacaoField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_CertificacaoModel> lFuncionario_CertificacaoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_ProdutoField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_ProdutoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_EnderecoModel> lFuncionario_EnderecoField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_EnderecoModel> lFuncionario_EnderecoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_ComissaoField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_ComissaoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal pComissaoAprazoField;
@@ -1307,7 +1307,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_AcessoModel> lFuncionario_Acesso {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_AcessoModel> lFuncionario_Acesso {
             get {
                 return this.lFuncionario_AcessoField;
             }
@@ -1320,7 +1320,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_ArquivoModel> lFuncionario_Arquivo {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_ArquivoModel> lFuncionario_Arquivo {
             get {
                 return this.lFuncionario_ArquivoField;
             }
@@ -1333,7 +1333,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_CertificacaoModel> lFuncionario_Certificacao {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_CertificacaoModel> lFuncionario_Certificacao {
             get {
                 return this.lFuncionario_CertificacaoField;
             }
@@ -1346,7 +1346,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto {
             get {
                 return this.lFuncionario_Comissao_ProdutoField;
             }
@@ -1359,7 +1359,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_EnderecoModel> lFuncionario_Endereco {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_EnderecoModel> lFuncionario_Endereco {
             get {
                 return this.lFuncionario_EnderecoField;
             }
@@ -1372,7 +1372,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarioService.Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.funcionarService.Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao {
             get {
                 return this.lFuncionario_Margem_Lucro_ComissaoField;
             }
@@ -2049,20 +2049,20 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarioService.IserviceFuncionario")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarService.IserviceFuncionario")]
     public interface IserviceFuncionario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
-        HLP.Entries.ViewModel.funcionarioService.FuncionarioModel getFuncionario(int idFuncionario);
+        HLP.Entries.ViewModel.funcionarService.FuncionarioModel getFuncionario(int idFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.ViewModel.funcionarioService.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
+        System.Threading.Tasks.Task<HLP.Entries.ViewModel.funcionarService.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        int saveFuncionario(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario);
+        int saveFuncionario(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario);
+        System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
         bool deleteFuncionario(int idFuncionario);
@@ -2071,19 +2071,19 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        int copyFuncionario(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario);
+        int copyFuncionario(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario);
+        System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceFuncionarioChannel : HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario, System.ServiceModel.IClientChannel {
+    public interface IserviceFuncionarioChannel : HLP.Entries.ViewModel.funcionarService.IserviceFuncionario, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceFuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario>, HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario {
+    public partial class IserviceFuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.funcionarService.IserviceFuncionario>, HLP.Entries.ViewModel.funcionarService.IserviceFuncionario {
         
         public IserviceFuncionarioClient() {
         }
@@ -2104,19 +2104,19 @@ namespace HLP.Entries.ViewModel.funcionarioService {
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.ViewModel.funcionarioService.FuncionarioModel getFuncionario(int idFuncionario) {
+        public HLP.Entries.ViewModel.funcionarService.FuncionarioModel getFuncionario(int idFuncionario) {
             return base.Channel.getFuncionario(idFuncionario);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.ViewModel.funcionarioService.FuncionarioModel> getFuncionarioAsync(int idFuncionario) {
+        public System.Threading.Tasks.Task<HLP.Entries.ViewModel.funcionarService.FuncionarioModel> getFuncionarioAsync(int idFuncionario) {
             return base.Channel.getFuncionarioAsync(idFuncionario);
         }
         
-        public int saveFuncionario(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario) {
+        public int saveFuncionario(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario) {
             return base.Channel.saveFuncionario(objFuncionario);
         }
         
-        public System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario) {
+        public System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario) {
             return base.Channel.saveFuncionarioAsync(objFuncionario);
         }
         
@@ -2128,11 +2128,11 @@ namespace HLP.Entries.ViewModel.funcionarioService {
             return base.Channel.deleteFuncionarioAsync(idFuncionario);
         }
         
-        public int copyFuncionario(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario) {
+        public int copyFuncionario(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario) {
             return base.Channel.copyFuncionario(objFuncionario);
         }
         
-        public System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.ViewModel.funcionarioService.FuncionarioModel objFuncionario) {
+        public System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.ViewModel.funcionarService.FuncionarioModel objFuncionario) {
             return base.Channel.copyFuncionarioAsync(objFuncionario);
         }
     }
