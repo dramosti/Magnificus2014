@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models.Gerais;
@@ -53,23 +54,29 @@ namespace HLP.Wcf.Entries
                 FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
 
-                objFuncionario.lFuncionario_Acesso = this.acessoRepository.GetAllAcesso_Funcionario(
-                    idFuncionario: idFuncionario);
+                objFuncionario.lFuncionario_Acesso = new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>(list:
+                    this.acessoRepository.GetAllAcesso_Funcionario(
+                    idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Arquivo = this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
-                    idFuncionario: idFuncionario);
+                objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>(list:
+                    this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
+                    idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Certificacao = this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
-                    idFuncionario: idFuncionario);
+                objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>(list:
+                    this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
+                    idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Comissao_Produto = this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
-                    idFuncionario: idFuncionario);
+                objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>(list:
+                    this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
+                    idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Endereco = this.funcionario_EnderecoRepository.GetAllFuncionario_Endereco(idFuncionario:
-                    idFuncionario);
+                objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>(list:
+                    this.funcionario_EnderecoRepository.GetAllFuncionario_Endereco(idFuncionario:
+                    idFuncionario));
 
-                objFuncionario.lFuncionario_Margem_Lucro_Comissao = this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
-                    idFuncionario: idFuncionario);
+                objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>(list:
+                    this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
+                    idFuncionario: idFuncionario));
 
                 return objFuncionario;
             }
