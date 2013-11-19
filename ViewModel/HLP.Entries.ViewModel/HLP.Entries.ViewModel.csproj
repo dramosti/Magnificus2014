@@ -52,10 +52,10 @@
     <Compile Include="Commands\CargoCommands.cs" />
     <Compile Include="Commands\CidadeCommands.cs" />
     <Compile Include="Commands\CidadeViewModel.cs" />
+    <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
     <Compile Include="Commands\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
     <Compile Include="Commands\EmpresaCommands.cs" />
-    <Compile Include="Commands\Gerais\FuncionarioCommands.cs" />
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
@@ -103,10 +103,10 @@
     </Compile>
     <Compile Include="ViewModels\CargoViewModel.cs" />
     <Compile Include="ViewModels\CidadeViewModel.cs" />
+    <Compile Include="ViewModels\Comercial\Tipo_ProdutoViewModel.cs" />
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
-    <Compile Include="ViewModels\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
