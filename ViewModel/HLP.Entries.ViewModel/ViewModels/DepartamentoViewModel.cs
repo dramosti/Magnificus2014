@@ -37,7 +37,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         }
 
         public DepartamentoViewModel()
-            : base(xTabela: "Departamento")
+            : base()
         {
             DepartamentoCommands comm = new DepartamentoCommands(objViewModel: this);
         }

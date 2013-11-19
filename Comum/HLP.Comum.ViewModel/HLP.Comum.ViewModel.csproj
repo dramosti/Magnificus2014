@@ -71,11 +71,6 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Commands\ViewModelBaseCommands.cs" />
-    <Compile Include="Service References\camposBaseDadosService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\HlpPesquisaPadraoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,16 +111,6 @@
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Models.campoSqlModel.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
-    <None Include="Service References\camposBaseDadosService\camposBaseDadosService.wsdl" />
-    <None Include="Service References\camposBaseDadosService\camposBaseDadosService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\camposBaseDadosService\camposBaseDadosService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\camposBaseDadosService\camposBaseDadosService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.wsdl" />
     <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.xsd">
       <SubType>Designer</SubType>
@@ -150,23 +135,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\camposBaseDadosService\" />
     <WCFMetadataStorage Include="Service References\HlpPesquisaPadraoService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\camposBaseDadosService\camposBaseDadosService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\camposBaseDadosService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\camposBaseDadosService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\camposBaseDadosService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\HlpPesquisaPadraoService\serviceHlpPesquisaPadrao.disco" />

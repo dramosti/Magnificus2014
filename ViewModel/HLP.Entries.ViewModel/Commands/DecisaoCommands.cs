@@ -113,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new DecisaoModel(lcampoSql: this.objViewModel.lCampos);
+            this.objViewModel.currentModel = new DecisaoModel();
             this.objViewModel.commandNovoBase.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -124,7 +124,6 @@ namespace HLP.Entries.ViewModel.Commands
         private void Alterar()
         {
             this.objViewModel.commandAlterarBase.Execute(parameter: null);
-            this.objViewModel.currentModel.lcamposSqlNotNull = this.objViewModel.lCampos.ToList();
         }
         private bool AlterarCanExecute()
         {

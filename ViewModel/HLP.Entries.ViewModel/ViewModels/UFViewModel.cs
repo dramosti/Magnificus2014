@@ -34,7 +34,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         UFCommands objUFCommands;
 
         public UFViewModel()
-            : base(xTabela: "UF")
+            : base()
         {
             objUFCommands = new UFCommands(objViewModel: this);
         }

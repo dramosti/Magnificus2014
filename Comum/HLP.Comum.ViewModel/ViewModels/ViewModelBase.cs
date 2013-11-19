@@ -26,9 +26,6 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
 
-        camposBaseDadosService.IcamposBaseDadosServiceClient servico = new camposBaseDadosService.IcamposBaseDadosServiceClient();
-        public campoSqlModel[] lCampos;
-
         private string _sText = "0 de 0";
         public string sText
         {
@@ -93,39 +90,11 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         public ViewModelBaseCommands viewModelBaseCommands;
 
-        public ViewModelBase(string xTabela = "")
+        public ViewModelBase()
         {
             this.bIsEnabled = false;
             viewModelBaseCommands = new ViewModelBaseCommands(vViewModel: this);
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += bw_DoWork;
-
-            if (xTabela != "")
-                bw.RunWorkerAsync(argument: xTabela);
-
         }
-
-        async void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                this.lCampos = await this.taskGetCamposNotNull(e.Argument.ToString());
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
-
-        public async Task<campoSqlModel[]> taskGetCamposNotNull(string xTabela)
-        {
-            campoSqlModel[] aCampos = await this.servico.getCamposNotNullAsync(xTabela: xTabela);
-            return aCampos;
-        }
-
-
-
 
 
         #region NotifyPropertyChanged

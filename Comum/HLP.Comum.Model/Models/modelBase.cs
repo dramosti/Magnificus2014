@@ -6,17 +6,36 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
 using System.Reflection;
+using HLP.Comum.Model.StaticModels;
 
 namespace HLP.Comum.Model.Models
 {
     public class modelBase : INotifyPropertyChanged, IDataErrorInfo
     {
         public List<campoSqlModel> lcamposSqlNotNull;
+        camposBaseDadosService.IcamposBaseDadosServiceClient service = new camposBaseDadosService.IcamposBaseDadosServiceClient();
+
         public statusModel status { get; set; }
 
         public modelBase()
         {
+        }
 
+        public modelBase(string xTabela)
+        {
+            if (lCamposSqlNotNull._lCamposSqlNotNull.Count(i => i.xTabela == xTabela)
+                == 0)
+            {
+                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                lCampos.xTabela = xTabela;
+                //TODO: Chamar wcf para retornar campos
+                lCamposSqlNotNull.AddCampoSqlNotNull(objCamposSqlNotNull: lCampos);
+            }
+            else
+            {
+                lcamposSqlNotNull = lCamposSqlNotNull._lCamposSqlNotNull.FirstOrDefault(i => i.xTabela
+                    == xTabela).lCamposSqlModel;
+            }
         }
 
         #region NotifyPropertyChanged

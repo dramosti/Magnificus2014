@@ -86,11 +86,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\PesquisaRapidaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Validates\NumericValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,34 +152,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida.wsdl" />
-    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\PesquisaRapidaService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PesquisaRapidaService\servicePesquisaRapida.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PesquisaRapidaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PesquisaRapidaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PesquisaRapidaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

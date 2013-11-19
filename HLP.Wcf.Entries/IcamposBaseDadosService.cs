@@ -1,10 +1,6 @@
 ﻿using HLP.Comum.Model.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace HLP.Wcf.Entries
 {
@@ -13,6 +9,6 @@ namespace HLP.Wcf.Entries
     public interface IcamposBaseDadosService
     {
         [OperationContract]
-        campoSqlModel[] getCamposNotNull(string xTabela);
+        List<campoSqlModel> getCamposNotNull(string xTabela);
     }
 }

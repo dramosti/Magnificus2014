@@ -64,7 +64,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         DecisaoCommands objCommands;
 
         public DecisaoViewModel()
-            : base(xTabela: "Decisao")
+            : base()
         {
             objCommands = new DecisaoCommands(vViewModel: this);
         }

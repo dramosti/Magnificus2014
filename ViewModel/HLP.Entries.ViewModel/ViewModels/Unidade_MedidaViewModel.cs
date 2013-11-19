@@ -28,7 +28,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         Unidade_MedidaCommands objCommands;
 
         public Unidade_MedidaViewModel()
-            : base(xTabela: "Unidade_medida")
+            : base()
         {
             objCommands = new Unidade_MedidaCommands(this);
         }

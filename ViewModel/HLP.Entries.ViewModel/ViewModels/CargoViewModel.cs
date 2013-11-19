@@ -77,7 +77,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         }
 
         public CargoViewModel()
-            : base(xTabela: "Cargo")
+            : base()
         {
             CargoCommands comm = new CargoCommands(objViewModel: this);
         }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="26d730b5-8cf6-4613-b9a6-8b47e03d6f44" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/camposBaseDadosService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="camposBaseDadosService.wsdl" MetadataType="Wsdl" ID="86409d49-1158-4f3b-8ec3-2bd0875d1e71" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/camposBaseDadosService.svc?wsdl" />
+    <MetadataFile FileName="camposBaseDadosService.disco" MetadataType="Disco" ID="05329b25-b4d6-4c6c-81b3-fa0d46219b61" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/camposBaseDadosService.svc?disco" />
+    <MetadataFile FileName="camposBaseDadosService.xsd" MetadataType="Schema" ID="d448142c-46d6-4831-9402-bd8190395ca6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/camposBaseDadosService.svc?xsd=xsd1" />
+    <MetadataFile FileName="camposBaseDadosService1.xsd" MetadataType="Schema" ID="33453ad9-e0b4-49ad-b954-6927ff8a8b4d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/camposBaseDadosService.svc?xsd=xsd0" />
+    <MetadataFile FileName="camposBaseDadosService2.xsd" MetadataType="Schema" ID="a32868c1-4417-4458-813d-d6a1b364eb7f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/camposBaseDadosService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

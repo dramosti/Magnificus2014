@@ -1,14 +1,10 @@
-﻿using HLP.Comum.Model.Models;
-using Ninject;
+﻿using Ninject;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 using HLP.Dependencies;
 using HLP.Comum.Resources.Util;
+using HLP.Comum.Model.Models;
+using System.Collections.Generic;
 
 namespace HLP.Wcf.Entries
 {
@@ -37,11 +33,11 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public campoSqlModel[] getCamposNotNull(string xTabela)
+        public List<campoSqlModel> getCamposNotNull(string xTabela)
         {
             try
             {
-                return modelBaseRepository.getCamposSqlNotNull(xTabela: xTabela).ToArray();
+                return modelBaseRepository.getCamposSqlNotNull(xTabela: xTabela);
             }
             catch (Exception e)
             {

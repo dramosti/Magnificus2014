@@ -14,10 +14,10 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        public FuncionarioModel(campoSqlModel[] lCamposSql)
+        public FuncionarioModel()
             : base()
         {
-            lcamposSqlNotNull = lCamposSql.ToList();
+            
         }
 
         private int? _idFuncionario;
