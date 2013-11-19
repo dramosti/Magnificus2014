@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Model.Components;
 using HLP.Comum.Model.Repository.Interfaces.Components;
-using HLP.Comum.ViewModel.HlpPesquisaPadraoService;
+//using HLP.Comum.ViewModel.HlpPesquisaPadraoService;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
 
@@ -19,7 +19,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         private HlpPesquisaPadraoViewModel _objViewModel;
 
-        private HlpPesquisaPadraoService.IserviceHlpPesquisaPadraoClient servicoPesquisaPadrao = new IserviceHlpPesquisaPadraoClient();
+        private PesquisaPadraoService.IservicePesquisaPadraoClient servicoPesquisaPadrao;
 
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
         {
@@ -97,7 +97,11 @@ namespace HLP.Comum.ViewModel.Commands.Components
                         sql.Append(s + " ");
                     }
                 }
-                _objViewModel.Result = await servicoPesquisaPadrao.GetDataAsync(sql.ToString(), false, "", true);
+                if (servicoPesquisaPadrao == null)
+                    servicoPesquisaPadrao = new PesquisaPadraoService.IservicePesquisaPadraoClient();
+
+                DataSet retorno = await servicoPesquisaPadrao.GetDataAsync(sql.ToString(), false, "", true);
+                _objViewModel.Result = retorno.Tables[0];
             }
             catch (Exception ex)
             {
@@ -120,7 +124,6 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         }
 
-
         void ExecLimpar()
         {
             this.CarregaInformationTable(_objViewModel.sView);
@@ -129,8 +132,6 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 _objViewModel.Result.Rows.Clear();
             }
         }
-
-
 
         private void CarregaInformationTable(object param)
         {
@@ -145,14 +146,26 @@ namespace HLP.Comum.ViewModel.Commands.Components
         {
             try
             {
-                PesquisaPadraoModel[] lResult = await servicoPesquisaPadrao.GetTableInformationAsync(sViewName: e.Argument.ToString());
-                _objViewModel.lFilers = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(lResult.ToList());
+                if (servicoPesquisaPadrao == null)
+                    servicoPesquisaPadrao = new PesquisaPadraoService.IservicePesquisaPadraoClient();
+
+                PesquisaPadraoModelContract[] lResult = await servicoPesquisaPadrao.GetTableInformationAsync(sViewName: e.Argument.ToString());
+
+                var dados = (from c in lResult
+                             select new PesquisaPadraoModel
+                             {
+                                 DATA_TYPE = c.DATA_TYPE,
+                                 COLUMN_NAME = c.COLUMN_NAME
+                             }).ToList<PesquisaPadraoModel>();
+
+                _objViewModel.lFilers = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(dados);
+                              
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
-            
+
         }
 
 

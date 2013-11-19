@@ -40,9 +40,30 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.5.0.0\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=2.1.0.91, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Magnificus\Comum\HLP.Comum.Infrastructure\NInject\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,7 +91,7 @@
     <Content Include="serviceDepartamento.svc" />
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceFuncionario.svc" />
-    <Content Include="serviceHlpPesquisaPadrao.svc" />
+    <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceTipo_documento.svc" />
@@ -89,7 +110,7 @@
     <Compile Include="IserviceDepartamento.cs" />
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceFuncionario.cs" />
-    <Compile Include="IserviceHlpPesquisaPadrao.cs" />
+    <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
@@ -112,8 +133,8 @@
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceHlpPesquisaPadrao.svc.cs">
-      <DependentUpon>serviceHlpPesquisaPadrao.svc</DependentUpon>
+    <Compile Include="servicePesquisaPadrao.svc.cs">
+      <DependentUpon>servicePesquisaPadrao.svc</DependentUpon>
     </Compile>
     <Compile Include="servicePesquisaRapida.svc.cs">
       <DependentUpon>servicePesquisaRapida.svc</DependentUpon>
@@ -137,6 +158,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\wcfEntries.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -163,6 +185,9 @@
       <Name>HLP.Entries.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -176,7 +201,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>63620</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:49630/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
