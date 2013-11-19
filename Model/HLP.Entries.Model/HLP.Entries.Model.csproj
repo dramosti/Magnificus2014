@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Models\RecursosHumanos\CargoModel.cs" />
     <Compile Include="Models\RecursosHumanos\DepartamentoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Repository\Implementation\Gerais\Unidade_medidaRepository.cs" />
     <Compile Include="Repository\Implementation\RecursosHumanos\CargoRepository.cs" />
     <Compile Include="Repository\Implementation\RecursosHumanos\DepartamentoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />

@@ -52,6 +52,7 @@
     <Compile Include="Commands\CargoCommands.cs" />
     <Compile Include="Commands\CidadeCommands.cs" />
     <Compile Include="Commands\CidadeViewModel.cs" />
+    <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
     <Compile Include="Commands\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
     <Compile Include="Commands\EmpresaCommands.cs" />
@@ -102,6 +103,7 @@
     </Compile>
     <Compile Include="ViewModels\CargoViewModel.cs" />
     <Compile Include="ViewModels\CidadeViewModel.cs" />
+    <Compile Include="ViewModels\Comercial\Tipo_ProdutoViewModel.cs" />
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
