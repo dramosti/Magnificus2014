@@ -35,13 +35,16 @@ namespace HLP.Wcf.Entries
             return dados;
         }
 
-        public ResultPesquisaModelContract GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
+        public System.Data.DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
         {
-            var dados = iHlpPesquisaPadraoRepository.GetData(sSelect,
+            object dados = iHlpPesquisaPadraoRepository.GetData(sSelect,
                 addDefault,
                 sWhere,
                 bOrdena);
-            return dados;
+            DataSet dsReturn = new DataSet();
+            dsReturn.Tables.Add((dados as DataTable));
+
+            return dsReturn;
         }
     }
 }

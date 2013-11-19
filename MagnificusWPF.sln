@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLP.Comum.Infrastructure", "Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj", "{CD60F2D5-6E51-417A-B50E-C4EB01EB7565}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{EA5F59AE-FD74-4402-A01B-F6B9BDC036FC}"
+	ProjectSection(SolutionItems) = preProject
+		Comum\HLP.Comum.ViewModel\app.config = Comum\HLP.Comum.ViewModel\app.config
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{2AF39EF2-5B74-4912-B440-FFF641FCE62E}"
 EndProject

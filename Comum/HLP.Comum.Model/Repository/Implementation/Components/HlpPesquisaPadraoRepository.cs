@@ -60,7 +60,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         }
 
 
-        public ResultPesquisaModelContract GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
+        public object GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
         {
             try
             {
@@ -112,10 +112,8 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         }
                     }
                     dt.Rows.Add(array);
-                }
-                ResultPesquisaModelContract ret = new ResultPesquisaModelContract();
-                ret.ResultTable = dt;
-                return ret;
+                }                
+                return dt;
             }
             catch (Exception ex)
             {

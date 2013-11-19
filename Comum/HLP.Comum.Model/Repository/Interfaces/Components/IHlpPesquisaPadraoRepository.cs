@@ -14,7 +14,7 @@ namespace HLP.Comum.Model.Repository.Interfaces.Components
 {
     public interface IHlpPesquisaPadraoRepository
     {
-        ResultPesquisaModelContract GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true);
+        object GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true);
         PesquisaPadraoModel[] GetTableInformation(string sViewName);
         PesquisaPadraoModelContract[] GetTableInformationContract(string sViewName);
     }
