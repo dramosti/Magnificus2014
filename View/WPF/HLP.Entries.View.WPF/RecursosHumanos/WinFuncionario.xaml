@@ -281,7 +281,14 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="30" Margin="9,20,10,10" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128"/>
+								Height="30" Margin="9,20,10,10" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
+								<Components:HlpComboBox.Items>
+									<System:String>0-Centro de Trabalho</System:String>
+									<System:String>1-Funcionário</System:String>
+									<System:String>2-Prestador de Serviços</System:String>
+									<System:String>3-Representante</System:String>
+								</Components:HlpComboBox.Items>
+							</Components:HlpComboBox>
 							<Components:HlpPesquisa
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idSetor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -340,11 +347,16 @@
 									SelectedDate="{Binding currentModel.dAniversario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="30" Margin="12,15,380,10" Caption="Data de Aniversário" Field="dAniversario" Help="Informe a data de aniversário do funcionário." Table="Funcionario" WidthLabel="155"/>
-								<Components:HlpComboBox
+								<Components:HlpComboBox x:Name="cbxSexo"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									SelectedValue="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,320,10" Caption="Sexo" Field="stSexo" Help="Informe o sexo do funcionário" Table="Funcionario" WidthLabel="155"/>
+									Height="30" Margin="10,0,282,10" Caption="Sexo" Field="stSexo" Help="Informe o sexo do funcionário" Table="Funcionario" WidthLabel="155">
+									<Components:HlpComboBox.Items>
+										<System:String>0-MASCULINO</System:String>
+										<System:String>1-FEMININO</System:String>
+									</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
 								<Components:HlpDateTimePicker
 									Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 									SelectedDate="{Binding currentModel.dFalecimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -374,10 +386,12 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,64,10" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos." Table="Conta_bancaria" WidthLabel="155" FieldPesquisa="ID" TableView="vwContaBancaria">
+									Height="30" Margin="10,0,64,10" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos." Table="Funcionario" WidthLabel="155" FieldPesquisa="ID" TableView="vwContaBancaria">
 									<Components:HlpPesquisa.Items>
 										<System:String>xNumeroConta</System:String>
-										<System:String>xDescricao</System:String>
+										<System:String>Agencia</System:String>
+										<System:String>Banco</System:String>
+										<System:String>stConta</System:String>
 									</Components:HlpPesquisa.Items>
 								</Components:HlpPesquisa>
 							</StackPanel>
@@ -453,7 +467,7 @@
 							</Grid>
 						</Grid>
 					</Expander>
-					<Expander Header="Departamento Pessoal" HorizontalAlignment="Left" Height="406" Margin="652,199.04,0,0" VerticalAlignment="Top" Width="558" IsExpanded="True">
+					<Expander Header="Departamento Pessoal" HorizontalAlignment="Left" Height="406" Margin="647,199.04,0,0" VerticalAlignment="Top" Width="558" IsExpanded="True">
 						<Grid>
 							<StackPanel HorizontalAlignment="Left" Height="383" VerticalAlignment="Top" Width="556">
 								<Components:HlpDateTimePicker 
@@ -465,27 +479,37 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.vDiaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,332.5,10" Caption="Diaria" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117"/>
+									Height="30" Margin="10,0,223.5,10" Caption="Diaria" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117"/>
 								<Components:HlpComboBox 									
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									SelectedValue="{Binding currentModel.stSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,332.5,10" Caption="Tipo de Salário" Field="stSalario" Help="Informar se a condição de salario do  funcionário é:" Table="Funcionario" WidthLabel="117"/>
+									Height="30" Margin="10,0,223.5,10" Caption="Tipo de Salário" Field="stSalario" Help="Informar se a condição de salario do  funcionário é:" Table="Funcionario" WidthLabel="117">
+									<Components:HlpComboBox.Items>
+										<System:String>0-Horista</System:String>
+										<System:String>1-Mensalista</System:String>
+									</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.vSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,332.5,10" Caption="Salário" Field="vSalario" Help="Informar o valor mensal quando o campo Tipo de Salário tiver Mensalista ou valor hora quando o campo tipo de salário tiver horista." Table="Funcionario" WidthLabel="117"/>
+									Height="30" Margin="10,0,223.5,10" Caption="Salário" Field="vSalario" Help="Informar o valor mensal quando o campo Tipo de Salário tiver Mensalista ou valor hora quando o campo tipo de salário tiver horista." Table="Funcionario" WidthLabel="117"/>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.vSalarioHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,332.5,10" Caption="Salario Hora" Field="vSalarioHora" Help="Informar o valor do salário hora do funcionário" Table="Funcionario" WidthLabel="117"/>
+									Height="30" Margin="10,0,223.5,10" Caption="Salario Hora" Field="vSalarioHora" Help="Informar o valor do salário hora do funcionário" Table="Funcionario" WidthLabel="117"/>
 								<Components:HlpPesquisa 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idResponsavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"	
-									Height="30" Margin="10,0,223.5,10" Caption="Responsável" Field="idResponsavel" Help="Informar o responsável pelo funcionário na empresa" Table="Funcionario" WidthLabel="117"/>
+									Height="30" Margin="10,0,129,10" Caption="Responsável" Field="idResponsavel" Help="Informar o responsável pelo funcionário na empresa" Table="Funcionario" WidthLabel="117" FieldPesquisa="ID" TableView="vwFuncionario">
+									<Components:HlpPesquisa.Items>
+										<System:String>xCodigoAlternativo</System:String>
+										<System:String>xNome</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>
 							</StackPanel>
 						</Grid>
 					</Expander>
@@ -595,21 +619,35 @@
 			</TabItem>
 			<TabItem Header="Representantes" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0">
 				<Grid>
-					<Expander Header="Geral" HorizontalAlignment="Left" Height="605.04" VerticalAlignment="Top" Width="417.5" IsEnabled="True" IsExpanded="True">
-						<StackPanel HorizontalAlignment="Left" Height="595.04" Margin="0,0,-2,0" Width="417.5">
-							<Components:HlpComboBox Height="30" Margin="10,10,47,10" Caption="Tipo de Comissão" Field="stComissao" Help="Informar o tipo de comissão a ser calculada para o Representante, são elas: 0-Por Representante (Default) (Os valores de comissão Avista e Aprazo virão do cadastro de Funcionário da guia Representantes) 1-Por Lista de Preço (Quando por lista de preço o sistema buscará a comissão quando Avista e Aprazo das Listas de preços e depois o que define é os produtos da lista, caso tenha os campos de comissão preenchido) 2-Por Família de Produto (O sistema pegará as comissões do cadastro de Familia de Produto e todas as outras comissões serão descartadas pelo sistema) 3-Por Produto (Caso seja por produto definir no próprio formulário de funcionários os produtos relacionado a esse representantes e suas respectivas comissões, o sistema somente liberará a visualização dos produtos que estiverem cadastrado nessa tabela para o representante, outros produtos não cadastrado não poderão ser vendidos) 4-Por Faixa Margem de Venda Quando por faixa o sistema pegará o valor vendido pelo representante calculara a faixa de margem da venda e colocará na faixa que representa essa margem e chegará na comissão a vista ou a prazo." Table="Funcionario" WidthLabel="213"/>
-							<Components:HlpTextBox Height="30" Margin="10,0,47,7" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo “Condicao_Pagamento.stCondicao” for igual Avista" Table="Funcionario" WidthLabel="213"/>
-							<Components:HlpTextBox Height="30" Margin="10,0,47,0" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a “Condicao_Pagamento.stCondicao” for Aprazo. " Table="Funcionario" WidthLabel="213"/>
+					<Expander Header="Geral" HorizontalAlignment="Left" Height="171.04" VerticalAlignment="Top" Width="417.5" IsEnabled="True" IsExpanded="True">
+						<StackPanel HorizontalAlignment="Left" Height="145.04" Margin="0,0,-2,0" Width="417.5">
+							<Components:HlpComboBox 								
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedValue="{Binding currentModel.stComissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="30" Margin="10,10,47,10" Caption="Tipo de Comissão" Field="stComissao" Help="Informar o tipo de comissão a ser calculada para o Representante, são elas: 0-Por Representante (Default) (Os valores de comissão Avista e Aprazo virão do cadastro de Funcionário da guia Representantes) 1-Por Lista de Preço (Quando por lista de preço o sistema buscará a comissão quando Avista e Aprazo das Listas de preços e depois o que define é os produtos da lista, caso tenha os campos de comissão preenchido) 2-Por Família de Produto (O sistema pegará as comissões do cadastro de Familia de Produto e todas as outras comissões serão descartadas pelo sistema) 3-Por Produto (Caso seja por produto definir no próprio formulário de funcionários os produtos relacionado a esse representantes e suas respectivas comissões, o sistema somente liberará a visualização dos produtos que estiverem cadastrado nessa tabela para o representante, outros produtos não cadastrado não poderão ser vendidos) 4-Por Faixa Margem de Venda Quando por faixa o sistema pegará o valor vendido pelo representante calculara a faixa de margem da venda e colocará na faixa que representa essa margem e chegará na comissão a vista ou a prazo." Table="Funcionario" WidthLabel="213">
+								<Components:HlpComboBox.Items>
+									<System:String>0-Por Representante</System:String>
+									<System:String>1-Por Lista de Preço</System:String>
+									<System:String>2-Por Família de Produto</System:String>
+									<System:String>3-Por Produto</System:String>
+									<System:String>4-Por Faixa Margem de Venda</System:String>
+								</Components:HlpComboBox.Items>
+							</Components:HlpComboBox>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="30" Margin="10,0,47,7" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo “Condicao_Pagamento.stCondicao” for igual Avista" Table="Funcionario" WidthLabel="213"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="30" Margin="10,0,47,0" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a “Condicao_Pagamento.stCondicao” for Aprazo. " Table="Funcionario" WidthLabel="213"/>
 						</StackPanel>
 					</Expander>
-					<Expander Header="Produtos" HorizontalAlignment="Left" Height="605.04" Margin="417.5,0,0,0" VerticalAlignment="Top" Width="352.5" IsExpanded="True">
-						<StackPanel HorizontalAlignment="Left" Height="595.04" Margin="0,0,-1,0" Width="351.5">
-							<Components:HlpPesquisa Height="30" Margin="10,10,85,10" Caption="Código do Produto">
-								
-									
-							
-							</Components:HlpPesquisa>
-						</StackPanel>
+					<Expander Header="Expander" HorizontalAlignment="Left" Height="333" Margin="0,272.04,0,0" VerticalAlignment="Top" Width="1210">
+						<Grid/>
 					</Expander>
 				</Grid>
 			</TabItem>
