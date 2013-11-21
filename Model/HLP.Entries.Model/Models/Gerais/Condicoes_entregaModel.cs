@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Infrastructure;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,23 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class Condicoes_entregaModel
+    public partial class Condicoes_entregaModel : modelBase
     {
+        private int? _idCondicaoEntrega;
+
         [ParameterOrder(Order = 1)]
-        public int? idCondicaoEntrega { get; set; }
+        public int? idCondicaoEntrega
+        {
+            get
+            {
+                return this._idCondicaoEntrega;
+            }
+            set
+            {
+                this._idCondicaoEntrega = value;
+                base.NotifyPropertyChanged(propertyName: "idCondicaoEntrega");
+            }
+        }
         [ParameterOrder(Order = 2)]
         public string xCondicaoEntrega { get; set; }
         [ParameterOrder(Order = 3)]
@@ -23,5 +37,16 @@ namespace HLP.Entries.Model.Models.Gerais
         public byte stAplicarMinGratis { get; set; }
         [ParameterOrder(Order = 7)]
         public decimal vMinimoGratis { get; set; }
+    }
+
+    public partial class Condicoes_entregaModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
     }
 }

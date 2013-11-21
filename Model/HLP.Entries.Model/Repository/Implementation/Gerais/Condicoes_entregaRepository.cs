@@ -27,7 +27,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regCondicaoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_condicoes_entrega",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idCondicaoEntrega"),
-                                  MapBuilder<Condicoes_entregaModel>.MapAllProperties().Build());
+                                  MapBuilder<Condicoes_entregaModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regCondicaoAccessor.Execute(idCondicaoEntrega).FirstOrDefault();
         }
