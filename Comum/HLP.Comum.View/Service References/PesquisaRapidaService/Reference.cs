@@ -16,10 +16,10 @@ namespace HLP.Comum.View.PesquisaRapidaService {
     public interface IservicePesquisaRapida {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePesquisaRapida/GetValorDisplay", ReplyAction="http://tempuri.org/IservicePesquisaRapida/GetValorDisplayResponse")]
-        string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, System.Nullable<int> _iValorPesquisa);
+        string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, System.Nullable<int> _iValorPesquisa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePesquisaRapida/GetValorDisplay", ReplyAction="http://tempuri.org/IservicePesquisaRapida/GetValorDisplayResponse")]
-        System.Threading.Tasks.Task<string> GetValorDisplayAsync(string _TableView, string[] _Items, string _FieldPesquisa, System.Nullable<int> _iValorPesquisa);
+        System.Threading.Tasks.Task<string> GetValorDisplayAsync(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, System.Nullable<int> _iValorPesquisa);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +49,12 @@ namespace HLP.Comum.View.PesquisaRapidaService {
                 base(binding, remoteAddress) {
         }
         
-        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, System.Nullable<int> _iValorPesquisa) {
-            return base.Channel.GetValorDisplay(_TableView, _Items, _FieldPesquisa, _iValorPesquisa);
+        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, System.Nullable<int> _iValorPesquisa) {
+            return base.Channel.GetValorDisplay(_TableView, _Items, _FieldPesquisa, idEmpresa, _iValorPesquisa);
         }
         
-        public System.Threading.Tasks.Task<string> GetValorDisplayAsync(string _TableView, string[] _Items, string _FieldPesquisa, System.Nullable<int> _iValorPesquisa) {
-            return base.Channel.GetValorDisplayAsync(_TableView, _Items, _FieldPesquisa, _iValorPesquisa);
+        public System.Threading.Tasks.Task<string> GetValorDisplayAsync(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, System.Nullable<int> _iValorPesquisa) {
+            return base.Channel.GetValorDisplayAsync(_TableView, _Items, _FieldPesquisa, idEmpresa, _iValorPesquisa);
         }
     }
 }

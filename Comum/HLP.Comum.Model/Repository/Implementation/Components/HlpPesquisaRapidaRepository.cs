@@ -20,7 +20,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         DataAccessor<PesquisaRapidaModel> regAcessor = null;
 
 
-        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int? _iValorPesquisa)
+        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, int? _iValorPesquisa)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         sQuery.Append(" WHERE ");
                         sQuery.Append(_FieldPesquisa + " = @FieldPesquisa ");
                         if (UndTrabalho.ColunaExistis(_TableView, "idEmpresa"))
-                            sQuery.Append(" AND idEmpresa = '" + CompanyData.idEmpresa + "' ");
+                            sQuery.Append(" AND idEmpresa = '" + idEmpresa + "' ");
                         if (UndTrabalho.ColunaExistis(_TableView, "Ativo"))
                             sQuery.Append(" AND Ativo = 'S'");
 
