@@ -14,6 +14,12 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public class EmpresaModel : modelBase
     {
+        public EmpresaModel()
+            : base(xTabela: "Empresa")
+        {
+            lEmpresa_endereco = new ObservableCollectionBaseCadastros<Empresa_EnderecoModel>();
+        }
+
         private int? _idEmpresa;
         [ParameterOrder(Order = 1)]
         public int? idEmpresa
@@ -70,15 +76,15 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "lEmpresa_endereco");
             }
         }
-
-        public EmpresaModel()
-        {
-            lEmpresa_endereco = new ObservableCollectionBaseCadastros<Empresa_EnderecoModel>();
-        }
     }
 
     public class Empresa_EnderecoModel : modelBase
     {
+        public Empresa_EnderecoModel()
+            : base(xTabela: "Empresa_endereco")
+        {
+        }
+
         [ParameterOrder(Order = 1)]
         public int? idEmpresaEndereco { get; set; }
 

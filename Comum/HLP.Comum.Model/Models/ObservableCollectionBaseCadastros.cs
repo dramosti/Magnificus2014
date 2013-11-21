@@ -49,5 +49,13 @@ namespace HLP.Comum.Model.Models
                     break;
             }
         }
+
+        public void CollectionCarregada()
+        {
+            foreach (var item in this.Items)
+            {
+                item.GetType().GetProperty("status").SetValue(item, statusModel.nenhum);
+            }
+        }
     }
 }

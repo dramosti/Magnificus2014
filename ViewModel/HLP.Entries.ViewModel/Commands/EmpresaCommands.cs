@@ -60,6 +60,8 @@ namespace HLP.Entries.ViewModel.Commands
                 this.objViewModel.currentModel.idEmpresa = await servico.saveEmpresaAsync(objEmpresa:
                     objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.GetEmpresasBackground(this, null);
+                this.Inicia_Collections();
             }
             catch (Exception ex)
             {
@@ -150,14 +152,33 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.pesquisarBaseCommand.Execute(null);
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
 
             bw.RunWorkerAsync();
 
         }
 
-        private async void GetEmpresasBackground(object sender, DoWorkEventArgs e)
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.getEmpresaAsync(idEmpresa: this.objViewModel.currentID);
+            try
+            {
+                this.Inicia_Collections();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        private void Inicia_Collections()
+        {
+            this.objViewModel.currentModel.lEmpresa_endereco.CollectionCarregada();
+        }
+
+        private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = servico.getEmpresa(idEmpresa: this.objViewModel.currentID);
         }
         #endregion
 
