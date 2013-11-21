@@ -1,5 +1,4 @@
-﻿using HLP.Entries.Model.Models.RecursosHumanos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,10 +12,10 @@ namespace HLP.Wcf.Entries
     public interface IserviceSetor
     {
         [OperationContract]
-        SetorModel getSetor(int idSetor);
+        HLP.Entries.Model.Models.RecursosHumanos.SetorModel getSetor(int idSetor);
 
         [OperationContract]
-        int saveSetor(SetorModel objSetor);
+        int saveSetor(HLP.Entries.Model.Models.RecursosHumanos.SetorModel objSetor);
 
         [OperationContract]
         bool deleteSetor(int idSetor);

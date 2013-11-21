@@ -86,6 +86,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\setorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\TipoProdutoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -160,6 +165,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.CargoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel1.datasource" />
     <None Include="Service References\cargoService\serviceCargo.wsdl" />
     <None Include="Service References\cargoService\serviceCargo.xsd">
       <SubType>Designer</SubType>
@@ -240,6 +246,25 @@
     <None Include="Service References\empresaService\serviceEmpresa4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\setorService\serviceSetor.wsdl" />
+    <None Include="Service References\setorService\serviceSetor.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setorService\serviceSetor1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setorService\serviceSetor2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setorService\serviceSetor3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setorService\serviceSetor4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setorService\serviceSetor5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TipoProdutoService\HLP.Entries.ViewModel.TipoProdutoService.Tipo_produtoModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -317,6 +342,7 @@
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
+    <WCFMetadataStorage Include="Service References\setorService\" />
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
@@ -453,6 +479,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\TipoProdutoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setorService\serviceSetor.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setorService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setorService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setorService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

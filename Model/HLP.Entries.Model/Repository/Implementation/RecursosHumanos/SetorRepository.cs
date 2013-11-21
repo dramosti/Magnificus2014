@@ -28,7 +28,7 @@ namespace HLP.Entries.Model.Repository.Implementation.RecursosHumanos
                 regSetorAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_setor",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idSetor"),
-                                  MapBuilder<SetorModel>.MapAllProperties().Build());
+                                  MapBuilder<SetorModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
 
 

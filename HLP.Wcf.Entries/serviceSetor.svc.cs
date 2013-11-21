@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Models.RecursosHumanos;
 using HLP.Entries.Model.Repository.Interfaces.RecursosHumanos;
 using Ninject;
 using System;
@@ -36,7 +35,7 @@ namespace HLP.Wcf.Entries
             
         }
 
-        public SetorModel getSetor(int idSetor)
+        public HLP.Entries.Model.Models.RecursosHumanos.SetorModel getSetor(int idSetor)
         {
 
             try
@@ -51,7 +50,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int saveSetor(SetorModel objSetor)
+        public int saveSetor(HLP.Entries.Model.Models.RecursosHumanos.SetorModel objSetor)
         {
 
             try
