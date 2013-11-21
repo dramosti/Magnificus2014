@@ -59,9 +59,9 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 16)]
         public byte stCodigoRegimeTributario { get; set; }
 
-        private ObservableCollection<Empresa_EnderecoModel> _lEmpresa_endereco;
+        private ObservableCollectionBaseCadastros<Empresa_EnderecoModel> _lEmpresa_endereco;
 
-        public ObservableCollection<Empresa_EnderecoModel> lEmpresa_endereco
+        public ObservableCollectionBaseCadastros<Empresa_EnderecoModel> lEmpresa_endereco
         {
             get { return _lEmpresa_endereco; }
             set
@@ -73,7 +73,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public EmpresaModel()
         {
-            lEmpresa_endereco = new ObservableCollection<Empresa_EnderecoModel>();
+            lEmpresa_endereco = new ObservableCollectionBaseCadastros<Empresa_EnderecoModel>();
         }
     }
 

@@ -6,7 +6,8 @@
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
-      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IserviceEmpresa_getEmpresa_InputMessage">

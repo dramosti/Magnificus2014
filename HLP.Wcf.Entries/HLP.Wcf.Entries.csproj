@@ -95,6 +95,7 @@
     <Content Include="servicePesquisaRapida.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceSetor.svc" />
+    <Content Include="serviceTipoServico.svc" />
     <Content Include="serviceTipo_documento.svc" />
     <Content Include="serviceTipoProduto.svc" />
     <Content Include="serviceUf.svc" />
@@ -116,6 +117,7 @@
     <Compile Include="IservicePesquisaRapida.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceSetor.cs" />
+    <Compile Include="IserviceTipoServico.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
     <Compile Include="IserviceTipoProduto.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="serviceSetor.svc.cs">
       <DependentUpon>serviceSetor.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceTipoServico.svc.cs">
+      <DependentUpon>serviceTipoServico.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceTipo_documento.svc.cs">
       <DependentUpon>serviceTipo_documento.svc</DependentUpon>

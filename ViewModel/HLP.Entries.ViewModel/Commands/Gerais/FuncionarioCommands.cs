@@ -15,7 +15,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     public class FuncionarioCommands
     {
         FuncionarioViewModel objViewModel;
-        //funcionarioService.IserviceFuncionarioClient servico = new funcionarioService.IserviceFuncionarioClient();
+        funcionarioService.IserviceFuncionarioClient servico = new funcionarioService.IserviceFuncionarioClient();
 
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
@@ -56,8 +56,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //this.objViewModel.currentModel.idFuncionario = await servico.saveFuncionarioAsync(objFuncionario:
-                //    this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idFuncionario = await servico.saveFuncionarioAsync(objFuncionario:
+                    this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -83,17 +83,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    //if (await this.servico.deleteFuncionarioAsync(idFuncionario: (int)this.objViewModel.currentModel.idFuncionario))
-                    //{
-                    //    MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                    //        button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                    //    this.objViewModel.currentModel = null;
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                    //        button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                    //}
+                    if (await this.servico.deleteFuncionarioAsync(idFuncionario: (int)this.objViewModel.currentModel.idFuncionario))
+                    {
+                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.currentModel = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+                    }
                 }
             }
             catch (Exception ex)
@@ -147,7 +147,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //this.objViewModel.currentModel.idFuncionario = await this.servico.copyFuncionarioAsync(objFuncionario: this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idFuncionario = await this.servico.copyFuncionarioAsync(objFuncionario: this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -191,7 +191,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentModel = await this.servico.getFuncionarioAsync(idFuncionario: this.objViewModel.currentID);
+            this.objViewModel.currentModel = await this.servico.getFuncionarioAsync(idFuncionario: this.objViewModel.currentID);
         }
         #endregion
 

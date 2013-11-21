@@ -11,6 +11,7 @@ using HLP.Entries.Model.Repository.Interfaces.RecursosHumanos;
 using HLP.Entries.Model.Repository.Implementation.RecursosHumanos;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using HLP.Entries.Model.Repository.Implementation.Comercial;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Dependencies
 {
@@ -105,7 +106,7 @@ namespace HLP.Dependencies
             //Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
             Bind<IUnidade_medidaRepository>().To<Unidade_medidaRepository>();
-            //Bind<ITipo_servicoRepository>().To<Tipo_servicoRepository>();
+            Bind<ITipo_servicoRepository>().To<Tipo_servicoRepository>();
             //Bind<IFabricanteRepository>().To<FabricanteRepository>();
             //Bind<IFamilia_ProdutoRepository>().To<Familia_produtoRepository>();
             //Bind<IFamilia_Produto_ClassesRepository>().To<Familia_Produto_ClassesRepository>();

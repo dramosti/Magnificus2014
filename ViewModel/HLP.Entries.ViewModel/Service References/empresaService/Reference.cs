@@ -9,7 +9,150 @@
 //------------------------------------------------------------------------------
 
 namespace HLP.Entries.ViewModel.empresaService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EmpresaModel))]
+    public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.empresaService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HLP.Entries.ViewModel.empresaService.statusModel statusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.empresaService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+            get {
+                return this.lcamposSqlNotNullField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.lcamposSqlNotNullField, value) != true)) {
+                    this.lcamposSqlNotNullField = value;
+                    this.RaisePropertyChanged("lcamposSqlNotNull");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HLP.Entries.ViewModel.empresaService.statusModel status {
+            get {
+                return this.statusField;
+            }
+            set {
+                if ((this.statusField.Equals(value) != true)) {
+                    this.statusField = value;
+                    this.RaisePropertyChanged("status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components")]
+    [System.SerializableAttribute()]
+    public partial class PesquisaPadraoModelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string COLUMN_NAMEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DATA_TYPEField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string COLUMN_NAME {
+            get {
+                return this.COLUMN_NAMEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.COLUMN_NAMEField, value) != true)) {
+                    this.COLUMN_NAMEField = value;
+                    this.RaisePropertyChanged("COLUMN_NAME");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DATA_TYPE {
+            get {
+                return this.DATA_TYPEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
+                    this.DATA_TYPEField = value;
+                    this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum statusModel : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        nenhum = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        criado = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        alterado = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        excluido = 3,
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="empresaService.IserviceEmpresa")]
