@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7b521910-c642-4ff1-9e70-4349eeddc849" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipoServico.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceTipoServico.xsd" MetadataType="Schema" ID="f91c4e11-f657-4136-9123-d4b213c150bd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTipoServico.wsdl" MetadataType="Wsdl" ID="ec6ec858-11e4-43e6-a734-a23db1816f85" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?wsdl" />
+    <MetadataFile FileName="serviceTipoServico1.xsd" MetadataType="Schema" ID="f65d0e8f-e7be-461b-b879-a33c622b9585" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipoServico.disco" MetadataType="Disco" ID="7690ae28-4fc9-419e-9d2b-46c266caf590" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?disco" />
+    <MetadataFile FileName="serviceTipoServico2.xsd" MetadataType="Schema" ID="6f666f4a-4f49-4136-9bd4-43d70267a097" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
