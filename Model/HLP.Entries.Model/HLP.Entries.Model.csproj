@@ -62,6 +62,7 @@
     <Compile Include="Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
+    <Compile Include="Models\Gerais\DataContract.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
     <Compile Include="Models\Gerais\FuncionarioModel.cs" />
     <Compile Include="Models\Gerais\RegiaoModel.cs" />

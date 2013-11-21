@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
 
+
 namespace HLP.Entries.Model.Models.Gerais
 {
+      
     public partial class UFModel : modelBase
     {
         public UFModel()

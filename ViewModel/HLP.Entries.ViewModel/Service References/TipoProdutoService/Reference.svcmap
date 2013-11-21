@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b029983a-5439-4f00-8636-ad502530ad0d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="65570046-129f-4104-aa69-8ee93541a30b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -15,6 +15,7 @@
     <UseSerializerForFaults>true</UseSerializerForFaults>
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
       <ReferencedAssembly AssemblyName="System" />
     </ReferencedAssemblies>
     <ReferencedDataContractTypes />
@@ -24,14 +25,14 @@
     <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceTipoProduto.xsd" MetadataType="Schema" ID="105c326f-9b43-4af3-8504-a91677993bb4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceTipoProduto1.xsd" MetadataType="Schema" ID="249995e7-a163-4555-be6e-292a69ee9a5a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceTipoProduto2.xsd" MetadataType="Schema" ID="276e5bcc-dc24-4dfa-afc6-bc51673a6ed3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceTipoProduto3.xsd" MetadataType="Schema" ID="3966af93-fbcf-46e3-bce6-f84b3294bcea" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceTipoProduto4.xsd" MetadataType="Schema" ID="f5985317-eba0-4471-826c-49ed6c02a657" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceTipoProduto.wsdl" MetadataType="Wsdl" ID="cd58a1e0-a2a4-4417-ba25-b16b4ff63f1d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?wsdl" />
-    <MetadataFile FileName="serviceTipoProduto.disco" MetadataType="Disco" ID="c9a0caa3-e640-4634-855c-b541dd308cae" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?disco" />
-    <MetadataFile FileName="serviceTipoProduto5.xsd" MetadataType="Schema" ID="0af61fd2-a03a-4013-ab81-e8134a9e448c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceTipoProduto.xsd" MetadataType="Schema" ID="98afdee1-9bcf-40f2-9afd-4678113779ad" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTipoProduto1.xsd" MetadataType="Schema" ID="b7b6e7c1-bb71-46e2-8267-c4786c6f5115" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceTipoProduto2.xsd" MetadataType="Schema" ID="b744344a-aa4b-4577-85f4-8f23ba3dab5d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipoProduto3.xsd" MetadataType="Schema" ID="8dfea3e2-f3aa-4f2a-991e-75e5d15a5052" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTipoProduto4.xsd" MetadataType="Schema" ID="c450e44b-1f25-4f16-9ef3-2d8e591b5059" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTipoProduto.wsdl" MetadataType="Wsdl" ID="39a67bcd-3be8-4c5d-a826-de3072d1ed1d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?wsdl" />
+    <MetadataFile FileName="serviceTipoProduto.disco" MetadataType="Disco" ID="0f190d59-b748-4ced-be19-ecaae3d3d30c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?disco" />
+    <MetadataFile FileName="serviceTipoProduto5.xsd" MetadataType="Schema" ID="680bd2ab-23f7-47e5-9713-7d1e57804b9f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoProduto.svc?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

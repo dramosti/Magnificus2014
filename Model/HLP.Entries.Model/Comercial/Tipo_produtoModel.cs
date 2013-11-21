@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
@@ -13,7 +14,7 @@ namespace HLP.Entries.Model.Comercial
     {
         public Tipo_produtoModel()
             : base(xTabela: "Tipo_produto") { }
-
+        
         [ParameterOrder(Order = 1)]
         public int? idTipoProduto { get; set; }
         [ParameterOrder(Order = 2)]
@@ -36,9 +37,8 @@ namespace HLP.Entries.Model.Comercial
         public byte stServicos { get; set; }
     }
 
-
     public partial class Tipo_produtoModel
-    {
+    {        
         public override string this[string columnName]
         {
             get
