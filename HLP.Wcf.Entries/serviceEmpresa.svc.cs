@@ -52,25 +52,25 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                objEmpresa = empresaRepository.GetEmpresa(1);
-                objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(
-                    empresa_EnderecoRepository.GetAllEmpresa_Endereco(1));
+                //objEmpresa = empresaRepository.GetEmpresa(1);
+                //objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(
+                //    empresa_EnderecoRepository.GetAllEmpresa_Endereco(1));
 
-                objEmpresa.lEmpresa_endereco.Add(
-                    new HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel
-                    {
-                        idEmpresa = 1,
-                        idCidade = 1,
-                        Cep = "13304394",
-                        nro = "247",
-                        status = statusModel.criado,
-                        stPrincipal = 1,
-                        StTipoEnd = 1,
-                        xBairro = "Pq. América",
-                        xCpl = "A",
-                        xCxPostal = "1",
-                        xLgr = "Rua João Pereira de Góes"
-                    });
+                //objEmpresa.lEmpresa_endereco.Add(
+                //    new HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel
+                //    {
+                //        idEmpresa = 1,
+                //        idCidade = 1,
+                //        Cep = "13304394",
+                //        nro = "247",
+                //        status = statusModel.criado,
+                //        stPrincipal = 1,
+                //        StTipoEnd = 1,
+                //        xBairro = "Pq. América",
+                //        xCpl = "A",
+                //        xCxPostal = "1",
+                //        xLgr = "Rua João Pereira de Góes"
+                //    });
 
                 empresaRepository.Save(objEmpresa: objEmpresa);
 

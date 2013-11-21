@@ -48,9 +48,6 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                this.objViewModel.currentModel.idEmpresa = await servico.saveEmpresaAsync(objEmpresa:
-                    objViewModel.currentModel);
-
                 foreach (int id in this.objViewModel.currentModel.lEmpresa_endereco.idExcluidos)
                 {
                     this.objViewModel.currentModel.lEmpresa_endereco.Add(
@@ -60,7 +57,8 @@ namespace HLP.Entries.ViewModel.Commands
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-
+                this.objViewModel.currentModel.idEmpresa = await servico.saveEmpresaAsync(objEmpresa:
+                    objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
