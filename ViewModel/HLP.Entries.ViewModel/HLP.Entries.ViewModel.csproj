@@ -57,6 +57,7 @@
     <Compile Include="Commands\DepartamentoCommands.cs" />
     <Compile Include="Commands\EmpresaCommands.cs" />
     <Compile Include="Commands\Gerais\FuncionarioCommands.cs" />
+    <Compile Include="Commands\Gerais\TipoServicoCommand.cs" />
     <Compile Include="Commands\RecursosHumanos\SetorCommands.cs" />
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\TipoServicoViewModel.cs" />
     <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
@@ -181,6 +183,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Tipo_servicoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.CargoModel.datasource" />
@@ -325,9 +328,6 @@
     </None>
     <None Include="Service References\TipoProdutoService\serviceTipoProduto5.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\tipoServicoService\HLP.Entries.ViewModel.tipoServicoService.Tipo_servicoModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\tipoServicoService\serviceTipoServico.wsdl" />
     <None Include="Service References\tipoServicoService\serviceTipoServico.xsd">

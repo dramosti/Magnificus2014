@@ -16,6 +16,7 @@
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies>
       <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+      <ReferencedAssembly AssemblyName="System" />
     </ReferencedAssemblies>
     <ReferencedDataContractTypes />
     <ServiceContractMappings />

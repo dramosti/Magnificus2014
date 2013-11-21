@@ -1,27 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using HLP.Entries.ViewModel.ViewModels.Comercial;
-using HLP.Entries.ViewModel.ViewModels;
 using System.Windows.Controls;
-using System.ComponentModel;
 using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 
-namespace HLP.Entries.ViewModel.Commands.Comercial
+namespace HLP.Entries.ViewModel.Commands.Gerais
 {
-    public class Tipo_ProdutoCommands
+    public class TipoServicoCommand
     {
-        Tipo_ProdutoViewModel objViewModel;
+        TipoServicoViewModel objViewModel;
+        tipoServicoService.IserviceTipoServicoClient servicotpServico = new tipoServicoService.IserviceTipoServicoClient();
 
-        private TipoProdutoService.IserviceTipoProdutoClient servicoProduto = new TipoProdutoService.IserviceTipoProdutoClient();
-
-        public Tipo_ProdutoCommands(Tipo_ProdutoViewModel _objViewModel)
+        public TipoServicoCommand(TipoServicoViewModel _objViewModel)
         {
             this.objViewModel = _objViewModel;
-
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
@@ -45,8 +42,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
-        }
 
+        }
         #region Implementação Commands
 
         public async void Save()
@@ -54,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 //TODO: método de serviço para salvar
-                await servicoProduto.SaveAsync(objViewModel.currentModel);
+                await servicotpServico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -77,10 +74,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-               caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-               == MessageBoxResult.Yes)
+                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
                 {
-                    if (await this.servicoProduto.DeleteAsync((int)this.objViewModel.currentModel.idTipoProduto))
+                    if (await servicotpServico.DeleteAsync((int)objViewModel.currentModel.idTipoServico))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -114,7 +111,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Novo()
         {
             //TODO: instanciar novo objeto
-            objViewModel.currentModel = new Model.Comercial.Tipo_produtoModel();
+            this.objViewModel = new TipoServicoViewModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -146,7 +143,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 //TODO: Implementar serviço de copy
-                objViewModel.currentModel.idTipoProduto = await servicoProduto.CopyAsync(idTipoProduto: (int)objViewModel.currentModel.idTipoProduto);
+                await servicotpServico.CopyAsync((int)objViewModel.currentModel.idTipoServico);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -190,10 +187,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
-            this.objViewModel.currentModel = await servicoProduto.GetTipoAsync(idTipoProduto: (int)this.objViewModel.currentID);
+            this.objViewModel.currentModel = await servicotpServico.GetTipoAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
         }
         #endregion
+
+
+
 
     }
 }

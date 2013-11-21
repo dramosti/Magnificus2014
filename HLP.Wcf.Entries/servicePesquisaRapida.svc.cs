@@ -33,12 +33,7 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                Log.AddLog(_TableView);
-                Log.AddLog(_Items.First());
-                Log.AddLog(_FieldPesquisa);
-                Log.AddLog(_iValorPesquisa.ToString());
-
-               return iHlpPesquisaRapidaRepository.GetValorDisplay(_TableView, _Items, _FieldPesquisa, _iValorPesquisa);
+                return iHlpPesquisaRapidaRepository.GetValorDisplay(_TableView, _Items, _FieldPesquisa, _iValorPesquisa);
             }
             catch (Exception ex)
             {
