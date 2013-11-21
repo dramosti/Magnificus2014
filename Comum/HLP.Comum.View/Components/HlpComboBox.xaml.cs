@@ -24,10 +24,38 @@ namespace HLP.Comum.View.Components
     {
         public HlpComboBox()
         {
-            InitializeComponent();        
+            InitializeComponent();
+            if (this.Items != null)
+            {
+                foreach (var item in this.Items)
+                {
+                    comboBox.Items.Add(item);
+                }
+            }
         }
 
         #region ComboBox's Property
+
+        public static readonly DependencyProperty ItemsProperty =
+        DependencyProperty.Register("Items",
+        typeof(IList),
+        typeof(HlpComboBox),
+        new PropertyMetadata(new List<string>()));
+
+        [Category("HLP.Owner")]
+        public IList Items
+        {
+            get { return (IList)GetValue(ItemsProperty); }
+            set
+            {
+                SetValue(ItemsProperty, new List<string>());
+                SetValue(ItemsProperty, value);
+            }
+        }
+
+
+
+
         [Category("HLP.Owner")]
         public string DisplayMemberPath
         {
@@ -38,6 +66,7 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for DisplayMemberPath.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DisplayMemberPathProperty =
             DependencyProperty.Register("DisplayMemberPath", typeof(string), typeof(HlpComboBox), new PropertyMetadata(string.Empty));
+
 
 
         [Category("HLP.Owner")]

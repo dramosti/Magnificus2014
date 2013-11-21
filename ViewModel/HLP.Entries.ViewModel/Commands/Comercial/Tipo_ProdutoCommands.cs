@@ -22,7 +22,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel = _objViewModel;
         }
 
-
         #region Implementação Commands
 
         public async void Save()
@@ -49,35 +48,35 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
 
         public async void Delete()
-          {
-                try
+        {
+            try
+            {
+                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
+               caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+               == MessageBoxResult.Yes)
                 {
-                    if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                   caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                   == MessageBoxResult.Yes)
+                    if (await this.servicoProduto.DeleteAsync((int)this.objViewModel.currentModel.idTipoProduto))
                     {
-                        //if (await this.servicoProduto.DeleteAsync((int)this.objViewModel.currentModel.idTipoProduto))
-                        {
-                            MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                                button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                            this.objViewModel.currentModel = null;
-                        }
-                        //else
-                        {
-                            MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                                button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                        }
+                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.currentModel = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    this.objViewModel.deletarBaseCommand.Execute(parameter: null);
-                }
-          }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+            }
+        }
 
         private bool DeleteCanExecute()
         {
@@ -90,6 +89,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Novo()
         {
             //TODO: instanciar novo objeto
+            objViewModel.currentModel = new Model.Comercial.Tipo_produtoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -100,7 +100,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Alterar()
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: null);
-            //this.objViewModel.currentModel.lcamposSqlNotNull = this.objViewModel.lCampos.ToList();
         }
         private bool AlterarCanExecute()
         {
@@ -122,6 +121,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 //TODO: Implementar serviço de copy
+                objViewModel.currentModel.idTipoProduto = await servicoProduto.CopyAsync(idTipoProduto: (int)objViewModel.currentModel.idTipoProduto);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -164,14 +164,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
-          {            
-              //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
-          }
+        {
+            //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = await servicoProduto.GetTipoAsync(idTipoProduto: (int)this.objViewModel.currentID);
+        }
         #endregion
-
-
-
-
 
     }
 }

@@ -170,10 +170,10 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
         System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipoProduto/Delete", ReplyAction="http://tempuri.org/IserviceTipoProduto/DeleteResponse")]
-        void Delete(int idTipoProduto);
+        bool Delete(int idTipoProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipoProduto/Delete", ReplyAction="http://tempuri.org/IserviceTipoProduto/DeleteResponse")]
-        System.Threading.Tasks.Task DeleteAsync(int idTipoProduto);
+        System.Threading.Tasks.Task<bool> DeleteAsync(int idTipoProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipoProduto/Copy", ReplyAction="http://tempuri.org/IserviceTipoProduto/CopyResponse")]
         int Copy(int idTipoProduto);
@@ -225,11 +225,11 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
             return base.Channel.SaveAsync(tipo);
         }
         
-        public void Delete(int idTipoProduto) {
-            base.Channel.Delete(idTipoProduto);
+        public bool Delete(int idTipoProduto) {
+            return base.Channel.Delete(idTipoProduto);
         }
         
-        public System.Threading.Tasks.Task DeleteAsync(int idTipoProduto) {
+        public System.Threading.Tasks.Task<bool> DeleteAsync(int idTipoProduto) {
             return base.Channel.DeleteAsync(idTipoProduto);
         }
         
