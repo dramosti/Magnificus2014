@@ -1,5 +1,4 @@
-﻿using HLP.Entries.Model.Models.Gerais;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,15 +12,15 @@ namespace HLP.Wcf.Entries
     public interface IserviceEmpresa
     {
         [OperationContract]
-        EmpresaModel getEmpresa(int idEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresa(int idEmpresa);
 
         [OperationContract]
-        int saveEmpresa(EmpresaModel objEmpresa);
+        int saveEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
 
         [OperationContract]
         bool delEmpresa(int idEmpresa);
 
         [OperationContract]
-        int copyEmpresa(EmpresaModel objEmpresa);
+        int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
     }
 }

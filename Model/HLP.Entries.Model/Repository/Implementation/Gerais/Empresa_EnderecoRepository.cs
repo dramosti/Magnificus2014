@@ -21,26 +21,28 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Empresa_EnderecoModel objEmpresa_Endereco)
         {
-            objEmpresa_Endereco.idEmpresaEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Empresa_Endereco]",
-            ParameterBase<Empresa_EnderecoModel>.SetParameterValue(objEmpresa_Endereco));
-        }
-
-        public void Update(Empresa_EnderecoModel objEmpresa_Endereco)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objEmpresa_Endereco.idEmpresaEndereco == null)
+            {
+                objEmpresa_Endereco.idEmpresaEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+               "[dbo].[Proc_save_Empresa_Endereco]",
+                ParameterBase<Empresa_EnderecoModel>.SetParameterValue(objEmpresa_Endereco));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
             "[dbo].[Proc_update_Empresa_Endereco]",
             ParameterBase<Empresa_EnderecoModel>.SetParameterValue(objEmpresa_Endereco));
+            }
         }
 
-        public void Delete(Empresa_EnderecoModel objEmpresa_Endereco)
+        public void Delete(int idEmpresaEndereco)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Empresa_Endereco]",
                   UserData.idUser,
-                  objEmpresa_Endereco.idEmpresaEndereco);
+                  idEmpresaEndereco);
         }
 
-        public void Delete(int idEmpresa)
+        public void DeleteEnderecoPorIdEmpresa(int idEmpresa)
         {
             UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
               "DELETE Empresa_Endereco WHERE idEmpresa = " + idEmpresa);

@@ -24,29 +24,9 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandPesquisar { get; set; }
         #endregion
 
-        public List<int> lItensExcluidos = new List<int>();
-
         public EmpresaViewModel()
         {
             EmpresaCommands com = new EmpresaCommands(objViewModel: this);            
-        }
-
-        private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Add)
-            {
-                foreach (Empresa_EnderecoModel item in e.NewItems)
-                {
-                    item.status = statusModel.criado;
-                }
-            }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
-            {
-                foreach (Empresa_EnderecoModel item in e.OldItems)
-                {
-                    lItensExcluidos.Add(item: (int)item.idEmpresaEndereco);
-                }
-            }
         }
 
         private EmpresaModel _currentModel;
@@ -57,8 +37,6 @@ namespace HLP.Entries.ViewModel.ViewModels
             set
             {
                 _currentModel = value;
-                if (value != null)
-                    _currentModel.lEmpresa_endereco.CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChangedMethod);
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }

@@ -48,18 +48,19 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                Empresa_EnderecoModel obj;
-                foreach (int item in this.objViewModel.lItensExcluidos)
-                {
-                    obj = new Empresa_EnderecoModel
-                    {
-                        idEmpresaEndereco = item,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
-                    };
-                    this.objViewModel.currentModel.lEmpresa_endereco.Add(item: obj);
-                }
                 this.objViewModel.currentModel.idEmpresa = await servico.saveEmpresaAsync(objEmpresa:
                     objViewModel.currentModel);
+
+                foreach (int id in this.objViewModel.currentModel.lEmpresa_endereco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lEmpresa_endereco.Add(
+                        new Empresa_EnderecoModel
+                        {
+                            idEmpresaEndereco = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -129,6 +130,7 @@ namespace HLP.Entries.ViewModel.Commands
         private void Alterar()
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this.objViewModel.currentModel.lEmpresa_endereco.xCampoId = "idEmpresaEndereco";
         }
         private bool AlterarCanExecute()
         {

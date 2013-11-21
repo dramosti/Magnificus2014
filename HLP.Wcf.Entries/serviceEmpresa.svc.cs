@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
@@ -11,6 +10,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Wcf.Entries
 {
@@ -32,12 +32,12 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public EmpresaModel getEmpresa(int idEmpresa)
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresa(int idEmpresa)
         {
             try
             {
-                EmpresaModel objEmpresa = empresaRepository.GetEmpresa(idEmpresa: idEmpresa);
-                objEmpresa.lEmpresa_endereco = new ObservableCollection<Empresa_EnderecoModel>(list: empresa_EnderecoRepository.GetAllEmpresa_Endereco(idEmpresa: idEmpresa));
+                HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa = empresaRepository.GetEmpresa(idEmpresa: idEmpresa);
+                objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(list: empresa_EnderecoRepository.GetAllEmpresa_Endereco(idEmpresa: idEmpresa));
 
                 return objEmpresa;
             }
@@ -48,13 +48,33 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int saveEmpresa(EmpresaModel objEmpresa)
+        public int saveEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
         {
             try
             {
+                objEmpresa = empresaRepository.GetEmpresa(1);
+                objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(
+                    empresa_EnderecoRepository.GetAllEmpresa_Endereco(1));
+
+                objEmpresa.lEmpresa_endereco.Add(
+                    new HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel
+                    {
+                        idEmpresa = 1,
+                        idCidade = 1,
+                        Cep = "13304394",
+                        nro = "247",
+                        status = statusModel.criado,
+                        stPrincipal = 1,
+                        StTipoEnd = 1,
+                        xBairro = "Pq. América",
+                        xCpl = "A",
+                        xCxPostal = "1",
+                        xLgr = "Rua João Pereira de Góes"
+                    });
+
                 empresaRepository.Save(objEmpresa: objEmpresa);
 
-                foreach (Empresa_EnderecoModel item in objEmpresa.lEmpresa_endereco)
+                foreach (HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel item in objEmpresa.lEmpresa_endereco)
                 {
                     switch (item.status)
                     {
@@ -66,12 +86,11 @@ namespace HLP.Wcf.Entries
                             break;
                         case statusModel.excluido:
                             {
-                                empresa_EnderecoRepository.Delete(objEmpresa_Endereco: item);
+                                empresa_EnderecoRepository.Delete(idEmpresaEndereco: (int)item.idEmpresaEndereco);
                             }
                             break;
                     }
                 }
-
                 return (int)objEmpresa.idEmpresa;
             }
             catch (Exception ex)
@@ -85,7 +104,7 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                empresa_EnderecoRepository.Delete(idEmpresa: idEmpresa);
+                empresa_EnderecoRepository.DeleteEnderecoPorIdEmpresa(idEmpresa: idEmpresa);
                 empresaRepository.Delete(idEmpresa: idEmpresa);
                 return true;
             }
@@ -96,7 +115,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int copyEmpresa(EmpresaModel objEmpresa)
+        public int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
         {
             try
             {
