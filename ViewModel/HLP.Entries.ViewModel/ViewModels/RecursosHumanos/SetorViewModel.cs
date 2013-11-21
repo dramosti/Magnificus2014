@@ -1,18 +1,15 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Comum.ViewModel.ViewModels;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.Commands;
+﻿using HLP.Comum.ViewModel.ViewModels;
+using HLP.Entries.Model.Models.RecursosHumanos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HLP.Entries.ViewModel.ViewModels
+namespace HLP.Entries.ViewModel.ViewModels.RecursosHumanos
 {
-    public class FuncionarioViewModel : ViewModelBase
+    public class SetorViewModel : ViewModelBase
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -25,15 +22,9 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand navegarCommand { get; set; }
         #endregion
 
+        SetorModel _currentModel;
 
-        FuncionarioViewModel()
-        {
-            FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
-        }
-
-        FuncionarioModel _currentModel;
-
-        public FuncionarioModel currentModel
+        public SetorModel currentModel
         {
             get { return _currentModel; }
             set
@@ -41,6 +32,10 @@ namespace HLP.Entries.ViewModel.ViewModels
                 _currentModel = value;
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
+        }
+
+        public SetorViewModel()
+        {
         }
     }
 }

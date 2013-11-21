@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.ViewModel.Commands;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.ViewModels;
+using HLP.Entries.ViewModel.ViewModels.RecursosHumanos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace HLP.Entries.ViewModel.Commands
+namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
 {
-    public class FuncionarioCommands
+    public class SetorCommands
     {
-        FuncionarioViewModel objViewModel;
-        funcionarService.IserviceFuncionarioClient servico = new funcionarService.IserviceFuncionarioClient();
+        SetorViewModel objViewModel;
+        
+        
 
-        public FuncionarioCommands(FuncionarioViewModel objViewModel)
+        public SetorCommands(SetorViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
@@ -56,8 +56,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                //this.objViewModel.currentModel.idFuncionario = await servico.saveFuncionarioAsync(objFuncionario:
-                //    this.objViewModel.currentModel);
+                //TODO: método de serviço para salvar
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -83,7 +82,8 @@ namespace HLP.Entries.ViewModel.Commands
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteFuncionarioAsync(idFuncionario: (int)this.objViewModel.currentModel.idFuncionario))
+                    if (true //TODO: método de serviço para deletar
+                    )
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -116,7 +116,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new FuncionarioModel();
+            //TODO: instanciar novo objeto
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -147,7 +147,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                //this.objViewModel.currentModel.idFuncionario = await this.servico.copyFuncionarioAsync(objFuncionario: this.objViewModel.currentModel);
+                //TODO: Implementar serviço de copy
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -191,7 +191,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentModel = await this.servico.getFuncionarioAsync(idFuncionario: this.objViewModel.currentID);
+            //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
         }
         #endregion
 
