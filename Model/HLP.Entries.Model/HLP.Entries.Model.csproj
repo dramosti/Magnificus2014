@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comercial\Tipo_produtoModel.cs" />
+    <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
@@ -66,6 +66,8 @@
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
     <Compile Include="Models\Gerais\FuncionarioModel.cs" />
     <Compile Include="Models\Gerais\RegiaoModel.cs" />
+    <Compile Include="Models\Gerais\Tipo_servicoModel.cs" />
+    <Compile Include="Models\Gerais\Tipo_servicoRepository.cs" />
     <Compile Include="Models\Gerais\UFModel.cs" />
     <Compile Include="Models\Gerais\Unidade_medidaModel.cs" />
     <Compile Include="Models\RecursosHumanos\CargoModel.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Margem_Lucro_ComissaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IRegiaoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\ITipo_servicoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IUFRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IUnidade_medidaRepository.cs" />
     <Compile Include="Repository\Interfaces\RecursosHumanos\ICargoRepository.cs" />
