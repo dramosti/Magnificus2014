@@ -169,6 +169,7 @@ namespace HLP.Dependencies
             #region Recursos Humanos
 
             Bind<ICargoRepository>().To<CargoRepository>();
+            Bind<ISetorRepository>().To<SetorRepository>();
 
             #endregion
 
