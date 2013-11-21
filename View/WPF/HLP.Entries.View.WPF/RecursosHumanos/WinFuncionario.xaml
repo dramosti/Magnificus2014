@@ -274,7 +274,7 @@
 							</Components:HlpPesquisa>
 						</StackPanel>
 					</Expander>	
-					<Expander Header="Administração" HorizontalAlignment="Left" Height="169.07" Margin="644.5,0,0,0" VerticalAlignment="Top" Width="428" IsExpanded="True">
+					<Expander Header="Administração" HorizontalAlignment="Left" Height="169.07" Margin="585,0,0,0" VerticalAlignment="Top" Width="479.5" IsExpanded="True">
 						
 						<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100.57" >
 							<Components:HlpComboBox
@@ -294,13 +294,18 @@
 							</Components:HlpPesquisa>
 						</StackPanel>
 					</Expander>
-					<Expander Header="Requisição de Compras" HorizontalAlignment="Left" Height="185.5" Margin="644,169.07,0,0" VerticalAlignment="Top" Width="428" IsExpanded="True">
+					<Expander Header="Requisição de Compras" HorizontalAlignment="Left" Height="185.5" Margin="585,169.07,0,0" VerticalAlignment="Top" Width="551" IsExpanded="True">
 						<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 							<Components:HlpPesquisa
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="30" Margin="10,20,10,10" Caption="Site Padrão" Field="idSite" Help="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." Table="Site" WidthLabel="178"/>
+								Height="30" Margin="10,20,10,10" Caption="Site Padrão" Field="idSite" Help="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." Table="Site" WidthLabel="178" FieldPesquisa="ID" TableView="vwSite">
+								<Components:HlpPesquisa.Items>
+									<System:String>xSite</System:String>
+									<System:String>xDescricao</System:String>
+								</Components:HlpPesquisa.Items>
+							</Components:HlpPesquisa>
 							<Components:HlpPesquisa
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -369,7 +374,12 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="30" Margin="10,0,202,10" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos." Table="Conta_bancaria" WidthLabel="155"/>
+									Height="30" Margin="10,0,64,10" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos." Table="Conta_bancaria" WidthLabel="155" FieldPesquisa="ID" TableView="vwContaBancaria">
+									<Components:HlpPesquisa.Items>
+										<System:String>xNumeroConta</System:String>
+										<System:String>xDescricao</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>
 							</StackPanel>
 						</Grid>
 					</Expander>
