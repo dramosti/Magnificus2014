@@ -14,6 +14,6 @@ namespace HLP.Wcf.Entries
     public interface IservicePesquisaRapida
     {
         [OperationContract]
-        string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int? _iValorPesquisa);
+        string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, int? _iValorPesquisa);
     }
 }

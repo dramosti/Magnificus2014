@@ -10,6 +10,7 @@ using HLP.Dependencies;
 using Ninject;
 using HLP.Comum.Model.Components;
 using System.Collections;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Wcf.Entries
 {
@@ -17,7 +18,6 @@ namespace HLP.Wcf.Entries
     // NOTE: In order to launch WCF Test Client for testing this service, please select servicePesquisaRapida.svc or servicePesquisaRapida.svc.cs at the Solution Explorer and start debugging.
     public class servicePesquisaRapida : IservicePesquisaRapida
     {
-
         public servicePesquisaRapida()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -29,11 +29,11 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IHlpPesquisaRapidaRepository iHlpPesquisaRapidaRepository { get; set; }
 
-        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int? _iValorPesquisa)
+        public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, int? _iValorPesquisa)
         {
             try
             {
-                return iHlpPesquisaRapidaRepository.GetValorDisplay(_TableView, _Items, _FieldPesquisa, _iValorPesquisa);
+                return iHlpPesquisaRapidaRepository.GetValorDisplay(_TableView, _Items, _FieldPesquisa, idEmpresa, _iValorPesquisa);
             }
             catch (Exception ex)
             {

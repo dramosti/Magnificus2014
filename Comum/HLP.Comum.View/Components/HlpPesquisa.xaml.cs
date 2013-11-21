@@ -19,6 +19,7 @@ using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
 using HLP.Comum.View.PesquisaRapidaService;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.View.Components
 {
@@ -66,11 +67,14 @@ namespace HLP.Comum.View.Components
 
                     string[] teste = ((List<string>)this.Items).ToArray();
 
+                    int i = CompanyData.idEmpresa;
+
                     var objRet = await this.servicoPesquisaRapida.GetValorDisplayAsync
                          (
                          _TableView: this.TableView,
                          _Items: teste,
                          _FieldPesquisa: this.FieldPesquisa,
+                         idEmpresa: CompanyData.idEmpresa,
                          _iValorPesquisa: Convert.ToInt32(sValor)
                          );
 
