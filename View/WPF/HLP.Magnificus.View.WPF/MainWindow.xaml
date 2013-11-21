@@ -183,9 +183,9 @@
                             </TabControl.ItemTemplate>
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
-                                    <StackPanel>
+                                    <DockPanel LastChildFill="True">
                                         <ContentControl Content="{Binding _content}"/>
-                                    </StackPanel>
+                                    </DockPanel>
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
                         </TabControl>
