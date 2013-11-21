@@ -30,22 +30,56 @@ namespace HLP.Wcf.Entries
 
         public HLP.Entries.Model.Comercial.Tipo_produtoModel GetTipo(int idTipoProduto)
         {
-            return iTipo_produtoRepository.GetTipo(idTipoProduto);
+            try
+            {
+                return iTipo_produtoRepository.GetTipo(idTipoProduto);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        
         }
 
         public void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo)
         {
-            iTipo_produtoRepository.Save(tipo);
+            try
+            {
+                iTipo_produtoRepository.Save(tipo);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
         }
 
-        public void Delete(int idTipoProduto)
+        public bool Delete(int idTipoProduto)
         {
-            iTipo_produtoRepository.Delete(idTipoProduto);
+            try
+            {
+                iTipo_produtoRepository.Delete(idTipoProduto);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
         }
 
         public int Copy(int idTipoProduto)
         {
-           return iTipo_produtoRepository.Copy(idTipoProduto);
+            try
+            {
+                return iTipo_produtoRepository.Copy(idTipoProduto);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
         }
     }
 }

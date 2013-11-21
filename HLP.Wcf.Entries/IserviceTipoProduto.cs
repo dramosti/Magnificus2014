@@ -13,11 +13,11 @@ namespace HLP.Wcf.Entries
     public interface IserviceTipoProduto
     {
         [OperationContract]
-        Tipo_produtoModel GetTipo(int idTipoProduto);
+        HLP.Entries.Model.Comercial.Tipo_produtoModel GetTipo(int idTipoProduto);
         [OperationContract]
-        void Save(Tipo_produtoModel tipo);
+        void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
         [OperationContract]
-        void Delete(int idTipoProduto);
+        bool Delete(int idTipoProduto);
         [OperationContract]
         int Copy(int idTipoProduto);
     }

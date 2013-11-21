@@ -152,6 +152,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Comercial.Tipo_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Fiscal.Tipo_documentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
@@ -239,9 +240,6 @@
     </None>
     <None Include="Service References\empresaService\serviceEmpresa4.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TipoProdutoService\HLP.Entries.ViewModel.TipoProdutoService.Tipo_produtoModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.wsdl" />
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.xsd">
