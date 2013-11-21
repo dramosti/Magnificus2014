@@ -1,6 +1,6 @@
-﻿using HLP.Comum.ViewModel.Commands;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.ViewModels.Gerais;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.ViewModel.ViewModels.RecursosHumanos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace HLP.Entries.ViewModel.Commands.Gerais
+namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
 {
-    public class FuncionarioCommands
+    public class SetorCommands
     {
-        FuncionarioViewModel objViewModel;
-        //funcionarioService.IserviceFuncionarioClient servico = new funcionarioService.IserviceFuncionarioClient();
+        SetorViewModel objViewModel;
+        setrService.IserviceSetorClient service = new setrService.IserviceSetorClient();
 
-        public FuncionarioCommands(FuncionarioViewModel objViewModel)
+
+        public SetorCommands(SetorViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
@@ -56,8 +57,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //this.objViewModel.currentModel.idFuncionario = await servico.saveFuncionarioAsync(objFuncionario:
-                //    this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idEmpresa = CompanyData.idEmpresa;
+                this.objViewModel.currentModel.idSetor = await service.saveSetorAsync(objSetor: objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -83,17 +84,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    //if (await this.servico.deleteFuncionarioAsync(idFuncionario: (int)this.objViewModel.currentModel.idFuncionario))
-                    //{
-                    //    MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                    //        button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                    //    this.objViewModel.currentModel = null;
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                    //        button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                    //}
+                    if (await service.deleteSetorAsync(idSetor: (int)objViewModel.currentModel.idSetor))
+                    {
+                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.currentModel = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+                    }
                 }
             }
             catch (Exception ex)
@@ -116,7 +117,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new FuncionarioModel();
+            this.objViewModel.currentModel = new Model.Models.RecursosHumanos.SetorModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -147,7 +148,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //this.objViewModel.currentModel.idFuncionario = await this.servico.copyFuncionarioAsync(objFuncionario: this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idSetor = await this.service.copySetorAsync(idSetor: (int)this.objViewModel.currentModel.idSetor);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -191,7 +192,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentModel = await this.servico.getFuncionarioAsync(idFuncionario: this.objViewModel.currentID);
+            this.objViewModel.currentModel = await this.service.getSetorAsync(idSetor: this.objViewModel.currentID);
         }
         #endregion
 

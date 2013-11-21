@@ -10,19 +10,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.RecursosHumanos;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
-	/// <summary>
-	/// Interaction logic for WinSetor.xaml
-	/// </summary>
-	public partial class WinSetor : WindowsBase
-	{
-		public WinSetor()
-		{
-			this.InitializeComponent();
-			
-			// Insert code required on object creation below this point.
-		}
-	}
+    /// <summary>
+    /// Interaction logic for WinSetor.xaml
+    /// </summary>
+    public partial class WinSetor : WindowsBase
+    {
+        public WinSetor()
+        {
+            this.InitializeComponent();
+            this.ViewModel = new SetorViewModel();
+        }
+
+        public SetorViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as SetorViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+    }
 }

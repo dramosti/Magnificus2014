@@ -1,5 +1,4 @@
-﻿using HLP.Entries.Model.Models.Gerais;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,15 +12,15 @@ namespace HLP.Wcf.Entries
     public interface IserviceFuncionario
     {
         [OperationContract]
-        FuncionarioModel getFuncionario(int idFuncionario);
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
 
         [OperationContract]
-        int saveFuncionario(FuncionarioModel objFuncionario);
+        int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
 
         [OperationContract]
         bool deleteFuncionario(int idFuncionario);
 
         [OperationContract]
-        int copyFuncionario(FuncionarioModel objFuncionario);
+        int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
     }
 }

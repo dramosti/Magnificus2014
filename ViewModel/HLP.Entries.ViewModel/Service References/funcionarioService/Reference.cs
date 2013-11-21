@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.setorService {
+namespace HLP.Entries.ViewModel.funcionarioService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,17 +17,23 @@ namespace HLP.Entries.ViewModel.setorService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.RecursosHumanos.SetorModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.FuncionarioModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.setorService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.setorService.statusModel statusField;
+        private HLP.Entries.ViewModel.funcionarioService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -40,7 +46,7 @@ namespace HLP.Entries.ViewModel.setorService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.setorService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -53,7 +59,7 @@ namespace HLP.Entries.ViewModel.setorService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.setorService.statusModel status {
+        public HLP.Entries.ViewModel.funcionarioService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -154,91 +160,91 @@ namespace HLP.Entries.ViewModel.setorService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="setorService.IserviceSetor")]
-    public interface IserviceSetor {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarioService.IserviceFuncionario")]
+    public interface IserviceFuncionario {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/getSetor", ReplyAction="http://tempuri.org/IserviceSetor/getSetorResponse")]
-        HLP.Entries.Model.Models.RecursosHumanos.SetorModel getSetor(int idSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/getSetor", ReplyAction="http://tempuri.org/IserviceSetor/getSetorResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.RecursosHumanos.SetorModel> getSetorAsync(int idSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/saveSetor", ReplyAction="http://tempuri.org/IserviceSetor/saveSetorResponse")]
-        int saveSetor(HLP.Entries.Model.Models.RecursosHumanos.SetorModel objSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
+        int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/saveSetor", ReplyAction="http://tempuri.org/IserviceSetor/saveSetorResponse")]
-        System.Threading.Tasks.Task<int> saveSetorAsync(HLP.Entries.Model.Models.RecursosHumanos.SetorModel objSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
+        System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/deleteSetor", ReplyAction="http://tempuri.org/IserviceSetor/deleteSetorResponse")]
-        bool deleteSetor(int idSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
+        bool deleteFuncionario(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/deleteSetor", ReplyAction="http://tempuri.org/IserviceSetor/deleteSetorResponse")]
-        System.Threading.Tasks.Task<bool> deleteSetorAsync(int idSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
+        System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/copySetor", ReplyAction="http://tempuri.org/IserviceSetor/copySetorResponse")]
-        int copySetor(int idSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
+        int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSetor/copySetor", ReplyAction="http://tempuri.org/IserviceSetor/copySetorResponse")]
-        System.Threading.Tasks.Task<int> copySetorAsync(int idSetor);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
+        System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceSetorChannel : HLP.Entries.ViewModel.setorService.IserviceSetor, System.ServiceModel.IClientChannel {
+    public interface IserviceFuncionarioChannel : HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceSetorClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.setorService.IserviceSetor>, HLP.Entries.ViewModel.setorService.IserviceSetor {
+    public partial class IserviceFuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario>, HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario {
         
-        public IserviceSetorClient() {
+        public IserviceFuncionarioClient() {
         }
         
-        public IserviceSetorClient(string endpointConfigurationName) : 
+        public IserviceFuncionarioClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceSetorClient(string endpointConfigurationName, string remoteAddress) : 
+        public IserviceFuncionarioClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceSetorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceFuncionarioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceSetorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceFuncionarioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.RecursosHumanos.SetorModel getSetor(int idSetor) {
-            return base.Channel.getSetor(idSetor);
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario) {
+            return base.Channel.getFuncionario(idFuncionario);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.RecursosHumanos.SetorModel> getSetorAsync(int idSetor) {
-            return base.Channel.getSetorAsync(idSetor);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario) {
+            return base.Channel.getFuncionarioAsync(idFuncionario);
         }
         
-        public int saveSetor(HLP.Entries.Model.Models.RecursosHumanos.SetorModel objSetor) {
-            return base.Channel.saveSetor(objSetor);
+        public int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+            return base.Channel.saveFuncionario(objFuncionario);
         }
         
-        public System.Threading.Tasks.Task<int> saveSetorAsync(HLP.Entries.Model.Models.RecursosHumanos.SetorModel objSetor) {
-            return base.Channel.saveSetorAsync(objSetor);
+        public System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+            return base.Channel.saveFuncionarioAsync(objFuncionario);
         }
         
-        public bool deleteSetor(int idSetor) {
-            return base.Channel.deleteSetor(idSetor);
+        public bool deleteFuncionario(int idFuncionario) {
+            return base.Channel.deleteFuncionario(idFuncionario);
         }
         
-        public System.Threading.Tasks.Task<bool> deleteSetorAsync(int idSetor) {
-            return base.Channel.deleteSetorAsync(idSetor);
+        public System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario) {
+            return base.Channel.deleteFuncionarioAsync(idFuncionario);
         }
         
-        public int copySetor(int idSetor) {
-            return base.Channel.copySetor(idSetor);
+        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+            return base.Channel.copyFuncionario(objFuncionario);
         }
         
-        public System.Threading.Tasks.Task<int> copySetorAsync(int idSetor) {
-            return base.Channel.copySetorAsync(idSetor);
+        public System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+            return base.Channel.copyFuncionarioAsync(objFuncionario);
         }
     }
 }

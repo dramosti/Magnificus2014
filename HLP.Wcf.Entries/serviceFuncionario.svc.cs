@@ -2,7 +2,6 @@
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
@@ -47,34 +46,34 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public FuncionarioModel getFuncionario(int idFuncionario)
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario)
         {
             try
             {
-                FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
+                HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
 
-                objFuncionario.lFuncionario_Acesso = new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>(list:
+                objFuncionario.lFuncionario_Acesso = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel>(list:
                     this.acessoRepository.GetAllAcesso_Funcionario(
                     idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>(list:
+                objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
                     this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
                     idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>(list:
+                objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>(list:
                     this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
                     idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>(list:
+                objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel>(list:
                     this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
                     idFuncionario: idFuncionario));
 
-                objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>(list:
+                objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel>(list:
                     this.funcionario_EnderecoRepository.GetAllFuncionario_Endereco(idFuncionario:
                     idFuncionario));
 
-                objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>(list:
+                objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel>(list:
                     this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
                     idFuncionario: idFuncionario));
 
@@ -87,14 +86,14 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int saveFuncionario(FuncionarioModel objFuncionario)
+        public int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
 
             try
             {
                 this.funcionarioRepository.Save(objFuncionario: objFuncionario);
 
-                foreach (Funcionario_AcessoModel item in objFuncionario.lFuncionario_Acesso)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel item in objFuncionario.lFuncionario_Acesso)
                 {
                     switch (item.status)
                     {
@@ -115,7 +114,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (Funcionario_ArquivoModel item in objFuncionario.lFuncionario_Arquivo)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel item in objFuncionario.lFuncionario_Arquivo)
                 {
                     switch (item.status)
                     {
@@ -136,7 +135,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (Funcionario_CertificacaoModel item in objFuncionario.lFuncionario_Certificacao)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel item in objFuncionario.lFuncionario_Certificacao)
                 {
                     switch (item.status)
                     {
@@ -157,7 +156,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (Funcionario_Comissao_ProdutoModel item in objFuncionario.lFuncionario_Comissao_Produto)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel item in objFuncionario.lFuncionario_Comissao_Produto)
                 {
                     switch (item.status)
                     {
@@ -178,7 +177,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (Funcionario_EnderecoModel item in objFuncionario.lFuncionario_Endereco)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel item in objFuncionario.lFuncionario_Endereco)
                 {
                     switch (item.status)
                     {
@@ -199,7 +198,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (Funcionario_Margem_Lucro_ComissaoModel item in objFuncionario.lFuncionario_Margem_Lucro_Comissao)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel item in objFuncionario.lFuncionario_Margem_Lucro_Comissao)
                 {
                     switch (item.status)
                     {
@@ -263,7 +262,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int copyFuncionario(FuncionarioModel objFuncionario)
+        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
 
             try
@@ -271,35 +270,35 @@ namespace HLP.Wcf.Entries
                 this.funcionarioRepository.BeginTransaction();
                 this.funcionarioRepository.Copy(objFuncionario: objFuncionario);
 
-                foreach (Funcionario_ArquivoModel item in objFuncionario.lFuncionario_Arquivo)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel item in objFuncionario.lFuncionario_Arquivo)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.funcionario_ArquivoRepository.Copy(
                         objFuncionario_Arquivo: item);
                 }
 
-                foreach (Funcionario_CertificacaoModel item in objFuncionario.lFuncionario_Certificacao)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel item in objFuncionario.lFuncionario_Certificacao)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.funcionario_CertificacaoRepository.Copy(
                         objFuncionario_Certificacao: item);
                 }
 
-                foreach (Funcionario_Comissao_ProdutoModel item in objFuncionario.lFuncionario_Comissao_Produto)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel item in objFuncionario.lFuncionario_Comissao_Produto)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.funcionario_Comissao_ProdutoRepository.Copy(
                         objFuncionario_Comissao_Produto: item);
                 }
 
-                foreach (Funcionario_EnderecoModel item in objFuncionario.lFuncionario_Endereco)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel item in objFuncionario.lFuncionario_Endereco)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.funcionario_EnderecoRepository.Copy(
                         objFuncionario_Endereco: item);
                 }
 
-                foreach (Funcionario_Margem_Lucro_ComissaoModel item in objFuncionario.lFuncionario_Margem_Lucro_Comissao)
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel item in objFuncionario.lFuncionario_Margem_Lucro_Comissao)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.funcionario_Margem_Lucro_ComissaoRepository.Copy(

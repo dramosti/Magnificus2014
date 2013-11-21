@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ab44d6b5-d4be-4a47-8a7a-3519bce7c096" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceFuncionario.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceFuncionario.xsd" MetadataType="Schema" ID="4ac17da4-23ac-4455-bff5-c56b99118f56" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceFuncionario1.xsd" MetadataType="Schema" ID="9bd1a9d8-5833-4e7f-bd93-3d2e35a2a015" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceFuncionario2.xsd" MetadataType="Schema" ID="fb33a737-8334-4f60-8dfc-1270da91552e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceFuncionario.wsdl" MetadataType="Wsdl" ID="87b7fdef-01c1-4fe4-896d-2eede1ae0d1b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?wsdl" />
+    <MetadataFile FileName="serviceFuncionario.disco" MetadataType="Disco" ID="16c112e5-dee2-4a76-8aae-e9d12455ee27" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?disco" />
+    <MetadataFile FileName="serviceFuncionario3.xsd" MetadataType="Schema" ID="ad7ac7ff-17b9-497c-b168-c3a15cfb9dfa" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceFuncionario4.xsd" MetadataType="Schema" ID="425e569c-01ca-4a6c-81ba-5362a0927a0a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceFuncionario5.xsd" MetadataType="Schema" ID="b5350e63-dc5e-4417-90b2-f694b8574463" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -56,6 +56,8 @@
     <Compile Include="Commands\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
     <Compile Include="Commands\EmpresaCommands.cs" />
+    <Compile Include="Commands\Gerais\FuncionarioCommands.cs" />
+    <Compile Include="Commands\RecursosHumanos\SetorCommands.cs" />
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
@@ -86,6 +88,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\setrService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\TipoProdutoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +119,8 @@
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
@@ -122,6 +131,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
+      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
+      <Name>HLP.Comum.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
       <Name>HLP.Comum.Model</Name>
@@ -161,6 +174,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.CargoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Service References\cargoService\serviceCargo.wsdl" />
     <None Include="Service References\cargoService\serviceCargo.xsd">
       <SubType>Designer</SubType>
@@ -241,6 +255,25 @@
     <None Include="Service References\empresaService\serviceEmpresa4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\setrService\serviceSetor.wsdl" />
+    <None Include="Service References\setrService\serviceSetor.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setrService\serviceSetor1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setrService\serviceSetor2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setrService\serviceSetor3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setrService\serviceSetor4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\setrService\serviceSetor5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.wsdl" />
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.xsd">
       <SubType>Designer</SubType>
@@ -315,6 +348,7 @@
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
+    <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
@@ -451,6 +485,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\TipoProdutoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\setrService\serviceSetor.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setrService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setrService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\setrService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

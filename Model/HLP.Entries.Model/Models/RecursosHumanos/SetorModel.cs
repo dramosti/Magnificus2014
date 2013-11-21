@@ -14,8 +14,21 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
 
+        private int? _idSetor;
+
         [ParameterOrder(Order = 2)]
-        public int? idSetor { get; set; }
+        public int? idSetor
+        {
+            get
+            {
+                return this._idSetor;
+            }
+            set
+            {
+                this._idSetor = value;
+                base.NotifyPropertyChanged(propertyName: "idSetor");
+            }
+        }
 
         [ParameterOrder(Order = 3)]
         public string xSetor { get; set; }
