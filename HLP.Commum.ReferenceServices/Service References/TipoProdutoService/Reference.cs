@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.TipoProdutoService {
+namespace HLP.Commum.ReferenceServices.TipoProdutoService {
     using System.Runtime.Serialization;
     using System;
     
@@ -24,10 +24,10 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.TipoProdutoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private HLP.Commum.ReferenceServices.TipoProdutoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.TipoProdutoService.statusModel statusField;
+        private HLP.Commum.ReferenceServices.TipoProdutoService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -40,7 +40,7 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.TipoProdutoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public HLP.Commum.ReferenceServices.TipoProdutoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -53,7 +53,7 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.TipoProdutoService.statusModel status {
+        public HLP.Commum.ReferenceServices.TipoProdutoService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -183,12 +183,12 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceTipoProdutoChannel : HLP.Entries.ViewModel.TipoProdutoService.IserviceTipoProduto, System.ServiceModel.IClientChannel {
+    public interface IserviceTipoProdutoChannel : HLP.Commum.ReferenceServices.TipoProdutoService.IserviceTipoProduto, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceTipoProdutoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.TipoProdutoService.IserviceTipoProduto>, HLP.Entries.ViewModel.TipoProdutoService.IserviceTipoProduto {
+    public partial class IserviceTipoProdutoClient : System.ServiceModel.ClientBase<HLP.Commum.ReferenceServices.TipoProdutoService.IserviceTipoProduto>, HLP.Commum.ReferenceServices.TipoProdutoService.IserviceTipoProduto {
         
         public IserviceTipoProdutoClient() {
         }

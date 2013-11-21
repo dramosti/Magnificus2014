@@ -28,12 +28,12 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public Tipo_produtoModel GetTipo(int idTipoProduto)
+        public HLP.Entries.Model.Comercial.Tipo_produtoModel GetTipo(int idTipoProduto)
         {
             return iTipo_produtoRepository.GetTipo(idTipoProduto);
         }
 
-        public void Save(Tipo_produtoModel tipo)
+        public void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo)
         {
             iTipo_produtoRepository.Save(tipo);
         }
