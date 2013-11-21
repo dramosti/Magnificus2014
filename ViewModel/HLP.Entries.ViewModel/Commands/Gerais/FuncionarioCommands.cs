@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -45,20 +46,83 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
-
-
         }
 
 
         #region Implementação Commands
 
-        public async void Save()
+        public void Save()
         {
             try
             {
-                this.objViewModel.currentModel.idFuncionario = await servico.saveFuncionarioAsync(objFuncionario:
+                #region Carregar Ids Excluidos Collections
+
+                foreach (int id in this.objViewModel.currentModel.lFuncionario_Acesso.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lFuncionario_Acesso.Add(
+                        item: new Funcionario_AcessoModel
+                        {
+                            idAcesso = id,
+                            status = statusModel.excluido
+                        });
+                }
+
+                foreach (int id in objViewModel.currentModel.lFuncionario_Arquivo.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lFuncionario_Arquivo.Add(
+                        item: new Funcionario_ArquivoModel
+                        {
+                            idFuncionarioArquivo = id,
+                            status = statusModel.excluido
+                        });
+                }
+
+                foreach (int id in objViewModel.currentModel.lFuncionario_Certificacao.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lFuncionario_Certificacao.Add(
+                        item: new Funcionario_CertificacaoModel
+                        {
+                            idFuncionarioCertificacao = id,
+                            status = statusModel.excluido
+                        });
+                }
+
+                foreach (int id in objViewModel.currentModel.lFuncionario_Comissao_Produto.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lFuncionario_Comissao_Produto.Add(
+                        item: new Funcionario_Comissao_ProdutoModel
+                        {
+                            idFuncionarioComissaoProduto = id,
+                            status = statusModel.excluido
+                        });
+                }
+
+                foreach (int id in objViewModel.currentModel.lFuncionario_Endereco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lFuncionario_Endereco.Add(
+                        item: new Funcionario_EnderecoModel
+                        {
+                            idEndereco = id,
+                            status = statusModel.excluido
+                        });
+                }
+
+                foreach (int id in objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.Add(
+                        item: new Funcionario_Margem_Lucro_ComissaoModel
+                        {
+                            idFuncionarioMargemLucroComissao = id,
+                            status = statusModel.excluido
+                        });
+                }
+                #endregion
+
+                this.objViewModel.currentModel.idFuncionario = servico.saveFuncionario(objFuncionario:
                     this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.metodoGetModel(this, null);
+                this.Inicia_Collections();
             }
             catch (Exception ex)
             {
@@ -127,6 +191,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Alterar()
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this.objViewModel.currentModel.lFuncionario_Acesso.xCampoId = "idAcesso";
+            this.objViewModel.currentModel.lFuncionario_Arquivo.xCampoId = "idFuncionarioArquivo";
+            this.objViewModel.currentModel.lFuncionario_Certificacao.xCampoId = "idFuncionarioCertificacao";
+            this.objViewModel.currentModel.lFuncionario_Comissao_Produto.xCampoId = "idFuncionarioComissaoProduto";
+            this.objViewModel.currentModel.lFuncionario_Endereco.xCampoId = "idEndereco";
+            this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.xCampoId = "idFuncionarioMargemLucroComissao";
         }
         private bool AlterarCanExecute()
         {
@@ -185,13 +255,28 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
-
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getFuncionarioAsync(idFuncionario: this.objViewModel.currentID);
+            this.Inicia_Collections();
+        }
+
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.servico.getFuncionario(idFuncionario: this.objViewModel.currentID);
+        }
+
+        private void Inicia_Collections()
+        {
+            this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
+            this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
+            this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
+            this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();
+            this.objViewModel.currentModel.lFuncionario_Endereco.CollectionCarregada();
+            this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.CollectionCarregada();
         }
         #endregion
 
