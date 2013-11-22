@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.Model.Models.Gerais
+namespace HLP.Entries.Model.Models.Transportes
 {
     public partial class Condicoes_entregaModel : modelBase
     {

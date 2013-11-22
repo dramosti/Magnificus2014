@@ -1,6 +1,6 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Gerais.Condicoes_entregaModel getCondicao_entrega(int idCondicao_entrega)
+        public HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel getCondicao_entrega(int idCondicao_entrega)
         {
 
             try
@@ -41,7 +41,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int saveCondicao_entrega(HLP.Entries.Model.Models.Gerais.Condicoes_entregaModel objCondicao_entrega)
+        public int saveCondicao_entrega(HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel objCondicao_entrega)
         {
             try
             {

@@ -62,7 +62,9 @@
     <Compile Include="Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
-    <Compile Include="Models\Gerais\Condicoes_entregaModel.cs" />
+    <Compile Include="Models\Gerais\Condicao_pagamentoModel.cs" />
+    <Compile Include="Models\Gerais\ConversaoModel.cs" />
+    <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
     <Compile Include="Models\Gerais\FuncionarioModel.cs" />
@@ -80,7 +82,9 @@
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Crm\DecisaoRepository.cs" />
-    <Compile Include="Repository\Implementation\Gerais\Condicoes_entregaRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Condicao_pagamentoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\ConversaoRepository.cs" />
+    <Compile Include="Repository\Implementation\Transportes\Condicoes_entregaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\EmpresaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Empresa_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\FuncionarioRepository.cs" />
@@ -100,7 +104,9 @@
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Crm\IDecisaoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Gerais\ICondicoes_entregaRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\ICondicao_pagamentoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IConversaoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Transportes\ICondicoes_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresa_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionarioRepository.cs" />

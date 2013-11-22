@@ -12,6 +12,8 @@ using HLP.Entries.Model.Repository.Implementation.RecursosHumanos;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using HLP.Entries.Model.Repository.Implementation.Comercial;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Repository.Interfaces.Transportes;
+using HLP.Entries.Model.Repository.Implementation.Transportes;
 
 namespace HLP.Dependencies
 {
@@ -83,7 +85,7 @@ namespace HLP.Dependencies
             //Bind<IProdutoRepository>().To<ProdutoRepository>();
             Bind<ITipo_produtoRepository>().To<Tipo_produtoRepository>();
             //Bind<IProduto_localizacaoRepository>().To<Produto_localizacaoRepository>();
-            //Bind<ICondicao_pagamentoRepository>().To<Condicao_pagamentoRepository>();
+            Bind<ICondicao_pagamentoRepository>().To<Condicao_pagamentoRepository>();
             //Bind<IProduto_Fornecedor_HomologadoRepository>().To<Produto_Fornecedor_HomologadoRepository>();
             //Bind<IProduto_RevisaoRepository>().To<Produto_RevisaoRepository>();
 
@@ -110,7 +112,7 @@ namespace HLP.Dependencies
             //Bind<IFabricanteRepository>().To<FabricanteRepository>();
             //Bind<IFamilia_ProdutoRepository>().To<Familia_produtoRepository>();
             //Bind<IFamilia_Produto_ClassesRepository>().To<Familia_Produto_ClassesRepository>();
-            //Bind<IConversaoRepository>().To<ConversaoRepository>();
+            Bind<IConversaoRepository>().To<ConversaoRepository>();
             //Bind<ISiteRepository>().To<SiteRepository>();
             //Bind<IContato_EnderecoRepository>().To<Contato_EnderecoRepository>();
             Bind<IFuncionario_Margem_Lucro_ComissaoRepository>().To<Funcionario_Margem_LucroComissaoRepository>();
