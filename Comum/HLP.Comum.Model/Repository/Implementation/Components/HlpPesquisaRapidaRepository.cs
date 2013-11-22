@@ -61,8 +61,8 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         sQuery.Append(_FieldPesquisa + " = @FieldPesquisa ");
                         if (UndTrabalho.ColunaExistis(_TableView, "idEmpresa"))
                             sQuery.Append(" AND idEmpresa = '" + idEmpresa + "' ");
-                        if (UndTrabalho.ColunaExistis(_TableView, "Ativo"))
-                            sQuery.Append(" AND Ativo = 'S'");
+                        //if (UndTrabalho.ColunaExistis(_TableView, "Ativo"))
+                        //    sQuery.Append(" AND Ativo = 'S'");
 
                         regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(sQuery.ToString(),
                             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),

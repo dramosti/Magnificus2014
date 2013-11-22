@@ -33,6 +33,12 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                //_TableView = "vwProduto";
+                //_Items = new string[] { "xPesquisa", "cAlternativo" };
+                //_FieldPesquisa = "ID";
+                //idEmpresa = 1;
+                //_iValorPesquisa = 1;
+
                 return iHlpPesquisaRapidaRepository.GetValorDisplay(_TableView, _Items, _FieldPesquisa, idEmpresa, _iValorPesquisa);
             }
             catch (Exception ex)
