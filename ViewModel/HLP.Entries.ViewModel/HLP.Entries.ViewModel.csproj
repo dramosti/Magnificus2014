@@ -126,6 +126,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Modo_EntregaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\moedaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -442,6 +447,28 @@
     <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega.wsdl" />
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\moedaService\serviceMoeda.wsdl" />
     <None Include="Service References\moedaService\serviceMoeda.xsd">
       <SubType>Designer</SubType>
@@ -589,6 +616,7 @@
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
+    <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
@@ -879,6 +907,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Ramo_AtividadeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Modo_EntregaService\serviceModoEntrega.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Modo_EntregaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Modo_EntregaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Modo_EntregaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
