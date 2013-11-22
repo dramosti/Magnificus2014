@@ -31,6 +31,15 @@
   type="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario, HLP.Entries.View.WPF">
   </object>
 <object id="WinAcesso" name="WinAcesso" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.RecursosHumanos.Acesso, HLP.Entries.View.WPF">
+  type="HLP.Entries.View.WPF.Gerais.WinAcesso, HLP.Entries.View.WPF">
+  </object>
+<object id="WinCondicaoEngtrega" name="WinCondicaoEngtrega" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega, HLP.Entries.View.WPF">
+  </object>
+<object id="WinCondicaoPagamento" name="WinCondicaoPagamento" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento, HLP.Entries.View.WPF">
+  </object>
+<object id="WinConversao" name="WinConversao" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">
   </object>
 </objects>

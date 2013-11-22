@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 
-namespace HLP.Entries.View.WPF.RecursosHumanos
+namespace HLP.Entries.View.WPF.Gerais
 {
     /// <summary>
-    /// Interaction logic for WinAcesso.xaml
+    /// Interaction logic for WinCondicaoPagamento.xaml
     /// </summary>
-    public partial class WinAcesso : WindowsBase
+    public partial class WinCondicaoPagamento : WindowsBase
     {
-        public WinAcesso()
+        public WinCondicaoPagamento()
         {
             InitializeComponent();
         }
