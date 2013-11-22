@@ -284,7 +284,7 @@
 								Height="27" Margin="9,20,10,10" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
 								<Components:HlpComboBox.Items>
 									<System:String>0-Centro de Trabalho</System:String>
-									<System:String>1-Funcionário</System:String>
+                                    <System:String>1-Funcionário</System:String>
 									<System:String>2-Prestador de Serviços</System:String>
 									<System:String>3-Representante</System:String>
 								</Components:HlpComboBox.Items>

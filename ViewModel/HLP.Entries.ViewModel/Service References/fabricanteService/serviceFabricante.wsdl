@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="serviceFabricante" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IserviceFabricante_getFabricante_InputMessage">
+    <wsdl:part name="parameters" element="tns:getFabricante" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_getFabricante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getFabricanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_saveFabricante_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveFabricante" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_saveFabricante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveFabricanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_deleteFabricante_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteFabricante" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_deleteFabricante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteFabricanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_copyFabricante_InputMessage">
+    <wsdl:part name="parameters" element="tns:copyFabricante" />
+  </wsdl:message>
+  <wsdl:message name="IserviceFabricante_copyFabricante_OutputMessage">
+    <wsdl:part name="parameters" element="tns:copyFabricanteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IserviceFabricante">
+    <wsdl:operation name="getFabricante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceFabricante/getFabricante" message="tns:IserviceFabricante_getFabricante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceFabricante/getFabricanteResponse" message="tns:IserviceFabricante_getFabricante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveFabricante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceFabricante/saveFabricante" message="tns:IserviceFabricante_saveFabricante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceFabricante/saveFabricanteResponse" message="tns:IserviceFabricante_saveFabricante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteFabricante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceFabricante/deleteFabricante" message="tns:IserviceFabricante_deleteFabricante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceFabricante/deleteFabricanteResponse" message="tns:IserviceFabricante_deleteFabricante_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="copyFabricante">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceFabricante/copyFabricante" message="tns:IserviceFabricante_copyFabricante_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceFabricante/copyFabricanteResponse" message="tns:IserviceFabricante_copyFabricante_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IserviceFabricante" type="tns:IserviceFabricante">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getFabricante">
+      <soap:operation soapAction="http://tempuri.org/IserviceFabricante/getFabricante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveFabricante">
+      <soap:operation soapAction="http://tempuri.org/IserviceFabricante/saveFabricante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteFabricante">
+      <soap:operation soapAction="http://tempuri.org/IserviceFabricante/deleteFabricante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copyFabricante">
+      <soap:operation soapAction="http://tempuri.org/IserviceFabricante/copyFabricante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="serviceFabricante">
+    <wsdl:port name="BasicHttpBinding_IserviceFabricante" binding="tns:BasicHttpBinding_IserviceFabricante">
+      <soap:address location="http://192.168.9.33:8080/wcf/serviceFabricante.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

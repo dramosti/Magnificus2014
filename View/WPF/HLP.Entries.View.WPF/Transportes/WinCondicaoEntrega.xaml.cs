@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Transportes;
 
 namespace HLP.Entries.View.WPF.Transportes
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Transportes
         public WinCondicaoEntrega()
         {
             InitializeComponent();
+            this.DataContext = new Condicao_entregaViewModel();   
+        }
+
+        public Condicao_entregaViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Condicao_entregaViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

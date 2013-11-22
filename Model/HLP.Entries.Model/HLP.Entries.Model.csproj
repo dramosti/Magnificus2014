@@ -65,6 +65,8 @@
     <Compile Include="Models\Gerais\Condicao_pagamentoModel.cs" />
     <Compile Include="Models\Gerais\ConversaoModel.cs" />
     <Compile Include="Models\Gerais\DepositoModel.cs" />
+    <Compile Include="Models\Gerais\FabricanteModel.cs" />
+    <Compile Include="Models\Gerais\MoedaModel.cs" />
     <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
@@ -86,6 +88,8 @@
     <Compile Include="Repository\Implementation\Gerais\Condicao_pagamentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\ConversaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\DepositoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\FabricanteRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\MoedaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Condicoes_entregaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\EmpresaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Empresa_EnderecoRepository.cs" />
@@ -109,6 +113,8 @@
     <Compile Include="Repository\Interfaces\Gerais\ICondicao_pagamentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IConversaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IDepositoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFabricanteRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IMoedaRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ICondicoes_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresa_EnderecoRepository.cs" />

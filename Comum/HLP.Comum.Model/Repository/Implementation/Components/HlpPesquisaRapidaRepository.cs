@@ -24,7 +24,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         {
             try
             {
-                
+                string sDisplay = string.Empty;
                 if (UndTrabalho.TableExistis(_TableView))
                 {
                     if (regAcessor == null)
@@ -34,9 +34,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                             throw new Exception("Campo FieldPesquisa não foi configurado!");
                         if (UndTrabalho.ColunaExistis(_TableView, _FieldPesquisa) == false)
                             throw new Exception(string.Format("Campo FieldPesquisa ({0}) configurado no componente não existe!", _FieldPesquisa));
-
-
-                        string sDisplay = string.Empty;
+                                                                        
                         foreach (string col in (_Items.ToList()).Distinct())
                         {
                             if (UndTrabalho.ColunaExistis(_TableView, col.ToString()))
@@ -63,14 +61,25 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         sQuery.Append(_FieldPesquisa + " = @FieldPesquisa ");
                         if (UndTrabalho.ColunaExistis(_TableView, "idEmpresa"))
                             sQuery.Append(" AND idEmpresa = '" + idEmpresa + "' ");
-                        if (UndTrabalho.ColunaExistis(_TableView, "Ativo"))
-                            sQuery.Append(" AND Ativo = 'S'");
+                        //if (UndTrabalho.ColunaExistis(_TableView, "Ativo"))
+                        //    sQuery.Append(" AND Ativo = 'S'");
 
                         regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(sQuery.ToString(),
                             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("FieldPesquisa"),
                             MapBuilder<PesquisaRapidaModel>.MapAllProperties().Build());
                     }
-                    return regAcessor.Execute(_iValorPesquisa).FirstOrDefault().Display;
+
+
+                    List<PesquisaRapidaModel> lResult = regAcessor.Execute(_iValorPesquisa).ToList();
+                    sDisplay = "";
+                    if (lResult != null)
+                    {
+                        if (lResult.Count > 0)
+                        {
+                            sDisplay = regAcessor.Execute(_iValorPesquisa).FirstOrDefault().Display;
+                        }
+                    }
+                    return sDisplay;
                 }
                 else
                 {

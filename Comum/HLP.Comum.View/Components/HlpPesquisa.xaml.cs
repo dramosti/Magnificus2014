@@ -144,21 +144,30 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty TableViewProperty =
             DependencyProperty.Register("TableView", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
 
-        public static readonly DependencyProperty ItemsProperty =
-        DependencyProperty.Register("Items",
-        typeof(IList),
-        typeof(HlpPesquisa),
-        new PropertyMetadata(new List<string>()));
+        //public static readonly DependencyProperty ItemsProperty =
+        //DependencyProperty.Register("Items",
+        //typeof(IList),
+        //typeof(HlpPesquisa),
+        //new PropertyMetadata(new List<string>()));
 
-        [Category("HLP.Owner")]
-        public IList Items
+        //[Category("HLP.Owner")]
+        //public IList Items
+        //{
+        //    get { return (IList)GetValue(ItemsProperty); }
+        //    set
+        //    {
+        //        SetValue(ItemsProperty, new List<string>());
+        //        SetValue(ItemsProperty, value);
+        //    }
+        //}
+
+
+        private List<string> _Items = new List<string>();
+
+        public List<string> Items
         {
-            get { return (IList)GetValue(ItemsProperty); }
-            set
-            {
-                SetValue(ItemsProperty, new List<string>());
-                SetValue(ItemsProperty, value);
-            }
+            get { return _Items; }
+            set { _Items = value; }
         }
         #endregion
 
