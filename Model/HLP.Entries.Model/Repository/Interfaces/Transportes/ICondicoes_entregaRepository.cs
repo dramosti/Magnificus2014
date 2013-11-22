@@ -1,11 +1,11 @@
-﻿using HLP.Entries.Model.Models.Gerais;
+﻿using HLP.Entries.Model.Models.Transportes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.Model.Repository.Interfaces.Gerais
+namespace HLP.Entries.Model.Repository.Interfaces.Transportes
 {
     public interface ICondicoes_entregaRepository
     {

@@ -12,10 +12,10 @@ namespace HLP.Wcf.Entries
     public interface IserviceCondicao_Entrega
     {
         [OperationContract]
-        HLP.Entries.Model.Models.Gerais.Condicoes_entregaModel getCondicao_entrega(int idCondicao_entrega);
+        HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel getCondicao_entrega(int idCondicao_entrega);
 
         [OperationContract]
-        int saveCondicao_entrega(HLP.Entries.Model.Models.Gerais.Condicoes_entregaModel objCondicao_entrega);
+        int saveCondicao_entrega(HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel objCondicao_entrega);
 
         [OperationContract]
         bool delCondicao_entrega(int idCondicao_entrega);
