@@ -24,37 +24,10 @@ namespace HLP.Comum.View.Components
     {
         public HlpComboBox()
         {
-            InitializeComponent();
-            if (this.Items != null)
-            {
-                foreach (var item in this.Items)
-                {
-                    comboBox.Items.Add(item);
-                }
-            }
+            InitializeComponent();         
         }
 
         #region ComboBox's Property
-
-        public static readonly DependencyProperty ItemsProperty =
-        DependencyProperty.Register("Items",
-        typeof(IList),
-        typeof(HlpComboBox),
-        new PropertyMetadata(new List<string>()));
-
-        [Category("HLP.Owner")]
-        public IList Items
-        {
-            get { return (IList)GetValue(ItemsProperty); }
-            set
-            {
-                SetValue(ItemsProperty, new List<string>());
-                SetValue(ItemsProperty, value);
-            }
-        }
-
-
-
 
         [Category("HLP.Owner")]
         public string DisplayMemberPath
@@ -128,7 +101,39 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for SelectedValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedValueProperty =
             DependencyProperty.Register("SelectedValue", typeof(object), typeof(HlpComboBox), new PropertyMetadata());
+
+
+        private List<string> _Items = new List<string>();
+
+        public List<string> Items
+        {
+            get { return _Items; }
+            set { _Items = value; }
+        }
+
         #endregion
+
+        private void BaseControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (comboBox.Items.Count == 0)
+                {
+                    if (this.Items != null)
+                    {
+                        foreach (var item in this.Items)
+                        {
+                            comboBox.Items.Add(item.ToString().ToUpper());
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex) 
+            {                
+                throw ex;
+            }
+        }
 
 
     }
