@@ -92,7 +92,7 @@ namespace HLP.Dependencies
             //#region Gerais
 
             //Bind<IDepositoRepository>().To<DepositoRepository>();
-            //Bind<ICondicoes_entregaRepository>().To<Condicoes_entregaRepository>();
+            Bind<ICondicoes_entregaRepository>().To<Condicoes_entregaRepository>();
             //Bind<IRotaRepository>().To<RotaRepository>();
             Bind<IUFRepository>().To<UFRepository>();
             Bind<ICidadeRepository>().To<CidadeRepository>();
