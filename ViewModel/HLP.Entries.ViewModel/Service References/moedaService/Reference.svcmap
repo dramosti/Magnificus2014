@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="82715894-cae8-4d1d-a96e-847fa40f52d9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceMoeda.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceMoeda.xsd" MetadataType="Schema" ID="a53a871e-fd10-487e-a613-9bbaabd56f31" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceMoeda1.xsd" MetadataType="Schema" ID="4d93f30a-0a9a-4d56-8adf-1301154372db" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceMoeda.disco" MetadataType="Disco" ID="01ce421c-5004-495a-87d8-54522be92b2c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?disco" />
+    <MetadataFile FileName="serviceMoeda2.xsd" MetadataType="Schema" ID="a9aec641-af2f-4c07-88ea-ba1d8e7c8d75" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceMoeda3.xsd" MetadataType="Schema" ID="943ee55f-a017-4151-9e29-3d5214c12eb4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceMoeda4.xsd" MetadataType="Schema" ID="f13dcf45-e69e-4825-9a94-7a0a2b1dcd29" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceMoeda5.xsd" MetadataType="Schema" ID="ca1253c4-b9bf-468d-baca-0bd9c08ad370" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceMoeda.wsdl" MetadataType="Wsdl" ID="c4d52815-6f1f-4a3f-85c6-d026a627f65e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMoeda.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
