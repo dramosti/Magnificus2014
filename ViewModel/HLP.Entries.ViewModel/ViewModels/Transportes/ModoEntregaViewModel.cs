@@ -33,5 +33,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }
+
+
     }
 }
