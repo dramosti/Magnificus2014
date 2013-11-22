@@ -92,6 +92,7 @@
     <Content Include="serviceConversao.svc" />
     <Content Include="serviceDecisao.svc" />
     <Content Include="serviceDepartamento.svc" />
+    <Content Include="serviceDeposito.svc" />
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceFuncionario.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
@@ -117,6 +118,7 @@
     <Compile Include="IserviceConversao.cs" />
     <Compile Include="IserviceDecisao.cs" />
     <Compile Include="IserviceDepartamento.cs" />
+    <Compile Include="IserviceDeposito.cs" />
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
@@ -147,6 +149,9 @@
     </Compile>
     <Compile Include="serviceDepartamento.svc.cs">
       <DependentUpon>serviceDepartamento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceDeposito.svc.cs">
+      <DependentUpon>serviceDeposito.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceEmpresa.svc.cs">
       <DependentUpon>serviceEmpresa.svc</DependentUpon>
