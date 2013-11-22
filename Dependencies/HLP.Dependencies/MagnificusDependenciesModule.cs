@@ -141,7 +141,7 @@ namespace HLP.Dependencies
             //Bind<IAgenciaRepository>().To<AgenciaRepository>();
             //Bind<IAgencia_ContatoRepository>().To<Agencia_ContatoRepository>();
             //Bind<IAgencia_EnderecoRepository>().To<Agencia_EnderecoRepository>();
-            //Bind<IMoedaRepository>().To<MoedaRepository>();
+            Bind<IMoedaRepository>().To<MoedaRepository>();
             //Bind<IDescontos_AvistaRepository>().To<Descontos_AvistaRepository>();
             //Bind<IDia_PagamentoRepository>().To<Dia_PagamentoRepository>();
             //Bind<IDia_pagamento_linhasRepository>().To<Dia_Pagamento_LinhaRepository>();
