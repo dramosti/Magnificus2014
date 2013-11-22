@@ -59,6 +59,7 @@
     <Compile Include="Commands\Gerais\Condicao_PagamentoCommands.cs" />
     <Compile Include="Commands\Gerais\ConversaoCommands.cs" />
     <Compile Include="Commands\Gerais\depositoCommands.cs" />
+    <Compile Include="Commands\Gerais\FabricanteCommands.cs" />
     <Compile Include="Commands\Gerais\FuncionarioCommands.cs" />
     <Compile Include="Commands\Gerais\TipoServicoCommand.cs" />
     <Compile Include="Commands\RecursosHumanos\SetorCommands.cs" />
@@ -113,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\fabricanteService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\funcionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +163,7 @@
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\depositoViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\FabricanteViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\TipoServicoViewModel.cs" />
     <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />
@@ -213,6 +220,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Tipo_servicoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
@@ -380,6 +388,25 @@
     <None Include="Service References\empresaService\serviceEmpresa5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\fabricanteService\serviceFabricante.wsdl" />
+    <None Include="Service References\fabricanteService\serviceFabricante.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fabricanteService\serviceFabricante1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fabricanteService\serviceFabricante2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fabricanteService\serviceFabricante3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fabricanteService\serviceFabricante4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fabricanteService\serviceFabricante5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\funcionarioService\serviceFuncionario.wsdl" />
     <None Include="Service References\funcionarioService\serviceFuncionario.xsd">
       <SubType>Designer</SubType>
@@ -506,6 +533,7 @@
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\depositoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
+    <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
@@ -750,6 +778,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\depositoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\fabricanteService\serviceFabricante.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\fabricanteService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\fabricanteService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\fabricanteService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
