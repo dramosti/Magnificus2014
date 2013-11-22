@@ -109,7 +109,7 @@ namespace HLP.Dependencies
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
             Bind<IUnidade_medidaRepository>().To<Unidade_medidaRepository>();
             Bind<ITipo_servicoRepository>().To<Tipo_servicoRepository>();
-            //Bind<IFabricanteRepository>().To<FabricanteRepository>();
+            Bind<IFabricanteRepository>().To<FabricanteRepository>();
             //Bind<IFamilia_ProdutoRepository>().To<Familia_produtoRepository>();
             //Bind<IFamilia_Produto_ClassesRepository>().To<Familia_Produto_ClassesRepository>();
             Bind<IConversaoRepository>().To<ConversaoRepository>();

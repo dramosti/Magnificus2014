@@ -94,6 +94,7 @@
     <Content Include="serviceDepartamento.svc" />
     <Content Include="serviceDeposito.svc" />
     <Content Include="serviceEmpresa.svc" />
+    <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFuncionario.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
@@ -120,6 +121,7 @@
     <Compile Include="IserviceDepartamento.cs" />
     <Compile Include="IserviceDeposito.cs" />
     <Compile Include="IserviceEmpresa.cs" />
+    <Compile Include="IserviceFabricante.cs" />
     <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
@@ -155,6 +157,9 @@
     </Compile>
     <Compile Include="serviceEmpresa.svc.cs">
       <DependentUpon>serviceEmpresa.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceFabricante.svc.cs">
+      <DependentUpon>serviceFabricante.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
