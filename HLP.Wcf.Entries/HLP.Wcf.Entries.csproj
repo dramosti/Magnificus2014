@@ -96,6 +96,7 @@
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFuncionario.svc" />
+    <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
@@ -124,6 +125,7 @@
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceFabricante.cs" />
     <Compile Include="IserviceFuncionario.cs" />
+    <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
@@ -165,6 +167,9 @@
     </Compile>
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceModoEntrega.svc.cs">
+      <DependentUpon>serviceModoEntrega.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceMoeda.svc.cs">
       <DependentUpon>serviceMoeda.svc</DependentUpon>

@@ -79,6 +79,7 @@
     <Compile Include="Models\RecursosHumanos\CargoModel.cs" />
     <Compile Include="Models\RecursosHumanos\DepartamentoModel.cs" />
     <Compile Include="Models\RecursosHumanos\SetorModel.cs" />
+    <Compile Include="Models\Transportes\Modos_entregaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Repository\Implementation\RecursosHumanos\CargoRepository.cs" />
     <Compile Include="Repository\Implementation\RecursosHumanos\DepartamentoRepository.cs" />
     <Compile Include="Repository\Implementation\RecursosHumanos\SetorRepository.cs" />
+    <Compile Include="Repository\Implementation\Transportes\Modos_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="Repository\Interfaces\RecursosHumanos\ICargoRepository.cs" />
     <Compile Include="Repository\Interfaces\RecursosHumanos\IDepartamentoRepository.cs" />
     <Compile Include="Repository\Interfaces\RecursosHumanos\ISetorRepository.cs" />
+    <Compile Include="Repository\Interfaces\Transportes\IModos_entregaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
