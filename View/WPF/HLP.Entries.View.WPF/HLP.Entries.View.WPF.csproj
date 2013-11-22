@@ -80,6 +80,9 @@
     <Compile Include="Gerais\WinUnidadeMedida.xaml.cs">
       <DependentUpon>WinUnidadeMedida.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecursosHumanos\WinAcesso.xaml.cs">
+      <DependentUpon>WinAcesso.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RecursosHumanos\WinCargo.xaml.cs">
       <DependentUpon>WinCargo.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="RecursosHumanos\WinAcesso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RecursosHumanos\WinCargo.xaml">
       <SubType>Designer</SubType>
