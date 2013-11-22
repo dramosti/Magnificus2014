@@ -1,6 +1,6 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Repository.Interfaces.Transportes;
+using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceCondicao_Entrega" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceCondicao_Entrega.svc or serviceCondicao_Entrega.svc.cs at the Solution Explorer and start debugging.
-    public class serviceCondicao_Entrega : IserviceCondicao_Entrega
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceDeposito" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceDeposito.svc or serviceDeposito.svc.cs at the Solution Explorer and start debugging.
+    public class serviceDeposito : IserviceDeposito
     {
         [Inject]
-        public ICondicoes_entregaRepository condicoes_entregaRepository { get; set; }
+        public IDepositoRepository depositoRepository { get; set; }
 
-        public serviceCondicao_Entrega()
+        public serviceDeposito()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -26,12 +26,12 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel getCondicao_entrega(int idCondicao_entrega)
+        public HLP.Entries.Model.Models.Gerais.DepositoModel getDeposito(int idDeposito)
         {
 
             try
             {
-                return this.condicoes_entregaRepository.GetCondicao(idCondicaoEntrega: idCondicao_entrega);
+                return depositoRepository.GetDeposito(idDeposito: idDeposito);
             }
             catch (Exception ex)
             {
@@ -41,27 +41,28 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int saveCondicao_entrega(HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel objCondicao_entrega)
+        public int saveDeposito(HLP.Entries.Model.Models.Gerais.DepositoModel objDeposito)
         {
+
             try
             {
-                this.condicoes_entregaRepository.Save(condicao:
-                    objCondicao_entrega);
-                return (int)objCondicao_entrega.idCondicaoEntrega;
+                this.depositoRepository.Save(deposito: objDeposito);
+                return (int)objDeposito.idDeposito;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
+
         }
 
-        public bool delCondicao_entrega(int idCondicao_entrega)
+        public bool deleteDeposito(int idDeposito)
         {
+
             try
             {
-                this.condicoes_entregaRepository.Delete(idCondicaoEntrega:
-                    idCondicao_entrega);
+                this.depositoRepository.Delete(idDeposito: idDeposito);
                 return true;
             }
             catch (Exception ex)
@@ -69,19 +70,22 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
+
         }
 
-        public int copyCondicao_entrega(int idCondicao_entrega)
+        public int copyDeposito(int idDeposito)
         {
+
             try
             {
-                return this.condicoes_entregaRepository.Copy(idCondicaoEntrega: idCondicao_entrega);
+                return this.depositoRepository.Copy(idDeposito: idDeposito);
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
+
         }
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d81d3615-e284-401a-86fc-76742002dab8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceCondicao_Entrega.xsd" MetadataType="Schema" ID="b92aaed1-2971-4c16-9e02-52658dd1ff3e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCondicao_Entrega1.xsd" MetadataType="Schema" ID="7eb87642-75d7-4944-be12-b8efbf0da102" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceCondicao_Entrega2.xsd" MetadataType="Schema" ID="fafb6c2e-fd4d-4f88-8da1-6875b0f2cb0b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceCondicao_Entrega3.xsd" MetadataType="Schema" ID="b7f82606-df6d-4fce-9f28-61c9e622bee0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceCondicao_Entrega4.xsd" MetadataType="Schema" ID="e0654f38-e1a5-442e-84c5-02b80d22e2e7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceCondicao_Entrega5.xsd" MetadataType="Schema" ID="2a8064c8-982b-4ba4-b56e-b83d741166c0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceCondicao_Entrega.disco" MetadataType="Disco" ID="d2f059cd-d786-475b-a073-a2e8256eeff7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?disco" />
+    <MetadataFile FileName="serviceCondicao_Entrega.wsdl" MetadataType="Wsdl" ID="d894ef02-996f-4b9f-9744-607033af8c24" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Entrega.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

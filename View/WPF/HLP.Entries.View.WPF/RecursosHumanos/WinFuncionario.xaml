@@ -651,6 +651,15 @@
 					</Expander>
 				</Grid>
 			</TabItem>
+			<TabItem Header="Comissão / Faixa de lucro" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0">
+				<Grid/>
+			</TabItem>
+			<TabItem Header="Arquivos" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0"/>
+			<TabItem Header="Hierarquia" Background="{x:Null}" BorderBrush="{x:Null}" Height="21.96" Width="71.027">
+				<Grid>
+					<TreeView HorizontalAlignment="Left" Height="424.04" VerticalAlignment="Top" Width="363"/>
+				</Grid>
+			</TabItem>
 		</TabControl>
 	</Grid>
 </runtime:WindowsBase>

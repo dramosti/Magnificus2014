@@ -1,7 +1,8 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
-using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using System;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.Model.Repository.Implementation.Gerais
+namespace HLP.Entries.Model.Repository.Implementation.Transportes
 {
     public class Condicoes_entregaRepository : ICondicoes_entregaRepository
     {

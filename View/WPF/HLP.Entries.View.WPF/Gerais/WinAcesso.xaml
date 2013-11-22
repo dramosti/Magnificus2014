@@ -1,0 +1,59 @@
+﻿<runtime:WindowsBase x:Class="HLP.Entries.View.WPF.Gerais.WinAcesso"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"               
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+		xmlns:System="clr-namespace:System;assembly=mscorlib"  
+        Title="Acesso" Height="660" Width="1024">
+    <Grid>
+		<Expander Header="Funcionário" HorizontalAlignment="Left" Height="81" VerticalAlignment="Top" Width="873.5" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpPesquisa 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					HorizontalAlignment="Left" Height="31.5" Margin="9,10,0,0" VerticalAlignment="Top" Width="503" Caption="Funcionário" WidthLabel="97" FieldPesquisa="ID" Table="Acesso" Field="idFuncionario" Help="Seleciona um funcionario" TableView="vwFuncionario">
+					<Components:HlpPesquisa.Items>
+						<System:String>xCodigoAlternativo</System:String>
+						<System:String>xNome</System:String>
+					</Components:HlpPesquisa.Items>
+				</Components:HlpPesquisa>
+			</StackPanel>
+		</Expander>
+		<Expander Header="Login" HorizontalAlignment="Left" Height="157" Margin="0,81,0,0" VerticalAlignment="Top" Width="873.5" IsExpanded="True">
+			<Grid HorizontalAlignment="Left" Height="138" Margin="-1,0,-2,0" Width="874.5">
+				<StackPanel HorizontalAlignment="Left" Height="138" VerticalAlignment="Top" Width="437.25">					
+					<Components:HlpComboBox Height="30" Margin="10,10,108.25,10" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario" Help="Seleciona o tipo do Usuário" WidthLabel="102"/>
+					<Components:HlpTextBox 
+						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}"
+						Height="30" Margin="10,0,108.25,6" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102"/>
+					<Components:HlpTextBox 
+						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}"
+						Height="30" Margin="10,0,108.25,10" Caption="Login" WidthLabel="102"/>
+				</StackPanel>
+				<StackPanel HorizontalAlignment="Left" Height="138" Margin="437.25,0,0,0" VerticalAlignment="Top" Width="437.25">
+					<Components:HlpCheckBox
+						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						IsChecked="{Binding currentModel.stUsuarioAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}" 
+						Height="30" Margin="10,10,241,10" Caption="Utiliza Sistema" WidthLabel="119" Field="stUsuarioAtivo" Table="Funcionario"/>
+					<Button Content="Verificar" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" Width="186.25"/>
+				</StackPanel>
+			</Grid>
+		</Expander>
+		<Expander Header="Empresa" HorizontalAlignment="Left" Height="201.5" Margin="0,238,0,0" VerticalAlignment="Top" Width="873.5" IsExpanded="True">
+			<DataGrid HorizontalAlignment="Left" Height="177.75" Width="703.5" Background="{x:Null}" BorderBrush="{x:Null}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Empresa" Width="300"/>
+					<DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Setor" Width="300"/>
+					<DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Valor da Compra" Width="100"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>

@@ -1,0 +1,38 @@
+﻿<runtime:WindowsBase
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinConversao"
+        Title="Conversão" Height="660" Width="1024">
+	<Grid>
+		<Expander Header="Parametro" HorizontalAlignment="Left" Height="124.5" VerticalAlignment="Top" Width="633.5" IsExpanded="True">
+			<StackPanel Height="100" Margin="0,0,-2,0">
+				<Components:HlpPesquisa 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="30" Margin="10,10,172,10" Caption="Produto" Field="idProduto" Help="Informar o código do produto para criação das unidades de conversões" Table="Produto" WidthLabel="81" FieldPesquisa="ID" TableView="vwProduto">
+					<Components:HlpPesquisa.Items>
+						<System:String>xPesquisa</System:String>
+						<System:String>cAlternativo</System:String>
+					</Components:HlpPesquisa.Items>
+				</Components:HlpPesquisa>
+				<Button Content="Lançar Conversões" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" Width="169.5"/>
+			</StackPanel>
+		</Expander>
+		<Expander Header="Grade" HorizontalAlignment="Left" Height="184" Margin="0,129.5,0,0" VerticalAlignment="Top" Width="633.5" IsExpanded="True">
+			<Grid>
+				<DataGrid HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="561" Background="{x:Null}" BorderBrush="{x:Null}">
+					<DataGrid.Columns>
+						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Da Unidade" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="100"/>
+						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Para Unidade" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="100"/>
+						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Arredondar" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="100"/>
+						<DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Fator de Conversão" Width="130"/>
+						<DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Qualidade Adcional" Width="130"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</Grid>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>

@@ -68,8 +68,17 @@
     <Compile Include="Crm\WinDecisao.xaml.cs">
       <DependentUpon>WinDecisao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinAcesso.xaml.cs">
+      <DependentUpon>WinAcesso.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinCidade.xaml.cs">
       <DependentUpon>WinCidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinCondicaoPagamento.xaml.cs">
+      <DependentUpon>WinCondicaoPagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinConversao.xaml.cs">
+      <DependentUpon>WinConversao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinEmpresa.xaml.cs">
       <DependentUpon>WinEmpresa.xaml</DependentUpon>
@@ -95,12 +104,27 @@
     <Compile Include="RecursosHumanos\WinSetor.xaml.cs">
       <DependentUpon>WinSetor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transportes\WinCondicaoEntrega.xaml.cs">
+      <DependentUpon>WinCondicaoEntrega.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIUtilities\UserInterfaceUtilities.cs" />
     <Page Include="Crm\WinDecisao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Gerais\WinAcesso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gerais\WinCidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinCondicaoPagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinConversao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +176,10 @@
     <Page Include="RecursosHumanos\WinSetor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transportes\WinCondicaoEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +235,7 @@
       <Name>HLP.Entries.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
