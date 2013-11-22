@@ -57,7 +57,7 @@ namespace HLP.Dependencies
             //Bind<ICodigo_Icms_paiRepository>().To<Codigo_Icms_paiRepository>();
             //Bind<ICodigo_IcmsRepository>().To<Codigo_IcmsRepository>();
             //Bind<IClassificacao_fiscalRepository>().To<Classificacao_fiscalRepository>();
-            //Bind<IRamo_atividadeRepository>().To<Ramo_atividadeRepository>();
+            Bind<IRamo_atividadeRepository>().To<Ramo_atividadeRepository>();
             //Bind<ICarga_trib_media_st_icmsRepository>().To<Carga_trib_media_st_icmsRepository>();
 
             //#endregion
