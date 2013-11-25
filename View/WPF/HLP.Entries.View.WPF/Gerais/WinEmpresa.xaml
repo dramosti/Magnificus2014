@@ -5,8 +5,8 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
         Title="Empresa" Height="600" Width="800" NameView="vwEmpresa"    
     >
-    <StackPanel>
-        <TabControl>
+    <Grid>
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
                 <WrapPanel Orientation="Vertical">
                     <Components:HlpTextBox Caption="Id Empresa" Width="200" WidthLabel="140" Margin="0,3,0,0"
@@ -72,17 +72,30 @@
                 </WrapPanel>
             </TabItem>
             <TabItem Header="Endereços">
-                <DataGrid ItemsSource="{Binding currentModel.lEmpresa_endereco}"
-                          AutoGenerateColumns="True"
+                <DataGrid 
+                          ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
                           IsEnabled="{Binding bIsEnabled}">
-                    <DataGrid.Columns>                        
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Tipo" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding }"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTemplateColumn ClipboardContentBinding="{x:Null}"/>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-
-
         </TabControl>
-
-
-    </StackPanel>
+    </Grid>
 </runtime:WindowsBase>
