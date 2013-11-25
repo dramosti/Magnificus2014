@@ -22,7 +22,7 @@
                 DockPanel.Dock="Top" Margin="0,0,0,4" >
             <DataGrid x:Name="dgvFilter"                       
                   Background="Transparent"
-                      BorderBrush="Transparent"
+                  BorderBrush="Transparent"
                   ItemsSource="{Binding lFilers}" 
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"                  
@@ -31,7 +31,8 @@
                   FontSize="10"   
                   RowHeight="19"                    
                   AlternationCount="2"                 
-                  ColumnHeaderStyle="{StaticResource columnHeaderStyle}" SelectionUnit="Cell" 
+                  ColumnHeaderStyle="{StaticResource columnHeaderStyle}" 
+                  SelectionUnit="Cell" 
                   CellStyle="{StaticResource RightAlignedCell}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=COLUMN_NAME}" IsReadOnly="True"   Header="Campos" Width="150" />

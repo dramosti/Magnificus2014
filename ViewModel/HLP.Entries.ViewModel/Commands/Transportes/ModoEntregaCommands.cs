@@ -20,10 +20,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         public ModoEntregaCommands(ModoEntregaViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
-
-
-
-
         }
 
 
