@@ -107,7 +107,7 @@ namespace HLP.Dependencies
             Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             //Bind<ICalendarioRepository>().To<CalendarioRepository>();
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
-            //Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
+            Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
             Bind<IUnidade_medidaRepository>().To<Unidade_medidaRepository>();
             Bind<ITipo_servicoRepository>().To<Tipo_servicoRepository>();
@@ -122,10 +122,10 @@ namespace HLP.Dependencies
             Bind<IFuncionario_Comissao_ProdutoRepository>().To<Funcionario_Comissao_ProdutoRepository>();
             Bind<IFuncionario_ArquivoRepository>().To<Funcionario_ArquivoRepository>();
             Bind<IFuncionario_CertificacaoRepository>().To<Funcionario_CertificacaoRepository>();
-            //Bind<ITransportador_VeiculosRepository>().To<Transportador_VeiculosRepository>();
-            //Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
-            //Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
-            //Bind<ITransportador_EnderecoRepository>().To<Transportador_EnderecoRepository>();
+            Bind<ITransportador_VeiculosRepository>().To<Transportador_VeiculosRepository>();
+            Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
+            Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
+            Bind<ITransportador_EnderecoRepository>().To<Transportador_EnderecoRepository>();
             Bind<IEmpresa_EnderecoRepository>().To<Empresa_EnderecoRepository>();
             Bind<IAcessoRepository>().To<AcessoRepository>();
             //Bind<ILog_ScriptsRepository>().To<Log_ScriptsRepository>();

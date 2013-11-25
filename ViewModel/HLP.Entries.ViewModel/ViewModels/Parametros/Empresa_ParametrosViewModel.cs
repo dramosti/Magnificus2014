@@ -27,6 +27,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
         public Empresa_ParametrosViewModel()
         {
             Empresa_ParametrosCommands comm = new Empresa_ParametrosCommands(objViewModel: this);
+            comm.ExecPesquisa();
         }
 
         private EmpresaParametrosModel _currentModel;

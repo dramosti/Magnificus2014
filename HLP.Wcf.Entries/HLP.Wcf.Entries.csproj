@@ -107,6 +107,7 @@
     <Content Include="serviceTipoServico.svc" />
     <Content Include="serviceTipo_documento.svc" />
     <Content Include="serviceTipoProduto.svc" />
+    <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Web.config" />
@@ -138,6 +139,7 @@
     <Compile Include="IserviceTipoServico.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
     <Compile Include="IserviceTipoProduto.cs" />
+    <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="serviceCargo.svc.cs">
       <DependentUpon>serviceCargo.svc</DependentUpon>
@@ -204,6 +206,9 @@
     </Compile>
     <Compile Include="serviceTipoProduto.svc.cs">
       <DependentUpon>serviceTipoProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceTransportador.svc.cs">
+      <DependentUpon>serviceTransportador.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceUf.svc.cs">
       <DependentUpon>serviceUf.svc</DependentUpon>

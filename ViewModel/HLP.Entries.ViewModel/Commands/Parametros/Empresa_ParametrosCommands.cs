@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.ViewModel.ViewModels.Parametros;
 using System;
 using System.Collections.Generic;
@@ -177,7 +178,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 
         public void ExecPesquisa()
         {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
             this.PesquisarRegistro();
         }
 
@@ -190,9 +190,11 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         }
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
-          {            
-              this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
-          }
+        {
+            //não será possível pesquisar os paramêtros da empresa, pois sempre será uma parametrização por empresa
+            this.objViewModel.currentModel = await this.servico.getEmpresaParametrosAsync(
+                idEmpresa: CompanyData.idEmpresa);
+        }
         #endregion
 
 

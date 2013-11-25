@@ -69,7 +69,6 @@
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\Transportes\Condicao_entregaCommands.cs" />
-    <Compile Include="Commands\Transportes\ModoEntregaCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +113,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\empresaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Empresa_ParametrosService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -192,7 +196,6 @@
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Transportes\Condicao_entregaViewModel.cs" />
-    <Compile Include="ViewModels\Transportes\ModoEntregaViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
     <Compile Include="ViewModels\Unidade_MedidaViewModel.cs" />
     <Compile Include="VMUtilities\UserInterfaceUtilities.cs" />
@@ -243,6 +246,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel.datasource" />
@@ -254,7 +258,6 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
-    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Modos_entregaModel.datasource" />
     <None Include="Service References\cargoService\serviceCargo.wsdl" />
     <None Include="Service References\cargoService\serviceCargo.xsd">
       <SubType>Designer</SubType>
@@ -414,6 +417,28 @@
     <None Include="Service References\empresaService\serviceEmpresa5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.wsdl" />
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\fabricanteService\serviceFabricante.wsdl" />
     <None Include="Service References\fabricanteService\serviceFabricante.xsd">
       <SubType>Designer</SubType>
@@ -451,6 +476,9 @@
     </None>
     <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega.wsdl" />
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega.xsd">
@@ -616,6 +644,7 @@
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\depositoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
+    <WCFMetadataStorage Include="Service References\Empresa_ParametrosService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
@@ -924,6 +953,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Modo_EntregaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Empresa_ParametrosService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Empresa_ParametrosService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Empresa_ParametrosService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
