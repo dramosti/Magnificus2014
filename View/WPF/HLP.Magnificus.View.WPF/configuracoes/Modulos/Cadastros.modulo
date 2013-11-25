@@ -42,4 +42,7 @@
 <object id="WinConversao" name="WinConversao" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">
   </object>
+<object id="WinDeposito" name="WinDeposito" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinDeposito, HLP.Entries.View.WPF">
+  </object>
 </objects>

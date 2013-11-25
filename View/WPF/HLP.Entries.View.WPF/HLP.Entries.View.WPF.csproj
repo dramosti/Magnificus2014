@@ -80,6 +80,9 @@
     <Compile Include="Gerais\WinConversao.xaml.cs">
       <DependentUpon>WinConversao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinDeposito.xaml.cs">
+      <DependentUpon>WinDeposito.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinEmpresa.xaml.cs">
       <DependentUpon>WinEmpresa.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\WinConversao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinDeposito.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
