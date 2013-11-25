@@ -211,4 +211,26 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
     }
+
+    public partial class SiteModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+
+    public partial class Site_enderecoModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
 }

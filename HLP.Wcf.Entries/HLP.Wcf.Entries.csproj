@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="camposBaseDadosService.svc" />
+    <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCargo.svc" />
     <Content Include="serviceCidade.svc" />
     <Content Include="serviceCondicao_Entrega.svc" />
@@ -118,6 +119,7 @@
       <DependentUpon>camposBaseDadosService.svc</DependentUpon>
     </Compile>
     <Compile Include="IcamposBaseDadosService.cs" />
+    <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCargo.cs" />
     <Compile Include="IserviceCidade.cs" />
     <Compile Include="IserviceCondicao_Entrega.cs" />
@@ -143,6 +145,9 @@
     <Compile Include="IserviceTipoProduto.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="serviceCanal_Venda.svc.cs">
+      <DependentUpon>serviceCanal_Venda.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceCargo.svc.cs">
       <DependentUpon>serviceCargo.svc</DependentUpon>
     </Compile>

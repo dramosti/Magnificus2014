@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Comercial\Canal_vendaModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Models\Transportes\Modos_entregaModel.cs" />
     <Compile Include="Models\Transportes\TransportadorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\Comercial\Canal_vendaRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Repository\Implementation\Transportes\Transportador_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Transportador_MotoristaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Transportador_VeiculosRepository.cs" />
+    <Compile Include="Repository\Interfaces\Comercial\ICanal_vendaRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
