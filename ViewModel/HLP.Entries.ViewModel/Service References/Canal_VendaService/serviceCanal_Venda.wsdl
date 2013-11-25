@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="serviceCanal_Venda" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IserviceCanal_Venda_getCanal_venda_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCanal_venda" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_getCanal_venda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCanal_vendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_saveCanal_venda_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveCanal_venda" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_saveCanal_venda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveCanal_vendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_deleteCanal_venda_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteCanal_venda" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_deleteCanal_venda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteCanal_vendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_copyCanal_venda_InputMessage">
+    <wsdl:part name="parameters" element="tns:copyCanal_venda" />
+  </wsdl:message>
+  <wsdl:message name="IserviceCanal_Venda_copyCanal_venda_OutputMessage">
+    <wsdl:part name="parameters" element="tns:copyCanal_vendaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IserviceCanal_Venda">
+    <wsdl:operation name="getCanal_venda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceCanal_Venda/getCanal_venda" message="tns:IserviceCanal_Venda_getCanal_venda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceCanal_Venda/getCanal_vendaResponse" message="tns:IserviceCanal_Venda_getCanal_venda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveCanal_venda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceCanal_Venda/saveCanal_venda" message="tns:IserviceCanal_Venda_saveCanal_venda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceCanal_Venda/saveCanal_vendaResponse" message="tns:IserviceCanal_Venda_saveCanal_venda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCanal_venda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceCanal_Venda/deleteCanal_venda" message="tns:IserviceCanal_Venda_deleteCanal_venda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceCanal_Venda/deleteCanal_vendaResponse" message="tns:IserviceCanal_Venda_deleteCanal_venda_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="copyCanal_venda">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceCanal_Venda/copyCanal_venda" message="tns:IserviceCanal_Venda_copyCanal_venda_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceCanal_Venda/copyCanal_vendaResponse" message="tns:IserviceCanal_Venda_copyCanal_venda_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IserviceCanal_Venda" type="tns:IserviceCanal_Venda">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getCanal_venda">
+      <soap:operation soapAction="http://tempuri.org/IserviceCanal_Venda/getCanal_venda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCanal_venda">
+      <soap:operation soapAction="http://tempuri.org/IserviceCanal_Venda/saveCanal_venda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCanal_venda">
+      <soap:operation soapAction="http://tempuri.org/IserviceCanal_Venda/deleteCanal_venda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copyCanal_venda">
+      <soap:operation soapAction="http://tempuri.org/IserviceCanal_Venda/copyCanal_venda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="serviceCanal_Venda">
+    <wsdl:port name="BasicHttpBinding_IserviceCanal_Venda" binding="tns:BasicHttpBinding_IserviceCanal_Venda">
+      <soap:address location="http://192.168.9.33:8080/wcf/serviceCanal_Venda.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Comercial\Canal_vendaModel.cs" />
+    <Compile Include="Models\Comercial\Cliente_fornecedorModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
