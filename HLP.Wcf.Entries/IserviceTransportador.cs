@@ -21,6 +21,6 @@ namespace HLP.Wcf.Entries
         bool delTransportador(int idTransportador);
 
         [OperationContract]
-        int copyTransportador(int idTransportador);
+        int copyTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador);
     }
 }

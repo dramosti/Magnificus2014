@@ -161,12 +161,59 @@ namespace HLP.Wcf.Entries
 
         public bool delTransportador(int idTransportador)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                this.transportadorRepository.BeginTransaction();
+                this.transportadorRepository.Delete(idTransportador: idTransportador);
+                this.transportador_ContatoRepository.DeletePorTransportador(idTransportador: idTransportador);
+                this.transportador_EnderecoRepository.DeletePorTransportador(idTransportador: idTransportador);
+                this.transportador_MotoristaRepository.DeletePorTransportador(idTransportador: idTransportador);
+                this.transportador_VeiculosRepository.DeletePorTransportador(idTransportador: idTransportador);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
 
-        public int copyTransportador(int idTransportador)
+        public int copyTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                this.transportadorRepository.Copy(objTransportador: objTransportador);
+                foreach (HLP.Entries.Model.Models.Transportes.Transportador_ContatoModel item in objTransportador.lTransportador_Contato)
+                {
+                    item.idTransportador = (int)objTransportador.idTransportador;
+                    this.transportador_ContatoRepository.Copy(objTransportador_Contato: item);
+                }
+                foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
+                {
+                    item.idTransportador = (int)objTransportador.idTransportador;
+                    this.transportador_EnderecoRepository.Copy(objTransportador_Endereco: item);
+                }
+                foreach (HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel item in objTransportador.lTransportador_Motorista)
+                {
+                    item.idTransportador = (int)objTransportador.idTransportador;
+                    this.transportador_MotoristaRepository.Copy(objTransportador_Motorista: item);
+                }
+                foreach (HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel item in objTransportador.lTransportador_Veiculos)
+                {
+                    item.idTransportador = (int)objTransportador.idTransportador;
+                    this.transportador_VeiculosRepository.Copy(objTransportador_Veiculos: item);
+                }
+                return (int)objTransportador.idTransportador;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
     }
 }

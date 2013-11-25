@@ -93,38 +93,174 @@ namespace HLP.Entries.Model.Models.Transportes
             set
             {
                 _idEndereco = value;
+                base.NotifyPropertyChanged(propertyName: "idEndereco");
             }
         }
+        private byte? _stPrincipal;
         [ParameterOrder(Order = 2)]
-        public byte? stPrincipal { get; set; }
+        public byte? stPrincipal
+        {
+            get { return _stPrincipal; }
+            set
+            {
+                _stPrincipal = value;
+                base.NotifyPropertyChanged(propertyName: "stPrincipal");
+            }
+        }
+        private string _xNome;
         [ParameterOrder(Order = 3)]
-        public string xNome { get; set; }
+        public string xNome
+        {
+            get { return _xNome; }
+            set
+            {
+                _xNome = value;
+                base.NotifyPropertyChanged(propertyName: "xNome");
+            }
+        }
+        private byte _stTipoEndereco;
         [ParameterOrder(Order = 4)]
-        public byte stTipoEndereco { get; set; }
+        public byte stTipoEndereco
+        {
+            get { return _stTipoEndereco; }
+            set
+            {
+                _stTipoEndereco = value;
+                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
+            }
+        }
+        private string _xCEP;
         [ParameterOrder(Order = 5)]
-        public string xCEP { get; set; }
+        public string xCEP
+        {
+            get { return _xCEP; }
+            set
+            {
+                _xCEP = value;
+                base.NotifyPropertyChanged(propertyName: "xCEP");
+            }
+        }
+        private byte _stLogradouro;
         [ParameterOrder(Order = 6)]
-        public byte stLogradouro { get; set; }
+        public byte stLogradouro
+        {
+            get { return _stLogradouro; }
+            set
+            {
+                _stLogradouro = value;
+                base.NotifyPropertyChanged(propertyName: "stLogradouro");
+            }
+        }
+        private string _xEndereco;
         [ParameterOrder(Order = 7)]
-        public string xEndereco { get; set; }
+        public string xEndereco
+        {
+            get { return _xEndereco; }
+            set
+            {
+                _xEndereco = value;
+                base.NotifyPropertyChanged(propertyName: "xEndereco");
+            }
+        }
+        private string _nNumero;
         [ParameterOrder(Order = 8)]
-        public string nNumero { get; set; }
+        public string nNumero
+        {
+            get { return _nNumero; }
+            set
+            {
+                _nNumero = value;
+                base.NotifyPropertyChanged(propertyName: "nNumero");
+            }
+        }
+        private string _xComplemento;
         [ParameterOrder(Order = 9)]
-        public string xComplemento { get; set; }
+        public string xComplemento
+        {
+            get { return _xComplemento; }
+            set
+            {
+                _xComplemento = value;
+                base.NotifyPropertyChanged(propertyName: "xComplemento");
+            }
+        }
+        private string _xBairro;
         [ParameterOrder(Order = 10)]
-        public string xBairro { get; set; }
+        public string xBairro
+        {
+            get { return _xBairro; }
+            set
+            {
+                _xBairro = value;
+                base.NotifyPropertyChanged(propertyName: "xBairro");
+            }
+        }
+        private string _xLatitude;
         [ParameterOrder(Order = 11)]
-        public string xLatitude { get; set; }
+        public string xLatitude
+        {
+            get { return _xLatitude; }
+            set
+            {
+                _xLatitude = value;
+                base.NotifyPropertyChanged(propertyName: "xLatitude");
+            }
+        }
+        private string _xLongitude;
         [ParameterOrder(Order = 12)]
-        public string xLongitude { get; set; }
+        public string xLongitude
+        {
+            get { return _xLongitude; }
+            set
+            {
+                _xLongitude = value;
+                base.NotifyPropertyChanged(propertyName: "xLongitude");
+            }
+        }
+        private string _xFusoHorario;
         [ParameterOrder(Order = 13)]
-        public string xFusoHorario { get; set; }
+        public string xFusoHorario
+        {
+            get { return _xFusoHorario; }
+            set
+            {
+                _xFusoHorario = value;
+                base.NotifyPropertyChanged(propertyName: "xFusoHorario");
+            }
+        }
+        private string _xCaixaPostal;
         [ParameterOrder(Order = 14)]
-        public string xCaixaPostal { get; set; }
+        public string xCaixaPostal
+        {
+            get { return _xCaixaPostal; }
+            set
+            {
+                _xCaixaPostal = value;
+                base.NotifyPropertyChanged(propertyName: "xCaixaPostal");
+            }
+        }
+        private int _idTransportador;
         [ParameterOrder(Order = 15)]
-        public int idTransportador { get; set; }
+        public int idTransportador
+        {
+            get { return _idTransportador; }
+            set
+            {
+                _idTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportador");
+            }
+        }
+        private int _idCidade;
         [ParameterOrder(Order = 16)]
-        public int idCidade { get; set; }
+        public int idCidade
+        {
+            get { return _idCidade; }
+            set
+            {
+                _idCidade = value;
+                base.NotifyPropertyChanged(propertyName: "idCidade");
+            }
+        }
 
     }
 
@@ -142,18 +278,64 @@ namespace HLP.Entries.Model.Models.Transportes
             set
             {
                 _idTransportadorVeiculo = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportadorVeiculo");
             }
         }
+        private string _xPlacaVeiculo;
         [ParameterOrder(Order = 2)]
-        public string xPlacaVeiculo { get; set; }
+        public string xPlacaVeiculo
+        {
+            get { return _xPlacaVeiculo; }
+            set
+            {
+                _xPlacaVeiculo = value;
+                base.NotifyPropertyChanged(propertyName: "xPlacaVeiculo");
+            }
+        }
+        private int _idUf;
         [ParameterOrder(Order = 3)]
-        public int idUf { get; set; }
+        public int idUf
+        {
+            get { return _idUf; }
+            set
+            {
+                _idUf = value;
+                base.NotifyPropertyChanged(propertyName: "idUf");
+            }
+        }
+        private int _idTransportador;
         [ParameterOrder(Order = 4)]
-        public int idTransportador { get; set; }
+        public int idTransportador
+        {
+            get { return _idTransportador; }
+            set
+            {
+                _idTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportador");
+            }
+        }
+        private string _xMarca;
         [ParameterOrder(Order = 5)]
-        public string xMarca { get; set; }
+        public string xMarca
+        {
+            get { return _xMarca; }
+            set
+            {
+                _xMarca = value;
+                base.NotifyPropertyChanged(propertyName: "xMarca");
+            }
+        }
+        private string _xModelo;
         [ParameterOrder(Order = 6)]
-        public string xModelo { get; set; }
+        public string xModelo
+        {
+            get { return _xModelo; }
+            set
+            {
+                _xModelo = value;
+                base.NotifyPropertyChanged(propertyName: "xModelo");
+            }
+        }
     }
 
     public partial class Transportador_ContatoModel : modelBase
@@ -171,12 +353,31 @@ namespace HLP.Entries.Model.Models.Transportes
             set
             {
                 _idTransportdorContato = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportdorContato");
             }
         }
+        private int _idTransportador;
         [ParameterOrder(Order = 2)]
-        public int idTransportador { get; set; }
+        public int idTransportador
+        {
+            get { return _idTransportador; }
+            set
+            {
+                _idTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportador");
+            }
+        }
+        private int _idContato;
         [ParameterOrder(Order = 3)]
-        public int idContato { get; set; }
+        public int idContato
+        {
+            get { return _idContato; }
+            set
+            {
+                _idContato = value;
+                base.NotifyPropertyChanged(propertyName: "idContato");
+            }
+        }
     }
 
     public partial class Transportador_MotoristaModel : modelBase
@@ -186,21 +387,49 @@ namespace HLP.Entries.Model.Models.Transportes
         {
         }
         private int? _idTransportdorMotorista;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idTransportdorMotorista
         {
             get { return _idTransportdorMotorista; }
             set
             {
                 _idTransportdorMotorista = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportdorMotorista");
             }
         }
+        private int? _idTransportador;
         [ParameterOrder(Order = 2)]
-        public int? idTransportador { get; set; }
+        public int? idTransportador
+        {
+            get { return _idTransportador; }
+            set
+            {
+                _idTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportador");
+            }
+        }
+        private int? _idContato;
         [ParameterOrder(Order = 3)]
-        public int? idContato { get; set; }
+        public int? idContato
+        {
+            get { return _idContato; }
+            set
+            {
+                _idContato = value;
+                base.NotifyPropertyChanged(propertyName: "idContato");
+            }
+        }
+        private string _xRntrc;
         [ParameterOrder(Order = 4)]
-        public string xRntrc { get; set; }
+        public string xRntrc
+        {
+            get { return _xRntrc; }
+            set
+            {
+                _xRntrc = value;
+                base.NotifyPropertyChanged(propertyName: "xRntrc");
+            }
+        }
     }
 
     #region Validações

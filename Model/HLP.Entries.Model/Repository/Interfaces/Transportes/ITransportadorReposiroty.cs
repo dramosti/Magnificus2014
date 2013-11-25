@@ -10,10 +10,9 @@ namespace HLP.Entries.Model.Repository.Interfaces.Transportes
     public interface ITransportadorReposiroty
     {
         void Save(TransportadorModel objTransportador);
-        void Delete(TransportadorModel objTransportador);
+        void Delete(int idTransportador);
         void Copy(TransportadorModel objTransportador);
         TransportadorModel GetTransportador(int idTransportador);
-
         void BeginTransaction();
         void CommitTransaction();
         void RollackTransaction();

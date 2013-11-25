@@ -39,13 +39,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
             }
         }
 
-        public void Delete(TransportadorModel objTransportador)
+        public void Delete(int idTransportador)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
             UndTrabalho.dbTransaction,
            "[dbo].[Proc_delete_Transportador]",
             UserData.idUser,
-            objTransportador.idTransportador);
+            idTransportador);
         }
 
         public void Copy(TransportadorModel objTransportador)

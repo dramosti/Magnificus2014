@@ -69,6 +69,7 @@
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\Transportes\Condicao_entregaCommands.cs" />
+    <Compile Include="Commands\Transportes\TransportadorCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,6 +168,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\transportadorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\unidadeMedidaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +202,7 @@
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Transportes\Condicao_entregaViewModel.cs" />
+    <Compile Include="ViewModels\Transportes\TransportadorViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
     <Compile Include="ViewModels\Unidade_MedidaViewModel.cs" />
     <Compile Include="VMUtilities\UserInterfaceUtilities.cs" />
@@ -258,6 +265,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
     <None Include="Service References\cargoService\serviceCargo.wsdl" />
     <None Include="Service References\cargoService\serviceCargo.xsd">
       <SubType>Designer</SubType>
@@ -601,6 +609,25 @@
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\transportadorService\serviceTransportador.wsdl" />
+    <None Include="Service References\transportadorService\serviceTransportador.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\transportadorService\serviceTransportador1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\transportadorService\serviceTransportador2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\transportadorService\serviceTransportador3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\transportadorService\serviceTransportador4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\transportadorService\serviceTransportador5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ufService\serviceUf4.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -654,6 +681,7 @@
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
     <WCFMetadataStorage Include="Service References\tipoServicoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
+    <WCFMetadataStorage Include="Service References\transportadorService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
   </ItemGroup>
@@ -968,6 +996,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Empresa_ParametrosService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\transportadorService\serviceTransportador.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\transportadorService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\transportadorService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\transportadorService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

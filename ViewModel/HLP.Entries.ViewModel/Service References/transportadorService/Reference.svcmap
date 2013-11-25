@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="86fbef37-2ef3-4804-9006-24f76b2529f2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTransportador.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceTransportador.disco" MetadataType="Disco" ID="0ee44507-05c8-4c08-bf68-2be73420cbd4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?disco" />
+    <MetadataFile FileName="serviceTransportador.wsdl" MetadataType="Wsdl" ID="b1fdbf8f-4967-425f-a4a9-f001da5e682b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?wsdl" />
+    <MetadataFile FileName="serviceTransportador.xsd" MetadataType="Schema" ID="37a8afd6-2948-4de4-b897-2c712d6b8916" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTransportador1.xsd" MetadataType="Schema" ID="0ab2fe3b-5b18-4035-9394-e9f4b6cba079" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTransportador2.xsd" MetadataType="Schema" ID="7fa71b9a-8519-498d-9c0d-57f4dd4edf98" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTransportador3.xsd" MetadataType="Schema" ID="33cd5f1a-50c0-43b2-ba83-f41d27ac1344" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTransportador4.xsd" MetadataType="Schema" ID="ebbe6b24-c667-4e22-9e32-d6a123175309" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceTransportador5.xsd" MetadataType="Schema" ID="1844a6b3-ad1c-48ae-b678-17f66e6905e6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTransportador.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
