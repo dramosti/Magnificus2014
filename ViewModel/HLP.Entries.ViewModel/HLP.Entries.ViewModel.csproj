@@ -68,6 +68,7 @@
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\Transportes\Condicao_entregaCommands.cs" />
+    <Compile Include="Commands\Transportes\ModoEntregaCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Transportes\Condicao_entregaViewModel.cs" />
+    <Compile Include="ViewModels\Transportes\ModoEntregaViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
     <Compile Include="ViewModels\Unidade_MedidaViewModel.cs" />
     <Compile Include="VMUtilities\UserInterfaceUtilities.cs" />
@@ -250,6 +252,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Modos_entregaModel.datasource" />
     <None Include="Service References\cargoService\serviceCargo.wsdl" />
     <None Include="Service References\cargoService\serviceCargo.xsd">
       <SubType>Designer</SubType>
@@ -446,9 +449,6 @@
     </None>
     <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega.wsdl" />
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega.xsd">
