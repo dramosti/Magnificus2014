@@ -184,7 +184,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idEndereco { get; set; }
         [ParameterOrder(Order = 2)]
         public byte stTipoEndereco { get; set; }
@@ -223,7 +223,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFuncionarioArquivo { get; set; }
         [ParameterOrder(Order = 2)]
         public string xArquivo { get; set; }
@@ -240,7 +240,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFuncionarioCertificacao { get; set; }
         [ParameterOrder(Order = 2)]
         public byte stCertificacao { get; set; }
@@ -263,7 +263,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFuncionarioComissaoProduto { get; set; }
         [ParameterOrder(Order = 2)]
         public decimal pComissaoAvista { get; set; }
@@ -283,7 +283,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFuncionarioMargemLucroComissao { get; set; }
         [ParameterOrder(Order = 2)]
         public decimal pDeMargemVenda { get; set; }
@@ -304,7 +304,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idAcesso { get; set; }
         [ParameterOrder(Order = 2)]
         public int idEmpresa { get; set; }

@@ -64,6 +64,7 @@
     <Compile Include="Commands\Gerais\MoedaCommands.cs" />
     <Compile Include="Commands\Gerais\Ramo_atividadeCommands.cs" />
     <Compile Include="Commands\Gerais\TipoServicoCommand.cs" />
+    <Compile Include="Commands\Parametros\Empresa_ParametrosCommands.cs" />
     <Compile Include="Commands\RecursosHumanos\SetorCommands.cs" />
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="ViewModels\Gerais\MoedaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />
     <Compile Include="ViewModels\Gerais\TipoServicoViewModel.cs" />
+    <Compile Include="ViewModels\Parametros\Empresa_ParametrosViewModel.cs" />
     <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />

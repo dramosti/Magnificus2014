@@ -8,6 +8,7 @@ using HLP.Comum.Resources.RecursosBases;
 using System.Reflection;
 using HLP.Comum.Model.StaticModels;
 using HLP.Comum.Model.Components;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.Model.Models
 {
@@ -44,6 +45,10 @@ namespace HLP.Comum.Model.Models
             }
             lcamposSqlNotNull = lCamposSqlNotNull._lCamposSqlNotNull.FirstOrDefault(i => i.xTabela
                     == xTabela).lCamposSqlModel;
+            PropertyInfo p = this.GetType().GetProperty("idEmpresa");
+
+            if (p != null)
+                p.SetValue(this, CompanyData.idEmpresa);
         }
 
         #region NotifyPropertyChanged

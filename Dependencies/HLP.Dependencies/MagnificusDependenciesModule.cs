@@ -14,6 +14,8 @@ using HLP.Entries.Model.Repository.Implementation.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using HLP.Entries.Model.Repository.Implementation.Transportes;
+using HLP.Entries.Model.Repository.Interfaces.Parametros;
+using HLP.Entries.Model.Repository.Implementation.Parametros;
 
 namespace HLP.Dependencies
 {
@@ -66,7 +68,7 @@ namespace HLP.Dependencies
 
             //Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
             //Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
-             Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
+            Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
             //Bind<IMultasRepository>().To<MultasRepository>();
             //Bind<ICanal_vendaRepository>().To<Canal_vendaRepository>();
             //Bind<IJurosRepository>().To<JurosRepository>();
@@ -151,13 +153,13 @@ namespace HLP.Dependencies
 
             //#region Parametros
 
-            //Bind<IParametro_EstoqueRepository>().To<Parametro_EstoqueRepository>();
-            //Bind<IParametro_CustosRepository>().To<Parametro_CustosRepository>();
-            //Bind<IParametro_ComprasRepository>().To<Parametro_ComprasRepository>();
-            //Bind<IParametro_Ordem_ProducaoRepository>().To<Parametro_Ordem_ProducaoRepository>();
-            //Bind<IParametro_FiscalRepository>().To<Parametro_FiscalRepository>();
-            //Bind<IParametro_ComercialRepository>().To<Parametro_ComercialRepository>();
-            //Bind<IParametro_FinanceiroRepository>().To<Parametro_FinanceiroRepository>();
+            Bind<IParametro_EstoqueRepository>().To<Parametro_EstoqueRepository>();
+            Bind<IParametro_CustosRepository>().To<Parametro_CustosRepository>();
+            Bind<IParametro_ComprasRepository>().To<Parametro_ComprasRepository>();
+            Bind<IParametro_Ordem_ProducaoRepository>().To<Parametro_Ordem_ProducaoRepository>();
+            Bind<IParametro_FiscalRepository>().To<Parametro_FiscalRepository>();
+            Bind<IParametro_ComercialRepository>().To<Parametro_ComercialRepository>();
+            Bind<IParametro_FinanceiroRepository>().To<Parametro_FinanceiroRepository>();
 
             //#endregion
 

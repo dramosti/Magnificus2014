@@ -10,4 +10,10 @@ namespace HLP.Comum.Infrastructure
     {
         public int Order { get; set; }
     }
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public class PrimaryKey : System.Attribute
+    {
+        public bool isPrimary { get; set; }
+    }
 }
