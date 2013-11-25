@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="serviceSite" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSite.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSite.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSite.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSite.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSite.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSite.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IserviceSite_getSite_InputMessage">
+    <wsdl:part name="parameters" element="tns:getSite" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_getSite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_saveSite_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveSite" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_saveSite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_deleteSite_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteSite" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_deleteSite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteSiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_copySite_InputMessage">
+    <wsdl:part name="parameters" element="tns:copySite" />
+  </wsdl:message>
+  <wsdl:message name="IserviceSite_copySite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:copySiteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IserviceSite">
+    <wsdl:operation name="getSite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceSite/getSite" message="tns:IserviceSite_getSite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceSite/getSiteResponse" message="tns:IserviceSite_getSite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveSite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceSite/saveSite" message="tns:IserviceSite_saveSite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceSite/saveSiteResponse" message="tns:IserviceSite_saveSite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceSite/deleteSite" message="tns:IserviceSite_deleteSite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceSite/deleteSiteResponse" message="tns:IserviceSite_deleteSite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="copySite">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceSite/copySite" message="tns:IserviceSite_copySite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceSite/copySiteResponse" message="tns:IserviceSite_copySite_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IserviceSite" type="tns:IserviceSite">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getSite">
+      <soap:operation soapAction="http://tempuri.org/IserviceSite/getSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveSite">
+      <soap:operation soapAction="http://tempuri.org/IserviceSite/saveSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSite">
+      <soap:operation soapAction="http://tempuri.org/IserviceSite/deleteSite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copySite">
+      <soap:operation soapAction="http://tempuri.org/IserviceSite/copySite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="serviceSite">
+    <wsdl:port name="BasicHttpBinding_IserviceSite" binding="tns:BasicHttpBinding_IserviceSite">
+      <soap:address location="http://192.168.9.33:8080/wcf/serviceSite.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

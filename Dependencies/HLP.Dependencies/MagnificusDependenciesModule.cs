@@ -14,6 +14,8 @@ using HLP.Entries.Model.Repository.Implementation.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using HLP.Entries.Model.Repository.Implementation.Transportes;
+using HLP.Entries.Model.Repository.Interfaces.Parametros;
+using HLP.Entries.Model.Repository.Implementation.Parametros;
 
 namespace HLP.Dependencies
 {
@@ -65,10 +67,10 @@ namespace HLP.Dependencies
             //#region Comercial
 
             //Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
-            //Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
-             Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
+            Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
+            Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
             //Bind<IMultasRepository>().To<MultasRepository>();
-            //Bind<ICanal_vendaRepository>().To<Canal_vendaRepository>();
+            Bind<ICanal_vendaRepository>().To<Canal_vendaRepository>();
             //Bind<IJurosRepository>().To<JurosRepository>();
             //Bind<ICliente_fornecedorRepository>().To<Cliente_fornecedorRepository>();
             //Bind<ICliente_fornecedor_arquivoRepository>().To<Cliente_fornecedor_arquivoRepository>();
@@ -105,7 +107,7 @@ namespace HLP.Dependencies
             Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             //Bind<ICalendarioRepository>().To<CalendarioRepository>();
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
-            //Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
+            Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
             Bind<IUnidade_medidaRepository>().To<Unidade_medidaRepository>();
             Bind<ITipo_servicoRepository>().To<Tipo_servicoRepository>();
@@ -113,17 +115,17 @@ namespace HLP.Dependencies
             //Bind<IFamilia_ProdutoRepository>().To<Familia_produtoRepository>();
             //Bind<IFamilia_Produto_ClassesRepository>().To<Familia_Produto_ClassesRepository>();
             Bind<IConversaoRepository>().To<ConversaoRepository>();
-            //Bind<ISiteRepository>().To<SiteRepository>();
+            Bind<ISiteRepository>().To<SiteRepository>();
             //Bind<IContato_EnderecoRepository>().To<Contato_EnderecoRepository>();
             Bind<IFuncionario_Margem_Lucro_ComissaoRepository>().To<Funcionario_Margem_LucroComissaoRepository>();
             Bind<IFuncionario_EnderecoRepository>().To<Funcionario_EnderecoRepository>();
             Bind<IFuncionario_Comissao_ProdutoRepository>().To<Funcionario_Comissao_ProdutoRepository>();
             Bind<IFuncionario_ArquivoRepository>().To<Funcionario_ArquivoRepository>();
             Bind<IFuncionario_CertificacaoRepository>().To<Funcionario_CertificacaoRepository>();
-            //Bind<ITransportador_VeiculosRepository>().To<Transportador_VeiculosRepository>();
-            //Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
-            //Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
-            //Bind<ITransportador_EnderecoRepository>().To<Transportador_EnderecoRepository>();
+            Bind<ITransportador_VeiculosRepository>().To<Transportador_VeiculosRepository>();
+            Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
+            Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
+            Bind<ITransportador_EnderecoRepository>().To<Transportador_EnderecoRepository>();
             Bind<IEmpresa_EnderecoRepository>().To<Empresa_EnderecoRepository>();
             Bind<IAcessoRepository>().To<AcessoRepository>();
             //Bind<ILog_ScriptsRepository>().To<Log_ScriptsRepository>();
@@ -151,13 +153,13 @@ namespace HLP.Dependencies
 
             //#region Parametros
 
-            //Bind<IParametro_EstoqueRepository>().To<Parametro_EstoqueRepository>();
-            //Bind<IParametro_CustosRepository>().To<Parametro_CustosRepository>();
-            //Bind<IParametro_ComprasRepository>().To<Parametro_ComprasRepository>();
-            //Bind<IParametro_Ordem_ProducaoRepository>().To<Parametro_Ordem_ProducaoRepository>();
-            //Bind<IParametro_FiscalRepository>().To<Parametro_FiscalRepository>();
-            //Bind<IParametro_ComercialRepository>().To<Parametro_ComercialRepository>();
-            //Bind<IParametro_FinanceiroRepository>().To<Parametro_FinanceiroRepository>();
+            Bind<IParametro_EstoqueRepository>().To<Parametro_EstoqueRepository>();
+            Bind<IParametro_CustosRepository>().To<Parametro_CustosRepository>();
+            Bind<IParametro_ComprasRepository>().To<Parametro_ComprasRepository>();
+            Bind<IParametro_Ordem_ProducaoRepository>().To<Parametro_Ordem_ProducaoRepository>();
+            Bind<IParametro_FiscalRepository>().To<Parametro_FiscalRepository>();
+            Bind<IParametro_ComercialRepository>().To<Parametro_ComercialRepository>();
+            Bind<IParametro_FinanceiroRepository>().To<Parametro_FinanceiroRepository>();
 
             //#endregion
 

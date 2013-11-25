@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="camposBaseDadosService.svc" />
+    <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCargo.svc" />
     <Content Include="serviceCidade.svc" />
     <Content Include="serviceCondicao_Entrega.svc" />
@@ -94,6 +95,7 @@
     <Content Include="serviceDepartamento.svc" />
     <Content Include="serviceDeposito.svc" />
     <Content Include="serviceEmpresa.svc" />
+    <Content Include="serviceEmpresaParametros.svc" />
     <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFuncionario.svc" />
     <Content Include="serviceModoEntrega.svc" />
@@ -103,9 +105,11 @@
     <Content Include="serviceRamoAtividade.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceSetor.svc" />
+    <Content Include="serviceSite.svc" />
     <Content Include="serviceTipoServico.svc" />
     <Content Include="serviceTipo_documento.svc" />
     <Content Include="serviceTipoProduto.svc" />
+    <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Web.config" />
@@ -115,6 +119,7 @@
       <DependentUpon>camposBaseDadosService.svc</DependentUpon>
     </Compile>
     <Compile Include="IcamposBaseDadosService.cs" />
+    <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCargo.cs" />
     <Compile Include="IserviceCidade.cs" />
     <Compile Include="IserviceCondicao_Entrega.cs" />
@@ -124,6 +129,7 @@
     <Compile Include="IserviceDepartamento.cs" />
     <Compile Include="IserviceDeposito.cs" />
     <Compile Include="IserviceEmpresa.cs" />
+    <Compile Include="IserviceEmpresaParametros.cs" />
     <Compile Include="IserviceFabricante.cs" />
     <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
@@ -133,10 +139,15 @@
     <Compile Include="IserviceRamoAtividade.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceSetor.cs" />
+    <Compile Include="IserviceSite.cs" />
     <Compile Include="IserviceTipoServico.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
     <Compile Include="IserviceTipoProduto.cs" />
+    <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="serviceCanal_Venda.svc.cs">
+      <DependentUpon>serviceCanal_Venda.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceCargo.svc.cs">
       <DependentUpon>serviceCargo.svc</DependentUpon>
     </Compile>
@@ -163,6 +174,9 @@
     </Compile>
     <Compile Include="serviceEmpresa.svc.cs">
       <DependentUpon>serviceEmpresa.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceEmpresaParametros.svc.cs">
+      <DependentUpon>serviceEmpresaParametros.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceFabricante.svc.cs">
       <DependentUpon>serviceFabricante.svc</DependentUpon>
@@ -191,6 +205,9 @@
     <Compile Include="serviceSetor.svc.cs">
       <DependentUpon>serviceSetor.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceSite.svc.cs">
+      <DependentUpon>serviceSite.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceTipoServico.svc.cs">
       <DependentUpon>serviceTipoServico.svc</DependentUpon>
     </Compile>
@@ -199,6 +216,9 @@
     </Compile>
     <Compile Include="serviceTipoProduto.svc.cs">
       <DependentUpon>serviceTipoProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceTransportador.svc.cs">
+      <DependentUpon>serviceTransportador.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceUf.svc.cs">
       <DependentUpon>serviceUf.svc</DependentUpon>
