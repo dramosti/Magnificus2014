@@ -23,5 +23,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int copyCidade(int idCidade);
+
+        [OperationContract]
+        IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox();
     }
 }

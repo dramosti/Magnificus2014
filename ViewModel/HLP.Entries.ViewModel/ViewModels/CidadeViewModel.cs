@@ -60,9 +60,9 @@ namespace HLP.Entries.ViewModel.ViewModels
             objCidadeCommands = new CidadeCommands(objViewModel: this);
         }
 
-        public void GetCidadeByUf(int iidUF)
+        public void GetCidadeByUf(int idUF)
         {
-            objCidadeCommands.GetCidadeByUf(idUF: iidUF);
+            objCidadeCommands.GetCidadeByUf(idUF: idUF);
         }
 
 

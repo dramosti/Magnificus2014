@@ -2,9 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
-        Title="Empresa" Height="600" Width="800" NameView="vwEmpresa"    
-    >
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
+        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
+    <Window.Resources>
+        <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+        <ObjectDataProvider x:Key="EnumTpEnder" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:TipoEndereco"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
@@ -74,24 +86,38 @@
             <TabItem Header="Endereços">
                 <DataGrid 
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
-                          IsEnabled="{Binding bIsEnabled}">
+                          IsEnabled="{Binding bIsEnabled}"
+                          AutoGenerateColumns="False"                    >
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Tipo" Width="150">
+                        <DataGridComboBoxColumn 
+                            Header="Tipo Endereço" Width="120"
+                            ItemsSource="{Binding Source={StaticResource EnumTpEnder}}"
+                            SelectedItemBinding ="{Binding StTipoEnd}"/>
+                        <DataGridTemplateColumn Header="Principal" Width="60">                            
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding }"/>
+                                    <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-
+                            <DataGridTemplateColumn.CellEditingTemplate>                                
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>                                             
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>                            
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTemplateColumn ClipboardContentBinding="{x:Null}"/>
+                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr}" />
+                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro}" />
+                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl}" />
+                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro}" />
+                        <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep}" />
+                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal}" />
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
                     </DataGrid.Columns>
                 </DataGrid>

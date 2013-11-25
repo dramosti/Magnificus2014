@@ -99,9 +99,9 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        private byte _StTipoEnd;
+        private TipoEndereco _StTipoEnd;
         [ParameterOrder(Order = 3)]
-        public byte StTipoEnd
+        public TipoEndereco StTipoEnd
         {
             get
             {

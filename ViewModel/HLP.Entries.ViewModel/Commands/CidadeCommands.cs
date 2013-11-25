@@ -50,6 +50,19 @@ namespace HLP.Entries.ViewModel.Commands
 
         }
 
+        public void GetAllCidadeToComboBox() 
+        {
+            try
+            {
+                
+
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
+        }
+
 
         #region Implementação Commands
 

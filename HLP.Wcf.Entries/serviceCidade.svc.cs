@@ -79,5 +79,20 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
         }
+
+        public IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
+        {
+            try
+            {
+                return cidadeRepository.GetAllCidadeToComboBox();
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
+        }
+
     }
 }
