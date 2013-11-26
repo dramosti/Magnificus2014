@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HLP.Wcf.Entries.serviceLista_Preco" CodeBehind="serviceLista_Preco.svc.cs" %>
