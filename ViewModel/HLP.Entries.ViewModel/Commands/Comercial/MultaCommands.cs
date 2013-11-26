@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     public class MultaCommands
     {
         MultaViewModel objViewModel;
+        multaService.IserviceMultaClient servico = new multaService.IserviceMultaClient();
         public MultaCommands(MultaViewModel objViewModel)
         {
 
@@ -53,7 +55,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                //this.objViewModel.currentModel.idMultas =
+                this.objViewModel.currentModel.idMultas = await this.servico.saveMultaAsync(
+                    objMulta: this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -79,8 +82,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (true
-                    )
+                    if (await this.servico.deleteMultaAsync(idMulta: (int)this.objViewModel.currentModel.idMultas))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -113,7 +115,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Novo()
         {
-            //TODO: instanciar novo objeto
+            this.objViewModel.currentModel = new MultasModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -144,7 +146,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                //TODO: Implementar serviço de copy
+                this.objViewModel.currentModel.idMultas = await this.servico.copyMultaAsync(idMulta:
+                    (int)this.objViewModel.currentModel.idMultas);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -188,7 +191,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private async void getMulta(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
+            try
+            {
+                this.objViewModel.currentModel = await this.servico.getMultaAsync(
+                idMulta: this.objViewModel.currentID);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         #endregion
 

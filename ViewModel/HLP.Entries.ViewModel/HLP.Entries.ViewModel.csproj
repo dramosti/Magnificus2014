@@ -169,6 +169,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\multaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Ramo_AtividadeService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -288,6 +293,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.JurosModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
@@ -651,6 +657,25 @@
     <None Include="Service References\moedaService\serviceMoeda5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\multaService\serviceMulta.wsdl" />
+    <None Include="Service References\multaService\serviceMulta.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\multaService\serviceMulta1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\multaService\serviceMulta2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\multaService\serviceMulta3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\multaService\serviceMulta4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\multaService\serviceMulta5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.xsd">
       <SubType>Designer</SubType>
@@ -824,6 +849,7 @@
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\moedaService\" />
+    <WCFMetadataStorage Include="Service References\multaService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
@@ -1235,6 +1261,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Lista_PrecoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\multaService\serviceMulta.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\multaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\multaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\multaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
