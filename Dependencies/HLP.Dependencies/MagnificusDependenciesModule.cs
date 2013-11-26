@@ -69,9 +69,9 @@ namespace HLP.Dependencies
             //Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
             Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
             Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
-            //Bind<IMultasRepository>().To<MultasRepository>();
+            Bind<IMultasRepository>().To<MultasRepository>();
             Bind<ICanal_vendaRepository>().To<Canal_vendaRepository>();
-            //Bind<IJurosRepository>().To<JurosRepository>();
+            Bind<IJurosRepository>().To<JurosRepository>();
             Bind<ICliente_fornecedorRepository>().To<Cliente_fornecedorRepository>();
             Bind<ICliente_fornecedor_arquivoRepository>().To<Cliente_fornecedor_arquivoRepository>();
             Bind<ICliente_fornecedor_contatoRepository>().To<Cliente_fornecedor_contatoRepository>();
@@ -82,8 +82,8 @@ namespace HLP.Dependencies
             Bind<ICliente_fornecedor_representanteRepository>().To<Cliente_fornecedor_representanteRepository>();
             //Bind<IPlano_pagamentoRepository>().To<Plano_pagamentoRepository>();
             //Bind<IPlano_pagamento_linhasRepository>().To<Plano_pagamento_linhasRepository>();
-            //Bind<ILista_Preco_PaiRepository>().To<Lista_Preco_PaiRepository>();
-            //Bind<ILista_precoRepository>().To<Lista_precoRepository>();
+            Bind<ILista_Preco_PaiRepository>().To<Lista_Preco_PaiRepository>();
+            Bind<ILista_precoRepository>().To<Lista_precoRepository>();
             //Bind<IProdutoRepository>().To<ProdutoRepository>();
             Bind<ITipo_produtoRepository>().To<Tipo_produtoRepository>();
             //Bind<IProduto_localizacaoRepository>().To<Produto_localizacaoRepository>();

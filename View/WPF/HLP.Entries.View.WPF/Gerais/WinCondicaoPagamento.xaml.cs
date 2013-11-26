@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -23,6 +24,20 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinCondicaoPagamento()
         {
             InitializeComponent();
+            this.ViewModel = new Condicao_PagamentoViewModel();
+        }
+
+        public Condicao_PagamentoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Condicao_PagamentoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+
         }
     }
 }

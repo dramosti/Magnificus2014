@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCliente.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Cliente_fornecedorModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="cAlternativo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="cliforFiscalModel" nillable="true" type="tns:Cliente_fornecedor_fiscalModel" />
+          <xs:element minOccurs="0" name="dCadastro" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dDataAdmissao" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dDataNascimento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dInformacaoComercialClienteDesde1" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dInformacaoComercialClienteDesde2" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dInformacaoComercialClienteDesde3" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dInformacaoComercialUltimaCompra1" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dInformacaoComercialUltimaCompra2" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dInformacaoComercialUltimaCompra3" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idCalendario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCanalVenda" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCondicaoEntrega" type="xs:int" />
+          <xs:element minOccurs="0" name="idCondicaoPagamento" type="xs:int" />
+          <xs:element minOccurs="0" name="idContaBancaria" type="xs:int" />
+          <xs:element minOccurs="0" name="idDeposito" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idDescontos" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idDiaPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idJuros" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idListaPrecoPai" type="xs:int" />
+          <xs:element minOccurs="0" name="idModosEntrega" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idMoeda" type="xs:int" />
+          <xs:element minOccurs="0" name="idMultas" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idPlanoPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idRamoAtividade" type="xs:int" />
+          <xs:element minOccurs="0" name="idRota" type="xs:int" />
+          <xs:element minOccurs="0" name="idSite" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoDocumento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lCliente_Fornecedor_Endereco" nillable="true" type="tns:ArrayOfCliente_fornecedor_EnderecoModel" />
+          <xs:element minOccurs="0" name="lCliente_Fornecedor_Observacao" nillable="true" type="tns:ArrayOfCliente_Fornecedor_ObservacaoModel" />
+          <xs:element minOccurs="0" name="lCliente_fornecedor_arquivo" nillable="true" type="tns:ArrayOfCliente_fornecedor_arquivoModel" />
+          <xs:element minOccurs="0" name="lCliente_fornecedor_contato" nillable="true" type="tns:ArrayOfCliente_fornecedor_contatoModel" />
+          <xs:element minOccurs="0" name="lCliente_fornecedor_produto" nillable="true" type="tns:ArrayOfCliente_fornecedor_produtoModel" />
+          <xs:element minOccurs="0" name="lCliente_fornecedor_representante" nillable="true" type="tns:ArrayOfCliente_fornecedor_representanteModel" />
+          <xs:element minOccurs="0" name="nFuncionarios" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stAssociacaoComercial" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCatalogo" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCategoria" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCreditoAprovado" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstadoCivil" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stExigeRelacaoProduto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stFrete" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stLimiteCreditoObrigatorio" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stMostraProdutosRelacionado" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stObrigaListaPreco" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stParado" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPessoa" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stResidencia" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSexo" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSituacaoSci" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSpc" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="vInformacaoComercialMaiorCompra1" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vInformacaoComercialMaiorCompra2" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vInformacaoComercialMaiorCompra3" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vLimiteCredito" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vSalario" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vSalarioConjugue" type="xs:decimal" />
+          <xs:element minOccurs="0" name="xApelido" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCPFConjugue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCPFMae" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCPFPai" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCnpj" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xConjugue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCpf" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmpresaConjugue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmpresaTrabalha" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFantasia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFilhos" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFusoHorario" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xHttp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xIE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xIm" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialInformante1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialInformante2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialInformante3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialNome1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialNome2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialNome3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialTelefone1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialTelefone2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xInformacaoComercialTelefone3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLatitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLocalNascimento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLongitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xMemorando" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNomeMae" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNomePai" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xPontoReferenciaResidencia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xProfissao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xProfissaoConjugue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRGConjugue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRGMae" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRGPai" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xSaudacao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefone1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefone2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefoneEmpresaTrabalha" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xUFNascimento" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedorModel" nillable="true" type="tns:Cliente_fornecedorModel" />
+  <xs:complexType name="Cliente_fornecedor_fiscalModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedorFiscal" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="pDescontaCofinsSuframa" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDescontaIcmsSuframa" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDescontaPisSuframa" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pFunrural" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stCalculaFunrural" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIcms" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCalculaIpi" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stConsumidorFinal" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stContribuienteIcms" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stCooperativaAgricola" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaIcmsSuframa" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDescontaPisCofinsSuframa" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stExportador" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stProdutorRural" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRetemCsll" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRetemInss" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRetemIrrf" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRetemIss" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stRetemPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSimplesNacional" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSubsticaoTributariaIcmsDiferenciada" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stZeraIcms" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xCodigoSuframa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCodigoSuspensaoPisCofins" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedor_fiscalModel" nillable="true" type="tns:Cliente_fornecedor_fiscalModel" />
+  <xs:complexType name="ArrayOfCliente_fornecedor_EnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente_fornecedor_EnderecoModel" nillable="true" type="tns:Cliente_fornecedor_EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente_fornecedor_EnderecoModel" nillable="true" type="tns:ArrayOfCliente_fornecedor_EnderecoModel" />
+  <xs:complexType name="Cliente_fornecedor_EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
+          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stLogradouro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFusoHorario" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLatitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLongitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedor_EnderecoModel" nillable="true" type="tns:Cliente_fornecedor_EnderecoModel" />
+  <xs:complexType name="ArrayOfCliente_Fornecedor_ObservacaoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente_Fornecedor_ObservacaoModel" nillable="true" type="tns:Cliente_Fornecedor_ObservacaoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente_Fornecedor_ObservacaoModel" nillable="true" type="tns:ArrayOfCliente_Fornecedor_ObservacaoModel" />
+  <xs:complexType name="Cliente_Fornecedor_ObservacaoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedorObservacao" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="xObservacao" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_Fornecedor_ObservacaoModel" nillable="true" type="tns:Cliente_Fornecedor_ObservacaoModel" />
+  <xs:complexType name="ArrayOfCliente_fornecedor_arquivoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente_fornecedor_arquivoModel" nillable="true" type="tns:Cliente_fornecedor_arquivoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente_fornecedor_arquivoModel" nillable="true" type="tns:ArrayOfCliente_fornecedor_arquivoModel" />
+  <xs:complexType name="Cliente_fornecedor_arquivoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q5:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedorArquivo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="xArquivo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLinkArquivo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedor_arquivoModel" nillable="true" type="tns:Cliente_fornecedor_arquivoModel" />
+  <xs:complexType name="ArrayOfCliente_fornecedor_contatoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente_fornecedor_contatoModel" nillable="true" type="tns:Cliente_fornecedor_contatoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente_fornecedor_contatoModel" nillable="true" type="tns:ArrayOfCliente_fornecedor_contatoModel" />
+  <xs:complexType name="Cliente_fornecedor_contatoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedorContato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedor_contatoModel" nillable="true" type="tns:Cliente_fornecedor_contatoModel" />
+  <xs:complexType name="ArrayOfCliente_fornecedor_produtoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente_fornecedor_produtoModel" nillable="true" type="tns:Cliente_fornecedor_produtoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente_fornecedor_produtoModel" nillable="true" type="tns:ArrayOfCliente_fornecedor_produtoModel" />
+  <xs:complexType name="Cliente_fornecedor_produtoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q7:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedorProduto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idListaPrecoPai" type="xs:int" />
+          <xs:element minOccurs="0" name="idProduto" type="xs:int" />
+          <xs:element minOccurs="0" name="stObrigaListaPreco" type="xs:unsignedByte" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedor_produtoModel" nillable="true" type="tns:Cliente_fornecedor_produtoModel" />
+  <xs:complexType name="ArrayOfCliente_fornecedor_representanteModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cliente_fornecedor_representanteModel" nillable="true" type="tns:Cliente_fornecedor_representanteModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCliente_fornecedor_representanteModel" nillable="true" type="tns:ArrayOfCliente_fornecedor_representanteModel" />
+  <xs:complexType name="Cliente_fornecedor_representanteModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q8:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedorRepresentante" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+          <xs:element minOccurs="0" name="pComissaoAprazo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAvista" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Cliente_fornecedor_representanteModel" nillable="true" type="tns:Cliente_fornecedor_representanteModel" />
+</xs:schema>
