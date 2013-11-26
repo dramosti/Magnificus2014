@@ -108,21 +108,6 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        //private TipoEndereco _StTipoEnd;
-        
-        //public TipoEndereco StTipoEnd
-        //{
-        //    get
-        //    {
-        //        return this._StTipoEnd;
-        //    }
-        //    set
-        //    {
-        //        this._StTipoEnd = (TipoEndereco)value;
-        //        base.NotifyPropertyChanged(propertyName: "StTipoEnd");
-        //    }
-        //}
-
         private TipoEndereco _enumTipoEnder;
 
         public TipoEndereco enumTipoEnder

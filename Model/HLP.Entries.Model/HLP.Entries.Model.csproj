@@ -113,6 +113,8 @@
     <Compile Include="Repository\Implementation\Gerais\ConversaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\DepositoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\FabricanteRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Familia_produtoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Familia_Produto_ClassesRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\MoedaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Ramo_atividadeRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\SiteRepository.cs" />
@@ -163,6 +165,8 @@
     <Compile Include="Repository\Interfaces\Gerais\IConversaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IDepositoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFabricanteRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFamilia_ProdutoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFamilia_Produto_ClassesRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IMoedaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IRamo_atividadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ISiteRepository.cs" />

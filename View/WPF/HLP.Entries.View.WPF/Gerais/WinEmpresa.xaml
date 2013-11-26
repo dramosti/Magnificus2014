@@ -20,7 +20,7 @@
         <ObjectDataProvider x:Key="lCidades" ObjectInstance="{StaticResource odpCidade}"  MethodName="GetAllCidadeToComboBox"/>
     </Window.Resources>
 
-    <Grid>
+    <Grid>        
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
                 <WrapPanel Orientation="Vertical">
@@ -77,7 +77,7 @@
                     <Components:HlpTextBox Caption="Link Pastas" Width="500" Margin="0,3,0,0"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>                    
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
                     <Components:HlpCheckBox Caption="Cód. Reg. Tribut." Width="160" WidthLabel="140"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.stCodigoRegimeTributario, Mode=TwoWay,
@@ -89,7 +89,9 @@
                 <DataGrid 
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
                           IsEnabled="{Binding bIsEnabled}"
-                          AutoGenerateColumns="False"                    >
+                          AutoGenerateColumns="False" 
+                          SelectionUnit="Cell"
+                    >
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn 
                             Header="Tipo Endereço" Width="120"
@@ -107,12 +109,12 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr}" />
-                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro}" />
-                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl}" />
-                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro}" />
+                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr}"  />
+                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
+                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
                         <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep}" />
-                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal}" />                       
+                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal}" />
                         <DataGridComboBoxColumn  Header="Cidades" Width="150"
                             ItemsSource="{Binding Source={StaticResource lCidades}}"
                             SelectedValuePath="id"

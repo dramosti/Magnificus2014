@@ -4,13 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class Familia_produtoModel
+    public partial class Familia_produtoModel : modelBase
     {
+        public Familia_produtoModel() : base() { }
+
         [ParameterOrder(Order = 1)]
-        public int? idFamiliaProduto { get; set; }
+        public int? _idFamiliaProduto;
+
+        public int? idFamiliaProduto
+        {
+            get { return _idFamiliaProduto; }
+            set { _idFamiliaProduto = value; base.NotifyPropertyChanged("idFamiliaProduto"); }
+        } 
         [ParameterOrder(Order = 2)]
         public int idEmpresa { get; set; }
         [ParameterOrder(Order = 3)]
@@ -37,5 +46,92 @@ namespace HLP.Entries.Model.Models.Gerais
         public byte stGrau { get; set; }
         [ParameterOrder(Order = 14)]
         public byte stAlteraDescricaoComercialProdutoVenda { get; set; }
+
+        private ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel> _lFamilia_Produto_ClassesModel;
+        public ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel> lFamilia_Produto_ClassesModel
+        {
+            get { return _lFamilia_Produto_ClassesModel; }
+            set { _lFamilia_Produto_ClassesModel = value; base.NotifyPropertyChanged("lFamilia_Produto_ClassesModel"); }
+        }
     }
+
+
+    public partial class Familia_Produto_ClassesModel : modelBase
+    {
+        public Familia_Produto_ClassesModel() : base() { }
+
+        private int? _idFamilia_Produto_Classes;
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
+        public int? idFamilia_Produto_Classes
+        {
+            get { return _idFamilia_Produto_Classes; }
+            set
+            {
+                _idFamilia_Produto_Classes = value;
+                base.NotifyPropertyChanged(propertyName: "idFamilia_Produto_Classes");
+            }
+        }
+        private int _idTipoOperacao;
+        [ParameterOrder(Order = 2)]
+        public int idTipoOperacao
+        {
+            get { return _idTipoOperacao; }
+            set
+            {
+                _idTipoOperacao = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoOperacao");
+            }
+        }
+        private int _idClasseFinanceira;
+        [ParameterOrder(Order = 3)]
+        public int idClasseFinanceira
+        {
+            get { return _idClasseFinanceira; }
+            set
+            {
+                _idClasseFinanceira = value;
+                base.NotifyPropertyChanged(propertyName: "idClasseFinanceira");
+            }
+        }
+        private int _idFamiliaProduto;
+        [ParameterOrder(Order = 4)]
+        public int idFamiliaProduto
+        {
+            get { return _idFamiliaProduto; }
+            set
+            {
+                _idFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "idFamiliaProduto");
+            }
+        }
+
+    }
+
+
+    #region Validacao
+
+    public partial class Familia_produtoModel 
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+
+    public partial class Familia_Produto_ClassesModel 
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+
+    #endregion
+
 }
