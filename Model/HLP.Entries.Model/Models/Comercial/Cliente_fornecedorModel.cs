@@ -240,6 +240,21 @@ namespace HLP.Entries.Model.Models.Comercial
         public int? idMultas { get; set; }
         [ParameterOrder(Order = 107)]
         public byte? stObrigaListaPreco { get; set; }
+
+        public ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel> lCliente_Fornecedor_Observacao =
+            new ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel>();
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel> lCliente_fornecedor_representante =
+            new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> lCliente_Fornecedor_Endereco =
+            new ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel>();
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> lCliente_fornecedor_contato =
+            new ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel>();
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel> lCliente_fornecedor_arquivo =
+            new ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel>();
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel> lCliente_fornecedor_produto =
+            new ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel>();
+
+        public Cliente_fornecedor_fiscalModel cliforFiscalModel = new Cliente_fornecedor_fiscalModel();
     }
 
     public partial class Cliente_fornecedor_representanteModel : modelBase
