@@ -94,7 +94,7 @@
                         <DataGridComboBoxColumn 
                             Header="Tipo Endereço" Width="120"
                             ItemsSource="{Binding Source={StaticResource EnumTpEnder}}"
-                            SelectedItemBinding ="{Binding StTipoEnd}"/>
+                            SelectedItemBinding ="{Binding enumTipoEnder}"/>
                         <DataGridTemplateColumn Header="Principal" Width="60">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
