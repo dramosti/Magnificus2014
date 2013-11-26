@@ -16,8 +16,19 @@ namespace HLP.Entries.Model.Models.Comercial
         {
         }
 
+        private int? _idJuros;
+
         [ParameterOrder(Order = 1)]
-        public int? idJuros { get; set; }
+        public int? idJuros
+        {
+            get { return _idJuros; }
+            set
+            {
+                _idJuros = value;
+                base.NotifyPropertyChanged(propertyName: "idJuros");
+            }
+        }
+
         [ParameterOrder(Order = 2)]
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 3)]
