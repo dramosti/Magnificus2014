@@ -71,7 +71,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regFamilia_Produto_ClassesAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Familia_Produto_Classes",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idFamilia_Produto_Classes"),
-                                 MapBuilder<Familia_Produto_ClassesModel>.MapAllProperties().Build());
+                                 MapBuilder<Familia_Produto_ClassesModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
 
             return regFamilia_Produto_ClassesAccessor.Execute(idFamilia_Produto_Classes).FirstOrDefault();
@@ -81,7 +81,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             DataAccessor<Familia_Produto_ClassesModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
              ("select * from Familia_Produto_Classes where idFamiliaProduto = @idFamiliaProduto", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idFamiliaProduto"),
-             MapBuilder<Familia_Produto_ClassesModel>.MapAllProperties().Build());
+             MapBuilder<Familia_Produto_ClassesModel>.MapAllProperties().DoNotMap(c => c.status).Build());
 
             return reg.Execute(idFamiliaProduto).ToList();
         }

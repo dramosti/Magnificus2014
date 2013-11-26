@@ -27,7 +27,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regFamiliaProdAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_familia_produto",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idFamiliaProduto"),
-                                    MapBuilder<Familia_produtoModel>.MapAllProperties().Build());
+                                    MapBuilder<Familia_produtoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
             }
             familia = regFamiliaProdAccessor.Execute(idFamiliaProduto).FirstOrDefault();
             return familia;

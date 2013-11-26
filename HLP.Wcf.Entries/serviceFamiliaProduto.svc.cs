@@ -35,8 +35,10 @@ namespace HLP.Wcf.Entries
             try
             {
                 Familia_produtoModel objFamiliaProd = iFamilia_ProdutoRepository.GetFamilia_produto(idFamiliaProduto);
-                objFamiliaProd.lFamilia_Produto_ClassesModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel>(iFamilia_Produto_ClassesRepository.GetAllFamilia_Produto_Classes(idFamiliaProduto));
-
+                if (objFamiliaProd != null)
+                {
+                    objFamiliaProd.lFamilia_Produto_ClassesModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel>(iFamilia_Produto_ClassesRepository.GetAllFamilia_Produto_Classes(idFamiliaProduto));
+                }
                 return objFamiliaProd;
             }
             catch (Exception ex)
