@@ -88,6 +88,7 @@
     <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCargo.svc" />
     <Content Include="serviceCidade.svc" />
+    <Content Include="serviceCliente.svc" />
     <Content Include="serviceCondicao_Entrega.svc" />
     <Content Include="serviceCondicao_Pagamento.svc" />
     <Content Include="serviceConversao.svc" />
@@ -122,6 +123,7 @@
     <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCargo.cs" />
     <Compile Include="IserviceCidade.cs" />
+    <Compile Include="IserviceCliente.cs" />
     <Compile Include="IserviceCondicao_Entrega.cs" />
     <Compile Include="IserviceCondicao_Pagamento.cs" />
     <Compile Include="IserviceConversao.cs" />
@@ -153,6 +155,9 @@
     </Compile>
     <Compile Include="serviceCidade.svc.cs">
       <DependentUpon>serviceCidade.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceCliente.svc.cs">
+      <DependentUpon>serviceCliente.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceCondicao_Entrega.svc.cs">
       <DependentUpon>serviceCondicao_Entrega.svc</DependentUpon>
