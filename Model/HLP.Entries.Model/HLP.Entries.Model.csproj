@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Models\Comercial\Canal_vendaModel.cs" />
     <Compile Include="Models\Comercial\Cliente_fornecedorModel.cs" />
+    <Compile Include="Models\Comercial\JurosModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_ObservacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_representanteRepository.cs" />
+    <Compile Include="Repository\Implementation\Comercial\JurosRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
@@ -154,6 +156,7 @@
     <Compile Include="Repository\Interfaces\Comercial\ICliente_Fornecedor_ObservacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_representanteRepository.cs" />
+    <Compile Include="Repository\Interfaces\Comercial\IJurosRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />

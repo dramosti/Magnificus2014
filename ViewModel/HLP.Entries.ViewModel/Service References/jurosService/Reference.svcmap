@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="864e20e4-530d-4ba0-96f6-81a8718a380e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceJuros.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceJuros.xsd" MetadataType="Schema" ID="df0b241e-45b4-4bad-ab8d-48849ac7563a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceJuros1.xsd" MetadataType="Schema" ID="823b8b71-b563-401b-b832-fd5aa37cb53f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceJuros2.xsd" MetadataType="Schema" ID="5974cc60-8c49-46fd-9086-c8f611af0385" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceJuros3.xsd" MetadataType="Schema" ID="a7d0d29e-2361-4853-ba09-583cf547d5c9" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceJuros4.xsd" MetadataType="Schema" ID="aefbd06d-84f4-40e2-b5b0-9f690c3eaaf1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceJuros.wsdl" MetadataType="Wsdl" ID="9bf8af26-7609-4fce-b22a-135aca4cd19a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?wsdl" />
+    <MetadataFile FileName="serviceJuros5.xsd" MetadataType="Schema" ID="1c928621-68b8-4533-8d5b-502afd4d5121" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceJuros.disco" MetadataType="Disco" ID="be9f9e2c-433a-4593-b63f-df3c73aee504" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceJuros.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -99,6 +99,7 @@
     <Content Include="serviceEmpresaParametros.svc" />
     <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFuncionario.svc" />
+    <Content Include="serviceJuros.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
@@ -134,6 +135,7 @@
     <Compile Include="IserviceEmpresaParametros.cs" />
     <Compile Include="IserviceFabricante.cs" />
     <Compile Include="IserviceFuncionario.cs" />
+    <Compile Include="IserviceJuros.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
@@ -188,6 +190,9 @@
     </Compile>
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceJuros.svc.cs">
+      <DependentUpon>serviceJuros.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceModoEntrega.svc.cs">
       <DependentUpon>serviceModoEntrega.svc</DependentUpon>
