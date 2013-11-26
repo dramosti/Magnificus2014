@@ -103,6 +103,7 @@
     <Content Include="serviceLista_Preco.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
+    <Content Include="serviceMulta.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
     <Content Include="serviceRamoAtividade.svc" />
@@ -140,6 +141,7 @@
     <Compile Include="IserviceLista_Preco.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
+    <Compile Include="IserviceMulta.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
     <Compile Include="IserviceRamoAtividade.cs" />
@@ -204,6 +206,9 @@
     </Compile>
     <Compile Include="serviceMoeda.svc.cs">
       <DependentUpon>serviceMoeda.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceMulta.svc.cs">
+      <DependentUpon>serviceMulta.svc</DependentUpon>
     </Compile>
     <Compile Include="servicePesquisaPadrao.svc.cs">
       <DependentUpon>servicePesquisaPadrao.svc</DependentUpon>

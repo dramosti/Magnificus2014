@@ -55,6 +55,8 @@
     <Compile Include="Commands\Comercial\Canal_VendaCommands.cs" />
     <Compile Include="Commands\Comercial\ClienteCommands.cs" />
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
+    <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
+    <Compile Include="Commands\Comercial\MultaCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
     <Compile Include="Commands\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
@@ -152,6 +154,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Lista_PrecoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Modo_EntregaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -212,6 +219,8 @@
     <Compile Include="ViewModels\Comercial\Canal_VendaViewModel.cs" />
     <Compile Include="ViewModels\Comercial\ClienteViewModel.cs" />
     <Compile Include="ViewModels\Comercial\JurosViewModel.cs" />
+    <Compile Include="ViewModels\Comercial\Lista_PrecoViewModel.cs" />
+    <Compile Include="ViewModels\Comercial\MultaViewModel.cs" />
     <Compile Include="ViewModels\Comercial\Tipo_ProdutoViewModel.cs" />
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
@@ -278,6 +287,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Canal_vendaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.JurosModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
@@ -581,6 +591,25 @@
     <None Include="Service References\jurosService\serviceJuros5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco.wsdl" />
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -792,6 +821,7 @@
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\jurosService\" />
+    <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
@@ -1190,6 +1220,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\jurosService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

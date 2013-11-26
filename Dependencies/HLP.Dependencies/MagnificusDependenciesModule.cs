@@ -69,7 +69,7 @@ namespace HLP.Dependencies
             //Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
             Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
             Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
-            //Bind<IMultasRepository>().To<MultasRepository>();
+            Bind<IMultasRepository>().To<MultasRepository>();
             Bind<ICanal_vendaRepository>().To<Canal_vendaRepository>();
             Bind<IJurosRepository>().To<JurosRepository>();
             Bind<ICliente_fornecedorRepository>().To<Cliente_fornecedorRepository>();
