@@ -11,11 +11,9 @@ namespace HLP.Entries.Model.Repository.Interfaces.Comercial
     {
         void Save(Produto_Fornecedor_HomologadoModel produtoFornHom);
 
-        void Update(Produto_Fornecedor_HomologadoModel produtoFornHom);
+        void Delete(int idProdutoFornecedorHomologado);
 
-        void Delete(Produto_Fornecedor_HomologadoModel produtoFornHom);
-
-        void Delete(int idProduto);
+        void DeletePorProduto(int idProduto);
 
         void Copy(Produto_Fornecedor_HomologadoModel produtoFornHom);
 

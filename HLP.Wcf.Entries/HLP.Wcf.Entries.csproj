@@ -104,6 +104,7 @@
     <Content Include="serviceMoeda.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
+    <Content Include="serviceProduto.svc" />
     <Content Include="serviceRamoAtividade.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceSetor.svc" />
@@ -140,6 +141,7 @@
     <Compile Include="IserviceMoeda.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
+    <Compile Include="IserviceProduto.cs" />
     <Compile Include="IserviceRamoAtividade.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceSetor.cs" />
@@ -205,6 +207,9 @@
     </Compile>
     <Compile Include="servicePesquisaRapida.svc.cs">
       <DependentUpon>servicePesquisaRapida.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceProduto.svc.cs">
+      <DependentUpon>serviceProduto.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceRamoAtividade.svc.cs">
       <DependentUpon>serviceRamoAtividade.svc</DependentUpon>

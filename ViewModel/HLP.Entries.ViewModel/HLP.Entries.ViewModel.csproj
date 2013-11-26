@@ -145,6 +145,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Familia_ProdutoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\funcionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -304,6 +309,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Familia_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Ramo_atividadeModel.datasource" />
@@ -559,6 +565,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\fabricanteService\serviceFabricante5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto.wsdl" />
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\funcionarioService\serviceFuncionario.wsdl" />
@@ -846,6 +871,7 @@
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\Empresa_ParametrosService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
+    <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\jurosService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
@@ -1278,6 +1304,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\multaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
