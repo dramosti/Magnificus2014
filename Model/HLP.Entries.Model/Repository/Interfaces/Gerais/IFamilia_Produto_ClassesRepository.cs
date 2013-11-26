@@ -11,7 +11,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     {
         void Save(Familia_Produto_ClassesModel objFamilia_Produto_Classes);
         void Delete(int idFamilia_Produto);
-        void DeleteFamiliasPorFamilia(int idFamiliaProduto)
+        void DeleteFamiliasPorFamilia(int idFamiliaProduto);
         void Copy(Familia_Produto_ClassesModel objFamilia_Produto_Classes);
         Familia_Produto_ClassesModel GetFamilia_Produto_Classes(int idFamilia_Produto_Classes);
         List<Familia_Produto_ClassesModel> GetAllFamilia_Produto_Classes(int idFamiliaProduto);

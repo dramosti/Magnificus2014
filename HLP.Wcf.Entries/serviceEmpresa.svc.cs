@@ -128,8 +128,14 @@ namespace HLP.Wcf.Entries
             }
         }
 
+        public int Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
+        {
+            throw new NotImplementedException();
+        }
 
-       
-
+        public bool Delete(int idEmpresa)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

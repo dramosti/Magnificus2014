@@ -98,12 +98,10 @@
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceEmpresaParametros.svc" />
     <Content Include="serviceFabricante.svc" />
+    <Content Include="serviceFamiliaProduto.svc" />
     <Content Include="serviceFuncionario.svc" />
-    <Content Include="serviceJuros.svc" />
-    <Content Include="serviceLista_Preco.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
-    <Content Include="serviceMulta.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
     <Content Include="serviceRamoAtividade.svc" />
@@ -136,12 +134,10 @@
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceEmpresaParametros.cs" />
     <Compile Include="IserviceFabricante.cs" />
+    <Compile Include="IserviceFamiliaProduto.cs" />
     <Compile Include="IserviceFuncionario.cs" />
-    <Compile Include="IserviceJuros.cs" />
-    <Compile Include="IserviceLista_Preco.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
-    <Compile Include="IserviceMulta.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
     <Compile Include="IserviceRamoAtividade.cs" />
@@ -192,23 +188,17 @@
     <Compile Include="serviceFabricante.svc.cs">
       <DependentUpon>serviceFabricante.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceFamiliaProduto.svc.cs">
+      <DependentUpon>serviceFamiliaProduto.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceJuros.svc.cs">
-      <DependentUpon>serviceJuros.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceLista_Preco.svc.cs">
-      <DependentUpon>serviceLista_Preco.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceModoEntrega.svc.cs">
       <DependentUpon>serviceModoEntrega.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceMoeda.svc.cs">
       <DependentUpon>serviceMoeda.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceMulta.svc.cs">
-      <DependentUpon>serviceMulta.svc</DependentUpon>
     </Compile>
     <Compile Include="servicePesquisaPadrao.svc.cs">
       <DependentUpon>servicePesquisaPadrao.svc</DependentUpon>

@@ -12,7 +12,7 @@ namespace HLP.Wcf.Entries
     public interface IserviceEmpresa
     {
         [OperationContract]
-        HLP.Entries.Model.Models.Gerais.EmpresaModel GetObject(int idEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresa(int idEmpresa);
 
         [OperationContract]
         int Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);

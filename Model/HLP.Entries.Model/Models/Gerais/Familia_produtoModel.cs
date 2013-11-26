@@ -12,14 +12,13 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public Familia_produtoModel() : base() { }
 
+        private int? _idFamiliaProduto;
         [ParameterOrder(Order = 1)]
-        public int? _idFamiliaProduto;
-
         public int? idFamiliaProduto
         {
             get { return _idFamiliaProduto; }
             set { _idFamiliaProduto = value; base.NotifyPropertyChanged("idFamiliaProduto"); }
-        } 
+        }
         [ParameterOrder(Order = 2)]
         public int idEmpresa { get; set; }
         [ParameterOrder(Order = 3)]
@@ -110,7 +109,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
     #region Validacao
 
-    public partial class Familia_produtoModel 
+    public partial class Familia_produtoModel
     {
         public override string this[string columnName]
         {
@@ -121,7 +120,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
     }
 
-    public partial class Familia_Produto_ClassesModel 
+    public partial class Familia_Produto_ClassesModel
     {
         public override string this[string columnName]
         {
