@@ -3,7 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento"
-        Title="Condição de Pagamento" Height="600" Width="1024">
+        Title="Condição de Pagamento" Height="600" Width="1024" NameView="vwCondicaoPagamento">
 	<Grid>
 		<Expander Header="Geral" HorizontalAlignment="Left" Height="155.5" VerticalAlignment="Top" Width="669.5" IsExpanded="True">
 			<StackPanel>
