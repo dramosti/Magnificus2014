@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 
@@ -13,19 +16,42 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         FamiliaProdutoViewModel objViewModel;
 
-        public FamiliaProdutoCommand(FamiliaProdutoViewModel objViewModel) 
+        public FamiliaProdutoCommand(FamiliaProdutoViewModel objViewModel)
         {
-            this.objViewModel = new FamiliaProdutoViewModel();
+            this.objViewModel = objViewModel;
 
-            
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
+                    paramCanExec => DeleteCanExecute());
+
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+                    paramCanExec => SaveCanExecute(paramCanExec));
+
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+                   canExecute: paramCanExec => this.NovoCanExecute());
+
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+                    canExecute: paramCanExec => this.AlterarCanExecute());
+
+            this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
+                    canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+            canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                        canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
 
         }
 
+        Familia_ProdutoService.IserviceFamiliaProdutoClient servico = new Familia_ProdutoService.IserviceFamiliaProdutoClient();
 
-        
+
         #region Implementação Commands
 
-        public async void Save()
+        public void Save()
         {
             try
             {
@@ -43,10 +69,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                 #endregion
 
-
+                servico.Save(this.objViewModel.currentModel);
 
                 //TODO: método de serviço para salvar
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.metodoGetModel(this, null);
+                this.Inicia_Collections();
             }
             catch (Exception ex)
             {
@@ -64,36 +92,35 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
         public async void Delete()
-          {
-                try
+        {
+            try
+            {
+                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
+                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
                 {
-                    if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                        caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                        == MessageBoxResult.Yes)
+                    if (await servico.DeleteAsync((int)objViewModel.currentModel.idFamiliaProduto))
                     {
-                        if (await //TODO: método de serviço para deletar
-                        )
-                        {
-                            MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                                button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                            this.objViewModel.currentModel = null;
-                        }
-                        else
-                        {
-                            MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                                button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                        }
+                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.currentModel = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    this.objViewModel.deletarBaseCommand.Execute(parameter: null);
-                }
-          }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+            }
+        }
 
         private bool DeleteCanExecute()
         {
@@ -106,6 +133,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Novo()
         {
             //TODO: instanciar novo objeto
+            this.objViewModel = new FamiliaProdutoViewModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -116,7 +144,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Alterar()
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: null);
-            this.objViewModel.currentModel.lcamposSqlNotNull = this.objViewModel.lCampos.ToList();
         }
         private bool AlterarCanExecute()
         {
@@ -138,6 +165,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 //TODO: Implementar serviço de copy
+                this.objViewModel.currentModel.idFamiliaProduto = await servico.CopyAsync(this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -175,14 +203,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
-          {            
-              this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
-          }
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Inicia_Collections();
+        }
+
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.servico.GetObject((int)this.objViewModel.currentID); //TODO: método de serviço para pesquisar
+        }
 
 
         private void Inicia_Collections()
@@ -193,7 +227,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #endregion
 
-        
+
 
 
 
