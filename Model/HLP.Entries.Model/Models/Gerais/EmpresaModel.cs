@@ -108,20 +108,39 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        private TipoEndereco _StTipoEnd;
-        [ParameterOrder(Order = 3)]
-        public TipoEndereco StTipoEnd
+        //private TipoEndereco _StTipoEnd;
+        
+        //public TipoEndereco StTipoEnd
+        //{
+        //    get
+        //    {
+        //        return this._StTipoEnd;
+        //    }
+        //    set
+        //    {
+        //        this._StTipoEnd = (TipoEndereco)value;
+        //        base.NotifyPropertyChanged(propertyName: "StTipoEnd");
+        //    }
+        //}
+
+        private TipoEndereco _enumTipoEnder;
+
+        public TipoEndereco enumTipoEnder
         {
-            get
-            {
-                return this._StTipoEnd;
-            }
-            set
-            {
-                this._StTipoEnd = value;
-                base.NotifyPropertyChanged(propertyName: "StTipoEnd");
-            }
+            get { return _enumTipoEnder; }
+            set { _enumTipoEnder = value; base.NotifyPropertyChanged("enumTipoEnder"); _StTipoEnd = (int)value; }
         }
+
+
+        private int _StTipoEnd;
+        [ParameterOrder(Order = 3)]
+        public int StTipoEnd
+        {
+            get { return _StTipoEnd; }
+            set { _StTipoEnd = value; base.NotifyPropertyChanged(propertyName: "StTipoEnd"); _enumTipoEnder = (TipoEndereco)value; }
+        }
+
+
 
         private string _xLgr;
         [ParameterOrder(Order = 4)]

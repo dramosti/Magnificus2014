@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 
-namespace HLP.Comum.Model.Models
+namespace HLP.Entries.Model.Models
 {
     public class modelToComboBox
     {

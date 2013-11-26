@@ -277,6 +277,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Tipo_servicoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.UFModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.modelToComboBox.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.CargoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
@@ -331,6 +332,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cidadeService\serviceCidade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\cidadeService\serviceCidade6.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\condicaoEntregaService\serviceCondicao_Entrega.wsdl" />
