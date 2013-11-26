@@ -9,12 +9,16 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.Collection`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
-    <ReferencedAssemblies />
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
   </ClientOptions>
@@ -22,6 +26,8 @@
     <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCidade.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="serviceCidade5.xsd" MetadataType="Schema" ID="46549525-04df-4edd-beb1-22a2e10350fc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCidade6.xsd" MetadataType="Schema" ID="906f036c-fd59-4667-add1-1f3b73f4c279" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd6" />
     <MetadataFile FileName="serviceCidade.xsd" MetadataType="Schema" ID="b8260f88-de8d-49fd-9257-506817dc68cd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd0" />
     <MetadataFile FileName="serviceCidade.wsdl" MetadataType="Wsdl" ID="7a84eb10-ddd6-4d00-9d5e-36f18d97688a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCidade.svc?wsdl" />
     <MetadataFile FileName="serviceCidade.disco" MetadataType="Disco" ID="df41e7ca-ecb4-4e3c-8bc9-387919a72d9d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCidade.svc?disco" />

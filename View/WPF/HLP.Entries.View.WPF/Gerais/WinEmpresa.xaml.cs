@@ -48,5 +48,8 @@ namespace HLP.Entries.View.WPF.Gerais
                 this.DataContext = value;
             }
         }
+
+
+       
     }
 }

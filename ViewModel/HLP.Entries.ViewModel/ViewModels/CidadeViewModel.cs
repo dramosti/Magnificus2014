@@ -9,6 +9,7 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using System.Windows.Input;
 using HLP.Comum.ViewModel.ViewModels;
+using HLP.Entries.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
@@ -63,6 +64,12 @@ namespace HLP.Entries.ViewModel.ViewModels
         public void GetCidadeByUf(int idUF)
         {
             objCidadeCommands.GetCidadeByUf(idUF: idUF);
+        }
+
+
+        public ObservableCollection<modelToComboBox> GetAllCidadeToComboBox()
+        {
+            return new ObservableCollection<modelToComboBox>(objCidadeCommands.GetAllCidadeToComboBox());
         }
 
 

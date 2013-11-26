@@ -72,6 +72,7 @@
     <Compile Include="Models\Gerais\MoedaModel.cs" />
     <Compile Include="Models\Gerais\Ramo_atividadeModel.cs" />
     <Compile Include="Models\Gerais\SiteModel.cs" />
+    <Compile Include="Models\modelToComboBox.cs" />
     <Compile Include="Models\Parametros\Parametro_ComercialModel.cs" />
     <Compile Include="Models\Parametros\Parametro_ComprasModel.cs" />
     <Compile Include="Models\Parametros\Parametro_CustosModel.cs" />

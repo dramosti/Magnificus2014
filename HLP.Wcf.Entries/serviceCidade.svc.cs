@@ -80,7 +80,8 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
+
+        public IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
         {
             try
             {
@@ -91,8 +92,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
+        
         }
-
     }
 }

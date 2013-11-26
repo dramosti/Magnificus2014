@@ -70,7 +70,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regEmpresaAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Empresa",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idEmpresa"),
-                                 MapBuilder<EmpresaModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                 MapBuilder<EmpresaModel>.MapAllProperties().DoNotMap(i => i.status).
+                                 DoNotMap(c => c.empresaParametros).Build());
             }
 
             return regEmpresaAccessor.Execute(idEmpresa).FirstOrDefault();

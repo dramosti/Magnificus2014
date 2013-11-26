@@ -74,7 +74,6 @@
     <Compile Include="Components\PesquisaPadraoModelContract.cs" />
     <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\modelBase.cs" />
-    <Compile Include="Models\modelToComboBox.cs" />
     <Compile Include="Models\MyObservableCollection.cs" />
     <Compile Include="Models\ObservableCollectionBaseCadastros.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />
