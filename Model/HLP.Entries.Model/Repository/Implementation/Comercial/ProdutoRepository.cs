@@ -52,13 +52,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         }
 
-        public void Delete(ProdutoModel produto)
+        public void Delete(int idProduto)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
             UndTrabalho.dbTransaction,
             "[dbo].[Proc_delete_Produto]",
             UserData.idUser,
-            produto.idProduto);
+            idProduto);
         }
 
         public void Copy(ProdutoModel produto)

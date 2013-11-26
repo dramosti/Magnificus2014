@@ -12,7 +12,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Comercial
         List<ProdutoModel> GetByProdutoType(int idTipoProduto);
         ProdutoModel GetProduto(int idProduto);
         void Save(ProdutoModel produto);
-        void Delete(ProdutoModel produto);
+        void Delete(int idProduto);
         void Copy(ProdutoModel produto);
 
         void BeginTransaction();
