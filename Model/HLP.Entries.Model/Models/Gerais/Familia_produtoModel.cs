@@ -12,6 +12,8 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public Familia_produtoModel() : base() { }
 
+
+
         private int? _idFamiliaProduto;
         [ParameterOrder(Order = 1)]
         public int? idFamiliaProduto
