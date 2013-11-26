@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
@@ -69,12 +70,55 @@ namespace HLP.Wcf.Entries
 
                 this.produtoRepository.Save(produto: objProduto);
 
-                return (int)objProduto.idProduto;
 
+                foreach (HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel item in objProduto.lProduto_Fornecedor_Homologado)
+                {
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            {
+                                item.idProduto = (int)objProduto.idProduto;
+                                this.produto_Fornecedor_HomologadoRepository.Save(
+                                    produtoFornHom: item);
+                            }
+                            break;
+                        case statusModel.excluido:
+                            {
+                                this.produto_Fornecedor_HomologadoRepository.Delete(
+                                    idProdutoFornecedorHomologado: (int)item.idProdutoFornecedorHomologado);
+                            }
+                            break;
+                    }
+                }
+
+
+                foreach (HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel item in objProduto.lProduto_Revisao)
+                {
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            {
+                                item.idProduto = (int)objProduto.idProduto;
+                                this.produto_RevisaoRepository.Save(
+                                    produtoRevisao: item);
+                            }
+                            break;
+                        case statusModel.excluido:
+                            {
+                                this.produto_RevisaoRepository.Delete(idProdutoRevisao: (int)item.idProdutoRevisao);
+                            }
+                            break;
+                    }
+                }
+                produtoRepository.CommitTransaction();
+                return (int)objProduto.idProduto;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
+                produtoRepository.RollackTransaction();
                 throw new FaultException(reason: ex.Message);
             }
 
@@ -82,12 +126,56 @@ namespace HLP.Wcf.Entries
 
         public bool deleteProduto(int idProduto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                this.produtoRepository.BeginTransaction();
+                this.produto_Fornecedor_HomologadoRepository.DeletePorProduto(
+                    idProduto: idProduto);
+                this.produto_RevisaoRepository.DeletePorProduto(
+                    idProduto: idProduto);
+                this.produtoRepository.Delete(idProduto: idProduto);
+                this.produtoRepository.CommitTransaction();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                this.produtoRepository.RollackTransaction();
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
 
         public int copyProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                this.produtoRepository.BeginTransaction();
+                this.produtoRepository.Copy(produto: objProduto);
+
+                foreach (HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel item in objProduto.lProduto_Revisao)
+                {
+                    item.idProduto = (int)objProduto.idProduto;
+                    this.produto_RevisaoRepository.Copy(produtoRevisao: item);
+                }
+
+                foreach (HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel item in objProduto.lProduto_Fornecedor_Homologado)
+                {
+                    item.idProduto = (int)objProduto.idProduto;
+                    this.produto_Fornecedor_HomologadoRepository.Copy(produtoFornHom: item);
+                }
+                this.produtoRepository.CommitTransaction();
+                return (int)objProduto.idProduto;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                this.produtoRepository.RollackTransaction();
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
     }
 }
