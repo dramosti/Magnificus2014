@@ -95,7 +95,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Validates\NumericValidationRule.cs" />
+    <Compile Include="Validates\NumericDecimalValidationRule.cs" />
+    <Compile Include="Validates\NumericIntValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
