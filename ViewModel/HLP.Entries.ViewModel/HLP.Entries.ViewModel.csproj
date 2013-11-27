@@ -66,6 +66,7 @@
     <Compile Include="Commands\Gerais\ConversaoCommands.cs" />
     <Compile Include="Commands\Gerais\depositoCommands.cs" />
     <Compile Include="Commands\Gerais\FabricanteCommands.cs" />
+    <Compile Include="Commands\Gerais\FamiliaProdutoCommand.cs" />
     <Compile Include="Commands\Gerais\FuncionarioCommands.cs" />
     <Compile Include="Commands\Gerais\MoedaCommands.cs" />
     <Compile Include="Commands\Gerais\Ramo_atividadeCommands.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\depositoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FabricanteViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\FamiliaProdutoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\MoedaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />

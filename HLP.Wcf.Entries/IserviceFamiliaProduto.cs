@@ -18,7 +18,7 @@ namespace HLP.Wcf.Entries
         void Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
 
         [OperationContract]
-        void Delete(int idFamiliaProduto);
+        bool Delete(int idFamiliaProduto);
 
         [OperationContract]
         int Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);

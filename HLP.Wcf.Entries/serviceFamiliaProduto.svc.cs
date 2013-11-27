@@ -85,7 +85,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public void Delete(int idFamiliaProduto)
+        public bool Delete(int idFamiliaProduto)
         {
             try
             {
@@ -93,6 +93,7 @@ namespace HLP.Wcf.Entries
                 iFamilia_Produto_ClassesRepository.DeleteFamiliasPorFamilia(idFamiliaProduto);
                 iFamilia_ProdutoRepository.Delete(idFamiliaProduto);
                 iFamilia_ProdutoRepository.CommitTransaction();
+                return true;
             }
             catch (Exception ex)
             {
