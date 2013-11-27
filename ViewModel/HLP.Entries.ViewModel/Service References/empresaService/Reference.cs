@@ -205,10 +205,10 @@ namespace HLP.Entries.ViewModel.empresaService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> getEmpresaAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Save", ReplyAction="http://tempuri.org/IserviceEmpresa/SaveResponse")]
-        void Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Save", ReplyAction="http://tempuri.org/IserviceEmpresa/SaveResponse")]
-        System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> SaveAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Delete", ReplyAction="http://tempuri.org/IserviceEmpresa/DeleteResponse")]
         bool Delete(int idEmpresa);
@@ -217,10 +217,10 @@ namespace HLP.Entries.ViewModel.empresaService {
         System.Threading.Tasks.Task<bool> DeleteAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/copyEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/copyEmpresaResponse")]
-        int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/copyEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/copyEmpresaResponse")]
-        System.Threading.Tasks.Task<int> copyEmpresaAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> copyEmpresaAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -258,11 +258,11 @@ namespace HLP.Entries.ViewModel.empresaService {
             return base.Channel.getEmpresaAsync(idEmpresa);
         }
         
-        public void Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
-            base.Channel.Save(objEmpresa);
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
+            return base.Channel.Save(objEmpresa);
         }
         
-        public System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> SaveAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
             return base.Channel.SaveAsync(objEmpresa);
         }
         
@@ -274,11 +274,11 @@ namespace HLP.Entries.ViewModel.empresaService {
             return base.Channel.DeleteAsync(idEmpresa);
         }
         
-        public int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
             return base.Channel.copyEmpresa(objEmpresa);
         }
         
-        public System.Threading.Tasks.Task<int> copyEmpresaAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> copyEmpresaAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
             return base.Channel.copyEmpresaAsync(objEmpresa);
         }
     }

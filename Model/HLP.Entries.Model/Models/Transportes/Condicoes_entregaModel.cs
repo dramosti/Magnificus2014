@@ -10,6 +10,11 @@ namespace HLP.Entries.Model.Models.Transportes
 {
     public partial class Condicoes_entregaModel : modelBase
     {
+        public Condicoes_entregaModel()
+            : base(xTabela: "Condicoes_entrega")
+        {
+        }
+
         private int? _idCondicaoEntrega;
 
         [ParameterOrder(Order = 1)]

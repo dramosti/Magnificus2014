@@ -10,7 +10,7 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class Familia_produtoModel : modelBase
     {
-        public Familia_produtoModel() : base() { }
+        public Familia_produtoModel() : base("Familia_produto") { }
 
 
 
@@ -59,7 +59,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
     public partial class Familia_Produto_ClassesModel : modelBase
     {
-        public Familia_Produto_ClassesModel() : base() { }
+        public Familia_Produto_ClassesModel() : base("Familia_Produto_Classes") { }
 
         private int? _idFamilia_Produto_Classes;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b248c6a7-f077-4aa3-976b-5c730f38ce70" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="System.Core" />
+      <ReferencedAssembly AssemblyName="WindowsBase" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceContato.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceContato.xsd" MetadataType="Schema" ID="0d05aba3-3bba-4be0-9109-88a418de52a8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceContato1.xsd" MetadataType="Schema" ID="cc37af35-54e7-4c0e-8340-1a6d07790879" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceContato2.xsd" MetadataType="Schema" ID="00873086-1712-40b2-a972-90ec7feb4fb3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceContato.wsdl" MetadataType="Wsdl" ID="52e11d9f-5e75-4ba2-897e-1fad07dee3eb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?wsdl" />
+    <MetadataFile FileName="serviceContato3.xsd" MetadataType="Schema" ID="56f52789-9cac-46c9-8e63-ff4d1c45a6e9" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceContato.disco" MetadataType="Disco" ID="c484392b-e529-4f3f-826c-002f34832ac2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?disco" />
+    <MetadataFile FileName="serviceContato4.xsd" MetadataType="Schema" ID="d550fd94-6c44-458c-9925-e3e439d9b94b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceContato5.xsd" MetadataType="Schema" ID="d49271a4-dc39-48b3-ba9d-3d8c9736255e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

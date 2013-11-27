@@ -53,13 +53,13 @@ namespace HLP.Comum.Model.Models
                                 {
                                     if (((PrimaryKey)pk).isPrimary)
                                     {
-                                        idExcluidos.Add(item: (int)(p.GetValue(obj: item)));
+                                        int? value = (int?)(p.GetValue(obj: item));
+                                        if (value != null)
+                                            idExcluidos.Add(item: (int)value);
                                         break;
                                         //idExcluidos.Add(item: (int)item.GetType().GetProperty(name: xCampoId).GetValue(obj: item));
                                     }
-
                                 }
-
                             }
                         }
                     }
@@ -69,10 +69,24 @@ namespace HLP.Comum.Model.Models
 
         public void CollectionCarregada()
         {
+            this.RemoveItensExcluidos();
             foreach (var item in this.Items)
             {
                 item.GetType().GetProperty("status").SetValue(item, statusModel.nenhum);
             }
+        }
+
+        private void RemoveItensExcluidos()
+        {
+            if (this.Items.Count(i => (statusModel)i.GetType().GetProperty("status").GetValue(obj: i)
+                == statusModel.excluido) == 0)
+                return;
+
+            this.Items.Remove(this.Items.FirstOrDefault(
+                i => (statusModel)i.GetType().GetProperty("status").GetValue(obj: i)
+                == statusModel.excluido));
+
+            this.RemoveItensExcluidos();
         }
     }
 }

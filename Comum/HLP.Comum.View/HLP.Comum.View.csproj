@@ -76,6 +76,9 @@
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\boolToByteConverter.cs" />
+    <Compile Include="Converters\ByteToIntConverter.cs" />
+    <Compile Include="Converters\DecimalToStringConverter.cs" />
+    <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
@@ -92,7 +95,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Validates\NumericValidationRule.cs" />
+    <Compile Include="Validates\NumericDecimalValidationRule.cs" />
+    <Compile Include="Validates\NumericIntValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

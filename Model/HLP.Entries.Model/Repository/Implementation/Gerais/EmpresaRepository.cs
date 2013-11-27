@@ -24,12 +24,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             if (objEmpresa.idEmpresa == null)
             {
-                objEmpresa.idEmpresa = (int)UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_save_Empresa",
+                objEmpresa.idEmpresa = (int)UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                    "dbo.Proc_save_Empresa",
             ParameterBase<EmpresaModel>.SetParameterValue(objEmpresa));
             }
             else
             {
-                UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_update_Empresa",
+                UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                    "dbo.Proc_update_Empresa",
             ParameterBase<EmpresaModel>.SetParameterValue(objEmpresa));
             }
 
@@ -50,7 +52,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Delete(int idEmpresa)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_delete_Empresa",
+            UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                "dbo.Proc_delete_Empresa",
                  UserData.idUser,
                  idEmpresa);
         }
@@ -58,6 +61,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public int Copy(EmpresaModel objModel)
         {
             objModel.idEmpresa = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
                       "dbo.Proc_copy_Empresa",
                        objModel.idEmpresa);
             return objModel.idEmpresa.Value;

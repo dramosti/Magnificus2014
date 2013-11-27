@@ -37,8 +37,14 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(),
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+            canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.PesquisarRegistro(),
                     canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
         }
 
 
@@ -56,8 +62,8 @@ namespace HLP.Entries.ViewModel.Commands
                             idEmpresaEndereco = id,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
-                }
-                //this.objViewModel.currentModel.idEmpresa = 
+                }                
+                this.objViewModel.currentModel =
                     await servico.SaveAsync(objEmpresa:
                     objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
@@ -76,6 +82,26 @@ namespace HLP.Entries.ViewModel.Commands
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
+        }
+
+        public async void Copy()
+        {
+            try
+            {
+                this.objViewModel.currentModel = await this.servico.copyEmpresaAsync(objEmpresa:
+                    this.objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool CopyCanExecute()
+        {
+            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public async void Delete(object objUFModel)
@@ -147,7 +173,7 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public void Pesquisar()
+        private void PesquisarRegistro()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
             BackgroundWorker bw = new BackgroundWorker();
@@ -155,7 +181,6 @@ namespace HLP.Entries.ViewModel.Commands
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
 
             bw.RunWorkerAsync();
-
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -169,6 +194,19 @@ namespace HLP.Entries.ViewModel.Commands
                 throw ex;
             }
 
+        }
+
+        public void Navegar(object ContentBotao)
+        {
+            try
+            {
+                objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                this.PesquisarRegistro();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void Inicia_Collections()

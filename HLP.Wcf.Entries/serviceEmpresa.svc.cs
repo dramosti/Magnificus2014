@@ -53,6 +53,7 @@ namespace HLP.Wcf.Entries
             try
             {
 
+                empresaRepository.BeginTransaction();
                 empresaRepository.Save(objEmpresa: objEmpresa);
 
                 foreach (HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel item in objEmpresa.lEmpresa_endereco)
@@ -62,6 +63,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idEmpresa = (int)objEmpresa.idEmpresa;
                                 empresa_EnderecoRepository.Save(objEmpresa_Endereco: item);
                             }
                             break;
@@ -72,11 +74,12 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
-
+                empresaRepository.CommitTransaction();
                 return objEmpresa;
             }
             catch (Exception ex)
             {
+                empresaRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw ex;
             }
@@ -86,25 +89,38 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                empresaRepository.BeginTransaction();
                 empresa_EnderecoRepository.DeleteEnderecoPorIdEmpresa(idEmpresa: idEmpresa);
                 empresaRepository.Delete(idEmpresa: idEmpresa);
+                empresaRepository.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
+                empresaRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 return false;
             }
         }
 
-        public int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
         {
             try
             {
-                return empresaRepository.Copy(objModel: objEmpresa);
+                empresaRepository.BeginTransaction();
+                empresaRepository.Copy(objModel: objEmpresa);
+                foreach (HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel item in objEmpresa.lEmpresa_endereco)
+                {
+                    item.idEmpresa = (int)objEmpresa.idEmpresa;
+                    empresa_EnderecoRepository.Copy(objEmpresa_Endereco: item);
+                }
+
+                empresaRepository.CommitTransaction();
+                return objEmpresa;
             }
             catch (Exception ex)
             {
+                empresaRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw ex;
             }

@@ -103,7 +103,7 @@ namespace HLP.Dependencies
             Bind<IEmpresaRepository>().To<EmpresaRepository>();
             Bind<IRegiaoRepository>().To<RegiaoRepository>();
             //Bind<ISetorRepository>().To<SetorRepository>();
-            //Bind<IContatoRepository>().To<ContatoRepository>();            
+            Bind<IContatoRepository>().To<ContatoRepository>();            
             Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             //Bind<ICalendarioRepository>().To<CalendarioRepository>();
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
@@ -116,7 +116,7 @@ namespace HLP.Dependencies
             Bind<IFamilia_Produto_ClassesRepository>().To<Familia_Produto_ClassesRepository>();
             Bind<IConversaoRepository>().To<ConversaoRepository>();
             Bind<ISiteRepository>().To<SiteRepository>();
-            //Bind<IContato_EnderecoRepository>().To<Contato_EnderecoRepository>();
+            Bind<IContato_EnderecoRepository>().To<Contato_EnderecoRepository>();
             Bind<IFuncionario_Margem_Lucro_ComissaoRepository>().To<Funcionario_Margem_LucroComissaoRepository>();
             Bind<IFuncionario_EnderecoRepository>().To<Funcionario_EnderecoRepository>();
             Bind<IFuncionario_Comissao_ProdutoRepository>().To<Funcionario_Comissao_ProdutoRepository>();

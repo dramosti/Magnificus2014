@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class FamiliaProdutoViewModel : ViewModelBase
+    public class ContatoViewModel
     {
+
         #region Icommands
         public ICommand commandSalvar { get; set; }
         public ICommand commandDeletar { get; set; }
@@ -23,21 +23,19 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand navegarCommand { get; set; }
         #endregion
 
-        FamiliaProdutoCommand commands;
-
-        public FamiliaProdutoViewModel() 
+        ContatoCommand commands;
+        public ContatoViewModel() 
         {
-            commands = new FamiliaProdutoCommand(objViewModel: this);
+            commands = new ContatoCommand(this);
         }
 
-        private Familia_produtoModel _currentModel;
+        private ContatoModel _currentModel;
 
-        public Familia_produtoModel currentModel
+        public ContatoModel currentModel
         {
             get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged(propertyName: "currentModel"); }
+            set { _currentModel = value; }
         }
 
-                
     }
 }
