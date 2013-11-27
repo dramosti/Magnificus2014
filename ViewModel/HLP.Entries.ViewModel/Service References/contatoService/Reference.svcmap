@@ -18,6 +18,7 @@
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies>
       <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+      <ReferencedAssembly AssemblyName="System" />
       <ReferencedAssembly AssemblyName="WindowsBase" />
     </ReferencedAssemblies>
     <ReferencedDataContractTypes />

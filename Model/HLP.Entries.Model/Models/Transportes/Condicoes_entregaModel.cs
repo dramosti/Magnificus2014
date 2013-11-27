@@ -11,7 +11,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Condicoes_entregaModel : modelBase
     {
         public Condicoes_entregaModel()
-            : base(xTabela: "")
+            : base(xTabela: "Condicoes_entrega")
         {
         }
 
