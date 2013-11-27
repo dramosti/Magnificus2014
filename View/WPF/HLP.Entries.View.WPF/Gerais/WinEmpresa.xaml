@@ -89,7 +89,7 @@
                                            
     		Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    
+
                     <Components:HlpTextBox Caption="Link Pastas" Width="500" Margin="0,3,0,0"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
@@ -146,7 +146,7 @@
                             />
                     </DataGrid.Columns>
                 </DataGrid>
-            </TabItem>            
+            </TabItem>
         </TabControl>
     </Grid>
 </runtime:WindowsBase>
