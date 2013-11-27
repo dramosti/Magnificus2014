@@ -15,31 +15,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="saveEmpresa">
+  <xs:element name="Save">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objEmpresa" nillable="true" type="q2:EmpresaModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="saveEmpresaResponse">
+  <xs:element name="SaveResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="saveEmpresaResult" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="delEmpresa">
+  <xs:element name="Delete">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="delEmpresaResponse">
+  <xs:element name="DeleteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="delEmpresaResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="DeleteResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

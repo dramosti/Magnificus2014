@@ -47,7 +47,7 @@ namespace HLP.Comum.Model.Models
                     == xTabela).lCamposSqlModel;
             PropertyInfo p = this.GetType().GetProperty("idEmpresa");
 
-            if (p != null)
+            if (p != null && xTabela != "Empresa")
                 p.SetValue(this, CompanyData.idEmpresa);
         }
 

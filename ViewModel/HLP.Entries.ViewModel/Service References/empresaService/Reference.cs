@@ -17,6 +17,14 @@ namespace HLP.Entries.ViewModel.empresaService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_ComercialModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_ComprasModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_CustosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_EstoqueModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_FinanceiroModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_FiscalModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_Ordem_ProducaoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EmpresaModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -154,6 +162,38 @@ namespace HLP.Entries.ViewModel.empresaService {
         excluido = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoEndereco", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoEndereco : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        COMERCIAL = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA_ALT = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NOTA_FISCAL = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RESIDÊNCIA = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SERVICO = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SWIFT = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PAGAMENTO = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OUTRO = 8,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="empresaService.IserviceEmpresa")]
     public interface IserviceEmpresa {
@@ -164,17 +204,17 @@ namespace HLP.Entries.ViewModel.empresaService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/getEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/getEmpresaResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> getEmpresaAsync(int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/saveEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/saveEmpresaResponse")]
-        int saveEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Save", ReplyAction="http://tempuri.org/IserviceEmpresa/SaveResponse")]
+        void Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/saveEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/saveEmpresaResponse")]
-        System.Threading.Tasks.Task<int> saveEmpresaAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Save", ReplyAction="http://tempuri.org/IserviceEmpresa/SaveResponse")]
+        System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/delEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/delEmpresaResponse")]
-        bool delEmpresa(int idEmpresa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Delete", ReplyAction="http://tempuri.org/IserviceEmpresa/DeleteResponse")]
+        bool Delete(int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/delEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/delEmpresaResponse")]
-        System.Threading.Tasks.Task<bool> delEmpresaAsync(int idEmpresa);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/Delete", ReplyAction="http://tempuri.org/IserviceEmpresa/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresa/copyEmpresa", ReplyAction="http://tempuri.org/IserviceEmpresa/copyEmpresaResponse")]
         int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
@@ -218,20 +258,20 @@ namespace HLP.Entries.ViewModel.empresaService {
             return base.Channel.getEmpresaAsync(idEmpresa);
         }
         
-        public int saveEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
-            return base.Channel.saveEmpresa(objEmpresa);
+        public void Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
+            base.Channel.Save(objEmpresa);
         }
         
-        public System.Threading.Tasks.Task<int> saveEmpresaAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
-            return base.Channel.saveEmpresaAsync(objEmpresa);
+        public System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {
+            return base.Channel.SaveAsync(objEmpresa);
         }
         
-        public bool delEmpresa(int idEmpresa) {
-            return base.Channel.delEmpresa(idEmpresa);
+        public bool Delete(int idEmpresa) {
+            return base.Channel.Delete(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<bool> delEmpresaAsync(int idEmpresa) {
-            return base.Channel.delEmpresaAsync(idEmpresa);
+        public System.Threading.Tasks.Task<bool> DeleteAsync(int idEmpresa) {
+            return base.Channel.DeleteAsync(idEmpresa);
         }
         
         public int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa) {

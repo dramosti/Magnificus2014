@@ -15,7 +15,8 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresa(int idEmpresa);
 
         [OperationContract]
-        int Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel 
+            Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
 
         [OperationContract]
         bool Delete(int idEmpresa);

@@ -65,6 +65,7 @@
     <Compile Include="Models\Comercial\MultasModel.cs" />
     <Compile Include="Models\Comercial\ProdutoModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
+    <Compile Include="Models\Financeiro\AgenciaModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />

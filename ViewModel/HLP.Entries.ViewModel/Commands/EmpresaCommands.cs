@@ -57,10 +57,10 @@ namespace HLP.Entries.ViewModel.Commands
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel.idEmpresa = await servico.saveEmpresaAsync(objEmpresa:
+                //this.objViewModel.currentModel.idEmpresa = 
+                    await servico.SaveAsync(objEmpresa:
                     objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.GetEmpresasBackground(this, null);
                 this.Inicia_Collections();
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace HLP.Entries.ViewModel.Commands
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.delEmpresaAsync(idEmpresa: (int)this.objViewModel.currentModel.idEmpresa))
+                    if (await servico.DeleteAsync(idEmpresa: (int)this.objViewModel.currentModel.idEmpresa))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);

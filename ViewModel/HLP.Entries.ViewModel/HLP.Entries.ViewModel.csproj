@@ -57,6 +57,7 @@
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
     <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
+    <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
     <Compile Include="Commands\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
@@ -179,6 +180,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\produtoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Ramo_AtividadeService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -231,6 +237,7 @@
     <Compile Include="ViewModels\Comercial\JurosViewModel.cs" />
     <Compile Include="ViewModels\Comercial\Lista_PrecoViewModel.cs" />
     <Compile Include="ViewModels\Comercial\MultaViewModel.cs" />
+    <Compile Include="ViewModels\Comercial\ProdutoViewModel.cs" />
     <Compile Include="ViewModels\Comercial\Tipo_ProdutoViewModel.cs" />
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
@@ -299,6 +306,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.JurosModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
@@ -524,6 +532,9 @@
     <None Include="Service References\empresaService\serviceEmpresa5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\empresaService\serviceEmpresa6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.wsdl" />
     <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.xsd">
       <SubType>Designer</SubType>
@@ -701,6 +712,25 @@
     <None Include="Service References\multaService\serviceMulta5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\produtoService\serviceProduto.wsdl" />
+    <None Include="Service References\produtoService\serviceProduto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.xsd">
       <SubType>Designer</SubType>
@@ -876,6 +906,7 @@
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\multaService\" />
+    <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
@@ -1317,6 +1348,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Familia_ProdutoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\serviceProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
