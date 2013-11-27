@@ -10,7 +10,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     public class ContatoCommand
     {
         ContatoViewModel objViewModel;
-
+        contato_Service.IserviceContatoClient servico = new contato_Service.IserviceContatoClient();
         public ContatoCommand(ContatoViewModel objViewModel)
         {
 
