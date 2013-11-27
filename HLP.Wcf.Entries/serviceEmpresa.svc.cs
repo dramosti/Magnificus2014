@@ -48,29 +48,10 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int saveEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa)
         {
             try
             {
-                //objEmpresa = empresaRepository.GetEmpresa(1);
-                //objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(
-                //    empresa_EnderecoRepository.GetAllEmpresa_Endereco(1));
-
-                //objEmpresa.lEmpresa_endereco.Add(
-                //    new HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel
-                //    {
-                //        idEmpresa = 1,
-                //        idCidade = 1,
-                //        Cep = "13304394",
-                //        nro = "247",
-                //        status = statusModel.criado,
-                //        stPrincipal = 1,
-                //        StTipoEnd = 1,
-                //        xBairro = "Pq. América",
-                //        xCpl = "A",
-                //        xCxPostal = "1",
-                //        xLgr = "Rua João Pereira de Góes"
-                //    });
 
                 empresaRepository.Save(objEmpresa: objEmpresa);
 
@@ -91,7 +72,8 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
-                return (int)objEmpresa.idEmpresa;
+
+                return objEmpresa;
             }
             catch (Exception ex)
             {
@@ -100,7 +82,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public bool delEmpresa(int idEmpresa)
+        public bool Delete(int idEmpresa)
         {
             try
             {

@@ -2,10 +2,25 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
-        Title="Empresa" Height="600" Width="800" NameView="vwEmpresa"    
-    >
-    <Grid>
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
+        x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
+        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
+    <Window.Resources>
+        <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+        <ObjectDataProvider x:Key="EnumTpEnder" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:TipoEndereco"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:CidadeViewModel}"/>
+        <ObjectDataProvider x:Key="lCidades" ObjectInstance="{StaticResource odpCidade}"  MethodName="GetAllCidadeToComboBox"/>
+    </Window.Resources>
+
+    <Grid>        
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
                 <WrapPanel Orientation="Vertical">
@@ -63,36 +78,49 @@
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <!--<Components:HlpPesquisa Caption="Ramo Atividade" Width="500" WidthLabel="140" Margin="0,3,0,0"
-                                            IsEnabled="{Binding bIsEnabled}"/>-->
                     <Components:HlpCheckBox Caption="Cód. Reg. Tribut." Width="160" WidthLabel="140"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.stCodigoRegimeTributario, Mode=TwoWay,
                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></Components:HlpCheckBox>
+
                 </WrapPanel>
             </TabItem>
             <TabItem Header="Endereços">
                 <DataGrid 
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
-                          IsEnabled="{Binding bIsEnabled}">
+                          IsEnabled="{Binding bIsEnabled}"
+                          AutoGenerateColumns="False" 
+                          SelectionUnit="Cell"
+                    >
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Tipo" Width="150">
+                        <DataGridComboBoxColumn 
+                            Header="Tipo Endereço" Width="120"
+                            ItemsSource="{Binding Source={StaticResource EnumTpEnder}}"
+                            SelectedItemBinding ="{Binding enumTipoEnder}"/>
+                        <DataGridTemplateColumn Header="Principal" Width="60">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding }"/>
+                                    <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                        <DataGridTemplateColumn ClipboardContentBinding="{x:Null}"/>
-
+                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr}"  />
+                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
+                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                        <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep}" />
+                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal}" />
+                        <DataGridComboBoxColumn  Header="Cidades" Width="150"
+                            ItemsSource="{Binding Source={StaticResource lCidades}}"
+                            SelectedValuePath="id"
+                            DisplayMemberPath="display"
+                            SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                            />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

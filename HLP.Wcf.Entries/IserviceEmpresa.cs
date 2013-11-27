@@ -15,10 +15,11 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresa(int idEmpresa);
 
         [OperationContract]
-        int saveEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel 
+            Save(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
 
         [OperationContract]
-        bool delEmpresa(int idEmpresa);
+        bool Delete(int idEmpresa);
 
         [OperationContract]
         int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);

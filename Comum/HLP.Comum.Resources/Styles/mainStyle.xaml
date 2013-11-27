@@ -451,6 +451,9 @@
     <Style TargetType="{x:Type TextBox}">
         <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>        
     </Style>
+
+   
+
     <Style x:Key="LabelStyleComponents" TargetType="Label">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Lucida Handwriting"/>

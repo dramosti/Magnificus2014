@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -23,6 +24,7 @@ namespace HLP.Entries.View.WPF.Gerais
     {
         public WinEmpresa()
         {
+            
             InitializeComponent();
             try
             {
@@ -46,5 +48,8 @@ namespace HLP.Entries.View.WPF.Gerais
                 this.DataContext = value;
             }
         }
+
+
+       
     }
 }

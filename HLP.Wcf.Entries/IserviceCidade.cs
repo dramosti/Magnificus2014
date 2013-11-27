@@ -1,5 +1,4 @@
-﻿using HLP.Entries.Model.Models.Gerais;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,16 +11,20 @@ namespace HLP.Wcf.Entries
     [ServiceContract]
     public interface IserviceCidade
     {
-        [OperationContract]
-        CidadeModel getCidade(int idCidade);
 
         [OperationContract]
-        int saveCidade(CidadeModel objCidade);
+        HLP.Entries.Model.Models.Gerais.CidadeModel getCidade(int idCidade);
+
+        [OperationContract]
+        int saveCidade(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade);
 
         [OperationContract]
         bool delCidade(int idCidade);
 
         [OperationContract]
         int copyCidade(int idCidade);
+
+        [OperationContract]
+        IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox();
     }
 }

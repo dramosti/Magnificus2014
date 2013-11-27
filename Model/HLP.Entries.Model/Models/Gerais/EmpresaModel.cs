@@ -2,6 +2,7 @@
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Model.Models;
 using HLP.Comum.Resources.RecursosBases;
+using HLP.Entries.Model.Models.Parametros;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
-    public class EmpresaModel : modelBase
+    public partial class EmpresaModel : modelBase
     {
         public EmpresaModel()
             : base(xTabela: "Empresa")
@@ -76,16 +77,24 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "lEmpresa_endereco");
             }
         }
+
+        EmpresaParametrosModel _empresaParametros;
+
+        public EmpresaParametrosModel empresaParametros
+        {
+            get { return _empresaParametros; }
+            set { _empresaParametros = value; }
+        }
     }
 
-    public class Empresa_EnderecoModel : modelBase
+    public partial class Empresa_EnderecoModel : modelBase
     {
         public Empresa_EnderecoModel()
             : base(xTabela: "Empresa_endereco")
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idEmpresaEndereco { get; set; }
 
         private int _idEmpresa { get; set; }
@@ -99,20 +108,24 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        private byte _StTipoEnd;
-        [ParameterOrder(Order = 3)]
-        public byte StTipoEnd
+        private TipoEndereco _enumTipoEnder;
+
+        public TipoEndereco enumTipoEnder
         {
-            get
-            {
-                return this._StTipoEnd;
-            }
-            set
-            {
-                this._StTipoEnd = value;
-                base.NotifyPropertyChanged(propertyName: "StTipoEnd");
-            }
+            get { return _enumTipoEnder; }
+            set { _enumTipoEnder = value; base.NotifyPropertyChanged("enumTipoEnder"); _StTipoEnd = (int)value; }
         }
+
+
+        private int _StTipoEnd;
+        [ParameterOrder(Order = 3)]
+        public int StTipoEnd
+        {
+            get { return _StTipoEnd; }
+            set { _StTipoEnd = value; base.NotifyPropertyChanged(propertyName: "StTipoEnd"); _enumTipoEnder = (TipoEndereco)value; }
+        }
+
+
 
         private string _xLgr;
         [ParameterOrder(Order = 4)]
@@ -232,4 +245,142 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
     }
+
+    public partial class EmpresaParametrosModel : modelBase
+    {
+        public EmpresaParametrosModel()
+        {
+            this.objParametro_ComercialModel = new Parametro_ComercialModel();
+            this.ObjParametro_ComprasModel = new Parametro_ComprasModel();
+            this.ObjParametro_CustosModel = new Parametro_CustosModel();
+            this.ObjParametro_EstoqueModel = new Parametro_EstoqueModel();
+            this.ObjParametro_FinanceiroModel = new Parametro_FinanceiroModel();
+            this.ObjParametro_FiscalModel = new Parametro_FiscalModel();
+            this.ObjParametro_Ordem_ProducaoModel = new Parametro_Ordem_ProducaoModel();
+        }
+
+        private int idEmpresa
+        {
+            get
+            {
+                return CompanyData.idEmpresa;
+            }
+        }
+
+        private Parametro_EstoqueModel objParametro_EstoqueModel;
+
+        public Parametro_EstoqueModel ObjParametro_EstoqueModel
+        {
+            get { return objParametro_EstoqueModel; }
+            set
+            {
+                objParametro_EstoqueModel = value;
+                objParametro_EstoqueModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_EstoqueModel");
+            }
+        }
+
+        private Parametro_CustosModel objParametro_CustosModel;
+
+        public Parametro_CustosModel ObjParametro_CustosModel
+        {
+            get { return objParametro_CustosModel; }
+            set
+            {
+                objParametro_CustosModel = value;
+                objParametro_CustosModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_CustosModel");
+            }
+        }
+
+        private Parametro_ComprasModel objParametro_ComprasModel;
+
+        public Parametro_ComprasModel ObjParametro_ComprasModel
+        {
+            get { return objParametro_ComprasModel; }
+            set
+            {
+                objParametro_ComprasModel = value;
+                objParametro_ComprasModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_ComprasModel");
+            }
+        }
+
+        private Parametro_Ordem_ProducaoModel objParametro_Ordem_ProducaoModel;
+
+        public Parametro_Ordem_ProducaoModel ObjParametro_Ordem_ProducaoModel
+        {
+            get { return objParametro_Ordem_ProducaoModel; }
+            set
+            {
+                objParametro_Ordem_ProducaoModel = value;
+                objParametro_Ordem_ProducaoModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_Ordem_ProducaoModel");
+            }
+        }
+
+        private Parametro_FiscalModel objParametro_FiscalModel;
+
+        public Parametro_FiscalModel ObjParametro_FiscalModel
+        {
+            get { return objParametro_FiscalModel; }
+            set
+            {
+                objParametro_FiscalModel = value;
+                objParametro_FiscalModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_FiscalModel");
+            }
+        }
+
+        private Parametro_ComercialModel objParametro_ComercialModel;
+
+        public Parametro_ComercialModel ObjParametro_ComercialModel
+        {
+            get { return objParametro_ComercialModel; }
+            set
+            {
+                objParametro_ComercialModel = value;
+                objParametro_ComercialModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_ComercialModel");
+            }
+        }
+
+        private Parametro_FinanceiroModel objParametro_FinanceiroModel;
+
+        public Parametro_FinanceiroModel ObjParametro_FinanceiroModel
+        {
+            get { return objParametro_FinanceiroModel; }
+            set
+            {
+                objParametro_FinanceiroModel = value;
+                objParametro_FinanceiroModel.idEmpresa = this.idEmpresa;
+                base.NotifyPropertyChanged(propertyName: "ObjParametro_FinanceiroModel");
+            }
+        }
+    }
+
+
+    #region Validações
+    public partial class EmpresaModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+
+    public partial class Empresa_EnderecoModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+    #endregion
 }

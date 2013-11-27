@@ -75,6 +75,7 @@
     <Compile Include="Components\HlpTextBox.xaml.cs">
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">

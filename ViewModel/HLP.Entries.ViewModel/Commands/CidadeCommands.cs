@@ -11,6 +11,7 @@ using HLP.Comum.ViewModel.Commands;
 using System.Windows.Controls;
 using System.Windows;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -48,6 +49,18 @@ namespace HLP.Entries.ViewModel.Commands
         public void GetCidadeByUf(int idUF)
         {
 
+        }
+
+        public IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
+        {
+            try
+            {
+                return servico.GetAllCidadeToComboBox();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 

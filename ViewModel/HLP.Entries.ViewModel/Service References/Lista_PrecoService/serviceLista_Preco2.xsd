@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Lista_Preco_PaiModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="dListaPreco" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dValidadeContrato" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idListaPrecoOrigem" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idListaPrecoPai" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lLista_preco" nillable="true" type="tns:ArrayOfLista_precoModel" />
+          <xs:element minOccurs="0" name="nDiasSemAtualicao" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pAcressimoMaximo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDescontoMaximo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pPercentual" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stAtualizacao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stContrato" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xCodigoListaPreco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLista" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNrContrato" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Lista_Preco_PaiModel" nillable="true" type="tns:Lista_Preco_PaiModel" />
+  <xs:complexType name="ArrayOfLista_precoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Lista_precoModel" nillable="true" type="tns:Lista_precoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLista_precoModel" nillable="true" type="tns:ArrayOfLista_precoModel" />
+  <xs:complexType name="Lista_precoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dAlteracaoCusto" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idListaPreco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idListaPrecoPai" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idProduto" type="xs:int" />
+          <xs:element minOccurs="0" name="idUnidadeMedida" type="xs:int" />
+          <xs:element minOccurs="0" name="pAcrescimoMaximo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissao" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAprazo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAvista" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDesconto" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDescontoMaximo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pLucro" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pOutros" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vCustoProduto" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vVenda" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Lista_precoModel" nillable="true" type="tns:Lista_precoModel" />
+</xs:schema>

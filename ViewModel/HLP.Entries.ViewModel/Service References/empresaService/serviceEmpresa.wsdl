@@ -8,6 +8,7 @@
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IserviceEmpresa_getEmpresa_InputMessage">
@@ -16,17 +17,17 @@
   <wsdl:message name="IserviceEmpresa_getEmpresa_OutputMessage">
     <wsdl:part name="parameters" element="tns:getEmpresaResponse" />
   </wsdl:message>
-  <wsdl:message name="IserviceEmpresa_saveEmpresa_InputMessage">
-    <wsdl:part name="parameters" element="tns:saveEmpresa" />
+  <wsdl:message name="IserviceEmpresa_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
   </wsdl:message>
-  <wsdl:message name="IserviceEmpresa_saveEmpresa_OutputMessage">
-    <wsdl:part name="parameters" element="tns:saveEmpresaResponse" />
+  <wsdl:message name="IserviceEmpresa_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
   </wsdl:message>
-  <wsdl:message name="IserviceEmpresa_delEmpresa_InputMessage">
-    <wsdl:part name="parameters" element="tns:delEmpresa" />
+  <wsdl:message name="IserviceEmpresa_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
   </wsdl:message>
-  <wsdl:message name="IserviceEmpresa_delEmpresa_OutputMessage">
-    <wsdl:part name="parameters" element="tns:delEmpresaResponse" />
+  <wsdl:message name="IserviceEmpresa_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
   </wsdl:message>
   <wsdl:message name="IserviceEmpresa_copyEmpresa_InputMessage">
     <wsdl:part name="parameters" element="tns:copyEmpresa" />
@@ -39,13 +40,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceEmpresa/getEmpresa" message="tns:IserviceEmpresa_getEmpresa_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceEmpresa/getEmpresaResponse" message="tns:IserviceEmpresa_getEmpresa_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="saveEmpresa">
-      <wsdl:input wsaw:Action="http://tempuri.org/IserviceEmpresa/saveEmpresa" message="tns:IserviceEmpresa_saveEmpresa_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IserviceEmpresa/saveEmpresaResponse" message="tns:IserviceEmpresa_saveEmpresa_OutputMessage" />
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceEmpresa/Save" message="tns:IserviceEmpresa_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceEmpresa/SaveResponse" message="tns:IserviceEmpresa_Save_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="delEmpresa">
-      <wsdl:input wsaw:Action="http://tempuri.org/IserviceEmpresa/delEmpresa" message="tns:IserviceEmpresa_delEmpresa_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IserviceEmpresa/delEmpresaResponse" message="tns:IserviceEmpresa_delEmpresa_OutputMessage" />
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceEmpresa/Delete" message="tns:IserviceEmpresa_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceEmpresa/DeleteResponse" message="tns:IserviceEmpresa_Delete_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="copyEmpresa">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceEmpresa/copyEmpresa" message="tns:IserviceEmpresa_copyEmpresa_InputMessage" />
@@ -63,8 +64,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="saveEmpresa">
-      <soap:operation soapAction="http://tempuri.org/IserviceEmpresa/saveEmpresa" style="document" />
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/IserviceEmpresa/Save" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -72,8 +73,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="delEmpresa">
-      <soap:operation soapAction="http://tempuri.org/IserviceEmpresa/delEmpresa" style="document" />
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IserviceEmpresa/Delete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
