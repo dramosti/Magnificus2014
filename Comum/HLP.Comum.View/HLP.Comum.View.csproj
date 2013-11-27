@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />
+    <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Formularios\WindowsBase.cs" />

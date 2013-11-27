@@ -316,6 +316,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
@@ -449,9 +450,6 @@
     </None>
     <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento5.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\contatoService\HLP.Entries.ViewModel.contatoService.ContatoModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\contatoService\serviceContato.wsdl" />
     <None Include="Service References\contatoService\serviceContato.xsd">
