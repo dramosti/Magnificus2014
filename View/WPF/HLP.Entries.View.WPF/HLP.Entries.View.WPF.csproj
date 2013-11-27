@@ -92,6 +92,15 @@
     <Compile Include="Gerais\WinFamiliaProduto.xaml.cs">
       <DependentUpon>WinFamiliaProduto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinMoeda.xaml.cs">
+      <DependentUpon>WinMoeda.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinPlanoPagamento.xaml.cs">
+      <DependentUpon>WinPlanoPagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinRamoAtividade.xaml.cs">
+      <DependentUpon>WinRamoAtividade.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
     </Compile>
@@ -150,6 +159,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\WinFamiliaProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinMoeda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinPlanoPagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinRamoAtividade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
