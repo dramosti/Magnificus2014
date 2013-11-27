@@ -111,6 +111,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\contatoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ConversaoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -443,6 +448,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\contatoService\HLP.Entries.ViewModel.contatoService.ContatoModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\contatoService\serviceContato.wsdl" />
+    <None Include="Service References\contatoService\serviceContato.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\contatoService\serviceContato1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\contatoService\serviceContato2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\contatoService\serviceContato3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\contatoService\serviceContato4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\contatoService\serviceContato5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ConversaoService\serviceConversao.wsdl" />
@@ -894,6 +921,7 @@
     <WCFMetadataStorage Include="Service References\clienteService\" />
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
+    <WCFMetadataStorage Include="Service References\contatoService\" />
     <WCFMetadataStorage Include="Service References\ConversaoService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
@@ -1365,6 +1393,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\produtoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\contatoService\serviceContato.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\contatoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\contatoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\contatoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
