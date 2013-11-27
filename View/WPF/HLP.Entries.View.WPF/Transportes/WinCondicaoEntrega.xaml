@@ -4,10 +4,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+    xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega"    
         Title="Condição de Entrega" Height="660" Width="1024" NameView="vwCondicaoEntrega">
     <Window.Resources>
         <conv:ByteToIntConverter x:Key="convByteToIntConverter"/>
+        <conv:DecimalToStringConverter x:Key="decimalToStringConverter"/>
         <conv:ByteToBoolConverter x:Key="convByteToBoolConverter"/>
     </Window.Resources>
     <Grid>
@@ -56,17 +58,29 @@
 						Text="{Binding currentModel.nIntrastat, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,164.5,2" Caption="Código Intrastat" Field="nIntrastat" Help="Intrastat é uma declaração estatística de entrega obrigatória ao INE por parte dos contribuintes que adquirem ou vendem produtos ao Mercado Comunitário. " Table="Condicoes_entrega" WidthLabel="262"/>
-                    <Components:HlpCheckBox 						
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						IsChecked="{Binding currentModel.stAplicarMinGratis, Mode=TwoWay, NotifyOnValidationError=True,
+                    <Components:HlpCheckBox 
+                        IsChecked="{Binding currentModel.stAplicarMinGratis, Mode=TwoWay, NotifyOnValidationError=True,
                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource convByteToBoolConverter}}"
+						Validation.ErrorTemplate="{StaticResource exceptionComp}"						
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,164.5,2" Caption="Aplicar Mínimo Máximo" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,164.5,2" Caption="Aplicar Mínimo Máximo" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262">
+                    </Components:HlpCheckBox>
                     <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.vMinimoGratis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Validation.ErrorTemplate="{StaticResource exceptionComp}"						
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,164.5,2" Caption="Valor do Mínimo Grátis" Field="vMinimoGratis" Help="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos. " Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,164.5,2" Caption="Valor do Mínimo Grátis" Field="vMinimoGratis" Help="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos. " Table="Condicoes_entrega" WidthLabel="262">
+                        <Components:HlpTextBox.Text>
+                            <Binding Path="currentModel.vMinimoGratis"
+                                     Mode="TwoWay"
+                                     NotifyOnValidationError="True"
+                                     UpdateSourceTrigger="PropertyChanged"
+                                     ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <v:NumericDecimalValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </Components:HlpTextBox.Text>
+                    </Components:HlpTextBox>
                 </StackPanel>
             </Grid>
         </Expander>

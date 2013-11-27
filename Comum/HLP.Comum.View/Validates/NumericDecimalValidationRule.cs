@@ -12,6 +12,9 @@ namespace HLP.Comum.View.Validates
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             decimal result;
+            if(value.ToString().Contains(','))
+                return new ValidationResult(isValid: false,
+                errorContent: "Utilize ponto(.) ao invés de vírgula(,)");
 
             if (decimal.TryParse(value.ToString(), out result))
                 return ValidationResult.ValidResult;
