@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e99f8090-6310-422f-ab45-f282998fdb3d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+      <ReferencedAssembly AssemblyName="System" />
+      <ReferencedAssembly AssemblyName="WindowsBase" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceModoEntrega.xsd" MetadataType="Schema" ID="0d48ef38-b336-41a4-8cb3-7e54b2e269ca" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceModoEntrega1.xsd" MetadataType="Schema" ID="45410fc4-52f7-4070-a905-4719ee3cd310" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceModoEntrega2.xsd" MetadataType="Schema" ID="b1a77481-d8f2-40c4-86c7-629e381ab26f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceModoEntrega3.xsd" MetadataType="Schema" ID="ec9f3a7b-bb14-44c4-bc88-8e7edc08f298" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceModoEntrega4.xsd" MetadataType="Schema" ID="45e48ac9-1cd1-4a68-af56-8412c6b63497" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceModoEntrega.disco" MetadataType="Disco" ID="0806d0a7-2b77-4852-808f-d109f7934029" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?disco" />
+    <MetadataFile FileName="serviceModoEntrega5.xsd" MetadataType="Schema" ID="e0219420-f559-4b9e-ac2e-d27b4868ef47" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceModoEntrega.wsdl" MetadataType="Wsdl" ID="4e6e8297-86b6-4b14-9296-8190bd805fe7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceModoEntrega.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

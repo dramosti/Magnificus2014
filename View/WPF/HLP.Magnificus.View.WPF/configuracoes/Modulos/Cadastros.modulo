@@ -45,4 +45,10 @@
 <object id="WinDeposito" name="WinDeposito" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinDeposito, HLP.Entries.View.WPF">
   </object>
+<object id="WinFabricante" name="WinFabricante" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinFabricante, HLP.Entries.View.WPF">
+  </object>
+<object id="WinFamiliaProduto" name="WinFamiliaProduto" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto, HLP.Entries.View.WPF">
+  </object>
 </objects>

@@ -163,7 +163,7 @@ namespace HLP.Comum.View.Components
 
 
         private List<string> _Items = new List<string>();
-
+        [Category("HLP.Owner")]
         public List<string> Items
         {
             get { return _Items; }

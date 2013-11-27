@@ -5,9 +5,9 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
 		x:Class="HLP.Entries.View.WPF.Gerais.WinDeposito"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
-        Title="Deposito" Height="660" Width="1024">
-	<Grid>
-		<TabControl HorizontalAlignment="Left" Height="629" VerticalAlignment="Top" Width="1016">
+        Title="Depósito" Height="660" Width="1024">
+	<DockPanel LastChildFill="True">
+		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Principal">
 				<Grid>
 					<Expander Header="Geral" HorizontalAlignment="Left" Height="277.04" VerticalAlignment="Top" Width="596" IsExpanded="True">
@@ -67,5 +67,5 @@
 				<Grid/>
 			</TabItem>
 		</TabControl>
-	</Grid>
+	</DockPanel>
 </runtime:WindowsBase>

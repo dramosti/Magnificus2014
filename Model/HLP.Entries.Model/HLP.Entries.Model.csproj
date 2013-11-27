@@ -59,14 +59,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
-    <Compile Include="Fiscal\Tipo_documentoModel.cs" />
+    <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
     <Compile Include="Models\Gerais\Condicao_pagamentoModel.cs" />
     <Compile Include="Models\Gerais\ConversaoModel.cs" />
     <Compile Include="Models\Gerais\DepositoModel.cs" />
     <Compile Include="Models\Gerais\FabricanteModel.cs" />
+    <Compile Include="Models\Gerais\Familia_produtoModel.cs" />
     <Compile Include="Models\Gerais\MoedaModel.cs" />
+    <Compile Include="Models\Gerais\Ramo_atividadeModel.cs" />
     <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Models\RecursosHumanos\CargoModel.cs" />
     <Compile Include="Models\RecursosHumanos\DepartamentoModel.cs" />
     <Compile Include="Models\RecursosHumanos\SetorModel.cs" />
+    <Compile Include="Models\Transportes\Modos_entregaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="Repository\Implementation\Gerais\DepositoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\FabricanteRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\MoedaRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Ramo_atividadeRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Condicoes_entregaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\EmpresaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Empresa_EnderecoRepository.cs" />
@@ -105,6 +109,7 @@
     <Compile Include="Repository\Implementation\RecursosHumanos\CargoRepository.cs" />
     <Compile Include="Repository\Implementation\RecursosHumanos\DepartamentoRepository.cs" />
     <Compile Include="Repository\Implementation\RecursosHumanos\SetorRepository.cs" />
+    <Compile Include="Repository\Implementation\Transportes\Modos_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
@@ -115,6 +120,7 @@
     <Compile Include="Repository\Interfaces\Gerais\IDepositoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFabricanteRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IMoedaRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IRamo_atividadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ICondicoes_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresa_EnderecoRepository.cs" />
@@ -131,6 +137,7 @@
     <Compile Include="Repository\Interfaces\RecursosHumanos\ICargoRepository.cs" />
     <Compile Include="Repository\Interfaces\RecursosHumanos\IDepartamentoRepository.cs" />
     <Compile Include="Repository\Interfaces\RecursosHumanos\ISetorRepository.cs" />
+    <Compile Include="Repository\Interfaces\Transportes\IModos_entregaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

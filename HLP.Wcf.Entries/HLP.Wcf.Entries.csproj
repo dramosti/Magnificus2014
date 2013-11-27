@@ -96,9 +96,11 @@
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFuncionario.svc" />
+    <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
+    <Content Include="serviceRamoAtividade.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceSetor.svc" />
     <Content Include="serviceTipoServico.svc" />
@@ -124,9 +126,11 @@
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceFabricante.cs" />
     <Compile Include="IserviceFuncionario.cs" />
+    <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
+    <Compile Include="IserviceRamoAtividade.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceSetor.cs" />
     <Compile Include="IserviceTipoServico.cs" />
@@ -166,6 +170,9 @@
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceModoEntrega.svc.cs">
+      <DependentUpon>serviceModoEntrega.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceMoeda.svc.cs">
       <DependentUpon>serviceMoeda.svc</DependentUpon>
     </Compile>
@@ -174,6 +181,9 @@
     </Compile>
     <Compile Include="servicePesquisaRapida.svc.cs">
       <DependentUpon>servicePesquisaRapida.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceRamoAtividade.svc.cs">
+      <DependentUpon>serviceRamoAtividade.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceRegiao.svc.cs">
       <DependentUpon>serviceRegiao.svc</DependentUpon>
