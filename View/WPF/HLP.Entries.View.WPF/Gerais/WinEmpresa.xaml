@@ -11,11 +11,14 @@
         Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
     <Window.Resources>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
-        <ObjectDataProvider x:Key="EnumTpEnder" MethodName="GetValues" ObjectType="{x:Type sys:Enum}" >
+        <ObjectDataProvider 
+            MethodName="GetDict"
+            ObjectType="{x:Type convert:EnumDescriptionConverter}"
+            x:Key="EnumDescriptionDict">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoEndereco"/>
+                <x:Type TypeName="enums:TipoEndereco"></x:Type>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        </ObjectDataProvider>        
         <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:CidadeViewModel}"/>
         <ObjectDataProvider x:Key="lCidades" ObjectInstance="{StaticResource odpCidade}"  MethodName="GetAllCidadeToComboBox"/>
     </Window.Resources>
@@ -95,8 +98,12 @@
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn 
                             Header="Tipo Endereço" Width="120"
-                            ItemsSource="{Binding Source={StaticResource EnumTpEnder}}"
-                            SelectedItemBinding ="{Binding enumTipoEnder}"/>
+                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
+                            DisplayMemberPath="Key"
+                            SelectedValuePath="Value"
+                            SelectedValueBinding ="{Binding enumTipoEnder}">
+                            
+                        </DataGridComboBoxColumn>
                         <DataGridTemplateColumn Header="Principal" Width="60">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
