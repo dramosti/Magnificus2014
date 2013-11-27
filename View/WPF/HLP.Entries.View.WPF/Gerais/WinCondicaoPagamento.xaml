@@ -26,12 +26,14 @@
 		</Expander>
 		<Expander Header="Configuração" HorizontalAlignment="Left" Height="357.5" Margin="0,160.5,0,0" VerticalAlignment="Top" Width="691.5" IsExpanded="True">
 			<StackPanel>
-				<Components:HlpComboBox 
+                <Components:HlpComboBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedValue="{Binding currentModel.stMetodo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="30" Margin="10,10,361.5,2" Caption="Método de Pagamento" Field="stMetodo" Help="Selecione o método a ser usado para calcular a data de vencimento. A caixa de listagem exibe todos os métodos disponíveis." Table="Condicao_pagamento" WidthLabel="166"/>
-				<Components:HlpComboBox 
+					Height="30" Margin="10,10,361.5,2" Caption="Método de Pagamento" Field="stMetodo" Help="Selecione o método a ser usado para calcular a data de vencimento. A caixa de listagem exibe todos os métodos disponíveis." Table="Condicao_pagamento" WidthLabel="166">
+                    
+                </Components:HlpComboBox>
+                <Components:HlpComboBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedValue="{Binding currentModel.stcondicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
