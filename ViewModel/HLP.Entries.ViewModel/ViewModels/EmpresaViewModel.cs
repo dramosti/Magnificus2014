@@ -21,7 +21,9 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandNovo { get; set; }
         public ICommand commandAlterar { get; set; }
         public ICommand commandCancelar { get; set; }
+        public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
+        public ICommand navegarCommand { get; set; }
         #endregion
 
         public EmpresaViewModel()

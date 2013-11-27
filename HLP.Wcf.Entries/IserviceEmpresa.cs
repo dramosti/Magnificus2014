@@ -22,6 +22,6 @@ namespace HLP.Wcf.Entries
         bool Delete(int idEmpresa);
 
         [OperationContract]
-        int copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel copyEmpresa(HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa);
     }
 }

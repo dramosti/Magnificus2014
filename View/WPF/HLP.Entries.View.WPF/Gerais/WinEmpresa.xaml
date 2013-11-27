@@ -18,12 +18,12 @@
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="enums:TipoEndereco"></x:Type>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>        
+        </ObjectDataProvider>
         <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:CidadeViewModel}"/>
         <ObjectDataProvider x:Key="lCidades" ObjectInstance="{StaticResource odpCidade}"  MethodName="GetAllCidadeToComboBox"/>
     </Window.Resources>
 
-    <Grid>        
+    <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
                 <WrapPanel Orientation="Vertical">
@@ -93,7 +93,8 @@
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
-                          SelectionUnit="Cell"
+                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                    CanUserDeleteRows="True"
                     >
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn 
@@ -101,13 +102,15 @@
                             ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
                             DisplayMemberPath="Key"
                             SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumTipoEnder}">
-                            
+                            SelectedValueBinding ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged}">
+
                         </DataGridComboBoxColumn>
                         <DataGridTemplateColumn Header="Principal" Width="60">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                    <CheckBox IsChecked="{Binding stPrincipal, 
+                                        UpdateSourceTrigger=PropertyChanged, 
+                                        Converter={StaticResource ByteToBoolConverter}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
@@ -116,12 +119,12 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr}"  />
-                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
-                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
-                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
-                        <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep}" />
-                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal}" />
+                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr, UpdateSourceTrigger=PropertyChanged}"  />
+                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
+                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                        <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal, UpdateSourceTrigger=PropertyChanged}" />
                         <DataGridComboBoxColumn  Header="Cidades" Width="150"
                             ItemsSource="{Binding Source={StaticResource lCidades}}"
                             SelectedValuePath="id"

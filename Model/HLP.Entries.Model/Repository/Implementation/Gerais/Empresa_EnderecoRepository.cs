@@ -24,12 +24,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             if (objEmpresa_Endereco.idEmpresaEndereco == null)
             {
                 objEmpresa_Endereco.idEmpresaEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                "[dbo].[Proc_save_Empresa_Endereco]",
                 ParameterBase<Empresa_EnderecoModel>.SetParameterValue(objEmpresa_Endereco));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Empresa_Endereco]",
             ParameterBase<Empresa_EnderecoModel>.SetParameterValue(objEmpresa_Endereco));
             }
@@ -37,14 +39,16 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Delete(int idEmpresaEndereco)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Empresa_Endereco]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Empresa_Endereco]",
                   UserData.idUser,
                   idEmpresaEndereco);
         }
 
         public void DeleteEnderecoPorIdEmpresa(int idEmpresa)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Empresa_Endereco WHERE idEmpresa = " + idEmpresa);
         }
 
@@ -72,7 +76,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             DataAccessor<Empresa_EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Empresa_Endereco WHERE idEmpresa = @idEmpresa", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEmpresa"),
-            MapBuilder<Empresa_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).DoNotMap(c=>c.enumTipoEnder).Build());
+            MapBuilder<Empresa_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).DoNotMap(c => c.enumTipoEnder).Build());
 
             return reg.Execute(idEmpresa).ToList();
         }
