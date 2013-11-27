@@ -62,8 +62,7 @@ namespace HLP.Entries.ViewModel.Commands
                             idEmpresaEndereco = id,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
-                }
-                this.objViewModel.currentModel.idRamoAtividade = 1;
+                }                
                 this.objViewModel.currentModel =
                     await servico.SaveAsync(objEmpresa:
                     objViewModel.currentModel);
