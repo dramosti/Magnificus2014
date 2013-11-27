@@ -17,10 +17,10 @@
         <Label x:Name="lblCaption" 
                Style="{StaticResource  LabelStyleComponents}"
                Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="27"/>
         <DatePicker x:Name="dtControle"
                 SelectedDate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDate}"
-                SelectedDateFormat="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDateFormat}"    
+                SelectedDateFormat="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDateFormat}" Height="25"    
                     />        
     </DockPanel>
 </runtime:BaseControl>

@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" Height="27">
         <Label x:Name="lbl" 
                Style="{StaticResource  LabelStyleComponents}"
                Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=Caption}" 
@@ -24,7 +24,7 @@
                 SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedItem}"
                 SelectedIndex="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedIndex}"
                 DisplayMemberPath="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=DisplayMemberPath}"
-                ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}"  
+                ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}" Height="20"  
                   >           
         </ComboBox>
     </DockPanel>

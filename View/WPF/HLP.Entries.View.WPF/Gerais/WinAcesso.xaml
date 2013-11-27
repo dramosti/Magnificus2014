@@ -23,24 +23,24 @@
 		<Expander Header="Login" HorizontalAlignment="Left" Height="157" Margin="0,81,0,0" VerticalAlignment="Top" Width="873.5" IsExpanded="True">
 			<Grid HorizontalAlignment="Left" Height="138" Margin="-1,0,-2,0" Width="874.5">
 				<StackPanel HorizontalAlignment="Left" Height="138" VerticalAlignment="Top" Width="437.25">					
-					<Components:HlpComboBox Height="30" Margin="10,10,108.25,10" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario" Help="Seleciona o tipo do Usuário" WidthLabel="102"/>
+					<Components:HlpComboBox Height="30" Margin="10,10,108.25,2" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario" Help="Seleciona o tipo do Usuário" WidthLabel="102"/>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,108.25,6" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102"/>
+						Height="30" Margin="10,0,108.25,2" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102"/>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,108.25,10" Caption="Login" WidthLabel="102"/>
+						Height="30" Margin="10,0,108.25,2" Caption="Login" WidthLabel="102"/>
 				</StackPanel>
 				<StackPanel HorizontalAlignment="Left" Height="138" Margin="437.25,0,0,0" VerticalAlignment="Top" Width="437.25">
 					<Components:HlpCheckBox
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stUsuarioAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}" 
-						Height="30" Margin="10,10,241,10" Caption="Utiliza Sistema" WidthLabel="119" Field="stUsuarioAtivo" Table="Funcionario"/>
+						Height="30" Margin="10,10,241,2" Caption="Utiliza Sistema" WidthLabel="119" Field="stUsuarioAtivo" Table="Funcionario"/>
 					<Button Content="Verificar" HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" Width="186.25"/>
 				</StackPanel>
 			</Grid>

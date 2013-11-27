@@ -12,37 +12,37 @@
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,10,218.5,10" Caption="Código" Field="idCondicaoEntrega" Help="Chave principal do registro da Condição de Entrega." Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,10,218.5,2" Caption="Código" Field="idCondicaoEntrega" Help="Chave principal do registro da Condição de Entrega." Table="Condicoes_entrega" WidthLabel="262"/>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,218.5,10" Caption="Condição de Entrega " Field="xCondicaoEntrega" Help="Digite um código para a recém-criada origem de venda. " Table="Condicoes_Entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,218.5,2" Caption="Condição de Entrega " Field="xCondicaoEntrega" Help="Digite um código para a recém-criada origem de venda. " Table="Condicoes_Entrega" WidthLabel="262"/>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,70,10" Caption="Descrição " Field="xDescricao" Help="Descrição da condição de entrega" Table="Codicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,70,2" Caption="Descrição " Field="xDescricao" Help="Descrição da condição de entrega" Table="Codicoes_entrega" WidthLabel="262"/>
 					<Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedValue="{Binding currentModel.stEnderecoImpostoSobreVendas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,104.5,10" Caption="Endereço para Imposto sobre Vendas" Field="stEnderecoImpostoSobreVendas" Help="Selecione o endereço no qual as mercadorias trocam de propriedade (INTRASTAT). São eles:" Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,104.5,2" Caption="Endereço para Imposto sobre Vendas" Field="stEnderecoImpostoSobreVendas" Help="Selecione o endereço no qual as mercadorias trocam de propriedade (INTRASTAT). São eles:" Table="Condicoes_entrega" WidthLabel="262"/>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nIntrastat, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,164.5,10" Caption="Código Intrastat" Field="nIntrastat" Help="Intrastat é uma declaração estatística de entrega obrigatória ao INE por parte dos contribuintes que adquirem ou vendem produtos ao Mercado Comunitário. " Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,164.5,2" Caption="Código Intrastat" Field="nIntrastat" Help="Intrastat é uma declaração estatística de entrega obrigatória ao INE por parte dos contribuintes que adquirem ou vendem produtos ao Mercado Comunitário. " Table="Condicoes_entrega" WidthLabel="262"/>
 					<Components:HlpCheckBox 						
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stAplicarMinGratiso, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,164.5,0" Caption="Aplicar Mínimo Máximo" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,164.5,2" Caption="Aplicar Mínimo Máximo" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262"/>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.vMinimoGratis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,164.5,0" Caption="Valor do Mínimo Grátis" Field="vMinimoGratis" Help="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos. " Table="Condicoes_entrega" WidthLabel="262"/>
+						Height="30" Margin="10,0,164.5,2" Caption="Valor do Mínimo Grátis" Field="vMinimoGratis" Help="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos. " Table="Condicoes_entrega" WidthLabel="262"/>
 				</StackPanel>
 			</Grid>
 		</Expander>

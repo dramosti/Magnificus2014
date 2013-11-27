@@ -80,8 +80,17 @@
     <Compile Include="Gerais\WinConversao.xaml.cs">
       <DependentUpon>WinConversao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinDeposito.xaml.cs">
+      <DependentUpon>WinDeposito.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinEmpresa.xaml.cs">
       <DependentUpon>WinEmpresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinFabricante.xaml.cs">
+      <DependentUpon>WinFabricante.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinFamiliaProduto.xaml.cs">
+      <DependentUpon>WinFamiliaProduto.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
@@ -128,7 +137,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Gerais\WinDeposito.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gerais\WinEmpresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinFabricante.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinFamiliaProduto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,7 +256,28 @@
       <Name>HLP.Entries.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\segoeui.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\segoeuib.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\segoeuii.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\segoeuiz.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
