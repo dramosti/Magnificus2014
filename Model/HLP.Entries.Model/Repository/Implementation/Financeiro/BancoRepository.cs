@@ -25,7 +25,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
             if (regAllBancoAccessor == null)
             {
                 regAllBancoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Banco",
-                                  MapBuilder<BancoModel>.MapAllProperties().Build());
+                                  MapBuilder<BancoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regAllBancoAccessor.Execute().ToList();
         }
@@ -37,7 +37,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
                 regBancoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_banco",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idBanco"),
-                                  MapBuilder<BancoModel>.MapAllProperties().Build());
+                                  MapBuilder<BancoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regBancoAccessor.Execute(idBanco).FirstOrDefault();
         }
