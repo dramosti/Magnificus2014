@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
+namespace HLP.Entries.ViewModel.Plano_PagamentoService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,17 +17,18 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Plano_pagamento_linhasModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.Condicao_PagamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.Plano_PagamentoService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.Condicao_PagamentoService.statusModel statusField;
+        private HLP.Entries.ViewModel.Plano_PagamentoService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -40,7 +41,7 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.Condicao_PagamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.Plano_PagamentoService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -53,7 +54,7 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.Condicao_PagamentoService.statusModel status {
+        public HLP.Entries.ViewModel.Plano_PagamentoService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -154,91 +155,91 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Condicao_PagamentoService.IserviceCondicao_Pagamento")]
-    public interface IserviceCondicao_Pagamento {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Plano_PagamentoService.IservicePlanoPagamento")]
+    public interface IservicePlanoPagamento {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/getCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/getCondicao_pagamentoResponse")]
-        HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel getCondicao_pagamento(int idCondicao_pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/Save", ReplyAction="http://tempuri.org/IservicePlanoPagamento/SaveResponse")]
+        HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel Save(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/getCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/getCondicao_pagamentoResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel> getCondicao_pagamentoAsync(int idCondicao_pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/Save", ReplyAction="http://tempuri.org/IservicePlanoPagamento/SaveResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel> SaveAsync(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/saveCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/saveCondicao_pagamentoResponse")]
-        int saveCondicao_pagamento(HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel objCondicao_pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/Delete", ReplyAction="http://tempuri.org/IservicePlanoPagamento/DeleteResponse")]
+        bool Delete(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/saveCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/saveCondicao_pagamentoResponse")]
-        System.Threading.Tasks.Task<int> saveCondicao_pagamentoAsync(HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel objCondicao_pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/Delete", ReplyAction="http://tempuri.org/IservicePlanoPagamento/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/deleteCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/deleteCondicao_pagamentoResponse")]
-        bool deleteCondicao_pagamento(int idCondicao_pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/Copy", ReplyAction="http://tempuri.org/IservicePlanoPagamento/CopyResponse")]
+        HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel Copy(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/deleteCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/deleteCondicao_pagamentoResponse")]
-        System.Threading.Tasks.Task<bool> deleteCondicao_pagamentoAsync(int idCondicao_pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/Copy", ReplyAction="http://tempuri.org/IservicePlanoPagamento/CopyResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel> CopyAsync(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamentoResponse")]
-        int copyCondicao_pagamento(int idCondicao_Pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/GetObject", ReplyAction="http://tempuri.org/IservicePlanoPagamento/GetObjectResponse")]
+        HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel GetObject(int idPlanoPagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamentoResponse")]
-        System.Threading.Tasks.Task<int> copyCondicao_pagamentoAsync(int idCondicao_Pagamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IservicePlanoPagamento/GetObject", ReplyAction="http://tempuri.org/IservicePlanoPagamento/GetObjectResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel> GetObjectAsync(int idPlanoPagamento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceCondicao_PagamentoChannel : HLP.Entries.ViewModel.Condicao_PagamentoService.IserviceCondicao_Pagamento, System.ServiceModel.IClientChannel {
+    public interface IservicePlanoPagamentoChannel : HLP.Entries.ViewModel.Plano_PagamentoService.IservicePlanoPagamento, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceCondicao_PagamentoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Condicao_PagamentoService.IserviceCondicao_Pagamento>, HLP.Entries.ViewModel.Condicao_PagamentoService.IserviceCondicao_Pagamento {
+    public partial class IservicePlanoPagamentoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Plano_PagamentoService.IservicePlanoPagamento>, HLP.Entries.ViewModel.Plano_PagamentoService.IservicePlanoPagamento {
         
-        public IserviceCondicao_PagamentoClient() {
+        public IservicePlanoPagamentoClient() {
         }
         
-        public IserviceCondicao_PagamentoClient(string endpointConfigurationName) : 
+        public IservicePlanoPagamentoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceCondicao_PagamentoClient(string endpointConfigurationName, string remoteAddress) : 
+        public IservicePlanoPagamentoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceCondicao_PagamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IservicePlanoPagamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceCondicao_PagamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IservicePlanoPagamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel getCondicao_pagamento(int idCondicao_pagamento) {
-            return base.Channel.getCondicao_pagamento(idCondicao_pagamento);
+        public HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel Save(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento) {
+            return base.Channel.Save(objPlano_pagamento);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel> getCondicao_pagamentoAsync(int idCondicao_pagamento) {
-            return base.Channel.getCondicao_pagamentoAsync(idCondicao_pagamento);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel> SaveAsync(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento) {
+            return base.Channel.SaveAsync(objPlano_pagamento);
         }
         
-        public int saveCondicao_pagamento(HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel objCondicao_pagamento) {
-            return base.Channel.saveCondicao_pagamento(objCondicao_pagamento);
+        public bool Delete(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento) {
+            return base.Channel.Delete(objPlano_pagamento);
         }
         
-        public System.Threading.Tasks.Task<int> saveCondicao_pagamentoAsync(HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel objCondicao_pagamento) {
-            return base.Channel.saveCondicao_pagamentoAsync(objCondicao_pagamento);
+        public System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento) {
+            return base.Channel.DeleteAsync(objPlano_pagamento);
         }
         
-        public bool deleteCondicao_pagamento(int idCondicao_pagamento) {
-            return base.Channel.deleteCondicao_pagamento(idCondicao_pagamento);
+        public HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel Copy(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento) {
+            return base.Channel.Copy(objPlano_pagamento);
         }
         
-        public System.Threading.Tasks.Task<bool> deleteCondicao_pagamentoAsync(int idCondicao_pagamento) {
-            return base.Channel.deleteCondicao_pagamentoAsync(idCondicao_pagamento);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel> CopyAsync(HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objPlano_pagamento) {
+            return base.Channel.CopyAsync(objPlano_pagamento);
         }
         
-        public int copyCondicao_pagamento(int idCondicao_Pagamento) {
-            return base.Channel.copyCondicao_pagamento(idCondicao_Pagamento);
+        public HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel GetObject(int idPlanoPagamento) {
+            return base.Channel.GetObject(idPlanoPagamento);
         }
         
-        public System.Threading.Tasks.Task<int> copyCondicao_pagamentoAsync(int idCondicao_Pagamento) {
-            return base.Channel.copyCondicao_pagamentoAsync(idCondicao_Pagamento);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel> GetObjectAsync(int idPlanoPagamento) {
+            return base.Channel.GetObjectAsync(idPlanoPagamento);
         }
     }
 }

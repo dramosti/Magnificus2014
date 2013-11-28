@@ -61,7 +61,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 deposito.idDeposito = idDeposito;
             }
             else
-            {
+            {                
                 UndTrabalho.dbPrincipal.ExecuteScalar(
                     "[dbo].[Proc_update_Deposito]",
                    ParameterBase<DepositoModel>.SetParameterValue(deposito));

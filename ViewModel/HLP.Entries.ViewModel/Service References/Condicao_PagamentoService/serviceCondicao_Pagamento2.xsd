@@ -46,7 +46,7 @@
   <xs:element name="copyCondicao_pagamento">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idCondicao_pagamento" type="xs:int" />
+        <xs:element minOccurs="0" name="idCondicao_Pagamento" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
