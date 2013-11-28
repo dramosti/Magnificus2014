@@ -7,12 +7,13 @@ using HLP.Entries.ViewModel.ViewModels.Transportes;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
-   public class RotaCommand
+    public class RotaCommand
     {
-       RotaViewModel objViewModel;
-       public RotaCommand(RotaViewModel objViewModel) 
-       {
-           this.objViewModel = objViewModel;
-       }
+        RotaViewModel objViewModel;
+        rotaService.IserviceRotaClient servico = new rotaService.IserviceRotaClient();
+        public RotaCommand(RotaViewModel objViewModel)
+        {
+            this.objViewModel = objViewModel;
+        }
     }
 }

@@ -210,6 +210,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\rotaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\setrService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -356,6 +361,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.RotaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
     <None Include="Service References\agenciaService\serviceAgencia.wsdl" />
     <None Include="Service References\agenciaService\serviceAgencia.xsd">
@@ -835,6 +841,25 @@
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\rotaService\serviceRota.wsdl" />
+    <None Include="Service References\rotaService\serviceRota.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\rotaService\serviceRota1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\rotaService\serviceRota2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\rotaService\serviceRota3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\rotaService\serviceRota4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\rotaService\serviceRota5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\setrService\serviceSetor.wsdl" />
     <None Include="Service References\setrService\serviceSetor.xsd">
       <SubType>Designer</SubType>
@@ -996,6 +1021,7 @@
     <WCFMetadataStorage Include="Service References\Plano_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
+    <WCFMetadataStorage Include="Service References\rotaService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
@@ -1500,7 +1526,21 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\rotaService\serviceRota.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\rotaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\rotaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\rotaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
