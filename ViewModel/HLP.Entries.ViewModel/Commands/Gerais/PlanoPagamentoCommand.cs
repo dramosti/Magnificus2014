@@ -9,8 +9,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class PlanoPagamentoCommand
     {
+
+        Plano_PagamentoService.IservicePlanoPagamentoClient servico = new Plano_PagamentoService.IservicePlanoPagamentoClient();
         PlanoPagamentoViewModel objViewModel;
-        public PlanoPagamentoCommand(PlanoPagamentoViewModel objViewModel) 
+        public PlanoPagamentoCommand(PlanoPagamentoViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
 

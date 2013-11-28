@@ -57,7 +57,7 @@
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
     <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
-    <Compile Include="Commands\Comercial\PlanoPagamentoCommand.cs" />
+    <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
     <Compile Include="Commands\DecisaoCommands.cs" />
