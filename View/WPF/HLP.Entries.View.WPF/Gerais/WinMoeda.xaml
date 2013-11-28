@@ -1,0 +1,35 @@
+﻿<runtime:WindowsBase
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        x:Class="HLP.Entries.View.WPF.Gerais.WinMoeda"
+        Title="Moedasg" Height="660" Width="1024">
+	<Grid>
+		<Expander Header="Principal" HorizontalAlignment="Left" Height="155.5" VerticalAlignment="Top" Width="718.5" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"	
+					Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,10,438.333,2" Caption="Código da Moeda" Field="idMoeda" Help="Chave principal do registro da Moeda, campo autoincremental" Table="Moeda" WidthLabel="162"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"	
+					Text="{Binding currentModel.xSiglaMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,438.333,2" Caption="Moeda " Field="xSiglaMoeda" Help="O identificador exclusivo de um código de até três caracteres. " Table="Moeda" WidthLabel="162"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"	
+					Text="{Binding currentModel.xMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,251.936,2" Caption="Nome" Field="xMoeda" Help="Um nome para a moeda selecionada,  juntamente com o código da moeda, é impressa em cheques e outros documentos. " Table="Moeda" WidthLabel="162"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"	
+					Text="{Binding currentModel.xSimbolo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,438.333,-4" Caption="Símbolo" Help="Símbolo da moeda selecionada são usados frequentemente nos relatórios. " WidthLabel="162"/>
+			</StackPanel>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>
