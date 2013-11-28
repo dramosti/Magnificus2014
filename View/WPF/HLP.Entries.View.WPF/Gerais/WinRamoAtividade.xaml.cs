@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinRamoAtividade()
         {
             InitializeComponent();
+            this.ViewModel = new Ramo_atividadeViewModel();
+        }
+
+        public Ramo_atividadeViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Ramo_atividadeViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

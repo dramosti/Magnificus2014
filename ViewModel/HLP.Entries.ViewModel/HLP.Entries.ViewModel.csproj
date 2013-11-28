@@ -57,6 +57,7 @@
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
     <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
+    <Compile Include="Commands\Financeiro\AgenciaCommands.cs" />
     <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
@@ -83,6 +84,11 @@
     <Compile Include="Commands\UFCommands.cs" />
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\agenciaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Canal_VendaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,6 +261,7 @@
     <Compile Include="ViewModels\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
+    <Compile Include="ViewModels\Financeiro\AgenciaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
@@ -323,6 +330,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.AgenciaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel1.datasource" />
@@ -347,6 +355,25 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
+    <None Include="Service References\agenciaService\serviceAgencia.wsdl" />
+    <None Include="Service References\agenciaService\serviceAgencia.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\agenciaService\serviceAgencia1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\agenciaService\serviceAgencia2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\agenciaService\serviceAgencia3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\agenciaService\serviceAgencia4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\agenciaService\serviceAgencia5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda.wsdl" />
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda.xsd">
       <SubType>Designer</SubType>
@@ -942,6 +969,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
@@ -1455,6 +1483,22 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\agenciaService\serviceAgencia.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\agenciaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\agenciaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\agenciaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

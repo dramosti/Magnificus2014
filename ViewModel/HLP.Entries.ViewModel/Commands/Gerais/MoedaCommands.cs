@@ -147,14 +147,50 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel.idMoeda = await this.servico.copyMoedaAsync(idMoeda:
-                    (int)this.objViewModel.currentModel.idMoeda);
-                this.objViewModel.copyBaseCommand.Execute(null);
+                BackgroundWorker bwCopy = new BackgroundWorker();
+                bwCopy.DoWork += bwCopy_DoWork;
+                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentID = (int)e.Result;
+                    this.metodoGetModel(this, null);
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = this.servico.copyMoeda(idMoeda:
+                    (int)this.objViewModel.currentModel.idMoeda);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

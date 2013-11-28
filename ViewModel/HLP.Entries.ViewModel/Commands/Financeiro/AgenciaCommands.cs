@@ -1,6 +1,6 @@
 ﻿using HLP.Comum.ViewModel.Commands;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace HLP.Entries.ViewModel.Commands.Gerais
+namespace HLP.Entries.ViewModel.Commands.Financeiro
 {
-    public class Ramo_atividadeCommands
+    public class AgenciaCommands
     {
-        Ramo_atividadeViewModel objViewModel;
-        Ramo_AtividadeService.IserviceRamoAtividadeClient servico = new Ramo_AtividadeService.IserviceRamoAtividadeClient();
+        AgenciaViewModel objViewModel;
+        agenciaService.IserviceAgenciaClient servico = new agenciaService.IserviceAgenciaClient();
 
-        public Ramo_atividadeCommands(Ramo_atividadeViewModel objViewModel)
+        public AgenciaCommands(AgenciaViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
@@ -46,25 +46,66 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-
         }
 
+        private void IniciaCollections()
+        {
+            this.objViewModel.currentModel.lAgencia_ContatoModel.CollectionCarregada();
+            this.objViewModel.currentModel.lAgencia_EnderecoModel.CollectionCarregada();
+        }
 
         #region Implementação Commands
 
-        public async void Save()
+        public void Save()
         {
             try
             {
-                this.objViewModel.currentModel.idRamoAtividade = await this.servico.saveRamo_atividadeAsync(objRamo_atividade:
-                    this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                BackgroundWorker bwSave = new BackgroundWorker();
+                bwSave.DoWork += bwSave_DoWork;
+                bwSave.RunWorkerCompleted += bwSave_RunWorkerCompleted;
+                bwSave.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSave_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel.idAgencia =
+                        (int)e.Result;
+                    this.IniciaCollections();
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void bwSave_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = this.servico.Save(Objeto: this.objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -83,8 +124,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteRamo_atividadeAsync(idRamo_atividade:
-                        (int)this.objViewModel.currentModel.idRamoAtividade))
+                    if (await this.servico.DeleteAsync(Objeto: this.objViewModel.currentModel)
+                    )
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -117,7 +158,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new Ramo_atividadeModel();
+            this.objViewModel.currentModel = new AgenciaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -151,7 +192,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 BackgroundWorker bwCopy = new BackgroundWorker();
                 bwCopy.DoWork += bwCopy_DoWork;
                 bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
@@ -171,8 +212,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 else
                 {
                     this.objViewModel.currentID = (int)e.Result;
-                    this.metodoGetModel(this, null);
-                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.GetAgencia(this, null);
                 }
             }
             catch (Exception ex)
@@ -185,13 +225,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                e.Result = this.servico.copyRamo_atividade(idRamo_atividade:
-                    (int)this.objViewModel.currentModel.idRamoAtividade);
+                e.Result = this.servico.Copy(Objeto:
+                    this.objViewModel.currentModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
@@ -222,15 +261,28 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void PesquisarRegistro()
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.DoWork += new DoWorkEventHandler(this.GetAgencia);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getRamo_atividadeAsync(
-                idRamo_atividade: this.objViewModel.currentID);
+            try
+            {
+                this.IniciaCollections();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void GetAgencia(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel =
+                this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
         }
         #endregion
 
