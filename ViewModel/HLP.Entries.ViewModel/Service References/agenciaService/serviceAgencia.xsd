@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceAgencia.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="AgenciaModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cAgencia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idBanco" type="xs:int" />
+          <xs:element minOccurs="0" name="lAgencia_ContatoModel" nillable="true" type="tns:ArrayOfAgencia_ContatoModel" />
+          <xs:element minOccurs="0" name="lAgencia_EnderecoModel" nillable="true" type="tns:ArrayOfAgencia_EnderecoModel" />
+          <xs:element minOccurs="0" name="xAgencia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefone" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AgenciaModel" nillable="true" type="tns:AgenciaModel" />
+  <xs:complexType name="ArrayOfAgencia_ContatoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Agencia_ContatoModel" nillable="true" type="tns:Agencia_ContatoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAgencia_ContatoModel" nillable="true" type="tns:ArrayOfAgencia_ContatoModel" />
+  <xs:complexType name="Agencia_ContatoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idAgencia" type="xs:int" />
+          <xs:element minOccurs="0" name="idAgenciaContato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Agencia_ContatoModel" nillable="true" type="tns:Agencia_ContatoModel" />
+  <xs:complexType name="ArrayOfAgencia_EnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Agencia_EnderecoModel" nillable="true" type="tns:Agencia_EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAgencia_EnderecoModel" nillable="true" type="tns:ArrayOfAgencia_EnderecoModel" />
+  <xs:complexType name="Agencia_EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idAgencia" type="xs:int" />
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stLogradouro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFusoHorario" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLatitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLongitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Agencia_EnderecoModel" nillable="true" type="tns:Agencia_EnderecoModel" />
+</xs:schema>

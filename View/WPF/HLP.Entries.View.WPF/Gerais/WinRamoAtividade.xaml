@@ -4,14 +4,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinRamoAtividade"
-        Title="Ramo de Atividade" Height="660" Width="1024">
+        Title="Ramo de Atividade" Height="660" Width="1024" NameView="vwRamoAtividade">
 	<Grid>
 		<Expander Header="Principal" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="563.5" IsExpanded="True">
 			<StackPanel>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					IsEnabled="False"
 					Height="27" Margin="10,10,191.5,2" Caption="Código do Ramo de Atividade" Help="Chave principal do registro do Ramo de Atividade, campo auto incremental." WidthLabel="222"/>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
