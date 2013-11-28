@@ -120,29 +120,68 @@
                         <Expander Header="Fiscal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True" Margin="0,-1,0,1">
                             <DockPanel LastChildFill="True">
                                 <StackPanel Width="480" DockPanel.Dock="Left">
-                                    <Components:HlpTextBox Height="27" Margin="10,10,20.857,-1" Caption="Alíquota de ICMS para o super simples" Help="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de ISS para o super simples" Help="Informar a alíquota de ISS – Imposto sobre serviços para o super simples." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de CSLL para o super simples" Help="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de IRRF para o super simples" Help="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples" WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de PIS para o super simples" Help="Informar a alíquota do PIS – Programa de Integração Social para o super simples." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de COFINS para o super simples" Help="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Número de Itens para emissão da NF-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal quando for formulário continuo." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Número de Itens para emissão da NFS-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal de serviços, quando for formulário continuo." WidthLabel="377"/>
-                                    <Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de INSS para o super simples" Help="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples" WidthLabel="377"/>
-                                    <Components:HlpCheckBox Height="27" Margin="10,0,20.857,-1" Caption="Optante do Super Simples?" Help="O Simples Nacional é um regime compartilhado de arrecadação, cobrança e fiscalização de tributos aplicável às Microempresas e Empresas de Pequeno Porte, previsto na Lei Complementar nº 123, de 14 de dezembro de 2006." WidthLabel="377"/>
-                                    <Components:HlpComboBox Height="27" Margin="10,0,20.857,-1" Caption="Código de Regime Tributário (CRT)?" Help="O Código de Regime Tributário ou CRT deve ser indicado na nota fiscal eletrônica." WidthLabel="377"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,10,10,-1" Caption="Alíquota de ICMS para o super simples" Help="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Alíquota de ISS para o super simples" Help="Informar a alíquota de ISS – Imposto sobre serviços para o super simples." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Alíquota de CSLL para o super simples" Help="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Alíquota de IRRF para o super simples" Help="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples" WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Alíquota de PIS para o super simples" Help="Informar a alíquota do PIS – Programa de Integração Social para o super simples." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Alíquota de COFINS para o super simples" Help="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Número de Itens para emissão da NF-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal quando for formulário continuo." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Número de Itens para emissão da NFS-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal de serviços, quando for formulário continuo." WidthLabel="365"/>
+                                    <Components:HlpTextBox Height="27" Margin="10,0,10,-1" Caption="Alíquota de INSS para o super simples" Help="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples" WidthLabel="365"/>
+                                    <Components:HlpCheckBox Height="27" Margin="10,0,10,-1" Caption="Optante do Super Simples?" Help="O Simples Nacional é um regime compartilhado de arrecadação, cobrança e fiscalização de tributos aplicável às Microempresas e Empresas de Pequeno Porte, previsto na Lei Complementar nº 123, de 14 de dezembro de 2006." WidthLabel="365"/>
+                                    <Components:HlpComboBox Height="27" Margin="10,0,10,-1" Caption="Código de Regime Tributário (CRT)?" Help="O Código de Regime Tributário ou CRT deve ser indicado na nota fiscal eletrônica." WidthLabel="365"/>
                                 </StackPanel>
-                                <StackPanel>
-                                    <Components:HlpCheckBox Height="27" Width="624" Margin="-10,10,0,-1" Caption="Imprimi mensagem padrão para o super simples?" Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="392"/>
-                                    <Components:HlpPesquisa Height="27" Width="624" Margin="-10,0,0,-1" Caption="Código da observação para impressão do super simples." WidthLabel="392" Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem padrão do super simples? estiver como opção 1-Sim"/>
-                                    <Components:HlpCheckBox Height="27" Width="624" Margin="-10,0,0,-1" Caption="Imprimi mensagem de crédito de ICMS do super Simples? " Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão de crédito de ICMS do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="392"/>
-                                    <Components:HlpPesquisa Height="36" Width="624" Margin="-10,0,0,-1" Caption="Código da observação para impressão da mensagem de crédito de ICMS do super simples." Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem de crédito de ICMS do super simples? estiver como opção 1-Sim." WidthLabel="392"/>
+                                <StackPanel  x:Name="stack2">
+                                    <Components:HlpCheckBox Height="36.333" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,10,0,4" Caption="Imprimi mensagem padrão para o super simples?" Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="300"/>
+                                    <Components:HlpPesquisa Height="36.333" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" Caption="Código da observação para impressão do super simples." WidthLabel="300" Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem padrão do super simples? estiver como opção 1-Sim"/>
+                                    <Components:HlpCheckBox Height="37.667" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" Caption="Imprimi mensagem de crédito de ICMS do super Simples? " Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão de crédito de ICMS do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="300"/>
+                                    <Components:HlpPesquisa Height="48" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" Caption="Código da observação para impressão da mensagem de crédito de ICMS do super simples." Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem de crédito de ICMS do super simples? estiver como opção 1-Sim." WidthLabel="300"/>
                                 </StackPanel>
 
                             </DockPanel>
                         </Expander>
                     </TabItem>
                 </TabControl>
+            </TabItem>
+			<TabItem Header="Comercial">
+					<Expander Header="Parâmetros Comercial" Height="439.5" IsExpanded="True">
+						<DockPanel LastChildFill="True">
+							<StackPanel Width="678" DockPanel.Dock="Left">
+								<Components:HlpTextBox Height="27" Margin="10,10,106,-1" Caption="Mascara Centro de Custo" Help="Informar a característica do formato para o centro de custo." WidthLabel="364"/>
+								<Components:HlpTextBox Height="27" Margin="10,0,106,-1" Caption="Quantidade de dias para validade do orçamento" Help="Informar a quantidade de dias validos para o orçamento, após o prazo vencido só terá acesso quando o administrador liberar o orçamento." WidthLabel="364"/>
+								<Components:HlpCheckBox Height="27" Margin="10,0,106,-1" Caption="Obriga Análise e aprovação de Crédito?" Help="Informar se será obrigatório a análise para aprovação de crédito." WidthLabel="364"/>
+								<Components:HlpCheckBox Height="42" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Orçamento de Vendas" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um orçamento para o cliente" WidthLabel="364"/>
+								<Components:HlpCheckBox Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Pedido de Vendas" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um pedido de venda para o cliente" WidthLabel="364"/>
+								<Components:HlpCheckBox Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Faturamento" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um nf para o cliente" WidthLabel="364"/>
+								<Components:HlpCheckBox Height="27" Margin="10,0,106,-1" Caption="Obriga o uso da Lista de Preço" Help="O sistema obrigará o uso da lista de preço definida no cadastro do cliente, não deixando o uso de nenhuma outra lista de preço" WidthLabel="364"/>
+								<Components:HlpComboBox Height="27" Margin="10,0,182,-1" Caption="Conceder desconto baseado em?" Help="Informar ao sistema em que ele se baseará com default os desconto, sendo para:" WidthLabel="364"/>
+								<Components:HlpComboBox Height="27" Margin="10,0,182,-1" Caption="Tipo de Desconto" Help="Informar se o desconto irá aparecer ou não na nota fiscal." WidthLabel="364"/>
+								<Components:HlpCheckBox Height="27" Margin="10,0,106,-1" Caption="Usar projeto no Orçamento" Help="É o mesmo esquema hoje do magnificus, daquele que ao lançar um item no orçamento aparece a pergunta? Se for não será necessário o campo iremos montar uma tela só para projetos, não servirá só para projetos de produtos e sim até para serviços. Pensaremos nisso mais para frente quando chegar Ordem de produção." WidthLabel="364"/>
+								<Components:HlpCheckBox Height="27" Margin="10,0,106,-1" Caption="Obrigar a aprovação do Pedido de Vendas" Help="Informar se o sistema irá obrigar a aprovação do Pedido de Vendas, após confirmado a obrigação (1-Sim) o sistema não deixará prosseguir os processos após a venda, tais como a emissão do faturamento, geração de Ordem de produção, impressão da Nota Fiscal, etc..." WidthLabel="364"/>
+								<Components:HlpPesquisa Height="27" Margin="10,0,10,-1" Caption="Moeda padrão para todo o módulo Comercial" Help="Informar qual moeda será padrão para emissão de orçamento, pedido de vendas e faturamento, mesmo trazendo a moeda nada impede que o usuário troque no ato da montagem das ordens." WidthLabel="364"/>
+							</StackPanel>
+							<StackPanel>
+								<Components:HlpComboBox Height="27" Width="292" Margin="-190,15,0,2" Caption="Origem da Lista de Preço" Help="Informar de onde vem a lista padrão de preço, assim temos:" WidthLabel="198"/>
+								<Components:HlpComboBox Height="27" Width="292" Margin="-190,0,0,2" Caption="Utiliza venda casada?" Help="Sem especificação" WidthLabel="198"/>
+								<Components:HlpComboBox Height="27" Width="292" Margin="-190,0,0,2" Caption="Utiliza venda de Kit?" Help="Sem especificação" WidthLabel="198"/>
+								<Components:HlpComboBox Height="27" Width="292" Margin="-190,0,0,2" Caption="Tipo de Rateio sobre o Frete" Help="Informar qual será a situação do rateio sobre o frete." WidthLabel="198"/>
+
+								
+							</StackPanel>
+						</DockPanel>							
+					</Expander>	
+			</TabItem>
+			<TabItem Header="Financeiro">
+                    <Expander Header="Parâmetros Financeiro" Height="436" IsExpanded="True">
+                        <StackPanel>
+                            <Components:HlpTextBox Height="27" Margin="10,10,408.256,2" Caption="Mascara para Classes Financeira" Help="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos." WidthLabel="461"/>
+                            <Components:HlpCheckBox Height="27" Margin="10,0,178.256,2" Caption="Fechar ordem de produção com saldo a produzir?" Help="Informar ao sistema se poderá fechar ou finalizar a ordem de produção mesmo com saldo aberto a produzir." WidthLabel="461"/>
+                            <Components:HlpPesquisa Height="27" Margin="10,0,178.256,2" Caption="Operação padrão para ordem de produção para produtos." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos" WidthLabel="461"/>
+                            <Components:HlpPesquisa Height="27" Margin="10,0,178.256,2" Caption="Operação padrão para ordem de produção para serviços." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para serviços." WidthLabel="461"/>
+                            <Components:HlpPesquisa Height="27" Margin="10,0,178.256,2" Caption="Operação padrão para ordem de produção para beneficiamento." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para beneficiamento." WidthLabel="461"/>
+                        </StackPanel>
+                    </Expander>                
             </TabItem>
         </TabControl>
 
