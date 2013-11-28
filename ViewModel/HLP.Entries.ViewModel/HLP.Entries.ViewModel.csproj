@@ -57,6 +57,7 @@
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
     <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
+    <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
     <Compile Include="Commands\DecisaoCommands.cs" />
@@ -70,7 +71,6 @@
     <Compile Include="Commands\Gerais\FamiliaProdutoCommand.cs" />
     <Compile Include="Commands\Gerais\FuncionarioCommands.cs" />
     <Compile Include="Commands\Gerais\MoedaCommands.cs" />
-    <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Gerais\Ramo_atividadeCommands.cs" />
     <Compile Include="Commands\Gerais\siteCommands.cs" />
     <Compile Include="Commands\Gerais\TipoServicoCommand.cs" />
@@ -184,6 +184,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\multaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Plano_PagamentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -330,6 +335,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Familia_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Ramo_atividadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.SiteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Tipo_servicoModel.datasource" />
@@ -743,6 +749,25 @@
     <None Include="Service References\multaService\serviceMulta5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.wsdl" />
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\produtoService\serviceProduto.wsdl" />
     <None Include="Service References\produtoService\serviceProduto.xsd">
       <SubType>Designer</SubType>
@@ -938,6 +963,7 @@
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\multaService\" />
+    <WCFMetadataStorage Include="Service References\Plano_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
@@ -1410,6 +1436,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\contato_Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Plano_PagamentoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Plano_PagamentoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Plano_PagamentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
