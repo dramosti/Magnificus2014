@@ -141,7 +141,7 @@ namespace HLP.Dependencies
 
             //#region Financeiro
 
-            //Bind<IBancoRepository>().To<BancoRepository>();
+            Bind<IBancoRepository>().To<BancoRepository>();
             Bind<IAgenciaRepository>().To<AgenciaRepository>();
             Bind<IAgencia_ContatoRepository>().To<Agencia_ContatoRepository>();
             Bind<IAgencia_EnderecoRepository>().To<Agencia_EnderecoRepository>();
