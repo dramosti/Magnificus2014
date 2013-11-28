@@ -79,6 +79,7 @@
     <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\Transportes\Condicao_entregaCommands.cs" />
+    <Compile Include="Commands\Transportes\RotaCommand.cs" />
     <Compile Include="Commands\Transportes\TransportadorCommands.cs" />
     <Compile Include="Commands\UFCommands.cs" />
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Transportes\Condicao_entregaViewModel.cs" />
+    <Compile Include="ViewModels\Transportes\RotaViewModel.cs" />
     <Compile Include="ViewModels\Transportes\TransportadorViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
     <Compile Include="ViewModels\Unidade_MedidaViewModel.cs" />

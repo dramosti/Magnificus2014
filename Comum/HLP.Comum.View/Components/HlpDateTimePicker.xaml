@@ -20,7 +20,7 @@
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"  Height="{Binding ElementName=componente, Path=Height}"/>
         <DatePicker x:Name="dtControle"
                 SelectedDate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDate}"
-                SelectedDateFormat="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDateFormat}" Height="25"    
+                SelectedDateFormat="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDateFormat}" Height="25" Width="104"    
                     />        
     </DockPanel>
 </runtime:BaseControl>
