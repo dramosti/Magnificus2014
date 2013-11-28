@@ -40,7 +40,7 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
             canExecute: paramCanExec => this.CopyCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.PesquisarRegistro(),
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
                     canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
@@ -134,7 +134,6 @@ namespace HLP.Entries.ViewModel.Commands
                 this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
-
         private bool DeleteCanExecute()
         {
             if (objViewModel.currentModel == null)
@@ -173,13 +172,19 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        private void PesquisarRegistro()
+
+        public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
+        }
+
+
+        private void PesquisarRegistro()
+        {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-
             bw.RunWorkerAsync();
         }
 

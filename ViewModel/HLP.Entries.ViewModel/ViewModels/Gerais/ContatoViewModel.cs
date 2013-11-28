@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class ContatoViewModel
+    public class ContatoViewModel : ViewModelBase
     {
 
         #region Icommands
