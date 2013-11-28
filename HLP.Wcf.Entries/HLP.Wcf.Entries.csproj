@@ -109,6 +109,7 @@
     <Content Include="serviceProduto.svc" />
     <Content Include="serviceRamoAtividade.svc" />
     <Content Include="serviceRegiao.svc" />
+    <Content Include="serviceRota.svc" />
     <Content Include="serviceSetor.svc" />
     <Content Include="serviceSite.svc" />
     <Content Include="serviceTipoServico.svc" />
@@ -148,6 +149,7 @@
     <Compile Include="IserviceProduto.cs" />
     <Compile Include="IserviceRamoAtividade.cs" />
     <Compile Include="IserviceRegiao.cs" />
+    <Compile Include="IserviceRota.cs" />
     <Compile Include="IserviceSetor.cs" />
     <Compile Include="IserviceSite.cs" />
     <Compile Include="IserviceTipoServico.cs" />
@@ -226,6 +228,9 @@
     </Compile>
     <Compile Include="serviceRegiao.svc.cs">
       <DependentUpon>serviceRegiao.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceRota.svc.cs">
+      <DependentUpon>serviceRota.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceSetor.svc.cs">
       <DependentUpon>serviceSetor.svc</DependentUpon>
