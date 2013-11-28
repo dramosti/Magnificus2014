@@ -66,6 +66,7 @@
     <Compile Include="Models\Comercial\ProdutoModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
     <Compile Include="Models\Financeiro\AgenciaModel.cs" />
+    <Compile Include="Models\Financeiro\BancoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Repository\Implementation\Financeiro\AgenciaRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Agencia_ContatoRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Agencia_EnderecoRepository.cs" />
+    <Compile Include="Repository\Implementation\Financeiro\BancoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
@@ -191,6 +193,7 @@
     <Compile Include="Repository\Interfaces\Financeiro\IAgenciaRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IAgencia_ContatoRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IAgencia_EnderecoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Financeiro\IBancoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />

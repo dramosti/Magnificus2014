@@ -15,8 +15,19 @@ namespace HLP.Entries.Model.Models.Financeiro
         {
         }
 
+        
+        private int? _idAgencia;
         [ParameterOrder(Order = 1)]
-        public int? idAgencia { get; set; }
+        public int? idAgencia
+        {
+            get { return _idAgencia; }
+            set
+            {
+                _idAgencia = value;
+                base.NotifyPropertyChanged(propertyName: "idAgencia");
+            }
+        }
+        
         [ParameterOrder(Order = 2)]
         public int idBanco { get; set; }
         [ParameterOrder(Order = 3)]
