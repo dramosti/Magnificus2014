@@ -274,14 +274,14 @@
 							</Components:HlpPesquisa>
 						</StackPanel>
 					</Expander>	
-					<Expander Header="Administração" HorizontalAlignment="Left" Height="101.57" Margin="585,0,0,0" VerticalAlignment="Top" Width="466" IsExpanded="True">
+					<Expander Header="Administração" HorizontalAlignment="Left" Height="101.57" Margin="585,0,0,0" VerticalAlignment="Top" Width="549.5" IsExpanded="True">
 						
 						<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="78.07" Margin="0,0,-2,0" >
 							<Components:HlpComboBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="9,20,10,-1" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
+								Height="27" Margin="10,20,330,-1" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
 								<Components:HlpComboBox.Items>
 									<System:String>0-Centro de Trabalho</System:String>
                                     <System:String>1-Funcionário</System:String>

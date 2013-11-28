@@ -101,11 +101,17 @@
     <Compile Include="Gerais\WinRamoAtividade.xaml.cs">
       <DependentUpon>WinRamoAtividade.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinTipoServico.xaml.cs">
+      <DependentUpon>WinTipoServico.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinUF.xaml.cs">
       <DependentUpon>WinUF.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinUnidadeMedida.xaml.cs">
       <DependentUpon>WinUnidadeMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Parametrização\WinParametrizacao.xaml.cs">
+      <DependentUpon>WinParametrizacao.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecursosHumanos\WinCargo.xaml.cs">
       <DependentUpon>WinCargo.xaml</DependentUpon>
@@ -174,6 +180,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Gerais\WinTipoServico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gerais\WinUnidadeMedida.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,6 +201,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Gerais\WinUF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Parametrização\WinParametrizacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

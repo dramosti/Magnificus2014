@@ -6,7 +6,7 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinRamoAtividade"
         Title="Ramo de Atividade" Height="660" Width="1024">
 	<Grid>
-		<Expander Header="Principal" HorizontalAlignment="Left" Height="297" VerticalAlignment="Top" Width="549.5" IsExpanded="True">
+		<Expander Header="Principal" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="563.5" IsExpanded="True">
 			<StackPanel>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"

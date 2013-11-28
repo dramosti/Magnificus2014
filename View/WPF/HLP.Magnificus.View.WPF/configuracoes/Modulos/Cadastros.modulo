@@ -60,4 +60,10 @@
 <object id="WinRamoAtividade" name="WinRamoAtividade" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinRamoAtividade, HLP.Entries.View.WPF">
   </object>
+<object id="WinTipoServico" name="WinTipoServico" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinTipoServico, HLP.Entries.View.WPF">
+  </object>
+  <object id="WinParametrizacao" name="WinParametrizacao" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Parametrização.WinParametrizacao, HLP.Entries.View.WPF">
+  </object>
 </objects>
