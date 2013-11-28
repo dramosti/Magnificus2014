@@ -94,6 +94,7 @@
     <Content Include="serviceCondicao_Entrega.svc" />
     <Content Include="serviceCondicao_Pagamento.svc" />
     <Content Include="serviceContato.svc" />
+    <Content Include="serviceConta_Bancaria.svc" />
     <Content Include="serviceConversao.svc" />
     <Content Include="serviceDecisao.svc" />
     <Content Include="serviceDepartamento.svc" />
@@ -136,6 +137,7 @@
     <Compile Include="IserviceCondicao_Entrega.cs" />
     <Compile Include="IserviceCondicao_Pagamento.cs" />
     <Compile Include="IserviceContato.cs" />
+    <Compile Include="IserviceConta_Bancaria.cs" />
     <Compile Include="IserviceConversao.cs" />
     <Compile Include="IserviceDecisao.cs" />
     <Compile Include="IserviceDepartamento.cs" />
@@ -187,6 +189,9 @@
     </Compile>
     <Compile Include="serviceContato.svc.cs">
       <DependentUpon>serviceContato.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceConta_Bancaria.svc.cs">
+      <DependentUpon>serviceConta_Bancaria.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceConversao.svc.cs">
       <DependentUpon>serviceConversao.svc</DependentUpon>

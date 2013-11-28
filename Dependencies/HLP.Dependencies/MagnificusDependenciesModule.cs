@@ -149,7 +149,7 @@ namespace HLP.Dependencies
             //Bind<IDescontos_AvistaRepository>().To<Descontos_AvistaRepository>();
             //Bind<IDia_PagamentoRepository>().To<Dia_PagamentoRepository>();
             //Bind<IDia_pagamento_linhasRepository>().To<Dia_Pagamento_LinhaRepository>();
-            //Bind<IConta_bancariaRepository>().To<Conta_bancariaRepository>();
+            Bind<IConta_bancariaRepository>().To<Conta_bancariaRepository>();
 
             //#endregion
 
