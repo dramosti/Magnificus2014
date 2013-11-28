@@ -62,7 +62,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
                 regRotaAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Rota",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idRota"),
-                                         MapBuilder<RotaModel>.MapAllProperties().Build());
+                                         MapBuilder<RotaModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
             }
 
             return regRotaAccessor.Execute(idRota).FirstOrDefault();

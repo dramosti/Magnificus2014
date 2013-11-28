@@ -4,14 +4,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinMoeda"
-        Title="Moedasg" Height="660" Width="1024">
+        Title="Moedas" Height="660" Width="1024" NameView="vwMoeda">
 	<Grid>
 		<Expander Header="Principal" HorizontalAlignment="Left" Height="155.5" VerticalAlignment="Top" Width="718.5" IsExpanded="True">
 			<StackPanel>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"	
-					Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					Text="{Binding currentModel.idMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					IsEnabled="False"
 					Height="27" Margin="10,10,438.333,2" Caption="Código da Moeda" Field="idMoeda" Help="Chave principal do registro da Moeda, campo autoincremental" Table="Moeda" WidthLabel="162"/>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"	
