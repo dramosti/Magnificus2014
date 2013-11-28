@@ -15,5 +15,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         {
             this.objViewModel = objViewModel;
         }
+
+        
     }
 }
