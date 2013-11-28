@@ -85,7 +85,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
-
         private bool DeleteCanExecute()
         {
             if (objViewModel.currentModel == null)

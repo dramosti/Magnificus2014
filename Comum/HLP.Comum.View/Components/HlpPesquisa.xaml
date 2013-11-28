@@ -14,11 +14,12 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <Label x:Name="lblCaption" 
-               Style="{StaticResource  LabelStyleComponents}"
-               Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
+        <TextBlock x:Name="lblCaption" 
+               TextWrapping="Wrap"
+               Style="{StaticResource  TextBlocktyleComponents}"
+               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="27"/>
-        <TextBox x:Name="txtID" 
+        <TextBlock x:Name="txtID" 
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  TextWrapping="Wrap" Width="80" Height="20"/>
         <TextBox x:Name="txtDisplay" IsReadOnly="True" 

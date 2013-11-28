@@ -458,6 +458,10 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Lucida Handwriting"/>
     </Style>
+    <Style x:Key="TextBlocktyleComponents" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Lucida Handwriting"/>
+    </Style>
 
     <ControlTemplate x:Key="exceptionComp">
         <DockPanel LastChildFill="True">
