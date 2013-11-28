@@ -6,17 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Components
-{
-    [DataContract]
+{    
     public class PesquisaPadraoModelContract
-    {
-        [DataMember]
-        public string COLUMN_NAME { get; set; }
-        [DataMember]
+    {        
+        public string COLUMN_NAME { get; set; }        
         public string DATA_TYPE { get; set; }
-        [DataMember]
         public string IS_NULLABLE { get; set; }
-        [DataMember]
         public int CHARACTER_MAXIMUM_LENGTH { get; set; }
     }
 }

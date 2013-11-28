@@ -181,8 +181,17 @@ namespace HLP.Entries.ViewModel.Commands
 
         public void ExecPesquisa()
         {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.PesquisarRegistro();
+            try
+            {
+                this.objViewModel.pesquisarBaseCommand.Execute(null);
+                this.PesquisarRegistro();
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+            
         }
 
         private void PesquisarRegistro()

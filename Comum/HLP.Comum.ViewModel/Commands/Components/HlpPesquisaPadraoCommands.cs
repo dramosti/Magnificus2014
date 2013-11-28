@@ -157,7 +157,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
         async void bwCarregaInfTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             await Application.Current.Dispatcher.BeginInvoke(
-                    DispatcherPriority.Background, new Action(() => this._objViewModel.lFilers =  new ObservableCollection<PesquisaPadraoModel>(e.Result as List<PesquisaPadraoModel>)));
+                    DispatcherPriority.Background, new Action(() => this._objViewModel.lFilers = new ObservableCollection<PesquisaPadraoModel>(e.Result as List<PesquisaPadraoModel>)));
         }
         void GetTableInformation_Background(object sender, DoWorkEventArgs e)
         {
@@ -166,7 +166,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 if (servicoPesquisaPadrao == null)
                     servicoPesquisaPadrao = new HlpPesquisaPadraoService.IservicePesquisaPadraoClient();
 
-                PesquisaPadraoModelContract[] lResult = servicoPesquisaPadrao.GetTableInformation(sViewName: e.Argument.ToString());
+                HlpPesquisaPadraoService.PesquisaPadraoModelContract[] lResult = servicoPesquisaPadrao.GetTableInformation(sViewName: e.Argument.ToString());
 
                 e.Result = (from c in lResult
                              select new PesquisaPadraoModel

@@ -37,8 +37,8 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                                                                     .DoNotMap(C => C.EOU)
                                                                     .DoNotMap(C => C.HeaderText)
                                                                     .DoNotMap(C => C.OwnerType)
-                                                                    .DoNotMap(C=> C.bEnablePesquisa)
-                                                                    .DoNotMap(C=> C.status)
+                                                                    .DoNotMap(C => C.bEnablePesquisa)
+                                                                    .DoNotMap(C => C.status)
                                                                     .Build());
             }
             return regPesquisaPadraoAccessor.Execute(sViewName).ToArray();
@@ -53,7 +53,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                                            where TABLE_NAME = @sViewName",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<string>("sViewName"),
-                  MapBuilder<PesquisaPadraoModelContract>.MapAllProperties()
+                  MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().DoNotMap(i => i.IS_NULLABLE).DoNotMap(i => i.CHARACTER_MAXIMUM_LENGTH)
                                                                     .Build());
             }
             return regPesquisaPadraoContractAccessor.Execute(sViewName).ToArray();
@@ -92,10 +92,10 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                     sSelect += " ORDER BY DISPLAY";
                 }
                 DbCommand cmd = UndTrabalho.dbPrincipal.GetSqlStringCommand(sSelect);
-              
-                
+
+
                 IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(cmd);
-              
+
                 DataTable dt = new DataTable();
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
@@ -124,7 +124,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         }
                     }
                     dt.Rows.Add(array);
-                }                
+                }
                 return dt;
             }
             catch (Exception ex)
