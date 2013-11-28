@@ -1,0 +1,151 @@
+﻿<runtime:WindowsBase 
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Parametrização.WinParametrizacao"
+        Title="Parâmetros" Height="600" Width="1200">
+	<DockPanel LastChildFill="True" > 
+		<Expander Header="Dados da Empresa" DockPanel.Dock="Top" IsExpanded="True" Height="103">
+			<StackPanel >
+				<Components:HlpTextBox Height="27" Margin="10,10,874,2" Caption="Código" Help="Seleciona a empresa" WidthLabel="63"/>
+				<Components:HlpTextBox Height="27" Margin="10,0,606,0" Caption="Nome" Help="Digita o nome da empresa" WidthLabel="63"/>
+			</StackPanel>
+		</Expander>
+		<TabControl  VerticalAlignment="Stretch">
+			<TabItem Header="Estoque">
+				<Grid>
+					<Expander Header="Parâmetros de Estoque" HorizontalAlignment="Left" Height="307.04" VerticalAlignment="Top" Width="735.5" IsExpanded="True">
+						<StackPanel>
+							<Components:HlpComboBox Height="27" Margin="9.997,10,321.443,-1" Caption="Tipo do estoque mínimo." Help="Informar se o tipo de estoque mínimo será Automático ou Manual." WidthLabel="248" RenderTransformOrigin="0.5,0.5">
+								<Components:HlpComboBox.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform/>
+										<SkewTransform AngleY="0.037"/>
+										<RotateTransform Angle="0.04"/>
+										<TranslateTransform/>
+									</TransformGroup>
+								</Components:HlpComboBox.RenderTransform>
+							</Components:HlpComboBox>
+							<Components:HlpComboBox Height="27" Margin="9.997,0,321.443,-1" Caption="Tipo do estoque máximo." Help="Informar se o tipo de estoque máximo será Automático ou Manual." WidthLabel="248"/>
+							<Components:HlpComboBox Height="27" Margin="9.997,0,321.443,-1" Caption="Tipo de média consumo" Help="Informar ao sistema em quanto tempo será a feita de média de consumo:" WidthLabel="248"/>
+							<Components:HlpComboBox Height="27" Margin="9.997,0,321.443,-1" Caption="Vendas Gera?" Help="Quando a empresa trabalha sem estoque, quando faz o pedido de venda o sistema já gera automaticamente uma necessidade de compra para atendimento da venda." WidthLabel="248"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,313.442,-1" Caption="Utiliza grade nos produtos?" Help="Informar se o Magnificus irá trabalhar com grades, além dessa informação para que veja as opções das grades nas movimentações de vendas, compras ou movimentação, no cadastro do produto deve estar definido em qual grade ele pertence." WidthLabel="388"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,313.442,-1" Caption="Utiliza rastreabilidade dos materiais?" Help="Informar se o Magníficus irá fazer a rastreabilidade de todos os materias de consumo, compras, aquisição, etc. Menos os produtos acabados." WidthLabel="388"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,313.442,-1" Caption="Utiliza rastreabilidade dos produtos acabados?" Help="Informar se o Magníficus irá fazer a rastreabilidade de todos os produtos acabados inclusive a rastreabilidade dos materiais." WidthLabel="388"/>
+						</StackPanel>
+					</Expander>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Custos">
+				<StackPanel>
+					<Expander Header="Parâmetros Custo" Height="436.5" IsExpanded="True">
+						<StackPanel>
+							<Components:HlpTextBox Height="27" Margin="10,10,438.5,-1" Caption="Horas trabalhada dia" Help="de custo hora homem. " WidthLabel="484"/>
+							<Components:HlpTextBox Height="27" Margin="10,0,438.5,-1" Caption="Quantidade de dias trabalhada na semana" Help="Informar a quantidade de dias trabalhada na semana para calculo de custo." WidthLabel="484"/>
+							<Components:HlpComboBox Height="27" Margin="10,0,395,-1" Caption="Qual o custo do Material na composição do produto final" Help="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)" WidthLabel="484"/>
+							<Components:HlpComboBox Height="27" Margin="10,0,242,-1" Caption="Tipo de Valor de Venda" Help="Após calculado o custo de um produto o sistema irá por padrão assumir o preço de venda, 1- NENHUM(sem preço), 2-SUGERIDO (o calculado pelo sistema) ou3-MERCADO (é o valor de mercado informado na composição de preços).  " WidthLabel="484"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,488,-1" Caption="Atualiza valor de custo" WidthLabel="484"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,488,-1" Caption="Atualiza valor de Venda pós Recebimento?" Help="Informar se o valor de venda será atualizado automaticamente pelo sistema após o recebimento, seja produto acabado ou material de venda." WidthLabel="484"/>
+							<Components:HlpComboBox Height="27" Margin="10,0,395,-1" Caption="Tipo de Custo Default?" Help="Informar qual o tipo custo Default quando é incluído um novo produto, lembrando que não é esse tipo de custo que o software se baseará ele se baseia pelo tipo de custo que esta no cadastro de produto no campo formação de custo." WidthLabel="484"/>
+							<Components:HlpComboBox Height="27" Margin="10,0,395,-1" Caption="Custo Médio Default" Help="Informar qual o custo médio Default quando é incluído um novo produto, lembrando que não é esse tipo de custo médio que o software se baseará ele se baseia pelo que esta no cadastro de produto no campo tipo de custo." WidthLabel="484"/>
+							<Components:HlpComboBox Height="27" Margin="10,0,10,-1" Caption="Base de calculo para o custo operacional" Help="1- VALOR DE CUSTO DO MATERIAL(DEFAULT)" WidthLabel="484"/>
+							<Components:HlpPesquisa Height="27" Margin="10,0,242,-1" Caption="Tipo de operação padrão para calculo de custo do produto/material" WidthLabel="484"/>
+						</StackPanel>
+					</Expander>
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="Compras">
+				<StackPanel>
+					<Expander Header="Parâmetros de Compras" Height="435" IsExpanded="True">
+						<StackPanel>
+							<Components:HlpTextBox Height="27" Margin="10,10,445.5,2" Caption="Total máximo para liberação automática do pedido" Help="Informar o total máximo para aquele determinado pedido de compras para ser liberado automaticamente pelo sistema, sem aprovação de um supervisor." WidthLabel="379"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,445.5,2" Caption="Requer aprovação da requisição?" Help="Informar se será obrigatória a aprovação da Requisição seja ela de consumo ou de compras. Quando ‘SIM’ o sistema só irá liberar a Requisição para cotação de compras quando aprovado por algum supervisor." WidthLabel="379"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,445.5,2" Caption="Requer aprovação de cotação de compras?" Help="Informar se será obrigatória a aprovação da cotação de compras. Quando ‘SIM’ o sistema só irá liberar a cotação para montagem do pedido quando aprovado por algum supervisor" WidthLabel="379"/>
+							<Components:HlpComboBox Height="27" Margin="10,0,445.5,2" Caption="Requer aprovação de pedido de compras?" Help="- Quando o campo “St_aprova_pedido” é igual a “0-NÃO” o campo “Vl_aprova_auto_pedido” deve ser igual a zero;" WidthLabel="379"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,445.5,0" Caption="Ignora saldo do estoque na requisição?" Help="Informar se o sistema irá ignorar o saldo de estoque quando gerado uma requisição de consumo ou compra." WidthLabel="379"/>
+						</StackPanel>
+					</Expander>
+					
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="Ordem de Produção">
+				<StackPanel>
+					<Expander Header="Parâmetros de Ordem de Produção" Height="436" IsExpanded="True">
+						<StackPanel>
+							<Components:HlpComboBox Height="27" Margin="10,10,408.256,2" Caption="Produção gera?" Help="Quando a ordem de produção é gerada o calculará a sua necessidade de consumo para aquela Ordem de produção se não possuir a quantidade necessária em estoque, o que deve ser gerado." WidthLabel="461"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,178.256,2" Caption="Gera ordem de produção filhas? " Help="Informar ao sistema que ao gerar uma ordem de produção e a mesma conter em sua engenharia subprodutos (produtos com estruturas própria) e o mesmo não ter em estoque será gerado uma outra ordem de produção referente aos subprodutos " WidthLabel="461"/>
+							<Components:HlpCheckBox Height="27" Margin="10,0,178.256,2" Caption="Fechar ordem de produção com saldo a produzir?" Help="Informar ao sistema se poderá fechar ou finalizar a ordem de produção mesmo com saldo aberto a produzir." WidthLabel="461"/>
+							<Components:HlpPesquisa Height="27" Margin="10,0,178.256,2" Caption="Operação padrão para ordem de produção para produtos." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos" WidthLabel="461"/>
+							<Components:HlpPesquisa Height="27" Margin="10,0,178.256,2" Caption="Operação padrão para ordem de produção para serviços." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para serviços." WidthLabel="461"/>
+							<Components:HlpPesquisa Height="27" Margin="10,0,178.256,2" Caption="Operação padrão para ordem de produção para beneficiamento." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para beneficiamento." WidthLabel="461"/>
+						</StackPanel>
+					</Expander>
+				</StackPanel>	
+			</TabItem>
+			<TabItem Header="Fiscal">
+				
+					<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+						<TabItem Header="Geral">							
+							<Expander Header="Fiscal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True" Margin="0,-1,0,1">
+								<DockPanel LastChildFill="True">
+									<StackPanel Width="466.5" DockPanel.Dock="Left">
+										<Components:HlpTextBox Height="27" Margin="10,10,88.5,-1" Caption="Alíquota PIS " Help="Informar a alíquota do PIS - Programas de Integração Social e de Formação do Patrimônio do Servidor Público" WidthLabel="284"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,88.5,-1" Caption="Alíquota COFINS" Help="Informar a alíquota do COFINS - Contribuição para Financiamento da Seguridade Social." WidthLabel="284"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,88.5,-1" Caption="Alíquota CSLL" Help="Informar a alíquota da Contribuição Social sobre o Lucro Líquido." WidthLabel="284"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,42,-1" Caption="Regime de apuração do IRPJ" Help="As disposições tributárias do IR aplicam-se a todas as firmas e sociedades, registradas ou não.As entidades submetidas aos regimes de liquidação extrajudicial e de falência sujeitam-se às normas de incidência do imposto aplicáveis às pessoas jurídicas, em relação às operações praticadas durante o período em que perdurarem os procedimentos para a realização de seu ativo e o pagamento do passivo (Lei 9.430/96, art. 60)." WidthLabel="284"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,42,-1" Caption="Tipo de apuração do IPI" Help="Definir o tipo de apuração para o IPI – Imposto sobre produtos industrializados." WidthLabel="284"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,42,-1" Caption="Regime de tributação do PIS e COFINS" Help="Informar qual é o tipo de Regime de tributação ao PIS e COFINS." WidthLabel="284"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,42,-1" Caption="Tipo apuração do PIS e COFINS" Help="Informar qual é o tipo de apuração do PIS e COFINS." WidthLabel="284"/>
+										<Components:HlpCheckBox Height="27" Margin="10,0,57,-1" Caption="Produtor Rural?" Help="Informar se a organização é uma Produtora Rural." WidthLabel="284"/>
+										<Components:HlpCheckBox Height="27" Margin="10,0,57,-1" Caption="Cooperativa Agrícola?" Help="Informar se a organização é uma cooperativa Agrícola." WidthLabel="284"/>
+										<Components:HlpCheckBox Height="27" Margin="10,0,57,-1" Caption="Destaca ISS na nota fiscal de serviços?" Help="Informar se o ISS – Imposto sobre Serviço será destacado na nota fiscal de Serviços." WidthLabel="284"/>
+										<Components:HlpCheckBox Height="27" Margin="10,0,57,-1" Caption="Destaca CSLL na nota fiscal de serviços?" Help="Informar se a CSLL – Contribuição Social sobre o Lucro Líquido será destacado na nota fiscal de serviços." WidthLabel="284"/>
+									</StackPanel>
+									<StackPanel>
+										<Components:HlpCheckBox Height="27" Width="516" Margin="10,10,0,-1" Caption="Destaca IRRF na nota fiscal de serviços?" Help="Informar se o IRRF – Imposto de Renda Retido na Fonte será destacado na nota fiscal de serviços." WidthLabel="394"/>
+										<Components:HlpCheckBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Destaca PIS e COFINS na nota fiscal de serviços?" WidthLabel="394"/>
+										<Components:HlpCheckBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Destaca INSS na nota fiscal de serviços?" Help="Informar se o INSS – Instituto Nacional de Seguro Social, será destacado na nota fiscal de serviços." WidthLabel="394"/>
+										<Components:HlpComboBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Ambiente para NF-e de Produtos" Help="Nota Fiscal eletrônica para produtos." WidthLabel="394"/>
+										<Components:HlpComboBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Ambiente para NF-e de Serviços?" Help="Informar se a organização está em ambiente para emissão de Nota Fiscal eletrônica para serviços." WidthLabel="394"/>
+										<Components:HlpCheckBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Imprimi mensagem de SUFRAMA na Nota Fiscal?" Help="Informar se a mensagem obrigatória de SUFRAMA será impressa na Nota Fiscal ou na Nota Fiscal Eletrônica." WidthLabel="394"/>
+										<Components:HlpComboBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Qual código do produto será impresso na NF-e?" Help="Informar qual será o código do produto será impresso na NF-e" WidthLabel="394"/>
+										<Components:HlpCheckBox Height="27" Width="516" Margin="10,0,0,-1" Caption="Calcula ICMS de Substituição Tributária por Diferença?" Help="Informar se o sistema irá calcular o ICMS de Substituição Tributária por diferença" WidthLabel="394"/>
+									</StackPanel>
+									
+								</DockPanel>	
+							</Expander>							
+						</TabItem>
+						<TabItem Header="Super Simples">
+							<Expander Header="Fiscal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True" Margin="0,-1,0,1">
+								<DockPanel LastChildFill="True">
+									<StackPanel Width="480" DockPanel.Dock="Left">
+										<Components:HlpTextBox Height="27" Margin="10,10,20.857,-1" Caption="Alíquota de ICMS para o super simples" Help="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de ISS para o super simples" Help="Informar a alíquota de ISS – Imposto sobre serviços para o super simples." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de CSLL para o super simples" Help="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de IRRF para o super simples" Help="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples" WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de PIS para o super simples" Help="Informar a alíquota do PIS – Programa de Integração Social para o super simples." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de COFINS para o super simples" Help="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Número de Itens para emissão da NF-e “Formulário”" Help="Informar a quantidade de  itens a ser impresso na nota fiscal quando for formulário continuo." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Número de Itens para emissão da NFS-e “Formulário”" Help="Informar a quantidade de  itens a ser impresso na nota fiscal de serviços, quando for formulário continuo." WidthLabel="377"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,20.857,-1" Caption="Alíquota de INSS para o super simples" Help="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples" WidthLabel="377"/>
+										<Components:HlpCheckBox Height="27" Margin="10,0,20.857,-1" Caption="Optante do Super Simples?" Help="O Simples Nacional é um regime compartilhado de arrecadação, cobrança e fiscalização de tributos aplicável às Microempresas e Empresas de Pequeno Porte, previsto na Lei Complementar nº 123, de 14 de dezembro de 2006." WidthLabel="377"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,20.857,-1" Caption="Código de Regime Tributário (CRT)?" Help="O Código de Regime Tributário ou CRT deve ser indicado na nota fiscal eletrônica." WidthLabel="377"/>
+									</StackPanel>
+									<StackPanel>
+										<Components:HlpCheckBox Height="27" Width="620.608" Margin="-10,10,0,-1" Caption="Imprimi mensagem padrão para o super simples?" Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="394"/>
+										<Components:HlpPesquisa Height="27" Width="622.304" Margin="-10,0,0,-1" Caption="Código da observação para impressão do super simples." WidthLabel="383" Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro “Imprimi mensagem padrão do super simples?” estiver como opção 1-Sim"/>
+										<Components:HlpCheckBox Height="27" Width="624" Margin="-10,0,0,-1" Caption="Imprimi mensagem de crédito de ICMS do super Simples? " Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão de crédito de ICMS do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="394"/>
+										<Components:HlpPesquisa Height="27" Width="622.304" Margin="-10,0,0,-1" Caption="Código da observação para impressão da mensagem de crédito de ICMS do super simples." Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro “Imprimi mensagem de crédito de ICMS do super simples?” estiver como opção 1-Sim." WidthLabel="623"/>
+									</StackPanel>
+									
+								</DockPanel>	
+							</Expander>	
+						</TabItem>
+					</TabControl>	
+			</TabItem>
+		</TabControl>
+
+        
+	</DockPanel>
+</runtime:WindowsBase>

@@ -51,4 +51,19 @@
 <object id="WinFamiliaProduto" name="WinFamiliaProduto" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto, HLP.Entries.View.WPF">
   </object>
+<object id="WinMoeda" name="WinMoeda" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinMoeda, HLP.Entries.View.WPF">
+  </object>
+<object id="WinPlanoPagamento" name="WinPlanoPagamento" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento, HLP.Entries.View.WPF">
+  </object>
+<object id="WinRamoAtividade" name="WinRamoAtividade" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinRamoAtividade, HLP.Entries.View.WPF">
+  </object>
+<object id="WinTipoServico" name="WinTipoServico" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinTipoServico, HLP.Entries.View.WPF">
+  </object>
+  <object id="WinParametrizacao" name="WinParametrizacao" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Parametrização.WinParametrizacao, HLP.Entries.View.WPF">
+  </object>
 </objects>

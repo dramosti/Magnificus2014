@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Comum.Model.Components;
 using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
@@ -29,10 +28,19 @@ namespace HLP.Wcf.Entries
         }
 
 
-        public PesquisaPadraoModelContract[] GetTableInformation(string sViewName)
+        public HLP.Comum.Model.Components.PesquisaPadraoModelContract[] GetTableInformation(string sViewName)
         {
-            var dados = iHlpPesquisaPadraoRepository.GetTableInformationContract(sViewName);
-            return dados;
+            try
+            {
+                var dados = iHlpPesquisaPadraoRepository.GetTableInformationContract(sViewName);
+                return dados;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         public System.Data.DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)

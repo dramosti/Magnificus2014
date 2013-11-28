@@ -12,31 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
-using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
     /// <summary>
-    /// Interaction logic for WinFabricante.xaml
+    /// Interaction logic for WinRamoAtividade.xaml
     /// </summary>
-    public partial class WinFabricante : WindowsBase
+    public partial class WinRamoAtividade : WindowsBase
     {
-        public WinFabricante()
+        public WinRamoAtividade()
         {
             InitializeComponent();
-            this.ViewModel = new FabricanteViewModel();
-        }
-
-        public FabricanteViewModel ViewModel
-        {
-            get
-            {
-                return this.DataContext as FabricanteViewModel;
-            }
-            set
-            {
-                this.DataContext = value;
-            }
         }
     }
 }

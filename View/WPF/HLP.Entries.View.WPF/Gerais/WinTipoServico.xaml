@@ -1,0 +1,29 @@
+﻿<runtime:WindowsBase
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinTipoServico"
+        Title="Tipos de Serviço" Height="600" Width="1024">
+	<Grid>
+		<Expander Header="Principal" HorizontalAlignment="Left" Height="130.5" VerticalAlignment="Top" Width="611" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idTpoServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,10,348.5,2" Caption="Código" Help="Chave principal do registro do tipo de serviço" WidthLabel="130"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.cTipoServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,348.5,2" Caption="Código de Serviço" Help="Digite um código para o tipo de serviço. " WidthLabel="130"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xTipoServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,90.5,2" Caption="Descrição " Help="Descrição do tipo de serviço. " WidthLabel="130"/>
+			</StackPanel>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>

@@ -27,79 +27,79 @@
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
-                <WrapPanel Orientation="Vertical">
-                    <Components:HlpTextBox Caption="Id Empresa" Width="200" WidthLabel="140" Margin="0,3,0,0"
+                <StackPanel>
+                    <Components:HlpTextBox Caption="Id Empresa" WidthLabel="158" Margin="10,10,803.871,2"
                                            Text="{Binding currentModel.idEmpresa, Mode=TwoWay}" IsEnabled="False"/>
-                    <Components:HlpTextBox Caption="Nome" Width="400" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Nome" WidthLabel="158" Margin="10,0,449.909,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xNome, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Fantasia" Width="400" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Fantasia" WidthLabel="158" Margin="10,0,449.909,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xFantasia, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="CNPJ" Width="250" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="CNPJ" WidthLabel="158" Margin="10,0,750.824,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xCNPJ, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="IE" Width="250" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="IE" WidthLabel="158" Margin="10,0,750.824,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xIE, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="IM" Width="250" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="IM" WidthLabel="158" Margin="10,0,750.824,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xIM, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Suframa" Width="250" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Suframa" WidthLabel="158" Margin="10,0,449.909,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xSuframa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Telefone" Width="250" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Telefone" WidthLabel="158" Margin="10,0,750.824,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xTelefone, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Fax" Width="250" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Fax" WidthLabel="158" Margin="10,0,750.824,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xFax, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Email" Width="300" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Email" WidthLabel="158" Margin="10,0,449.909,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xEmail, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Http" Width="300" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Http" WidthLabel="158" Margin="10,3,449.909,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xHttp, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpCheckBox Caption="Ativo" Width="200" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpCheckBox Caption="Ativo" WidthLabel="158" Margin="10,3,869.371,2"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.Ativo, Mode=TwoWay,
                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
                     <Components:HlpPesquisa Caption="Ramo de Atividade"
-                                            IsEnabled="{Binding bIsEnabled}"
-                                            Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                                            Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID"
+                    	IsEnabled="{Binding bIsEnabled}"
+                    	Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID" Margin="10,0,449.909,2" WidthLabel="158"
                                             >
-                        <Components:HlpPesquisa.Items>
-                            <System:String>xRamo</System:String>
-                            <System:String>xDescricao</System:String>
-                        </Components:HlpPesquisa.Items>
+                    	<Components:HlpPesquisa.Items>
+                    		<sys:String>xRamo</sys:String>
+                    		<sys:String>xDescricao</sys:String>
+                    	</Components:HlpPesquisa.Items>
                     </Components:HlpPesquisa>
-                    <Components:HlpTextBox Caption="Link Logo" Width="500" WidthLabel="140" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Link Logo" WidthLabel="158" Margin="10,3,514.409,2"
                                            IsEnabled="{Binding bIsEnabled}"
                                            
     		Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
 
-                    <Components:HlpTextBox Caption="Link Pastas" Width="500" Margin="0,3,0,0"
+                    <Components:HlpTextBox Caption="Link Pastas" Margin="10,3,514.409,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpCheckBox Caption="Cód. Reg. Tribut." Width="160" WidthLabel="140"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" WidthLabel="158"/>
+                    <Components:HlpCheckBox Caption="Cód. Reg. Tribut." WidthLabel="158"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.stCodigoRegimeTributario, Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></Components:HlpCheckBox>
+                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="10,0,869.371,2"/>
 
-                </WrapPanel>
+                </StackPanel>
             </TabItem>
             <TabItem Header="Endereços">
                 <DataGrid 

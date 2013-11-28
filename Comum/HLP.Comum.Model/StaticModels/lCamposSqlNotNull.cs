@@ -10,14 +10,14 @@ namespace HLP.Comum.Model.StaticModels
 {
     public static class lCamposSqlNotNull
     {
-        public static List<CamposSqlNotNullModel> _lCamposSqlNotNull = new List<CamposSqlNotNullModel>();
+        public static List<CamposSqlNotNullModel> _lCamposSql = new List<CamposSqlNotNullModel>();
 
-        public static void AddCampoSqlNotNull(CamposSqlNotNullModel objCamposSqlNotNull)
+        public static void AddCampoSql(CamposSqlNotNullModel objCamposSqlNotNull)
         {
             //if (_lCamposSqlNotNull == null)
             //    _lCamposSqlNotNull = new List<CamposSqlNotNullModel>();
 
-            _lCamposSqlNotNull.Add(item: objCamposSqlNotNull);
+            _lCamposSql.Add(item: objCamposSqlNotNull);
         }
     }
 

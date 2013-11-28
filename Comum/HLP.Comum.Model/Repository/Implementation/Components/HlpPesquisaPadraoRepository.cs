@@ -37,8 +37,8 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                                                                     .DoNotMap(C => C.EOU)
                                                                     .DoNotMap(C => C.HeaderText)
                                                                     .DoNotMap(C => C.OwnerType)
-                                                                    .DoNotMap(C=> C.bEnablePesquisa)
-                                                                    .DoNotMap(C=> C.status)
+                                                                    .DoNotMap(C => C.bEnablePesquisa)
+                                                                    .DoNotMap(C => C.status)
                                                                     .Build());
             }
             return regPesquisaPadraoAccessor.Execute(sViewName).ToArray();
@@ -53,7 +53,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                                            where TABLE_NAME = @sViewName",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<string>("sViewName"),
-                  MapBuilder<PesquisaPadraoModelContract>.MapAllProperties()
+                  MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().DoNotMap(i => i.IS_NULLABLE).DoNotMap(i => i.CHARACTER_MAXIMUM_LENGTH)
                                                                     .Build());
             }
             return regPesquisaPadraoContractAccessor.Execute(sViewName).ToArray();
@@ -62,11 +62,11 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
         public List<PesquisaPadraoModelContract> getCamposSqlNotNull(string xTabela)
         {
             regPesquisaPadraoContractAccessor = this.UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
-                   sqlString: ("select c.COLUMN_NAME, (select keyC.type from sys.key_constraints keyC " +
+                   sqlString: ("select c.COLUMN_NAME, c.IS_NULLABLE, c.CHARACTER_MAXIMUM_LENGTH,(select keyC.type from sys.key_constraints keyC " +
                                "where keyC.name = (select const.CONSTRAINT_NAME from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE const " +
                                "where const.TABLE_NAME = c.TABLE_NAME and const.COLUMN_NAME = c.COLUMN_NAME and const.CONSTRAINT_NAME not like 'PK_%')) as DATA_TYPE " +
                                "from INFORMATION_SCHEMA.COLUMNS c " +
-                               "where c.TABLE_NAME = '" + xTabela + "' and IS_NULLABLE = 'NO'"),
+                               "where c.TABLE_NAME = '" + xTabela + "'"),
                                rowMapper: MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().Build());
             return regPesquisaPadraoContractAccessor.Execute().ToList();
         }
@@ -92,10 +92,10 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                     sSelect += " ORDER BY DISPLAY";
                 }
                 DbCommand cmd = UndTrabalho.dbPrincipal.GetSqlStringCommand(sSelect);
-              
-                
+
+
                 IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(cmd);
-              
+
                 DataTable dt = new DataTable();
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
@@ -124,7 +124,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         }
                     }
                     dt.Rows.Add(array);
-                }                
+                }
                 return dt;
             }
             catch (Exception ex)
