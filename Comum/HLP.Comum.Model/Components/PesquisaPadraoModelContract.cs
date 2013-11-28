@@ -14,5 +14,9 @@ namespace HLP.Comum.Model.Components
         public string COLUMN_NAME { get; set; }
         [DataMember]
         public string DATA_TYPE { get; set; }
+        [DataMember]
+        public string IS_NULLABLE { get; set; }
+        [DataMember]
+        public int CHARACTER_MAXIMUM_LENGTH { get; set; }
     }
 }

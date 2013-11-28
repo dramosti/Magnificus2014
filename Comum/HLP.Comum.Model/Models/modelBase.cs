@@ -25,7 +25,7 @@ namespace HLP.Comum.Model.Models
         public modelBase(string xTabela)
         {
             servico = new camposNotNullService.IcamposBaseDadosServiceClient();
-            if (lCamposSqlNotNull._lCamposSqlNotNull.Count(i => i.xTabela == xTabela)
+            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == xTabela)
                 == 0)
             {
                 CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
@@ -37,13 +37,15 @@ namespace HLP.Comum.Model.Models
                     lCampos.lCamposSqlModel.Add(item: new PesquisaPadraoModelContract
                     {
                         COLUMN_NAME = item.COLUMN_NAME,
-                        DATA_TYPE = item.DATA_TYPE
+                        DATA_TYPE = item.DATA_TYPE,
+                        CHARACTER_MAXIMUM_LENGTH = item.CHARACTER_MAXIMUM_LENGTH,
+                        IS_NULLABLE = item.IS_NULLABLE
                     });
                 }
 
-                lCamposSqlNotNull.AddCampoSqlNotNull(objCamposSqlNotNull: lCampos);
+                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
             }
-            lcamposSqlNotNull = lCamposSqlNotNull._lCamposSqlNotNull.FirstOrDefault(i => i.xTabela
+            lcamposSqlNotNull = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela
                     == xTabela).lCamposSqlModel;
             PropertyInfo p = this.GetType().GetProperty("idEmpresa");
 
@@ -78,24 +80,13 @@ namespace HLP.Comum.Model.Models
         {
             get
             {
-                return this.GetValidationErrorEmpty(columnName: columnName, objeto: this);
+                return this.GetValidationError(columnName: columnName, objeto: this);
             }
         }
 
         #endregion
 
-        public void CarregaEmptyString()
-        {
-            foreach (PropertyInfo pi in this.GetType().GetProperties())
-            {
-                if (pi.PropertyType == typeof(string) && pi.Name != "Item" && pi.Name != "Error")
-                {
-                    pi.SetValue(this, "");
-                }
-            }
-        }
-
-        protected string GetValidationErrorEmpty<T>(string columnName, T objeto) where T : class
+        protected string GetValidationError<T>(string columnName, T objeto) where T : class
         {
             if (lcamposSqlNotNull != null)
             {
@@ -104,12 +95,19 @@ namespace HLP.Comum.Model.Models
                 if (campo != null)
                 {
                     object valor = objeto.GetType().GetProperty(columnName).GetValue(objeto);
-                    if (campo.DATA_TYPE == "F " && valor == "0")
+                    if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == "F " && valor == "0"))
                         return "Necessário que campo possua valor!";
-                    else if ((campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
+                    else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
                         && (valor == "" || valor == null))
                     {
                         return "Necessário que campo possua valor!";
+                    }
+
+                    if (valor != null)
+                    {
+                        if (valor.GetType() == typeof(string) && valor.ToString().Count() > campo.CHARACTER_MAXIMUM_LENGTH)
+                            return "Valor deve possuir menos que " + campo.CHARACTER_MAXIMUM_LENGTH.ToString() +
+                                " caracteres!";
                     }
                 }
             }
