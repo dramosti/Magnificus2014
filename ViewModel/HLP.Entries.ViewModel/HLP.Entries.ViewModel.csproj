@@ -59,6 +59,7 @@
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
     <Compile Include="Commands\Financeiro\AgenciaCommands.cs" />
     <Compile Include="Commands\Financeiro\BancoCommands.cs" />
+    <Compile Include="Commands\Financeiro\Conta_BancariaCommands.cs" />
     <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
@@ -127,6 +128,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\contato_Service\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Conta_BancariaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -275,6 +281,7 @@
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\AgenciaViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\BancoViewModel.cs" />
+    <Compile Include="ViewModels\Financeiro\Conta_BancariaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
@@ -346,6 +353,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.AgenciaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel1.datasource" />
@@ -540,6 +548,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\contato_Service\serviceContato5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.wsdl" />
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ConversaoService\serviceConversao.wsdl" />
@@ -1032,6 +1059,7 @@
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
+    <WCFMetadataStorage Include="Service References\Conta_BancariaService\" />
     <WCFMetadataStorage Include="Service References\ConversaoService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
@@ -1580,6 +1608,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\bancoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
