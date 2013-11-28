@@ -21,28 +21,37 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
 
         public void Save(Rota_pracaModel objRota_Praca)
         {
-            objRota_Praca.idRotaPraca = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Rota_Praca]",
-            ParameterBase<Rota_pracaModel>.SetParameterValue(objRota_Praca));
-        }
 
-        public void Update(Rota_pracaModel objRota_Praca)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
-            "[dbo].[Proc_update_Rota_Praca]",
-            ParameterBase<Rota_pracaModel>.SetParameterValue(objRota_Praca));
-        }
+            if (objRota_Praca.idRotaPraca == null)
+            {
+                objRota_Praca.idRotaPraca = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Rota_Praca]",
+                ParameterBase<Rota_pracaModel>.SetParameterValue(objRota_Praca));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                    "[dbo].[Proc_update_Rota_Praca]",
+                    ParameterBase<Rota_pracaModel>.SetParameterValue(objRota_Praca));
 
+            }
+        }
+              
         public void Delete(Rota_pracaModel objRota_Praca)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Rota_Praca]",
+                UndTrabalho.dbTransaction,
                   UserData.idUser,
                   objRota_Praca.idRotaPraca);
         }
 
-        public void Delete(int idRota)
+        public void DeletePracasByRota(int idRota)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Rota_Praca WHERE idRota = " + idRota);
         }
 
@@ -61,7 +70,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Rota_Praca]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idRotaPraca"),
-                   MapBuilder<Rota_pracaModel>.MapAllProperties().Build());
+                   MapBuilder<Rota_pracaModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
             return regAcessor.Execute(idRotaPraca).FirstOrDefault();
         }
@@ -70,7 +79,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
         {
             DataAccessor<Rota_pracaModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Rota_Praca WHERE idRota = @idRota", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idRota"),
-            MapBuilder<Rota_pracaModel>.MapAllProperties().Build());
+            MapBuilder<Rota_pracaModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
 
             return reg.Execute(idRota).ToList();
         }

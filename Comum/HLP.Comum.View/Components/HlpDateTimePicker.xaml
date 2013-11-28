@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
-             Width="Auto" Height="Auto">
+             Width="Auto" Height="Auto" x:Name="componente">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,10 +14,10 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <Label x:Name="lblCaption" 
-               Style="{StaticResource  LabelStyleComponents}"
-               Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="27"/>
+        <TextBlock x:Name="lblCaption" 
+               Style="{StaticResource  TextBlocktyleComponents}"
+               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"  Height="{Binding ElementName=componente, Path=Height}"/>
         <DatePicker x:Name="dtControle"
                 SelectedDate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDate}"
                 SelectedDateFormat="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDateFormat}" Height="25"    

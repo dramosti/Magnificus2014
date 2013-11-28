@@ -22,7 +22,7 @@
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}"/>
         <TextBox x:Name="txtID" 
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
-                 TextWrapping="Wrap" Width="80" Height="20"/>
+                 Width="80" Height="20"/>
         <TextBox x:Name="txtDisplay" IsReadOnly="True" 
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
                  Focusable="False" Height="20"  />

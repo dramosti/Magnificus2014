@@ -16,6 +16,8 @@ using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using HLP.Entries.Model.Repository.Implementation.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Parametros;
 using HLP.Entries.Model.Repository.Implementation.Parametros;
+using HLP.Entries.Model.Repository.Interfaces.Financeiro;
+using HLP.Entries.Model.Repository.Implementation.Financeiro;
 
 namespace HLP.Dependencies
 {
@@ -66,7 +68,7 @@ namespace HLP.Dependencies
 
             //#region Comercial
 
-            //Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
+            Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
             Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
             Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
             Bind<IMultasRepository>().To<MultasRepository>();
@@ -97,13 +99,13 @@ namespace HLP.Dependencies
 
             Bind<IDepositoRepository>().To<DepositoRepository>();
             Bind<ICondicoes_entregaRepository>().To<Condicoes_entregaRepository>();
-            //Bind<IRotaRepository>().To<RotaRepository>();
+            Bind<IRotaRepository>().To<RotaRepository>();
             Bind<IUFRepository>().To<UFRepository>();
             Bind<ICidadeRepository>().To<CidadeRepository>();
             Bind<IEmpresaRepository>().To<EmpresaRepository>();
             Bind<IRegiaoRepository>().To<RegiaoRepository>();
             //Bind<ISetorRepository>().To<SetorRepository>();
-            Bind<IContatoRepository>().To<ContatoRepository>();            
+            Bind<IContatoRepository>().To<ContatoRepository>();
             Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             //Bind<ICalendarioRepository>().To<CalendarioRepository>();
             //Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
@@ -140,9 +142,9 @@ namespace HLP.Dependencies
             //#region Financeiro
 
             //Bind<IBancoRepository>().To<BancoRepository>();
-            //Bind<IAgenciaRepository>().To<AgenciaRepository>();
-            //Bind<IAgencia_ContatoRepository>().To<Agencia_ContatoRepository>();
-            //Bind<IAgencia_EnderecoRepository>().To<Agencia_EnderecoRepository>();
+            Bind<IAgenciaRepository>().To<AgenciaRepository>();
+            Bind<IAgencia_ContatoRepository>().To<Agencia_ContatoRepository>();
+            Bind<IAgencia_EnderecoRepository>().To<Agencia_EnderecoRepository>();
             Bind<IMoedaRepository>().To<MoedaRepository>();
             //Bind<IDescontos_AvistaRepository>().To<Descontos_AvistaRepository>();
             //Bind<IDia_PagamentoRepository>().To<Dia_PagamentoRepository>();

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto">
+              Width="Auto" Height="Auto"  x:Name="componente">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,11 +14,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
-        <Label x:Name="lblCaption" 
-               Style="{StaticResource  LabelStyleComponents}"
-               Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"
-			   Height="27"/>
+        <TextBlock x:Name="lblCaption" 
+               Height="{Binding ElementName=componente, Path=Height}"
+               Style="{StaticResource  TextBlocktyleComponents}"
+               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
+			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
         <TextBox x:Name="txtControle"  
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  Height="20"/>

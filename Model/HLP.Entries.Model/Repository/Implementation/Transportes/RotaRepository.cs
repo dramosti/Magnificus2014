@@ -24,12 +24,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
             if (objRota.idRota == null)
             {
                 objRota.idRota = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_save_Rota]",
                 ParameterBase<RotaModel>.SetParameterValue(objRota));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Rota]",
                 ParameterBase<RotaModel>.SetParameterValue(objRota));
             }
