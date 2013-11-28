@@ -66,7 +66,7 @@ namespace HLP.Dependencies
 
             //#region Comercial
 
-            //Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
+            Bind<IRota_pracaRepository>().To<Rota_pracaRepository>();
             Bind<ISite_enderecoRepository>().To<Site_enderecoRepository>();
             Bind<IModos_entregaRepository>().To<Modos_entregaRepository>();
             Bind<IMultasRepository>().To<MultasRepository>();
@@ -97,7 +97,7 @@ namespace HLP.Dependencies
 
             Bind<IDepositoRepository>().To<DepositoRepository>();
             Bind<ICondicoes_entregaRepository>().To<Condicoes_entregaRepository>();
-            //Bind<IRotaRepository>().To<RotaRepository>();
+            Bind<IRotaRepository>().To<RotaRepository>();
             Bind<IUFRepository>().To<UFRepository>();
             Bind<ICidadeRepository>().To<CidadeRepository>();
             Bind<IEmpresaRepository>().To<EmpresaRepository>();

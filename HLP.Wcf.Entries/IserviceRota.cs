@@ -12,6 +12,12 @@ namespace HLP.Wcf.Entries
     public interface IserviceRota
     {
         [OperationContract]
-        void DoWork();
+        HLP.Entries.Model.Models.Transportes.RotaModel Save(HLP.Entries.Model.Models.Transportes.RotaModel objRota);
+        [OperationContract]
+        void Delete(int idRota);
+        [OperationContract]
+        HLP.Entries.Model.Models.Transportes.RotaModel Copy(HLP.Entries.Model.Models.Transportes.RotaModel objRota);
+        [OperationContract]
+        HLP.Entries.Model.Models.Transportes.RotaModel GetObject(int idRota);
     }
 }

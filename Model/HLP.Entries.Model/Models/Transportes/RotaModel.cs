@@ -12,7 +12,7 @@ namespace HLP.Entries.Model.Models.Transportes
     {
         public RotaModel() : base("Rota") { }
 
-        public int? _idRota;
+        private int? _idRota;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idRota
         {

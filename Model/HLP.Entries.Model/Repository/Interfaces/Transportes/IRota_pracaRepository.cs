@@ -21,9 +21,8 @@ namespace HLP.Entries.Model.Repository.Interfaces.Transportes
     public interface IRota_pracaRepository
     {
         void Save(Rota_pracaModel objRota_Praca);
-        void Update(Rota_pracaModel objRota_Praca);
         void Delete(Rota_pracaModel objRota_Praca);
-        void Delete(int idRota);
+        void DeletePracasByRota(int idRota);
         void Copy(Rota_pracaModel objRota_Praca);
         Rota_pracaModel GetRota_Praca(int idRotaPraca);
         List<Rota_pracaModel> GetAllRota_Praca(int idRota);
