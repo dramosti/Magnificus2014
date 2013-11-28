@@ -14,7 +14,7 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         HLP.Entries.Model.Models.Transportes.RotaModel Save(HLP.Entries.Model.Models.Transportes.RotaModel objRota);
         [OperationContract]
-        void Delete(int idRota);
+        bool Delete(int idRota);
         [OperationContract]
         HLP.Entries.Model.Models.Transportes.RotaModel Copy(HLP.Entries.Model.Models.Transportes.RotaModel objRota);
         [OperationContract]
