@@ -155,7 +155,6 @@ namespace HLP.Entries.ViewModel.Commands
         private void Alterar()
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: null);
-            this.objViewModel.currentModel.lEmpresa_endereco.xCampoId = "idEmpresaEndereco";
         }
         private bool AlterarCanExecute()
         {

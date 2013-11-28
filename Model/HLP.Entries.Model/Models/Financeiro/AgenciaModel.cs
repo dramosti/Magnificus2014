@@ -27,6 +27,12 @@ namespace HLP.Entries.Model.Models.Financeiro
         public string xTelefone { get; set; }
         [ParameterOrder(Order = 6)]
         public string xFax { get; set; }
+
+        public ObservableCollectionBaseCadastros<Agencia_ContatoModel> lAgencia_ContatoModel
+            = new ObservableCollectionBaseCadastros<Agencia_ContatoModel>();
+
+        public ObservableCollectionBaseCadastros<Agencia_EnderecoModel> lAgencia_EnderecoModel
+            = new ObservableCollectionBaseCadastros<Agencia_EnderecoModel>();
     }
 
     public partial class Agencia_ContatoModel : modelBase

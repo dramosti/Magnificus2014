@@ -119,6 +119,9 @@
     <Compile Include="Repository\Implementation\Comercial\Produto_Fornecedor_HomologadoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Produto_RevisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
+    <Compile Include="Repository\Implementation\Financeiro\AgenciaRepository.cs" />
+    <Compile Include="Repository\Implementation\Financeiro\Agencia_ContatoRepository.cs" />
+    <Compile Include="Repository\Implementation\Financeiro\Agencia_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
@@ -182,6 +185,9 @@
     <Compile Include="Repository\Interfaces\Comercial\IProduto_Fornecedor_HomologadoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\IProduto_RevisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Financeiro\IAgenciaRepository.cs" />
+    <Compile Include="Repository\Interfaces\Financeiro\IAgencia_ContatoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Financeiro\IAgencia_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
