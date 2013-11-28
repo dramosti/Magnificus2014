@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dad9903d-3f91-4273-b055-a4dd90658859" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="servicePlanoPagamento.xsd" MetadataType="Schema" ID="487c35a3-8982-4c77-b1c7-2be4573dfb9c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="servicePlanoPagamento1.xsd" MetadataType="Schema" ID="8d60a385-3c38-4eeb-8427-f8a53a5c4092" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="servicePlanoPagamento2.xsd" MetadataType="Schema" ID="f966f4ff-dc32-4bd0-bd73-54a3f0169ef9" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd5" />
+    <MetadataFile FileName="servicePlanoPagamento3.xsd" MetadataType="Schema" ID="2be72308-6e9c-48ea-b465-57682b25e38b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd3" />
+    <MetadataFile FileName="servicePlanoPagamento.wsdl" MetadataType="Wsdl" ID="288fc371-779a-4290-9548-f20bcac53a77" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?wsdl" />
+    <MetadataFile FileName="servicePlanoPagamento4.xsd" MetadataType="Schema" ID="0fb16d9d-4cde-4fa6-8ad6-53ce64fadcb9" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="servicePlanoPagamento5.xsd" MetadataType="Schema" ID="ff3f0f56-b82d-4ec0-a190-bd01ca0163d7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="servicePlanoPagamento.disco" MetadataType="Disco" ID="0f0365e8-0e50-40d8-9b3d-3dc1e4107220" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

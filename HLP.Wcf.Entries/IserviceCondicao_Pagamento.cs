@@ -21,6 +21,6 @@ namespace HLP.Wcf.Entries
         bool deleteCondicao_pagamento(int idCondicao_pagamento);
 
         [OperationContract]
-        int copyCondicao_pagamento(int idCondicao_pagamento);
+        int copyCondicao_pagamento(int idCondicao_Pagamento);
     }
 }

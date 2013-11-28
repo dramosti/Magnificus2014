@@ -114,7 +114,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new Condicao_pagamentoModel();
+            try
+            {
+                this.objViewModel.currentModel = new Condicao_pagamentoModel();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -141,17 +150,45 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idCondicaoPagamento = await servico.copyCondicao_pagamentoAsync(
-                    idCondicao_pagamento: (int)this.objViewModel.currentModel.idCondicaoPagamento);
-                this.objViewModel.copyBaseCommand.Execute(null);
+                BackgroundWorker bwCopy = new BackgroundWorker();
+                bwCopy.DoWork += bwCopy_DoWork;
+                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.copyBaseCommand.Execute(null);
+                this.metodoGetModel(this, null);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentID = servico.copyCondicao_pagamento(
+                    idCondicao_Pagamento: (int)this.objViewModel.currentModel.idCondicaoPagamento);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

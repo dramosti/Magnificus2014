@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/servicePlanoPagamento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Plano_pagamentoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="_idPlanoPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idPlanoPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lPlano_pagamento_linhasModel" nillable="true" type="tns:ArrayOfPlano_pagamento_linhasModel" />
+          <xs:element minOccurs="0" name="nAlterar" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumerosPagamentos" type="xs:int" />
+          <xs:element minOccurs="0" name="nValorMinimo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="nValorMoeda" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stAlocacao" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stAlocacaoImpostos" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stFormaPagamento" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNota" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xPlanoPagamento" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Plano_pagamentoModel" nillable="true" type="tns:Plano_pagamentoModel" />
+  <xs:complexType name="ArrayOfPlano_pagamento_linhasModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plano_pagamento_linhasModel" nillable="true" type="tns:Plano_pagamento_linhasModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlano_pagamento_linhasModel" nillable="true" type="tns:ArrayOfPlano_pagamento_linhasModel" />
+  <xs:complexType name="Plano_pagamento_linhasModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idLinhasPagamento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idPlanoPagamento" type="xs:int" />
+          <xs:element minOccurs="0" name="nQuantidade" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="nValorouPorcentagem" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stValorouPorcentagem" nillable="true" type="xs:unsignedByte" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Plano_pagamento_linhasModel" nillable="true" type="tns:Plano_pagamento_linhasModel" />
+</xs:schema>

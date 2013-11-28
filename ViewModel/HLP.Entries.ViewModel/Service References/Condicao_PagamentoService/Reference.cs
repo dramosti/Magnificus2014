@@ -176,10 +176,10 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
         System.Threading.Tasks.Task<bool> deleteCondicao_pagamentoAsync(int idCondicao_pagamento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamentoResponse")]
-        int copyCondicao_pagamento(int idCondicao_pagamento);
+        int copyCondicao_pagamento(int idCondicao_Pagamento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamento", ReplyAction="http://tempuri.org/IserviceCondicao_Pagamento/copyCondicao_pagamentoResponse")]
-        System.Threading.Tasks.Task<int> copyCondicao_pagamentoAsync(int idCondicao_pagamento);
+        System.Threading.Tasks.Task<int> copyCondicao_pagamentoAsync(int idCondicao_Pagamento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -233,12 +233,12 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
             return base.Channel.deleteCondicao_pagamentoAsync(idCondicao_pagamento);
         }
         
-        public int copyCondicao_pagamento(int idCondicao_pagamento) {
-            return base.Channel.copyCondicao_pagamento(idCondicao_pagamento);
+        public int copyCondicao_pagamento(int idCondicao_Pagamento) {
+            return base.Channel.copyCondicao_pagamento(idCondicao_Pagamento);
         }
         
-        public System.Threading.Tasks.Task<int> copyCondicao_pagamentoAsync(int idCondicao_pagamento) {
-            return base.Channel.copyCondicao_pagamentoAsync(idCondicao_pagamento);
+        public System.Threading.Tasks.Task<int> copyCondicao_pagamentoAsync(int idCondicao_Pagamento) {
+            return base.Channel.copyCondicao_pagamentoAsync(idCondicao_Pagamento);
         }
     }
 }

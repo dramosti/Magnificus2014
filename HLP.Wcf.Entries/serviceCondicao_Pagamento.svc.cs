@@ -76,13 +76,14 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int copyCondicao_pagamento(int idCondicao_pagamento)
+        public int copyCondicao_pagamento(int idCondicao_Pagamento)
         {
 
             try
             {
                 return this.condicao_PagamentoRepository.Copy(idCondicaoPagamento:
-                    idCondicao_pagamento);
+                    idCondicao_Pagamento);
+
             }
             catch (Exception ex)
             {

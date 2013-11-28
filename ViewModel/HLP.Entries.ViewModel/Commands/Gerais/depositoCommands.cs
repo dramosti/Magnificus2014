@@ -46,7 +46,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-
         }
 
 
@@ -143,17 +142,50 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idDeposito = await this.servico.copyDepositoAsync(idDeposito:
-                    (int)this.objViewModel.currentModel.idDeposito);
-                this.objViewModel.copyBaseCommand.Execute(null);
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.DoWork += bw_DoWork;
+                bw.RunWorkerCompleted += bw_RunWorkerCompleted;
+                bw.RunWorkerAsync();
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
 
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.getDeposito(this, null);
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentID = this.servico.copyDeposito(idDeposito:
+                    (int)this.objViewModel.currentModel.idDeposito);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
@@ -185,12 +217,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void PesquisarRegistro()
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.DoWork += new DoWorkEventHandler(this.getDeposito);
             bw.RunWorkerAsync();
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private async void getDeposito(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = await this.servico.getDepositoAsync(idDeposito: this.objViewModel.currentID);
         }
