@@ -59,7 +59,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public void Delete(int idRota)
+        public bool Delete(int idRota)
         {
             try
             {
@@ -67,6 +67,7 @@ namespace HLP.Wcf.Entries
                 iRota_pracaRepository.DeletePracasByRota(idRota);
                 iRotaRepository.Delete(idRota);
                 iRotaRepository.CommitTransaction();
+                return true;
 
             }
             catch (Exception ex)

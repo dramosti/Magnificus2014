@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0b745084-b9d2-47a7-b3ea-0360c06a96b9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceDescontosAvista.xsd" MetadataType="Schema" ID="4330f22d-65ac-4687-9502-92e4617f1c24" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceDescontosAvista1.xsd" MetadataType="Schema" ID="84521e1b-be83-4be1-befc-d92205672c6a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceDescontosAvista2.xsd" MetadataType="Schema" ID="6f37b6e1-bd94-4083-9bc8-bbef66619511" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceDescontosAvista3.xsd" MetadataType="Schema" ID="25f68ca9-55f7-4571-97b3-99262d5da881" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceDescontosAvista4.xsd" MetadataType="Schema" ID="03534751-565e-4d8c-ba39-b9a9ac1bde15" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceDescontosAvista5.xsd" MetadataType="Schema" ID="3d900242-6a3c-4323-b711-75b2f25f9763" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceDescontosAvista.wsdl" MetadataType="Wsdl" ID="2a1442ab-ebad-4552-9ec0-8cf5cd1051ec" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?wsdl" />
+    <MetadataFile FileName="serviceDescontosAvista.disco" MetadataType="Disco" ID="35a8b7e4-a65a-4acf-af85-90dadbd3ab5a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDescontosAvista.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

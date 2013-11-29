@@ -24,7 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         #endregion
 
 
-        FuncionarioViewModel()
+        public FuncionarioViewModel()
         {
             FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
         }
@@ -36,7 +36,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _currentModel; }
             set
             {
-                _currentModel = value;
+                _currentModel = value;                
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }

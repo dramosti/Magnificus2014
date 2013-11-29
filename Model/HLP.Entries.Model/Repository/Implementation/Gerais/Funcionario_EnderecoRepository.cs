@@ -22,6 +22,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Save(Funcionario_EnderecoModel objFuncionario_Endereco)
         {
             objFuncionario_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
            "[dbo].[Proc_save_Funcionario_Endereco]",
             ParameterBase<Funcionario_EnderecoModel>.SetParameterValue(objFuncionario_Endereco));
         }
@@ -29,20 +30,25 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Update(Funcionario_EnderecoModel objFuncionario_Endereco)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Endereco]",
             ParameterBase<Funcionario_EnderecoModel>.SetParameterValue(objFuncionario_Endereco));
         }
 
         public void Delete(Funcionario_EnderecoModel objFuncionario_Endereco)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Funcionario_Endereco]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Funcionario_Endereco]",
                   UserData.idUser,
                   objFuncionario_Endereco.idEndereco);
         }
 
         public void Delete(int idFuncionario)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Funcionario_Endereco WHERE idFuncionario = " + idFuncionario);
         }
 

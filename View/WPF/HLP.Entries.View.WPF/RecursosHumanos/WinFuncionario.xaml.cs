@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         public WinFuncionario()
         {
             InitializeComponent();
+            this.ViewModel = new FuncionarioViewModel();
+        }
+
+        public FuncionarioViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as FuncionarioViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

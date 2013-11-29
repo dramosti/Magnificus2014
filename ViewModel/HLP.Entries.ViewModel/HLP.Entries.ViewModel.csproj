@@ -58,6 +58,15 @@
     <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
     <Compile Include="Commands\Financeiro\AgenciaCommands.cs" />
+    <Compile Include="Commands\Financeiro\BancoCommands.cs" />
+    <Compile Include="Commands\Financeiro\Conta_BancariaCommands.cs" />
+    <Compile Include="Commands\Financeiro\DescontosAvistaCommand.cs" />
+    <Compile Include="Commands\Financeiro\DiaPagamentoCommand.cs" />
+    <Compile Include="ViewModels\Financeiro\DiaPagamentoViewModel.cs" />
+    <Compile Include="Commands\Fiscal\StCofinsCommands.cs" />
+    <Compile Include="Commands\Fiscal\StIcmsCommands.cs" />
+    <Compile Include="Commands\Fiscal\StIpiCommands.cs" />
+    <Compile Include="Commands\Fiscal\Tipo_OperacaoCommands.cs" />
     <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
@@ -86,6 +95,11 @@
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\agenciaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\bancoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -125,6 +139,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Conta_BancariaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ConversaoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +160,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\depositoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DescontoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Dia_PagamentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -225,6 +254,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\StCofinsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StIcmsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\StIpiService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\TipoProdutoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -236,6 +280,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\Tipo_documentoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Tipo_OperacaoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -268,6 +317,13 @@
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\AgenciaViewModel.cs" />
+    <Compile Include="ViewModels\Financeiro\BancoViewModel.cs" />
+    <Compile Include="ViewModels\Financeiro\Conta_BancariaViewModel.cs" />
+    <Compile Include="ViewModels\Financeiro\DescontosAvistaViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\StCofinsViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\StIcmsViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\StIpiViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\Tipo_OperacaoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
@@ -338,6 +394,14 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.AgenciaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_cofinsModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_icmsModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel1.datasource" />
@@ -380,6 +444,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\agenciaService\serviceAgencia5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\bancoService\serviceBanco.wsdl" />
+    <None Include="Service References\bancoService\serviceBanco.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\bancoService\serviceBanco1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\bancoService\serviceBanco2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\bancoService\serviceBanco3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\bancoService\serviceBanco4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\bancoService\serviceBanco5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda.wsdl" />
@@ -515,6 +598,25 @@
     <None Include="Service References\contato_Service\serviceContato5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.wsdl" />
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ConversaoService\serviceConversao.wsdl" />
     <None Include="Service References\ConversaoService\serviceConversao.xsd">
       <SubType>Designer</SubType>
@@ -583,6 +685,44 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\depositoService\serviceDeposito5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DescontoService\serviceDescontosAvista.wsdl" />
+    <None Include="Service References\DescontoService\serviceDescontosAvista.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DescontoService\serviceDescontosAvista1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DescontoService\serviceDescontosAvista2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DescontoService\serviceDescontosAvista3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DescontoService\serviceDescontosAvista4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DescontoService\serviceDescontosAvista5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento.wsdl" />
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
@@ -898,6 +1038,63 @@
     <None Include="Service References\siteService\serviceSite5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\StCofinsService\serviceStCofins.wsdl" />
+    <None Include="Service References\StCofinsService\serviceStCofins.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StCofinsService\serviceStCofins1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StCofinsService\serviceStCofins2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StCofinsService\serviceStCofins3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StCofinsService\serviceStCofins4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StCofinsService\serviceStCofins5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIcmsService\serviceStIcms.wsdl" />
+    <None Include="Service References\StIcmsService\serviceStIcms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIcmsService\serviceStIcms1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIcmsService\serviceStIcms2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIcmsService\serviceStIcms3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIcmsService\serviceStIcms4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIcmsService\serviceStIcms5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi.wsdl" />
+    <None Include="Service References\StIpiService\serviceStIpi.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.wsdl" />
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.xsd">
       <SubType>Designer</SubType>
@@ -941,6 +1138,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.wsdl" />
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\transportadorService\serviceTransportador.wsdl" />
@@ -997,6 +1213,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\agenciaService\" />
+    <WCFMetadataStorage Include="Service References\bancoService\" />
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
@@ -1004,10 +1221,13 @@
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
+    <WCFMetadataStorage Include="Service References\Conta_BancariaService\" />
     <WCFMetadataStorage Include="Service References\ConversaoService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\depositoService\" />
+    <WCFMetadataStorage Include="Service References\DescontoService\" />
+    <WCFMetadataStorage Include="Service References\Dia_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\Empresa_ParametrosService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
@@ -1024,9 +1244,13 @@
     <WCFMetadataStorage Include="Service References\rotaService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
+    <WCFMetadataStorage Include="Service References\StCofinsService\" />
+    <WCFMetadataStorage Include="Service References\StIcmsService\" />
+    <WCFMetadataStorage Include="Service References\StIpiService\" />
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
     <WCFMetadataStorage Include="Service References\tipoServicoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
+    <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
     <WCFMetadataStorage Include="Service References\transportadorService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
@@ -1537,6 +1761,126 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\rotaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\bancoService\serviceBanco.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\bancoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\bancoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\bancoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Conta_BancariaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StCofinsService\serviceStCofins.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StCofinsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StCofinsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StCofinsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIcmsService\serviceStIcms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIcmsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIcmsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIcmsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DescontoService\serviceDescontosAvista.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DescontoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DescontoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DescontoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\serviceStIpi.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Dia_PagamentoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Dia_PagamentoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Dia_PagamentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

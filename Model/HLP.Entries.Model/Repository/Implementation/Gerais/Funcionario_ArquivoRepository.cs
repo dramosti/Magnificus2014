@@ -22,6 +22,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Save(Funcionario_ArquivoModel objFuncionario_Arquivo)
         {
             objFuncionario_Arquivo.idFuncionarioArquivo = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
            "[dbo].[Proc_save_Funcionario_Arquivo]",
             ParameterBase<Funcionario_ArquivoModel>.SetParameterValue(objFuncionario_Arquivo));
         }
@@ -29,20 +30,25 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Update(Funcionario_ArquivoModel objFuncionario_Arquivo)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Arquivo]",
             ParameterBase<Funcionario_ArquivoModel>.SetParameterValue(objFuncionario_Arquivo));
         }
 
         public void Delete(Funcionario_ArquivoModel objFuncionario_Arquivo)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Funcionario_Arquivo]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Funcionario_Arquivo]",
                   UserData.idUser,
                   objFuncionario_Arquivo.idFuncionarioArquivo);
         }
 
         public void Delete(int idFuncionario)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Funcionario_Arquivo WHERE idFuncionario = " + idFuncionario);
         }
 

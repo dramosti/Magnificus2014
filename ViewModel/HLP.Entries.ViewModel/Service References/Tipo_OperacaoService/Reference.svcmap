@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="44cdc220-4462-4a5a-badd-5556f50a85c0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceTipo_Operacao.xsd" MetadataType="Schema" ID="0281f536-51a6-4c5b-901b-abac8eb97a7e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTipo_Operacao1.xsd" MetadataType="Schema" ID="3814dc2a-55a4-46c2-9087-55aa8578fe49" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTipo_Operacao.disco" MetadataType="Disco" ID="28773867-315c-492d-8552-c0e8bd82ca4d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?disco" />
+    <MetadataFile FileName="serviceTipo_Operacao2.xsd" MetadataType="Schema" ID="6e020c62-372f-4249-8a2f-22e303ae1226" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceTipo_Operacao3.xsd" MetadataType="Schema" ID="e9210aa5-eb14-4be8-8e88-4085d668541e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceTipo_Operacao.wsdl" MetadataType="Wsdl" ID="2477f99c-dbaf-4dc0-9dc1-81e7044325ce" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?wsdl" />
+    <MetadataFile FileName="serviceTipo_Operacao4.xsd" MetadataType="Schema" ID="7d1ed6ec-b941-4fdc-ab78-18749052e9a1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipo_Operacao5.xsd" MetadataType="Schema" ID="b6b5089a-44f3-4d4e-a629-67bf68b2f343" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_Operacao.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -24,7 +24,7 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.Condicao_PagamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.Condicao_PagamentoService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private HLP.Entries.ViewModel.Condicao_PagamentoService.statusModel statusField;
@@ -40,7 +40,7 @@ namespace HLP.Entries.ViewModel.Condicao_PagamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.Condicao_PagamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.Condicao_PagamentoService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }

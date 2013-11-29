@@ -22,19 +22,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(FuncionarioModel objFuncionario)
         {
-            //Aqui deve-se setar as FK's (se houver)
-            //Exemplo:
-            //produto.idEmpresa = CompanyData.idEmpresa;
-
             if (objFuncionario.idFuncionario == null)
             {
                 objFuncionario.idFuncionario = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_save_Funcionario]",
                 ParameterBase<FuncionarioModel>.SetParameterValue(objFuncionario));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Funcionario]",
                 ParameterBase<FuncionarioModel>.SetParameterValue(objFuncionario));
             }

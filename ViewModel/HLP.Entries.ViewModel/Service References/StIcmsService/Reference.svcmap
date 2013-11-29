@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3107639a-733c-4fd8-8b6c-e4ae3963d221" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceStIcms.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceStIcms.xsd" MetadataType="Schema" ID="2d26c609-1ebc-4cc6-a0fb-4894a9de3328" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceStIcms1.xsd" MetadataType="Schema" ID="a0dabbf1-fe72-4116-b211-2a74664074c7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceStIcms.disco" MetadataType="Disco" ID="7618ef46-0d4c-4e43-966d-776606c1fa55" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?disco" />
+    <MetadataFile FileName="serviceStIcms2.xsd" MetadataType="Schema" ID="0a9fc9b1-8d6f-423e-b3fc-c23915129368" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceStIcms3.xsd" MetadataType="Schema" ID="0e2b2fa2-7b91-46dd-b8be-79f6abccf7be" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceStIcms.wsdl" MetadataType="Wsdl" ID="25a2e232-d591-4e5c-b876-be26425a920a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?wsdl" />
+    <MetadataFile FileName="serviceStIcms4.xsd" MetadataType="Schema" ID="4b6c353c-3e39-4d66-b836-0d1581c3aa13" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceStIcms5.xsd" MetadataType="Schema" ID="f2b1c734-9805-497a-bd2c-79f3d16737d3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStIcms.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -22,6 +22,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Save(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao)
         {
             objFuncionario_Margem_Lucro_Comissao.idFuncionarioMargemLucroComissao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
            "[dbo].[Proc_save_Funcionario_Margem_Lucro_Comissao]",
             ParameterBase<Funcionario_Margem_Lucro_ComissaoModel>.SetParameterValue(objFuncionario_Margem_Lucro_Comissao));
         }
@@ -29,6 +30,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Update(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Margem_Lucro_Comissao]",
             ParameterBase<Funcionario_Margem_Lucro_ComissaoModel>.SetParameterValue(objFuncionario_Margem_Lucro_Comissao));
         }
@@ -36,13 +38,16 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Delete(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Funcionario_Margem_Lucro_Comissao]",
+                UndTrabalho.dbTransaction,
                   UserData.idUser,
                   objFuncionario_Margem_Lucro_Comissao.idFuncionarioMargemLucroComissao);
         }
 
         public void Delete(int idFuncionario)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Funcionario_Margem_Lucro_Comissao WHERE idFuncionario = " + idFuncionario);
         }
 

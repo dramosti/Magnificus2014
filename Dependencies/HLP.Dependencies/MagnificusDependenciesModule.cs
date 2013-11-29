@@ -51,13 +51,13 @@ namespace HLP.Dependencies
             //Bind<ICfopRepository>().To<CfopRepository>();
             Bind<ITipo_documentoRepository>().To<Tipo_documentoRepository>();
             //Bind<ITipo_documento_oper_validaRepository>().To<Tipo_documento_oper_validaRepository>();
-            //Bind<ITipo_operacaoRepository>().To<Tipo_operacaoRepository>();
+            Bind<ITipo_operacaoRepository>().To<Tipo_operacaoRepository>();
             //Bind<IOperacao_reducao_baseRepository>().To<Operacao_reducao_baseRepository>();
             //Bind<IOperacao_importacaoRepository>().To<Operacao_importacaoRepository>();
-            //Bind<ISituacao_tributaria_cofinsRepository>().To<Situacao_tributaria_cofinsRepository>();
-            //Bind<ISituacao_tributaria_icmsRepository>().To<Situacao_tributaria_icmsRepository>();
+            Bind<ISituacao_tributaria_cofinsRepository>().To<Situacao_tributaria_cofinsRepository>();
+            Bind<ISituacao_tributaria_icmsRepository>().To<Situacao_tributaria_icmsRepository>();
             //Bind<ISituacao_tributaria_pisRepository>().To<Situacao_tributaria_pisRepository>();
-            //Bind<ISituacao_tributaria_ipiRepository>().To<Situacao_tributaria_ipiRepository>();
+            Bind<ISituacao_tributaria_ipiRepository>().To<Situacao_tributaria_ipiRepository>();
             //Bind<ICodigo_Icms_paiRepository>().To<Codigo_Icms_paiRepository>();
             //Bind<ICodigo_IcmsRepository>().To<Codigo_IcmsRepository>();
             //Bind<IClassificacao_fiscalRepository>().To<Classificacao_fiscalRepository>();
@@ -146,10 +146,10 @@ namespace HLP.Dependencies
             Bind<IAgencia_ContatoRepository>().To<Agencia_ContatoRepository>();
             Bind<IAgencia_EnderecoRepository>().To<Agencia_EnderecoRepository>();
             Bind<IMoedaRepository>().To<MoedaRepository>();
-            //Bind<IDescontos_AvistaRepository>().To<Descontos_AvistaRepository>();
-            //Bind<IDia_PagamentoRepository>().To<Dia_PagamentoRepository>();
-            //Bind<IDia_pagamento_linhasRepository>().To<Dia_Pagamento_LinhaRepository>();
-            //Bind<IConta_bancariaRepository>().To<Conta_bancariaRepository>();
+            Bind<IDescontos_AvistaRepository>().To<Descontos_AvistaRepository>();
+            Bind<IDia_PagamentoRepository>().To<Dia_PagamentoRepository>();
+            Bind<IDia_pagamento_linhasRepository>().To<Dia_Pagamento_LinhaRepository>();
+            Bind<IConta_bancariaRepository>().To<Conta_bancariaRepository>();
 
             //#endregion
 

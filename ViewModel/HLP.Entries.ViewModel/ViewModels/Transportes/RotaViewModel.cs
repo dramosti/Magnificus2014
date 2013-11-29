@@ -23,14 +23,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
         public ICommand navegarCommand { get; set; }
         #endregion
 
-
-
         public RotaViewModel()
         {
-            
+            commands = new RotaCommand(objViewModel: this);
         }
 
-        RotaCommand command;
+        RotaCommand commands;
 
         private RotaModel _currentModel;
 
