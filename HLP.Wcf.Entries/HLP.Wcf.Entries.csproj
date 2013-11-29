@@ -99,6 +99,7 @@
     <Content Include="serviceDecisao.svc" />
     <Content Include="serviceDepartamento.svc" />
     <Content Include="serviceDeposito.svc" />
+    <Content Include="serviceDescontosAvista.svc" />
     <Content Include="serviceEmpresa.svc" />
     <Content Include="serviceEmpresaParametros.svc" />
     <Content Include="serviceFabricante.svc" />
@@ -142,6 +143,7 @@
     <Compile Include="IserviceDecisao.cs" />
     <Compile Include="IserviceDepartamento.cs" />
     <Compile Include="IserviceDeposito.cs" />
+    <Compile Include="IserviceDescontosAvista.cs" />
     <Compile Include="IserviceEmpresa.cs" />
     <Compile Include="IserviceEmpresaParametros.cs" />
     <Compile Include="IserviceFabricante.cs" />
@@ -204,6 +206,9 @@
     </Compile>
     <Compile Include="serviceDeposito.svc.cs">
       <DependentUpon>serviceDeposito.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceDescontosAvista.svc.cs">
+      <DependentUpon>serviceDescontosAvista.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceEmpresa.svc.cs">
       <DependentUpon>serviceEmpresa.svc</DependentUpon>
