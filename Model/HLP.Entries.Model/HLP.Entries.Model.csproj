@@ -71,6 +71,7 @@
     <Compile Include="Models\Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_cofinsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_icmsModel.cs" />
+    <Compile Include="Models\Fiscal\Situacao_tributaria_ipiModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Repository\Implementation\Financeiro\Descontos_AvistaRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_icmsRepository.cs" />
+    <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_ipiRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
@@ -206,6 +208,7 @@
     <Compile Include="Repository\Interfaces\Financeiro\IDescontos_AvistaRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_icmsRepository.cs" />
+    <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_ipiRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
