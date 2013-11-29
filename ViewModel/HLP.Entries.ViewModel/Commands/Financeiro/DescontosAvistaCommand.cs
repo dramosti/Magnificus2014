@@ -12,6 +12,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         DescontosAvistaViewModel objViewModel;
         DescontoService.IserviceDescontosAvistaClient service = new DescontoService.IserviceDescontosAvistaClient();
 
+
         public DescontosAvistaCommand(DescontosAvistaViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
