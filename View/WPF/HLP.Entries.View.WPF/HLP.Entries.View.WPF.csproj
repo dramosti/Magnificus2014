@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Crm\WinContato.xaml.cs">
+      <DependentUpon>WinContato.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Crm\WinDecisao.xaml.cs">
       <DependentUpon>WinDecisao.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <DependentUpon>WinCondicaoEntrega.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIUtilities\UserInterfaceUtilities.cs" />
+    <Page Include="Crm\WinContato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Crm\WinDecisao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
