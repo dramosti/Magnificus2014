@@ -119,9 +119,11 @@
     <Content Include="serviceSite.svc" />
     <Content Include="serviceStCofins.svc" />
     <Content Include="serviceStIcms.svc" />
+    <Content Include="serviceStIpi.svc" />
     <Content Include="serviceTipoServico.svc" />
     <Content Include="serviceTipo_documento.svc" />
     <Content Include="serviceTipoProduto.svc" />
+    <Content Include="serviceTipo_Operacao.svc" />
     <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
@@ -166,9 +168,11 @@
     <Compile Include="IserviceSite.cs" />
     <Compile Include="IserviceStCofins.cs" />
     <Compile Include="IserviceStIcms.cs" />
+    <Compile Include="IserviceStIpi.cs" />
     <Compile Include="IserviceTipoServico.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
     <Compile Include="IserviceTipoProduto.cs" />
+    <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="serviceAgencia.svc.cs">
@@ -273,6 +277,9 @@
     <Compile Include="serviceStIcms.svc.cs">
       <DependentUpon>serviceStIcms.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceStIpi.svc.cs">
+      <DependentUpon>serviceStIpi.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceTipoServico.svc.cs">
       <DependentUpon>serviceTipoServico.svc</DependentUpon>
     </Compile>
@@ -281,6 +288,9 @@
     </Compile>
     <Compile Include="serviceTipoProduto.svc.cs">
       <DependentUpon>serviceTipoProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceTipo_Operacao.svc.cs">
+      <DependentUpon>serviceTipo_Operacao.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceTransportador.svc.cs">
       <DependentUpon>serviceTransportador.svc</DependentUpon>

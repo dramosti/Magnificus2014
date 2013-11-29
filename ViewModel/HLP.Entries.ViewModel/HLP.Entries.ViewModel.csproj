@@ -63,6 +63,7 @@
     <Compile Include="Commands\Financeiro\DescontosAvistaCommand.cs" />
     <Compile Include="Commands\Fiscal\StCofinsCommands.cs" />
     <Compile Include="Commands\Fiscal\StIcmsCommands.cs" />
+    <Compile Include="Commands\Fiscal\StIpiCommands.cs" />
     <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
@@ -255,6 +256,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\StIpiService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\TipoProdutoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -303,6 +309,7 @@
     <Compile Include="ViewModels\Financeiro\DescontosAvistaViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StCofinsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StIcmsViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\StIpiViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
@@ -378,6 +385,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_cofinsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_icmsModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel1.datasource" />
@@ -1033,6 +1041,25 @@
     <None Include="Service References\StIcmsService\serviceStIcms5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\StIpiService\serviceStIpi.wsdl" />
+    <None Include="Service References\StIpiService\serviceStIpi.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StIpiService\serviceStIpi5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.wsdl" />
     <None Include="Service References\TipoProdutoService\serviceTipoProduto.xsd">
       <SubType>Designer</SubType>
@@ -1164,6 +1191,7 @@
     <WCFMetadataStorage Include="Service References\siteService\" />
     <WCFMetadataStorage Include="Service References\StCofinsService\" />
     <WCFMetadataStorage Include="Service References\StIcmsService\" />
+    <WCFMetadataStorage Include="Service References\StIpiService\" />
     <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
     <WCFMetadataStorage Include="Service References\tipoServicoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
@@ -1752,6 +1780,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DescontoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\serviceStIpi.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\StIpiService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -1,4 +1,6 @@
-﻿using HLP.Entries.Model.Repository.Interfaces.Fiscal;
+﻿using HLP.Comum.Resources.Util;
+using HLP.Dependencies;
+using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -19,26 +21,74 @@ namespace HLP.Wcf.Entries
 
         public serviceStIpi()
         {
+
+            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
+            kernel.Settings.ActivationCacheDisabled = false;
+            kernel.Inject(this);
+            Log.xPath = @"C:\inetpub\wwwroot\log";
+
         }
 
         public int Save(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel Objeto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                this.situacao_tributaria_ipiRepository.Save(ipi: Objeto);
+                return (int)Objeto.idCSTIpi;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
 
         public HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel GetObjeto(int idObjeto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                return this.situacao_tributaria_ipiRepository.GetStIpi(idCSTIpi: idObjeto);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
 
         public bool Delete(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel Objeto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                this.situacao_tributaria_ipiRepository.Delete(idCSTIpi: (int)Objeto.idCSTIpi);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
 
         public int Copy(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel Objeto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                return this.situacao_tributaria_ipiRepository.Copy(idCSTIpi: (int)Objeto.idCSTIpi);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
     }
 }
