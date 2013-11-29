@@ -32,7 +32,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 this.situaca_Tributaria_IcmsRepository.Save(icms: Objeto);
-                return (int)Objeto.idCSTIcms;
+                return (int)Objeto.idCSTICms;
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace HLP.Wcf.Entries
 
             try
             {
-                this.situaca_Tributaria_IcmsRepository.Delete(idCSTIcms: (int)Objeto.idCSTIcms);
+                this.situaca_Tributaria_IcmsRepository.Delete(idCSTIcms: (int)Objeto.idCSTICms);
                 return true;
             }
             catch (Exception ex)
@@ -78,7 +78,7 @@ namespace HLP.Wcf.Entries
 
             try
             {
-                return this.situaca_Tributaria_IcmsRepository.Copy(idCSTIcms: (int)Objeto.idCSTIcms);
+                return this.situaca_Tributaria_IcmsRepository.Copy(idCSTIcms: (int)Objeto.idCSTICms);
             }
             catch (Exception ex)
             {

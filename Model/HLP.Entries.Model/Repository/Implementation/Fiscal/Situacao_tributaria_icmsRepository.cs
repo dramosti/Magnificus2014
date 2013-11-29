@@ -37,13 +37,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
 
         public void Save(Situacao_tributaria_icmsModel icms)
         {
-            if (icms.idCSTIcms == null)
+            if (icms.idCSTICms == null)
             {
                 int idCSTIcms = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
                    "[dbo].[Proc_save_situacao_tributaria_icms]",
                   ParameterBase<Situacao_tributaria_icmsModel>.SetParameterValue(icms));
 
-                icms.idCSTIcms = idCSTIcms;
+                icms.idCSTICms = idCSTIcms;
             }
             else
             {
