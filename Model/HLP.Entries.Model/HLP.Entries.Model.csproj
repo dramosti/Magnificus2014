@@ -68,6 +68,7 @@
     <Compile Include="Models\Financeiro\AgenciaModel.cs" />
     <Compile Include="Models\Financeiro\BancoModel.cs" />
     <Compile Include="Models\Financeiro\Conta_bancariaModel.cs" />
+    <Compile Include="Models\Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_cofinsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_icmsModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Repository\Implementation\Financeiro\Agencia_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\BancoRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Conta_bancariaRepository.cs" />
+    <Compile Include="Repository\Implementation\Financeiro\Descontos_AvistaRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
@@ -201,6 +203,7 @@
     <Compile Include="Repository\Interfaces\Financeiro\IAgencia_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IBancoRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IConta_bancariaRepository.cs" />
+    <Compile Include="Repository\Interfaces\Financeiro\IDescontos_AvistaRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
