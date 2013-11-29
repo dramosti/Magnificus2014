@@ -15,8 +15,19 @@ namespace HLP.Entries.Model.Models.Fiscal
         {
         }
 
+
+        private int? _idCSTICms;
         [ParameterOrder(Order = 1)]
-        public int? idCSTIcms { get; set; }
+        public int? idCSTICms
+        {
+            get { return _idCSTICms; }
+            set
+            {
+                _idCSTICms = value;
+                base.NotifyPropertyChanged(propertyName: "idCSTICms");
+            }
+        }
+
         [ParameterOrder(Order = 2)]
         public string cCSTIcms { get; set; }
         [ParameterOrder(Order = 3)]
