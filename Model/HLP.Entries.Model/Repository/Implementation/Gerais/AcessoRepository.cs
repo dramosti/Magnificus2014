@@ -22,27 +22,34 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_AcessoModel objAcesso)
         {
-            objAcesso.idAcesso = (int)UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_save_Acesso",
+            objAcesso.idAcesso = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "dbo.Proc_save_Acesso",
             ParameterBase<Funcionario_AcessoModel>.SetParameterValue(objAcesso));
         }
 
         public void Update(Funcionario_AcessoModel objAcesso)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Acesso]",
             ParameterBase<Funcionario_AcessoModel>.SetParameterValue(objAcesso));
         }
 
         public void Delete(int idAcesso)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_delete_Acesso",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "dbo.Proc_delete_Acesso",
                  UserData.idUser,
                  idAcesso);
         }
 
         public void Delete(Funcionario_AcessoModel objAcesso)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_delete_Acesso",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "dbo.Proc_delete_Acesso",
                   UserData.idUser,
                   objAcesso.idAcesso, objAcesso.idEmpresa, objAcesso.idFuncionario);
         }
@@ -50,6 +57,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public int Copy(Funcionario_AcessoModel objFuncionario_Acesso)
         {
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
                       "dbo.Proc_copy_Acesso",
                        objFuncionario_Acesso, objFuncionario_Acesso.idFuncionario);
         }

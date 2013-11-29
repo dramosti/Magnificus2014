@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Entries.Model.Models.Financeiro;
 
 namespace HLP.Wcf.Entries
 {
@@ -19,6 +18,6 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         int Copy(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         [OperationContract]
-        Dia_pagamentoModel GetObect(int idDiaPagamento);
+        HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel GetObect(int idDiaPagamento);
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.funcionarioService {
+namespace HLP.Entries.ViewModel.Dia_PagamentoService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,23 +17,18 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.FuncionarioModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Financeiro.Dia_pagamento_linhasModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.Dia_PagamentoService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.statusModel statusField;
+        private HLP.Entries.ViewModel.Dia_PagamentoService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46,7 +41,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.Dia_PagamentoService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -59,7 +54,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.statusModel status {
+        public HLP.Entries.ViewModel.Dia_PagamentoService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -192,91 +187,91 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarioService.IserviceFuncionario")]
-    public interface IserviceFuncionario {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Dia_PagamentoService.IserviceDiaPagamento")]
+    public interface IserviceDiaPagamento {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
-        HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/Save", ReplyAction="http://tempuri.org/IserviceDiaPagamento/SaveResponse")]
+        HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel Save(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/Save", ReplyAction="http://tempuri.org/IserviceDiaPagamento/SaveResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel> SaveAsync(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/Delete", ReplyAction="http://tempuri.org/IserviceDiaPagamento/DeleteResponse")]
+        void Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/Delete", ReplyAction="http://tempuri.org/IserviceDiaPagamento/DeleteResponse")]
+        System.Threading.Tasks.Task DeleteAsync(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
-        bool deleteFuncionario(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/Copy", ReplyAction="http://tempuri.org/IserviceDiaPagamento/CopyResponse")]
+        int Copy(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
-        System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/Copy", ReplyAction="http://tempuri.org/IserviceDiaPagamento/CopyResponse")]
+        System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/GetObect", ReplyAction="http://tempuri.org/IserviceDiaPagamento/GetObectResponse")]
+        HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel GetObect(int idDiaPagamento);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceDiaPagamento/GetObect", ReplyAction="http://tempuri.org/IserviceDiaPagamento/GetObectResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel> GetObectAsync(int idDiaPagamento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceFuncionarioChannel : HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario, System.ServiceModel.IClientChannel {
+    public interface IserviceDiaPagamentoChannel : HLP.Entries.ViewModel.Dia_PagamentoService.IserviceDiaPagamento, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceFuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario>, HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario {
+    public partial class IserviceDiaPagamentoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Dia_PagamentoService.IserviceDiaPagamento>, HLP.Entries.ViewModel.Dia_PagamentoService.IserviceDiaPagamento {
         
-        public IserviceFuncionarioClient() {
+        public IserviceDiaPagamentoClient() {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName) : 
+        public IserviceDiaPagamentoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName, string remoteAddress) : 
+        public IserviceDiaPagamentoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceDiaPagamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionarioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceDiaPagamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario) {
-            return base.Channel.getFuncionario(idFuncionario);
+        public HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel Save(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento) {
+            return base.Channel.Save(objDia_pagamento);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario) {
-            return base.Channel.getFuncionarioAsync(idFuncionario);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel> SaveAsync(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento) {
+            return base.Channel.SaveAsync(objDia_pagamento);
         }
         
-        public int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.saveFuncionario(objFuncionario);
+        public void Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento) {
+            base.Channel.Delete(objDia_pagamento);
         }
         
-        public System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.saveFuncionarioAsync(objFuncionario);
+        public System.Threading.Tasks.Task DeleteAsync(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento) {
+            return base.Channel.DeleteAsync(objDia_pagamento);
         }
         
-        public bool deleteFuncionario(int idFuncionario) {
-            return base.Channel.deleteFuncionario(idFuncionario);
+        public int Copy(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento) {
+            return base.Channel.Copy(objDia_pagamento);
         }
         
-        public System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario) {
-            return base.Channel.deleteFuncionarioAsync(idFuncionario);
+        public System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento) {
+            return base.Channel.CopyAsync(objDia_pagamento);
         }
         
-        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.copyFuncionario(objFuncionario);
+        public HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel GetObect(int idDiaPagamento) {
+            return base.Channel.GetObect(idDiaPagamento);
         }
         
-        public System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.copyFuncionarioAsync(objFuncionario);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel> GetObectAsync(int idDiaPagamento) {
+            return base.Channel.GetObectAsync(idDiaPagamento);
         }
     }
 }

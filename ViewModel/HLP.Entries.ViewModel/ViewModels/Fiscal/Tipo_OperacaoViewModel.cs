@@ -1,6 +1,6 @@
 ﻿using HLP.Comum.ViewModel.ViewModels;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.Commands.Gerais;
+using HLP.Entries.Model.Models.Fiscal;
+using HLP.Entries.ViewModel.Commands.Fiscal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HLP.Entries.ViewModel.ViewModels.Gerais
+namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class FuncionarioViewModel : ViewModelBase
+    public class Tipo_OperacaoViewModel: ViewModelBase
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -22,23 +22,25 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
+        
 
-
-        public FuncionarioViewModel()
+        public Tipo_OperacaoViewModel()
         {
-            FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
+            Tipo_OperacaoCommands comm = new Tipo_OperacaoCommands(objViewModel: this);
         }
 
-        FuncionarioModel _currentModel;
+        
+        private Tipo_operacaoModel _currentModel;
 
-        public FuncionarioModel currentModel
+        public Tipo_operacaoModel currentModel
         {
             get { return _currentModel; }
             set
             {
-                _currentModel = value;                
+                _currentModel = value;
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }
+        
     }
 }

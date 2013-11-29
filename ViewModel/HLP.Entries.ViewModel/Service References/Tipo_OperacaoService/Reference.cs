@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.funcionarioService {
+namespace HLP.Entries.ViewModel.Tipo_OperacaoService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,23 +17,17 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.FuncionarioModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.Tipo_OperacaoService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.statusModel statusField;
+        private HLP.Entries.ViewModel.Tipo_OperacaoService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46,7 +40,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.Tipo_OperacaoService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -59,7 +53,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.statusModel status {
+        public HLP.Entries.ViewModel.Tipo_OperacaoService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -192,91 +186,91 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarioService.IserviceFuncionario")]
-    public interface IserviceFuncionario {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Tipo_OperacaoService.IserviceTipo_Operacao")]
+    public interface IserviceTipo_Operacao {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
-        HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Save", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/SaveResponse")]
+        int Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Save", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/SaveResponse")]
+        System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/GetObjeto", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/GetObjetoResponse")]
+        HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel GetObjeto(int idObjeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/GetObjeto", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/GetObjetoResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel> GetObjetoAsync(int idObjeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
-        bool deleteFuncionario(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Delete", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/DeleteResponse")]
+        bool Delete(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
-        System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Delete", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Copy", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/CopyResponse")]
+        int Copy(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Copy", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/CopyResponse")]
+        System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceFuncionarioChannel : HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario, System.ServiceModel.IClientChannel {
+    public interface IserviceTipo_OperacaoChannel : HLP.Entries.ViewModel.Tipo_OperacaoService.IserviceTipo_Operacao, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceFuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario>, HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario {
+    public partial class IserviceTipo_OperacaoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Tipo_OperacaoService.IserviceTipo_Operacao>, HLP.Entries.ViewModel.Tipo_OperacaoService.IserviceTipo_Operacao {
         
-        public IserviceFuncionarioClient() {
+        public IserviceTipo_OperacaoClient() {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName) : 
+        public IserviceTipo_OperacaoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName, string remoteAddress) : 
+        public IserviceTipo_OperacaoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceTipo_OperacaoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionarioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceTipo_OperacaoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario) {
-            return base.Channel.getFuncionario(idFuncionario);
+        public int Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+            return base.Channel.Save(Objeto);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario) {
-            return base.Channel.getFuncionarioAsync(idFuncionario);
+        public System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+            return base.Channel.SaveAsync(Objeto);
         }
         
-        public int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.saveFuncionario(objFuncionario);
+        public HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel GetObjeto(int idObjeto) {
+            return base.Channel.GetObjeto(idObjeto);
         }
         
-        public System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.saveFuncionarioAsync(objFuncionario);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel> GetObjetoAsync(int idObjeto) {
+            return base.Channel.GetObjetoAsync(idObjeto);
         }
         
-        public bool deleteFuncionario(int idFuncionario) {
-            return base.Channel.deleteFuncionario(idFuncionario);
+        public bool Delete(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+            return base.Channel.Delete(Objeto);
         }
         
-        public System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario) {
-            return base.Channel.deleteFuncionarioAsync(idFuncionario);
+        public System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+            return base.Channel.DeleteAsync(Objeto);
         }
         
-        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.copyFuncionario(objFuncionario);
+        public int Copy(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+            return base.Channel.Copy(Objeto);
         }
         
-        public System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
-            return base.Channel.copyFuncionarioAsync(objFuncionario);
+        public System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+            return base.Channel.CopyAsync(Objeto);
         }
     }
 }

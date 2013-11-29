@@ -91,6 +91,7 @@ namespace HLP.Wcf.Entries
 
             try
             {
+                this.funcionarioRepository.BeginTransaction();
                 this.funcionarioRepository.Save(objFuncionario: objFuncionario);
 
                 foreach (HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel item in objFuncionario.lFuncionario_Acesso)
@@ -100,6 +101,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idFuncionario = (int)objFuncionario.idFuncionario;
                                 this.acessoRepository.Save(objAcesso:
                                     item);
                             }
@@ -121,6 +123,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idFuncionario = (int)objFuncionario.idFuncionario;
                                 this.funcionario_ArquivoRepository.Save(
                                     objFuncionario_Arquivo: item);
                             }
@@ -142,6 +145,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idFuncionario = (int)objFuncionario.idFuncionario;
                                 this.funcionario_CertificacaoRepository.Save(
                                     objFuncionario_Certificacao: item);
                             }
@@ -163,6 +167,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idFuncionario = (int)objFuncionario.idFuncionario;
                                 this.funcionario_Comissao_ProdutoRepository.Save(
                                     objFuncionario_Comissao_Produto: item);
                             }
@@ -184,6 +189,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idFuncionario = (int)objFuncionario.idFuncionario;
                                 this.funcionario_EnderecoRepository.Save(
                                     objFuncionario_Endereco: item);
                             }
@@ -205,6 +211,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idFuncionario = (int)objFuncionario.idFuncionario;
                                 this.funcionario_Margem_Lucro_ComissaoRepository.Save(
                                     objFuncionario_Margem_Lucro_Comissao: item);
                             }
@@ -219,11 +226,12 @@ namespace HLP.Wcf.Entries
                 }
 
 
-
+                this.funcionarioRepository.CommitTransaction();
                 return (int)objFuncionario.idFuncionario;
             }
             catch (Exception ex)
             {
+                this.funcionarioRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -255,8 +263,8 @@ namespace HLP.Wcf.Entries
             }
             catch (Exception ex)
             {
-                Log.AddLog(xLog: ex.Message);
                 this.funcionarioRepository.RollackTransaction();
+                Log.AddLog(xLog: ex.Message);                
                 throw new FaultException(reason: ex.Message);
             }
 
@@ -310,8 +318,8 @@ namespace HLP.Wcf.Entries
             }
             catch (Exception ex)
             {
-                Log.AddLog(xLog: ex.Message);
                 this.funcionarioRepository.RollackTransaction();
+                Log.AddLog(xLog: ex.Message);                
                 throw new FaultException(reason: ex.Message);
             }
 

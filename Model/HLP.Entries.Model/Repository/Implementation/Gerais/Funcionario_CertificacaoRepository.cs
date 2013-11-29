@@ -22,6 +22,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Save(Funcionario_CertificacaoModel objFuncionario_Certificacao)
         {
             objFuncionario_Certificacao.idFuncionarioCertificacao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
            "[dbo].[Proc_save_Funcionario_Certificacao]",
             ParameterBase<Funcionario_CertificacaoModel>.SetParameterValue(objFuncionario_Certificacao));
         }
@@ -29,20 +30,25 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void Update(Funcionario_CertificacaoModel objFuncionario_Certificacao)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Certificacao]",
             ParameterBase<Funcionario_CertificacaoModel>.SetParameterValue(objFuncionario_Certificacao));;
         }
 
         public void Delete(Funcionario_CertificacaoModel objFuncionario_Certificacao)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Funcionario_Certificacao]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Funcionario_Certificacao]",
                   UserData.idUser,
                   objFuncionario_Certificacao.idFuncionarioCertificacao);
         }
 
         public void Delete(int idFuncionario)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Funcionario_Certificacao WHERE idFuncionario = " + idFuncionario);
         }
 

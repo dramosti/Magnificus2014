@@ -10,7 +10,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
     public class DiaPagamentoViewModel : ViewModelBase
     {
-        k
         public DiaPagamentoViewModel() 
         {
             

@@ -11,6 +11,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
     {
 
         DiaPagamentoViewModel objViewModel;
+        Dia_PagamentoService.IserviceDiaPagamentoClient servico = new Dia_PagamentoService.IserviceDiaPagamentoClient();
+
         public DiaPagamentoCommand(DiaPagamentoViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
