@@ -60,6 +60,7 @@
     <Compile Include="Commands\Financeiro\AgenciaCommands.cs" />
     <Compile Include="Commands\Financeiro\BancoCommands.cs" />
     <Compile Include="Commands\Financeiro\Conta_BancariaCommands.cs" />
+    <Compile Include="Commands\Financeiro\DescontosAvistaCommand.cs" />
     <Compile Include="Commands\Fiscal\StCofinsCommands.cs" />
     <Compile Include="Commands\Fiscal\StIcmsCommands.cs" />
     <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="ViewModels\Financeiro\AgenciaViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\BancoViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\Conta_BancariaViewModel.cs" />
+    <Compile Include="ViewModels\Financeiro\DescontosAvistaViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StCofinsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StIcmsViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
