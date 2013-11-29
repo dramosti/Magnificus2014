@@ -116,6 +116,7 @@
     <Content Include="serviceSetor.svc" />
     <Content Include="serviceSite.svc" />
     <Content Include="serviceStCofins.svc" />
+    <Content Include="serviceStIcms.svc" />
     <Content Include="serviceTipoServico.svc" />
     <Content Include="serviceTipo_documento.svc" />
     <Content Include="serviceTipoProduto.svc" />
@@ -160,6 +161,7 @@
     <Compile Include="IserviceSetor.cs" />
     <Compile Include="IserviceSite.cs" />
     <Compile Include="IserviceStCofins.cs" />
+    <Compile Include="IserviceStIcms.cs" />
     <Compile Include="IserviceTipoServico.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
     <Compile Include="IserviceTipoProduto.cs" />
@@ -257,6 +259,9 @@
     </Compile>
     <Compile Include="serviceStCofins.svc.cs">
       <DependentUpon>serviceStCofins.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceStIcms.svc.cs">
+      <DependentUpon>serviceStIcms.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceTipoServico.svc.cs">
       <DependentUpon>serviceTipoServico.svc</DependentUpon>

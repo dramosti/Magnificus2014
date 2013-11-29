@@ -55,7 +55,7 @@ namespace HLP.Dependencies
             //Bind<IOperacao_reducao_baseRepository>().To<Operacao_reducao_baseRepository>();
             //Bind<IOperacao_importacaoRepository>().To<Operacao_importacaoRepository>();
             Bind<ISituacao_tributaria_cofinsRepository>().To<Situacao_tributaria_cofinsRepository>();
-            //Bind<ISituacao_tributaria_icmsRepository>().To<Situacao_tributaria_icmsRepository>();
+            Bind<ISituacao_tributaria_icmsRepository>().To<Situacao_tributaria_icmsRepository>();
             //Bind<ISituacao_tributaria_pisRepository>().To<Situacao_tributaria_pisRepository>();
             //Bind<ISituacao_tributaria_ipiRepository>().To<Situacao_tributaria_ipiRepository>();
             //Bind<ICodigo_Icms_paiRepository>().To<Codigo_Icms_paiRepository>();
