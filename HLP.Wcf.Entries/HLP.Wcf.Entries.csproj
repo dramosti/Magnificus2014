@@ -108,6 +108,7 @@
     <Content Include="serviceFuncionario.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
+    <Content Include="servicePersonalidade.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="servicePesquisaRapida.svc" />
     <Content Include="servicePlanoPagamento.svc" />
@@ -157,6 +158,7 @@
     <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
+    <Compile Include="IservicePersonalidade.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
     <Compile Include="IservicePlanoPagamento.cs" />
@@ -243,6 +245,9 @@
     </Compile>
     <Compile Include="serviceMoeda.svc.cs">
       <DependentUpon>serviceMoeda.svc</DependentUpon>
+    </Compile>
+    <Compile Include="servicePersonalidade.svc.cs">
+      <DependentUpon>servicePersonalidade.svc</DependentUpon>
     </Compile>
     <Compile Include="servicePesquisaPadrao.svc.cs">
       <DependentUpon>servicePesquisaPadrao.svc</DependentUpon>

@@ -65,6 +65,7 @@
     <Compile Include="Models\Comercial\MultasModel.cs" />
     <Compile Include="Models\Comercial\ProdutoModel.cs" />
     <Compile Include="Models\Comercial\Tipo_produtoModel.cs" />
+    <Compile Include="Models\Crm\PersonalidadeModel.cs" />
     <Compile Include="Models\Financeiro\AgenciaModel.cs" />
     <Compile Include="Models\Financeiro\BancoModel.cs" />
     <Compile Include="Models\Financeiro\Conta_bancariaModel.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Repository\Implementation\Comercial\Produto_Fornecedor_HomologadoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Produto_RevisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Tipo_produtoRepository.cs" />
+    <Compile Include="Repository\Implementation\Crm\PersonalidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\AgenciaRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Agencia_ContatoRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Agencia_EnderecoRepository.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Repository\Interfaces\Comercial\IProduto_Fornecedor_HomologadoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\IProduto_RevisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ITipo_produtoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Crm\IPersonalidadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IAgenciaRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IAgencia_ContatoRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IAgencia_EnderecoRepository.cs" />

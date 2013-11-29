@@ -65,7 +65,7 @@ namespace HLP.Wcf.Entries
         
         }
 
-        public void Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento)
+        public bool Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento)
         {
             try
             {
@@ -73,6 +73,7 @@ namespace HLP.Wcf.Entries
                 iDia_pagamento_linhasRepository.DeleteLinhasByDia((int)objDia_pagamento.idDiaPagamento);
                 iDia_PagamentoRepository.Delete(objDia_pagamento);
                 iDia_PagamentoRepository.CommitTransaction();
+                return true;
             }
             catch (Exception ex)
             {

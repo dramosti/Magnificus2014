@@ -18,6 +18,8 @@ using HLP.Entries.Model.Repository.Interfaces.Parametros;
 using HLP.Entries.Model.Repository.Implementation.Parametros;
 using HLP.Entries.Model.Repository.Interfaces.Financeiro;
 using HLP.Entries.Model.Repository.Implementation.Financeiro;
+using HLP.Entries.Model.Repository.Interfaces.Crm;
+using HLP.Entries.Model.Repository.Implementation.Crm;
 
 namespace HLP.Dependencies
 {
@@ -168,7 +170,7 @@ namespace HLP.Dependencies
             //#region CRM
 
             Bind<IDecisaoRepository>().To<DecisaoRepository>();
-            //Bind<IPersonalidadeRepository>().To<PersonalidadeRepository>();
+            Bind<IPersonalidadeRepository>().To<PersonalidadeRepository>();
             //Bind<IFidelidadeRepository>().To<FidelidadeRepository>();
 
             //#endregion

@@ -14,7 +14,7 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel Save(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         [OperationContract]
-        void Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
+        bool Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         [OperationContract]
         int Copy(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento);
         [OperationContract]
