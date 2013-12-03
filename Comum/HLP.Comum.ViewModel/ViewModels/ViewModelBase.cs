@@ -131,6 +131,8 @@ namespace HLP.Comum.ViewModel.ViewModels
             foreach (object i in obj.ItemsSource)
             {
                 DataGridRow row = obj.ItemContainerGenerator.ContainerFromItem(i) as DataGridRow;
+                if (row == null)
+                    return false;
                 foreach (DataGridColumn c in obj.Columns)
                 {
                     o = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex).Content;

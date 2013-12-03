@@ -25,6 +25,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         {
             InitializeComponent();
             this.ViewModel = new FuncionarioViewModel();
+            this.UpdateLayout();
         }
 
         public FuncionarioViewModel ViewModel

@@ -10,6 +10,8 @@
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
+        <convert:TimeSpanToString x:Key="timeSpanConverter"/>
+        <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
         <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
@@ -278,7 +280,8 @@
 								Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,35,-1" Caption="Nome" Field="xNome" Help="Informe o nome do funcionário." Table="Funcionario" WidthLabel="142"/>
-                                <Components:HlpPesquisa 
+                                <Components:HlpPesquisa
+                                Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,35,-1" Caption="Cargo" Field="idCargo" Help="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="142" TableView="vwCargo" FieldPesquisa="ID">
@@ -304,7 +307,7 @@
                             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="78.07" Margin="0,0,-2,0" >
                                 <Components:HlpComboBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								SelectedValue="{Binding currentModel.idRegiao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								SelectedIndex="{Binding currentModel.stPerfil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,20,255,-1" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
                                     <Components:HlpComboBox.Items>
@@ -316,7 +319,7 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpPesquisa
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.idSetor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								Text="{Binding currentModel.idCalendario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,-1" Caption="Calendário" Field="idCalendário" Help="Informe um tipo de Calendário para o funcionário." Table="Calendario" WidthLabel="128" FieldPesquisa="ID" TableView="vwCalendario">
                                     <Components:HlpPesquisa.Items>
@@ -448,7 +451,7 @@
 									Height="27" Margin="12,15,338,-1" Caption="Data de Aniversário" Field="dAniversario" Help="Informe a data de aniversário do funcionário." Table="Funcionario" WidthLabel="154"/>
                                     <Components:HlpComboBox x:Name="cbxSexo"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									SelectedValue="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									SelectedIndex="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,282,-1" Caption="Sexo" Field="stSexo" Help="Informe o sexo do funcionário" Table="Funcionario" WidthLabel="156">
                                         <Components:HlpComboBox.Items>
@@ -485,7 +488,8 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,30,-1" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos." Table="Funcionario" WidthLabel="156" FieldPesquisa="ID" TableView="vwContaBancaria">
+									Height="27" Margin="10,0,30,-1" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos."
+                                        Table="Funcionario" WidthLabel="156" FieldPesquisa="ID" TableView="vwContaBancaria">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xNumeroConta</System:String>
                                             <System:String>Agencia</System:String>
@@ -525,43 +529,71 @@
                         <Expander Header="Quantidade de Horas de Trabalho" HorizontalAlignment="Left" Height="270" Margin="0,243.04,0,0" VerticalAlignment="Top" Width="608" IsExpanded="True">
                             <Grid>
                                 <Grid HorizontalAlignment="Left" Height="247" VerticalAlignment="Top" Width="645">
-                                    <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasSegunda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    <Components:HlpTextBox
+                                        Name="txtHorasSegunda"
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"                                    
+									Text="{Binding currentModel.nQtdHorasSegunda, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="15.333,8,450.167,209" Caption="Segunda-Feira" Field="nQtdHorasSegunda" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113"/>
                                     <Components:HlpTextBox
+                                        Name="txtHorasTerca"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasTerca, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.nQtdHorasTerca, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="15.333,35.5,450.167,184.5" Field="nQtdHorasTerca" Caption="Terça-Feira" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113"/>
-                                    <Components:HlpTextBox 
+                                    <Components:HlpTextBox
+                                        Name="txtHorasQuarta"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasQuarta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.nQtdHorasQuarta, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="15.333,62.63,450.167,157.37" Field="nQtdHorasQuarta" Caption="Quarta-Feira" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113"/>
-                                    <Components:HlpTextBox 
+                                    <Components:HlpTextBox
+                                        Name="txtHorasQuinta"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasQuinta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.nQtdHorasQuinta, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="15.333,90.42,450.167,129.58" Caption="Quinta-Feira" Field="nQtdHorasQuinta" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113"/>
                                     <Components:HlpTextBox 
+                                        Name="txtHorasSexta"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasSexta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.nQtdHorasSexta, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="15.333,117.42,450.167,102.58" Caption="Sexta-Feira" Field="nQtdHorasSexta" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113"/>
                                     <Components:HlpTextBox 
+                                        Name="txtHorasSabado"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasSabado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.nQtdHorasSabado, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="257.5,10,105,210" Caption="Sábado" Field="nQtdHorasSabado" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="200"/>
                                     <Components:HlpTextBox 
+                                        Name="txtHorasDomingo"
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.nQtdHorasDomingo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.nQtdHorasDomingo, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="257.5,36.749,105,183.25" Field="nQtdHorasDomingo" Caption="Domingo" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="200"/>
                                     <Components:HlpTextBox
-									Height="27" Margin="257.5,65.741,105,154.258" Caption="Total de Horas de Trabalho" Help="O Sistema irá informar a quantidade de horas trabalhada na semana" Table="Funcionario" WidthLabel="200"/>
+                                        IsEnabled="False"
+									Height="27" Margin="257.5,65.741,105,154.258" Caption="Total de Horas de Trabalho" 
+                                        Help="O Sistema irá informar a quantidade de horas trabalhada na semana" Table="Funcionario" WidthLabel="200">
+                                        <Components:HlpTextBox.Text>
+                                            <MultiBinding Converter="{StaticResource operacoesAritmetConverter}" ConverterParameter="soma">
+                                                <Binding ElementName="txtHorasSegunda" Path="Text"></Binding>
+                                                <Binding ElementName="txtHorasTerca" Path="Text"></Binding>
+                                                <Binding ElementName="txtHorasQuarta" Path="Text"></Binding>
+                                                <Binding ElementName="txtHorasQuinta" Path="Text"></Binding>
+                                                <Binding ElementName="txtHorasSexta" Path="Text"></Binding>
+                                                <Binding ElementName="txtHorasSabado" Path="Text"></Binding>
+                                                <Binding ElementName="txtHorasDomingo" Path="Text"></Binding>
+                                            </MultiBinding>
+                                        </Components:HlpTextBox.Text>
+                                    </Components:HlpTextBox>
 
                                 </Grid>
                             </Grid>
@@ -581,7 +613,7 @@
 									Height="27" Margin="10,0,223.5,-1" Caption="Diaria" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117"/>
                                     <Components:HlpComboBox 									
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									SelectedValue="{Binding currentModel.stSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									SelectedIndex="{Binding currentModel.stSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,223.5,-1" Caption="Tipo de Salário" Field="stSalario" Help="Informar se a condição de salario do  funcionário é:" Table="Funcionario" WidthLabel="117">
                                         <Components:HlpComboBox.Items>

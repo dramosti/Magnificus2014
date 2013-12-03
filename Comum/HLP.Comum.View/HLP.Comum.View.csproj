@@ -80,6 +80,8 @@
     <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
+    <Compile Include="Converters\OperacoesAritmetConverter.cs" />
+    <Compile Include="Converters\TimeSpanToString.cs" />
     <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
       <DependentUpon>WinPesquisaPadrao.xaml</DependentUpon>
