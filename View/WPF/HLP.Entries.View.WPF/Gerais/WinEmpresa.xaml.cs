@@ -24,7 +24,6 @@ namespace HLP.Entries.View.WPF.Gerais
     {
         public WinEmpresa()
         {
-            
             InitializeComponent();
             try
             {

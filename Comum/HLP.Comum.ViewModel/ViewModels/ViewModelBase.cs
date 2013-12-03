@@ -11,6 +11,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Forms;
 using HLP.Comum.Model.Models;
+using System.Windows.Controls.Primitives;
+using HLP.Comum.Resources.Util;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
@@ -114,11 +116,47 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             // The dependency object is valid if it has no errors, 
             //and all of its children (that are dependency objects) are error-free.
-            return !Validation.GetHasError(obj) &&
+            return (obj.GetType() == typeof(System.Windows.Controls.DataGrid) ? !this.GridObjectsIsValid(obj: obj as System.Windows.Controls.DataGrid)
+                : !Validation.GetHasError(obj)
+                ) &&
                 LogicalTreeHelper.GetChildren(obj)
                 .OfType<DependencyObject>()
                 .All(child => IsValid(child));
         }
+
+        public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)
+        {
+            object o;
+
+            foreach (object i in obj.ItemsSource)
+            {
+                DataGridRow row = obj.ItemContainerGenerator.ContainerFromItem(i) as DataGridRow;
+                foreach (DataGridColumn c in obj.Columns)
+                {
+                    o = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex).Content;
+                    if (o != null)
+                    {
+                        if (o.GetType() == typeof(System.Windows.Controls.TextBlock))
+                        {
+                            if (Validation.GetHasError(element: o as TextBlock))
+                                return true;
+                        }
+                        else if (o.GetType() == typeof(System.Windows.Controls.ComboBox))
+                        {
+                            if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
+                                return true;
+                        }
+                        else if (o.GetType() == typeof(System.Windows.Controls.TextBox))
+                        {
+                            if (Validation.GetHasError(element: o as System.Windows.Controls.TextBox))
+                                return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
         #endregion
     }
 }

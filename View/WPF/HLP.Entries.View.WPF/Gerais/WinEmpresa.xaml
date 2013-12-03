@@ -107,7 +107,6 @@
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                          CanUserDeleteRows="True"
                     >
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn 

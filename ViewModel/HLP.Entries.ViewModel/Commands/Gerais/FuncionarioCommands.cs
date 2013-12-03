@@ -271,12 +271,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Inicia_Collections()
         {
-            this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Endereco.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.CollectionCarregada();
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Endereco.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.CollectionCarregada();
+            }
         }
         #endregion
 
