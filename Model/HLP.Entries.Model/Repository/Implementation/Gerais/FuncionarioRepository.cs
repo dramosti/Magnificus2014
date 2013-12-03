@@ -63,7 +63,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regFuncionarioAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Funcionario",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idFuncionario"),
-                                         MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                         MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status)
+                                         .Build());
             }
 
             return regFuncionarioAccessor.Execute(idFuncionario).FirstOrDefault();

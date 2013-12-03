@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IFuncionario_ArquivoRepository
     {
         void Save(Funcionario_ArquivoModel objFuncionario_Arquivo);
-        void Update(Funcionario_ArquivoModel objFuncionario_Arquivo);
         void Delete(Funcionario_ArquivoModel objFuncionario_Arquivo);
         void Delete(int idFuncionario);
         void Copy(Funcionario_ArquivoModel objFuncionario_Arquivo);

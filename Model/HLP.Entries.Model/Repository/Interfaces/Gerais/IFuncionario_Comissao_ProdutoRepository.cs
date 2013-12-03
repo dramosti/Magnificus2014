@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IFuncionario_Comissao_ProdutoRepository
     {
         void Save(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto);
-        void Update(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto);
         void Delete(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto);
         void Delete(int idFuncionario);
         void Copy(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto);

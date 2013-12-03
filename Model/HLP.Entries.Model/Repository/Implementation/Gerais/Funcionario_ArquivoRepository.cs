@@ -21,18 +21,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_ArquivoModel objFuncionario_Arquivo)
         {
-            objFuncionario_Arquivo.idFuncionarioArquivo = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                UndTrabalho.dbTransaction,
-           "[dbo].[Proc_save_Funcionario_Arquivo]",
-            ParameterBase<Funcionario_ArquivoModel>.SetParameterValue(objFuncionario_Arquivo));
-        }
-
-        public void Update(Funcionario_ArquivoModel objFuncionario_Arquivo)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objFuncionario_Arquivo.idFuncionarioArquivo == null)
+            {
+                objFuncionario_Arquivo.idFuncionarioArquivo = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Funcionario_Arquivo]",
+                ParameterBase<Funcionario_ArquivoModel>.SetParameterValue(objFuncionario_Arquivo));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Arquivo]",
             ParameterBase<Funcionario_ArquivoModel>.SetParameterValue(objFuncionario_Arquivo));
+            }
         }
 
         public void Delete(Funcionario_ArquivoModel objFuncionario_Arquivo)

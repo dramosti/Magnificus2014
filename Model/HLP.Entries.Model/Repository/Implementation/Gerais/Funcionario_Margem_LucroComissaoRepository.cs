@@ -21,18 +21,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao)
         {
-            objFuncionario_Margem_Lucro_Comissao.idFuncionarioMargemLucroComissao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                UndTrabalho.dbTransaction,
-           "[dbo].[Proc_save_Funcionario_Margem_Lucro_Comissao]",
-            ParameterBase<Funcionario_Margem_Lucro_ComissaoModel>.SetParameterValue(objFuncionario_Margem_Lucro_Comissao));
-        }
-
-        public void Update(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objFuncionario_Margem_Lucro_Comissao.idFuncionarioMargemLucroComissao == null)
+            {
+                objFuncionario_Margem_Lucro_Comissao.idFuncionarioMargemLucroComissao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Funcionario_Margem_Lucro_Comissao]",
+                ParameterBase<Funcionario_Margem_Lucro_ComissaoModel>.SetParameterValue(objFuncionario_Margem_Lucro_Comissao));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Margem_Lucro_Comissao]",
             ParameterBase<Funcionario_Margem_Lucro_ComissaoModel>.SetParameterValue(objFuncionario_Margem_Lucro_Comissao));
+            }
         }
 
         public void Delete(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao)
