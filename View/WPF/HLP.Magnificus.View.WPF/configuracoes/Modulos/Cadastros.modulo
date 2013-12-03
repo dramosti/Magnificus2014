@@ -63,7 +63,13 @@
 <object id="WinTipoServico" name="WinTipoServico" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinTipoServico, HLP.Entries.View.WPF">
   </object>
-  <object id="WinParametrizacao" name="WinParametrizacao" singleton="false" scope="request"
+<object id="WinParametrizacao" name="WinParametrizacao" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Parametrização.WinParametrizacao, HLP.Entries.View.WPF">
+  </object>
+<object id="WinContato" name="WinContato" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Crm.WinContato, HLP.Entries.View.WPF">
+  </object>
+<object id="WinModoEntrega" name="WinModoEntrega" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Transportes.WinModoEntrega, HLP.Entries.View.WPF">
   </object>
 </objects>
