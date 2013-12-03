@@ -122,7 +122,17 @@ namespace HLP.Comum.Model.Models
                 if (campo != null)
                 {
                     if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == "F " && valor.ToString() == "0"))
-                        return "Necessário que campo possua valor!";
+                    {
+                        try
+                        {
+                            return "Necessário que campo possua valor!";
+                        }
+                        catch (Exception)
+                        {
+                            
+                            throw;
+                        }                        
+                    }
                     else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
                         && (valor == "" || valor == null))
                     {
