@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HLP.Wcf.Entries.serviceCarga_trib_media_st_icms" CodeBehind="serviceCarga_trib_media_st_icms.svc.cs" %>

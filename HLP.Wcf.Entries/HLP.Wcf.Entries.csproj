@@ -88,6 +88,7 @@
     <Content Include="serviceAgencia.svc" />
     <Content Include="serviceBanco.svc" />
     <Content Include="serviceCanal_Venda.svc" />
+    <Content Include="serviceCarga_trib_media_st_icms.svc" />
     <Content Include="serviceCargo.svc" />
     <Content Include="serviceCidade.svc" />
     <Content Include="serviceCliente.svc" />
@@ -139,6 +140,7 @@
     <Compile Include="IserviceAgencia.cs" />
     <Compile Include="IserviceBanco.cs" />
     <Compile Include="IserviceCanal_Venda.cs" />
+    <Compile Include="IserviceCarga_trib_media_st_icms.cs" />
     <Compile Include="IserviceCargo.cs" />
     <Compile Include="IserviceCidade.cs" />
     <Compile Include="IserviceCliente.cs" />
@@ -187,6 +189,9 @@
     </Compile>
     <Compile Include="serviceCanal_Venda.svc.cs">
       <DependentUpon>serviceCanal_Venda.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceCarga_trib_media_st_icms.svc.cs">
+      <DependentUpon>serviceCarga_trib_media_st_icms.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceCargo.svc.cs">
       <DependentUpon>serviceCargo.svc</DependentUpon>

@@ -72,6 +72,7 @@
     <Compile Include="Models\Financeiro\Conta_bancariaModel.cs" />
     <Compile Include="Models\Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Models\Financeiro\Dia_pagamentoModel.cs" />
+    <Compile Include="Models\Fiscal\Carga_trib_media_st_icmsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_cofinsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_icmsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_ipiModel.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Repository\Implementation\Financeiro\Descontos_AvistaRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Dia_PagamentoRepository.cs" />
     <Compile Include="Repository\Implementation\Financeiro\Dia_Pagamento_LinhaRepository.cs" />
+    <Compile Include="Repository\Implementation\Fiscal\Carga_trib_media_st_icmsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_ipiRepository.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Repository\Interfaces\Financeiro\IDescontos_AvistaRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IDia_PagamentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Financeiro\IDia_pagamento_linhasRepository.cs" />
+    <Compile Include="Repository\Interfaces\Fiscal\ICarga_trib_media_st_icmsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_ipiRepository.cs" />
