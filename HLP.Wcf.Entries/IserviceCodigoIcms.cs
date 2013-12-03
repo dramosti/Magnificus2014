@@ -13,7 +13,7 @@ namespace HLP.Wcf.Entries
     {
         
         [OperationContract]
-        int Save(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Save(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
 
         [OperationContract]
         HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel GetObjeto(int idObjeto);
@@ -22,7 +22,7 @@ namespace HLP.Wcf.Entries
         bool Delete(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
 
         [OperationContract]
-        int Copy(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Copy(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
         
     }
 }

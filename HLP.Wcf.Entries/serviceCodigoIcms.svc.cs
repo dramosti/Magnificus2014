@@ -29,7 +29,7 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public int Save(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel)
+        public HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Save(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel)
         {
 
             try
@@ -50,7 +50,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 iCodigo_Icms_paiRepository.CommitTransaction();
-                return (int)objModel.idCodigoIcmsPai;
+                return objModel;
 
             }
             catch (Exception ex)
@@ -99,7 +99,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int Copy(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel)
+        public HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Copy(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace HLP.Wcf.Entries
                 }
                 iCodigo_Icms_paiRepository.CommitTransaction();
 
-                return (int)objModel.idCodigoIcmsPai;
+                return this.GetObjeto((int)objModel.idCodigoIcmsPai);
 
             }
             catch (Exception ex)
