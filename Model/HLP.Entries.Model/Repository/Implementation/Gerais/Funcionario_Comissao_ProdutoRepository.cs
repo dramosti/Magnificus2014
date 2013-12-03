@@ -21,18 +21,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto)
         {
-            objFuncionario_Comissao_Produto.idFuncionarioComissaoProduto = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                UndTrabalho.dbTransaction,
-           "[dbo].[Proc_save_Funcionario_Comissao_Produto]",
-            ParameterBase<Funcionario_Comissao_ProdutoModel>.SetParameterValue(objFuncionario_Comissao_Produto));
-        }
-
-        public void Update(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objFuncionario_Comissao_Produto.idFuncionarioComissaoProduto == null)
+            {
+                objFuncionario_Comissao_Produto.idFuncionarioComissaoProduto = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Funcionario_Comissao_Produto]",
+                ParameterBase<Funcionario_Comissao_ProdutoModel>.SetParameterValue(objFuncionario_Comissao_Produto));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Comissao_Produto]",
             ParameterBase<Funcionario_Comissao_ProdutoModel>.SetParameterValue(objFuncionario_Comissao_Produto));
+            }
         }
 
         public void Delete(Funcionario_Comissao_ProdutoModel objFuncionario_Comissao_Produto)

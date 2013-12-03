@@ -21,18 +21,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_EnderecoModel objFuncionario_Endereco)
         {
-            objFuncionario_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                UndTrabalho.dbTransaction,
-           "[dbo].[Proc_save_Funcionario_Endereco]",
-            ParameterBase<Funcionario_EnderecoModel>.SetParameterValue(objFuncionario_Endereco));
-        }
-
-        public void Update(Funcionario_EnderecoModel objFuncionario_Endereco)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objFuncionario_Endereco.idEndereco == null)
+            {
+                objFuncionario_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Funcionario_Endereco]",
+                ParameterBase<Funcionario_EnderecoModel>.SetParameterValue(objFuncionario_Endereco));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Endereco]",
             ParameterBase<Funcionario_EnderecoModel>.SetParameterValue(objFuncionario_Endereco));
+            }
         }
 
         public void Delete(Funcionario_EnderecoModel objFuncionario_Endereco)
@@ -67,7 +69,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Funcionario_Endereco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
-                   MapBuilder<Funcionario_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                   MapBuilder<Funcionario_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status)
+                   .DoNotMap(i => i.enumTipoEnder)
+                   .Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
         }
@@ -76,7 +80,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             DataAccessor<Funcionario_EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Funcionario_Endereco WHERE idFuncionario = @idFuncionario", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idFuncionario"),
-            MapBuilder<Funcionario_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            MapBuilder<Funcionario_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status)
+            .DoNotMap(i => i.enumTipoEnder)
+            .Build());
 
             return reg.Execute(idFuncionario).ToList();
         }

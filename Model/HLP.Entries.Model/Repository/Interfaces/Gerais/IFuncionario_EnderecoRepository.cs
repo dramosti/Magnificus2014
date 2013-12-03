@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IFuncionario_EnderecoRepository
     {
         void Save(Funcionario_EnderecoModel objFuncionario_Endereco);
-        void Update(Funcionario_EnderecoModel objFuncionario_Endereco);
         void Delete(Funcionario_EnderecoModel objFuncionario_Endereco);
         void Delete(int idFuncionario);
         void Copy(Funcionario_EnderecoModel objFuncionario_Endereco);

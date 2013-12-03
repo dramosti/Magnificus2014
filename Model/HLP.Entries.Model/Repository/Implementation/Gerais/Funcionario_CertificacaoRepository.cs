@@ -21,18 +21,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_CertificacaoModel objFuncionario_Certificacao)
         {
-            objFuncionario_Certificacao.idFuncionarioCertificacao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                UndTrabalho.dbTransaction,
-           "[dbo].[Proc_save_Funcionario_Certificacao]",
-            ParameterBase<Funcionario_CertificacaoModel>.SetParameterValue(objFuncionario_Certificacao));
-        }
-
-        public void Update(Funcionario_CertificacaoModel objFuncionario_Certificacao)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objFuncionario_Certificacao.idFuncionarioCertificacao == null)
+            {
+                objFuncionario_Certificacao.idFuncionarioCertificacao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Funcionario_Certificacao]",
+                ParameterBase<Funcionario_CertificacaoModel>.SetParameterValue(objFuncionario_Certificacao));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Funcionario_Certificacao]",
-            ParameterBase<Funcionario_CertificacaoModel>.SetParameterValue(objFuncionario_Certificacao));;
+            ParameterBase<Funcionario_CertificacaoModel>.SetParameterValue(objFuncionario_Certificacao)); ;
+            }
         }
 
         public void Delete(Funcionario_CertificacaoModel objFuncionario_Certificacao)

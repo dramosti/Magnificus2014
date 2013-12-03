@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IFuncionario_Margem_Lucro_ComissaoRepository
     {
         void Save(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao);
-        void Update(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao);
         void Delete(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao);
         void Delete(int idFuncionario);
         void Copy(Funcionario_Margem_Lucro_ComissaoModel objFuncionario_Margem_Lucro_Comissao);

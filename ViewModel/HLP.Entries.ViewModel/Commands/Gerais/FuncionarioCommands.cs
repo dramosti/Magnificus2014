@@ -126,7 +126,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 throw ex;
             }
-
         }
 
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -301,7 +300,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.getFuncionario(idFuncionario: this.objViewModel.currentID);
+            try
+            {
+                this.objViewModel.currentModel = this.servico.getFuncionario(idFuncionario: this.objViewModel.currentID);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         private void Inicia_Collections()

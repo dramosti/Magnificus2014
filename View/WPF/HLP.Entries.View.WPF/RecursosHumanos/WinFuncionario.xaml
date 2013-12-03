@@ -5,7 +5,8 @@
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
-		xmlns:System="clr-namespace:System;assembly=mscorlib" 
+		xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
@@ -27,6 +28,8 @@
                 <x:Type TypeName="enums:TipoEndereco"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:CidadeViewModel}"/>
+        <ObjectDataProvider x:Key="lCidades" ObjectInstance="{StaticResource odpCidade}"  MethodName="GetAllCidadeToComboBox"/>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -420,6 +423,12 @@
                                     ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
+                                <DataGridComboBoxColumn  Header="Cidades" Width="150"
+                                ItemsSource="{Binding Source={StaticResource lCidades}}"
+                                SelectedValuePath="id"
+                                DisplayMemberPath="display"
+                                SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

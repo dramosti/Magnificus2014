@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IFuncionario_CertificacaoRepository
     {
         void Save(Funcionario_CertificacaoModel objFuncionario_Certificacao);
-        void Update(Funcionario_CertificacaoModel objFuncionario_Certificacao);
         void Delete(Funcionario_CertificacaoModel objFuncionario_Certificacao);
         void Delete(int idFuncionario);
         void Copy(Funcionario_CertificacaoModel objFuncionario_Certificacao);
