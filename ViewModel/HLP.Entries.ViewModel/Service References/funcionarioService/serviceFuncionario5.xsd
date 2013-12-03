@@ -25,7 +25,7 @@
   <xs:element name="saveFuncionarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="saveFuncionarioResult" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="saveFuncionarioResult" nillable="true" type="q3:FuncionarioModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +46,7 @@
   <xs:element name="copyFuncionario">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objFuncionario" nillable="true" type="q3:FuncionarioModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objFuncionario" nillable="true" type="q4:FuncionarioModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

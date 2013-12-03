@@ -117,18 +117,50 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         });
                 }
                 #endregion
-
-                this.objViewModel.currentModel.idFuncionario = servico.saveFuncionario(objFuncionario:
-                    this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.metodoGetModel(this, null);
-                this.Inicia_Collections();
+                BackgroundWorker bwSalvar = new BackgroundWorker();
+                bwSalvar.DoWork += bwSalvar_DoWork;
+                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bwSalvar.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.Inicia_Collections();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentModel = servico.saveFuncionario(objFuncionario:
+                    this.objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {

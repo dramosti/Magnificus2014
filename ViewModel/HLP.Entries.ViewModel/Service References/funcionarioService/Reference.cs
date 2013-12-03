@@ -191,6 +191,38 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         excluido = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoEndereco", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoEndereco : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        COMERCIAL = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA_ALT = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NOTA_FISCAL = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RESIDÊNCIA = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SERVICO = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SWIFT = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PAGAMENTO = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OUTRO = 8,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarioService.IserviceFuncionario")]
     public interface IserviceFuncionario {
@@ -202,10 +234,10 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
         bool deleteFuncionario(int idFuncionario);
@@ -255,11 +287,11 @@ namespace HLP.Entries.ViewModel.funcionarioService {
             return base.Channel.getFuncionarioAsync(idFuncionario);
         }
         
-        public int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
             return base.Channel.saveFuncionario(objFuncionario);
         }
         
-        public System.Threading.Tasks.Task<int> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
             return base.Channel.saveFuncionarioAsync(objFuncionario);
         }
         
