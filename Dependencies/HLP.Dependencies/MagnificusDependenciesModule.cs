@@ -50,7 +50,7 @@ namespace HLP.Dependencies
 
             //#region Fiscal
 
-            //Bind<ICfopRepository>().To<CfopRepository>();
+            Bind<ICfopRepository>().To<CfopRepository>();
             Bind<ITipo_documentoRepository>().To<Tipo_documentoRepository>();
             //Bind<ITipo_documento_oper_validaRepository>().To<Tipo_documento_oper_validaRepository>();
             Bind<ITipo_operacaoRepository>().To<Tipo_operacaoRepository>();
@@ -60,9 +60,9 @@ namespace HLP.Dependencies
             Bind<ISituacao_tributaria_icmsRepository>().To<Situacao_tributaria_icmsRepository>();
             //Bind<ISituacao_tributaria_pisRepository>().To<Situacao_tributaria_pisRepository>();
             Bind<ISituacao_tributaria_ipiRepository>().To<Situacao_tributaria_ipiRepository>();
-            //Bind<ICodigo_Icms_paiRepository>().To<Codigo_Icms_paiRepository>();
-            //Bind<ICodigo_IcmsRepository>().To<Codigo_IcmsRepository>();
-            //Bind<IClassificacao_fiscalRepository>().To<Classificacao_fiscalRepository>();
+            Bind<ICodigo_Icms_paiRepository>().To<Codigo_Icms_paiRepository>();
+            Bind<ICodigo_IcmsRepository>().To<Codigo_IcmsRepository>();
+            Bind<IClassificacao_fiscalRepository>().To<Classificacao_fiscalRepository>();
             Bind<IRamo_atividadeRepository>().To<Ramo_atividadeRepository>();
             Bind<ICarga_trib_media_st_icmsRepository>().To<Carga_trib_media_st_icmsRepository>();
 

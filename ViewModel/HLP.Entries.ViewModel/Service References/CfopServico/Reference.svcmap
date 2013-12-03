@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b0fcf1b1-22fa-4ab2-b3a9-f6d581520314" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCfop.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceCfop.xsd" MetadataType="Schema" ID="4d0b4eba-f47d-4d56-9444-90ae5626649b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCfop.disco" MetadataType="Disco" ID="5b926bcc-6027-4a33-85dc-ac2252b3a307" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?disco" />
+    <MetadataFile FileName="serviceCfop.wsdl" MetadataType="Wsdl" ID="f2c2f06f-943e-4ede-b177-a4401e77d9e1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?wsdl" />
+    <MetadataFile FileName="serviceCfop1.xsd" MetadataType="Schema" ID="1f3d312c-fadb-4b22-b6e9-742b0dc24840" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceCfop2.xsd" MetadataType="Schema" ID="6bef17da-5d00-49ee-955b-99ba6966f344" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceCfop3.xsd" MetadataType="Schema" ID="5d91b615-9960-4800-a81d-13a26c2756ea" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceCfop4.xsd" MetadataType="Schema" ID="7eca0e56-442e-4aa2-99b9-b2375e94a88c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceCfop5.xsd" MetadataType="Schema" ID="b1695e55-3859-4f06-8d8d-41e829f5c778" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCfop.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

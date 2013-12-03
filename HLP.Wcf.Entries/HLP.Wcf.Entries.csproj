@@ -90,8 +90,11 @@
     <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCarga_trib_media_st_icms.svc" />
     <Content Include="serviceCargo.svc" />
+    <Content Include="serviceCfop.svc" />
     <Content Include="serviceCidade.svc" />
+    <Content Include="serviceClassificacaoFiscal.svc" />
     <Content Include="serviceCliente.svc" />
+    <Content Include="serviceCodigoIcms.svc" />
     <Content Include="serviceCondicao_Entrega.svc" />
     <Content Include="serviceCondicao_Pagamento.svc" />
     <Content Include="serviceContato.svc" />
@@ -142,8 +145,11 @@
     <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCarga_trib_media_st_icms.cs" />
     <Compile Include="IserviceCargo.cs" />
+    <Compile Include="IserviceCfop.cs" />
     <Compile Include="IserviceCidade.cs" />
+    <Compile Include="IserviceClassificacaoFiscal.cs" />
     <Compile Include="IserviceCliente.cs" />
+    <Compile Include="IserviceCodigoIcms.cs" />
     <Compile Include="IserviceCondicao_Entrega.cs" />
     <Compile Include="IserviceCondicao_Pagamento.cs" />
     <Compile Include="IserviceContato.cs" />
@@ -196,11 +202,20 @@
     <Compile Include="serviceCargo.svc.cs">
       <DependentUpon>serviceCargo.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceCfop.svc.cs">
+      <DependentUpon>serviceCfop.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceCidade.svc.cs">
       <DependentUpon>serviceCidade.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceClassificacaoFiscal.svc.cs">
+      <DependentUpon>serviceClassificacaoFiscal.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceCliente.svc.cs">
       <DependentUpon>serviceCliente.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceCodigoIcms.svc.cs">
+      <DependentUpon>serviceCodigoIcms.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceCondicao_Entrega.svc.cs">
       <DependentUpon>serviceCondicao_Entrega.svc</DependentUpon>

@@ -11,12 +11,13 @@ using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
-    public class Carga_trib_media_st_icmsCommand
+    public class ClassificacaoFiscalCommand
     {
-        Carga_trib_media_st_icmsViewModel objViewModel;
-        Carga_trib_media_st_icmsServico.IserviceCarga_trib_media_st_icmsClient servico = new Carga_trib_media_st_icmsServico.IserviceCarga_trib_media_st_icmsClient();
-        public Carga_trib_media_st_icmsCommand(Carga_trib_media_st_icmsViewModel objViewModel)
+        ClassificacaoFiscalViewModel objViewModel;
+        ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient servico = new ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient();
+        public ClassificacaoFiscalCommand(ClassificacaoFiscalViewModel objViewModel)
         {
+
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -44,7 +45,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
         
         
-
         }
 
 
@@ -115,7 +115,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         private void Novo()
         {
             //TODO: instanciar novo objeto
-            objViewModel.currentModel = new Model.Models.Fiscal.Carga_trib_media_st_icmsModel();
+            objViewModel.currentModel = new Model.Models.Fiscal.Classificacao_fiscalModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -180,18 +180,18 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         }
 
         void bwCopy_DoWork(object sender, DoWorkEventArgs e)
-          {
-              try
-              {
-                  e.Result = servico.Copy(objViewModel.currentModel);
-                  //TODO: implementar serviço de copy
-              }
-              catch (Exception)
-              {
+        {
+            try
+            {
+                e.Result = servico.Copy(objViewModel.currentModel);
+                //TODO: implementar serviço de copy
+            }
+            catch (Exception)
+            {
 
-                  throw;
-              }
-          }
+                throw;
+            }
+        }
 
         public bool CopyCanExecute()
         {
@@ -226,15 +226,11 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         }
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
-          {
-              this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
-          }
+        {
+            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
+        }
         #endregion
 
-
-
-
-
-
+        
     }
 }

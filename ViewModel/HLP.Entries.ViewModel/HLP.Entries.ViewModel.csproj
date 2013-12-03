@@ -64,6 +64,30 @@
     <Compile Include="Commands\Financeiro\Conta_BancariaCommands.cs" />
     <Compile Include="Commands\Financeiro\DescontosAvistaCommand.cs" />
     <Compile Include="Commands\Financeiro\DiaPagamentoCommand.cs" />
+    <Compile Include="Commands\Fiscal\Carga_trib_media_st_icmsCommand.cs" />
+    <Compile Include="Commands\Fiscal\CfopCommand.cs" />
+    <Compile Include="Commands\Fiscal\ClassificacaoFiscalCommand.cs" />
+    <Compile Include="Commands\Fiscal\CodigoIcmsCommand.cs" />
+    <Compile Include="Service References\Carga_trib_media_st_icmsServico\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CfopServico\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ClassificacaoFiscalServico\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CodigoIcmsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\FidelidadeServico\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -334,6 +358,10 @@
     <Compile Include="ViewModels\Financeiro\BancoViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\Conta_BancariaViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\DescontosAvistaViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\Carga_trib_media_st_icmsViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\CfopViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\ClassificacaoFiscalViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\CodigoIcmsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StCofinsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StIcmsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StIpiViewModel.cs" />
@@ -414,6 +442,10 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Carga_trib_media_st_icmsModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.CfopModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Classificacao_fiscalModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_cofinsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_icmsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel.datasource" />
@@ -500,6 +532,25 @@
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.wsdl" />
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\cargoService\serviceCargo.wsdl" />
     <None Include="Service References\cargoService\serviceCargo.xsd">
       <SubType>Designer</SubType>
@@ -514,6 +565,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cargoService\serviceCargo4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CfopServico\serviceCfop.wsdl" />
+    <None Include="Service References\CfopServico\serviceCfop.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CfopServico\serviceCfop1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CfopServico\serviceCfop2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CfopServico\serviceCfop3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CfopServico\serviceCfop4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CfopServico\serviceCfop5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cidadeService\serviceCidade.wsdl" />
@@ -538,6 +608,25 @@
     <None Include="Service References\cidadeService\serviceCidade6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.wsdl" />
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\clienteService\serviceCliente.wsdl" />
     <None Include="Service References\clienteService\serviceCliente.xsd">
       <SubType>Designer</SubType>
@@ -555,6 +644,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\clienteService\serviceCliente5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.wsdl" />
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\condicaoEntregaService\serviceCondicao_Entrega.wsdl" />
@@ -1269,9 +1377,13 @@
     <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\bancoService\" />
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
+    <WCFMetadataStorage Include="Service References\Carga_trib_media_st_icmsServico\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
+    <WCFMetadataStorage Include="Service References\CfopServico\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
+    <WCFMetadataStorage Include="Service References\ClassificacaoFiscalServico\" />
     <WCFMetadataStorage Include="Service References\clienteService\" />
+    <WCFMetadataStorage Include="Service References\CodigoIcmsService\" />
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
@@ -1967,6 +2079,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\FidelidadeServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CfopServico\serviceCfop.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CfopServico\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CfopServico\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CfopServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
