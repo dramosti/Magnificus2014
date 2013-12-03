@@ -57,11 +57,18 @@
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
     <Compile Include="Commands\Comercial\Lista_PrecoCommands.cs" />
     <Compile Include="Commands\Comercial\MultaCommands.cs" />
+    <Compile Include="Commands\Crm\PersonalidadeCommand.cs" />
     <Compile Include="Commands\Financeiro\AgenciaCommands.cs" />
     <Compile Include="Commands\Financeiro\BancoCommands.cs" />
     <Compile Include="Commands\Financeiro\Conta_BancariaCommands.cs" />
     <Compile Include="Commands\Financeiro\DescontosAvistaCommand.cs" />
     <Compile Include="Commands\Financeiro\DiaPagamentoCommand.cs" />
+    <Compile Include="Service References\PersonalidadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Crm\PersonalidadeViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\DiaPagamentoViewModel.cs" />
     <Compile Include="Commands\Fiscal\StCofinsCommands.cs" />
     <Compile Include="Commands\Fiscal\StIcmsCommands.cs" />
@@ -393,6 +400,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Crm.PersonalidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.AgenciaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
@@ -924,6 +932,25 @@
     <None Include="Service References\multaService\serviceMulta5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade.wsdl" />
+    <None Include="Service References\PersonalidadeService\servicePersonalidade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.wsdl" />
     <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.xsd">
       <SubType>Designer</SubType>
@@ -1238,6 +1265,7 @@
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\multaService\" />
+    <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Plano_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
@@ -1881,6 +1909,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Dia_PagamentoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonalidadeService\servicePersonalidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonalidadeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonalidadeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PersonalidadeService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

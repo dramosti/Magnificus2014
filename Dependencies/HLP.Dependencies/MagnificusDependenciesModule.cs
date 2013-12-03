@@ -171,7 +171,7 @@ namespace HLP.Dependencies
 
             Bind<IDecisaoRepository>().To<DecisaoRepository>();
             Bind<IPersonalidadeRepository>().To<PersonalidadeRepository>();
-            //Bind<IFidelidadeRepository>().To<FidelidadeRepository>();
+            Bind<IFidelidadeRepository>().To<FidelidadeRepository>();
 
             //#endregion
 

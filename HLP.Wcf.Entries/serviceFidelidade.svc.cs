@@ -6,17 +6,19 @@ using System.ServiceModel;
 using System.Text;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
+using HLP.Entries.Model.Repository.Interfaces.Crm;
 using Ninject;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "servicePersonalidade" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select servicePersonalidade.svc or servicePersonalidade.svc.cs at the Solution Explorer and start debugging.
-    public class servicePersonalidade : IservicePersonalidade
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceFidelidade" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceFidelidade.svc or serviceFidelidade.svc.cs at the Solution Explorer and start debugging.
+    public class serviceFidelidade : IserviceFidelidade
     {
         [Inject]
-        public HLP.Entries.Model.Repository.Interfaces.Crm.IPersonalidadeRepository iPersonalidadeRepository { get; set; }
-        public servicePersonalidade()
+        public IFidelidadeRepository iFidelidadeRepository { get; set; }
+
+        public serviceFidelidade()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -24,15 +26,13 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-
-
-        public int Save(HLP.Entries.Model.Models.Crm.PersonalidadeModel Objeto)
+        public int Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel)
         {
 
             try
             {
-                iPersonalidadeRepository.Save(Objeto);
-                return (int)Objeto.idPersonalidade;
+                iFidelidadeRepository.Save(objModel);
+                return (int)objModel.idFidelidade;
             }
             catch (Exception ex)
             {
@@ -42,12 +42,11 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public HLP.Entries.Model.Models.Crm.PersonalidadeModel GetObjeto(int idObjeto)
+        public HLP.Entries.Model.Models.Crm.FidelidadeModel GetObjeto(int idObjeto)
         {
-
             try
             {
-                return iPersonalidadeRepository.GetPersonalidade(idObjeto);
+                return iFidelidadeRepository.GetFidelidade(idObjeto);
             }
             catch (Exception ex)
             {
@@ -57,12 +56,12 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public bool Delete(HLP.Entries.Model.Models.Crm.PersonalidadeModel Objeto)
+        public bool Delete(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel)
         {
 
             try
             {
-                iPersonalidadeRepository.Delete((int)Objeto.idPersonalidade);
+                iFidelidadeRepository.Delete((int)objModel.idFidelidade);
                 return true;
             }
             catch (Exception ex)
@@ -73,11 +72,11 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int Copy(HLP.Entries.Model.Models.Crm.PersonalidadeModel Objeto)
+        public int Copy(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel)
         {
             try
             {
-                return iPersonalidadeRepository.Copy((int)Objeto.idPersonalidade);
+                return iFidelidadeRepository.Copy((int)objModel.idFidelidade);
             }
             catch (Exception ex)
             {

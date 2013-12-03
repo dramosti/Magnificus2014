@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b21543bb-b276-44ed-adb6-3d0ec6300680" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/servicePersonalidade.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="servicePersonalidade.xsd" MetadataType="Schema" ID="3b02c394-d5fe-48e0-bc35-09d5600d4c31" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?xsd=xsd1" />
+    <MetadataFile FileName="servicePersonalidade1.xsd" MetadataType="Schema" ID="3cc6ec2b-b0cc-4729-8e23-a1f10fdbbe12" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?xsd=xsd5" />
+    <MetadataFile FileName="servicePersonalidade2.xsd" MetadataType="Schema" ID="4a3068b7-797a-4ce9-9852-a8a1f747b13c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?xsd=xsd4" />
+    <MetadataFile FileName="servicePersonalidade.disco" MetadataType="Disco" ID="8f75ed88-0feb-44f3-ae65-7aed576d8688" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?disco" />
+    <MetadataFile FileName="servicePersonalidade3.xsd" MetadataType="Schema" ID="d281c385-6286-413a-ad29-6ed7fb82ccce" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?xsd=xsd0" />
+    <MetadataFile FileName="servicePersonalidade4.xsd" MetadataType="Schema" ID="b92d3675-55f2-4a55-9b88-77d4c6bdc833" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?xsd=xsd3" />
+    <MetadataFile FileName="servicePersonalidade5.xsd" MetadataType="Schema" ID="1c10c608-90dc-4dff-ae11-5ee5aed4479e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?xsd=xsd2" />
+    <MetadataFile FileName="servicePersonalidade.wsdl" MetadataType="Wsdl" ID="7d3d5f4d-9a07-4f16-9634-ddd27b1af193" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePersonalidade.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
