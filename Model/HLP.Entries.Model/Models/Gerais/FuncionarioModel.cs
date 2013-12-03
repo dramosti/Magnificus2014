@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace HLP.Entries.Model.Models.Gerais
         public FuncionarioModel()
             : base(xTabela: "Funcionario")
         {
+            this.lFuncionario_Endereco =
+                new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>();
         }
 
         private int? _idFuncionario;
@@ -161,14 +164,26 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 67)]
         public bool stUsuarioAtivo { get; set; }
 
+
+        private ObservableCollectionBaseCadastros<Funcionario_EnderecoModel> _lFuncionario_Endereco;
+
+        public ObservableCollectionBaseCadastros<Funcionario_EnderecoModel> lFuncionario_Endereco
+        {
+            get { return _lFuncionario_Endereco; }
+            set
+            {
+                _lFuncionario_Endereco = value;
+                base.NotifyPropertyChanged(propertyName: "lFuncionario_Endereco");
+            }
+        }
+
+
         public ObservableCollectionBaseCadastros<Funcionario_ArquivoModel> lFuncionario_Arquivo =
             new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
         public ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel> lFuncionario_Certificacao =
             new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>();
         public ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto =
             new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>();
-        public ObservableCollectionBaseCadastros<Funcionario_EnderecoModel> lFuncionario_Endereco =
-            new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>();
         public ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao =
             new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>();
         public ObservableCollectionBaseCadastros<Funcionario_AcessoModel> lFuncionario_Acesso =
@@ -184,36 +199,188 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
+        private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idEndereco { get; set; }
+        public int? idEndereco
+        {
+            get { return _idEndereco; }
+            set
+            {
+                _idEndereco = value;
+                base.NotifyPropertyChanged(propertyName: "idEndereco");
+            }
+        }
+
+
+        private TipoEndereco _enumTipoEnder;
+
+        public TipoEndereco enumTipoEnder
+        {
+            get { return _enumTipoEnder; }
+            set
+            {
+                _enumTipoEnder = value;
+                base.NotifyPropertyChanged(propertyName: "enumTipoEnder");
+                _stTipoEndereco = (int)value;
+            }
+        }
+
+
+        private int _stTipoEndereco;
         [ParameterOrder(Order = 2)]
-        public byte stTipoEndereco { get; set; }
+        public int stTipoEndereco
+        {
+            get { return _stTipoEndereco; }
+            set
+            {
+                _stTipoEndereco = value;
+                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
+                _enumTipoEnder = (TipoEndereco)value;
+            }
+        }
+        private string _xEndereco;
         [ParameterOrder(Order = 3)]
-        public string xEndereco { get; set; }
+        public string xEndereco
+        {
+            get { return _xEndereco; }
+            set
+            {
+                _xEndereco = value;
+                base.NotifyPropertyChanged(propertyName: "xEndereco");
+            }
+        }
+        private string _xCep;
         [ParameterOrder(Order = 4)]
-        public string xCep { get; set; }
+        public string xCep
+        {
+            get { return _xCep; }
+            set
+            {
+                _xCep = value;
+                base.NotifyPropertyChanged(propertyName: "xCep");
+            }
+        }
+        private string _xNumero;
         [ParameterOrder(Order = 5)]
-        public string xNumero { get; set; }
+        public string xNumero
+        {
+            get { return _xNumero; }
+            set
+            {
+                _xNumero = value;
+                base.NotifyPropertyChanged(propertyName: "xNumero");
+            }
+        }
+        private string _xComplemento;
         [ParameterOrder(Order = 6)]
-        public string xComplemento { get; set; }
+        public string xComplemento
+        {
+            get { return _xComplemento; }
+            set
+            {
+                _xComplemento = value;
+                base.NotifyPropertyChanged(propertyName: "xComplemento");
+            }
+        }
+        private string _xBairro;
         [ParameterOrder(Order = 7)]
-        public string xBairro { get; set; }
+        public string xBairro
+        {
+            get { return _xBairro; }
+            set
+            {
+                _xBairro = value;
+                base.NotifyPropertyChanged(propertyName: "xBairro");
+            }
+        }
+        private string _xLatitude;
         [ParameterOrder(Order = 8)]
-        public string xLatitude { get; set; }
+        public string xLatitude
+        {
+            get { return _xLatitude; }
+            set
+            {
+                _xLatitude = value;
+                base.NotifyPropertyChanged(propertyName: "xLatitude");
+            }
+        }
+        private string _xLongitude;
         [ParameterOrder(Order = 9)]
-        public string xLongitude { get; set; }
+        public string xLongitude
+        {
+            get { return _xLongitude; }
+            set
+            {
+                _xLongitude = value;
+                base.NotifyPropertyChanged(propertyName: "xLongitude");
+            }
+        }
+        private string _xFusoHorario;
         [ParameterOrder(Order = 10)]
-        public string xFusoHorario { get; set; }
+        public string xFusoHorario
+        {
+            get { return _xFusoHorario; }
+            set
+            {
+                _xFusoHorario = value;
+                base.NotifyPropertyChanged(propertyName: "xFusoHorario");
+            }
+        }
+        private string _xCaixaPostal;
         [ParameterOrder(Order = 11)]
-        public string xCaixaPostal { get; set; }
+        public string xCaixaPostal
+        {
+            get { return _xCaixaPostal; }
+            set
+            {
+                _xCaixaPostal = value;
+                base.NotifyPropertyChanged(propertyName: "xCaixaPostal");
+            }
+        }
+        private int _idFuncionario;
         [ParameterOrder(Order = 12)]
-        public int idFuncionario { get; set; }
+        public int idFuncionario
+        {
+            get { return _idFuncionario; }
+            set
+            {
+                _idFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionario");
+            }
+        }
+        private int _idCidade;
         [ParameterOrder(Order = 13)]
-        public int idCidade { get; set; }
+        public int idCidade
+        {
+            get { return _idCidade; }
+            set
+            {
+                _idCidade = value;
+                base.NotifyPropertyChanged(propertyName: "idCidade");
+            }
+        }
+        private byte? _stPrincipal;
         [ParameterOrder(Order = 14)]
-        public byte? stPrincipal { get; set; }
+        public byte? stPrincipal
+        {
+            get { return _stPrincipal; }
+            set
+            {
+                _stPrincipal = value;
+                base.NotifyPropertyChanged(propertyName: "stPrincipal");
+            }
+        }
+        private string _xNome;
         [ParameterOrder(Order = 15)]
-        public string xNome { get; set; }
+        public string xNome
+        {
+            get { return _xNome; }
+            set
+            {
+                _xNome = value;
+                base.NotifyPropertyChanged(propertyName: "xNome");
+            }
+        }
     }
 
     public partial class Funcionario_ArquivoModel : modelBase

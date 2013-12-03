@@ -9,6 +9,7 @@ using System.Reflection;
 using HLP.Comum.Model.StaticModels;
 using HLP.Comum.Model.Components;
 using HLP.Comum.Infrastructure.Static;
+using System.Data.SqlTypes;
 
 namespace HLP.Comum.Model.Models
 {
@@ -16,10 +17,35 @@ namespace HLP.Comum.Model.Models
     {
         public List<PesquisaPadraoModelContract> lcamposSqlNotNull;
         public statusModel status { get; set; }
+        public readonly string[] camposSeremIgnorados = { "Item", "Error" }; //Campos que não devem ser verificados no reflection de iniciaobjeto()
         camposNotNullService.IcamposBaseDadosServiceClient servico;
 
         public modelBase()
         {
+        }
+
+        public void IniciaObjeto()
+        {
+            try
+            {
+                object o;
+                foreach (PropertyInfo p in this.GetType().GetProperties())
+                {
+                    if (camposSeremIgnorados.ToList().Count(i => i.ToString() == p.Name) == 0)
+                    {
+                        o = p.GetValue(obj: this);
+                        if (o != null)
+                            if (p.GetValue(obj: this).GetType() == typeof(DateTime))
+                                p.SetValue(obj: this, value: ((DateTime)SqlDateTime.MinValue));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public modelBase(string xTabela)
@@ -51,6 +77,8 @@ namespace HLP.Comum.Model.Models
 
             if (p != null && !xTabela.Contains("Empresa"))
                 p.SetValue(this, CompanyData.idEmpresa);
+
+            this.IniciaObjeto();
         }
 
         #region NotifyPropertyChanged
@@ -84,23 +112,26 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        #endregion
-
         protected string GetValidationError<T>(string columnName, T objeto) where T : class
         {
+            object valor = objeto.GetType().GetProperty(columnName).GetValue(objeto);
             if (lcamposSqlNotNull != null)
             {
                 PesquisaPadraoModelContract campo = lcamposSqlNotNull.FirstOrDefault(predicate:
                     i => i.COLUMN_NAME == columnName);
                 if (campo != null)
                 {
-                    object valor = objeto.GetType().GetProperty(columnName).GetValue(objeto);
-                    if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == "F " && valor == "0"))
+                    if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == "F " && valor.ToString() == "0"))
                         return "Necessário que campo possua valor!";
                     else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
                         && (valor == "" || valor == null))
                     {
                         return "Necessário que campo possua valor!";
+                    }
+                    else if (campo.IS_NULLABLE == "NO" && (objeto.GetType().GetProperty(columnName).GetType()
+                        == typeof(DateTime) && ((DateTime)valor) < SqlDateTime.MinValue))
+                    {
+                        return "Necessário uma data maior que " + SqlDateTime.MinValue.ToString();
                     }
 
                     if (valor != null)
@@ -111,7 +142,16 @@ namespace HLP.Comum.Model.Models
                     }
                 }
             }
+
+            if (objeto.GetType().GetProperty(columnName).GetValue(objeto).GetType()
+                == typeof(DateTime) && ((DateTime)valor) != DateTime.MinValue && ((DateTime)valor) < ((DateTime)SqlDateTime.MinValue))
+            {
+                return "Necessário uma data maior que " + SqlDateTime.MinValue.ToString();
+            }
+
             return null;
         }
+
+        #endregion
     }
 }

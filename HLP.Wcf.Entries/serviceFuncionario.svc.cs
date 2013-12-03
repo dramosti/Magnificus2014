@@ -86,7 +86,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
 
             try
@@ -227,7 +227,7 @@ namespace HLP.Wcf.Entries
 
 
                 this.funcionarioRepository.CommitTransaction();
-                return (int)objFuncionario.idFuncionario;
+                return objFuncionario;
             }
             catch (Exception ex)
             {

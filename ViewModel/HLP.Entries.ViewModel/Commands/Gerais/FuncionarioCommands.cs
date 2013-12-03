@@ -117,12 +117,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         });
                 }
                 #endregion
-
-                this.objViewModel.currentModel.idFuncionario = servico.saveFuncionario(objFuncionario:
-                    this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.metodoGetModel(this, null);
-                this.Inicia_Collections();
+                BackgroundWorker bwSalvar = new BackgroundWorker();
+                bwSalvar.DoWork += bwSalvar_DoWork;
+                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bwSalvar.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -130,10 +128,47 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
 
         }
+
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.Inicia_Collections();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentModel = servico.saveFuncionario(objFuncionario:
+                    this.objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         private bool SaveCanExecute(object objDependency)
         {
             if (objViewModel.currentModel == null || objDependency == null)
                 return false;
+            bool bExec = (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null));
+
+            bool bIsValid = this.objViewModel.IsValid(objDependency as Panel);
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
@@ -271,12 +306,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Inicia_Collections()
         {
-            this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Endereco.CollectionCarregada();
-            this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.CollectionCarregada();
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Endereco.CollectionCarregada();
+                this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.CollectionCarregada();
+            }
         }
         #endregion
 
