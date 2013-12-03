@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Comum.ViewModel.Commands;
-using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
-    public class CodigoIcmsCommand
+    public class Situacao_tributaria_pisCommand
     {
-        CodigoIcmsViewModel objViewModel;
-        CodigoIcmsService.IserviceCodigoIcmsClient servico = new CodigoIcmsService.IserviceCodigoIcmsClient();
+        Situacao_tributaria_pisService.IserviceSituacao_tributaria_pisClient servico = new Situacao_tributaria_pisService.IserviceSituacao_tributaria_pisClient();
+        Situacao_tributaria_pisViewModel objViewModel;
 
-        public CodigoIcmsCommand(CodigoIcmsViewModel objViewModel)
+        public Situacao_tributaria_pisCommand(Situacao_tributaria_pisViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
@@ -45,6 +44,9 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
+        
+        
+
         }
 
 
@@ -54,19 +56,8 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                foreach (int id in this.objViewModel.currentModel.lCodigo_IcmsModel.idExcluidos)
-                {
-                    this.objViewModel.currentModel.lCodigo_IcmsModel.Add(
-                        new Codigo_IcmsModel
-                        {
-                            idCodigoIcms = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
-                        });
-                }
-                this.objViewModel.currentModel =
-                    await servico.SaveAsync(objViewModel.currentModel);
+                this.objViewModel.currentModel.idCSTPis = await this.servico.SaveAsync(this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.Inicia_Collections();
             }
             catch (Exception ex)
             {
@@ -76,30 +67,11 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         }
         private bool SaveCanExecute(object objDependency)
         {
-            if (objViewModel.currentModel == null && objDependency == null)
+            if (objViewModel.currentModel == null || objDependency == null)
                 return false;
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
-        }
-
-        public async void Copy()
-        {
-            try
-            {
-                this.objViewModel.currentModel = await this.servico.CopyAsync(this.objViewModel.currentModel);
-                this.objViewModel.copyBaseCommand.Execute(null);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
-        public bool CopyCanExecute()
-        {
-            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public async void Delete()
@@ -110,7 +82,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.DeleteAsync(this.objViewModel.currentModel))
+                    if (await this.servico.DeleteAsync(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -132,6 +104,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                 this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
+
         private bool DeleteCanExecute()
         {
             if (objViewModel.currentModel == null)
@@ -142,7 +115,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new Codigo_Icms_paiModel();
+            this.objViewModel.currentModel = new Model.Models.Fiscal.Situacao_tributaria_pisModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -169,33 +142,59 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-
-        public void ExecPesquisa()
-        {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.PesquisarRegistro();
-        }
-
-
-        private void PesquisarRegistro()
-        {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
-        }
-
-        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public async void Copy()
         {
             try
             {
-                this.Inicia_Collections();
+                BackgroundWorker bwCopy = new BackgroundWorker();
+                bwCopy.DoWork += bwCopy_DoWork;
+                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentID = (int)e.Result;
+                    this.metodoGetModel(this, null);
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
 
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = this.servico.Copy(this.objViewModel.currentModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool CopyCanExecute()
+        {
+            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public void Navegar(object ContentBotao)
@@ -211,15 +210,25 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
         }
 
-        private void Inicia_Collections()
+        public void ExecPesquisa()
         {
-            this.objViewModel.currentModel.lCodigo_IcmsModel.CollectionCarregada();
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
         }
 
-        private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
+        private void PesquisarRegistro()
         {
-            this.objViewModel.currentModel = servico.GetObjeto(this.objViewModel.currentID);
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerAsync();
+
+        }
+
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.servico.GetObjeto(this.objViewModel.currentID);
         }
         #endregion
+
     }
 }

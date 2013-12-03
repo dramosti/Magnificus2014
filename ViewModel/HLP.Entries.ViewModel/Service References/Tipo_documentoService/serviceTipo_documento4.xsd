@@ -1,88 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" />
-  <xs:element name="DoWork">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DoWorkResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumento">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="GetDocumentoResult" nillable="true" type="q1:Tipo_documentoModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Save">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="documento" nillable="true" type="q2:Tipo_documentoModel" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="objModel" nillable="true" type="q1:Tipo_documentoModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetObjeto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idObjeto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetObjetoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="GetObjetoResult" nillable="true" type="q2:Tipo_documentoModel" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Delete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="objModel" nillable="true" type="q3:Tipo_documentoModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteResponse">
     <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Begin">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="BeginResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Commit">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="CommitResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RollBack">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RollBackResponse">
-    <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Copy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="objModel" nillable="true" type="q4:Tipo_documentoModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,7 +65,7 @@
   <xs:element name="GetTipo_documentoAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="GetTipo_documentoAllResult" nillable="true" type="q3:ArrayOfTipo_documentoModel" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" minOccurs="0" name="GetTipo_documentoAllResult" nillable="true" type="q5:ArrayOfTipo_documentoModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

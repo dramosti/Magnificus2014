@@ -123,6 +123,7 @@
     <Content Include="serviceRota.svc" />
     <Content Include="serviceSetor.svc" />
     <Content Include="serviceSite.svc" />
+    <Content Include="serviceSituacao_tributaria_pis.svc" />
     <Content Include="serviceStCofins.svc" />
     <Content Include="serviceStIcms.svc" />
     <Content Include="serviceStIpi.svc" />
@@ -178,6 +179,7 @@
     <Compile Include="IserviceRota.cs" />
     <Compile Include="IserviceSetor.cs" />
     <Compile Include="IserviceSite.cs" />
+    <Compile Include="IserviceSituacao_tributaria_pis.cs" />
     <Compile Include="IserviceStCofins.cs" />
     <Compile Include="IserviceStIcms.cs" />
     <Compile Include="IserviceStIpi.cs" />
@@ -300,6 +302,9 @@
     </Compile>
     <Compile Include="serviceSite.svc.cs">
       <DependentUpon>serviceSite.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceSituacao_tributaria_pis.svc.cs">
+      <DependentUpon>serviceSituacao_tributaria_pis.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceStCofins.svc.cs">
       <DependentUpon>serviceStCofins.svc</DependentUpon>

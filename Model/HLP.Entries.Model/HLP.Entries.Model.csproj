@@ -79,6 +79,7 @@
     <Compile Include="Models\Fiscal\Situacao_tributaria_cofinsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_icmsModel.cs" />
     <Compile Include="Models\Fiscal\Situacao_tributaria_ipiModel.cs" />
+    <Compile Include="Models\Fiscal\Situacao_tributaria_pisModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_operacaoModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_ipiRepository.cs" />
+    <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_pisRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_operacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
@@ -236,6 +238,7 @@
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_ipiRepository.cs" />
+    <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_pisRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_operacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />

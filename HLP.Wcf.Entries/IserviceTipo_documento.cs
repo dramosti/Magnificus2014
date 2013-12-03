@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Entries.Model.Fiscal;
 
 namespace HLP.Wcf.Entries
 {
@@ -13,22 +12,18 @@ namespace HLP.Wcf.Entries
     public interface IserviceTipo_documento
     {
         [OperationContract]
-        void DoWork();
+        int Save(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel);
+
         [OperationContract]
-        Tipo_documentoModel GetDocumento(int idTipoDocumento);
+        HLP.Entries.Model.Fiscal.Tipo_documentoModel GetObjeto(int idObjeto);
+
         [OperationContract]
-        void Save(Tipo_documentoModel documento);
+        bool Delete(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel);
+
         [OperationContract]
-        void Delete(int idTipoDocumento);
+        int Copy(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel);
+
         [OperationContract]
-        void Begin();
-        [OperationContract]
-        void Commit();
-        [OperationContract]
-        void RollBack();
-        [OperationContract]
-        int Copy(int idTipoDocumento);
-        [OperationContract]
-        List<Tipo_documentoModel> GetTipo_documentoAll();
+        List<HLP.Entries.Model.Fiscal.Tipo_documentoModel> GetTipo_documentoAll();
     }
 }

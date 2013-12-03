@@ -18,7 +18,7 @@ namespace HLP.Wcf.Entries
     {
 
         [Inject]
-        public ITipo_documentoRepository tipo_documentoRepository { get; set; }
+        public ITipo_documentoRepository itipo_documentoRepository { get; set; }
 
         public serviceTipo_documento() 
         {
@@ -27,115 +27,74 @@ namespace HLP.Wcf.Entries
             kernel.Inject(this);
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
-        public void DoWork()
+
+        public int Save(Tipo_documentoModel objModel)
         {
-        }
-
-
-        public Tipo_documentoModel GetDocumento(int idTipoDocumento)
-        {
-
             try
             {
-                return tipo_documentoRepository.GetDocumento(idTipoDocumento);
+                itipo_documentoRepository.Save(objModel);
+                return (int)objModel.idTipoDocumento;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }
-        
+            }        
         }
 
-        public void Save(Tipo_documentoModel documento)
+        public Tipo_documentoModel GetObjeto(int idObjeto)
         {
             try
             {
-                tipo_documentoRepository.Save(documento);
+                return itipo_documentoRepository.GetDocumento(idObjeto);
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }
+            }        
         }
 
-        public void Delete(int idTipoDocumento)
+        public bool Delete(Tipo_documentoModel objModel)
         {
             try
             {
-                tipo_documentoRepository.Delete(idTipoDocumento);
+                itipo_documentoRepository.Delete((int)objModel.idTipoDocumento);
+                return true;
+
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }
+            }        
         }
 
-        public void Begin()
+        public int Copy(Tipo_documentoModel objModel)
         {
             try
             {
-                tipo_documentoRepository.Begin();
+                return itipo_documentoRepository.Copy((int)objModel.idTipoDocumento);
+
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }
-        }
-
-        public void Commit()
-        {
-            try
-            {
-                tipo_documentoRepository.Commit();
-            }
-            catch (Exception ex)
-            {
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
-            }
-        }
-
-        public void RollBack()
-        {
-            try
-            {
-                tipo_documentoRepository.RollBack();
-            }
-            catch (Exception ex)
-            {
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
-            }
-        }
-
-        public int Copy(int idTipoDocumento)
-        {
-            try
-            {
-               return tipo_documentoRepository.Copy(idTipoDocumento);
-            }
-            catch (Exception ex)
-            {
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
-            }
+            }        
         }
 
         public List<Tipo_documentoModel> GetTipo_documentoAll()
         {
             try
             {
-                return tipo_documentoRepository.GetTipo_documentoAll();
+                return itipo_documentoRepository.GetTipo_documentoAll();
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }
+            }        
         }
     }
 }

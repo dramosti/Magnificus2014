@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.CodigoIcmsService {
+namespace HLP.Entries.ViewModel.Situacao_tributaria_pisService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,18 +17,17 @@ namespace HLP.Entries.ViewModel.CodigoIcmsService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Fiscal.Codigo_IcmsModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.CodigoIcmsService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.Situacao_tributaria_pisService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.CodigoIcmsService.statusModel statusField;
+        private HLP.Entries.ViewModel.Situacao_tributaria_pisService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -41,7 +40,7 @@ namespace HLP.Entries.ViewModel.CodigoIcmsService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.CodigoIcmsService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.Situacao_tributaria_pisService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -54,7 +53,7 @@ namespace HLP.Entries.ViewModel.CodigoIcmsService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.CodigoIcmsService.statusModel status {
+        public HLP.Entries.ViewModel.Situacao_tributaria_pisService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -187,90 +186,90 @@ namespace HLP.Entries.ViewModel.CodigoIcmsService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CodigoIcmsService.IserviceCodigoIcms")]
-    public interface IserviceCodigoIcms {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Situacao_tributaria_pisService.IserviceSituacao_tributaria_pis")]
+    public interface IserviceSituacao_tributaria_pis {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/Save", ReplyAction="http://tempuri.org/IserviceCodigoIcms/SaveResponse")]
-        HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Save(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/Save", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/SaveResponse")]
+        int Save(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/Save", ReplyAction="http://tempuri.org/IserviceCodigoIcms/SaveResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel> SaveAsync(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/Save", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/SaveResponse")]
+        System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/GetObjeto", ReplyAction="http://tempuri.org/IserviceCodigoIcms/GetObjetoResponse")]
-        HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel GetObjeto(int idObjeto);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/GetObjeto", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/GetObjetoResponse")]
+        HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel GetObjeto(int idObjeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/GetObjeto", ReplyAction="http://tempuri.org/IserviceCodigoIcms/GetObjetoResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel> GetObjetoAsync(int idObjeto);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/GetObjeto", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/GetObjetoResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel> GetObjetoAsync(int idObjeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/Delete", ReplyAction="http://tempuri.org/IserviceCodigoIcms/DeleteResponse")]
-        bool Delete(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/Delete", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/DeleteResponse")]
+        bool Delete(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/Delete", ReplyAction="http://tempuri.org/IserviceCodigoIcms/DeleteResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/Delete", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/DeleteResponse")]
+        System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/Copy", ReplyAction="http://tempuri.org/IserviceCodigoIcms/CopyResponse")]
-        HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Copy(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/Copy", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/CopyResponse")]
+        int Copy(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCodigoIcms/Copy", ReplyAction="http://tempuri.org/IserviceCodigoIcms/CopyResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel> CopyAsync(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSituacao_tributaria_pis/Copy", ReplyAction="http://tempuri.org/IserviceSituacao_tributaria_pis/CopyResponse")]
+        System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceCodigoIcmsChannel : HLP.Entries.ViewModel.CodigoIcmsService.IserviceCodigoIcms, System.ServiceModel.IClientChannel {
+    public interface IserviceSituacao_tributaria_pisChannel : HLP.Entries.ViewModel.Situacao_tributaria_pisService.IserviceSituacao_tributaria_pis, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceCodigoIcmsClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.CodigoIcmsService.IserviceCodigoIcms>, HLP.Entries.ViewModel.CodigoIcmsService.IserviceCodigoIcms {
+    public partial class IserviceSituacao_tributaria_pisClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Situacao_tributaria_pisService.IserviceSituacao_tributaria_pis>, HLP.Entries.ViewModel.Situacao_tributaria_pisService.IserviceSituacao_tributaria_pis {
         
-        public IserviceCodigoIcmsClient() {
+        public IserviceSituacao_tributaria_pisClient() {
         }
         
-        public IserviceCodigoIcmsClient(string endpointConfigurationName) : 
+        public IserviceSituacao_tributaria_pisClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceCodigoIcmsClient(string endpointConfigurationName, string remoteAddress) : 
+        public IserviceSituacao_tributaria_pisClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceCodigoIcmsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceSituacao_tributaria_pisClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceCodigoIcmsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceSituacao_tributaria_pisClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Save(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel) {
+        public int Save(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel) {
             return base.Channel.Save(objModel);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel> SaveAsync(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel) {
+        public System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel) {
             return base.Channel.SaveAsync(objModel);
         }
         
-        public HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel GetObjeto(int idObjeto) {
+        public HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel GetObjeto(int idObjeto) {
             return base.Channel.GetObjeto(idObjeto);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel> GetObjetoAsync(int idObjeto) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel> GetObjetoAsync(int idObjeto) {
             return base.Channel.GetObjetoAsync(idObjeto);
         }
         
-        public bool Delete(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel) {
+        public bool Delete(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel) {
             return base.Channel.Delete(objModel);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel) {
+        public System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel) {
             return base.Channel.DeleteAsync(objModel);
         }
         
-        public HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel Copy(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel) {
+        public int Copy(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel) {
             return base.Channel.Copy(objModel);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel> CopyAsync(HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objModel) {
+        public System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel objModel) {
             return base.Channel.CopyAsync(objModel);
         }
     }

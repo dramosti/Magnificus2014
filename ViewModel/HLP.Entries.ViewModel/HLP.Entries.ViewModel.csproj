@@ -68,6 +68,8 @@
     <Compile Include="Commands\Fiscal\CfopCommand.cs" />
     <Compile Include="Commands\Fiscal\ClassificacaoFiscalCommand.cs" />
     <Compile Include="Commands\Fiscal\CodigoIcmsCommand.cs" />
+    <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
+    <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Service References\Carga_trib_media_st_icmsServico\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +96,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\PersonalidadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Situacao_tributaria_pisService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -125,7 +132,6 @@
     <Compile Include="Commands\Parametros\Empresa_ParametrosCommands.cs" />
     <Compile Include="Commands\RecursosHumanos\SetorCommands.cs" />
     <Compile Include="Commands\RegiaoCommands.cs" />
-    <Compile Include="Commands\Tipo_documentoCommands.cs" />
     <Compile Include="Commands\Transportes\Condicao_entregaCommands.cs" />
     <Compile Include="Commands\Transportes\RotaCommand.cs" />
     <Compile Include="Commands\Transportes\TransportadorCommands.cs" />
@@ -362,9 +368,11 @@
     <Compile Include="ViewModels\Fiscal\CfopViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\ClassificacaoFiscalViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\CodigoIcmsViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\Situacao_tributaria_pisViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StCofinsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StIcmsViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\StIpiViewModel.cs" />
+    <Compile Include="ViewModels\Fiscal\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\Tipo_OperacaoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
@@ -381,7 +389,6 @@
     <Compile Include="ViewModels\Parametros\Empresa_ParametrosViewModel.cs" />
     <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
-    <Compile Include="ViewModels\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Transportes\Condicao_entregaViewModel.cs" />
     <Compile Include="ViewModels\Transportes\RotaViewModel.cs" />
     <Compile Include="ViewModels\Transportes\TransportadorViewModel.cs" />
@@ -449,6 +456,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_cofinsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_icmsModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
@@ -1200,6 +1208,25 @@
     <None Include="Service References\siteService\serviceSite5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis.wsdl" />
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\StCofinsService\serviceStCofins.wsdl" />
     <None Include="Service References\StCofinsService\serviceStCofins.xsd">
       <SubType>Designer</SubType>
@@ -1300,6 +1327,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_documentoService\serviceTipo_documento5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.wsdl" />
@@ -1412,6 +1442,7 @@
     <WCFMetadataStorage Include="Service References\rotaService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
+    <WCFMetadataStorage Include="Service References\Situacao_tributaria_pisService\" />
     <WCFMetadataStorage Include="Service References\StCofinsService\" />
     <WCFMetadataStorage Include="Service References\StIcmsService\" />
     <WCFMetadataStorage Include="Service References\StIpiService\" />
@@ -2139,6 +2170,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\CodigoIcmsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Situacao_tributaria_pisService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Situacao_tributaria_pisService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Situacao_tributaria_pisService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

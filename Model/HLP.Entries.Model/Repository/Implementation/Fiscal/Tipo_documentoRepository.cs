@@ -26,7 +26,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
                 regDocumentoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_tipo_documento",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idTipoDocumento"),
-                                  MapBuilder<Tipo_documentoModel>.MapAllProperties().Build());
+                                  MapBuilder<Tipo_documentoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
             }
 
 
@@ -40,7 +40,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
                 int idTipoDocumento = Convert.ToInt32((UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
                    "dbo.Proc_save_tipo_documento",
                   ParameterBase<Tipo_documentoModel>.SetParameterValue(documento))));
-
                 documento.idTipoDocumento = idTipoDocumento;
             }
             else

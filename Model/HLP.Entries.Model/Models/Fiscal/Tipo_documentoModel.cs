@@ -12,8 +12,13 @@ namespace HLP.Entries.Model.Fiscal
     {
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
+        public int? _idTipoDocumento;
         [ParameterOrder(Order = 2)]
-        public int? idTipoDocumento { get; set; }
+        public int? idTipoDocumento
+        {
+            get { return _idTipoDocumento; }
+            set { _idTipoDocumento = value; base.NotifyPropertyChanged("idTipoDocumento"); }
+        }
         [ParameterOrder(Order = 3)]
         public string xTpdoc { get; set; }
         [ParameterOrder(Order = 4)]
