@@ -134,6 +134,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             if (objViewModel.currentModel == null || objDependency == null)
                 return false;
+            bool bExec = (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null));
+
+            bool bIsValid = this.objViewModel.IsValid(objDependency as Panel);
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));

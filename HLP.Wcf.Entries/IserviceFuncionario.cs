@@ -15,7 +15,7 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
 
         [OperationContract]
-        int saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
 
         [OperationContract]
         bool deleteFuncionario(int idFuncionario);
