@@ -14,12 +14,12 @@ namespace HLP.Comum.View.Converters
             if (value == null)
                 return null;
 
-            value = value.ToString().Replace(oldValue: " ", newValue: "");
 
             switch (parameter.ToString())
             {
                 case "cep":
                     {
+                        value = value.ToString().Replace(oldValue: " ", newValue: "");
                         if (value.ToString().Length > 8)
                             value = value.ToString().Substring(startIndex: 0, length: 8);
 
@@ -32,6 +32,7 @@ namespace HLP.Comum.View.Converters
                 case "tel":
                 case "cel":
                     {
+                        value = value.ToString().Replace(oldValue: " ", newValue: "");
                         if (value.ToString().Length > 11)
                             value = value.ToString().Substring(startIndex: 0, length: 10);
 
@@ -61,7 +62,12 @@ namespace HLP.Comum.View.Converters
                     }
                 case "date":
                     {
-                        return String.Format(format: "{0:dd/MM/yyyy}", arg0: value);
+                        DateTime dValue;
+
+                        if (DateTime.TryParse(s: value.ToString(), result: out dValue))
+                            return String.Format(format: "{0:dd/MM/yyyy}", arg0: dValue);
+
+                        return DateTime.MinValue;
                     }
             }
             return value.ToString();
