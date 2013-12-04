@@ -11,20 +11,20 @@ namespace HLP.Comum.View.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            decimal valorTotal = decimal.Zero;
-            decimal valor = decimal.Zero;
+            TimeSpan valorTotal = TimeSpan.Zero;
+            TimeSpan valor = TimeSpan.Zero;
             switch (parameter.ToString())
             {
                 case "soma":
                     {
                         foreach (object item in values)
                         {
-                            if (decimal.TryParse(s: item.ToString(), result: out valor))
+                            if (TimeSpan.TryParse(s: item.ToString(), result: out valor))
                                 valorTotal += valor;
                         }
                     } break;
             }
-            return valorTotal;
+            return valorTotal.ToString();
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)

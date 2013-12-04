@@ -7,8 +7,9 @@ using System.Windows.Data;
 
 namespace HLP.Comum.View.Converters
 {
+    [ValueConversion(sourceType: typeof(TimeSpan), targetType: typeof(string))]
     public class TimeSpanToString : IValueConverter
-    {
+    {        
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             string ret = "";
