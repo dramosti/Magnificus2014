@@ -12,11 +12,11 @@ using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
-    public class ContatoCommand
+    public class CalendarioCommand
     {
-        ContatoViewModel objViewModel;
-        contato_Service.IserviceContatoClient servico = new contato_Service.IserviceContatoClient();
-        public ContatoCommand(ContatoViewModel objViewModel)
+        CalendarioViewModel objViewModel;
+        CalendarioService.IserviceCalendarioClient servico = new CalendarioService.IserviceCalendarioClient();
+        public CalendarioCommand(CalendarioViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
@@ -48,23 +48,23 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         
         }
 
-
         #region Implementação Commands
 
         public async void Save()
         {
             try
             {
-                foreach (int id in this.objViewModel.currentModel.lContato_EnderecoModel.idExcluidos)
+                foreach (int id in this.objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos)
                 {
-                    this.objViewModel.currentModel.lContato_EnderecoModel.Add(
-                        new Contato_EnderecoModel
+                    this.objViewModel.currentModel.lCalendario_DetalheModel.Add(
+                        new Calendario_DetalheModel
                         {
-                            idEndereco = id,
+                            idCalendarioDetalhe = id,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel = await servico.SaveAsync(objViewModel.currentModel);
+                this.objViewModel.currentModel =
+                    await servico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                 this.Inicia_Collections();
             }
@@ -76,11 +76,30 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         private bool SaveCanExecute(object objDependency)
         {
-            if (objViewModel.currentModel == null || objDependency == null)
+            if (objViewModel.currentModel == null && objDependency == null)
                 return false;
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
+        }
+
+        public async void Copy()
+        {
+            try
+            {
+                this.objViewModel.currentModel = await this.servico.CopyAsync(this.objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool CopyCanExecute()
+        {
+            return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public async void Delete()
@@ -91,7 +110,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.DeleteAsync(objViewModel.currentID))
+                    if (await servico.DeleteAsync(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -123,7 +142,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo()
         {
-            objViewModel.currentModel = new ContatoModel();
+            this.objViewModel.currentModel = new CalendarioModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -150,36 +169,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
-        {
-            try
-            {
-                objViewModel.currentModel = await servico.CopyAsync(this.objViewModel.currentModel);
-                this.objViewModel.copyBaseCommand.Execute(null);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-        public bool CopyCanExecute()
-        {
-            return this.objViewModel.copyBaseCommand.CanExecute(null);
-        }
-
-        public void Navegar(object ContentBotao)
-        {
-            try
-            {
-                objViewModel.navegarBaseCommand.Execute(ContentBotao);
-                this.PesquisarRegistro();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         public void ExecPesquisa()
         {
@@ -187,13 +176,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.PesquisarRegistro();
         }
 
+
         private void PesquisarRegistro()
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
-
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -209,18 +198,29 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
-        private  void metodoGetModel(object sender, DoWorkEventArgs e)
-          {
-              this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID);
-          }
+        public void Navegar(object ContentBotao)
+        {
+            try
+            {
+                objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                this.PesquisarRegistro();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         private void Inicia_Collections()
         {
-            this.objViewModel.currentModel.lContato_EnderecoModel.CollectionCarregada();
+            this.objViewModel.currentModel.lCalendario_DetalheModel.CollectionCarregada();
         }
 
+        private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = servico.GetObjeto(this.objViewModel.currentID);
+        }
         #endregion
-
 
 
     }

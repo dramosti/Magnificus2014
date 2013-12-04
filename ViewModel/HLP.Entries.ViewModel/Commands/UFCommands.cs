@@ -187,9 +187,8 @@ namespace HLP.Entries.ViewModel.Commands
                 this.PesquisarRegistro();
             }
             catch (Exception ex)
-            {
-                
-                throw;
+            {                
+                throw ex;
             }
             
         }

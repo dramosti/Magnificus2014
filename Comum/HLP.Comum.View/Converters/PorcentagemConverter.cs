@@ -7,26 +7,28 @@ using System.Windows.Data;
 
 namespace HLP.Comum.View.Converters
 {
-    [ValueConversion(sourceType: typeof(TimeSpan), targetType: typeof(string))]
-    public class TimeSpanToString : IValueConverter
-    {        
+    public class PorcentagemConverter : IValueConverter
+    {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            string ret = "";
             if (value != null)
-                ret = value.ToString();
+                return value.ToString();
 
-            return ret;
+            return String.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            TimeSpan time = TimeSpan.Zero;
-
+            decimal valor;
             if (value != null)
-                time = TimeSpan.Parse(s: value.ToString());
+            {
+                value = value.ToString().Replace(".", ",");
+                value = value.ToString().Replace(" ", "").Replace("%", "");
 
-            return time;
+                if (decimal.TryParse(value.ToString(), out valor))
+                    return valor;
+            }
+            return decimal.Zero;
         }
     }
 }

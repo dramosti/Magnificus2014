@@ -49,5 +49,38 @@ namespace HLP.Comum.Resources.RecursosBases
         OUTRO
     };
 
+    public enum TipoCertificacao
+    {
+        [Description("0-ENSINO MÉDIO")]
+        ENSINOMEDIO,
+        [Description("1-ENSINO SUPERIOR")]
+        ENSINOSUPERIOR,
+        [Description("2-MBA/PÓS-GRADUAÇÃO")]
+        MBAPOSGRADUACAO,
+        [Description("3-MESTRADO")]
+        MESTRADO,
+        [Description("4-DOUTORADO")]
+        DOUTORADO,
+        [Description("5-PÓS-DOUTORADO")]
+        POSDOUTORADO,
+        [Description("6-CURSOS COMPLEMENTARES")]
+        CURSOSCOMPLEMENTARES,
+        [Description("7-OUTROS")]
+        OUTROS
+    }
+
+    public enum TipoComissao
+    {
+        [Description("0-Por Representante (Default)")]
+        REPRESENTANTE,
+        [Description("1-Por Lista de Preço")]
+        LISTAPREDEPRECO,
+        [Description("2-Por Família de Produto")]
+        FAMILIAPRODUTO,
+        [Description("3-Por Produto")]
+        PRODUTO,
+        [Description("4-Por Faixa Margem de Venda")]
+        FAIXAMARGEMVENDA
+    }
     #endregion
 }

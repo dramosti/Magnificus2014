@@ -70,6 +70,12 @@
     <Compile Include="Commands\Fiscal\CodigoIcmsCommand.cs" />
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
+    <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
+    <Compile Include="Service References\CalendarioService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Carga_trib_media_st_icmsServico\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -374,6 +380,7 @@
     <Compile Include="ViewModels\Fiscal\StIpiViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\Tipo_OperacaoViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\CalendarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
@@ -458,6 +465,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_ipiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel1.datasource" />
@@ -519,6 +527,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\bancoService\serviceBanco5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalendarioService\serviceCalendario.wsdl" />
+    <None Include="Service References\CalendarioService\serviceCalendario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalendarioService\serviceCalendario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalendarioService\serviceCalendario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalendarioService\serviceCalendario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalendarioService\serviceCalendario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CalendarioService\serviceCalendario5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda.wsdl" />
@@ -1406,6 +1433,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\bancoService\" />
+    <WCFMetadataStorage Include="Service References\CalendarioService\" />
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\Carga_trib_media_st_icmsServico\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
@@ -2185,6 +2213,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Situacao_tributaria_pisService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CalendarioService\serviceCalendario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CalendarioService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CalendarioService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CalendarioService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

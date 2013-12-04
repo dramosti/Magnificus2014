@@ -87,6 +87,7 @@
     <Content Include="camposBaseDadosService.svc" />
     <Content Include="serviceAgencia.svc" />
     <Content Include="serviceBanco.svc" />
+    <Content Include="serviceCalendario.svc" />
     <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCarga_trib_media_st_icms.svc" />
     <Content Include="serviceCargo.svc" />
@@ -143,6 +144,7 @@
     <Compile Include="IcamposBaseDadosService.cs" />
     <Compile Include="IserviceAgencia.cs" />
     <Compile Include="IserviceBanco.cs" />
+    <Compile Include="IserviceCalendario.cs" />
     <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCarga_trib_media_st_icms.cs" />
     <Compile Include="IserviceCargo.cs" />
@@ -194,6 +196,9 @@
     </Compile>
     <Compile Include="serviceBanco.svc.cs">
       <DependentUpon>serviceBanco.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceCalendario.svc.cs">
+      <DependentUpon>serviceCalendario.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceCanal_Venda.svc.cs">
       <DependentUpon>serviceCanal_Venda.svc</DependentUpon>
