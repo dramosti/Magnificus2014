@@ -10,6 +10,7 @@ using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
@@ -19,7 +20,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public UnitOfWorkBase UndTrabalho { get; set; }
         private DataAccessor<CidadeModel> regCidadeByUfAccessor;
         private DataAccessor<CidadeModel> regCidadeAccessor;
-        private DataAccessor<HLP.Entries.Model.Models.modelToComboBox> regCidadeToComboboxAccessor;
+        private DataAccessor<modelToComboBox> regCidadeToComboboxAccessor;
 
 
         public ObservableCollection<CidadeModel> GetCidadeByUf(int idUf)
@@ -82,20 +83,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
             return regCidadeAccessor.Execute(idCidade).FirstOrDefault();
         }
-
-
-        public IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
-        {
-            List<HLP.Entries.Model.Models.modelToComboBox> lReturn;
-            if (regCidadeToComboboxAccessor == null)
-            {
-                regCidadeToComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM vwCidadeToComboBox",
-                                 MapBuilder<HLP.Entries.Model.Models.modelToComboBox>.MapAllProperties().Build());
-            }
-
-            lReturn = regCidadeToComboboxAccessor.Execute().ToList();
-
-            return lReturn;
-        }
+                    
     }
 }

@@ -81,18 +81,18 @@ namespace HLP.Wcf.Entries
         }
 
 
-        public IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
-        {
-            try
-            {
-                return cidadeRepository.GetAllCidadeToComboBox();
-            }
-            catch (Exception ex)
-            {
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
-            }
+        //public IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
+        //{
+        //    try
+        //    {
+        //        return cidadeRepository.GetAllCidadeToComboBox();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log.AddLog(xLog: ex.Message);
+        //        throw new FaultException(reason: ex.Message);
+        //    }
         
-        }
+        //}
     }
 }

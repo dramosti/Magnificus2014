@@ -69,7 +69,8 @@ namespace HLP.Entries.ViewModel.ViewModels
 
         public ObservableCollection<modelToComboBox> GetAllCidadeToComboBox()
         {
-            return new ObservableCollection<modelToComboBox>(objCidadeCommands.GetAllCidadeToComboBox());
+            //return new ObservableCollection<modelToComboBox>(objCidadeCommands.GetAllCidadeToComboBox());
+            return null;
         }
 
 

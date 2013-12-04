@@ -81,5 +81,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
                          "dbo.Proc_copy_tipo_operacao",
                           idTipoOperacao);
         }
+              
     }
 }

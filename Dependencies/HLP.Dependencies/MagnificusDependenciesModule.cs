@@ -36,6 +36,7 @@ namespace HLP.Dependencies
         {
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
             Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
+            Bind<IFillComboBoxRepository>().To<FillComboBoxRepository>();
 
             //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();

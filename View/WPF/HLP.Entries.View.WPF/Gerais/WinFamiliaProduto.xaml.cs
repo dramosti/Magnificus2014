@@ -24,7 +24,7 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinFamiliaProduto()
         {
             InitializeComponent();
-            this.ViewModel = new FamiliaProdutoViewModel();
+            //this.ViewModel = new FamiliaProdutoViewModel();
         }
 
         public FamiliaProdutoViewModel ViewModel

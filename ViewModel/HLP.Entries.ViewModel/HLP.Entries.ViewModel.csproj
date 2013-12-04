@@ -640,9 +640,6 @@
     <None Include="Service References\cidadeService\serviceCidade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\cidadeService\serviceCidade6.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.wsdl" />
     <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.xsd">
       <SubType>Designer</SubType>

@@ -51,17 +51,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         }
 
-        public IEnumerable<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox()
-        {
-            try
-            {
-                return servico.GetAllCidadeToComboBox();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+      
 
 
         #region Implementação Commands
