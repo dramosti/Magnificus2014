@@ -166,6 +166,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaRapidaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Models.modelToComboBox.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

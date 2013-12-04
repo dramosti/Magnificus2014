@@ -111,6 +111,7 @@
     <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFamiliaProduto.svc" />
     <Content Include="serviceFidelidade.svc" />
+    <Content Include="serviceFillComboBox.svc" />
     <Content Include="serviceFuncionario.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
@@ -168,6 +169,7 @@
     <Compile Include="IserviceFabricante.cs" />
     <Compile Include="IserviceFamiliaProduto.cs" />
     <Compile Include="IserviceFidelidade.cs" />
+    <Compile Include="IserviceFillComboBox.cs" />
     <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
@@ -268,6 +270,9 @@
     </Compile>
     <Compile Include="serviceFidelidade.svc.cs">
       <DependentUpon>serviceFidelidade.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceFillComboBox.svc.cs">
+      <DependentUpon>serviceFillComboBox.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>

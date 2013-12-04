@@ -16,5 +16,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Fiscal
         void Commit();
         void RollBack();
         int Copy(int idTipoOperacao);
+
     }
 }

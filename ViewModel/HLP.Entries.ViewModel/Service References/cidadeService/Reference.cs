@@ -85,10 +85,16 @@ namespace HLP.Entries.ViewModel.cidadeService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -97,6 +103,19 @@ namespace HLP.Entries.ViewModel.cidadeService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -122,6 +141,19 @@ namespace HLP.Entries.ViewModel.cidadeService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -180,12 +212,6 @@ namespace HLP.Entries.ViewModel.cidadeService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/copyCidade", ReplyAction="http://tempuri.org/IserviceCidade/copyCidadeResponse")]
         System.Threading.Tasks.Task<int> copyCidadeAsync(int idCidade);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBox", ReplyAction="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBoxResponse")]
-        System.Collections.ObjectModel.Collection<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBox", ReplyAction="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBoxResponse")]
-        System.Threading.Tasks.Task<System.Collections.ObjectModel.Collection<HLP.Entries.Model.Models.modelToComboBox>> GetAllCidadeToComboBoxAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -245,14 +271,6 @@ namespace HLP.Entries.ViewModel.cidadeService {
         
         public System.Threading.Tasks.Task<int> copyCidadeAsync(int idCidade) {
             return base.Channel.copyCidadeAsync(idCidade);
-        }
-        
-        public System.Collections.ObjectModel.Collection<HLP.Entries.Model.Models.modelToComboBox> GetAllCidadeToComboBox() {
-            return base.Channel.GetAllCidadeToComboBox();
-        }
-        
-        public System.Threading.Tasks.Task<System.Collections.ObjectModel.Collection<HLP.Entries.Model.Models.modelToComboBox>> GetAllCidadeToComboBoxAsync() {
-            return base.Channel.GetAllCidadeToComboBoxAsync();
         }
     }
 }
