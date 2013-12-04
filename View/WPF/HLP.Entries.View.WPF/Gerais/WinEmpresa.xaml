@@ -79,10 +79,10 @@
                     	Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                     	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID" Margin="10,0,449.909,2" WidthLabel="158"
                                             >
-                    	<Components:HlpPesquisa.Items>
-                    		<sys:String>xRamo</sys:String>
-                    		<sys:String>xDescricao</sys:String>
-                    	</Components:HlpPesquisa.Items>
+                        <Components:HlpPesquisa.Items>
+                            <sys:String>xRamo</sys:String>
+                            <sys:String>xDescricao</sys:String>
+                        </Components:HlpPesquisa.Items>
                     </Components:HlpPesquisa>
                     <Components:HlpTextBox Caption="Link Logo" WidthLabel="158" Margin="10,3,514.409,2"
                                            IsEnabled="{Binding bIsEnabled}"
@@ -106,8 +106,7 @@
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
-                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                    >
+                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"  CanUserDeleteRows="True" >
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn 
                             Header="Tipo Endereço" Width="120"

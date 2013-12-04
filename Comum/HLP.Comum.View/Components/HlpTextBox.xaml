@@ -15,6 +15,7 @@
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
         <TextBlock x:Name="lblCaption" 
+               TextWrapping="Wrap"
                Height="{Binding ElementName=componente, Path=Height}"
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 

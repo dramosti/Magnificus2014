@@ -8,7 +8,7 @@
         Title="Família de Produtos" Height="660" Width="1200">
 	<DockPanel LastChildFill="True">
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-			<TabItem Header="Geral">
+			<TabItem Header="Geral" Margin="4,0,-8,-2">
 				<Grid>
 					<Expander Header="Geral" HorizontalAlignment="Left" Height="198.54" VerticalAlignment="Top" Width="548" IsExpanded="True">
 						<StackPanel>
@@ -36,7 +36,7 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedValue="{Binding currentModel.stGrau, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,183.5,2" Caption="Grau" Field="stGrau" Help="Informar se a Linha de produto é Sintético ou Analitica, no caso de Sintético a linha se tornará um Pai do grupo e não poderá ser feito nenhum tipo de lançamento nele, só para afins de totalizador de relatórios." Table="Familia_produto" WidthLabel="222">
+								Height="27" Margin="10,0,151,2" Caption="Grau" Field="stGrau" Help="Informar se a Linha de produto é Sintético ou Analitica, no caso de Sintético a linha se tornará um Pai do grupo e não poderá ser feito nenhum tipo de lançamento nele, só para afins de totalizador de relatórios." Table="Familia_produto" WidthLabel="222">
 								<Components:HlpComboBox.Items>
 									<System:String>0-Analítico</System:String>
                                     <System:String>1-Sintético</System:String>
@@ -55,7 +55,8 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.pAcrescimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Percentual de Acrescimo Máximo" Field="pAcrescimoMaximo" Help="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto." Table="Familia_produto" WidthLabel="238"/>
+								Height="27" Margin="10,0,10,2" Caption="Percentual de Acrescimo Máximo" Field="pAcrescimoMaximo" Help="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto." Table="Familia_produto" 
+                                WidthLabel="238"/>
 							<Components:HlpPesquisa 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -69,7 +70,8 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Centro de Custo" Field="dCentroCusto" Help="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="Centro_Custo" WidthLabel="238" RenderTransformOrigin="0.5,0.5" FieldPesquisa="ID" TableView="vwCentroCusto">
+								Height="27" Margin="10,0,10,2" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Centro de Custo" Field="dCentroCusto" Help="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="Centro_Custo"
+                                WidthLabel="238" RenderTransformOrigin="0.5,0.5" FieldPesquisa="ID" TableView="vwCentroCusto">
 								<Components:HlpPesquisa.Items>
 									<System:String>TESTE</System:String>
 								</Components:HlpPesquisa.Items>
@@ -78,7 +80,8 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								IsChecked="{Binding currentModel.stAlteraDescricaoComercialProdutoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0" Caption="Altera descrição comercial do produto em Vendas" Field="stAlteraDescricaoComercialProdutoVenda" Help="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento)." Table="Familia_produto" WidthLabel="354"/>
+								Height="27" Margin="10,0" Caption="Altera descrição comercial do produto em Vendas" Field="stAlteraDescricaoComercialProdutoVenda" Help="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento)." 
+                                Table="Familia_produto" WidthLabel="354"/>
 						</StackPanel>
 					</Expander>
 					<Expander Header="Representante" HorizontalAlignment="Left" Height="178.7" Margin="0,203.54,0,0" VerticalAlignment="Top" Width="638" IsExpanded="True">
@@ -98,10 +101,16 @@
 				</Grid>
 			</TabItem>
 			<TabItem Header="Classificação Financeira das Linhas de Produto">
-				<DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+				<DataGrid 
+                    ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
+                    IsEnabled="{Binding bIsEnabled}"
+                          AutoGenerateColumns="False" 
+                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                          CanUserDeleteRows="True"
+                          CanUserAddRows="True">
 					<DataGrid.Columns>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Tipo de Operação" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="250"/>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Classe Financeira" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="250"/>
+						<DataGridComboBoxColumn  Header="Tipo de Operação" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="600"/>
+						<DataGridComboBoxColumn Header="Classe Financeira" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="*"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
