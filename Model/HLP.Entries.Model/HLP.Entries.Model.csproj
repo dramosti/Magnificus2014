@@ -82,6 +82,7 @@
     <Compile Include="Models\Fiscal\Situacao_tributaria_pisModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_operacaoModel.cs" />
+    <Compile Include="Models\Gerais\CalendarioModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
     <Compile Include="Models\Gerais\Condicao_pagamentoModel.cs" />
@@ -157,6 +158,8 @@
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_operacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\CalendarioRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Calendario_DetalheRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Crm\DecisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Condicao_pagamentoRepository.cs" />
@@ -242,6 +245,8 @@
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_operacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\ICalendarioRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\ICalendario_DetalheRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Crm\IDecisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICondicao_pagamentoRepository.cs" />

@@ -37,7 +37,10 @@ namespace HLP.Wcf.Entries
             try
             {
                 HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa = empresaRepository.GetEmpresa(idEmpresa: idEmpresa);
-                objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(list: empresa_EnderecoRepository.GetAllEmpresa_Endereco(idEmpresa: idEmpresa));
+                if (objEmpresa != null)
+                {
+                    objEmpresa.lEmpresa_endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel>(list: empresa_EnderecoRepository.GetAllEmpresa_Endereco(idEmpresa: idEmpresa));
+                }
 
                 return objEmpresa;
             }
