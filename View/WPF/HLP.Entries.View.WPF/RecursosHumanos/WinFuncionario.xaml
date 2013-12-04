@@ -12,7 +12,7 @@
     <runtime:WindowsBase.Resources>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
-        <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
+        <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>        
         <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
@@ -819,7 +819,7 @@
                             <StackPanel HorizontalAlignment="Left" Height="145.04" Margin="0,0,-2,0" Width="417.5">
                                 <Components:HlpComboBox 								
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								SelectedValue="{Binding currentModel.stComissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								SelectedIndex="{Binding currentModel.stComissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,10,37,-1" Caption="Tipo de Comissão" Field="stComissao" Help="Informar o tipo de comissão a ser calculada para o Representante, são elas: 0-Por Representante (Default) (Os valores de comissão Avista e Aprazo virão do cadastro de Funcionário da guia Representantes) 1-Por Lista de Preço (Quando por lista de preço o sistema buscará a comissão quando Avista e Aprazo das Listas de preços e depois o que define é os produtos da lista, caso tenha os campos de comissão preenchido) 2-Por Família de Produto (O sistema pegará as comissões do cadastro de Familia de Produto e todas as outras comissões serão descartadas pelo sistema) 3-Por Produto (Caso seja por produto definir no próprio formulário de funcionários os produtos relacionado a esse representantes e suas respectivas comissões, o sistema somente liberará a visualização dos produtos que estiverem cadastrado nessa tabela para o representante, outros produtos não cadastrado não poderão ser vendidos) 4-Por Faixa Margem de Venda Quando por faixa o sistema pegará o valor vendido pelo representante calculara a faixa de margem da venda e colocará na faixa que representa essa margem e chegará na comissão a vista ou a prazo." Table="Funcionario" WidthLabel="213">
                                     <Components:HlpComboBox.Items>
@@ -832,12 +832,14 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay,  StringFormat='\{0\}%',
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,47,-1" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo Condicao_Pagamento.stCondicao for igual Avista" Table="Funcionario" WidthLabel="213"/>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay,  StringFormat='\{0\}%',
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,47,-1" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a Condicao_Pagamento.stCondicao for Aprazo. " Table="Funcionario" WidthLabel="213"/>
                             </StackPanel>
