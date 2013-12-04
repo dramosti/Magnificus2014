@@ -69,5 +69,18 @@ namespace HLP.Comum.Resources.RecursosBases
         OUTROS
     }
 
+    public enum TipoComissao
+    {
+        [Description("0-Por Representante (Default)")]
+        REPRESENTANTE,
+        [Description("1-Por Lista de Preço")]
+        LISTAPREDEPRECO,
+        [Description("2-Por Família de Produto")]
+        FAMILIAPRODUTO,
+        [Description("3-Por Produto")]
+        PRODUTO,
+        [Description("4-Por Faixa Margem de Venda")]
+        FAIXAMARGEMVENDA
+    }
     #endregion
 }
