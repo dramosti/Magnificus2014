@@ -16,6 +16,8 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             this.lFuncionario_Endereco =
                 new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>();
+            this.lFuncionario_Certificacao =
+                new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>();
         }
 
         private int? _idFuncionario;
@@ -178,10 +180,21 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
+        private ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel> _lFuncionario_Certificacao;
+
+        public ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel> lFuncionario_Certificacao
+        {
+            get { return _lFuncionario_Certificacao; }
+            set
+            {
+                _lFuncionario_Certificacao = value;
+                base.NotifyPropertyChanged(propertyName: "lFuncionario_Certificacao");
+            }
+        }
+
+
         public ObservableCollectionBaseCadastros<Funcionario_ArquivoModel> lFuncionario_Arquivo =
             new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
-        public ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel> lFuncionario_Certificacao =
-            new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>();
         public ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto =
             new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>();
         public ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao =
@@ -409,8 +422,30 @@ namespace HLP.Entries.Model.Models.Gerais
 
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFuncionarioCertificacao { get; set; }
+
+        private TipoCertificacao _enumTipoCertificacao;
+        public TipoCertificacao enumTipoCertificacao
+        {
+            get { return _enumTipoCertificacao; }
+            set
+            {
+                _enumTipoCertificacao = value;
+                _stCertificacao = (byte)value;
+            }
+        }
+
+        private byte _stCertificacao;
         [ParameterOrder(Order = 2)]
-        public byte stCertificacao { get; set; }
+        public byte stCertificacao
+        {
+            get { return _stCertificacao; }
+            set
+            {
+                _stCertificacao = value;
+                _enumTipoCertificacao = (TipoCertificacao)value;
+            }
+        }
+
         [ParameterOrder(Order = 3)]
         public string xCertificacao { get; set; }
         [ParameterOrder(Order = 4)]

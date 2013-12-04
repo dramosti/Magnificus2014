@@ -49,5 +49,25 @@ namespace HLP.Comum.Resources.RecursosBases
         OUTRO
     };
 
+    public enum TipoCertificacao
+    {
+        [Description("0-ENSINO MÉDIO")]
+        ENSINOMEDIO,
+        [Description("1-ENSINO SUPERIOR")]
+        ENSINOSUPERIOR,
+        [Description("2-MBA/PÓS-GRADUAÇÃO")]
+        MBAPOSGRADUACAO,
+        [Description("3-MESTRADO")]
+        MESTRADO,
+        [Description("4-DOUTORADO")]
+        DOUTORADO,
+        [Description("5-PÓS-DOUTORADO")]
+        POSDOUTORADO,
+        [Description("6-CURSOS COMPLEMENTARES")]
+        CURSOSCOMPLEMENTARES,
+        [Description("7-OUTROS")]
+        OUTROS
+    }
+
     #endregion
 }
