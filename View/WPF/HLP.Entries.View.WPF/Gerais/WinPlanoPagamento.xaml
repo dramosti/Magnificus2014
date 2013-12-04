@@ -97,7 +97,6 @@
         </Grid>
         <Grid>
             <Expander Header="Linhas de Pagamento" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
-                <Grid>
                     <DataGrid 
 						IsEnabled="{Binding bIsEnabled}"
 						SelectionUnit="CellOrRowHeader" 
@@ -109,8 +108,7 @@
                             <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Tipo" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
                             <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Valor ou Porcentagem" Width="*"/>
                         </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
+                    </DataGrid>       
             </Expander>
         </Grid>
     </DockPanel>
