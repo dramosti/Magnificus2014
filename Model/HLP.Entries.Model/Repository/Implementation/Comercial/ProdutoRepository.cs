@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
+using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -82,8 +83,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
             return regProdutoByTypeAccessor.Execute(idTipoProduto).ToList();
         }
-
-
 
         public void BeginTransaction()
         {

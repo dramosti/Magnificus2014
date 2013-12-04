@@ -193,14 +193,56 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
-        public ObservableCollectionBaseCadastros<Funcionario_ArquivoModel> lFuncionario_Arquivo =
-            new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
-        public ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto =
-            new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>();
-        public ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao =
-            new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>();
-        public ObservableCollectionBaseCadastros<Funcionario_AcessoModel> lFuncionario_Acesso =
-            new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>();
+        private ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel> _lFuncionario_Comissao_Produto;
+
+        public ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel> lFuncionario_Comissao_Produto
+        {
+            get { return _lFuncionario_Comissao_Produto; }
+            set
+            {
+                _lFuncionario_Comissao_Produto = value;
+                base.NotifyPropertyChanged(propertyName: "lFuncionario_Comissao_Produto");
+            }
+        }
+
+
+        private ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel> _lFuncionario_Margem_Lucro_Comissao;
+
+        public ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel> lFuncionario_Margem_Lucro_Comissao
+        {
+            get { return _lFuncionario_Margem_Lucro_Comissao; }
+            set
+            {
+                _lFuncionario_Margem_Lucro_Comissao = value;
+                base.NotifyPropertyChanged(propertyName: "lFuncionario_Margem_Lucro_Comissao");
+            }
+        }
+
+
+        private ObservableCollectionBaseCadastros<Funcionario_ArquivoModel> _lFuncionario_Arquivo;
+
+        public ObservableCollectionBaseCadastros<Funcionario_ArquivoModel> lFuncionario_Arquivo
+        {
+            get { return _lFuncionario_Arquivo; }
+            set
+            {
+                _lFuncionario_Arquivo = value;
+                base.NotifyPropertyChanged(propertyName: "lFuncionario_Arquivo");
+            }
+        }
+
+
+        private ObservableCollectionBaseCadastros<Funcionario_AcessoModel> _lFuncionario_Acesso;
+
+        public ObservableCollectionBaseCadastros<Funcionario_AcessoModel> lFuncionario_Acesso
+        {
+            get { return _lFuncionario_Acesso; }
+            set
+            {
+                _lFuncionario_Acesso = value;
+                base.NotifyPropertyChanged(propertyName: "lFuncionario_Acesso");
+            }
+        }
     }
 
     public partial class Funcionario_EnderecoModel : modelBase

@@ -12,7 +12,8 @@
     <runtime:WindowsBase.Resources>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
-        <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>        
+        <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
+        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
         <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="true">
@@ -815,7 +816,7 @@
             <TabItem Header="Representantes" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0">
                 <AdornerDecorator>
                     <Grid>
-                        <Expander Header="Geral" HorizontalAlignment="Left" Height="171.04" VerticalAlignment="Top" Width="417.5" IsEnabled="True" IsExpanded="True">
+                        <Expander Header="Geral" HorizontalAlignment="Left" Height="134" VerticalAlignment="Top" Width="418" IsEnabled="True" IsExpanded="True">
                             <StackPanel HorizontalAlignment="Left" Height="145.04" Margin="0,0,-2,0" Width="417.5">
                                 <Components:HlpComboBox 								
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -832,30 +833,128 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay,  StringFormat='\{0\}%',
+								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay,  StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,47,-1" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo Condicao_Pagamento.stCondicao for igual Avista" Table="Funcionario" WidthLabel="213"/>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay,  StringFormat='\{0\}%',
+								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay,  StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,47,-1" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a Condicao_Pagamento.stCondicao for Aprazo. " Table="Funcionario" WidthLabel="213"/>
                             </StackPanel>
                         </Expander>
-                        <Expander Header="Expander" HorizontalAlignment="Left" Height="333" Margin="0,272.04,0,0" VerticalAlignment="Top" Width="1210">
-                            <Grid/>
+                        <Expander Header="Expander" HorizontalAlignment="Left" Height="484" Margin="0,121,0,-2" VerticalAlignment="Top" Width="1210">
+                            <Grid>
+                                <DataGrid
+                                    Name="gridRepresentantes"
+                                    ItemsSource="{Binding currentModel.lFuncionario_Comissao_Produto}"                          
+                                    IsEnabled="{Binding bIsEnabled}"
+                                    AutoGenerateColumns="False" 
+                                    SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                                    CanUserDeleteRows="True"
+                                    CanUserAddRows="True"
+                                    >
+                                    <DataGrid.Columns>
+                                        <DataGridComboBoxColumn  Header="Produtos" Width="150"                                         
+                                        />
+                                        <DataGridTextColumn                                
+                                        Header="% Comissão a Vista" Width="200"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                        <DataGridTextColumn                                
+                                        Header="% Comissão a Prazo" Width="200"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
                         </Expander>
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Comissão / Faixa de lucro" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0">
                 <AdornerDecorator>
-                    <Grid/>
+                    <Grid>
+                        <DataGrid
+                            Name="gridComissoes"
+                                    ItemsSource="{Binding currentModel.lFuncionario_Margem_Lucro_Comissao}"                          
+                                    IsEnabled="{Binding bIsEnabled}"
+                                    AutoGenerateColumns="False" 
+                                    SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                                    CanUserDeleteRows="True"
+                                    CanUserAddRows="True"
+                            >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn                                
+                                        Header="% Margem Venda 'De'" Width="200"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pDeMargemVenda, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                <DataGridTextColumn                                
+                                        Header="% Margem Venda 'Até'" Width="200"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pAteMargemVenda, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                <DataGridTextColumn                                
+                                        Header="% Comissão à Vista" Width="200"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                <DataGridTextColumn                                
+                                        Header="% Comissão a Prazo" Width="200"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Arquivos" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0"/>
+            <TabItem Header="Arquivos" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0">
+                <AdornerDecorator>
+                    <Grid>
+                        <DataGrid
+                            Name="gridArquivos"
+                        ItemsSource="{Binding currentModel.lFuncionario_Arquivo}"                          
+                          IsEnabled="{Binding bIsEnabled}"
+                          AutoGenerateColumns="False" 
+                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                          CanUserDeleteRows="True"
+                          CanUserAddRows="True"
+                            >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn                                
+                                Header="Arquivo" Width="300"
+                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                Binding="{Binding Path=xArquivo, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                ></DataGridTextColumn>
+                                <DataGridTextColumn                                
+                                Header="Caminho" Width="400"
+                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                Binding="{Binding Path=xLink, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                ></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </AdornerDecorator>
+            </TabItem>
             <TabItem Header="Hierarquia" Background="{x:Null}" BorderBrush="{x:Null}" Height="21.96" Width="71.027">
                 <AdornerDecorator>
                     <Grid>
