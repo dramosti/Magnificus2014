@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2b5c0436-c4c0-41c3-846e-f42f6ef53396" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCalendario.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceCalendario.xsd" MetadataType="Schema" ID="7c72a8c7-5f0f-44bd-a900-165d29a57874" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceCalendario.wsdl" MetadataType="Wsdl" ID="4d657a1c-b8d7-4b5c-ab43-104a2c79b3eb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?wsdl" />
+    <MetadataFile FileName="serviceCalendario1.xsd" MetadataType="Schema" ID="1fc30111-0c6c-472e-8f5b-a1d81968b18a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceCalendario2.xsd" MetadataType="Schema" ID="35fb332b-d8a5-41dd-8350-28e6cc8adf1f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceCalendario3.xsd" MetadataType="Schema" ID="ba69e8f4-b14c-4f63-a6cf-37a63c205ebc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCalendario.disco" MetadataType="Disco" ID="797a63d1-c6ca-46a9-ab08-44a183da4898" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?disco" />
+    <MetadataFile FileName="serviceCalendario4.xsd" MetadataType="Schema" ID="3c31ca71-5d17-4b6b-b0ce-7a8f4ad39613" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceCalendario5.xsd" MetadataType="Schema" ID="cf1ab73c-2f0c-4245-8829-4bb4c912d7fc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCalendario.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
