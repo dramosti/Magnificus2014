@@ -1,0 +1,64 @@
+﻿<runtime:WindowsBase 
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto"
+        Title="Descontos" Height="660" Width="1024">
+	<StackPanel>
+		<Expander Header="Geral" Height="423" Margin="0,0,411,0" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,10,232,2" Caption="Código" Help="Chave principal do registro do Desconto, campo autoincremental." WidthLabel="214"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,232,2" Caption="Desconto " Help="Digite o código alfanumérico para o desconto. Por exemplo, 10D2% para indicar que o cliente recebe um desconto de 2 por cento se o pagamento for feito 10 dias antes da data de vencimento. " WidthLabel="214"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,10,2" Caption="Descrição " Help="Digite uma breve descrição do desconto à vista, por exemplo, 10 dias antecipado 2 % de Desconto para o código de desconto 10D2%." WidthLabel="214"/>
+				<Components:HlpPesquisa 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idProximoDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,10,2" Caption="Próximo Código de Desconto" FieldPesquisa="ID" TableView="vwDescontosAvista" WidthLabel="214">
+					<Components:HlpPesquisa.Items>
+							<System:String>xDescontos</System:String>
+							<System:String>xDescricao</System:String>
+					</Components:HlpPesquisa.Items>
+				</Components:HlpPesquisa>
+				<Components:HlpComboBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					SelectedValue="{Binding currentModel.stLiquidoAtual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,32.667,2" Caption="Liquido/Atual" Help="Escolha o método aplicável ao seu desconto à vista. O método especificado, juntamente com o valor fornecido no campo Dias e/ou Meses, será usado para calcular a última data em que o pagamento pode ser feito para receber qualquer desconto à vista disponível. " WidthLabel="214">
+					<Components:HlpComboBox.Items>
+							<System:String>0-Dias e/ou Meses</System:String>                            
+					</Components:HlpComboBox.Items>
+				</Components:HlpComboBox>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,268,2" Caption="Meses" Help="Digite o número de meses em que o desconto à vista será aplicável. " WidthLabel="214"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,268,2" Caption="Dias" Help="Digite o número de dias em que o desconto à vista será aplicável. " WidthLabel="214"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.pDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,268,2" Caption="Percentual de Desconto" Help="Digite o desconto à vista como um percentual do valor faturado. " WidthLabel="214"/>
+			</StackPanel>
+		</Expander>
+	</StackPanel>
+</runtime:WindowsBase>

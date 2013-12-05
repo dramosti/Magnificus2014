@@ -1,0 +1,30 @@
+﻿<runtime:WindowsBase 
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Crm.WinPersonalidade"
+        Title="Personalidade" Height="660" Width="1024">
+	<Grid>
+		<Expander Header="Geral" HorizontalAlignment="Left" Height="191" VerticalAlignment="Top" Width="422" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idPersonalidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,10,205,2" Caption="Código" Help="Chave principal do registro da Personalidade" WidthLabel="111"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xPersonalidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,10,2" Caption="Personalidade " Help="Característica e/ou personalidade da pessoa de contato." WidthLabel="111"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0" Caption="Descrição" Help="Descrição mais precisa do da característica ativo." WidthLabel="111"/>
+			</StackPanel>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>

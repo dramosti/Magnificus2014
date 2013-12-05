@@ -1,0 +1,40 @@
+﻿<runtime:WindowsBase
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinMulta"
+        Title="Multas" Height="660" Width="1024">
+	<Grid>
+		<Expander Header="Geral" HorizontalAlignment="Left" Height="195" VerticalAlignment="Top" Width="656" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idMultas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,10,370.5,2" Caption="Código" Help="Chave principal do registro da Multa, autoincremental." WidthLabel="151"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,183,2" Caption="Nome" Help="Insira nome do código da multa. " WidthLabel="151"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,183,2" Caption="Descrição" Help="Insira uma descrição detalhada da Multa." WidthLabel="151"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.pPercentual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,370.5,2" Caption="Percentual da Multa " Help="Insira a porcentagem da multa que se aplica ao código da multa. " WidthLabel="151"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,370.5,2" Caption="Dias de Carência" Help="Insira o número de dias no período de carência antes da aplicação da porcentagem de multa " WidthLabel="151"/>
+			</StackPanel>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>

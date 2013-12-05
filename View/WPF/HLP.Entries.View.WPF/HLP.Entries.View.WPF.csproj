@@ -74,8 +74,29 @@
     <Compile Include="Crm\WinDecisao.xaml.cs">
       <DependentUpon>WinDecisao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Crm\WinFidelidade.xaml.cs">
+      <DependentUpon>WinFidelidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crm\WinPersonalidade.xaml.cs">
+      <DependentUpon>WinPersonalidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
+      <DependentUpon>WinAgencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinBanco.xaml.cs">
+      <DependentUpon>WinBanco.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinContaBancaria.xaml.cs">
+      <DependentUpon>WinContaBancaria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinDesconto.xaml.cs">
+      <DependentUpon>WinDesconto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\Financeiro\WinJuros.xaml.cs">
       <DependentUpon>WinJuros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinMulta.xaml.cs">
+      <DependentUpon>WinMulta.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinAcesso.xaml.cs">
       <DependentUpon>WinAcesso.xaml</DependentUpon>
@@ -165,7 +186,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Crm\WinFidelidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Crm\WinPersonalidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinAgencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinBanco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinContaBancaria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinDesconto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gerais\Financeiro\WinJuros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinMulta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

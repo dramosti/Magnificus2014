@@ -1,0 +1,29 @@
+﻿<runtime:WindowsBase
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Crm.WinFidelidade"
+        Title="Fidelidade" Height="660" Width="1024">
+	<Grid>
+		<Expander Header="Geral" HorizontalAlignment="Left" Height="233.5" VerticalAlignment="Top" Width="501.5" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idFidelidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,10,303,2" Caption="Código" Help="Chave principal do registro de Finalidade" WidthLabel="87"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xFidelidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,303,2" Caption="Fidelidade" Help="Digite um código resumido para Finalidade " WidthLabel="87"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,110.5,2" Caption="Descrição " Help="Descrição da Finalidade " WidthLabel="87"/>
+			</StackPanel>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>

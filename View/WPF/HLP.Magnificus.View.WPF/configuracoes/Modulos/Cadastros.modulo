@@ -87,4 +87,22 @@
 <object id="WinListaPreco" name="WinListaPreco" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinListaPreco, HLP.Entries.View.WPF">
   </object>
+<object id="WinMulta" name="WinMulta" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinMulta, HLP.Entries.View.WPF">
+  </object>
+<object id="WinFidelidade" name="WinFidelidade" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Crm.WinFidelidade, HLP.Entries.View.WPF">
+  </object>
+<object id="WinPersonalidade" name="WinPersonalidade" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Crm.WinPersonalidade, HLP.Entries.View.WPF">
+  </object>
+<object id="WinBanco" name="WinBanco" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco, HLP.Entries.View.WPF">
+  </object>
+<object id="WinAgencia" name="WinAgencia" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">
+  </object>
+<object id="WinContaBancaria" name="WinContaBancaria" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
+  </object>
 </objects>
