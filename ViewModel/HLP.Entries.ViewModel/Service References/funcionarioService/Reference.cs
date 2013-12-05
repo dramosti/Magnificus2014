@@ -192,6 +192,35 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoCertificacao", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoCertificacao : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENSINOMEDIO = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENSINOSUPERIOR = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MBAPOSGRADUACAO = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MESTRADO = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        DOUTORADO = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        POSDOUTORADO = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CURSOSCOMPLEMENTARES = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OUTROS = 7,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TipoEndereco", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
     public enum TipoEndereco : int {
         

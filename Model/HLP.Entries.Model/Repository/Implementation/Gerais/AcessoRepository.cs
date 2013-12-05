@@ -22,18 +22,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Funcionario_AcessoModel objAcesso)
         {
-            objAcesso.idAcesso = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                UndTrabalho.dbTransaction,
-                "dbo.Proc_save_Acesso",
-            ParameterBase<Funcionario_AcessoModel>.SetParameterValue(objAcesso));
-        }
-
-        public void Update(Funcionario_AcessoModel objAcesso)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objAcesso.idAcesso == null)
+            {
+                objAcesso.idAcesso = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+                    "dbo.Proc_save_Acesso",
+                ParameterBase<Funcionario_AcessoModel>.SetParameterValue(objAcesso));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Acesso]",
             ParameterBase<Funcionario_AcessoModel>.SetParameterValue(objAcesso));
+            }
         }
 
         public void Delete(int idAcesso)

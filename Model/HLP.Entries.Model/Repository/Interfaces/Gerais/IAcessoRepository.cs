@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface IAcessoRepository
     {
         void Save(Funcionario_AcessoModel objAcesso);
-        void Update(Funcionario_AcessoModel objAcesso);
         void Delete(int idAcesso);
         void Delete(Funcionario_AcessoModel objAcesso);
         int Copy(Funcionario_AcessoModel objFuncionario_Acesso);

@@ -12,7 +12,7 @@ namespace HLP.Wcf.Entries
     public interface IserviceFuncionario_Acesso
     {
         [OperationContract]
-        int Save(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel);
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel Save(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel);
 
         [OperationContract]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel GetObjeto(int idObjeto);

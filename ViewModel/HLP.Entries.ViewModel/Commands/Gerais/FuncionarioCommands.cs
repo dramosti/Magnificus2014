@@ -304,7 +304,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             if (this.objViewModel.currentModel != null)
             {
-                this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
                 this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
                 this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
                 this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();

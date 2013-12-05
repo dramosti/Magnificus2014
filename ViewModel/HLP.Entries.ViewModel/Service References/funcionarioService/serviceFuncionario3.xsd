@@ -136,6 +136,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="dConclusao" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dValidade" type="xs:dateTime" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoCertificacao" type="q5:TipoCertificacao" />
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioCertificacao" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="stCertificacao" type="xs:unsignedByte" />
@@ -154,7 +155,7 @@
   <xs:element name="ArrayOfFuncionario_Comissao_ProdutoModel" nillable="true" type="tns:ArrayOfFuncionario_Comissao_ProdutoModel" />
   <xs:complexType name="Funcionario_Comissao_ProdutoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q5:modelBase">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioComissaoProduto" nillable="true" type="xs:int" />
@@ -174,9 +175,9 @@
   <xs:element name="ArrayOfFuncionario_EnderecoModel" nillable="true" type="tns:ArrayOfFuncionario_EnderecoModel" />
   <xs:complexType name="Funcionario_EnderecoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q7:modelBase">
         <xs:sequence>
-          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoEnder" type="q7:TipoEndereco" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoEnder" type="q8:TipoEndereco" />
           <xs:element minOccurs="0" name="idCidade" type="xs:int" />
           <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
@@ -205,7 +206,7 @@
   <xs:element name="ArrayOfFuncionario_Margem_Lucro_ComissaoModel" nillable="true" type="tns:ArrayOfFuncionario_Margem_Lucro_ComissaoModel" />
   <xs:complexType name="Funcionario_Margem_Lucro_ComissaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q8:modelBase">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q9:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioMargemLucroComissao" nillable="true" type="xs:int" />
