@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinAcesso()
         {
             InitializeComponent();
+            this.ViewModel = new Funcionario_AcessoViewModel();
+        }
+
+        public Funcionario_AcessoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Funcionario_AcessoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

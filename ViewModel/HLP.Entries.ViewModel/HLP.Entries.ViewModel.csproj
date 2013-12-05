@@ -102,6 +102,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Funcionario_AcessoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\PersonalidadeService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1003,6 +1008,25 @@
     <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso.wsdl" />
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\jurosService\serviceJuros.wsdl" />
     <None Include="Service References\jurosService\serviceJuros.xsd">
       <SubType>Designer</SubType>
@@ -1466,6 +1490,7 @@
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
+    <WCFMetadataStorage Include="Service References\Funcionario_AcessoService\" />
     <WCFMetadataStorage Include="Service References\jurosService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
@@ -2236,6 +2261,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\CalendarioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Funcionario_AcessoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Funcionario_AcessoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Funcionario_AcessoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
