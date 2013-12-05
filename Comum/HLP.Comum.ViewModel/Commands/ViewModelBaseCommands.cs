@@ -43,7 +43,7 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.novoBaseCanExecute());
             this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
                 canExecute: pCanExec => this.alterarBaseCanExecute());
-            this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(),
+            this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved:pExec),
                 canExecute: pCanExec => this.delBaseCanExecute());
             this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
@@ -150,27 +150,34 @@ namespace HLP.Comum.ViewModel.Commands
 
             if (objviewModel.navigatePesquisa != null)
             {
-                switch (ContentBotao.ToString())
+                if (objviewModel.navigatePesquisa.Count() > 0)
                 {
-                    case "Primeiro":
-                        bCanExecute = true;
-                        break;
-                    case "Anterior":
-                        currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
-                        bCanExecute = currentPosition > 0;
-                        break;
-                    case "Proximo":
-                        {
+                    switch (ContentBotao.ToString())
+                    {
+                        case "Primeiro":
+                            bCanExecute = true;
+                            break;
+                        case "Anterior":
                             currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
-                            lastIndex = objviewModel.navigatePesquisa.Count - 1;
-                            bCanExecute = currentPosition < lastIndex;
-                        }
-                        break;
-                    case "Ultimo":
-                        bCanExecute = true;
-                        break;
-                    default:
-                        break;
+                            bCanExecute = currentPosition > 0;
+                            break;
+                        case "Proximo":
+                            {
+                                currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
+                                lastIndex = objviewModel.navigatePesquisa.Count - 1;
+                                bCanExecute = currentPosition < lastIndex;
+                            }
+                            break;
+                        case "Ultimo":
+                            bCanExecute = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    objviewModel.sText = (objviewModel.navigatePesquisa.CurrentPosition + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
                 }
             }
             return bCanExecute;
@@ -181,6 +188,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
+            this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
         }
         private bool novoBaseCanExecute()
         {
@@ -198,9 +206,16 @@ namespace HLP.Comum.ViewModel.Commands
             return this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando;
         }
 
-        private void delBase()
+        private void delBase(object iRemoved)
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
+            if (this.objviewModel.navigatePesquisa != null)
+            {
+                if (objviewModel.navigatePesquisa.Where(c=>c == (int)iRemoved).Count() > 0)
+                {
+                    objviewModel.navigatePesquisa.Remove((int)iRemoved);            
+                }   
+            }
         }
         private bool delBaseCanExecute()
         {

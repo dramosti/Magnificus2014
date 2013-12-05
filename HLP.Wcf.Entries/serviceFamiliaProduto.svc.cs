@@ -49,7 +49,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public void Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto)
+        public HLP.Entries.Model.Models.Gerais.Familia_produtoModel Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto)
         {
             try
             {
@@ -58,12 +58,13 @@ namespace HLP.Wcf.Entries
                 iFamilia_ProdutoRepository.Save(familia_produto);
 
                 foreach (var item in familia_produto.lFamilia_Produto_ClassesModel)
-                {
+                {                    
                     switch (item.status)
                     {
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idFamiliaProduto = (int)familia_produto.idFamiliaProduto;
                                 iFamilia_Produto_ClassesRepository.Save(item);
                             }
                             break;
@@ -75,6 +76,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 iFamilia_ProdutoRepository.CommitTransaction();
+                return familia_produto;
             }
             catch (Exception ex)
             {
@@ -103,7 +105,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto)
+        public HLP.Entries.Model.Models.Gerais.Familia_produtoModel Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto)
         {
             try
             {
@@ -116,7 +118,7 @@ namespace HLP.Wcf.Entries
                     iFamilia_Produto_ClassesRepository.Copy(item);
                 }
                 iFamilia_ProdutoRepository.CommitTransaction();
-                return (int)familia_produto.idFamiliaProduto;
+                return familia_produto;
             }
             catch (Exception ex)
             {

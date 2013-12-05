@@ -8,8 +8,10 @@
   <xs:element name="ArrayOfPesquisaPadraoModelContract" nillable="true" type="tns:ArrayOfPesquisaPadraoModelContract" />
   <xs:complexType name="PesquisaPadraoModelContract">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CHARACTER_MAXIMUM_LENGTH" type="xs:int" />
       <xs:element minOccurs="0" name="COLUMN_NAME" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DATA_TYPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IS_NULLABLE" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PesquisaPadraoModelContract" nillable="true" type="tns:PesquisaPadraoModelContract" />

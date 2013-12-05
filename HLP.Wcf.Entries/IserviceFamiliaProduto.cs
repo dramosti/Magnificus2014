@@ -15,13 +15,13 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.Familia_produtoModel GetObject(int idFamiliaProduto);
 
         [OperationContract]
-        void Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
+        HLP.Entries.Model.Models.Gerais.Familia_produtoModel Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
 
         [OperationContract]
         bool Delete(int idFamiliaProduto);
 
         [OperationContract]
-        int Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
+        HLP.Entries.Model.Models.Gerais.Familia_produtoModel Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
 
 
     }

@@ -86,10 +86,16 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -98,6 +104,19 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -123,6 +142,19 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -165,10 +197,10 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Familia_produtoModel> GetObjectAsync(int idFamiliaProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFamiliaProduto/Save", ReplyAction="http://tempuri.org/IserviceFamiliaProduto/SaveResponse")]
-        void Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
+        HLP.Entries.Model.Models.Gerais.Familia_produtoModel Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFamiliaProduto/Save", ReplyAction="http://tempuri.org/IserviceFamiliaProduto/SaveResponse")]
-        System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Familia_produtoModel> SaveAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFamiliaProduto/Delete", ReplyAction="http://tempuri.org/IserviceFamiliaProduto/DeleteResponse")]
         bool Delete(int idFamiliaProduto);
@@ -177,10 +209,10 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
         System.Threading.Tasks.Task<bool> DeleteAsync(int idFamiliaProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFamiliaProduto/Copy", ReplyAction="http://tempuri.org/IserviceFamiliaProduto/CopyResponse")]
-        int Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
+        HLP.Entries.Model.Models.Gerais.Familia_produtoModel Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFamiliaProduto/Copy", ReplyAction="http://tempuri.org/IserviceFamiliaProduto/CopyResponse")]
-        System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Familia_produtoModel> CopyAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -218,11 +250,11 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
             return base.Channel.GetObjectAsync(idFamiliaProduto);
         }
         
-        public void Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
-            base.Channel.Save(familia_produto);
+        public HLP.Entries.Model.Models.Gerais.Familia_produtoModel Save(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
+            return base.Channel.Save(familia_produto);
         }
         
-        public System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Familia_produtoModel> SaveAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
             return base.Channel.SaveAsync(familia_produto);
         }
         
@@ -234,11 +266,11 @@ namespace HLP.Entries.ViewModel.Familia_ProdutoService {
             return base.Channel.DeleteAsync(idFamiliaProduto);
         }
         
-        public int Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
+        public HLP.Entries.Model.Models.Gerais.Familia_produtoModel Copy(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
             return base.Channel.Copy(familia_produto);
         }
         
-        public System.Threading.Tasks.Task<int> CopyAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Familia_produtoModel> CopyAsync(HLP.Entries.Model.Models.Gerais.Familia_produtoModel familia_produto) {
             return base.Channel.CopyAsync(familia_produto);
         }
     }
