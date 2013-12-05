@@ -18,6 +18,12 @@ namespace HLP.Entries.Model.Models.Gerais
                 new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>();
             this.lFuncionario_Certificacao =
                 new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>();
+            this.lFuncionario_Comissao_Produto =
+                new ObservableCollectionBaseCadastros<Funcionario_Comissao_ProdutoModel>();
+            this.lFuncionario_Margem_Lucro_Comissao =
+                new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>();
+            this.lFuncionario_Arquivo =
+                new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
         }
 
         private int? _idFuncionario;

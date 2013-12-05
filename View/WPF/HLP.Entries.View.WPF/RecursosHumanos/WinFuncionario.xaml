@@ -7,6 +7,7 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
+        xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
@@ -40,8 +41,17 @@
                 <x:Type TypeName="enums:TipoCertificacao"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-        <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:CidadeViewModel}"/>
-        <ObjectDataProvider x:Key="lCidades" ObjectInstance="{StaticResource odpCidade}"  MethodName="GetAllCidadeToComboBox"/>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwProdutoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lresultCidades" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwCidadeToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -438,7 +448,7 @@
                                 Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
                                 <DataGridComboBoxColumn  Header="Cidades" Width="150"
-                                ItemsSource="{Binding Source={StaticResource lCidades}}"
+                                ItemsSource="{Binding Source={StaticResource lresultCidades}}"
                                 SelectedValuePath="id"
                                 DisplayMemberPath="display"
                                 SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
@@ -857,7 +867,11 @@
                                     CanUserAddRows="True"
                                     >
                                     <DataGrid.Columns>
-                                        <DataGridComboBoxColumn  Header="Produtos" Width="150"                                         
+                                        <DataGridComboBoxColumn  Header="Produtos" Width="150"
+                                        ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
+                                        SelectedValuePath="id"
+                                        DisplayMemberPath="display"
+                                        SelectedValueBinding="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                                         />
                                         <DataGridTextColumn                                
                                         Header="% Comissão a Vista" Width="200"
