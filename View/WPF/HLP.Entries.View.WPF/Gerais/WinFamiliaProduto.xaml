@@ -5,7 +5,23 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"        
+        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         Title="Família de Produtos" Height="660" Width="1200">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwTipoOperacaoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lClasses" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwClasseFinanceiraToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
 	<DockPanel LastChildFill="True">
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Geral" Margin="4,0,-8,-2">
@@ -105,12 +121,21 @@
                     ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
                     IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
-                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                          SelectionUnit="CellOrRowHeader" 
+                          CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
 					<DataGrid.Columns>
-						<DataGridComboBoxColumn  Header="Tipo de Operação" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="600"/>
-						<DataGridComboBoxColumn Header="Classe Financeira" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="*"/>
+                        <DataGridComboBoxColumn  Header="Tipo de Operação" Width="600"
+                                                 ItemsSource="{Binding Source={StaticResource lTpOper}}"
+                            SelectedValuePath="id"
+                            DisplayMemberPath="display"
+                            SelectedValueBinding="{Binding idTipoOperacao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+						<DataGridComboBoxColumn Header="Classe Financeira"  Width="*"
+                                                ItemsSource="{Binding Source={StaticResource lClasses}}"
+                            SelectedValuePath="id"
+                            DisplayMemberPath="display"
+                            SelectedValueBinding="{Binding idClasseFinanceira, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>

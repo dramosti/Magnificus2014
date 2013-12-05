@@ -133,7 +133,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Novo()
         {
             //TODO: instanciar novo objeto
-            this.objViewModel = new FamiliaProdutoViewModel();
+            this.objViewModel.currentModel = new Familia_produtoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()

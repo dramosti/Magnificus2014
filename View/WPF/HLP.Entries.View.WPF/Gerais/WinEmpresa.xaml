@@ -105,12 +105,14 @@
 
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Endereços">
+            <TabItem Header="Endereços" Height="22" VerticalAlignment="Bottom">
                 <DataGrid 
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
-                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"  CanUserDeleteRows="True" >
+                          SelectionUnit="CellOrRowHeader" 
+                          CanUserReorderColumns="False"  
+                          CanUserDeleteRows="True" >
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn 
                             Header="Tipo Endereço" Width="120"
