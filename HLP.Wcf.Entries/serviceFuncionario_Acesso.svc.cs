@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.Util;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
@@ -29,12 +30,31 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public int Save(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel)
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel Save(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel)
         {
-
             try
             {
-                throw new NotImplementedException();
+                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel item in objModel.lFuncionario_Acesso)
+                {
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            {
+                                item.idFuncionario = (int)objModel.idFuncionario;
+                                this.acessoRepository.Save(objAcesso: item);
+                            }
+                            break;
+                        case statusModel.excluido:
+                            {
+                                this.acessoRepository.Delete(objAcesso: item);
+                            }
+                            break;
+                    }
+                }
+
+                return objModel;
+
             }
             catch (Exception ex)
             {
@@ -46,7 +66,21 @@ namespace HLP.Wcf.Entries
 
         public HLP.Entries.Model.Models.Gerais.FuncionarioModel GetObjeto(int idObjeto)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario =
+                this.funcionarioRepository.GetFuncionario(idFuncionario: idObjeto);
+                objFuncionario.lFuncionario_Acesso = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel>
+                (this.acessoRepository.GetAllAcesso_Funcionario(idFuncionario: idObjeto));
+                return objFuncionario;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
     }
 }

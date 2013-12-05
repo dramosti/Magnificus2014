@@ -71,6 +71,7 @@
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
+    <Compile Include="Commands\Gerais\Funcionario_AcessoCommands.cs" />
     <Compile Include="Service References\CalendarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -388,6 +389,7 @@
     <Compile Include="ViewModels\Gerais\FabricanteViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FamiliaProdutoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\Funcionario_AcessoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\MoedaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\PlanoPagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />
