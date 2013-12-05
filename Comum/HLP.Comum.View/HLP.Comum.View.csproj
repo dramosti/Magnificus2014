@@ -75,6 +75,7 @@
     <Compile Include="Components\HlpTextBox.xaml.cs">
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />
     <Compile Include="Converters\DecimalToStringConverter.cs" />

@@ -276,7 +276,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.pesquisarBaseCommand.Execute(null);
                     this.IniciaCollections();
                 }
             }
