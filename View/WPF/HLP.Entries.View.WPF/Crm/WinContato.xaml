@@ -1,12 +1,52 @@
 ﻿<runtime:WindowsBase
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
+        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"  
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"  
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         x:Class="HLP.Entries.View.WPF.Crm.WinContato"
+        xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="Contato" Height="660" Width="1024">
+    <Window.Resources>
+        <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={RelativeSource Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="Background" Value="Yellow"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+        <convert:MaskConverter x:Key="maskConverter"/>
+        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        <ObjectDataProvider 
+            MethodName="GetDict"
+            ObjectType="{x:Type convert:EnumDescriptionConverter}"
+            x:Key="EnumDescriptionDict">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:TipoEndereco"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider 
+            MethodName="GetDict"
+            ObjectType="{x:Type convert:EnumDescriptionConverter}"
+            x:Key="EnumTipoLogradouro">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:TipoLogradouro"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odpCidade}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwCidadeToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
 	<Grid>
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Geral">
@@ -15,9 +55,8 @@
 						<Expander Header="Identificação" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="609" IsExpanded="True">
 							<StackPanel>
 								<Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    IsReadOnly="True"
 									Height="27" Margin="10,10,215,2" Caption="Código" Help="Chave principal do registro do Contato, campo autoincremental" WidthLabel="115"/>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -61,7 +100,7 @@
 									Height="27" Margin="10,0,215,2" Caption="C.P.F." Help="Informar o CPF do contato." WidthLabel="115"/>
 								<Components:HlpComboBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									SelectedValue="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									SelectedIndex="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,215,0" Caption="Sexo" Help="Especifique o sexo do contato." WidthLabel="115">
 									<Components:HlpComboBox.Items>
@@ -71,7 +110,7 @@
 								</Components:HlpComboBox>
 								<Components:HlpComboBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									SelectedValue="{Binding currentModel.stSensibilidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									SelectedIndex="{Binding currentModel.stSensibilidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,215.241,0" Caption="Sensibilidade" Help="Selecione a sensibilidade das atividades que envolvem o contato." WidthLabel="115">
 									<Components:HlpComboBox.Items>
@@ -194,15 +233,61 @@
 				</StackPanel>				
 			</TabItem>
 			<TabItem Header="Endereços">
-				<DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<DataGrid.Columns>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Principal" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-						<DataGridTextColumn Header="Nome" Width="100" Binding="{Binding Path=xNome, UpdateSourceTrigger=PropertyChanged}"/>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Tipo Endereço" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-						<DataGridTextColumn Header="CEP" Width="100" Binding="{Binding Path=xCEP, UpdateSourceTrigger=PropertyChanged}"/>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Cidade" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Logadouro" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-						<DataGridTextColumn Header="Endereço" Width="*" Binding="{Binding Path=xEndereco, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGrid ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
+                          IsEnabled="{Binding bIsEnabled}"
+                          AutoGenerateColumns="False" 
+                          SelectionUnit="CellOrRowHeader" 
+                          CanUserReorderColumns="False"  
+                          CanUserDeleteRows="True" >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Principal" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding stPrincipal, 
+                                        UpdateSourceTrigger=PropertyChanged, 
+                                        Converter={StaticResource ByteToBoolConverter}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>                                    
+                                    <CheckBox  IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Nome" Width="100" ElementStyle="{StaticResource CellErrorStyle}"
+                                            Binding="{Binding Path=xNome, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                        <DataGridComboBoxColumn 
+                            Header="Tipo Endereço" Width="120"
+                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
+                            DisplayMemberPath="Key"
+                            SelectedValuePath="Value"
+                            ElementStyle="{StaticResource CellErrorStyle}"
+                            SelectedValueBinding ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                        </DataGridComboBoxColumn>
+                        <DataGridTextColumn
+                                Header="CEP" Width="100"
+                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, 
+                                    ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}"
+                                ></DataGridTextColumn>
+                        <DataGridComboBoxColumn  Header="Cidades" Width="150"
+                            ItemsSource="{Binding Source={StaticResource lresult}}"
+                            SelectedValuePath="id"
+                            DisplayMemberPath="display"
+                                                 ElementStyle="{StaticResource CellErrorStyle}"
+                            SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
+                            />
+                        <DataGridComboBoxColumn 
+                            Header="Logradouro" Width="120"
+                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
+                            DisplayMemberPath="Key"
+                            SelectedValuePath="Value"
+                            ElementStyle="{StaticResource CellErrorStyle}"
+                            SelectedValueBinding ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                        </DataGridComboBoxColumn>
+                        <DataGridTextColumn Header="Endereço" Width="*" 
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                            Binding="{Binding Path=xEndereco, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True} "/>
 					</DataGrid.Columns>
 				</DataGrid>
 						
@@ -214,7 +299,7 @@
 							<StackPanel>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.xTelefoneComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xTelefoneComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,10,219.5,-1" Caption="Telefone Comercial" Help="Insira o número do telefone comercial do contato" WidthLabel="160"/>
 								<Components:HlpTextBox 
@@ -224,7 +309,7 @@
 									Height="27" Margin="10,0,219.5,-1" Caption="Ramal" Help="Insira o número do Ramal do contato" WidthLabel="160"/>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.xCelularComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xCelularComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,219.5,-1" Caption="Celular" Help="Insira o número do Celular do contato." WidthLabel="160"/>
 								<Components:HlpTextBox 
@@ -239,7 +324,7 @@
 									Height="27" Margin="10,0,219.5,-1" Caption="Pager" Help="Insira o número do Pager do contato." WidthLabel="160"/>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.xFaxComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xFaxComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,219.5,-1" Caption="Fax" Help="Insira o número do Fax do contato" WidthLabel="160"/>
 								<Components:HlpTextBox 
@@ -270,12 +355,12 @@
 							<StackPanel>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.xTelefoneResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xTelefoneResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="243.5" Caption="Telefone Residencial" Help="Insira o número do telefone particular do contato, caso possua." WidthLabel="155" Margin="-262,10,0,-2"/>
 								<Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.xCelularResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xCelularResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="243.5" Caption="Celular" Help="Insira o número do Celular Particular do contato, caso possua." WidthLabel="155" Margin="-262,0,0,-2"/>
 								<Components:HlpTextBox 

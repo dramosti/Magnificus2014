@@ -49,6 +49,62 @@ namespace HLP.Comum.Resources.RecursosBases
         OUTRO
     };
 
+    public enum TipoLogradouro
+    {
+        [Description("00-AER - AEROPORTO")]
+        AEROPORTO,
+        [Description("01-AL - ALAMEDA")]
+        ALAMEDA,
+        [Description("02-AP - APARTAMENTO")]
+        APARTAMENTO,
+        [Description("03-AV - AVENIDA")]
+        AVENIDA,
+        [Description("04-BC - BECO")]
+        BECO,
+        [Description("05-BL - BLOCO")]
+        BLOCO,
+        [Description("06-CAM - CAMINHO")]
+        CAMINHO,
+        [Description("07-ESCD - ESCADINHA")]
+        ESCADINHA,
+        [Description("08-EST  - ESTAÇÃO")]
+        ESTAÇÃO,
+        [Description("09-ETR - ESTRADA")]
+        ESTRADA,
+        [Description("10-FAZ - FAZENDA")]
+        FAZENDA,
+        [Description("11-FORT - FORTALEZA")]
+        FORTALEZA,
+        [Description("12-GL - GALERIA")]
+        GALERIA,
+        [Description("13-LD - LADEIRA")]
+        LADEIRA,
+        [Description("14-LGO  - LARGO")]
+        LARGO,
+        [Description("15-PÇA - PRAÇA")]
+        PRAÇA,
+        [Description("16-PR  - PRAIA")]
+        PRAIA,
+        [Description("17-PRQ - PARQUE")]
+        PARQUE,
+        [Description("18-QD  - QUADRA")]
+        QUADRA,
+        [Description("19-KM - QUILÔMETRO")]
+        QUILÔMETRO,
+        [Description("20-QTA  - QUINTA")]
+        QUINTA,
+        [Description("21-ROD  - RODOVIA")]
+        RODOVIA,
+        [Description("22-R - RUA")]
+        RUA,
+        [Description("23-SQD - SUPER QUADRA")]
+        SUPER_QUADRA,
+        [Description("24-TRV - TRAVESSA")]
+        TRAVESSA
+
+    }
+
+
     public enum TipoCertificacao
     {
         [Description("0-ENSINO MÉDIO")]

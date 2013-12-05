@@ -25,7 +25,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 regTipoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_tipo_servico",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idTipoServico"),
-                                    MapBuilder<Tipo_servicoModel>.MapAllProperties().Build());
+                                    MapBuilder<Tipo_servicoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
             }
             return regTipoAccessor.Execute(idTipoServico).FirstOrDefault();
         }

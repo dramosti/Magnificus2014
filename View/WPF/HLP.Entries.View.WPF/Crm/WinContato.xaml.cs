@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Comum.ViewModel.ViewModels.Components;
 
 namespace HLP.Entries.View.WPF.Crm
 {
@@ -25,6 +27,7 @@ namespace HLP.Entries.View.WPF.Crm
             try
             {
                 InitializeComponent();
+                
             }
             catch (Exception ex)
             {

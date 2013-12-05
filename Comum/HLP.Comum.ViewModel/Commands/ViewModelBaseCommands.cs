@@ -206,9 +206,21 @@ namespace HLP.Comum.ViewModel.Commands
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
             if (this.objviewModel.navigatePesquisa != null)
             {
-                if (objviewModel.navigatePesquisa.Where(c => c == (int)iRemoved).Count() > 0)
+                if (iRemoved == null)
                 {
-                    objviewModel.navigatePesquisa.Remove((int)iRemoved);
+                    throw new Exception("É necessário corrigir o método de Excluir!");
+                }
+                else
+                {
+                    if (objviewModel.navigatePesquisa.Where(c => c == (int)iRemoved).Count() > 0)
+                    {
+                        objviewModel.navigatePesquisa.Remove((int)iRemoved);
+                    }
+
+                    if (objviewModel.navigatePesquisa.Where(c => c > (int)iRemoved).Count() > 0)
+                        this.ExecAcao("Proximo");
+                    else
+                        this.ExecAcao("Ultimo");
                 }
             }
         }
