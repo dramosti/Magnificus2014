@@ -40,19 +40,18 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public void Save(HLP.Entries.Model.Models.Gerais.Tipo_servicoModel tipo)
+        public HLP.Entries.Model.Models.Gerais.Tipo_servicoModel Save(HLP.Entries.Model.Models.Gerais.Tipo_servicoModel tipo)
         {
-
             try
             {
                 iTipo_servicoRepository.Save(tipo);
+                return tipo;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
         }
 
         public bool Delete(int idTipoServico)

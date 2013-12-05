@@ -41,7 +41,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
-                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
         }
         #region Implementação Commands
@@ -51,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 //TODO: método de serviço para salvar
-                await servicotpServico.SaveAsync(objViewModel.currentModel);
+                objViewModel.currentModel = await servicotpServico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -111,7 +111,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Novo()
         {
             //TODO: instanciar novo objeto
-            this.objViewModel = new TipoServicoViewModel();
+            this.objViewModel.currentModel = new Model.Models.Gerais.Tipo_servicoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()

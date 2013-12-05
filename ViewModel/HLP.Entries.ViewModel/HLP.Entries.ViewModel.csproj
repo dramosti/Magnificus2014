@@ -1339,6 +1339,15 @@
     <None Include="Service References\tipoServicoService\serviceTipoServico2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\tipoServicoService\serviceTipoServico3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\tipoServicoService\serviceTipoServico31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\tipoServicoService\serviceTipoServico32.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento.wsdl" />
     <None Include="Service References\Tipo_documentoService\serviceTipo_documento.xsd">
       <SubType>Designer</SubType>
