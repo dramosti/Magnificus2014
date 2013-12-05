@@ -13,8 +13,13 @@ namespace HLP.Entries.Model.Models.Gerais
         public Tipo_servicoModel() : base("Tipo_servico") { }
 
 
+        public int? _idTipoServico;
         [ParameterOrder(Order = 1)]
-        public int? idTipoServico { get; set; }
+        public int? idTipoServico
+        {
+            get { return _idTipoServico; }
+            set { _idTipoServico = value; base.NotifyPropertyChanged("idTipoServico"); }
+        }
         [ParameterOrder(Order = 2)]
         public int cTipoServico { get; set; }
         [ParameterOrder(Order = 3)]

@@ -14,7 +14,7 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         HLP.Entries.Model.Models.Gerais.Tipo_servicoModel GetTipo(int idTipoServico);
         [OperationContract]
-        void Save(HLP.Entries.Model.Models.Gerais.Tipo_servicoModel tipo);
+        HLP.Entries.Model.Models.Gerais.Tipo_servicoModel Save(HLP.Entries.Model.Models.Gerais.Tipo_servicoModel tipo);
         [OperationContract]
         bool Delete(int idTipoServico);
         [OperationContract]
