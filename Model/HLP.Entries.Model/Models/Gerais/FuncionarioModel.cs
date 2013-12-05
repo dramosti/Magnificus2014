@@ -24,6 +24,8 @@ namespace HLP.Entries.Model.Models.Gerais
                 new ObservableCollectionBaseCadastros<Funcionario_Margem_Lucro_ComissaoModel>();
             this.lFuncionario_Arquivo =
                 new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
+            this.lFuncionario_Acesso =
+                new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>();
         }
 
         private int? _idFuncionario;
@@ -554,16 +556,61 @@ namespace HLP.Entries.Model.Models.Gerais
         {
         }
 
+        private int? _idAcesso;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idAcesso { get; set; }
+        public int? idAcesso
+        {
+            get { return _idAcesso; }
+            set
+            {
+                _idAcesso = value;
+                base.NotifyPropertyChanged(propertyName: "idAcesso");
+            }
+        }
+        private int _idEmpresa;
         [ParameterOrder(Order = 2)]
-        public int idEmpresa { get; set; }
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
+        private int _idSetor;
         [ParameterOrder(Order = 3)]
-        public int idSetor { get; set; }
+        public int idSetor
+        {
+            get { return _idSetor; }
+            set
+            {
+                _idSetor = value;
+                base.NotifyPropertyChanged(propertyName: "idSetor");
+            }
+        }
+        private int _idFuncionario;
         [ParameterOrder(Order = 4)]
-        public int idFuncionario { get; set; }
+        public int idFuncionario
+        {
+            get { return _idFuncionario; }
+            set
+            {
+                _idFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionario");
+            }
+        }
+        private decimal _vCompraAprovaAuto;
         [ParameterOrder(Order = 5)]
-        public decimal vCompraAprovaAuto { get; set; }
+        public decimal vCompraAprovaAuto
+        {
+            get { return _vCompraAprovaAuto; }
+            set
+            {
+                _vCompraAprovaAuto = value;
+                base.NotifyPropertyChanged(propertyName: "vCompraAprovaAuto");
+            }
+        }
     }
 
     #region Validação Model

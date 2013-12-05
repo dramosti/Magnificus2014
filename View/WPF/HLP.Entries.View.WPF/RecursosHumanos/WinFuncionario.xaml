@@ -386,7 +386,7 @@
                     <Grid>
                         <DataGrid
                             Name="gridEnderecos"
-                        ItemsSource="{Binding currentModel.lFuncionario_Endereco}"                          
+						  ItemsSource="{Binding currentModel.lFuncionario_Endereco}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
@@ -781,7 +781,7 @@
                     <Grid>
                         <DataGrid
                             Name="gridCertificacoes"
-                        ItemsSource="{Binding currentModel.lFuncionario_Certificacao}"                          
+						  ItemsSource="{Binding currentModel.lFuncionario_Certificacao}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"

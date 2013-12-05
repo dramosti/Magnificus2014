@@ -65,11 +65,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comercial\WinCanalVenda.xaml.cs">
+      <DependentUpon>WinCanalVenda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
     </Compile>
     <Compile Include="Crm\WinDecisao.xaml.cs">
       <DependentUpon>WinDecisao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crm\WinFidelidade.xaml.cs">
+      <DependentUpon>WinFidelidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Crm\WinPersonalidade.xaml.cs">
+      <DependentUpon>WinPersonalidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
+      <DependentUpon>WinAgencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinBanco.xaml.cs">
+      <DependentUpon>WinBanco.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinContaBancaria.xaml.cs">
+      <DependentUpon>WinContaBancaria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinDesconto.xaml.cs">
+      <DependentUpon>WinDesconto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinJuros.xaml.cs">
+      <DependentUpon>WinJuros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinMulta.xaml.cs">
+      <DependentUpon>WinMulta.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinAcesso.xaml.cs">
       <DependentUpon>WinAcesso.xaml</DependentUpon>
@@ -95,6 +122,9 @@
     <Compile Include="Gerais\WinFamiliaProduto.xaml.cs">
       <DependentUpon>WinFamiliaProduto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinListaPreco.xaml.cs">
+      <DependentUpon>WinListaPreco.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinMoeda.xaml.cs">
       <DependentUpon>WinMoeda.xaml</DependentUpon>
     </Compile>
@@ -103,6 +133,9 @@
     </Compile>
     <Compile Include="Gerais\WinRamoAtividade.xaml.cs">
       <DependentUpon>WinRamoAtividade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinSite.xaml.cs">
+      <DependentUpon>WinSite.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinTipoServico.xaml.cs">
       <DependentUpon>WinTipoServico.xaml</DependentUpon>
@@ -134,12 +167,54 @@
     <Compile Include="Transportes\WinCondicaoEntrega.xaml.cs">
       <DependentUpon>WinCondicaoEntrega.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIUtilities\UserInterfaceUtilities.cs" />
+    <Compile Include="Transportes\WinModoEntrega.xaml.cs">
+      <DependentUpon>WinModoEntrega.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transportes\WinRota.xaml.cs">
+      <DependentUpon>WinRota.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\UIUtilities\UserInterfaceUtilities.cs" />
+    <Page Include="Comercial\WinCanalVenda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Crm\WinContato.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Crm\WinDecisao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Crm\WinFidelidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Crm\WinPersonalidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinAgencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinBanco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinContaBancaria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinDesconto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinJuros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinMulta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,6 +250,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Gerais\WinListaPreco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gerais\WinMoeda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\WinRamoAtividade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinSite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +324,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Transportes\WinCondicaoEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transportes\WinModoEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transportes\WinRota.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -99,19 +99,17 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Expander x:Name="expanderContainerCadastros" Header="Cadastros" Style="{StaticResource expanderRecolher}">
-                            <ListBox ItemsSource="{Binding _lWindows}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
+                                <ListBox ItemsSource="{Binding _lWindows}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
                                             <Button Content="{Binding xHeader}" 
 												Style="{StaticResource btnListItem}"
 												Tag="{Binding xName}"
 												Command="{Binding DataContext.AddWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}, Mode=FindAncestor}}" CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
                                                     />
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                         </Expander>
                         <Expander x:Name="expanderContainerFavoritos" Header="Favoritos" Grid.Row="1" Style="{StaticResource expanderRecolher}">
                             <ListBox/>

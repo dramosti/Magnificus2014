@@ -72,4 +72,37 @@
 <object id="WinModoEntrega" name="WinModoEntrega" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Transportes.WinModoEntrega, HLP.Entries.View.WPF">
   </object>
+<object id="WinRota" name="WinRota" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Transportes.WinRota, HLP.Entries.View.WPF">
+  </object>
+<object id="WinSite" name="WinSite" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinSite, HLP.Entries.View.WPF">
+  </object>
+<object id="WinCanalVenda" name="WinCanalVenda" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
+  </object>
+<object id="WinJuros" name="WinJuros" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros, HLP.Entries.View.WPF">
+  </object>
+<object id="WinListaPreco" name="WinListaPreco" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinListaPreco, HLP.Entries.View.WPF">
+  </object>
+<object id="WinMulta" name="WinMulta" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinMulta, HLP.Entries.View.WPF">
+  </object>
+<object id="WinFidelidade" name="WinFidelidade" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Crm.WinFidelidade, HLP.Entries.View.WPF">
+  </object>
+<object id="WinPersonalidade" name="WinPersonalidade" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Crm.WinPersonalidade, HLP.Entries.View.WPF">
+  </object>
+<object id="WinBanco" name="WinBanco" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco, HLP.Entries.View.WPF">
+  </object>
+<object id="WinAgencia" name="WinAgencia" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">
+  </object>
+<object id="WinContaBancaria" name="WinContaBancaria" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
+  </object>
 </objects>

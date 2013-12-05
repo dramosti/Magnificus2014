@@ -1,0 +1,60 @@
+﻿<runtime:WindowsBase
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco"
+        Title="Bancos" Height="660" Width="1024">
+	<Grid>
+		<TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+			<TabItem Header="Geral">
+				<StackPanel>
+					<Expander Header="Principal" Height="260.5" Margin="0,0,477,0" IsExpanded="True">
+						<StackPanel>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,10,295.5,2" Caption="Código" Help="Chave principal do registro Banco" WidthLabel="126"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.cBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,295.5,2" Caption="Código do Banco " Help="Informar o Código para o Banco" WidthLabel="126"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.xBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" Caption="Nome" Help="Descrição do Nome do Banco Completo." WidthLabel="126"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.xBancoResumido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" Caption="Nome Resumido" Help="Descrição do Nome do Banco Resumido " WidthLabel="126"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.xLinkLogo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" Caption="Logotipo" Help="Informar o caminho do arquivo do logotipo do banco." WidthLabel="126"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.vDxMais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,255,2" Caption="D+" Help="Define a quantidade de dias a mais para ser faturado a duplicata recebida. Ex. Caso receba um cheque e o mesmo vai ser compensado apenas 5 dias após o recebimento, será preciso preencher o campo D+ com o número 5.Esta opção é utilizada no relatório de Fluxo de Caixa Analítico." WidthLabel="126"/>
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.vDxMenos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,255,2" Caption="D-" Help="Define a quantidade de dias a menos para ser faturado a duplicata paga. Ex. Caso pague uma fatura no dia atual, mas será compensado apenas três dias depois, deverá ser informar o valor 3 no campo D-.Esta opção é utilizada no relatório de Fluxo de Caixa Analítico." WidthLabel="126"/>
+						</StackPanel>
+					</Expander>
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="Hierarquia">
+				<Grid>
+					<TreeView HorizontalAlignment="Left" Height="416.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="489"/>
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</runtime:WindowsBase>
