@@ -5,7 +5,7 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"  
-        Title="Acesso" Height="660" Width="1024">
+        Title="Acesso" Height="660" Width="1024" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lresultSetor" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">

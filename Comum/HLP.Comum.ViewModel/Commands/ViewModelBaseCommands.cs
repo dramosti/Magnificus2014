@@ -26,12 +26,7 @@ namespace HLP.Comum.ViewModel.Commands
             { return this._currentOp; }
             set
             {
-                Dispatcher.CurrentDispatcher.BeginInvoke(
-                    method: new Action(() => this._currentOp = value),
-                    priority: DispatcherPriority.Background, args: null);
-                Dispatcher.CurrentDispatcher.BeginInvoke(
-                    method: new Action(() => CommandManager.InvalidateRequerySuggested()),
-                    priority: DispatcherPriority.Background, args: null);
+                this._currentOp = value;
             }
         }
 
@@ -43,7 +38,7 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.novoBaseCanExecute());
             this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
                 canExecute: pCanExec => this.alterarBaseCanExecute());
-            this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved:pExec),
+            this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved: pExec),
                 canExecute: pCanExec => this.delBaseCanExecute());
             this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
@@ -211,10 +206,10 @@ namespace HLP.Comum.ViewModel.Commands
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
             if (this.objviewModel.navigatePesquisa != null)
             {
-                if (objviewModel.navigatePesquisa.Where(c=>c == (int)iRemoved).Count() > 0)
+                if (objviewModel.navigatePesquisa.Where(c => c == (int)iRemoved).Count() > 0)
                 {
-                    objviewModel.navigatePesquisa.Remove((int)iRemoved);            
-                }   
+                    objviewModel.navigatePesquisa.Remove((int)iRemoved);
+                }
             }
         }
         private bool delBaseCanExecute()
