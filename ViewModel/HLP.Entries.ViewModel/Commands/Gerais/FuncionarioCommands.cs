@@ -57,16 +57,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 #region Carregar Ids Excluidos Collections
 
-                foreach (int id in this.objViewModel.currentModel.lFuncionario_Acesso.idExcluidos)
-                {
-                    this.objViewModel.currentModel.lFuncionario_Acesso.Add(
-                        item: new Funcionario_AcessoModel
-                        {
-                            idAcesso = id,
-                            status = statusModel.excluido
-                        });
-                }
-
+                
                 foreach (int id in objViewModel.currentModel.lFuncionario_Arquivo.idExcluidos)
                 {
                     this.objViewModel.currentModel.lFuncionario_Arquivo.Add(
@@ -303,17 +294,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-            
+
         }
 
         private void Inicia_Collections()
         {
             if (this.objViewModel.currentModel != null)
             {
-                this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();
                 this.objViewModel.currentModel.lFuncionario_Arquivo.CollectionCarregada();
                 this.objViewModel.currentModel.lFuncionario_Certificacao.CollectionCarregada();
                 this.objViewModel.currentModel.lFuncionario_Comissao_Produto.CollectionCarregada();

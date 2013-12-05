@@ -121,6 +121,28 @@ namespace HLP.Comum.Infrastructure
             }
         }
 
+
+
+        /// <summary>
+        /// Verifica se uma Tabela ou uma View existe na base de dados
+        /// </summary>
+        /// <param name="nm_Table"></param>
+        /// <returns></returns>
+        public bool ViewExistis(string nm_View)
+        {
+            int iCount = (int)this.dbPrincipal.ExecuteScalar(
+              "dbo.Proc_ExistsView", nm_View);
+
+            if (iCount == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /// <summary>
         /// Verifica se uma coluna existe na Tabela/View
         /// </summary>

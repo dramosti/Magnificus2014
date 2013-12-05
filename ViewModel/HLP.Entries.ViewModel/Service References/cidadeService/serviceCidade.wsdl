@@ -8,7 +8,6 @@
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
-      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceCidade.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IserviceCidade_getCidade_InputMessage">
@@ -35,12 +34,6 @@
   <wsdl:message name="IserviceCidade_copyCidade_OutputMessage">
     <wsdl:part name="parameters" element="tns:copyCidadeResponse" />
   </wsdl:message>
-  <wsdl:message name="IserviceCidade_GetAllCidadeToComboBox_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCidadeToComboBox" />
-  </wsdl:message>
-  <wsdl:message name="IserviceCidade_GetAllCidadeToComboBox_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCidadeToComboBoxResponse" />
-  </wsdl:message>
   <wsdl:portType name="IserviceCidade">
     <wsdl:operation name="getCidade">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceCidade/getCidade" message="tns:IserviceCidade_getCidade_InputMessage" />
@@ -57,10 +50,6 @@
     <wsdl:operation name="copyCidade">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceCidade/copyCidade" message="tns:IserviceCidade_copyCidade_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceCidade/copyCidadeResponse" message="tns:IserviceCidade_copyCidade_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCidadeToComboBox">
-      <wsdl:input wsaw:Action="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBox" message="tns:IserviceCidade_GetAllCidadeToComboBox_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBoxResponse" message="tns:IserviceCidade_GetAllCidadeToComboBox_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IserviceCidade" type="tns:IserviceCidade">
@@ -94,15 +83,6 @@
     </wsdl:operation>
     <wsdl:operation name="copyCidade">
       <soap:operation soapAction="http://tempuri.org/IserviceCidade/copyCidade" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCidadeToComboBox">
-      <soap:operation soapAction="http://tempuri.org/IserviceCidade/GetAllCidadeToComboBox" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

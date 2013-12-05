@@ -153,7 +153,11 @@ namespace HLP.Comum.Model.Models
                 }
             }
 
-            if (objeto.GetType().GetProperty(columnName).GetValue(objeto).GetType()
+            if (valor ==null)
+            {
+                return null;
+            }
+            if (valor.GetType()
                 == typeof(DateTime) && ((DateTime)valor) != DateTime.MinValue && ((DateTime)valor) < ((DateTime)SqlDateTime.MinValue))
             {
                 return "Necessário uma data maior que " + SqlDateTime.MinValue.ToString();

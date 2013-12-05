@@ -74,14 +74,17 @@
     <Compile Include="Components\PesquisaPadraoModelContract.cs" />
     <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\modelBase.cs" />
+    <Compile Include="Models\modelToComboBox.cs" />
     <Compile Include="Models\MyObservableCollection.cs" />
     <Compile Include="Models\ObservableCollectionBaseCadastros.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />
     <Compile Include="Models\windowsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\Components\FillComboBoxRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaRapidaRepository.cs" />
     <Compile Include="Repository\Interfaces\ClassesBases\ImodelBaseRepository.cs" />
+    <Compile Include="Repository\Interfaces\Components\IFillComboBoxRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaRapidaRepository.cs" />
     <Compile Include="Service References\camposNotNullService\Reference.cs">

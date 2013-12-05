@@ -10,7 +10,10 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class Familia_produtoModel : modelBase
     {
-        public Familia_produtoModel() : base("Familia_produto") { }
+        public Familia_produtoModel() : base("Familia_produto") 
+        {
+            lFamilia_Produto_ClassesModel = new ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel>();
+        }
 
 
 

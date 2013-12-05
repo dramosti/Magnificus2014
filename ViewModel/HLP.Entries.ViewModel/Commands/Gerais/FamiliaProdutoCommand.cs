@@ -42,7 +42,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
-                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
         }
 
@@ -69,11 +69,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                 #endregion
 
-                servico.Save(this.objViewModel.currentModel);
-
-                //TODO: método de serviço para salvar
+                this.objViewModel.currentModel = servico.Save(this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.metodoGetModel(this, null);
                 this.Inicia_Collections();
             }
             catch (Exception ex)
@@ -93,8 +90,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int idRemoved = 0; // adicionado
             try
-            {
+            {                
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -103,6 +101,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)objViewModel.currentModel.idFamiliaProduto;  // adicionado
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -118,7 +117,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved); // adicionado
             }
         }
 
@@ -133,7 +132,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Novo()
         {
             //TODO: instanciar novo objeto
-            this.objViewModel = new FamiliaProdutoViewModel();
+            this.objViewModel.currentModel = new Familia_produtoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -165,7 +164,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 //TODO: Implementar serviço de copy
-                this.objViewModel.currentModel.idFamiliaProduto = await servico.CopyAsync(this.objViewModel.currentModel);
+                this.objViewModel.currentModel = await servico.CopyAsync(this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)

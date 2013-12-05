@@ -34,10 +34,7 @@ namespace HLP.Wcf.Entries
 
         [Inject]
         public IFuncionario_Margem_Lucro_ComissaoRepository funcionario_Margem_Lucro_ComissaoRepository { get; set; }
-
-        [Inject]
-        public IAcessoRepository acessoRepository { get; set; }
-
+        
         public serviceFuncionario()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -52,11 +49,7 @@ namespace HLP.Wcf.Entries
             {
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
-
-                objFuncionario.lFuncionario_Acesso = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel>(list:
-                    this.acessoRepository.GetAllAcesso_Funcionario(
-                    idFuncionario: idFuncionario));
-
+                
                 objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
                     this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
                     idFuncionario: idFuncionario));
@@ -93,28 +86,6 @@ namespace HLP.Wcf.Entries
             {
                 this.funcionarioRepository.BeginTransaction();
                 this.funcionarioRepository.Save(objFuncionario: objFuncionario);
-
-                foreach (HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel item in objFuncionario.lFuncionario_Acesso)
-                {
-                    switch (item.status)
-                    {
-                        case statusModel.criado:
-                        case statusModel.alterado:
-                            {
-                                item.idFuncionario = (int)objFuncionario.idFuncionario;
-                                this.acessoRepository.Save(objAcesso:
-                                    item);
-                            }
-                            break;
-                        case statusModel.excluido:
-                            {
-                                this.acessoRepository.Delete(objAcesso:
-                                    item);
-                            }
-                            break;
-                    }
-                }
-
 
                 foreach (HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel item in objFuncionario.lFuncionario_Arquivo)
                 {

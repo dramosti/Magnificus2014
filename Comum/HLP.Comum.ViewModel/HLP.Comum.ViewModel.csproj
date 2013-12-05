@@ -71,11 +71,17 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Commands\ViewModelBaseCommands.cs" />
+    <Compile Include="Service References\FillComboBoxService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\HlpPesquisaPadraoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Components\FillComboBoxViewModel.cs" />
     <Compile Include="ViewModels\Components\HlpPesquisaPadraoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -111,8 +117,19 @@
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract1.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Models.campoSqlModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Models.modelToComboBox.datasource" />
     <None Include="Properties\DataSources\System.Data.DataSet1.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox.wsdl" />
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\HlpPesquisaPadraoService\HLP.Comum.ViewModel.HlpPesquisaPadraoService.GetDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -137,6 +154,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FillComboBoxService\" />
     <WCFMetadataStorage Include="Service References\HlpPesquisaPadraoService\" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +168,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\HlpPesquisaPadraoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

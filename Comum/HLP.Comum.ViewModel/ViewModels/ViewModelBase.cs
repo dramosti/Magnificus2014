@@ -128,30 +128,33 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             object o;
 
-            foreach (object i in obj.ItemsSource)
+            if (obj.ItemsSource != null)
             {
-                DataGridRow row = obj.ItemContainerGenerator.ContainerFromItem(i) as DataGridRow;
-                if (row == null)
-                    return false;
-                foreach (DataGridColumn c in obj.Columns)
+                foreach (object i in obj.ItemsSource)
                 {
-                    o = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex).Content;
-                    if (o != null)
+                    DataGridRow row = obj.ItemContainerGenerator.ContainerFromItem(i) as DataGridRow;
+                    if (row == null)
+                        return false;
+                    foreach (DataGridColumn c in obj.Columns)
                     {
-                        if (o.GetType() == typeof(System.Windows.Controls.TextBlock))
+                        o = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex).Content;
+                        if (o != null)
                         {
-                            if (Validation.GetHasError(element: o as TextBlock))
-                                return true;
-                        }
-                        else if (o.GetType() == typeof(System.Windows.Controls.ComboBox))
-                        {
-                            if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
-                                return true;
-                        }
-                        else if (o.GetType() == typeof(System.Windows.Controls.TextBox))
-                        {
-                            if (Validation.GetHasError(element: o as System.Windows.Controls.TextBox))
-                                return true;
+                            if (o.GetType() == typeof(System.Windows.Controls.TextBlock))
+                            {
+                                if (Validation.GetHasError(element: o as TextBlock))
+                                    return true;
+                            }
+                            else if (o.GetType() == typeof(System.Windows.Controls.ComboBox))
+                            {
+                                if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
+                                    return true;
+                            }
+                            else if (o.GetType() == typeof(System.Windows.Controls.TextBox))
+                            {
+                                if (Validation.GetHasError(element: o as System.Windows.Controls.TextBox))
+                                    return true;
+                            }
                         }
                     }
                 }
