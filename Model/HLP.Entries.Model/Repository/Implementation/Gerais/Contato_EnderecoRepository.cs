@@ -64,7 +64,11 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Contato_Endereco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
-                   MapBuilder<Contato_EnderecoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
+                   MapBuilder<Contato_EnderecoModel>.MapAllProperties()
+                   .DoNotMap(c => c.status)
+                   .DoNotMap(c=>c.enumTipoEndereco)
+                   .DoNotMap(c=>c.enumTipoLogradouro)
+                   .Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
         }
@@ -73,7 +77,11 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             DataAccessor<Contato_EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Contato_Endereco WHERE idContato = @idContato", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idContato"),
-            MapBuilder<Contato_EnderecoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
+            MapBuilder<Contato_EnderecoModel>.MapAllProperties()
+            .DoNotMap(c => c.status)
+            .DoNotMap(c => c.enumTipoEndereco)
+            .DoNotMap(c => c.enumTipoLogradouro)
+            .Build());
 
             return reg.Execute(idContato).ToList();
         }
