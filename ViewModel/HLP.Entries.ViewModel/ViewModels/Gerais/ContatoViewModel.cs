@@ -35,7 +35,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ContatoModel currentModel
         {
             get { return _currentModel; }
-            set { _currentModel = value; }
+            set { _currentModel = value; base.NotifyPropertyChanged("currentModel"); }
         }
 
     }

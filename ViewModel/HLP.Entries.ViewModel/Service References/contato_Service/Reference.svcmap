@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36a01907-25e2-40d7-8abd-0d8765da3d2e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a25fffdb-d7da-4841-ba2d-f8a2da996335" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -26,14 +26,14 @@
     <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceContato.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceContato.xsd" MetadataType="Schema" ID="a031e4d9-c21b-40e6-9b27-6d28b5f32c99" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceContato1.xsd" MetadataType="Schema" ID="e9337a43-519d-4aa2-a8b7-51d2ef8d53d6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceContato2.xsd" MetadataType="Schema" ID="40b67626-b2b6-436d-9efb-8a9f2e0fa9dc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceContato.wsdl" MetadataType="Wsdl" ID="7acf9b6b-b5c7-48ac-b580-cbf3f54034d4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?wsdl" />
-    <MetadataFile FileName="serviceContato3.xsd" MetadataType="Schema" ID="b49ca89a-e717-429e-bfa5-915ce6925ce2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceContato.disco" MetadataType="Disco" ID="b4646627-2e6d-4ffb-9e94-f7ba9feea35c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?disco" />
-    <MetadataFile FileName="serviceContato4.xsd" MetadataType="Schema" ID="2d8a416d-91e1-40f5-9ef1-c0fd86b1b934" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceContato5.xsd" MetadataType="Schema" ID="986e01f3-de34-49a5-a964-c7c06bdc3ef6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceContato.xsd" MetadataType="Schema" ID="afcf1272-fca2-449c-aa71-51cc822875df" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceContato1.xsd" MetadataType="Schema" ID="70694a5f-a754-4c9f-aeec-20d141baec5c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceContato2.xsd" MetadataType="Schema" ID="79ae1c93-af2f-407c-9fd3-154aaf88131a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceContato.wsdl" MetadataType="Wsdl" ID="6b06fdc4-7150-4a63-8455-cb9fd246f304" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?wsdl" />
+    <MetadataFile FileName="serviceContato3.xsd" MetadataType="Schema" ID="13698816-3bb5-4de9-992e-af158c2c5dba" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceContato.disco" MetadataType="Disco" ID="77441dc9-1139-440c-9fcf-d24566ccf1fb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?disco" />
+    <MetadataFile FileName="serviceContato4.xsd" MetadataType="Schema" ID="0ec0d5bc-8a97-4061-a3c2-6d1e7726d415" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceContato5.xsd" MetadataType="Schema" ID="11739cfb-8860-46ef-8d0e-ef6eeb5866d3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
