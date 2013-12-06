@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -34,6 +35,10 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                this.funcionarioRepository.BeginTransaction();
+                objModel.xSenha = Criptografia.Encripta(strTexto: objModel.xSenha);
+                this.funcionarioRepository.Save(objFuncionario: objModel);
+
                 foreach (HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel item in objModel.lFuncionario_Acesso)
                 {
                     switch (item.status)
@@ -53,11 +58,13 @@ namespace HLP.Wcf.Entries
                     }
                 }
 
+                this.funcionarioRepository.CommitTransaction();
                 return objModel;
 
             }
             catch (Exception ex)
             {
+                this.funcionarioRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -71,6 +78,7 @@ namespace HLP.Wcf.Entries
             {
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario =
                 this.funcionarioRepository.GetFuncionario(idFuncionario: idObjeto);
+                objFuncionario.xSenha = Criptografia.Decripta(strTexto: objFuncionario.xSenha);
                 objFuncionario.lFuncionario_Acesso = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel>
                 (this.acessoRepository.GetAllAcesso_Funcionario(idFuncionario: idObjeto));
                 return objFuncionario;

@@ -41,6 +41,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }
-        
     }
 }

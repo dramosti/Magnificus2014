@@ -2,6 +2,7 @@
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"               
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
@@ -86,18 +87,38 @@
         <Expander Header="Empresa"   IsExpanded="True">
             <DataGrid 
                 Name="gridAcessos"
-                        ItemsSource="{Binding currentModel.lFuncionario_Acesso}"                          
+                ItemsSource="{Binding currentModel.lFuncionario_Acesso, UpdateSourceTrigger=PropertyChanged}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
                           CanUserAddRows="True"
-                          HorizontalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}">
+                          HorizontalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" CellEditEnding="gridAcessos_CellEditEnding">
+                <DataGrid.BindingGroup>
+                    <BindingGroup NotifyOnValidationError="True">
+                        <BindingGroup.ValidationRules>
+                            <v:ListUniqueValuesValidationRule                                
+                                ValidatesOnTargetUpdated="True"
+                                
+                                xCampos="idSetor-idEmpresa"></v:ListUniqueValuesValidationRule>
+                        </BindingGroup.ValidationRules>
+                    </BindingGroup>
+                </DataGrid.BindingGroup>
                 <DataGrid.Columns>
                     <DataGridComboBoxColumn  Header="Empresa" Width="450"
                                         ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                        >
+                        <DataGridComboBoxColumn.SelectedValueBinding>
+                            <!--SelectedValueBinding="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"-->
+                            <Binding
+                                Path="idEmpresa"
+                                Mode="TwoWay"
+                                UpdateSourceTrigger="PropertyChanged"
+                                ValidatesOnDataErrors="True">
+                            </Binding>
+                        </DataGridComboBoxColumn.SelectedValueBinding>
+                    </DataGridComboBoxColumn>
                     <DataGridComboBoxColumn  Header="Setor" Width="*"
                                         ItemsSource="{Binding Source={StaticResource lresultSetor}}"
                                         SelectedValuePath="id"
