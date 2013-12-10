@@ -60,8 +60,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 BackgroundWorker bwSalvar = new BackgroundWorker();
                 bwSalvar.DoWork += bwSalvar_DoWork;
                 bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-
-
+                bwSalvar.RunWorkerAsync();
             }
             catch (Exception ex)
             {

@@ -47,5 +47,10 @@ namespace HLP.Entries.View.WPF.Gerais
                 this.DataContext = value;
             }
         }
+
+        private void gridConversao_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            this.gridConversao.BindingGroup.UpdateSources();
+        }
     }
 }
