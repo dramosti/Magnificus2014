@@ -73,7 +73,7 @@
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_AcessoCommands.cs" />
     <Compile Include="Commands\Transportes\ModoEntregaCommands.cs" />
-    <Compile Include="Service References\Acesso_funcionarioService\Reference.cs">
+    <Compile Include="Service References\AcessoFuncionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -501,23 +501,23 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Modos_entregaModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.RotaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso.wsdl" />
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso.wsdl" />
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso1.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso2.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso3.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso4.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso5.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\agenciaService\serviceAgencia.wsdl" />
@@ -1469,7 +1469,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\Acesso_funcionarioService\" />
+    <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
     <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\bancoService\" />
     <WCFMetadataStorage Include="Service References\CalendarioService\" />
@@ -2272,16 +2272,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Acesso_funcionarioService\serviceAcesso.disco" />
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Acesso_funcionarioService\configuration91.svcinfo" />
+    <None Include="Service References\AcessoFuncionarioService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Acesso_funcionarioService\configuration.svcinfo" />
+    <None Include="Service References\AcessoFuncionarioService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Acesso_funcionarioService\Reference.svcmap">
+    <None Include="Service References\AcessoFuncionarioService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
