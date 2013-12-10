@@ -108,9 +108,6 @@
   <object id="WinContaBancaria" name="WinContaBancaria" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
   </object>
-<object id="WinDesconto" name="WinDesconto" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
-  </object>
 <object id="WinDiaPagamento" name="WinDiaPagamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">
   </object>
