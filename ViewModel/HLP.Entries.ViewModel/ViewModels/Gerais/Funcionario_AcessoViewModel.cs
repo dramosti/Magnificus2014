@@ -28,9 +28,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public Funcionario_AcessoViewModel()
         {
             Funcionario_AcessoCommands comm = new Funcionario_AcessoCommands(objViewModel: this);
-        }
+        }       
 
-        
         private FuncionarioModel _currentModel;
 
         public FuncionarioModel currentModel
@@ -42,6 +41,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }
-        
     }
 }

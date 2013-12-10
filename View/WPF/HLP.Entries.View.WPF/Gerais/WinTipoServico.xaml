@@ -3,13 +3,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinTipoServico"
+    NameView="vwTipoServico"
         Title="Tipos de Serviço" Height="600" Width="1024">
 	<Grid>
 		<Expander Header="Principal" HorizontalAlignment="Left" Height="130.5" VerticalAlignment="Top" Width="611" IsExpanded="True">
 			<StackPanel>
 				<Components:HlpTextBox
 					IsReadOnly="True"
-					Text="{Binding currentModel.idTpoServico, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"					
+					Text="{Binding currentModel.idTipoServico, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"					
 					Height="27" Margin="10,10,348.5,2" Caption="Código" Help="Chave principal do registro do tipo de serviço" WidthLabel="130"/>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"

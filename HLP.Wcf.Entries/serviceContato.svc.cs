@@ -41,6 +41,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idContato = (int)objContato.idContato;
                                 iContato_EnderecoRepository.Save(item);                    
                             }
                             break;

@@ -71,6 +71,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -81,6 +82,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)objViewModel.currentModel.idTipoServico;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -96,7 +98,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -185,9 +187,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servicotpServico.GetTipoAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = servicotpServico.GetTipo(objViewModel.currentID); //TODO: método de serviço para pesquisar
         }
         #endregion
 

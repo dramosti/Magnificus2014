@@ -116,12 +116,15 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             // The dependency object is valid if it has no errors, 
             //and all of its children (that are dependency objects) are error-free.
-            return (obj.GetType() == typeof(System.Windows.Controls.DataGrid) ? !this.GridObjectsIsValid(obj: obj as System.Windows.Controls.DataGrid)
-                : !Validation.GetHasError(obj)
+            bool resultado = ((!Validation.GetHasError(obj)
                 ) &&
                 LogicalTreeHelper.GetChildren(obj)
                 .OfType<DependencyObject>()
-                .All(child => IsValid(child));
+                .All(child => IsValid(child)));
+            return resultado &&
+                obj.GetType() == typeof(System.Windows.Controls.DataGrid) ?
+                !this.GridObjectsIsValid(obj: obj as System.Windows.Controls.DataGrid)
+                : resultado;
         }
 
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)

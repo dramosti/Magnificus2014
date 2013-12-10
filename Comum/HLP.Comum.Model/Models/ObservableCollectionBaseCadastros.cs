@@ -27,7 +27,7 @@ namespace HLP.Comum.Model.Models
             this.CollectionChanged += ObservableCollectionBaseCadastros_CollectionChanged;
         }
 
-        void ObservableCollectionBaseCadastros_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public void ObservableCollectionBaseCadastros_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {

@@ -39,6 +39,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HLP.Comum.Resources", "Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj", "{E92DD62D-5BF4-4968-A03C-869127AB5860}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wcf", "Wcf", "{7C07B7A9-117F-4C58-94B3-8B961F1D817D}"
+	ProjectSection(SolutionItems) = preProject
+		ViewModel\HLP.Entries.ViewModel\app.config = ViewModel\HLP.Entries.ViewModel\app.config
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entries", "Entries", "{DEC0FCF6-6249-4DAA-937D-94CE4F0EF2BF}"
 EndProject
