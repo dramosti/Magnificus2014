@@ -821,6 +821,9 @@
     <None Include="Service References\ConversaoService\serviceConversao5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ConversaoService\serviceConversao6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\decisaoService\serviceDecisao.wsdl" />
     <None Include="Service References\decisaoService\serviceDecisao.xsd">
       <SubType>Designer</SubType>

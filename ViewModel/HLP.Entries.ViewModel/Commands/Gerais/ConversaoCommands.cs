@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -55,16 +56,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                foreach (int item in this.objViewModel.currentModel.idExcluidos)
+                foreach (int item in this.objViewModel.currentModel.lProdutos_Conversao.idExcluidos)
                 {
-                    this.objViewModel.currentModel.Add(
+                    this.objViewModel.currentModel.lProdutos_Conversao.Add(
                         item: new ConversaoModel
                         {
                             idConversao = item,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                servico.savelConversao(lConversao: objViewModel.currentModel.ToList());
+                servico.savelConversao(lConversao: objViewModel.currentModel.lProdutos_Conversao.ToList());
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                 this.IniciaCollection();
                 this.metodoGetModel(this, null);
@@ -125,7 +126,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<ConversaoModel>();
+            this.objViewModel.currentModel = new ProdutoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -205,14 +206,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void IniciaCollection()
         {
-            this.objViewModel.currentModel.CollectionCarregada();
+            this.objViewModel.currentModel.lProdutos_Conversao.CollectionCarregada();
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel
-                = new Comum.Model.Models.ObservableCollectionBaseCadastros<ConversaoModel>(
-                    list: this.servico.getlConversao(idProduto: this.objViewModel.idProdutoSelecionado));
+                = this.servico.getlConversao(idProduto: this.objViewModel.idProdutoSelecionado);
         }
         #endregion
 

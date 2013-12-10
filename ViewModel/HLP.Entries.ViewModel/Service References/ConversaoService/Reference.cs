@@ -17,7 +17,10 @@ namespace HLP.Entries.ViewModel.ConversaoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.ConversaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.ProdutoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -190,10 +193,10 @@ namespace HLP.Entries.ViewModel.ConversaoService {
     public interface IserviceConversao {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceConversao/getlConversao", ReplyAction="http://tempuri.org/IserviceConversao/getlConversaoResponse")]
-        System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ConversaoModel> getlConversao(int idProduto);
+        HLP.Entries.Model.Models.Comercial.ProdutoModel getlConversao(int idProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceConversao/getlConversao", ReplyAction="http://tempuri.org/IserviceConversao/getlConversaoResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ConversaoModel>> getlConversaoAsync(int idProduto);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.ProdutoModel> getlConversaoAsync(int idProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceConversao/savelConversao", ReplyAction="http://tempuri.org/IserviceConversao/savelConversaoResponse")]
         void savelConversao(System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ConversaoModel> lConversao);
@@ -235,11 +238,11 @@ namespace HLP.Entries.ViewModel.ConversaoService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ConversaoModel> getlConversao(int idProduto) {
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel getlConversao(int idProduto) {
             return base.Channel.getlConversao(idProduto);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ConversaoModel>> getlConversaoAsync(int idProduto) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.ProdutoModel> getlConversaoAsync(int idProduto) {
             return base.Channel.getlConversaoAsync(idProduto);
         }
         
