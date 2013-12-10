@@ -1,0 +1,34 @@
+﻿<runtime:WindowsBase 
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Fiscal.WinStICMS"
+		xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Situação Tributária do ICMS" Height="660" Width="1024">
+    <Grid>
+		<Expander Header="Principal" HorizontalAlignment="Left" Height="328.314" VerticalAlignment="Top" Width="610.5" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					IsReadOnly="True"
+					Text="{Binding currentModel.idCSTIcms, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					Height="27" Margin="10,10,232,2" Caption="Código" Help="have principal do registro da Situação Tributária para COFINS, campo autoinclemental." WidthLabel="279"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.cCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,232,2" Caption="Código Origem da Situação Tributária." Help="Digite o Código da Situação Tributária de Cofins definida pela legislação. " WidthLabel="279"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,10,2" Caption="Descrição " Help="Descrição do código da Situação Tributária de Cofins" WidthLabel="279"/>
+				<Components:HlpCheckBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,10,2" Caption="Simples Nacional?" Help="Informar se a Situação Tributária de Cofins é de Simples Nacional." WidthLabel="279"/>
+			</StackPanel>
+		</Expander>
+        
+	</Grid>
+</runtime:WindowsBase>
