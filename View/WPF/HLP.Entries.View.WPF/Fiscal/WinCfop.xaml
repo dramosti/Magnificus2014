@@ -1,0 +1,35 @@
+﻿<runtime:WindowsBase 
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Fiscal.WinCfop"
+        Title="CFOP" Height="660" Width="1024">
+	<StackPanel>
+		<Expander Header="Principal" Height="154.5" Margin="0,0,389.5,0" IsExpanded="True">
+			<StackPanel>
+				<Components:HlpTextBox 
+					IsReadOnly="True"
+					Text="{Binding currentModel.idCfop, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					Height="27" Margin="10,10,383,2" Caption="Código" Help="Chave principal do registro da CFOP" WidthLabel="173"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.cCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,383,2" Caption="CFOP " Help="Informar o código padrão da CFOP fornecida pelo seu Órgão Emissor." WidthLabel="173"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xCfopResumida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,132,2" Caption="Descrição Resumida" Help="Informar uma descrição abreviada do CFOP. Esse campo sairá na NF por isso que há necessidade da abreviação da Descrição da CFOP." WidthLabel="173"/>
+				<Components:HlpTextBox 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" Margin="10,0,132,2" Caption="Descrição" Help="Descrição Detalhada da CFOP." WidthLabel="173"/>
+			</StackPanel>
+		</Expander>
+        
+	</StackPanel>
+</runtime:WindowsBase>
