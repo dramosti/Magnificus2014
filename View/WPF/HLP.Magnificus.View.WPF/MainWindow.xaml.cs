@@ -30,7 +30,15 @@ namespace HLP.Magnificus.View.WPF
             InitializeComponent();
 
             GerenciadorModulo.Instancia.InicializaSistema();
-            this._viewModel = new MainViewModel();
+            try
+            {
+                this._viewModel = new MainViewModel();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
             CompanyData.idEmpresa = 1;
         }
         public MainViewModel _viewModel
