@@ -13,9 +13,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceFuncionario_Acesso" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceFuncionario_Acesso.svc or serviceFuncionario_Acesso.svc.cs at the Solution Explorer and start debugging.
-    public class serviceFuncionario_Acesso : IserviceFuncionario_Acesso
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceAcesso" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceAcesso.svc or serviceAcesso.svc.cs at the Solution Explorer and start debugging.
+    public class serviceAcesso : IserviceAcesso
     {
         [Inject]
         public IAcessoRepository acessoRepository { get; set; }
@@ -23,7 +23,7 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IFuncionarioRepository funcionarioRepository { get; set; }
 
-        public serviceFuncionario_Acesso()
+        public serviceAcesso()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -78,7 +78,7 @@ namespace HLP.Wcf.Entries
             {
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario =
                 this.funcionarioRepository.GetFuncionario(idFuncionario: idObjeto);
-                objFuncionario.xSenha = Criptografia.Decripta(strTexto: objFuncionario.xSenha);
+                objFuncionario.xSenha = Criptografia.Decripta(strTexto: objFuncionario.xSenha ?? "");
                 objFuncionario.lFuncionario_Acesso = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel>
                 (this.acessoRepository.GetAllAcesso_Funcionario(idFuncionario: idObjeto));
                 return objFuncionario;
@@ -89,6 +89,21 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
 
+        }
+
+        public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario)
+        {
+            try
+            {
+                return this.acessoRepository.getCountLoginUsuario(xLogin: xLogin,
+                    xSenha: Criptografia.Encripta(strTexto: xSenha),
+                    idFuncionario: idFuncionario) == 0 ? true : false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

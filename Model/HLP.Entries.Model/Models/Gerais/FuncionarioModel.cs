@@ -620,7 +620,9 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             get
             {
-                return base[columnName];
+                string s = base[columnName];
+
+                return s;
             }
         }
     }

@@ -6,12 +6,13 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria"
         Title="Contas Bancárias" Height="660" Width="1024">
+    <Grid>
 <TabControl>
  <TabItem Header="Geral">
    <AdornerDecorator>
 	<DockPanel LastChildFill="True">
 		<StackPanel Width="479" DockPanel.Dock="Left">
-			<Expander Header="Principal" Height="630" IsExpanded="True">
+			<Expander Header="Principal" Height="600" IsExpanded="True">
 				<StackPanel>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -73,7 +74,7 @@
 			</Expander>
 		</StackPanel>
 		<StackPanel>
-			<Expander Header="Home Banking" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True" Height="630">
+			<Expander Header="Home Banking" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True" Height="600" Width="534">
 				<StackPanel>
 					<Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -142,4 +143,5 @@
 	</StackPanel>
   </TabItem>
  </TabControl>
+</Grid>
 </runtime:WindowsBase>

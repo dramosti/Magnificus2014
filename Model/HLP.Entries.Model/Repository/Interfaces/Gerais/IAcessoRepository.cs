@@ -16,5 +16,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         Funcionario_AcessoModel GetAcesso(int idAcesso);
         List<Funcionario_AcessoModel> GetAllAcesso();
         List<Funcionario_AcessoModel> GetAllAcesso_Funcionario(int idFuncionario);
+        int getCountLoginUsuario(string xLogin, string xSenha, int idFuncionario);
     }
 }

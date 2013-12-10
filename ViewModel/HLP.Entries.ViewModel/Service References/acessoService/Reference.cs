@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.Funcionario_AcessoService {
+namespace HLP.Entries.ViewModel.acessoService {
     using System.Runtime.Serialization;
     using System;
     
@@ -30,10 +30,10 @@ namespace HLP.Entries.ViewModel.Funcionario_AcessoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.Funcionario_AcessoService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.acessoService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.Funcionario_AcessoService.statusModel statusField;
+        private HLP.Entries.ViewModel.acessoService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46,7 +46,7 @@ namespace HLP.Entries.ViewModel.Funcionario_AcessoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.Funcionario_AcessoService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.acessoService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -59,7 +59,7 @@ namespace HLP.Entries.ViewModel.Funcionario_AcessoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.Funcionario_AcessoService.statusModel status {
+        public HLP.Entries.ViewModel.acessoService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -253,46 +253,52 @@ namespace HLP.Entries.ViewModel.Funcionario_AcessoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Funcionario_AcessoService.IserviceFuncionario_Acesso")]
-    public interface IserviceFuncionario_Acesso {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="acessoService.IserviceAcesso")]
+    public interface IserviceAcesso {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario_Acesso/Save", ReplyAction="http://tempuri.org/IserviceFuncionario_Acesso/SaveResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/Save", ReplyAction="http://tempuri.org/IserviceAcesso/SaveResponse")]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel Save(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario_Acesso/Save", ReplyAction="http://tempuri.org/IserviceFuncionario_Acesso/SaveResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/Save", ReplyAction="http://tempuri.org/IserviceAcesso/SaveResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> SaveAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario_Acesso/GetObjeto", ReplyAction="http://tempuri.org/IserviceFuncionario_Acesso/GetObjetoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/GetObjeto", ReplyAction="http://tempuri.org/IserviceAcesso/GetObjetoResponse")]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel GetObjeto(int idObjeto);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario_Acesso/GetObjeto", ReplyAction="http://tempuri.org/IserviceFuncionario_Acesso/GetObjetoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/GetObjeto", ReplyAction="http://tempuri.org/IserviceAcesso/GetObjetoResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> GetObjetoAsync(int idObjeto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/ValidaUsuario", ReplyAction="http://tempuri.org/IserviceAcesso/ValidaUsuarioResponse")]
+        bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/ValidaUsuario", ReplyAction="http://tempuri.org/IserviceAcesso/ValidaUsuarioResponse")]
+        System.Threading.Tasks.Task<bool> ValidaUsuarioAsync(string xLogin, string xSenha, int idFuncionario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceFuncionario_AcessoChannel : HLP.Entries.ViewModel.Funcionario_AcessoService.IserviceFuncionario_Acesso, System.ServiceModel.IClientChannel {
+    public interface IserviceAcessoChannel : HLP.Entries.ViewModel.acessoService.IserviceAcesso, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceFuncionario_AcessoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Funcionario_AcessoService.IserviceFuncionario_Acesso>, HLP.Entries.ViewModel.Funcionario_AcessoService.IserviceFuncionario_Acesso {
+    public partial class IserviceAcessoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.acessoService.IserviceAcesso>, HLP.Entries.ViewModel.acessoService.IserviceAcesso {
         
-        public IserviceFuncionario_AcessoClient() {
+        public IserviceAcessoClient() {
         }
         
-        public IserviceFuncionario_AcessoClient(string endpointConfigurationName) : 
+        public IserviceAcessoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceFuncionario_AcessoClient(string endpointConfigurationName, string remoteAddress) : 
+        public IserviceAcessoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionario_AcessoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceAcessoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionario_AcessoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceAcessoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -310,6 +316,14 @@ namespace HLP.Entries.ViewModel.Funcionario_AcessoService {
         
         public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> GetObjetoAsync(int idObjeto) {
             return base.Channel.GetObjetoAsync(idObjeto);
+        }
+        
+        public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario) {
+            return base.Channel.ValidaUsuario(xLogin, xSenha, idFuncionario);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidaUsuarioAsync(string xLogin, string xSenha, int idFuncionario) {
+            return base.Channel.ValidaUsuarioAsync(xLogin, xSenha, idFuncionario);
         }
     }
 }

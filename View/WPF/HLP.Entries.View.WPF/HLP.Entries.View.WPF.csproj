@@ -80,6 +80,30 @@
     <Compile Include="Crm\WinPersonalidade.xaml.cs">
       <DependentUpon>WinPersonalidade.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fiscal\WinCargaTribMediaStIcms.xaml.cs">
+      <DependentUpon>WinCargaTribMediaStIcms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinCfop.xaml.cs">
+      <DependentUpon>WinCfop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinClassificacaoFiscal.xaml.cs">
+      <DependentUpon>WinClassificacaoFiscal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinCodigoICMS.xaml.cs">
+      <DependentUpon>WinCodigoICMS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinsStPIS.xaml.cs">
+      <DependentUpon>WinsStPIS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinStCofins.xaml.cs">
+      <DependentUpon>WinStCofins.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinStICMS.xaml.cs">
+      <DependentUpon>WinStICMS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinStIPI.xaml.cs">
+      <DependentUpon>WinStIPI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
     </Compile>
@@ -91,6 +115,9 @@
     </Compile>
     <Compile Include="Gerais\Financeiro\WinDesconto.xaml.cs">
       <DependentUpon>WinDesconto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\Financeiro\WinDiaPagamento.xaml.cs">
+      <DependentUpon>WinDiaPagamento.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\Financeiro\WinJuros.xaml.cs">
       <DependentUpon>WinJuros.xaml</DependentUpon>
@@ -171,6 +198,7 @@
       <DependentUpon>WinRota.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\UIUtilities\UserInterfaceUtilities.cs" />
+    <Compile Include="Validates\ValidaUsuarioValidationRule.cs" />
     <Page Include="Comercial\WinCanalVenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,6 +219,38 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fiscal\WinCargaTribMediaStIcms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinCfop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinClassificacaoFiscal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinCodigoICMS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinsStPIS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinStCofins.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinStICMS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinStIPI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Gerais\Financeiro\WinAgencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\Financeiro\WinDesconto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\Financeiro\WinDiaPagamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
