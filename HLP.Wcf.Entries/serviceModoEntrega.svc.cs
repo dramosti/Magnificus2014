@@ -39,11 +39,12 @@ namespace HLP.Wcf.Entries
             }        
         }
 
-        public void Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo)
+        public HLP.Entries.Model.Models.Transportes.Modos_entregaModel Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo)
         {
             try
             {
                 iModos_entregaRepository.Save(modo);
+                return modo;
             }
             catch (Exception ex)
             {
@@ -66,11 +67,11 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int Copy(int idModosEntrega)
+        public HLP.Entries.Model.Models.Transportes.Modos_entregaModel Copy(int idModosEntrega)
         {
             try
             {
-                return iModos_entregaRepository.Copy(idModosEntrega);
+                return this.GetModo(iModos_entregaRepository.Copy(idModosEntrega));
             }
             catch (Exception ex)
             {

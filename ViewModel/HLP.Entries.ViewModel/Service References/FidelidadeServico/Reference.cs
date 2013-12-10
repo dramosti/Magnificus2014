@@ -190,10 +190,10 @@ namespace HLP.Entries.ViewModel.FidelidadeServico {
     public interface IserviceFidelidade {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFidelidade/Save", ReplyAction="http://tempuri.org/IserviceFidelidade/SaveResponse")]
-        int Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel);
+        HLP.Entries.Model.Models.Crm.FidelidadeModel Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFidelidade/Save", ReplyAction="http://tempuri.org/IserviceFidelidade/SaveResponse")]
-        System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Crm.FidelidadeModel> SaveAsync(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFidelidade/GetObjeto", ReplyAction="http://tempuri.org/IserviceFidelidade/GetObjetoResponse")]
         HLP.Entries.Model.Models.Crm.FidelidadeModel GetObjeto(int idObjeto);
@@ -241,11 +241,11 @@ namespace HLP.Entries.ViewModel.FidelidadeServico {
                 base(binding, remoteAddress) {
         }
         
-        public int Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel) {
+        public HLP.Entries.Model.Models.Crm.FidelidadeModel Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel) {
             return base.Channel.Save(objModel);
         }
         
-        public System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Crm.FidelidadeModel> SaveAsync(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel) {
             return base.Channel.SaveAsync(objModel);
         }
         

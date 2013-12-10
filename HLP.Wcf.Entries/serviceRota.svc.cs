@@ -40,6 +40,7 @@ namespace HLP.Wcf.Entries
                     {
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                            item.idRota = (int)objRota.idRota;
                             iRota_pracaRepository.Save(item);
                             break;
                         case HLP.Comum.Resources.RecursosBases.statusModel.excluido:

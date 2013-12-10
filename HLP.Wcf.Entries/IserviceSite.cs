@@ -15,7 +15,7 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.SiteModel getSite(int idSite);
 
         [OperationContract]
-        int saveSite(HLP.Entries.Model.Models.Gerais.SiteModel objSite);
+        HLP.Entries.Model.Models.Gerais.SiteModel saveSite(HLP.Entries.Model.Models.Gerais.SiteModel objSite);
 
         [OperationContract]
         bool deleteSite(int idSite);

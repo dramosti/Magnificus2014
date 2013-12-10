@@ -5,7 +5,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinSite"
-        Title="Sites" Height="660" Width="1024">
+        Title="Sites" Height="660" Width="1831.463">
 	<Grid>
 		<TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 			<TabItem Header="Principal">
@@ -14,10 +14,9 @@
 					<Expander DockPanel.Dock="Top" Header="Geral" HorizontalAlignment="Stretch" Height="135.04" VerticalAlignment="Top" IsExpanded="True">
 						<StackPanel>
 							<Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								Text="{Binding currentModel.idSite, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,10,709,2" Caption="Código do Site" Help="Chave principal do registro do Site. Sendo gerada automaticamente pelo software." WidthLabel="143"/>
+								Height="27" Margin="10,10,709,2" Caption="Código" Help="Chave principal do registro do Site. Sendo gerada automaticamente pelo software." WidthLabel="143"/>
 							<Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.nSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

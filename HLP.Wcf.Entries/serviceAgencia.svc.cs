@@ -77,6 +77,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idAgencia = (int)Objeto.idAgencia;
                                 this.agencia_EnderecoRepository.Save(
                                     objAgencia_Endereco: item);
                             }

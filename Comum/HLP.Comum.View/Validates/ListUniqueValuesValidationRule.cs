@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
+
 namespace HLP.Comum.View.Validates
 {
     public class ListUniqueValuesValidationRule : ValidationRule

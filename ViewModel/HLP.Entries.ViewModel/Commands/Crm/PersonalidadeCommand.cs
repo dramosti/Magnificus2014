@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.ViewModel.ViewModels.Crm;
 
 namespace HLP.Entries.ViewModel.Commands.Crm
@@ -17,9 +18,35 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         public PersonalidadeCommand(PersonalidadeViewModel objViewModel)
         {
-            this.objViewModel = objViewModel;
-        }
 
+            this.objViewModel = objViewModel;
+
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
+                    paramCanExec => DeleteCanExecute());
+
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+                    paramCanExec => SaveCanExecute(paramCanExec));
+
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+                   canExecute: paramCanExec => this.NovoCanExecute());
+
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+                    canExecute: paramCanExec => this.AlterarCanExecute());
+
+            this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
+                    canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+            canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                        canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
+        
+        
+        }
 
         #region Implementação Commands
 
@@ -28,7 +55,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             try
             {
                 //TODO: método de serviço para salvar
-                await servico.SaveAsync(objViewModel.currentModel);
+                objViewModel.currentModel.idPersonalidade = await servico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -48,6 +75,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -58,6 +86,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)objViewModel.currentModel.idPersonalidade;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -73,7 +102,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -115,7 +144,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
@@ -153,18 +182,18 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         }
 
         void bwCopy_DoWork(object sender, DoWorkEventArgs e)
-          {
-              try
-              {
-                  e.Result = servico.CopyAsync(objViewModel.currentModel);
-                  //TODO: implementar serviço de copy
-              }
-              catch (Exception)
-              {
+        {
+            try
+            {
+                e.Result = servico.CopyAsync(objViewModel.currentModel);
+                //TODO: implementar serviço de copy
+            }
+            catch (Exception)
+            {
 
-                  throw;
-              }
-          }
+                throw;
+            }
+        }
 
         public bool CopyCanExecute()
         {
@@ -199,9 +228,9 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         }
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
-          {
-              this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
-          }
+        {
+            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
+        }
         #endregion
 
 

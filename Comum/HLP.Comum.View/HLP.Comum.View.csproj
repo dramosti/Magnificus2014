@@ -101,6 +101,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Validates\ListUniqueValuesValidationRule.cs" />
+    <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
     <Compile Include="Validates\NumericDecimalValidationRule.cs" />
     <Compile Include="Validates\NumericIntValidationRule.cs" />
   </ItemGroup>

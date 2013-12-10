@@ -10,14 +10,17 @@ namespace HLP.Entries.Model.Models.Transportes
 {
     public partial class RotaModel : modelBase
     {
-        public RotaModel() : base("Rota") { }
+        public RotaModel() : base("Rota") 
+        {
+            this.lRota_Praca = new ObservableCollectionBaseCadastros<Rota_pracaModel>();
+        }
 
         private int? _idRota;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idRota
         {
             get { return _idRota; }
-            set { _idRota = value; }
+            set { _idRota = value; base.NotifyPropertyChanged("idRota"); }
         } 
 
         [ParameterOrder(Order = 2)]

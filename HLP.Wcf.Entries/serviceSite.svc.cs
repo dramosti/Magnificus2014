@@ -50,15 +50,13 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int saveSite(HLP.Entries.Model.Models.Gerais.SiteModel objSite)
+        public HLP.Entries.Model.Models.Gerais.SiteModel saveSite(HLP.Entries.Model.Models.Gerais.SiteModel objSite)
         {
 
             try
             {
                 this.siteRepository.BeginTransaction();
                 this.siteRepository.Save(objSite: objSite);
-
-
                 foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in objSite.lSite_Endereco)
                 {
                     switch (item.status)
@@ -66,6 +64,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idSite = (int)objSite.idSite;
                                 this.site_enderecoRepository.Save(objSite_Endereco: item);
                             }
                             break;
@@ -77,7 +76,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 this.siteRepository.CommitTransaction();
-                return (int)objSite.idSite;
+                return objSite;
             }
             catch (Exception ex)
             {
@@ -95,10 +94,12 @@ namespace HLP.Wcf.Entries
                 this.siteRepository.BeginTransaction();
                 this.site_enderecoRepository.DeletePorSite(idSite: idSite);
                 this.siteRepository.Delete(idSite: idSite);
+                this.siteRepository.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
+                this.siteRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -107,20 +108,21 @@ namespace HLP.Wcf.Entries
 
         public int copySite(HLP.Entries.Model.Models.Gerais.SiteModel objSite)
         {
-
             try
             {
+                this.siteRepository.BeginTransaction();
                 this.siteRepository.Copy(objSite: objSite);
                 foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in objSite.lSite_Endereco)
                 {
                     item.idSite = (int)objSite.idSite;
                     this.site_enderecoRepository.Copy(objSite_Endereco: item);
                 }
-
+                this.siteRepository.CommitTransaction();
                 return (int)objSite.idSite;
             }
             catch (Exception ex)
             {
+                this.siteRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }

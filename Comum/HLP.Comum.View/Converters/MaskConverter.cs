@@ -75,6 +75,10 @@ namespace HLP.Comum.View.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (value == null)
+            {
+                return "";
+            }
             switch (parameter.ToString())
             {
                 case "cep":

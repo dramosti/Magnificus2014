@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
 
@@ -17,7 +18,34 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         rotaService.IserviceRotaClient servico = new rotaService.IserviceRotaClient();
         public RotaCommand(RotaViewModel objViewModel)
         {
+
             this.objViewModel = objViewModel;
+
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
+                    paramCanExec => DeleteCanExecute());
+
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+                    paramCanExec => SaveCanExecute(paramCanExec));
+
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+                   canExecute: paramCanExec => this.NovoCanExecute());
+
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+                    canExecute: paramCanExec => this.AlterarCanExecute());
+
+            this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
+                    canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+            canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                        canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+
         }
 
 
@@ -58,16 +86,18 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.DeleteAsync(objViewModel.currentID))
+                    if (await servico.DeleteAsync((int)objViewModel.currentModel.idRota))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)objViewModel.currentModel.idRota;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -83,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
         private bool DeleteCanExecute()
@@ -162,17 +192,16 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
 
         void bwCopy_DoWork(object sender, DoWorkEventArgs e)
-          {
-              try
-              {
-                  e.Result = (int)servico.Copy(objViewModel.currentModel).idRota;
-              }
-              catch (Exception)
-              {
-
-                  throw;
-              }
-          }
+        {
+            try
+            {
+                e.Result = (int)servico.Copy(objViewModel.currentModel).idRota;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public bool CopyCanExecute()
         {
@@ -220,9 +249,9 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
-          {
-              this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID); //TODO: método de serviço para pesquisar
-          }
+        {
+            this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID); //TODO: método de serviço para pesquisar
+        }
 
         private void Inicia_Collections()
         {

@@ -120,7 +120,11 @@ namespace HLP.Comum.ViewModel.Commands
                 {
                     try
                     {
-                        objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
+                        objviewModel.currentID = 0;
+                        if (objviewModel.navigatePesquisa.Count > 0)
+                        {
+                            objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;                            
+                        }
                         objviewModel.sText = (objviewModel.navigatePesquisa.CurrentPosition + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
                     }
                     catch (Exception ex)

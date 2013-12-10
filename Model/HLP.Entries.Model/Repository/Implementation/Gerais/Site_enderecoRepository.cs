@@ -21,28 +21,36 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(Site_enderecoModel objSite_Endereco)
         {
-            objSite_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Site_Endereco]",
-            ParameterBase<Site_enderecoModel>.SetParameterValue(objSite_Endereco));
-        }
-
-        public void Update(Site_enderecoModel objSite_Endereco)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
-            "[dbo].[Proc_update_Site_Endereco]",
-            ParameterBase<Site_enderecoModel>.SetParameterValue(objSite_Endereco));
+            if (objSite_Endereco.idEndereco == null)
+            {
+                objSite_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Site_Endereco]",
+                ParameterBase<Site_enderecoModel>.SetParameterValue(objSite_Endereco));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+                    "[dbo].[Proc_update_Site_Endereco]",
+                    ParameterBase<Site_enderecoModel>.SetParameterValue(objSite_Endereco));
+            }
         }
 
         public void Delete(int site_idEndereco)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Site_Endereco]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Site_Endereco]",
                   UserData.idUser,
                   site_idEndereco);
         }
 
         public void DeletePorSite(int idSite)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Site_Endereco WHERE idSite = " + idSite);
         }
 

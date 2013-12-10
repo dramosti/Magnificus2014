@@ -155,9 +155,6 @@
     <Compile Include="RecursosHumanos\WinDepartamento.xaml.cs">
       <DependentUpon>WinDepartamento.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RecursosHumanos\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RecursosHumanos\WinFuncionario.xaml.cs">
       <DependentUpon>WinFuncionario.xaml</DependentUpon>
     </Compile>
@@ -310,10 +307,6 @@
     <Page Include="RecursosHumanos\WinDepartamento.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="RecursosHumanos\Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RecursosHumanos\WinFuncionario.xaml">
       <SubType>Designer</SubType>

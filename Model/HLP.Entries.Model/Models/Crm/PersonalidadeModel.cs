@@ -10,6 +10,7 @@ namespace HLP.Entries.Model.Models.Crm
 {
     public partial class PersonalidadeModel : modelBase
     {
+        public PersonalidadeModel() : base("Personalidade") { }
         public int? _idPersonalidade;
 
         [ParameterOrder(Order = 1)]

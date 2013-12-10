@@ -14,10 +14,10 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         HLP.Entries.Model.Models.Transportes.Modos_entregaModel GetModo(int idModosEntrega);
         [OperationContract]
-        void Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo);
+        HLP.Entries.Model.Models.Transportes.Modos_entregaModel Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo);
         [OperationContract]
         bool Delete(int idModosEntrega);
         [OperationContract]
-        int Copy(int idModosEntrega);
+        HLP.Entries.Model.Models.Transportes.Modos_entregaModel Copy(int idModosEntrega);
     }
 }

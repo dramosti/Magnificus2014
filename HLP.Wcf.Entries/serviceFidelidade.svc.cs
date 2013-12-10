@@ -26,13 +26,13 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public int Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel)
+        public HLP.Entries.Model.Models.Crm.FidelidadeModel Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel)
         {
 
             try
             {
                 iFidelidadeRepository.Save(objModel);
-                return (int)objModel.idFidelidade;
+                return objModel;
             }
             catch (Exception ex)
             {

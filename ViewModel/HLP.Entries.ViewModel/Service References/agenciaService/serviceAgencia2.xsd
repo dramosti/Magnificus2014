@@ -9,4 +9,48 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="statusModel" nillable="true" type="tns:statusModel" />
+  <xs:simpleType name="TipoEndereco">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="COMERCIAL" />
+      <xs:enumeration value="ENTREGA" />
+      <xs:enumeration value="ENTREGA_ALT" />
+      <xs:enumeration value="NOTA_FISCAL" />
+      <xs:enumeration value="RESIDÊNCIA" />
+      <xs:enumeration value="SERVICO" />
+      <xs:enumeration value="SWIFT" />
+      <xs:enumeration value="PAGAMENTO" />
+      <xs:enumeration value="OUTRO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoEndereco" nillable="true" type="tns:TipoEndereco" />
+  <xs:simpleType name="TipoLogradouro">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AEROPORTO" />
+      <xs:enumeration value="ALAMEDA" />
+      <xs:enumeration value="APARTAMENTO" />
+      <xs:enumeration value="AVENIDA" />
+      <xs:enumeration value="BECO" />
+      <xs:enumeration value="BLOCO" />
+      <xs:enumeration value="CAMINHO" />
+      <xs:enumeration value="ESCADINHA" />
+      <xs:enumeration value="ESTAÇÃO" />
+      <xs:enumeration value="ESTRADA" />
+      <xs:enumeration value="FAZENDA" />
+      <xs:enumeration value="FORTALEZA" />
+      <xs:enumeration value="GALERIA" />
+      <xs:enumeration value="LADEIRA" />
+      <xs:enumeration value="LARGO" />
+      <xs:enumeration value="PRAÇA" />
+      <xs:enumeration value="PRAIA" />
+      <xs:enumeration value="PARQUE" />
+      <xs:enumeration value="QUADRA" />
+      <xs:enumeration value="QUILÔMETRO" />
+      <xs:enumeration value="QUINTA" />
+      <xs:enumeration value="RODOVIA" />
+      <xs:enumeration value="RUA" />
+      <xs:enumeration value="SUPER_QUADRA" />
+      <xs:enumeration value="TRAVESSA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoLogradouro" nillable="true" type="tns:TipoLogradouro" />
 </xs:schema>
