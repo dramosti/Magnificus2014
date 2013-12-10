@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Model.Models;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -56,6 +57,46 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
+                BackgroundWorker bwSalvar = new BackgroundWorker();
+                bwSalvar.DoWork += bwSalvar_DoWork;
+                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error.Message != null)
+                {
+                    throw new ApplicationException(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel.lProdutos_Conversao =
+                        (ObservableCollectionBaseCadastros<ConversaoModel>)e.Result;
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.IniciaCollection();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
                 foreach (int item in this.objViewModel.currentModel.lProdutos_Conversao.idExcluidos)
                 {
                     this.objViewModel.currentModel.lProdutos_Conversao.Add(
@@ -65,16 +106,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                servico.savelConversao(lConversao: objViewModel.currentModel.lProdutos_Conversao.ToList());
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.IniciaCollection();
-                this.metodoGetModel(this, null);
+                e.Result = servico.savelConversao(objProduto: objViewModel.currentModel);
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
-
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -212,7 +250,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel
-                = this.servico.getlConversao(idProduto: this.objViewModel.idProdutoSelecionado);
+                = this.servico.getlConversao(idProduto: this.objViewModel.currentID);
         }
         #endregion
 

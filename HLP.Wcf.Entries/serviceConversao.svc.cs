@@ -37,8 +37,9 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto =
                     produtoRepository.GetProduto(idProduto: idProduto);
 
-                objProduto.lProdutos_Conversao = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel>
-                    (list: conversaoRepository.GetAll(idProduto: idProduto));
+                if (objProduto != null)
+                    objProduto.lProdutos_Conversao = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel>
+                        (list: conversaoRepository.GetAll(idProduto: idProduto));
 
                 return objProduto;
             }
@@ -50,12 +51,12 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public void savelConversao(Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> lConversao)
+        public Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
 
             try
             {
-                foreach (HLP.Entries.Model.Models.Gerais.ConversaoModel item in lConversao)
+                foreach (HLP.Entries.Model.Models.Gerais.ConversaoModel item in objProduto.lProdutos_Conversao)
                 {
                     switch (item.status)
                     {
@@ -72,6 +73,8 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
+
+                return objProduto.lProdutos_Conversao;
             }
             catch (Exception ex)
             {

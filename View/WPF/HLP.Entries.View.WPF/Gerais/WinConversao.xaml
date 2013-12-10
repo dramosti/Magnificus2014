@@ -6,27 +6,28 @@
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinConversao"
-        Title="Conversão" Height="660" Width="1024">
+        Title="Conversão" Height="660" Width="1024" NameView="vwProduto">
     <Window.Resources>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
-            x:Key="EnumDescriptionDictCertif">
+            x:Key="EnumDescriptionDictArrend">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoCertificacao"></x:Type>
+                <x:Type TypeName="enums:TipoArredondamento"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lResultConversao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
-                <System:String>vwUnidadeMedida</System:String>
+                <System:String>vwUnidadeMedidaToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
     <WrapPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="200" VerticalAlignment="Top" IsExpanded="True">
+        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" IsExpanded="True">
             <Components:HlpTextBox
-                Height="80"
+                IsEnabled="False"
+                Height="50"
                 Text="{Binding currentModel.xPesquisa, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                 Caption="Descrição Produto"
                 WidthLabel="80"
@@ -46,7 +47,6 @@
                     >
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn  Header="Conversão De" Width="150"
-                                                 ElementStyle="{StaticResource CellErrorStyle}"
                                         ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
@@ -54,7 +54,6 @@
                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                                         />
                         <DataGridComboBoxColumn  Header="Conversão Para" Width="150"
-                                                 ElementStyle="{StaticResource CellErrorStyle}"
                                         ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
@@ -73,14 +72,13 @@
                                         Binding="{Binding Path=nQuantidadeAdicional, UpdateSourceTrigger=LostFocus,
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                        <DataGridComboBoxColumn  Header="Arredondamento" Width="150"
-                                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                        ItemsSource="{Binding Source={StaticResource lResultConversao}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idDeUnidadeMedida, Mode=TwoWay, 
-                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                        />
+                        <DataGridComboBoxColumn
+                                Header="Arredondamento" Width="120"                                    
+                                ItemsSource="{Binding Source={StaticResource EnumDescriptionDictArrend}}"
+                                DisplayMemberPath="Key"
+                                SelectedValuePath="Value"
+                                SelectedValueBinding="{Binding enumTipoArredondamento,
+                                UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
