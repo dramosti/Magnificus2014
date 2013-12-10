@@ -9,4 +9,11 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="statusModel" nillable="true" type="tns:statusModel" />
+  <xs:simpleType name="TipoArredondamento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PARABAIXO" />
+      <xs:enumeration value="PARACIMA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoArredondamento" nillable="true" type="tns:TipoArredondamento" />
 </xs:schema>

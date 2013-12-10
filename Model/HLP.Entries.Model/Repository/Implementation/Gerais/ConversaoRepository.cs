@@ -28,7 +28,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regConversaoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_conversao",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idConversao"),
-                                    MapBuilder<ConversaoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                    MapBuilder<ConversaoModel>.MapAllProperties()
+                                    .DoNotMap(i => i.enumTipoArredondamento)
+                                    .DoNotMap(i => i.status).Build());
             }
             return regConversaoAccessor.Execute(idConversao).FirstOrDefault();
         }
@@ -40,7 +42,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regAllConversaoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Conversao WHERE idProduto = @idProduto",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idProduto"),
-                                  MapBuilder<ConversaoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                  MapBuilder<ConversaoModel>.MapAllProperties()
+                                  .DoNotMap(i => i.enumTipoArredondamento)
+                                  .DoNotMap(i => i.status).Build());
             }
 
 

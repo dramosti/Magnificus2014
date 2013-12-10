@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,16 +83,27 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        private byte? _stArredondar;
 
+        private TipoArredondamento _enumTipoArredondamento;
+        public TipoArredondamento enumTipoArredondamento
+        {
+            get { return _enumTipoArredondamento; }
+            set
+            {
+                _enumTipoArredondamento = value;
+                _stArredondar = (byte)value;
+            }
+        }
+
+        private byte _stArredondar;
         [ParameterOrder(Order = 6)]
-        public byte? stArredondar
+        public byte stArredondar
         {
             get { return _stArredondar; }
             set
             {
                 _stArredondar = value;
-                base.NotifyPropertyChanged(propertyName: "stArredondar");
+                _enumTipoArredondamento = (TipoArredondamento)value;
             }
         }
 
