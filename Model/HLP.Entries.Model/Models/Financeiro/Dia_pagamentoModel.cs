@@ -11,7 +11,8 @@ namespace HLP.Entries.Model.Models.Financeiro
 {
     public partial class Dia_pagamentoModel : modelBase
     {
-        public Dia_pagamentoModel() : base("Dia_pagamento")         
+        public Dia_pagamentoModel()
+            : base("Dia_pagamento")
         {
             this.lDia_pagamento_linhas = new ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel>();
         }
@@ -149,7 +150,29 @@ namespace HLP.Entries.Model.Models.Financeiro
         {
             get
             {
-                return base[columnName];
+                string sValor = base[columnName];
+
+                if (sValor == null)
+                {
+                    if (columnName == "stSemanaMes" || columnName == "stDiaUtil")
+                    {
+                        if (this.enumSemanaOuMes == SemanaOuMes.MES)
+                        {
+                            if (this.enumDiaUtil != DiaUtil.NAO_SE_APLICA)
+                                this.enumDiaUtil = DiaUtil.NAO_SE_APLICA;
+                        }
+                        else
+                            if (this.nDia != 0)
+                                this.nDia = 0;
+                    }
+                    else if (columnName == "nDia")
+                    {
+                        if (this.enumSemanaOuMes == SemanaOuMes.SEMANA)
+                            if (this.nDia != 0)
+                                this.nDia = 0;
+                    }
+                }
+                return sValor;
             }
         }
     }

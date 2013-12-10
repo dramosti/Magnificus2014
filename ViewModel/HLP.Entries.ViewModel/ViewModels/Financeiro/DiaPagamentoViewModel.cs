@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.ViewModel.Commands.Financeiro;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
@@ -26,9 +27,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         
         public DiaPagamentoViewModel() 
         {
-            
+            commands = new DiaPagamentoCommand(objViewModel: this);
         }
-        
+
+        DiaPagamentoCommand commands;
         private Dia_pagamentoModel _currentModel;
 
         public Dia_pagamentoModel currentModel

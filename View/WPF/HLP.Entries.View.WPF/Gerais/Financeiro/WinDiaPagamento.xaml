@@ -7,7 +7,8 @@
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento"
-        Title="Dia de Pagamento">
+        Title="Dia de Pagamento"
+        NameView="vwDiaPagamento">
     <Window.Resources>
         <ObjectDataProvider 
             MethodName="GetDict"
@@ -46,7 +47,15 @@
             </StackPanel>
         </Expander>
         <Expander Header="Dia do pagamento" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True" Width="300">
-            <DataGrid HorizontalAlignment="Stretch" Margin="0,15,0,0">
+            <DataGrid 
+                 x:Name="dgvEndereco"
+                         ItemsSource="{Binding currentModel.lDia_pagamento_linhas}"                          
+                         IsEnabled="{Binding bIsEnabled}"
+                         AutoGenerateColumns="False" 
+                         SelectionUnit="CellOrRowHeader" 
+                         CanUserReorderColumns="False"  
+                         CanUserDeleteRows="True" 
+                  Margin="0,15,0,0">
                 <DataGrid.Columns>
                     <DataGridComboBoxColumn Header="Semana/Mes" Width="120"
                                             ItemsSource="{Binding Source={StaticResource EnumSemanaOuMes}}"
