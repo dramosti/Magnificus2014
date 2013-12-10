@@ -104,6 +104,30 @@ namespace HLP.Comum.Resources.RecursosBases
 
     }
 
+    public enum SemanaOuMes
+    {
+        [Description("0 - SEMANA")]
+        SEMANA,
+        [Description("1 - MÊS")]
+        MES
+    }
+
+    public enum DiaUtil
+    {
+        [Description("0-NÃO SE APLICA")]
+        NAO_SE_APLICA,
+        [Description("1-SEGUNDA")]
+        SEGUNDA,
+        [Description("2-TERÇA")]
+        TERCA,
+        [Description("3-QUARTA")]
+        QUARTA,
+        [Description("4-QUINTA")]
+        QUINTA,
+        [Description("5-SEXTA")]
+        SEXTA
+    }
+
 
     public enum TipoCertificacao
     {

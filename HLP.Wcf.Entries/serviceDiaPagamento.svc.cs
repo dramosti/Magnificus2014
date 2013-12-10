@@ -45,6 +45,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idDiaPagamento = (int)objDia_pagamento.idDiaPagamento;
                                 iDia_pagamento_linhasRepository.Save(item);
                             }
                             break;

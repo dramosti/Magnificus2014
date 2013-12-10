@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 
@@ -19,10 +20,33 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         public DiaPagamentoCommand(DiaPagamentoViewModel objViewModel)
         {
+
             this.objViewModel = objViewModel;
+
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
+                    paramCanExec => DeleteCanExecute());
+
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+                    paramCanExec => SaveCanExecute(paramCanExec));
+
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+                   canExecute: paramCanExec => this.NovoCanExecute());
+
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+                    canExecute: paramCanExec => this.AlterarCanExecute());
+
+            this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
+                    canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+            canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                        canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
         }
-
-
 
         #region Implementação Commands
 
@@ -61,8 +85,10 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
+
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -71,6 +97,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)this.objViewModel.currentModel.idDiaPagamento;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -86,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
         private bool DeleteCanExecute()
@@ -127,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
@@ -165,17 +192,17 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         }
 
         void bwCopy_DoWork(object sender, DoWorkEventArgs e)
-          {
-              try
-              {
-                  e.Result = servico.Copy(objViewModel.currentModel);
-              }
-              catch (Exception)
-              {
+        {
+            try
+            {
+                e.Result = servico.Copy(objViewModel.currentModel);
+            }
+            catch (Exception)
+            {
 
-                  throw;
-              }
-          }
+                throw;
+            }
+        }
 
         public bool CopyCanExecute()
         {
@@ -210,10 +237,10 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         }
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
-          {
-              this.objViewModel.currentModel = await servico.GetObectAsync(objViewModel.currentID);
+        {
+            this.objViewModel.currentModel = await servico.GetObectAsync(objViewModel.currentID);
             //TODO: método de serviço para pesquisar
-          }
+        }
         private void Inicia_Collections()
         {
             this.objViewModel.currentModel.lDia_pagamento_linhas.CollectionCarregada();

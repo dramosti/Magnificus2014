@@ -118,6 +118,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         public async void Delete()
         {
+            int iremoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -129,6 +130,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        iremoved = (int)this.objViewModel.currentModel.idAgencia;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -144,7 +146,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iremoved);
             }
         }
 

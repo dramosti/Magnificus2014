@@ -2,15 +2,14 @@
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
-     xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
+        xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
+        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
-     xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia"
-        Title="Agência" Height="660" Width="1024">
-
+        Title="Agência" Height="660" Width="1024" NameView="vwAgencia">
     <Window.Resources>
         <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
             <Style.Triggers>
@@ -103,7 +102,7 @@
                                     </StackPanel>
                                     <DataGrid
                                         x:Name="dgvContato"
-                                         ItemsSource="{Binding currentModel.lAgencia_EnderecoModel}"                          
+                                         ItemsSource="{Binding currentModel.lAgencia_ContatoModel}"                          
                                          IsEnabled="{Binding bIsEnabled}"
                                          AutoGenerateColumns="False" 
                                          SelectionUnit="CellOrRowHeader" 
@@ -157,10 +156,10 @@
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridComboBoxColumn  Header="Tipo Endereço" Width="250"
-                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
-                            DisplayMemberPath="Key"
-                            SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumTipoEndereco, UpdateSourceTrigger=PropertyChanged}"/>
+                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
+                                            DisplayMemberPath="Key"
+                                            SelectedValuePath="Value"
+                                            SelectedValueBinding ="{Binding enumTipoEndereco, UpdateSourceTrigger=PropertyChanged}"/>
                                         <DataGridTextColumn Header="CEP" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}"/>
