@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="camposBaseDadosService.svc" />
+    <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
     <Content Include="serviceBanco.svc" />
     <Content Include="serviceCalendario.svc" />
@@ -113,7 +114,6 @@
     <Content Include="serviceFidelidade.svc" />
     <Content Include="serviceFillComboBox.svc" />
     <Content Include="serviceFuncionario.svc" />
-    <Content Include="serviceFuncionario_Acesso.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
     <Content Include="servicePersonalidade.svc" />
@@ -144,6 +144,7 @@
       <DependentUpon>camposBaseDadosService.svc</DependentUpon>
     </Compile>
     <Compile Include="IcamposBaseDadosService.cs" />
+    <Compile Include="IserviceAcesso.cs" />
     <Compile Include="IserviceAgencia.cs" />
     <Compile Include="IserviceBanco.cs" />
     <Compile Include="IserviceCalendario.cs" />
@@ -195,6 +196,9 @@
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="serviceAcesso.svc.cs">
+      <DependentUpon>serviceAcesso.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceAgencia.svc.cs">
       <DependentUpon>serviceAgencia.svc</DependentUpon>
     </Compile>
@@ -278,9 +282,6 @@
     </Compile>
     <Compile Include="serviceFuncionario.svc.cs">
       <DependentUpon>serviceFuncionario.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceFuncionario_Acesso.svc.cs">
-      <DependentUpon>serviceFuncionario_Acesso.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceModoEntrega.svc.cs">
       <DependentUpon>serviceModoEntrega.svc</DependentUpon>

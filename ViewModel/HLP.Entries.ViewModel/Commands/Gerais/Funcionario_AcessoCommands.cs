@@ -13,7 +13,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     public class Funcionario_AcessoCommands
     {
         Funcionario_AcessoViewModel objViewModel;
-        Funcionario_AcessoService.IserviceFuncionario_AcessoClient servico = new Funcionario_AcessoService.IserviceFuncionario_AcessoClient();
+        acessoService.IserviceAcessoClient servico = new acessoService.IserviceAcessoClient();
 
         public Funcionario_AcessoCommands(Funcionario_AcessoViewModel objViewModel)
         {
@@ -288,8 +288,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void getFuncionario(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto:
+            try
+            {
+                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto:
                 this.objViewModel.currentID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         #endregion
 

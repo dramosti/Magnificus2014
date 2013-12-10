@@ -95,5 +95,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
             return reg.Execute(idFuncionario).ToList();
         }
+
+        public int getCountLoginUsuario(string xLogin, string xSenha, int idFuncionario)
+        {
+            System.Data.Common.DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                              (string.Format("select count(xID) from Funcionario where xID = '" + xLogin
+                              + "' and xSenha = '" + xSenha + "' and idFuncionario <> "+idFuncionario+""));
+
+            return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
+        }
     }
 }

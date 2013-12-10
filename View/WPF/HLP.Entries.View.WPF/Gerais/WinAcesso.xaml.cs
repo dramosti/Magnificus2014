@@ -24,7 +24,15 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinAcesso()
         {
             InitializeComponent();
-            this.ViewModel = new Funcionario_AcessoViewModel();
+            try
+            {
+                this.ViewModel = new Funcionario_AcessoViewModel();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         public Funcionario_AcessoViewModel ViewModel

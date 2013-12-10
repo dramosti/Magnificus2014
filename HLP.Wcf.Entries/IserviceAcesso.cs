@@ -7,9 +7,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceFuncionario_Acesso" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceAcesso" in both code and config file together.
     [ServiceContract]
-    public interface IserviceFuncionario_Acesso
+    public interface IserviceAcesso
     {
         [OperationContract]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel Save(HLP.Entries.Model.Models.Gerais.FuncionarioModel objModel);

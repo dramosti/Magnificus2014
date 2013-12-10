@@ -72,6 +72,11 @@
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_AcessoCommands.cs" />
+    <Compile Include="Service References\acessoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\CalendarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,11 +108,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\FidelidadeServico\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\Funcionario_AcessoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -498,6 +498,25 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.RotaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
+    <None Include="Service References\acessoService\serviceAcesso.wsdl" />
+    <None Include="Service References\acessoService\serviceAcesso.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\acessoService\serviceAcesso1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\acessoService\serviceAcesso2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\acessoService\serviceAcesso3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\acessoService\serviceAcesso4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\acessoService\serviceAcesso5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\agenciaService\serviceAgencia.wsdl" />
     <None Include="Service References\agenciaService\serviceAgencia.xsd">
       <SubType>Designer</SubType>
@@ -1008,25 +1027,6 @@
     <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso.wsdl" />
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\jurosService\serviceJuros.wsdl" />
     <None Include="Service References\jurosService\serviceJuros.xsd">
       <SubType>Designer</SubType>
@@ -1463,6 +1463,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\acessoService\" />
     <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\bancoService\" />
     <WCFMetadataStorage Include="Service References\CalendarioService\" />
@@ -1490,7 +1491,6 @@
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
-    <WCFMetadataStorage Include="Service References\Funcionario_AcessoService\" />
     <WCFMetadataStorage Include="Service References\jurosService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
@@ -2251,21 +2251,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Funcionario_AcessoService\serviceFuncionario_Acesso.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Funcionario_AcessoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Funcionario_AcessoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Funcionario_AcessoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\contato_Service\serviceContato.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2276,6 +2261,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\contato_Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\acessoService\serviceAcesso.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\acessoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\acessoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\acessoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

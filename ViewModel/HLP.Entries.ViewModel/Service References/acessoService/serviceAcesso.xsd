@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFuncionario_Acesso.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
   <xs:element name="Save">
     <xs:complexType>
       <xs:sequence>
@@ -26,6 +26,22 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="GetObjetoResult" nillable="true" type="q3:FuncionarioModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xLogin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xSenha" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidaUsuarioResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
