@@ -138,5 +138,13 @@ namespace HLP.Comum.Resources.RecursosBases
         [Description("4-Por Faixa Margem de Venda")]
         FAIXAMARGEMVENDA
     }
+
+    public enum TipoArredondamento
+    {
+        [Description("0-Para Baixo")]
+        PARABAIXO,
+        [Description("1-Para Cima")]
+        PARACIMA,
+    }
     #endregion
 }

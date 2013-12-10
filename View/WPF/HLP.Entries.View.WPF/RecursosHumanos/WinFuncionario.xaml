@@ -393,23 +393,23 @@
                                 UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
                                 <DataGridTextColumn                                
                                 Header="Endereço" Width="200"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xEndereco, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn
                                 Header="Cep" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCep, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, 
                                     ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}"
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn
                                 Header="Nº" Width="50"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xNumero, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn
                                 Header="Complemento" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xComplemento, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn

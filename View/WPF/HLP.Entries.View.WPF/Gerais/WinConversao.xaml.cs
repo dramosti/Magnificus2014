@@ -22,7 +22,7 @@ namespace HLP.Entries.View.WPF.Gerais
     {
         public WinConversao()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
