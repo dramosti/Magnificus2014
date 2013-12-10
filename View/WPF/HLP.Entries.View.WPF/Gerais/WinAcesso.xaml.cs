@@ -30,7 +30,7 @@ namespace HLP.Entries.View.WPF.Gerais
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -50,6 +50,11 @@ namespace HLP.Entries.View.WPF.Gerais
         private void gridAcessos_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             this.gridAcessos.BindingGroup.UpdateSources();
+        }
+
+        private void controlsBgLogin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.bgLogin.UpdateSources();
         }
     }
 }

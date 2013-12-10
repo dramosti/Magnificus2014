@@ -44,6 +44,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
         }
 
+        public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario)
+        {
+            return this.servico.ValidaUsuario(xLogin: xLogin, xSenha: xSenha, idFuncionario: idFuncionario);
+        }
+
         private void IniciaCollections()
         {
             this.objViewModel.currentModel.lFuncionario_Acesso.CollectionCarregada();

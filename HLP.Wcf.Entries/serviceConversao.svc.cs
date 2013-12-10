@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
+using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
@@ -18,6 +19,9 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IConversaoRepository conversaoRepository { get; set; }
 
+        [Inject]
+        public IProdutoRepository produtoRepository { get; set; }
+
         public serviceConversao()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -26,11 +30,17 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public IEnumerable<HLP.Entries.Model.Models.Gerais.ConversaoModel> getlConversao(int idProduto)
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel getlConversao(int idProduto)
         {
             try
             {
-                return this.conversaoRepository.GetAll(idProduto: idProduto);
+                HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto =
+                    produtoRepository.GetProduto(idProduto: idProduto);
+
+                objProduto.lProdutos_Conversao = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel>
+                    (list: conversaoRepository.GetAll(idProduto: idProduto));
+
+                return objProduto;
             }
             catch (Exception ex)
             {

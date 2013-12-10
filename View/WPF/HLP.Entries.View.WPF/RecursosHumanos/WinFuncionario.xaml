@@ -15,16 +15,6 @@
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
-        <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                        Value="{Binding RelativeSource={RelativeSource Self},
-                                Path=(Validation.Errors)[0].ErrorContent}"/>
-                    <Setter Property="Background" Value="Yellow"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
         <ObjectDataProvider
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
