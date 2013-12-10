@@ -13,7 +13,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     public class Funcionario_AcessoCommands
     {
         Funcionario_AcessoViewModel objViewModel;
-        Acesso_funcionarioService.IserviceAcessoClient servico = new Acesso_funcionarioService.IserviceAcessoClient();
+        AcessoFuncionarioService.IserviceAcessoClient servico = new AcessoFuncionarioService.IserviceAcessoClient();
 
         public Funcionario_AcessoCommands(Funcionario_AcessoViewModel objViewModel)
         {

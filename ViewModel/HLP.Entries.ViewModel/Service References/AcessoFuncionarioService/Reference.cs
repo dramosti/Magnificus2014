@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.Acesso_funcionarioService {
+namespace HLP.Entries.ViewModel.AcessoFuncionarioService {
     using System.Runtime.Serialization;
     using System;
     
@@ -30,10 +30,10 @@ namespace HLP.Entries.ViewModel.Acesso_funcionarioService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.Acesso_funcionarioService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.AcessoFuncionarioService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.Acesso_funcionarioService.statusModel statusField;
+        private HLP.Entries.ViewModel.AcessoFuncionarioService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46,7 +46,7 @@ namespace HLP.Entries.ViewModel.Acesso_funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.Acesso_funcionarioService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.AcessoFuncionarioService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -59,7 +59,7 @@ namespace HLP.Entries.ViewModel.Acesso_funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.Acesso_funcionarioService.statusModel status {
+        public HLP.Entries.ViewModel.AcessoFuncionarioService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -253,7 +253,7 @@ namespace HLP.Entries.ViewModel.Acesso_funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Acesso_funcionarioService.IserviceAcesso")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AcessoFuncionarioService.IserviceAcesso")]
     public interface IserviceAcesso {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceAcesso/Save", ReplyAction="http://tempuri.org/IserviceAcesso/SaveResponse")]
@@ -276,12 +276,12 @@ namespace HLP.Entries.ViewModel.Acesso_funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceAcessoChannel : HLP.Entries.ViewModel.Acesso_funcionarioService.IserviceAcesso, System.ServiceModel.IClientChannel {
+    public interface IserviceAcessoChannel : HLP.Entries.ViewModel.AcessoFuncionarioService.IserviceAcesso, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceAcessoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.Acesso_funcionarioService.IserviceAcesso>, HLP.Entries.ViewModel.Acesso_funcionarioService.IserviceAcesso {
+    public partial class IserviceAcessoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.AcessoFuncionarioService.IserviceAcesso>, HLP.Entries.ViewModel.AcessoFuncionarioService.IserviceAcesso {
         
         public IserviceAcessoClient() {
         }
