@@ -8,9 +8,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -60,6 +62,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 BackgroundWorker bwSalvar = new BackgroundWorker();
                 bwSalvar.DoWork += bwSalvar_DoWork;
                 bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                foreach (int item in this.objViewModel.currentModel.lProdutos_Conversao.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lProdutos_Conversao.Add(
+                        item: new ConversaoModel
+                        {
+                            idConversao = item,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
                 bwSalvar.RunWorkerAsync();
             }
             catch (Exception ex)
@@ -97,15 +108,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                foreach (int item in this.objViewModel.currentModel.lProdutos_Conversao.idExcluidos)
-                {
-                    this.objViewModel.currentModel.lProdutos_Conversao.Add(
-                        item: new ConversaoModel
-                        {
-                            idConversao = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
-                        });
-                }
                 e.Result = servico.savelConversao(objProduto: objViewModel.currentModel);
             }
             catch (Exception ex)
@@ -125,14 +127,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int idRegistroDeletado = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.dellConversaoAsync(idProduto: this.objViewModel.idProdutoSelecionado))
+                    if (await this.servico.dellConversaoAsync(idProduto: (int)this.objViewModel.currentModel.idProduto))
                     {
+                        idRegistroDeletado = (int)objViewModel.currentModel.idProduto;
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         this.objViewModel.currentModel = null;
@@ -150,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRegistroDeletado);
             }
         }
 

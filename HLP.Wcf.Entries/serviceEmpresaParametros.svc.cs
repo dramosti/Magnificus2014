@@ -48,10 +48,15 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel getEmpresaParametros(int idEmpresa)
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresaParametros(int idEmpresa)
         {
             try
             {
+                HLP.Entries.Model.Models.Gerais.EmpresaModel objEmpresa =
+                    new HLP.Entries.Model.Models.Gerais.EmpresaModel();
+
+                objEmpresa = this.empresaRepository.GetEmpresa(idEmpresa: idEmpresa);
+
                 HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel objEmpresaParametros = new
                  HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel();
 
@@ -75,7 +80,9 @@ namespace HLP.Wcf.Entries
                     objEmpresaParametros.ObjParametro_FinanceiroModel.idEmpresa = objEmpresaParametros.ObjParametro_FiscalModel.idEmpresa =
                     objEmpresaParametros.ObjParametro_Ordem_ProducaoModel.idEmpresa = idEmpresa;
 
-                return objEmpresaParametros;
+                objEmpresa.empresaParametros = objEmpresaParametros;
+
+                return objEmpresa;
             }
             catch (Exception ex)
             {
