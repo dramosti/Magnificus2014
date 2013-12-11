@@ -86,6 +86,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -96,6 +97,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved =(int) objViewModel.currentModel.idPlanoPagamento;
                         this.objViewModel.currentModel = null;
                     }
                     else

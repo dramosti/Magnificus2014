@@ -128,7 +128,6 @@ namespace HLP.Comum.Resources.RecursosBases
         SEXTA
     }
 
-
     public enum TipoCertificacao
     {
         [Description("0-ENSINO MÉDIO")]
@@ -170,5 +169,14 @@ namespace HLP.Comum.Resources.RecursosBases
         [Description("1-Para Cima")]
         PARACIMA,
     }
+
+    public enum ValorOuPorcentagem
+    {
+        [Description("0-PORCENTAGEM")]
+        PORCENTAGEM,
+        [Description("1-VALOR ESPECÍFICO")]
+        VALOR
+    }
+
     #endregion
 }

@@ -5,12 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class Plano_pagamentoModel : modelBase
     {
-        public Plano_pagamentoModel() : base("Plano_pagamento") { }
+        public Plano_pagamentoModel()
+            : base("Plano_pagamento")
+        {
+            this.lPlano_pagamento_linhasModel = new ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel>();
+        }
 
         public int? _idPlanoPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -87,6 +92,19 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "nValorouPorcentagem");
             }
         }
+
+
+        private ValorOuPorcentagem _enumValorOuPorcentagem;
+        public ValorOuPorcentagem enumValorOuPorcentagem
+        {
+            get { return _enumValorOuPorcentagem; }
+            set
+            {
+                _enumValorOuPorcentagem = value;
+                _stValorouPorcentagem = (byte?)value;
+            }
+        }
+
         private byte? _stValorouPorcentagem;
         [ParameterOrder(Order = 4)]
         public byte? stValorouPorcentagem
@@ -95,9 +113,11 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stValorouPorcentagem = value;
-                base.NotifyPropertyChanged(propertyName: "stValorouPorcentagem");
+                _enumValorOuPorcentagem = (ValorOuPorcentagem)value;
             }
         }
+
+
         private int _idPlanoPagamento;
         [ParameterOrder(Order = 5)]
         public int idPlanoPagamento

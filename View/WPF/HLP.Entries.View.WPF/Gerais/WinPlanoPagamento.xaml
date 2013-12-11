@@ -3,86 +3,98 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento"
         Title="Plano de Pagamento" Height="660" Width="1024">
+    <Window.Resources>
+        <ObjectDataProvider 
+            MethodName="GetDict"
+            ObjectType="{x:Type convert:EnumDescriptionConverter}"
+            x:Key="EnumValorOuPorcentagem">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:ValorOuPorcentagem"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <DockPanel LastChildFill="True">
         <Grid>
             <Expander Header="Identificação" HorizontalAlignment="Left" Height="131.04" VerticalAlignment="Top" Width="522" IsExpanded="True">
                 <StackPanel>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,136.5,2" Caption="Código" Help="Chave principal do registro do Plano de Pagamento" WidthLabel="150"/>
+                        IsReadOnly="True"
+						Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+						Height="27" Margin="10,10,272,2" Caption="Código" Help="Chave principal do registro do Plano de Pagamento" WidthLabel="150"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,136.5,2" Caption="Plano Pagamento " Help="Insira um código ou uma breve descrição para identificar o plano de pagamento." WidthLabel="150"/>
+						Height="27" Margin="10,0,204,2" Caption="Plano Pagamento " Help="Insira um código ou uma breve descrição para identificar o plano de pagamento." WidthLabel="150"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,136.5,2" Caption="Descrição " Help="Insira a descrição do plano de pagamento" WidthLabel="150"/>
+						Height="27" Margin="10,0,26,2" Caption="Descrição " Help="Insira a descrição do plano de pagamento" WidthLabel="150"/>
                 </StackPanel>
             </Expander>
             <Expander Header="Plano Pagamento" HorizontalAlignment="Left" Height="245.5" Margin="0,131.04,0,0" VerticalAlignment="Top" Width="522" IsExpanded="True">
                 <StackPanel>
                     <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						SelectedValue="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+						SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,10,114.5,2" Caption="Alocação" Help="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,   " WidthLabel="241">
-						<Components:HlpComboBox.Items>
-							<System:String>0-Especificado</System:String>
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Especificado</System:String>
                             <System:String>1-Quantidade fixa</System:String>
-							<System:String>2-Total</System:String>
-							<System:String>3-Valor fixo</System:String>
-						</Components:HlpComboBox.Items>
-					</Components:HlpComboBox>
+                            <System:String>2-Total</System:String>
+                            <System:String>3-Valor fixo</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
                     <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						SelectedValue="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+						SelectedIndex="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,114.5,2" Caption="Forma de Pagamento" Help="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação." WidthLabel="241">
-						<Components:HlpComboBox.Items>
-							<System:String>0-Anos</System:String>
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Anos</System:String>
                             <System:String>1-Dias</System:String>
-							<System:String>2-Meses</System:String>
-						</Components:HlpComboBox.Items>
-					</Components:HlpComboBox>
+                            <System:String>2-Meses</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nAlterarPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,114.5,2" Caption="Alterar" Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " WidthLabel="241"/>
+						Height="27" Margin="10,0,119,2" Caption="Alterar" Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " WidthLabel="241"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nNumerosPagamentos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,114.5,2" Caption="Numero de Pagamentos" Help="Se você selecionou a opção Quantidade fixa no campo Alocação, especifique o número de prestações para o plano de pagamento." WidthLabel="241"/>
+						Height="27" Margin="10,0,119,2" Caption="Numero de Pagamentos" Help="Se você selecionou a opção Quantidade fixa no campo Alocação, especifique o número de prestações para o plano de pagamento." WidthLabel="241"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.nValorMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.nValorMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,114.5,2" Caption="Valor da Moeda" Help="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação." WidthLabel="241"/>
+						Height="27" Margin="10,0,119,2" Caption="Valor da Moeda" Help="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação." WidthLabel="241"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.vValorMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.vValorMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,114.5,2" Caption="Valor Mínimo" Help="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados." WidthLabel="241"/>
+						Height="27" Margin="10,0,119,2" Caption="Valor Mínimo" Help="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados." WidthLabel="241"/>
                     <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						SelectedValue="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+						SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10.879,0,96.5,0" Caption="Alocação de imposto sobre vendas" Help="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento. 0-Primeira prestação - o valor total do imposto sobre vendas está incluído na primeira prestação. 1-Proporcionalmente - o valor do imposto sobre vendas é distribuído por igual, com o mesmo valor de imposto em cada prestação. 2-Última prestação - o valor total do imposto sobre vendas está incluído na última prestação. " WidthLabel="241">
-						<Components:HlpComboBox.Items>
-							<System:String>0-Primeira prestação</System:String>
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Primeira prestação</System:String>
                             <System:String>1-Proporcionalmente</System:String>
-							<System:String>2-Última prestação</System:String>
-						</Components:HlpComboBox.Items>
-					</Components:HlpComboBox>
+                            <System:String>2-Última prestação</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
                 </StackPanel>
             </Expander>
             <Expander Header="Nota" HorizontalAlignment="Left" Height="92.5" Margin="0,381.54,0,0" VerticalAlignment="Top" Width="522" IsExpanded="True">
@@ -91,24 +103,28 @@
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xNota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,114.5,2" Caption="Nota" Help="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno." WidthLabel="150"/>
+						Height="27" Margin="10,10,29,2" Caption="Nota" Help="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno." WidthLabel="50"/>
                 </StackPanel>
             </Expander>
         </Grid>
         <Grid>
             <Expander Header="Linhas de Pagamento" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
-                    <DataGrid 
+                <DataGrid 
 						IsEnabled="{Binding bIsEnabled}"
 						SelectionUnit="CellOrRowHeader" 
 						CanUserReorderColumns="False"
 						CanUserDeleteRows="True"
 						HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="{x:Null}" BorderBrush="Black">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
-                            <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Tipo" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-                            <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Valor ou Porcentagem" Width="*"/>
-                        </DataGrid.Columns>
-                    </DataGrid>       
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
+                        <DataGridComboBoxColumn  Header="Tipo" Width="150"
+                            ItemsSource="{Binding Source={StaticResource EnumValorOuPorcentagem}}"
+                            DisplayMemberPath="Key"
+                            SelectedValuePath="Value"
+                            SelectedValueBinding ="{Binding enumValorOuPorcentagem, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" Header="Valor ou Porcentagem" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Expander>
         </Grid>
     </DockPanel>
