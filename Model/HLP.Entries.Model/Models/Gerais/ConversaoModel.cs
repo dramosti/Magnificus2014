@@ -17,8 +17,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
         private int? _idConversao;
-
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idConversao
         {
             get { return _idConversao; }
