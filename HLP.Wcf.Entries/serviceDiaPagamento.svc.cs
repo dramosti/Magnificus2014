@@ -36,17 +36,8 @@ namespace HLP.Wcf.Entries
             {
                 iDia_PagamentoRepository.BeginTransaction();
 
-                //objDia_pagamento = new HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel();
-                //objDia_pagamento.xDescricao = "aaaaaaaaa";
-                //objDia_pagamento.xDiaPagamento = "ddddd";
-
-                //objDia_pagamento.lDia_pagamento_linhas = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Financeiro.Dia_pagamento_linhasModel>();
-                //objDia_pagamento.lDia_pagamento_linhas.Add(new HLP.Entries.Model.Models.Financeiro.Dia_pagamento_linhasModel
-                //{
-                //    nDia = 10,
-                //    stDiaUtil = 0,
-                //    stSemanaMes = 0
-                //});
+                //objDia_pagamento = this.GetObect(1022);
+                //objDia_pagamento.lDia_pagamento_linhas[0].status = Comum.Resources.RecursosBases.statusModel.excluido;
 
                 iDia_PagamentoRepository.Save(objDia_pagamento);
 

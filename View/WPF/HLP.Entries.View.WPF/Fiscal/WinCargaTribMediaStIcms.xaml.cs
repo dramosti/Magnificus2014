@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.View.WPF.Fiscal
 {
@@ -23,6 +24,14 @@ namespace HLP.Entries.View.WPF.Fiscal
         public WinCargaTribMediaStIcms()
         {
             InitializeComponent();
+            this.ViewModel = new Carga_trib_media_st_icmsViewModel();
+        }
+
+
+        public Carga_trib_media_st_icmsViewModel ViewModel
+        {
+            get { return this.DataContext as Carga_trib_media_st_icmsViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }

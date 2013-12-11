@@ -11,8 +11,14 @@ namespace HLP.Entries.Model.Models.Fiscal
     public partial class Carga_trib_media_st_icmsModel : modelBase
     {
         public Carga_trib_media_st_icmsModel() : base("Carga_trib_media_st_icms") { }
+        private int? _idCargaTribMediaStIcms;
         [ParameterOrder(Order = 1)]
-        public int? idCargaTribMediaStIcms { get; set; }
+        public int? idCargaTribMediaStIcms
+        {
+            get { return _idCargaTribMediaStIcms; }
+            set { _idCargaTribMediaStIcms = value; base.NotifyPropertyChanged("idCargaTribMediaStIcms"); }
+        }
+        
         [ParameterOrder(Order = 2)]
         public int idRamoAtividade { get; set; }
         [ParameterOrder(Order = 3)]

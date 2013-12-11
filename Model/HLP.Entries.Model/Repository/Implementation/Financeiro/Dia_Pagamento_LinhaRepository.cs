@@ -41,10 +41,12 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
 
         public void Delete(Dia_pagamento_linhasModel objDia_pagamento_linhas)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Dia_pagamento_linhas]",
+            int idPai =  (int)objDia_pagamento_linhas.idDiaPagamentoLinhas;
+            UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Dia_pagamento_linhas]",                
                   UserData.idUser,
-                  objDia_pagamento_linhas.idDiaPagamentoLinhas);
+                                idPai);
         }
 
         public void DeleteLinhasByDia(int idDiaPagamento)
@@ -71,9 +73,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Dia_pagamento_linhas]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idDiaPagamentoLinhas"),
                    MapBuilder<Dia_pagamento_linhasModel>.MapAllProperties()
-                   .DoNotMap(c=>c.enumDiaUtil)
-                   .DoNotMap(c=>c.enumSemanaOuMes)
-                   .DoNotMap(c=>c.status).Build());
+                   .DoNotMap(c => c.enumDiaUtil)
+                   .DoNotMap(c => c.enumSemanaOuMes)
+                   .DoNotMap(c => c.status).Build());
             }
             return regAcessor.Execute(idDiaPagamentoLinhas).FirstOrDefault();
         }

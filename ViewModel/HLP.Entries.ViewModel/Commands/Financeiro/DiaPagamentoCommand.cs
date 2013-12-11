@@ -60,7 +60,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     this.objViewModel.currentModel.lDia_pagamento_linhas.Add(
                         new Dia_pagamento_linhasModel
                         {
-                            idDiaPagamento = id,
+                            idDiaPagamentoLinhas = id,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
