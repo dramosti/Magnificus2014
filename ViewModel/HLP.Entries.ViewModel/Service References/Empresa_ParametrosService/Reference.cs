@@ -17,6 +17,7 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_ComercialModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_ComprasModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_CustosModel))]
@@ -24,7 +25,8 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_FinanceiroModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_FiscalModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Parametros.Parametro_Ordem_ProducaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Empresa_EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EmpresaModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -92,10 +94,16 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -104,6 +112,19 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -129,6 +150,19 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -160,15 +194,47 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
         excluido = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoEndereco", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoEndereco : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        COMERCIAL = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA_ALT = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NOTA_FISCAL = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RESIDÊNCIA = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SERVICO = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SWIFT = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PAGAMENTO = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OUTRO = 8,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Empresa_ParametrosService.IserviceEmpresaParametros")]
     public interface IserviceEmpresaParametros {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresaParametros/getEmpresaParametros", ReplyAction="http://tempuri.org/IserviceEmpresaParametros/getEmpresaParametrosResponse")]
-        HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel getEmpresaParametros(int idEmpresa);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresaParametros(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresaParametros/getEmpresaParametros", ReplyAction="http://tempuri.org/IserviceEmpresaParametros/getEmpresaParametrosResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel> getEmpresaParametrosAsync(int idEmpresa);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> getEmpresaParametrosAsync(int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceEmpresaParametros/saveEmpresaParamestros", ReplyAction="http://tempuri.org/IserviceEmpresaParametros/saveEmpresaParamestrosResponse")]
         void saveEmpresaParamestros(HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel objEmpresaParametros);
@@ -204,11 +270,11 @@ namespace HLP.Entries.ViewModel.Empresa_ParametrosService {
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel getEmpresaParametros(int idEmpresa) {
+        public HLP.Entries.Model.Models.Gerais.EmpresaModel getEmpresaParametros(int idEmpresa) {
             return base.Channel.getEmpresaParametros(idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel> getEmpresaParametrosAsync(int idEmpresa) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.EmpresaModel> getEmpresaParametrosAsync(int idEmpresa) {
             return base.Channel.getEmpresaParametrosAsync(idEmpresa);
         }
         
