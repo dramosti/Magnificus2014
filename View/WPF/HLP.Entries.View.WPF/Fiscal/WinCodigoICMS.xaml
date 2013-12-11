@@ -7,7 +7,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS"
-        Title="Código ICMS" Height="660" Width="1101.612">
+        Title="Código ICMS" Height="660" Width="1101.612" NameView="vwCodigoIcmsPai">
     <Window.Resources>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
@@ -48,13 +48,13 @@
                             ItemsSource="{Binding Source={StaticResource lUF}}"
                             SelectedValuePath="id"
                             DisplayMemberPath="display"
-                            SelectedValueBinding="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=PropertyChanged}" Header="Alíquota do Estado" Width="125"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Alíquota Interna de ICMS" Width="150"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Alíquota de Subst. Trib. (MVA/IVA)" Width="200"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="% de ICMS P/ Não Contribuinte Fora do Estado" Width="280"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=vCoeficienteIcms, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Coeficiente do ICMS" Width="120"/>
-                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Fundamento Legal" Width="120"/>
+                            SelectedValueBinding="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=LostFocus, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}" Header="Alíquota do Estado" Width="125"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna,UpdateSourceTrigger=LostFocus, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}" Header="Alíquota Interna de ICMS" Width="150"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=LostFocus, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}" Header="Alíquota de Subst. Trib. (MVA/IVA)" Width="200"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=LostFocus, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}" Header="% de ICMS P/ Não Contribuinte Fora do Estado" Width="280"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=vCoeficienteIcms, UpdateSourceTrigger=LostFocus, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}" Header="Coeficiente do ICMS" Width="120"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=LostFocus,  StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}" Header="Fundamento Legal" Width="120"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Expander>

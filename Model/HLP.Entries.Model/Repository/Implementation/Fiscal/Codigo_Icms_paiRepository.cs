@@ -21,8 +21,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
 
         public void Save(Codigo_Icms_paiModel objCodigo_Icms_pai)
         {
-            objCodigo_Icms_pai.idEmpresa = CompanyData.idEmpresa;
-
             if (objCodigo_Icms_pai.idCodigoIcmsPai == null)
             {
                 objCodigo_Icms_pai.idCodigoIcmsPai = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
