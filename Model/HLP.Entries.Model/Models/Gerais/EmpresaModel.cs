@@ -259,14 +259,6 @@ namespace HLP.Entries.Model.Models.Gerais
             this.ObjParametro_Ordem_ProducaoModel = new Parametro_Ordem_ProducaoModel();
         }
 
-        private int idEmpresa
-        {
-            get
-            {
-                return CompanyData.idEmpresa;
-            }
-        }
-
         private Parametro_EstoqueModel objParametro_EstoqueModel;
 
         public Parametro_EstoqueModel ObjParametro_EstoqueModel
@@ -275,7 +267,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_EstoqueModel = value;
-                objParametro_EstoqueModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_EstoqueModel");
             }
         }
@@ -288,7 +279,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_CustosModel = value;
-                objParametro_CustosModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_CustosModel");
             }
         }
@@ -301,7 +291,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_ComprasModel = value;
-                objParametro_ComprasModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_ComprasModel");
             }
         }
@@ -314,7 +303,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_Ordem_ProducaoModel = value;
-                objParametro_Ordem_ProducaoModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_Ordem_ProducaoModel");
             }
         }
@@ -327,7 +315,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_FiscalModel = value;
-                objParametro_FiscalModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_FiscalModel");
             }
         }
@@ -340,7 +327,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_ComercialModel = value;
-                objParametro_ComercialModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_ComercialModel");
             }
         }
@@ -353,7 +339,6 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 objParametro_FinanceiroModel = value;
-                objParametro_FinanceiroModel.idEmpresa = this.idEmpresa;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_FinanceiroModel");
             }
         }
