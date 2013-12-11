@@ -39,7 +39,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                        canExecute: paramCanExec => false);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -52,7 +52,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         {
             try
             {
-                await servico.saveEmpresaParamestrosAsync(objEmpresaParametros: this.objViewModel.currentModel);
+                await servico.saveEmpresaParamestrosAsync(objEmpresaParametros: this.objViewModel.currentModel.empresaParametros);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -134,7 +134,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -185,8 +184,25 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
 
+        }
+
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    new ApplicationException(message: e.Error.Message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)

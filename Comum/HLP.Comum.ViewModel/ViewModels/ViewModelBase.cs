@@ -28,6 +28,11 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
 
+        public void SetValorCurrentOp(OperacaoCadastro op)
+        {
+            viewModelBaseCommands.currentOp = op;
+        }
+
         private string _sText = "0 de 0";
         public string sText
         {

@@ -28,11 +28,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
         {
             Empresa_ParametrosCommands comm = new Empresa_ParametrosCommands(objViewModel: this);
             comm.ExecPesquisa();
+            this.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
 
-        private EmpresaParametrosModel _currentModel;
+        private EmpresaModel _currentModel;
 
-        public EmpresaParametrosModel currentModel
+        public EmpresaModel currentModel
         {
             get { return _currentModel; }
             set
