@@ -57,7 +57,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
     public partial class Plano_pagamento_linhasModel : modelBase
     {
-        public Plano_pagamento_linhasModel() : base("Plano_pagamento_linhas") { }
+        public Plano_pagamento_linhasModel() : base("Plano_pagamento_linhas") {  }
 
         private int? _idLinhasPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -101,13 +101,13 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _enumValorOuPorcentagem = value;
-                _stValorouPorcentagem = (byte?)value;
+                _stValorouPorcentagem = (byte)value;
             }
         }
 
-        private byte? _stValorouPorcentagem;
+        private byte _stValorouPorcentagem;
         [ParameterOrder(Order = 4)]
-        public byte? stValorouPorcentagem
+        public byte stValorouPorcentagem
         {
             get { return _stValorouPorcentagem; }
             set

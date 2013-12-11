@@ -7,7 +7,7 @@
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento"
-        Title="Plano de Pagamento" Height="660" Width="1024">
+        Title="Plano de Pagamento" Height="660" Width="1024" NameView="vwPlanoPagamento">
     <Window.Resources>
         <ObjectDataProvider 
             MethodName="GetDict"
@@ -66,7 +66,7 @@
                     </Components:HlpComboBox>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.nAlterarPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.nAlterar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,119,2" Caption="Alterar" Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " WidthLabel="241"/>
                     <Components:HlpTextBox 
@@ -81,7 +81,7 @@
 						Height="27" Margin="10,0,119,2" Caption="Valor da Moeda" Help="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação." WidthLabel="241"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.vValorMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
+						Text="{Binding currentModel.nValorMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,119,2" Caption="Valor Mínimo" Help="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados." WidthLabel="241"/>
                     <Components:HlpComboBox 
@@ -110,11 +110,14 @@
         <Grid>
             <Expander Header="Linhas de Pagamento" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
                 <DataGrid 
+                    ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
 						IsEnabled="{Binding bIsEnabled}"
+                        AutoGenerateColumns="False" 
 						SelectionUnit="CellOrRowHeader" 
 						CanUserReorderColumns="False"
 						CanUserDeleteRows="True"
-						HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="{x:Null}" BorderBrush="Black">
+						HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Stretch"  BorderBrush="Black">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
                         <DataGridComboBoxColumn  Header="Tipo" Width="150"
