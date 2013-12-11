@@ -2,44 +2,62 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+    xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS"
-        Title="Código ICMS" Height="660" Width="1024">
-	<DockPanel LastChildFill="True">
-		<DockPanel Height="68" DockPanel.Dock="Top">
-			<Expander Header="Principal" IsExpanded="True">
-				<StackPanel Orientation="Horizontal">
-					<Components:HlpTextBox 
+        Title="Código ICMS" Height="660" Width="1101.612">
+    <Window.Resources>
+        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lUF" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwUFToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <DockPanel Height="68" DockPanel.Dock="Top">
+            <Expander Header="Principal" IsExpanded="True">
+                <WrapPanel Orientation="Horizontal">
+                    <Components:HlpTextBox 
 						IsReadOnly="True"
 						Text="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-						Height="27" Margin="10,10,10,2" Width="370" Caption="Código" Help="Código principal do Registro, campo autoicremental" WidthLabel="118"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,10,10,2" Width="146" Caption="Código" Help="Código principal do Registro, campo autoicremental" 
+                        HorizontalAlignment="Left" WidthLabel="70"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.cIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"		
-						Height="27" Margin="0,10,10,2" Width="370" Caption="Código do ICMS" Help="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto." WidthLabel="118"/>
-				</StackPanel>
-			</Expander>			
-		</DockPanel>
-		<DockPanel>
-			<Expander Header="Tributação" IsExpanded="True">
-				<DataGrid
-					IsEnabled="{Binding bIsEnabled}"
-					SelectionUnit="CellOrRowHeader" 
-					CanUserReorderColumns="False"
-					CanUserDeleteRows="True">
-					<DataGrid.Columns>
-						<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="UF" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-						<DataGridTextColumn Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=PropertyChanged}" Header="Alíquota do Estado" Width="200"/>
-						<DataGridTextColumn Binding="{Binding Path=pIcmsInterna, UpdateSourceTrigger=PropertyChanged}" Header="Alíquota Interna de ICMS" Width="200"/>
-						<DataGridTextColumn Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=PropertyChanged}" Header="Alíquota de Subst. Trib. (MVA/IVA)" Width="250"/>
-						<DataGridTextColumn Binding="{Binding Path=.pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=PropertyChanged}" Header="Alíquota de ICMS para Não Contribuinte Fora do Estado" Width="350"/>
-						<DataGridTextColumn Binding="{Binding Path=vCoeficienteIcms, UpdateSourceTrigger=PropertyChanged}" Header="Coeficiente do ICMS" Width="200"/>
-						<DataGridTextColumn Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=PropertyChanged}" Header="Fundamento Legal" Width="200"/>
-					</DataGrid.Columns>					
-				</DataGrid>
-			</Expander>
-		</DockPanel>
-	</DockPanel>
+						Height="27" Margin="8,10,10,2" Width="190" Caption="Código do ICMS" Help="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto." WidthLabel="118" HorizontalAlignment="Left"/>
+                </WrapPanel>
+            </Expander>
+        </DockPanel>
+        <DockPanel>
+            <Expander Header="Tributação" IsExpanded="True">
+                <DataGrid
+					     ItemsSource="{Binding currentModel.lContato_EnderecoModel}"                          
+                         IsEnabled="{Binding bIsEnabled}"
+                         AutoGenerateColumns="False" 
+                         SelectionUnit="CellOrRowHeader" 
+                         CanUserReorderColumns="False"  
+                         CanUserDeleteRows="True" >
+                    <DataGrid.Columns>
+                        <DataGridComboBoxColumn  Header="UF" Width="*"
+                            ItemsSource="{Binding Source={StaticResource lUF}}"
+                            SelectedValuePath="id"
+                            DisplayMemberPath="display"
+                            SelectedValueBinding="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=PropertyChanged}" Header="Alíquota do Estado" Width="125"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Alíquota Interna de ICMS" Width="150"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Alíquota de Subst. Trib. (MVA/IVA)" Width="200"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsNaoContribruinteForaEstado, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="% de ICMS P/ Não Contribuinte Fora do Estado" Width="280"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=vCoeficienteIcms, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Coeficiente do ICMS" Width="120"/>
+                        <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}" Header="Fundamento Legal" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Expander>
+        </DockPanel>
+    </DockPanel>
 </runtime:WindowsBase>

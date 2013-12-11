@@ -40,8 +40,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
 
         public void Delete(Codigo_IcmsModel objCodigo_Icms)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Codigo_Icms]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
                 UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Codigo_Icms]",                
                   UserData.idUser,
                   objCodigo_Icms.idCodigoIcms);
         }

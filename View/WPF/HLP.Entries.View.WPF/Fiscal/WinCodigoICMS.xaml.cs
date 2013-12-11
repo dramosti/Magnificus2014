@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.View.WPF.Fiscal
 {
@@ -23,6 +24,13 @@ namespace HLP.Entries.View.WPF.Fiscal
         public WinCodigoICMS()
         {
             InitializeComponent();
+            this.ViewModel = new CodigoIcmsViewModel();
+        }
+
+        public CodigoIcmsViewModel ViewModel
+        {
+            get { return this.DataContext as CodigoIcmsViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }
