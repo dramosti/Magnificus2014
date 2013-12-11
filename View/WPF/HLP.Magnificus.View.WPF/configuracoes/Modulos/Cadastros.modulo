@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" default-lazy-init="true">
+  <object id="WinDesconto" name="WinDesconto" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
+  </object>
   <object id="WinUF" name="WinUF" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Gerais.WinUF, HLP.Entries.View.WPF">
   </object>
@@ -21,92 +24,89 @@
   <object id="WinUnidadeMedida" name="WinUnidadeMedida" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinUnidadeMedida, HLP.Entries.View.WPF">
   </object>
- <object id="WinDepartamento" name="WinDepartamento" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.RecursosHumanos.WinDepartamento, HLP.Entries.View.WPF">
+  <object id="WinDepartamento" name="WinDepartamento" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.RecursosHumanos.WinDepartamento, HLP.Entries.View.WPF">
   </object>
- <object id="WinSetor" name="WinSetor" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.RecursosHumanos.WinSetor, HLP.Entries.View.WPF">
+  <object id="WinSetor" name="WinSetor" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.RecursosHumanos.WinSetor, HLP.Entries.View.WPF">
   </object>
- <object id="WinFuncionario" name="WinFuncionario" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario, HLP.Entries.View.WPF">
+  <object id="WinFuncionario" name="WinFuncionario" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario, HLP.Entries.View.WPF">
   </object>
-<object id="WinAcesso" name="WinAcesso" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinAcesso, HLP.Entries.View.WPF">
+  <object id="WinAcesso" name="WinAcesso" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinAcesso, HLP.Entries.View.WPF">
   </object>
-<object id="WinCondicaoEngtrega" name="WinCondicaoEngtrega" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega, HLP.Entries.View.WPF">
+  <object id="WinCondicaoEngtrega" name="WinCondicaoEngtrega" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega, HLP.Entries.View.WPF">
   </object>
-<object id="WinCondicaoPagamento" name="WinCondicaoPagamento" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento, HLP.Entries.View.WPF">
+  <object id="WinCondicaoPagamento" name="WinCondicaoPagamento" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento, HLP.Entries.View.WPF">
   </object>
-<object id="WinConversao" name="WinConversao" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">
+  <object id="WinConversao" name="WinConversao" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">
   </object>
-<object id="WinDeposito" name="WinDeposito" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinDeposito, HLP.Entries.View.WPF">
+  <object id="WinDeposito" name="WinDeposito" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinDeposito, HLP.Entries.View.WPF">
   </object>
-<object id="WinFabricante" name="WinFabricante" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinFabricante, HLP.Entries.View.WPF">
+  <object id="WinFabricante" name="WinFabricante" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinFabricante, HLP.Entries.View.WPF">
   </object>
-<object id="WinFamiliaProduto" name="WinFamiliaProduto" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto, HLP.Entries.View.WPF">
+  <object id="WinFamiliaProduto" name="WinFamiliaProduto" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto, HLP.Entries.View.WPF">
   </object>
-<object id="WinMoeda" name="WinMoeda" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinMoeda, HLP.Entries.View.WPF">
+  <object id="WinMoeda" name="WinMoeda" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinMoeda, HLP.Entries.View.WPF">
   </object>
-<object id="WinPlanoPagamento" name="WinPlanoPagamento" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento, HLP.Entries.View.WPF">
+  <object id="WinPlanoPagamento" name="WinPlanoPagamento" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento, HLP.Entries.View.WPF">
   </object>
-<object id="WinRamoAtividade" name="WinRamoAtividade" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinRamoAtividade, HLP.Entries.View.WPF">
+  <object id="WinRamoAtividade" name="WinRamoAtividade" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinRamoAtividade, HLP.Entries.View.WPF">
   </object>
-<object id="WinTipoServico" name="WinTipoServico" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinTipoServico, HLP.Entries.View.WPF">
+  <object id="WinTipoServico" name="WinTipoServico" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinTipoServico, HLP.Entries.View.WPF">
   </object>
-<object id="WinParametrizacao" name="WinParametrizacao" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Parametrização.WinParametrizacao, HLP.Entries.View.WPF">
+  <object id="WinParametrizacao" name="WinParametrizacao" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Parametrização.WinParametrizacao, HLP.Entries.View.WPF">
   </object>
-<object id="WinContato" name="WinContato" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Crm.WinContato, HLP.Entries.View.WPF">
+  <object id="WinContato" name="WinContato" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Crm.WinContato, HLP.Entries.View.WPF">
   </object>
-<object id="WinModoEntrega" name="WinModoEntrega" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Transportes.WinModoEntrega, HLP.Entries.View.WPF">
+  <object id="WinModoEntrega" name="WinModoEntrega" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Transportes.WinModoEntrega, HLP.Entries.View.WPF">
   </object>
-<object id="WinRota" name="WinRota" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Transportes.WinRota, HLP.Entries.View.WPF">
+  <object id="WinRota" name="WinRota" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Transportes.WinRota, HLP.Entries.View.WPF">
   </object>
-<object id="WinSite" name="WinSite" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinSite, HLP.Entries.View.WPF">
+  <object id="WinSite" name="WinSite" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinSite, HLP.Entries.View.WPF">
   </object>
-<object id="WinCanalVenda" name="WinCanalVenda" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
+  <object id="WinCanalVenda" name="WinCanalVenda" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
   </object>
-<object id="WinJuros" name="WinJuros" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros, HLP.Entries.View.WPF">
+  <object id="WinJuros" name="WinJuros" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros, HLP.Entries.View.WPF">
   </object>
-<object id="WinListaPreco" name="WinListaPreco" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinListaPreco, HLP.Entries.View.WPF">
+  <object id="WinListaPreco" name="WinListaPreco" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinListaPreco, HLP.Entries.View.WPF">
   </object>
-<object id="WinMulta" name="WinMulta" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinMulta, HLP.Entries.View.WPF">
+  <object id="WinMulta" name="WinMulta" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinMulta, HLP.Entries.View.WPF">
   </object>
-<object id="WinFidelidade" name="WinFidelidade" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Crm.WinFidelidade, HLP.Entries.View.WPF">
+  <object id="WinFidelidade" name="WinFidelidade" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Crm.WinFidelidade, HLP.Entries.View.WPF">
   </object>
-<object id="WinPersonalidade" name="WinPersonalidade" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Crm.WinPersonalidade, HLP.Entries.View.WPF">
+  <object id="WinPersonalidade" name="WinPersonalidade" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Crm.WinPersonalidade, HLP.Entries.View.WPF">
   </object>
-<object id="WinBanco" name="WinBanco" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco, HLP.Entries.View.WPF">
+  <object id="WinBanco" name="WinBanco" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco, HLP.Entries.View.WPF">
   </object>
-<object id="WinAgencia" name="WinAgencia" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">
+  <object id="WinAgencia" name="WinAgencia" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">
   </object>
-<object id="WinContaBancaria" name="WinContaBancaria" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
-  </object>
-<object id="WinDesconto" name="WinDesconto" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
+  <object id="WinContaBancaria" name="WinContaBancaria" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
   </object>
 <object id="WinDiaPagamento" name="WinDiaPagamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">

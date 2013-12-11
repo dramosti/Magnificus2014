@@ -41,5 +41,11 @@ namespace HLP.Entries.View.WPF.Crm
             get { return this.DataContext as ContatoViewModel; }
             set { this.DataContext = value; }
         }
+
+     
+        private void dgvEndereco_CurrentCellChanged(object sender, EventArgs e)
+        {
+            this.dgvEndereco.BindingGroup.UpdateSources();
+        }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Parametros;
 
 namespace HLP.Entries.View.WPF.Parametrização
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Parametrização
         public WinParametrizacao()
         {
             InitializeComponent();
+            this.ViewModel = new Empresa_ParametrosViewModel();
+        }
+
+        public Empresa_ParametrosViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Empresa_ParametrosViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

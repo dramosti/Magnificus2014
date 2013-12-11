@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Fiscal;
+using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
@@ -22,7 +23,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-
         
         private CfopModel _currentModel;
 
@@ -38,9 +38,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         
         public CfopViewModel() 
         {
-            
 
+            commands = new CfopCommand(objViewModel: this);
         }
-        
+
+        CfopCommand commands;
     }
 }

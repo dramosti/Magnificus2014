@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Transportes;
 
 namespace HLP.Entries.View.WPF.Transportes
 {
@@ -23,6 +24,15 @@ namespace HLP.Entries.View.WPF.Transportes
         public WinModoEntrega()
         {
             InitializeComponent();
+            this.ViewModel = new ModoEntregaViewModel();
         }
+
+
+        public ModoEntregaViewModel ViewModel
+        {
+            get { return this.DataContext as ModoEntregaViewModel; }
+            set { this.DataContext = value; }
+        }
+
     }
 }

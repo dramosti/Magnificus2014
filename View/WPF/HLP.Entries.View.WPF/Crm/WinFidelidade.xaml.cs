@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Crm;
 
 
 namespace HLP.Entries.View.WPF.Crm
@@ -24,6 +25,18 @@ namespace HLP.Entries.View.WPF.Crm
         public WinFidelidade()
         {
             InitializeComponent();
+            this.viewModel = new FidelidadeViewModel();
+        }
+        public FidelidadeViewModel viewModel
+        {
+            get
+            {
+                return this.DataContext as FidelidadeViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

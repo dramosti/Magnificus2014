@@ -25,7 +25,7 @@
   <xs:element name="saveSiteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="saveSiteResult" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="saveSiteResult" nillable="true" type="q3:SiteModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +46,7 @@
   <xs:element name="copySite">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objSite" nillable="true" type="q3:SiteModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="objSite" nillable="true" type="q4:SiteModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -21,7 +21,7 @@ namespace HLP.Wcf.Entries
         public IDia_pagamento_linhasRepository iDia_pagamento_linhasRepository { get; set; }
 
 
-        public serviceDiaPagamento() 
+        public serviceDiaPagamento()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -36,6 +36,9 @@ namespace HLP.Wcf.Entries
             {
                 iDia_PagamentoRepository.BeginTransaction();
 
+                //objDia_pagamento = this.GetObect(1022);
+                //objDia_pagamento.lDia_pagamento_linhas[0].status = Comum.Resources.RecursosBases.statusModel.excluido;
+
                 iDia_PagamentoRepository.Save(objDia_pagamento);
 
                 foreach (var item in objDia_pagamento.lDia_pagamento_linhas)
@@ -45,6 +48,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idDiaPagamento = (int)objDia_pagamento.idDiaPagamento;
                                 iDia_pagamento_linhasRepository.Save(item);
                             }
                             break;
@@ -62,7 +66,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
 
         public bool Delete(HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objDia_pagamento)
@@ -124,7 +128,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
     }
 }

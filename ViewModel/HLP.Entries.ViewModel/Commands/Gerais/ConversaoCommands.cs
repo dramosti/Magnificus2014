@@ -1,4 +1,6 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Model.Models;
+using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -6,9 +8,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -55,25 +59,62 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                foreach (int item in this.objViewModel.currentModel.idExcluidos)
+                BackgroundWorker bwSalvar = new BackgroundWorker();
+                bwSalvar.DoWork += bwSalvar_DoWork;
+                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                foreach (int item in this.objViewModel.currentModel.lProdutos_Conversao.idExcluidos)
                 {
-                    this.objViewModel.currentModel.Add(
+                    this.objViewModel.currentModel.lProdutos_Conversao.Add(
                         item: new ConversaoModel
                         {
                             idConversao = item,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                servico.savelConversao(lConversao: objViewModel.currentModel.ToList());
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.IniciaCollection();
-                this.metodoGetModel(this, null);
+                bwSalvar.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new ApplicationException(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel.lProdutos_Conversao =
+                        new ObservableCollectionBaseCadastros<ConversaoModel>(list:
+                            ((List<ConversaoModel>)e.Result));
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.IniciaCollection();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = servico.savelConversao(objProduto: objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -86,14 +127,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int idRegistroDeletado = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.dellConversaoAsync(idProduto: this.objViewModel.idProdutoSelecionado))
+                    if (await this.servico.dellConversaoAsync(idProduto: (int)this.objViewModel.currentModel.idProduto))
                     {
+                        idRegistroDeletado = (int)objViewModel.currentModel.idProduto;
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         this.objViewModel.currentModel = null;
@@ -111,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRegistroDeletado);
             }
         }
 
@@ -125,7 +168,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo()
         {
-            this.objViewModel.currentModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<ConversaoModel>();
+            this.objViewModel.currentModel = new ProdutoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
         }
         private bool NovoCanExecute()
@@ -205,14 +248,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void IniciaCollection()
         {
-            this.objViewModel.currentModel.CollectionCarregada();
+            this.objViewModel.currentModel.lProdutos_Conversao.CollectionCarregada();
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel
-                = new Comum.Model.Models.ObservableCollectionBaseCadastros<ConversaoModel>(
-                    list: this.servico.getlConversao(idProduto: this.objViewModel.idProdutoSelecionado));
+                = this.servico.getlConversao(idProduto: this.objViewModel.currentID);
         }
         #endregion
 

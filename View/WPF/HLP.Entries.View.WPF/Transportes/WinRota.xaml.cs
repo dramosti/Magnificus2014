@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Transportes;
 
 namespace HLP.Entries.View.WPF.Transportes
 {
@@ -23,6 +24,13 @@ namespace HLP.Entries.View.WPF.Transportes
         public WinRota()
         {
             InitializeComponent();
+            this.ViewModel = new RotaViewModel();
+        }
+
+        public RotaViewModel ViewModel
+        {
+            get { return this.DataContext as RotaViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }

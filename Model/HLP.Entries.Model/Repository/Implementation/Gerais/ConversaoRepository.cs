@@ -28,7 +28,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regConversaoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_conversao",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idConversao"),
-                                    MapBuilder<ConversaoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                    MapBuilder<ConversaoModel>.MapAllProperties()
+                                    .DoNotMap(i => i.enumTipoArredondamento)
+                                    .DoNotMap(i => i.status).Build());
             }
             return regConversaoAccessor.Execute(idConversao).FirstOrDefault();
         }
@@ -40,7 +42,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regAllConversaoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Conversao WHERE idProduto = @idProduto",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idProduto"),
-                                  MapBuilder<ConversaoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                  MapBuilder<ConversaoModel>.MapAllProperties()
+                                  .DoNotMap(i => i.enumTipoArredondamento)
+                                  .DoNotMap(i => i.status).Build());
             }
 
 
@@ -51,8 +55,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             try
             {
-                UndTrabalho.BeginTransaction();
-
                 if (conversao.idConversao == null)
                 {
                     conversao.idConversao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
@@ -66,11 +68,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                         ParameterBase<ConversaoModel>.SetParameterValue(conversao));
                 }
 
-                UndTrabalho.CommitTransaction();
             }
             catch (Exception ex)
             {
-                UndTrabalho.RollBackTransaction();
                 throw ex;
             }
         }
@@ -79,7 +79,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             try
             {
-                UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+                UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                    System.Data.CommandType.Text,
                 "DELETE Conversao WHERE idProduto = " + idProduto);
             }
             catch (Exception ex)
@@ -90,7 +91,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Delete(int idConversao)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Conversao]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Conversao]",
                   UserData.idUser,
                   idConversao);
         }
@@ -103,6 +106,21 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                            "[dbo].[Proc_save_Conversao]",
 
             ParameterBase<ConversaoModel>.SetParameterValue(objConversao));
+        }
+
+        public void BeginTransaction()
+        {
+            this.UndTrabalho.BeginTransaction();
+        }
+
+        public void CommitTransaction()
+        {
+            this.UndTrabalho.CommitTransaction();
+        }
+
+        public void RollbackTransaction()
+        {
+            this.UndTrabalho.RollBackTransaction();
         }
     }
 }

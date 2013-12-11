@@ -72,7 +72,8 @@
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_AcessoCommands.cs" />
-    <Compile Include="Service References\acessoService\Reference.cs">
+    <Compile Include="Commands\Transportes\ModoEntregaCommands.cs" />
+    <Compile Include="Service References\AcessoFuncionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -107,12 +108,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\decisaoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\FidelidadeServico\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\PersonalidadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\siteService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -132,7 +143,7 @@
     <Compile Include="Commands\Gerais\PlanoPagamentoCommand.cs" />
     <Compile Include="Commands\Comercial\ProdutoCommands.cs" />
     <Compile Include="Commands\Comercial\Tipo_ProdutoCommands.cs" />
-    <Compile Include="Commands\DecisaoCommands.cs" />
+    <Compile Include="Commands\Crm\DecisaoCommands.cs" />
     <Compile Include="Commands\DepartamentoCommands.cs" />
     <Compile Include="Commands\EmpresaCommands.cs" />
     <Compile Include="Commands\Gerais\Condicao_PagamentoCommands.cs" />
@@ -201,11 +212,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ConversaoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\decisaoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -305,11 +311,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\siteService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\StCofinsService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -369,7 +370,7 @@
     <Compile Include="ViewModels\Comercial\MultaViewModel.cs" />
     <Compile Include="ViewModels\Comercial\ProdutoViewModel.cs" />
     <Compile Include="ViewModels\Comercial\Tipo_ProdutoViewModel.cs" />
-    <Compile Include="ViewModels\DecisaoViewModel.cs" />
+    <Compile Include="ViewModels\Crm\DecisaoViewModel.cs" />
     <Compile Include="ViewModels\DepartamentoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\Financeiro\AgenciaViewModel.cs" />
@@ -404,6 +405,7 @@
     <Compile Include="ViewModels\RecursosHumanos\SetorViewModel.cs" />
     <Compile Include="ViewModels\RegiaoViewModel.cs" />
     <Compile Include="ViewModels\Transportes\Condicao_entregaViewModel.cs" />
+    <Compile Include="ViewModels\Transportes\ModoEntregaViewModel.cs" />
     <Compile Include="ViewModels\Transportes\RotaViewModel.cs" />
     <Compile Include="ViewModels\Transportes\TransportadorViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
@@ -496,25 +498,26 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.SetorModel2.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Condicoes_entregaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.Modos_entregaModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.RotaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
-    <None Include="Service References\acessoService\serviceAcesso.wsdl" />
-    <None Include="Service References\acessoService\serviceAcesso.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso.wsdl" />
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\acessoService\serviceAcesso1.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\acessoService\serviceAcesso2.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\acessoService\serviceAcesso3.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\acessoService\serviceAcesso4.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\acessoService\serviceAcesso5.xsd">
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\agenciaService\serviceAgencia.wsdl" />
@@ -818,6 +821,9 @@
     <None Include="Service References\ConversaoService\serviceConversao5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ConversaoService\serviceConversao6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\decisaoService\serviceDecisao.wsdl" />
     <None Include="Service References\decisaoService\serviceDecisao.xsd">
       <SubType>Designer</SubType>
@@ -832,6 +838,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\decisaoService\serviceDecisao4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\decisaoService\serviceDecisao5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\departamentoService\serviceDepartamento.wsdl" />
@@ -1463,7 +1472,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\acessoService\" />
+    <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
     <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\bancoService\" />
     <WCFMetadataStorage Include="Service References\CalendarioService\" />
@@ -1586,21 +1595,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\cidadeService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\serviceDecisao.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1841,21 +1835,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\transportadorService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\serviceSite.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2266,16 +2245,46 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\acessoService\serviceAcesso.disco" />
+    <None Include="Service References\decisaoService\serviceDecisao.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\acessoService\configuration91.svcinfo" />
+    <None Include="Service References\decisaoService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\acessoService\configuration.svcinfo" />
+    <None Include="Service References\decisaoService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\acessoService\Reference.svcmap">
+    <None Include="Service References\decisaoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\siteService\serviceSite.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\siteService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\siteService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\siteService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcessoFuncionarioService\serviceAcesso.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcessoFuncionarioService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcessoFuncionarioService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AcessoFuncionarioService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

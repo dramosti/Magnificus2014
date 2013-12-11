@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceAgencia.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceAgencia.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="AgenciaModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
@@ -46,6 +47,8 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
         <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoEndereco" type="q4:TipoEndereco" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoLogradouro" type="q5:TipoLogradouro" />
           <xs:element minOccurs="0" name="idAgencia" type="xs:int" />
           <xs:element minOccurs="0" name="idCidade" type="xs:int" />
           <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />

@@ -102,11 +102,15 @@ namespace HLP.Comum.View.Components
         {
             try
             {
+                HlpPesquisa comp = d as HlpPesquisa;
                 if (e.NewValue != null)
                 {
-                    HlpPesquisa comp = d as HlpPesquisa;
                     comp.ExecutaPesquisa(e.NewValue.ToString());
                     comp.Text = e.NewValue.ToString();
+                }
+                else
+                {
+                    comp.txtDisplay.Text = string.Empty;
                 }
             }
             catch (Exception ex)

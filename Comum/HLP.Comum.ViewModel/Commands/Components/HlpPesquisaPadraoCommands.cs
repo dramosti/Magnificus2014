@@ -69,11 +69,11 @@ namespace HLP.Comum.ViewModel.Commands.Components
                     sExpression.Add("AND");
                 }
                 // NUNCA IRÁ FILTRAR OS NÃO ATIVOS, VERIFICAR DEPOIS A REGRA!!
-                if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "Ativo").Count() > 0)
-                {
-                    sExpression.Add("(Ativo = 1)");
-                    sExpression.Add("AND");
-                }
+                //if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "Ativo").Count() > 0)
+                //{
+                //    sExpression.Add("(Ativo = 1)");
+                //    sExpression.Add("AND");
+                //}
 
                 foreach (PesquisaPadraoModel filtro in _objViewModel.lFilers)
                 {

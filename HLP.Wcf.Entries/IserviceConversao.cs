@@ -13,10 +13,10 @@ namespace HLP.Wcf.Entries
     public interface IserviceConversao
     {
         [OperationContract]
-        IEnumerable<HLP.Entries.Model.Models.Gerais.ConversaoModel> getlConversao(int idProduto);
+        HLP.Entries.Model.Models.Comercial.ProdutoModel getlConversao(int idProduto);
 
         [OperationContract]
-        void savelConversao(ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> lConversao);
+        Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
 
         [OperationContract]
         bool dellConversao(int idProduto);

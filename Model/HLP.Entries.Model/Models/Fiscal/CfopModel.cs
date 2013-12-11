@@ -41,7 +41,19 @@ namespace HLP.Entries.Model.Models.Fiscal
         {
             get
             {
-                return base[columnName];
+                string sValidacao = base[columnName];
+
+                if (sValidacao == null)
+                {
+                    if (columnName == "cCfop")
+                    {
+                        if (cCfop.ToString().Length != 4)
+                        {
+                            sValidacao =  "CFOP deve conter 4 digitos";
+                        }
+                    }
+                }
+                return sValidacao;
             }
         }
     }

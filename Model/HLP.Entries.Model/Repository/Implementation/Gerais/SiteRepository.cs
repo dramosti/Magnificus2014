@@ -23,19 +23,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Save(SiteModel objSite)
         {
-            //Aqui deve-se setar as FK's (se houver)
-            //Exemplo:
-            //produto.idEmpresa = CompanyData.idEmpresa;
-
             if (objSite.idSite == null)
             {
                 objSite.idSite = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                   UndTrabalho.dbTransaction,
                 "[dbo].[Proc_save_Site]",
                 ParameterBase<SiteModel>.SetParameterValue(objSite));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Site]",
                 ParameterBase<SiteModel>.SetParameterValue(objSite));
             }

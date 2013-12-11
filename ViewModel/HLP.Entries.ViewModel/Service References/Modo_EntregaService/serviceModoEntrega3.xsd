@@ -24,7 +24,9 @@
   </xs:element>
   <xs:element name="SaveResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" minOccurs="0" name="SaveResult" nillable="true" type="q3:Modos_entregaModel" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Delete">
@@ -51,7 +53,7 @@
   <xs:element name="CopyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CopyResult" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" minOccurs="0" name="CopyResult" nillable="true" type="q4:Modos_entregaModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

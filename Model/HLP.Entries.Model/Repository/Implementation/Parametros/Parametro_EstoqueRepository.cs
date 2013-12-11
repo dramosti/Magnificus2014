@@ -53,7 +53,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Parametros
             if (regParametro_EstoqueAccessor == null)
             {
                 regParametro_EstoqueAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Parametro_Estoque" +
-                " where idEmpresa = " + CompanyData.idEmpresa,
+                " where idEmpresa = " + idEmpresa,
                                 MapBuilder<Parametro_EstoqueModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Transportes;
+using HLP.Entries.ViewModel.Commands.Transportes;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
@@ -23,6 +24,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
         public ICommand navegarCommand { get; set; }
         #endregion
 
+        ModoEntregaCommands commands;
+
+        public ModoEntregaViewModel() 
+        {
+            commands = new ModoEntregaCommands(objViewModel: this);
+        }
         private Modos_entregaModel _currentModel;
         public Modos_entregaModel currentModel
         {

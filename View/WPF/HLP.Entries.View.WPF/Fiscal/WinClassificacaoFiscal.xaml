@@ -2,133 +2,137 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinClassificacaoFiscal"
-        Title="Classificação Fiscal" Height="660" Width="1200">
-	<StackPanel>
-		<Expander Header="Geral" HorizontalAlignment="Stretch" Height="630" IsExpanded="True">
-			<DockPanel LastChildFill="True">
-				<StackPanel DockPanel.Dock="Left" Width="518">    				
-					<Components:HlpTextBox 
+        Title="Classificação Fiscal" Height="660" Width="1200" NameView="vwClassificacaoFiscal">
+    <Window.Resources>
+        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+    </Window.Resources>
+    <StackPanel>
+        <Expander Header="Geral" HorizontalAlignment="Stretch" Height="630" IsExpanded="True">
+            <DockPanel LastChildFill="True">
+                <WrapPanel Orientation="Vertical" DockPanel.Dock="Left" Width="518">
+                    <Components:HlpTextBox 
 						IsReadOnly="True"
 						Text="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-						Height="27" Margin="10,10,246,2" Caption="Código" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Código" WidthLabel="145" HorizontalAlignment="Left" Width="212" Margin="10,10,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,83,2" Caption="Nome" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Nome" WidthLabel="145" HorizontalAlignment="Left" Width="421" Margin="10,2,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.cNCM, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,83,2" Caption="Código NCM" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Código NCM" WidthLabel="145" HorizontalAlignment="Left" Width="258" Margin="10,2,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.cClassifcacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,246,2" Caption="Código abreviado" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Código abreviado" WidthLabel="145" HorizontalAlignment="Left" Width="258" Margin="10,2,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xFundamentoLegal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,83,2" Caption="Fundamento legal" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,2,83,0" Caption="Fundamento legal" WidthLabel="145" HorizontalAlignment="Left" Width="421"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,246,2" Caption="Alíquota de IPI" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Alíquota de IPI" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,2,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,246,2" Caption="Alíquota de PIS" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Alíquota de PIS" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,2,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,246,2" Caption="Alíquota de ii" WidthLabel="145"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Alíquota de ii" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,2,0,0"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,246,2" Caption="Alíquota de COFINS" WidthLabel="145"/>    				
-				</StackPanel>
-				<StackPanel>
-					<Components:HlpComboBox 
+						Height="27"  Caption="Alíquota de COFINS" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,2,0,0"/>
+                </WrapPanel>
+                <WrapPanel Orientation="Vertical">
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stCalculaPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,10,2" Caption="Calcula pis/cofins" WidthLabel="363">
-						<Components:HlpComboBox.Items>
-								<System:String>0-NÃO</System:String>
-                                <System:String>1-NORMAL</System:String>
-								<System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
-						</Components:HlpComboBox.Items>
-					  </Components:HlpComboBox>
-					<Components:HlpComboBox 
+						Height="27"  Caption="Calcula pis/cofins" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left">
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-NÃO</System:String>
+                            <System:String>1-NORMAL</System:String>
+                            <System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stRegimeTributacaoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Regime de Tributação do pis e cofins" WidthLabel="363">
-						<Components:HlpComboBox.Items>
-								<System:String>0-CUMULATIVO</System:String>
-                                <System:String>1-NÃO CUMULATIVO</System:String>								
-						</Components:HlpComboBox.Items>
-					  </Components:HlpComboBox>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Regime de Tributação do pis e cofins" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left">
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-CUMULATIVO</System:String>
+                            <System:String>1-NÃO CUMULATIVO</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.vCoeficienteSubstituicaoPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.vCoeficienteSubstituicaoPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="35" Margin="10,0,10,2" Caption="Coeficiente substituição tributária do pis" WidthLabel="363"/>
-					<Components:HlpTextBox 
+						Height="27"  Caption="Coeficiente substituição tributária do pis" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left" Width="454"/>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.vCoeficienteSubstituicaoCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Text="{Binding currentModel.vCoeficienteSubstituicaoCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="35" Margin="10,0,10,2" Caption="Coeficiente substituição tributária do cofins" WidthLabel="363"/>
-					<Components:HlpComboBox 
+						Height="27"  Caption="Coeficiente substituição tributária do cofins" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left" Width="454"/>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stCompoeBaseNormalPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Compões a base de pis/cofins normal ?" WidthLabel="363">
-						<Components:HlpComboBox.Items>
-								<System:String>0-NÃO</System:String>
-                                <System:String>1-NORMAL</System:String>
-								<System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
-						</Components:HlpComboBox.Items>
-					  </Components:HlpComboBox>
-					<Components:HlpComboBox 
+						Height="27"  Caption="Compões a base de pis/cofins normal ?" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left">
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-NÃO</System:String>
+                            <System:String>1-NORMAL</System:String>
+                            <System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stCompoeBaseSubstPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Compões a base de pis por substituição tributária" WidthLabel="363">
-						<Components:HlpComboBox.Items>
-									<System:String>0-PRODUTOS X COEFICIENTE</System:String>
-                                    <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
-									<System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
-									<System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
-						</Components:HlpComboBox.Items>
-					</Components:HlpComboBox>
-					<Components:HlpComboBox 
+						Height="27"  Caption="Compões a base de pis por substituição tributária" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left">
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-PRODUTOS X COEFICIENTE</System:String>
+                            <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
+                            <System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
+                            <System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stCompoeBaseSubstCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Compões a base de cofins por substituição tributária" WidthLabel="363">
-						<Components:HlpComboBox.Items>
-									<System:String>0-PRODUTOS X COEFICIENTE</System:String>
-                                    <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
-									<System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
-									<System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
-						</Components:HlpComboBox.Items>
-					</Components:HlpComboBox>
-					<Components:HlpCheckBox 
+						Height="27"  Caption="Compões a base de cofins por substituição tributária" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left">
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-PRODUTOS X COEFICIENTE</System:String>
+                            <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
+                            <System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
+                            <System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Cadastro ativo?" WidthLabel="363"/>
-				</StackPanel>	    			
-			</DockPanel> 
-		</Expander>        
-	</StackPanel>
+						Height="27"  Caption="Cadastro ativo?" WidthLabel="363" Margin="10,2,0,0" HorizontalAlignment="Left"/>
+                </WrapPanel>
+            </DockPanel>
+        </Expander>
+    </StackPanel>
 </runtime:WindowsBase>

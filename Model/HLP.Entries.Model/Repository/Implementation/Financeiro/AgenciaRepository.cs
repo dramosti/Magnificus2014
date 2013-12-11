@@ -61,7 +61,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
                 regAgenciaAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Agencia",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idAgencia"),
-                                         MapBuilder<AgenciaModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                         MapBuilder<AgenciaModel>.MapAllProperties()                                         
+                                         .DoNotMap(i => i.status).Build());
             }
 
             return regAgenciaAccessor.Execute(idAgencia).FirstOrDefault();

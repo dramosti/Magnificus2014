@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Financeiro;
 
 namespace HLP.Entries.View.WPF.Gerais.Financeiro
 {
@@ -23,6 +24,18 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro
         public WinDesconto()
         {
             InitializeComponent();
+            this.ViewModel = new DescontosAvistaViewModel();
+        }
+        public DescontosAvistaViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as DescontosAvistaViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

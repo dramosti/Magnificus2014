@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Financeiro
         public int? idDescontosAvista
         {
             get { return _idDescontosAvista; }
-            set { _idDescontosAvista = value; }
+            set { _idDescontosAvista = value; base.NotifyPropertyChanged("idDescontosAvista"); }
         }
         [ParameterOrder(Order = 2)]
         public string xDescontos { get; set; }

@@ -34,6 +34,7 @@
     <MetadataFile FileName="serviceConversao4.xsd" MetadataType="Schema" ID="31637f53-3bf3-40bd-a698-f6bcc5237e7d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceConversao.svc?xsd=xsd1" />
     <MetadataFile FileName="serviceConversao.wsdl" MetadataType="Wsdl" ID="d552d16c-c7b7-4504-bf84-8eb421c87cbd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceConversao.svc?wsdl" />
     <MetadataFile FileName="serviceConversao5.xsd" MetadataType="Schema" ID="f7d0b46d-c4d7-4590-87ba-9d990849495d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceConversao.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceConversao6.xsd" MetadataType="Schema" ID="30e7c9a1-c546-4d01-8bbe-611669c64734" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceConversao.svc?xsd=xsd6" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

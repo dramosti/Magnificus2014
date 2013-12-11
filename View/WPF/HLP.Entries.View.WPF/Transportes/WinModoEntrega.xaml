@@ -4,21 +4,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+     NameView="vwModoEntrega"
         x:Class="HLP.Entries.View.WPF.Transportes.WinModoEntrega"
         Title="Modos de Entrega" Height="660" Width="1024">
 	<Grid>
-		<Expander Header="Geral" HorizontalAlignment="Left" Height="437" VerticalAlignment="Top" Width="617.5" IsExpanded="True"> 
+		<Expander Header="Geral" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  IsExpanded="True"> 
 			<StackPanel>
 				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,10,218.75,2" Caption="Código do Modos de Entrega" Help="Chave principal do registro dos modos de entrega, auto incremental." WidthLabel="237"/>
+                    IsReadOnly="True"
+					Height="27" Margin="10,10,674,2" Caption="Código" Help="Chave principal do registro dos modos de entrega, auto incremental." WidthLabel="237"/>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"	
-					Height="27" Margin="10,0,218.75,2" Caption="Modo de Entrega " Help="Digite um código alfanumérico para o modo de entrega (até 10 caracteres)." WidthLabel="237"/>
+					Height="27" Margin="10,0,618,2" Caption="Modo de Entrega " Help="Digite um código alfanumérico para o modo de entrega (até 10 caracteres)." WidthLabel="237"/>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -26,9 +27,9 @@
 					Height="27" Margin="10,0,218.75,2" Caption="Descrição " Help="Digite uma breve descrição do modo de entrega. Você pode usar o nome como um nome de pesquisa para localizar um modo de entrega específico. O nome de pesquisa aparece em formulários impressos, como ordens de venda e notas fiscais de clientes. " WidthLabel="237"/>
 				<Components:HlpComboBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					SelectedValue="{Binding currentModel.stServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					SelectedIndex="{Binding currentModel.stServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,212.5,2" Caption="Tipo de Serviço" Help="Selecione o tipo de serviço de remessa usado para o modo de entrega selecionado. Eles podem ser:" WidthLabel="237">
+					Height="27" Margin="10,0,590,2" Caption="Tipo de Serviço" Help="Selecione o tipo de serviço de remessa usado para o modo de entrega selecionado. Eles podem ser:" WidthLabel="237">
 					<Components:HlpComboBox.Items>
 						<System:String>0-Diversos</System:String>
                         <System:String>1-Retirada</System:String>
@@ -38,9 +39,9 @@
 				</Components:HlpComboBox>
 				<Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.IdTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,28,2" Caption="Identificação do Transportador" Help="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="237" FieldPesquisa="ID" TableView="vwTransportador">
+					Height="27" Margin="10,0,219,2" Caption="Identificação do Transportador" Help="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="237" FieldPesquisa="ID" TableView="vwTransportador">
 					<Components:HlpPesquisa.Items>
 						<System:String>xNome</System:String>
 						<System:String>xCodigoAlternativo</System:String>

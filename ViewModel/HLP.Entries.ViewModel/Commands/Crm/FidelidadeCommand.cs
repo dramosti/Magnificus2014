@@ -56,7 +56,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             try
             {
                 //TODO: método de serviço para salvar
-                await servico.SaveAsync(objViewModel.currentModel);
+                objViewModel.currentModel = await servico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -76,6 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         public async void Delete()
         {
+            int iRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -86,7 +87,9 @@ namespace HLP.Entries.ViewModel.Commands.Crm
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        iRemoved = (int)this.objViewModel.currentModel.idFidelidade;
                         this.objViewModel.currentModel = null;
+
                     }
                     else
                     {
@@ -101,7 +104,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
             }
         }
 
@@ -143,7 +146,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {

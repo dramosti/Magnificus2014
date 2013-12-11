@@ -12,6 +12,7 @@ namespace HLP.Entries.ViewModel.ViewModels
 {
     public class DecisaoViewModel : ViewModelBase
     {
+
         #region Icommands
         public ICommand commandSalvar { get; set; }
         public ICommand commandDeletar { get; set; }
@@ -22,45 +23,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-        #region IcommandsBase
-        public ICommand commandSalvarBase
-        {
-            get
-            {
-                return base.salvarBaseCommand;
-            }
-        }
-
-        public ICommand commandDeletarBase
-        {
-            get
-            {
-                return base.deletarBaseCommand;
-            }
-        }
-        public ICommand commandNovoBase
-        {
-            get
-            {
-                return base.novoBaseCommand;
-            }
-        }
-        public ICommand commandAlterarBase
-        {
-            get
-            {
-                return base.alterarBaseCommand;
-            }
-        }
-        public ICommand commandCancelarBase
-        {
-            get
-            {
-                return base.cancelarBaseCommand;
-            }
-        }
-        #endregion
-
+        
         DecisaoCommands objCommands;
 
         public DecisaoViewModel()

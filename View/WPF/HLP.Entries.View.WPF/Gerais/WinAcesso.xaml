@@ -41,62 +41,68 @@
             </StackPanel>
         </Expander>
         <Expander DockPanel.Dock="Top" Header="Login" Height="173" VerticalAlignment="Stretch" IsExpanded="True">
-            <StackPanel HorizontalAlignment="Stretch" Height="157" VerticalAlignment="Top">
-                <Components:HlpCheckBox
+            <AdornerDecorator>
+                <StackPanel HorizontalAlignment="Stretch" Height="157" VerticalAlignment="Top">
+                    <Components:HlpCheckBox
                         Name="cbUtilizaSistema"
                 		Validation.ErrorTemplate="{StaticResource exceptionComp}"
                 		IsChecked="{Binding currentModel.stUsuarioAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                 		IsEnabled="{Binding bIsEnabled}" 
                 		Height="30" Margin="10,10,241,2" Caption="Utiliza Sistema" WidthLabel="119" Field="stUsuarioAtivo" Table="Funcionario"/>
-                <Components:HlpComboBox 
+                    <Components:HlpComboBox 
                         Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.stUsuario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                         Height="30" Margin="10,10,547,2" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario"
                                             Help="Seleciona o tipo do Usuário" WidthLabel="102">
-                    <Components:HlpComboBox.IsEnabled>
-                        <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                            <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                            <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                        </MultiBinding>
-                    </Components:HlpComboBox.IsEnabled>
-                    <Components:HlpComboBox.Items>
-                        <System:String>0 - HLP</System:String>
-                        <System:String>1 - ADMINISTRADOR/DEFAULT</System:String>
-                        <System:String>2 - NORMAL</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpTextBox 
+                        <Components:HlpComboBox.IsEnabled>
+                            <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                                <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                                <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                            </MultiBinding>
+                        </Components:HlpComboBox.IsEnabled>
+                        <Components:HlpComboBox.Items>
+                            <System:String>0 - HLP</System:String>
+                            <System:String>1 - ADMINISTRADOR/DEFAULT</System:String>
+                            <System:String>2 - NORMAL</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpTextBox
+                        Name="txtLogin"
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xID, Mode=TwoWay, 
-                        NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-						Height="30" Margin="10,0,547,2" Caption="Login" WidthLabel="102">
-                    <Components:HlpTextBox.IsEnabled>
-                        <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                            <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                            <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                        </MultiBinding>
-                    </Components:HlpTextBox.IsEnabled>
-                </Components:HlpTextBox>
-                <Components:HlpTextBox 
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Height="30" Margin="10,0,547,2" Caption="Login" WidthLabel="102"
+                        LostFocus="controlsBgLogin_LostFocus">
+                        <Components:HlpTextBox.IsEnabled>
+                            <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                                <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                                <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                            </MultiBinding>
+                        </Components:HlpTextBox.IsEnabled>
+                    </Components:HlpTextBox>
+                    <Components:HlpTextBox 
+                        Name="txtSenha"
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-						Height="30" Margin="10,0,547,2" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102">
-                    <Components:HlpTextBox.IsEnabled>
-                        <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                            <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                            <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                        </MultiBinding>
-                    </Components:HlpTextBox.IsEnabled>
-                </Components:HlpTextBox>
-                <StackPanel.BindingGroup>
-                    <BindingGroup x:Name="bgLogin">
-                        <BindingGroup.ValidationRules>
-                            <convView:ValidaUsuarioValidationRule
+						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						Height="30" Margin="10,0,547,2" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102"
+                        LostFocus="controlsBgLogin_LostFocus">
+                        <Components:HlpTextBox.IsEnabled>
+                            <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                                <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                                <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                            </MultiBinding>
+                        </Components:HlpTextBox.IsEnabled>
+                    </Components:HlpTextBox>
+                    <StackPanel.BindingGroup>
+                        <BindingGroup x:Name="bgLogin">
+                            <BindingGroup.ValidationRules>
+                                <convView:ValidaUsuarioValidationRule
                                 ValidatesOnTargetUpdated="True"></convView:ValidaUsuarioValidationRule>
-                        </BindingGroup.ValidationRules>
-                    </BindingGroup>
-                </StackPanel.BindingGroup>
-            </StackPanel>
+                            </BindingGroup.ValidationRules>
+                        </BindingGroup>
+                    </StackPanel.BindingGroup>
+                </StackPanel>
+            </AdornerDecorator>
         </Expander>
         <Expander Header="Empresa"   IsExpanded="True">
             <DataGrid 

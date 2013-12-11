@@ -76,7 +76,10 @@ namespace HLP.Comum.Model.Models
             PropertyInfo p = this.GetType().GetProperty("idEmpresa");
 
             if (p != null && !xTabela.Contains("Empresa"))
-                p.SetValue(this, CompanyData.idEmpresa);
+            {
+                if (CompanyData.idEmpresa != 0)
+                    p.SetValue(this, CompanyData.idEmpresa);
+            }
 
             this.IniciaObjeto();
         }
@@ -129,9 +132,9 @@ namespace HLP.Comum.Model.Models
                         }
                         catch (Exception)
                         {
-                            
+
                             throw;
-                        }                        
+                        }
                     }
                     else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
                         && (valor == "" || valor == null))
@@ -153,7 +156,7 @@ namespace HLP.Comum.Model.Models
                 }
             }
 
-            if (valor ==null)
+            if (valor == null)
             {
                 return null;
             }

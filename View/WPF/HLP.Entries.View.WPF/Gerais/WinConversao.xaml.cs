@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -22,7 +23,34 @@ namespace HLP.Entries.View.WPF.Gerais
     {
         public WinConversao()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                this.ViewModel = new ConversaoViewModel();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        public ConversaoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as ConversaoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+
+        private void gridConversao_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            this.gridConversao.BindingGroup.UpdateSources();
         }
     }
 }

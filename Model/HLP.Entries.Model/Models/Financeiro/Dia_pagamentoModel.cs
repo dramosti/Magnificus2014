@@ -5,12 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
     public partial class Dia_pagamentoModel : modelBase
     {
-        public Dia_pagamentoModel() : base("Dia_pagamento") { }
+        public Dia_pagamentoModel()
+            : base("Dia_pagamento")
+        {
+            this.lDia_pagamento_linhas = new ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel>();
+        }
         public int? _idDiaPagamento;
         [ParameterOrder(Order = 1)]
         public int? idDiaPagamento
@@ -23,7 +28,7 @@ namespace HLP.Entries.Model.Models.Financeiro
         [ParameterOrder(Order = 3)]
         public string xDescricao { get; set; }
 
-        
+
         private ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel> _lDia_pagamento_linhas;
 
         public ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel> lDia_pagamento_linhas
@@ -35,7 +40,7 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "lDia_pagamento_linhas");
             }
         }
-        
+
     }
 
     public partial class Dia_pagamento_linhasModel : modelBase
@@ -52,28 +57,58 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "idDiaPagamentoLinhas");
             }
         }
-        private byte? _stSemanaMes;
+
+        private SemanaOuMes _enumSemanaOuMes;
+        public SemanaOuMes enumSemanaOuMes
+        {
+            get { return _enumSemanaOuMes; }
+            set
+            {
+                _enumSemanaOuMes = value;
+                _stSemanaMes = (byte)value;
+            }
+        }
+
+        private byte _stSemanaMes;
         [ParameterOrder(Order = 2)]
-        public byte? stSemanaMes
+        public byte stSemanaMes
         {
             get { return _stSemanaMes; }
             set
             {
                 _stSemanaMes = value;
-                base.NotifyPropertyChanged(propertyName: "stSemanaMes");
+                _enumSemanaOuMes = (SemanaOuMes)value;
             }
         }
-        private byte? _stDiaUtil;
+
+
+        private DiaUtil _enumDiaUtil;
+        public DiaUtil enumDiaUtil
+        {
+            get { return _enumDiaUtil; }
+            set
+            {
+                _enumDiaUtil = value;
+                _stDiaUtil = (byte)value;
+            }
+        }
+
+        private byte _stDiaUtil;
         [ParameterOrder(Order = 3)]
-        public byte? stDiaUtil
+        public byte stDiaUtil
         {
             get { return _stDiaUtil; }
             set
             {
                 _stDiaUtil = value;
-                base.NotifyPropertyChanged(propertyName: "stDiaUtil");
+                _enumDiaUtil = (DiaUtil)value;
             }
         }
+
+
+
+
+
         private int? _nDia;
         [ParameterOrder(Order = 4)]
         public int? nDia
@@ -115,7 +150,29 @@ namespace HLP.Entries.Model.Models.Financeiro
         {
             get
             {
-                return base[columnName];
+                string sValor = base[columnName];
+
+                if (sValor == null)
+                {
+                    if (columnName == "stSemanaMes" || columnName == "stDiaUtil")
+                    {
+                        if (this.enumSemanaOuMes == SemanaOuMes.MES)
+                        {
+                            if (this.enumDiaUtil != DiaUtil.NAO_SE_APLICA)
+                                this.enumDiaUtil = DiaUtil.NAO_SE_APLICA;
+                        }
+                        else
+                            if (this.nDia != 0)
+                                this.nDia = 0;
+                    }
+                    else if (columnName == "nDia")
+                    {
+                        if (this.enumSemanaOuMes == SemanaOuMes.SEMANA)
+                            if (this.nDia != 0)
+                                this.nDia = 0;
+                    }
+                }
+                return sValor;
             }
         }
     }

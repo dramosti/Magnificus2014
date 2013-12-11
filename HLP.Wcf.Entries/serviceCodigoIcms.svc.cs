@@ -42,6 +42,7 @@ namespace HLP.Wcf.Entries
                     {
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                            item.idCodigoIcmsPai = (int) objModel.idCodigoIcmsPai;
                             iCodigo_IcmsRepository.Save(item);
                             break;
                         case HLP.Comum.Resources.RecursosBases.statusModel.excluido:

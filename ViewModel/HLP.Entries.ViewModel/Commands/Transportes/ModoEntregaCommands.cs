@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
@@ -19,7 +20,35 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         public ModoEntregaCommands(ModoEntregaViewModel objViewModel)
         {
+
+
             this.objViewModel = objViewModel;
+
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
+                    paramCanExec => DeleteCanExecute());
+
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+                    paramCanExec => SaveCanExecute(paramCanExec));
+
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+                   canExecute: paramCanExec => this.NovoCanExecute());
+
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+                    canExecute: paramCanExec => this.AlterarCanExecute());
+
+            this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
+                    canExecute: paramCanExec => this.CancelarCanExecute());
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
+            canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                        canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+
         }
 
 
@@ -31,7 +60,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             try
             {
                 //TODO: método de serviço para salvar
-                await serviceModoEntrega.SaveAsync(objViewModel.currentModel);
+                this.objViewModel.currentModel = await serviceModoEntrega.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -51,16 +80,18 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         public async void Delete()
         {
+            int iremoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await serviceModoEntrega.DeleteAsync(objViewModel.currentID))
+                    if (await serviceModoEntrega.DeleteAsync((int)objViewModel.currentModel.idModosEntrega))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        iremoved = (int)objViewModel.currentModel.idModosEntrega;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -76,7 +107,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iremoved);
             }
         }
 
@@ -123,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             try
             {
                 //TODO: Implementar serviço de copy
-                await serviceModoEntrega.CopyAsync(objViewModel.currentID);
+                this.objViewModel.currentModel = await serviceModoEntrega.CopyAsync((int)objViewModel.currentModel.idModosEntrega);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)

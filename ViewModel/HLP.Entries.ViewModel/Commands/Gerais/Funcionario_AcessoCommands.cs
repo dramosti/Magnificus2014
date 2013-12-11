@@ -13,7 +13,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     public class Funcionario_AcessoCommands
     {
         Funcionario_AcessoViewModel objViewModel;
-        acessoService.IserviceAcessoClient servico = new acessoService.IserviceAcessoClient();
+        AcessoFuncionarioService.IserviceAcessoClient servico = new AcessoFuncionarioService.IserviceAcessoClient();
 
         public Funcionario_AcessoCommands(Funcionario_AcessoViewModel objViewModel)
         {
@@ -42,6 +42,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+        }
+
+        public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario)
+        {
+            return this.servico.ValidaUsuario(xLogin: xLogin, xSenha: xSenha, idFuncionario: idFuncionario);
         }
 
         private void IniciaCollections()

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.View.WPF.Fiscal
 {
@@ -23,6 +24,13 @@ namespace HLP.Entries.View.WPF.Fiscal
         public WinClassificacaoFiscal()
         {
             InitializeComponent();
+            this.ViewModel = new ClassificacaoFiscalViewModel();
+        }
+
+        public ClassificacaoFiscalViewModel ViewModel
+        {
+            get { return this.DataContext as ClassificacaoFiscalViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }

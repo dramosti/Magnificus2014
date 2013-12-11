@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Crm;
 
 
 namespace HLP.Entries.View.WPF.Crm
@@ -24,6 +25,19 @@ namespace HLP.Entries.View.WPF.Crm
         public WinPersonalidade()
         {
             InitializeComponent();
+            this.viewModel = new PersonalidadeViewModel();
+        }
+
+        public PersonalidadeViewModel viewModel
+        {
+            get
+            {
+                return this.DataContext as PersonalidadeViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

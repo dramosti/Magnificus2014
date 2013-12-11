@@ -13,7 +13,7 @@ namespace HLP.Wcf.Entries
     {
         
         [OperationContract]
-        int Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel);
+        HLP.Entries.Model.Models.Crm.FidelidadeModel Save(HLP.Entries.Model.Models.Crm.FidelidadeModel objModel);
 
         [OperationContract]
         HLP.Entries.Model.Models.Crm.FidelidadeModel GetObjeto(int idObjeto);

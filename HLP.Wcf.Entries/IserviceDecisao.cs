@@ -1,5 +1,4 @@
-﻿using HLP.Entries.Model.Models.Gerais;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,10 +12,10 @@ namespace HLP.Wcf.Entries
     public interface IserviceDecisao
     {
         [OperationContract]
-        DecisaoModel getDecisao(int idDecisao);
+        HLP.Entries.Model.Models.Gerais.DecisaoModel getDecisao(int idDecisao);
 
         [OperationContract]
-        int saveDecisao(DecisaoModel objDecisao);
+        HLP.Entries.Model.Models.Gerais.DecisaoModel saveDecisao(HLP.Entries.Model.Models.Gerais.DecisaoModel objDecisao);
 
         [OperationContract]
         bool deleteDecisao(int idDecisao);

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class Funcionario_AcessoViewModel: ViewModelBase
+    public class Funcionario_AcessoViewModel : ViewModelBase
     {
 
         #region Icommands
@@ -23,12 +23,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-        
 
+        Funcionario_AcessoCommands comm;
         public Funcionario_AcessoViewModel()
         {
-            Funcionario_AcessoCommands comm = new Funcionario_AcessoCommands(objViewModel: this);
-        }       
+            comm = new Funcionario_AcessoCommands(objViewModel: this);
+        }
 
         private FuncionarioModel _currentModel;
 
@@ -40,6 +40,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 _currentModel = value;
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
+        }
+
+        public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario)
+        {
+            return this.comm.ValidaUsuario(xLogin: xLogin, xSenha: xSenha, idFuncionario: idFuncionario);
         }
     }
 }

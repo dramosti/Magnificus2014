@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace HLP.Entries.Model.Models.Comercial
         public ProdutoModel()
             : base(xTabela: "Produto")
         {
+            this.lProdutos_Conversao = new ObservableCollectionBaseCadastros<ConversaoModel>();
         }
 
         private int? _idProduto;
@@ -173,6 +175,22 @@ namespace HLP.Entries.Model.Models.Comercial
             new ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel>();
         public ObservableCollectionBaseCadastros<Produto_RevisaoModel> lProduto_Revisao =
             new ObservableCollectionBaseCadastros<Produto_RevisaoModel>();
+
+
+        private ObservableCollectionBaseCadastros<ConversaoModel> _lProdutos_Conversao;
+
+        public ObservableCollectionBaseCadastros<ConversaoModel> lProdutos_Conversao
+        {
+            get { return _lProdutos_Conversao; }
+            set
+            {
+                _lProdutos_Conversao = value;
+                base.NotifyPropertyChanged(propertyName: "lProdutos_Conversao");
+            }
+        }
+
+
+
     }
 
     public partial class Produto_Fornecedor_HomologadoModel : modelBase

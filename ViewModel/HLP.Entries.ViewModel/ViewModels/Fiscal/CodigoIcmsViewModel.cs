@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Fiscal;
+using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
@@ -25,9 +26,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         
         public CodigoIcmsViewModel()
         {
-            
+            commands = new CodigoIcmsCommand(this);
         }
-        
+        CodigoIcmsCommand commands;
 
         private Codigo_Icms_paiModel _currentModel;
         public Codigo_Icms_paiModel currentModel

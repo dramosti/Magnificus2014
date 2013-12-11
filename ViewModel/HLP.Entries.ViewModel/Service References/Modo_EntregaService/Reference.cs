@@ -85,10 +85,16 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -97,6 +103,19 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -122,6 +141,19 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -164,10 +196,10 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.Modos_entregaModel> GetModoAsync(int idModosEntrega);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceModoEntrega/Save", ReplyAction="http://tempuri.org/IserviceModoEntrega/SaveResponse")]
-        void Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo);
+        HLP.Entries.Model.Models.Transportes.Modos_entregaModel Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceModoEntrega/Save", ReplyAction="http://tempuri.org/IserviceModoEntrega/SaveResponse")]
-        System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.Modos_entregaModel> SaveAsync(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceModoEntrega/Delete", ReplyAction="http://tempuri.org/IserviceModoEntrega/DeleteResponse")]
         bool Delete(int idModosEntrega);
@@ -176,10 +208,10 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
         System.Threading.Tasks.Task<bool> DeleteAsync(int idModosEntrega);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceModoEntrega/Copy", ReplyAction="http://tempuri.org/IserviceModoEntrega/CopyResponse")]
-        int Copy(int idModosEntrega);
+        HLP.Entries.Model.Models.Transportes.Modos_entregaModel Copy(int idModosEntrega);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceModoEntrega/Copy", ReplyAction="http://tempuri.org/IserviceModoEntrega/CopyResponse")]
-        System.Threading.Tasks.Task<int> CopyAsync(int idModosEntrega);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.Modos_entregaModel> CopyAsync(int idModosEntrega);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -217,11 +249,11 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
             return base.Channel.GetModoAsync(idModosEntrega);
         }
         
-        public void Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo) {
-            base.Channel.Save(modo);
+        public HLP.Entries.Model.Models.Transportes.Modos_entregaModel Save(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo) {
+            return base.Channel.Save(modo);
         }
         
-        public System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.Modos_entregaModel> SaveAsync(HLP.Entries.Model.Models.Transportes.Modos_entregaModel modo) {
             return base.Channel.SaveAsync(modo);
         }
         
@@ -233,11 +265,11 @@ namespace HLP.Entries.ViewModel.Modo_EntregaService {
             return base.Channel.DeleteAsync(idModosEntrega);
         }
         
-        public int Copy(int idModosEntrega) {
+        public HLP.Entries.Model.Models.Transportes.Modos_entregaModel Copy(int idModosEntrega) {
             return base.Channel.Copy(idModosEntrega);
         }
         
-        public System.Threading.Tasks.Task<int> CopyAsync(int idModosEntrega) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.Modos_entregaModel> CopyAsync(int idModosEntrega) {
             return base.Channel.CopyAsync(idModosEntrega);
         }
     }

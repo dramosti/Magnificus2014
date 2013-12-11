@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Financeiro;
 
 namespace HLP.Entries.View.WPF.Gerais.Financeiro
 {
@@ -23,6 +24,25 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro
         public WinAgencia()
         {
             InitializeComponent();
+            this.ViewModel = new AgenciaViewModel();
+        }
+
+
+        public AgenciaViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as AgenciaViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+
+        private void dgvEndereco_CurrentCellChanged(object sender, EventArgs e)
+        {
+            this.dgvEndereco.BindingGroup.UpdateSources();
         }
     }
 }

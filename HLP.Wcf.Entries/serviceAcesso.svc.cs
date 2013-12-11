@@ -59,6 +59,7 @@ namespace HLP.Wcf.Entries
                 }
 
                 this.funcionarioRepository.CommitTransaction();
+                objModel.xSenha = Criptografia.Decripta(strTexto: objModel.xSenha ?? "");
                 return objModel;
 
             }

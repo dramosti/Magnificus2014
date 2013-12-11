@@ -10,7 +10,10 @@ namespace HLP.Entries.Model.Models.Fiscal
 {
     public partial class Codigo_Icms_paiModel : modelBase
     {
-        public Codigo_Icms_paiModel() : base("Codigo_Icms_pai") { }
+        public Codigo_Icms_paiModel() : base("Codigo_Icms_pai")         
+        {
+            this.lCodigo_IcmsModel = new ObservableCollectionBaseCadastros<Codigo_IcmsModel>();
+        }
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
 

@@ -15,5 +15,8 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void DeletePorProduto(int idProduto);
         void Delete(int idConversao);
         void Copy(ConversaoModel objConversao);
+        void BeginTransaction();
+        void CommitTransaction();
+        void RollbackTransaction();
     }
 }

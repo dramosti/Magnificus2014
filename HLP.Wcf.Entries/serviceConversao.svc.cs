@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
+using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
@@ -18,6 +19,9 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IConversaoRepository conversaoRepository { get; set; }
 
+        [Inject]
+        public IProdutoRepository produtoRepository { get; set; }
+
         public serviceConversao()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -26,11 +30,18 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public IEnumerable<HLP.Entries.Model.Models.Gerais.ConversaoModel> getlConversao(int idProduto)
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel getlConversao(int idProduto)
         {
             try
             {
-                return this.conversaoRepository.GetAll(idProduto: idProduto);
+                HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto =
+                    produtoRepository.GetProduto(idProduto: idProduto);
+
+                if (objProduto != null)
+                    objProduto.lProdutos_Conversao = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel>
+                        (list: conversaoRepository.GetAll(idProduto: idProduto));
+
+                return objProduto;
             }
             catch (Exception ex)
             {
@@ -40,18 +51,20 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public void savelConversao(Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> lConversao)
+        public Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
 
             try
             {
-                foreach (HLP.Entries.Model.Models.Gerais.ConversaoModel item in lConversao)
+                this.conversaoRepository.BeginTransaction();
+                foreach (HLP.Entries.Model.Models.Gerais.ConversaoModel item in objProduto.lProdutos_Conversao)
                 {
                     switch (item.status)
                     {
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idProduto = (int)objProduto.idProduto;
                                 this.conversaoRepository.Save(conversao: item);
                             }
                             break;
@@ -62,9 +75,13 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
+                this.conversaoRepository.CommitTransaction();
+
+                return objProduto.lProdutos_Conversao;
             }
             catch (Exception ex)
             {
+                this.conversaoRepository.RollbackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }

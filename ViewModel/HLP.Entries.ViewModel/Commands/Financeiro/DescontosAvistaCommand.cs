@@ -42,7 +42,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                         canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
-                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
         }
         #region Implementação Commands
 
@@ -51,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 //TODO: método de serviço para salvar
-                await service.SaveAsync(objViewModel.currentModel);
+                objViewModel.currentModel.idDescontosAvista = await service.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
             catch (Exception ex)
@@ -71,16 +71,19 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await service.DeleteAsync(objViewModel.currentID))
+                    if (await service.DeleteAsync((int)objViewModel.currentModel.idDescontosAvista))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+
+                        idRemoved = (int)objViewModel.currentModel.idDescontosAvista;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -96,7 +99,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -138,7 +141,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {

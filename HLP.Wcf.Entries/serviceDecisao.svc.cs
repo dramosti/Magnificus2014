@@ -1,6 +1,5 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
 using System;
@@ -27,9 +26,8 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public DecisaoModel getDecisao(int idDecisao)
+        public HLP.Entries.Model.Models.Gerais.DecisaoModel getDecisao(int idDecisao)
         {
-
             try
             {
                 return decisaoRepository.GetDecisao(idDecisao: idDecisao);
@@ -39,28 +37,24 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
         }
 
-        public int saveDecisao(DecisaoModel objDecisao)
+        public HLP.Entries.Model.Models.Gerais.DecisaoModel saveDecisao(HLP.Entries.Model.Models.Gerais.DecisaoModel objDecisao)
         {
-
             try
             {
                 this.decisaoRepository.Save(decisao: objDecisao);
-                return (int)objDecisao.idDecisao;
+                return objDecisao;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
         }
 
         public bool deleteDecisao(int idDecisao)
         {
-
             try
             {
                 this.decisaoRepository.Delete(idDecisao: idDecisao);
@@ -71,12 +65,10 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
         }
 
         public int copyDecisao(int idDecisao)
         {
-
             try
             {
                 return this.decisaoRepository.Copy(idDecisao: idDecisao);
@@ -86,7 +78,6 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
         }
     }
 }

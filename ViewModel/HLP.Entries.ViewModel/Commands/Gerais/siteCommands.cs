@@ -64,7 +64,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel.idSite = await this.servico.saveSiteAsync(
+                this.objViewModel.currentModel = await this.servico.saveSiteAsync(
                     objSite: this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
             }
@@ -85,6 +85,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -96,6 +97,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)this.objViewModel.currentModel.idSite;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -111,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 

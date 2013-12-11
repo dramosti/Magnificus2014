@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
@@ -13,9 +14,11 @@ namespace HLP.Entries.Model.Models.Financeiro
         public AgenciaModel()
             : base(xTabela: "Agencia")
         {
+            this.lAgencia_EnderecoModel = new ObservableCollectionBaseCadastros<Agencia_EnderecoModel>();
+            this.lAgencia_ContatoModel = new ObservableCollectionBaseCadastros<Agencia_ContatoModel>();
         }
 
-        
+
         private int? _idAgencia;
         [ParameterOrder(Order = 1)]
         public int? idAgencia
@@ -27,7 +30,7 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "idAgencia");
             }
         }
-        
+
         [ParameterOrder(Order = 2)]
         public int idBanco { get; set; }
         [ParameterOrder(Order = 3)]
@@ -39,11 +42,38 @@ namespace HLP.Entries.Model.Models.Financeiro
         [ParameterOrder(Order = 6)]
         public string xFax { get; set; }
 
+
+
+
+
+
+        private ObservableCollectionBaseCadastros<Agencia_ContatoModel> _lAgencia_ContatoModel;
+
         public ObservableCollectionBaseCadastros<Agencia_ContatoModel> lAgencia_ContatoModel
-            = new ObservableCollectionBaseCadastros<Agencia_ContatoModel>();
+        {
+            get { return _lAgencia_ContatoModel; }
+            set
+            {
+                _lAgencia_ContatoModel = value;
+                base.NotifyPropertyChanged(propertyName: "lAgencia_ContatoModel");
+            }
+        }
+
+
+
+
+        private ObservableCollectionBaseCadastros<Agencia_EnderecoModel> _lAgencia_EnderecoModel;
 
         public ObservableCollectionBaseCadastros<Agencia_EnderecoModel> lAgencia_EnderecoModel
-            = new ObservableCollectionBaseCadastros<Agencia_EnderecoModel>();
+        {
+            get { return _lAgencia_EnderecoModel; }
+            set
+            {
+                _lAgencia_EnderecoModel = value;
+                base.NotifyPropertyChanged(propertyName: "lAgencia_EnderecoModel");
+            }
+        }
+
     }
 
     public partial class Agencia_ContatoModel : modelBase
@@ -104,6 +134,17 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "idEndereco");
             }
         }
+        private TipoEndereco _enumTipoEndereco;
+        public TipoEndereco enumTipoEndereco
+        {
+            get { return _enumTipoEndereco; }
+            set
+            {
+                _enumTipoEndereco = value;
+                _stTipoEndereco = (byte)value;
+            }
+        }
+
         private byte _stTipoEndereco;
         [ParameterOrder(Order = 2)]
         public byte stTipoEndereco
@@ -112,9 +153,10 @@ namespace HLP.Entries.Model.Models.Financeiro
             set
             {
                 _stTipoEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
+                _enumTipoEndereco = (TipoEndereco)value;
             }
         }
+
         private string _xCEP;
         [ParameterOrder(Order = 3)]
         public string xCEP
@@ -126,6 +168,17 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
+        private TipoLogradouro _enumTipoLogradouro;
+        public TipoLogradouro enumTipoLogradouro
+        {
+            get { return _enumTipoLogradouro; }
+            set
+            {
+                _enumTipoLogradouro = value;
+                _stLogradouro = (byte)value;
+            }
+        }
+
         private byte _stLogradouro;
         [ParameterOrder(Order = 4)]
         public byte stLogradouro
@@ -134,7 +187,7 @@ namespace HLP.Entries.Model.Models.Financeiro
             set
             {
                 _stLogradouro = value;
-                base.NotifyPropertyChanged(propertyName: "stLogradouro");
+                _enumTipoLogradouro = (TipoLogradouro)value;
             }
         }
         private string _xEndereco;

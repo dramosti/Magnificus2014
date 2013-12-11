@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Model.Models;
 using HLP.Comum.ViewModel.ViewModels;
+using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
@@ -31,9 +32,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             ConversaoCommands comm = new ConversaoCommands(objViewModel: this);
         }
 
-        ObservableCollectionBaseCadastros<ConversaoModel> _currentModel;
+        ProdutoModel _currentModel;
 
-        public ObservableCollectionBaseCadastros<ConversaoModel> currentModel
+        public ProdutoModel currentModel
         {
             get { return _currentModel; }
             set
