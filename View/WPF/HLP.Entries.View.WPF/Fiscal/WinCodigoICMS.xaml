@@ -37,7 +37,7 @@
         <DockPanel>
             <Expander Header="Tributação" IsExpanded="True">
                 <DataGrid
-					     ItemsSource="{Binding currentModel.lContato_EnderecoModel}"                          
+					     ItemsSource="{Binding currentModel.lCodigo_IcmsModel}"                          
                          IsEnabled="{Binding bIsEnabled}"
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
