@@ -15,7 +15,7 @@
             <WrapPanel Orientation="Vertical">
                 <Components:HlpTextBox 					
 					IsReadOnly="True"
-					Text="{Binding currentModel.idCargaTribMediaStIcms, Converter={StaticResource porcentagemConverter}, Mode=TwoWay, StringFormat=\{0\}%, UpdateSourceTrigger=PropertyChanged}"
+					Text="{Binding currentModel.idCargaTribMediaStIcms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					Height="27" Margin="10,10,257.5,2" Caption="Código" WidthLabel="192" Width="271" HorizontalAlignment="Left"/>
                 <Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -29,7 +29,7 @@
                 </Components:HlpPesquisa>
                 <Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				 FieldPesquisa="ID"	 TableView="vwUF" Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Uf" WidthLabel="192" HorizontalAlignment="Left" Width="500">
                     <Components:HlpPesquisa.Items>
@@ -39,7 +39,7 @@
                 </Components:HlpPesquisa>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,257.5,2" Caption="% Carga Tributária Média" WidthLabel="192" Width="272" HorizontalAlignment="Left"/>
             </WrapPanel>
