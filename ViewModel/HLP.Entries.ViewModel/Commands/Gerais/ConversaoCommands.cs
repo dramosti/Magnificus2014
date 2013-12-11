@@ -73,14 +73,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                if (e.Error.Message != null)
+                if (e.Error != null)
                 {
                     throw new ApplicationException(message: e.Error.Message);
                 }
                 else
                 {
                     this.objViewModel.currentModel.lProdutos_Conversao =
-                        (ObservableCollectionBaseCadastros<ConversaoModel>)e.Result;
+                        new ObservableCollectionBaseCadastros<ConversaoModel>(list:
+                            ((List<ConversaoModel>)e.Result));
                     this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                     this.IniciaCollection();
                 }

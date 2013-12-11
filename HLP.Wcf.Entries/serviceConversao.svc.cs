@@ -56,6 +56,7 @@ namespace HLP.Wcf.Entries
 
             try
             {
+                this.conversaoRepository.BeginTransaction();
                 foreach (HLP.Entries.Model.Models.Gerais.ConversaoModel item in objProduto.lProdutos_Conversao)
                 {
                     switch (item.status)
@@ -63,6 +64,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idProduto = (int)objProduto.idProduto;
                                 this.conversaoRepository.Save(conversao: item);
                             }
                             break;
@@ -73,11 +75,13 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
+                this.conversaoRepository.CommitTransaction();
 
                 return objProduto.lProdutos_Conversao;
             }
             catch (Exception ex)
             {
+                this.conversaoRepository.RollbackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
