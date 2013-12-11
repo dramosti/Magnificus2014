@@ -104,6 +104,12 @@
     <Compile Include="Fiscal\WinStIPI.xaml.cs">
       <DependentUpon>WinStIPI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fiscal\WinTipoDocumento.xaml.cs">
+      <DependentUpon>WinTipoDocumento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fiscal\WinTipoOperacao.xaml.cs">
+      <DependentUpon>WinTipoOperacao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
     </Compile>
@@ -251,6 +257,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fiscal\WinStIPI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinTipoDocumento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fiscal\WinTipoOperacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

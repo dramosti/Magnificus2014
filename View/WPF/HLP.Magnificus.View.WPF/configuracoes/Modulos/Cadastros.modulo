@@ -135,4 +135,10 @@
 <object id="WinStPIS" name="WinStPIS" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Fiscal.WinStPIS, HLP.Entries.View.WPF">
   </object>
+<object id="WinTipoDocumento" name="WinTipoDocumento" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Fiscal.WinTipoDocumento, HLP.Entries.View.WPF">
+  </object>
+<object id="WinTipoOperacao" name="WinTipoOperacao" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Fiscal.WinTipoOperacao, HLP.Entries.View.WPF">
+  </object>
 </objects>

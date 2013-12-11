@@ -79,7 +79,7 @@
                     </Expander>
                 </Grid>
             </TabItem>
-            <TabItem Header="Custos">
+            <TabItem Header="Custos" Height="21.96" VerticalAlignment="Top">
                 <StackPanel>
                     <Expander Header="Parâmetros Custo" Height="436.5" IsExpanded="True">
                         <StackPanel>
