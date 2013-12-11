@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using HLP.Comum.Modules;
 using HLP.Comum.Modules.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
+using System.Windows.Markup;
+using System.Globalization;
 namespace HLP.Magnificus.View.WPF
 {
     /// <summary>
@@ -63,6 +65,24 @@ namespace HLP.Magnificus.View.WPF
             if (false == unhandledException)
             {
             }
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            try
+            {
+                FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata(
+                    XmlLanguage.GetLanguage(
+                    CultureInfo.CurrentCulture.IetfLanguageTag)));
+                base.OnStartup(e);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }            
         }
     }
 }

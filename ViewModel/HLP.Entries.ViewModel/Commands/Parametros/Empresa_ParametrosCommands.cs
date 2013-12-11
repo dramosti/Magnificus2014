@@ -18,8 +18,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         Empresa_ParametrosService.IserviceEmpresaParametrosClient servico = new Empresa_ParametrosService.IserviceEmpresaParametrosClient();
         public Empresa_ParametrosCommands(Empresa_ParametrosViewModel objViewModel)
         {
-            this.objViewModel = objViewModel;
-
+            this.objViewModel = objViewModel;            
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
