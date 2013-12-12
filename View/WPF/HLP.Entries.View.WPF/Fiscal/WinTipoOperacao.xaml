@@ -447,8 +447,8 @@
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Situação tributária do cofins" WidthLabel="300" Width="676" FieldPesquisa="ID" TableView="vwStCOFINS">
 											<Components:HlpPesquisa.Items>
-													<System:String>cCOFINS</System:String>
-													<System:String>xCOFINS</System:String>																		
+													<System:String>cCSTCofins</System:String>
+													<System:String>xCSTCofins</System:String>																		
 												</Components:HlpPesquisa.Items>
 											</Components:HlpPesquisa>
 										<Components:HlpComboBox 
