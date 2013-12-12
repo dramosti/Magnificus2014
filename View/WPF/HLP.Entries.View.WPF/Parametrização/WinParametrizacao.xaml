@@ -8,6 +8,7 @@
         x:Class="HLP.Entries.View.WPF.Parametrização.WinParametrizacao"
         Title="Parâmetros" Height="600" Width="1200">
     <runtime:WindowsBase.Resources>
+        <conv:PorcentagemConverter x:Key="porcentagemConverter"/>
         <conv:MoedaConverter x:Key="MoedaConverter"/>
     </runtime:WindowsBase.Resources>
     <DockPanel LastChildFill="True" >
@@ -255,12 +256,14 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpCheckBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stGeraOPFilhas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stGeraOPFilhas, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="22.968,0,125.224,2" Caption="Gera ordem de produção filhas? " Help="Informar ao sistema que ao gerar uma ordem de produção e a mesma conter em sua engenharia subprodutos (produtos com estruturas própria) e o mesmo não ter em estoque será gerado uma outra ordem de produção referente aos subprodutos " WidthLabel="462"/>
                                 <Components:HlpCheckBox	
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stFechaOPSaldoAproduzir, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stFechaOPSaldoAproduzir, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="22.968,0,125.224,2" Caption="Fechar ordem de produção com saldo a produzir?" Help="Informar ao sistema se poderá fechar ou finalizar a ordem de produção mesmo com saldo aberto a produzir." WidthLabel="462"/>
                                 <Components:HlpPesquisa 
@@ -277,7 +280,10 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="22.968,0,125.224,2" Caption="Operação padrão para ordem de produção para serviços." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para serviços." WidthLabel="462" FieldPesquisa="ID" TableView="vwTipoOperao">
+								Height="27" Margin="22.968,0,125.224,2" 
+                                    Caption="Operação padrão para ordem de produção para serviços." 
+                                    Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para serviços." 
+                                    WidthLabel="462" FieldPesquisa="ID" TableView="vwTipoOperacao">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
@@ -308,17 +314,26 @@
                                     <StackPanel Width="466.5" DockPanel.Dock="Left">
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaPIS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPIS,
+                                            Mode=TwoWay, NotifyOnValidationError=True, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,76.519,-1" Caption="Alíquota PIS " Help="Informar a alíquota do PIS - Programas de Integração Social e de Formação do Patrimônio do Servidor Público" WidthLabel="295"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINS,
+                                            Mode=TwoWay, NotifyOnValidationError=True, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,76.519,-1" Caption="Alíquota COFINS" Help="Informar a alíquota do COFINS - Contribuição para Financiamento da Seguridade Social." WidthLabel="295"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaCSLL, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaCSLL, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,76.519,-1" Caption="Alíquota CSLL" Help="Informar a alíquota da Contribuição Social sobre o Lucro Líquido." WidthLabel="295"/>
                                         <Components:HlpComboBox 
@@ -365,39 +380,46 @@
                                         </Components:HlpComboBox>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stProdutorRural, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stProdutorRural, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,43.993,-1" Caption="Produtor Rural?" Help="Informar se a organização é uma Produtora Rural." WidthLabel="295"/>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stCooperativaAgricola, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stCooperativaAgricola, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,43.993,-1" Caption="Cooperativa Agrícola?" Help="Informar se a organização é uma cooperativa Agrícola." WidthLabel="295"/>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaISSnfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaISSnfServico, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,43.993,-1" Caption="Destaca ISS na nota fiscal de serviços?" Help="Informar se o ISS – Imposto sobre Serviço será destacado na nota fiscal de Serviços." WidthLabel="295"/>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaCSLLnfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaCSLLnfServico, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,43.993,-1" Caption="Destaca CSLL na nota fiscal de serviços?" Help="Informar se a CSLL – Contribuição Social sobre o Lucro Líquido será destacado na nota fiscal de serviços." WidthLabel="295"/>
                                     </StackPanel>
                                     <StackPanel>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaIRRFnfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaIRRFnfServico, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Width="558" Margin="10,10,0,-1" Caption="Destaca IRRF na nota fiscal de serviços?" Help="Informar se o IRRF – Imposto de Renda Retido na Fonte será destacado na nota fiscal de serviços." WidthLabel="394"/>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaPISCOFINSnfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaPISCOFINSnfServico, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Width="558" Margin="10,0,0,-1" Caption="Destaca PIS e COFINS na nota fiscal de serviços?" WidthLabel="394"/>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaINSSnfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaINSSnfServico, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Width="558" Margin="10,0,0,-1" Caption="Destaca INSS na nota fiscal de serviços?" Help="Informar se o INSS – Instituto Nacional de Seguro Social, será destacado na nota fiscal de serviços." WidthLabel="394"/>
                                         <Components:HlpComboBox 
@@ -424,7 +446,8 @@
                                         </Components:HlpComboBox>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgSuframaNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgSuframaNf, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Width="558" Margin="10,0,0,-1" Caption="Imprimi mensagem de SUFRAMA na Nota Fiscal?" Help="Informar se a mensagem obrigatória de SUFRAMA será impressa na Nota Fiscal ou na Nota Fiscal Eletrônica." WidthLabel="394"/>
                                         <Components:HlpComboBox 
@@ -440,7 +463,8 @@
                                         </Components:HlpComboBox>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stIcmsSubstDif, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stIcmsSubstDif, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Width="558" Margin="10,0,0,-1" Caption="Calcula ICMS de Substituição Tributária por Diferença?" Help="Informar se o sistema irá calcular o ICMS de Substituição Tributária por diferença" WidthLabel="394"/>
                                     </StackPanel>
@@ -456,32 +480,44 @@
                                     <StackPanel Width="480" DockPanel.Dock="Left">
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pICMSss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pICMSss,
+                                        StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,10,-1" Caption="Alíquota de ICMS para o super simples" Help="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pISSss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pISSss, 
+                                        StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de ISS para o super simples" Help="Informar a alíquota de ISS – Imposto sobre serviços para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCSLLss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCSLLss, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de CSLL para o super simples" Help="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pIRRFss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pIRRFss, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de IRRF para o super simples" Help="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples" WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPISss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPISss, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de PIS para o super simples" Help="Informar a alíquota do PIS – Programa de Integração Social para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINSss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINSss, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de COFINS para o super simples" Help="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
@@ -496,12 +532,15 @@
 										Height="27" Margin="10,0,10,-1" Caption="Número de Itens para emissão da NFS-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal de serviços, quando for formulário continuo." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pINSSss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pINSSss, 
+                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de INSS para o super simples" Help="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples" WidthLabel="365"/>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stSuperSimples, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stSuperSimples, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Optante do Super Simples?" Help="O Simples Nacional é um regime compartilhado de arrecadação, cobrança e fiscalização de tributos aplicável às Microempresas e Empresas de Pequeno Porte, previsto na Lei Complementar nº 123, de 14 de dezembro de 2006." WidthLabel="365"/>
                                         <Components:HlpComboBox 
@@ -519,22 +558,28 @@
                                     <StackPanel  x:Name="stack2">
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgPadraoSs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgPadraoSs, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="36.333" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,10,0,4" Caption="Imprimi mensagem padrão para o super simples?" Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="300"/>
                                         <Components:HlpPesquisa 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.idObservacaoMsgSuperSimples, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.idObservacaoMsgSuperSimples,
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="36.333" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" Caption="Código da observação para impressão do super simples." WidthLabel="300" Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem padrão do super simples? estiver como opção 1-Sim" FieldPesquisa="ID" TableView="vwObservacao">
+										Height="36.333" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" 
+                                            Caption="Código da observação para impressão do super simples." WidthLabel="300" 
+                                            Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem padrão do super simples? estiver como opção 1-Sim" 
+                                            FieldPesquisa="ID" TableView="vwObservacao">
                                             <Components:HlpPesquisa.Items>
-                                                <System:String>xObservação</System:String>
-                                                <System:String>xDescrição</System:String>
+                                                <System:String>xObservacao</System:String>
+                                                <System:String>xDescricao</System:String>
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgCreditoIcmsSs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgCreditoIcmsSs, 
+                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="37.667" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" Caption="Imprimi mensagem de crédito de ICMS do super Simples? " Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão de crédito de ICMS do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="300"/>
                                         <Components:HlpPesquisa 
@@ -543,8 +588,8 @@
 										IsEnabled="{Binding bIsEnabled}"
 										Height="48" Width="{Binding ElementName=stack2,Path=Width}" Margin="2,0,0,4" Caption="Código da observação para impressão da mensagem de crédito de ICMS do super simples." Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem de crédito de ICMS do super simples? estiver como opção 1-Sim." WidthLabel="300" FieldPesquisa="ID" TableView="vwObservacao">
                                             <Components:HlpPesquisa.Items>
-                                                <System:String>xObservação</System:String>
-                                                <System:String>xDescrição</System:String>
+                                                <System:String>xObservacao</System:String>
+                                                <System:String>xDescricao</System:String>
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                     </StackPanel>
@@ -572,27 +617,32 @@
 									Height="27" Margin="10,0,106,-1" Caption="Quantidade de dias para validade do orçamento" Help="Informar a quantidade de dias validos para o orçamento, após o prazo vencido só terá acesso quando o administrador liberar o orçamento." WidthLabel="364"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaCreditoAprovado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaCreditoAprovado, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,106,-1" Caption="Obriga Análise e aprovação de Crédito?" Help="Informar se será obrigatório a análise para aprovação de crédito." WidthLabel="364"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraOrcamento, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="42" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Orçamento de Vendas" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um orçamento para o cliente" WidthLabel="364"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraPedidoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraPedidoVenda, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Pedido de Vendas" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um pedido de venda para o cliente" WidthLabel="364"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraFaturamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraFaturamento, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Faturamento" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um nf para o cliente" WidthLabel="364"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaUsoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaUsoListaPreco, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,106,-1" Caption="Obriga o uso da Lista de Preço" Help="O sistema obrigará o uso da lista de preço definida no cadastro do cliente, não deixando o uso de nenhuma outra lista de preço" WidthLabel="364"/>
                                 <Components:HlpComboBox 
@@ -617,12 +667,14 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrcamentoProjeto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrcamentoProjeto,
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,106,-1" Caption="Usar projeto no Orçamento" Help="É o mesmo esquema hoje do magnificus, daquele que ao lançar um item no orçamento aparece a pergunta? Se for não será necessário o campo iremos montar uma tela só para projetos, não servirá só para projetos de produtos e sim até para serviços. Pensaremos nisso mais para frente quando chegar Ordem de produção." WidthLabel="364"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAprovacaoPedidoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAprovacaoPedidoVenda, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,106,-1" Caption="Obrigar a aprovação do Pedido de Vendas" Help="Informar se o sistema irá obrigar a aprovação do Pedido de Vendas, após confirmado a obrigação (1-Sim) o sistema não deixará prosseguir os processos após a venda, tais como a emissão do faturamento, geração de Ordem de produção, impressão da Nota Fiscal, etc..." WidthLabel="364"/>
                                 <Components:HlpPesquisa 
@@ -650,12 +702,14 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaCasada, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaCasada, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="356.5" Margin="-125,0,0,2" Caption="Utiliza venda casada?" Help="Sem especificação" WidthLabel="198"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaKitMateria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaKitMaterial, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="356.5" Margin="-125,0,0,2" Caption="Utiliza venda de Kit?" Help="Sem especificação" WidthLabel="198"/>
                                 <Components:HlpComboBox 
@@ -684,12 +738,14 @@
 								Height="27" Margin="10,10,408.256,2" Caption="Mascara para Classes Financeira" Help="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos." WidthLabel="361"/>
                             <Components:HlpCheckBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoCompraGeraPrevisao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoCompraGeraPrevisao, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,408.256,2" Caption="Pedido de Compra gera previsão no financeiro?" Help="Informar ao sistema se ao montar um pedido de compras o sistema irá gerar previsão de pagamento para o financeiro, quando sim serão criados registros de previsão de pagamento, a quantidade de registros dependerá da condição de pagamento, a cada recebimento vinculado ao pedido de compra o sistema elimina de forma automática as previsões, sendo parcial ou total." WidthLabel="361"/>
                             <Components:HlpCheckBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.tPedidoVendaGeraPrevisao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoVendaGeraPrevisao, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,408.256,2" Caption="Pedido de Venda gera previsão no financeiro?" Help="Informar ao sistema se ao montar um pedido de vendas e o mesmo estiver em carteira, o sistema irá gerar previsão de recebimento para o financeiro, quando sim serão criados registros de previsões de recebimento, a quantidade de registros dependerá da condição de pagamento, a cada liberação do pedido de vendas o sistema elimina de forma automática as previsões, sendo parcial ou total." WidthLabel="361"/>
                             <Components:HlpComboBox 
@@ -704,12 +760,14 @@
                             </Components:HlpComboBox>
                             <Components:HlpCheckBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stCreditoAprovado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stCreditoAprovado, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,408.256,2" Caption="Credito aprovado?" Help="Informar ao sistema se para aprovar uma venda será necessário estar com o crédito aprovado, para isso o cliente terá que passar por aprovação através dos parâmetros financeiro de credito." WidthLabel="361"/>
                             <Components:HlpCheckBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stBloqueiaClientePosCartaCobranca, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stBloqueiaClientePosCartaCobranca, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,408.256,2" Caption="Bloqueia Cliente após carta de cobrança enviada." Help="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos." WidthLabel="361"/>
                         </StackPanel>

@@ -34,7 +34,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                             throw new Exception("Campo FieldPesquisa não foi configurado!");
                         if (UndTrabalho.ColunaExistis(_TableView, _FieldPesquisa) == false)
                             throw new Exception(string.Format("Campo FieldPesquisa ({0}) configurado no componente não existe!", _FieldPesquisa));
-                                                                        
+
                         foreach (string col in (_Items.ToList()).Distinct())
                         {
                             if (UndTrabalho.ColunaExistis(_TableView, col.ToString()))
@@ -47,7 +47,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                         }
 
                         if (sDisplay == string.Empty)
-                            throw new Exception("Nenhuma coluna válida foi encontrada!");
+                            throw new Exception(string.Format("Nenhuma coluna válida foi encontrada na view {0} !", _TableView));
 
                         StringBuilder sQuery = new StringBuilder();
                         sQuery.Append("SELECT ");
@@ -83,7 +83,7 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
                 }
                 else
                 {
-                    throw new Exception("Tabela/View não existente na base de dados!");
+                    throw new Exception(string.Format("Tabela/View de nome {0}, não existente na base de dados!", _TableView));
                 }
             }
             catch (Exception ex)

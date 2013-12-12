@@ -90,6 +90,7 @@ namespace HLP.Wcf.Entries
                 foreach (var item in objRota.lRota_Praca)
                 {
                     item.idRota = (int)objRota.idRota;
+                    item.idRotaPraca = null;
                     iRota_pracaRepository.Copy(item);
                 }
                 iRotaRepository.CommitTransaction();

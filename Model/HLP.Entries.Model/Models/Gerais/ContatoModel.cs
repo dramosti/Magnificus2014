@@ -123,7 +123,12 @@ namespace HLP.Entries.Model.Models.Gerais
     }
     public partial class Contato_EnderecoModel : modelBase
     {
-        public Contato_EnderecoModel() : base("Contato_Endereco") { }
+        public Contato_EnderecoModel()
+            : base("Contato_Endereco")
+        {
+            enumTipoEndereco = TipoEndereco.COMERCIAL;
+            enumTipoLogradouro = TipoLogradouro.AEROPORTO;
+        }
 
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]

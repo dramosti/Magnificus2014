@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<objects xmlns="http://www.springframework.net" default-lazy-init="true">
+<objects xmlns="http://www.springframework.net" default-lazy-init="true"> 
+  <object id="WinsStPIS" name="WinsStPIS" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Fiscal.WinsStPIS, HLP.Entries.View.WPF">
+  </object>
   <object id="WinDesconto" name="WinDesconto" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
   </object>
@@ -132,9 +135,7 @@
 <object id="WinStIPI" name="WinStIPI" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Fiscal.WinStIPI, HLP.Entries.View.WPF">
   </object>
-<object id="WinStPIS" name="WinStPIS" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinStPIS, HLP.Entries.View.WPF">
-  </object>
+
 <object id="WinTipoDocumento" name="WinTipoDocumento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Fiscal.WinTipoDocumento, HLP.Entries.View.WPF">
   </object>

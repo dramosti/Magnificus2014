@@ -20,10 +20,7 @@ namespace HLP.Wcf.Entries
 
         [Inject]
         public IPlano_pagamento_linhasRepository iPlano_pagamento_linhasRepository { get; set; }
-
-
-
-
+        
         public servicePlanoPagamento() 
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -47,6 +44,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idPlanoPagamento = (int)objPlano_pagamento.idPlanoPagamento;
                                 iPlano_pagamento_linhasRepository.Save(item);
                             }
                             break;
@@ -97,6 +95,7 @@ namespace HLP.Wcf.Entries
                 foreach (var item in objPlano_pagamento.lPlano_pagamento_linhasModel)
                 {
                     item.idPlanoPagamento = (int)objPlano_pagamento.idPlanoPagamento;
+                    item.idLinhasPagamento = null;
                     iPlano_pagamento_linhasRepository.Copy(item);
                 }
                 iPlano_pagamentoRepository.CommitTransaction();

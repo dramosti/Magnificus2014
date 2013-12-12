@@ -76,6 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -86,6 +87,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)this.objViewModel.currentModel.idCSTPis;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -101,7 +103,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -142,7 +144,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {

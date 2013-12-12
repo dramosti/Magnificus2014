@@ -77,12 +77,16 @@ namespace HLP.Comum.ViewModel.ViewModels
             this._lWindows = new ObservableCollection<windowsModel>();
             windowsModel objWindow;
 
-            foreach (var item in GerenciadorModulo.Instancia.Modulos[0].objectModulo.lFormularios)
+            foreach (var item in Modulo.lobjectModulo)
             {
-                objWindow = new windowsModel();
-                objWindow.xName = item.xName;
-                objWindow.xHeader = this.getHeaderWindow(xNomeForm: objWindow.xName);
-                this.lWindows.Add(item: objWindow);
+                foreach (var win in item.lFormularios)
+                {
+                    objWindow = new windowsModel();
+                    objWindow.xName = win.xId;
+                    objWindow.xHeader = win.xName;
+                    this.lWindows.Add(item: objWindow);
+                }
+
             }
         }
 

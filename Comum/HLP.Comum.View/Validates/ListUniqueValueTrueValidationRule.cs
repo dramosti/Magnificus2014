@@ -19,7 +19,11 @@ namespace HLP.Comum.View.Validates
 
             BindingGroup bg = value as BindingGroup;
             DataGrid dgv = bg.Owner as DataGrid;
-            if (dgv.CurrentItem != null)
+
+            if (dgv.CurrentItem == null)
+                return ValidationResult.ValidResult;
+
+            if (dgv.Items.IndexOf(dgv.CurrentItem) >= 0)
             {
                 if (dgv.Items.Count > 1)
                 {

@@ -104,12 +104,16 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                //objModel = this.GetObjeto(1064);
                 iCodigo_Icms_paiRepository.BeginTransaction();
+
+               
 
                 iCodigo_Icms_paiRepository.Copy(objModel);
                 foreach (var item in objModel.lCodigo_IcmsModel)
                 {
                     item.idCodigoIcmsPai = (int)objModel.idCodigoIcmsPai;
+                    item.idCodigoIcms = null;
                     iCodigo_IcmsRepository.Save(item);
                 }
                 iCodigo_Icms_paiRepository.CommitTransaction();

@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios;   
+using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.View.WPF.Fiscal
 {
@@ -23,6 +24,15 @@ namespace HLP.Entries.View.WPF.Fiscal
         public WinsStPIS()
         {
             InitializeComponent();
+            this.ViewModel = new Situacao_tributaria_pisViewModel();
         }
+
+        public Situacao_tributaria_pisViewModel ViewModel
+        {
+            get { return this.DataContext as Situacao_tributaria_pisViewModel; }
+            set { this.DataContext = value; }
+        }
+
+
     }
 }
