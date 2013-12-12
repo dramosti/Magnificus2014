@@ -788,7 +788,7 @@
                                 UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
                                 <DataGridTextColumn                                
                                 Header="Certificação" Width="200"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
+                                ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCertificacao, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn                                

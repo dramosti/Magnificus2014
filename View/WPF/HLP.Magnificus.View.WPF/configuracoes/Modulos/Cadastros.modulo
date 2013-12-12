@@ -1,8 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<objects xmlns="http://www.springframework.net" default-lazy-init="true"> 
-  <object id="WinsStPIS" name="Situação Tributária de PIS" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinsStPIS, HLP.Entries.View.WPF">
-  </object>
+<objects xmlns="http://www.springframework.net" default-lazy-init="true">   
   <object id="WinDesconto" name="Desconto" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
   </object>
@@ -135,7 +132,9 @@
 <object id="WinStIPI" name="Situação_Tributária_de_IPI" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Fiscal.WinStIPI, HLP.Entries.View.WPF">
   </object>
-
+  <object id="WinsStPIS" name="Situação Tributária de PIS" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Fiscal.WinsStPIS, HLP.Entries.View.WPF">
+  </object>
 <object id="WinTipoDocumento" name="Tipo_de_Documento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Fiscal.WinTipoDocumento, HLP.Entries.View.WPF">
   </object>
@@ -144,5 +143,8 @@
   </object>
 <object id="WinCalendario" name="Calendário" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinCalendario, HLP.Entries.View.WPF">
+  </object>
+<object id="WinTransportadora" name="Transportadora" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Transportes.WinTransportadora, HLP.Entries.View.WPF">
   </object>
 </objects>

@@ -209,6 +209,9 @@
       <DependentUpon>WinRota.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\UIUtilities\UserInterfaceUtilities.cs" />
+    <Compile Include="Transportes\WinTransportadora.xaml.cs">
+      <DependentUpon>WinTransportadora.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validates\ValidaUsuarioValidationRule.cs" />
     <Page Include="Comercial\WinCanalVenda.xaml">
       <SubType>Designer</SubType>
@@ -412,6 +415,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transportes\WinRota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transportes\WinTransportadora.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
