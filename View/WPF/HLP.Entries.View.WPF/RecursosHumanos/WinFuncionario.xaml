@@ -770,7 +770,7 @@
                 <AdornerDecorator>
                     <Grid>
                         <DataGrid
-                            Name="gridCertificacoes"
+                          Name="gridCertificacoes"
 						  ItemsSource="{Binding currentModel.lFuncionario_Certificacao}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
@@ -793,10 +793,9 @@
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn                                
                                 Header="Data de Conclusão" Width="200"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=dConclusao, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,
-                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
+                                ElementStyle="{StaticResource CellErrorStyle}"
+                                Binding="{Binding Path=dConclusao, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,NotifyOnValidationError=True, ValidatesOnDataErrors=True}">                                    
+								</DataGridTextColumn>
                                 <DataGridTextColumn                                
                                 Header="Data de Validade" Width="200"
                                     ElementStyle="{StaticResource CellErrorStyle}"

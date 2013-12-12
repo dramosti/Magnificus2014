@@ -6,7 +6,7 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinTipoOperacao"
-        Title="Tipo de Operação" Height="660" Width="1024">
+        Title="Tipo de Operação" Height="660" Width="1200">
 	<Grid>
 		<TabControl>
 			<TabItem Header="Principal">
@@ -382,32 +382,385 @@
 							</AdornerDecorator>
 						</TabItem>
 						<TabItem Header="Pis e Cofins/icms/ipi">
+						  <AdornerDecorator>
 							<DockPanel LastChildFill="True">
-								<Expander Header="Pis e Cofins" DockPanel.Dock="Top" IsExpanded="True" Height="200">
+								<Expander Header="Pis e Cofins" DockPanel.Dock="Top" IsExpanded="True" Height="272">
 									<WrapPanel Orientation="Vertical">
-										<Components:HlpTextBox Height="27" Margin="10,10,10,1" HorizontalAlignment="Left" Caption="Coeficiente de subst tributária do cofins" WidthLabel="300"/>
-										<Components:HlpTextBox Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Alíquota de pis" WidthLabel="300"/>
-										<Components:HlpTextBox Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Alíquota de cofins" WidthLabel="300"/>
-										<Components:HlpComboBox Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Calcula pis e cofins?" WidthLabel="300"/>
-										<Components:HlpComboBox Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Regime do pis e cofins" WidthLabel="300"/>
-										<Components:HlpPesquisa Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Situação tributária" WidthLabel="300"/>
-										<Components:HlpPesquisa Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Situação tributária do cofins" WidthLabel="300"/>
-										<Components:HlpComboBox Height="37" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Compõe a base de cálculo normal do pis e cofins" WidthLabel="334" Width="484"/>
-										<Components:HlpComboBox Height="37" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Compõe a base de cálculo da subst. tributária do pis" WidthLabel="304" Width="489"/>
-										<Components:HlpComboBox Height="42" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Compõe a base de cálculo da subst. tributária do cofins" WidthLabel="300"/>										
+										<Components:HlpTextBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.nCoeficienteSubstituicaoTributariaPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,10,10,1" HorizontalAlignment="Left" Caption="Coeficiente de subst tributária do pis" WidthLabel="300" Width="449"/>
+										<Components:HlpTextBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.nCoeficienteSubstituicaoTributariaCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Coeficiente de subst tributária do cofins" WidthLabel="300" Width="449"/>
+										<Components:HlpTextBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Alíquota de pis" WidthLabel="300" Width="449"/>
+										<Components:HlpTextBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Alíquota de cofins" WidthLabel="300" Width="449"/>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stCalculaPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Calcula pis e cofins?" WidthLabel="300">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Não</System:String>
+													<System:String>1-Normal</System:String>
+													<System:String>2-Subst Tributária</System:String>																																							
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stRegimeTributacaoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Regime do pis e cofins" WidthLabel="300" Width="536">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Cumulativo</System:String>
+													<System:String>1-Não Cumulativo</System:String>																																																				
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>
+										<Components:HlpPesquisa 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Situação tributária do pis" WidthLabel="300" Width="676" FieldPesquisa="ID" TableView="vwStPIS">
+											<Components:HlpPesquisa.Items>
+													<System:String>cCSTPis</System:String>
+													<System:String>xCSTPis</System:String>																		
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+										<Components:HlpPesquisa 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Situação tributária do cofins" WidthLabel="300" Width="676" FieldPesquisa="ID" TableView="vwStCOFINS">
+											<Components:HlpPesquisa.Items>
+													<System:String>cCOFINS</System:String>
+													<System:String>xCOFINS</System:String>																		
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stCompoeBaseNormalPiscofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="37" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Compõe a base de cálculo normal do pis e cofins" WidthLabel="383" Width="535">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Produtos</System:String>
+													<System:String>1-Produtos+IPI</System:String>
+													<System:String>2-Produtos+Ipi+Frete</System:String>
+													<System:String>3-Produtos+ipi+frete+seguro+outras dispesas</System:String>
+													<System:String>4-Nenhum</System:String>																																																				
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stCompoeBaseSubtTribPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="37" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Compõe a base de cálculo da subst. tributária do pis" WidthLabel="383" Width="535">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Produtos</System:String>
+													<System:String>1-Produtos+IPI</System:String>
+													<System:String>2-Produtos+Ipi+Frete</System:String>
+													<System:String>3-Produtos+ipi+frete+seguro+outras dispesas</System:String>
+													<System:String>4-Nenhum</System:String>																																																				
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stCompoeBaseSubtTribCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="42" Margin="10,0,10,1" HorizontalAlignment="Left" Caption="Compõe a base de cálculo da subst. tributária do cofins" WidthLabel="383" Width="535">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Produtos</System:String>
+													<System:String>1-Produtos+IPI</System:String>
+													<System:String>2-Produtos+Ipi+Frete</System:String>
+													<System:String>3-Produtos+ipi+frete+seguro+outras dispesas</System:String>
+													<System:String>4-Nenhum</System:String>																																																				
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>										
 									</WrapPanel>									
 								</Expander>
-								<Expander Header="Icms" IsExpanded="True" DockPanel.Dock="Top" Height="200">	
-									<WrapPanel Orientation="Vertical">										
+								<Expander Header="Icms" IsExpanded="True" DockPanel.Dock="Top" Height="100">	
+									<WrapPanel Orientation="Vertical">
+										<Components:HlpCheckBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											IsChecked="{Binding currentModel.stCalculaIcmsSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Calcula icms subst. tributária" WidthLabel="401"/>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stCompoeBaseIcmsSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo de icms subst. tributária icms?" WidthLabel="401" Width="551.667">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Produtos</System:String>
+													<System:String>1-Produtos+IPI</System:String>
+													<System:String>2-Produtos+Ipi+Frete</System:String>
+													<System:String>3-Produtos+ipi+frete+seguro+outras dispesas</System:String>
+													<System:String>4-Nenhum</System:String>																																																				
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>																															
 									</WrapPanel>							
 								</Expander>
 								<Expander Header="IPI" IsExpanded="True">
-									<WrapPanel Orientation="Vertical">										
+									<WrapPanel Orientation="Vertical">
+										<Components:HlpTextBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.pIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Alíquota de ipi" WidthLabel="244" Width="393.5"/>
+										<Components:HlpComboBox 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											SelectedIndex="{Binding currentModel.stCompoeBaseIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo de ipi?" WidthLabel="244">
+											<Components:HlpComboBox.Items>
+													<System:String>0-Produtos</System:String>
+													<System:String>1-Produtos+Frete</System:String>
+													<System:String>2-Produtos+Frete+Seguro+Outras Despesas</System:String>
+													<System:String>3-Nenhum</System:String>																																																																	
+												</Components:HlpComboBox.Items>
+											</Components:HlpComboBox>	
+										<Components:HlpPesquisa 
+											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											Text="{Binding currentModel.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Situação tributária de ipi" WidthLabel="244" Width="521" TableView="vwStIPI" FieldPesquisa="ID">
+											<Components:HlpPesquisa.Items>
+													<System:String>cCSTIpi</System:String>
+													<System:String>xCSTIpi</System:String>																		
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>																				
 									</WrapPanel>
 								</Expander>
 							</DockPanel>
+						  </AdornerDecorator>
 						</TabItem>
 					</TabControl>
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Redução base cálculo">
+				<AdornerDecorator>
+					<DataGrid
+						  ItemsSource="{Binding currentModel.lFuncionario_Certificacao}"                          
+                          IsEnabled="{Binding bIsEnabled}"
+                          AutoGenerateColumns="False" 
+                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                          CanUserDeleteRows="True"
+                          CanUserAddRows="True">
+						<DataGrid.Columns>
+							<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="UF" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="*"/>
+							<DataGridTextColumn 
+							 ElementStyle="{StaticResource CellErrorStyle}"
+                             Binding="{Binding Path=pReducaoIcms, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+							 Header="% de redução de base icms" Width="200"/>
+							<DataGridTextColumn 
+							 ElementStyle="{StaticResource CellErrorStyle}"
+							 Binding="{Binding Path=pReducaoIcmsSubstTributaria, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+							 Header="% de redução de base icms subst. tributária" Width="250"/>
+						</DataGrid.Columns>						
+					</DataGrid>						
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Produção">
+				<AdornerDecorator>
+					<Expander Header="Produção" IsExpanded="True">
+						<WrapPanel Orientation="Vertical">
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stBaixaMaterialOp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Quando baixa o material na ordem de produção?" WidthLabel="365">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Não baixa</System:String>
+												<System:String>1-Na geração da op</System:String>
+												<System:String>2-Apontamento</System:String>																																																																														
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stExplosaoMatOp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Explosão de material na op" WidthLabel="365">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Um nível</System:String>
+												<System:String>1-Todos os níveis</System:String>																																																																																										
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpCheckBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								IsChecked="{Binding currentModel.stEstoqueProdFimOP, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Estoque de produto no encerramento de op?" WidthLabel="365"/>
+							<Components:HlpCheckBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								IsChecked="{Binding currentModel.stVinculaPedidoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Vincular pedido de vendas?" WidthLabel="365"/>							
+						</WrapPanel>
+					</Expander>
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Importação">
+				<AdornerDecorator>
+					<Expander Header="Importação" IsExpanded="True">
+						<WrapPanel Orientation="Vertical">
+							<Components:HlpTextBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Alíquota de ii" WidthLabel="303" Width="420"/>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeBaseIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo do ipi?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Valor CIF</System:String>
+												<System:String>1-Valor CIF+Valor do II</System:String>
+												<System:String>2-Valor Cif+valor do ii +frete</System:String>
+												<System:String>3-Valor cif+Valor do 11+Frete+Seguro+outras despesas</System:String>																																																																																										
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeFatorIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o cálculo do fator de icms?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-((100-%ICMS)/100)</System:String>																																																																																																						
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeBaseIcmsOculto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo do icms oculto?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Valor CIF</System:String>
+												<System:String>1-Valor CIF+Valor do II</System:String>
+												<System:String>2-Valor Cif+valor do ii +frete</System:String>
+												<System:String>3-Valor cif+Valor do 11+Frete+Seguro+outras despesas</System:String>																																																																																										
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeIcmsOculto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o cálculo do icms oculto?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-BASE ICMS OCULTO X %icms</System:String>																																																																																																						
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeFatorPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o cálculo do fator pis e cofins?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-(100-(%pis+%cofins)/100)</System:String>																																																																																																						
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeBasePis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo do pis?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Valor CIF</System:String>
+												<System:String>1-Valor CIF+Valor do II</System:String>
+												<System:String>2-Valor Cif+valor do ii+icms imbutido</System:String>
+												<System:String>3-Valor cif+icms imbutido</System:String>																																																																																																																		
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoePis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o cálculo do pis?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Base do pis x %pis</System:String>																																																																																																						
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeBaseCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo do cofins?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Valor CIF</System:String>
+												<System:String>1-Valor CIF+Valor do II</System:String>
+												<System:String>2-Valor Cif+valor do ii+icms imbutido</System:String>
+												<System:String>3-Valor cif+icms imbutido</System:String>																																																																																																																		
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 								
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o cálculo do cofins?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Valor CIF</System:String>
+												<System:String>1-Valor CIF+Valor do II</System:String>
+												<System:String>2-Valor Cif+valor do ii+icms imbutido</System:String>
+												<System:String>3-Valor cif+icms imbutido</System:String>																																																																																																																		
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeBaseIcmsNormal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo do icms normal?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-(VALOR CIF / FATOR ICMS)</System:String>
+												<System:String>1-((VALOR CIF + VALOR DO II) / FATOR ICMS)</System:String>
+												<System:String>2-((VALOR CIF + VALOR DO II + VALOR DO IPI) / FATOR ICMS)</System:String>
+												<System:String>3-((VALOR CIF + VALOR DO II + VALOR DO IPI + VALOR DO PIS) / FATOR ICMS)</System:String>
+												<System:String>4-((VALOR CIF + VALOR DO II + VALOR DO IPI + VALOR DO PIS + VALOR DO COFINS) / FATOR ICMS)</System:String>
+												<System:String>5-((VALOR CIF + VALOR DO II + VALOR DO IPI + VALOR DO PIS + VALOR DO COFINS + VALOR SISCOMEX) / FATOR ICMS)</System:String>
+												<System:String>6-((VALOR CIF + VALOR DO II + VALOR DO IPI + VALOR DO PIS + VALOR DO COFINS + VALOR SISCOMEX + FRETE) / FATOR ICMS)</System:String>
+												<System:String>7-((VALOR CIF + VALOR DO II + VALOR DO IPI + VALOR DO PIS + VALOR DO COFINS + VALOR SISCOMEX + FRETE+SEGURO+OUTRAS DESPESAS) / FATOR ICMS))</System:String>																																																																																																																		
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeIcmsNormal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o cálculo do icms normal?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-Base icms normal x %icms</System:String>																																																																																																						
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeValorProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o valor total dos produtos?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-VALOR CIF</System:String>
+												<System:String>1-VALOR CIF+VALOR DO II</System:String>
+												<System:String>2-BASE ICMS NORMAL</System:String>																																																																																																						
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+							<Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.stCompoeValorNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Compõe o valor total da nf?" WidthLabel="303">
+								<Components:HlpComboBox.Items>
+												<System:String>0-VALOR CIF+VALOR COM II</System:String>																																																																																																																		
+										</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>					
+						</WrapPanel>
+					</Expander>
 				</AdornerDecorator>
 			</TabItem>
 		</TabControl>        
