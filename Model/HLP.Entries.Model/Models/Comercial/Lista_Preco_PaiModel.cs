@@ -13,6 +13,7 @@ namespace HLP.Entries.Model.Models.Comercial
         public Lista_Preco_PaiModel()
             : base(xTabela: "Lista_Preco_Pai")
         {
+            this.lLista_preco = new ObservableCollectionBaseCadastros<Lista_precoModel>();
         }
 
         [ParameterOrder(Order = 1)]
