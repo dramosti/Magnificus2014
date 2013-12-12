@@ -83,7 +83,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 {
                     objWindow = new windowsModel();
                     objWindow.xName = win.xId;
-                    objWindow.xHeader = win.xName;
+                    objWindow.xHeader = win.xName.Replace('_',' ');
                     this.lWindows.Add(item: objWindow);
                 }
 
