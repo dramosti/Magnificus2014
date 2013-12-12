@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.Model.Fiscal;
 using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.ViewModel.Commands.Fiscal
@@ -47,14 +48,30 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         
         }
 
+        private void Inicia_Collections()
+        {
+            this.objViewModel.currentModel.lTipo_documento_oper_validaModel.CollectionCarregada();
+        }
+
         #region Implementação Commands
 
         public async void Save()
         {
             try
             {
+                foreach (int id in this.objViewModel.currentModel.lTipo_documento_oper_validaModel.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lTipo_documento_oper_validaModel.Add(
+                        new Tipo_documento_oper_validaModel
+                        {
+                            idTipoDocumentoOperValida = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+
                 this.objViewModel.currentModel.idTipoDocumento = await this.servico.SaveAsync(this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.Inicia_Collections();
             }
             catch (Exception ex)
             {
@@ -73,6 +90,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -83,6 +101,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)this.objViewModel.currentModel.idTipoDocumento;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -98,7 +117,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -139,7 +158,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {

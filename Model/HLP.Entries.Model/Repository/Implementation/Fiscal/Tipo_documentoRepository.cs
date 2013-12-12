@@ -78,6 +78,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
         public int Copy(int idTipoDocumento)
         {
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
                          "dbo.Proc_copy_tipo_documento",
                           idTipoDocumento);
         }

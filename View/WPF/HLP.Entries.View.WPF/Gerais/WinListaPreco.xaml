@@ -2,136 +2,246 @@
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinListaPreco"
-        Title="Listas de Preço" Height="660" Width="1024">
-	<DockPanel LastChildFill="True">
-		<Expander Header="Expander" Height="262.5" IsExpanded="True" DockPanel.Dock="Top">
-		  <DockPanel LastChildFill="True">
-			<StackPanel Width="571" DockPanel.Dock="Left" >
-				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+        Title="Listas de Preço" Height="660" Width="1024" NameView="vwListaPrecoPai"
+    >
+    <Window.Resources>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lResultConversao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwUnidadeMedidaToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        
+        <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwProdutoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <Expander Header="Expander" Height="262.5" IsExpanded="True" DockPanel.Dock="Top">
+            <DockPanel LastChildFill="True">
+                <StackPanel Width="571" DockPanel.Dock="Left" >
+                    <Components:HlpTextBox 
+					Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay}"
+					IsEnabled="False"
 					Height="27" Margin="10,10,160.5,1" Caption="Código" Help="Chave principal do registro da Origem de Venda" WidthLabel="242"/>
-				<Components:HlpTextBox 
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xCodigoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,160.5,1" Caption="Código da Lista de Preço " Help="Digite um código para a recém-criada Lista de preço " WidthLabel="242"/>
-				<Components:HlpTextBox 
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,1" Caption="Descrição " Help="Descrição da Lista de preço. " WidthLabel="242"/>
-				<Components:HlpDateTimePicker 
+                    <Components:HlpDateTimePicker 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,106.5,1" Caption="Data de Criação da Lista de Preço" Help="Este campo mostra a data em que a lista de preços foi gerada " WidthLabel="242"/>
-				<Components:HlpComboBox 
+                    <Components:HlpComboBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					SelectedValue="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					SelectedIndex="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,106.5,1" Caption="Tipo de Atualização" Help="Informar o tipo de atualização para o campo Preço de Venda para essa lista de preço, elas podem ser Manual ou Automática." WidthLabel="242">
-					<Components:HlpComboBox.Items>
-						<System:String>0-Automatica</System:String>
-                        <System:String>1-Manual</System:String>
-					</Components:HlpComboBox.Items>
-				 </Components:HlpComboBox>
-				<Components:HlpPesquisa 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Automatica</System:String>
+                            <System:String>1-Manual</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.cListaPrecoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,1" Caption="Lista de Preço Origem" Help="Informar qual é a Lista de Preço Origem quando a Lista for automática, o campo só é disponibilizado quando a lista for automática." WidthLabel="242" FieldPesquisa="ID" TableView="vwListaPrecoPai">
-					<Components:HlpPesquisa.Items>
-						<System:String>xCodigoListaPreco</System:String>
-						<System:String>xLista</System:String>
-					</Components:HlpPesquisa.Items>
-				</Components:HlpPesquisa>
-				<Components:HlpTextBox 
+                        <Components:HlpPesquisa.Items>
+                            <System:String>xCodigoListaPreco</System:String>
+                            <System:String>xLista</System:String>
+                        </Components:HlpPesquisa.Items>
+                    </Components:HlpPesquisa>
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.pPercentual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
+                        Converter={StaticResource PorcentagemConverter}, StringFormat='\{0\}%',
+                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,160.5,1" Caption="Percentual" Help="Este campo serve para se definir o % de acréscimo (valor positivo) ou % de desconto (valor negativo) para a lista que está sendo mostrada na tela e definida como automática, porém para este tipo de cálculo o sistema pegará sempre como base a lista 00001." WidthLabel="242"/>
-				<Button Content="Gerar Lista" Height="27" Margin="251.5,0,160.5,1"/>
-			</StackPanel>
-			<StackPanel>
-				<Components:HlpTextBox 
+                    <Button Content="Gerar Lista" Height="27" Margin="251.5,0,160.5,1"/>
+                </StackPanel>
+                <StackPanel>
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.nDiasSemAtualicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="36" Margin="10,10,81,1" Caption="N.° dias sem Atualização no valor de custo" Help="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campo" WidthLabel="222"/>
-				<Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					IsChecked="{Binding currentModel.stContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					IsChecked="{Binding currentModel.stContrato, Mode=TwoWay, 
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,1" Caption="É Contrato" WidthLabel="222"/>
-				<Components:HlpTextBox 
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xNrContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,81,1" Caption="Nº do Contrato" WidthLabel="222"/>
-				<Components:HlpDateTimePicker 
+                    <Components:HlpDateTimePicker 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,1" Caption="Data de validade do Contrato" WidthLabel="222"/>
-				<Components:HlpTextBox 
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, 
+                        Converter={StaticResource PorcentagemConverter}, StringFormat='\{0\}%',
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,81,1" Caption="Desconto Máximo" WidthLabel="222"/>
-				<Components:HlpTextBox 
+                    <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, 
+                        Converter={StaticResource PorcentagemConverter}, StringFormat='\{0\}%',
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,81,1" Caption="Acréscimo Máximo" WidthLabel="222"/>
-				<Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, 
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,1" Caption="Ativo ?" WidthLabel="222"/>
-				
-			</StackPanel>
-		  </DockPanel>
-		</Expander>
-		<Expander Header="Produtos" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
-			<DockPanel LastChildFill="True">
-				<DockPanel DockPanel.Dock="Top" Height="35">
-					<Button Content="Atribuição Coletiva" Height="27" Width="121" DockPanel.Dock="Left" Margin="0,0,20,0" />
-					<Button Content="Alteração no preço de venda/custo do produto" Height="27" Width="271" DockPanel.Dock="Left" Margin="0,0,20,0" />
-					<Button Content="Carregar todos os produtos" Height="27" Width="157.5" DockPanel.Dock="Left" HorizontalAlignment="Left" />					
-				</DockPanel>
-				<DockPanel>
-					<DataGrid
-						 IsEnabled="{Binding bIsEnabled}"
-                          AutoGenerateColumns="False" 
-                          SelectionUnit="CellOrRowHeader" 
-						  CanUserReorderColumns="False"
-                          CanUserDeleteRows="True"
-                          CanUserAddRows="True">
-						<DataGrid.Columns>
-							<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Produto" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="100"/>
-							<DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" Header="Un. de Medida" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Custo do produto" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=pDesconto, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Porcentagem de Desconto" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=pComissao, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Custo de Comissão" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=pOutros, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Outros" Width="100"/>
-							<DataGridTextColumn Binding="{Binding Path=pLucro, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Margem de Lucro" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=vVenda, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Valor de Venda" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=pDescontoMaximo, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Desconto Máximo" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=AcressimoMaximo, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Acréscimo Máximo" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Comissão a vista" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Comissão a prazo" Width="150"/>
-							<DataGridTextColumn Binding="{Binding Path=nDistanciaProximaCidade, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Última alteração no custo" Width="150"/>
-						</DataGrid.Columns>
-					</DataGrid>					
-				</DockPanel>
-			</DockPanel>
-			
-		</Expander>
-        
-	</DockPanel>
+
+                </StackPanel>
+            </DockPanel>
+        </Expander>
+        <Expander Header="Produtos" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
+            <DockPanel LastChildFill="True">
+                <DockPanel DockPanel.Dock="Top" Height="35">
+                    <Button Content="Atribuição Coletiva" Height="27" Width="121" DockPanel.Dock="Left" Margin="0,0,20,0" />
+                    <Button Content="Alteração no preço de venda/custo do produto" Height="27" Width="271" DockPanel.Dock="Left" Margin="0,0,20,0" />
+                    <Button Content="Carregar todos os produtos" Height="27" Width="157.5" DockPanel.Dock="Left" HorizontalAlignment="Left" />
+                </DockPanel>
+                <DockPanel>
+                    <DataGrid
+						 Name="gridItens"
+                                    ItemsSource="{Binding currentModel.lLista_preco}"                          
+                                    IsEnabled="{Binding bIsEnabled}"
+                                    AutoGenerateColumns="False" 
+                                    SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
+                                    CanUserDeleteRows="True"
+                                    CanUserAddRows="True">
+                        <DataGrid.Columns>
+                            <DataGridComboBoxColumn  Header="Produtos" Width="150"
+                                        ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
+                                        SelectedValuePath="id"
+                                        DisplayMemberPath="display"
+                                        SelectedValueBinding="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                        />
+                            <DataGridTextColumn                                
+                                Header="Custo Produto" Width="100"
+                                ElementStyle="{StaticResource CellErrorStyle}"
+                                Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=LostFocus,
+                                StringFormat={}{0:C},
+                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Lucro" Width="100"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pLucro, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                Header="Valor Venda" Width="100"
+                                ElementStyle="{StaticResource CellErrorStyle}"
+                                Binding="{Binding Path=vVenda, UpdateSourceTrigger=LostFocus,
+                                StringFormat={}{0:C},
+                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Desc. Máx." Width="100"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pDescontoMaximo, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Acréc. Máx." Width="100"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pAcrescimoMaximo, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Comissão à Vista" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Comissão à Prazo" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Desconto" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pDesconto, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Comissão" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTextColumn                                
+                                        Header="% Outros" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pOutros, UpdateSourceTrigger=LostFocus,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Data Alteração Custo">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <DatePicker SelectedDate="{Binding dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></DatePicker>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridComboBoxColumn  Header="Unidade Medida" Width="150"
+                                        ItemsSource="{Binding Source={StaticResource lResultConversao}}"
+                                        SelectedValuePath="id"
+                                        DisplayMemberPath="display"
+                                        SelectedValueBinding="{Binding idUnidadeMedida, Mode=TwoWay, 
+                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                        />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </DockPanel>
+
+        </Expander>
+
+    </DockPanel>
 </runtime:WindowsBase>

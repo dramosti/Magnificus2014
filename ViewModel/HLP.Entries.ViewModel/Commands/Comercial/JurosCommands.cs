@@ -76,6 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public async void Delete()
         {
+            int iExcluido = (int)this.objViewModel.currentModel.idJuros;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -102,7 +103,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
             }
         }
 
@@ -143,17 +144,52 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idJuros =
-                    await this.servico.copyJurosAsync(idJuros: (int)this.objViewModel.currentModel.idJuros);
+                BackgroundWorker bwCopy = new BackgroundWorker();
+                bwCopy.DoWork += bwCopy_DoWork;
+                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentID = (int)e.Result;
+                    this.metodoGetModel(sender: this, e: null);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result =
+                    this.servico.copyJuros(idJuros: (int)this.objViewModel.currentModel.idJuros);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
