@@ -27,10 +27,10 @@ namespace HLP.Entries.View.WPF.Fiscal
             this.ViewModel = new CfopViewModel();
             
         }
-        public CfopViewModel ViewModel
-        {
-            get { return this.DataContext as CfopViewModel; }
-            set { this.DataContext = value; }
-        }
+            public CfopViewModel ViewModel
+            {
+                get { return this.DataContext as CfopViewModel; }
+                set { this.DataContext = value; }
+            }
     }
 }
