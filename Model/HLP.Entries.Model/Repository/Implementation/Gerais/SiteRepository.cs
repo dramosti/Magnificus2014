@@ -64,7 +64,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regSiteAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Site",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idSite"),
-                                         MapBuilder<SiteModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                         MapBuilder<SiteModel>.MapAllProperties()
+                                         .DoNotMap(i => i.status).Build());
             }
 
             return regSiteAccessor.Execute(idSite).FirstOrDefault();

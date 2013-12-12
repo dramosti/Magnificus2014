@@ -100,8 +100,7 @@ namespace HLP.Comum.Resources.RecursosBases
         [Description("23-SQD - SUPER QUADRA")]
         SUPER_QUADRA,
         [Description("24-TRV - TRAVESSA")]
-        TRAVESSA
-
+        TRAVESSA,
     }
 
     public enum SemanaOuMes
