@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,18 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 3)]
         public string xDescricao { get; set; }
 
-        public ObservableCollectionBaseCadastros<Site_enderecoModel> lSite_Endereco =
-            new ObservableCollectionBaseCadastros<Site_enderecoModel>();
+
+        private ObservableCollectionBaseCadastros<Site_enderecoModel> _lSite_Endereco;
+
+        public ObservableCollectionBaseCadastros<Site_enderecoModel> lSite_Endereco
+        {
+            get { return _lSite_Endereco; }
+            set
+            {
+                _lSite_Endereco = value;
+                base.NotifyPropertyChanged(propertyName: "lSite_Endereco");
+            }
+        }
     }
 
     public partial class Site_enderecoModel : modelBase
@@ -33,6 +44,8 @@ namespace HLP.Entries.Model.Models.Gerais
         public Site_enderecoModel()
             : base(xTabela: "Site_Endereco")
         {
+            this.enumTipoEndereco = TipoEndereco.COMERCIAL;
+            this.enumTipoLogradouro = TipoLogradouro.RUA;
         }
 
         private int? _idEndereco;
@@ -46,6 +59,19 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idEndereco");
             }
         }
+
+
+        private TipoEndereco _enumTipoEndereco;
+        public TipoEndereco enumTipoEndereco
+        {
+            get { return _enumTipoEndereco; }
+            set
+            {
+                _enumTipoEndereco = value;
+                _stTipoEndereco = (byte)value;
+            }
+        }
+
         private byte _stTipoEndereco;
         [ParameterOrder(Order = 2)]
         public byte stTipoEndereco
@@ -54,9 +80,10 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stTipoEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
+                _enumTipoEndereco = (TipoEndereco)value;
             }
         }
+
         private string _xCEP;
         [ParameterOrder(Order = 3)]
         public string xCEP
@@ -68,6 +95,19 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
+
+
+        private TipoLogradouro _enumTipoLogradouro;
+        public TipoLogradouro enumTipoLogradouro
+        {
+            get { return _enumTipoLogradouro; }
+            set
+            {
+                _enumTipoLogradouro = value;
+                _stLogradouro = (byte)value;
+            }
+        }
+
         private byte _stLogradouro;
         [ParameterOrder(Order = 4)]
         public byte stLogradouro
@@ -76,9 +116,10 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stLogradouro = value;
-                base.NotifyPropertyChanged(propertyName: "stLogradouro");
+                _enumTipoLogradouro = (TipoLogradouro)value;
             }
         }
+
         private string _xEndereco;
         [ParameterOrder(Order = 5)]
         public string xEndereco
