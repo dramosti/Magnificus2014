@@ -1,0 +1,56 @@
+﻿<runtime:WindowsBase 
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Transportes.WinTransportadora"
+        Title="WinTransportadora" Height="660" Width="1024">
+	<Grid>
+		<TabControl>
+			<TabItem Header="Principal">
+				<AdornerDecorator>
+					<DockPanel LastChildFill="True">
+						<DockPanel DockPanel.Dock="Top" Height="233">
+							<Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Left" Width="450">
+								<WrapPanel Orientation="Vertical">									
+									<Components:HlpTextBox Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Código" Help="É preenchido com um código sequencial que é gerado pelo próprio sistema." WidthLabel="137" Width="230"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Código Alternativo " Help="O sistema traz o mesmo código de identificação do registro do sistema da transportadora, mas deixa a opção para o usuário mudar." WidthLabel="137" Width="230"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Razão Social" Help="É preenchido com a razão social da Transportadora." WidthLabel="137" Width="426"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Nome Fantasia" Help="É preenchido com o nome fantasia da Transportadora." WidthLabel="137" Width="426"/>
+									<Components:HlpCheckBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Pessoa Jurídica?" Help="Este campo define se a Transportadora é pessoa jurídica ou física, preenchendo com SIM, o sistema abrirá os campos disponíveis para pessoa jurídica caso contrário os campos disponíveis para pessoa física." WidthLabel="137"/>									
+								</WrapPanel>
+							</Expander>
+							<Expander Header="Documentação" IsExpanded="True">
+								<WrapPanel Orientation="Vertical">
+									<Components:HlpTextBox Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="CNPJ" Help="No caso de Pessoa Jurídica, deverá ser preenchido o CNPJ (Cadastro Nacional de Pessoa Jurídica) da Transportadora. Este campo possui validação e consistência, não sendo aceito qualquer número" WidthLabel="166" Width="285"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Estadual" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição estadual da Transportadora. Este campo possui consistência por estado." WidthLabel="166" Width="285"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Municipal" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição municipal da Transportadora." WidthLabel="166" Width="285"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="CPF" Help="No caso de Pessoa Física, este campo deverá ser preenchido com o CPF (Cadastro de Pessoa Física) da pessoa. Este campo possui validação e consistência, não sendo aceito qualquer número." WidthLabel="166" Width="285"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="RG" Help="No caso de Pessoa Física, deverá ser preenchido com o RG (Registro Geral) da pessoa." WidthLabel="166" Width="285"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="RNTRC" Help="Informar o Registro Nacional de Transportadores Rodoviários de Carga" WidthLabel="166" Width="285"/>
+								</WrapPanel>								
+							</Expander>						
+						</DockPanel>
+						<DockPanel>	
+							<Expander Header="Telefones" IsExpanded="True" DockPanel.Dock="Left" Width="450">	
+								<WrapPanel Orientation="Vertical">
+									<Components:HlpTextBox Height="27" Margin="10,10,10,2" Caption="1° Telefone" Help="É preenchido com o telefone principal da Transportadora." WidthLabel="95" Width="214"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="2° Telefone" Help="É preenchido com o segundo telefone da Transportadora, se houver." WidthLabel="95" Width="214"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Fax" Help="É preenchido com o fax principal da Transportadora" WidthLabel="95" Width="214"/>
+								</WrapPanel>							
+							</Expander>
+							<Expander Header="Identificação Eletrônica" IsExpanded="True">	
+								<WrapPanel Orientation="Vertical">
+									<Components:HlpTextBox Height="27" Margin="10,10,10,2" Caption="E-mail" Help="Preencher o e-mail da transportadora." WidthLabel="158" Width="391"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Endereço da Internet" Help="Informar o endereço da Internet da transportadora." WidthLabel="158" Width="391"/>
+									<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Ativo" Help="Informar se a transportadora esta ou não ativa no sistema." WidthLabel="158"/>
+								</WrapPanel>							
+							</Expander>						
+						</DockPanel>
+					</DockPanel>
+				</AdornerDecorator>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</runtime:WindowsBase>
