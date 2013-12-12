@@ -80,7 +80,13 @@ namespace HLP.Comum.View.Components
 
                     if (objRet != null)
                     {
-                        this.Display = objRet.ToString();
+                        if (objRet == "")
+                        {
+                            this.Display = objRet.ToString();
+                            this.txtID.Text = "";
+                        }
+                        else
+                            this.Display = objRet.ToString();
                     }
                 }
             }

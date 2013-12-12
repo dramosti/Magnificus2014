@@ -6,7 +6,6 @@ using System.ServiceModel;
 using System.Text;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
-using HLP.Entries.Model.Fiscal;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject;
 
@@ -19,8 +18,10 @@ namespace HLP.Wcf.Entries
 
         [Inject]
         public ITipo_documentoRepository itipo_documentoRepository { get; set; }
+        [Inject]
+        public ITipo_documento_oper_validaRepository iTipo_documento_oper_validaRepository { get; set; }
 
-        public serviceTipo_documento() 
+        public serviceTipo_documento()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -28,63 +29,99 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public int Save(Tipo_documentoModel objModel)
+        public int Save(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel)
         {
             try
-            {
+            {               
+                itipo_documentoRepository.Begin();
                 itipo_documentoRepository.Save(objModel);
+                foreach (var item in objModel.lTipo_documento_oper_validaModel)
+                {
+                    switch (item.status)
+                    {
+                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
+                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                            item.idTipoDocumento = (int)objModel.idTipoDocumento;
+                            iTipo_documento_oper_validaRepository.Save(item);
+                            break;
+                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                            iTipo_documento_oper_validaRepository.Delete((int)item.idTipoDocumento);
+                            break;
+                    }
+                }
+                itipo_documentoRepository.Commit();
                 return (int)objModel.idTipoDocumento;
             }
             catch (Exception ex)
             {
+                itipo_documentoRepository.RollBack();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }        
+            }
         }
 
-        public Tipo_documentoModel GetObjeto(int idObjeto)
+        public HLP.Entries.Model.Fiscal.Tipo_documentoModel GetObjeto(int idObjeto)
         {
             try
             {
-                return itipo_documentoRepository.GetDocumento(idObjeto);
+                HLP.Entries.Model.Fiscal.Tipo_documentoModel objret = itipo_documentoRepository.GetDocumento(idObjeto);
+                if (objret != null)
+                {
+                    objret.lTipo_documento_oper_validaModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Fiscal.Tipo_documento_oper_validaModel>(iTipo_documento_oper_validaRepository.GetAll((int)objret.idTipoDocumento));
+                }
+                return objret;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }        
+            }
         }
 
-        public bool Delete(Tipo_documentoModel objModel)
+        public bool Delete(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel)
         {
             try
             {
+                itipo_documentoRepository.Begin();
+                iTipo_documento_oper_validaRepository.DeleteOperValidaByTipoDocumento((int)objModel.idTipoDocumento);
                 itipo_documentoRepository.Delete((int)objModel.idTipoDocumento);
+                itipo_documentoRepository.Commit();
                 return true;
 
             }
             catch (Exception ex)
             {
+                itipo_documentoRepository.RollBack();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }        
+            }
         }
 
-        public int Copy(Tipo_documentoModel objModel)
+        public int Copy(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel)
         {
             try
             {
-                return itipo_documentoRepository.Copy((int)objModel.idTipoDocumento);
+                itipo_documentoRepository.Begin();
+                objModel.idTipoDocumento = itipo_documentoRepository.Copy((int)objModel.idTipoDocumento);
+                foreach (var item in objModel.lTipo_documento_oper_validaModel)
+                {
+                    item.idTipoDocumento = (int)objModel.idTipoDocumento;
+                    item.idTipoDocumentoOperValida = null;
+                    iTipo_documento_oper_validaRepository.Copy((int)item.idTipoDocumentoOperValida);
+                }
+                itipo_documentoRepository.Commit();
+                return (int)objModel.idTipoDocumento;
 
             }
             catch (Exception ex)
             {
+                itipo_documentoRepository.RollBack();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }        
+            }
         }
 
-        public List<Tipo_documentoModel> GetTipo_documentoAll()
+        public List<HLP.Entries.Model.Fiscal.Tipo_documentoModel> GetTipo_documentoAll()
         {
             try
             {
@@ -94,7 +131,7 @@ namespace HLP.Wcf.Entries
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
-            }        
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ namespace HLP.Dependencies
 
             Bind<ICfopRepository>().To<CfopRepository>();
             Bind<ITipo_documentoRepository>().To<Tipo_documentoRepository>();
-            //Bind<ITipo_documento_oper_validaRepository>().To<Tipo_documento_oper_validaRepository>();
+            Bind<ITipo_documento_oper_validaRepository>().To<Tipo_documento_oper_validaRepository>();
             Bind<ITipo_operacaoRepository>().To<Tipo_operacaoRepository>();
             //Bind<IOperacao_reducao_baseRepository>().To<Operacao_reducao_baseRepository>();
             //Bind<IOperacao_importacaoRepository>().To<Operacao_importacaoRepository>();

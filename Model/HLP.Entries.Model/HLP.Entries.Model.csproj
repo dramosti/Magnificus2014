@@ -244,6 +244,7 @@
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_ipiRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_pisRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Fiscal\ITipo_documento_oper_validaRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_operacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICalendarioRepository.cs" />
