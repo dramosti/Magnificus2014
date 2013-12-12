@@ -10,6 +10,12 @@ namespace HLP.Entries.Model.Fiscal
 {
     public partial class Tipo_documentoModel : modelBase
     {
+        public Tipo_documentoModel()
+            : base("Tipo_documento")
+        {
+
+            this.lTipo_documento_oper_validaModel = new ObservableCollectionBaseCadastros<Tipo_documento_oper_validaModel>();
+        }
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
         public int? _idTipoDocumento;
@@ -71,9 +77,74 @@ namespace HLP.Entries.Model.Fiscal
         public int idModeloDocFiscal { get; set; }
         [ParameterOrder(Order = 28)]
         public byte? stNFdevolucao { get; set; }
+
+        
+        private ObservableCollectionBaseCadastros<Tipo_documento_oper_validaModel> _lTipo_documento_oper_validaModel;
+
+        public ObservableCollectionBaseCadastros<Tipo_documento_oper_validaModel> lTipo_documento_oper_validaModel
+        {
+            get { return _lTipo_documento_oper_validaModel; }
+            set
+            {
+                _lTipo_documento_oper_validaModel = value;
+                base.NotifyPropertyChanged(propertyName: "lTipo_documento_oper_validaModel");
+            }
+        }
+        
+    }
+
+    public partial class Tipo_documento_oper_validaModel : modelBase
+    {
+        public Tipo_documento_oper_validaModel() : base("Tipo_documento_oper_valida") { }
+
+        private int? _idTipoDocumentoOperValida;
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
+        public int? idTipoDocumentoOperValida
+        {
+            get { return _idTipoDocumentoOperValida; }
+            set
+            {
+                _idTipoDocumentoOperValida = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoDocumentoOperValida");
+            }
+        }
+        private int _idTipoOperacao;
+        [ParameterOrder(Order = 2)]
+        public int idTipoOperacao
+        {
+            get { return _idTipoOperacao; }
+            set
+            {
+                _idTipoOperacao = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoOperacao");
+            }
+        }
+        private int _idTipoDocumento;
+        [ParameterOrder(Order = 3)]
+        public int idTipoDocumento
+        {
+            get { return _idTipoDocumento; }
+            set
+            {
+                _idTipoDocumento = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
+            }
+        }
+
     }
 
     public partial class Tipo_documentoModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+
+    public partial class Tipo_documento_oper_validaModel
     {
         public override string this[string columnName]
         {
