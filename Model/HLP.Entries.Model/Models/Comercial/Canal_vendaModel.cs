@@ -14,8 +14,20 @@ namespace HLP.Entries.Model.Models.Comercial
             : base(xTabela: "Canal_venda")
         {
         }
+
+
+        private int? _idCanalVenda;
         [ParameterOrder(Order = 1)]
-        public int? idCanalVenda { get; set; }
+        public int? idCanalVenda
+        {
+            get { return _idCanalVenda; }
+            set
+            {
+                _idCanalVenda = value;
+                base.NotifyPropertyChanged(propertyName: "idCanalVenda");
+            }
+        }
+
         [ParameterOrder(Order = 2)]
         public string cCanalVenda { get; set; }
         [ParameterOrder(Order = 3)]

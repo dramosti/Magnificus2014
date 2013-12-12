@@ -4,27 +4,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Comercial.WinCanalVenda"
-        Title="Canal de Vendas" Height="660" Width="1024">
-	<Grid>
-		<Expander Header="Geral" HorizontalAlignment="Left" Height="136.5" VerticalAlignment="Top" Width="633.5" IsExpanded="True">
-			<StackPanel>
-				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+        Title="Canal de Vendas" Height="660" Width="1024" NameView="vwCanalVenda">
+    <Grid>
+        <Expander Header="Geral" HorizontalAlignment="Left" Height="136.5" VerticalAlignment="Top" Width="633.5" IsExpanded="True">
+            <StackPanel>
+                <Components:HlpTextBox 
+					Text="{Binding currentModel.idCanalVenda, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+					IsEnabled="False"
 					Height="27" Margin="10,10,283,2" Caption="Código" Help="Chave principal do registro do Código de Vendas" WidthLabel="202"/>
-				<Components:HlpTextBox 
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.cCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,283,2" Caption="Código do Canal de Vendas" Help="Digite um código para o Canal de Vendas" WidthLabel="202"/>
-				<Components:HlpTextBox 
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Descrição" Help="Descrição detalhada do Canal de Vendas " WidthLabel="202"/>
-			</StackPanel>
-		</Expander>
-        
-	</Grid>
+            </StackPanel>
+        </Expander>
+
+    </Grid>
 </runtime:WindowsBase>

@@ -76,6 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public async void Delete()
         {
+            int iExcluir = (int)objViewModel.currentModel.idCanalVenda;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -102,7 +103,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
             }
         }
 
