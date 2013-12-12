@@ -42,7 +42,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
                                 item.idContato = (int)objContato.idContato;
-                                iContato_EnderecoRepository.Save(item);                    
+                                iContato_EnderecoRepository.Save(item);
                             }
                             break;
                         case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
@@ -80,7 +80,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
 
         public HLP.Entries.Model.Models.Gerais.ContatoModel Copy(HLP.Entries.Model.Models.Gerais.ContatoModel objContato)
@@ -93,11 +93,11 @@ namespace HLP.Wcf.Entries
                 foreach (var item in objContato.lContato_EnderecoModel)
                 {
                     item.idContato = (int)objContato.idContato;
+                    item.idEndereco = null;
                     iContato_EnderecoRepository.Copy(item);
                 }
                 iContatoRepository.CommitTransaction();
-               return objContato;
-
+                return objContato;
             }
             catch (Exception ex)
             {
@@ -105,7 +105,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
 
         public HLP.Entries.Model.Models.Gerais.ContatoModel GetObject(int idContato)
@@ -116,7 +116,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.ContatoModel objReturn = iContatoRepository.GetContato(idContato);
                 if (objReturn != null)
                 {
-                    objReturn.lContato_EnderecoModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Contato_EnderecoModel>(iContato_EnderecoRepository.GetAllContato_Endereco(idContato));                    
+                    objReturn.lContato_EnderecoModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Contato_EnderecoModel>(iContato_EnderecoRepository.GetAllContato_Endereco(idContato));
                 }
                 return objReturn;
 
@@ -127,7 +127,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
 
         public List<HLP.Entries.Model.Models.Gerais.ContatoModel> GetContato_ByClienteFornec(int idContato)
@@ -141,13 +141,13 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
 
 
 
 
 
-  
+
     }
 }

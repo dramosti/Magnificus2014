@@ -29,6 +29,8 @@ namespace HLP.Comum.Modules
         /// Objeto de configuração do modulo que contem informações dos Formularios.
         /// </summary>
         public ObjectsModule objectModulo { get; set; }
+
+        public static List<ObjectsModule> lobjectModulo = new List<ObjectsModule>();
         
         //public IFormModulo FormModulo { get; private set; }
 
@@ -46,7 +48,7 @@ namespace HLP.Comum.Modules
 
                 objectModulo = SerializeClassToXml.DeserializeClasse<ObjectsModule>(ArquivoConfiguracao);
 
-
+                lobjectModulo.Add(objectModulo);
             }
             catch (Exception ex)
             {
