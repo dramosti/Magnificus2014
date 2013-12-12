@@ -10,6 +10,7 @@ namespace HLP.Entries.Model.Models.Fiscal
 {
     public partial class Situacao_tributaria_pisModel : modelBase
     {
+        public Situacao_tributaria_pisModel() : base("Situacao_tributaria_pis") { }
 
         private int? _idCSTPis;
         [ParameterOrder(Order = 1)]

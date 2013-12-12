@@ -156,6 +156,7 @@
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_ipiRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_pisRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_documentoRepository.cs" />
+    <Compile Include="Repository\Implementation\Fiscal\Tipo_documento_oper_validaRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Tipo_operacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CalendarioRepository.cs" />

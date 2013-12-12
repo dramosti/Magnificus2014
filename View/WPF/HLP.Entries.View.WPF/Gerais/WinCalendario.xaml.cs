@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
-using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
-namespace HLP.Entries.View.WPF.Fiscal
+namespace HLP.Entries.View.WPF.Gerais
 {
     /// <summary>
-    /// Interaction logic for WinCfop.xaml
+    /// Interaction logic for WinCalendario.xaml
     /// </summary>
-    public partial class WinCfop : WindowsBase
+    public partial class WinCalendario : WindowsBase
     {
-        public WinCfop()
+        public WinCalendario()
         {
             InitializeComponent();
-            this.ViewModel = new CfopViewModel();
-            
         }
-            public CfopViewModel ViewModel
-            {
-                get { return this.DataContext as CfopViewModel; }
-                set { this.DataContext = value; }
-            }
     }
 }

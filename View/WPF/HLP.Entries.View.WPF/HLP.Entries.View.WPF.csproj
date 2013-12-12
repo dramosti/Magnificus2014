@@ -136,6 +136,9 @@
     <Compile Include="Gerais\WinAcesso.xaml.cs">
       <DependentUpon>WinAcesso.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\WinCalendario.xaml.cs">
+      <DependentUpon>WinCalendario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gerais\WinCidade.xaml.cs">
       <DependentUpon>WinCidade.xaml</DependentUpon>
     </Compile>
@@ -296,6 +299,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\WinAcesso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinCalendario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
