@@ -6,7 +6,7 @@
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros"
-        Title="Juros" Height="660" Width="1024">
+        Title="Juros" Height="660" Width="1024" NameView="vwJuros">
     <Window.Resources>
         <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
     </Window.Resources>
@@ -37,7 +37,7 @@
 					Height="27" Margin="10,0,384,2" Caption="% de Juros" Help="Insira a porcentagem de juros que se aplica" WidthLabel="166"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.nQuantidadeDiaMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+					Text="{Binding currentModel.nQuantidadeDiasMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,319.334,2" Caption="Quantidade Juros por:" Help="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês. " WidthLabel="166"/>
                 <Components:HlpComboBox 

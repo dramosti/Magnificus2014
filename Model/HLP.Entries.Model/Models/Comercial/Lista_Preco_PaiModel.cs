@@ -57,8 +57,18 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 15)]
         public int? idListaPrecoOrigem { get; set; }
 
+
+        private ObservableCollectionBaseCadastros<Lista_precoModel> _lLista_preco;
+
         public ObservableCollectionBaseCadastros<Lista_precoModel> lLista_preco
-            = new ObservableCollectionBaseCadastros<Lista_precoModel>();
+        {
+            get { return _lLista_preco; }
+            set
+            {
+                _lLista_preco = value;
+                base.NotifyPropertyChanged(propertyName: "lLista_preco");
+            }
+        }
     }
 
     public partial class Lista_precoModel : modelBase
