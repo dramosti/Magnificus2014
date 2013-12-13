@@ -1,0 +1,117 @@
+﻿<runtime:WindowsBase 
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Comercial.WinCliente"
+        Title="WinCliente" Height="660" Width="1024">
+	<Grid>
+		<TabControl>
+			<TabItem Header="Geral">
+				<AdornerDecorator>
+					<TabControl>
+						<TabItem Header="Principal">
+							<AdornerDecorator>
+								<DockPanel>
+									<Expander Header="Identificação" IsExpanded="True">
+										<WrapPanel Orientation="Vertical">											
+											<Components:HlpTextBox Height="27" Margin="10,10,10,2" Caption="Código do Cliente" WidthLabel="191" HorizontalAlignment="Left" Width="250"/>
+											<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" Caption="Data do Cadastro" WidthLabel="191" HorizontalAlignment="Left"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Nome do Cliente" WidthLabel="191" HorizontalAlignment="Left" Width="400"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Nome Fantasia" WidthLabel="191" HorizontalAlignment="Left" Width="400"/>
+											<Components:HlpPesquisa Height="27" Margin="10,0,10,2" Caption="Ramo de Atividade" WidthLabel="191" HorizontalAlignment="Left" Width="400"/>
+											<Components:HlpPesquisa Height="27" Margin="10,0,10,2" Caption="Moeda" WidthLabel="191" HorizontalAlignment="Left" Width="400"/>
+											<Components:HlpPesquisa Height="27" Margin="10,0,10,2" Caption="Contato Principal" WidthLabel="191" HorizontalAlignment="Left" Width="400"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Memorando" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Tipo de Catálogo" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="C.P.F." HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="R.G." HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="CEP" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Fuso Horário" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Caixa Postal" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="1° Telefone" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="2° Telefone" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="FAX" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="E-mail" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Endereço na Internet" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Ativo?" HorizontalAlignment="Left" WidthLabel="191"/>
+											<Components:HlpTextBox Height="27" Margin="10,0,10,2" Caption="Número de Funcionários" HorizontalAlignment="Left" WidthLabel="191"/>																						
+										</WrapPanel>
+									</Expander>									
+								</DockPanel>
+							</AdornerDecorator>
+						</TabItem>
+						<TabItem Header="Endereço Principal">
+							<AdornerDecorator/>
+						</TabItem>
+					</TabControl>
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Comercial">
+				<AdornerDecorator>
+					<TabControl>
+						<TabItem Header="Geral">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Faturamento">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Observação para faturamento">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Representantes">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Pagamento">
+							<AdornerDecorator/>
+						</TabItem>
+					</TabControl>
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Financeiro">
+				<AdornerDecorator/>
+			</TabItem>
+			<TabItem Header="Pessoal">
+				<AdornerDecorator>
+					<TabControl>
+						<TabItem Header="Pessoal">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Conjugue">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Local de trabalho">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Filiação">
+							<AdornerDecorator/>
+						</TabItem>
+						<TabItem Header="Referência Comercial">
+							<AdornerDecorator/>
+						</TabItem>	
+					</TabControl>
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Configuração">
+				<AdornerDecorator/>
+			</TabItem>
+			<TabItem Header="Endereços">
+				<AdornerDecorator/>
+			</TabItem>
+			<TabItem Header="Contatos">
+				<AdornerDecorator/>
+			</TabItem>
+			<TabItem Header="Arquivos">
+				<AdornerDecorator/>
+			</TabItem>
+			<TabItem Header="Produtos">
+				<AdornerDecorator/>
+			</TabItem>
+			<TabItem Header="Fiscais">
+				<AdornerDecorator/>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</runtime:WindowsBase>

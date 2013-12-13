@@ -147,4 +147,7 @@
 <object id="WinTransportadora" name="Transportadora" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Transportes.WinTransportadora, HLP.Entries.View.WPF">
   </object>
+  <object id="WinCliente" name="Clientes" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Comercial.WinCliente, HLP.Entries.View.WPF">
+  </object>
 </objects>
