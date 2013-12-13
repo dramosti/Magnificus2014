@@ -138,7 +138,16 @@
 							</AdornerDecorator>
 						</TabItem>
 						<TabItem Header="Pagamento">
-							<AdornerDecorator/>
+							<AdornerDecorator>
+								<Expander Header="Dados de Pagamento" IsExpanded="True">
+									<WrapPanel Orientation="Vertical">
+										<Components:HlpPesquisa Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Condição de Pagamento" WidthLabel="184" Width="470"/>
+										<Components:HlpPesquisa Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Plano de Pagamento" WidthLabel="184" Width="470"/>
+										<Components:HlpPesquisa Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Dia de Pagamento" WidthLabel="184" Width="470"/>
+										<Components:HlpPesquisa Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Desconto Combinado" WidthLabel="184" Width="470"/>										
+									</WrapPanel>
+								</Expander>
+							</AdornerDecorator>
 						</TabItem>
 					</TabControl>
 				</AdornerDecorator>
@@ -168,7 +177,21 @@
 				<AdornerDecorator>
 					<TabControl>
 						<TabItem Header="Pessoal">
-							<AdornerDecorator/>
+							<AdornerDecorator>
+								<Expander Header="Dados Pessoais" IsExpanded="True">
+									<WrapPanel Orientation="Vertical">
+										<Components:HlpTextBox Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Saudação" WidthLabel="274" Width="500"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Sexo" WidthLabel="274"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Apelido" WidthLabel="274" Width="425"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Estado Civil" WidthLabel="274"/>
+										<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data de Nascimento" WidthLabel="274"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Local de Nascimento" WidthLabel="274" Width="425"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="UF de Nascimento" WidthLabel="274" Width="425"/>
+										<Components:HlpComboBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Situação da Residência em que mora" WidthLabel="274"/>
+										<Components:HlpTextBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Ponto de Referencia da Residência" WidthLabel="274" Width="425"/>										
+									</WrapPanel>
+								</Expander>
+							</AdornerDecorator>
 						</TabItem>
 						<TabItem Header="Conjugue">
 							<AdornerDecorator/>
