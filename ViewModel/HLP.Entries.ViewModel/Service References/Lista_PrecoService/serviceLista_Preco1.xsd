@@ -25,7 +25,7 @@
   <xs:element name="saveLista_PrecoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="saveLista_PrecoResult" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="saveLista_PrecoResult" nillable="true" type="q3:Lista_Preco_PaiModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +46,7 @@
   <xs:element name="copyLista_Preco">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="objListaPreco" nillable="true" type="q3:Lista_Preco_PaiModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="objListaPreco" nillable="true" type="q4:Lista_Preco_PaiModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -54,6 +54,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="copyLista_PrecoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItensListaPreco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idListaPrecoPai" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItensListaPrecoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="GetItensListaPrecoResult" nillable="true" type="q5:ArrayOfLista_precoModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

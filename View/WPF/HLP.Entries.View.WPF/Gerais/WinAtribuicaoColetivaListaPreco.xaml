@@ -1,0 +1,89 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco"
+        Title="Atribuição Coletiva" Height="400" Width="750">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwProdutoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Components:HlpComboBox HorizontalAlignment="Left" Width="300" 
+                                        Caption="Trocar conteúdo do campo" Height="70" WidthLabel="150" Margin="20,0,0,0" >
+                    <Components:HlpComboBox.Items>
+                        <System:String>Desconto Máximo</System:String>
+                        <System:String>Acréscimo Máximo</System:String>
+                        <System:String>Comissão a Vista</System:String>
+                        <System:String>Comissão a Prazo</System:String>
+                    </Components:HlpComboBox.Items>
+                </Components:HlpComboBox>
+                <Components:HlpTextBox Name="txtPor"
+                    HorizontalAlignment="Left" Width="200" Caption="Por" Margin="20,0,0,0"/>
+            </StackPanel>
+        </Grid>
+        <DataGrid
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            ItemsSource="{Binding currentList}"
+            >
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Width="30">
+                    <DataGridCheckBoxColumn.Header>
+                        <CheckBox Name="cbSelDesTudo" HorizontalAlignment="Center"></CheckBox>
+                    </DataGridCheckBoxColumn.Header>
+                </DataGridCheckBoxColumn>
+                <DataGridComboBoxColumn  Header="Produtos" Width="150"
+                                        ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
+                                        SelectedValuePath="id"
+                                        DisplayMemberPath="display"
+                                        SelectedValueBinding="{Binding idProduto, Mode=OneWay, ValidatesOnDataErrors=True}" 
+                                        />
+                <DataGridTextColumn                                
+                                        Header="% Desc. Máx." Width="100"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pDescontoMaximo, Mode=OneWay,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="% Acréc. Máx." Width="100"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pAcrescimoMaximo, Mode=OneWay,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="% Comissão à Vista" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAvista, Mode=OneWay,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="% Comissão à Prazo" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissaoAprazo, Mode=OneWay,
+                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

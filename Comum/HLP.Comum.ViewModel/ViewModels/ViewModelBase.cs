@@ -163,6 +163,11 @@ namespace HLP.Comum.ViewModel.ViewModels
                                 if (Validation.GetHasError(element: o as System.Windows.Controls.TextBox))
                                     return true;
                             }
+                            else if (o.GetType().Name.ToString() == "TextBlockComboBox")
+                            {
+                                if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
+                                    return true;
+                            }
                         }
                     }
                 }

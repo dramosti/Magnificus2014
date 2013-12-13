@@ -22,8 +22,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
+        public ICommand gerarListaCommand { get; set; }
+        public ICommand AtribuicaoColetivaCommand { get; set; }
         #endregion
-        
+
 
         public Lista_PrecoViewModel()
         {

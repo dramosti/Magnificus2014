@@ -34,6 +34,12 @@
   <wsdl:message name="IserviceLista_Preco_copyLista_Preco_OutputMessage">
     <wsdl:part name="parameters" element="tns:copyLista_PrecoResponse" />
   </wsdl:message>
+  <wsdl:message name="IserviceLista_Preco_GetItensListaPreco_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItensListaPreco" />
+  </wsdl:message>
+  <wsdl:message name="IserviceLista_Preco_GetItensListaPreco_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItensListaPrecoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IserviceLista_Preco">
     <wsdl:operation name="getLista_Preco">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceLista_Preco/getLista_Preco" message="tns:IserviceLista_Preco_getLista_Preco_InputMessage" />
@@ -50,6 +56,10 @@
     <wsdl:operation name="copyLista_Preco">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceLista_Preco/copyLista_Preco" message="tns:IserviceLista_Preco_copyLista_Preco_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceLista_Preco/copyLista_PrecoResponse" message="tns:IserviceLista_Preco_copyLista_Preco_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItensListaPreco">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceLista_Preco/GetItensListaPreco" message="tns:IserviceLista_Preco_GetItensListaPreco_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceLista_Preco/GetItensListaPrecoResponse" message="tns:IserviceLista_Preco_GetItensListaPreco_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IserviceLista_Preco" type="tns:IserviceLista_Preco">
@@ -83,6 +93,15 @@
     </wsdl:operation>
     <wsdl:operation name="copyLista_Preco">
       <soap:operation soapAction="http://tempuri.org/IserviceLista_Preco/copyLista_Preco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItensListaPreco">
+      <soap:operation soapAction="http://tempuri.org/IserviceLista_Preco/GetItensListaPreco" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
