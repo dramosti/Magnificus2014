@@ -106,6 +106,12 @@
     <Content Include="EnterpriseLibrary\Microsoft.Practices.ServiceLocation.dll" />
     <Content Include="EnterpriseLibrary\Microsoft.Practices.Unity.dll" />
     <Content Include="EnterpriseLibrary\Microsoft.Practices.Unity.Interception.dll" />
+    <Content Include="ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.dll" />
+    <Content Include="ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+    <Content Include="ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+    <Content Include="ExtendedWPFToolkit\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+    <Content Include="ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll" />
+    <Content Include="ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll" />
     <Content Include="NInject\Ninject.dll" />
     <Content Include="Spring\Spring.Core.dll" />
     <Content Include="Zip\ICSharpCode.SharpZipLib.dll" />
