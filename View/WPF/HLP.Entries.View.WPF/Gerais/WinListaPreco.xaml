@@ -16,7 +16,7 @@
                 <System:String>vwUnidadeMedidaToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-        
+
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwProdutoToComboBox</System:String>
@@ -59,7 +59,8 @@
                     </Components:HlpComboBox>
                     <Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.cListaPrecoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.idListaPrecoOrigem, Mode=TwoWay, 
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,1" Caption="Lista de Preço Origem" Help="Informar qual é a Lista de Preço Origem quando a Lista for automática, o campo só é disponibilizado quando a lista for automática." WidthLabel="242" FieldPesquisa="ID" TableView="vwListaPrecoPai">
                         <Components:HlpPesquisa.Items>
@@ -74,7 +75,9 @@
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,160.5,1" Caption="Percentual" Help="Este campo serve para se definir o % de acréscimo (valor positivo) ou % de desconto (valor negativo) para a lista que está sendo mostrada na tela e definida como automática, porém para este tipo de cálculo o sistema pegará sempre como base a lista 00001." WidthLabel="242"/>
-                    <Button Content="Gerar Lista" Height="27" Margin="251.5,0,160.5,1"/>
+                    <Button 
+                        Command="{Binding gerarListaCommand}"
+                        Content="Gerar Lista" Height="27" Margin="251.5,0,160.5,1"/>
                 </StackPanel>
                 <StackPanel>
                     <Components:HlpTextBox 
@@ -125,7 +128,10 @@
         <Expander Header="Produtos" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
             <DockPanel LastChildFill="True">
                 <DockPanel DockPanel.Dock="Top" Height="35">
-                    <Button Content="Atribuição Coletiva" Height="27" Width="121" DockPanel.Dock="Left" Margin="0,0,20,0" />
+                    <Button
+                        Name="btnAtribuicaoColetiva"
+                        Click="btnAtribuicaoColetiva_Click"
+                        Content="Atribuição Coletiva" Height="27" Width="121" DockPanel.Dock="Left" Margin="0,0,20,0" />
                     <Button Content="Alteração no preço de venda/custo do produto" Height="27" Width="271" DockPanel.Dock="Left" Margin="0,0,20,0" />
                     <Button Content="Carregar todos os produtos" Height="27" Width="157.5" DockPanel.Dock="Left" HorizontalAlignment="Left" />
                 </DockPanel>
@@ -234,8 +240,7 @@
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
                                         SelectedValueBinding="{Binding idUnidadeMedida, Mode=TwoWay, 
-                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                        />
+                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>

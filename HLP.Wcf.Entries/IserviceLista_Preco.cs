@@ -15,12 +15,15 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel getLista_Preco(int idListaPrecoPai);
 
         [OperationContract]
-        int saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
+        HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
 
         [OperationContract]
         bool deleteLista_Preco(int idListaPrecoPai);
 
         [OperationContract]
         int copyLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
+
+        [OperationContract]
+        List<HLP.Entries.Model.Models.Comercial.Lista_precoModel> GetItensListaPreco(int idListaPrecoPai);
     }
 }

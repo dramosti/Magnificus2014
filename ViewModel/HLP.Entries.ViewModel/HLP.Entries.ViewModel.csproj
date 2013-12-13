@@ -70,6 +70,8 @@
     <Compile Include="Commands\Fiscal\CodigoIcmsCommand.cs" />
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
+    <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
+    <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_AcessoCommands.cs" />
     <Compile Include="Commands\Transportes\ModoEntregaCommands.cs" />
@@ -455,6 +457,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Canal_vendaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.JurosModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_precoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />

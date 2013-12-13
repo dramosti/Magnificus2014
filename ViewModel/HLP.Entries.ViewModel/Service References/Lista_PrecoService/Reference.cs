@@ -86,10 +86,16 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -98,6 +104,19 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -123,6 +142,19 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -165,10 +197,10 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel> getLista_PrecoAsync(int idListaPrecoPai);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/saveLista_Preco", ReplyAction="http://tempuri.org/IserviceLista_Preco/saveLista_PrecoResponse")]
-        int saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
+        HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/saveLista_Preco", ReplyAction="http://tempuri.org/IserviceLista_Preco/saveLista_PrecoResponse")]
-        System.Threading.Tasks.Task<int> saveLista_PrecoAsync(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel> saveLista_PrecoAsync(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/deleteLista_Preco", ReplyAction="http://tempuri.org/IserviceLista_Preco/deleteLista_PrecoResponse")]
         bool deleteLista_Preco(int idListaPrecoPai);
@@ -181,6 +213,12 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/copyLista_Preco", ReplyAction="http://tempuri.org/IserviceLista_Preco/copyLista_PrecoResponse")]
         System.Threading.Tasks.Task<int> copyLista_PrecoAsync(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/GetItensListaPreco", ReplyAction="http://tempuri.org/IserviceLista_Preco/GetItensListaPrecoResponse")]
+        System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Lista_precoModel> GetItensListaPreco(int idListaPrecoPai);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/GetItensListaPreco", ReplyAction="http://tempuri.org/IserviceLista_Preco/GetItensListaPrecoResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Lista_precoModel>> GetItensListaPrecoAsync(int idListaPrecoPai);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -218,11 +256,11 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
             return base.Channel.getLista_PrecoAsync(idListaPrecoPai);
         }
         
-        public int saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco) {
+        public HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco) {
             return base.Channel.saveLista_Preco(objListaPreco);
         }
         
-        public System.Threading.Tasks.Task<int> saveLista_PrecoAsync(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel> saveLista_PrecoAsync(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco) {
             return base.Channel.saveLista_PrecoAsync(objListaPreco);
         }
         
@@ -240,6 +278,14 @@ namespace HLP.Entries.ViewModel.Lista_PrecoService {
         
         public System.Threading.Tasks.Task<int> copyLista_PrecoAsync(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco) {
             return base.Channel.copyLista_PrecoAsync(objListaPreco);
+        }
+        
+        public System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Lista_precoModel> GetItensListaPreco(int idListaPrecoPai) {
+            return base.Channel.GetItensListaPreco(idListaPrecoPai);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.Lista_precoModel>> GetItensListaPrecoAsync(int idListaPrecoPai) {
+            return base.Channel.GetItensListaPrecoAsync(idListaPrecoPai);
         }
     }
 }
