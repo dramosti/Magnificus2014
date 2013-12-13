@@ -70,6 +70,9 @@
     <Compile Include="Comercial\WinCanalVenda.xaml.cs">
       <DependentUpon>WinCanalVenda.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Comercial\WinCliente.xaml.cs">
+      <DependentUpon>WinCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,9 @@
     </Compile>
     <Compile Include="Gerais\WinCalendario.xaml.cs">
       <DependentUpon>WinCalendario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gerais\WinCalendarioDetalhe.xaml.cs">
+      <DependentUpon>WinCalendarioDetalhe.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\WinCidade.xaml.cs">
       <DependentUpon>WinCidade.xaml</DependentUpon>
@@ -214,6 +220,10 @@
     </Compile>
     <Compile Include="Validates\ValidaUsuarioValidationRule.cs" />
     <Page Include="Comercial\WinCanalVenda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comercial\WinCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,6 +316,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gerais\WinCalendario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gerais\WinCalendarioDetalhe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
