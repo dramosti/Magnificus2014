@@ -87,7 +87,8 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("Value", typeof(DateTime), typeof(HlpTimePicker), new PropertyMetadata(DateTime.Today));
 
 
-        [Category("HLP.Owner")]
+
+
         public object Watermark
         {
             get { return (object)GetValue(WatermarkProperty); }
@@ -96,7 +97,9 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for Watermark.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.Register("Watermark", typeof(object), typeof(HlpTimePicker), new PropertyMetadata(new object()));
+            DependencyProperty.Register("Watermark", typeof(object), typeof(HlpTimePicker), new PropertyMetadata());
+
+
 
 
 
