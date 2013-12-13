@@ -83,6 +83,7 @@
     <Compile Include="Models\Fiscal\Situacao_tributaria_pisModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_documentoModel.cs" />
     <Compile Include="Models\Fiscal\Tipo_operacaoModel.cs" />
+    <Compile Include="Models\Gerais\CalendarioDetalheModel.cs" />
     <Compile Include="Models\Gerais\CalendarioModel.cs" />
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />

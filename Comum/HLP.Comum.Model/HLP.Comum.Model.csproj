@@ -73,6 +73,7 @@
     <Compile Include="Components\PesquisaPadraoModel.cs" />
     <Compile Include="Components\PesquisaPadraoModelContract.cs" />
     <Compile Include="Components\PesquisaRapidaModel.cs" />
+    <Compile Include="Models\DateTimeEnumerator.cs" />
     <Compile Include="Models\modelBase.cs" />
     <Compile Include="Models\modelToComboBox.cs" />
     <Compile Include="Models\MyObservableCollection.cs" />
