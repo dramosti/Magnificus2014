@@ -83,7 +83,8 @@ namespace HLP.Comum.View.Components
                         if (objRet == "")
                         {
                             this.Display = objRet.ToString();
-                            this.txtID.Text = "";
+                            this.txtID.Text = "0";
+                            this.txtID.Focus();
                         }
                         else
                             this.Display = objRet.ToString();
