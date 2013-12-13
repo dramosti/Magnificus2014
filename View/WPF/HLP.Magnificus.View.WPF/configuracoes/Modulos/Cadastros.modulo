@@ -150,4 +150,7 @@
   <object id="WinCliente" name="Clientes" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Comercial.WinCliente, HLP.Entries.View.WPF">
   </object>
+<object id="WinAtribuicaoColetivaListaPreco" name="Atribuição Coletiva Lista de Preço" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco, HLP.Entries.View.WPF">
+  </object>
 </objects>
