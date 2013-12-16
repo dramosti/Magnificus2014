@@ -59,8 +59,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         public void GeraDetalhamento()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinCalendarioDetalhe", Comum.Modules.Interface.TipoExibeForm.Modal);
+            win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             win.ShowDialog();
-            var dados = win.GetPropertyValue("lCalendarioDetalhes");
+            var dados = win.GetPropertyValue("ViewModel").GetPropertyValue("lCalendarioDetalhes");
             if (dados != null)
                 objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
         }

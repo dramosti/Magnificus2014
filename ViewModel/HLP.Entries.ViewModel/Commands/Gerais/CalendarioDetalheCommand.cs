@@ -22,17 +22,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.currentModel = new Model.Models.Gerais.CalendarioGeraDetalhesModel();
 
             this.objViewModel.commandGerarDetalhamento = new RelayCommand(
-               exec => GeraGradeHoraria(),
+               exec => GeraGradeHoraria(o: exec),
                can => CanExecute(o: can));
         }
 
 
 
-        private void GeraGradeHoraria()
+        private void GeraGradeHoraria(object o)
         {
             try
             {
-                objViewModel.lCalendarioDetalhes = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.Calendario_DetalheModel>();
+                objViewModel.lCalendarioDetalhes =  new ObservableCollectionBaseCadastros<Calendario_DetalheModel>();
                 List<string> DiasSemProgramacao = objViewModel.currentModel.diaSemProgramacao.Split(',').ToList();
                 Dictionary<DateTime, DateTime> Intervalos = objViewModel.GeraIntervalos();
 
@@ -69,6 +69,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                     }
                 }
+
+                objViewModel.FechaForm(((UserControl)o).Parent);
             }
             catch (Exception ex)
             {
@@ -78,7 +80,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public bool CanExecute(object o)
         {
-
             return !Validation.GetHasError((UserControl)o);
 
         }

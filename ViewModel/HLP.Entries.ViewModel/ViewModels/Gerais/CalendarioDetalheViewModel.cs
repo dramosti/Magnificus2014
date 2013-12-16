@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using HLP.Comum.Model.Models;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
@@ -38,10 +39,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
 
-        
-        private ObservableCollection<Calendario_DetalheModel> _lCalendarioDetalhes;
 
-        public ObservableCollection<Calendario_DetalheModel> lCalendarioDetalhes
+        private ObservableCollectionBaseCadastros<Calendario_DetalheModel> _lCalendarioDetalhes;
+
+        public ObservableCollectionBaseCadastros<Calendario_DetalheModel> lCalendarioDetalhes
         {
             get { return _lCalendarioDetalhes; }
             set

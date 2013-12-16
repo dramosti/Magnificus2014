@@ -136,7 +136,6 @@
     <Compile Include="Fiscal\WinTipoOperacao.xaml.cs">
       <DependentUpon>WinTipoOperacao.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gerais\CalendarioGeraDetalhesModel.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
     </Compile>

@@ -28,12 +28,7 @@ namespace HLP.Magnificus.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-
-
-            WinCalendarioDetalhe aaa = new WinCalendarioDetalhe();
-
-            aaa.ShowDialog();
-
+            
             GerenciadorModulo.Instancia.InicializaSistema();
             try
             {
