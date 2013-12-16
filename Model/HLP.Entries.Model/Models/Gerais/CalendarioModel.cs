@@ -10,7 +10,7 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class CalendarioModel : modelBase
     {
-        public CalendarioModel() : base("Calendario") { }
+        public CalendarioModel() : base("Calendario") { this.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<Calendario_DetalheModel>(); }
 
         public int? _idCalendario;
         [ParameterOrder(Order = 1)]

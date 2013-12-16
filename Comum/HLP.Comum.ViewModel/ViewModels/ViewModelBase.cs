@@ -140,11 +140,22 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             if (p.GetType().BaseType == typeof(Window))
             {
-                ((Window)p).Close();
+                try
+                {
+                    ((Window)p).Close();
+                }
+                catch (Exception)
+                {
+
+                }
+
             }
             else
             {
-                FechaForm(p: ((System.Windows.Controls.Panel)p).Parent);
+                try
+                { FechaForm(p: ((System.Windows.Controls.Panel)p).Parent); }
+                catch (Exception) { ((Window)p).Close(); }
+
             }
         }
 

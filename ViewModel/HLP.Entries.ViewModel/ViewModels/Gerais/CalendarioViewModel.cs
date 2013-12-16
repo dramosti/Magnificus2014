@@ -21,7 +21,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
+
+        public ICommand gerarDetalhamentoCommand { get; set; }
         #endregion
+
+
 
         public CalendarioViewModel() 
         {

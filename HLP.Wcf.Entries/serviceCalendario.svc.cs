@@ -40,6 +40,7 @@ namespace HLP.Wcf.Entries
                     {
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                            item.idCalendario = (int)objModel.idCalendario;
                             iCalendario_DetalheRepository.Save(item);
                             break;
                         case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
@@ -104,6 +105,7 @@ namespace HLP.Wcf.Entries
                 foreach (var item in objModel.lCalendario_DetalheModel)
                 {
                     item.idCalendario = (int)objModel.idCalendario;
+                    item.idCalendarioDetalhe = null;
                     iCalendario_DetalheRepository.Copy(item);                    
                 }
                 iCalendarioRepository.CommitTransaction();
