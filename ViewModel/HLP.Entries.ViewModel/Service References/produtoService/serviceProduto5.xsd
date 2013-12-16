@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
   <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
   <xs:complexType name="ProdutoModel">
     <xs:complexContent mixed="false">
@@ -43,6 +44,7 @@
           <xs:element minOccurs="0" name="idUnidadeMedidaVendas" type="xs:int" />
           <xs:element minOccurs="0" name="lProduto_Fornecedor_Homologado" nillable="true" type="tns:ArrayOfProduto_Fornecedor_HomologadoModel" />
           <xs:element minOccurs="0" name="lProduto_Revisao" nillable="true" type="tns:ArrayOfProduto_RevisaoModel" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" minOccurs="0" name="lProdutos_Conversao" nillable="true" type="q2:ArrayOfConversaoModel" />
           <xs:element minOccurs="0" name="nAlturaBruta" type="xs:decimal" />
           <xs:element minOccurs="0" name="nEstoqueMaximo" type="xs:decimal" />
           <xs:element minOccurs="0" name="nEstoqueMinimo" type="xs:decimal" />
@@ -92,7 +94,7 @@
   <xs:element name="ArrayOfProduto_Fornecedor_HomologadoModel" nillable="true" type="tns:ArrayOfProduto_Fornecedor_HomologadoModel" />
   <xs:complexType name="Produto_Fornecedor_HomologadoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
@@ -113,7 +115,7 @@
   <xs:element name="ArrayOfProduto_RevisaoModel" nillable="true" type="tns:ArrayOfProduto_RevisaoModel" />
   <xs:complexType name="Produto_RevisaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="dFinal" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dInicial" type="xs:dateTime" />
@@ -126,4 +128,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Produto_RevisaoModel" nillable="true" type="tns:Produto_RevisaoModel" />
+  <xs:complexType name="ArrayOfProdutoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProdutoModel" nillable="true" type="tns:ProdutoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProdutoModel" nillable="true" type="tns:ArrayOfProdutoModel" />
 </xs:schema>

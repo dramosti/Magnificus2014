@@ -77,11 +77,26 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regProdutoByTypeAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Produto WHERE idTipoProduto = @idTipoProduto",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idTipoProduto"),
-                                  MapBuilder<ProdutoModel>.MapAllProperties().Build());
+                                  MapBuilder<ProdutoModel>.MapAllProperties()
+                                  .DoNotMap(i => i.status)
+                                  .Build());
             }
 
 
             return regProdutoByTypeAccessor.Execute(idTipoProduto).ToList();
+        }
+
+        public List<ProdutoModel> GetAll()
+        {
+            if (regProdutoByTypeAccessor == null)
+            {
+                regProdutoByTypeAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Produto",
+                                  new Parameters(UndTrabalho.dbPrincipal),
+                                  MapBuilder<ProdutoModel>.MapAllProperties()
+                                  .DoNotMap(i => i.status)
+                                  .Build());
+            }
+            return regProdutoByTypeAccessor.Execute().ToList();
         }
 
         public void BeginTransaction()

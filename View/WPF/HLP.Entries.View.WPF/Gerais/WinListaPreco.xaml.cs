@@ -26,7 +26,16 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinListaPreco()
         {
             InitializeComponent();
-            this.ViewModel = new Lista_PrecoViewModel();
+            try
+            {
+                this.ViewModel = new Lista_PrecoViewModel();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public Lista_PrecoViewModel ViewModel

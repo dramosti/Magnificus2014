@@ -1200,6 +1200,9 @@
     <None Include="Service References\produtoService\serviceProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\produtoService\serviceProduto6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.xsd">
       <SubType>Designer</SubType>

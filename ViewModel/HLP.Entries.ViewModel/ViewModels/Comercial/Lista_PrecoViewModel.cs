@@ -24,6 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand navegarCommand { get; set; }
         public ICommand gerarListaCommand { get; set; }
         public ICommand AtribuicaoColetivaCommand { get; set; }
+        public ICommand CarregarProdutosCommand { get; set; }
         #endregion
 
 

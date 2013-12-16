@@ -49,6 +49,7 @@
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,106.5,1" Caption="Data de Criação da Lista de Preço" Help="Este campo mostra a data em que a lista de preços foi gerada " WidthLabel="242"/>
                     <Components:HlpComboBox 
+                        Name="cbxStAtualizacao"
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedIndex="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -68,6 +69,15 @@
                             <System:String>xCodigoListaPreco</System:String>
                             <System:String>xLista</System:String>
                         </Components:HlpPesquisa.Items>
+                        <Components:HlpPesquisa.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=cbxStAtualizacao, Path=SelectedIndex}" Value="1">
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Components:HlpPesquisa.Style>
                     </Components:HlpPesquisa>
                     <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -135,9 +145,7 @@
                         Command="{Binding AtribuicaoColetivaCommand}" CommandParameter="WinAtribuicaoColetivaListaPreco"
                         Content="Atribuição Coletiva" Height="27" Width="121" DockPanel.Dock="Left" Margin="0,0,20,0" />
                     <Button
-                        IsEnabled="{Binding bIsEnabled}"
-                        Content="Alteração no preço de venda/custo do produto" Height="27" Width="271" DockPanel.Dock="Left" Margin="0,0,20,0" />
-                    <Button
+                        Command="{Binding CarregarProdutosCommand}"
                         IsEnabled="{Binding bIsEnabled}"
                         Content="Carregar todos os produtos" Height="27" Width="157.5" DockPanel.Dock="Left" HorizontalAlignment="Left" />
                 </DockPanel>

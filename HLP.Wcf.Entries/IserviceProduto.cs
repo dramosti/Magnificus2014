@@ -23,5 +23,8 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         int copyProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
 
+        [OperationContract]
+        List<HLP.Entries.Model.Models.Comercial.ProdutoModel> getAll();
+
     }
 }

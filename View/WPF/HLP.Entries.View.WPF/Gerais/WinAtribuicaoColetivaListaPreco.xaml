@@ -41,11 +41,15 @@
                             <System:String>Acréscimo Máximo</System:String>
                             <System:String>Comissão a Vista</System:String>
                             <System:String>Comissão a Prazo</System:String>
+                            <System:String>Valor de Custo</System:String>
+                            <System:String>Valor de Venda</System:String>
                         </Components:HlpComboBox.Items>
                     </Components:HlpComboBox>
                     <Components:HlpTextBox Name="txtPor"
-                                           Text="{Binding valor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Left" Width="200" Caption="Por" Margin="20,0,0,0"/>
+                                           Text="{Binding valor, 
+                        StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                        Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    HorizontalAlignment="Left" Width="100" Caption="Por" Margin="20,0,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Button 
@@ -108,6 +112,18 @@
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, Mode=OneWay,
                                             StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="R$ Custo" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=vCustoProduto, Mode=OneWay, StringFormat={}{0:C},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="R$ Venda" Width="120"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=vVenda, Mode=OneWay, StringFormat={}{0:C},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
             </DataGrid.Columns>

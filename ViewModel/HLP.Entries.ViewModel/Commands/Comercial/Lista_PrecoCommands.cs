@@ -18,6 +18,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         Lista_PrecoViewModel objViewModel;
         Lista_PrecoService.IserviceLista_PrecoClient servico = new Lista_PrecoService.IserviceLista_PrecoClient();
+        produtoService.IserviceProdutoClient servicoProduto = new produtoService.IserviceProdutoClient();
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
@@ -53,6 +54,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
+
+            this.objViewModel.CarregarProdutosCommand = new RelayCommand(execute: paramExec => this.CarregarProdutos(),
+                canExecute: paramCanExec => this.CarregarProdutosCanExecute());
         }
 
         private void IniciaCollection()
@@ -62,6 +66,25 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         #region Implementação Commands
 
+
+        private void CarregarProdutos()
+        {
+            foreach (ProdutoModel p in this.servicoProduto.getAll())
+            {
+                if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == p.idProduto) == 0)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
+                    {
+                        idProduto = (int)p.idProduto
+                    });
+                }
+            }
+        }
+
+        private bool CarregarProdutosCanExecute()
+        {
+            return true;
+        }
 
 
         private void AtribuicaoColetiva(object xForm)

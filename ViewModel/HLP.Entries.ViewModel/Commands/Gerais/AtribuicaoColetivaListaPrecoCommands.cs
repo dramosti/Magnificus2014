@@ -69,6 +69,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                             this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pComissaoAprazo
                                                 = this.objViewModel.valor;
                                         } break;
+                                    case 4:
+                                        {
+                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).vCustoProduto
+                                                *= (1 + (this.objViewModel.valor / 100));
+                                        } break;
+                                    case 5:
+                                        {
+                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).vVenda
+                                                *= (1 + (this.objViewModel.valor / 100));
+                                        } break;
                                 }
 
                             }
