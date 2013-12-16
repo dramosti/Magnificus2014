@@ -3,6 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
@@ -129,11 +130,16 @@
             <DockPanel LastChildFill="True">
                 <DockPanel DockPanel.Dock="Top" Height="35">
                     <Button
+                        IsEnabled="{Binding bIsEnabled}"
                         Name="btnAtribuicaoColetiva"
-                        Click="btnAtribuicaoColetiva_Click"
+                        Command="{Binding AtribuicaoColetivaCommand}" CommandParameter="WinAtribuicaoColetivaListaPreco"
                         Content="Atribuição Coletiva" Height="27" Width="121" DockPanel.Dock="Left" Margin="0,0,20,0" />
-                    <Button Content="Alteração no preço de venda/custo do produto" Height="27" Width="271" DockPanel.Dock="Left" Margin="0,0,20,0" />
-                    <Button Content="Carregar todos os produtos" Height="27" Width="157.5" DockPanel.Dock="Left" HorizontalAlignment="Left" />
+                    <Button
+                        IsEnabled="{Binding bIsEnabled}"
+                        Content="Alteração no preço de venda/custo do produto" Height="27" Width="271" DockPanel.Dock="Left" Margin="0,0,20,0" />
+                    <Button
+                        IsEnabled="{Binding bIsEnabled}"
+                        Content="Carregar todos os produtos" Height="27" Width="157.5" DockPanel.Dock="Left" HorizontalAlignment="Left" />
                 </DockPanel>
                 <DockPanel>
                     <DataGrid
@@ -143,7 +149,18 @@
                                     AutoGenerateColumns="False" 
                                     SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                                     CanUserDeleteRows="True"
-                                    CanUserAddRows="True">
+                                    CanUserAddRows="True"
+                                    CellEditEnding="gridItens_CellEditEnding"
+                        >
+                        <DataGrid.BindingGroup>
+                            <BindingGroup NotifyOnValidationError="True">
+                                <BindingGroup.ValidationRules>
+                                    <v:ListUniqueValuesValidationRule                                
+                                ValidatesOnTargetUpdated="True"                                
+                                xCampos="idProduto"></v:ListUniqueValuesValidationRule>
+                                </BindingGroup.ValidationRules>
+                            </BindingGroup>
+                        </DataGrid.BindingGroup>
                         <DataGrid.Columns>
                             <DataGridComboBoxColumn  Header="Produtos" Width="150"
                                         ItemsSource="{Binding Source={StaticResource lresultProdutos}}"

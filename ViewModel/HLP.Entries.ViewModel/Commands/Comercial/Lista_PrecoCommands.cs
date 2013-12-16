@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Modules;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -50,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.gerarListaCommand = new RelayCommand(execute: paramExec => this.GerarLista(),
                 canExecute: paramCanExec => this.GerarListaCanExecute());
 
-            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(o: paramExec),
+            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
         }
 
@@ -63,15 +64,19 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
 
 
-        private void AtribuicaoColetiva(object o)
+        private void AtribuicaoColetiva(object xForm)
         {
+            Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xForm.ToString(),
+                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+
             object vm = null;
-            vm = o.GetType().GetProperty(name: "DataContext").GetValue(obj: o);
+            vm = form.GetType().GetProperty(name: "DataContext").GetValue(obj: form);
 
             ((AtribuicaoColetivaListaPrecoViewModel)vm).currentList = new Comum.Model.Models.ObservableCollectionBaseCadastros<Lista_precoModel>(
                 list: this.objViewModel.currentModel.lLista_preco);
 
-            ((Window)o).Show();
+            form.Show();
+
         }
 
         private bool AtribuicaoColetivaCanExecute()
@@ -109,6 +114,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+                foreach (int id in objViewModel.currentModel.lLista_preco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(
+                        item: new Lista_precoModel
+                        {
+                            idListaPreco = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+
                 BackgroundWorker bwSalvar = new BackgroundWorker();
                 bwSalvar.DoWork += bwSalvar_DoWork;
                 bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -146,6 +161,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+
                 e.Result =
                     this.servico.saveLista_Preco(objListaPreco: this.objViewModel.currentModel);
             }

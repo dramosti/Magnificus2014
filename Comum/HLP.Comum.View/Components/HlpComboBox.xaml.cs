@@ -113,6 +113,16 @@ namespace HLP.Comum.View.Components
 
         #endregion
 
+        public event SelectionChangedEventHandler UCSelectionChanged;
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (UCSelectionChanged != null)
+            {
+                UCSelectionChanged(this, e);
+            }
+        }
+
         private void BaseControl_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -134,6 +144,8 @@ namespace HLP.Comum.View.Components
                 throw ex;
             }
         }
+
+
 
 
     }

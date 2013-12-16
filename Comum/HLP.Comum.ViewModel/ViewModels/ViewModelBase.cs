@@ -28,6 +28,8 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
 
+        public ICommand fecharCommand { get; set; }
+
         public void SetValorCurrentOp(OperacaoCadastro op)
         {
             viewModelBaseCommands.currentOp = op;

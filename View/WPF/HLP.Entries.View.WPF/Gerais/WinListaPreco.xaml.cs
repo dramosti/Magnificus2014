@@ -46,5 +46,10 @@ namespace HLP.Entries.View.WPF.Gerais
             WinAtribuicaoColetivaListaPreco winAtrib = new WinAtribuicaoColetivaListaPreco();
             this.ViewModel.AtribuicaoColetivaCommand.Execute(parameter: winAtrib);
         }
+
+        private void gridItens_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            this.gridItens.BindingGroup.UpdateSources();
+        }
     }
 }
