@@ -59,7 +59,21 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco)
+        public List<HLP.Entries.Model.Models.Comercial.Lista_precoModel> GetItensListaPreco(int idListaPrecoPai)
+        {
+            try
+            {
+                return this.lista_PrecoRepository.GetAllLista_preco(idListaPrecoPai:
+                    idListaPrecoPai);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel saveLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco)
         {
 
             try
@@ -89,12 +103,13 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
-
-                return (int)objListaPreco.idListaPrecoPai;
+                this.lista_Preco_PaiRepository.CommitTransaction();
+                return objListaPreco;
 
             }
             catch (Exception ex)
             {
+                this.lista_Preco_PaiRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -106,14 +121,17 @@ namespace HLP.Wcf.Entries
 
             try
             {
+                this.lista_Preco_PaiRepository.BeginTransaction();
                 this.lista_PrecoRepository.DeletePorListaPrecoPai(
                     idListaPrecoPai: idListaPrecoPai);
                 this.lista_Preco_PaiRepository.Delete(
                     idListaPrecoPai: idListaPrecoPai);
+                this.lista_Preco_PaiRepository.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
+                this.lista_Preco_PaiRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -125,20 +143,24 @@ namespace HLP.Wcf.Entries
 
             try
             {
+                this.lista_Preco_PaiRepository.BeginTransaction();
                 this.lista_Preco_PaiRepository.Copy(objLista_Preco_Pai:
                     objListaPreco);
 
 
                 foreach (HLP.Entries.Model.Models.Comercial.Lista_precoModel item in objListaPreco.lLista_preco)
                 {
+                    item.idListaPreco = null;
                     item.idListaPrecoPai = objListaPreco.idListaPrecoPai;
                     this.lista_PrecoRepository.Copy(
                         objLista_preco: item);
                 }
+                this.lista_Preco_PaiRepository.CommitTransaction();
                 return (int)objListaPreco.idListaPrecoPai;
             }
             catch (Exception ex)
             {
+                this.lista_Preco_PaiRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }

@@ -799,7 +799,7 @@
                                 <DataGridTextColumn                                
                                 Header="Data de Validade" Width="200"
                                     ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=dValidade, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,
+									Binding="{Binding Path=dValidade, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,
                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
                                 <DataGridTextColumn                                

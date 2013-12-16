@@ -21,7 +21,8 @@
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=Caption}" 
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" 
                Height="{Binding ElementName=componente, Path=Height}"/>
-        <ComboBox DockPanel.Dock="Left" x:Name="comboBox"  Margin="0,4,0,3"         
+        <ComboBox DockPanel.Dock="Left" x:Name="comboBox"  Margin="0,4,0,3"
+                  SelectionChanged="comboBox_SelectionChanged"
                 SelectedValue="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedValue}"  
                 SelectedValuePath="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedValuePath}"
                 SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedItem}"

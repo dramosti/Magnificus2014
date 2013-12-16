@@ -1,6 +1,8 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Modules;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +48,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
+            this.objViewModel.gerarListaCommand = new RelayCommand(execute: paramExec => this.GerarLista(),
+                canExecute: paramCanExec => this.GerarListaCanExecute());
+
+            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
+                canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
         }
 
         private void IniciaCollection()
@@ -55,10 +62,68 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         #region Implementação Commands
 
+
+
+        private void AtribuicaoColetiva(object xForm)
+        {
+            Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xForm.ToString(),
+                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+
+            object vm = null;
+            vm = form.GetType().GetProperty(name: "DataContext").GetValue(obj: form);
+
+            ((AtribuicaoColetivaListaPrecoViewModel)vm).currentList = new Comum.Model.Models.ObservableCollectionBaseCadastros<Lista_precoModel>(
+                list: this.objViewModel.currentModel.lLista_preco);
+
+            form.Show();
+
+        }
+
+        private bool AtribuicaoColetivaCanExecute()
+        {
+            return true;
+        }
+
+
+        private void GerarLista()
+        {
+            foreach (Lista_precoModel item in
+                this.servico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
+            {
+                if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == item.idProduto) == 0)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
+                    {
+                        idProduto = item.idProduto
+                    });
+                }
+            }
+        }
+
+        private bool GerarListaCanExecute()
+        {
+            if (this.objViewModel.currentModel == null)
+                return false;
+
+            return this.objViewModel.currentModel.idListaPrecoOrigem != null &&
+                this.objViewModel.bIsEnabled;
+        }
+
+
         public void Save()
         {
             try
             {
+                foreach (int id in objViewModel.currentModel.lLista_preco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(
+                        item: new Lista_precoModel
+                        {
+                            idListaPreco = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+
                 BackgroundWorker bwSalvar = new BackgroundWorker();
                 bwSalvar.DoWork += bwSalvar_DoWork;
                 bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -75,13 +140,19 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentModel.idListaPrecoPai = (int)e.Result;
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.IniciaCollection();
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel = (Lista_Preco_PaiModel)e.Result;
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.IniciaCollection();
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -90,6 +161,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+
                 e.Result =
                     this.servico.saveLista_Preco(objListaPreco: this.objViewModel.currentModel);
             }
@@ -110,6 +182,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public async void Delete()
         {
+            int iExcluir = (int)this.objViewModel.currentModel.idListaPrecoPai;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -137,7 +210,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
             }
         }
 

@@ -28,6 +28,8 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
 
+        public ICommand fecharCommand { get; set; }
+
         public void SetValorCurrentOp(OperacaoCadastro op)
         {
             viewModelBaseCommands.currentOp = op;
@@ -161,6 +163,11 @@ namespace HLP.Comum.ViewModel.ViewModels
                             else if (o.GetType() == typeof(System.Windows.Controls.TextBox))
                             {
                                 if (Validation.GetHasError(element: o as System.Windows.Controls.TextBox))
+                                    return true;
+                            }
+                            else if (o.GetType().Name.ToString() == "TextBlockComboBox")
+                            {
+                                if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
                                     return true;
                             }
                         }

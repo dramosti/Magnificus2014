@@ -46,7 +46,8 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
             this.objviewModel.copyBaseCommand = new RelayCommand(execute: pExec => this.copyBase(),
                 canExecute: pCanExec => this.copyBaseCanExecute());
-
+            this.objviewModel.fecharCommand = new RelayCommand(execute: pExec => this.Fechar(wd: pExec),
+                canExecute: pCanExec => this.FecharCanExecute(wd: pCanExec));
 
             this.currentOp = OperacaoCadastro.livre;
 
@@ -61,6 +62,18 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
         #region Executes & CanExecutes
+
+
+        private void Fechar(object wd)
+        {
+            ((Window)wd).Close();
+        }
+
+        private bool FecharCanExecute(object wd)
+        {
+            return true;
+        }
+
 
         private void ShowPesquisaExecute()
         {
@@ -123,7 +136,7 @@ namespace HLP.Comum.ViewModel.Commands
                         objviewModel.currentID = 0;
                         if (objviewModel.navigatePesquisa.Count > 0)
                         {
-                            objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;                            
+                            objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
                         }
                         objviewModel.sText = (objviewModel.navigatePesquisa.CurrentPosition + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
                     }

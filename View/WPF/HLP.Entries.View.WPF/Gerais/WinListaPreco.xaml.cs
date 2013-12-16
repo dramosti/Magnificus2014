@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
+using System.Collections;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -37,6 +39,17 @@ namespace HLP.Entries.View.WPF.Gerais
             {
                 this.DataContext = value;
             }
+        }
+
+        private void btnAtribuicaoColetiva_Click(object sender, RoutedEventArgs e)
+        {
+            WinAtribuicaoColetivaListaPreco winAtrib = new WinAtribuicaoColetivaListaPreco();
+            this.ViewModel.AtribuicaoColetivaCommand.Execute(parameter: winAtrib);
+        }
+
+        private void gridItens_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            this.gridItens.BindingGroup.UpdateSources();
         }
     }
 }
