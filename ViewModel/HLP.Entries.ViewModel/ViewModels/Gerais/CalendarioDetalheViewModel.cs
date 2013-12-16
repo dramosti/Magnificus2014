@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public CalendarioDetalheViewModel()
         {
             commands = new CalendarioDetalheCommand(objViewModel: this);
+            
         }
 
         #region Icommands
@@ -23,9 +25,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         CalendarioDetalheCommand commands;
 
-        private CalendarioDetalheModel _currentModel;
+        private CalendarioGeraDetalhesModel _currentModel;
 
-        public CalendarioDetalheModel currentModel
+        public CalendarioGeraDetalhesModel currentModel
         {
             get { return _currentModel; }
             set
@@ -36,60 +38,118 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
 
+        
+        private ObservableCollection<Calendario_DetalheModel> _lCalendarioDetalhes;
+
+        public ObservableCollection<Calendario_DetalheModel> lCalendarioDetalhes
+        {
+            get { return _lCalendarioDetalhes; }
+            set
+            {
+                _lCalendarioDetalhes = value;
+                base.NotifyPropertyChanged(propertyName: "lCalendarioDetalhes");
+            }
+        }
 
 
-        private bool ValidaIntervalosDia()
+
+
+        public Dictionary<DateTime, DateTime> GeraIntervalos()
+        {
+            try
+            {
+                Dictionary<DateTime, DateTime> Intervalos = new Dictionary<DateTime, DateTime>();
+                foreach (var item in currentModel.lDetalhes)
+                {
+                    Intervalos.Add(item.horaInicial, item.horaFinal);
+                }
+                return Intervalos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool VerificaDiaExcluidoProgramacao(DateTime day, List<string> DiasSemProgramacao)
         {
             try
             {
                 bool ret = true;
-                //if (dgvIntervalo.RowCount > 1)
-                //{
-                //    DateTime Inicio;
-                //    DateTime Fim;
-                //    for (int i = 0; i < dgvIntervalo.RowCount - 1; i++)
-                //    {
-                //        if (dgvIntervalo.Rows[i].Cells["Inicio"].Value != null)
-                //        {
-                //            Inicio = Convert.ToDateTime(dgvIntervalo.Rows[i].Cells["Inicio"].Value);
-                //        }
-                //        else
-                //        {
-                //            ret = false;
-                //            break;
-                //        }
-                //        if (dgvIntervalo.Rows[i].Cells["Fim"].Value != null)
-                //        {
-                //            Fim = Convert.ToDateTime(dgvIntervalo.Rows[i].Cells["Fim"].Value);
-                //        }
-                //        else
-                //        {
-                //            ret = false;
-                //            break;
-                //        }
-                //        if (Inicio >= Fim)
-                //        {
-                //            ret = false;
-                //            break;
-                //        }
+                foreach (string diasExcluidos in DiasSemProgramacao)
+                {
+                    if (diasExcluidos != "")
+                    {
+                        int dia = Convert.ToInt32(diasExcluidos.Split('/')[0]);
+                        int mes = Convert.ToInt32(diasExcluidos.Split('/')[1]);
 
-                //    }
-                //    if (!ret)
-                //    {
-                //        KryptonMessageBox.Show("Intervalo(s) do dia Inválido(s)", "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //    return ret;
-                //}
-                //else
-                //{
-                    return ret;
-                //}
+                        if (day.Date.Day == dia && day.Date.Month == mes)
+                        {
+                            ret = false;
+                            break;
+                        }
+                    }
+                }
+                return ret;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //new HLPexception(ex);
                 return false;
             }
         }
+        public void MontaHorario(Dictionary<DateTime, DateTime> Intervalos, DateTime day, DateTime HoraInicial, DateTime HoraFinal)
+        {
+            try
+            {
+                Calendario_DetalheModel detalhe = new Calendario_DetalheModel();
+
+                detalhe.dCalendario = day.Date;
+                detalhe.dHoraInicio = HoraInicial;
+
+                if (Intervalos.Count() > 0)
+                {
+                    foreach (KeyValuePair<DateTime, DateTime> inter in Intervalos.OrderBy(C => C.Key))
+                    {
+
+
+                        if (inter.Key.TimeOfDay < HoraFinal.TimeOfDay)
+                        {
+                            detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, inter.Key.Hour, inter.Key.Minute, inter.Key.Second);
+                            lCalendarioDetalhes.Add(detalhe);
+
+                            if (inter.Value.TimeOfDay < HoraFinal.TimeOfDay)
+                            {
+                                detalhe = new Calendario_DetalheModel();
+                                detalhe.dCalendario = day.Date;
+                                detalhe.dHoraInicio = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, inter.Value.Hour, inter.Value.Minute, inter.Value.Second);
+                            }
+                        }
+                        else
+                        {
+                            detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, HoraFinal.Hour, HoraFinal.Minute, HoraFinal.Second);
+                            lCalendarioDetalhes.Add(detalhe);
+                        }
+                    }
+                    if (detalhe.dHoraTermino.TimeOfDay.Equals(new TimeSpan(0, 0, 0)))
+                    {
+                        detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, HoraFinal.Hour, HoraFinal.Minute, HoraFinal.Second);
+                        lCalendarioDetalhes.Add(detalhe);
+                    }
+
+                }
+                else
+                {
+                    detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, HoraFinal.Hour, HoraFinal.Minute, HoraFinal.Second);
+                    lCalendarioDetalhes.Add(detalhe);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+        
     }
 }

@@ -2,65 +2,77 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.WinCalendarioDetalhe"
         Title="WinCalendarioDetalhe" Height="500" Width="620">
-	<DockPanel>
-		<WrapPanel Orientation="Vertical" DockPanel.Dock="top" Height="173.5">			
-			<Components:HlpDateTimePicker Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Data Inicial" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data Final" WidthLabel="173" Width="281.571"/>
-			<Components:HlpCheckBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Considerar Sabado?" WidthLabel="173" Width="281.571"/>
-			<Components:HlpCheckBox Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Considerar Domingo?" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Inicial -seg a sex" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Hora Final -seg a sex" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora - Sábado" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final - Sábado" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Inicial - Domingo" WidthLabel="173" Width="281.571"/>
-			<Components:HlpDateTimePicker Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final - Domingo" WidthLabel="173" Width="281.571"/>			
-		</WrapPanel>			
-		<DockPanel>
-			<WrapPanel Orientation="Vertical" DockPanel.Dock="Top" Height="75">
-				<Components:HlpTextBox Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Dia/mês sem programação(ex:01/01)" WidthLabel="278" Width="587"/>
-				<Button Content="Gerar Detalhamento" Width="150" Margin="447,0,10,2" HorizontalAlignment="Left"/>				
-			</WrapPanel>
-			<DataGrid
-					IsEnabled="{Binding bIsEnabled}"
+    <Window.Resources>
+        <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
+    </Window.Resources>
+    <DockPanel>
+        <WrapPanel Orientation="Vertical" DockPanel.Dock="top" Height="192">
+            <Components:HlpDateTimePicker SelectedDate="{Binding currentModel.dtInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Data Inicial" WidthLabel="173" Width="281.571"/>
+            <Components:HlpDateTimePicker SelectedDate="{Binding currentModel.dtFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data Final" WidthLabel="173" Width="281.571"/>
+            <Components:HlpCheckBox IsChecked="{Binding currentModel.bConsideraSabado, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"  Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Considerar Sabado?" WidthLabel="173" Width="199"/>
+            <Components:HlpCheckBox IsChecked="{Binding currentModel.bConsideraDomingo, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"  Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Considerar Domingo?" WidthLabel="173" Width="199"/>
+            <Label Margin="0,0,20,20" Height="23"/>
+            <Components:HlpTimePicker Value="{Binding currentModel.SegSexInicial, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Hora Inicial -seg a sex" WidthLabel="173" Width="281.571"/>
+            <Components:HlpTimePicker Value="{Binding currentModel.SegSexFinal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final -seg a sex" WidthLabel="173" Width="281.571"/>
+            <Components:HlpTimePicker Value="{Binding currentModel.SabadoInicial, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora - Sábado" WidthLabel="173" Width="281.571"/>
+            <Components:HlpTimePicker Value="{Binding currentModel.SabadoFinal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final - Sábado" WidthLabel="173" Width="281.571"/>
+            <Components:HlpTimePicker Value="{Binding currentModel.DomingoInicial, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Inicial - Domingo" WidthLabel="173" Width="281.571"/>
+            <Components:HlpTimePicker Value="{Binding currentModel.DomingoFinal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final - Domingo" WidthLabel="173" Width="281.571"/>
+
+        </WrapPanel>
+        <DockPanel>
+            <WrapPanel Orientation="Vertical" DockPanel.Dock="Top" Height="75">
+                <Components:HlpTextBox x:Name="txtDiaSemProg" Height="27" Margin="10,10,10,2" HorizontalAlignment="Left"
+                                       Caption="Dia/mês sem programação(ex:01/01)" WidthLabel="278" Width="579"
+                                       Validation.ErrorTemplate="{StaticResource exceptionComp}" 
+                                       Text="{Binding currentModel.diaSemProgramacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                        />
+                <Button  Content="Gerar Detalhamento" Width="143" Margin="447,0,10,2" HorizontalAlignment="Left" 
+                         Command="{Binding commandGerarDetalhamento}"
+                         CommandParameter="{Binding ElementName=txtDiaSemProg}"
+                         />
+            </WrapPanel>
+            <DataGrid
+                 ItemsSource="{Binding currentModel.lDetalhes}"					
 					AutoGenerateColumns="False" 
                     SelectionUnit="CellOrRowHeader" 
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True">
-				<DataGrid.Columns>
-					<DataGridTemplateColumn Header="Hora Inicial" Width="300">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></TextBlock>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></DatePicker>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>
-							<DataGridTemplateColumn Header="Hora Final" Width="*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></TextBlock>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <DatePicker SelectedDate="{Binding dAlteracaoCusto, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></DatePicker>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>                            
-				</DataGrid.Columns>				
-			</DataGrid>			
-		</DockPanel>
-	</DockPanel>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Hora Inicial" Width="300">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource dateConverter}}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Components:TimePicker Value="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:TimePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Hora Final" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource dateConverter}}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Components:TimePicker Value="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:TimePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </DockPanel>
 </runtime:WindowsBase>

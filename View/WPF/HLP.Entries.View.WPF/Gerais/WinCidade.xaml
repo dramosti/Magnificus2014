@@ -31,7 +31,6 @@
                 <System:String>xUf</System:String>
             </Components:HlpPesquisa.Items>
         </Components:HlpPesquisa>
-        <Components:HlpTimePicker/>
     </StackPanel>
 
 </runtime:WindowsBase>

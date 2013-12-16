@@ -29,6 +29,11 @@ namespace HLP.Magnificus.View.WPF
         {
             InitializeComponent();
 
+
+            WinCalendarioDetalhe aaa = new WinCalendarioDetalhe();
+
+            aaa.ShowDialog();
+
             GerenciadorModulo.Instancia.InicializaSistema();
             try
             {
@@ -36,7 +41,7 @@ namespace HLP.Magnificus.View.WPF
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
             CompanyData.idEmpresa = 1;

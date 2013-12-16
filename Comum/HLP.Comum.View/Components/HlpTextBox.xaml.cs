@@ -24,7 +24,7 @@ namespace HLP.Comum.View.Components
     {
         public HlpTextBox()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         #region TextBox's Property
@@ -38,7 +38,7 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(HlpTextBox), new PropertyMetadata(string.Empty));
-        
+
         public bool IsReadOnly
         {
             get { return (bool)GetValue(IsReadOnlyProperty); }
@@ -49,7 +49,30 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty IsReadOnlyProperty =
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false));
 
-        
+        public bool isValid
+        {
+            get { return !Validation.GetHasError(this); }
+        }
+
+
+
+
+
+
+
+        //public bool isValid
+        //{
+        //    get
+        //    {
+        //        isValid = !Validation.GetHasError(this);
+        //        return (bool)GetValue(isValidProperty);
+        //    }
+        //    set { SetValue(isValidProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for isValid.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty isValidProperty =
+        //    DependencyProperty.Register("isValid", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(true));
 
 
 
