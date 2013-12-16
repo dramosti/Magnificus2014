@@ -75,19 +75,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         }
                     }
                 }
-                FechaForm(p: ((DataGrid)o).Parent);
-            }
-        }
-
-        private void FechaForm(object p)
-        {
-            if (p.GetType().BaseType == typeof(Window))
-            {
-                ((Window)p).Close();
-            }
-            else
-            {
-                FechaForm(p: ((Panel)p).Parent);
+                this.objViewModel.FechaForm(p: ((DataGrid)o).Parent);
             }
         }
 

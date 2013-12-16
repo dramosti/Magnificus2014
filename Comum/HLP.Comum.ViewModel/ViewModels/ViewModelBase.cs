@@ -134,6 +134,20 @@ namespace HLP.Comum.ViewModel.ViewModels
                 : resultado;
         }
 
+
+
+        public void FechaForm(object p)
+        {
+            if (p.GetType().BaseType == typeof(Window))
+            {
+                ((Window)p).Close();
+            }
+            else
+            {
+                FechaForm(p: ((System.Windows.Controls.Panel)p).Parent);
+            }
+        }
+
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)
         {
             object o;
