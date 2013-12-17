@@ -27,6 +27,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="serviceProduto.xsd" MetadataType="Schema" ID="b7e8c837-9e67-49f3-996a-5c9e587cddce" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceProduto6.xsd" MetadataType="Schema" ID="6e303730-d924-4663-99e5-bfbc0d809a45" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd6" />
     <MetadataFile FileName="serviceProduto.disco" MetadataType="Disco" ID="93b4aa81-b883-435b-ba1a-bd42901af4ef" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceProduto.svc?disco" />
     <MetadataFile FileName="serviceProduto1.xsd" MetadataType="Schema" ID="f73a4f66-dc56-476e-a6cb-9143bfc74197" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd3" />
     <MetadataFile FileName="serviceProduto.wsdl" MetadataType="Wsdl" ID="b1a817b9-de0e-45aa-95dd-6b7f4e29ba0a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceProduto.svc?wsdl" />

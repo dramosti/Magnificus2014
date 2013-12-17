@@ -6,9 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Comum.Modules;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Model.Models;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -43,12 +46,26 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
-                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
-        
-        
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+            //gerarDetalhamentoCommand
+
+            this.objViewModel.gerarDetalhamentoCommand = new RelayCommand(execute: exec => this.GeraDetalhamento(),
+                 canExecute: can => true);
+
         }
 
         #region Implementação Commands
+
+        public void GeraDetalhamento()
+        {
+            Window win = GerenciadorModulo.Instancia.CarregaForm("WinCalendarioDetalhe", Comum.Modules.Interface.TipoExibeForm.Modal);
+            win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            win.ShowDialog();
+            var dados = win.GetPropertyValue("ViewModel").GetPropertyValue("lCalendarioDetalhes");
+            if (dados != null)
+                objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
+        }
+
 
         public async void Save()
         {

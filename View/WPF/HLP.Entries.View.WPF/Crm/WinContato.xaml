@@ -289,7 +289,7 @@
                             ItemsSource="{Binding Source={StaticResource lresult}}"
                             SelectedValuePath="id"
                             DisplayMemberPath="display"
-                            SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                            SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
                             <DataGridComboBoxColumn  Header="Logradouro" Width="160"
                             ItemsSource="{Binding Source={StaticResource EnumTipoLogradouro}}"
                             DisplayMemberPath="Key"

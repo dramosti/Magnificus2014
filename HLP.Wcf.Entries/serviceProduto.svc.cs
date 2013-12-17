@@ -175,7 +175,21 @@ namespace HLP.Wcf.Entries
                 this.produtoRepository.RollackTransaction();
                 throw new FaultException(reason: ex.Message);
             }
+        }
 
+        public List<HLP.Entries.Model.Models.Comercial.ProdutoModel> getAll()
+        {
+
+            try
+            {
+                return this.produtoRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        
         }
     }
 }

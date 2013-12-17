@@ -8,6 +8,7 @@
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IserviceProduto_getProduto_InputMessage">
@@ -34,6 +35,12 @@
   <wsdl:message name="IserviceProduto_copyProduto_OutputMessage">
     <wsdl:part name="parameters" element="tns:copyProdutoResponse" />
   </wsdl:message>
+  <wsdl:message name="IserviceProduto_getAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAll" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_getAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllResponse" />
+  </wsdl:message>
   <wsdl:portType name="IserviceProduto">
     <wsdl:operation name="getProduto">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/getProduto" message="tns:IserviceProduto_getProduto_InputMessage" />
@@ -50,6 +57,10 @@
     <wsdl:operation name="copyProduto">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/copyProduto" message="tns:IserviceProduto_copyProduto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/copyProdutoResponse" message="tns:IserviceProduto_copyProduto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/getAll" message="tns:IserviceProduto_getAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/getAllResponse" message="tns:IserviceProduto_getAll_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IserviceProduto" type="tns:IserviceProduto">
@@ -83,6 +94,15 @@
     </wsdl:operation>
     <wsdl:operation name="copyProduto">
       <soap:operation soapAction="http://tempuri.org/IserviceProduto/copyProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <soap:operation soapAction="http://tempuri.org/IserviceProduto/getAll" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

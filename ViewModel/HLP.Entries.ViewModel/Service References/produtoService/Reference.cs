@@ -17,6 +17,7 @@ namespace HLP.Entries.ViewModel.produtoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.ConversaoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Comercial.ProdutoModel))]
@@ -87,10 +88,16 @@ namespace HLP.Entries.ViewModel.produtoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -99,6 +106,19 @@ namespace HLP.Entries.ViewModel.produtoService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -124,6 +144,19 @@ namespace HLP.Entries.ViewModel.produtoService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -155,6 +188,17 @@ namespace HLP.Entries.ViewModel.produtoService {
         excluido = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoArredondamento", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoArredondamento : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PARABAIXO = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PARACIMA = 1,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="produtoService.IserviceProduto")]
     public interface IserviceProduto {
@@ -182,6 +226,12 @@ namespace HLP.Entries.ViewModel.produtoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceProduto/copyProduto", ReplyAction="http://tempuri.org/IserviceProduto/copyProdutoResponse")]
         System.Threading.Tasks.Task<int> copyProdutoAsync(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceProduto/getAll", ReplyAction="http://tempuri.org/IserviceProduto/getAllResponse")]
+        System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.ProdutoModel> getAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceProduto/getAll", ReplyAction="http://tempuri.org/IserviceProduto/getAllResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.ProdutoModel>> getAllAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -241,6 +291,14 @@ namespace HLP.Entries.ViewModel.produtoService {
         
         public System.Threading.Tasks.Task<int> copyProdutoAsync(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto) {
             return base.Channel.copyProdutoAsync(objProduto);
+        }
+        
+        public System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.ProdutoModel> getAll() {
+            return base.Channel.getAll();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Comercial.ProdutoModel>> getAllAsync() {
+            return base.Channel.getAllAsync();
         }
     }
 }

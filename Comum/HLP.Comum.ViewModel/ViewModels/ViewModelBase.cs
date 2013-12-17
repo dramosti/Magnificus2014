@@ -28,6 +28,8 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
 
+        public ICommand fecharCommand { get; set; }
+
         public void SetValorCurrentOp(OperacaoCadastro op)
         {
             viewModelBaseCommands.currentOp = op;
@@ -130,6 +132,31 @@ namespace HLP.Comum.ViewModel.ViewModels
                 obj.GetType() == typeof(System.Windows.Controls.DataGrid) ?
                 !this.GridObjectsIsValid(obj: obj as System.Windows.Controls.DataGrid)
                 : resultado;
+        }
+
+
+
+        public void FechaForm(object p)
+        {
+            if (p.GetType().BaseType == typeof(Window))
+            {
+                try
+                {
+                    ((Window)p).Close();
+                }
+                catch (Exception)
+                {
+
+                }
+
+            }
+            else
+            {
+                try
+                { FechaForm(p: ((System.Windows.Controls.Panel)p).Parent); }
+                catch (Exception) { ((Window)p).Close(); }
+
+            }
         }
 
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)

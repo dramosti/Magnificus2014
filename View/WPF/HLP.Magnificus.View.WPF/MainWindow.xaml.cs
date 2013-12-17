@@ -28,7 +28,7 @@ namespace HLP.Magnificus.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-
+            
             GerenciadorModulo.Instancia.InicializaSistema();
             try
             {
@@ -36,7 +36,7 @@ namespace HLP.Magnificus.View.WPF
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
             CompanyData.idEmpresa = 1;

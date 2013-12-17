@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Modules;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -17,6 +18,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         Lista_PrecoViewModel objViewModel;
         Lista_PrecoService.IserviceLista_PrecoClient servico = new Lista_PrecoService.IserviceLista_PrecoClient();
+        produtoService.IserviceProdutoClient servicoProduto = new produtoService.IserviceProdutoClient();
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
@@ -50,8 +52,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.gerarListaCommand = new RelayCommand(execute: paramExec => this.GerarLista(),
                 canExecute: paramCanExec => this.GerarListaCanExecute());
 
-            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(o: paramExec),
+            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
+
+            this.objViewModel.CarregarProdutosCommand = new RelayCommand(execute: paramExec => this.CarregarProdutos(),
+                canExecute: paramCanExec => this.CarregarProdutosCanExecute());
         }
 
         private void IniciaCollection()
@@ -62,16 +67,39 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         #region Implementação Commands
 
 
-
-        private void AtribuicaoColetiva(object o)
+        private void CarregarProdutos()
         {
+            foreach (ProdutoModel p in this.servicoProduto.getAll())
+            {
+                if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == p.idProduto) == 0)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
+                    {
+                        idProduto = (int)p.idProduto
+                    });
+                }
+            }
+        }
+
+        private bool CarregarProdutosCanExecute()
+        {
+            return true;
+        }
+
+
+        private void AtribuicaoColetiva(object xForm)
+        {
+            Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xForm.ToString(),
+                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+
             object vm = null;
-            vm = o.GetType().GetProperty(name: "DataContext").GetValue(obj: o);
+            vm = form.GetType().GetProperty(name: "DataContext").GetValue(obj: form);
 
             ((AtribuicaoColetivaListaPrecoViewModel)vm).currentList = new Comum.Model.Models.ObservableCollectionBaseCadastros<Lista_precoModel>(
                 list: this.objViewModel.currentModel.lLista_preco);
 
-            ((Window)o).Show();
+            form.Show();
+
         }
 
         private bool AtribuicaoColetivaCanExecute()
@@ -109,6 +137,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+                foreach (int id in objViewModel.currentModel.lLista_preco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(
+                        item: new Lista_precoModel
+                        {
+                            idListaPreco = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+
                 BackgroundWorker bwSalvar = new BackgroundWorker();
                 bwSalvar.DoWork += bwSalvar_DoWork;
                 bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -146,6 +184,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+
                 e.Result =
                     this.servico.saveLista_Preco(objListaPreco: this.objViewModel.currentModel);
             }
