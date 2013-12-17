@@ -109,7 +109,9 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vCustoProduto = value;
+                //this._pLucro = (decimal)(((this._vVenda - (this._vVenda * ((this._pDesconto ?? 0) / 100))) - value) / value) * 100;
                 base.NotifyPropertyChanged(propertyName: "vCustoProduto");
+                //base.NotifyPropertyChanged(propertyName: "pLucro");
             }
         }
         private decimal _pLucro;
@@ -120,7 +122,10 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _pLucro = value;
+                //this._vVenda = (this._vVenda - (this._vVenda * ((this._pDesconto ?? 0) / 100))) *
+                //    (1 + (value / 100));
                 base.NotifyPropertyChanged(propertyName: "pLucro");
+                //base.NotifyPropertyChanged(propertyName: "vVenda");
             }
         }
         private decimal _vVenda;
@@ -131,9 +136,9 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                this._pLucro = ((value - this._vCustoProduto) / this._vCustoProduto) * 100;
+                //this._pLucro = (decimal)(((value - (value * ((this._pDesconto ?? 0) / 100))) - this._vCustoProduto) / this._vCustoProduto) * 100;
                 base.NotifyPropertyChanged(propertyName: "vVenda");
-                base.NotifyPropertyChanged(propertyName: "pLucro");
+                //base.NotifyPropertyChanged(propertyName: "pLucro");
             }
         }
         private decimal? _pDescontoMaximo;
@@ -199,7 +204,9 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _pDesconto = value;
+                //this._pLucro = (decimal)(((this._vVenda - (this._vVenda * ((value ?? 0) / 100))) - this._vCustoProduto) / this._vCustoProduto) * 100;
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
+                //base.NotifyPropertyChanged(propertyName: "pLucro");
             }
         }
         private decimal? _pComissao;
@@ -244,6 +251,17 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _idUnidadeMedida = value;
                 base.NotifyPropertyChanged(propertyName: "idUnidadeMedida");
+            }
+        }
+        private decimal? _pMarkup;
+        [ParameterOrder(Order = 16)]
+        public decimal? pMarkup
+        {
+            get { return _pMarkup; }
+            set
+            {
+                _pMarkup = value;
+                base.NotifyPropertyChanged(propertyName: "pMarkup");
             }
         }
     }

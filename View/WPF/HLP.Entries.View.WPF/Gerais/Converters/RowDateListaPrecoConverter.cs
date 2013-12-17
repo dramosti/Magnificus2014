@@ -14,6 +14,12 @@ namespace HLP.Entries.View.WPF.Gerais.Converters
             DateTime date;
             double dateAdd;
 
+            foreach (object o in values)
+            {
+                if (o == null)
+                    return false;
+            }
+
             if (DateTime.TryParse(s: values[0].ToString(), result: out date))
             {
                 if (!double.TryParse(s: values[1].ToString(), result: out dateAdd))

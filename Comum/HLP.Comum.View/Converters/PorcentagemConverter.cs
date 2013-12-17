@@ -11,14 +11,17 @@ namespace HLP.Comum.View.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            double d;
-
-            if (!double.TryParse(s: value.ToString(), result: out d))
+            decimal d;
+            if (value == null)
             {
-                d = double.MinValue;
+                d = decimal.Zero;
+            }
+            else if (!decimal.TryParse(s: value.ToString(), result: out d))
+            {
+                d = decimal.Zero;
             }
 
-            return String.Format("{0:P1}", d/100);
+            return String.Format("{0:P1}", d / 100);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
