@@ -11,10 +11,14 @@ namespace HLP.Comum.View.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value != null)
-                return value.ToString();
+            double d;
 
-            return String.Empty;
+            if (!double.TryParse(s: value.ToString(), result: out d))
+            {
+                d = double.MinValue;
+            }
+
+            return String.Format("{0:P1}", d/100);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

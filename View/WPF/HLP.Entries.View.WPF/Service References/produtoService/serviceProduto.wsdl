@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="serviceProduto" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/serviceProduto.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IserviceProduto_getProduto_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProduto" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_getProduto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProdutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_saveProduto_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveProduto" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_saveProduto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveProdutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_deleteProduto_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteProduto" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_deleteProduto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteProdutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_copyProduto_InputMessage">
+    <wsdl:part name="parameters" element="tns:copyProduto" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_copyProduto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:copyProdutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_getAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAll" />
+  </wsdl:message>
+  <wsdl:message name="IserviceProduto_getAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IserviceProduto">
+    <wsdl:operation name="getProduto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/getProduto" message="tns:IserviceProduto_getProduto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/getProdutoResponse" message="tns:IserviceProduto_getProduto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveProduto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/saveProduto" message="tns:IserviceProduto_saveProduto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/saveProdutoResponse" message="tns:IserviceProduto_saveProduto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProduto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/deleteProduto" message="tns:IserviceProduto_deleteProduto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/deleteProdutoResponse" message="tns:IserviceProduto_deleteProduto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="copyProduto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/copyProduto" message="tns:IserviceProduto_copyProduto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/copyProdutoResponse" message="tns:IserviceProduto_copyProduto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceProduto/getAll" message="tns:IserviceProduto_getAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceProduto/getAllResponse" message="tns:IserviceProduto_getAll_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IserviceProduto" type="tns:IserviceProduto">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getProduto">
+      <soap:operation soapAction="http://tempuri.org/IserviceProduto/getProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveProduto">
+      <soap:operation soapAction="http://tempuri.org/IserviceProduto/saveProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProduto">
+      <soap:operation soapAction="http://tempuri.org/IserviceProduto/deleteProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="copyProduto">
+      <soap:operation soapAction="http://tempuri.org/IserviceProduto/copyProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <soap:operation soapAction="http://tempuri.org/IserviceProduto/getAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="serviceProduto">
+    <wsdl:port name="BasicHttpBinding_IserviceProduto" binding="tns:BasicHttpBinding_IserviceProduto">
+      <soap:address location="http://192.168.9.33:8080/wcf/serviceProduto.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

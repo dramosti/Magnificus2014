@@ -131,7 +131,9 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
+                this._pLucro = ((value - this._vCustoProduto) / this._vCustoProduto) * 100;
                 base.NotifyPropertyChanged(propertyName: "vVenda");
+                base.NotifyPropertyChanged(propertyName: "pLucro");
             }
         }
         private decimal? _pDescontoMaximo;
