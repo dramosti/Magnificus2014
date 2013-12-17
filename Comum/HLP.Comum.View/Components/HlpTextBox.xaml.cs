@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HLP.Comum.ViewModel.Commands;
 
 namespace HLP.Comum.View.Components
 {
@@ -21,10 +22,11 @@ namespace HLP.Comum.View.Components
     /// Interaction logic for MyUserControl.xaml
     /// </summary>
     public partial class HlpTextBox : BaseControl
-    {
+    {    
+
         public HlpTextBox()
         {
-            InitializeComponent();
+            InitializeComponent();                   
         }
 
         #region TextBox's Property
@@ -32,7 +34,8 @@ namespace HLP.Comum.View.Components
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            set { SetValue(TextProperty, value);           
+            }
         }
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
@@ -57,27 +60,7 @@ namespace HLP.Comum.View.Components
         }
         // Using a DependencyProperty as the backing store for isFindFolder.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty isFindFolderProperty =
-            DependencyProperty.Register("isFindFolder", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false, new PropertyChangedCallback(OnChangedisisFindFolder)));
-        public static void OnChangedisisFindFolder(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            try
-            {
-                HlpTextBox comp = d as HlpTextBox;
-                if (e.NewValue != null)
-                {
-                    bool bValor = (bool)e.NewValue;
-                    Button btn = (Button)comp.txtControle.Template.FindName("btn", comp.txtControle);
-                    if (bValor)
-                        btn.Visibility = Visibility.Visible;
-                    else if (comp.isFindFiles == false)
-                        btn.Visibility = Visibility.Collapsed;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+            DependencyProperty.Register("isFindFolder", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false));
 
         [Category("HLP.Owner")]
         public bool isFindFiles
@@ -88,29 +71,7 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for isFindFiles.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty isFindFilesProperty =
-            DependencyProperty.Register("isFindFiles", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false, new PropertyChangedCallback(OnChangedisFindFiles)));
-
-
-        public static void OnChangedisFindFiles(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            try
-            {
-                HlpTextBox comp = d as HlpTextBox;
-                if (e.NewValue != null)
-                {
-                    bool bValor = (bool)e.NewValue;
-                    Button btn = (Button)comp.txtControle.Template.FindName("btn", comp.txtControle);
-                    if (bValor)
-                        btn.Visibility = Visibility.Visible;
-                    else if (comp.isFindFolder == false)
-                        btn.Visibility = Visibility.Collapsed;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+            DependencyProperty.Register("isFindFiles", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false));
 
         public Visibility VisibilityLabel
         {
@@ -123,6 +84,60 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("VisibilityLabel", typeof(Visibility), typeof(HlpTextBox), new PropertyMetadata(Visibility.Visible));
 
         #endregion
+
+        private System.Windows.Forms.FolderBrowserDialog fbd { get; set; }
+        private System.Windows.Forms.OpenFileDialog ofd { get; set; }
+
+        public void Find()
+        {
+            try
+            {
+                if (this.isFindFolder)
+                {
+                    if (fbd == null)
+                    {
+                        fbd = new System.Windows.Forms.FolderBrowserDialog();
+                        fbd.Description = "Localizar diretório";                        
+                    }
+                    if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.Text = fbd.SelectedPath;
+                    }
+                }
+                else if (this.isFindFiles)
+                {
+                    if (ofd == null)
+                    {
+                        ofd = new System.Windows.Forms.OpenFileDialog();
+                        ofd.Title = "Localizar arquivos";
+                        ofd.FileName = "Magníficus";
+                        ofd.Multiselect = false;
+                    }
+                    if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.Text = ofd.FileName;
+                    }          
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        private void componente_Loaded(object sender, RoutedEventArgs e)
+        {           
+            if (this.isFindFolder || this.isFindFiles)
+            {
+                this.btn.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            Find();
+        }
     }
 
 }

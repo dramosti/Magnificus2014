@@ -10,7 +10,8 @@ namespace HLP.Entries.Model.Models.Gerais
 {
     public partial class DecisaoModel : modelBase
     {
-        public DecisaoModel(): base("Decisao")
+        public DecisaoModel()
+            : base("Decisao")
         {
         }
 
@@ -28,8 +29,18 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idDecisao");
             }
         }
+
+        private string _xDecisao;
         [ParameterOrder(Order = 2)]
-        public string xDecisao { get; set; }
+        public string xDecisao
+        {
+            get { return _xDecisao; }
+            set
+            {
+                _xDecisao = value;
+            }
+        }
+
         [ParameterOrder(Order = 3)]
         public string xDescricao { get; set; }
     }

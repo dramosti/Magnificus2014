@@ -94,6 +94,7 @@
     <Compile Include="Comercial\WinCliente.xaml.cs">
       <DependentUpon>WinCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Crm\testeConverter.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
     </Compile>
