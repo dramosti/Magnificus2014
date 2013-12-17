@@ -38,6 +38,11 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register("IsChecked", typeof(bool?), typeof(HlpCheckBox), new PropertyMetadata(false));
 
+        private void componente_Loaded(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
         
     }
 }

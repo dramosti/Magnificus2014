@@ -36,7 +36,7 @@
 					IsEnabled="False"
 					HorizontalAlignment="Left" Height="31.5" Margin="9,10,0,0" VerticalAlignment="Top" Width="503" Caption="Funcionário" WidthLabel="97" Table="Acesso" Field="idFuncionario" Help="Seleciona um funcionario" 
                     >
-                </Components:HlpTextBox>
+                </Components:HlpTextBox>                
 
             </StackPanel>
         </Expander>
@@ -67,6 +67,8 @@
                         </Components:HlpComboBox.Items>
                     </Components:HlpComboBox>
                     <Components:HlpTextBox
+                        isFindFiles="False" 
+                        isFindFolder="False"
                         Name="txtLogin"
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xID, Mode=TwoWay, 
