@@ -48,6 +48,7 @@
           <xs:element minOccurs="0" name="pDesconto" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="pDescontoMaximo" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="pLucro" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pMarkup" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="pOutros" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="vCustoProduto" type="xs:decimal" />
           <xs:element minOccurs="0" name="vVenda" type="xs:decimal" />

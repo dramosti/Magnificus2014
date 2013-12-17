@@ -66,12 +66,12 @@
                             <StackPanel>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}"
+								Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,10,188,2" Caption="Percentual de Desconto Máximo" Field="pDescontoMaximo" Help="Informar um percentual de desconto máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de desconto do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto." Table="Familia_produto" WidthLabel="238"/>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}"
+								Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,188,2" Caption="Percentual de Acrescimo Máximo" Field="pAcrescimoMaximo" Help="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto." Table="Familia_produto" 
                                 WidthLabel="238"/>
@@ -106,12 +106,12 @@
                             <StackPanel>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}"
+								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,10,60,2" Caption="Percentual Comissão avista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condução de vendas for por Dinheiro." Table="Familia_produto" WidthLabel="224"/>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}"
+								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,60,0" Caption="Percentual comissão aprazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a condução de vendas for Cartão de Débito e Crédito, Cheques e valores Líquidos ou Duplicatas geradas." Table="Familia_produto" WidthLabel="224"/>
                             </StackPanel>

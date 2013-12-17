@@ -59,7 +59,7 @@
 					Height="27" Margin="10,0,268,2" Caption="Dias" Help="Digite o número de dias em que o desconto à vista será aplicável. " WidthLabel="214"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.pDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter}}"
+					Text="{Binding currentModel.pDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,268,2" Caption="Percentual de Desconto" Help="Digite o desconto à vista como um percentual do valor faturado. " WidthLabel="214"/>
             </StackPanel>
