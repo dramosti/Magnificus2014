@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinStCofins"
-        Title="Situação Tributária do Cofins" Height="660" Width="1024">
+        Title="Situação Tributária do Cofins" Height="660" Width="1024" NameView="vwStCOFINS">
 	<Grid>
 		<Expander Header="Principal" HorizontalAlignment="Left" Height="328.314" VerticalAlignment="Top" Width="507.5" IsExpanded="True">
 			<StackPanel>
