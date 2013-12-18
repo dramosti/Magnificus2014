@@ -21,28 +21,36 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
 
         public void Save(Transportador_EnderecoModel objTransportador_Endereco)
         {
-            objTransportador_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Transportador_Endereco]",
-            ParameterBase<Transportador_EnderecoModel>.SetParameterValue(objTransportador_Endereco));
-        }
-
-        public void Update(Transportador_EnderecoModel objTransportador_Endereco)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
-            "[dbo].[Proc_update_Transportador_Endereco]",
-            ParameterBase<Transportador_EnderecoModel>.SetParameterValue(objTransportador_Endereco));
+            if (objTransportador_Endereco.idEndereco == null)
+            {
+                objTransportador_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Transportador_Endereco]",
+                ParameterBase<Transportador_EnderecoModel>.SetParameterValue(objTransportador_Endereco));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+                    "[dbo].[Proc_update_Transportador_Endereco]",
+                    ParameterBase<Transportador_EnderecoModel>.SetParameterValue(objTransportador_Endereco));
+            }
         }
 
         public void Delete(int idTransportadorEndereco)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Transportador_Endereco]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Transportador_Endereco]",
                   UserData.idUser,
                   idTransportadorEndereco);
         }
 
         public void DeletePorTransportador(int idTransportador)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Transportador_Endereco WHERE idTransportador = " + idTransportador);
         }
 
@@ -61,7 +69,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Transportador_Endereco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
-                   MapBuilder<Transportador_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                   MapBuilder<Transportador_EnderecoModel>.MapAllProperties()
+                   .DoNotMap(c => c.enumTipoEndereco)
+                   .DoNotMap(c => c.enumTipoLogradouro)
+                   .DoNotMap(i => i.status).Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
         }
@@ -70,7 +81,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
         {
             DataAccessor<Transportador_EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Transportador_Endereco WHERE idTransportador = @idTransportador", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idTransportador"),
-            MapBuilder<Transportador_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            MapBuilder<Transportador_EnderecoModel>.MapAllProperties()
+            .DoNotMap(c => c.enumTipoEndereco)
+            .DoNotMap(c => c.enumTipoLogradouro)
+            .DoNotMap(i => i.status).Build());
 
             return reg.Execute(idTransportador).ToList();
         }
