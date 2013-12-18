@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Transportes
     public interface ITransportador_VeiculosRepository
     {
         void Save(Transportador_VeiculosModel objTransportador_Veiculos);
-        void Update(Transportador_VeiculosModel objTransportador_Veiculos);
         void Delete(int idTransportadorVeiculo);
         void DeletePorTransportador(int idTransportador);
         void Copy(Transportador_VeiculosModel objTransportador_Veiculos);

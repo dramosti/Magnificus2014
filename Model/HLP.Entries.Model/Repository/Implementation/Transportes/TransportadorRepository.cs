@@ -21,19 +21,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
 
         public void Save(TransportadorModel objTransportador)
         {
-            //Aqui deve-se setar as FK's (se houver)
-            //Exemplo:
-            //produto.idEmpresa = CompanyData.idEmpresa;
-
             if (objTransportador.idTransportador == null)
             {
                 objTransportador.idTransportador = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
                 "[dbo].[Proc_save_Transportador]",
                 ParameterBase<TransportadorModel>.SetParameterValue(objTransportador));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Transportador]",
                 ParameterBase<TransportadorModel>.SetParameterValue(objTransportador));
             }

@@ -150,7 +150,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

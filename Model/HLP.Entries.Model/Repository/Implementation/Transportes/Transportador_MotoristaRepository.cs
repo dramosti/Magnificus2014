@@ -21,28 +21,38 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
 
         public void Save(Transportador_MotoristaModel objTransportador_Motorista)
         {
-            objTransportador_Motorista.idTransportdorMotorista = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Transportador_Motorista]",
-            ParameterBase<Transportador_MotoristaModel>.SetParameterValue(objTransportador_Motorista));
+            if (objTransportador_Motorista.idTransportdorMotorista == null)
+            {
+                objTransportador_Motorista.idTransportdorMotorista = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Transportador_Motorista]",
+                ParameterBase<Transportador_MotoristaModel>.SetParameterValue(objTransportador_Motorista));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+                   "[dbo].[Proc_update_Transportador_Motorista]",
+                   ParameterBase<Transportador_MotoristaModel>.SetParameterValue(objTransportador_Motorista));
+            }
         }
 
-        public void Update(Transportador_MotoristaModel objTransportador_Motorista)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
-            "[dbo].[Proc_update_Transportador_Motorista]",
-            ParameterBase<Transportador_MotoristaModel>.SetParameterValue(objTransportador_Motorista));
-        }
+
 
         public void Delete(int idTransportadorMotorista)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Transportador_Motorista]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Transportador_Motorista]",
                   UserData.idUser,
                   idTransportadorMotorista);
         }
 
         public void DeletePorTransportador(int idTransportador)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Transportador_Motorista WHERE idTransportador = " + idTransportador);
         }
 

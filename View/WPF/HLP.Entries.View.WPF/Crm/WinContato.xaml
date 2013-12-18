@@ -12,17 +12,7 @@
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="Contato" Height="660" Width="1024"
         NameView="vwContato">
-    <Window.Resources>
-        <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                        Value="{Binding RelativeSource={RelativeSource Self},
-                                Path=(Validation.Errors)[0].ErrorContent}"/>
-                    <Setter Property="Background" Value="Yellow"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+    <Window.Resources>        
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
@@ -241,7 +231,7 @@
                     </StackPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Endereços" Height="22" VerticalAlignment="Bottom">
+            <TabItem Header="Endereços" Height="22" VerticalAlignment="Bottom" Margin="1,0,-5,0">
                 <AdornerDecorator>
                     <DataGrid 
                          x:Name="dgvEndereco"

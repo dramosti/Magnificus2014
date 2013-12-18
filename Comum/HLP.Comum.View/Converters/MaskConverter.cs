@@ -15,8 +15,20 @@ namespace HLP.Comum.View.Converters
                 return null;
 
 
+
             switch (parameter.ToString())
             {
+                case "placa":
+                    {
+                        value = value.ToString().Replace(oldValue: " ", newValue: "");
+                        if (value.ToString().Length > 7)
+                            value = value.ToString().Substring(startIndex: 0, length: 7);
+                        if (value.ToString().Length <= 3)
+                            value = value.ToString().PadLeft(7, '0');
+                        string sReturn = (string)value;
+
+                        return sReturn.Insert(3, "-");
+                    } break;
                 case "cep":
                     {
                         value = value.ToString().Replace(oldValue: " ", newValue: "");
@@ -58,8 +70,8 @@ namespace HLP.Comum.View.Converters
                                         return String.Format(@"{0:\(##\) #####\-####}", valor);
                                     }
                             }
-                        } break;
-                    }
+                        }
+                    } break;
                 case "date":
                     {
                         DateTime dValue;
@@ -68,7 +80,7 @@ namespace HLP.Comum.View.Converters
                             return String.Format(format: "{0:dd/MM/yyyy}", arg0: dValue);
 
                         return DateTime.MinValue;
-                    }
+                    } break;
             }
             return value.ToString();
         }
@@ -81,6 +93,12 @@ namespace HLP.Comum.View.Converters
             }
             switch (parameter.ToString())
             {
+                case "placa":
+                    {
+                        string valor;
+                        valor = value.ToString().Replace(oldValue: "-", newValue: "");
+                        return valor;
+                    }
                 case "cep":
                     {
                         string valor;

@@ -94,6 +94,12 @@
     <Compile Include="Comercial\WinCliente.xaml.cs">
       <DependentUpon>WinCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Comercial\WinOrcamento.xaml.cs">
+      <DependentUpon>WinOrcamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comercial\WinProduto.xaml.cs">
+      <DependentUpon>WinProduto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Crm\testeConverter.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
@@ -257,6 +263,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Comercial\WinCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comercial\WinOrcamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comercial\WinProduto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -561,29 +575,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BlendEmbeddedFont Include="Fonts\segoeui.ttf">
-      <IsSystemFont>True</IsSystemFont>
-      <All>True</All>
-      <AutoFill>True</AutoFill>
-    </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\segoeuib.ttf">
-      <IsSystemFont>True</IsSystemFont>
-      <All>True</All>
-      <AutoFill>True</AutoFill>
-    </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\segoeuii.ttf">
-      <IsSystemFont>True</IsSystemFont>
-      <All>True</All>
-      <AutoFill>True</AutoFill>
-    </BlendEmbeddedFont>
-    <BlendEmbeddedFont Include="Fonts\segoeuiz.ttf">
-      <IsSystemFont>True</IsSystemFont>
-      <All>True</All>
-      <AutoFill>True</AutoFill>
-    </BlendEmbeddedFont>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Folder Include="Fonts\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\produtoService\" />

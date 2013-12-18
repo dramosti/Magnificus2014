@@ -81,6 +81,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_ContatoRepository.Save(objTransportador_Contato:
                                     item);
                             }
@@ -100,6 +101,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_EnderecoRepository.Save(objTransportador_Endereco: item);
                             }
                             break;
@@ -118,6 +120,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_MotoristaRepository.Save(objTransportador_Motorista: item);
                             }
                             break;
@@ -136,6 +139,7 @@ namespace HLP.Wcf.Entries
                         case HLP.Comum.Resources.RecursosBases.statusModel.criado:
                         case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
                             {
+                                item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_VeiculosRepository.Save(objTransportador_Veiculos: item);
                             }
                             break;
@@ -146,7 +150,6 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
-
                 this.transportadorRepository.CommitTransaction();
                 return (int)objTransportador.idTransportador;
             }
@@ -161,19 +164,20 @@ namespace HLP.Wcf.Entries
 
         public bool delTransportador(int idTransportador)
         {
-
             try
             {
-                this.transportadorRepository.BeginTransaction();
-                this.transportadorRepository.Delete(idTransportador: idTransportador);
+                this.transportadorRepository.BeginTransaction();                
                 this.transportador_ContatoRepository.DeletePorTransportador(idTransportador: idTransportador);
                 this.transportador_EnderecoRepository.DeletePorTransportador(idTransportador: idTransportador);
                 this.transportador_MotoristaRepository.DeletePorTransportador(idTransportador: idTransportador);
                 this.transportador_VeiculosRepository.DeletePorTransportador(idTransportador: idTransportador);
+                this.transportadorRepository.Delete(idTransportador: idTransportador);
+                this.transportadorRepository.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
+                this.transportadorRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -182,9 +186,9 @@ namespace HLP.Wcf.Entries
 
         public int copyTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador)
         {
-
             try
             {
+                this.transportadorRepository.BeginTransaction();
                 this.transportadorRepository.Copy(objTransportador: objTransportador);
                 foreach (HLP.Entries.Model.Models.Transportes.Transportador_ContatoModel item in objTransportador.lTransportador_Contato)
                 {
@@ -206,10 +210,12 @@ namespace HLP.Wcf.Entries
                     item.idTransportador = (int)objTransportador.idTransportador;
                     this.transportador_VeiculosRepository.Copy(objTransportador_Veiculos: item);
                 }
+                this.transportadorRepository.CommitTransaction();
                 return (int)objTransportador.idTransportador;
             }
             catch (Exception ex)
             {
+                this.transportadorRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
