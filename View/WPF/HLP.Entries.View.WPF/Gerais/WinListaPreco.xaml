@@ -28,6 +28,7 @@
         <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
         <convL:RowDateListaPrecoConverter x:Key="RowDateConverter"/>
         <convL:StCustoProdutoConverter x:Key="stCustoProdutoConverter"/>
+        <conv:MoedaConverter x:Key="moedaConverter"/>
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <Expander Header="Expander" Height="262.5" IsExpanded="True" DockPanel.Dock="Top">
@@ -57,7 +58,7 @@
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedIndex="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,106.5,1" Caption="Tipo de Atualização" Help="Informar o tipo de atualização para o campo Preço de Venda para essa lista de preço, elas podem ser Manual ou Automática." WidthLabel="242">
+					Height="27" Margin="10,0,106.5,1" Caption="Tipo de Atualização" Help="Informar o tipo de atualização para o campo Preço de Venda para essa lista de preço, elas podem ser Manual ou Automática." WidthLabel="242" UCSelectionChanged="cbxStAtualizacao_UCSelectionChanged">
                         <Components:HlpComboBox.Items>
                             <System:String>0-Automatica</System:String>
                             <System:String>1-Manual</System:String>
@@ -200,8 +201,8 @@
                             <DataGridTextColumn                                
                                 Header="Custo Produto" Width="100"                                
                                 ElementStyle="{StaticResource CellErrorStyle}"                                
-                                Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=LostFocus,
-                                StringFormat={}{0:C},
+                                Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,
+                                Converter={StaticResource moedaConverter},
                                 NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 >
                                 <DataGridTextColumn.CellStyle>
@@ -220,7 +221,8 @@
                                         Binding="{Binding Path=pLucro, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
+                                        >
+                            </DataGridTextColumn>
                             <DataGridTextColumn                                
                                 Header="Valor Venda" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"

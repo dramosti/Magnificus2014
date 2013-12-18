@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Gerais\Converters\RowDateListaPrecoConverter.cs" />
     <Compile Include="Gerais\Converters\StCustoProdutoConverter.cs" />
+    <Compile Include="Gerais\Converters\StTipoAtualizacaoConverter.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
     </Compile>

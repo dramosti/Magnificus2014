@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f6533cb6-53c6-4a91-a5df-4ac83752e1bc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.View.WPF" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceEmpresaParametros.wsdl" MetadataType="Wsdl" ID="4abbb6a3-ee51-449f-aa36-06692226f715" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?wsdl" />
+    <MetadataFile FileName="serviceEmpresaParametros.xsd" MetadataType="Schema" ID="a9706d81-8a20-4dfd-83c3-fa82cb79d7a5" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceEmpresaParametros1.xsd" MetadataType="Schema" ID="3919f4ed-7531-4bee-a921-3ae208782745" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceEmpresaParametros2.xsd" MetadataType="Schema" ID="41460609-e4a5-4815-acf5-3b0cf4123ef4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceEmpresaParametros3.xsd" MetadataType="Schema" ID="59b928ff-2b98-4f8f-869b-d288ac941d78" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceEmpresaParametros4.xsd" MetadataType="Schema" ID="e174b7a3-908c-4c6a-abb6-b3b72bed2d90" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceEmpresaParametros.disco" MetadataType="Disco" ID="7a072c34-db8d-4b67-99d8-83ce2229edf7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?disco" />
+    <MetadataFile FileName="serviceEmpresaParametros5.xsd" MetadataType="Schema" ID="2f7776d7-cfdb-4291-9386-a929374fb9dd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceEmpresaParametros6.xsd" MetadataType="Schema" ID="caddff0d-8ab3-45da-b2b4-0586c2b26c55" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceEmpresaParametros.svc?xsd=xsd6" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

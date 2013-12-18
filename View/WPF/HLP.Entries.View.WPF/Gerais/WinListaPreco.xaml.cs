@@ -15,6 +15,8 @@ using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System.Collections;
+using HLP.Comum.Resources.Util;
+using System.Reflection;
 
 namespace HLP.Entries.View.WPF.Gerais
 {
@@ -23,6 +25,7 @@ namespace HLP.Entries.View.WPF.Gerais
     /// </summary>
     public partial class WinListaPreco : WindowsBase
     {
+        produtoService.IserviceProdutoClient servico = new produtoService.IserviceProdutoClient();
         public WinListaPreco()
         {
             InitializeComponent();
@@ -59,6 +62,32 @@ namespace HLP.Entries.View.WPF.Gerais
         private void gridItens_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             this.gridItens.BindingGroup.UpdateSources();
+            e.Row.DataContext.GetType().GetProperty("vCustoProduto").SetValue(e.Row.DataContext,
+                                    decimal.Zero);
+            switch (e.Column.DisplayIndex)
+            {
+                case 0:
+                    {
+                        DataGridCell c = StaticUtil.GetCell(grid: (DataGrid)sender, row: e.Row, column: 1);
+                        DataGridCell cProduto = StaticUtil.GetCell(grid: (DataGrid)sender, row: e.Row, column: e.Column.DisplayIndex);
+                        if (!c.IsEnabled)
+                        {
+                            try
+                            {
+                                e.Row.DataContext.GetType().GetProperty("vCustoProduto").SetValue(e.Row.DataContext,
+                                    servico.getProduto(idProduto: (int)((ComboBox)cProduto.Content).SelectedValue).vCompra);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
+                        }
+                    } break;
+            }
+        }
+
+        private void cbxStAtualizacao_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }
