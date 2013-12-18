@@ -158,4 +158,7 @@
 <object id="WinAtribuicaoColetivaListaPreco" name="Atribuição_Coletiva_Lista_de_Preço" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco, HLP.Entries.View.WPF">
   </object>
+<object id="WinProduto" name="Produtos" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Comercial.WinProduto, HLP.Entries.View.WPF">
+  </object>
 </objects>

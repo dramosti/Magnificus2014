@@ -319,7 +319,7 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.stPerfil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,20,255,-1" FontFamily="/HLP.Entries.View.WPF;component/Fonts/#Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
+								Height="27" Margin="10,20,255,-1" FontFamily="Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-Centro de Trabalho</System:String>
                                         <System:String>1-Funcionário</System:String>
