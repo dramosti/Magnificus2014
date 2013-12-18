@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Financeiro;
 
 namespace HLP.Entries.View.WPF.Gerais.Financeiro
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro
         public WinBanco()
         {
             InitializeComponent();
+            this.ViewModel = new BancoViewModel();
+        }
+
+        public BancoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as BancoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

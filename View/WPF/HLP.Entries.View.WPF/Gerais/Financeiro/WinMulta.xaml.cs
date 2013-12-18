@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Comercial;
 
 namespace HLP.Entries.View.WPF.Gerais.Financeiro
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro
         public WinMulta()
         {
             InitializeComponent();
+            this.ViewModel = new MultaViewModel();
+        }
+
+        public MultaViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as MultaViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

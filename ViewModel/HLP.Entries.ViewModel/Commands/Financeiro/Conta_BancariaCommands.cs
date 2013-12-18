@@ -79,6 +79,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
+                int iExcluido = (int)this.objViewModel.currentModel.idContaBancaria;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -88,6 +89,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         this.objViewModel.currentModel = null;
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
                     }
                     else
                     {
@@ -99,10 +101,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
@@ -186,7 +184,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 e.Result =
-                    this.servico.CopyAsync(Objeto: this.objViewModel.currentModel);
+                    this.servico.Copy(Objeto: this.objViewModel.currentModel);
             }
             catch (Exception)
             {
