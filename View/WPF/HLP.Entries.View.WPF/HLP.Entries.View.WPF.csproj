@@ -94,13 +94,13 @@
     <Compile Include="Comercial\WinCliente.xaml.cs">
       <DependentUpon>WinCliente.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+    <Compile Include="Comercial\WinOrcamento.xaml.cs">
+      <DependentUpon>WinOrcamento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Comercial\WinProduto.xaml.cs">
       <DependentUpon>WinProduto.xaml</DependentUpon>
     </Compile>
-=======
     <Compile Include="Crm\testeConverter.cs" />
->>>>>>> 2dff35ca17289748e61dcf66a7277fe7ba1dc0f1
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
     </Compile>
@@ -262,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Comercial\WinCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comercial\WinOrcamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

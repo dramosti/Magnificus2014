@@ -1,0 +1,230 @@
+﻿<runtime:WindowsBase 
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        x:Class="HLP.Entries.View.WPF.Comercial.WinOrcamento"
+        Title="WinOrcamento" Height="660" Width="1024">
+	<DockPanel LastChildFill="True">
+		<Expander Header="Cadastro" IsExpanded="True" DockPanel.Dock="Top" Height="75">
+			<WrapPanel Orientation="Horizontal" Margin="0,10,0,0">				
+				<Components:HlpTextBox 
+					IsReadOnly="True"
+					Text="{Binding currentModel.idOrcamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código" Help="O número de identificação automático e exclusivo do orçamento de venda." WidthLabel="152" Width="252"/>
+				<Components:HlpDateTimePicker 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					SelectedDate="{Binding currentModel.dDataHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data e Hora Criado" Help="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento." WidthLabel="152" Width="258"/>
+				<Components:HlpPesquisa 
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="152" Width="424" RenderTransformOrigin="0.5,0.5">									
+					<Components:HlpPesquisa.Items>
+						<System:String>xNome</System:String>
+						<System:String>xFantasia</System:String>
+					</Components:HlpPesquisa.Items>
+				</Components:HlpPesquisa>				
+			</WrapPanel>			
+		</Expander>
+		<TabControl>
+			<TabItem Header="Principal">
+				<AdornerDecorator>
+					<DockPanel LastChildFill="True">
+						<Expander Header="Principal" IsExpanded="True" DockPanel.Dock="Top" Height="158.5">
+							<WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+								<Components:HlpTextBox 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idOrcamentoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do orçamento de origem" Help="É o código de origem do Orçamento, quando é gerado uma Revisão de Orçamento pelo botão Status, quando se gera um orçamento o campo Versão é gerado conforme as versões criadas.Ex." WidthLabel="231" Width="329"/>
+								<Components:HlpTextBox 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Departamento" Help="Departamento do contato do orçamento de vendas, o software busca da Tabela de Contatos no Cadastro de Clientes" WidthLabel="231" Width="329"/>
+								<Components:HlpPesquisa 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contato" Help="Informar a pessoa de contato externo para quem o orçamento é emitido. Busca da Tabela de Contatos no Cadastro de Clientes." FieldPesquisa="ID" TableView="vwContato" WidthLabel="231" Width="473">
+									<Components:HlpPesquisa.Items>
+										<System:String>xNome</System:String>
+										<System:String>xFuncao</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>
+								<Components:HlpCheckBox 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									IsChecked="{Binding currentModel.stContribuienteIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contribuinte de ICMS" Help="O sistema informara automaticamente se o cliente é contribuinte de ICMS conforme o campo " WidthLabel="231"/>
+								<Components:HlpPesquisa 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Tipo de Documento" Help="Pesquisar tabela “tipo_documento" FieldPesquisa="ID" TableView="vwTipoDocumento" WidthLabel="231" Width="473">
+									<Components:HlpPesquisa.Items>
+										<System:String>xTpdoc</System:String>
+										<System:String>stDocumento</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>
+								<Components:HlpPesquisa 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idFuncionarioRepresentante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Representante" Help="Informar o representante do orçamento de vendas, o sistema traz automaticamente o representante cadastrado no cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwFuncionarioRepresentante" WidthLabel="231" Width="473">
+									<Components:HlpPesquisa.Items>
+										<System:String>xNome</System:String>
+										<System:String>xCodigoAlternativo</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>
+								<Components:HlpPesquisa 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Condição de pagamento" Help="Informar uma condição de pagamento ao orçamento de vendas, o sistema traz automaticamente a condição usada no cadastro de cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwCondicaoPagamento" WidthLabel="231" Width="473">
+									<Components:HlpPesquisa.Items>
+										<System:String>xCondicaoPagamento</System:String>
+										<System:String>xDescricao</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>								
+							</WrapPanel>							
+						</Expander>
+						<Expander Header="Status" IsExpanded="True">
+							<WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+								<Components:HlpComboBox 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									SelectedIndex="{Binding currentModel.stOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Status do Orçamento" Help="O status da cotação ativa. Use o botão Atualizações para alterar o status de uma cotação de venda" WidthLabel="205">
+									<Components:HlpComboBox.Items>
+										<System:String>0-Criado</System:String>
+										<System:String>1-Enviado</System:String>
+										<System:String>2-Confirmado</System:String>
+										<System:String>3-Confirmado Parcialmente</System:String>
+										<System:String>4-Perdido</System:String>
+										<System:String>5-Cancelado</System:String>
+									</Components:HlpComboBox.Items>
+								</Components:HlpComboBox>
+								<Components:HlpPesquisa 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Tipo do Orçamento" Help="Selecione a categoria de cotação. As categorias são configuradas e mantidas no formulário Tipo de Orçamentos. Elas podem ser Telemarketing, Prospect, Internet, etc..." FieldPesquisa="ID" TableView="vwTipoOrcamento" WidthLabel="205" Width="528">
+									<Components:HlpPesquisa.Items>
+										<System:String>xTipoOrcamento</System:String>
+										<System:String>xDescricao</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>
+								<Components:HlpDateTimePicker 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									SelectedDate="{Binding currentModel.dVencimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de vencimento" Help="A data em que o orçamento de venda expira e não é mais válida." WidthLabel="205"/>
+								<Components:HlpDateTimePicker 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									SelectedDate="{Binding currentModel.dAcompanhamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de acompanhamento" Help="A data inicial de qualquer atividade de acompanhamento da cotação de venda." WidthLabel="205"/>
+								<Components:HlpDateTimePicker 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									SelectedDate="{Binding currentModel.dConfirmacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de confirmação" Help="Informar a data de confirmação do orçamento de vendas." WidthLabel="205"/>
+								<Components:HlpPesquisa 
+									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									Text="{Binding currentModel.idMotivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Motivo da perda" Help="O campo só é liberado e obrigatório caso a situação é de Perdido ou Cancelado, após liberado informar o motivo da perda da proposta comercial." FieldPesquisa="ID" TableView="vwMotivoPerdaOrcam" WidthLabel="205" Width="528">
+									<Components:HlpPesquisa.Items>
+										<System:String>xMotivo</System:String>
+										<System:String>xDescricao</System:String>
+									</Components:HlpPesquisa.Items>
+								</Components:HlpPesquisa>								
+							</WrapPanel>						
+						</Expander>
+					</DockPanel>
+				</AdornerDecorator>
+			</TabItem>
+			<TabItem Header="Dados Adcionais">
+				<AdornerDecorator>
+					<TabControl>
+						<TabItem Header="Geral / Informações de Venda">
+							<AdornerDecorator>
+								<DockPanel LastChildFill="True">
+									<Expander Header="Geral" IsExpanded="True" DockPanel.Dock="Top" Height="181">
+										<WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+											<Components:HlpTextBox Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Telefone" Help="Telefone para contato busca o mesmo telefone do contato informado, caso seja nulo buscar do endereço principal o telefone da empresa" WidthLabel="149" Width="237"/>
+											<Components:HlpTextBox Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cidade" Help="Cidade do Cliente" WidthLabel="149" Width="273"/>
+											<Components:HlpTextBox Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="UF" Help="Estado" WidthLabel="149" Width="273"/>
+											<Components:HlpPesquisa 
+												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												IsEnabled="{Binding bIsEnabled}"
+												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Ramo de Atividade" Help="O Sistema informará automaticamente qual é o ramo de atividade do Cliente" FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="149" Width="426">
+												<Components:HlpPesquisa.Items>
+													<System:String>xCnae</System:String>
+													<System:String>xDescricao</System:String>
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+											<Components:HlpPesquisa Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Conta Contábil" FieldPesquisa="ID" TableView="vwContaContabil" WidthLabel="149" Width="426"/>																						
+										</WrapPanel>										
+									</Expander>
+									<Expander Header="Informações de Venda" IsExpanded="True">
+										<WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+											<Components:HlpPesquisa 
+												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												IsEnabled="{Binding bIsEnabled}"
+												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Funcionário do  orçamento de Vendas" Help="Identifica quem é Responsável  pelo orçamento." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="272" Width="619">
+												<Components:HlpPesquisa.Items>
+													<System:String>xNome</System:String>
+													<System:String>xCodigoAlternativo</System:String>
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+											<Components:HlpPesquisa 
+												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												Text="{Binding currentModel.idFuncionarioResponsavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												IsEnabled="{Binding bIsEnabled}"
+												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Responsável de Vendas" Help="Trazer automaticamente o responsável pelo funcionário do orçamento. Informado no cadastro do Funcionário." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="272" Width="619">
+												<Components:HlpPesquisa.Items>
+													<System:String>xNome</System:String>
+													<System:String>xCodigoAlternativo</System:String>
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+											<Components:HlpPesquisa 
+												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												Text="{Binding currentModel.idUnidadeVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												IsEnabled="{Binding bIsEnabled}"
+												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Vendas" Help="A equipe de vendedores responsável por uma meta de vendas comum. " FieldPesquisa="ID" TableView="vwUnidadeVenda" WidthLabel="272" Width="619">
+												<Components:HlpPesquisa.Items>
+													<System:String>xDescricaoUnidadevenda</System:String>													
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+											<Components:HlpPesquisa 
+												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												IsEnabled="{Binding bIsEnabled}"
+												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Canal de Vendas" Help="O sistema trará do cadastro do cliente ao qual canal de venda ele pertence" FieldPesquisa="ID" TableView="vwCanalVenda" WidthLabel="272" Width="619">
+												<Components:HlpPesquisa.Items>
+													<System:String>xCanalVenda</System:String>
+													<System:String>cCanalVenda</System:String>
+												</Components:HlpPesquisa.Items>
+											</Components:HlpPesquisa>
+											<Components:HlpPesquisa Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Moeda" Help="O código de moeda usado para os valores e os preços da cotação de venda ativa." FieldPesquisa="ID" TableView="vwMoeda" WidthLabel="272" Width="619"/>
+											<Components:HlpTextBox Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Observação" Help="Informe uma observação ao orçamento de vendas" WidthLabel="272" Width="619"/>
+											<Components:HlpCheckBox Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Orçamento veio da Web" Help="O sistema irá informar se o orçamento foi provido do sistema web." WidthLabel="272"/>																						
+										</WrapPanel>										
+									</Expander>
+								</DockPanel>
+							</AdornerDecorator>
+						</TabItem>
+					</TabControl>				
+				</AdornerDecorator>
+			</TabItem>
+		</TabControl>
+	</DockPanel>
+</runtime:WindowsBase>
