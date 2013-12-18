@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
@@ -13,6 +14,10 @@ namespace HLP.Entries.Model.Models.Transportes
         public TransportadorModel()
             : base(xTabela: "Transportador")
         {
+            this.lTransportador_Contato = new ObservableCollectionBaseCadastros<Transportador_ContatoModel>();
+            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<Transportador_EnderecoModel>();
+            this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<Transportador_MotoristaModel>();
+            this.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
         }
 
         private int? _idTransportador;
@@ -63,18 +68,65 @@ namespace HLP.Entries.Model.Models.Transportes
         [ParameterOrder(Order = 18)]
         public string xRntrc { get; set; }
 
-        public ObservableCollectionBaseCadastros<Transportador_EnderecoModel> lTransportador_Endereco =
-            new ObservableCollectionBaseCadastros<Transportador_EnderecoModel>();
 
-        public ObservableCollectionBaseCadastros<Transportador_VeiculosModel> lTransportador_Veiculos =
-            new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
 
-        public ObservableCollectionBaseCadastros<Transportador_ContatoModel> lTransportador_Contato =
-            new ObservableCollectionBaseCadastros<Transportador_ContatoModel>();
+        
+        private ObservableCollectionBaseCadastros<Transportador_EnderecoModel> _lTransportador_Endereco;
 
-        public ObservableCollectionBaseCadastros<Transportador_MotoristaModel> lTransportador_Motorista =
-            new ObservableCollectionBaseCadastros<Transportador_MotoristaModel>();
+        public ObservableCollectionBaseCadastros<Transportador_EnderecoModel> lTransportador_Endereco
+        {
+            get { return _lTransportador_Endereco; }
+            set
+            {
+                _lTransportador_Endereco = value;
+                base.NotifyPropertyChanged(propertyName: "lTransportador_Endereco");
+            }
+        }
 
+
+
+
+        
+        private ObservableCollectionBaseCadastros<Transportador_VeiculosModel> _lTransportador_Veiculos;
+
+        public ObservableCollectionBaseCadastros<Transportador_VeiculosModel> lTransportador_Veiculos
+        {
+            get { return _lTransportador_Veiculos; }
+            set
+            {
+                _lTransportador_Veiculos = value;
+                base.NotifyPropertyChanged(propertyName: "lTransportador_Veiculos");
+            }
+        }
+
+
+        
+        private ObservableCollectionBaseCadastros<Transportador_ContatoModel> _lTransportador_Contato;
+
+        public ObservableCollectionBaseCadastros<Transportador_ContatoModel> lTransportador_Contato
+        {
+            get { return _lTransportador_Contato; }
+            set
+            {
+                _lTransportador_Contato = value;
+                base.NotifyPropertyChanged(propertyName: "lTransportador_Contato");
+            }
+        }
+
+
+        
+        private ObservableCollectionBaseCadastros<Transportador_MotoristaModel> _lTransportador_Motorista;
+
+        public ObservableCollectionBaseCadastros<Transportador_MotoristaModel> lTransportador_Motorista
+        {
+            get { return _lTransportador_Motorista; }
+            set
+            {
+                _lTransportador_Motorista = value;
+                base.NotifyPropertyChanged(propertyName: "lTransportador_Motorista");
+            }
+        }
+        
 
     }
 
@@ -118,17 +170,33 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "xNome");
             }
         }
+
+        private TipoEndereco _enumTipoEndereco;
+        public TipoEndereco enumTipoEndereco
+        {
+            get { return _enumTipoEndereco; }
+            set
+            {
+                _enumTipoEndereco = value;
+                _stTipoEndereco = (byte)value;
+            }
+        }
+
         private byte _stTipoEndereco;
-        [ParameterOrder(Order = 4)]
+            [ParameterOrder(Order = 4)]
         public byte stTipoEndereco
         {
             get { return _stTipoEndereco; }
             set
             {
                 _stTipoEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
+                _enumTipoEndereco = (TipoEndereco)value;
             }
         }
+
+
+    
+
         private string _xCEP;
         [ParameterOrder(Order = 5)]
         public string xCEP
@@ -140,6 +208,19 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
+
+
+        private TipoLogradouro _enumTipoLogradouro;
+        public TipoLogradouro enumTipoLogradouro
+        {
+            get { return _enumTipoLogradouro; }
+            set
+            {
+                _enumTipoLogradouro = value;
+                _stLogradouro = (byte)value;
+            }
+        }
+
         private byte _stLogradouro;
         [ParameterOrder(Order = 6)]
         public byte stLogradouro
@@ -148,9 +229,12 @@ namespace HLP.Entries.Model.Models.Transportes
             set
             {
                 _stLogradouro = value;
-                base.NotifyPropertyChanged(propertyName: "stLogradouro");
+                _enumTipoLogradouro = (TipoLogradouro)value;
             }
         }
+
+
+
         private string _xEndereco;
         [ParameterOrder(Order = 7)]
         public string xEndereco
