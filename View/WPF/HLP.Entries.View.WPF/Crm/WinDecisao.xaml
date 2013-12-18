@@ -1,15 +1,19 @@
 ﻿<runtime:WindowsBase
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:converter="clr-namespace:HLP.Entries.View.WPF.Crm"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Crm.WinDecisao"
         Title="Decisão" NameView="vwDecisao">
+    <Window.Resources>
+        <converter:testeConverter x:Key="teste"/>
+    </Window.Resources>
     <Grid>
         <Expander Header="Geral" HorizontalAlignment="Left" Height="233.5" VerticalAlignment="Top" Width="501.5" IsExpanded="True">
             <StackPanel >
             <Components:HlpTextBox Margin="0,10,286,0" Caption="Código" WidthLabel="100" Text="{Binding currentModel.idDecisao, Mode=TwoWay}"                                   
                                    IsReadOnly="True"/>
-            <Components:HlpTextBox Margin="0,4,165,0" Caption="Decisao" WidthLabel="100"
+            <Components:HlpTextBox x:Name="txtdecisao" Margin="0,4,165,0" Caption="Decisao" WidthLabel="100"
                                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
                                    Text="{Binding currentModel.xDecisao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                                    IsEnabled="{Binding bIsEnabled}"                                 />
@@ -17,7 +21,7 @@
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                                    IsEnabled="{Binding bIsEnabled}" />
 
-        </StackPanel>
+            </StackPanel>
     </Expander>
     </Grid>
 </runtime:WindowsBase>

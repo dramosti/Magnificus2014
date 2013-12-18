@@ -38,6 +38,8 @@ namespace HLP.Entries.Model.Models.Parametros
         public byte stCompoeBaseCalculoCustoOperacional { get; set; }
         [ParameterOrder(Order = 12)]
         public int? idTipoOperacao { get; set; }
+        [ParameterOrder(Order = 13)]
+        public byte st_Markup { get; set; }
     }
 
     public partial class Parametro_CustosModel

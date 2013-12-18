@@ -832,13 +832,13 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay,  StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,47,-1" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo Condicao_Pagamento.stCondicao for igual Avista" Table="Funcionario" WidthLabel="213"/>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
-								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay,  StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,47,-1" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a Condicao_Pagamento.stCondicao for Aprazo. " Table="Funcionario" WidthLabel="213"/>
@@ -866,14 +866,14 @@
                                         Header="% Comissão a Vista" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                                         <DataGridTextColumn                                
                                         Header="% Comissão a Prazo" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                                     </DataGrid.Columns>
@@ -900,28 +900,28 @@
                                         Header="% Margem Venda 'De'" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pDeMargemVenda, UpdateSourceTrigger=LostFocus,
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                                 <DataGridTextColumn                                
                                         Header="% Margem Venda 'Até'" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pAteMargemVenda, UpdateSourceTrigger=LostFocus,
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                                 <DataGridTextColumn                                
                                         Header="% Comissão à Vista" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                                 <DataGridTextColumn                                
                                         Header="% Comissão a Prazo" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
 

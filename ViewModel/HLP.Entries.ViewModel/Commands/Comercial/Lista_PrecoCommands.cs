@@ -354,7 +354,14 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.IniciaCollection();
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.IniciaCollection();
+                }
             }
             catch (Exception ex)
             {

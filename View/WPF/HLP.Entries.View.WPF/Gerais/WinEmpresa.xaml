@@ -88,13 +88,13 @@
                             <sys:String>xDescricao</sys:String>
                         </Components:HlpPesquisa.Items>
                     </Components:HlpPesquisa>
-                    <Components:HlpTextBox Caption="Link Logo" WidthLabel="158" Margin="10,3,514.409,2"
+                    <Components:HlpTextBox isFindFiles="True" Caption="Link Logo" WidthLabel="158" Margin="10,3,514.409,2"
                                            IsEnabled="{Binding bIsEnabled}"
                                            
     		Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
 
-                    <Components:HlpTextBox Caption="Link Pastas" Margin="10,3,514.409,2"
+                    <Components:HlpTextBox isFindFolder="True" Caption="Link Pastas" Margin="10,3,514.409,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}" WidthLabel="158"/>

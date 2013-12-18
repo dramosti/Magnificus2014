@@ -47,7 +47,7 @@
                     </Components:HlpComboBox>
                     <Components:HlpTextBox Name="txtPor"
                                            Text="{Binding valor, 
-                        StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                        Converter={StaticResource PorcentagemConverter},
                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     HorizontalAlignment="Left" Width="100" Caption="Por" Margin="20,0,0,0"/>
                 </StackPanel>
@@ -90,28 +90,28 @@
                     Header="% Desc. Máx." Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pDescontoMaximo, Mode=OneWay,
-                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
                                         Header="% Acréc. Máx." Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pAcrescimoMaximo, Mode=OneWay,
-                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
                                         Header="% Comissão à Vista" Width="120"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, Mode=OneWay,
-                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
                                         Header="% Comissão à Prazo" Width="120"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, Mode=OneWay,
-                                            StringFormat='\{0\}%', Converter={StaticResource PorcentagemConverter},
+                                            Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                

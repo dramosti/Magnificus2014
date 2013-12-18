@@ -51,10 +51,33 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.gerarDetalhamentoCommand = new RelayCommand(execute: exec => this.GeraDetalhamento(),
                  canExecute: can => true);
-
+            this.objViewModel.gerarByCalendarioBaseCommand = new RelayCommand(execute: exec => this.GerarDetalhamentoByCalendarBase(),
+                canExecute: can => this.CanGerarDetalhamentoByCalendarBase());
         }
 
         #region Implementação Commands
+
+        public void GerarDetalhamentoByCalendarBase()
+        {
+            CalendarioModel objBase = servico.GetObjeto((int)objViewModel.currentModel.idCalendarioBase);
+            foreach (var item in objBase.lCalendario_DetalheModel)
+            {
+                item.idCalendarioDetalhe = null;
+                item.status = Comum.Resources.RecursosBases.statusModel.criado;
+            }
+            objViewModel.currentModel.lCalendario_DetalheModel = objBase.lCalendario_DetalheModel;
+        }
+
+        public bool CanGerarDetalhamentoByCalendarBase()
+        {
+            bool breturn = false;
+            if (objViewModel.currentModel != null)
+                if (objViewModel.currentModel.idCalendarioBase != null)
+                    if (objViewModel.currentModel.idCalendarioBase > 0)
+                        breturn = true;
+            return breturn;
+        }
+
 
         public void GeraDetalhamento()
         {
@@ -121,6 +144,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public async void Delete()
         {
+            int iRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -131,6 +155,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        iRemoved = (int)this.objViewModel.currentModel.idCalendario;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -146,7 +171,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
             }
         }
         private bool DeleteCanExecute()

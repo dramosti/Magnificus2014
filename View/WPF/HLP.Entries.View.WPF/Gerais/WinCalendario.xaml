@@ -6,7 +6,7 @@
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.WinCalendario"
-        Title="WinCalendario" Height="660" Width="1024">
+        Title="WinCalendario" Height="660" Width="1024" NameView="vwCalendario">
     <Window.Resources>
         <convert:DateTimeToStringLongConverter x:Key="dateLongConverter"/>
         <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
@@ -38,7 +38,7 @@
                         <System:String>xDescricao</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-                <Button Content="Gerar" IsEnabled="{Binding bIsEnabled}" Height="27" Width="75" HorizontalAlignment="Left" Margin="147,0,10,2"/>
+                <Button Content="Gerar" Command="{Binding gerarByCalendarioBaseCommand}" IsEnabled="{Binding bIsEnabled}" Height="27" Width="75" HorizontalAlignment="Left" Margin="147,0,10,2"/>
             </WrapPanel>
         </Expander>
         <Expander Header="Detalhamento" IsExpanded="True">

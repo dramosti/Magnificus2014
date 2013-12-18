@@ -31,7 +31,7 @@ namespace HLP.Entries.Model.Models.Parametros
         [ParameterOrder(Order = 8)]
         public byte stRastreabilidadeMaterial { get; set; }
         [ParameterOrder(Order = 9)]
-        public byte stRastreabilidadeProdutoAcabado { get; set; }
+        public byte stRastreabilidadeProdutoAcabado { get; set; }        
     }
 
     public partial class Parametro_EstoqueModel

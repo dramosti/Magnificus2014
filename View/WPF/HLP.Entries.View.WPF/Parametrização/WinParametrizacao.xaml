@@ -29,7 +29,7 @@
                 <AdornerDecorator>
                     <Grid>
                         <Expander Header="Parâmetros de Estoque" HorizontalAlignment="Left" Height="307.04" VerticalAlignment="Top" Width="735.5" IsExpanded="True">
-                            <StackPanel>
+                            <WrapPanel>
                                 <Components:HlpComboBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -91,7 +91,7 @@
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10.009,0,8.942,-1" Caption="Utiliza rastreabilidade dos produtos acabados?" Help="Informar se o Magníficus irá fazer a rastreabilidade de todos os produtos acabados inclusive a rastreabilidade dos materiais." WidthLabel="340"/>
-                            </StackPanel>
+                            </WrapPanel>
                         </Expander>
                     </Grid>
                 </AdornerDecorator>
@@ -100,22 +100,22 @@
                 <AdornerDecorator>
                     <StackPanel>
                         <Expander Header="Parâmetros Custo" Height="436.5" IsExpanded="True">
-                            <StackPanel>
+                            <WrapPanel Orientation="Vertical">
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xHorasTrabalhadasDia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,10,438.5,-1" Caption="Horas trabalhada dia" Help="de custo hora homem. " WidthLabel="484"/>
+								Height="27" Caption="Horas trabalhada dia" Help="de custo hora homem. " WidthLabel="484" Width="567" HorizontalAlignment="Left"/>
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xDiasTrabalhadasSemana, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Quantidade de dias trabalhada na semana" Help="Informar a quantidade de dias trabalhada na semana para calculo de custo." WidthLabel="484"/>
+								Height="27"  Caption="Quantidade de dias trabalhada na semana" Help="Informar a quantidade de dias trabalhada na semana para calculo de custo." WidthLabel="484" Width="567" HorizontalAlignment="Left"/>
                                 <Components:HlpComboBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoComposicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Qual o custo do Material na composição do produto final" Help="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)" WidthLabel="483" Width="734.667">
+								Height="27" Caption="Qual o custo do Material na composição do produto final" Help="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)" WidthLabel="483" Width="647" HorizontalAlignment="Left">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-Compra</System:String>
                                         <System:String>1-Venda</System:String>
@@ -123,9 +123,19 @@
                                 </Components:HlpComboBox>
                                 <Components:HlpComboBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.st_Markup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								Height="27"  Caption="Custo baseado em" Help="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)" WidthLabel="483" Width="650" HorizontalAlignment="Left">
+                                    <Components:HlpComboBox.Items>
+                                        <System:String>0-Preço de Compra</System:String>
+                                        <System:String>1- Preço de Venda</System:String>
+                                    </Components:HlpComboBox.Items>
+                                </Components:HlpComboBox>
+                                <Components:HlpComboBox 
+								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stValorVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Tipo de Valor de Venda" Help="Após calculado o custo de um produto o sistema irá por padrão assumir o preço de venda, 1- NENHUM(sem preço), 2-SUGERIDO (o calculado pelo sistema) ou3-MERCADO (é o valor de mercado informado na composição de preços).  " WidthLabel="484">
+								Height="27"  Caption="Tipo de Valor de Venda" Help="Após calculado o custo de um produto o sistema irá por padrão assumir o preço de venda, 1- NENHUM(sem preço), 2-SUGERIDO (o calculado pelo sistema) ou3-MERCADO (é o valor de mercado informado na composição de preços).  " WidthLabel="484" HorizontalAlignment="Left" Width="645">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-NENHUM(sem preço)</System:String>
                                         <System:String>1-SUGERIDO(o calculado pelo sistema)</System:String>
@@ -137,18 +147,18 @@
 								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorCusto, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Atualiza valor de custo" WidthLabel="484"/>
+								Height="27"  Caption="Atualiza valor de custo" WidthLabel="484" HorizontalAlignment="Left"/>
                                 <Components:HlpCheckBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorVenda, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Atualiza valor de Venda pós Recebimento?" Help="Informar se o valor de venda será atualizado automaticamente pelo sistema após o recebimento, seja produto acabado ou material de venda." WidthLabel="484"/>
+								Height="27"  Caption="Atualiza valor de Venda pós Recebimento?" Help="Informar se o valor de venda será atualizado automaticamente pelo sistema após o recebimento, seja produto acabado ou material de venda." WidthLabel="484" HorizontalAlignment="Left"/>
                                 <Components:HlpComboBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoDefault, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Tipo de Custo Default?" Help="Informar qual o tipo custo Default quando é incluído um novo produto, lembrando que não é esse tipo de custo que o software se baseará ele se baseia pelo tipo de custo que esta no cadastro de produto no campo formação de custo." WidthLabel="484">
+								Height="27"  Caption="Tipo de Custo Default?" Help="Informar qual o tipo custo Default quando é incluído um novo produto, lembrando que não é esse tipo de custo que o software se baseará ele se baseia pelo tipo de custo que esta no cadastro de produto no campo formação de custo." WidthLabel="484" HorizontalAlignment="Left">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-Custo de Composição</System:String>
                                         <System:String>1-Custo Manual</System:String>
@@ -159,7 +169,7 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoMedio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Custo Médio Default" Help="Informar qual o custo médio Default quando é incluído um novo produto, lembrando que não é esse tipo de custo médio que o software se baseará ele se baseia pelo que esta no cadastro de produto no campo tipo de custo." WidthLabel="484">
+								Height="27"  Caption="Custo Médio Default" Help="Informar qual o custo médio Default quando é incluído um novo produto, lembrando que não é esse tipo de custo médio que o software se baseará ele se baseia pelo que esta no cadastro de produto no campo tipo de custo." WidthLabel="484" HorizontalAlignment="Left">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-Custo Médio(Ponderado)</System:String>
                                         <System:String>1-Custo Atual</System:String>
@@ -169,7 +179,7 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCompoeBaseCalculoCustoOperacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,438.5,-1" Caption="Base de calculo para o custo operacional" Help="1- VALOR DE CUSTO DO MATERIAL(DEFAULT)" WidthLabel="484">
+								Height="27" Caption="Base de calculo para o custo operacional" Help="1- VALOR DE CUSTO DO MATERIAL(DEFAULT)" WidthLabel="484" HorizontalAlignment="Left">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-Nenhum</System:String>
                                         <System:String>1-VALOR DE CUSTO DO MATERIAL(DEFAULT)</System:String>
@@ -180,13 +190,13 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.idTipoOperacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,294.5,-1" Caption="Tipo de operação padrão para calculo de custo do produto/material" WidthLabel="484" FieldPesquisa="ID" TableView="vwTipoOperacao">
+								Height="27"  Caption="Tipo de operação padrão para calculo de custo do produto/material" WidthLabel="484" FieldPesquisa="ID" TableView="vwTipoOperacao" HorizontalAlignment="Left" Width="1033">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                            </StackPanel>
+                            </WrapPanel>
                         </Expander>
                     </StackPanel>
                 </AdornerDecorator>
@@ -316,7 +326,7 @@
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPIS,
                                             Mode=TwoWay, NotifyOnValidationError=True, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,76.519,-1" Caption="Alíquota PIS " Help="Informar a alíquota do PIS - Programas de Integração Social e de Formação do Patrimônio do Servidor Público" WidthLabel="295"/>
@@ -324,7 +334,7 @@
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINS,
                                             Mode=TwoWay, NotifyOnValidationError=True, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,76.519,-1" Caption="Alíquota COFINS" Help="Informar a alíquota do COFINS - Contribuição para Financiamento da Seguridade Social." WidthLabel="295"/>
@@ -332,7 +342,7 @@
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaCSLL, 
                                             Mode=TwoWay, NotifyOnValidationError=True, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,76.519,-1" Caption="Alíquota CSLL" Help="Informar a alíquota da Contribuição Social sobre o Lucro Líquido." WidthLabel="295"/>
@@ -481,42 +491,42 @@
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pICMSss,
-                                        StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                        Converter={StaticResource porcentagemConverter},
                                         Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,10,-1" Caption="Alíquota de ICMS para o super simples" Help="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pISSss, 
-                                        StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                        Converter={StaticResource porcentagemConverter},
                                         Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de ISS para o super simples" Help="Informar a alíquota de ISS – Imposto sobre serviços para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCSLLss, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de CSLL para o super simples" Help="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pIRRFss, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de IRRF para o super simples" Help="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples" WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPISss, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de PIS para o super simples" Help="Informar a alíquota do PIS – Programa de Integração Social para o super simples." WidthLabel="365"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINSss, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de COFINS para o super simples" Help="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples." WidthLabel="365"/>
@@ -533,7 +543,7 @@
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pINSSss, 
-                                            StringFormat='\{0\}%', Converter={StaticResource porcentagemConverter},
+                                            Converter={StaticResource porcentagemConverter},
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,-1" Caption="Alíquota de INSS para o super simples" Help="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples" WidthLabel="365"/>

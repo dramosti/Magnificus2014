@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
-              Width="Auto" Height="Auto"  x:Name="componente">
+              Width="Auto" Height="Auto"  x:Name="componente" Loaded="componente_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,10 +19,20 @@
                Height="{Binding ElementName=componente, Path=Height}"
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
+               Visibility ="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=VisibilityLabel}" 
 			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
-        <TextBox x:Name="txtControle"  
+        <Button DockPanel.Dock="Right" Visibility="Collapsed" x:Name="btn" HorizontalAlignment="Right" Width="25" Grid.Column="1" Click="btn_Click">
+            <StackPanel>
+                <Image x:Name="img"  Source="pack://application:,,,/HLP.Comum.Resources;component/Images/Folder.png" Width="12" Height="12"/>
+            </StackPanel>
+        </Button>
+        <TextBox x:Name="txtControle"  DockPanel.Dock="Left" 
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
-                 Height="20"/>
+                 Height="20">
+        </TextBox>
+
+
+
     </DockPanel>
 </runtime:BaseControl>

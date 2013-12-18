@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
-             Width="Auto" Height="Auto" x:Name="componente">
+             Width="Auto" Height="Auto" x:Name="componente" Loaded="componente_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
