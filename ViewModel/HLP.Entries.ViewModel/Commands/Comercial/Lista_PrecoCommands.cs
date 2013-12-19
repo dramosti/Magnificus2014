@@ -57,6 +57,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             this.objViewModel.CarregarProdutosCommand = new RelayCommand(execute: paramExec => this.CarregarProdutos(),
                 canExecute: paramCanExec => this.CarregarProdutosCanExecute());
+
+            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
+                canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
         }
 
         private void IniciaCollection()
@@ -67,6 +70,32 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         #region Implementação Commands
 
 
+        private void AtribuirPercentual(object param)
+        {
+            decimal d;
+
+            if (param == null)
+            {
+                d = decimal.Zero;
+            }
+
+            if (!decimal.TryParse(s: param.ToString(), result: out d))
+            {
+                d = decimal.Zero;
+            }
+
+            foreach (Lista_precoModel it in this.objViewModel.currentModel.lLista_preco)
+            {
+                it.vVenda *= 1 + (d / 100);
+            }
+        }
+
+        private bool AtribuirPercentualCanExecute(object param)
+        {
+            return true;
+        }
+
+
         private void CarregarProdutos()
         {
             foreach (ProdutoModel p in this.servicoProduto.getAll())
@@ -75,7 +104,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 {
                     this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
                     {
-                        idProduto = (int)p.idProduto
+                        idProduto = (int)p.idProduto,
+                        idUnidadeMedida = p.idUnidadeMedidaVendas,
+                        vCustoProduto = p.vCompra
                     });
                 }
             }
@@ -117,9 +148,17 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 {
                     this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
                     {
-                        idProduto = item.idProduto
+                        idProduto = item.idProduto,
+                        idUnidadeMedida = item.idUnidadeMedida,
+                        vCustoProduto = item.vCustoProduto,
+                        vVenda = item.vVenda
                     });
                 }
+
+                decimal pPercentualTemp = (decimal)this.objViewModel.currentModel.pPercentual;
+                this.objViewModel.currentModel.pPercentual = 0;
+                this.objViewModel.currentModel.pPercentual = pPercentualTemp;
+
             }
         }
 

@@ -22,11 +22,11 @@ namespace HLP.Comum.View.Components
     /// Interaction logic for MyUserControl.xaml
     /// </summary>
     public partial class HlpTextBox : BaseControl
-    {    
+    {
 
         public HlpTextBox()
         {
-            InitializeComponent();                   
+            InitializeComponent();
         }
 
         #region TextBox's Property
@@ -34,7 +34,9 @@ namespace HLP.Comum.View.Components
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value);           
+            set
+            {
+                SetValue(TextProperty, value);
             }
         }
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
@@ -97,7 +99,7 @@ namespace HLP.Comum.View.Components
                     if (fbd == null)
                     {
                         fbd = new System.Windows.Forms.FolderBrowserDialog();
-                        fbd.Description = "Localizar diretório";                        
+                        fbd.Description = "Localizar diretório";
                     }
                     if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -116,7 +118,7 @@ namespace HLP.Comum.View.Components
                     if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         this.Text = ofd.FileName;
-                    }          
+                    }
                 }
             }
             catch (Exception)
@@ -127,7 +129,7 @@ namespace HLP.Comum.View.Components
         }
 
         private void componente_Loaded(object sender, RoutedEventArgs e)
-        {           
+        {
             if (this.isFindFolder || this.isFindFiles)
             {
                 this.btn.Visibility = System.Windows.Visibility.Visible;
@@ -137,6 +139,16 @@ namespace HLP.Comum.View.Components
         private void btn_Click(object sender, RoutedEventArgs e)
         {
             Find();
+        }
+
+        public event TextChangedEventHandler UCTextChanged;
+
+        private void txtControle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (UCTextChanged != null)
+            {
+                UCTextChanged(sender: this, e: e);
+            }
         }
     }
 

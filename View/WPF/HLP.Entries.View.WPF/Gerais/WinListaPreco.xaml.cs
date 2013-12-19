@@ -62,8 +62,6 @@ namespace HLP.Entries.View.WPF.Gerais
         private void gridItens_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             this.gridItens.BindingGroup.UpdateSources();
-            e.Row.DataContext.GetType().GetProperty("vCustoProduto").SetValue(e.Row.DataContext,
-                                    decimal.Zero);
             switch (e.Column.DisplayIndex)
             {
                 case 0:
@@ -88,6 +86,11 @@ namespace HLP.Entries.View.WPF.Gerais
 
         private void cbxStAtualizacao_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            this.gridItens.Columns[2].IsReadOnly =
+                this.gridItens.Columns[3].IsReadOnly =
+                this.gridItens.Columns[6].IsReadOnly =
+                this.gridItens.Columns[7].IsReadOnly =
+                this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.HlpComboBox)sender).SelectedIndex == 0);
         }
     }
 }

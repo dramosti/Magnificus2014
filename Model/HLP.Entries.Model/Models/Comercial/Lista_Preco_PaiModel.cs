@@ -55,8 +55,37 @@ namespace HLP.Entries.Model.Models.Comercial
         public decimal? pAcressimoMaximo { get; set; }
         [ParameterOrder(Order = 13)]
         public string xCodigoListaPreco { get; set; }
+
+        private decimal? _pPercentual;
+
         [ParameterOrder(Order = 14)]
-        public decimal? pPercentual { get; set; }
+        public decimal? pPercentual
+        {
+            get { return _pPercentual; }
+            set
+            {
+                _pPercentual = value;
+
+                decimal d;
+
+                if (pPercentual == null)
+                {
+                    d = decimal.Zero;
+                }
+
+                if (!decimal.TryParse(s: pPercentual.ToString(), result: out d))
+                {
+                    d = decimal.Zero;
+                }
+
+                foreach (Lista_precoModel it in this.lLista_preco)
+                {
+                    it.vVenda *= 1 + (d / 100);
+                    this.NotifyPropertyChanged(propertyName: "vVenda");
+                }
+            }
+        }
+
         [ParameterOrder(Order = 15)]
         public int? idListaPrecoOrigem { get; set; }
 
@@ -83,6 +112,9 @@ namespace HLP.Entries.Model.Models.Comercial
 
         private void CalculaPrecoVenda()
         {
+            if (CompanyData.parametros_CustoEmpresa == null)
+                return;
+
             byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
             switch (stMarkup)
             {
