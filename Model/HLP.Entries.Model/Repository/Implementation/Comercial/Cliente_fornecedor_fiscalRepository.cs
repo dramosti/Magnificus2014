@@ -35,12 +35,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             if (objCliente_fornecedor_fiscal.idClienteFornecedorFiscal == null)
             {
                 objCliente_fornecedor_fiscal.idClienteFornecedorFiscal = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_save_Cliente_fornecedor_fiscal]",
                 ParameterBase<Cliente_fornecedor_fiscalModel>.SetParameterValue(objCliente_fornecedor_fiscal));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Cliente_fornecedor_fiscal]",
                 ParameterBase<Cliente_fornecedor_fiscalModel>.SetParameterValue(objCliente_fornecedor_fiscal));
             }
@@ -48,7 +50,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         public void Delete(int idClienteFornecedor)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(UndTrabalho.dbTransaction, System.Data.CommandType.Text,
               "DELETE Cliente_fornecedor_fiscal WHERE idClienteFornecedor = " + idClienteFornecedor);
         }
 

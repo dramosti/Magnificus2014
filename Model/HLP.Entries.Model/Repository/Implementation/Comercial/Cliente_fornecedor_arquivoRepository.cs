@@ -21,28 +21,31 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         public void Save(Cliente_fornecedor_arquivoModel objCliente_fornecedor_arquivo)
         {
-            objCliente_fornecedor_arquivo.idClienteFornecedorArquivo = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Cliente_fornecedor_arquivo]",
-            ParameterBase<Cliente_fornecedor_arquivoModel>.SetParameterValue(objCliente_fornecedor_arquivo));
-        }
+            if (objCliente_fornecedor_arquivo.idClienteFornecedorArquivo == null)
+            {
+                objCliente_fornecedor_arquivo.idClienteFornecedorArquivo = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Cliente_fornecedor_arquivo]",
+                ParameterBase<Cliente_fornecedor_arquivoModel>.SetParameterValue(objCliente_fornecedor_arquivo));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                    "[dbo].[Proc_update_Cliente_fornecedor_arquivo]",
+                    ParameterBase<Cliente_fornecedor_arquivoModel>.SetParameterValue(objCliente_fornecedor_arquivo));
 
-        public void Update(Cliente_fornecedor_arquivoModel objCliente_fornecedor_arquivo)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
-            "[dbo].[Proc_update_Cliente_fornecedor_arquivo]",
-            ParameterBase<Cliente_fornecedor_arquivoModel>.SetParameterValue(objCliente_fornecedor_arquivo));
+            }
         }
-
         public void Delete(int idClienteFornecedorArquivo)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Cliente_fornecedor_arquivo]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction, "[dbo].[Proc_delete_Cliente_fornecedor_arquivo]",
                   UserData.idUser,
                   idClienteFornecedorArquivo);
         }
 
         public void DeletePorClienteFornecedor(int idClienteFornecedor)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(UndTrabalho.dbTransaction, System.Data.CommandType.Text,
               "DELETE Cliente_fornecedor_arquivo WHERE idClienteFornecedor = " + idClienteFornecedor);
         }
 

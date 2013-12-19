@@ -18,6 +18,20 @@ namespace HLP.Comum.View.Converters
 
             switch (parameter.ToString())
             {
+                case "cnpj":
+                    {
+                        value = value.ToString().Replace(oldValue: " ", newValue: "");
+                        if (value.ToString().Length > 14)
+                            value = value.ToString().Substring(startIndex: 0, length: 14);
+
+                        long valor;
+                        if (long.TryParse(s: value.ToString(), result: out valor))
+                        {
+                            return String.Format(@"{0:00\.000\.000\/0000\-00}", valor);
+                        }
+
+                    }
+                    break;
                 case "placa":
                     {
                         value = value.ToString().Replace(oldValue: " ", newValue: "");
@@ -28,7 +42,8 @@ namespace HLP.Comum.View.Converters
                         string sReturn = (string)value;
 
                         return sReturn.Insert(3, "-");
-                    } break;
+                    } 
+                    break;
                 case "cep":
                     {
                         value = value.ToString().Replace(oldValue: " ", newValue: "");
@@ -93,6 +108,14 @@ namespace HLP.Comum.View.Converters
             }
             switch (parameter.ToString())
             {
+                case "cnpj":
+                    {
+                        string valor;
+                        valor = value.ToString().Replace(oldValue: "-", newValue: "").Replace(oldValue: "/", newValue: "").Replace(oldValue: ".", newValue: "");
+                        if (valor.ToString().Length > 14)
+                            valor = valor.ToString().Substring(startIndex: 0, length: 14);
+                        return valor;
+                    }
                 case "placa":
                     {
                         string valor;

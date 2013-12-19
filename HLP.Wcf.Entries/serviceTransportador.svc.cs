@@ -166,6 +166,8 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                
+
                 this.transportadorRepository.BeginTransaction();                
                 this.transportador_ContatoRepository.DeletePorTransportador(idTransportador: idTransportador);
                 this.transportador_EnderecoRepository.DeletePorTransportador(idTransportador: idTransportador);

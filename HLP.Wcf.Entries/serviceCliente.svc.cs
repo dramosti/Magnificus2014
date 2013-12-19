@@ -59,7 +59,7 @@ namespace HLP.Wcf.Entries
                 if (objCliente == null)
                     return null;
 
-                objCliente.cliforFiscalModel = this.cliente_fornecedor_fiscalRepository.GetCliente_fornecedor_fiscal(
+                objCliente.cliente_fornecedor_fiscal = this.cliente_fornecedor_fiscalRepository.GetCliente_fornecedor_fiscal(
                     idClienteFornecedor: idCliente);
 
                 objCliente.lCliente_fornecedor_arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_arquivoModel>
@@ -70,7 +70,7 @@ namespace HLP.Wcf.Entries
                 (list: this.cliente_fornecedor_contatoRepository.GetAllCliente_fornecedor_contato(
                 idClienteFornecedor: idCliente));
 
-                objCliente.lCliente_Fornecedor_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel>
+                objCliente.lCliente_fornecedor_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel>
                 (list: this.cliente_fornecedor_enderecoRepository.GetAllCliente_Fornecedor_Endereco(
                 idClienteFornecedor: idCliente));
 
@@ -104,7 +104,7 @@ namespace HLP.Wcf.Entries
                 this.cliente_fornecedorRepository.BeginTransaction();
                 this.cliente_fornecedorRepository.Save(objCliente_fornecedor: objCliente);
                 this.cliente_fornecedor_fiscalRepository.Save(objCliente_fornecedor_fiscal:
-                    objCliente.cliforFiscalModel);
+                    objCliente.cliente_fornecedor_fiscal);
 
 
                 foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_arquivoModel item in objCliente.lCliente_fornecedor_arquivo)
@@ -114,6 +114,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_arquivoRepository.Save(objCliente_fornecedor_arquivo:
                                     item);
                             }
@@ -135,6 +136,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_contatoRepository.Save(
                                     objCliente_fornecedor_contato: item);
                             }
@@ -149,13 +151,14 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel item in objCliente.lCliente_Fornecedor_Endereco)
+                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel item in objCliente.lCliente_fornecedor_Endereco)
                 {
                     switch (item.status)
                     {
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_enderecoRepository.Save(
                                     objCliente_Fornecedor_Endereco: item);
                             }
@@ -177,6 +180,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_observacaoRepository.Save(
                                     objCliente_Fornecedor_Observacao: item);
                             }
@@ -198,6 +202,7 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_produtoRepository.Save(
                                     objCliente_fornecedor_produto: item);
                             }
@@ -219,12 +224,14 @@ namespace HLP.Wcf.Entries
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_representanteRepository.Save(
                                     objCliente_fornecedor_representante: item);
                             }
                             break;
                         case statusModel.excluido:
                             {
+                                item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                                 this.cliente_fornecedor_representanteRepository.Delete(
                                     idClienteFornecedorRepresentante: (int)item.idClienteFornecedorRepresentante);
                             }
@@ -240,7 +247,6 @@ namespace HLP.Wcf.Entries
                 this.cliente_fornecedorRepository.RollackTransaction();
                 throw new FaultException(reason: ex.Message);
             }
-
         }
 
         public bool deleteCliente(int idCliente)
@@ -274,15 +280,14 @@ namespace HLP.Wcf.Entries
 
         public int copyCliente(HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel objCliente)
         {
-
             try
             {
                 this.cliente_fornecedorRepository.Copy(objCliente_fornecedor:
                     objCliente);
 
-                objCliente.cliforFiscalModel.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
+                objCliente.cliente_fornecedor_fiscal.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                 this.cliente_fornecedor_fiscalRepository.Copy(
-                    objCliente.cliforFiscalModel);
+                    objCliente.cliente_fornecedor_fiscal);
 
                 foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_arquivoModel item in objCliente.lCliente_fornecedor_arquivo)
                 {
@@ -298,7 +303,7 @@ namespace HLP.Wcf.Entries
                         objCliente_fornecedor_contato: item);
                 }
 
-                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel item in objCliente.lCliente_Fornecedor_Endereco)
+                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel item in objCliente.lCliente_fornecedor_Endereco)
                 {
                     item.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
                     this.cliente_fornecedor_enderecoRepository.Copy(

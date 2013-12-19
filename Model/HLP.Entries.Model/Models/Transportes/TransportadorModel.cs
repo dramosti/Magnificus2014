@@ -35,8 +35,13 @@ namespace HLP.Entries.Model.Models.Transportes
 
         [ParameterOrder(Order = 2)]
         public string xCodigoAlternativo { get; set; }
+        public byte _stPessoa = 0;
         [ParameterOrder(Order = 3)]
-        public byte stPessoa { get; set; }
+        public byte stPessoa
+        {
+            get { return _stPessoa; }
+            set { _stPessoa = value; }
+        }
         [ParameterOrder(Order = 4)]
         public string xCnpj { get; set; }
         [ParameterOrder(Order = 5)]
@@ -70,7 +75,7 @@ namespace HLP.Entries.Model.Models.Transportes
 
 
 
-        
+
         private ObservableCollectionBaseCadastros<Transportador_EnderecoModel> _lTransportador_Endereco;
 
         public ObservableCollectionBaseCadastros<Transportador_EnderecoModel> lTransportador_Endereco
@@ -86,7 +91,7 @@ namespace HLP.Entries.Model.Models.Transportes
 
 
 
-        
+
         private ObservableCollectionBaseCadastros<Transportador_VeiculosModel> _lTransportador_Veiculos;
 
         public ObservableCollectionBaseCadastros<Transportador_VeiculosModel> lTransportador_Veiculos
@@ -100,7 +105,7 @@ namespace HLP.Entries.Model.Models.Transportes
         }
 
 
-        
+
         private ObservableCollectionBaseCadastros<Transportador_ContatoModel> _lTransportador_Contato;
 
         public ObservableCollectionBaseCadastros<Transportador_ContatoModel> lTransportador_Contato
@@ -114,7 +119,7 @@ namespace HLP.Entries.Model.Models.Transportes
         }
 
 
-        
+
         private ObservableCollectionBaseCadastros<Transportador_MotoristaModel> _lTransportador_Motorista;
 
         public ObservableCollectionBaseCadastros<Transportador_MotoristaModel> lTransportador_Motorista
@@ -126,7 +131,7 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "lTransportador_Motorista");
             }
         }
-        
+
 
     }
 
@@ -183,7 +188,7 @@ namespace HLP.Entries.Model.Models.Transportes
         }
 
         private byte _stTipoEndereco;
-            [ParameterOrder(Order = 4)]
+        [ParameterOrder(Order = 4)]
         public byte stTipoEndereco
         {
             get { return _stTipoEndereco; }
@@ -195,7 +200,7 @@ namespace HLP.Entries.Model.Models.Transportes
         }
 
 
-    
+
 
         private string _xCEP;
         [ParameterOrder(Order = 5)]
@@ -523,7 +528,9 @@ namespace HLP.Entries.Model.Models.Transportes
         {
             get
             {
-                return base[columnName];
+                string sRet = base[columnName];
+
+                return sRet;
             }
         }
     }

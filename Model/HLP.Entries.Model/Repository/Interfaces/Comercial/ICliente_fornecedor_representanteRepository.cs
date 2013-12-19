@@ -10,7 +10,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Comercial
     public interface ICliente_fornecedor_representanteRepository
     {
         void Save(Cliente_fornecedor_representanteModel objCliente_fornecedor_representante);
-        void Update(Cliente_fornecedor_representanteModel objCliente_fornecedor_representante);
         void Delete(int idClienteFornecedorRepresentante);
         void DeletePorClienteFornecedor(int idClienteFornecedor);
         void Copy(Cliente_fornecedor_representanteModel objCliente_fornecedor_representante);

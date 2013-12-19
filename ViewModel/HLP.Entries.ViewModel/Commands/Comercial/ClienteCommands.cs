@@ -83,7 +83,71 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.servico.saveCliente(objCliente: this.objViewModel.currentModel);
+            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_arquivo.idExcluidos)
+            {
+                this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Add(
+                    new Cliente_fornecedor_arquivoModel
+                    {
+                        idClienteFornecedorArquivo = id,
+                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                    });
+            }
+            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_contato.idExcluidos)
+            {
+                this.objViewModel.currentModel.lCliente_fornecedor_contato.Add(
+                    new Cliente_fornecedor_contatoModel
+                    {
+                        idClienteFornecedorContato = id,
+                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                    });
+            }
+            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_Endereco.idExcluidos)
+            {
+                this.objViewModel.currentModel.lCliente_fornecedor_Endereco.Add(
+                    new Cliente_fornecedor_EnderecoModel
+                    {
+                        idClienteFornecedor = id,
+                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                    });
+            }
+            foreach (int id in this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.idExcluidos)
+            {
+                this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.Add(
+                    new Cliente_Fornecedor_ObservacaoModel
+                    {
+                        idClienteFornecedorObservacao = id,
+                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                    });
+            }
+            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_produto.idExcluidos)
+            {
+                this.objViewModel.currentModel.lCliente_fornecedor_produto.Add(
+                    new Cliente_fornecedor_produtoModel
+                    {
+                        idClienteFornecedorProduto = id,
+                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                    });
+            }
+            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_representante.idExcluidos)
+            {
+                this.objViewModel.currentModel.lCliente_fornecedor_representante.Add(
+                    new Cliente_fornecedor_representanteModel
+                    {
+                        idClienteFornecedorRepresentante = id,
+                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                    });
+            }
+            this.objViewModel.currentModel.idClienteFornecedor = this.servico.saveCliente(objCliente: this.objViewModel.currentModel);
+            this.Inicia_Collections();
+        }
+        private void Inicia_Collections()
+        {
+            this.objViewModel.currentModel.lCliente_fornecedor_arquivo.CollectionCarregada();
+            this.objViewModel.currentModel.lCliente_fornecedor_contato.CollectionCarregada();
+            this.objViewModel.currentModel.lCliente_fornecedor_Endereco.CollectionCarregada();
+            this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.CollectionCarregada();
+            this.objViewModel.currentModel.lCliente_fornecedor_produto.CollectionCarregada();
+            this.objViewModel.currentModel.lCliente_fornecedor_representante.CollectionCarregada();
         }
 
         private bool SaveCanExecute(object objDependency)
@@ -97,6 +161,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public async void Delete()
         {
+            int idRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -109,6 +174,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        idRemoved = (int)this.objViewModel.currentModel.idClienteFornecedor;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -124,7 +190,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -266,7 +332,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             this.objViewModel.currentModel.lCliente_fornecedor_arquivo.CollectionCarregada();
             this.objViewModel.currentModel.lCliente_fornecedor_contato.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_Fornecedor_Endereco.CollectionCarregada();
+            this.objViewModel.currentModel.lCliente_fornecedor_Endereco.CollectionCarregada();
             this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.CollectionCarregada();
             this.objViewModel.currentModel.lCliente_fornecedor_produto.CollectionCarregada();
             this.objViewModel.currentModel.lCliente_fornecedor_representante.CollectionCarregada();

@@ -10,7 +10,7 @@
         x:Class="HLP.Entries.View.WPF.Transportes.WinTransportadora"
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="WinTransportadora" Height="660" Width="1024" NameView="vwTransportador">
-<Window.Resources>
+    <Window.Resources>
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
@@ -47,121 +47,157 @@
                 <System:String>vwUFToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-    </Window.Resources>  
-	<Grid>
-		<TabControl>
-			<TabItem Header="Principal">
-				<AdornerDecorator>
-					<DockPanel LastChildFill="True">
-						<DockPanel DockPanel.Dock="Top" Height="233">
-							<Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Left" Width="450">
-								<WrapPanel Orientation="Vertical">									
-									<Components:HlpTextBox 
+    </Window.Resources>
+    <Grid>
+        <TabControl>
+            <TabItem Header="Principal">
+                <AdornerDecorator>
+                    <DockPanel LastChildFill="True">
+                        <DockPanel DockPanel.Dock="Top" Height="233">
+                            <Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Left" Width="450">
+                                <WrapPanel Orientation="Vertical">
+                                    <Components:HlpTextBox 
 										IsReadOnly="True"
 										Text="{Binding currentModel.idTransportador, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 										Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Código" Help="É preenchido com um código sequencial que é gerado pelo próprio sistema." WidthLabel="137" Width="230"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xCodigoAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Código Alternativo " Help="O sistema traz o mesmo código de identificação do registro do sistema da transportadora, mas deixa a opção para o usuário mudar." WidthLabel="137" Width="230"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Razão Social" Help="É preenchido com a razão social da Transportadora." WidthLabel="137" Width="426"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Nome Fantasia" Help="É preenchido com o nome fantasia da Transportadora." WidthLabel="137" Width="426"/>
-									<Components:HlpCheckBox 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                    <Components:HlpCheckBox x:Name="chkPessoa"  
+										Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 										IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Pessoa Jurídica?" Help="Este campo define se a Transportadora é pessoa jurídica ou física, preenchendo com SIM, o sistema abrirá os campos disponíveis para pessoa jurídica caso contrário os campos disponíveis para pessoa física." WidthLabel="137"/>									
-								</WrapPanel>
-							</Expander>
-							<Expander Header="Documentação" IsExpanded="True">
-								<WrapPanel Orientation="Vertical">
-									<Components:HlpTextBox 
+										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Pessoa Jurídica?" Help="Este campo define se a Transportadora é pessoa jurídica ou física, preenchendo com SIM, o sistema abrirá os campos disponíveis para pessoa jurídica caso contrário os campos disponíveis para pessoa física." WidthLabel="137"/>
+                                </WrapPanel>
+                            </Expander>
+                            <Expander Header="Documentação" IsExpanded="True">
+                                <WrapPanel Orientation="Vertical">
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="CNPJ" Help="No caso de Pessoa Jurídica, deverá ser preenchido o CNPJ (Cadastro Nacional de Pessoa Jurídica) da Transportadora. Este campo possui validação e consistência, não sendo aceito qualquer número" WidthLabel="166" Width="285"/>
-									<Components:HlpTextBox 
+										Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}"										
+										Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="CNPJ" Help="No caso de Pessoa Jurídica, deverá ser preenchido o CNPJ (Cadastro Nacional de Pessoa Jurídica) da Transportadora. Este campo possui validação e consistência, não sendo aceito qualquer número" WidthLabel="166" Width="285">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xIe, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Estadual" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição estadual da Transportadora. Este campo possui consistência por estado." WidthLabel="166" Width="285"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Municipal" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição municipal da Transportadora." WidthLabel="166" Width="285"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="CPF" Help="No caso de Pessoa Física, este campo deverá ser preenchido com o CPF (Cadastro de Pessoa Física) da pessoa. Este campo possui validação e consistência, não sendo aceito qualquer número." WidthLabel="166" Width="285"/>
-									<Components:HlpTextBox 
+										Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"										
+										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="CPF" Help="No caso de Pessoa Física, este campo deverá ser preenchido com o CPF (Cadastro de Pessoa Física) da pessoa. Este campo possui validação e consistência, não sendo aceito qualquer número." WidthLabel="166" Width="285">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="RG" Help="No caso de Pessoa Física, deverá ser preenchido com o RG (Registro Geral) da pessoa." WidthLabel="166" Width="285"/>
-									<Components:HlpTextBox 
+										Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"									
+										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="RG" Help="No caso de Pessoa Física, deverá ser preenchido com o RG (Registro Geral) da pessoa." WidthLabel="166" Width="285">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xRntrc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="RNTRC" Help="Informar o Registro Nacional de Transportadores Rodoviários de Carga" WidthLabel="166" Width="285"/>
-								</WrapPanel>								
-							</Expander>						
-						</DockPanel>
-						<DockPanel>	
-							<Expander Header="Telefones" IsExpanded="True" DockPanel.Dock="Left" Width="450">	
-								<WrapPanel Orientation="Vertical">
-									<Components:HlpTextBox 
+                                </WrapPanel>
+                            </Expander>
+                        </DockPanel>
+                        <DockPanel>
+                            <Expander Header="Telefones" IsExpanded="True" DockPanel.Dock="Left" Width="450">
+                                <WrapPanel Orientation="Vertical">
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,10,2" Caption="1° Telefone" Help="É preenchido com o telefone principal da Transportadora." WidthLabel="95" Width="214"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" Caption="2° Telefone" Help="É preenchido com o segundo telefone da Transportadora, se houver." WidthLabel="95" Width="214"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" Caption="Fax" Help="É preenchido com o fax principal da Transportadora" WidthLabel="95" Width="214"/>
-								</WrapPanel>							
-							</Expander>
-							<Expander Header="Identificação Eletrônica" IsExpanded="True">	
-								<WrapPanel Orientation="Vertical">
-									<Components:HlpTextBox 
+                                </WrapPanel>
+                            </Expander>
+                            <Expander Header="Identificação Eletrônica" IsExpanded="True">
+                                <WrapPanel Orientation="Vertical">
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,10,2" Caption="E-mail" Help="Preencher o e-mail da transportadora." WidthLabel="158" Width="391"/>
-									<Components:HlpTextBox 
+                                    <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xHttp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" Caption="Endereço da Internet" Help="Informar o endereço da Internet da transportadora." WidthLabel="158" Width="391"/>
-									<Components:HlpCheckBox 
+                                    <Components:HlpCheckBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" Caption="Ativo" Help="Informar se a transportadora esta ou não ativa no sistema." WidthLabel="158"/>
-								</WrapPanel>							
-							</Expander>						
-						</DockPanel>
-					</DockPanel>
-				</AdornerDecorator>
-			</TabItem>
-			<TabItem Header="Endereços">
-				<AdornerDecorator>
+                                </WrapPanel>
+                            </Expander>
+                        </DockPanel>
+                    </DockPanel>
+                </AdornerDecorator>
+            </TabItem>
+            <TabItem Header="Endereços">
+                <AdornerDecorator>
                     <DataGrid 
                          x:Name="dgvEndereco"
                          ItemsSource="{Binding currentModel.lTransportador_Endereco}"                          
@@ -239,12 +275,12 @@
 
                     </DataGrid>
                 </AdornerDecorator>
-			</TabItem>
-			<TabItem Header="Contatos / Motoristas / Veículos">
-				<AdornerDecorator>
-					<DockPanel LastChildFill="True">
-						<DockPanel DockPanel.Dock="Top" Height="280">
-							<Expander Header="Contatos" IsExpanded="True" DockPanel.Dock="Left" Width="420">
+            </TabItem>
+            <TabItem Header="Contatos / Motoristas / Veículos">
+                <AdornerDecorator>
+                    <DockPanel LastChildFill="True">
+                        <DockPanel DockPanel.Dock="Top" Height="280">
+                            <Expander Header="Contatos" IsExpanded="True" DockPanel.Dock="Left" Width="420">
                                 <DataGrid
                                         x:Name="dgvContato"
                                          ItemsSource="{Binding currentModel.lTransportador_Contato}"                          
@@ -262,16 +298,16 @@
                                     </DataGrid.Columns>
                                 </DataGrid>
 
-                            </Expander>	
-							<Expander Header="Motoristas" IsExpanded="True">
-								<DataGrid
+                            </Expander>
+                            <Expander Header="Motoristas" IsExpanded="True">
+                                <DataGrid
 								ItemsSource="{Binding currentModel.lTransportador_Motorista}"                          
 								IsEnabled="{Binding bIsEnabled}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
 								CanUserAddRows="True">
-									<DataGrid.Columns>
+                                    <DataGrid.Columns>
                                         <DataGridComboBoxColumn  Header="Contatos" Width="*"
                                             ItemsSource="{Binding Source={StaticResource lcontatos}}"
                                             SelectedValuePath="id"
@@ -281,21 +317,21 @@
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xRntrc, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 											Header="Rntrc" Width="150"/>
-									</DataGrid.Columns>									
-								</DataGrid>								
-							</Expander>					
-						</DockPanel>
-						<DockPanel>
-							<Expander Header="Veículos" IsExpanded="True">
-								<DataGrid
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Expander>
+                        </DockPanel>
+                        <DockPanel>
+                            <Expander Header="Veículos" IsExpanded="True">
+                                <DataGrid
 								ItemsSource="{Binding currentModel.lTransportador_Veiculos}"                          
 								IsEnabled="{Binding bIsEnabled}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
 								CanUserAddRows="True">
-									<DataGrid.Columns>
-										<DataGridTextColumn 
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn 
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xPlacaVeiculo, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=placa}"
 											Header="Placa do Veículo" Width="200"/>
@@ -308,17 +344,17 @@
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xMarca, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 											Header="Marca" Width="200"/>
-										<DataGridTextColumn 
+                                        <DataGridTextColumn 
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xModelo, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 											Header="Modelo" Width="200"/>
-									</DataGrid.Columns>									
-								</DataGrid>
-							</Expander>							
-						</DockPanel>
-					</DockPanel>
-				</AdornerDecorator>
-			</TabItem>
-		</TabControl>
-	</Grid>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Expander>
+                        </DockPanel>
+                    </DockPanel>
+                </AdornerDecorator>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </runtime:WindowsBase>

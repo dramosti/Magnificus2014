@@ -23,6 +23,7 @@ namespace HLP.Entries.View.WPF.Transportes
     {
         public WinTransportadora()
         {
+            
             InitializeComponent();
             this.ViewModel = new TransportadorViewModel();
         }

@@ -21,28 +21,36 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         public void Save(Cliente_Fornecedor_ObservacaoModel objCliente_Fornecedor_Observacao)
         {
-            objCliente_Fornecedor_Observacao.idClienteFornecedorObservacao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Cliente_Fornecedor_Observacao]",
-            ParameterBase<Cliente_Fornecedor_ObservacaoModel>.SetParameterValue(objCliente_Fornecedor_Observacao));
+            if (objCliente_Fornecedor_Observacao.idClienteFornecedorObservacao == null)
+            {
+                objCliente_Fornecedor_Observacao.idClienteFornecedorObservacao = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Cliente_Fornecedor_Observacao]",
+                ParameterBase<Cliente_Fornecedor_ObservacaoModel>.SetParameterValue(objCliente_Fornecedor_Observacao));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+                   "[dbo].[Proc_update_Cliente_Fornecedor_Observacao]",
+                   ParameterBase<Cliente_Fornecedor_ObservacaoModel>.SetParameterValue(objCliente_Fornecedor_Observacao));
+            }
         }
 
-        public void Update(Cliente_Fornecedor_ObservacaoModel objCliente_Fornecedor_Observacao)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
-            "[dbo].[Proc_update_Cliente_Fornecedor_Observacao]",
-            ParameterBase<Cliente_Fornecedor_ObservacaoModel>.SetParameterValue(objCliente_Fornecedor_Observacao));
-        }
 
         public void Delete(int idClienteFornecedorObservacao)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Cliente_Fornecedor_Observacao]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Cliente_Fornecedor_Observacao]",
                   UserData.idUser,
                   idClienteFornecedorObservacao);
         }
 
         public void DeletePorClienteFornecedor(int idClienteFornecedor)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction, System.Data.CommandType.Text,
               "DELETE Cliente_Fornecedor_Observacao WHERE idClienteFornecedor = " + idClienteFornecedor);
         }
 
@@ -61,7 +69,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Cliente_Fornecedor_Observacao]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idClienteFornecedorObservacao"),
-                   MapBuilder<Cliente_Fornecedor_ObservacaoModel>.MapAllProperties().Build());
+                   MapBuilder<Cliente_Fornecedor_ObservacaoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
             }
             return regAcessor.Execute(idClienteFornecedorObservacao).FirstOrDefault();
         }
@@ -70,7 +78,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DataAccessor<Cliente_Fornecedor_ObservacaoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Cliente_Fornecedor_Observacao WHERE idClienteFornecedor = @idClienteFornecedor", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idClienteFornecedor"),
-            MapBuilder<Cliente_Fornecedor_ObservacaoModel>.MapAllProperties().Build());
+            MapBuilder<Cliente_Fornecedor_ObservacaoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
 
             return reg.Execute(idClienteFornecedor).ToList();
         }

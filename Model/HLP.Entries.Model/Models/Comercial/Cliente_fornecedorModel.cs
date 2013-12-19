@@ -13,6 +13,13 @@ namespace HLP.Entries.Model.Models.Comercial
         public Cliente_fornecedorModel()
             : base(xTabela: "Cliente_fornecedor")
         {
+            this.lCliente_fornecedor_arquivo = new ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel>();
+            this.lCliente_fornecedor_contato = new ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel>();
+            this.lCliente_fornecedor_Endereco = new ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel>();
+            this.lCliente_Fornecedor_Observacao = new ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel>();
+            this.lCliente_fornecedor_produto = new ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel>();
+            this.lCliente_fornecedor_representante = new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
+            this.cliente_fornecedor_fiscal = new Cliente_fornecedor_fiscalModel();
         }
 
         private int? _idClienteFornecedor;
@@ -241,20 +248,100 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 107)]
         public byte? stObrigaListaPreco { get; set; }
 
-        public ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel> lCliente_Fornecedor_Observacao =
-            new ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel>();
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel> lCliente_fornecedor_representante =
-            new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> lCliente_Fornecedor_Endereco =
-            new ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel>();
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> lCliente_fornecedor_contato =
-            new ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel>();
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel> lCliente_fornecedor_arquivo =
-            new ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel>();
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel> lCliente_fornecedor_produto =
-            new ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel>();
 
-        public Cliente_fornecedor_fiscalModel cliforFiscalModel = new Cliente_fornecedor_fiscalModel();
+        
+        private ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel> _lCliente_Fornecedor_Observacao;
+
+        public ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel> lCliente_Fornecedor_Observacao
+        {
+            get { return _lCliente_Fornecedor_Observacao; }
+            set
+            {
+                _lCliente_Fornecedor_Observacao = value;
+                base.NotifyPropertyChanged(propertyName: "lCliente_Fornecedor_Observacao");
+            }
+        }
+
+
+        
+        private ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel> _lCliente_fornecedor_representante;
+
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel> lCliente_fornecedor_representante
+        {
+            get { return _lCliente_fornecedor_representante; }
+            set
+            {
+                _lCliente_fornecedor_representante = value;
+                base.NotifyPropertyChanged(propertyName: "lCliente_fornecedor_representante");
+            }
+        }
+
+
+        
+        private ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> _lCliente_fornecedor_Endereco;
+
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> lCliente_fornecedor_Endereco
+        {
+            get { return _lCliente_fornecedor_Endereco; }
+            set
+            {
+                _lCliente_fornecedor_Endereco = value;
+                base.NotifyPropertyChanged(propertyName: "lCliente_fornecedor_Endereco");
+            }
+        }
+
+        
+        private ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> _lCliente_fornecedor_contato;
+
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> lCliente_fornecedor_contato
+        {
+            get { return _lCliente_fornecedor_contato; }
+            set
+            {
+                _lCliente_fornecedor_contato = value;
+                base.NotifyPropertyChanged(propertyName: "lCliente_fornecedor_contato");
+            }
+        }
+
+        
+        private ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel> _lCliente_fornecedor_arquivo;
+
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel> lCliente_fornecedor_arquivo
+        {
+            get { return _lCliente_fornecedor_arquivo; }
+            set
+            {
+                _lCliente_fornecedor_arquivo = value;
+                base.NotifyPropertyChanged(propertyName: "lCliente_fornecedor_arquivo");
+            }
+        }
+
+        
+        private ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel> _lCliente_fornecedor_produto;
+
+        public ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel> lCliente_fornecedor_produto
+        {
+            get { return _lCliente_fornecedor_produto; }
+            set
+            {
+                _lCliente_fornecedor_produto = value;
+                base.NotifyPropertyChanged(propertyName: "lCliente_fornecedor_produto");
+            }
+        }
+
+        
+        private Cliente_fornecedor_fiscalModel _cliente_fornecedor_fiscal;
+
+        public Cliente_fornecedor_fiscalModel cliente_fornecedor_fiscal
+        {
+            get { return _cliente_fornecedor_fiscal; }
+            set
+            {
+                _cliente_fornecedor_fiscal = value;
+                base.NotifyPropertyChanged(propertyName: "cliente_fornecedor_fiscal");
+            }
+        }
+        
     }
 
     public partial class Cliente_fornecedor_representanteModel : modelBase

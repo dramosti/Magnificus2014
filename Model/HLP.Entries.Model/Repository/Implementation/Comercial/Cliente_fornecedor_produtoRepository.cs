@@ -21,28 +21,38 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         public void Save(Cliente_fornecedor_produtoModel objCliente_fornecedor_produto)
         {
-            objCliente_fornecedor_produto.idClienteFornecedorProduto = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-           "[dbo].[Proc_save_Cliente_fornecedor_produto]",
-            ParameterBase<Cliente_fornecedor_produtoModel>.SetParameterValue(objCliente_fornecedor_produto));
-        }
-
-        public void Update(Cliente_fornecedor_produtoModel objCliente_fornecedor_produto)
-        {
-            UndTrabalho.dbPrincipal.ExecuteScalar(
+            if (objCliente_fornecedor_produto.idClienteFornecedorProduto == null)
+            {
+                objCliente_fornecedor_produto.idClienteFornecedorProduto = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
+               "[dbo].[Proc_save_Cliente_fornecedor_produto]",
+                ParameterBase<Cliente_fornecedor_produtoModel>.SetParameterValue(objCliente_fornecedor_produto));
+            }
+            else
+            {
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Cliente_fornecedor_produto]",
             ParameterBase<Cliente_fornecedor_produtoModel>.SetParameterValue(objCliente_fornecedor_produto));
+
+            }
+
         }
 
         public void Delete(int idClienteFornecedorProduto)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Cliente_fornecedor_produto]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Cliente_fornecedor_produto]",
                   UserData.idUser,
                   idClienteFornecedorProduto);
         }
 
         public void DeletePorClienteFornecedor(int idClienteFornecedor)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                UndTrabalho.dbTransaction,
+                System.Data.CommandType.Text,
               "DELETE Cliente_fornecedor_produto WHERE idClienteFornecedor = " + idClienteFornecedor);
         }
 

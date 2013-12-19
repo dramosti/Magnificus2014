@@ -21,19 +21,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         public void Save(Cliente_fornecedorModel objCliente_fornecedor)
         {
-            //Aqui deve-se setar as FK's (se houver)
-            //Exemplo:
-            //produto.idEmpresa = CompanyData.idEmpresa;
-
             if (objCliente_fornecedor.idClienteFornecedor == null)
             {
                 objCliente_fornecedor.idClienteFornecedor = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_save_Cliente_fornecedor]",
                 ParameterBase<Cliente_fornecedorModel>.SetParameterValue(objCliente_fornecedor));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Cliente_fornecedor]",
                 ParameterBase<Cliente_fornecedorModel>.SetParameterValue(objCliente_fornecedor));
             }
