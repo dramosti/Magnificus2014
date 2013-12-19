@@ -27,12 +27,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             if (objLista_preco.idListaPreco == null)
             {
                 objLista_preco.idListaPreco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                "[dbo].[Proc_save_Lista_preco]",
                 ParameterBase<Lista_precoModel>.SetParameterValue(objLista_preco));
             }
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
             "[dbo].[Proc_update_Lista_preco]",
             ParameterBase<Lista_precoModel>.SetParameterValue(objLista_preco));
             }
@@ -40,7 +42,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         public void Delete(int idListaPreco)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("[dbo].[Proc_delete_Lista_preco]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction,
+                "[dbo].[Proc_delete_Lista_preco]",
                   UserData.idUser,
                   idListaPreco);
         }
@@ -77,7 +81,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             ("SELECT * FROM Lista_preco WHERE idListaPrecoPai = @idListaPrecoPai", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPrecoPai"),
             MapBuilder<Lista_precoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
 
-            return reg.Execute(idListaPrecoPai).ToList();
+            try
+            {
+                return reg.Execute(idListaPrecoPai).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<int> ReturnProducts(List<int> lidProduto)

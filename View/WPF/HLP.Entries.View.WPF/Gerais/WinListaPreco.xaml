@@ -87,7 +87,8 @@
                         </Components:HlpPesquisa.Style>
                     </Components:HlpPesquisa>
                     <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                        x:Name="txtPercentual"                        
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"                        
 					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
                         Converter={StaticResource PorcentagemConverter},
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
@@ -105,7 +106,7 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </Components:HlpTextBox.Style>
+                        </Components:HlpTextBox.Style>                        
                     </Components:HlpTextBox>
                     <Button 
                         Command="{Binding gerarListaCommand}"
@@ -201,7 +202,7 @@
                             <DataGridTextColumn                                
                                 Header="Custo Produto" Width="100"                                
                                 ElementStyle="{StaticResource CellErrorStyle}"                                
-                                Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,
+                                Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=LostFocus, Mode=TwoWay,
                                 Converter={StaticResource moedaConverter},
                                 NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 >
@@ -312,7 +313,7 @@
                                     <DataTrigger>
                                         <DataTrigger.Binding>
                                             <MultiBinding Converter="{StaticResource RowDateConverter}">
-                                                <Binding Path="dAlteracaoCusto" FallbackValue=""></Binding>
+                                                <Binding Path="dAlteracaoCusto"></Binding>
                                                 <Binding Path="DataContext.currentModel.nDiasSemAtualicao" 
                                                          RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}"/>
                                             </MultiBinding>

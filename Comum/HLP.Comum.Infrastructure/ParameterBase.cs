@@ -25,6 +25,7 @@ namespace HLP.Comum.Infrastructure
                         .GetValue(classe, ModelDefinition.ARRAY_OBJECTS);
                     list.Add(value);
                 }
+        
 
                 return list.ToArray();
             }
