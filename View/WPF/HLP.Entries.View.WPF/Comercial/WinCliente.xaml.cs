@@ -39,5 +39,10 @@ namespace HLP.Entries.View.WPF.Comercial
                 this.DataContext = value;
             }
         }
+
+        private void dgvEndereco_CurrentCellChanged(object sender, EventArgs e)
+        {
+            this.dgvEndereco.BindingGroup.UpdateSources();
+        }
     }
 }
