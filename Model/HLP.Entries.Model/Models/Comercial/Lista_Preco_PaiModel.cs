@@ -78,9 +78,8 @@ namespace HLP.Entries.Model.Models.Comercial
 
                 foreach (Lista_precoModel it in this.lLista_preco)
                 {
-                    it.vVenda -= it.vVenda * ((this._pPercentual / 100 ?? 0) / 100);
+                    it.vVenda /= 1 + ((this._pPercentual ?? 0) / 100);
                     it.vVenda *= (1 + (d / 100));
-                    //it.vVenda = ((1 + (it.pLucro / 100)) * it.vCustoProduto) * (1 + (d / 100));
                     this.NotifyPropertyChanged(propertyName: "vVenda");
                 }
                 _pPercentual = value;
