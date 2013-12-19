@@ -151,11 +151,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         idProduto = item.idProduto,
                         idUnidadeMedida = item.idUnidadeMedida,
                         vCustoProduto = item.vCustoProduto,
-                        vVenda = item.vVenda
+                        vVenda = item.vVenda * (1 + ((this.objViewModel.currentModel.pPercentual ?? 0) / 100))
                     });
-                    decimal pPercentualTemp = (decimal?)this.objViewModel.currentModel.pPercentual ?? decimal.Zero;
-                    this.objViewModel.currentModel.pPercentual = 0;
-                    this.objViewModel.currentModel.pPercentual = pPercentualTemp;
                 }
             }
         }
