@@ -167,6 +167,9 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
+
+
+
         private string _xCEP;
         [ParameterOrder(Order = 3)]
         public string xCEP

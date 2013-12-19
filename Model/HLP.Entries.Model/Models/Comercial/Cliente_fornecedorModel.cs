@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
@@ -844,6 +845,21 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "xNome");
             }
         }
+
+
+
+
+        private TipoEndereco _enumTipoEndereco;
+        public TipoEndereco enumTipoEndereco
+        {
+            get { return _enumTipoEndereco; }
+            set
+            {
+                _enumTipoEndereco = value;
+                _stTipoEndereco = (byte)value;
+            }
+        }
+
         private byte _stTipoEndereco;
         [ParameterOrder(Order = 4)]
         public byte stTipoEndereco
@@ -852,9 +868,12 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _stTipoEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
+                _enumTipoEndereco = (TipoEndereco)value;
             }
         }
+
+
+
         private string _xCEP;
         [ParameterOrder(Order = 5)]
         public string xCEP
@@ -866,6 +885,17 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "xCEP");
             }
         }
+        private TipoLogradouro _enumTipoLogradouro;
+        public TipoLogradouro enumTipoLogradouro
+        {
+            get { return _enumTipoLogradouro; }
+            set
+            {
+                _enumTipoLogradouro = value;
+                _stLogradouro = (byte)value;
+            }
+        }
+
         private byte _stLogradouro;
         [ParameterOrder(Order = 6)]
         public byte stLogradouro
@@ -874,9 +904,15 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _stLogradouro = value;
-                base.NotifyPropertyChanged(propertyName: "stLogradouro");
+                _enumTipoLogradouro = (TipoLogradouro)value;
             }
         }
+
+
+
+
+
+
         private string _xEndereco;
         [ParameterOrder(Order = 7)]
         public string xEndereco
