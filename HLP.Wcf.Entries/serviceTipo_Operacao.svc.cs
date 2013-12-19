@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.Util;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject;
@@ -18,6 +19,9 @@ namespace HLP.Wcf.Entries
         [Inject]
         public ITipo_operacaoRepository tipo_operacaoRepository { get; set; }
 
+        [Inject]
+        public IOperacao_reducao_baseRepository operacao_Reducao_BaseRepository { get; set; }
+
         public serviceTipo_Operacao()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -26,15 +30,37 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public int Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto)
+        public HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto)
         {
 
             try
             {
                 this.tipo_operacaoRepository.Begin();
                 this.tipo_operacaoRepository.Save(operacao: Objeto);
+
+
+                foreach (HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel item in Objeto.lOperacaoReducaoBase)
+                {
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            {
+                                item.idTipoOperacao = (int)Objeto.idTipoOperacao;
+                                this.operacao_Reducao_BaseRepository.Save(operacaoReducao: item);
+                            }
+                            break;
+                        case statusModel.excluido:
+                            {
+                                this.operacao_Reducao_BaseRepository.Delete(idOperacaoReducaoBase: (int)item.idOperacaoReducaoBase);
+                            }
+                            break;
+                    }
+                }
+
+
                 this.tipo_operacaoRepository.Commit();
-                return (int)Objeto.idTipoOperacao;
+                return Objeto;
             }
             catch (Exception ex)
             {
@@ -50,7 +76,14 @@ namespace HLP.Wcf.Entries
 
             try
             {
-                return this.tipo_operacaoRepository.GetOperacao(idTipoOperacao: idObjeto);
+                HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel objeto = this.tipo_operacaoRepository.GetOperacao(idTipoOperacao: idObjeto);
+
+                if (objeto != null)
+                {
+                    objeto.lOperacaoReducaoBase = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel>(
+                        list: this.operacao_Reducao_BaseRepository.GetAll(idTipoOperacao: idObjeto));
+                }
+                return objeto;
             }
             catch (Exception ex)
             {
@@ -65,7 +98,16 @@ namespace HLP.Wcf.Entries
 
             try
             {
+                List<int?> lIds = new List<int?>();
+
+                foreach (HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel item in Objeto.lOperacaoReducaoBase)
+                {
+                    lIds.Add(item.idOperacaoReducaoBase);
+                }
+
                 this.tipo_operacaoRepository.Begin();
+                this.operacao_Reducao_BaseRepository.Delete(idTipoOperacao: (int)Objeto.idTipoOperacao,
+                    lidOperacaoReducaoBase: lIds);
                 this.tipo_operacaoRepository.Delete(idTipoOperacao: (int)Objeto.idTipoOperacao);
                 this.tipo_operacaoRepository.Commit();
                 return true;
@@ -86,6 +128,13 @@ namespace HLP.Wcf.Entries
             {
                 this.tipo_operacaoRepository.Begin();
                 int id = this.tipo_operacaoRepository.Copy(idTipoOperacao: (int)Objeto.idTipoOperacao);
+                foreach (HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel it in Objeto.lOperacaoReducaoBase)
+                {
+                    it.idOperacaoReducaoBase = null;
+                    it.idTipoOperacao = id;
+                    this.operacao_Reducao_BaseRepository.Copy(operacaoReducaoBase: it);
+                }
+
                 this.tipo_operacaoRepository.Commit();
 
                 return id;
@@ -98,6 +147,6 @@ namespace HLP.Wcf.Entries
             }
 
         }
-          
+
     }
 }

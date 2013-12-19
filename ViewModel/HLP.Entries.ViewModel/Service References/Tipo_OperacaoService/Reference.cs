@@ -17,6 +17,7 @@ namespace HLP.Entries.ViewModel.Tipo_OperacaoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -190,10 +191,10 @@ namespace HLP.Entries.ViewModel.Tipo_OperacaoService {
     public interface IserviceTipo_Operacao {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Save", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/SaveResponse")]
-        int Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
+        HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/Save", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/SaveResponse")]
-        System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel> SaveAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipo_Operacao/GetObjeto", ReplyAction="http://tempuri.org/IserviceTipo_Operacao/GetObjetoResponse")]
         HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel GetObjeto(int idObjeto);
@@ -241,11 +242,11 @@ namespace HLP.Entries.ViewModel.Tipo_OperacaoService {
                 base(binding, remoteAddress) {
         }
         
-        public int Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+        public HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
             return base.Channel.Save(Objeto);
         }
         
-        public System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel> SaveAsync(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto) {
             return base.Channel.SaveAsync(Objeto);
         }
         

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.View.WPF.Fiscal
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Fiscal
         public WinTipoOperacao()
         {
             InitializeComponent();
+            this.ViewModel = new Tipo_OperacaoViewModel();
+        }
+
+        public Tipo_OperacaoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Tipo_OperacaoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

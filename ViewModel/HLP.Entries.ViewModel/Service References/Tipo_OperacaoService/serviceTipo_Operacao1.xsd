@@ -17,6 +17,7 @@
           <xs:element minOccurs="0" name="idCodigoIcmsPai" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
           <xs:element minOccurs="0" name="idTipoOperacao" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lOperacaoReducaoBase" nillable="true" type="tns:ArrayOfOperacao_reducao_baseModel" />
           <xs:element minOccurs="0" name="nCoeficienteSubstituicaoTributariaCofins" type="xs:decimal" />
           <xs:element minOccurs="0" name="nCoeficienteSubstituicaoTributariaPis" type="xs:decimal" />
           <xs:element minOccurs="0" name="pCofins" type="xs:decimal" />
@@ -78,4 +79,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Tipo_operacaoModel" nillable="true" type="tns:Tipo_operacaoModel" />
+  <xs:complexType name="ArrayOfOperacao_reducao_baseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Operacao_reducao_baseModel" nillable="true" type="tns:Operacao_reducao_baseModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperacao_reducao_baseModel" nillable="true" type="tns:ArrayOfOperacao_reducao_baseModel" />
+  <xs:complexType name="Operacao_reducao_baseModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idOperacaoReducaoBase" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" type="xs:int" />
+          <xs:element minOccurs="0" name="idUf" type="xs:int" />
+          <xs:element minOccurs="0" name="pReducaoIcms" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pReducaoIcmsSubstTributaria" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Operacao_reducao_baseModel" nillable="true" type="tns:Operacao_reducao_baseModel" />
 </xs:schema>
