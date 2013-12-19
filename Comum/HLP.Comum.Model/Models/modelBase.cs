@@ -149,7 +149,7 @@ namespace HLP.Comum.Model.Models
 
                     if (valor != null)
                     {
-                        if (valor.GetType() == typeof(string) && valor.ToString().Count() > campo.CHARACTER_MAXIMUM_LENGTH)
+                        if (valor.GetType() == typeof(string) && valor.ToString().Count() > campo.CHARACTER_MAXIMUM_LENGTH && campo.CHARACTER_MAXIMUM_LENGTH > 0)
                             return "Valor deve possuir menos que " + campo.CHARACTER_MAXIMUM_LENGTH.ToString() +
                                 " caracteres!";
                     }

@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios; 
+using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Fiscal;
 
 namespace HLP.Entries.View.WPF.Fiscal
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Fiscal
         public WinStICMS()
         {
             InitializeComponent();
+            this.ViewModel = new StIcmsViewModel();
+        }
+
+        public StIcmsViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as StIcmsViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

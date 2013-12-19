@@ -17,6 +17,7 @@ using HLP.Comum.Modules.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
 using System.Windows.Markup;
 using System.Globalization;
+using System.ComponentModel;
 namespace HLP.Magnificus.View.WPF
 {
     /// <summary>
@@ -25,11 +26,50 @@ namespace HLP.Magnificus.View.WPF
     public partial class App : Application
     {
         private bool unhandledException = false;
+        empresaParametrosService.IserviceEmpresaParametrosClient empresaServico =
+            new empresaParametrosService.IserviceEmpresaParametrosClient();
 
         public App()
         {
-            CompanyData.idEmpresa = 1;
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            CompanyData.idEmpresa = 1;
+            BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
+            bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
+            bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
+            bwParametrosEmpresa.RunWorkerAsync();
+        }
+
+        void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    CompanyData.parametrosEmpresa = e.Result;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        void bwParametrosEmpresa_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = empresaServico.getEmpresaParametros(idEmpresa: CompanyData.idEmpresa);               
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public bool DoHandle { get; set; }
@@ -80,9 +120,9 @@ namespace HLP.Magnificus.View.WPF
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
-            }            
+            }
         }
     }
 }

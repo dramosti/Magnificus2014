@@ -78,6 +78,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+                int iExcluido = (int)this.objViewModel.currentModel.idMultas;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -93,6 +94,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
+                    this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
                 }
             }
             catch (Exception ex)
@@ -101,7 +103,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
@@ -142,13 +143,50 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idMultas = await this.servico.copyMultaAsync(idMulta:
+
+                BackgroundWorker bwCopy = new BackgroundWorker();
+                bwCopy.DoWork += bwCopy_DoWork;
+                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.getMulta(sender: sender, e: null);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentID = this.servico.copyMulta(idMulta:
                     (int)this.objViewModel.currentModel.idMultas);
-                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {

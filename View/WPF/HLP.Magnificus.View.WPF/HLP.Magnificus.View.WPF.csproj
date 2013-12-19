@@ -43,6 +43,8 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,6 +65,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Service References\empresaParametrosService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <None Include="Service References\empresaParametrosService\HLP.Magnificus.View.WPF.empresaParametrosService.EmpresaModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\empresaParametrosService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\empresaParametrosService\configuration.svcinfo" />
+    <None Include="Service References\empresaParametrosService\configuration91.svcinfo" />
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.disco" />
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,6 +135,22 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.wsdl" />
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros4.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -145,6 +184,12 @@
       <Project>{f6e2fd5e-5581-4362-a072-fce5099cccc1}</Project>
       <Name>HLP.Entries.View.WPF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\empresaParametrosService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
