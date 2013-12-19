@@ -153,12 +153,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         vCustoProduto = item.vCustoProduto,
                         vVenda = item.vVenda
                     });
+                    decimal pPercentualTemp = (decimal?)this.objViewModel.currentModel.pPercentual ?? decimal.Zero;
+                    this.objViewModel.currentModel.pPercentual = 0;
+                    this.objViewModel.currentModel.pPercentual = pPercentualTemp;
                 }
-
-                decimal pPercentualTemp = (decimal)this.objViewModel.currentModel.pPercentual;
-                this.objViewModel.currentModel.pPercentual = 0;
-                this.objViewModel.currentModel.pPercentual = pPercentualTemp;
-
             }
         }
 

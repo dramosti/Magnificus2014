@@ -64,25 +64,26 @@ namespace HLP.Entries.Model.Models.Comercial
             get { return _pPercentual; }
             set
             {
-                _pPercentual = value;
-
                 decimal d;
 
-                if (pPercentual == null)
+                if (value == null)
                 {
                     d = decimal.Zero;
                 }
 
-                if (!decimal.TryParse(s: pPercentual.ToString(), result: out d))
+                if (!decimal.TryParse(s: value.ToString(), result: out d))
                 {
                     d = decimal.Zero;
                 }
 
                 foreach (Lista_precoModel it in this.lLista_preco)
                 {
-                    it.vVenda *= 1 + (d / 100);
+                    it.vVenda -= it.vVenda * ((this._pPercentual / 100 ?? 0) / 100);
+                    it.vVenda *= (1 + (d / 100));
+                    //it.vVenda = ((1 + (it.pLucro / 100)) * it.vCustoProduto) * (1 + (d / 100));
                     this.NotifyPropertyChanged(propertyName: "vVenda");
                 }
+                _pPercentual = value;
             }
         }
 
