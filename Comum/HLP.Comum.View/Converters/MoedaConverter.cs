@@ -11,10 +11,17 @@ namespace HLP.Comum.View.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value != null)
-                return value.ToString();
+            decimal d;
+            if (value == null)
+            {
+                d = decimal.Zero;
+            }
+            else if (!decimal.TryParse(s: value.ToString(), result: out d))
+            {
+                d = decimal.Zero;
+            }
 
-            return string.Empty;
+            return String.Format("{0:C}", d);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

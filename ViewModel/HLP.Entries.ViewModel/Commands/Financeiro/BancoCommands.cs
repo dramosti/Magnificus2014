@@ -72,19 +72,21 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idBanco;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.DeleteAsync(Objeto: this.objViewModel.currentModel))
+                    if (this.servico.Delete(Objeto: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         this.objViewModel.currentModel = null;
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                     }
                     else
                     {
@@ -96,10 +98,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
@@ -140,7 +138,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
@@ -182,7 +180,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 e.Result =
-                    this.servico.GetObjeto(idObjeto: (int)this.objViewModel.currentModel.idBanco);
+                    this.servico.Copy(Objeto: objViewModel.currentModel);
             }
             catch (Exception)
             {
