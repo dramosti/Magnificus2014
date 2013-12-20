@@ -15,6 +15,8 @@ namespace HLP.Entries.Model.Models.Comercial
             : base(xTabela: "Produto")
         {
             this.lProdutos_Conversao = new ObservableCollectionBaseCadastros<ConversaoModel>();
+            this.lProduto_Fornecedor_Homologado = new ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel>();
+            this.lProduto_Revisao = new ObservableCollectionBaseCadastros<Produto_RevisaoModel>();
         }
 
         private int? _idProduto;
@@ -171,11 +173,31 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 71)]
         public decimal pPerdaConstante { get; set; }
 
-        public ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel> lProduto_Fornecedor_Homologado =
-            new ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel>();
-        public ObservableCollectionBaseCadastros<Produto_RevisaoModel> lProduto_Revisao =
-            new ObservableCollectionBaseCadastros<Produto_RevisaoModel>();
 
+        private ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel> _lProduto_Fornecedor_Homologado;
+
+        public ObservableCollectionBaseCadastros<Produto_Fornecedor_HomologadoModel> lProduto_Fornecedor_Homologado
+        {
+            get { return _lProduto_Fornecedor_Homologado; }
+            set
+            {
+                _lProduto_Fornecedor_Homologado = value;
+                base.NotifyPropertyChanged(propertyName: "lProduto_Fornecedor_Homologado");
+            }
+        }
+
+
+        private ObservableCollectionBaseCadastros<Produto_RevisaoModel> _lProduto_Revisao;
+
+        public ObservableCollectionBaseCadastros<Produto_RevisaoModel> lProduto_Revisao
+        {
+            get { return _lProduto_Revisao; }
+            set
+            {
+                _lProduto_Revisao = value;
+                base.NotifyPropertyChanged(propertyName: "lProduto_Revisao");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<ConversaoModel> _lProdutos_Conversao;
 

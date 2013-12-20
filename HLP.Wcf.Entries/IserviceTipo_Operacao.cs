@@ -13,7 +13,7 @@ namespace HLP.Wcf.Entries
     {
 
         [OperationContract]
-        int Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
+        HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Save(HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel Objeto);
 
         [OperationContract]
         HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel GetObjeto(int idObjeto);

@@ -13,6 +13,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         public Tipo_operacaoModel()
             : base(xTabela: "Tipo_Operacao")
         {
+            this.lOperacaoReducaoBase = new ObservableCollectionBaseCadastros<Operacao_reducao_baseModel>();
         }
 
         [ParameterOrder(Order = 1)]
@@ -164,9 +165,54 @@ namespace HLP.Entries.Model.Models.Fiscal
         public int idCSTPis { get; set; }
         [ParameterOrder(Order = 68)]
         public int idCodigoIcmsPai { get; set; }
+
+
+        private ObservableCollectionBaseCadastros<Operacao_reducao_baseModel> _lOperacaoReducaoBase;
+
+        public ObservableCollectionBaseCadastros<Operacao_reducao_baseModel> lOperacaoReducaoBase
+        {
+            get { return _lOperacaoReducaoBase; }
+            set
+            {
+                _lOperacaoReducaoBase = value;
+                base.NotifyPropertyChanged(propertyName: "lOperacaoReducaoBase");
+            }
+        }
+
+    }
+
+    public partial class Operacao_reducao_baseModel : modelBase
+    {
+        public Operacao_reducao_baseModel()
+            : base(xTabela: "Operacao_reducao_base")
+        {
+        }
+
+        [ParameterOrder(Order = 1)]
+        public int idTipoOperacao { get; set; }
+        [ParameterOrder(Order = 2)]
+        public int? idOperacaoReducaoBase { get; set; }
+        [ParameterOrder(Order = 3)]
+        public decimal pReducaoIcms { get; set; }
+        [ParameterOrder(Order = 4)]
+        public decimal pReducaoIcmsSubstTributaria { get; set; }
+        [ParameterOrder(Order = 5)]
+        public int idUf { get; set; }
+
     }
 
     public partial class Tipo_operacaoModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                return base[columnName];
+            }
+        }
+    }
+
+    public partial class Operacao_reducao_baseModel
     {
         public override string this[string columnName]
         {
