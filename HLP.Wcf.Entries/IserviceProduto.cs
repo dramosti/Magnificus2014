@@ -15,7 +15,7 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Comercial.ProdutoModel getProduto(int idProduto);
 
         [OperationContract]
-        int saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
+        HLP.Entries.Model.Models.Comercial.ProdutoModel saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
 
         [OperationContract]
         bool deleteProduto(int idProduto);

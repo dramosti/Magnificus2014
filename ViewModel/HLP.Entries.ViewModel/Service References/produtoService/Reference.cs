@@ -210,10 +210,10 @@ namespace HLP.Entries.ViewModel.produtoService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.ProdutoModel> getProdutoAsync(int idProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceProduto/saveProduto", ReplyAction="http://tempuri.org/IserviceProduto/saveProdutoResponse")]
-        int saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
+        HLP.Entries.Model.Models.Comercial.ProdutoModel saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceProduto/saveProduto", ReplyAction="http://tempuri.org/IserviceProduto/saveProdutoResponse")]
-        System.Threading.Tasks.Task<int> saveProdutoAsync(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.ProdutoModel> saveProdutoAsync(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceProduto/deleteProduto", ReplyAction="http://tempuri.org/IserviceProduto/deleteProdutoResponse")]
         bool deleteProduto(int idProduto);
@@ -269,11 +269,11 @@ namespace HLP.Entries.ViewModel.produtoService {
             return base.Channel.getProdutoAsync(idProduto);
         }
         
-        public int saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto) {
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto) {
             return base.Channel.saveProduto(objProduto);
         }
         
-        public System.Threading.Tasks.Task<int> saveProdutoAsync(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Comercial.ProdutoModel> saveProdutoAsync(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto) {
             return base.Channel.saveProdutoAsync(objProduto);
         }
         
