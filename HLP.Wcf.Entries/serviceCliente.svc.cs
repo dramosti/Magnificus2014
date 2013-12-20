@@ -98,11 +98,13 @@ namespace HLP.Wcf.Entries
 
         public int saveCliente(HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel objCliente)
         {
-
             try
             {
                 this.cliente_fornecedorRepository.BeginTransaction();
                 this.cliente_fornecedorRepository.Save(objCliente_fornecedor: objCliente);
+
+                objCliente.cliente_fornecedor_fiscal.idClienteFornecedor = (int)objCliente.idClienteFornecedor;
+
                 this.cliente_fornecedor_fiscalRepository.Save(objCliente_fornecedor_fiscal:
                     objCliente.cliente_fornecedor_fiscal);
 

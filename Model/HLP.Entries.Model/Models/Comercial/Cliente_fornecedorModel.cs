@@ -21,6 +21,7 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lCliente_fornecedor_produto = new ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel>();
             this.lCliente_fornecedor_representante = new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
             this.cliente_fornecedor_fiscal = new Cliente_fornecedor_fiscalModel();
+            this.dCadastro = DateTime.Today;
         }
 
         private int? _idClienteFornecedor;
