@@ -51,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         }
 
-      
+
 
 
         #region Implementação Commands
@@ -77,18 +77,20 @@ namespace HLP.Entries.ViewModel.Commands
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
+                int iExcluido = (int)this.objViewModel.currentModel.idCidade;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.delCidadeAsync(idCidade: (int)this.objViewModel.currentModel.idCidade))
+                    if (servico.delCidade(idCidade: (int)this.objViewModel.currentModel.idCidade))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -101,10 +103,6 @@ namespace HLP.Entries.ViewModel.Commands
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 

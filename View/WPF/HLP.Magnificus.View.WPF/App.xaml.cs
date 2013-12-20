@@ -63,7 +63,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                e.Result = empresaServico.getEmpresaParametros(idEmpresa: CompanyData.idEmpresa);               
+                e.Result = empresaServico.getEmpresaParametros(idEmpresa: CompanyData.idEmpresa);
             }
             catch (Exception ex)
             {
@@ -83,6 +83,10 @@ namespace HLP.Magnificus.View.WPF
             {
                 xMessage = "Não é possível inserir o valor '" + e.Exception.Message.Split('(')[1].Split(')')[0]
                     + "' porque ele já existe na base de dados.";
+            }
+            else if (e.Exception.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+            {
+                xMessage = "Não é possível excluir o cadastro porque ele está sendo utilizado nos cadastros";
             }
             else
             {

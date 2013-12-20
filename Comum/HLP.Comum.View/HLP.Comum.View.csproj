@@ -100,6 +100,7 @@
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />
+    <Compile Include="Converters\DateTimeTimeSpanConverter.cs" />
     <Compile Include="Converters\DateTimeToStringHourConverter.cs" />
     <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
     <Compile Include="Converters\DecimalToStringConverter.cs" />
