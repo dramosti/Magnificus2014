@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Comercial.WinProduto"
-        Title="WinProduto" Height="660" Width="1024">
+        Title="WinProduto" Height="660" Width="1024" NameView="vwProduto">
 	<Grid>
 		<TabControl>
 			<TabItem Header="Principal">
@@ -14,7 +14,7 @@
 						<Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Top" Height="131">
 							<WrapPanel Orientation="Vertical" Margin="0,10,0,0">
 								<Components:HlpTextBox 
-									IsReadOnly="True"
+									IsEnabled="False"
 									Text="{Binding currentModel.idProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do Produto" Help="Chave principal do registro Produto" WidthLabel="159" Width="267"/>
 								<Components:HlpTextBox 
@@ -537,6 +537,7 @@
 			<TabItem Header="Fornecedores">
 				<AdornerDecorator>
 					<DataGrid
+                        ItemsSource="{Binding currentModel.lProduto_Fornecedor_Homologado}"
 						IsEnabled="{Binding bIsEnabled}"
                         AutoGenerateColumns="False" 
                         SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
@@ -561,6 +562,7 @@
 					<DataGrid
 						IsEnabled="{Binding bIsEnabled}"
                         AutoGenerateColumns="False" 
+                        ItemsSource="{Binding currentModel.lProduto_Revisao}"
                         SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                         CanUserDeleteRows="True"
                         CanUserAddRows="True">
