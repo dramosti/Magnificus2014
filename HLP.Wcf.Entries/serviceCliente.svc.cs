@@ -100,13 +100,13 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                objCliente = this.getCliente(14);
-                objCliente.lCliente_Fornecedor_Observacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_Fornecedor_ObservacaoModel>();
-                objCliente.lCliente_Fornecedor_Observacao.Add(new HLP.Entries.Model.Models.Comercial.Cliente_Fornecedor_ObservacaoModel
-                {
-                    idClienteFornecedor = 14,
-                    xObservacao = "DSADASDA"
-                });
+                //objCliente = this.getCliente(14);
+                //objCliente.lCliente_Fornecedor_Observacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_Fornecedor_ObservacaoModel>();
+                //objCliente.lCliente_Fornecedor_Observacao.Add(new HLP.Entries.Model.Models.Comercial.Cliente_Fornecedor_ObservacaoModel
+                //{
+                //    idClienteFornecedor = 14,
+                //    xObservacao = "DSADASDA"
+                //});
 
                 this.cliente_fornecedorRepository.BeginTransaction();
                 this.cliente_fornecedorRepository.Save(objCliente_fornecedor: objCliente);

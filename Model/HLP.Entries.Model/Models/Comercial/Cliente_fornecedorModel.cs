@@ -464,6 +464,7 @@ namespace HLP.Entries.Model.Models.Comercial
             : base(xTabela: "Cliente_Fornecedor_Observacao")
         {
         }
+
         private int? _idClienteFornecedorObservacao;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idClienteFornecedorObservacao
@@ -486,9 +487,9 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "xObservacao");
             }
         }
-        private int? _idClienteFornecedor;
+        private int _idClienteFornecedor;
         [ParameterOrder(Order = 3)]
-        public int? idClienteFornecedor
+        public int idClienteFornecedor
         {
             get { return _idClienteFornecedor; }
             set

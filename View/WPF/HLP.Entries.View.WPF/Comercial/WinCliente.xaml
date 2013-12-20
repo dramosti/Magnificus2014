@@ -49,6 +49,20 @@
                 <System:String>vwContatoToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwProdutoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lListaPreco" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwListaPrecoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+
+
+
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tbPrincipal">
@@ -495,7 +509,7 @@
 
                             </AdornerDecorator>
                         </TabItem>
-                      
+
                         <TabItem Header="Representantes" >
                             <AdornerDecorator>
                                 <DataGrid
@@ -1034,18 +1048,38 @@
                     </DataGrid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Produtos">
+            <TabItem Header="Produtos" Height="22" VerticalAlignment="Bottom">
                 <AdornerDecorator>
                     <DataGrid
+                          ItemsSource="{Binding currentModel.lCliente_fornecedor_produto}"
 						  IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Header="Produto" Width="*"/>
-                            <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Header="Lista de Preço" Width="200"/>
-                            <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}" Header="Obriga Lista de Preço" Width="200"/>
+                            <DataGridComboBoxColumn  Header="Produtos" Width="*"
+                                            ItemsSource="{Binding Source={StaticResource lProdutos}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"
+                                            SelectedValueBinding="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                            <DataGridComboBoxColumn  Header="Lista de Preço" Width="300"
+                                            ItemsSource="{Binding Source={StaticResource lListaPreco}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"
+                                            SelectedValueBinding="{Binding idListaPrecoPai, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                            <DataGridTemplateColumn Header="Obriga Lista de Preço ?" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding stObrigaListaPreco, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <CheckBox  IsChecked="{Binding stObrigaListaPreco, Converter={StaticResource ByteToBoolConverter}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>
