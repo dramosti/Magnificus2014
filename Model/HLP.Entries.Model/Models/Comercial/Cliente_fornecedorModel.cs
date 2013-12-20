@@ -35,7 +35,6 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
             }
         }
-
         [ParameterOrder(Order = 2)]
         public int idEmpresa { get; set; }
         [ParameterOrder(Order = 3)]
@@ -72,8 +71,13 @@ namespace HLP.Entries.Model.Models.Comercial
         public string xEmail { get; set; }
         [ParameterOrder(Order = 19)]
         public string xHttp { get; set; }
+        private bool _Ativo = true;
         [ParameterOrder(Order = 20)]
-        public bool Ativo { get; set; }
+        public bool Ativo
+        {
+            get { return _Ativo; }
+            set { _Ativo = value; }
+        }
         [ParameterOrder(Order = 21)]
         public string xMemorando { get; set; }
         [ParameterOrder(Order = 22)]
@@ -99,154 +103,136 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 32)]
         public int idCondicaoPagamento { get; set; }
         [ParameterOrder(Order = 33)]
-        public string xCEP { get; set; }
-        [ParameterOrder(Order = 34)]
-        public string xEndereco { get; set; }
-        [ParameterOrder(Order = 35)]
-        public string nNumero { get; set; }
-        [ParameterOrder(Order = 36)]
-        public string xComplemento { get; set; }
-        [ParameterOrder(Order = 37)]
-        public string xBairro { get; set; }
-        [ParameterOrder(Order = 38)]
-        public string xLatitude { get; set; }
-        [ParameterOrder(Order = 39)]
-        public string xLongitude { get; set; }
-        [ParameterOrder(Order = 40)]
-        public string xFusoHorario { get; set; }
-        [ParameterOrder(Order = 41)]
-        public string xCaixaPostal { get; set; }
-        [ParameterOrder(Order = 42)]
         public int? idFuncionario { get; set; }
-        [ParameterOrder(Order = 43)]
+        [ParameterOrder(Order = 34)]
         public byte stParado { get; set; }
-        [ParameterOrder(Order = 44)]
-        public int nFuncionarios { get; set; }
-        [ParameterOrder(Order = 45)]
+        [ParameterOrder(Order = 35)]
+        public int? nFuncionarios { get; set; }
+        [ParameterOrder(Order = 36)]
         public byte stCategoria { get; set; }
-        [ParameterOrder(Order = 46)]
+        [ParameterOrder(Order = 37)]
         public string xSaudacao { get; set; }
-        [ParameterOrder(Order = 47)]
+        [ParameterOrder(Order = 38)]
         public string xApelido { get; set; }
-        [ParameterOrder(Order = 48)]
-        public byte stEstadoCivil { get; set; }
-        [ParameterOrder(Order = 49)]
-        public DateTime dDataNascimento { get; set; }
-        [ParameterOrder(Order = 50)]
+        [ParameterOrder(Order = 39)]
+        public byte? stEstadoCivil { get; set; }
+        [ParameterOrder(Order = 40)]
+        public DateTime? dDataNascimento { get; set; }
+        [ParameterOrder(Order = 41)]
         public string xFilhos { get; set; }
-        [ParameterOrder(Order = 51)]
+        [ParameterOrder(Order = 42)]
         public string xConjugue { get; set; }
-        [ParameterOrder(Order = 52)]
-        public DateTime dDataAdmissao { get; set; }
-        [ParameterOrder(Order = 53)]
+        [ParameterOrder(Order = 43)]
+        public DateTime? dDataAdmissao { get; set; }
+        [ParameterOrder(Order = 44)]
         public string xEmpresaTrabalha { get; set; }
-        [ParameterOrder(Order = 54)]
+        [ParameterOrder(Order = 45)]
         public string xTelefoneEmpresaTrabalha { get; set; }
-        [ParameterOrder(Order = 55)]
+        [ParameterOrder(Order = 46)]
         public string xLocalNascimento { get; set; }
-        [ParameterOrder(Order = 56)]
+        [ParameterOrder(Order = 47)]
         public string xUFNascimento { get; set; }
-        [ParameterOrder(Order = 57)]
+        [ParameterOrder(Order = 48)]
         public string xProfissao { get; set; }
-        [ParameterOrder(Order = 58)]
+        [ParameterOrder(Order = 49)]
         public string xNomePai { get; set; }
-        [ParameterOrder(Order = 59)]
+        [ParameterOrder(Order = 50)]
         public string xRGPai { get; set; }
-        [ParameterOrder(Order = 60)]
+        [ParameterOrder(Order = 51)]
         public string xCPFPai { get; set; }
-        [ParameterOrder(Order = 61)]
+        [ParameterOrder(Order = 52)]
         public string xNomeMae { get; set; }
-        [ParameterOrder(Order = 62)]
+        [ParameterOrder(Order = 53)]
         public string xRGMae { get; set; }
-        [ParameterOrder(Order = 63)]
+        [ParameterOrder(Order = 54)]
         public string xCPFMae { get; set; }
-        [ParameterOrder(Order = 64)]
-        public byte stResidencia { get; set; }
-        [ParameterOrder(Order = 65)]
+        [ParameterOrder(Order = 55)]
+        public byte? stResidencia { get; set; }
+        [ParameterOrder(Order = 56)]
         public string xPontoReferenciaResidencia { get; set; }
-        [ParameterOrder(Order = 66)]
-        public decimal vSalario { get; set; }
-        [ParameterOrder(Order = 67)]
+        [ParameterOrder(Order = 57)]
+        public decimal? vSalario { get; set; }
+        [ParameterOrder(Order = 58)]
         public string xCPFConjugue { get; set; }
-        [ParameterOrder(Order = 68)]
+        [ParameterOrder(Order = 59)]
         public string xRGConjugue { get; set; }
-        [ParameterOrder(Order = 69)]
+        [ParameterOrder(Order = 60)]
         public string xProfissaoConjugue { get; set; }
-        [ParameterOrder(Order = 70)]
+        [ParameterOrder(Order = 61)]
         public string xEmpresaConjugue { get; set; }
-        [ParameterOrder(Order = 71)]
+        [ParameterOrder(Order = 62)]
         public string xInformacaoComercialNome1 { get; set; }
-        [ParameterOrder(Order = 72)]
+        [ParameterOrder(Order = 63)]
         public string xInformacaoComercialNome2 { get; set; }
-        [ParameterOrder(Order = 73)]
+        [ParameterOrder(Order = 64)]
         public string xInformacaoComercialNome3 { get; set; }
-        [ParameterOrder(Order = 74)]
+        [ParameterOrder(Order = 65)]
         public string xInformacaoComercialTelefone1 { get; set; }
-        [ParameterOrder(Order = 75)]
+        [ParameterOrder(Order = 66)]
         public string xInformacaoComercialTelefone2 { get; set; }
-        [ParameterOrder(Order = 76)]
+        [ParameterOrder(Order = 67)]
         public string xInformacaoComercialTelefone3 { get; set; }
+        [ParameterOrder(Order = 68)]
+        public DateTime? dInformacaoComercialClienteDesde1 { get; set; }
+        [ParameterOrder(Order = 69)]
+        public DateTime? dInformacaoComercialClienteDesde2 { get; set; }
+        [ParameterOrder(Order = 70)]
+        public DateTime? dInformacaoComercialClienteDesde3 { get; set; }
+        [ParameterOrder(Order = 71)]
+        public decimal? vInformacaoComercialMaiorCompra1 { get; set; }
+        [ParameterOrder(Order = 72)]
+        public decimal? vInformacaoComercialMaiorCompra2 { get; set; }
+        [ParameterOrder(Order = 73)]
+        public decimal? vInformacaoComercialMaiorCompra3 { get; set; }
+        [ParameterOrder(Order = 74)]
+        public DateTime? dInformacaoComercialUltimaCompra1 { get; set; }
+        [ParameterOrder(Order = 75)]
+        public DateTime? dInformacaoComercialUltimaCompra2 { get; set; }
+        [ParameterOrder(Order = 76)]
+        public DateTime? dInformacaoComercialUltimaCompra3 { get; set; }
         [ParameterOrder(Order = 77)]
-        public DateTime dInformacaoComercialClienteDesde1 { get; set; }
-        [ParameterOrder(Order = 78)]
-        public DateTime dInformacaoComercialClienteDesde2 { get; set; }
-        [ParameterOrder(Order = 79)]
-        public DateTime dInformacaoComercialClienteDesde3 { get; set; }
-        [ParameterOrder(Order = 80)]
-        public decimal vInformacaoComercialMaiorCompra1 { get; set; }
-        [ParameterOrder(Order = 81)]
-        public decimal vInformacaoComercialMaiorCompra2 { get; set; }
-        [ParameterOrder(Order = 82)]
-        public decimal vInformacaoComercialMaiorCompra3 { get; set; }
-        [ParameterOrder(Order = 83)]
-        public DateTime dInformacaoComercialUltimaCompra1 { get; set; }
-        [ParameterOrder(Order = 84)]
-        public DateTime dInformacaoComercialUltimaCompra2 { get; set; }
-        [ParameterOrder(Order = 85)]
-        public DateTime dInformacaoComercialUltimaCompra3 { get; set; }
-        [ParameterOrder(Order = 86)]
         public string xInformacaoComercialInformante1 { get; set; }
-        [ParameterOrder(Order = 87)]
+        [ParameterOrder(Order = 78)]
         public string xInformacaoComercialInformante2 { get; set; }
-        [ParameterOrder(Order = 88)]
+        [ParameterOrder(Order = 79)]
         public string xInformacaoComercialInformante3 { get; set; }
-        [ParameterOrder(Order = 89)]
-        public decimal vSalarioConjugue { get; set; }
-        [ParameterOrder(Order = 90)]
-        public byte stSexo { get; set; }
-        [ParameterOrder(Order = 91)]
+        [ParameterOrder(Order = 80)]
+        public decimal? vSalarioConjugue { get; set; }
+        [ParameterOrder(Order = 81)]
+        public byte? stSexo { get; set; }
+        [ParameterOrder(Order = 82)]
         public int idCondicaoEntrega { get; set; }
-        [ParameterOrder(Order = 92)]
+        [ParameterOrder(Order = 83)]
         public int? idModosEntrega { get; set; }
-        [ParameterOrder(Order = 93)]
+        [ParameterOrder(Order = 84)]
         public int? idCalendario { get; set; }
-        [ParameterOrder(Order = 94)]
+        [ParameterOrder(Order = 85)]
         public int? idTipoDocumento { get; set; }
-        [ParameterOrder(Order = 95)]
+        [ParameterOrder(Order = 86)]
         public int? idSite { get; set; }
-        [ParameterOrder(Order = 96)]
+        [ParameterOrder(Order = 87)]
         public int? idDeposito { get; set; }
-        [ParameterOrder(Order = 97)]
+        [ParameterOrder(Order = 88)]
         public int? idDescontos { get; set; }
-        [ParameterOrder(Order = 98)]
+        [ParameterOrder(Order = 89)]
         public int? idPlanoPagamento { get; set; }
-        [ParameterOrder(Order = 99)]
+        [ParameterOrder(Order = 90)]
         public int? idDiaPagamento { get; set; }
-        [ParameterOrder(Order = 100)]
+        [ParameterOrder(Order = 91)]
         public int? idJuros { get; set; }
-        [ParameterOrder(Order = 101)]
+        [ParameterOrder(Order = 92)]
         public byte stMostraProdutosRelacionado { get; set; }
-        [ParameterOrder(Order = 102)]
+        [ParameterOrder(Order = 93)]
         public int? idTransportador { get; set; }
-        [ParameterOrder(Order = 103)]
-        public byte stSpc { get; set; }
-        [ParameterOrder(Order = 104)]
-        public byte stSituacaoSci { get; set; }
-        [ParameterOrder(Order = 105)]
-        public byte stAssociacaoComercial { get; set; }
-        [ParameterOrder(Order = 106)]
+        [ParameterOrder(Order = 94)]
+        public byte? stSpc { get; set; }
+        [ParameterOrder(Order = 95)]
+        public byte? stSituacaoSci { get; set; }
+        [ParameterOrder(Order = 96)]
+        public byte? stAssociacaoComercial { get; set; }
+        [ParameterOrder(Order = 97)]
         public int? idMultas { get; set; }
-        [ParameterOrder(Order = 107)]
+        [ParameterOrder(Order = 98)]
         public byte? stObrigaListaPreco { get; set; }
 
 
