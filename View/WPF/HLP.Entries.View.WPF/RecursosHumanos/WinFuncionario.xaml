@@ -920,8 +920,8 @@
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Arquivos" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-2,-2,-2,0">
-                <AdornerDecorator>                    
-                        <DataGrid
+                <AdornerDecorator>
+                    <DataGrid
                             Name="gridArquivos"
                         ItemsSource="{Binding currentModel.lFuncionario_Arquivo}"                          
                           IsEnabled="{Binding bIsEnabled}"
@@ -930,20 +930,31 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True"
                             >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn                                
+                        <DataGrid.Columns>
+                            <DataGridTextColumn                                
                                 Header="Arquivo" Width="300"
                                     ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xArquivo, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                                <DataGridTextColumn                                
-                                Header="Caminho" Width="400"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xLink, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    
+                            <DataGridTemplateColumn Header="Caminho" Width="400">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Components:HlpTextBox
+                                            Caption="" WidthLabel="0"
+                                            Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:HlpTextBox>                                            
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Components:HlpTextBox
+                                            Caption="" WidthLabel="0"
+                                            Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:HlpTextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Hierarquia" Background="{x:Null}" BorderBrush="{x:Null}" Height="21.96" Width="71.027">

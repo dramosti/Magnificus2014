@@ -102,18 +102,21 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
-        public async void Delete(object objUFModel)
+        public void Delete(object objUFModel)
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idEmpresa;
+
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.DeleteAsync(idEmpresa: (int)this.objViewModel.currentModel.idEmpresa))
+                    if (servico.Delete(idEmpresa: (int)this.objViewModel.currentModel.idEmpresa))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -126,10 +129,6 @@ namespace HLP.Entries.ViewModel.Commands
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
         private bool DeleteCanExecute()
