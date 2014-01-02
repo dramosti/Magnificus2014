@@ -151,7 +151,7 @@
                         <Expander DockPanel.Dock="Top" Header="Identificação" IsExpanded="True">
                             <WrapPanel Orientation="Vertical"  Margin="0,10,0,0" VerticalAlignment="Top">
                                 <Components:HlpTextBox 
-												IsReadOnly="True"
+												IsEnabled="{Binding bIsEnabled}"
 												Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 												Height="27" Margin="10,0,10,2" Caption="Código do Cliente" WidthLabel="191" HorizontalAlignment="Left" Width="296"/>
                                 <Components:HlpDateTimePicker 
@@ -216,7 +216,7 @@
 												Height="27" Margin="10,0,10,-2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="191"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												Height="27" Margin="10,0,10,-2" Caption="C.P.F." HorizontalAlignment="Left" WidthLabel="191" Width="380">
                                     <Components:HlpTextBox.Style>
                                         <Style>

@@ -71,8 +71,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                this.IniciaCollection();
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.IniciaCollection();
+                }
             }
             catch (Exception ex)
             {
@@ -161,7 +168,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public async void Delete()
         {
-            int idRemoved = 0;
+            int idRemoved = (int)this.objViewModel.currentModel.idClienteFornecedor;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -172,10 +179,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         idCliente: (int)this.objViewModel.currentModel.idClienteFornecedor)
                     )
                     {
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
+                        this.objViewModel.currentModel = null;
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        idRemoved = (int)this.objViewModel.currentModel.idClienteFornecedor;
-                        this.objViewModel.currentModel = null;
                     }
                     else
                     {
@@ -187,10 +194,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
             }
         }
 
@@ -238,6 +241,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 BackgroundWorker bwCopy = new BackgroundWorker();
                 bwCopy.DoWork += bwCopy_DoWork;
                 bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -250,9 +254,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.copyBaseCommand.Execute(null);
-                this.getCliente(this, null);
-                this.IniciaCollection();
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.getCliente(this, null);
+                    this.IniciaCollection();
+                }
             }
             catch (Exception ex)
             {

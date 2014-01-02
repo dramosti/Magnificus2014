@@ -181,12 +181,12 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idTransportador = await this.servico.copyTransportadorAsync(
-                    idTransportador: (int)this.objViewModel.currentModel.idTransportador);
+                this.objViewModel.currentModel.idTransportador = this.servico.copyTransportador(
+                    objTransportador: this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
