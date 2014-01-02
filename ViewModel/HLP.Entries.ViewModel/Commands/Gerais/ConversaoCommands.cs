@@ -211,7 +211,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public bool CopyCanExecute()
         {
-            return this.objViewModel.copyBaseCommand.CanExecute(null);
+            return false;
+            //return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
 
         public void Navegar(object ContentBotao)
