@@ -19,22 +19,22 @@
 
     <Grid>
         <DockPanel LastChildFill="True">
-            <Expander Header="Geral" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Width="500" IsExpanded="True">
-                <StackPanel>
+            <Expander Header="Geral" Width="500" IsExpanded="True">
+                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                     <Components:HlpTextBox 
 								Text="{Binding currentModel.idRota, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                 IsReadOnly="True"
-								Height="27" Margin="10,10,249,2" Caption="Código" Help="Chave principal da Rota" WidthLabel="157"/>
+								Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal da Rota" WidthLabel="157" Width="239" HorizontalAlignment="Left"/>
                     <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xRota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,22,2" Caption="Descrição da Rota " Help="Informe a Descrição desejada para essa Rota." WidthLabel="157"/>
+								Height="27" Margin="10,0,0,2" Caption="Descrição da Rota " Help="Informe a Descrição desejada para essa Rota." WidthLabel="157" HorizontalAlignment="Left" Width="450"/>
                     <Components:HlpPesquisa 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,22,2" Caption="Lista de Preço" Help="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." WidthLabel="157" FieldPesquisa="ID" TableView="vwListaPrecoPai">
+								Height="27" Margin="10,0,0,2" Caption="Lista de Preço" Help="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." WidthLabel="157" FieldPesquisa="ID" TableView="vwListaPrecoPai" HorizontalAlignment="Left" Width="450">
                         <Components:HlpPesquisa.Items>
                             <System:String>xLista</System:String>
                             <System:String>xCodigoListaPreco</System:String>
@@ -43,8 +43,8 @@
                     <Components:HlpCheckBox 
 								IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,293,2" Caption="Ativo?" Help="Informar se Rota esta ativa para a utilização, quando desativado o usuário não consegue visualiza-la." WidthLabel="157"/>
-                </StackPanel>
+								Height="27" Margin="10,0,0,2" Caption="Ativo?" Help="Informar se Rota esta ativa para a utilização, quando desativado o usuário não consegue visualiza-la." WidthLabel="157" HorizontalAlignment="Left"/>
+                </WrapPanel>
             </Expander>
             <Expander Header="Praça" IsExpanded="True">
                 <DataGrid 
