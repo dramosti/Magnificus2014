@@ -100,6 +100,9 @@
     <Compile Include="Comercial\WinProduto.xaml.cs">
       <DependentUpon>WinProduto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Comercial\WinTipoProduto.xaml.cs">
+      <DependentUpon>WinTipoProduto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Crm\testeConverter.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
@@ -271,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Comercial\WinProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comercial\WinTipoProduto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
