@@ -89,10 +89,16 @@ namespace HLP.Entries.ViewModel.transportadorService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -101,6 +107,19 @@ namespace HLP.Entries.ViewModel.transportadorService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -126,6 +145,19 @@ namespace HLP.Entries.ViewModel.transportadorService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -157,6 +189,118 @@ namespace HLP.Entries.ViewModel.transportadorService {
         excluido = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoEndereco", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoEndereco : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        COMERCIAL = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ENTREGA_ALT = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NOTA_FISCAL = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RESIDÊNCIA = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SERVICO = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SWIFT = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PAGAMENTO = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OUTRO = 8,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoLogradouro", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum TipoLogradouro : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AEROPORTO = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ALAMEDA = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        APARTAMENTO = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AVENIDA = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BECO = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BLOCO = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CAMINHO = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESCADINHA = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESTAÇÃO = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESTRADA = 9,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FAZENDA = 10,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FORTALEZA = 11,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        GALERIA = 12,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LADEIRA = 13,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LARGO = 14,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PRAÇA = 15,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PRAIA = 16,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PARQUE = 17,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        QUADRA = 18,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        QUILÔMETRO = 19,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        QUINTA = 20,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RODOVIA = 21,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RUA = 22,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SUPER_QUADRA = 23,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TRAVESSA = 24,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="transportadorService.IserviceTransportador")]
     public interface IserviceTransportador {
@@ -180,10 +324,10 @@ namespace HLP.Entries.ViewModel.transportadorService {
         System.Threading.Tasks.Task<bool> delTransportadorAsync(int idTransportador);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTransportador/copyTransportador", ReplyAction="http://tempuri.org/IserviceTransportador/copyTransportadorResponse")]
-        int copyTransportador(int idTransportador);
+        int copyTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTransportador/copyTransportador", ReplyAction="http://tempuri.org/IserviceTransportador/copyTransportadorResponse")]
-        System.Threading.Tasks.Task<int> copyTransportadorAsync(int idTransportador);
+        System.Threading.Tasks.Task<int> copyTransportadorAsync(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -237,12 +381,12 @@ namespace HLP.Entries.ViewModel.transportadorService {
             return base.Channel.delTransportadorAsync(idTransportador);
         }
         
-        public int copyTransportador(int idTransportador) {
-            return base.Channel.copyTransportador(idTransportador);
+        public int copyTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador) {
+            return base.Channel.copyTransportador(objTransportador);
         }
         
-        public System.Threading.Tasks.Task<int> copyTransportadorAsync(int idTransportador) {
-            return base.Channel.copyTransportadorAsync(idTransportador);
+        public System.Threading.Tasks.Task<int> copyTransportadorAsync(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador) {
+            return base.Channel.copyTransportadorAsync(objTransportador);
         }
     }
 }

@@ -264,6 +264,7 @@ namespace HLP.Wcf.Entries
 
             try
             {
+                this.cliente_fornecedorRepository.BeginTransaction();
                 this.cliente_fornecedor_arquivoRepository.DeletePorClienteFornecedor(
                     idClienteFornecedor: idCliente);
                 this.cliente_fornecedor_contatoRepository.DeletePorClienteFornecedor(
@@ -278,10 +279,12 @@ namespace HLP.Wcf.Entries
                     idClienteFornecedor: idCliente);
                 this.cliente_fornecedor_fiscalRepository.Delete(idClienteFornecedor: idCliente);
                 this.cliente_fornecedorRepository.Delete(idClienteFornecedor: idCliente);
+                this.cliente_fornecedorRepository.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
+                this.cliente_fornecedorRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -292,6 +295,8 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                this.cliente_fornecedorRepository.BeginTransaction();
+
                 this.cliente_fornecedorRepository.Copy(objCliente_fornecedor:
                     objCliente);
 
@@ -340,11 +345,12 @@ namespace HLP.Wcf.Entries
                     this.cliente_fornecedor_representanteRepository.Copy(
                         objCliente_fornecedor_representante: item);
                 }
-
+                this.cliente_fornecedorRepository.CommitTransaction();
                 return (int)objCliente.idClienteFornecedor;
             }
             catch (Exception ex)
             {
+                this.cliente_fornecedorRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
