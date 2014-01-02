@@ -13,6 +13,7 @@
         Title="Contato" Height="660" Width="1024"
         NameView="vwContato">
     <Window.Resources>
+        <convert:DateTimeTimeSpanConverter x:Key="DateTimeSpanConverter"/>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
@@ -150,18 +151,26 @@
                             </Expander>
                             <Expander Header="Tempo Disponivel" IsExpanded="True">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpDateTimePicker 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									SelectedDate="{Binding currentModel.dDisponivelaPartir, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Caption="Disponível a partir das:" Help="Insira a hora inicial da disponibilidade do contato." 
-									Margin="10,0,0,2" WidthLabel="171"/>
-                                    <Components:HlpDateTimePicker
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									SelectedDate="{Binding currentModel.dDisponivelAte, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27"  VerticalAlignment="Stretch" Caption="Disponível até as:" Help="Insira a hora final da disponibilidade do contato." 
-									HorizontalAlignment="Left"  WidthLabel="171" Margin="10,0,0,0"/>
+                                    <Components:HlpTimePicker 
+                                        Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                        Caption="Disponível a partir das:" Help="Insira a hora inicial da disponibilidade do contato."
+                                        IsEnabled="{Binding bIsEnabled}"
+                                        Value="{Binding currentModel.dDisponivelaPartir, 
+                                        Mode=TwoWay, NotifyOnValidationError=True, 
+                                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,
+                                        Converter={StaticResource DateTimeSpanConverter}}"
+                                        WidthLabel="170"
+                                        ></Components:HlpTimePicker>
+                                    <Components:HlpTimePicker 
+                                        Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                        Caption="Disponível até as:" Help="Insira a hora final da disponibilidade do contato."
+                                        IsEnabled="{Binding bIsEnabled}"
+                                        Value="{Binding currentModel.dDisponivelAte, 
+                                        Mode=TwoWay, NotifyOnValidationError=True, 
+                                        Converter={StaticResource DateTimeSpanConverter},
+                                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        WidthLabel="170"
+                                        ></Components:HlpTimePicker>
                                 </WrapPanel>
                             </Expander>
                         </DockPanel>
