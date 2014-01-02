@@ -62,7 +62,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regCliente_fornecedorAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Cliente_fornecedor",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idClienteFornecedor"),
-                                         MapBuilder<Cliente_fornecedorModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                         MapBuilder<Cliente_fornecedorModel>.MapAllProperties()
+                                         .DoNotMap(c => c.cliente_fornecedor_fiscal)
+                                         .DoNotMap(i => i.status).Build());
             }
 
             return regCliente_fornecedorAccessor.Execute(idClienteFornecedor).FirstOrDefault();
@@ -84,7 +86,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
              "inner join Cliente_fornecedor c on r.idClienteFornecedor = c.idClienteFornecedor " +
              "where r.idClienteFornecedor = @idClienteFornecedor and c.idEmpresa = @idEmpresa",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idClienteFornecedor").AddParameter<int>("idEmpresa"),
-            MapBuilder<Cliente_fornecedor_representanteModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            MapBuilder<Cliente_fornecedor_representanteModel>.MapAllProperties()
+            .DoNotMap(i => i.status).Build());
             return reg.Execute(idCliente_fornecedor, CompanyData.idEmpresa).ToList();
         }
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Entries.ViewModel.ViewModels.Comercial;
 
 namespace HLP.Entries.View.WPF.Comercial
 {
@@ -23,6 +24,19 @@ namespace HLP.Entries.View.WPF.Comercial
         public WinProduto()
         {
             InitializeComponent();
+            this.ViewModel = new ProdutoViewModel();
+        }
+
+        public ProdutoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as ProdutoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

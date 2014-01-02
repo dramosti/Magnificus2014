@@ -50,19 +50,64 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         #region Implementação Commands
 
-        public async void Save()
+        public void Save()
         {
             try
             {
-                this.objViewModel.currentModel.idTipoOperacao = await this.servico.SaveAsync(
-                    Objeto: this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                foreach (int it in this.objViewModel.currentModel.lOperacaoReducaoBase.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lOperacaoReducaoBase.Add(
+                        item: new Operacao_reducao_baseModel
+                        {
+                            idOperacaoReducaoBase = it,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+                BackgroundWorker bwSalvar = new BackgroundWorker();
+                bwSalvar.DoWork += bwSalvar_DoWork;
+                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bwSalvar.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel = (Tipo_operacaoModel)e.Result;
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = this.servico.Save(
+                    Objeto: this.objViewModel.currentModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -73,18 +118,20 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idTipoOperacao;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.DeleteAsync(Objeto: this.objViewModel.currentModel))
+                    if (this.servico.Delete(Objeto: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -97,10 +144,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
@@ -183,12 +226,11 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             try
             {
                 e.Result =
-                    this.servico.CopyAsync(Objeto: this.objViewModel.currentModel);
+                    this.servico.Copy(Objeto: this.objViewModel.currentModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
@@ -220,14 +262,27 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentModel.lOperacaoReducaoBase.CollectionCarregada();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel =
-                await this.servico.GetObjetoAsync(idObjeto: this.objViewModel.currentID);
+                this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
         }
         #endregion
 

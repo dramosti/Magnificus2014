@@ -91,8 +91,8 @@
                                         <Components:HlpTextBox.Style>
                                             <Style>
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
-                                                        <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
                                                         <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
@@ -103,14 +103,38 @@
                                     </Components:HlpTextBox>
                                     <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
-										Text="{Binding currentModel.xIe, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Estadual" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição estadual da Transportadora. Este campo possui consistência por estado." WidthLabel="166" Width="285"/>
+										Text="{Binding currentModel.xIe, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"										
+										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Estadual" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição estadual da Transportadora. Este campo possui consistência por estado." WidthLabel="166" Width="285">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
                                     <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Municipal" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição municipal da Transportadora." WidthLabel="166" Width="285"/>
+										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Inscrição Municipal" Help="No caso de Pessoa Jurídica deverá ser preenchido com a inscrição municipal da Transportadora." WidthLabel="166" Width="285">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
                                     <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"										

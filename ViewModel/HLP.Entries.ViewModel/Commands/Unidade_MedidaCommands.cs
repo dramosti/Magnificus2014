@@ -75,18 +75,20 @@ namespace HLP.Entries.ViewModel.Commands
                 && this.objViewModel.IsValid(objDependency as Grid));
         }
 
-        public async void Delete(object objUFModel)
+        public void Delete(object objUFModel)
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idUnidadeMedida;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteUnidade_medidaAsync(idUnidadeMedida: (int)this.objViewModel.currentModel.idUnidadeMedida))
+                    if (this.servico.deleteUnidade_medida(idUnidadeMedida: (int)this.objViewModel.currentModel.idUnidadeMedida))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -99,10 +101,6 @@ namespace HLP.Entries.ViewModel.Commands
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 

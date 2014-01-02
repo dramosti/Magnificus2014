@@ -24,7 +24,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         public UFCommands(UFViewModel objViewModel)
         {
-            
+
 
             this.objViewModel = objViewModel;
 
@@ -80,18 +80,20 @@ namespace HLP.Entries.ViewModel.Commands
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete(object objUFModel)
+        public void Delete(object objUFModel)
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idUF;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servicoUf.deleteUfAsync(idUf: (int)this.objViewModel.currentModel.idUF))
+                    if (this.servicoUf.deleteUf(idUf: (int)this.objViewModel.currentModel.idUF))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -107,7 +109,6 @@ namespace HLP.Entries.ViewModel.Commands
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
         private bool DeleteCanExecute()
@@ -187,10 +188,10 @@ namespace HLP.Entries.ViewModel.Commands
                 this.PesquisarRegistro();
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
-            
+
         }
 
         private void PesquisarRegistro()

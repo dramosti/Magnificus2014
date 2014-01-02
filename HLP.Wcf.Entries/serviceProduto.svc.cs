@@ -61,7 +61,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
 
             try
@@ -113,7 +113,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 produtoRepository.CommitTransaction();
-                return (int)objProduto.idProduto;
+                return objProduto;
             }
             catch (Exception ex)
             {
@@ -189,7 +189,7 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        
+
         }
     }
 }

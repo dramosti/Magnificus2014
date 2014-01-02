@@ -60,6 +60,25 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
+                foreach (int id in this.objViewModel.currentModel.lProduto_Revisao.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lProduto_Revisao.Add(item:
+                        new Produto_RevisaoModel
+                        {
+                            idProdutoRevisao = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lProduto_Fornecedor_Homologado.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lProduto_Fornecedor_Homologado.Add(
+                        item: new Produto_Fornecedor_HomologadoModel
+                        {
+                            idProdutoFornecedorHomologado = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
+
                 BackgroundWorker bwSalvar = new BackgroundWorker();
                 bwSalvar.DoWork += bwSalvar_DoWork;
                 bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -76,7 +95,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentModel.idProduto = (int)e.Result;
+                this.objViewModel.currentModel = (ProdutoModel)e.Result;
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                 this.IniciaCollection();
             }
@@ -108,18 +127,20 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idProduto;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteProdutoAsync(idProduto: (int)this.objViewModel.currentModel.idProduto))
+                    if (this.servico.deleteProduto(idProduto: (int)this.objViewModel.currentModel.idProduto))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -132,10 +153,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 

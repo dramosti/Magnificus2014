@@ -64,25 +64,25 @@ namespace HLP.Entries.Model.Models.Comercial
             get { return _pPercentual; }
             set
             {
+                //decimal d;
+
+                //if (value == null)
+                //{
+                //    d = decimal.Zero;
+                //}
+
+                //if (!decimal.TryParse(s: value.ToString(), result: out d))
+                //{
+                //    d = decimal.Zero;
+                //}
+
+                //foreach (Lista_precoModel it in this.lLista_preco)
+                //{
+                //    it.vVenda /= 1 + ((this._pPercentual ?? 0) / 100);
+                //    it.vVenda *= (1 + (d / 100));
+                //    this.NotifyPropertyChanged(propertyName: "vVenda");
+                //}
                 _pPercentual = value;
-
-                decimal d;
-
-                if (pPercentual == null)
-                {
-                    d = decimal.Zero;
-                }
-
-                if (!decimal.TryParse(s: pPercentual.ToString(), result: out d))
-                {
-                    d = decimal.Zero;
-                }
-
-                foreach (Lista_precoModel it in this.lLista_preco)
-                {
-                    it.vVenda *= 1 + (d / 100);
-                    this.NotifyPropertyChanged(propertyName: "vVenda");
-                }
             }
         }
 
@@ -310,12 +310,13 @@ namespace HLP.Entries.Model.Models.Comercial
         {
             get
             {
+                //TODO: estudar e concluir cálculo de markup
                 int stMarkup = 0;
 
                 switch (stMarkup)
                 {
                     case 0://Por preço de custo
-                        {
+                        {                            
                             _pMarkup = (1 + (((this._pComissao ?? (decimal)0) + (this._pLucro) +
                                 (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
                         } break;

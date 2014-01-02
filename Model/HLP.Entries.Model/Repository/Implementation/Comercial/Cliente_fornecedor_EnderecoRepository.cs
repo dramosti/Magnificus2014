@@ -22,7 +22,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         public void Save(Cliente_fornecedor_EnderecoModel objCliente_Fornecedor_Endereco)
         {
 
-            if (objCliente_Fornecedor_Endereco.idClienteFornecedor == null)
+            if (objCliente_Fornecedor_Endereco.idEndereco == null)
             {
                 objCliente_Fornecedor_Endereco.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
                     UndTrabalho.dbTransaction,
@@ -67,7 +67,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Cliente_Fornecedor_Endereco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
-                   MapBuilder<Cliente_fornecedor_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                   MapBuilder<Cliente_fornecedor_EnderecoModel>.MapAllProperties()
+                   .DoNotMap(c => c.enumTipoEndereco)
+                   .DoNotMap(c => c.enumTipoLogradouro)
+                   .DoNotMap(i => i.status).Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
         }
@@ -76,7 +79,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DataAccessor<Cliente_fornecedor_EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Cliente_Fornecedor_Endereco WHERE idClienteFornecedor = @idClienteFornecedor", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idClienteFornecedor"),
-            MapBuilder<Cliente_fornecedor_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            MapBuilder<Cliente_fornecedor_EnderecoModel>.MapAllProperties()
+            .DoNotMap(c => c.enumTipoEndereco)
+                   .DoNotMap(c => c.enumTipoLogradouro)
+            .DoNotMap(i => i.status).Build());
 
             return reg.Execute(idClienteFornecedor).ToList();
         }

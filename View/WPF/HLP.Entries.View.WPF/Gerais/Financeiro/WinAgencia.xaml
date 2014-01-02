@@ -98,7 +98,6 @@
 										Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27"  Caption="Fax" Help="Informar o Fax principal da Agencia Bancária." WidthLabel="71" Margin="0,0,27,0"/>
-
                                     </StackPanel>
                                     <DataGrid
                                         x:Name="dgvContato"

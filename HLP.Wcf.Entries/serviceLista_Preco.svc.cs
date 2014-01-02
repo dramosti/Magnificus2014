@@ -105,7 +105,6 @@ namespace HLP.Wcf.Entries
                 }
                 this.lista_Preco_PaiRepository.CommitTransaction();
                 return objListaPreco;
-
             }
             catch (Exception ex)
             {

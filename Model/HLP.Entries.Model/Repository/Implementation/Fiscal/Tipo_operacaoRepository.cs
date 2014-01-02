@@ -37,7 +37,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
         {
             if (operacao.idTipoOperacao == null)
             {
-                int idTipoOperacao = Convert.ToInt32((UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                int idTipoOperacao = Convert.ToInt32((UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "dbo.Proc_save_tipo_operacao",
                  ParameterBase<Tipo_operacaoModel>.SetParameterValue(operacao))));
 
@@ -45,7 +46,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
             }
             else
             {
-                UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,
+                UndTrabalho.dbPrincipal.ExecuteScalar(
+                    UndTrabalho.dbTransaction,
                 "[dbo].[Proc_update_Tipo_operacao]",
                  ParameterBase<Tipo_operacaoModel>.SetParameterValue(operacao));
             }
@@ -53,7 +55,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
 
         public void Delete(int idTipoOperacao)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction, "dbo.Proc_delete_tipo_operacao",
+            UndTrabalho.dbPrincipal.ExecuteScalar(
+                UndTrabalho.dbTransaction, "dbo.Proc_delete_tipo_operacao",
                 UserData.idUser,
                 idTipoOperacao);
         }
@@ -78,9 +81,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
         public int Copy(int idTipoOperacao)
         {
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(
+                this.UndTrabalho.dbTransaction,
                          "dbo.Proc_copy_tipo_operacao",
                           idTipoOperacao);
         }
-              
+
     }
 }

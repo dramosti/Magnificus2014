@@ -152,6 +152,7 @@
     <Compile Include="Repository\Implementation\Fiscal\Classificacao_fiscalRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Codigo_IcmsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Codigo_Icms_paiRepository.cs" />
+    <Compile Include="Repository\Implementation\Fiscal\Operacao_reducao_baseRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Implementation\Fiscal\Situacao_tributaria_ipiRepository.cs" />
@@ -240,6 +241,7 @@
     <Compile Include="Repository\Interfaces\Fiscal\IClassificacao_fiscalRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ICodigo_IcmsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ICodigo_Icms_paiRepository.cs" />
+    <Compile Include="Repository\Interfaces\Fiscal\IOperacao_reducao_baseRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_cofinsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_icmsRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ISituacao_tributaria_ipiRepository.cs" />

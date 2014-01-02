@@ -13,7 +13,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 {
     public class Condicao_entregaCommands
     {
-        Condicao_entregaViewModel objViewModel;        
+        Condicao_entregaViewModel objViewModel;
         condicaoEntregaService.IserviceCondicao_EntregaClient servico = new condicaoEntregaService.IserviceCondicao_EntregaClient();
 
         public Condicao_entregaCommands(Condicao_entregaViewModel objViewModel)
@@ -74,19 +74,21 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idCondicaoEntrega;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.delCondicao_entregaAsync(
+                    if (this.servico.delCondicao_entrega(
                         idCondicao_entrega: (int)this.objViewModel.currentModel.idCondicaoEntrega))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -99,10 +101,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
