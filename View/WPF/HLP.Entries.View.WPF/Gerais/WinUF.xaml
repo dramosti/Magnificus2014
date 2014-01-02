@@ -21,7 +21,8 @@
     		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="269" Margin="0,8,0,0" WidthLabel="100"/>
             <Components:HlpPesquisa 
                 Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="0,8,22,0">
+                Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="0,8,22,0"
+                IsEnabled="{Binding bIsEnabled}">
                 <Components:HlpPesquisa.Items>
                     <System:String>xRegiao</System:String>
                     <System:String>xPais</System:String>

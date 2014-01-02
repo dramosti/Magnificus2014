@@ -80,6 +80,7 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idSetor;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -88,6 +89,7 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -100,10 +102,6 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 

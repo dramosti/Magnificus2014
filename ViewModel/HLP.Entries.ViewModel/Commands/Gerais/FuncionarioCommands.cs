@@ -57,7 +57,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 #region Carregar Ids Excluidos Collections
 
-                
+
                 foreach (int id in objViewModel.currentModel.lFuncionario_Arquivo.idExcluidos)
                 {
                     this.objViewModel.currentModel.lFuncionario_Arquivo.Add(
@@ -161,18 +161,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
+                int iExcluir = (int)this.objViewModel.currentModel.idFuncionario;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteFuncionarioAsync(idFuncionario: (int)this.objViewModel.currentModel.idFuncionario))
+                    if (this.servico.deleteFuncionario(idFuncionario: (int)this.objViewModel.currentModel.idFuncionario))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -185,10 +187,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
             }
         }
 
