@@ -8,7 +8,8 @@
 	Title="Departamento"
 	NameView="vwDepartamento"
 	Width="640" Height="480">
-    <StackPanel HorizontalAlignment="Left" Height="214" Margin="2,1,0,0" VerticalAlignment="Top" Width="628">
+<Expander Header="Departamento" IsExpanded="True">
+    <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
         <Components:HlpTextBox 
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 			IsEnabled="{Binding bIsEnabled}" 
@@ -17,25 +18,26 @@
 			Field="idDepartamento" 
 			Table="Departamento" 
 			Help="Chave principal do registro departamento"
-		    WidthLabel="110" Height="30" Margin="20,20,359,2" />
+		    WidthLabel="110" Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Width="200" />
         <Components:HlpTextBox
         	Validation.ErrorTemplate="{StaticResource exceptionComp}" 
         	IsEnabled="{Binding bIsEnabled}" 
         	Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-        	Height="30" Margin="20,0,223,2" Caption="Departamento" Field="xDepartamento" Help="Informe um departamento de forma reduzida" Table="idDepartamento" WidthLabel="110"/>
+        	Height="27" Margin="10,0,10,2" Caption="Departamento" Field="xDepartamento" Help="Informe um departamento de forma reduzida" Table="idDepartamento" WidthLabel="110" HorizontalAlignment="Left" Width="225"/>
         <Components:HlpTextBox
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 			IsEnabled="{Binding bIsEnabled}" 
 			Text="{Binding currentModel.xDescricao, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
-			Height="30" Margin="20,0,23,2" Caption="Descrição" Field="xDescrição" Help="Descrição do Departamento" Table="Departamento" WidthLabel="110"/>
+			Height="27" Margin="10,0,10,2" Caption="Descrição" Field="xDescrição" Help="Descrição do Departamento" Table="Departamento" WidthLabel="110" HorizontalAlignment="Left" Width="331"/>
         <Components:HlpTextBox
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 			IsEnabled="{Binding bIsEnabled}" 
 			Text="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"			
-			Height="30" Margin="20,0,23,2" Caption="Setor" Field="idSetor" Help="Selecione um setor da empresa já cadastrado, mais detalhes no formulário de Setor." Table="Departamento" WidthLabel="110"/>
+			Height="27" Margin="10,0,10,2" Caption="Setor" Field="idSetor" Help="Selecione um setor da empresa já cadastrado, mais detalhes no formulário de Setor." Table="Departamento" WidthLabel="110" HorizontalAlignment="Left" Width="225"/>
         <Components:HlpTextBox
             IsEnabled="{Binding bIsEnabled}"
 			Text="{Binding currentModel.xEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-			Height="30" Margin="20,0,23,2" Caption="E-mail" Field="xEmail" Help="Informar o e-mail padrão para o Departamento, caso haja." Table="Departamento" WidthLabel="110"/>
-    </StackPanel>
+			Height="27" Margin="10,0,10,2" Caption="E-mail" Field="xEmail" Help="Informar o e-mail padrão para o Departamento, caso haja." Table="Departamento" WidthLabel="110" HorizontalAlignment="Left" Width="330"/>
+    </WrapPanel>
+  </Expander>
 </runtime:WindowsBase>

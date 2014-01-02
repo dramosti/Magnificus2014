@@ -6,26 +6,26 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.WinFabricante" NameView="vwFabricante"
         Title="Fabricante" Height="660" Width="1024">
-	<Grid>
-		<Expander Header="Geral" HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="474" IsExpanded="True">
-			<StackPanel>
-				<Components:HlpTextBox 
+    <Grid>
+        <Expander Header="Geral" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.idFabricante, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,230,2" Caption="Código" Field="idFabricante" Help="Chave principal do registro do fabricante" Table="Fabricante" WidthLabel="115"/>
-				<Components:HlpTextBox 
+					Height="27" Margin="10,0,10,2" Caption="Código" Field="idFabricante" Help="Chave principal do registro do fabricante" Table="Fabricante" WidthLabel="115" HorizontalAlignment="Left" Width="203"/>
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xRazao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,50,2" Caption="Razão Social" Field="xRazao" Help="Informe a razão social do fabricante " Table="Fabricante" WidthLabel="115"/>
-				<Components:HlpTextBox 
+					Height="27" Margin="10,0,10,2" Caption="Razão Social" Field="xRazao" Help="Informe a razão social do fabricante " Table="Fabricante" WidthLabel="115" HorizontalAlignment="Left" Width="400"/>
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,50,0" Caption="Nome Fantasia" Field="xFantasia" Help="Informe o nome fantasia do fabricante" Table="Fabricante" WidthLabel="115"/>
-			</StackPanel>
-		</Expander>
-        
-	</Grid>
+					Height="27" Margin="10,0,10,2" Caption="Nome Fantasia" Field="xFantasia" Help="Informe o nome fantasia do fabricante" Table="Fabricante" WidthLabel="115" HorizontalAlignment="Left" Width="400"/>
+            </WrapPanel>
+        </Expander>
+
+    </Grid>
 </runtime:WindowsBase>

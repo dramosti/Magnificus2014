@@ -31,125 +31,131 @@
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
-                <StackPanel>
-                    <Components:HlpTextBox Caption="Id Empresa" WidthLabel="158" Margin="10,10,803.871,2"
-                                           Text="{Binding currentModel.idEmpresa, Mode=TwoWay}" IsEnabled="False"/>
-                    <Components:HlpTextBox Caption="Nome" WidthLabel="158" Margin="10,0,449.909,2"
+                <AdornerDecorator>
+                    <Expander Header="Dados" IsExpanded="True">
+                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                            <Components:HlpTextBox Caption="Id Empresa" WidthLabel="158" Margin="10,0,10,2"
+                                           Text="{Binding currentModel.idEmpresa, Mode=TwoWay}" IsEnabled="False" Height="27" HorizontalAlignment="Left" Width="228"/>
+                            <Components:HlpTextBox Caption="Nome" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xNome, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Fantasia" WidthLabel="158" Margin="10,0,449.909,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="400"/>
+                            <Components:HlpTextBox Caption="Fantasia" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xFantasia, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="CNPJ" WidthLabel="158" Margin="10,0,750.824,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="400"/>
+                            <Components:HlpTextBox Caption="CNPJ" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xCNPJ, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="IE" WidthLabel="158" Margin="10,0,750.824,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="285"/>
+                            <Components:HlpTextBox Caption="IE" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xIE, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="IM" WidthLabel="158" Margin="10,0,750.824,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="285"/>
+                            <Components:HlpTextBox Caption="IM" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xIM, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Suframa" WidthLabel="158" Margin="10,0,449.909,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="285"/>
+                            <Components:HlpTextBox Caption="Suframa" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xSuframa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Telefone" WidthLabel="158" Margin="10,0,750.824,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
+                            <Components:HlpTextBox Caption="Telefone" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xTelefone, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Fax" WidthLabel="158" Margin="10,0,750.824,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
+                            <Components:HlpTextBox Caption="Fax" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xFax, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Email" WidthLabel="158" Margin="10,0,449.909,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
+                            <Components:HlpTextBox Caption="Email" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xEmail, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpTextBox Caption="Http" WidthLabel="158" Margin="10,3,449.909,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="400"/>
+                            <Components:HlpTextBox Caption="Http" WidthLabel="158" Margin="10,3,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xHttp, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpCheckBox Caption="Ativo" WidthLabel="158" Margin="10,3,869.371,2"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="400"/>
+                            <Components:HlpCheckBox Caption="Ativo" WidthLabel="158" Margin="10,3,10,2"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.Ativo, Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
-                    <Components:HlpPesquisa Caption="Ramo de Atividade"
+                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left"/>
+                            <Components:HlpPesquisa Caption="Ramo de Atividade"
                     	IsEnabled="{Binding bIsEnabled}"
                     	Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID" Margin="10,0,449.909,2" WidthLabel="158"
+                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID" Margin="10,0,10,2" WidthLabel="158" Height="27" HorizontalAlignment="Left" Width="415"
                                             >
-                        <Components:HlpPesquisa.Items>
-                            <sys:String>xRamo</sys:String>
-                            <sys:String>xDescricao</sys:String>
-                        </Components:HlpPesquisa.Items>
-                    </Components:HlpPesquisa>
-                    <Components:HlpTextBox isFindFiles="True" Caption="Link Logo" WidthLabel="158" Margin="10,3,514.409,2"
+                                <Components:HlpPesquisa.Items>
+                                    <sys:String>xRamo</sys:String>
+                                    <sys:String>xDescricao</sys:String>
+                                </Components:HlpPesquisa.Items>
+                            </Components:HlpPesquisa>
+                            <Components:HlpTextBox isFindFiles="True" Caption="Link Logo" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
                                            
     		Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="415"/>
 
-                    <Components:HlpTextBox isFindFolder="True" Caption="Link Pastas" Margin="10,3,514.409,2"
+                            <Components:HlpTextBox isFindFolder="True" Caption="Link Pastas" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" WidthLabel="158"/>
-                    <Components:HlpCheckBox Caption="Cód. Reg. Tribut." WidthLabel="158"
+                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" WidthLabel="158" Height="27" HorizontalAlignment="Left" Width="415"/>
+                            <Components:HlpCheckBox Caption="Cód. Reg. Tribut." WidthLabel="158"
                                             IsEnabled="{Binding bIsEnabled}"
                                             IsChecked="{Binding currentModel.stCodigoRegimeTributario, Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="10,0,869.371,2"/>
+                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="10,0,10,2" Height="27" HorizontalAlignment="Left"/>
 
-                </StackPanel>
+                        </WrapPanel>
+                    </Expander>
+                </AdornerDecorator>
             </TabItem>
             <TabItem Header="Endereços" Height="22" VerticalAlignment="Bottom">
-                <DataGrid 
+                <AdornerDecorator>
+                    <DataGrid 
                           ItemsSource="{Binding currentModel.lEmpresa_endereco}"                          
                           IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" 
                           CanUserReorderColumns="False"  
                           CanUserDeleteRows="True" >
-                    <DataGrid.Columns>
-                        <DataGridComboBoxColumn 
+                        <DataGrid.Columns>
+                            <DataGridComboBoxColumn 
                             Header="Tipo Endereço" Width="120"
                             ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
                             DisplayMemberPath="Key"
                             SelectedValuePath="Value"
                             SelectedValueBinding ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged}">
 
-                        </DataGridComboBoxColumn>
-                        <DataGridTemplateColumn Header="Principal" Width="60">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding stPrincipal, 
+                            </DataGridComboBoxColumn>
+                            <DataGridTemplateColumn Header="Principal" Width="60">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding stPrincipal, 
                                         UpdateSourceTrigger=PropertyChanged, 
                                         Converter={StaticResource ByteToBoolConverter}}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr, UpdateSourceTrigger=PropertyChanged}"  />
-                        <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
-                        <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
-                        <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
-                        <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridComboBoxColumn  Header="Cidades" Width="150"
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Logradouro" Width="200" Binding="{Binding Path=xLgr, UpdateSourceTrigger=PropertyChanged}"  />
+                            <DataGridTextColumn Header="Número" Width="100" Binding="{Binding Path=nro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
+                            <DataGridTextColumn Header="Complemento" Width="100" Binding="{Binding Path=xCpl, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                            <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
+                            <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep, UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal, UpdateSourceTrigger=PropertyChanged}" />
+                            <DataGridComboBoxColumn  Header="Cidades" Width="150"
                             ItemsSource="{Binding Source={StaticResource lresult}}"
                             SelectedValuePath="id"
                             DisplayMemberPath="display"
                             SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                             />
-                    </DataGrid.Columns>
-                </DataGrid>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </AdornerDecorator>
             </TabItem>
         </TabControl>
     </Grid>

@@ -13,7 +13,7 @@
 				<Components:HlpTextBox 
 					IsReadOnly="True"
 					Text="{Binding currentModel.idOrcamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código" Help="O número de identificação automático e exclusivo do orçamento de venda." WidthLabel="152" Width="252"/>
+					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código" Help="O número de identificação automático e exclusivo do orçamento de venda." WidthLabel="61" Width="162"/>
 				<Components:HlpDateTimePicker 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedDate="{Binding currentModel.dDataHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -23,7 +23,7 @@
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="152" Width="424" RenderTransformOrigin="0.5,0.5">									
+					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="63" Width="341.5" RenderTransformOrigin="0.5,0.5">									
 					<Components:HlpPesquisa.Items>
 						<System:String>xNome</System:String>
 						<System:String>xFantasia</System:String>

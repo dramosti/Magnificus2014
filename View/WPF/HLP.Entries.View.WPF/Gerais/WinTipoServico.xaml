@@ -5,25 +5,25 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinTipoServico"
     NameView="vwTipoServico"
         Title="Tipos de Serviço" Height="600" Width="1024">
-	<Grid>
-		<Expander Header="Principal" HorizontalAlignment="Left" Height="130.5" VerticalAlignment="Top" Width="611" IsExpanded="True">
-			<StackPanel>
-				<Components:HlpTextBox
+    <Grid>
+        <Expander Header="Principal" HorizontalAlignment="Left" Height="130.5" VerticalAlignment="Top" Width="611" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Components:HlpTextBox
 					IsReadOnly="True"
 					Text="{Binding currentModel.idTipoServico, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"					
-					Height="27" Margin="10,10,348.5,2" Caption="Código" Help="Chave principal do registro do tipo de serviço" WidthLabel="130"/>
-				<Components:HlpTextBox 
+					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do tipo de serviço" WidthLabel="130" HorizontalAlignment="Left" Width="220"/>
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.cTipoServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,348.5,2" Caption="Código de Serviço" Help="Digite um código para o tipo de serviço. " WidthLabel="130"/>
-				<Components:HlpTextBox 
+					Height="27" Margin="10,0,2,2" Caption="Código de Serviço" Help="Digite um código para o tipo de serviço. " WidthLabel="130" HorizontalAlignment="Left" Width="220"/>
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xTipoServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,90.5,2" Caption="Descrição " Help="Descrição do tipo de serviço. " WidthLabel="130"/>
-			</StackPanel>
-		</Expander>
-        
-	</Grid>
+					Height="27" Margin="10,0,2,2" Caption="Descrição " Help="Descrição do tipo de serviço. " WidthLabel="130" HorizontalAlignment="Left" Width="446"/>
+            </WrapPanel>
+        </Expander>
+
+    </Grid>
 </runtime:WindowsBase>

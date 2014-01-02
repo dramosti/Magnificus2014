@@ -26,17 +26,17 @@
     </Window.Resources>
     <WrapPanel Orientation="Vertical" HorizontalAlignment="Stretch">
         <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
             <Components:HlpTextBox
                 IsEnabled="False"
-                Height="50"
+                Height="35"
                 Text="{Binding currentModel.xPesquisa, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                 Caption="Descrição Produto"
-                WidthLabel="80"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Left" Width="632"/>
+                WidthLabel="150"
+                HorizontalAlignment="Left" Width="583" Margin="10,0,10,2"/>
+            </WrapPanel>
         </Expander>
-        <Expander Header="Grade" HorizontalAlignment="Stretch" Height="184" VerticalAlignment="Top" IsExpanded="True">
-            <Grid>
+        <Expander Header="Grade" HorizontalAlignment="Stretch" Height="184" VerticalAlignment="Top" IsExpanded="True">           
                 <DataGrid
                     Name="gridConversao"
 						  ItemsSource="{Binding currentModel.lProdutos_Conversao}"                          
@@ -92,8 +92,6 @@
                                 UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Grid>
         </Expander>
-
     </WrapPanel>
 </runtime:WindowsBase>

@@ -19,33 +19,33 @@
         </ObjectDataProvider>
     </Window.Resources>
     <DockPanel LastChildFill="True">
-        <Grid>
-            <Expander Header="Identificação" HorizontalAlignment="Left" Height="131.04" VerticalAlignment="Top" Width="522" IsExpanded="True">
-                <StackPanel>
+        <DockPanel LastChildFill="True" DockPanel.Dock="Left" Width="563">
+            <Expander Header="Identificação" IsExpanded="True" Height="132" DockPanel.Dock="top">
+                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
                         IsReadOnly="True"
 						Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-						Height="27" Margin="10,10,272,2" Caption="Código" Help="Chave principal do registro do Plano de Pagamento" WidthLabel="150"/>
+						Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do Plano de Pagamento" WidthLabel="150" HorizontalAlignment="Left" Width="250"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,204,2" Caption="Plano Pagamento " Help="Insira um código ou uma breve descrição para identificar o plano de pagamento." WidthLabel="150"/>
+						Height="27" Margin="10,0,0,2" Caption="Plano Pagamento " Help="Insira um código ou uma breve descrição para identificar o plano de pagamento." WidthLabel="150" HorizontalAlignment="Left" Width="250"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,26,2" Caption="Descrição " Help="Insira a descrição do plano de pagamento" WidthLabel="150"/>
-                </StackPanel>
+						Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Insira a descrição do plano de pagamento" WidthLabel="150" HorizontalAlignment="Left" Width="400"/>
+                </WrapPanel>
             </Expander>
-            <Expander Header="Plano Pagamento" HorizontalAlignment="Left" Height="245.5" Margin="0,131.04,0,0" VerticalAlignment="Top" Width="522" IsExpanded="True">
-                <StackPanel>
+            <Expander Header="Plano Pagamento" IsExpanded="True" DockPanel.Dock="Top" Height="242">
+                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                     <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,114.5,2" Caption="Alocação" Help="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,   " WidthLabel="241">
+						Height="27" Margin="10,0,0,2" Caption="Alocação" Help="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,   " WidthLabel="241" Width="393" HorizontalAlignment="Left">
                         <Components:HlpComboBox.Items>
                             <System:String>0-Especificado</System:String>
                             <System:String>1-Quantidade fixa</System:String>
@@ -57,7 +57,7 @@
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,114.5,2" Caption="Forma de Pagamento" Help="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação." WidthLabel="241">
+						Height="27" Margin="10,0,0,2" Caption="Forma de Pagamento" Help="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação." WidthLabel="241" HorizontalAlignment="Left" Width="393">
                         <Components:HlpComboBox.Items>
                             <System:String>0-Anos</System:String>
                             <System:String>1-Dias</System:String>
@@ -68,45 +68,45 @@
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nAlterar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,119,2" Caption="Alterar" Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " WidthLabel="241"/>
+						Height="27" Margin="10,0,0,2" Caption="Alterar" Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " WidthLabel="241" HorizontalAlignment="Left" Width="350"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nNumerosPagamentos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,119,2" Caption="Numero de Pagamentos" Help="Se você selecionou a opção Quantidade fixa no campo Alocação, especifique o número de prestações para o plano de pagamento." WidthLabel="241"/>
+						Height="27" Margin="10,0,0,2" Caption="Numero de Pagamentos" Help="Se você selecionou a opção Quantidade fixa no campo Alocação, especifique o número de prestações para o plano de pagamento." WidthLabel="241" HorizontalAlignment="Left" Width="350"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nValorMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,119,2" Caption="Valor da Moeda" Help="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação." WidthLabel="241"/>
+						Height="27" Margin="10,0,0,2" Caption="Valor da Moeda" Help="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação." WidthLabel="241" HorizontalAlignment="Left" Width="350"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nValorMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,119,2" Caption="Valor Mínimo" Help="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados." WidthLabel="241"/>
+						Height="27" Margin="10,0,0,2" Caption="Valor Mínimo" Help="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados." WidthLabel="241" HorizontalAlignment="Left" Width="350"/>
                     <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10.879,0,96.5,0" Caption="Alocação de imposto sobre vendas" Help="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento. 0-Primeira prestação - o valor total do imposto sobre vendas está incluído na primeira prestação. 1-Proporcionalmente - o valor do imposto sobre vendas é distribuído por igual, com o mesmo valor de imposto em cada prestação. 2-Última prestação - o valor total do imposto sobre vendas está incluído na última prestação. " WidthLabel="241">
+						Height="27" Margin="10,0,0,2" Caption="Alocação de imposto sobre vendas" Help="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento. 0-Primeira prestação - o valor total do imposto sobre vendas está incluído na primeira prestação. 1-Proporcionalmente - o valor do imposto sobre vendas é distribuído por igual, com o mesmo valor de imposto em cada prestação. 2-Última prestação - o valor total do imposto sobre vendas está incluído na última prestação. " WidthLabel="241" HorizontalAlignment="Left" Width="393">
                         <Components:HlpComboBox.Items>
                             <System:String>0-Primeira prestação</System:String>
                             <System:String>1-Proporcionalmente</System:String>
                             <System:String>2-Última prestação</System:String>
                         </Components:HlpComboBox.Items>
                     </Components:HlpComboBox>
-                </StackPanel>
+                </WrapPanel>
             </Expander>
-            <Expander Header="Nota" HorizontalAlignment="Left" Height="92.5" Margin="0,381.54,0,0" VerticalAlignment="Top" Width="522" IsExpanded="True">
-                <StackPanel>
+            <Expander Header="Nota" IsExpanded="True">
+                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                     <Components:HlpTextBox
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xNota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,29,2" Caption="Nota" Help="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno." WidthLabel="50"/>
-                </StackPanel>
+						Height="27" Margin="10,0,0,2" Caption="Nota" Help="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno." WidthLabel="50" Width="200"/>
+                </WrapPanel>
             </Expander>
-        </Grid>
+        </DockPanel>
         <Grid>
             <Expander Header="Linhas de Pagamento" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True">
                 <DataGrid 
