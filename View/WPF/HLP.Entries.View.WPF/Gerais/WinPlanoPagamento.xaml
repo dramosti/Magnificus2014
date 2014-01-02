@@ -42,6 +42,7 @@
             <Expander Header="Plano Pagamento" IsExpanded="True" DockPanel.Dock="Top" Height="242">
                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                     <Components:HlpComboBox 
+                        x:Name="cbxAlocacao"
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
@@ -65,10 +66,27 @@
                         </Components:HlpComboBox.Items>
                     </Components:HlpComboBox>
                     <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.nAlterar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Alterar" Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " WidthLabel="241" HorizontalAlignment="Left" Width="350"/>
+						Validation.ErrorTemplate="{StaticResource exceptionComp}"                        
+						Text="{Binding currentModel.nAlterar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"						
+						Height="27" Margin="10,0,0,2" Caption="Alterar" 
+                        Help="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. "
+                        WidthLabel="241" HorizontalAlignment="Left" Width="350">
+                        <Components:HlpTextBox.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="0">
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="2">
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Components:HlpTextBox.Style>
+                    </Components:HlpTextBox>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nNumerosPagamentos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
