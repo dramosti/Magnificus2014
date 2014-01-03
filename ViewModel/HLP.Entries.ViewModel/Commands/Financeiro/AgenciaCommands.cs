@@ -116,21 +116,21 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
-            int iremoved = 0;
+            int iremoved = (int)this.objViewModel.currentModel.idAgencia;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.DeleteAsync(Objeto: this.objViewModel.currentModel)
+                    if (this.servico.Delete(Objeto: this.objViewModel.currentModel)
                     )
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        iremoved = (int)this.objViewModel.currentModel.idAgencia;
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);                        
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: iremoved);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -143,10 +143,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: iremoved);
             }
         }
 
@@ -194,6 +190,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 BackgroundWorker bwCopy = new BackgroundWorker();
                 bwCopy.DoWork += bwCopy_DoWork;
                 bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)

@@ -39,7 +39,8 @@
                 </Components:HlpPesquisa>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,
+                    Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="% Carga Tributária Média" WidthLabel="192" Width="272" HorizontalAlignment="Left"/>
             </WrapPanel>

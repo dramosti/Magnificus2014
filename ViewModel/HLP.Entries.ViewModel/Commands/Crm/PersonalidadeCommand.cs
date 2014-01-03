@@ -185,7 +185,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                e.Result = servico.CopyAsync(objViewModel.currentModel);
+                e.Result = servico.Copy(objViewModel.currentModel);
                 //TODO: implementar serviço de copy
             }
             catch (Exception)
