@@ -21,7 +21,7 @@ namespace HLP.Comum.View.Converters
                 d = decimal.Zero;
             }
 
-            return String.Format("{0:P1}", d / 100);
+            return String.Format("{0:P2}", d / 100);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

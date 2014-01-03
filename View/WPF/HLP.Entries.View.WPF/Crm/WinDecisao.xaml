@@ -12,7 +12,7 @@
         <Expander Header="Geral" HorizontalAlignment="Left" Height="233.5" VerticalAlignment="Top" Width="501.5" IsExpanded="True">
             <StackPanel >
             <Components:HlpTextBox Margin="0,10,286,0" Caption="Código" WidthLabel="100" Text="{Binding currentModel.idDecisao, Mode=TwoWay}"                                   
-                                   IsReadOnly="True"/>
+                                   IsEnabled="False"/>
             <Components:HlpTextBox x:Name="txtdecisao" Margin="0,4,165,0" Caption="Decisao" WidthLabel="100"
                                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
                                    Text="{Binding currentModel.xDecisao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"

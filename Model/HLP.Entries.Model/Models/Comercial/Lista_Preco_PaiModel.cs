@@ -64,24 +64,6 @@ namespace HLP.Entries.Model.Models.Comercial
             get { return _pPercentual; }
             set
             {
-                //decimal d;
-
-                //if (value == null)
-                //{
-                //    d = decimal.Zero;
-                //}
-
-                //if (!decimal.TryParse(s: value.ToString(), result: out d))
-                //{
-                //    d = decimal.Zero;
-                //}
-
-                //foreach (Lista_precoModel it in this.lLista_preco)
-                //{
-                //    it.vVenda /= 1 + ((this._pPercentual ?? 0) / 100);
-                //    it.vVenda *= (1 + (d / 100));
-                //    this.NotifyPropertyChanged(propertyName: "vVenda");
-                //}
                 _pPercentual = value;
             }
         }
@@ -186,9 +168,31 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
-                base.NotifyPropertyChanged(propertyName: "vVenda");
-                base.NotifyPropertyChanged(propertyName: "pLucro");
+                if (CompanyData.parametros_CustoEmpresa != null)
+                {
+                    byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
+                    switch (stMarkup)
+                    {
+                        case 0://Por preço de custo
+                            {
+                                this._pLucro = ((100 * (this._vVenda - this._vCustoProduto)) / this._vCustoProduto)
+                    + (this._vCustoProduto * ((this._pDesconto ?? 0) / 100))
+                    - (this._vCustoProduto * ((this._pComissao ?? 0) / 100))
+                    - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
+                                this._pMarkup = this.pMarkup;
+                                base.NotifyPropertyChanged(propertyName: "pLucro");
+                                base.NotifyPropertyChanged(propertyName: "vVenda");
+                                base.NotifyPropertyChanged(propertyName: "pMarkup");
+                            } break;
+                        case 1://Por preço de venda
+                            {
+                                this._pLucro = (this._vVenda - this._vCustoProduto) * 100 / this._vVenda;
+                                this._pMarkup = this.pMarkup;
+                                base.NotifyPropertyChanged(propertyName: "pLucro");
+                                base.NotifyPropertyChanged(propertyName: "pMarkup");
+                            } break;
+                    }
+                }
             }
         }
         private decimal? _pDescontoMaximo;
@@ -311,20 +315,23 @@ namespace HLP.Entries.Model.Models.Comercial
             get
             {
                 //TODO: estudar e concluir cálculo de markup
-                int stMarkup = 0;
-
-                switch (stMarkup)
+                //int stMarkup = 0;
+                if (CompanyData.parametros_CustoEmpresa != null)
                 {
-                    case 0://Por preço de custo
-                        {                            
-                            _pMarkup = (1 + (((this._pComissao ?? (decimal)0) + (this._pLucro) +
-                                (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
-                        } break;
-                    case 1://Por preço de venda
-                        {
-                            _pMarkup = (1 - (((this._pComissao ?? (decimal)0) + (this._pLucro) +
-                                (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
-                        } break;
+                    byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
+                    switch (stMarkup)
+                    {
+                        case 0://Por preço de custo
+                            {
+                                _pMarkup = (1 + (((this._pComissao ?? (decimal)0) + (this._pLucro) +
+                                    (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
+                            } break;
+                        case 1://Por preço de venda
+                            {
+                                _pMarkup = (1 - (((this._pComissao ?? (decimal)0) + (this._pLucro) +
+                                    (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
+                            } break;
+                    }
                 }
                 return _pMarkup;
             }
