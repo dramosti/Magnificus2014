@@ -19,7 +19,7 @@
                TextWrapping="Wrap"
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}"/>
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Lucida Bright"/>
         <CheckBox x:Name="chkControle" VerticalAlignment="Center"
                  IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=IsChecked}" />
     </DockPanel>

@@ -8,48 +8,48 @@
     <Grid>
         <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabItem Header="Geral">
-                <StackPanel>
-                    <Expander Header="Principal" Height="260.5" Margin="0,0,477,0" IsExpanded="True">
-                        <StackPanel>
+                <DockPanel>
+                    <Expander Header="Principal" IsExpanded="True">
+                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                             <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idBanco, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,10,295.5,2" Caption="Código" Help="Chave principal do registro Banco" WidthLabel="126"/>
+								Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro Banco" WidthLabel="126" HorizontalAlignment="Left" Width="200"/>
                             <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.cBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,295.5,2" Caption="Código do Banco " Help="Informar o Código para o Banco" WidthLabel="126"/>
+								Height="27" Margin="10,0,0,2" Caption="Código do Banco " Help="Informar o Código para o Banco" WidthLabel="126" HorizontalAlignment="Left" Width="200"/>
                             <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Nome" Help="Descrição do Nome do Banco Completo." WidthLabel="126"/>
+								Height="27" Margin="10,0,0,2" Caption="Nome" Help="Descrição do Nome do Banco Completo." WidthLabel="126" HorizontalAlignment="Left" Width="300"/>
                             <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xBancoResumido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Nome Resumido" Help="Descrição do Nome do Banco Resumido " WidthLabel="126"/>
+								Height="27" Margin="10,0,0,2" Caption="Nome Resumido" Help="Descrição do Nome do Banco Resumido " WidthLabel="126" HorizontalAlignment="Left" Width="300"/>
                             <Components:HlpTextBox 
                                 isFindFiles="True"
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xLinkLogo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Logotipo" Help="Informar o caminho do arquivo do logotipo do banco." WidthLabel="126"/>
+								Height="27" Margin="10,0,0,2" Caption="Logotipo" Help="Informar o caminho do arquivo do logotipo do banco." WidthLabel="126" HorizontalAlignment="Left" Width="375"/>
                             <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.vDxMais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,255,2" Caption="D+" Help="Define a quantidade de dias a mais para ser faturado a duplicata recebida. Ex. Caso receba um cheque e o mesmo vai ser compensado apenas 5 dias após o recebimento, será preciso preencher o campo D+ com o número 5.Esta opção é utilizada no relatório de Fluxo de Caixa Analítico." WidthLabel="126"/>
+								Height="27" Margin="10,0,0,2" Caption="D+" Help="Define a quantidade de dias a mais para ser faturado a duplicata recebida. Ex. Caso receba um cheque e o mesmo vai ser compensado apenas 5 dias após o recebimento, será preciso preencher o campo D+ com o número 5.Esta opção é utilizada no relatório de Fluxo de Caixa Analítico." WidthLabel="126" HorizontalAlignment="Left" Width="200"/>
                             <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.vDxMenos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,255,2" Caption="D-" Help="Define a quantidade de dias a menos para ser faturado a duplicata paga. Ex. Caso pague uma fatura no dia atual, mas será compensado apenas três dias depois, deverá ser informar o valor 3 no campo D-.Esta opção é utilizada no relatório de Fluxo de Caixa Analítico." WidthLabel="126"/>
-                        </StackPanel>
+								Height="27" Margin="10,0,0,2" Caption="D-" Help="Define a quantidade de dias a menos para ser faturado a duplicata paga. Ex. Caso pague uma fatura no dia atual, mas será compensado apenas três dias depois, deverá ser informar o valor 3 no campo D-.Esta opção é utilizada no relatório de Fluxo de Caixa Analítico." WidthLabel="126" HorizontalAlignment="Left" Width="200"/>
+                        </WrapPanel>
                     </Expander>
-                </StackPanel>
+                </DockPanel>
             </TabItem>
             <TabItem Header="Hierarquia">
                 <Grid>

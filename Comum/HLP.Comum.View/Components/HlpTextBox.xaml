@@ -20,7 +20,7 @@
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
                Visibility ="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=VisibilityLabel}" 
-			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"/>
+			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" FontFamily="Lucida Bright"/>
         <Button DockPanel.Dock="Right" Visibility="Collapsed" x:Name="btn" HorizontalAlignment="Right" Width="25" Height="20" Grid.Column="1" Click="btn_Click">
             <StackPanel>
                 <Image Source="pack://application:,,,/HLP.Comum.Resources;component/Images/Folder.png" Width="12" Height="12"/>              
