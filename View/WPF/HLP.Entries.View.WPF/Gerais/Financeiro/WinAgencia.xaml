@@ -61,44 +61,42 @@
                         <DockPanel DockPanel.Dock="Top" Height="160">
                             <Expander Header="Principal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True">
                                 <DockPanel LastChildFill="True">
-                                    <StackPanel DockPanel.Dock="Left" Width="500">
+                                    <WrapPanel Orientation="Vertical" Margin="0,10,0,0" DockPanel.Dock="Left" Width="623">
                                         <Components:HlpTextBox 
 										Text="{Binding currentModel.idAgencia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,10,228,2" Caption="Código" Help="Chave principal do registro da Agencia." WidthLabel="147"/>
+										Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Agencia." WidthLabel="147" HorizontalAlignment="Left" Width="230"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.cAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"	
-										Height="27" Margin="10,0,180,2" Caption="Código da Agencia" Help="Digite um código da Agencia bancária." WidthLabel="147"/>
+										Height="27" Margin="10,0,0,2" Caption="Código da Agencia" Help="Digite um código da Agencia bancária." WidthLabel="147" HorizontalAlignment="Left" Width="230"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,10,2" Caption="Nome " Help="Informa o nome por completo da Agência Bancária." WidthLabel="147"/>
+										Height="27" Margin="10,0,0,2" Caption="Nome " Help="Informa o nome por completo da Agência Bancária." WidthLabel="147" HorizontalAlignment="Left" Width="375"/>
                                         <Components:HlpPesquisa 
                                         	Validation.ErrorTemplate="{StaticResource exceptionComp}"
                                         	Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         	IsEnabled="{Binding bIsEnabled}"
-                                        	Height="27" Margin="10,0,10,2" Caption="Banco " Help="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." WidthLabel="147" FieldPesquisa="ID" TableView="vwBanco">
+                                        	Height="27" Margin="10,0,0,2" Caption="Banco " Help="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." WidthLabel="147" FieldPesquisa="ID" TableView="vwBanco" HorizontalAlignment="Left" Width="374">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xBanco</System:String>
                                                 <System:String>cBanco</System:String>
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
-                                    </StackPanel>
-                                    <StackPanel Width="208">
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xTelefone, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27"  Caption="Telefone" Help="Informar o telefone principal da Agencia Bancária" WidthLabel="71" Margin="0,0,27,0"/>
+										Height="27"  Caption="Telefone" Help="Informar o telefone principal da Agencia Bancária" WidthLabel="71" Margin="10,0,0,2" HorizontalAlignment="Left" Width="178"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"
 										Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27"  Caption="Fax" Help="Informar o Fax principal da Agencia Bancária." WidthLabel="71" Margin="0,0,27,0"/>
-                                    </StackPanel>
+										Height="27"  Caption="Fax" Help="Informar o Fax principal da Agencia Bancária." WidthLabel="71" Margin="10,0,0,2" HorizontalAlignment="Left" Width="178"/>
+                                    </WrapPanel>
                                     <DataGrid
                                         x:Name="dgvContato"
                                          ItemsSource="{Binding currentModel.lAgencia_ContatoModel}"                          

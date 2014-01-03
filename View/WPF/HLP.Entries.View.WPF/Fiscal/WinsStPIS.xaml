@@ -6,26 +6,26 @@
         Title="Situação Tributária do PIS" NameView="vwStPIS">
     <Grid>
         <Expander Header="Principal" IsExpanded="True">
-            <WrapPanel Orientation="Vertical">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
 					IsReadOnly="True"
 					Text="{Binding currentModel.idCSTPis, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					Height="27" Caption="Código" Help="have principal do registro da Situação Tributária para COFINS, campo autoinclemental." WidthLabel="184" HorizontalAlignment="Left" Width="265" Margin="10,10,0,0"/>
+					Height="27" Caption="Código" Help="have principal do registro da Situação Tributária para COFINS, campo autoinclemental." WidthLabel="184" HorizontalAlignment="Left" Width="265" Margin="10,0,0,0"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.cCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27"  Caption="Código Origem da CST PIS" Help="Digite o Código da Situação Tributária de Cofins definida pela legislação. " WidthLabel="184" HorizontalAlignment="Left" Width="263" Margin="10,2,0,0"/>
+					Height="27"  Caption="Código Origem da CST PIS" Help="Digite o Código da Situação Tributária de Cofins definida pela legislação. " WidthLabel="184" HorizontalAlignment="Left" Width="263" Margin="10,0,0,0"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27"  Caption="Descrição " Help="Descrição do código da Situação Tributária de Cofins" WidthLabel="184" HorizontalAlignment="Left" Width="544" Margin="10,2,0,0"/>
+					Height="27"  Caption="Descrição " Help="Descrição do código da Situação Tributária de Cofins" WidthLabel="184" HorizontalAlignment="Left" Width="544" Margin="10,0,0,0"/>
                 <Components:HlpCheckBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					IsChecked="{Binding currentModel.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27"  Caption="Simples Nacional?" Help="Informar se a Situação Tributária de Cofins é de Simples Nacional." WidthLabel="184" HorizontalAlignment="Left" Margin="10,2,0,0"/>
+					Height="27"  Caption="Simples Nacional?" Help="Informar se a Situação Tributária de Cofins é de Simples Nacional." WidthLabel="184" HorizontalAlignment="Left" Margin="10,0,0,0"/>
             </WrapPanel>
         </Expander>
 

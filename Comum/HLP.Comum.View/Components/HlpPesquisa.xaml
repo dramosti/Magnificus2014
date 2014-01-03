@@ -19,7 +19,7 @@
                TextWrapping="Wrap"
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
-               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}"/>
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
         <TextBox x:Name="txtID" 
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  Width="80" Height="20"/>

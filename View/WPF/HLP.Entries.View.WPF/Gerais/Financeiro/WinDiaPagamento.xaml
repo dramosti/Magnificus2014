@@ -29,22 +29,22 @@
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <Expander Header="Geral" DockPanel.Dock="Left" IsExpanded="True" Width="440">
-            <StackPanel>
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
 					IsReadOnly="True"
 					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					Height="27" Caption="Código " Help="Chave principal do registro dia de pagamento" WidthLabel="142" Margin="10,15,200,0"/>
+					Height="27" Caption="Código " Help="Chave principal do registro dia de pagamento" WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="220"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Caption="Dia de pagamento " Help="Insira uma breve identificação para o dia de pagamento. " WidthLabel="142" Margin="10,0,118,0"/>
+					Height="27" Caption="Dia de pagamento " Help="Insira uma breve identificação para o dia de pagamento. " WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="220"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Caption="Descrição " Help="Insira uma descrição da identificação do dia de pagamento." WidthLabel="142" Margin="10,0,37,0"/>
-            </StackPanel>
+					Height="27" Caption="Descrição " Help="Insira uma descrição da identificação do dia de pagamento." WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="349.9"/>
+            </WrapPanel>
         </Expander>
         <Expander Header="Dia do pagamento" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True" Width="300">
             <DataGrid 

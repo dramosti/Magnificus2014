@@ -5,25 +5,25 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Crm.WinPersonalidade"
         Title="Personalidade" NameView="vwPersonalidade" Height="660" Width="1024">
-	<Grid>
-		<Expander Header="Geral" HorizontalAlignment="Left" Height="191" VerticalAlignment="Top" Width="541" IsExpanded="True">
-			<StackPanel>
-				<Components:HlpTextBox 
+    <Grid>
+        <Expander Header="Geral" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Components:HlpTextBox 
 					Text="{Binding currentModel.idPersonalidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
-					Height="27" Margin="10,10,330,2" Caption="Código" Help="Chave principal do registro da Personalidade" WidthLabel="111"/>
-				<Components:HlpTextBox 
+					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Personalidade" WidthLabel="111" HorizontalAlignment="Left" Width="190"/>
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xPersonalidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,204,2" Caption="Personalidade " Help="Característica e/ou personalidade da pessoa de contato." WidthLabel="111"/>
-				<Components:HlpTextBox 
+					Height="27" Margin="10,0,0,2" Caption="Personalidade " Help="Característica e/ou personalidade da pessoa de contato." WidthLabel="111" HorizontalAlignment="Left" Width="290"/>
+                <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0" Caption="Descrição" Help="Descrição mais precisa do da característica ativo." WidthLabel="111"/>
-			</StackPanel>
-		</Expander>
-        
-	</Grid>
+					Height="27" Margin="10,0,0,2" Caption="Descrição" Help="Descrição mais precisa do da característica ativo." WidthLabel="111" HorizontalAlignment="Left" Width="365"/>
+            </WrapPanel>
+        </Expander>
+
+    </Grid>
 </runtime:WindowsBase>

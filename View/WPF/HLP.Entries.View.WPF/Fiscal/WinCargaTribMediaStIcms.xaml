@@ -10,18 +10,18 @@
     <Window.Resources>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
     </Window.Resources>
-    <StackPanel>
-        <Expander Header="Geral" Height="313" Margin="0,0,106,0" IsExpanded="True">
-            <WrapPanel Orientation="Vertical">
+    <DockPanel>
+        <Expander Header="ssss" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 					
 					IsReadOnly="True"
 					Text="{Binding currentModel.idCargaTribMediaStIcms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					Height="27" Margin="10,10,257.5,2" Caption="Código" WidthLabel="192" Width="271" HorizontalAlignment="Left"/>
+					Height="27" Margin="10,0,0,2" Caption="Código" WidthLabel="192" Width="271" HorizontalAlignment="Left"/>
                 <Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,10,2" Caption="Ramo Atividade" FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="192" HorizontalAlignment="Left" Width="500">
+					Height="27" Margin="10,0,0,2" Caption="Ramo Atividade" FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="192" HorizontalAlignment="Left" Width="500">
                     <Components:HlpPesquisa.Items>
                         <System:String>xRamo</System:String>
                         <System:String>xDescricao</System:String>
@@ -31,7 +31,7 @@
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 				 FieldPesquisa="ID"	 TableView="vwUF" Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,10,2" Caption="Uf" WidthLabel="192" HorizontalAlignment="Left" Width="500">
+					Height="27" Margin="10,0,0,2" Caption="Uf" WidthLabel="192" HorizontalAlignment="Left" Width="500">
                     <Components:HlpPesquisa.Items>
                         <System:String>xUf</System:String>
                         <System:String>xSiglaUf</System:String>
@@ -41,8 +41,8 @@
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,257.5,2" Caption="% Carga Tributária Média" WidthLabel="192" Width="272" HorizontalAlignment="Left"/>
+					Height="27" Margin="10,0,0,2" Caption="% Carga Tributária Média" WidthLabel="192" Width="272" HorizontalAlignment="Left"/>
             </WrapPanel>
         </Expander>
-    </StackPanel>
+    </DockPanel>
 </runtime:WindowsBase>

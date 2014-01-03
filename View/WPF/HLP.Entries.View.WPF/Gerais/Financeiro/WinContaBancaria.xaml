@@ -7,141 +7,150 @@
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria"
         Title="Contas Bancárias" Height="660" Width="1024" NameView="vwContaBancaria">
     <Grid>
-<TabControl>
- <TabItem Header="Geral">
-   <AdornerDecorator>
-	<DockPanel LastChildFill="True">
-		<StackPanel Width="479" DockPanel.Dock="Left">
-			<Expander Header="Principal" Height="600" IsExpanded="True">
-				<StackPanel>
-					<Components:HlpTextBox 
+        <TabControl>
+            <TabItem Header="Geral">
+                <AdornerDecorator>
+                    <DockPanel LastChildFill="True">
+                        <DockPanel Width="479" DockPanel.Dock="Left">
+                            <Expander Header="Principal" Height="600" IsExpanded="True">
+                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,217,2" Caption="Código" Help="Chave principal do registro da Conta Bancaria, valor autoincremental" WidthLabel="148"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Conta Bancaria, valor autoincremental" WidthLabel="148" HorizontalAlignment="Left" Width="230"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xNumeroConta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,217,2" Caption="Número da Conta " Help="Informar o código da conta bancária." WidthLabel="148"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Número da Conta " Help="Informar o código da conta bancária." WidthLabel="148" HorizontalAlignment="Left" Width="250"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Descrição " Help="É preenchido com a descrição da conta. " WidthLabel="148"/>
-					<Components:HlpComboBox 
+						Height="27" Margin="10,0,0,2" Caption="Descrição " Help="É preenchido com a descrição da conta. " WidthLabel="148" HorizontalAlignment="Left" Width="400"/>
+                                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stConta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Tipo de Conta" Help="Informar se é Conta Corrente, Poupança, Caixa." WidthLabel="148">
-						<Components:HlpComboBox.Items>
-								<System:String>0-Caixa</System:String>
-                                <System:String>1-Conta Corrente</System:String>
-								<System:String>2-Conta Poupança</System:String>		
-						</Components:HlpComboBox.Items>
-					</Components:HlpComboBox>
-					<Components:HlpPesquisa 
+						Height="27" Margin="10,0,0,2" Caption="Tipo de Conta" Help="Informar se é Conta Corrente, Poupança, Caixa." WidthLabel="148" HorizontalAlignment="Left">
+                                        <Components:HlpComboBox.Items>
+                                            <System:String>0-Caixa</System:String>
+                                            <System:String>1-Conta Corrente</System:String>
+                                            <System:String>2-Conta Poupança</System:String>
+                                        </Components:HlpComboBox.Items>
+                                    </Components:HlpComboBox>
+                                    <Components:HlpPesquisa 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.idAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Agência" Help="Informa o código da Agencia. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="148" FieldPesquisa="ID" TableView="vwAgencia">
-						<Components:HlpPesquisa.Items>
-							<System:String>cAgencia</System:String>
-							<System:String>Banco</System:String>
-						</Components:HlpPesquisa.Items>
-					</Components:HlpPesquisa>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Agência" Help="Informa o código da Agencia. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="148" FieldPesquisa="ID" TableView="vwAgencia" HorizontalAlignment="Left" Width="400">
+                                        <Components:HlpPesquisa.Items>
+                                            <System:String>cAgencia</System:String>
+                                            <System:String>Banco</System:String>
+                                        </Components:HlpPesquisa.Items>
+                                    </Components:HlpPesquisa>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xTitular, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Titular" Help="É preenchido com o nome do titular da Conta Bancária." WidthLabel="148"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Titular" Help="É preenchido com o nome do titular da Conta Bancária." WidthLabel="148" HorizontalAlignment="Left" Width="400"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xCNPJouCPFTitular, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,170.001,2" Caption="CNPJ ou CPF Titular" Help="É preenchido com o CNPJ ou CPF do Titular da Conta Bancária." WidthLabel="148"/>
-					<Components:HlpCheckBox 
+						Height="27" Margin="10,0,0,2" Caption="CNPJ ou CPF Titular" Help="É preenchido com o CNPJ ou CPF do Titular da Conta Bancária." WidthLabel="148" HorizontalAlignment="Left" Width="275"/>
+                                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stBloquete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,10,2" Caption="Reemite Bloquete?" Help="Define se será reemitido os bloquetes, sendo utilizado na exportação de duplicatas." WidthLabel="148"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Reemite Bloquete?" Help="Define se será reemitido os bloquetes, sendo utilizado na exportação de duplicatas." WidthLabel="148" HorizontalAlignment="Left"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nDigitosConvenio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,170.001,2" Caption="Digito Convênio" Help="Informar o numero de dígitos para o numero do convenio." WidthLabel="148"/>
-				</StackPanel>
-			</Expander>
-		</StackPanel>
-		<StackPanel>
-			<Expander Header="Home Banking" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsExpanded="True" Height="600" Width="534">
-				<StackPanel>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Digito Convênio" Help="Informar o numero de dígitos para o numero do convenio." WidthLabel="148" HorizontalAlignment="Left" Width="230"/>
+                                </WrapPanel>
+                            </Expander>
+                        </DockPanel>
+                        <DockPanel>
+                            <Expander Header="Home Banking" IsExpanded="True">
+                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xNumeroContaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,10,100,2" Caption="N.° Conta para Home Banking" Help="Informa o código da Conta corrente, digitar de preferência o código verdadeiro da Conta para o Home Banking a ser cadastrado." WidthLabel="262"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="N.° Conta para Home Banking" Help="Informa o código da Conta corrente, digitar de preferência o código verdadeiro da Conta para o Home Banking a ser cadastrado." WidthLabel="262" HorizontalAlignment="Left" Width="350"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xCodigoEmpresaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="36" Margin="10,0,100,2" Caption="Código da Empresa para o Home Banking" Help="Informar o código da Empresa para o Banco" WidthLabel="262"/>
-					<Components:HlpTextBox
+						Height="36" Margin="10,0,0,2" Caption="Código da Empresa para o Home Banking" Help="Informar o código da Empresa para o Banco" WidthLabel="262" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="350">
+                                        <Components:HlpTextBox.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform AngleY="0.212"/>
+                                                <RotateTransform/>
+                                                <TranslateTransform Y="0.496"/>
+                                            </TransformGroup>
+                                        </Components:HlpTextBox.RenderTransform>
+                                    </Components:HlpTextBox>
+                                    <Components:HlpTextBox
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nConvenio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						 Height="27" Margin="10,0,150,2" Caption="Convernio HomeBanking" Help="Informa o numero do Convenio para o Home Banking para essa conta" WidthLabel="262"/>
-					<Components:HlpTextBox 
+						 Height="27" Margin="10,0,0,2" Caption="Convernio HomeBanking" Help="Informa o numero do Convenio para o Home Banking para essa conta" WidthLabel="262" HorizontalAlignment="Left" Width="350"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nDiasProtesto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,150,2" Caption="Dias para Protesto" Help="Define o número de dias para protesto, sendo utilizado para a exportação de duplicatas." WidthLabel="262"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Dias para Protesto" Help="Define o número de dias para protesto, sendo utilizado para a exportação de duplicatas." WidthLabel="262" HorizontalAlignment="Left" Width="350"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nSequenciaNossoNumero, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,150,2" Caption="Sequencia do Nosso Número" Help="É um número de sequência utilizado para a exportação de duplicatas e emissão de boletos." WidthLabel="262"/>
-					<Components:HlpCheckBox 
+						Height="27" Margin="10,0,0,2" Caption="Sequencia do Nosso Número" Help="É um número de sequência utilizado para a exportação de duplicatas e emissão de boletos." WidthLabel="262" HorizontalAlignment="Left" Width="350"/>
+                                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stZeraNossoNumero, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,200,2" Caption="Zera a Sequencia do Nosso Número?" Help="Informar se sempre será zerado a sequencia do Nosso Número, com isso o sistema exportará para o Banco sempre 0000000 na sequencia do nosso número" WidthLabel="262"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Zera a Sequencia do Nosso Número?" Help="Informar se sempre será zerado a sequencia do Nosso Número, com isso o sistema exportará para o Banco sempre 0000000 na sequencia do nosso número" WidthLabel="262" HorizontalAlignment="Left"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nCarteira, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,150,2" Caption="Carteira" Help="Informar o tipo de carteira da Conta para o Banco" WidthLabel="262"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Carteira" Help="Informar o tipo de carteira da Conta para o Banco" WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nVariacaoCarteira, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,150,2" Caption="Variação da Carteira" Help="Informar a variação da carteira da conta para o Banco." WidthLabel="262"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Variação da Carteira" Help="Informar a variação da carteira da conta para o Banco." WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xEspecie, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,100,2" Caption="Espécie" Help="Qual o tipo de movimentação/documento que será lançado." WidthLabel="262"/>
-					<Components:HlpTextBox 
+						Height="27" Margin="10,0,0,2" Caption="Espécie" Help="Qual o tipo de movimentação/documento que será lançado." WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
+                                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.nRemessaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,150,2" Caption="Numero da Remessa" Help="Informar o numero inicial da sequencia para Remessa ao Home Banking" WidthLabel="262"/>
-					<Components:HlpCheckBox 
+						Height="27" Margin="10,0,0,2" Caption="Numero da Remessa" Help="Informar o numero inicial da sequencia para Remessa ao Home Banking" WidthLabel="262" HorizontalAlignment="Left" Width="350"/>
+                                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stAceite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,200,2" Caption="Aceite" Help="Quando os boletos for ser impressos pelo banco colocar a opção de aceito com ‘SIM’, valor default sempre ‘Não’" WidthLabel="262"/>
-				</StackPanel>
-			</Expander>
-		</StackPanel>
-	</DockPanel>
-   </AdornerDecorator>
-  </TabItem>
-  <TabItem Header="Hierarquia">	
-	<StackPanel>
-		<TreeView Height="414" Margin="10,10,650,0"/>
-	</StackPanel>
-  </TabItem>
- </TabControl>
-</Grid>
+						Height="27" Margin="10,0,0,2" Caption="Aceite" Help="Quando os boletos for ser impressos pelo banco colocar a opção de aceito com 'SIM', valor default sempre 'Não'" WidthLabel="262" HorizontalAlignment="Left"/>
+                                </WrapPanel>
+                            </Expander>
+                        </DockPanel>
+                    </DockPanel>
+                </AdornerDecorator>
+            </TabItem>
+            <TabItem Header="Hierarquia">
+                <StackPanel>
+                    <TreeView Height="414" Margin="10,10,650,0"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </runtime:WindowsBase>

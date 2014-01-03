@@ -164,4 +164,7 @@
 <object id="WinOrcamento" name="Orçamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Comercial.WinOrcamento, HLP.Entries.View.WPF">
   </object>
+<object id="WinTipoProduto" name="Tipo_de_Produto" singleton="false" scope="request"
+  type="HLP.Entries.View.WPF.Comercial.WinTipoProduto, HLP.Entries.View.WPF">
+  </object>
 </objects>

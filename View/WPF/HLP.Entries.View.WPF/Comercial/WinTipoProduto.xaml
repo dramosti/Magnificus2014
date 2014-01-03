@@ -1,8 +1,63 @@
-﻿<Window x:Class="HLP.Entries.View.WPF.Comercial.WinTipoProduto"
+﻿<runtime:WindowsBase x:Class="HLP.Entries.View.WPF.Comercial.WinTipoProduto"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinTipoProduto" Height="300" Width="300">
+        Title="WinTipoProduto" Height="660" Width="1024">
     <Grid>
-        
+        <Expander Header="Geral" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Components:HlpTextBox 
+                    IsEnabled="False"
+					Text="{Binding currentModel.idTipoProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"    
+                    Height="27" Margin="10,0,0,2" Caption="Código da Origem do Tipo de Produto" Help="Chave principal do registro da tipo de produto" WidthLabel="500" Width="600" HorizontalAlignment="Left"/>
+                <Components:HlpTextBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xTipo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"    
+                    Height="27" Margin="10,0,0,2" Caption="Tipo de Produto" Help="Informe o tipo de produto resumidamente." WidthLabel="500" Width="600" HorizontalAlignment="Left"/>
+                <Components:HlpTextBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"     
+                    Height="27" Margin="10,0,0,2" Caption="Descrição" Help="Descrição do tipo de produto" WidthLabel="500" Width="790" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stTerceiros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"     
+                    Height="27" Margin="10,0,0,2" Caption="Material de Terceiros?" Help="Marque se tipo de produto é de terceiros, seja ele de clientes ou fornecedores." WidthLabel="500" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stServicos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"      
+                    Height="27" Margin="10,0,0,2" Caption="Serviços?" Help="Marque se o tipo de produto é para serviços." WidthLabel="500" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stPatrimonio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"     
+                    Height="27" Margin="10,0,0,2" Caption="Produto de Patrimônio?" Help="Marque se o produto é referente a patrimônio" WidthLabel="500" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stProducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"     
+                    Height="27" Margin="10,0,0,2" Caption="Visualizar o Tipo do Produto no módulo de Produção?" Help="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo produção." WidthLabel="500" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stEstoque, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"     
+                    Height="27" Margin="10,0,0,2" Caption="Visualizar o Tipo do Produto no módulo de Estoque?" Help="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo estoque." WidthLabel="500" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"      
+                    Height="27" Margin="10,0,0,2" Caption="Visualizar o TIpo do Produto no módulo de Compras?" Help="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo compras." WidthLabel="500" HorizontalAlignment="Left"/>
+                <Components:HlpCheckBox 
+                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					IsChecked="{Binding currentModel.stComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"       
+                    Height="27" Margin="10,0,0,2" Caption="Visualizar o Tipo do Produto no módulo de Comercial/Faturamento?" Help="Marque se deseja que todos os produtos com esse tipo deverá mostrar em todas as telas do módulo Comercial/Faturamento." WidthLabel="500" HorizontalAlignment="Left"/>
+            </WrapPanel>
+        </Expander>
     </Grid>
-</Window>
+</runtime:WindowsBase>
