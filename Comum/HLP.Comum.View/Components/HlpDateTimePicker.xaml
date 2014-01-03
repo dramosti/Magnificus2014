@@ -18,7 +18,7 @@
                TextWrapping="Wrap"
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"  Height="{Binding ElementName=componente, Path=Height}" FontFamily="Lucida Bright"/>
+               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}"  Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
         <DatePicker x:Name="dtControle" DockPanel.Dock="Left"
                 SelectedDate="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDate}"
                 SelectedDateFormat="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=SelectedDateFormat}" Height="25" Width="104"    
