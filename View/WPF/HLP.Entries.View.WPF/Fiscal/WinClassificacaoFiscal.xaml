@@ -40,22 +40,22 @@
 						Height="27" Margin="10,0,0,2" Caption="Fundamento legal" WidthLabel="145" HorizontalAlignment="Left" Width="421"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
+						Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27"  Caption="Alíquota de IPI" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
+						Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27"  Caption="Alíquota de PIS" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
+						Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27"  Caption="Alíquota de ii" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
+						Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27"  Caption="Alíquota de COFINS" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
                     <Components:HlpComboBox 
@@ -81,7 +81,7 @@
                     </Components:HlpComboBox>
                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.vCoeficienteSubstituicaoPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
+						Text="{Binding currentModel.vCoeficienteSubstituicaoPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27"  Caption="Coeficiente substituição tributária do pis" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left" Width="454"/>
                     <Components:HlpTextBox 

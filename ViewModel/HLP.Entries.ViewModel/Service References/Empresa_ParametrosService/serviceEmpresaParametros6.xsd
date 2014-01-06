@@ -60,6 +60,7 @@
           <xs:element minOccurs="0" name="stCustoDefault" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stCustoMedio" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stValorVenda" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="st_Markup" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="xDiasTrabalhadasSemana" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xHorasTrabalhadasDia" nillable="true" type="xs:string" />
         </xs:sequence>

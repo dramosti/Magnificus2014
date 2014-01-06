@@ -95,7 +95,7 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                objEmpresaParametros = this.getEmpresaParametros(1).empresaParametros;
+                //objEmpresaParametros = this.getEmpresaParametros(1).empresaParametros;
 
 
                 this.parametro_ComercialRepository.Save(objParametro_Comercial: objEmpresaParametros.ObjParametro_ComercialModel);
