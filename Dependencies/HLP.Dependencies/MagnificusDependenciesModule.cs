@@ -20,6 +20,8 @@ using HLP.Entries.Model.Repository.Interfaces.Financeiro;
 using HLP.Entries.Model.Repository.Implementation.Financeiro;
 using HLP.Entries.Model.Repository.Interfaces.Crm;
 using HLP.Entries.Model.Repository.Implementation.Crm;
+using HLP.Sales.Model.Repository.Interfaces;
+using HLP.Sales.Model.Repository.Implementation;
 
 namespace HLP.Dependencies
 {
@@ -134,11 +136,11 @@ namespace HLP.Dependencies
             Bind<IEmpresa_EnderecoRepository>().To<Empresa_EnderecoRepository>();
             Bind<IAcessoRepository>().To<AcessoRepository>();
             //Bind<ILog_ScriptsRepository>().To<Log_ScriptsRepository>();
-            //Bind<IOrcamento_ideRepository>().To<Orcamento_ideRepository>();
-            //Bind<IOrcamento_Item_ImpostosRepository>().To<Orcamento_Item_ImpostosRepository>();
-            //Bind<IOrcamento_ItemRepository>().To<Orcamento_ItemRepository>();
-            //Bind<IOrcamento_retTranspRepository>().To<Orcamento_retTranspRepository>();
-            //Bind<IOrcamento_Total_ImpostosRepository>().To<Orcamento_Total_ImpostosRepository>();
+            Bind<IOrcamento_ideRepository>().To<Orcamento_ideRepository>();
+            Bind<IOrcamento_Item_ImpostosRepository>().To<Orcamento_Item_ImpostosRepository>();
+            Bind<IOrcamento_ItemRepository>().To<Orcamento_ItemRepository>();
+            Bind<IOrcamento_retTranspRepository>().To<Orcamento_retTranspRepository>();
+            Bind<IOrcamento_Total_ImpostosRepository>().To<Orcamento_Total_ImpostosRepository>();
 
             //#endregion
 

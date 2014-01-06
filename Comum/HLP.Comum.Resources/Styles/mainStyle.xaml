@@ -577,11 +577,11 @@
         </Setter>
     </Style>
 
-    <Style TargetType="TabItem">
+    <Style TargetType="{x:Type TabItem}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="4,4,4,4" Margin="2,0">
+                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="4,4,0,0" Margin="1,0">
                         <ContentPresenter x:Name="ContentSite"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -598,27 +598,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TabItem">
-                    <Grid Name="Grid">
-                        <ContentPresenter x:Name="ContentSite"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         ContentSource="Header"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Grid" Property="Background" Value="LightSkyBlue"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="Grid" Property="Background" Value="White"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        </Setter>        
     </Style>
     <SolidColorBrush x:Key="TabItemisPressed" Color="White"/>
 
