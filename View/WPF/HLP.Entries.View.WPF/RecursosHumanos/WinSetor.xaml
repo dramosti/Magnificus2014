@@ -7,6 +7,7 @@
 	x:Name="Window"
 	Title="Setor"
 	Width="640" Height="480" NameView="vwSetor">
+    <Grid>
     <Expander Header="Setor" IsExpanded="True">
         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
             <Components:HlpTextBox
@@ -27,4 +28,5 @@
 			Height="27" Margin="10,0,10,2" Caption="E-mail do Setor" Field="xEmail" Help="Informar um e-mail geral caso tenha do setor." Table="Setor" WidthLabel="119" HorizontalAlignment="Left" Width="420"/>
         </WrapPanel>
     </Expander>
+   </Grid>
 </runtime:WindowsBase>
