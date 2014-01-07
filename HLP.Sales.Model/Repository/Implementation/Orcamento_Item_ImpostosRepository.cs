@@ -55,7 +55,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_Item_ImpostosAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_Item_Impostos",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamentoTotalizadorImpostos"),
-                                 MapBuilder<Orcamento_Item_ImpostosModel>.MapAllProperties().Build());
+                                 MapBuilder<Orcamento_Item_ImpostosModel>
+                                 .MapAllProperties()
+                                 .DoNotMap(i => i.status)
+                                 .Build());
             }
 
             return regOrcamento_Item_ImpostosAccessor.Execute(idOrcamentoTotalizadorImpostos).FirstOrDefault();
@@ -66,7 +69,10 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_Item_ImpostosAccessor == null)
             {
                 regAllOrcamento_Item_ImpostosAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_Item_Impostos",
-                                MapBuilder<Orcamento_Item_ImpostosModel>.MapAllProperties().Build());
+                                MapBuilder<Orcamento_Item_ImpostosModel>
+                                .MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute().ToList();
         }
@@ -77,7 +83,10 @@ namespace HLP.Sales.Model.Repository.Implementation
             {
                 regAllOrcamento_Item_ImpostosAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_Item_Impostos" +
                 " where idOrcamentoItem = @idOrcamentoItem", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idOrcamentoItem"),
-                                MapBuilder<Orcamento_Item_ImpostosModel>.MapAllProperties().Build());
+                                MapBuilder<Orcamento_Item_ImpostosModel>
+                                .MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento_Item).FirstOrDefault();
         }

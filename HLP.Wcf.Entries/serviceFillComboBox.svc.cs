@@ -26,11 +26,11 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public IEnumerable<Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView)
+        public IEnumerable<Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter)
         {
             try
             {
-                return iFillComboBoxRepository.GetAllCidadeToComboBox(sNameView);
+                return iFillComboBoxRepository.GetAllCidadeToComboBox(sNameView, sParameter);
             }
             catch (Exception ex)
             {

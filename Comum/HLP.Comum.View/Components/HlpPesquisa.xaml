@@ -20,7 +20,8 @@
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
-        <TextBox x:Name="txtID" 
+        <TextBox x:Name="txtID"        
+                 TextChanged="ucTxt_TextChanged"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  Width="80" Height="20"/>
         <TextBox x:Name="txtDisplay" IsReadOnly="True" 

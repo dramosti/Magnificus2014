@@ -12,6 +12,6 @@ namespace HLP.Wcf.Entries
     public interface IserviceFillComboBox
     {
         [OperationContract]
-        IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView);
+        IEnumerable<Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter);
     }
 }

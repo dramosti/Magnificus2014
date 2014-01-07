@@ -7,6 +7,7 @@ using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,8 +56,12 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_ideAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_ide",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamento"),
-                                 MapBuilder<Orcamento_ideModel>.MapAllProperties().DoNotMap(c => c.orcamento_Total_Impostos).DoNotMap(
-                                 i => i.orcamento_retTransp).Build());
+                                 MapBuilder<Orcamento_ideModel>.MapAllProperties()
+                                 .DoNotMap(c => c.orcamento_Total_Impostos)
+                                 .DoNotMap(i => i.orcamento_retTransp)
+                                 .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.xDepartamento)
+                                 .Build());
             }
 
             return regOrcamento_ideAccessor.Execute(idOrcamento).FirstOrDefault();
@@ -67,8 +72,12 @@ namespace HLP.Sales.Model.Repository.Implementation
             DataAccessor<Orcamento_ideModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("select * from Orcamento_ide where idOrcamento = @idOrcamento",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idOrcamento"),
-            MapBuilder<Orcamento_ideModel>.MapAllProperties().DoNotMap(c => c.orcamento_Total_Impostos)
-            .DoNotMap(i => i.orcamento_retTransp).Build());
+            MapBuilder<Orcamento_ideModel>.MapAllProperties()
+            .DoNotMap(c => c.orcamento_Total_Impostos)
+            .DoNotMap(i => i.orcamento_retTransp)
+            .DoNotMap(i => i.status)
+            .DoNotMap(i => i.xDepartamento)
+            .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
 
@@ -77,8 +86,12 @@ namespace HLP.Sales.Model.Repository.Implementation
             DataAccessor<Orcamento_ideModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("select * from Orcamento_ide where idOrcamentoOrigem = @idOrcamento",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idOrcamento"),
-            MapBuilder<Orcamento_ideModel>.MapAllProperties().DoNotMap(c => c.orcamento_Total_Impostos)
-            .DoNotMap(i => i.orcamento_retTransp).Build());
+            MapBuilder<Orcamento_ideModel>.MapAllProperties()
+            .DoNotMap(c => c.orcamento_Total_Impostos)
+            .DoNotMap(i => i.orcamento_retTransp)
+            .DoNotMap(i => i.status)
+            .DoNotMap(i => i.xDepartamento)
+            .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
 
@@ -87,7 +100,11 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_ideAccessor == null)
             {
                 regAllOrcamento_ideAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_ide",
-                                MapBuilder<Orcamento_ideModel>.MapAllProperties().Build());
+                                MapBuilder<Orcamento_ideModel>
+                                .MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.xDepartamento)
+                                .Build());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();
         }

@@ -43,6 +43,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,7 +65,9 @@
     <Compile Include="Repository\Interfaces\IOrcamento_retTranspRepository.cs" />
     <Compile Include="Repository\Interfaces\IOrcamento_Total_ImpostosRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
       <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
@@ -73,6 +77,21 @@
       <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
       <Name>HLP.Comum.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
+      <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
+      <Name>HLP.Comum.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Facade\HLP.Comum.Facade.csproj">
+      <Project>{3e7af44f-8443-4ddf-a196-f6ee90883898}</Project>
+      <Name>HLP.Comum.Facade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

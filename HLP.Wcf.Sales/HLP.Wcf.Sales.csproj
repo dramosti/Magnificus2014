@@ -76,6 +76,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\Sales_Wcf.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -103,6 +104,10 @@
     <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
       <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>
       <Name>HLP.Sales.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Wcf.Entries\HLP.Wcf.Entries.csproj">
+      <Project>{9c776abf-bcda-4a4e-b14e-cf35510c5ca2}</Project>
+      <Name>HLP.Wcf.Entries</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Comum.Facade.Sales;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -15,90 +16,475 @@ namespace HLP.Sales.Model.Models.Comercial
         {
         }
 
-        [ParameterOrder(Order = 1)]
-        public int? idOrcamento { get; set; }
+        private int? _idOrcamento;
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
+        public int? idOrcamento
+        {
+            get { return _idOrcamento; }
+            set
+            {
+                _idOrcamento = value;
+                base.NotifyPropertyChanged(propertyName: "idOrcamento");
+            }
+        }
+        private DateTime _dDataHora;
         [ParameterOrder(Order = 2)]
-        public DateTime dDataHora { get; set; }
+        public DateTime dDataHora
+        {
+            get { return _dDataHora; }
+            set
+            {
+                _dDataHora = value;
+                base.NotifyPropertyChanged(propertyName: "dDataHora");
+            }
+        }
+        private int _idClienteFornecedor;
         [ParameterOrder(Order = 3)]
-        public int idClienteFornecedor { get; set; }
+        public int idClienteFornecedor
+        {
+            get { return _idClienteFornecedor; }
+            set
+            {
+                _idClienteFornecedor = value;
+                OrcamentoFacade.objCadastros.objCliente = OrcamentoFacade.clienteServico.getCliente(idCliente: value);
+                base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
+            }
+        }
+        private byte _stOrcamento;
         [ParameterOrder(Order = 4)]
-        public byte stOrcamento { get; set; }
+        public byte stOrcamento
+        {
+            get { return _stOrcamento; }
+            set
+            {
+                _stOrcamento = value;
+                base.NotifyPropertyChanged(propertyName: "stOrcamento");
+            }
+        }
+        private int _idTipoOrcamento;
         [ParameterOrder(Order = 5)]
-        public int idTipoOrcamento { get; set; }
+        public int idTipoOrcamento
+        {
+            get { return _idTipoOrcamento; }
+            set
+            {
+                _idTipoOrcamento = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoOrcamento");
+            }
+        }
+        private DateTime? _dVencimento;
         [ParameterOrder(Order = 6)]
-        public DateTime? dVencimento { get; set; }
+        public DateTime? dVencimento
+        {
+            get { return _dVencimento; }
+            set
+            {
+                _dVencimento = value;
+                base.NotifyPropertyChanged(propertyName: "dVencimento");
+            }
+        }
+        private DateTime? _dAcompanhamento;
         [ParameterOrder(Order = 7)]
-        public DateTime? dAcompanhamento { get; set; }
+        public DateTime? dAcompanhamento
+        {
+            get { return _dAcompanhamento; }
+            set
+            {
+                _dAcompanhamento = value;
+                base.NotifyPropertyChanged(propertyName: "dAcompanhamento");
+            }
+        }
+        private string _xCotacaoComprasCliente;
         [ParameterOrder(Order = 8)]
-        public string xCotacaoComprasCliente { get; set; }
+        public string xCotacaoComprasCliente
+        {
+            get { return _xCotacaoComprasCliente; }
+            set
+            {
+                _xCotacaoComprasCliente = value;
+                base.NotifyPropertyChanged(propertyName: "xCotacaoComprasCliente");
+            }
+        }
+        private string _xPedidoCliente;
         [ParameterOrder(Order = 9)]
-        public string xPedidoCliente { get; set; }
+        public string xPedidoCliente
+        {
+            get { return _xPedidoCliente; }
+            set
+            {
+                _xPedidoCliente = value;
+                base.NotifyPropertyChanged(propertyName: "xPedidoCliente");
+            }
+        }
+        private int _idDeposito;
         [ParameterOrder(Order = 10)]
-        public int idDeposito { get; set; }
+        public int idDeposito
+        {
+            get { return _idDeposito; }
+            set
+            {
+                _idDeposito = value;
+                base.NotifyPropertyChanged(propertyName: "idDeposito");
+            }
+        }
+        private string _xNomeEntrega;
         [ParameterOrder(Order = 11)]
-        public string xNomeEntrega { get; set; }
+        public string xNomeEntrega
+        {
+            get { return _xNomeEntrega; }
+            set
+            {
+                _xNomeEntrega = value;
+                base.NotifyPropertyChanged(propertyName: "xNomeEntrega");
+            }
+        }
+        private int _idModosEntrega;
         [ParameterOrder(Order = 12)]
-        public int idModosEntrega { get; set; }
+        public int idModosEntrega
+        {
+            get { return _idModosEntrega; }
+            set
+            {
+                _idModosEntrega = value;
+                base.NotifyPropertyChanged(propertyName: "idModosEntrega");
+            }
+        }
+        private int _idCondicaoEntrega;
         [ParameterOrder(Order = 13)]
-        public int idCondicaoEntrega { get; set; }
+        public int idCondicaoEntrega
+        {
+            get { return _idCondicaoEntrega; }
+            set
+            {
+                _idCondicaoEntrega = value;
+                base.NotifyPropertyChanged(propertyName: "idCondicaoEntrega");
+            }
+        }
+        private DateTime? _dDataRecebimentoSolicitado;
         [ParameterOrder(Order = 14)]
-        public DateTime? dDataRecebimentoSolicitado { get; set; }
+        public DateTime? dDataRecebimentoSolicitado
+        {
+            get { return _dDataRecebimentoSolicitado; }
+            set
+            {
+                _dDataRecebimentoSolicitado = value;
+                base.NotifyPropertyChanged(propertyName: "dDataRecebimentoSolicitado");
+            }
+        }
+        private DateTime? _dDataRemessaSolicitada;
         [ParameterOrder(Order = 15)]
-        public DateTime? dDataRemessaSolicitada { get; set; }
+        public DateTime? dDataRemessaSolicitada
+        {
+            get { return _dDataRemessaSolicitada; }
+            set
+            {
+                _dDataRemessaSolicitada = value;
+                base.NotifyPropertyChanged(propertyName: "dDataRemessaSolicitada");
+            }
+        }
+        private int _idCondicaoPagamento;
         [ParameterOrder(Order = 16)]
-        public int idCondicaoPagamento { get; set; }
+        public int idCondicaoPagamento
+        {
+            get { return _idCondicaoPagamento; }
+            set
+            {
+                _idCondicaoPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "idCondicaoPagamento");
+            }
+        }
+        private int? _idMotivo;
         [ParameterOrder(Order = 17)]
-        public int? idMotivo { get; set; }
+        public int? idMotivo
+        {
+            get { return _idMotivo; }
+            set
+            {
+                _idMotivo = value;
+                base.NotifyPropertyChanged(propertyName: "idMotivo");
+            }
+        }
+        private DateTime? _dConfirmacao;
         [ParameterOrder(Order = 18)]
-        public DateTime? dConfirmacao { get; set; }
+        public DateTime? dConfirmacao
+        {
+            get { return _dConfirmacao; }
+            set
+            {
+                _dConfirmacao = value;
+                base.NotifyPropertyChanged(propertyName: "dConfirmacao");
+            }
+        }
+        private int _idUnidadeVenda;
         [ParameterOrder(Order = 19)]
-        public int idUnidadeVenda { get; set; }
+        public int idUnidadeVenda
+        {
+            get { return _idUnidadeVenda; }
+            set
+            {
+                _idUnidadeVenda = value;
+                base.NotifyPropertyChanged(propertyName: "idUnidadeVenda");
+            }
+        }
+        private int _idDescontos;
         [ParameterOrder(Order = 20)]
-        public int idDescontos { get; set; }
+        public int idDescontos
+        {
+            get { return _idDescontos; }
+            set
+            {
+                _idDescontos = value;
+                base.NotifyPropertyChanged(propertyName: "idDescontos");
+            }
+        }
+        private int _idJuros;
         [ParameterOrder(Order = 21)]
-        public int idJuros { get; set; }
+        public int idJuros
+        {
+            get { return _idJuros; }
+            set
+            {
+                _idJuros = value;
+                base.NotifyPropertyChanged(propertyName: "idJuros");
+            }
+        }
+        private int _idMulta;
         [ParameterOrder(Order = 22)]
-        public int idMulta { get; set; }
+        public int idMulta
+        {
+            get { return _idMulta; }
+            set
+            {
+                _idMulta = value;
+                base.NotifyPropertyChanged(propertyName: "idMulta");
+            }
+        }
+        private string _xObservacao;
         [ParameterOrder(Order = 23)]
-        public string xObservacao { get; set; }
+        public string xObservacao
+        {
+            get { return _xObservacao; }
+            set
+            {
+                _xObservacao = value;
+                base.NotifyPropertyChanged(propertyName: "xObservacao");
+            }
+        }
+        private byte? _stConsumidorFinal;
         [ParameterOrder(Order = 24)]
-        public byte? stConsumidorFinal { get; set; }
+        public byte? stConsumidorFinal
+        {
+            get { return _stConsumidorFinal; }
+            set
+            {
+                _stConsumidorFinal = value;
+                base.NotifyPropertyChanged(propertyName: "stConsumidorFinal");
+            }
+        }
+        private byte? _stSuframaOrcamento;
         [ParameterOrder(Order = 25)]
-        public byte? stSuframaOrcamento { get; set; }
+        public byte? stSuframaOrcamento
+        {
+            get { return _stSuframaOrcamento; }
+            set
+            {
+                _stSuframaOrcamento = value;
+                base.NotifyPropertyChanged(propertyName: "stSuframaOrcamento");
+            }
+        }
+        private byte? _stDescPISCOFINSSuframa;
         [ParameterOrder(Order = 26)]
-        public byte? stDescPISCOFINSSuframa { get; set; }
+        public byte? stDescPISCOFINSSuframa
+        {
+            get { return _stDescPISCOFINSSuframa; }
+            set
+            {
+                _stDescPISCOFINSSuframa = value;
+                base.NotifyPropertyChanged(propertyName: "stDescPISCOFINSSuframa");
+            }
+        }
+        private int _idMoeda;
         [ParameterOrder(Order = 27)]
-        public int idMoeda { get; set; }
+        public int idMoeda
+        {
+            get { return _idMoeda; }
+            set
+            {
+                _idMoeda = value;
+                base.NotifyPropertyChanged(propertyName: "idMoeda");
+            }
+        }
+        private int _idFuncionarioRepresentante;
         [ParameterOrder(Order = 28)]
-        public int idFuncionarioRepresentante { get; set; }
+        public int idFuncionarioRepresentante
+        {
+            get { return _idFuncionarioRepresentante; }
+            set
+            {
+                _idFuncionarioRepresentante = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
+            }
+        }
+        private string _cIdentificacao;
         [ParameterOrder(Order = 29)]
-        public string cIdentificacao { get; set; }
+        public string cIdentificacao
+        {
+            get { return _cIdentificacao; }
+            set
+            {
+                _cIdentificacao = value;
+                base.NotifyPropertyChanged(propertyName: "cIdentificacao");
+            }
+        }
+        private int _idContaContabil;
         [ParameterOrder(Order = 30)]
-        public int idContaContabil { get; set; }
+        public int idContaContabil
+        {
+            get { return _idContaContabil; }
+            set
+            {
+                _idContaContabil = value;
+                base.NotifyPropertyChanged(propertyName: "idContaContabil");
+            }
+        }
+        private int _idTipoDocumento;
         [ParameterOrder(Order = 31)]
-        public int idTipoDocumento { get; set; }
+        public int idTipoDocumento
+        {
+            get { return _idTipoDocumento; }
+            set
+            {
+                _idTipoDocumento = value;
+                base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
+            }
+        }
+        private int _idEmpresa;
         [ParameterOrder(Order = 32)]
-        public int idEmpresa { get; set; }
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
+        private int? _idContato;
         [ParameterOrder(Order = 33)]
-        public int? idContato { get; set; }
+        public int? idContato
+        {
+            get { return _idContato; }
+            set
+            {
+                _idContato = value;
+                if (value != null)
+                {
+                    OrcamentoFacade.objCadastros.objContato = OrcamentoFacade.contatoServico.GetObject(idContato: (int)value);
+                    this.xDepartamento = OrcamentoFacade.objCadastros.objContato.xDepartamento;
+                }
+                base.NotifyPropertyChanged(propertyName: "idContato");
+            }
+        }
+
+        private string _nPedidoCliente;
         [ParameterOrder(Order = 34)]
-        public string nPedidoCliente { get; set; }
+        public string nPedidoCliente
+        {
+            get { return _nPedidoCliente; }
+            set
+            {
+                _nPedidoCliente = value;
+                base.NotifyPropertyChanged(propertyName: "nPedidoCliente");
+            }
+        }
+        private byte _stContribuinteIcms;
         [ParameterOrder(Order = 35)]
-        public byte stContribuinteIcms { get; set; }
+        public byte stContribuinteIcms
+        {
+            get { return _stContribuinteIcms; }
+            set
+            {
+                _stContribuinteIcms = value;
+                base.NotifyPropertyChanged(propertyName: "stContribuinteIcms");
+            }
+        }
+        private int? _idOrcamentoOrigem;
         [ParameterOrder(Order = 36)]
-        public int? idOrcamentoOrigem { get; set; }
+        public int? idOrcamentoOrigem
+        {
+            get { return _idOrcamentoOrigem; }
+            set
+            {
+                _idOrcamentoOrigem = value;
+                base.NotifyPropertyChanged(propertyName: "idOrcamentoOrigem");
+            }
+        }
+        private string _xVersaoOrcamento;
         [ParameterOrder(Order = 37)]
-        public string xVersaoOrcamento { get; set; }
+        public string xVersaoOrcamento
+        {
+            get { return _xVersaoOrcamento; }
+            set
+            {
+                _xVersaoOrcamento = value;
+                base.NotifyPropertyChanged(propertyName: "xVersaoOrcamento");
+            }
+        }
+        private int? _idSite;
         [ParameterOrder(Order = 38)]
-        public int? idSite { get; set; }
+        public int? idSite
+        {
+            get { return _idSite; }
+            set
+            {
+                _idSite = value;
+                base.NotifyPropertyChanged(propertyName: "idSite");
+            }
+        }
+        private int? _idFuncionario;
         [ParameterOrder(Order = 39)]
-        public int? idFuncionario { get; set; }
+        public int? idFuncionario
+        {
+            get { return _idFuncionario; }
+            set
+            {
+                _idFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionario");
+            }
+        }
+        private int? _idFuncionarioResponsavel;
         [ParameterOrder(Order = 40)]
-        public int? idFuncionarioResponsavel { get; set; }
+        public int? idFuncionarioResponsavel
+        {
+            get { return _idFuncionarioResponsavel; }
+            set
+            {
+                _idFuncionarioResponsavel = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionarioResponsavel");
+            }
+        }
+        private byte? _stWeb;
         [ParameterOrder(Order = 41)]
-        public byte? stWeb { get; set; }
+        public byte? stWeb
+        {
+            get { return _stWeb; }
+            set
+            {
+                _stWeb = value;
+                base.NotifyPropertyChanged(propertyName: "stWeb");
+            }
+        }
+        private int? _idTransportador;
         [ParameterOrder(Order = 42)]
-        public int? idTransportador { get; set; }
+        public int? idTransportador
+        {
+            get { return _idTransportador; }
+            set
+            {
+                _idTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportador");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Orcamento_ItemModel> _lOrcamento_Itens;
 
@@ -117,7 +503,11 @@ namespace HLP.Sales.Model.Models.Comercial
         public Orcamento_Total_ImpostosModel orcamento_Total_Impostos
         {
             get { return _orcamento_Total_Impostos; }
-            set { _orcamento_Total_Impostos = value; }
+            set
+            {
+                _orcamento_Total_Impostos = value;
+                base.NotifyPropertyChanged(propertyName: "orcamento_Total_Impostos");
+            }
         }
 
         private Orcamento_retTranspModel _orcamento_retTransp;
@@ -125,7 +515,23 @@ namespace HLP.Sales.Model.Models.Comercial
         public Orcamento_retTranspModel orcamento_retTransp
         {
             get { return _orcamento_retTransp; }
-            set { _orcamento_retTransp = value; }
+            set
+            {
+                _orcamento_retTransp = value;
+                base.NotifyPropertyChanged(propertyName: "orcamento_retTransp");
+            }
+        }
+
+        private string _xDepartamento;
+        [DontMap(bDontMap = true)]
+        public string xDepartamento
+        {
+            get { return _xDepartamento; }
+            set
+            {
+                _xDepartamento = value;
+                base.NotifyPropertyChanged(propertyName: "xDepartamento");
+            }
         }
     }
 
@@ -539,7 +945,11 @@ namespace HLP.Sales.Model.Models.Comercial
         public Orcamento_Item_ImpostosModel orcamento_Item_Impostos
         {
             get { return _orcamento_Item_Impostos; }
-            set { _orcamento_Item_Impostos = value; }
+            set
+            {
+                _orcamento_Item_Impostos = value;
+                base.NotifyPropertyChanged(propertyName: "orcamento_Item_Impostos");
+            }
         }
 
     }

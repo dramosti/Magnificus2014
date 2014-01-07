@@ -55,7 +55,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_retTranspAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_retTransp",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idRetTransp"),
-                                 MapBuilder<Orcamento_retTranspModel>.MapAllProperties().Build());
+                                 MapBuilder<Orcamento_retTranspModel>
+                                 .MapAllProperties()
+                                 .DoNotMap(i => i.status)
+                                 .Build());
             }
 
             return regOrcamento_retTranspAccessor.Execute(idRetTransp).FirstOrDefault();
@@ -66,7 +69,10 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_retTranspAccessor == null)
             {
                 regAllOrcamento_retTranspAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_retTransp",
-                                MapBuilder<Orcamento_retTranspModel>.MapAllProperties().Build());
+                                MapBuilder<Orcamento_retTranspModel>
+                                .MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .Build());
             }
             return regAllOrcamento_retTranspAccessor.Execute().ToList();
         }
@@ -79,7 +85,9 @@ namespace HLP.Sales.Model.Repository.Implementation
                 " where idOrcamento = @idOrcamento",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamento"),
-                                 MapBuilder<Orcamento_retTranspModel>.MapAllProperties().Build());
+                                 MapBuilder<Orcamento_retTranspModel>.MapAllProperties()
+                                 .DoNotMap(i => i.status)
+                                 .Build());
             }
             return regOrcamento_retTranspAccessor.Execute(idOrcamento).FirstOrDefault();
         }

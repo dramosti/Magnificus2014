@@ -48,7 +48,7 @@ namespace HLP.Wcf.Sales
             }
         }
 
-        public int Save(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel)
+        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Save(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace HLP.Wcf.Sales
                 this.orcamento_Total_ImpostosRepository.Save(objOrcamento_Total_Impostos: objModel.orcamento_Total_Impostos);
 
                 this.orcamento_ideRepository.CommitTransaction();
-                return (int)objModel.idOrcamento;
+                return objModel;
             }
             catch (Exception ex)
             {

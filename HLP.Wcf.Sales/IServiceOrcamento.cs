@@ -13,7 +13,7 @@ namespace HLP.Wcf.Sales
     public interface IServiceOrcamento
     {
         [OperationContract]
-        int Save(Orcamento_ideModel objModel);
+        Orcamento_ideModel Save(Orcamento_ideModel objModel);
 
         [OperationContract]
         Orcamento_ideModel GetObjeto(int idObjeto);

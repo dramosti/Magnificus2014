@@ -56,7 +56,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                 regOrcamento_ItemAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Orcamento_Item",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamentoItem"),
-                                 MapBuilder<Orcamento_ItemModel>.MapAllProperties().Build());
+                                 MapBuilder<Orcamento_ItemModel>
+                                 .MapAllProperties()
+                                 .DoNotMap(i => i.status)
+                                 .Build());
             }
 
             return regOrcamento_ItemAccessor.Execute(idOrcamentoItem).FirstOrDefault();
@@ -70,7 +73,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                                             "where idOrcamento = @idOrcamento",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idOrcamento"),
-                                 MapBuilder<Orcamento_ItemModel>.MapAllProperties().DoNotMap(i => i.orcamento_Item_Impostos)
+                                 MapBuilder<Orcamento_ItemModel>
+                                 .MapAllProperties()
+                                 .DoNotMap(i => i.orcamento_Item_Impostos)
+                                 .DoNotMap(i => i.status)
                                  .Build());
             }
             return regOrcamento_ItemAccessor.Execute(idOrcamento).ToList();
@@ -81,7 +87,10 @@ namespace HLP.Sales.Model.Repository.Implementation
             if (regAllOrcamento_ItemAccessor == null)
             {
                 regAllOrcamento_ItemAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Orcamento_Item",
-                                MapBuilder<Orcamento_ItemModel>.MapAllProperties().Build());
+                                MapBuilder<Orcamento_ItemModel>
+                                .MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .Build());
             }
             return regAllOrcamento_ItemAccessor.Execute().ToList();
         }
