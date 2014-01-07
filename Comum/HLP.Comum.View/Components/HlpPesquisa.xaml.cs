@@ -182,5 +182,18 @@ namespace HLP.Comum.View.Components
         }
         #endregion
 
+        #region Eventos
+
+        public event TextChangedEventHandler ucTxtTextChanged;
+
+        private void ucTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ucTxtTextChanged != null)
+            {
+                ucTxtTextChanged(sender: sender, e: e);
+            }
+        }
+
+        #endregion
     }
 }

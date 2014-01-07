@@ -16,4 +16,10 @@ namespace HLP.Comum.Infrastructure
     {
         public bool isPrimary { get; set; }
     }
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    public class DontMap : System.Attribute
+    {
+        public bool bDontMap { get; set; }
+    }
 }

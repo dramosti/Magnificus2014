@@ -28,7 +28,7 @@ namespace HLP.Magnificus.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-            
+
             GerenciadorModulo.Instancia.InicializaSistema();
             try
             {

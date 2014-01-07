@@ -8,6 +8,6 @@ namespace HLP.Comum.Model.Repository.Interfaces.Components
 {
     public interface IFillComboBoxRepository
     {
-        IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox(string sNameView);
+        IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox(string sNameView, string parameter);
     }
 }

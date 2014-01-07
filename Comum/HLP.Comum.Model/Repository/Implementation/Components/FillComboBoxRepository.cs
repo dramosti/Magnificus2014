@@ -17,15 +17,23 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
 
         private DataAccessor<HLP.Comum.Model.Models.modelToComboBox> regComboboxAccessor;
 
-        public IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox(string sNameView)
+        public IEnumerable<HLP.Comum.Model.Models.modelToComboBox> GetAllCidadeToComboBox(string sNameView, string parameter)
         {
             List<HLP.Comum.Model.Models.modelToComboBox> lReturn = new List<Models.modelToComboBox>();
             if (UndTrabalho.ViewExistis(sNameView))
             {
                 if (regComboboxAccessor == null)
                 {
-                    regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}", sNameView),
-                                     MapBuilder<HLP.Comum.Model.Models.modelToComboBox>.MapAllProperties().Build());
+                    if (parameter == "")
+                    {
+                        regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}", sNameView),
+                                         MapBuilder<HLP.Comum.Model.Models.modelToComboBox>.MapAllProperties().Build());
+                    }
+                    else
+                    {
+                        regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}({1})", sNameView, parameter),
+                                         MapBuilder<HLP.Comum.Model.Models.modelToComboBox>.MapAllProperties().Build());
+                    }
 
                 }
                 lReturn = regComboboxAccessor.Execute().ToList();

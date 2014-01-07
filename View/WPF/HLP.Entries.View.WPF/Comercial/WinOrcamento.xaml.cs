@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
+using HLP.Sales.ViewModel.ViewModel.Comercio;
+using HLP.Comum.ViewModel.ViewModels.Components;
 
 namespace HLP.Entries.View.WPF.Comercial
 {
@@ -23,6 +25,25 @@ namespace HLP.Entries.View.WPF.Comercial
         public WinOrcamento()
         {
             InitializeComponent();
+            this.ViewModel = new OrcamentoViewModel();
+        }
+
+        public OrcamentoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as OrcamentoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+
+        private void pesquisaCliente_ucTxtTextChanged(object sender, TextChangedEventArgs e)
+        {
+            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
+            cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: (sender as TextBox).Text);
         }
     }
 }
