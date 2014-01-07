@@ -133,13 +133,13 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <ToolBar Style="{StaticResource toolBarCadastro}">
-                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{DynamicResource ButtonsMainWindow}" Height="30" Width="60"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Content="Duplicar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Content="Pesquisar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Content="Duplicar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Content="Pesquisar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
                             <DockPanel LastChildFill="True" Width="306" Margin="10,0,0,0"  >
                                 <Button       
                                     x:Name="btnPrimeiro"
@@ -162,7 +162,7 @@
                                 <Label Content="{Binding _currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center" Foreground="#FFECE5E5"/>
                             </DockPanel>
                         </ToolBar>
-                        <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="Black"/>
+                        <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
@@ -179,8 +179,9 @@
                                             <ContentPresenter Content="-"/>
                                         </Button>
 
-                                        <Label Grid.Column="0" Content="{Binding _header}"
-											DockPanel.Dock="Left"/>
+                                        <TextBlock Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
+                                        <!--<Label Grid.Column="0" Content="{Binding _header}"
+											DockPanel.Dock="Left"/>-->
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ItemTemplate>
