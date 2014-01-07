@@ -319,7 +319,7 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
     <Style x:Key="toolBarCadastro" TargetType="{x:Type ToolBar}">
-        <Setter Property="Background" Value="#73778C"></Setter>
+        <Setter Property="Background" Value="LightSkyBlue"></Setter>
     </Style>
     <Style x:Key="StyleButton1" TargetType="{x:Type Button}">
         <Setter Property="Background">
@@ -539,6 +539,38 @@
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
     <SolidColorBrush x:Key="Button.Foreground" Color="#FF9FA3A6"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground.MainWindow" Color="#FF423F3A"/>
+    <SolidColorBrush x:Key="ButtonDefaultBorder2" Color="LightSkyBlue"/>
+    <SolidColorBrush x:Key="ButtonMouseOverBorder2" Color="#FFBEE6FD"/>
+    <SolidColorBrush x:Key="ButtonPressed2Border" Color="#FF7DC2EE"/>
+    <SolidColorBrush x:Key="ButtonDisabled2Border" Color="#FFC9CCD3"/>
+    <SolidColorBrush x:Key="ButtonDisabledForegroung" Color="#FF6E6E6E"/>
+    <!--Cores Referentes aos botões da MainWindow-->
+    <LinearGradientBrush x:Key="Button.Default.Border"
+        EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF4CB1F3" Offset="1"/>
+        <GradientStop Color="LightSkyBlue"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush  x:Key="Button.MouseOver.Background.MainWindow" 
+        EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFDCF0FD" Offset="1"/>
+        <GradientStop Color="LightSkyBlue"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Buttom.Pressed.Background" 
+        EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFDCFDE7" Offset="1"/>
+        <GradientStop Color="#FF70ECFF"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Button.Disabled.Background.MainWindow"
+        EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFE8E8E8" Offset="0"/>
+        <GradientStop Color="#FFB9B3B3" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ButtonDefault" 
+        EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF1C66E8" Offset="0.009"/>
+        <GradientStop Color="#FF4BA3E0" Offset="1"/>
+    </LinearGradientBrush>   
     <Style x:Key="BtnFechar" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{x:Null}"/>
@@ -576,12 +608,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <Style TargetType="TabItem">
+    <Style TargetType="{x:Type TabItem}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="4,4,4,4" Margin="2,0">
+                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="4,4,0,0" Margin="1,0">
                         <ContentPresenter x:Name="ContentSite"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -590,37 +621,42 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="LightSkyBlue"/>
+                            <Setter TargetName="Border" Property="Background" Value="#FF4774B5"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="Border" Property="Background" Value="GhostWhite"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TabItem">
-                    <Grid Name="Grid">
-                        <ContentPresenter x:Name="ContentSite"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         ContentSource="Header"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="Grid" Property="Background" Value="LightSkyBlue"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="Grid" Property="Background" Value="White"/>
+                            <Setter TargetName="Border" Property="Background" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type Button}" x:Key="ButtonsMainWindow">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Name="StyleDefaultBorder" Background="{StaticResource ButtonDefaultBorder2}" CornerRadius="5" Margin="2,0,0,0">
+                        </Border>
+                        <Border Name="StyleBorderBrush" BorderBrush="#FF70C0F1" CornerRadius="5" Opacity="1" BorderThickness="0.5">
+                        </Border>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="StyleContentPresenter"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="StyleDefaultBorder" Value="{StaticResource ButtonMouseOverBorder2}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="StyleDefaultBorder" Value="{StaticResource ButtonPressed2Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">                            
+                            <Setter Property="TextElement.Foreground" TargetName="StyleContentPresenter" Value="{StaticResource ButtonDisabledForegroung}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>  
+            </Setter.Value>
+        </Setter>
+    </Style>
     <SolidColorBrush x:Key="TabItemisPressed" Color="White"/>
-
-
 </ResourceDictionary>

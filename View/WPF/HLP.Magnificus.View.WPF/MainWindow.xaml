@@ -83,7 +83,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Border BorderThickness="3">
-                    <Border Style="{DynamicResource BackgroundBorderTitle}">
+                    <Border>
                         <Grid>
                             <TextBlock x:Name="txtMenu" Margin="5,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Menu" Foreground="White" Width="auto" HorizontalAlignment="Left"/>
                             <StackPanel Width="auto" HorizontalAlignment="Right" Orientation="Horizontal">
@@ -99,17 +99,17 @@
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Expander x:Name="expanderContainerCadastros" Header="Cadastros" Style="{StaticResource expanderRecolher}">
-                                <ListBox ItemsSource="{Binding _lWindows}">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <Button Content="{Binding xHeader}" 
+                            <ListBox ItemsSource="{Binding _lWindows}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding xHeader}" 
 												Style="{StaticResource btnListItem}"
 												Tag="{Binding xName}"
 												Command="{Binding DataContext.AddWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}, Mode=FindAncestor}}" CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
                                                     />
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Expander>
                         <Expander x:Name="expanderContainerFavoritos" Header="Favoritos" Grid.Row="1" Style="{StaticResource expanderRecolher}">
                             <ListBox/>
@@ -123,8 +123,8 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="1" Margin="5,5,5,5"
-				BorderThickness="1" BorderBrush="Black">
+            <Border Grid.Row="1" Margin="0,0,10,10"
+				BorderThickness="1" BorderBrush="{x:Null}">
                 <DockPanel LastChildFill="True">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -133,14 +133,14 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <ToolBar Style="{StaticResource toolBarCadastro}">
-                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Content="Duplicar" Style="{StaticResource StyleButton1}"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Content="Pesquisar" Style="{StaticResource StyleButton1}"/>
-                            <DockPanel LastChildFill="True" Width="306" Margin="20,0,0,0"  >
+                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{DynamicResource ButtonsMainWindow}" Height="30" Width="60"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Content="Duplicar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Content="Pesquisar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="30"/>
+                            <DockPanel LastChildFill="True" Width="306" Margin="10,0,0,0"  >
                                 <Button       
                                     x:Name="btnPrimeiro"
                                     Content="Primeiro" 
@@ -164,7 +164,7 @@
                         </ToolBar>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="Black"/>
                         <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
-                            <TabControl.ItemTemplate>                               
+                            <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel LastChildFill="True">
                                         <Button DockPanel.Dock="Right"                                            
