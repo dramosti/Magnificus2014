@@ -633,7 +633,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border Name="StyleDefaultBorder" Background="{StaticResource ButtonBackgroundBlueDefault}" CornerRadius="5" Margin="2,0,0,0">
+                        <Border Name="StyleDefaultBorder" Background="{StaticResource StyleMainWindowDefault}" CornerRadius="5" Margin="2,0,0,0">
                         </Border>                        
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="StyleContentPresenter"/>
                     </Grid>
@@ -641,8 +641,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="StyleDefaultBorder" Value="{StaticResource ButtonBackgroundBlueMouseOver}"/>
                         </Trigger>                        
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextElement.Foreground" TargetName="StyleContentPresenter" Value="{StaticResource ButtonDisabledForegroung}"/>
+                        <Trigger Property="IsEnabled" Value="False">                            
                             <Setter Property="Background" TargetName="StyleDefaultBorder" Value="{StaticResource ButtonBackgrounGrayIsEnabledFalse}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

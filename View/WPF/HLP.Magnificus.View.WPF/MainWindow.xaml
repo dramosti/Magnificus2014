@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.MainWindow"
         Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1029" Closed="Window_Closed"
+        mc:Ignorable="d" WindowState="Maximized" Width="1108.5" Closed="Window_Closed" Height="557.5"
         >
     <Window.Resources>
         <ResourceDictionary>
@@ -133,34 +133,318 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <ToolBar Style="{StaticResource toolBarCadastro}">
-                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Content="Novo" Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Content="Alterar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Content="Excluir" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Content="Salvar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Content="Cancelar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Content="Duplicar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Content="Pesquisar" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25"/>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Add_Preto_48.png" />
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Add_File_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Add_Desabilitado.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Edit_48.png" />
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Edit_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Edit_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Delete_48.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Delete_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Delete_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Save_48.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Save_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Save_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Cancel_2_48.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Cancel_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Cancel_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Copy_48.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Copy_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Copy_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Search_48.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Search_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Search_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>                            
                             <DockPanel LastChildFill="True" Width="306" Margin="10,0,0,0"  >
                                 <Button       
-                                    x:Name="btnPrimeiro"
-                                    Content="Primeiro" 
-                                    Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName= btnPrimeiro, Path=Content}"   Style="{StaticResource StyleButton1}" DockPanel.Dock="Left" Height="20"  Width="50" Margin="0,0,2,0" Foreground="#FFECE5E5"/>
+                                    x:Name="btnPrimeiro"                                     
+                                    Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName= btnPrimeiro, Path=Content}"   Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="50" Margin="0,0,2,0">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Left.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Arrow_MouseOver_Left.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Left_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
                                 <Button 
-                                    x:Name="btnAnterior"
-                                    Content="Anterior"
+                                    x:Name="btnAnterior"                                    
                                     Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName= btnAnterior, Path=Content}"
-                                    Style="{StaticResource StyleButton1}" DockPanel.Dock="Left" Height="20"  Width="50" Margin="0" Foreground="#FFECE5E5"/>
+                                    Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="50" Margin="0">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd" Height="17">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Left.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_MouseOver_Left.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Left_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
                                 <Button 
-                                    x:Name="btnUltimo"
-                                    Content="Ultimo"
+                                    x:Name="btnUltimo"                                    
                                     Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName= btnUltimo, Path=Content}"
-                                    Style="{StaticResource StyleButton1}" DockPanel.Dock="Right" Height="20"  Width="50" Margin="2,0,0,0" Foreground="#FFECE5E5"/>
-                                <Button Content="Proximo" 
-                                        x:Name="btnProximo"
+                                    Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="50" Margin="2,0,0,0" Foreground="#FFECE5E5">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Right.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Arrow_MouseOver_Right.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Right_Enabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button x:Name="btnProximo"
                                         Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName= btnProximo, Path=Content}"
-                                        Style="{StaticResource StyleButton1}" DockPanel.Dock="Right" Height="20"  Width="50" Foreground="#FFECE5E5"/>
-                                <Label Content="{Binding _currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center" Foreground="#FFECE5E5"/>
+                                        Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="50">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd" Height="17">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Right.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_MouseOver_Right.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Right_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Label Content="{Binding _currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>                                    
                             </DockPanel>
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Printer_Enabled.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Printer_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Printer_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <Image x:Name="ImageAdd">
+                                                <Image.Style>
+                                                    <Style TargetType="{x:Type Image}">
+                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Settings_Enabled.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Settings_MouseOver.png"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Settings_Disabled.png"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
                         </ToolBar>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
