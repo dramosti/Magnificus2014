@@ -13,6 +13,7 @@ namespace HLP.Comum.Facade.Sales
         public static cidadeService.IserviceCidadeClient cidadeService;
         public static ufService.IserviceUfClient ufService;
         public static Canal_VendaService.IserviceCanal_VendaClient canal_VendaService;
+        public static Tipo_Documento_Oper_ValidaService.IserviceTipo_documento_Operacao_ValidaClient tipo_Documento_Oper_ValidaService;
         public static OrcamentoCadastros objCadastros;
     }
 
@@ -26,5 +27,6 @@ namespace HLP.Comum.Facade.Sales
 
         public clienteService.Cliente_fornecedorModel objCliente;
         public contato_Service.ContatoModel objContato;
+        public int idTipoOperacao;
     }
 }

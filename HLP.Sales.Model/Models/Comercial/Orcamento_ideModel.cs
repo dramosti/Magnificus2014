@@ -110,15 +110,15 @@ namespace HLP.Sales.Model.Models.Comercial
         }
 
 
-        private string _xCanalVenda;
+        private int _idCanalVenda;
 
-        public string xCanalVenda
+        public int idCanalVenda
         {
-            get { return _xCanalVenda; }
+            get { return _idCanalVenda; }
             set
             {
-                _xCanalVenda = value;
-                base.NotifyPropertyChanged(propertyName: "xCanalVenda");
+                _idCanalVenda = value;
+                base.NotifyPropertyChanged(propertyName: "idCanalVenda");
             }
         }
 
@@ -160,6 +160,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.idRamoAtividade = OrcamentoFacade.objCadastros.objCliente.idRamoAtividade;
                 this.idFuncionarioRepresentante = OrcamentoFacade.objCadastros.objCliente.idFuncionario ?? 0;
                 this.idCondicaoPagamento = OrcamentoFacade.objCadastros.objCliente.idCondicaoPagamento;
+                this.idCanalVenda = OrcamentoFacade.objCadastros.objCliente.idCanalVenda;
 
                 if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count() > 0)
                 {
@@ -659,7 +660,6 @@ namespace HLP.Sales.Model.Models.Comercial
         {
         }
 
-
         private int? _idOrcamentoItem;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idOrcamentoItem
@@ -734,6 +734,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idTipoOperacao = value;
+                OrcamentoFacade.objCadastros.idTipoOperacao = value;
                 base.NotifyPropertyChanged(propertyName: "idTipoOperacao");
             }
         }

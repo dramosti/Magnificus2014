@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Fiscal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:complexType name="Tipo_documento_oper_validaModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoDocumentoOperValida" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tipo_documento_oper_validaModel" nillable="true" type="tns:Tipo_documento_oper_validaModel" />
+  <xs:complexType name="ArrayOfTipo_documento_oper_validaModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tipo_documento_oper_validaModel" nillable="true" type="tns:Tipo_documento_oper_validaModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipo_documento_oper_validaModel" nillable="true" type="tns:ArrayOfTipo_documento_oper_validaModel" />
+</xs:schema>

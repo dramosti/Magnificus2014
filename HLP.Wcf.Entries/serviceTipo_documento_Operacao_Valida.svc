@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HLP.Wcf.Entries.serviceTipo_documento_Operacao_Valida" CodeBehind="serviceTipo_documento_Operacao_Valida.svc.cs" %>
