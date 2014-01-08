@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Facade.Sales;
+using HLP.Entries.Model.Fiscal;
+using System.Collections.ObjectModel;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -659,6 +661,10 @@ namespace HLP.Sales.Model.Models.Comercial
             : base(xTabela: "Orcamento_Item")
         {
         }
+
+        #region Propriedades não mapeadas
+        
+        #endregion
 
         private int? _idOrcamentoItem;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]

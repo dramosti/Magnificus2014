@@ -63,6 +63,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Tipo_Documento_Oper_ValidaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ufService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +167,28 @@
     <None Include="Service References\contato_Service\serviceContato5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\HLP.Comum.Facade.Tipo_Documento_Oper_ValidaService.Tipo_documento_oper_validaModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida.wsdl" />
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ufService\HLP.Comum.Facade.ufService.UFModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -190,6 +217,7 @@
     <WCFMetadataStorage Include="Service References\cidadeService\" />
     <WCFMetadataStorage Include="Service References\clienteService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
+    <WCFMetadataStorage Include="Service References\Tipo_Documento_Oper_ValidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +291,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Canal_VendaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_Documento_Oper_ValidaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
