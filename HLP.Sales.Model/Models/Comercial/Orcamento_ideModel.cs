@@ -14,7 +14,116 @@ namespace HLP.Sales.Model.Models.Comercial
         public Orcamento_ideModel()
             : base("Orcamento_ide")
         {
+            try
+            {
+                if (OrcamentoFacade.clienteServico == null)
+                    OrcamentoFacade.clienteServico = new Comum.Facade.clienteService.IserviceClienteClient();
+
+                if (OrcamentoFacade.contatoServico == null)
+                    OrcamentoFacade.contatoServico = new Comum.Facade.contato_Service.IserviceContatoClient();
+
+                if (OrcamentoFacade.ufService == null)
+                    OrcamentoFacade.ufService = new Comum.Facade.ufService.IserviceUfClient();
+
+                if (OrcamentoFacade.objCadastros == null)
+                    OrcamentoFacade.objCadastros = new OrcamentoCadastros();
+
+                if (OrcamentoFacade.cidadeService == null)
+                    OrcamentoFacade.cidadeService = new Comum.Facade.cidadeService.IserviceCidadeClient();
+
+                if (OrcamentoFacade.canal_VendaService == null)
+                    OrcamentoFacade.canal_VendaService = new Comum.Facade.Canal_VendaService.IserviceCanal_VendaClient();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
+
+        #region Propriedades apenas para visualização na tela
+
+        private string _xDepartamento;
+        public string xDepartamento
+        {
+            get { return _xDepartamento; }
+            set
+            {
+                if (value != null)
+                    _xDepartamento = value;
+                base.NotifyPropertyChanged(propertyName: "xDepartamento");
+            }
+        }
+
+
+        private string _xCidade;
+
+        public string xCidade
+        {
+            get { return _xCidade; }
+            set
+            {
+                if (value != null)
+                    _xCidade = value;
+                base.NotifyPropertyChanged(propertyName: "xCidade");
+            }
+        }
+
+
+        private string _xUf;
+
+        public string xUf
+        {
+            get { return _xUf; }
+            set
+            {
+                if (value != null)
+                    _xUf = value;
+                base.NotifyPropertyChanged(propertyName: "xUf");
+            }
+        }
+
+
+        private string _xTelefone;
+
+        public string xTelefone
+        {
+            get { return _xTelefone; }
+            set
+            {
+                _xTelefone = value;
+                base.NotifyPropertyChanged(propertyName: "xTelefone");
+            }
+        }
+
+
+        private int _idRamoAtividade;
+
+        public int idRamoAtividade
+        {
+            get { return _idRamoAtividade; }
+            set
+            {
+                _idRamoAtividade = value;
+                base.NotifyPropertyChanged(propertyName: "idRamoAtividade");
+            }
+        }
+
+
+        private string _xCanalVenda;
+
+        public string xCanalVenda
+        {
+            get { return _xCanalVenda; }
+            set
+            {
+                _xCanalVenda = value;
+                base.NotifyPropertyChanged(propertyName: "xCanalVenda");
+            }
+        }
+
+        #endregion
+
 
         private int? _idOrcamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -47,6 +156,23 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idClienteFornecedor = value;
                 OrcamentoFacade.objCadastros.objCliente = OrcamentoFacade.clienteServico.getCliente(idCliente: value);
+                this.stContribuinteIcms = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stContribuienteIcms;
+                this.idRamoAtividade = OrcamentoFacade.objCadastros.objCliente.idRamoAtividade;
+                this.idFuncionarioRepresentante = OrcamentoFacade.objCadastros.objCliente.idFuncionario ?? 0;
+                this.idCondicaoPagamento = OrcamentoFacade.objCadastros.objCliente.idCondicaoPagamento;
+
+                if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count() > 0)
+                {
+                    if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count(i => i.stPrincipal == 1) > 0)
+                    {
+                        HLP.Comum.Facade.cidadeService.CidadeModel objCidade =
+                            OrcamentoFacade.cidadeService.getCidade(idCidade:
+                            OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == 1).idCidade);
+                        this.xCidade = objCidade != null ? objCidade.xCidade : "";
+
+                        this.xUf = OrcamentoFacade.ufService.getUf(idUf: objCidade.idUF).xSiglaUf;
+                    }
+                }
                 base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
             }
         }
@@ -381,6 +507,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     OrcamentoFacade.objCadastros.objContato = OrcamentoFacade.contatoServico.GetObject(idContato: (int)value);
                     this.xDepartamento = OrcamentoFacade.objCadastros.objContato.xDepartamento;
+
+                    this.xTelefone = OrcamentoFacade.objCadastros.objContato.xTelefoneComercial ??
+                        OrcamentoFacade.objCadastros.objCliente.xTelefone1;
                 }
                 base.NotifyPropertyChanged(propertyName: "idContato");
             }
@@ -519,18 +648,6 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _orcamento_retTransp = value;
                 base.NotifyPropertyChanged(propertyName: "orcamento_retTransp");
-            }
-        }
-
-        private string _xDepartamento;
-        [DontMap(bDontMap = true)]
-        public string xDepartamento
-        {
-            get { return _xDepartamento; }
-            set
-            {
-                _xDepartamento = value;
-                base.NotifyPropertyChanged(propertyName: "xDepartamento");
             }
         }
     }

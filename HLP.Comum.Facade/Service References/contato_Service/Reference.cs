@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Comum.Facade.contatoService {
+namespace HLP.Comum.Facade.contato_Service {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,18 +17,18 @@ namespace HLP.Comum.Facade.contatoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Comum.Facade.contatoService.Contato_EnderecoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Comum.Facade.contatoService.ContatoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Comum.Facade.contato_Service.Contato_EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Comum.Facade.contato_Service.ContatoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Comum.Facade.contatoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private HLP.Comum.Facade.contato_Service.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Comum.Facade.contatoService.statusModel statusField;
+        private HLP.Comum.Facade.contato_Service.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -41,7 +41,7 @@ namespace HLP.Comum.Facade.contatoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Comum.Facade.contatoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public HLP.Comum.Facade.contato_Service.PesquisaPadraoModelContract[] lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -54,7 +54,7 @@ namespace HLP.Comum.Facade.contatoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Comum.Facade.contatoService.statusModel status {
+        public HLP.Comum.Facade.contato_Service.statusModel status {
             get {
                 return this.statusField;
             }
@@ -80,13 +80,13 @@ namespace HLP.Comum.Facade.contatoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Contato_EnderecoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class Contato_EnderecoModel : HLP.Comum.Facade.contatoService.modelBase {
+    public partial class Contato_EnderecoModel : HLP.Comum.Facade.contato_Service.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Comum.Facade.contatoService.TipoEndereco enumTipoEnderecoField;
+        private HLP.Comum.Facade.contato_Service.TipoEndereco enumTipoEnderecoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Comum.Facade.contatoService.TipoLogradouro enumTipoLogradouroField;
+        private HLP.Comum.Facade.contato_Service.TipoLogradouro enumTipoLogradouroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int idCidadeField;
@@ -137,7 +137,7 @@ namespace HLP.Comum.Facade.contatoService {
         private string xNomeField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Comum.Facade.contatoService.TipoEndereco enumTipoEndereco {
+        public HLP.Comum.Facade.contato_Service.TipoEndereco enumTipoEndereco {
             get {
                 return this.enumTipoEnderecoField;
             }
@@ -150,7 +150,7 @@ namespace HLP.Comum.Facade.contatoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Comum.Facade.contatoService.TipoLogradouro enumTipoLogradouro {
+        public HLP.Comum.Facade.contato_Service.TipoLogradouro enumTipoLogradouro {
             get {
                 return this.enumTipoLogradouroField;
             }
@@ -375,7 +375,7 @@ namespace HLP.Comum.Facade.contatoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ContatoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
     [System.SerializableAttribute()]
-    public partial class ContatoModel : HLP.Comum.Facade.contatoService.modelBase {
+    public partial class ContatoModel : HLP.Comum.Facade.contato_Service.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool AtivoField;
@@ -417,7 +417,7 @@ namespace HLP.Comum.Facade.contatoService {
         private System.Nullable<int> idPersonalidadeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Comum.Facade.contatoService.Contato_EnderecoModel[] lContato_EnderecoModelField;
+        private HLP.Comum.Facade.contato_Service.Contato_EnderecoModel[] lContato_EnderecoModelField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private byte stEstadoCivilField;
@@ -688,7 +688,7 @@ namespace HLP.Comum.Facade.contatoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Comum.Facade.contatoService.Contato_EnderecoModel[] lContato_EnderecoModel {
+        public HLP.Comum.Facade.contato_Service.Contato_EnderecoModel[] lContato_EnderecoModel {
             get {
                 return this.lContato_EnderecoModelField;
             }
@@ -1353,14 +1353,14 @@ namespace HLP.Comum.Facade.contatoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="contatoService.IserviceContato")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="contato_Service.IserviceContato")]
     public interface IserviceContato {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Save", ReplyAction="http://tempuri.org/IserviceContato/SaveResponse")]
-        HLP.Comum.Facade.contatoService.ContatoModel Save(HLP.Comum.Facade.contatoService.ContatoModel objContato);
+        HLP.Comum.Facade.contato_Service.ContatoModel Save(HLP.Comum.Facade.contato_Service.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Save", ReplyAction="http://tempuri.org/IserviceContato/SaveResponse")]
-        System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel> SaveAsync(HLP.Comum.Facade.contatoService.ContatoModel objContato);
+        System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel> SaveAsync(HLP.Comum.Facade.contato_Service.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Delete", ReplyAction="http://tempuri.org/IserviceContato/DeleteResponse")]
         bool Delete(int idContato);
@@ -1369,31 +1369,31 @@ namespace HLP.Comum.Facade.contatoService {
         System.Threading.Tasks.Task<bool> DeleteAsync(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Copy", ReplyAction="http://tempuri.org/IserviceContato/CopyResponse")]
-        HLP.Comum.Facade.contatoService.ContatoModel Copy(HLP.Comum.Facade.contatoService.ContatoModel objContato);
+        HLP.Comum.Facade.contato_Service.ContatoModel Copy(HLP.Comum.Facade.contato_Service.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Copy", ReplyAction="http://tempuri.org/IserviceContato/CopyResponse")]
-        System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel> CopyAsync(HLP.Comum.Facade.contatoService.ContatoModel objContato);
+        System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel> CopyAsync(HLP.Comum.Facade.contato_Service.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetObject", ReplyAction="http://tempuri.org/IserviceContato/GetObjectResponse")]
-        HLP.Comum.Facade.contatoService.ContatoModel GetObject(int idContato);
+        HLP.Comum.Facade.contato_Service.ContatoModel GetObject(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetObject", ReplyAction="http://tempuri.org/IserviceContato/GetObjectResponse")]
-        System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel> GetObjectAsync(int idContato);
+        System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel> GetObjectAsync(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetContato_ByClienteFornec", ReplyAction="http://tempuri.org/IserviceContato/GetContato_ByClienteFornecResponse")]
-        HLP.Comum.Facade.contatoService.ContatoModel[] GetContato_ByClienteFornec(int idContato);
+        HLP.Comum.Facade.contato_Service.ContatoModel[] GetContato_ByClienteFornec(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetContato_ByClienteFornec", ReplyAction="http://tempuri.org/IserviceContato/GetContato_ByClienteFornecResponse")]
-        System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel[]> GetContato_ByClienteFornecAsync(int idContato);
+        System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel[]> GetContato_ByClienteFornecAsync(int idContato);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceContatoChannel : HLP.Comum.Facade.contatoService.IserviceContato, System.ServiceModel.IClientChannel {
+    public interface IserviceContatoChannel : HLP.Comum.Facade.contato_Service.IserviceContato, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceContatoClient : System.ServiceModel.ClientBase<HLP.Comum.Facade.contatoService.IserviceContato>, HLP.Comum.Facade.contatoService.IserviceContato {
+    public partial class IserviceContatoClient : System.ServiceModel.ClientBase<HLP.Comum.Facade.contato_Service.IserviceContato>, HLP.Comum.Facade.contato_Service.IserviceContato {
         
         public IserviceContatoClient() {
         }
@@ -1414,11 +1414,11 @@ namespace HLP.Comum.Facade.contatoService {
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Comum.Facade.contatoService.ContatoModel Save(HLP.Comum.Facade.contatoService.ContatoModel objContato) {
+        public HLP.Comum.Facade.contato_Service.ContatoModel Save(HLP.Comum.Facade.contato_Service.ContatoModel objContato) {
             return base.Channel.Save(objContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel> SaveAsync(HLP.Comum.Facade.contatoService.ContatoModel objContato) {
+        public System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel> SaveAsync(HLP.Comum.Facade.contato_Service.ContatoModel objContato) {
             return base.Channel.SaveAsync(objContato);
         }
         
@@ -1430,27 +1430,27 @@ namespace HLP.Comum.Facade.contatoService {
             return base.Channel.DeleteAsync(idContato);
         }
         
-        public HLP.Comum.Facade.contatoService.ContatoModel Copy(HLP.Comum.Facade.contatoService.ContatoModel objContato) {
+        public HLP.Comum.Facade.contato_Service.ContatoModel Copy(HLP.Comum.Facade.contato_Service.ContatoModel objContato) {
             return base.Channel.Copy(objContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel> CopyAsync(HLP.Comum.Facade.contatoService.ContatoModel objContato) {
+        public System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel> CopyAsync(HLP.Comum.Facade.contato_Service.ContatoModel objContato) {
             return base.Channel.CopyAsync(objContato);
         }
         
-        public HLP.Comum.Facade.contatoService.ContatoModel GetObject(int idContato) {
+        public HLP.Comum.Facade.contato_Service.ContatoModel GetObject(int idContato) {
             return base.Channel.GetObject(idContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel> GetObjectAsync(int idContato) {
+        public System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel> GetObjectAsync(int idContato) {
             return base.Channel.GetObjectAsync(idContato);
         }
         
-        public HLP.Comum.Facade.contatoService.ContatoModel[] GetContato_ByClienteFornec(int idContato) {
+        public HLP.Comum.Facade.contato_Service.ContatoModel[] GetContato_ByClienteFornec(int idContato) {
             return base.Channel.GetContato_ByClienteFornec(idContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Comum.Facade.contatoService.ContatoModel[]> GetContato_ByClienteFornecAsync(int idContato) {
+        public System.Threading.Tasks.Task<HLP.Comum.Facade.contato_Service.ContatoModel[]> GetContato_ByClienteFornecAsync(int idContato) {
             return base.Channel.GetContato_ByClienteFornecAsync(idContato);
         }
     }

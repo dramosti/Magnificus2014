@@ -51,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-        public async void Save()
+        public void Save()
         {
             try
             {
@@ -64,7 +64,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel = await servico.SaveAsync(objViewModel.currentModel);
+                this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                 this.Inicia_Collections();
             }

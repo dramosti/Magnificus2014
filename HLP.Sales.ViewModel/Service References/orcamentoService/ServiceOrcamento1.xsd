@@ -45,10 +45,13 @@
           <xs:element minOccurs="0" name="stOrcamento" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stSuframaOrcamento" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stWeb" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xCidade" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xCotacaoComprasCliente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xDepartamento" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xNomeEntrega" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xObservacao" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xPedidoCliente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xUf" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xVersaoOrcamento" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>

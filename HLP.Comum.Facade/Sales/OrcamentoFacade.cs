@@ -8,9 +8,12 @@ namespace HLP.Comum.Facade.Sales
 {
     public static class OrcamentoFacade
     {
-        public static clienteService.IserviceClienteClient clienteServico = new clienteService.IserviceClienteClient();
-        public static contatoService.IserviceContatoClient contatoServico = new contatoService.IserviceContatoClient();
-        public static OrcamentoCadastros objCadastros = new OrcamentoCadastros();
+        public static clienteService.IserviceClienteClient clienteServico;
+        public static contato_Service.IserviceContatoClient contatoServico;
+        public static cidadeService.IserviceCidadeClient cidadeService;
+        public static ufService.IserviceUfClient ufService;
+        public static Canal_VendaService.IserviceCanal_VendaClient canal_VendaService;
+        public static OrcamentoCadastros objCadastros;
     }
 
     public class OrcamentoCadastros
@@ -18,10 +21,10 @@ namespace HLP.Comum.Facade.Sales
         public OrcamentoCadastros()
         {
             this.objCliente = new clienteService.Cliente_fornecedorModel();
-            this.objContato = new contatoService.ContatoModel();
+            this.objContato = new contato_Service.ContatoModel();
         }
 
         public clienteService.Cliente_fornecedorModel objCliente;
-        public contatoService.ContatoModel objContato;
+        public contato_Service.ContatoModel objContato;
     }
 }

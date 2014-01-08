@@ -61,6 +61,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.orcamento_retTransp)
                                  .DoNotMap(i => i.status)
                                  .DoNotMap(i => i.xDepartamento)
+                                 .DoNotMap(i => i.xCidade)
+                                 .DoNotMap(i => i.xUf)
+                                 .DoNotMap(i => i.xTelefone)
+                                 .DoNotMap(i => i.idRamoAtividade)
                                  .Build());
             }
 
@@ -77,6 +81,10 @@ namespace HLP.Sales.Model.Repository.Implementation
             .DoNotMap(i => i.orcamento_retTransp)
             .DoNotMap(i => i.status)
             .DoNotMap(i => i.xDepartamento)
+            .DoNotMap(i => i.xCidade)
+            .DoNotMap(i => i.xUf)
+            .DoNotMap(i => i.xTelefone)
+            .DoNotMap(i => i.idRamoAtividade)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -91,6 +99,10 @@ namespace HLP.Sales.Model.Repository.Implementation
             .DoNotMap(i => i.orcamento_retTransp)
             .DoNotMap(i => i.status)
             .DoNotMap(i => i.xDepartamento)
+            .DoNotMap(i => i.xCidade)
+            .DoNotMap(i => i.xUf)
+            .DoNotMap(i => i.xTelefone)
+            .DoNotMap(i => i.idRamoAtividade)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -104,6 +116,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.xDepartamento)
+                                .DoNotMap(i => i.xCidade)
+                                .DoNotMap(i => i.xUf)
+                                .DoNotMap(i => i.xTelefone)
+                                .DoNotMap(i => i.idRamoAtividade)
                                 .Build());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();
