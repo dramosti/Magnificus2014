@@ -136,6 +136,7 @@
     <Content Include="serviceTipoServico.svc" />
     <Content Include="serviceTipo_documento.svc" />
     <Content Include="serviceTipoProduto.svc" />
+    <Content Include="serviceTipo_documento_Operacao_Valida.svc" />
     <Content Include="serviceTipo_Operacao.svc" />
     <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
@@ -199,6 +200,7 @@
     <Compile Include="IserviceTipoServico.cs" />
     <Compile Include="IserviceTipo_documento.cs" />
     <Compile Include="IserviceTipoProduto.cs" />
+    <Compile Include="IserviceTipo_documento_Operacao_Valida.cs" />
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
@@ -354,6 +356,9 @@
     </Compile>
     <Compile Include="serviceTipoProduto.svc.cs">
       <DependentUpon>serviceTipoProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceTipo_documento_Operacao_Valida.svc.cs">
+      <DependentUpon>serviceTipo_documento_Operacao_Valida.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceTipo_Operacao.svc.cs">
       <DependentUpon>serviceTipo_Operacao.svc</DependentUpon>
