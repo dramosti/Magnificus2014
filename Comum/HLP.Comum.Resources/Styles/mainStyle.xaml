@@ -43,7 +43,6 @@
                                         </Path.Fill>
                                     </Path>
                                 </Grid>
-
                                 <Path x:Name="path" Fill="{x:Null}" Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
         								Height="9" 
         								RenderTransformOrigin="0.5,0.5" 
@@ -69,7 +68,6 @@
                                         </TransformGroup>
                                     </Path.RenderTransform>
                                 </Path>
-
                             </Grid>
                         </Border>
                     </Border>
@@ -81,28 +79,22 @@
                             <Setter Property="Width" TargetName="path_Copy" Value="6"/>
                             <Setter Property="Height" TargetName="path_Copy" Value="9"/>
                         </Trigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="false"/>
                                 <Condition Property="IsMouseOver" Value="true"/>
                             </MultiTrigger.Conditions>
-
                             <Setter Property="Opacity" TargetName="BGCollection" Value="1"/>
                             <Setter Property="Fill" TargetName="path_Copy" Value="#FFFFFFFF"/>
-
                         </MultiTrigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="True"/>
                                 <Condition Property="IsMouseOver" Value="true"/>
                             </MultiTrigger.Conditions>
-
                             <Setter Property="Opacity" TargetName="BGCollection" Value="1"/>
                             <Setter Property="Fill" TargetName="path" Value="#FFFFFFFF"/>
                         </MultiTrigger>
-
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="#FFADADAD"/>
                         </Trigger>
@@ -131,14 +123,10 @@
             <Trigger Property="ActualWidth" Value="30">
                 <Setter Property="Template" Value="{DynamicResource RightExpander}"/>
             </Trigger>
-
         </Style.Triggers>
     </Style>
     <Style x:Key="LeftPanelCollpasedButtonStyle" TargetType="{x:Type ToggleButton}">
-
-
         <Setter Property="Foreground" Value="White"/>
-
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -146,12 +134,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border BorderBrush="#FF283239" BorderThickness="1,1,1,1" Width="{TemplateBinding Width}" Height="Auto" >
-                        <Border BorderBrush="#FFFFFFFF" BorderThickness="1,1,1,1" x:Name="border" Background="#FF9DACB6" Padding="5,5,5,5">
+                    <Border BorderBrush="Black" BorderThickness=".7" Width="{TemplateBinding Width}" Height="Auto">
+                        <Border BorderBrush="Black" BorderThickness=".7" x:Name="border" Background="#FFBDBDBD" Padding="5,5,5,5">                            
                             <Grid ClipToBounds="False">
                                 <ContentPresenter RenderTransformOrigin="0.5,0.5" x:Name="con" HorizontalAlignment="Center" TextBlock.TextAlignment="Center" ContentTemplate="{TemplateBinding ContentTemplate}"
                                                       Content="{TemplateBinding Content}" 
-                                                      VerticalAlignment="Center">
+                                                      VerticalAlignment="Center" >
                                 </ContentPresenter>
                             </Grid>
                         </Border>
@@ -164,32 +152,14 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="#FFFFFFFF"/>
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <LinearGradientBrush EndPoint="1.071,0.5" StartPoint="0.107,0.5">
-                                        <GradientStop Color="#FF283B48" Offset="0.434"/>
-                                        <GradientStop Color="#FF4A677A" Offset="0"/>
-                                        <GradientStop Color="#FF243643" Offset="0.82"/>
-                                        <GradientStop Color="#FF304655" Offset="0.425"/>
-                                        <GradientStop Color="#FF567992" Offset="1"/>
-                                        <GradientStop Color="#FF385061" Offset="0.425"/>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBackgroundBlueDefault}">                                
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true"/>
-
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Foreground" Value="#FFFFFFFF"/>
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FF0D5F7E" Offset="0"/>
-                                        <GradientStop Color="#FF527F8F" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonBackgroundBlueDefault}">                                
                             </Setter>
-
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="RenderTransform" Value="{DynamicResource paginationbuttonScale}" TargetName="con"/>
@@ -307,8 +277,26 @@
         <Setter Property="Width" Value="60"/>
     </Style>
     <Style x:Key="btnListItem" TargetType="{x:Type Button}">
-        <Setter Property="Width" Value="180"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Name="BtnListItemBorder" Background="Transparent" BorderThickness="1" BorderBrush="Black" Width="190" Height="22" Margin="-1,0,0,0"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="BtnListItemContent" TextElement.Foreground="Black"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="BtnListItemBorder" Value="{StaticResource ButtonBackgroundBlueMouseOver}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="BtnListItemContent" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="BtnListItemBorder" Value="{StaticResource ButtonBackgroundBlueMouseOver}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="BtnListItemContent" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>         
     </Style>
     <Style x:Key="toolBarCadastro" TargetType="{x:Type ToolBar}">
         <Setter Property="Background" Value="{StaticResource StyleMainWindowDefault}"/>
@@ -537,7 +525,8 @@
     <SolidColorBrush x:Key="ButtonPressed2Border" Color="#FF7DC2EE"/>
     <SolidColorBrush x:Key="ButtonDisabled2Border" Color="#FFC9CCD3"/>
     <SolidColorBrush x:Key="ButtonDisabledForegroung" Color="#FF6E6E6E"/>
-    <SolidColorBrush x:Key="StyleMainWindowDefault" Color="#FFDEDEDE"/>
+    <SolidColorBrush x:Key="StyleMainWindowDefault" Color="#FFBDBDBD"/>
+    <SolidColorBrush x:Key="StyleMainGridDefault" Color="#FFD4D1D1"/> 
     <SolidColorBrush x:Key="ButtonBackgroundBlueDefault" Color="#FF4774B5"/>
     <SolidColorBrush x:Key="ButtonBackgroundBlueMouseOver" Color="#FF6A96D4"/>
     <SolidColorBrush x:Key="ButtonBackgrounGrayIsEnabledFalse" Color="#FFCFCFCF"/>    
@@ -648,6 +637,12 @@
                 </ControlTemplate>  
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style TargetType="{x:Type DockPanel}" x:Key="ToolBarBackground">
+        <Setter Property="Background" Value="{StaticResource StyleMainWindowDefault}"/>         
+    </Style>
+    <Style TargetType="{x:Type DockPanel}" x:Key="DockPanelGeral">
+        <Setter Property="Background" Value="{StaticResource StyleMainGridDefault}"/>
     </Style>
     <SolidColorBrush x:Key="TabItemisPressed" Color="White"/>
 </ResourceDictionary>

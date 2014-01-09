@@ -19,13 +19,13 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </runtime:WindowsBase.Resources>
-    <Grid>
+    <Grid Background="{StaticResource StyleMainWindowDefault}">
         <TabControl>
             <TabItem Header="Principal">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Top" Height="131">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <DockPanel LastChildFill="True" Background="{StaticResource StyleMainGridDefault}">
+                        <Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Top" Height="124" Background="{StaticResource StyleMainGridDefault}">
+                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0" Background="{StaticResource StyleMainGridDefault}">
                                 <Components:HlpTextBox 
 									IsEnabled="False"
 									Text="{Binding currentModel.idProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
@@ -113,8 +113,8 @@
 
                             </WrapPanel>
                         </Expander>
-                        <Expander Header="Grupos" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <Expander Header="Grupos" IsExpanded="True" Background="{StaticResource StyleMainGridDefault}">
+                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0" Background="{StaticResource StyleMainGridDefault}">
                                 <Components:HlpPesquisa 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
