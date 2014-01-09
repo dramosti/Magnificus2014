@@ -29,7 +29,7 @@ namespace HLP.Wcf.Entries
         public IEnumerable<Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter)
         {
             try
-            {
+            {                
                 return iFillComboBoxRepository.GetAllCidadeToComboBox(sNameView, sParameter);
             }
             catch (Exception ex)

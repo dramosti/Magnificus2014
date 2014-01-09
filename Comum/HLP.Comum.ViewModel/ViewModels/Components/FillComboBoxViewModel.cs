@@ -19,7 +19,7 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
 
         public ObservableCollection<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter = "")
         {
-                return new ObservableCollection<modelToComboBox>(servico.GetAllValuesToComboBox(sNameView, sParameter: sParameter));
+                return new ObservableCollection<modelToComboBox>(servico.GetAllValuesToComboBox(sNameView, sParameter));
         }
     }
 }

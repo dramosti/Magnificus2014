@@ -24,24 +24,25 @@ namespace HLP.Comum.Model.Repository.Implementation.Components
             {
                 if (regComboboxAccessor == null)
                 {
-                    if (parameter == "")
-                    {
-                        regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}", sNameView),
+                    regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}", sNameView),
                                          MapBuilder<HLP.Comum.Model.Models.modelToComboBox>.MapAllProperties().Build());
-                    }
-                    else
-                    {
-                        regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}({1})", sNameView, parameter),
-                                         MapBuilder<HLP.Comum.Model.Models.modelToComboBox>.MapAllProperties().Build());
-                    }
-
                 }
                 lReturn = regComboboxAccessor.Execute().ToList();
             }
             else
-            {
-                throw new Exception(string.Format("View {0} não existe no banco de Dados", sNameView));
-            }
+                if (UndTrabalho.FunctionExistis(nm_Function: sNameView))
+                {
+                    if (parameter != "" && parameter != null)
+                    {
+                        regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}({1})", sNameView, parameter),
+                                         MapBuilder<HLP.Comum.Model.Models.modelToComboBox>.MapAllProperties().Build());
+                        lReturn = regComboboxAccessor.Execute().ToList();
+                    }
+                }
+                else
+                {
+                    throw new Exception(string.Format("View {0} não existe no banco de Dados", sNameView));
+                }
             return lReturn;
         }
 

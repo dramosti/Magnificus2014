@@ -12,6 +12,7 @@
           <xs:element minOccurs="0" name="dDataRecebimentoSolicitado" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dDataRemessaSolicitada" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dVencimento" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idCanalVenda" type="xs:int" />
           <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
           <xs:element minOccurs="0" name="idCondicaoEntrega" type="xs:int" />
           <xs:element minOccurs="0" name="idCondicaoPagamento" type="xs:int" />
@@ -30,6 +31,7 @@
           <xs:element minOccurs="0" name="idMulta" type="xs:int" />
           <xs:element minOccurs="0" name="idOrcamento" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idOrcamentoOrigem" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idRamoAtividade" type="xs:int" />
           <xs:element minOccurs="0" name="idSite" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
           <xs:element minOccurs="0" name="idTipoOrcamento" type="xs:int" />
@@ -51,6 +53,7 @@
           <xs:element minOccurs="0" name="xNomeEntrega" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xObservacao" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xPedidoCliente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefone" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xUf" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xVersaoOrcamento" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -68,6 +71,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
         <xs:sequence>
+          <xs:element minOccurs="0" name="bXComercialEnabled" type="xs:boolean" />
           <xs:element minOccurs="0" name="dConfirmacaoItem" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dPrevisaoEntrega" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="idCfop" nillable="true" type="xs:int" />

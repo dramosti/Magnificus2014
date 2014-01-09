@@ -42,8 +42,41 @@ namespace HLP.Entries.View.WPF.Comercial
 
         private void pesquisaCliente_ucTxtTextChanged(object sender, TextChangedEventArgs e)
         {
+
             FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
             cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: (sender as TextBox).Text);
+        }
+
+        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
+            int? valor = (int?)cbxStDocumento.SelectedValue;
+            clTipoOperacao.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento",
+                sParameter: valor != null ? valor.ToString() : "");
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender != null)
+            {
+                if ((sender as DataGrid).CurrentColumn != null)
+                {
+                    if ((sender as DataGrid).CurrentColumn.Header.ToString() == "Produtos")
+                    {
+                        int? id = null;
+                        foreach (var item in e.AddedItems)
+                        {
+                            id = (int?)item.GetType().GetProperty(name: "id").GetValue(obj: item);
+                        }
+
+                        FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
+
+                        if (id != null)
+                            clUnidadeMedida.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getUnidadeMedidaToComboBox",
+                                sParameter: id.ToString());
+                    }
+                }
+            }
         }
     }
 }

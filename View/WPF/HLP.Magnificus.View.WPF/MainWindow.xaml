@@ -502,7 +502,8 @@
                             </Button>
                         </ToolBar>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        <TabControl Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
+                        <TabControl                            
+                            Grid.Row="2" SelectedItem="{Binding _currentTab}" x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}">
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Height="24" LastChildFill="True">

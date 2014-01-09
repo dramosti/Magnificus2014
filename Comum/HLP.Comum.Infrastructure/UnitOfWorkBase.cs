@@ -143,6 +143,21 @@ namespace HLP.Comum.Infrastructure
             }
         }
 
+        public bool FunctionExistis(string nm_Function)
+        {
+            int iCount = (int)this.dbPrincipal.ExecuteScalar(
+              "dbo.Proc_ExistisFunction", nm_Function);
+
+            if (iCount == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /// <summary>
         /// Verifica se uma coluna existe na Tabela/View
         /// </summary>
