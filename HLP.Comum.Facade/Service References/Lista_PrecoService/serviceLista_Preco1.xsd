@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" />
+  <xs:element name="getLista_Preco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idListaPrecoPai" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLista_PrecoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="getLista_PrecoResult" nillable="true" type="q1:Lista_Preco_PaiModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveLista_Preco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="objListaPreco" nillable="true" type="q2:Lista_Preco_PaiModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveLista_PrecoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="saveLista_PrecoResult" nillable="true" type="q3:Lista_Preco_PaiModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteLista_Preco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idListaPrecoPai" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteLista_PrecoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="deleteLista_PrecoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="copyLista_Preco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="objListaPreco" nillable="true" type="q4:Lista_Preco_PaiModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="copyLista_PrecoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="copyLista_PrecoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItensListaPreco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idListaPrecoPai" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItensListaPrecoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="GetItensListaPrecoResult" nillable="true" type="q5:ArrayOfLista_precoModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

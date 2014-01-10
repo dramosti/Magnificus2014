@@ -41,12 +41,6 @@ namespace HLP.Entries.View.WPF.Comercial
             }
         }
 
-        private void pesquisaCliente_ucTxtTextChanged(object sender, TextChangedEventArgs e)
-        {
-            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
-            cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: (sender as TextBox).Text);            
-        }
-
         private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
         {
             FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
@@ -79,8 +73,10 @@ namespace HLP.Entries.View.WPF.Comercial
             }
         }
 
-        private void pesquisaCliente_ucTxtLostFocus_1(object sender, RoutedEventArgs e)
+        private void pesquisaCliente_ucTxtPesquisaTextChanged(object sender, TextChangedEventArgs e)
         {
+            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
+            cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: pesquisaCliente.Text);
             clListaPreco.IsReadOnly = this.ViewModel.bListaPrecoHabilitado;
         }
     }

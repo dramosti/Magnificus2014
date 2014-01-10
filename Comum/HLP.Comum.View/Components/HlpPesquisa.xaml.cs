@@ -204,6 +204,16 @@ namespace HLP.Comum.View.Components
             }
         }
 
+        public event TextChangedEventHandler ucTxtPesquisaTextChanged;
+
+        private void ucTxtPesquisa_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (ucTxtPesquisaTextChanged != null)
+            {
+                ucTxtPesquisaTextChanged(sender: sender, e: e);
+            }
+        }
+
         #endregion
     }
 }

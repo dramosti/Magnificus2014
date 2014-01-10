@@ -60,11 +60,10 @@
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data e Hora Criado" Help="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento." WidthLabel="152" Width="258"/>
                 <Components:HlpPesquisa 
-                    x:Name="pesquisaCliente" 
-                    ucTxtTextChanged="pesquisaCliente_ucTxtTextChanged"
-                    ucTxtLostFocus="pesquisaCliente_ucTxtLostFocus_1"
+                    x:Name="pesquisaCliente"                     
+                    ucTxtPesquisaTextChanged="pesquisaCliente_ucTxtPesquisaTextChanged"
                     Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="63" Width="341.5" RenderTransformOrigin="0.5,0.5">
                     <Components:HlpPesquisa.Items>

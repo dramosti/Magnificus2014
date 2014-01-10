@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="98182ffc-bbd9-4c99-84a3-c63599d0af55" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceLista_Preco.xsd" MetadataType="Schema" ID="83c6c2a9-3120-4812-a66e-3b6f51ed6cf0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceLista_Preco1.xsd" MetadataType="Schema" ID="97d94d77-d858-4faf-aff5-3335c0bb75b2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceLista_Preco.disco" MetadataType="Disco" ID="89589668-f9ba-4f1c-bc7d-dfb62a00a20b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?disco" />
+    <MetadataFile FileName="serviceLista_Preco2.xsd" MetadataType="Schema" ID="817d6d19-9dd0-406b-99c2-a0b21d31db11" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceLista_Preco3.xsd" MetadataType="Schema" ID="7e95ffd7-9d69-436b-bbba-c6befb14e722" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceLista_Preco4.xsd" MetadataType="Schema" ID="76c0cd70-6b87-4b9b-97bf-00cc3854842e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceLista_Preco5.xsd" MetadataType="Schema" ID="c62ff13f-8a7c-4e05-972a-bcca08879fb2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceLista_Preco.wsdl" MetadataType="Wsdl" ID="59333fbd-59a8-420e-98c1-f2991076e5f0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
