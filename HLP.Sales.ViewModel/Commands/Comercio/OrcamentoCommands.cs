@@ -278,15 +278,18 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 throw new Exception(message: e.Error.Message);
             }
-            //else
-            //{
-            //    this.objViewModel.currentModelImpostos = this.objViewModel.currentModel.orcamento_Total_Impostos;
-            //}
         }
 
         private void getOrcamento(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+            try
+            {
+                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
         }
         #endregion
 

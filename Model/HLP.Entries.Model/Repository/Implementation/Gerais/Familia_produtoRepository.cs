@@ -32,6 +32,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             familia = regFamiliaProdAccessor.Execute(idFamiliaProduto).FirstOrDefault();
             return familia;
         }
+
         public void Save(Familia_produtoModel familia_produto)
         {
             try

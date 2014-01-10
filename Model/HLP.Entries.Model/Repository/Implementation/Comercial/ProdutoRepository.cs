@@ -30,7 +30,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regProduToAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_produto",
                                      new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idProduto"),
-                                    MapBuilder<ProdutoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                    MapBuilder<ProdutoModel>.MapAllProperties()
+                                    .DoNotMap(i => i.status)                                    
+                                    .Build());
             }
 
             return regProduToAccessor.Execute(idProduto).FirstOrDefault();

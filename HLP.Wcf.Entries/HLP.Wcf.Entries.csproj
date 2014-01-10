@@ -141,7 +141,9 @@
     <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="camposBaseDadosService.svc.cs">

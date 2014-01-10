@@ -53,12 +53,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\clienteService\Reference.cs">
+    <Compile Include="Service References\contato_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\contato_Service\Reference.cs">
+    <Compile Include="Service References\Familia_ProdutoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Lista_PrecoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\produtoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -123,28 +133,6 @@
     <None Include="Service References\cidadeService\serviceCidade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\clienteService\HLP.Comum.Facade.clienteService.Cliente_fornecedorModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente.wsdl" />
-    <None Include="Service References\clienteService\serviceCliente.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\contato_Service\HLP.Comum.Facade.contato_Service.ContatoModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -165,6 +153,78 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\contato_Service\serviceContato5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\HLP.Comum.Facade.Familia_ProdutoService.Familia_produtoModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto.wsdl" />
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Lista_PrecoService\HLP.Comum.Facade.Lista_PrecoService.Lista_Preco_PaiModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco.wsdl" />
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\HLP.Comum.Facade.produtoService.ProdutoModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto.wsdl" />
+    <None Include="Service References\produtoService\serviceProduto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\produtoService\serviceProduto6.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Tipo_Documento_Oper_ValidaService\HLP.Comum.Facade.Tipo_Documento_Oper_ValidaService.Tipo_documento_oper_validaModel.datasource">
@@ -215,25 +275,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
-    <WCFMetadataStorage Include="Service References\clienteService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
+    <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
+    <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
+    <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_Documento_Oper_ValidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\serviceCliente.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\contato_Service\serviceContato.disco" />
@@ -306,6 +353,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Tipo_Documento_Oper_ValidaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\serviceProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Familia_ProdutoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\serviceLista_Preco.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Lista_PrecoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
