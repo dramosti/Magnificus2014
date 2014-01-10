@@ -28,7 +28,7 @@
         </ObjectDataProvider>
     </Window.Resources>
 
-    <Grid Background="{StaticResource StyleMainWindowDefault}">
+    <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Principal">
                 <AdornerDecorator>
