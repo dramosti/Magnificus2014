@@ -28,6 +28,13 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
         }
 
+        public bool bListaPrecoHabilitado
+        {
+            get
+            {
+                return !this.currentModel.bListaPrecoItemHabil;
+            }
+        }
 
         private Orcamento_ideModel _currentModel;
 

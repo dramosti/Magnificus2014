@@ -282,7 +282,14 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void getOrcamento(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+            try
+            {
+                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
         }
         #endregion
 

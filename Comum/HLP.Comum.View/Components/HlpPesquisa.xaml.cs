@@ -194,6 +194,16 @@ namespace HLP.Comum.View.Components
             }
         }
 
+        public event RoutedEventHandler ucTxtLostFocus;
+
+        private void ucTxt_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ucTxtTextChanged != null)
+            {
+                ucTxtLostFocus(sender: sender, e: e);
+            }
+        }
+
         #endregion
     }
 }

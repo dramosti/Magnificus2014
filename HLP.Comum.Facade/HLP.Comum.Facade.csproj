@@ -53,11 +53,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\clienteService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\contato_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,28 +131,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cidadeService\serviceCidade5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\HLP.Comum.Facade.clienteService.Cliente_fornecedorModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente.wsdl" />
-    <None Include="Service References\clienteService\serviceCliente.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\contato_Service\HLP.Comum.Facade.contato_Service.ContatoModel.datasource">
@@ -302,28 +275,12 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
-    <WCFMetadataStorage Include="Service References\clienteService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_Documento_Oper_ValidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\serviceCliente.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\contato_Service\serviceContato.disco" />

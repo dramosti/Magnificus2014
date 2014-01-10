@@ -150,6 +150,17 @@ namespace HLP.Comum.View.Components
                 UCTextChanged(sender: this, e: e);
             }
         }
+
+        public event RoutedEventHandler UcLostFocus;
+
+        private void txtControle_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (UcLostFocus != null)
+            {
+                UcLostFocus(sender: sender, e: e);
+            }
+        }
+
     }
 
 }

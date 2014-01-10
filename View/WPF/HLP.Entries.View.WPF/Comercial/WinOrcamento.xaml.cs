@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using HLP.Comum.ViewModel.ViewModels.Components;
+using System.Reflection;
 
 namespace HLP.Entries.View.WPF.Comercial
 {
@@ -44,7 +45,7 @@ namespace HLP.Entries.View.WPF.Comercial
         {
 
             FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
-            cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: (sender as TextBox).Text);
+            cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: (sender as TextBox).Text);            
         }
 
         private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
@@ -77,6 +78,11 @@ namespace HLP.Entries.View.WPF.Comercial
                     }
                 }
             }
+        }
+
+        private void pesquisaCliente_ucTxtLostFocus_1(object sender, RoutedEventArgs e)
+        {
+            clListaPreco.IsReadOnly = !this.ViewModel.bListaPrecoHabilitado;
         }
     }
 }

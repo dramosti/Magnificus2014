@@ -28,7 +28,7 @@
         </Button>
         <TextBox x:Name="txtControle"  DockPanel.Dock="Left"
                  TextChanged="txtControle_TextChanged"
-                 
+                 LostFocus="txtControle_LostFocus"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Height="20" FontFamily="Calibri" FontSize="14">
