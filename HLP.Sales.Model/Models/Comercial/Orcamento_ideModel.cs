@@ -18,8 +18,8 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             try
             {
-                //if (OrcamentoFacade.clienteServico == null)
-                //    OrcamentoFacade.clienteServico = new Comum.Facade.clienteService.IserviceClienteClient();
+                if (OrcamentoFacade.clienteServico == null)
+                    OrcamentoFacade.clienteServico = new Comum.Facade.clienteService.IserviceClienteClient();
 
                 if (OrcamentoFacade.contatoServico == null)
                     OrcamentoFacade.contatoServico = new Comum.Facade.contato_Service.IserviceContatoClient();
@@ -139,9 +139,9 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             get
             {
-                //if (OrcamentoFacade.objCadastros != null)
-                //    if (OrcamentoFacade.objCadastros.objCliente != null)
-                //        return OrcamentoFacade.objCadastros.objCliente.stObrigaListaPreco == 0;
+                if (OrcamentoFacade.objCadastros != null)
+                    if (OrcamentoFacade.objCadastros.objCliente != null)
+                        return OrcamentoFacade.objCadastros.objCliente.stObrigaListaPreco == 0;
 
                 return true;
             }
@@ -151,8 +151,7 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             get
             {
-                //return OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai;
-                return 0;
+                return OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai;
             }
         }
 
@@ -189,44 +188,44 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idClienteFornecedor = value;
-                //OrcamentoFacade.objCadastros.objCliente = OrcamentoFacade.clienteServico.getCliente(idCliente: value);
-                //if (OrcamentoFacade.objCadastros.objCliente != null)
-                //{
-                //    if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal != null)
-                //    {
-                //        this.stContribuinteIcms = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stContribuienteIcms;
-                //    }
-                //    this.idRamoAtividade = OrcamentoFacade.objCadastros.objCliente.idRamoAtividade;
-                //    this.idFuncionarioRepresentante = OrcamentoFacade.objCadastros.objCliente.idFuncionario ?? 0;
-                //    this.idCondicaoPagamento = OrcamentoFacade.objCadastros.objCliente.idCondicaoPagamento;
-                //    this.idCanalVenda = OrcamentoFacade.objCadastros.objCliente.idCanalVenda;
-                //    OrcamentoFacade.objCadastros.objListaPreco = OrcamentoFacade.lista_PrecoService.getLista_Preco(idListaPrecoPai:
-                //    OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai);
+                OrcamentoFacade.objCadastros.objCliente = OrcamentoFacade.clienteServico.getCliente(idCliente: value);
+                if (OrcamentoFacade.objCadastros.objCliente != null)
+                {
+                    if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal != null)
+                    {
+                        this.stContribuinteIcms = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stContribuienteIcms;
+                    }
+                    this.idRamoAtividade = OrcamentoFacade.objCadastros.objCliente.idRamoAtividade;
+                    this.idFuncionarioRepresentante = OrcamentoFacade.objCadastros.objCliente.idFuncionario ?? 0;
+                    this.idCondicaoPagamento = OrcamentoFacade.objCadastros.objCliente.idCondicaoPagamento;
+                    this.idCanalVenda = OrcamentoFacade.objCadastros.objCliente.idCanalVenda;
+                    OrcamentoFacade.objCadastros.objListaPreco = OrcamentoFacade.lista_PrecoService.getLista_Preco(idListaPrecoPai:
+                    OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai);
 
-                //    if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco != null)
-                //    {
-                //        if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count() > 0)
-                //        {
-                //            if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count(i => i.stPrincipal == 1) > 0)
-                //            {
-                //                HLP.Comum.Facade.cidadeService.CidadeModel objCidade =
-                //                    OrcamentoFacade.cidadeService.getCidade(idCidade:
-                //                    OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == 1).idCidade);
-                //                this.xCidade = objCidade != null ? objCidade.xCidade : "";
+                    if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco != null)
+                    {
+                        if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count() > 0)
+                        {
+                            if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count(i => i.stPrincipal == 1) > 0)
+                            {
+                                HLP.Comum.Facade.cidadeService.CidadeModel objCidade =
+                                    OrcamentoFacade.cidadeService.getCidade(idCidade:
+                                    OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == 1).idCidade);
+                                this.xCidade = objCidade != null ? objCidade.xCidade : "";
 
-                //                this.xUf = OrcamentoFacade.ufService.getUf(idUf: objCidade.idUF).xSiglaUf;
-                //            }
-                //        }
-                //    }
-                //    if (!this.bListaPrecoItemHabil)
-                //    {
-                //        foreach (Orcamento_ItemModel it in this.lOrcamento_Itens)
-                //        {
-                //            it.idListaPrecoPai = this.idListaPrecoPaiCliente;
-                //            base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
-                //        }
-                //    }
-                //}
+                                this.xUf = OrcamentoFacade.ufService.getUf(idUf: objCidade.idUF).xSiglaUf;
+                            }
+                        }
+                    }
+                    if (!this.bListaPrecoItemHabil)
+                    {
+                        foreach (Orcamento_ItemModel it in this.lOrcamento_Itens)
+                        {
+                            it.idListaPrecoPai = this.idListaPrecoPaiCliente;
+                            base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
+                        }
+                    }
+                }
                 base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
             }
         }
@@ -563,8 +562,8 @@ namespace HLP.Sales.Model.Models.Comercial
                     if (OrcamentoFacade.objCadastros.objContato != null)
                     {
                         this.xDepartamento = OrcamentoFacade.objCadastros.objContato.xDepartamento;
-                        //this.xTelefone = OrcamentoFacade.objCadastros.objContato.xTelefoneComercial ??
-                        //    OrcamentoFacade.objCadastros.objCliente.xTelefone1;
+                        this.xTelefone = OrcamentoFacade.objCadastros.objContato.xTelefoneComercial ??
+                            OrcamentoFacade.objCadastros.objCliente.xTelefone1;
                     }
                 }
                 base.NotifyPropertyChanged(propertyName: "idContato");
@@ -713,12 +712,12 @@ namespace HLP.Sales.Model.Models.Comercial
         public Orcamento_ItemModel()
             : base(xTabela: "Orcamento_Item")
         {
-            //if (OrcamentoFacade.objCadastros != null)
-            //    if (OrcamentoFacade.objCadastros.objCliente != null)
-            //    {
-            //        this.idListaPrecoPai = OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai;
-            //        base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
-            //    }
+            if (OrcamentoFacade.objCadastros != null)
+                if (OrcamentoFacade.objCadastros.objCliente != null)
+                {
+                    this.idListaPrecoPai = OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai;
+                    base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
+                }
         }
 
         #region Propriedades não mapeadas

@@ -9,6 +9,7 @@ namespace HLP.Comum.Facade.Sales
 {
     public static class OrcamentoFacade
     {
+        public static clienteService.IserviceClienteClient clienteServico;
         public static contato_Service.IserviceContatoClient contatoServico;
         public static cidadeService.IserviceCidadeClient cidadeService;
         public static ufService.IserviceUfClient ufService;
@@ -19,7 +20,10 @@ namespace HLP.Comum.Facade.Sales
         {
             get
             {
-                return _objCadastros ?? new OrcamentoCadastros();
+                if (_objCadastros == null)
+                    _objCadastros = new OrcamentoCadastros();
+
+                return _objCadastros;
             }
             set
             {
@@ -36,6 +40,7 @@ namespace HLP.Comum.Facade.Sales
         public OrcamentoCadastros()
         {
             this.objContato = new contato_Service.ContatoModel();
+            this.objCliente = new clienteService.Cliente_fornecedorModel();
             this.objListaPreco = new Lista_PrecoService.Lista_Preco_PaiModel();
             lProdutos = new List<produtoService.ProdutoModel>();
         }
@@ -44,6 +49,7 @@ namespace HLP.Comum.Facade.Sales
         public List<produtoService.ProdutoModel> lProdutos;
         public int idTipoOperacao;
         public Lista_PrecoService.Lista_Preco_PaiModel objListaPreco;
+        public clienteService.Cliente_fornecedorModel objCliente;
 
         #region NotifyPropertyChanged
 

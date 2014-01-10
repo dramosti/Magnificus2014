@@ -64,7 +64,7 @@
                     ucTxtTextChanged="pesquisaCliente_ucTxtTextChanged"
                     ucTxtLostFocus="pesquisaCliente_ucTxtLostFocus_1"
                     Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=Explicit, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="63" Width="341.5" RenderTransformOrigin="0.5,0.5">
                     <Components:HlpPesquisa.Items>
