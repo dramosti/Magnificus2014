@@ -58,12 +58,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Condicao_PagamentoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\contato_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\empresaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Familia_ProdutoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\funcionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -79,6 +94,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\Tipo_Documento_Oper_ValidaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Tipo_OperacaoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -160,6 +180,28 @@
     <None Include="Service References\clienteService\serviceCliente5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Condicao_PagamentoService\HLP.Comum.Facade.Condicao_PagamentoService.Condicao_pagamentoModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento.wsdl" />
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\contato_Service\HLP.Comum.Facade.contato_Service.ContatoModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -182,6 +224,31 @@
     <None Include="Service References\contato_Service\serviceContato5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\empresaService\HLP.Comum.Facade.empresaService.EmpresaModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
+    <None Include="Service References\empresaService\serviceEmpresa.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Familia_ProdutoService\HLP.Comum.Facade.Familia_ProdutoService.Familia_produtoModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -202,6 +269,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\HLP.Comum.Facade.funcionarioService.FuncionarioModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario.wsdl" />
+    <None Include="Service References\funcionarioService\serviceFuncionario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Lista_PrecoService\HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel.datasource">
@@ -276,6 +365,28 @@
     <None Include="Service References\Tipo_Documento_Oper_ValidaService\serviceTipo_documento_Operacao_Valida5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Tipo_OperacaoService\HLP.Comum.Facade.Tipo_OperacaoService.Tipo_operacaoModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.wsdl" />
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ufService\HLP.Comum.Facade.ufService.UFModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -303,11 +414,15 @@
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
     <WCFMetadataStorage Include="Service References\clienteService\" />
+    <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
+    <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
+    <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_Documento_Oper_ValidaService\" />
+    <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
   </ItemGroup>
   <ItemGroup>
@@ -444,6 +559,72 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\funcionarioService\serviceFuncionario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\funcionarioService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\funcionarioService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\funcionarioService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Condicao_PagamentoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Condicao_PagamentoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Condicao_PagamentoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\serviceTipo_Operacao.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Tipo_OperacaoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\serviceEmpresa.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
+      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
+      <Name>HLP.Comum.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

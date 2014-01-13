@@ -49,6 +49,26 @@ namespace HLP.Comum.Resources.RecursosBases
         OUTRO
     };
 
+    public enum stOrigem
+    {
+        [Description("0 - Nacional")]
+        NACION,
+        [Description("1 - Estrangeira – Importação Direta")]
+        ESTRIMPDIRET,
+        [Description("2 - Estrangeira – Adquirida no mercado Interno.")]
+        ESTRMERCINTERNO,
+        [Description("3 - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 40% (quarenta por cento)")]
+        NACIONBEMIMPORTSUP40,
+        [Description("4 - Nacional, cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam o Decreto-Lei nº 288/67, e as Leis nºs 8.248/91, 8.387/91, 10.176/01 e 11 . 4 8 4 / 0 7")]
+        NACIONDECRETO28867,
+        [Description("5 - Nacional, mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40% (quarenta por cento)")]
+        NACIONBEMIMPORTINF40,
+        [Description("6 - Estrangeira - Importação direta, sem similar nacional, constante em lista de Resolução CAMEX")]
+        ESTRIMPDIRETSEMSIMILNACION,
+        [Description("7 - Estrangeira - Adquirida no mercado interno, sem similar nacional, constante em lista de Resolução CAMEX”")]
+        ESTRMERCINTERNOSEMSIMILNACION
+    }
+
     public enum TipoLogradouro
     {
         [Description("00-AER - AEROPORTO")]
