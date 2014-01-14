@@ -16,7 +16,7 @@
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
 					Text="{Binding currentModel.idCalendario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="True"
 					Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Código" Help="Chave principal do registro calendário" WidthLabel="137" Width="224.333"/>
                 <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"

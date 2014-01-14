@@ -41,7 +41,7 @@
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwCidadeToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>       
+        </ObjectDataProvider>
     </runtime:WindowsBase.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -61,33 +61,33 @@
                                     <Components:HlpTextBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}" 
-								Height="27" Margin="10,0,10,2" Caption="Código de Origem do Funcionário" Field="idFuncionario" Help="Chave principal do registro do Funcionário" Table="Funcionario" WidthLabel="249" HorizontalAlignment="Left" Width="330"/>
+								IsReadOnly="True"
+								Height="27" Margin="10,0,10,2" Caption="Código" Field="idFuncionario" Help="Chave principal do registro do Funcionário" Table="Funcionario" WidthLabel="200" HorizontalAlignment="Left" Width="330"/>
                                     <Components:HlpTextBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xCodigoAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Código Alternativo " Field="xCodigoAlternativo" Help="Digite um código alternativo para o Funcionário " Table="Funcionario" WidthLabel="249" HorizontalAlignment="Left" Width="330"/>
+								Height="27" Margin="10,0,10,2" Caption="Código Alternativo " Field="xCodigoAlternativo" Help="Digite um código alternativo para o Funcionário " Table="Funcionario" WidthLabel="200" HorizontalAlignment="Left" Width="330"/>
                                     <Components:HlpCheckBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 								IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Ativo" Field="Ativo" Help="Informe o status do funcionário, se ele está ativo ou não para a empresa" Table="Funcionario" WidthLabel="249" HorizontalAlignment="Left"/>
+								Height="27" Margin="10,0,10,2" Caption="Ativo" Field="Ativo" Help="Informe o status do funcionário, se ele está ativo ou não para a empresa" Table="Funcionario" WidthLabel="200" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xSaudacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Saudação" Field="xSaudacao" Help="Especifique a forma de saudação preferencial de um funcionário" Table="Funcionario" WidthLabel="249" HorizontalAlignment="Left" Width="450"/>
+								Height="27" Margin="10,0,10,2" Caption="Saudação" Field="xSaudacao" Help="Especifique a forma de saudação preferencial de um funcionário" Table="Funcionario" WidthLabel="200" HorizontalAlignment="Left" Width="450"/>
                                     <Components:HlpTextBox
 								Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 								Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Nome" Field="xNome" Help="Informe o nome do funcionário." Table="Funcionario" WidthLabel="249" HorizontalAlignment="Left" Width="450"/>
+								Height="27" Margin="10,0,10,2" Caption="Nome" Field="xNome" Help="Informe o nome do funcionário." Table="Funcionario" WidthLabel="200" HorizontalAlignment="Left" Width="450"/>
                                     <Components:HlpPesquisa
                                 Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Cargo" Field="idCargo" Help="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="249" TableView="vwCargo" FieldPesquisa="ID" HorizontalAlignment="Left" Width="500">
+								Height="27" Margin="10,0,10,2" Caption="Cargo" Field="idCargo" Help="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="200" TableView="vwCargo" FieldPesquisa="ID" HorizontalAlignment="Left" Width="500">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xCargo</System:String>
                                             <System:String>xDescricao</System:String>
@@ -97,7 +97,7 @@
 								Validation.ErrorTemplate="{StaticResource exceptionComp}" 
 								Text="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Departamento" Field="idDepartamento" Help="Informar o Departamento do funcionário" Table="Departamento" WidthLabel="249" FieldPesquisa="ID" TableView="vwDepartamento" HorizontalAlignment="Left" Width="500">
+								Height="27" Margin="10,0,10,2" Caption="Departamento" Field="idDepartamento" Help="Informar o Departamento do funcionário" Table="Departamento" WidthLabel="200" FieldPesquisa="ID" TableView="vwDepartamento" HorizontalAlignment="Left" Width="500">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xDepartamento</System:String>
                                             <System:String>xDescricao</System:String>
@@ -733,7 +733,7 @@
                                     <DataTemplate>
                                         <Components:HlpTextBox
                                             Caption="" WidthLabel="0"
-                                            Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:HlpTextBox>                                            
+                                            Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:HlpTextBox>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>

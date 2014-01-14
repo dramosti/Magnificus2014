@@ -147,8 +147,6 @@
   <object id="WinCalendarioDetalhe" name="Detalhamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinCalendarioDetalhe, HLP.Entries.View.WPF">
   </object>
-
-
 <object id="WinTransportadora" name="Transportadora" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Transportes.WinTransportadora, HLP.Entries.View.WPF">
   </object>

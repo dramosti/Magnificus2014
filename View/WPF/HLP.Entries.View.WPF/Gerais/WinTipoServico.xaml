@@ -9,7 +9,7 @@
         <Expander Header="Principal" HorizontalAlignment="Left" Height="130.5" VerticalAlignment="Top" Width="611" IsExpanded="True">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox
-					IsEnabled="{Binding bIsEnabled}"
+					IsReadOnly="True"
 					Text="{Binding currentModel.idTipoServico, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"					
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do tipo de serviço" WidthLabel="130" HorizontalAlignment="Left" Width="220"/>
                 <Components:HlpTextBox 

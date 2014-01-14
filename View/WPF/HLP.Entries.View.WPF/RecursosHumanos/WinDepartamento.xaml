@@ -13,7 +13,7 @@
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
 			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
-			IsEnabled="{Binding bIsEnabled}" 
+			IsReadOnly="True" 
 			Text="{Binding currentModel.idDepartamento, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"		
 			Caption="Código" 
 			Field="idDepartamento" 

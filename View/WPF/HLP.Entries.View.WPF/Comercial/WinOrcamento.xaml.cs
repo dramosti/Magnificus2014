@@ -58,9 +58,13 @@ namespace HLP.Entries.View.WPF.Comercial
                     if ((sender as DataGrid).CurrentColumn.Header.ToString() == "Produtos")
                     {
                         int? id = null;
+                        PropertyInfo pi;
                         foreach (var item in e.AddedItems)
                         {
-                            id = (int?)item.GetType().GetProperty(name: "id").GetValue(obj: item);
+                            pi = item.GetType().GetProperty(name: "id");
+
+                            if (pi != null)
+                                id = (int?)pi.GetValue(obj: item);
                         }
 
                         FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="75868389-c839-461c-8160-7fead99b9ba8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceClassificacaoFiscal.disco" MetadataType="Disco" ID="95b477d8-c44a-418a-9653-11c268db3c08" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?disco" />
+    <MetadataFile FileName="serviceClassificacaoFiscal.xsd" MetadataType="Schema" ID="80d273f2-cd3f-4d4c-809d-ad746228e72c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceClassificacaoFiscal1.xsd" MetadataType="Schema" ID="f038b2a4-6bc3-4237-ad12-05542a893705" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceClassificacaoFiscal2.xsd" MetadataType="Schema" ID="8921451d-503f-4ceb-9aaa-53247c9d3846" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceClassificacaoFiscal3.xsd" MetadataType="Schema" ID="7caf0cb2-84ac-44f3-81d0-bab05fa9598f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceClassificacaoFiscal4.xsd" MetadataType="Schema" ID="7c71a566-73d7-4ad4-a422-ba48db735983" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceClassificacaoFiscal5.xsd" MetadataType="Schema" ID="cdfed1c2-607f-4ff0-996b-39d8bfd6f204" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceClassificacaoFiscal.wsdl" MetadataType="Wsdl" ID="b587a10d-2227-43fe-8a6f-7a9a13cd8768" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceClassificacaoFiscal.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

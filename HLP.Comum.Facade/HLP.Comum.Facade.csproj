@@ -53,6 +53,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ClassificacaoFiscalServico\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\clienteService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +161,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cidadeService\serviceCidade5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\HLP.Comum.Facade.ClassificacaoFiscalServico.Classificacao_fiscalModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.wsdl" />
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\clienteService\HLP.Comum.Facade.clienteService.Cliente_fornecedorModel.datasource">
@@ -413,6 +440,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
+    <WCFMetadataStorage Include="Service References\ClassificacaoFiscalServico\" />
     <WCFMetadataStorage Include="Service References\clienteService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
@@ -625,6 +653,21 @@
       <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
       <Name>HLP.Comum.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClassificacaoFiscalServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

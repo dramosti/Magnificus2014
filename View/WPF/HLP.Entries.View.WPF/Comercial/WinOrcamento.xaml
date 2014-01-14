@@ -66,6 +66,16 @@
                 <System:String>vwCfopToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lResultClassifFiscal" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwClassificacaoFiscalToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lResultCstIpi" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwSituacaoTributaria_IpiToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
         <convert:MaskConverter x:Key="maskConverter"/>
     </runtime:WindowsBase.Resources>
     <DockPanel LastChildFill="True">
@@ -478,7 +488,9 @@
                         </DockPanel>
                         <Expander Header="Fiscal" DockPanel.Dock="Bottom" Height="100" IsExpanded="True">
                             <DataGrid
-                                x:Name="dgFiscalItens"                                                                                      
+                                CanUserAddRows="False"
+                                CanUserDeleteRows="False"
+                                x:Name="dgFiscalItens"                                                                                   
                                 IsEnabled="{Binding bIsEnabled}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"								                 
@@ -494,20 +506,67 @@
                                         Header="Calcula IPI" Width="125">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <ComboBox>
+                                                <ComboBox
+                                                    SelectedIndex="{Binding Path=IPI_stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True,
+                                                    ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                                                     <ComboBoxItem>0 - NÃO</ComboBoxItem>
                                                     <ComboBoxItem>1 - SIM</ComboBoxItem>
                                                 </ComboBox>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridComboBoxColumn Header="Classificação Fiscal" Width="125"/>
+                                    <DataGridTemplateColumn
+                                        Header="Classificação Fiscal" Width="125">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox
+                                                    x:Name="clClassifFiscal"
+                                                    ItemsSource="{Binding Source={StaticResource lResultClassifFiscal}}"
+                                                    SelectedValuePath="id"
+                                                    DisplayMemberPath="display"
+                                                    SelectedValue="{Binding idClassificacaoFiscal, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn
+                                        Header="Ncm" Width="125"
+                                        Binding="{Binding Path=xNcm, Mode=OneWay}"></DataGridTextColumn>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, 
+                                        ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 										Header="% IPI" Width="100"/>
-                                    <DataGridComboBoxColumn Header="Compõe base do IPI" Width="150"/>
-                                    <DataGridComboBoxColumn Header="Cód situação tributária" Width="150"/>
+                                    <DataGridTemplateColumn
+                                        Header="Compõe base do IPI" Width="150">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox
+                                                    SelectedIndex="{Binding IPI_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                    <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
+                                                    <ComboBoxItem>2-PRODUTOS+FRETE</ComboBoxItem>
+                                                    <ComboBoxItem>3-PRODUTOS+FRETE+SEGURO+OUTRAS DESPESAS</ComboBoxItem>
+                                                    <ComboBoxItem>4-NENHUM</ComboBoxItem>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn
+                                        Header="Cód situação tributária" Width="150">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox
+                                                    x:Name="clCstIpi"                                                    
+                                                    ItemsSource="{Binding Source={StaticResource lResultCstIpi}}"
+                                                    SelectedValuePath="id"
+                                                    DisplayMemberPath="display"
+                                                    SelectedValue="{Binding idCSTIpi, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                    ></ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>                                    
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=IPI_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -697,7 +756,7 @@
                                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></ComboBox>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>                                    
+                                    </DataGridTemplateColumn>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xComercial, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"

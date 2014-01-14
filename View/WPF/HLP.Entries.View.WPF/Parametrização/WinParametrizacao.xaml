@@ -15,7 +15,7 @@
         <Expander Header="Dados da Empresa" DockPanel.Dock="Top" IsExpanded="True" Height="103">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox
-                    IsEnabled="False"
+                    IsReadOnly="True"
                     Text="{Binding currentModel.idEmpresa, Mode=TwoWay}"
                     Height="27" Margin="10,0,0,2" Caption="Código" Help="Seleciona a empresa" WidthLabel="63" Width="175" HorizontalAlignment="Left"/>
                 <Components:HlpTextBox

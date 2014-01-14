@@ -18,7 +18,7 @@
                 <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
+						IsReadOnly="True"
 						Height="30" Margin="10,0,10,2" Caption="Código" Field="idCondicaoEntrega" Help="Chave principal do registro da Condição de Entrega." Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
                 <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"

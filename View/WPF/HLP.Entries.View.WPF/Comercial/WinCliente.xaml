@@ -151,34 +151,34 @@
                         <Expander DockPanel.Dock="Top" Header="Identificação" IsExpanded="True">
                             <WrapPanel Orientation="Vertical"  Margin="0,10,0,0" VerticalAlignment="Top">
                                 <Components:HlpTextBox 
-												IsEnabled="{Binding bIsEnabled}"
+												IsReadOnly="True"
 												Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-												Height="27" Margin="10,0,10,2" Caption="Código do Cliente" WidthLabel="191" HorizontalAlignment="Left" Width="296"/>
+												Height="27" Margin="10,0,10,2" Caption="Código" WidthLabel="150" HorizontalAlignment="Left" Width="296"/>
                                 <Components:HlpDateTimePicker 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												SelectedDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="False" 
-												Height="27" Margin="10,0,10,-2" Caption="Data do Cadastro" WidthLabel="191" HorizontalAlignment="Left"/>
+												Height="27" Margin="10,0,10,-2" Caption="Data do Cadastro" WidthLabel="150" HorizontalAlignment="Left"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Código Alternativo" WidthLabel="191" HorizontalAlignment="Left" Width="341"/>
+												Height="27" Margin="10,0,10,-2" Caption="Código Alternativo" WidthLabel="150" HorizontalAlignment="Left" Width="341"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Nome do Cliente" WidthLabel="191" HorizontalAlignment="Left" Width="522"/>
+												Height="27" Margin="10,0,10,-2" Caption="Nome do Cliente" WidthLabel="150" HorizontalAlignment="Left" Width="522"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Nome Fantasia" WidthLabel="191" HorizontalAlignment="Left" Width="522"/>
+												Height="27" Margin="10,0,10,-2" Caption="Nome Fantasia" WidthLabel="150" HorizontalAlignment="Left" Width="522"/>
                                 <Components:HlpPesquisa 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Ramo de Atividade" WidthLabel="191" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwRamoAtividade">
+												Height="27" Margin="10,0,10,-2" Caption="Ramo de Atividade" WidthLabel="150" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwRamoAtividade">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xRamo</System:String>
                                         <System:String>xDescricao</System:String>
@@ -188,7 +188,7 @@
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Moeda" WidthLabel="191" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwMoeda">
+												Height="27" Margin="10,0,10,-2" Caption="Moeda" WidthLabel="150" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwMoeda">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xSiglaMoeda</System:String>
                                         <System:String>xMoeda</System:String>
@@ -198,7 +198,7 @@
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Contato Principal" WidthLabel="191" HorizontalAlignment="Left" Width="522" TableView="vwFuncionario" FieldPesquisa="ID">
+												Height="27" Margin="10,0,10,-2" Caption="Contato Principal" WidthLabel="150" HorizontalAlignment="Left" Width="522" TableView="vwFuncionario" FieldPesquisa="ID">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xNome</System:String>
                                         <System:String>xCodigoAlternativo</System:String>
@@ -209,15 +209,15 @@
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xMemorando, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Memorando" HorizontalAlignment="Left" WidthLabel="191" Width="350"/>
+												Height="27" Margin="10,0,10,-2" Caption="Memorando" HorizontalAlignment="Left" WidthLabel="150" Width="350"/>
                                 <Components:HlpCheckBox x:Name="chkPessoa" 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												Height="27" Margin="10,0,10,-2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="191"/>
+												Height="27" Margin="10,0,10,-2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="150"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												Height="27" Margin="10,0,10,-2" Caption="C.P.F." HorizontalAlignment="Left" WidthLabel="191" Width="380">
+												Height="27" Margin="10,0,10,-2" Caption="C.P.F." HorizontalAlignment="Left" WidthLabel="150" Width="380">
                                     <Components:HlpTextBox.Style>
                                         <Style>
                                             <Style.Triggers>
@@ -234,7 +234,7 @@
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												Height="27" Margin="10,0,10,2" Caption="R.G." HorizontalAlignment="Left" WidthLabel="191" Width="380">
+												Height="27" Margin="10,0,10,2" Caption="R.G." HorizontalAlignment="Left" WidthLabel="150" Width="380">
                                     <Components:HlpTextBox.Style>
                                         <Style>
                                             <Style.Triggers>
@@ -251,7 +251,7 @@
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}"
-								Height="27" Margin="10,0,10,2" Caption="CNPJ" Help="Informar o Cadastro Nacional de Pessoa Jurídica da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="191" HorizontalAlignment="Left" Width="381">
+								Height="27" Margin="10,0,10,2" Caption="CNPJ" Help="Informar o Cadastro Nacional de Pessoa Jurídica da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
                                     <Components:HlpTextBox.Style>
                                         <Style>
                                             <Style.Triggers>
@@ -268,7 +268,7 @@
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xIE, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								Margin="10,0,10,2" Height="27" Caption="Inscrição Estadual" Help="Informar a Inscrição Estadual da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="191" HorizontalAlignment="Left" Width="381">
+								Margin="10,0,10,2" Height="27" Caption="Inscrição Estadual" Help="Informar a Inscrição Estadual da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
                                     <Components:HlpTextBox.Style>
                                         <Style>
                                             <Style.Triggers>
@@ -285,7 +285,7 @@
                                 <Components:HlpTextBox 
 								Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								Margin="10,0,10,2" Height="27" Caption="Inscrição Municipal" Help="Informar a Inscrição Municipal da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="191" HorizontalAlignment="Left" Width="381">
+								Margin="10,0,10,2" Height="27" Caption="Inscrição Municipal" Help="Informar a Inscrição Municipal da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
                                     <Components:HlpTextBox.Style>
                                         <Style>
                                             <Style.Triggers>
@@ -303,32 +303,32 @@
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="1° Telefone" HorizontalAlignment="Left" WidthLabel="191" Width="300"/>
+												Height="27" Margin="10,0,10,-2" Caption="1° Telefone" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="2° Telefone" HorizontalAlignment="Left" WidthLabel="191" Width="300"/>
+												Height="27" Margin="10,0,10,-2" Caption="2° Telefone" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="FAX" HorizontalAlignment="Left" WidthLabel="191" Width="300"/>
+												Height="27" Margin="10,0,10,-2" Caption="FAX" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="E-mail" HorizontalAlignment="Left" WidthLabel="191" Width="400"/>
+												Height="27" Margin="10,0,10,-2" Caption="E-mail" HorizontalAlignment="Left" WidthLabel="150" Width="400"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												Text="{Binding currentModel.xHttp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Endereço na Internet" HorizontalAlignment="Left" WidthLabel="191" Width="400"/>
+												Height="27" Margin="10,0,10,-2" Caption="Endereço na Internet" HorizontalAlignment="Left" WidthLabel="150" Width="400"/>
                                 <Components:HlpCheckBox                                     
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,10,-2" Caption="Ativo?" HorizontalAlignment="Left" WidthLabel="191"/>
+												Height="27" Margin="10,0,10,-2" Caption="Ativo?" HorizontalAlignment="Left" WidthLabel="150"/>
                                 <DataGrid
                                         x:Name="dgvContato"
                                          ItemsSource="{Binding currentModel.lCliente_fornecedor_contato}"                          
