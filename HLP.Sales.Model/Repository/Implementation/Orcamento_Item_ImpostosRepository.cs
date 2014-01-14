@@ -58,6 +58,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_Item_ImpostosModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.enumstOrigem)
                                  .Build());
             }
 
@@ -72,6 +73,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_Item_ImpostosModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.enumstOrigem)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute().ToList();
@@ -86,6 +88,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_Item_ImpostosModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.enumstOrigem)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento_Item).FirstOrDefault();

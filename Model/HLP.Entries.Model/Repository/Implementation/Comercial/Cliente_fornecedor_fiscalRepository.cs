@@ -25,7 +25,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
                 ("SELECT * FROM Cliente_fornecedor_fiscal WHERE idClienteFornecedor = @idClienteFornecedor",
                 new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idClienteFornecedor"),
-                MapBuilder<Cliente_fornecedor_fiscalModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                MapBuilder<Cliente_fornecedor_fiscalModel>.MapAllProperties().DoNotMap(i => i.status)                
+                .Build());
             }
             return regAcessor.Execute(idClienteFornecedor).FirstOrDefault();
         }
