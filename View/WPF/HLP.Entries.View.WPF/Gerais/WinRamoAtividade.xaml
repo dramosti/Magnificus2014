@@ -11,8 +11,8 @@
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					IsEnabled="False"
-					Height="27" Margin="10,10,191.5,2" Caption="Código do Ramo de Atividade" Help="Chave principal do registro do Ramo de Atividade, campo auto incremental." WidthLabel="222"/>
+					IsReadOnly="True"
+					Height="27" Margin="10,10,191.5,2" Caption="Código" Help="Chave principal do registro do Ramo de Atividade, campo auto incremental." WidthLabel="222"/>
 				<Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xRamo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

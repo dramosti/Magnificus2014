@@ -34,8 +34,8 @@
                     Name="cbxCampos"
                     SelectedIndex="{Binding selectedIndex, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     UCSelectionChanged="HlpComboBox_UCSelectionChanged"
-                    HorizontalAlignment="Left" Width="300" 
-                                        Caption="Trocar conteúdo do campo" Height="70" WidthLabel="150" Margin="20,0,0,0" >
+                    HorizontalAlignment="Left" Width="325" 
+                                        Caption="Trocar conteúdo do campo" Height="27" WidthLabel="170" Margin="10,0,0,2" >
                         <Components:HlpComboBox.Items>
                             <System:String>Desconto Máximo</System:String>
                             <System:String>Acréscimo Máximo</System:String>
@@ -49,7 +49,7 @@
                                            Text="{Binding valor, 
                         Converter={StaticResource PorcentagemConverter},
                         Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    HorizontalAlignment="Left" Width="100" Caption="Por" Margin="20,0,0,0"/>
+                    HorizontalAlignment="Left" Width="113" Caption="Por" Margin="20,0,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Button 

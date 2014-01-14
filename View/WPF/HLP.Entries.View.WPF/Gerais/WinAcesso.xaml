@@ -33,8 +33,8 @@
                 <Components:HlpTextBox
                     Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="False"
-					HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Width="503" Caption="Funcionário" WidthLabel="97" Table="Acesso" Field="idFuncionario" Help="Seleciona um funcionario" 
+					IsReadOnly="True"
+					HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Width="164" Caption="Código" WidthLabel="97" Table="Acesso" Field="idFuncionario" Help="Seleciona um funcionario" 
                     />
 
             </WrapPanel>

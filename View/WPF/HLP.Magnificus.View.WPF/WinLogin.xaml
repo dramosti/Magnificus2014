@@ -1,8 +1,23 @@
 ﻿<Window x:Class="HLP.Magnificus.View.WPF.WinLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinLogin" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="WinLogin" Height="500" Width="550" Background="#FF16499A" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None">
+    <DockPanel>
+        <DockPanel Margin="132,156,134,196" DockPanel.Dock="Top">
+            <DockPanel Width="123" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                <Image Source="C:\HLP\GIT\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\Imagens\UserSilhouette.png" Stretch="Fill" Height="128" Width="128" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+                <Label Content="Magnificus" Foreground="White" HorizontalAlignment="Center" FontFamily="Calibri" VerticalAlignment="Center" FontSize="20" Width="Auto" Height="39"/>
+            </DockPanel>
+            <DockPanel Height="142" Width="158" Margin="5,5,-20,5">
+                <TextBox Width="152" Height="27" DockPanel.Dock="Top" Margin="0,30,0,0"/>
+                <TextBox Width="152" Height="27" DockPanel.Dock="Top" Margin="0,5,0,0"/>
+                <Button Height="28" Width="152" Content="Conectar" DockPanel.Dock="Top" Margin="0,-15,0,0" Background="{StaticResource ButtonBackgroundBlueDefault}" Foreground="White" BorderBrush="white"/>
+            </DockPanel>
+        </DockPanel>
+        <DockPanel Margin="0,-55,0,0">
+            <Separator Height="1" DockPanel.Dock="Top" Width="574"/>
+            <Image Margin="0,0,0,-0" Source="icone hlp.ico" Width="32" Height="32" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" Content="© HLP - Estratégia em Sistemas" Foreground="White"/>
+        </DockPanel>
+    </DockPanel>
 </Window>
