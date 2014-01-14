@@ -32,7 +32,10 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         {
             get
             {
-                return !this.currentModel.bListaPrecoItemHabil;
+                if (currentModel != null)
+                    return !this.currentModel.bListaPrecoItemHabil;
+
+                return false;
             }
         }
 

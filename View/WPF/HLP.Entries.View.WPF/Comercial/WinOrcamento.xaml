@@ -11,6 +11,8 @@
     >
     <runtime:WindowsBase.Resources>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        <convert:MoedaConverter x:Key="moedaConverter"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lResultListaPreco" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
@@ -43,6 +45,16 @@
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwProdutoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lResultRepresentantes" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwFuncionarioRepresentanteToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lResultCfop" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwCfopToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <convert:MaskConverter x:Key="maskConverter"/>
@@ -107,6 +119,7 @@
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contribuinte de ICMS" Help="O sistema informara automaticamente se o cliente é contribuinte de ICMS conforme o campo " WidthLabel="231"/>
                                 <Components:HlpComboBox
                                     x:Name="cbxStDocumento"
+                                    UCSelectionChanged="cbxStDocumento_UCSelectionChanged"
                                     IsEnabled="{Binding bIsEnabled}"
                                     ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"
                                     SelectedValuePath="id"
@@ -118,7 +131,9 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idFuncionarioRepresentante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Representante" Help="Informar o representante do orçamento de vendas, o sistema traz automaticamente o representante cadastrado no cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwFuncionarioRepresentante" WidthLabel="231" Width="473">
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" 
+                                    Caption="Representante" Help="Informar o representante do orçamento de vendas, o sistema traz automaticamente o representante cadastrado no cliente, mas nada impede a sua alteração." 
+                                    FieldPesquisa="ID" TableView="vwFuncionarioRepresentante" WidthLabel="231" Width="473">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xNome</System:String>
                                         <System:String>xCodigoAlternativo</System:String>
@@ -248,7 +263,8 @@
                                                     <System:String>xDescricao</System:String>
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
-                                            <Components:HlpPesquisa Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Conta Contábil" FieldPesquisa="ID" TableView="vwContaContabil" WidthLabel="149" Width="426"/>
+                                            <Components:HlpPesquisa Height="27" HorizontalAlignment="Left" Margin="10,0,10,2"                                                                    
+                                                                    Caption="Conta Contábil" FieldPesquisa="ID" TableView="vwContaContabil" WidthLabel="149" Width="426"/>
                                         </WrapPanel>
                                     </Expander>
                                     <Expander Header="Informações de Venda" IsExpanded="True">
@@ -697,35 +713,45 @@
                                     </DataGridComboBoxColumn>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=pDesconto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=pDesconto, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Desc" Width="100"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vDesconto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vDesconto, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ Desc" Width="100"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vVenda, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vVenda, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ Venda" Width="100"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vVendaSemDesconto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        IsReadOnly="True"
+										Binding="{Binding Path=vVendaSemDesconto, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R% Venda s/desc" Width="150"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vTotalSemDescontoItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vTotalSemDescontoItem, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total s/desc" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vTotalItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vTotalItem, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total" Width="100"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vDescontoSuframa, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        IsReadOnly="True"
+										Binding="{Binding Path=vDescontoSuframa, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Desc Suframa" Width="150"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vFreteItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vFreteItem, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Frete" Width="100"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
@@ -750,13 +776,22 @@
 										Header="Observação" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vSegurosItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vSegurosItem, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        IsReadOnly="True"
 										Header="Seguros" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=vOutrasDespesasItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=vOutrasDespesasItem, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        IsReadOnly="True"
 										Header="Outras Despesas" Width="150"/>
-                                    <DataGridComboBoxColumn	Header="Representante" Width="125"/>
+                                    <DataGridComboBoxColumn	Header="Representante" Width="125"
+                                                            ItemsSource="{Binding Source={StaticResource lResultRepresentantes}}"
+                                                            SelectedValuePath="id"
+                                                            DisplayMemberPath="display"
+                                                            SelectedValueBinding="{Binding idFuncionarioRepresentante, Mode=TwoWay, 
+                                                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -766,7 +801,12 @@
                                     <DataGridTextColumn	Header="id Orçamento" Width="125"/>
                                     <DataGridTextColumn Header="id Empresa" Width="125"/>
                                     <DataGridTextColumn Header="Dconfirmaçãoitem" Width="125"/>
-                                    <DataGridComboBoxColumn Header="Idcfop" Width="125"/>
+                                    <DataGridComboBoxColumn Header="Idcfop" Width="125"
+                                                            ItemsSource="{Binding Source={StaticResource lResultCfop}}"
+                                                            SelectedValuePath="id"
+                                                            DisplayMemberPath="display"
+                                                            SelectedValueBinding="{Binding idCfop, Mode=TwoWay, 
+                                                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Expander>

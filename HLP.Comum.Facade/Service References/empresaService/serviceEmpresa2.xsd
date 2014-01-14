@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceEmpresa.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+  <xs:complexType name="EmpresaModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
+          <xs:element minOccurs="0" name="empresaParametros" nillable="true" type="tns:EmpresaParametrosModel" />
+          <xs:element minOccurs="0" name="idEmpresa" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idRamoAtividade" type="xs:int" />
+          <xs:element minOccurs="0" name="lEmpresa_endereco" nillable="true" type="tns:ArrayOfEmpresa_EnderecoModel" />
+          <xs:element minOccurs="0" name="stCodigoRegimeTributario" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xCNPJ" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFantasia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xHttp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xIE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xIM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLinkLogoEmpresa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLinkPastas" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xSuframa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefone" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmpresaModel" nillable="true" type="tns:EmpresaModel" />
+  <xs:complexType name="EmpresaParametrosModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_ComercialModel" nillable="true" type="q3:Parametro_ComercialModel" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_ComprasModel" nillable="true" type="q4:Parametro_ComprasModel" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_CustosModel" nillable="true" type="q5:Parametro_CustosModel" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_EstoqueModel" nillable="true" type="q6:Parametro_EstoqueModel" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_FinanceiroModel" nillable="true" type="q7:Parametro_FinanceiroModel" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_FiscalModel" nillable="true" type="q8:Parametro_FiscalModel" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" minOccurs="0" name="ObjParametro_Ordem_ProducaoModel" nillable="true" type="q9:Parametro_Ordem_ProducaoModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmpresaParametrosModel" nillable="true" type="tns:EmpresaParametrosModel" />
+  <xs:complexType name="ArrayOfEmpresa_EnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Empresa_EnderecoModel" nillable="true" type="tns:Empresa_EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpresa_EnderecoModel" nillable="true" type="tns:ArrayOfEmpresa_EnderecoModel" />
+  <xs:complexType name="Empresa_EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q10:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StTipoEnd" type="xs:int" />
+          <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoEnder" type="q11:TipoEndereco" />
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresaEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCpl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCxPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLgr" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Empresa_EnderecoModel" nillable="true" type="tns:Empresa_EnderecoModel" />
+</xs:schema>
