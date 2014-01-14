@@ -50,8 +50,9 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
-        private TabPagesAtivasModel currentTab;
 
+
+        private TabPagesAtivasModel currentTab;
         public TabPagesAtivasModel _currentTab
         {
             get { return currentTab; }

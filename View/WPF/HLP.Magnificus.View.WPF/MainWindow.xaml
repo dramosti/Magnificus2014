@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.MainWindow"
         Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1108.5" Closed="Window_Closed" Height="557.5"
+        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5"
         >
+    <Window.InputBindings>
+        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="E" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandDeletar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="S" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCancelar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="V" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCopiar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandPesquisar}" CommandParameter="{Binding _currentTab}"/>
+    </Window.InputBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -69,7 +78,7 @@
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
                                     <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
-                                </Trigger>                                
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -165,7 +174,10 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <ToolBar Style="{StaticResource toolBarCadastro}">
-                            <Button Command="{Binding _currentTab._currentDataContext.commandNovo}" Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60">
+                            <Button 
+                                Command="{Binding _currentTab._currentDataContext.commandNovo}" 
+                                CommandParameter="{Binding _currentTab}"
+                                Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60" ToolTip="Alt + N">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -188,7 +200,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + A">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -211,7 +223,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + E">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -234,7 +246,8 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" 
+                                    CommandParameter="{Binding _currentTab}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + S">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -257,7 +270,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + C">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -280,7 +293,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + V">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -303,7 +316,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + P">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

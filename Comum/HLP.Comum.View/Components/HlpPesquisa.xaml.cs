@@ -20,6 +20,8 @@ using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
 using HLP.Comum.View.PesquisaRapidaService;
 using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.ViewModel.Commands;
+using HLP.Comum.Modules;
 
 namespace HLP.Comum.View.Components
 {
@@ -30,6 +32,8 @@ namespace HLP.Comum.View.Components
     {
 
         private IservicePesquisaRapidaClient servicoPesquisaRapida;
+
+        private ICommand PesquisarCommand { get; set; }
 
         public string Display
         {
@@ -46,9 +50,8 @@ namespace HLP.Comum.View.Components
         {
             InitializeComponent();
             //this.DataContext = this;
-
         }
-
+       
         public async void ExecutaPesquisa(string sValor)
         {
             if (sValor.Equals("") || sValor.Equals("0"))
@@ -215,5 +218,26 @@ namespace HLP.Comum.View.Components
         }
 
         #endregion
+
+        private void txtID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5)
+            {
+                Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Modules.Interface.TipoExibeForm.Normal);
+                winPesquisa.WindowState = WindowState.Maximized;
+                winPesquisa.SetPropertyValue("NameView", this.TableView);
+
+                if (winPesquisa != null)
+                {
+                    winPesquisa.ShowDialog();
+
+                    if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
+                    {
+                        this.Text = (winPesquisa.GetPropertyValue("lResult") as List<int>).FirstOrDefault().ToString();
+                    }
+                }
+                
+            }
+        }
     }
 }

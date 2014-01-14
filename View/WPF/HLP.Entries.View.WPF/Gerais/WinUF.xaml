@@ -8,7 +8,7 @@
     <Grid Name="gridPropriedades">
 	<Expander Header="UF" IsExpanded="True">			
         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-            <Components:HlpTextBox Text="{Binding currentModel.idUF, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
+            <Components:HlpTextBox Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
     		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
@@ -19,9 +19,12 @@
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True                , NotifyOnValidationError=True}"
     		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
-            <Components:HlpPesquisa 
-                Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437">
+                <Components:HlpPesquisa 
+                         Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                         Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                         IsEnabled="{Binding bIsEnabled}"
+                         Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" 
+                         TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437">
                 <Components:HlpPesquisa.Items>
                     <System:String>xRegiao</System:String>
                     <System:String>xPais</System:String>

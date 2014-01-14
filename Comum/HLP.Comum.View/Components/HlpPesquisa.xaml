@@ -6,7 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Width="Auto" Height="Auto"
-             x:Name="componente"        >
+             x:Name="componente"     
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,12 +21,13 @@
                Style="{StaticResource  TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
+
         <TextBox x:Name="txtID"        
                  TextChanged="ucTxt_TextChanged"
                  LostFocus="ucTxt_LostFocus"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
-                 Width="80" Height="20"/>
-        <TextBox x:Name="txtDisplay" IsReadOnly="True"
+                 Width="80" Height="20" KeyDown="txtID_KeyDown" />
+        <wpfTool:WatermarkTextBox Watermark="F5" x:Name="txtDisplay" IsReadOnly="True"
                  TextChanged="ucTxtPesquisa_TextChanged"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
                  Focusable="False" Height="20"  />
