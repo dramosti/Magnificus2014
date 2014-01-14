@@ -764,8 +764,8 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
                     base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
                 }
-            this.orcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>();
-            
+            this.orcamento_Item_Impostos = new Orcamento_Item_ImpostosModel();
+
         }
 
 
@@ -862,8 +862,15 @@ namespace HLP.Sales.Model.Models.Comercial
                                 == 1;
                         }
 
-                        HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel objListaPrecoItem = OrcamentoFacade.objCadastros.objListaPreco.lLista_preco
+
+
+                        HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel objListaPrecoItem = null;
+
+                        if (OrcamentoFacade.objCadastros.objListaPreco.lLista_preco != null)
+                        {
+                            objListaPrecoItem = OrcamentoFacade.objCadastros.objListaPreco.lLista_preco
                             .FirstOrDefault(i => i.idProduto == value);
+                        }
 
 
 
@@ -995,7 +1002,7 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             #region IPI
 
-                            this.orcamento_Item_Impostos.First().IPI_stCalculaIpi = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal
+                            this.orcamento_Item_Impostos.IPI_stCalculaIpi = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal
                                 .stCalculaIpi == 0 ? (byte)0 : objTipoOperacao.stCalculaIpi == 0 ? (byte)0 : (byte)1;
 
                             #endregion
@@ -1381,9 +1388,10 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
-        private ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel> _orcamento_Item_Impostos;
 
-        public ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel> orcamento_Item_Impostos
+        private Orcamento_Item_ImpostosModel _orcamento_Item_Impostos;
+
+        public Orcamento_Item_ImpostosModel orcamento_Item_Impostos
         {
             get { return _orcamento_Item_Impostos; }
             set
@@ -1392,6 +1400,19 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "orcamento_Item_Impostos");
             }
         }
+
+
+        //private ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel> _orcamento_Item_Impostos;
+
+        //public ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel> orcamento_Item_Impostos
+        //{
+        //    get { return _orcamento_Item_Impostos; }
+        //    set
+        //    {
+        //        _orcamento_Item_Impostos = value;
+        //        base.NotifyPropertyChanged(propertyName: "orcamento_Item_Impostos");
+        //    }
+        //}
     }
 
     public partial class Orcamento_Item_ImpostosModel : modelBase
