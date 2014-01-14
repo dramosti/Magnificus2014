@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Commands\CargoCommands.cs" />
     <Compile Include="Commands\CidadeCommands.cs" />
-    <Compile Include="Commands\CidadeViewModel.cs" />
     <Compile Include="Commands\Comercial\Canal_VendaCommands.cs" />
     <Compile Include="Commands\Comercial\ClienteCommands.cs" />
     <Compile Include="Commands\Comercial\JurosCommands.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
+    <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioDetalheCommand.cs" />
@@ -162,7 +162,6 @@
     <Compile Include="Commands\Gerais\TipoServicoCommand.cs" />
     <Compile Include="Commands\Parametros\Empresa_ParametrosCommands.cs" />
     <Compile Include="Commands\RecursosHumanos\SetorCommands.cs" />
-    <Compile Include="Commands\RegiaoCommands.cs" />
     <Compile Include="Commands\Transportes\Condicao_entregaCommands.cs" />
     <Compile Include="Commands\Transportes\RotaCommand.cs" />
     <Compile Include="Commands\Transportes\TransportadorCommands.cs" />

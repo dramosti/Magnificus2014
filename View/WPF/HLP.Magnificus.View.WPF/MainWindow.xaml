@@ -8,8 +8,8 @@
         mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5"
         >
     <Window.InputBindings>
-        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding _currentTab._content}"/>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding _currentTab._content}"/>
         <KeyBinding Key="E" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandDeletar}" CommandParameter="{Binding _currentTab}"/>
         <KeyBinding Key="S" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}"/>
         <KeyBinding Key="C" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCancelar}" CommandParameter="{Binding _currentTab}"/>
@@ -176,7 +176,7 @@
                         <ToolBar Style="{StaticResource toolBarCadastro}">
                             <Button 
                                 Command="{Binding _currentTab._currentDataContext.commandNovo}" 
-                                CommandParameter="{Binding _currentTab}"
+                                CommandParameter="{Binding _currentTab._content}"
                                 Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60" ToolTip="Alt + N">
                                 <Button.Template>
                                     <ControlTemplate>
@@ -200,7 +200,9 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + A">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" 
+                                    CommandParameter="{Binding _currentTab._content}"
+                                    Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + A">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

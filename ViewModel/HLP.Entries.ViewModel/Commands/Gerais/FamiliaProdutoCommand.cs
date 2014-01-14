@@ -23,13 +23,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
@@ -51,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-        public void Save()
+        public void Save(object _panel)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 #endregion
 
                 this.objViewModel.currentModel = servico.Save(this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
                 this.Inicia_Collections();
             }
             catch (Exception ex)
@@ -129,20 +129,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Novo()
+        private void Novo(object _panel)
         {
             //TODO: instanciar novo objeto
             this.objViewModel.currentModel = new Familia_produtoModel();
-            this.objViewModel.novoBaseCommand.Execute(parameter: null);
+            this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Alterar()
+        private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
         }
         private bool AlterarCanExecute()
         {
