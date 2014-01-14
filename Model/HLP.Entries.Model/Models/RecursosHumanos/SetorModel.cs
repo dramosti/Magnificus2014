@@ -11,6 +11,10 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
 {
     public partial class SetorModel : modelBase
     {
+        public SetorModel()
+            : base(xTabela: "Setor")
+        { }
+
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
 

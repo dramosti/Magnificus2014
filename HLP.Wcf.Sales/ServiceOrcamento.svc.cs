@@ -65,12 +65,12 @@ namespace HLP.Wcf.Sales
                             {
                                 item.idOrcamento = (int)objModel.idOrcamento;
                                 this.orcamento_itemRepository.Save(objOrcamento_Item: item);
-                                this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item.orcamento_Item_Impostos);
+                                this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item.orcamento_Item_Impostos.FirstOrDefault());
                             }
                             break;
                         case statusModel.excluido:
                             {
-                                this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.orcamento_Item_Impostos.idOrcamentoTotalizadorImpostos);
+                                this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.orcamento_Item_Impostos.FirstOrDefault().idOrcamentoTotalizadorImpostos);
                                 this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
                             }
                             break;
@@ -104,8 +104,9 @@ namespace HLP.Wcf.Sales
 
                 foreach (HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel item in objOrcamento.lOrcamento_Itens)
                 {
-                    item.orcamento_Item_Impostos = this.IOrcamento_Item_ImpostosRepository.GetOrcamento_Item_ImpostosByItem(
-                        idOrcamento_Item: (int)item.idOrcamentoItem);
+                    item.orcamento_Item_Impostos.Add(item:
+                        this.IOrcamento_Item_ImpostosRepository.GetOrcamento_Item_ImpostosByItem(
+                        idOrcamento_Item: (int)item.idOrcamentoItem));
                 }
 
                 objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
@@ -127,7 +128,7 @@ namespace HLP.Wcf.Sales
             {
                 foreach (HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel item in objModel.lOrcamento_Itens)
                 {
-                    this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.orcamento_Item_Impostos.idOrcamentoTotalizadorImpostos);
+                    this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.orcamento_Item_Impostos.FirstOrDefault().idOrcamentoTotalizadorImpostos);
                     this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
                 }
 
@@ -157,7 +158,7 @@ namespace HLP.Wcf.Sales
                 foreach (HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel item in objModel.lOrcamento_Itens)
                 {
                     item.idOrcamentoItem = this.orcamento_itemRepository.Copy(idOrcamentoItem: (int)item.idOrcamentoItem, idOrcamento: (int)objModel.idOrcamento);
-                    this.IOrcamento_Item_ImpostosRepository.Copy(idOrcamentoTotalizadorImpostos: (int)item.orcamento_Item_Impostos.idOrcamentoTotalizadorImpostos,
+                    this.IOrcamento_Item_ImpostosRepository.Copy(idOrcamentoTotalizadorImpostos: (int)item.orcamento_Item_Impostos.FirstOrDefault().idOrcamentoTotalizadorImpostos,
                         idOrcamentoItem: (int)item.idOrcamentoItem);
                 }
 
