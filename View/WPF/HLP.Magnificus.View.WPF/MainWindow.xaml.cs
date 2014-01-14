@@ -33,6 +33,7 @@ namespace HLP.Magnificus.View.WPF
             try
             {
                 this._viewModel = new MainViewModel();
+                
             }
             catch (Exception)
             {

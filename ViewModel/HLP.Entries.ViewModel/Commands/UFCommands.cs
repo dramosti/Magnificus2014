@@ -31,10 +31,10 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentModel),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_tab: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_tab: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
@@ -57,12 +57,12 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
-        public async void Save()
+        public async void Save(object _tab)
         {
             try
             {
                 this.objViewModel.currentModel.idUF = await this.servicoUf.saveUfAsync(objModel: this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.objViewModel.salvarBaseCommand.Execute(parameter: _tab);
             }
             catch (Exception ex)
             {
@@ -77,7 +77,8 @@ namespace HLP.Entries.ViewModel.Commands
 
             return (
                 this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
-                && this.objViewModel.IsValid(objDependency as Panel));
+                && this.objViewModel.IsValid(
+                (objDependency as Panel)));
         }
 
         public void Delete(object objUFModel)
@@ -119,10 +120,10 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Novo()
+        private void Novo(object _tab)
         {
             this.objViewModel.currentModel = new UFModel();
-            this.objViewModel.novoBaseCommand.Execute(parameter: null);
+            this.objViewModel.novoBaseCommand.Execute(parameter: _tab);
         }
         private bool NovoCanExecute()
         {

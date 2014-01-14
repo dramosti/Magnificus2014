@@ -50,5 +50,20 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 base.NotifyPropertyChanged(propertyName: "currentModel");
             }
         }
+
+
+        private Orcamento_ItemModel _currentItem;
+
+        public Orcamento_ItemModel currentItem
+        {
+            get { return _currentItem; }
+            set
+            {
+                if (value != null)
+                    _currentItem = value;
+                base.NotifyPropertyChanged(propertyName: "currentItem");
+            }
+        }
+
     }
 }

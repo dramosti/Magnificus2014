@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace HLP.Comum.View.Formularios
@@ -13,7 +14,7 @@ namespace HLP.Comum.View.Formularios
     {
         public WindowsBase()
         {
-            
+
         }
 
 
@@ -27,9 +28,6 @@ namespace HLP.Comum.View.Formularios
         // Using a DependencyProperty as the backing store for NameView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameViewProperty =
             DependencyProperty.Register("NameView", typeof(string), typeof(WindowsBase), new PropertyMetadata(string.Empty));
-
-
-
 
     }
 }

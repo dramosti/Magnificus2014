@@ -55,6 +55,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (OrcamentoFacade.tipoOperacaoService == null)
                     OrcamentoFacade.tipoOperacaoService = new Comum.Facade.Tipo_OperacaoService.IserviceTipo_OperacaoClient();
 
+                if (OrcamentoFacade.classificFiscalService == null)
+                    OrcamentoFacade.classificFiscalService = new Comum.Facade.ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient();
+
                 this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
             }
             catch (Exception)
@@ -694,6 +697,8 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
+
+
         private ObservableCollectionBaseCadastros<Orcamento_ItemModel> _lOrcamento_Itens;
 
         public ObservableCollectionBaseCadastros<Orcamento_ItemModel> lOrcamento_Itens
@@ -762,8 +767,50 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
                     base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
                 }
+            this.orcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>
+            {
+                new Orcamento_Item_ImpostosModel{}
+            };
+
         }
 
+        #region Métodos de Cálculos
+
+        private void CalculaBaseIpi()
+        {
+            if (this.orcamento_Item_Impostos.Count < 1)
+                return;
+
+            if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stCalculaIpi == 0)
+                this.orcamento_Item_Impostos.First().IPI_stCompoeBaseCalculo = 3;
+
+            switch (this.orcamento_Item_Impostos.First().IPI_stCompoeBaseCalculo)
+            {
+                case 0:
+                    {
+                        this.orcamento_Item_Impostos.First().IPI_vBaseCalculo =
+                            this.vTotalItem;
+                    } break;
+                case 1:
+                    {
+                        this.orcamento_Item_Impostos.First().IPI_vBaseCalculo =
+                            this.vTotalItem + this.vFreteItem;
+                    } break;
+                case 2:
+                    {
+                        this.orcamento_Item_Impostos.First().IPI_vBaseCalculo =
+                            this.vTotalItem + this.vFreteItem + this.vSegurosItem + this.vOutrasDespesasItem;
+                    } break;
+                case 3:
+                    {
+                        this.orcamento_Item_Impostos.First().IPI_vBaseCalculo =
+                            0;
+                    } break;
+            }
+            base.NotifyPropertyChanged(propertyName: "IPI_vBaseCalculo");
+        }
+
+        #endregion
 
         #region Métodos de busca
 
@@ -771,7 +818,6 @@ namespace HLP.Sales.Model.Models.Comercial
         #endregion
 
         #region Propriedades não mapeadas
-
 
         private bool _bXComercialEnabled;
 
@@ -858,8 +904,15 @@ namespace HLP.Sales.Model.Models.Comercial
                                 == 1;
                         }
 
-                        HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel objListaPrecoItem = OrcamentoFacade.objCadastros.objListaPreco.lLista_preco
+
+
+                        HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel objListaPrecoItem = null;
+
+                        if (OrcamentoFacade.objCadastros.objListaPreco.lLista_preco != null)
+                        {
+                            objListaPrecoItem = OrcamentoFacade.objCadastros.objListaPreco.lLista_preco
                             .FirstOrDefault(i => i.idProduto == value);
+                        }
 
 
 
@@ -871,6 +924,7 @@ namespace HLP.Sales.Model.Models.Comercial
                             base.NotifyPropertyChanged(propertyName: "vVendaSemDesconto");
                         }
 
+                        #region Comissão
                         switch (OrcamentoFacade.objCadastros.objFuncionario.stComissao)
                         {
                             case 0:
@@ -980,6 +1034,42 @@ namespace HLP.Sales.Model.Models.Comercial
                                             } break;
                                     }
                                 }; break;
+                        }
+                        #endregion
+
+                        HLP.Comum.Facade.Tipo_OperacaoService.Tipo_operacaoModel objTipoOperacao =
+                            OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: this._idTipoOperacao);
+
+                        if (objTipoOperacao != null)
+                        {
+                            #region IPI
+
+                            this.orcamento_Item_Impostos.First().IPI_stCalculaIpi = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal
+                                .stCalculaIpi == 0 ? (byte)0 : objTipoOperacao.stCalculaIpi == 0 ? (byte)0 : (byte)1;
+                            base.NotifyPropertyChanged(propertyName: "IPI_stCalculaIpi");
+
+                            #endregion
+
+                            this.orcamento_Item_Impostos.First().idClassificacaoFiscal = objTipoOperacao.idClassificacaoFiscal != 0 ?
+                                objTipoOperacao.idClassificacaoFiscal : (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto
+                                == this.idProduto).idClassificacaoFiscalVenda;
+                            base.NotifyPropertyChanged(propertyName: "idClassificacaoFiscal");
+
+                            if (this.orcamento_Item_Impostos.First().idClassificacaoFiscal != 0)
+                            {
+                                this.orcamento_Item_Impostos.First().xNcm = OrcamentoFacade.classificFiscalService.GetObjeto(
+                                    idObjeto: this.orcamento_Item_Impostos.First().idClassificacaoFiscal).cNCM;
+                                base.NotifyPropertyChanged(propertyName: "cNCM");
+                            }
+
+                            int idProduto = OrcamentoFacade.objCadastros.lProdutos.Count(i => i.idProduto == this.idProduto) > 0 ?
+                                (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto == this.idProduto).idProduto : 0;
+
+                            this.orcamento_Item_Impostos.First().IPI_pIPI = OrcamentoFacade.classificFiscalService.GetObjeto(
+                                idObjeto: idProduto != 0 ? idProduto : objTipoOperacao.idClassificacaoFiscal).pIPI;
+
+                            this.orcamento_Item_Impostos.First().IPI_stCompoeBaseCalculo = objTipoOperacao.stCompoeBaseIpi;
+                            this.orcamento_Item_Impostos.First().idCSTIpi = objTipoOperacao.idCSTIpi;
                         }
                     }
                 }
@@ -1115,7 +1205,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                this._vTotalItem = this._vVenda * this._qProduto;
+                this.vTotalItem = this._vVenda * this._qProduto;
                 base.NotifyPropertyChanged(propertyName: "vVenda");
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
 
@@ -1139,7 +1229,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 _qProduto = value;
                 base.NotifyPropertyChanged(propertyName: "qProduto");
                 this._vTotalSemDescontoItem = this._qProduto * this._vVendaSemDesconto;
-                this._vTotalItem = this._qProduto * this._vVenda;
+                this.vTotalItem = this._qProduto * this._vVenda;
                 base.NotifyPropertyChanged(propertyName: "vTotalSemDescontoItem");
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
             }
@@ -1194,6 +1284,7 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _vTotalItem = value;
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
+                this.CalculaBaseIpi();
             }
         }
         private decimal _vFreteItem;
@@ -1362,9 +1453,9 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
-        private Orcamento_Item_ImpostosModel _orcamento_Item_Impostos;
+        private ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel> _orcamento_Item_Impostos;
 
-        public Orcamento_Item_ImpostosModel orcamento_Item_Impostos
+        public ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel> orcamento_Item_Impostos
         {
             get { return _orcamento_Item_Impostos; }
             set
@@ -1373,7 +1464,6 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "orcamento_Item_Impostos");
             }
         }
-
     }
 
     public partial class Orcamento_Item_ImpostosModel : modelBase
@@ -1382,6 +1472,25 @@ namespace HLP.Sales.Model.Models.Comercial
             : base(xTabela: "Orcamento_Item_Impostos")
         {
         }
+
+        #region Propriedades não Mapeadas
+
+
+        private string _xNcm;
+
+        public string xNcm
+        {
+            get { return _xNcm; }
+            set
+            {
+                _xNcm = value;
+                base.NotifyPropertyChanged(propertyName: "xNcm");
+            }
+        }
+
+
+
+        #endregion
 
         private int? _idOrcamentoTotalizadorImpostos;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -1394,7 +1503,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idOrcamentoTotalizadorImpostos");
             }
         }
-        
+
         private stOrigem _enumstOrigem;
         public stOrigem enumstOrigem
         {
@@ -1679,7 +1788,9 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _IPI_vBaseCalculo = value;
+                this.IPI_vIPI = value * (this.IPI_pIPI / 100);
                 base.NotifyPropertyChanged(propertyName: "IPI_vBaseCalculo");
+                base.NotifyPropertyChanged(propertyName: "IPI_vIPI");
             }
         }
         private decimal? _IPI_pIPI;
@@ -1690,7 +1801,9 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _IPI_pIPI = value;
+                this.IPI_vIPI = this.IPI_vIPI * (value / 100);
                 base.NotifyPropertyChanged(propertyName: "IPI_pIPI");
+                base.NotifyPropertyChanged(propertyName: "IPI_vIPI");
             }
         }
         private decimal? _IPI_vIPI;

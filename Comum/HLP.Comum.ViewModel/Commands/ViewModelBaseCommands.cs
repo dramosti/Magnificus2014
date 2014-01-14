@@ -13,6 +13,7 @@ using HLP.Comum.Modules;
 using HLP.Comum.Infrastructure.Static;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -34,13 +35,13 @@ namespace HLP.Comum.ViewModel.Commands
         public ViewModelBaseCommands(ViewModelBase vViewModel)
         {
             this.objviewModel = vViewModel;
-            this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(),
+            this.objviewModel.novoBaseCommand = new RelayCommand(execute: _tab => this.novoBase(tab: _tab),
                 canExecute: pCanExec => this.novoBaseCanExecute());
             this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
                 canExecute: pCanExec => this.alterarBaseCanExecute());
             this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved: pExec),
                 canExecute: pCanExec => this.delBaseCanExecute());
-            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
+            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(panel: pExec),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
@@ -114,16 +115,16 @@ namespace HLP.Comum.ViewModel.Commands
             {
                 switch (ContentBotao.ToString())
                 {
-                    case "Primeiro":
+                    case "btnPrimeiro":
                         objviewModel.navigatePesquisa.MoveFirst();
                         break;
-                    case "Anterior":
+                    case "btnAnterior":
                         objviewModel.navigatePesquisa.MovePrevious();
                         break;
-                    case "Proximo":
+                    case "btnProximo":
                         objviewModel.navigatePesquisa.MoveNext();
                         break;
-                    case "Ultimo":
+                    case "btnUltimo":
                         objviewModel.navigatePesquisa.MoveLast();
                         break;
                     default:
@@ -166,21 +167,21 @@ namespace HLP.Comum.ViewModel.Commands
                 {
                     switch (ContentBotao.ToString())
                     {
-                        case "Primeiro":
+                        case "btnPrimeiro":
                             bCanExecute = true;
                             break;
-                        case "Anterior":
+                        case "btnAnterior":
                             currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
                             bCanExecute = currentPosition > 0;
                             break;
-                        case "Proximo":
+                        case "btnProximo":
                             {
                                 currentPosition = objviewModel.navigatePesquisa.CurrentPosition;
                                 lastIndex = objviewModel.navigatePesquisa.Count - 1;
                                 bCanExecute = currentPosition < lastIndex;
                             }
                             break;
-                        case "Ultimo":
+                        case "btnUltimo":
                             bCanExecute = true;
                             break;
                         default:
@@ -196,11 +197,27 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
 
-        private void novoBase()
+        private void novoBase(object tab)
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
+
+            if (tab != null)
+            {
+                HLP.Comum.Model.Models.TabPagesAtivasModel _tab = tab as HLP.Comum.Model.Models.TabPagesAtivasModel;
+                _tab._content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+                System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+                while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
+                {
+                    ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                    ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+                }
+                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            }
+
+
+
         }
         private bool novoBaseCanExecute()
         {
@@ -246,10 +263,14 @@ namespace HLP.Comum.ViewModel.Commands
             return this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando;
         }
 
-        private void salvarBase()
+        private void salvarBase(object panel)
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
             this.objviewModel.bIsEnabled = false;
+            if (panel != null)
+            {
+                (panel as Panel).MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+            }
         }
         private bool salvarBaseCanExecute()
         {
