@@ -324,7 +324,7 @@
             <TabItem Header="Contato">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
-                        <DockPanel Width="442" DockPanel.Dock="Left" >
+                        <DockPanel Width="442" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Expander Header="Comercial" Height="599" IsExpanded="True">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTextBox 
@@ -381,7 +381,7 @@
                             </Expander>
                         </DockPanel>
                         <DockPanel>
-                            <Expander Header="Residencial" IsExpanded="True">
+                            <Expander Header="Residencial" IsExpanded="True" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Height="597" Width="571">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"

@@ -24,19 +24,21 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
-    <WrapPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" IsExpanded="True">
+    <DockPanel  HorizontalAlignment="Stretch">
+        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="82" VerticalAlignment="Top" IsExpanded="True" DockPanel.Dock="Top">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
             <Components:HlpTextBox
                 IsEnabled="False"
                 Height="35"
+                Validation.ErrorTemplate="{StaticResource exceptionComp}"
                 Text="{Binding currentModel.xPesquisa, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                 Caption="Descrição Produto"
                 WidthLabel="150"
                 HorizontalAlignment="Left" Width="583" Margin="10,0,10,2"/>
             </WrapPanel>
         </Expander>
-        <Expander Header="Grade" HorizontalAlignment="Stretch" Height="184" VerticalAlignment="Top" IsExpanded="True">           
+        <Expander Header="Grade" IsExpanded="True">
+            <DockPanel>
                 <DataGrid
                     Name="gridConversao"
 						  ItemsSource="{Binding currentModel.lProdutos_Conversao}"                          
@@ -84,7 +86,7 @@
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                         <DataGridComboBoxColumn
-                                Header="Arredondamento" Width="120"                                    
+                                Header="Arredondamento" Width="*"                                    
                                 ItemsSource="{Binding Source={StaticResource EnumDescriptionDictArrend}}"
                                 DisplayMemberPath="Key"
                                 SelectedValuePath="Value"
@@ -92,6 +94,7 @@
                                 UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+            </DockPanel>
         </Expander>
-    </WrapPanel>
+    </DockPanel>
 </runtime:WindowsBase>
