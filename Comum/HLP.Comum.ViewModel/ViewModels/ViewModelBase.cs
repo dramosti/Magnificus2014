@@ -14,6 +14,7 @@ using HLP.Comum.Model.Models;
 using System.Windows.Controls.Primitives;
 using HLP.Comum.Resources.Util;
 
+
 namespace HLP.Comum.ViewModel.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
@@ -203,5 +204,27 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         #endregion
+
+        public void SecondComponentFocus(System.Windows.Controls.Panel _panel)
+        {
+            _panel.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+            while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
+            {
+                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+            }
+            ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+        }
+        public void FirstComponentFocus(System.Windows.Controls.Panel _panel)
+        {
+            _panel.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+            while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
+            {
+                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+            }
+        }
     }
 }

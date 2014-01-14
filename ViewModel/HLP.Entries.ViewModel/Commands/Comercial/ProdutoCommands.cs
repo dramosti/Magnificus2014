@@ -16,6 +16,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         ProdutoViewModel objViewModel;
         produtoService.IserviceProdutoClient servico = new produtoService.IserviceProdutoClient();
+        object _panel;
         public ProdutoCommands(ProdutoViewModel objViewModel)
         {
 
@@ -27,10 +28,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
@@ -96,7 +97,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 this.objViewModel.currentModel = (ProdutoModel)e.Result;
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
                 this.IniciaCollection();
             }
             catch (Exception ex)
@@ -164,19 +165,21 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Novo()
+        private void Novo(object _panel)
         {
+            this._panel = _panel;
             this.objViewModel.currentModel = new ProdutoModel();
-            this.objViewModel.novoBaseCommand.Execute(parameter: null);
+            this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Alterar()
+        private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this._panel = _panel;
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
         }
         private bool AlterarCanExecute()
         {

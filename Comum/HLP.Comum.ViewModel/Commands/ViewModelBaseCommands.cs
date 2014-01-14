@@ -35,9 +35,9 @@ namespace HLP.Comum.ViewModel.Commands
         public ViewModelBaseCommands(ViewModelBase vViewModel)
         {
             this.objviewModel = vViewModel;
-            this.objviewModel.novoBaseCommand = new RelayCommand(execute: _tab => this.novoBase(tab: _tab),
+            this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(panel: pExec),
                 canExecute: pCanExec => this.novoBaseCanExecute());
-            this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
+            this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(panel: pExec),
                 canExecute: pCanExec => this.alterarBaseCanExecute());
             this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved: pExec),
                 canExecute: pCanExec => this.delBaseCanExecute());
@@ -64,17 +64,14 @@ namespace HLP.Comum.ViewModel.Commands
 
         #region Executes & CanExecutes
 
-
         private void Fechar(object wd)
         {
             ((Window)wd).Close();
         }
-
         private bool FecharCanExecute(object wd)
         {
             return true;
         }
-
 
         private void ShowPesquisaExecute()
         {
@@ -106,8 +103,6 @@ namespace HLP.Comum.ViewModel.Commands
 
             return bReturn;
         }
-
-
 
         public void ExecAcao(object ContentBotao)
         {
@@ -196,39 +191,33 @@ namespace HLP.Comum.ViewModel.Commands
             return bCanExecute;
         }
 
-
-        private void novoBase(object tab)
+        private void novoBase(object panel)
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
 
-            if (tab != null)
+            if (panel != null)
             {
-                HLP.Comum.Model.Models.TabPagesAtivasModel _tab = tab as HLP.Comum.Model.Models.TabPagesAtivasModel;
-                _tab._content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
-                System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
-                {
-                    ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                    ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                }
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+              objviewModel.SecondComponentFocus(panel as Panel);
             }
 
 
 
         }
+
+       
         private bool novoBaseCanExecute()
         {
             return (this.currentOp == Resources.RecursosBases.OperacaoCadastro.livre
                 || this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
 
-        private void alterarBase()
+        private void alterarBase(object panel)
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.alterando;
             this.objviewModel.bIsEnabled = true;
+            objviewModel.SecondComponentFocus(panel as Panel);
         }
         private bool alterarBaseCanExecute()
         {
@@ -269,9 +258,10 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.bIsEnabled = false;
             if (panel != null)
             {
-                (panel as Panel).MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+                objviewModel.FirstComponentFocus(panel as Panel);
             }
         }
+       
         private bool salvarBaseCanExecute()
         {
             if (this.currentOp != Resources.RecursosBases.OperacaoCadastro.criando &&
@@ -292,11 +282,9 @@ namespace HLP.Comum.ViewModel.Commands
                 this.currentOp == Resources.RecursosBases.OperacaoCadastro.alterando);
         }
 
-
         private void copyBase()
         {
         }
-
         private bool copyBaseCanExecute()
         {
             return this.currentOp == OperacaoCadastro.pesquisando;

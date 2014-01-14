@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Util="clr-namespace:HLP.Comum.Resources" >
+                    xmlns:Util="clr-namespace:HLP.Comum.Resources" 
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+                    >
 
     <Style x:Key="BackgroundBorderTitle" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush" Value="#E8E8E8"></Setter>
@@ -428,6 +430,10 @@
 
 
     <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
+    </Style>
+
+    <Style TargetType="{x:Type wpfTool:WatermarkTextBox}">
         <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
     </Style>
 
