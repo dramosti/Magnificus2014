@@ -351,7 +351,7 @@
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Comercial" HorizontalAlignment="Right" Width="62" Margin="0,-2,-2,0">
+            <TabItem Header="Comercial" HorizontalAlignment="Right">
                 <AdornerDecorator>
                     <TabControl>
                         <TabItem Header="Geral">
@@ -958,7 +958,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,10,10,2" Caption="Condição de Entrega" Help="Selecione as condições de entrega padrão para o cliente selecionado. Você pode alterar as condições de entrega no cabeçalho da Pedido de venda antes de faturar, se apropriado. " WidthLabel="157" Width="441" HorizontalAlignment="Left" FieldPesquisa="ID" TableView="vwCondicaoEntrega">
+									Height="27" Margin="10,10,10,2" Caption="Condição de Entrega" Help="Selecione as condições de entrega padrão para o cliente selecionado. Você pode alterar as condições de entrega no cabeçalho da Pedido de venda antes de faturar, se apropriado. " WidthLabel="260" Width="550" HorizontalAlignment="Left" FieldPesquisa="ID" TableView="vwCondicaoEntrega">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xCondicaoEntrega</System:String>
                                         <System:String>xDescricao</System:String>
@@ -968,7 +968,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Modo de Entrega" Help="Modo de entrega que se aplica à venda para o cliente selecionado. " WidthLabel="157" Width="440" HorizontalAlignment="Left" FieldPesquisa="ID" TableView="vwModoEntrega">
+									Height="27" Margin="10,0,10,2" Caption="Modo de Entrega" Help="Modo de entrega que se aplica à venda para o cliente selecionado. " WidthLabel="260" Width="550" HorizontalAlignment="Left" FieldPesquisa="ID" TableView="vwModoEntrega">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xModosEntrega</System:String>
                                         <System:String>xDescricao</System:String>
@@ -982,17 +982,17 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									IsChecked="{Binding currentModel.stExigeRelacaoProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Exibe Relação dos próprios Produtos" Help="Caso opte por SIM o software irá mostrar para esse cliente somente os produtos para ele cadastrado, impossibilitando a visão de produtos não cadastrados." WidthLabel="268"/>
+									Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Exibe Relação dos próprios Produtos" Help="Caso opte por SIM o software irá mostrar para esse cliente somente os produtos para ele cadastrado, impossibilitando a visão de produtos não cadastrados." WidthLabel="260"/>
                                 <Components:HlpCheckBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									IsChecked="{Binding currentModel.stMostraProdutosRelacionado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Mostrar somente produto do Cliente" Help="Informar se o cliente somente verá na tela de vendas os produtos selecionados na  guia Produto do Cliente, nessa guia terá que ser preenchida os produtos que poderão fornecer ao Cliente e com suas respectivas listas e valores." WidthLabel="268"/>
+									Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Mostrar somente produto do Cliente" Help="Informar se o cliente somente verá na tela de vendas os produtos selecionados na  guia Produto do Cliente, nessa guia terá que ser preenchida os produtos que poderão fornecer ao Cliente e com suas respectivas listas e valores." WidthLabel="260"/>
                             </WrapPanel>
                         </Expander>
                         <Expander Header="Calendário" IsExpanded="True" DockPanel.Dock="Top" Height="71">
                             <WrapPanel Orientation="Vertical">
-                                <Components:HlpPesquisa Height="27" Margin="10,10,10,2" Caption="Calendário de Recebimento" Help="Dias nos quais o cliente deseja receber seus pedidos de vendas." WidthLabel="201" Width="440" TableView="vwCalendario" FieldPesquisa="ID">
+                                <Components:HlpPesquisa Height="27" Margin="10,10,10,2" Caption="Calendário de Recebimento" Help="Dias nos quais o cliente deseja receber seus pedidos de vendas." WidthLabel="260" Width="550" TableView="vwCalendario" FieldPesquisa="ID">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xNome</System:String>
                                         <System:String>xDescricao</System:String>
@@ -1006,7 +1006,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,10,10,2" Caption="Tipo de Documento para Pedido de Vendas" Help="Informar o tipo de documento que tornará padrão para o cliente, caso esteja em branco o software utilizará como padrão o Tipo de Documento definido em configurações do comercial" WidthLabel="302" Width="500" FieldPesquisa="ID" TableView="vwTipoDocumento">
+									Height="27" Margin="10,10,10,2" Caption="Tipo de Documento para Pedido de Vendas" Help="Informar o tipo de documento que tornará padrão para o cliente, caso esteja em branco o software utilizará como padrão o Tipo de Documento definido em configurações do comercial" WidthLabel="260" Width="550" FieldPesquisa="ID" TableView="vwTipoDocumento">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xTpdoc</System:String>
                                         <System:String>stDocumento</System:String>

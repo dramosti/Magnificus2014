@@ -29,17 +29,17 @@
                                 <Components:HlpTextBox 
 									IsEnabled="False"
 									Text="{Binding currentModel.idProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do Produto" Help="Chave principal do registro Produto" WidthLabel="159" Width="267"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do Produto" Help="Chave principal do registro Produto" WidthLabel="136" Width="267"/>
                                 <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código Alternativo" Help="É o código alternativo do Produto/Material. É sugerido pelo sistema, porém pode ser alterado com um código alfanumérico (letras e números) ou o código de barras." WidthLabel="159" Width="267"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código Alternativo" Help="É o código alternativo do Produto/Material. É sugerido pelo sistema, porém pode ser alterado com um código alfanumérico (letras e números) ou o código de barras." WidthLabel="136" Width="267"/>
                                 <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.cEan, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código EAN" Help="Código EAN do produto" WidthLabel="159" Width="300"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código EAN" Help="Código EAN do produto" WidthLabel="136" Width="267"/>
                             </WrapPanel>
                         </Expander>
                         <Expander Header="Item" IsExpanded="True" DockPanel.Dock="Top" Height="216">
@@ -58,7 +58,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.xFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Nome Fiscal" Help="Descrição Fiscal do Produto" WidthLabel="136" Width="450"/>
+									HorizontalAlignment="Left" Height="27" Margin="10,0,30,2" Caption="Nome Fiscal" Help="Descrição Fiscal do Produto" WidthLabel="136" Width="450"/>
                                 <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.xIngles, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -119,7 +119,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Família do Produto" Help="Informar a que família ou grupo o item pertence." FieldPesquisa="ID" TableView="vwFamiliaProduto" WidthLabel="157" Width="435">
+									Height="27" Margin="10,0,10,2" Caption="Família do Produto" Help="Informar a que família ou grupo o item pertence." FieldPesquisa="ID" TableView="vwFamiliaProduto" WidthLabel="136" Width="435">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xFamiliaProduto</System:String>
                                         <System:String>xDescricao</System:String>
@@ -140,37 +140,37 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.nPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Bruto" Help="É o peso bruto do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal." WidthLabel="175" Width="270"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Bruto" Help="É o peso bruto do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal." WidthLabel="150" Width="270"/>
                                     <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.nPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Líquido" Help="É o peso líquido do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal." WidthLabel="175" Width="270"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Líquido" Help="É o peso líquido do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal." WidthLabel="150" Width="270"/>
                                     <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.nPrazoValidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Prazo de Validade" Help="Informar o prazo de validade do produto em dias." WidthLabel="175" Width="270"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Prazo de Validade" Help="Informar o prazo de validade do produto em dias." WidthLabel="150" Width="270"/>
                                     <Components:HlpDateTimePicker 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									SelectedDate="{Binding currentModel.dBloqueio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de Bloqueio" Help="Informa automaticamente a data de quando o produto foi desativado." WidthLabel="175" Width="283"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de Bloqueio" Help="Informa automaticamente a data de quando o produto foi desativado." WidthLabel="150" Width="283"/>
                                     <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.nEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Estoque Mínimo" Help="Informar a quantidade mínima que deve permanecer em estoque, para que o sistema faça um controle de estoque crítico através de um relatório padrão." WidthLabel="175" Width="270"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Estoque Mínimo" Help="Informar a quantidade mínima que deve permanecer em estoque, para que o sistema faça um controle de estoque crítico através de um relatório padrão." WidthLabel="150" Width="270"/>
                                     <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.nEstoqueMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Estoque Máximo" Help="Informar a quantidade máxima que deve permanecer em estoque, para que o sistema faça um controle de estoque máximo na hora de cotações e compras." WidthLabel="175" Width="270"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Estoque Máximo" Help="Informar a quantidade máxima que deve permanecer em estoque, para que o sistema faça um controle de estoque máximo na hora de cotações e compras." WidthLabel="150" Width="270"/>
                                     <Components:HlpPesquisa 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idUnidadeMedidaEstoque, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Medida " Help="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas." WidthLabel="175" Width="402" TableView="vwUnidadeMedida" FieldPesquisa="ID">
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Medida " Help="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas." WidthLabel="150" Width="402" TableView="vwUnidadeMedida" FieldPesquisa="ID">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xSiglaPadrao</System:String>
                                             <System:String>xUnidadeMedida</System:String>
@@ -180,7 +180,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Ativo" Help="Desmarque a opção se o produto não estiver ativo, desmarcando o produto não será mais mostrado em nenhuma tela seja ela de recebimento, estoque, produção ou vendas." WidthLabel="175"/>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Ativo" Help="Desmarque a opção se o produto não estiver ativo, desmarcando o produto não será mais mostrado em nenhuma tela seja ela de recebimento, estoque, produção ou vendas." WidthLabel="150"/>
                                 </WrapPanel>
                             </Expander>
                             <Expander Header="Localização" IsExpanded="True" DockPanel.Dock="Top">
@@ -189,7 +189,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idProdutoLocalizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Localização" Help="Informar qual a localização do produto dentro do depósito e em seu devido site." WidthLabel="100" Width="362" TableView="vwProdutoLocalizacao" FieldPesquisa="ID">
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Localização" Help="Informar qual a localização do produto dentro do depósito e em seu devido site." WidthLabel="150" Width="454" TableView="vwProdutoLocalizacao" FieldPesquisa="ID">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xNome</System:String>
                                             <System:String>xDescricao</System:String>
@@ -199,7 +199,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Depósito" Help="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." WidthLabel="100" Width="362" TableView="vwDeposito" FieldPesquisa="ID">
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Depósito" Help="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." WidthLabel="150" Width="454" TableView="vwDeposito" FieldPesquisa="ID">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xDeposito</System:String>
                                             <System:String>xDescricao</System:String>
@@ -209,7 +209,7 @@
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
 									Text="{Binding currentModel.idFabricante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Fabricante" Help="Informe o fabricante do produto." WidthLabel="100" Width="362" TableView="vwFabricante" FieldPesquisa="ID">
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Fabricante" Help="Informe o fabricante do produto." WidthLabel="150" Width="454" TableView="vwFabricante" FieldPesquisa="ID">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xFantasia</System:String>
                                             <System:String>xRazao</System:String>
