@@ -13,6 +13,7 @@ using HLP.Comum.Modules;
 using HLP.Comum.Infrastructure.Static;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -40,7 +41,7 @@ namespace HLP.Comum.ViewModel.Commands
                 canExecute: pCanExec => this.alterarBaseCanExecute());
             this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved: pExec),
                 canExecute: pCanExec => this.delBaseCanExecute());
-            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(tab: pExec),
+            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(panel: pExec),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
@@ -198,7 +199,7 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void novoBase(object tab)
         {
-            this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;            
+            this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
 
@@ -214,8 +215,8 @@ namespace HLP.Comum.ViewModel.Commands
                 }
                 ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
-            
-            
+
+
 
         }
         private bool novoBaseCanExecute()
@@ -262,14 +263,13 @@ namespace HLP.Comum.ViewModel.Commands
             return this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando;
         }
 
-        private void salvarBase(object tab)
+        private void salvarBase(object panel)
         {
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
             this.objviewModel.bIsEnabled = false;
-            if (tab != null)
+            if (panel != null)
             {
-                HLP.Comum.Model.Models.TabPagesAtivasModel _tab = tab as HLP.Comum.Model.Models.TabPagesAtivasModel;
-                _tab._content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+                (panel as Panel).MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
             }
         }
         private bool salvarBaseCanExecute()

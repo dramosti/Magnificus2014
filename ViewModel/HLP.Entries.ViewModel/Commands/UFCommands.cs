@@ -34,7 +34,7 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_tab: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_tab:paramExec),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_tab: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
@@ -77,7 +77,8 @@ namespace HLP.Entries.ViewModel.Commands
 
             return (
                 this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
-                && this.objViewModel.IsValid(objDependency as Panel));
+                && this.objViewModel.IsValid(
+                (objDependency as Panel)));
         }
 
         public void Delete(object objUFModel)
