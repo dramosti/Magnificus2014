@@ -79,5 +79,13 @@ namespace HLP.Entries.View.WPF.Comercial
             cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: pesquisaCliente.Text);
             clListaPreco.IsReadOnly = this.ViewModel.bListaPrecoHabilitado;
         }
+
+        private void cbxStDocumento_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
+            int? valor = (int?)cbxStDocumento.SelectedValue;
+            clTipoOperacao.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento",
+                sParameter: valor != null ? valor.ToString() : "");
+        }
     }
 }
