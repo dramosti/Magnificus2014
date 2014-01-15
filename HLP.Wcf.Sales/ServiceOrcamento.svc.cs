@@ -92,10 +92,12 @@ namespace HLP.Wcf.Sales
 
         }
 
-        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto)
+        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa)
         {
             try
             {
+                HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa = idEmpresa;
+
                 HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objOrcamento =
                     this.orcamento_ideRepository.GetOrcamento_ide(idOrcamento: idObjeto);
 

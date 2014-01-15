@@ -96,7 +96,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             bool bReturn = false;
 
-            if (objviewModel.NameView != string.Empty)
+            if ((objviewModel.NameView != string.Empty) && (this.currentOp == OperacaoCadastro.livre))
                 bReturn = true;
             else
                 bReturn = false;
@@ -201,7 +201,7 @@ namespace HLP.Comum.ViewModel.Commands
             {
               objviewModel.SecondComponentFocus(panel as Panel);
             }
-
+            objviewModel.currentID = -1;
 
 
         }
@@ -273,7 +273,14 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void cancelarBase()
         {
-            this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
+            if (objviewModel.currentID == 0)
+            {
+                this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
+            }
+            else
+            {
+                this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
+            }
             this.objviewModel.bIsEnabled = false;
         }
         private bool cancelarBaseCanExecute()

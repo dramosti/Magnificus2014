@@ -67,11 +67,15 @@ namespace HLP.Comum.ViewModel.ViewModels
             get { return _currentID; }
             set
             {
-                if ((value != _currentID) && (value != 0))
+                if (value == -1)
+                {
+                    _currentID = 0;
+                }
+                else if ((value != _currentID) && (value != 0))
                 {
                     _currentID = value;
-                    //pesquisarBaseCommand.Execute(null);
                 }
+
             }
         }
 

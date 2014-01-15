@@ -16,7 +16,7 @@ namespace HLP.Wcf.Sales
         Orcamento_ideModel Save(Orcamento_ideModel objModel);
 
         [OperationContract]
-        Orcamento_ideModel GetObjeto(int idObjeto);
+        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa);
 
         [OperationContract]
         bool Delete(Orcamento_ideModel objModel);
