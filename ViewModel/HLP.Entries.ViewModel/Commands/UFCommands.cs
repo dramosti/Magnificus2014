@@ -47,7 +47,7 @@ namespace HLP.Entries.ViewModel.Commands
                     canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                    canExecute: paramCanExec => true);
+                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -141,7 +141,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
