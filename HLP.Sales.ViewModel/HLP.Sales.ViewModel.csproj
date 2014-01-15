@@ -55,6 +55,10 @@
     <Compile Include="ViewModel\Comercio\OrcamentoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
+      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
+      <Name>HLP.Comum.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
       <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
       <Name>HLP.Comum.Model</Name>

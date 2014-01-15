@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Sales.Model.Models.Comercial" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Sales.Model.Models.Comercial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.9.33:8080/wcf/ServiceOrcamento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/ServiceOrcamento.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="Orcamento_ideModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
@@ -90,7 +91,7 @@
           <xs:element minOccurs="0" name="nPedidoClienteItem" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="nPesoBruto" type="xs:decimal" />
           <xs:element minOccurs="0" name="nPesoLiquido" type="xs:decimal" />
-          <xs:element minOccurs="0" name="orcamento_Item_Impostos" nillable="true" type="tns:Orcamento_Item_ImpostosModel" />
+          <xs:element minOccurs="0" name="orcamento_Item_Impostos" nillable="true" type="tns:ArrayOfOrcamento_Item_ImpostosModel" />
           <xs:element minOccurs="0" name="pComissao" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="pDesconto" type="xs:decimal" />
           <xs:element minOccurs="0" name="qProduto" type="xs:decimal" />
@@ -114,6 +115,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Orcamento_ItemModel" nillable="true" type="tns:Orcamento_ItemModel" />
+  <xs:complexType name="ArrayOfOrcamento_Item_ImpostosModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Orcamento_Item_ImpostosModel" nillable="true" type="tns:Orcamento_Item_ImpostosModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrcamento_Item_ImpostosModel" nillable="true" type="tns:ArrayOfOrcamento_Item_ImpostosModel" />
   <xs:complexType name="Orcamento_Item_ImpostosModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
@@ -159,6 +166,7 @@
           <xs:element minOccurs="0" name="PIS_stCompoeBaseCalculoSubstituicaoTributaria" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="PIS_vBaseCalculo" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="PIS_vPIS" nillable="true" type="xs:decimal" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumstOrigem" type="q4:stOrigem" />
           <xs:element minOccurs="0" name="idCSTCofins" type="xs:int" />
           <xs:element minOccurs="0" name="idCSTIcms" type="xs:int" />
           <xs:element minOccurs="0" name="idCSTIpi" type="xs:int" />
@@ -171,6 +179,7 @@
           <xs:element minOccurs="0" name="stCalculaPisCofins" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stCompoeBaseCalculoPisCofins" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stRegimeTributacaoPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xNcm" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -178,7 +187,7 @@
   <xs:element name="Orcamento_Item_ImpostosModel" nillable="true" type="tns:Orcamento_Item_ImpostosModel" />
   <xs:complexType name="Orcamento_Total_ImpostosModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q5:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idOrcamento" type="xs:int" />
           <xs:element minOccurs="0" name="idOrcamentoTotalImpostos" nillable="true" type="xs:int" />
@@ -215,7 +224,7 @@
   <xs:element name="Orcamento_Total_ImpostosModel" nillable="true" type="tns:Orcamento_Total_ImpostosModel" />
   <xs:complexType name="Orcamento_retTranspModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q5:modelBase">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="CFOP" type="xs:int" />
           <xs:element minOccurs="0" name="cMunFG" type="xs:int" />

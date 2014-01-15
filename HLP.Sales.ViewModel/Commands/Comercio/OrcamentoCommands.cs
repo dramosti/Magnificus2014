@@ -284,7 +284,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID, idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
             }
             catch (Exception ex)
             {                

@@ -76,6 +76,7 @@ namespace HLP.Magnificus.View.WPF
                                System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             string xMessage = "";
+            string xInner = "";
             e.Handled = true;
 
             if (e.Exception.Message.Contains("Violation of UNIQUE KEY constraint"))
@@ -90,10 +91,12 @@ namespace HLP.Magnificus.View.WPF
             else
             {
                 xMessage = e.Exception.Message;
+                xInner = e.Exception.InnerException.Message;
             }
 
             MessageBox.Show(messageBoxText: "Erro: " +
-                xMessage, caption: "Erro.",
+                xMessage + Environment.NewLine +
+            "Inner Exception: " + xInner, caption: "Erro.",
                 button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
         }
 

@@ -189,6 +189,35 @@ namespace HLP.Sales.ViewModel.orcamentoService {
         excluido = 3,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="stOrigem", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    public enum stOrigem : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NACION = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESTRIMPDIRET = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESTRMERCINTERNO = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NACIONBEMIMPORTSUP40 = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NACIONDECRETO28867 = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NACIONBEMIMPORTINF40 = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESTRIMPDIRETSEMSIMILNACION = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ESTRMERCINTERNOSEMSIMILNACION = 7,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="orcamentoService.IServiceOrcamento")]
     public interface IServiceOrcamento {
@@ -200,10 +229,10 @@ namespace HLP.Sales.ViewModel.orcamentoService {
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> SaveAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/GetObjeto", ReplyAction="http://tempuri.org/IServiceOrcamento/GetObjetoResponse")]
-        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto);
+        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/GetObjeto", ReplyAction="http://tempuri.org/IServiceOrcamento/GetObjetoResponse")]
-        System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GetObjetoAsync(int idObjeto);
+        System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GetObjetoAsync(int idObjeto, int idEmpresa);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Delete", ReplyAction="http://tempuri.org/IServiceOrcamento/DeleteResponse")]
         bool Delete(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
@@ -253,12 +282,12 @@ namespace HLP.Sales.ViewModel.orcamentoService {
             return base.Channel.SaveAsync(objModel);
         }
         
-        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto) {
-            return base.Channel.GetObjeto(idObjeto);
+        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa) {
+            return base.Channel.GetObjeto(idObjeto, idEmpresa);
         }
         
-        public System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GetObjetoAsync(int idObjeto) {
-            return base.Channel.GetObjetoAsync(idObjeto);
+        public System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GetObjetoAsync(int idObjeto, int idEmpresa) {
+            return base.Channel.GetObjetoAsync(idObjeto, idEmpresa);
         }
         
         public bool Delete(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {

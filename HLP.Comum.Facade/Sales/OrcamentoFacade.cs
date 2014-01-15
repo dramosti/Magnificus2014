@@ -38,6 +38,7 @@ namespace HLP.Comum.Facade.Sales
         public static Tipo_OperacaoService.IserviceTipo_OperacaoClient tipoOperacaoService;
         public static empresaService.IserviceEmpresaClient empresaService;
         public static ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient classificFiscalService;
+        public static CodigoIcmsService.IserviceCodigoIcmsClient icmsService;
 
         public static int GetIdCfop(int idTipoOpercacao)
         {
