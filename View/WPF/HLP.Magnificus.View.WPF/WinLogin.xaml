@@ -2,6 +2,64 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="WinLogin" Height="500" Width="550" Background="#FF16499A" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxLogin" TargetType="{x:Type TextBoxBase}">
+            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <SolidColorBrush x:Key="Button.MouseOver.Background2" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background2" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border2" Color="#FF2C628B"/>
+        <Style x:Key="ButtonStyleLoginCopy" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background2}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <DockPanel>
         <DockPanel Margin="132,156,134,196" DockPanel.Dock="Top">
             <DockPanel Width="123" DockPanel.Dock="Left" HorizontalAlignment="Left">
@@ -9,9 +67,9 @@
                 <Label Content="Magnificus" Foreground="White" HorizontalAlignment="Center" FontFamily="Calibri" VerticalAlignment="Center" FontSize="20" Width="Auto" Height="39"/>
             </DockPanel>
             <DockPanel Height="142" Width="158" Margin="5,5,-20,5">
-                <TextBox Width="152" Height="27" DockPanel.Dock="Top" Margin="0,30,0,0"/>
-                <TextBox Width="152" Height="27" DockPanel.Dock="Top" Margin="0,5,0,0"/>
-                <Button Height="28" Width="152" Content="Conectar" DockPanel.Dock="Top" Margin="0,-15,0,0" Background="{StaticResource ButtonBackgroundBlueDefault}" Foreground="White" BorderBrush="white"/>
+                <TextBox Width="152" Height="27" DockPanel.Dock="Top" Margin="0,30,0,0" Template="{DynamicResource TextBoxLogin}"/>
+                <TextBox Width="152" Height="27" DockPanel.Dock="Top" Margin="0,5,0,0" Template="{DynamicResource TextBoxLogin}"/>
+                <Button Height="28" Width="152" Content="Conectar" DockPanel.Dock="Top" Margin="0,-15,0,0" Background="{StaticResource ButtonBackgroundBlueDefault}" Foreground="White" BorderBrush="white" Style="{DynamicResource ButtonStyleLoginCopy}"/>
             </DockPanel>
         </DockPanel>
         <DockPanel Margin="0,-55,0,0">
