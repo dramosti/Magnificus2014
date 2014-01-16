@@ -72,6 +72,7 @@ namespace HLP.Comum.ViewModel.Commands
                     if (this.objviewModel._currentTab._windows.Name == xNomeForm.ToString())
                         bReturn = false;
             return bReturn;
+            //return true;
         }
 
         private void DelWindow(object tabItem)
