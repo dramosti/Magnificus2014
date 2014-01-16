@@ -17,7 +17,7 @@ namespace HLP.Comum.View.Components
 
         }
 
-       
+
 
         #region Base de Dados
         [Category("HLP.Base")]
@@ -43,6 +43,18 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty FieldProperty =
             DependencyProperty.Register("Field", typeof(string), typeof(BaseControl), new PropertyMetadata(string.Empty));
         #endregion
+
+
+        [Category("HLP.Owner")]
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false));
+
         [Category("HLP.Base")]
         public string Help
         {

@@ -23,20 +23,20 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentModel),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                    canExecute: paramCanExec => true);
+                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -48,12 +48,12 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
-        public async void Save()
+        public async void Save(object _panel)
         {
             try
             {
                 this.objViewModel.currentModel.idCargo = await servico.saveCargoAsync(this.objViewModel.currentModel);
-                this.objViewModel.commandSalvarBase.Execute(parameter: null);
+                this.objViewModel.commandSalvarBase.Execute(parameter: _panel);
             }
             catch (Exception ex)
             {
@@ -107,19 +107,19 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.commandDeletarBase.CanExecute(parameter: null);
         }
 
-        private void Novo()
+        private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new CargoModel();
-            this.objViewModel.commandNovoBase.Execute(parameter: null);
+            this.objViewModel.commandNovoBase.Execute(parameter: _panel);
         }
         private bool NovoCanExecute()
         {
             return this.objViewModel.commandNovoBase.CanExecute(parameter: null);
         }
 
-        private void Alterar()
+        private void Alterar(object _panel)
         {
-            this.objViewModel.commandAlterarBase.Execute(parameter: null);
+            this.objViewModel.commandAlterarBase.Execute(parameter: _panel);
         }
         private bool AlterarCanExecute()
         {
@@ -128,7 +128,8 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            //this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }
         private bool CancelarCanExecute()

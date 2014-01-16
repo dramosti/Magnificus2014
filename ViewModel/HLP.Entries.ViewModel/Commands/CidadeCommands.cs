@@ -39,8 +39,8 @@ namespace HLP.Entries.ViewModel.Commands
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.Pesquisar(),
-                    canExecute: paramCanExec => true);
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
                 canExecute: paramCanExec => this.CopyCanExecute());
@@ -90,7 +90,7 @@ namespace HLP.Entries.ViewModel.Commands
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
+                        if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -135,7 +135,8 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            //this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -143,19 +144,24 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public void Pesquisar()
+        public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetCidadeBackground);
-
-            bw.RunWorkerAsync();
+            this.PesquisarRegistro();
         }
 
-        private async void GetCidadeBackground(object sender, DoWorkEventArgs e)
+        private void PesquisarRegistro()
         {
-            this.objViewModel.currentModel = await servico.getCidadeAsync(idCidade:
-                this.objViewModel.currentID);
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerAsync();
+
+        }
+
+        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = await
+                this.servico.getCidadeAsync(this.objViewModel.currentID);
         }
 
         public async void Copy()

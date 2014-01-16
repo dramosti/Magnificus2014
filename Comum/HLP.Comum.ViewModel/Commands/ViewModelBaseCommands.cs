@@ -96,7 +96,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             bool bReturn = false;
 
-            if ((objviewModel.NameView != string.Empty) && (this.currentOp == OperacaoCadastro.livre))
+            if ((objviewModel.NameView != string.Empty) && ((this.currentOp == OperacaoCadastro.livre)||(this.currentOp == OperacaoCadastro.pesquisando)))
                 bReturn = true;
             else
                 bReturn = false;
@@ -226,6 +226,7 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void delBase(object iRemoved)
         {
+
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
             if (this.objviewModel.navigatePesquisa != null)
             {

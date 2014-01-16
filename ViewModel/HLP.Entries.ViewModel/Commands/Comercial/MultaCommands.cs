@@ -40,8 +40,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
-
+                     canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
@@ -94,7 +93,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
-                    this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
+                    if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluido);
                 }
             }
             catch (Exception ex)

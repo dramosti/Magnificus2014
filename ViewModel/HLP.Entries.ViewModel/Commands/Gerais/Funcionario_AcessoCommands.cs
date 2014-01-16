@@ -22,13 +22,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
             this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
@@ -38,7 +38,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                        canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -56,14 +56,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-        public void Save()
+        public void Save(object _panel)
         {
             try
             {
                 BackgroundWorker bw = new BackgroundWorker();
                 bw.DoWork += bw_DoWork;
+                
                 bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-                bw.RunWorkerAsync();
+                bw.RunWorkerAsync(_panel);
             }
             catch (Exception ex)
             {
@@ -82,7 +83,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: (object)e.Result);
                     this.IniciaCollections();
                 }
             }
@@ -97,9 +98,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel =
-                    this.servico.Save(objModel:
-                    this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.servico.Save(objModel: this.objViewModel.currentModel);
+                e.Result = e.Argument;
             }
             catch (Exception ex)
             {
@@ -116,36 +116,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
-            //try
-            //{
-            //    if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-            //        caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-            //        == MessageBoxResult.Yes)
-            //    {
-            //        if (await //TODO: método de serviço para deletar
-            //        )
-            //        {
-            //            MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-            //                button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-            //            this.objViewModel.currentModel = null;
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-            //                button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            //finally
-            //{
-            //    this.objViewModel.deletarBaseCommand.Execute(parameter: null);
-            //}
+           
         }
 
         private bool DeleteCanExecute()
@@ -167,9 +140,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             //return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Alterar()
+        private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
         }
         private bool AlterarCanExecute()
         {
@@ -178,7 +151,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            //this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -186,7 +160,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             //try
             //{

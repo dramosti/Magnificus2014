@@ -39,7 +39,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                        canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -92,7 +92,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             int idRemoved = 0; // adicionado
             try
-            {                
+            {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -151,7 +151,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            //this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -220,7 +221,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Inicia_Collections()
         {
-            this.objViewModel.currentModel.lFamilia_Produto_ClassesModel.CollectionCarregada();
+            if (this.objViewModel.currentModel != null)
+                this.objViewModel.currentModel.lFamilia_Produto_ClassesModel.CollectionCarregada();
         }
 
 

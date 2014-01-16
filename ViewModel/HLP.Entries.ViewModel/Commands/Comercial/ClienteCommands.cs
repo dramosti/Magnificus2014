@@ -16,6 +16,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         clienteService.IserviceClienteClient servico = new clienteService.IserviceClienteClient();
         ClienteViewModel objViewModel;
+        object _panel;
         public ClienteCommands(ClienteViewModel objViewModel)
         {
 
@@ -27,10 +28,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
@@ -40,7 +41,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -77,7 +78,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
                     this.IniciaCollection();
                 }
             }
@@ -205,19 +206,21 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Novo()
+        private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: null);
+            this._panel = _panel;
         }
         private bool NovoCanExecute()
         {
-            return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
+            return this.objViewModel.novoBaseCommand.CanExecute(parameter: _panel);
         }
 
-        private void Alterar()
+        private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this._panel = _panel;
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
         }
         private bool AlterarCanExecute()
         {
@@ -342,12 +345,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void IniciaCollection()
         {
-            this.objViewModel.currentModel.lCliente_fornecedor_arquivo.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_contato.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_Endereco.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_produto.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_representante.CollectionCarregada();
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lCliente_fornecedor_arquivo.CollectionCarregada();
+                this.objViewModel.currentModel.lCliente_fornecedor_contato.CollectionCarregada();
+                this.objViewModel.currentModel.lCliente_fornecedor_Endereco.CollectionCarregada();
+                this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.CollectionCarregada();
+                this.objViewModel.currentModel.lCliente_fornecedor_produto.CollectionCarregada();
+                this.objViewModel.currentModel.lCliente_fornecedor_representante.CollectionCarregada();
+            }
+
         }
         #endregion
 

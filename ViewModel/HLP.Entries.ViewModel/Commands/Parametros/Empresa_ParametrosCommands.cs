@@ -18,7 +18,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         Empresa_ParametrosService.IserviceEmpresaParametrosClient servico = new Empresa_ParametrosService.IserviceEmpresaParametrosClient();
         public Empresa_ParametrosCommands(Empresa_ParametrosViewModel objViewModel)
         {
-            this.objViewModel = objViewModel;            
+            this.objViewModel = objViewModel;
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
@@ -125,14 +125,19 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+
+
         }
         private bool AlterarCanExecute()
         {
-            return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
+            //return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
+            return (this.objViewModel.viewModelBaseCommands.currentOp == Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando ||
+                this.objViewModel.viewModelBaseCommands.currentOp == Comum.Resources.RecursosBases.OperacaoCadastro.livre);
         }
 
         private void Cancelar()
         {
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()

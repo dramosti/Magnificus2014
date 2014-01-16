@@ -12,7 +12,6 @@
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
 					Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					IsEnabled="{Binding bIsEnabled}"
                     IsReadOnly="True"
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro dos modos de entrega, auto incremental." WidthLabel="237" HorizontalAlignment="Left" Width="350"/>
                 <Components:HlpTextBox 

@@ -15,7 +15,7 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         HLP.Entries.Model.Comercial.Tipo_produtoModel GetTipo(int idTipoProduto);
         [OperationContract]
-        void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
+        int Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
         [OperationContract]
         bool Delete(int idTipoProduto);
         [OperationContract]

@@ -11,20 +11,8 @@
         <conv:PorcentagemConverter x:Key="porcentagemConverter"/>
         <conv:MoedaConverter x:Key="MoedaConverter"/>
     </runtime:WindowsBase.Resources>
-    <DockPanel LastChildFill="True" >
-        <Expander Header="Dados da Empresa" DockPanel.Dock="Top" IsExpanded="True" Height="103">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox
-                    IsReadOnly="True"
-                    Text="{Binding currentModel.idEmpresa, Mode=TwoWay}"
-                    Height="27" Margin="10,0,0,2" Caption="Código" Help="Seleciona a empresa" WidthLabel="63" Width="175" HorizontalAlignment="Left"/>
-                <Components:HlpTextBox
-                    IsEnabled="False"
-                    Text="{Binding currentModel.xNome, Mode=TwoWay}"
-                    Height="27" Margin="10,0,0,2" Caption="Nome" Help="Digita o nome da empresa" WidthLabel="63" HorizontalAlignment="Left" Width="375"/>
-            </WrapPanel>
-        </Expander>
-        <TabControl  VerticalAlignment="Stretch">
+    <DockPanel LastChildFill="True" >      
+        <TabControl  VerticalAlignment="Stretch" Margin="0,10,0,0">
             <TabItem Header="Estoque">
                 <AdornerDecorator Margin="0,-4,0,4">
                     <DockPanel LastChildFill="True">

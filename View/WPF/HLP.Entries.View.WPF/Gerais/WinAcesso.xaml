@@ -23,49 +23,51 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </runtime:WindowsBase.Resources>
-    <DockPanel LastChildFill="True">
-        <Expander DockPanel.Dock="Top" Header="Funcionário"  Height="81" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <WrapPanel.BindingGroup>
-                    <BindingGroup x:Name="groudInfoLogin">
-                    </BindingGroup>
-                </WrapPanel.BindingGroup>
-                <Components:HlpTextBox
-                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsReadOnly="True"
-					HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Width="164" Caption="Código" WidthLabel="97" Table="Acesso" Field="idFuncionario" Help="Seleciona um funcionario" 
-                    />
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Expander DockPanel.Dock="Top" Header="Funcionário"  Height="70" IsExpanded="True">
+                <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
 
-            </WrapPanel>
-        </Expander>
-        <Expander DockPanel.Dock="Top" Header="Login" Height="195" VerticalAlignment="Stretch" IsExpanded="True">
-            <AdornerDecorator>
-                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                    <Components:HlpCheckBox
+                    <Components:HlpPesquisa								
+								Text="{Binding currentModel.idFuncionario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                IsReadOnly="True"
+								Height="27" Margin="10,0,0,0" Caption="Funcionário" WidthLabel="80" TableView="vwFuncionario" Width="734" FieldPesquisa="ID">
+                        <Components:HlpPesquisa.Items>
+                            <System:String>xNome</System:String>
+                            <System:String>xCodigoAlternativo</System:String>
+                            <System:String>xTelefoneComercial</System:String>
+                        </Components:HlpPesquisa.Items>
+                    </Components:HlpPesquisa>
+                </WrapPanel>
+
+            </Expander>
+            <Expander DockPanel.Dock="Left" Header="Login"  VerticalAlignment="Stretch" IsExpanded="True">
+                <AdornerDecorator>
+                    <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <Components:HlpCheckBox
                         Name="cbUtilizaSistema"
                 		Validation.ErrorTemplate="{StaticResource exceptionComp}"
                 		IsChecked="{Binding currentModel.stUsuarioAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                 		IsEnabled="{Binding bIsEnabled}" 
-                		Height="27" Margin="10,0,10,2" Caption="Utiliza Sistema" WidthLabel="119" Field="stUsuarioAtivo" Table="Funcionario" HorizontalAlignment="Left"/>
-                    <Components:HlpComboBox 
+                		Height="27" Margin="10,0,10,2" Caption="Utiliza Sistema" WidthLabel="102" Field="stUsuarioAtivo" Table="Funcionario" HorizontalAlignment="Left"/>
+                        <Components:HlpComboBox 
                         Validation.ErrorTemplate="{StaticResource exceptionComp}"
 								SelectedIndex="{Binding currentModel.stUsuario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                        Height="27" Margin="10,10,10,2" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario"
+                        Height="27" Margin="10,0,10,2" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario"
                                             Help="Seleciona o tipo do Usuário" WidthLabel="102" HorizontalAlignment="Left">
-                        <Components:HlpComboBox.IsEnabled>
-                            <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                                <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                                <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                            </MultiBinding>
-                        </Components:HlpComboBox.IsEnabled>
-                        <Components:HlpComboBox.Items>
-                            <System:String>0 - HLP</System:String>
-                            <System:String>1 - ADMINISTRADOR/DEFAULT</System:String>
-                            <System:String>2 - NORMAL</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpTextBox
+                            <Components:HlpComboBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                                    <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                                    <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                                </MultiBinding>
+                            </Components:HlpComboBox.IsEnabled>
+                            <Components:HlpComboBox.Items>
+                                <System:String>0 - HLP</System:String>
+                                <System:String>1 - ADMINISTRADOR/DEFAULT</System:String>
+                                <System:String>2 - NORMAL</System:String>
+                            </Components:HlpComboBox.Items>
+                        </Components:HlpComboBox>
+                        <Components:HlpTextBox
                         isFindFiles="False" 
                         isFindFolder="False"
                         Name="txtLogin"
@@ -73,85 +75,86 @@
 						Text="{Binding currentModel.xID, Mode=TwoWay, 
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						Height="27" Margin="10,0,10,2" Caption="Login" WidthLabel="102"
-                        LostFocus="controlsBgLogin_LostFocus" HorizontalAlignment="Left" Width="274">
-                        <Components:HlpTextBox.IsEnabled>
-                            <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                                <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                                <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                            </MultiBinding>
-                        </Components:HlpTextBox.IsEnabled>
-                    </Components:HlpTextBox>
-                    <Components:HlpTextBox 
+                        LostFocus="controlsBgLogin_LostFocus" HorizontalAlignment="Left" Width="252">
+                            <Components:HlpTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                                    <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                                    <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                                </MultiBinding>
+                            </Components:HlpTextBox.IsEnabled>
+                        </Components:HlpTextBox>
+                        <Components:HlpTextBox 
                         Name="txtSenha"
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						Height="27" Margin="10,0,10,2" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102"
-                        LostFocus="controlsBgLogin_LostFocus" HorizontalAlignment="Left" Width="274">
-                        <Components:HlpTextBox.IsEnabled>
-                            <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                                <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                                <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                            </MultiBinding>
-                        </Components:HlpTextBox.IsEnabled>
-                    </Components:HlpTextBox>
-                    <WrapPanel.BindingGroup>
-                        <BindingGroup x:Name="bgLogin">
-                            <BindingGroup.ValidationRules>
-                                <convView:ValidaUsuarioValidationRule
+                        LostFocus="controlsBgLogin_LostFocus" HorizontalAlignment="Left" Width="252">
+                            <Components:HlpTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                                    <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                                    <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                                </MultiBinding>
+                            </Components:HlpTextBox.IsEnabled>
+                        </Components:HlpTextBox>
+                        <WrapPanel.BindingGroup>
+                            <BindingGroup x:Name="bgLogin">
+                                <BindingGroup.ValidationRules>
+                                    <convView:ValidaUsuarioValidationRule
                                 ValidatesOnTargetUpdated="True"></convView:ValidaUsuarioValidationRule>
-                            </BindingGroup.ValidationRules>
-                        </BindingGroup>
-                    </WrapPanel.BindingGroup>
-                </WrapPanel>
-            </AdornerDecorator>
-        </Expander>
-        <Expander Header="Empresa" IsExpanded="True">
-            <DataGrid 
+                                </BindingGroup.ValidationRules>
+                            </BindingGroup>
+                        </WrapPanel.BindingGroup>
+                    </WrapPanel>
+                </AdornerDecorator>
+            </Expander>
+            <Expander  Header="Empresa" IsExpanded="True">
+                <DataGrid 
                 Name="gridAcessos"
                 ItemsSource="{Binding currentModel.lFuncionario_Acesso, UpdateSourceTrigger=PropertyChanged}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
                           CanUserAddRows="True"
-                          HorizontalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" CellEditEnding="gridAcessos_CellEditEnding">
-                <DataGrid.BindingGroup>
-                    <BindingGroup NotifyOnValidationError="True">
-                        <BindingGroup.ValidationRules>
-                            <v:ListUniqueValuesValidationRule                                
+                          HorizontalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" CellEditEnding="gridAcessos_CellEditEnding" Margin="0,43,0,0">
+                    <DataGrid.BindingGroup>
+                        <BindingGroup NotifyOnValidationError="True">
+                            <BindingGroup.ValidationRules>
+                                <v:ListUniqueValuesValidationRule                                
                                 ValidatesOnTargetUpdated="True"                                
                                 xCampos="idSetor-idEmpresa"></v:ListUniqueValuesValidationRule>
-                        </BindingGroup.ValidationRules>
-                    </BindingGroup>
-                </DataGrid.BindingGroup>
-                <DataGrid.Columns>
-                    <DataGridComboBoxColumn  Header="Empresa" Width="450"
+                            </BindingGroup.ValidationRules>
+                        </BindingGroup>
+                    </DataGrid.BindingGroup>
+                    <DataGrid.Columns>
+                        <DataGridComboBoxColumn  Header="Empresa" Width="450"
                                         ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
                                         >
-                        <DataGridComboBoxColumn.SelectedValueBinding>
-                            <!--SelectedValueBinding="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"-->
-                            <Binding
+                            <DataGridComboBoxColumn.SelectedValueBinding>
+                                <!--SelectedValueBinding="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"-->
+                                <Binding
                                 Path="idEmpresa"
                                 Mode="TwoWay"
                                 UpdateSourceTrigger="PropertyChanged"
                                 ValidatesOnDataErrors="True">
-                            </Binding>
-                        </DataGridComboBoxColumn.SelectedValueBinding>
-                    </DataGridComboBoxColumn>
-                    <DataGridComboBoxColumn  Header="Setor" Width="*"
+                                </Binding>
+                            </DataGridComboBoxColumn.SelectedValueBinding>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn  Header="Setor" Width="*"
                                         ItemsSource="{Binding Source={StaticResource lresultSetor}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
                                         SelectedValueBinding="{Binding idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-                </DataGrid.Columns>
-                <DataGrid.IsEnabled>
-                    <MultiBinding Converter="{StaticResource boolMultiConverter}">
-                        <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
-                        <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
-                    </MultiBinding>
-                </DataGrid.IsEnabled>
-            </DataGrid>
-        </Expander>
-    </DockPanel>
+                    </DataGrid.Columns>
+                    <DataGrid.IsEnabled>
+                        <MultiBinding Converter="{StaticResource boolMultiConverter}">
+                            <Binding ElementName="cbUtilizaSistema" Path="IsChecked"/>
+                            <Binding ElementName="cbUtilizaSistema" Path="IsEnabled"/>
+                        </MultiBinding>
+                    </DataGrid.IsEnabled>
+                </DataGrid>
+            </Expander>
+        </DockPanel>
+    </Grid>
 </runtime:WindowsBase>

@@ -217,8 +217,11 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+                if (ctr.GetType() == typeof(System.Windows.Controls.ComboBox))
+                    break;
             }
-            ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            if (ctr.GetType() == typeof(System.Windows.Controls.TextBox))
+                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
         public void FirstComponentFocus(System.Windows.Controls.Panel _panel)
         {
@@ -228,6 +231,8 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+                if (ctr.GetType() == typeof(System.Windows.Controls.ComboBox))
+                    break;
             }
         }
     }

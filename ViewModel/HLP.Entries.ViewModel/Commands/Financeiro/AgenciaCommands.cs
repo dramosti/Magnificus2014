@@ -41,7 +41,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                        canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -50,8 +50,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void IniciaCollections()
         {
-            this.objViewModel.currentModel.lAgencia_ContatoModel.CollectionCarregada();
-            this.objViewModel.currentModel.lAgencia_EnderecoModel.CollectionCarregada();
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lAgencia_ContatoModel.CollectionCarregada();
+                this.objViewModel.currentModel.lAgencia_EnderecoModel.CollectionCarregada();
+            }
         }
 
         #region Implementação Commands
@@ -118,7 +121,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         public void Delete()
         {
-            int iremoved = (int)this.objViewModel.currentModel.idAgencia;
+            int iRemoved = (int)this.objViewModel.currentModel.idAgencia;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -129,8 +132,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     )
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);                        
-                        this.objViewModel.deletarBaseCommand.Execute(parameter: iremoved);
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -283,8 +286,9 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void GetAgencia(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel =
-                this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+            if (this.objViewModel.currentID != 0)
+                this.objViewModel.currentModel =
+                    this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
         }
         #endregion
 

@@ -23,13 +23,13 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
-            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
 
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(),
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
@@ -39,7 +39,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                        canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -48,7 +48,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         #region Implementação Commands
 
-        public async void Save()
+        public async void Save(object _panel)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
                 this.objViewModel.currentModel.idTransportador = await this.servico.saveTransportadorAsync(objTransportador:
                     this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
             catch (Exception ex)
             {
@@ -152,19 +152,19 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Novo()
+        private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new TransportadorModel();
-            this.objViewModel.novoBaseCommand.Execute(parameter: null);
+            this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
 
-        private void Alterar()
+        private void Alterar(object _panel)
         {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: null);
+            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
         }
         private bool AlterarCanExecute()
         {
@@ -173,7 +173,8 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            //this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -230,8 +231,13 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getTransportadorAsync(idTransportador:
-                this.objViewModel.currentID);
+            if (this.objViewModel.currentID != 0)
+                this.objViewModel.currentModel = await this.servico.getTransportadorAsync(idTransportador:
+                    this.objViewModel.currentID);
+            else
+            {
+                this.objViewModel.currentModel = null;
+            }
         }
         #endregion
 

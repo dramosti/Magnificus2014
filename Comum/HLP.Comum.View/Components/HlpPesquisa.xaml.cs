@@ -97,6 +97,8 @@ namespace HLP.Comum.View.Components
         }
 
         #region Dependendy Property
+
+
         [Category("HLP.Owner")]
         public string Text
         {

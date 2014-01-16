@@ -15,9 +15,8 @@
                             <Expander Header="Principal" Height="600" IsExpanded="True">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
-						Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
-						IsEnabled="{Binding bIsEnabled}"
+						Text="{Binding currentModel.idContaBancaria, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						IsReadOnly="True"
 						Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Conta Bancaria, valor autoincremental" WidthLabel="148" HorizontalAlignment="Left" Width="230"/>
                                     <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"

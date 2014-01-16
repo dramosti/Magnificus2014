@@ -41,7 +41,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                     canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -51,8 +51,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void IniciaCollection()
         {
-            this.objViewModel.currentModel.lProduto_Fornecedor_Homologado.CollectionCarregada();
-            this.objViewModel.currentModel.lProduto_Revisao.CollectionCarregada();
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lProduto_Fornecedor_Homologado.CollectionCarregada();
+                this.objViewModel.currentModel.lProduto_Revisao.CollectionCarregada();
+            }
         }
 
         #region Implementação Commands
@@ -141,7 +144,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                        if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -289,8 +292,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void getProduto(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.getProduto(idProduto:
-                this.objViewModel.currentID);
+            if (this.objViewModel.currentID != 0)
+            {
+                this.objViewModel.currentModel = this.servico.getProduto(idProduto:
+                    this.objViewModel.currentID);
+            }
+            else
+            {
+                this.objViewModel.currentModel = null;
+            }
         }
         #endregion
 

@@ -42,11 +42,12 @@ namespace HLP.Wcf.Entries
         
         }
 
-        public void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo)
+        public int Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo)
         {
             try
             {
                 iTipo_produtoRepository.Save(tipo);
+                return (int)tipo.idTipoProduto;
             }
             catch (Exception ex)
             {

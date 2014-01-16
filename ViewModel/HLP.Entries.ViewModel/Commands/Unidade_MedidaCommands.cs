@@ -22,11 +22,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             this.objViewModel = objViewModel;
 
-            this.objViewModel = objViewModel;
-
-
-
-            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentModel),
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
@@ -45,7 +41,7 @@ namespace HLP.Entries.ViewModel.Commands
                     canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                    canExecute: paramCanExec => true);
+                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -58,8 +54,8 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                this.objViewModel.currentModel.idUnidadeMedida = await this.servico.saveUnidade_medidaAsync(
-                    objUnidadeMedida: this.objViewModel.currentModel);
+                //TODO: método de serviço para salvar
+                this.objViewModel.currentModel.idUnidadeMedida = await servico.saveUnidade_medidaAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
             catch (Exception ex)
@@ -74,23 +70,24 @@ namespace HLP.Entries.ViewModel.Commands
                 return false;
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
-                && this.objViewModel.IsValid(objDependency as Grid));
+                && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public void Delete(object objUFModel)
+        public async void Delete()
         {
+            int iRemoved = 0;
             try
             {
-                int iExcluir = (int)this.objViewModel.currentModel.idUnidadeMedida;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteUnidade_medida(idUnidadeMedida: (int)this.objViewModel.currentModel.idUnidadeMedida))
+                    if (await servico.deleteUnidade_medidaAsync((int)objViewModel.currentModel.idUnidadeMedida))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+
+                        iRemoved = (int)objViewModel.currentModel.idUnidadeMedida;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -104,6 +101,10 @@ namespace HLP.Entries.ViewModel.Commands
             {
                 throw ex;
             }
+            finally
+            {
+                if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
+            }
         }
 
         private bool DeleteCanExecute()
@@ -116,6 +117,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo(object _panel)
         {
+            //TODO: instanciar novo objeto
             this.objViewModel.currentModel = new Unidade_medidaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -130,7 +132,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         private bool AlterarCanExecute()
         {
-            return this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null);
+            return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
         }
 
         private void Cancelar()
@@ -144,18 +146,54 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idUnidadeMedida =
-                    await this.servico.copyUnidade_medidaAsync(idUnidadeMedida: (int)this.objViewModel.currentModel.idUnidadeMedida);
-                this.objViewModel.copyBaseCommand.Execute(null);
+                BackgroundWorker bwCopy = new BackgroundWorker();
+                bwCopy.DoWork += bwCopy_DoWork;
+                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+                bwCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentID = (int)e.Result;
+                    this.metodoGetModel(this, null);
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result = servico.copyUnidade_medida((int)objViewModel.currentModel.idUnidadeMedida);
+                //TODO: implementar serviço de copy
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -186,18 +224,18 @@ namespace HLP.Entries.ViewModel.Commands
         private void PesquisarRegistro()
         {
             BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetUnidadeMedidaBackground);
+            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
             bw.RunWorkerAsync();
 
         }
 
-        private async void GetUnidadeMedidaBackground(object sender, DoWorkEventArgs e)
+        private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getUnidade_medidaAsync(idUnidadeMedida:
-                this.objViewModel.currentID);
+            this.objViewModel.currentModel = await servico.getUnidade_medidaAsync((int)objViewModel.currentID);  //TODO: método de serviço para pesquisar
         }
-
         #endregion
+
+
 
 
     }

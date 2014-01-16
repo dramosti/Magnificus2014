@@ -11,4 +11,11 @@ namespace HLP.Comum.Model.Models
         public string xName { get; set; }
         public string xHeader { get; set; }
     }
+
+    public class MenuItemModel
+    {
+        public string xName { get; set; }
+        public string xHeader { get; set; }
+        public List<MenuItemModel> lItens { get; set; }
+    }
 }

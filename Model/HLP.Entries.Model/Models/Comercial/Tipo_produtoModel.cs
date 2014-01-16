@@ -15,8 +15,14 @@ namespace HLP.Entries.Model.Comercial
         public Tipo_produtoModel()
             : base(xTabela: "Tipo_produto") { }
         
+        private int? _idTipoProduto;
         [ParameterOrder(Order = 1)]
-        public int? idTipoProduto { get; set; }
+        public int? idTipoProduto
+        {
+            get { return _idTipoProduto; }
+            set { _idTipoProduto = value; base.NotifyPropertyChanged("idTipoProduto"); }
+        }
+        
         [ParameterOrder(Order = 2)]
         public string xTipo { get; set; }
         [ParameterOrder(Order = 3)]
