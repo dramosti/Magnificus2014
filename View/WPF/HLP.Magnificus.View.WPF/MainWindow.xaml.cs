@@ -33,7 +33,7 @@ namespace HLP.Magnificus.View.WPF
             try
             {
                 this._viewModel = new MainViewModel();
-                
+                this._viewModel.CarregaMenu(m: this.menuPrincipal);
             }
             catch (Exception)
             {
@@ -53,12 +53,6 @@ namespace HLP.Magnificus.View.WPF
             Environment.Exit(0);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            WinFindAll a = new WinFindAll();
-            a.ShowDialog();
-        }      
-        
 
-        }
+    }
 }
