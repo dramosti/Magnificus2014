@@ -111,7 +111,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converter\SelectedTabItemConverter.cs" />
     <Compile Include="Service References\empresaParametrosService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
