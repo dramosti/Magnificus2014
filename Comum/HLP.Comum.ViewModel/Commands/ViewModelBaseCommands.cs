@@ -96,7 +96,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             bool bReturn = false;
 
-            if ((objviewModel.NameView != string.Empty) && (this.currentOp == OperacaoCadastro.livre))
+            if ((objviewModel.NameView != string.Empty) && ((this.currentOp == OperacaoCadastro.livre)||(this.currentOp == OperacaoCadastro.pesquisando)))
                 bReturn = true;
             else
                 bReturn = false;

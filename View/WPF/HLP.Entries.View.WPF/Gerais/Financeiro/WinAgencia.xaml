@@ -64,7 +64,7 @@
                                     <WrapPanel Orientation="Vertical" Margin="0,10,0,0" DockPanel.Dock="Left" Width="623">
                                         <Components:HlpTextBox 
 										Text="{Binding currentModel.idAgencia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-										IsEnabled="{Binding bIsEnabled}"
+										IsReadOnly="True"
 										Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Agencia." WidthLabel="147" HorizontalAlignment="Left" Width="230"/>
                                         <Components:HlpTextBox 
 										Validation.ErrorTemplate="{StaticResource exceptionComp}"

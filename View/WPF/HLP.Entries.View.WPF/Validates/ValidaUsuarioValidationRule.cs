@@ -21,7 +21,7 @@ namespace HLP.Entries.View.WPF.Validates
                     object vlLogin = r.GetType().GetProperty("xID").GetValue(obj: r) ?? "";
                     object vlSenha = r.GetType().GetProperty("xSenha").GetValue(obj: r) ?? "";
                     object vlIdFuncionario = r.GetType().GetProperty("idFuncionario").GetValue(obj: r);
-                    Funcionario_AcessoViewModel vm = (bg.Owner as StackPanel).DataContext as Funcionario_AcessoViewModel;
+                    Funcionario_AcessoViewModel vm = (bg.Owner as WrapPanel).DataContext as Funcionario_AcessoViewModel;
 
                     if (!vm.ValidaUsuario(xLogin: vlLogin.ToString()
                         , xSenha: vlSenha.ToString(),

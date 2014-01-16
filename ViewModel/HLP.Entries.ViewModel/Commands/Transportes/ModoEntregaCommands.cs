@@ -43,7 +43,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                        canExecute: paramCanExec => true);
+                        canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -80,7 +80,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         public async void Delete()
         {
-            int iremoved = 0;
+            int iRemoved = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -91,7 +91,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        iremoved = (int)objViewModel.currentModel.idModosEntrega;
+                        iRemoved = (int)objViewModel.currentModel.idModosEntrega;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -107,7 +107,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: iremoved);
+                if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
             }
         }
 
@@ -141,7 +141,8 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            //this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()

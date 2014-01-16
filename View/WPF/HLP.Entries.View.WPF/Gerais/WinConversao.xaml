@@ -25,16 +25,17 @@
         </ObjectDataProvider>
     </Window.Resources>
     <DockPanel  HorizontalAlignment="Stretch">
-        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="82" VerticalAlignment="Top" IsExpanded="True" DockPanel.Dock="Top">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-            <Components:HlpTextBox
-                IsEnabled="False"
-                Height="35"
-                Validation.ErrorTemplate="{StaticResource exceptionComp}"
-                Text="{Binding currentModel.xPesquisa, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                Caption="Descrição Produto"
-                WidthLabel="150"
-                HorizontalAlignment="Left" Width="583" Margin="10,0,10,2"/>
+        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Top" IsExpanded="True" DockPanel.Dock="Top">
+            <WrapPanel Orientation="Vertical" Margin="10,10,0,0">
+                <Components:HlpPesquisa Caption="Produto"
+                    	IsReadOnly="True"
+                    	Text="{Binding currentModel.idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwProduto" FieldPesquisa="ID" WidthLabel="55" Height="27" HorizontalAlignment="Left" Width="587">
+                    <Components:HlpPesquisa.Items>
+                        <System:String>xComercial</System:String>
+                        <System:String>cAlternativo</System:String>
+                    </Components:HlpPesquisa.Items>
+                </Components:HlpPesquisa>
             </WrapPanel>
         </Expander>
         <Expander Header="Grade" IsExpanded="True">

@@ -22,12 +22,13 @@
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
 
-        <wpfTool:WatermarkTextBox x:Name="txtID"        
+        <TextBox x:Name="txtID"        
                  TextChanged="ucTxt_TextChanged"
                  LostFocus="ucTxt_LostFocus"
+                 IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  Width="80" Height="20" KeyDown="txtID_KeyDown" />
-        <wpfTool:WatermarkTextBox Watermark="F5" x:Name="txtDisplay" IsReadOnly="True"
+        <TextBox x:Name="txtDisplay" IsReadOnly="True"
                  TextChanged="ucTxtPesquisa_TextChanged"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
                  Focusable="False" Height="20"  />

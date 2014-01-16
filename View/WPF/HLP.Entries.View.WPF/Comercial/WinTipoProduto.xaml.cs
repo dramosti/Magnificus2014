@@ -24,6 +24,19 @@ namespace HLP.Entries.View.WPF.Comercial
         public WinTipoProduto()
         {
             InitializeComponent();
+            this.ViewModel = new Tipo_ProdutoViewModel();
+        }
+
+        public Tipo_ProdutoViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as Tipo_ProdutoViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }

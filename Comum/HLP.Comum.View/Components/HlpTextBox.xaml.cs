@@ -44,17 +44,6 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("Text", typeof(string), typeof(HlpTextBox), new PropertyMetadata(string.Empty));
 
         [Category("HLP.Owner")]
-        public bool IsReadOnly
-        {
-            get { return (bool)GetValue(IsReadOnlyProperty); }
-            set { SetValue(IsReadOnlyProperty, value); }
-        }
-        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsReadOnlyProperty =
-            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(HlpTextBox), new PropertyMetadata(false));
-
-
-        [Category("HLP.Owner")]
         public bool isFindFolder
         {
             get { return (bool)GetValue(isFindFolderProperty); }

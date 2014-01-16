@@ -83,9 +83,10 @@ namespace HLP.Entries.ViewModel.Commands
 
         public void Delete(object objUFModel)
         {
+            int iExcluir = 0;
+
             try
             {
-                int iExcluir = (int)this.objViewModel.currentModel.idUF;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -94,7 +95,7 @@ namespace HLP.Entries.ViewModel.Commands
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                        iExcluir = (int)this.objViewModel.currentModel.idUF;                       
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -110,6 +111,7 @@ namespace HLP.Entries.ViewModel.Commands
             }
             finally
             {
+                if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
             }
         }
         private bool DeleteCanExecute()
@@ -141,6 +143,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
+            //this.PesquisarRegistro();
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
