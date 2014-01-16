@@ -63,6 +63,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\CodigoIcmsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Condicao_PagamentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,6 +210,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\clienteService\serviceCliente5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\HLP.Comum.Facade.CodigoIcmsService.Codigo_Icms_paiModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.wsdl" />
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Condicao_PagamentoService\HLP.Comum.Facade.Condicao_PagamentoService.Condicao_pagamentoModel.datasource">
@@ -442,6 +469,7 @@
     <WCFMetadataStorage Include="Service References\cidadeService\" />
     <WCFMetadataStorage Include="Service References\ClassificacaoFiscalServico\" />
     <WCFMetadataStorage Include="Service References\clienteService\" />
+    <WCFMetadataStorage Include="Service References\CodigoIcmsService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
@@ -665,6 +693,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ClassificacaoFiscalServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CodigoIcmsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

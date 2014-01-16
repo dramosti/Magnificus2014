@@ -59,7 +59,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_ItemModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
-                                 .DoNotMap(i => i.bXComercialEnabled)
+                                 .DoNotMap(i => i.bXComercialEnabled)                                 
                                  .Build());
             }
 

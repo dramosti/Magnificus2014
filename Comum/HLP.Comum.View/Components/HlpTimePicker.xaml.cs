@@ -24,7 +24,9 @@ namespace HLP.Comum.View.Components
         public HlpTimePicker()
         {
             InitializeComponent();
+            
 
+                
 
         }
 

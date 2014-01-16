@@ -17,16 +17,34 @@
         <TextBlock x:Name="lblCaption" 
                TextWrapping="Wrap"
                Height="{Binding ElementName=componente, Path=Height}"
-               Style="{StaticResource  TextBlocktyleComponents}"
+               Style="{StaticResource TextBlocktyleComponents}"
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
                Visibility ="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=VisibilityLabel}" 
 			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" FontFamily="Calibri" FontSize="14"/>
         <Button DockPanel.Dock="Right" Visibility="Collapsed" x:Name="btn" HorizontalAlignment="Right" Width="25" Height="20" Grid.Column="1" Click="btn_Click">
-            <StackPanel>
-                <Image Source="pack://application:,,,/HLP.Comum.Resources;component/Images/Folder.png" Width="12" Height="12"/>              
-            </StackPanel>
+            <Button.Template>
+                <ControlTemplate>
+                    <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd" Height="12" Width="12">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Folder.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Folder_MouseOver.png"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Folder_Disabled.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
         </Button>
-        <TextBox x:Name="txtControle"  DockPanel.Dock="Left"
+        <TextBox x:Name="txtControle" Style="{DynamicResource TextBoxComponentStyle}" DockPanel.Dock="Left"
                  TextChanged="txtControle_TextChanged"
                  LostFocus="txtControle_LostFocus"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"

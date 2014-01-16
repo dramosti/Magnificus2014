@@ -9,17 +9,4 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="statusModel" nillable="true" type="tns:statusModel" />
-  <xs:simpleType name="stOrigem">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NACION" />
-      <xs:enumeration value="ESTRIMPDIRET" />
-      <xs:enumeration value="ESTRMERCINTERNO" />
-      <xs:enumeration value="NACIONBEMIMPORTSUP40" />
-      <xs:enumeration value="NACIONDECRETO28867" />
-      <xs:enumeration value="NACIONBEMIMPORTINF40" />
-      <xs:enumeration value="ESTRIMPDIRETSEMSIMILNACION" />
-      <xs:enumeration value="ESTRMERCINTERNOSEMSIMILNACION" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="stOrigem" nillable="true" type="tns:stOrigem" />
 </xs:schema>

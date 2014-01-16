@@ -13,7 +13,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-
     <DockPanel LastChildFill="True">
         <TextBlock x:Name="lblCaption" 
                TextWrapping="Wrap"
@@ -21,6 +20,6 @@
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
         <CheckBox x:Name="chkControle" VerticalAlignment="Center"
-                 IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=IsChecked}" />
+                 IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=IsChecked}" Style="{DynamicResource CheckBoxStyle}" />
     </DockPanel>
 </runtime:BaseControl>
