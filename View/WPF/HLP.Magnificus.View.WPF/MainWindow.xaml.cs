@@ -51,6 +51,12 @@ namespace HLP.Magnificus.View.WPF
         private void Window_Closed(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WinFindAll a = new WinFindAll();
+            a.ShowDialog();
         }      
         
 

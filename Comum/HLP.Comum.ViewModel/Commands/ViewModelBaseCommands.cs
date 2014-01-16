@@ -226,6 +226,7 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void delBase(object iRemoved)
         {
+
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
             if (this.objviewModel.navigatePesquisa != null)
             {

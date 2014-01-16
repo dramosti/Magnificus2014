@@ -85,10 +85,16 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CHARACTER_MAXIMUM_LENGTHField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string COLUMN_NAMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DATA_TYPEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IS_NULLABLEField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -97,6 +103,19 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CHARACTER_MAXIMUM_LENGTH {
+            get {
+                return this.CHARACTER_MAXIMUM_LENGTHField;
+            }
+            set {
+                if ((this.CHARACTER_MAXIMUM_LENGTHField.Equals(value) != true)) {
+                    this.CHARACTER_MAXIMUM_LENGTHField = value;
+                    this.RaisePropertyChanged("CHARACTER_MAXIMUM_LENGTH");
+                }
             }
         }
         
@@ -122,6 +141,19 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
                 if ((object.ReferenceEquals(this.DATA_TYPEField, value) != true)) {
                     this.DATA_TYPEField = value;
                     this.RaisePropertyChanged("DATA_TYPE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IS_NULLABLE {
+            get {
+                return this.IS_NULLABLEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IS_NULLABLEField, value) != true)) {
+                    this.IS_NULLABLEField = value;
+                    this.RaisePropertyChanged("IS_NULLABLE");
                 }
             }
         }
@@ -164,10 +196,10 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
         System.Threading.Tasks.Task<HLP.Entries.Model.Comercial.Tipo_produtoModel> GetTipoAsync(int idTipoProduto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipoProduto/Save", ReplyAction="http://tempuri.org/IserviceTipoProduto/SaveResponse")]
-        void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
+        int Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipoProduto/Save", ReplyAction="http://tempuri.org/IserviceTipoProduto/SaveResponse")]
-        System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
+        System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceTipoProduto/Delete", ReplyAction="http://tempuri.org/IserviceTipoProduto/DeleteResponse")]
         bool Delete(int idTipoProduto);
@@ -217,11 +249,11 @@ namespace HLP.Entries.ViewModel.TipoProdutoService {
             return base.Channel.GetTipoAsync(idTipoProduto);
         }
         
-        public void Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo) {
-            base.Channel.Save(tipo);
+        public int Save(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo) {
+            return base.Channel.Save(tipo);
         }
         
-        public System.Threading.Tasks.Task SaveAsync(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo) {
+        public System.Threading.Tasks.Task<int> SaveAsync(HLP.Entries.Model.Comercial.Tipo_produtoModel tipo) {
             return base.Channel.SaveAsync(tipo);
         }
         

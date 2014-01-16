@@ -113,6 +113,7 @@
     <Content Include="ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll" />
     <Content Include="ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll" />
     <Content Include="NInject\Ninject.dll" />
+    <Content Include="SearchTextBox\SearchTextBox.dll" />
     <Content Include="Spring\Spring.Core.dll" />
     <Content Include="Zip\ICSharpCode.SharpZipLib.dll" />
   </ItemGroup>

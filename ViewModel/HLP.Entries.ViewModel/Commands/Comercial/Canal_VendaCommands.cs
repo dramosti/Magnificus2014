@@ -76,7 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public async void Delete()
         {
-            int iExcluir = (int)objViewModel.currentModel.idCanalVenda;
+            int iExcluir = 0;
             try
             {
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
@@ -88,6 +88,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        iExcluir = (int)objViewModel.currentModel.idCanalVenda;
                         this.objViewModel.currentModel = null;
                     }
                     else
