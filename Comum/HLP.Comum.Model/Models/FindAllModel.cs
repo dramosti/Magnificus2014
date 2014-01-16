@@ -13,7 +13,7 @@ namespace HLP.Comum.Model.Models
         public string output
         {
             get { return _output; }
-            set { _output = value; }
+            set { _output = value; base.NotifyPropertyChanged("output"); }
         }
 
 
@@ -22,7 +22,7 @@ namespace HLP.Comum.Model.Models
         public byte[] icon
         {
             get { return _icon; }
-            set { _icon = value; }
+            set { _icon = value; base.NotifyPropertyChanged("icon"); }
         }
         
         

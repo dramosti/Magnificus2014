@@ -452,7 +452,7 @@
                                 </Button>
                                 <Label Content="{Binding _currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                             </DockPanel>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" Click="Button_Click">
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" >
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
