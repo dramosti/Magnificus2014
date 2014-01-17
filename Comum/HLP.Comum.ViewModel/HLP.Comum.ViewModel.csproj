@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Components\HlpPesquisaPadraoCommands.cs" />
+    <Compile Include="Commands\LoginCommands.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Commands\ViewModelBaseCommands.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="ViewModels\Components\HlpPesquisaPadraoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FindAllViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>

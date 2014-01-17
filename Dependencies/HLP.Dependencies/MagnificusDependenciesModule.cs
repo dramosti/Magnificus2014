@@ -22,6 +22,8 @@ using HLP.Entries.Model.Repository.Interfaces.Crm;
 using HLP.Entries.Model.Repository.Implementation.Crm;
 using HLP.Sales.Model.Repository.Interfaces;
 using HLP.Sales.Model.Repository.Implementation;
+using HLP.Comum.Model.Repository.Interfaces;
+using HLP.Comum.Model.Repository.Implementation;
 
 namespace HLP.Dependencies
 {
@@ -36,6 +38,7 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+            Bind<ILoginRepository>().To<LoginRepository>();
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
             Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
             Bind<IFillComboBoxRepository>().To<FillComboBoxRepository>();

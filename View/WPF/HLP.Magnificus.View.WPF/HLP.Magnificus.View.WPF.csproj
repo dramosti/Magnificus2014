@@ -123,6 +123,7 @@
     <Compile Include="WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
+    <None Include="Resources\UserSilhouette.png" />
     <Resource Include="icone hlp.ico" />
     <None Include="Service References\empresaParametrosService\HLP.Magnificus.View.WPF.empresaParametrosService.EmpresaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
