@@ -21,13 +21,13 @@
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" 
                Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
         <ComboBox DockPanel.Dock="Left" x:Name="comboBox"  Margin="0,4,0,3"
-                  SelectionChanged="comboBox_SelectionChanged"
+                SelectionChanged="comboBox_SelectionChanged" Style="{StaticResource ComboBoxStyle}"
                 SelectedValue="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedValue}"  
                 SelectedValuePath="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedValuePath}"
                 SelectedItem="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedItem}"
                 SelectedIndex="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=SelectedIndex}"
                 DisplayMemberPath="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=DisplayMemberPath}"
-                ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}" Height="20" Width="150"  
+                ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}" Height="20" Width="150" FontFamily="Calibri"  
                   >
         </ComboBox>
         <Label Margin="10,0,0,0"/>
