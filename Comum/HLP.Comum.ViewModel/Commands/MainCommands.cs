@@ -31,6 +31,12 @@ namespace HLP.Comum.ViewModel.Commands
                     execute: ex => DelWindow(tabItem: ex),
                     canExecute: ex => DelWindowCanExecute());
 
+                this.objviewModel.FindAllCommand = new RelayCommand
+                    (
+                    execute: ex => objviewModel.FindAll(),
+                    canExecute: can=> true
+                    );
+
 
             }
             catch (Exception ex)

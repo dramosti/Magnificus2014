@@ -3,9 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Magnificus.View.WPF.WinFindAll"
-        Title="Pesquisa rápida" Width="250" Height="300">
+        Title="" Width="250" Height="300" WindowStyle="ToolWindow">
     <DockPanel LastChildFill="True" >
         <Components:HlpSearchTextBox Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" />
-        <ListBox Name="lstResult" />
+        <ListBox Name="lstResult"  ItemsSource="{Binding  Path=lResult}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path= icon}" Width="16" Height="16" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Path=xHeader}"/>                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </DockPanel>
 </Window>

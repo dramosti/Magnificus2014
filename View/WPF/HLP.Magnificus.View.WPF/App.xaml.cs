@@ -18,6 +18,9 @@ using HLP.Comum.Infrastructure.Static;
 using System.Windows.Markup;
 using System.Globalization;
 using System.ComponentModel;
+using System.Configuration;
+using System.ServiceModel.Configuration;
+using HLP.Comum.Infrastructure.Util;
 namespace HLP.Magnificus.View.WPF
 {
     /// <summary>
@@ -33,10 +36,6 @@ namespace HLP.Magnificus.View.WPF
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             CompanyData.idEmpresa = 1;
-            BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
-            bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
-            bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
-            bwParametrosEmpresa.RunWorkerAsync();
         }
 
         void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -66,7 +65,6 @@ namespace HLP.Magnificus.View.WPF
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -122,12 +120,69 @@ namespace HLP.Magnificus.View.WPF
                 new FrameworkPropertyMetadata(
                     XmlLanguage.GetLanguage(
                     CultureInfo.CurrentCulture.IetfLanguageTag)));
+
+                if (!this.EmRedeLocal())
+                {
+                    InternetCS internetUtil = new InternetCS();
+
+                    if (internetUtil.Conexao())
+                        this.SalvaEndPoint(xUri: HLP.Comum.Infrastructure.Static.WcfData.xEnderWeb);
+                }
+
+                BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
+                bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
+                bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
+                bwParametrosEmpresa.RunWorkerAsync();
+
                 base.OnStartup(e);
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+        }
+
+        private bool EmRedeLocal()
+        {
+            System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
+            System.Net.NetworkInformation.PingReply pr;
+
+            try
+            {
+                pr = p.Send(HLP.Comum.Infrastructure.Static.WcfData.xIpServidor);
+
+                if (pr.Status == System.Net.NetworkInformation.IPStatus.Success)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private void SalvaEndPoint(string xUri)
+        {
+            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
+            string xNomeServico;
+            foreach (ChannelEndpointElement item in serviceModeGroup.Client.Endpoints)
+            {
+                xNomeServico = item.Address.ToString().Split('/').ToList().Last();
+                item.Address = new Uri(xUri + xNomeServico);
+            }
+
+            try
+            {
+                c.Save();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

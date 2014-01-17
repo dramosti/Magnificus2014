@@ -24,7 +24,7 @@ namespace HLP.Magnificus.View.WPF
         public WinFindAll()
         {
             InitializeComponent();
-            this.ViewModel = new FindAllViewModel(this.m_txtTest);
+            this.ViewModel = new FindAllViewModel();
             // Supply the control with the list of sections
             List<string> sections = new List<string> { "Formulários", "Dashboards", "Relatórios" };
             m_txtTest.SectionsList = sections;
@@ -32,14 +32,26 @@ namespace HLP.Magnificus.View.WPF
             m_txtTest.SectionsStyle = HlpSearchTextBox.SectionsStyles.RadioBoxStyle;
             // Add a routine handling the event OnSearch
             m_txtTest.OnSearch += new RoutedEventHandler(this.ViewModel.m_txtTest_OnSearch);
-            
+            lstResult.MouseDoubleClick += new MouseButtonEventHandler(this.ViewModel.lstResult_MouseDoubleClick);
+            lstResult.KeyDown += new KeyEventHandler(this.ViewModel.lstResult_KeyDown);
         }
+
+
+
+        public ICommand AddWindowCommand
+        {
+            set { this.ViewModel.AddWindowCommand = value; }
+        }
+
+
 
         public FindAllViewModel ViewModel
         {
             get { return this.DataContext as FindAllViewModel; }
             set { this.DataContext = value; }
         }
-       
+
+
+
     }
 }

@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<objects xmlns="http://www.springframework.net" default-lazy-init="true">   
+<objects xmlns="http://www.springframework.net" default-lazy-init="true">
+  <object id="WinFindAll" name="Find" singleton="false" scope="request"
+   type="HLP.Magnificus.View.WPF.WinFindAll, HLP.Magnificus.View.WPF">
+  </object>
   <object id="WinDesconto" name="Desconto" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
   </object>
@@ -108,61 +111,61 @@
   <object id="WinContaBancaria" name="Contas_Bancárias" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
   </object>
-<object id="WinDiaPagamento" name="Dia_de_Pagamento" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">
+  <object id="WinDiaPagamento" name="Dia_de_Pagamento" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">
   </object>
-<object id="WinCargaTribMediaStIcms" name="Carga_Tributária_Média_ST_ICMS" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinCargaTribMediaStIcms, HLP.Entries.View.WPF">
+  <object id="WinCargaTribMediaStIcms" name="Carga_Tributária_Média_ST_ICMS" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinCargaTribMediaStIcms, HLP.Entries.View.WPF">
   </object>
-<object id="WinCfop" name="CFOP" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinCfop, HLP.Entries.View.WPF">
+  <object id="WinCfop" name="CFOP" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinCfop, HLP.Entries.View.WPF">
   </object>
- <object id="WinClassificacaoFiscal" name="Classificação_Fiscal" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Fiscal.WinClassificacaoFiscal, HLP.Entries.View.WPF">
+  <object id="WinClassificacaoFiscal" name="Classificação_Fiscal" singleton="false" scope="request"
+     type="HLP.Entries.View.WPF.Fiscal.WinClassificacaoFiscal, HLP.Entries.View.WPF">
   </object>
- <object id="WinCodigoICMS" name="Código_de_ICMS" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS, HLP.Entries.View.WPF">
+  <object id="WinCodigoICMS" name="Código_de_ICMS" singleton="false" scope="request"
+   type="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS, HLP.Entries.View.WPF">
   </object>
-<object id="WinStCofins" name="Situação_Tributária_de_Cofins" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinStCofins, HLP.Entries.View.WPF">
+  <object id="WinStCofins" name="Situação_Tributária_de_Cofins" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinStCofins, HLP.Entries.View.WPF">
   </object>
-<object id="WinStICMS" name="Situação_Tributária_de_ICMS" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinStICMS, HLP.Entries.View.WPF">
+  <object id="WinStICMS" name="Situação_Tributária_de_ICMS" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinStICMS, HLP.Entries.View.WPF">
   </object>
-<object id="WinStIPI" name="Situação_Tributária_de_IPI" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinStIPI, HLP.Entries.View.WPF">
+  <object id="WinStIPI" name="Situação_Tributária_de_IPI" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinStIPI, HLP.Entries.View.WPF">
   </object>
   <object id="WinsStPIS" name="Situação Tributária de PIS" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Fiscal.WinsStPIS, HLP.Entries.View.WPF">
   </object>
-<object id="WinTipoDocumento" name="Tipo_de_Documento" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinTipoDocumento, HLP.Entries.View.WPF">
+  <object id="WinTipoDocumento" name="Tipo_de_Documento" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinTipoDocumento, HLP.Entries.View.WPF">
   </object>
-<object id="WinTipoOperacao" name="Tipo_de_Operação" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Fiscal.WinTipoOperacao, HLP.Entries.View.WPF">
+  <object id="WinTipoOperacao" name="Tipo_de_Operação" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Fiscal.WinTipoOperacao, HLP.Entries.View.WPF">
   </object>
-<object id="WinCalendario" name="Calendário" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinCalendario, HLP.Entries.View.WPF">
+  <object id="WinCalendario" name="Calendário" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinCalendario, HLP.Entries.View.WPF">
   </object>
   <object id="WinCalendarioDetalhe" name="Detalhamento" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Gerais.WinCalendarioDetalhe, HLP.Entries.View.WPF">
   </object>
-<object id="WinTransportadora" name="Transportadora" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Transportes.WinTransportadora, HLP.Entries.View.WPF">
+  <object id="WinTransportadora" name="Transportadora" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Transportes.WinTransportadora, HLP.Entries.View.WPF">
   </object>
   <object id="WinCliente" name="Clientes" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Comercial.WinCliente, HLP.Entries.View.WPF">
   </object>
-<object id="WinAtribuicaoColetivaListaPreco" name="Atribuição_Coletiva_Lista_de_Preço" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco, HLP.Entries.View.WPF">
+  <object id="WinAtribuicaoColetivaListaPreco" name="Atribuição_Coletiva_Lista_de_Preço" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco, HLP.Entries.View.WPF">
   </object>
-<object id="WinProduto" name="Produtos" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Comercial.WinProduto, HLP.Entries.View.WPF">
+  <object id="WinProduto" name="Produtos" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Comercial.WinProduto, HLP.Entries.View.WPF">
   </object>
-<object id="WinOrcamento" name="Orçamento" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Comercial.WinOrcamento, HLP.Entries.View.WPF">
+  <object id="WinOrcamento" name="Orçamento" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Comercial.WinOrcamento, HLP.Entries.View.WPF">
   </object>
-<object id="WinTipoProduto" name="Tipo_de_Produto" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Comercial.WinTipoProduto, HLP.Entries.View.WPF">
+  <object id="WinTipoProduto" name="Tipo_de_Produto" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.Comercial.WinTipoProduto, HLP.Entries.View.WPF">
   </object>
 </objects>
