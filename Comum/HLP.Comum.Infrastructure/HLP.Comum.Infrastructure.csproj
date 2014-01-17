@@ -97,7 +97,9 @@
     <Compile Include="Static\Sistema.cs" />
     <Compile Include="Static\UserData.cs" />
     <Compile Include="Static\Util.cs" />
+    <Compile Include="Static\WcfData.cs" />
     <Compile Include="UnitOfWorkBase.cs" />
+    <Compile Include="Util\InternetCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
