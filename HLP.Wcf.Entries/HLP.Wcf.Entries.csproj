@@ -116,6 +116,7 @@
     <Content Include="serviceFuncionario.svc" />
     <Content Include="serviceJuros.svc" />
     <Content Include="serviceLista_Preco.svc" />
+    <Content Include="serviceLogin.svc" />
     <Content Include="serviceModoEntrega.svc" />
     <Content Include="serviceMoeda.svc" />
     <Content Include="serviceMulta.svc" />
@@ -182,6 +183,7 @@
     <Compile Include="IserviceFuncionario_Acesso.cs" />
     <Compile Include="IserviceJuros.cs" />
     <Compile Include="IserviceLista_Preco.cs" />
+    <Compile Include="IserviceLogin.cs" />
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
     <Compile Include="IserviceMulta.cs" />
@@ -298,6 +300,9 @@
     </Compile>
     <Compile Include="serviceLista_Preco.svc.cs">
       <DependentUpon>serviceLista_Preco.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceLogin.svc.cs">
+      <DependentUpon>serviceLogin.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceModoEntrega.svc.cs">
       <DependentUpon>serviceModoEntrega.svc</DependentUpon>

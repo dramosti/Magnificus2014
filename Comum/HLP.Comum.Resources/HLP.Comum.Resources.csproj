@@ -79,6 +79,8 @@
     <Resource Include="Images\imgError.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\publicidade.png" />
+    <Resource Include="Images\UserSilhouette.png" />
     <EmbeddedResource Include="Icones\WinBanco.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

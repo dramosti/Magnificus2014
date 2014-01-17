@@ -75,6 +75,7 @@
     <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\DateTimeEnumerator.cs" />
     <Compile Include="Models\FindAllModel.cs" />
+    <Compile Include="Models\loginModel.cs" />
     <Compile Include="Models\modelBase.cs" />
     <Compile Include="Models\modelToComboBox.cs" />
     <Compile Include="Models\MyObservableCollection.cs" />
@@ -85,10 +86,12 @@
     <Compile Include="Repository\Implementation\Components\FillComboBoxRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaRapidaRepository.cs" />
+    <Compile Include="Repository\Implementation\LoginRepository.cs" />
     <Compile Include="Repository\Interfaces\ClassesBases\ImodelBaseRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IFillComboBoxRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaRapidaRepository.cs" />
+    <Compile Include="Repository\Interfaces\ILoginRepository.cs" />
     <Compile Include="Service References\camposNotNullService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

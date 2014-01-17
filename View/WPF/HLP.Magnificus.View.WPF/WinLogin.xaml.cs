@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,20 @@ namespace HLP.Magnificus.View.WPF
         public WinLogin()
         {
             InitializeComponent();
+            this.ViewModel = new LoginViewModel();            
+
+        }
+
+        public LoginViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as LoginViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }
