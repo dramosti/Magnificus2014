@@ -115,8 +115,8 @@
 
     <Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="95*"/>
+            <RowDefinition Height="2.3*"/>
+            <RowDefinition Height="97.7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
