@@ -24,6 +24,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand AddWindowCommand { get; set; }
         public ICommand DelWindowCommand { get; set; }
         public ICommand pesquisarBaseCommand { get; set; }
+        public ICommand FindAllCommand { get; set; }
 
 
 
@@ -137,7 +138,6 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
             catch (Exception)
             {
-
                 throw;
             }
 
@@ -193,12 +193,13 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 System.Windows.Controls.MenuItem mi = new System.Windows.Controls.MenuItem();
 
-                if (File.Exists(path: System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + it.xName + ".png"))
+                string sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + it.xName + ".png";
+                if (File.Exists(path: sPath))
                 {
-                    mi.Icon = 
+                    mi.Icon =
                     new System.Windows.Controls.Image
                     {
-                        Source = new BitmapImage(new Uri(System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + it.xName + ".png"))
+                        Source = new BitmapImage(new Uri(sPath))
                     };
                     //Bitmap bmp = (Bitmap)System.Drawing.Image.FromFile(filename: System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + it.xName + ".png");
                     //Icon ic = Icon.FromHandle(bmp.GetHicon());
@@ -216,6 +217,14 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         #endregion
+
+        public void FindAll()
+        {
+            Window win = GerenciadorModulo.Instancia.CarregaForm("WinFindAll", Modules.Interface.TipoExibeForm.Modal);
+            win.SetPropertyValue("AddWindowCommand", this.AddWindowCommand);
+            win.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            win.ShowDialog();
+        }
 
         private string getHeaderWindow(string xNomeForm)
         {

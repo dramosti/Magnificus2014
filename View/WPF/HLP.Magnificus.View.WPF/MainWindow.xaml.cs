@@ -53,6 +53,8 @@ namespace HLP.Magnificus.View.WPF
             Environment.Exit(0);
         }
 
+       
+
 
     }
 }
