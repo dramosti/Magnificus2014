@@ -23,35 +23,6 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Storyboard x:Key="OnUnChecked" FillBehavior="HoldEnd">
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="containerCadastros" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="30"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerCadastros" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerFavoritos" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="txtMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-
-            <Storyboard x:Key="OnChecked" FillBehavior="HoldEnd"  >
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="containerCadastros" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerCadastros" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerFavoritos" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="txtMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
             <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
             <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
@@ -88,85 +59,16 @@
         </ResourceDictionary>
 
     </Window.Resources>
-
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleBtnRecolher">
-            <BeginStoryboard Storyboard="{StaticResource OnChecked}" />
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleBtnRecolher">
-            <BeginStoryboard Storyboard="{StaticResource OnUnChecked}" />
-        </EventTrigger>
-        <EventTrigger RoutedEvent="FrameworkElement.SizeChanged">
-            <BeginStoryboard >
-                <Storyboard >
-                    <BooleanAnimationUsingKeyFrames FillBehavior="Stop"  BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerCadastros" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                        <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                    </BooleanAnimationUsingKeyFrames>
-                </Storyboard>
-            </BeginStoryboard>
-            <BeginStoryboard >
-                <Storyboard >
-                    <BooleanAnimationUsingKeyFrames FillBehavior="Stop"  BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerFavoritos" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                        <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                    </BooleanAnimationUsingKeyFrames>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
-
     <Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="95*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Menu x:Name="menuPrincipal" Grid.ColumnSpan="2"/>
-        <Border Grid.Row="1" Width="200" x:Name="containerCadastros">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border BorderThickness="3">
-                    <Border>
-                        <Grid>
-                            <TextBlock x:Name="txtMenu" Margin="5,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Menu" Foreground="White" Width="auto" HorizontalAlignment="Left"/>
-                            <StackPanel Width="auto" HorizontalAlignment="Right" Orientation="Horizontal">
-                                <ToggleButton x:Name="toggleBtnRecolher" Style="{StaticResource ToggleButtonRecolher}" Width="25" IsChecked="True"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </Border>
-                <Grid Grid.Row="1">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Expander x:Name="expanderContainerCadastros" Header="Cadastros" Style="{StaticResource expanderRecolher}">
-                            <ListBox ItemsSource="{Binding _lWindows}" Style="{DynamicResource Listbox123}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Content="{Binding xHeader}" 
-												Style="{StaticResource btnListItem}"
-												Tag="{Binding xName}"
-												Command="{Binding DataContext.AddWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}, Mode=FindAncestor}}" CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
-                                                    />
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Expander>
-                        <Expander x:Name="expanderContainerFavoritos" Header="Favoritos" Grid.Row="1" Style="{StaticResource expanderRecolher}">
-                            <ListBox/>
-                        </Expander>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Border>
-        <Grid x:Name="grdForms" Grid.Column="1" Grid.Row="1">
+        <Grid x:Name="grdForms" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
