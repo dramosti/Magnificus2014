@@ -12,6 +12,7 @@ namespace HLP.Comum.ViewModel.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         public ICommand fecharCommand { get; set; }
+        public ICommand loginCommand { get; set; }
 
         public LoginViewModel()
         {

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Magnificus\loginFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sales\OrcamentoFacade.cs" />
     <Compile Include="Service References\Canal_VendaService\Reference.cs">
@@ -94,6 +95,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\Lista_PrecoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\loginService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -372,6 +378,13 @@
     <None Include="Service References\Lista_PrecoService\serviceLista_Preco5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\loginService\serviceLogin.wsdl" />
+    <None Include="Service References\loginService\serviceLogin.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\loginService\serviceLogin1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\produtoService\HLP.Comum.Facade.produtoService.ProdutoModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -476,6 +489,7 @@
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
+    <WCFMetadataStorage Include="Service References\loginService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_Documento_Oper_ValidaService\" />
     <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
@@ -712,6 +726,22 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\loginService\serviceLogin.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\loginService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\loginService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\loginService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
