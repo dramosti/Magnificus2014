@@ -2,22 +2,23 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
-        x:Class="HLP.Magnificus.View.WPF.WinFindAll"
-        Title="" Width="250" Height="300" WindowStyle="ToolWindow">
+        x:Class="HLP.Magnificus.View.WPF.WinFindAll" x:Name="winPesquisa"
+        Title="" Width="250" Height="300" WindowStyle="ToolWindow" FocusManager.FocusedElement="{Binding ElementName=m_txtTest}">
+    <Window.InputBindings>
+        <KeyBinding Key="Escape" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=winPesquisa}"/>
+    </Window.InputBindings>
     <DockPanel LastChildFill="True" >
-        <Components:HlpSearchTextBox FocusManager.IsFocusScope="True" Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" />
-        <StatusBar DockPanel.Dock="Bottom" Height="27" VerticalAlignment="Bottom" Background="Transparent">
-            <Label Content="ESC" FontSize="10" FontFamily="Calibri"/>
-        </StatusBar>
+        <Components:HlpSearchTextBox  Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" />
+        <Label Content="Esc - para sair" DockPanel.Dock="Bottom" Height="27" Opacity="1.2" VerticalAlignment="Bottom" Background="Transparent"/>
         <ListBox Name="lstResult" ItemContainerStyle="{StaticResource ExpanderMenuListitemStyle}" ItemsSource="{Binding  Path=lResult}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding Path= icon}" Width="16" Height="16" Margin="0,0,10,0"/>
-                        <TextBlock Text="{Binding Path=xHeader}"/>                        
+                        <TextBlock Text="{Binding Path=xHeader}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>        
+        </ListBox>
     </DockPanel>
 </Window>
