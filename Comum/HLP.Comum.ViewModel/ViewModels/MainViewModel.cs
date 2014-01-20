@@ -237,6 +237,14 @@ namespace HLP.Comum.ViewModel.ViewModels
                     //mi.Icon = ic;
                 }
 
+                if (it.xName == "Entries")
+                {
+                    ResourceDictionary rs = new ResourceDictionary
+                    {
+                        Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
+                    };
+                    mi.Style = rs["MenuItemPrincipal"] as Style;                    
+                }
 
                 mi.Header = it.xHeader;
                 mi.Command = this.AddWindowCommand;
