@@ -28,7 +28,6 @@ namespace HLP.Magnificus.View.WPF
         public MainWindow()
         {
             InitializeComponent();
-
             GerenciadorModulo.Instancia.InicializaSistema();
             try
             {
@@ -42,6 +41,7 @@ namespace HLP.Magnificus.View.WPF
             }
             CompanyData.idEmpresa = 1;
         }
+
         public MainViewModel _viewModel
         {
             get { return this.DataContext as MainViewModel; }
@@ -53,8 +53,15 @@ namespace HLP.Magnificus.View.WPF
             Environment.Exit(0);
         }
 
-       
+        private void exLogin_Expanded(object sender, RoutedEventArgs e)
+        {
+            ContextMenuService.SetPlacement(element: exLogin, value: System.Windows.Controls.Primitives.PlacementMode.Bottom);
+            this._viewModel.OpenCtxCommand.Execute(parameter: exLogin.ContextMenu);
+            exLogin.IsExpanded = false;
+        }
 
-
+        private void exLogin_MouseEnter(object sender, MouseEventArgs e)
+        {
+        }
     }
 }

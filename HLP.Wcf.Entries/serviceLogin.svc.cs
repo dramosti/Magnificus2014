@@ -27,6 +27,18 @@ namespace HLP.Wcf.Entries
 
         }
 
+        public int GetIdFuncionarioByXid(string xId)
+        {
+            try
+            {
+                return loginRepository.GetIdFuncionarioByXid(xId: xId);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public int ValidaUsuario(string xId)
         {
             try
@@ -57,7 +69,7 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                return loginRepository.ValidaLogin(xID: xId, xSenha: 
+                return loginRepository.ValidaLogin(xID: xId, xSenha:
                     HLP.Comum.Infrastructure.Static.Criptografia.Encripta(xSenha));
             }
             catch (Exception ex)

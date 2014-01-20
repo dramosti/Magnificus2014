@@ -24,6 +24,12 @@
   <wsdl:message name="IserviceLogin_ValidaLogin_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidaLoginResponse" />
   </wsdl:message>
+  <wsdl:message name="IserviceLogin_GetIdFuncionarioByXid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdFuncionarioByXid" />
+  </wsdl:message>
+  <wsdl:message name="IserviceLogin_GetIdFuncionarioByXid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIdFuncionarioByXidResponse" />
+  </wsdl:message>
   <wsdl:portType name="IserviceLogin">
     <wsdl:operation name="ValidaUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceLogin/ValidaUsuario" message="tns:IserviceLogin_ValidaUsuario_InputMessage" />
@@ -36,6 +42,10 @@
     <wsdl:operation name="ValidaLogin">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceLogin/ValidaLogin" message="tns:IserviceLogin_ValidaLogin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceLogin/ValidaLoginResponse" message="tns:IserviceLogin_ValidaLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIdFuncionarioByXid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXid" message="tns:IserviceLogin_GetIdFuncionarioByXid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXidResponse" message="tns:IserviceLogin_GetIdFuncionarioByXid_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IserviceLogin" type="tns:IserviceLogin">
@@ -60,6 +70,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidaLogin">
       <soap:operation soapAction="http://tempuri.org/IserviceLogin/ValidaLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIdFuncionarioByXid">
+      <soap:operation soapAction="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

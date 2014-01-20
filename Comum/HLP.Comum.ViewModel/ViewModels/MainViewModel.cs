@@ -20,14 +20,15 @@ namespace HLP.Comum.ViewModel.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
+        funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
+
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
         public ICommand DelWindowCommand { get; set; }
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand FindAllCommand { get; set; }
-
-
-
+        public ICommand OpenCtxCommand { get; set; }
         #endregion
 
         private ObservableCollection<TabPagesAtivasModel> lTabPagesAtivas;
@@ -135,6 +136,9 @@ namespace HLP.Comum.ViewModel.ViewModels
                         }
                     }
                 }
+
+                this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
+                this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
             }
             catch (Exception)
             {
@@ -144,7 +148,34 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         }
 
+        #region Informações Usuário e Empresa
 
+        private empresaService.EmpresaModel _currentEmpresa;
+
+        public empresaService.EmpresaModel currentEmpresa
+        {
+            get { return _currentEmpresa; }
+            set
+            {
+                _currentEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "currentEmpresa");
+            }
+        }
+
+        private funcionarioService.FuncionarioModel _currentFuncionario;
+
+        public funcionarioService.FuncionarioModel currentFuncionario
+        {
+            get { return _currentFuncionario; }
+            set
+            {
+                _currentFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "currentFuncionario");
+            }
+        }
+
+
+        #endregion
 
         #region Criação de Menu
 

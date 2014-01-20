@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Facade.Magnificus;
+using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace HLP.Comum.ViewModel.Commands
                         MessageBox.Show(messageBoxText: "Login e Senha incorretos.");
                     else
                     {
+                        UserData.idUser = loginFacade.loginClient.GetIdFuncionarioByXid(xId: this.objViewModel.currentLogin.xId);
+                        CompanyData.idEmpresa = this.objViewModel.currentLogin.idEmpresa;
                         SearchWindow(objeto: objDependency);
                     }
                 }

@@ -11,5 +11,6 @@ namespace HLP.Comum.Model.Repository.Interfaces
         int ValidaUsuario(string xId);
         int ValidaLogin(string xID, string xSenha);
         int ValidaAcesso(string xId, int idEmpresa);
+        int GetIdFuncionarioByXid(string xId);
     }
 }

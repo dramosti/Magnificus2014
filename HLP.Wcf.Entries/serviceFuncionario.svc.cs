@@ -79,6 +79,8 @@ namespace HLP.Wcf.Entries
             }
         }
 
+
+
         public HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
 
