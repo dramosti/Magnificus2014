@@ -8,9 +8,9 @@
         <KeyBinding Key="Escape" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=winPesquisa}"/>
     </Window.InputBindings>
     <DockPanel LastChildFill="True" >
-        <Components:HlpSearchTextBox  Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" />
+        <Components:HlpSearchTextBox  Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" BorderBrush="{x:Null}" />
         <Label Content="Esc - para sair" DockPanel.Dock="Bottom" Height="27" Opacity="1.2" VerticalAlignment="Bottom" Background="Transparent"/>
-        <ListBox Name="lstResult" ItemContainerStyle="{StaticResource ExpanderMenuListitemStyle}" ItemsSource="{Binding  Path=lResult}">
+        <ListBox Name="lstResult" ItemContainerStyle="{StaticResource ExpanderMenuListitemStyle}" ItemsSource="{Binding  Path=lResult}" Background="{x:Null}" BorderBrush="{x:Null}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
