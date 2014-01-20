@@ -115,6 +115,10 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
+                WinLogin wdLogin = new WinLogin();
+                HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
+                this.MainWindow = wd;
+                wdLogin.ShowDialog();
                 FrameworkElement.LanguageProperty.OverrideMetadata(
                 typeof(FrameworkElement),
                 new FrameworkPropertyMetadata(
@@ -135,6 +139,7 @@ namespace HLP.Magnificus.View.WPF
                 bwParametrosEmpresa.RunWorkerAsync();
 
                 base.OnStartup(e);
+                wd.Show();
             }
             catch (Exception ex)
             {

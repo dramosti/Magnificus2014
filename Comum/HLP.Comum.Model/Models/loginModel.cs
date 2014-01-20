@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HLP.Comum.Facade.Magnificus;
+using HLP.Comum.Facade.Sales;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,11 @@ namespace HLP.Comum.Model.Models
 {
     public partial class loginModel : modelBase
     {
+
         public loginModel()
         {
+            if (loginFacade.loginClient == null)
+                loginFacade.loginClient = new Facade.loginService.IserviceLoginClient();
         }
 
         public int idEmpresa { get; set; }
@@ -23,6 +28,23 @@ namespace HLP.Comum.Model.Models
         {
             get
             {
+                if (columnName == "idEmpresa")
+                {
+                    if (this.idEmpresa == 0)
+                        return "Necessário selecionar empresa!";
+                }
+                else if (columnName == "xId")
+                {
+                    if (this.xId == "")
+                        return "Necessário informar Nome de Usuário!";
+                    else if (loginFacade.loginClient.ValidaUsuario(xId: this.xId) < 1)
+                        return "Nome de Usuário não existe na base de dados!";
+                }
+                else if(columnName == "xPassword")
+                {
+                    if (this.xPassword == "")
+                        return "Campo de senha não pode ser vazio!";
+                }
                 return null;
             }
         }

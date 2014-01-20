@@ -100,6 +100,10 @@
     <Compile Include="StaticModels\lCamposSqlNotNull.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\HLP.Comum.Facade\HLP.Comum.Facade.csproj">
+      <Project>{3e7af44f-8443-4ddf-a196-f6ee90883898}</Project>
+      <Name>HLP.Comum.Facade</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
       <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
       <Name>HLP.Comum.Infrastructure</Name>

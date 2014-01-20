@@ -23,8 +23,7 @@ namespace HLP.Magnificus.View.WPF
         public WinLogin()
         {
             InitializeComponent();
-            this.ViewModel = new LoginViewModel();            
-
+            this.ViewModel = new LoginViewModel();
         }
 
         public LoginViewModel ViewModel

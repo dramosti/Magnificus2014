@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d4fadd00-9679-46aa-a610-5dc4594ca85a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceLogin.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceLogin.xsd" MetadataType="Schema" ID="1a9a5a59-0bf8-40d8-9362-2f6861661ffd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLogin.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceLogin.wsdl" MetadataType="Wsdl" ID="a3922353-0a8f-4ce8-9762-720d13e83a7f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLogin.svc?wsdl" />
+    <MetadataFile FileName="serviceLogin1.xsd" MetadataType="Schema" ID="49ec57ce-b5ab-4603-8e93-3f94443ee908" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLogin.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceLogin.disco" MetadataType="Disco" ID="dcd91de3-717b-46a3-bb2c-98cb8849bdad" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceLogin.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
