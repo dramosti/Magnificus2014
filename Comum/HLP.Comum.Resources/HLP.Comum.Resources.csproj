@@ -80,6 +80,8 @@
     <Resource Include="Images\imgError.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\publicidade.png" />
+    <Resource Include="Images\UserSilhouette.png" />
     <EmbeddedResource Include="Icones\WinBanco.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -89,6 +91,54 @@
     <EmbeddedResource Include="Icones\WinProduto.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Resource Include="Icones\Add_Desabilitado.png" />
+    <Resource Include="Icones\Add_File_MouseOver.png" />
+    <Resource Include="Icones\Arrow_MouseOver_Left.png" />
+    <Resource Include="Icones\Arrow_MouseOver_Right.png" />
+    <Resource Include="Icones\Cancel_2_48.png" />
+    <Resource Include="Icones\Cancel_48.png" />
+    <Resource Include="Icones\Cancel_Disabled.png" />
+    <Resource Include="Icones\Cancel_MouseOver.png" />
+    <Resource Include="Icones\Copy_48.png" />
+    <Resource Include="Icones\Copy_Disabled.png" />
+    <Resource Include="Icones\Copy_MouseOver.png" />
+    <Resource Include="Icones\Delete_48.png" />
+    <Resource Include="Icones\Delete_Disabled.png" />
+    <Resource Include="Icones\Delete_MouseOver.png" />
+    <Resource Include="Icones\Double_Arrow_Left.png" />
+    <Resource Include="Icones\Double_Arrow_Left_Disabled.png" />
+    <Resource Include="Icones\Double_Arrow_Right.png" />
+    <Resource Include="Icones\Double_Arrow_Right_Enabled.png" />
+    <Resource Include="Icones\Edit_48.png" />
+    <Resource Include="Icones\Edit_Disabled.png" />
+    <Resource Include="Icones\Edit_MouseOver.png" />
+    <Resource Include="Icones\Folder.png" />
+    <Resource Include="Icones\Folder_Disabled.png" />
+    <Resource Include="Icones\Folder_MouseOver.png" />
+    <Resource Include="Icones\Power.png" />
+    <Resource Include="Icones\Power_Disabled.png" />
+    <Resource Include="Icones\Power_MouseOver.png" />
+    <Resource Include="Icones\Printer_Disabled.png" />
+    <Resource Include="Icones\Printer_Enabled.png" />
+    <Resource Include="Icones\Printer_MouseOver.png" />
+    <Resource Include="Icones\Save_48.png" />
+    <Resource Include="Icones\Save_Disabled.png" />
+    <Resource Include="Icones\Save_MouseOver.png" />
+    <Resource Include="Icones\Search_48.png" />
+    <Resource Include="Icones\Search_48_Branca.png" />
+    <Resource Include="Icones\Search_Desabilitada_48.png" />
+    <Resource Include="Icones\Search_Disabled.png" />
+    <Resource Include="Icones\Search_MouseOver.png" />
+    <Resource Include="Icones\Settings_Disabled.png" />
+    <Resource Include="Icones\Settings_Enabled.png" />
+    <Resource Include="Icones\Settings_MouseOver.png" />
+    <Resource Include="Icones\Simple_Arrow_Left.png" />
+    <Resource Include="Icones\Simple_Arrow_Left_Disabled.png" />
+    <Resource Include="Icones\Simple_Arrow_MouseOver_Left.png" />
+    <Resource Include="Icones\Simple_Arrow_MouseOver_Right.png" />
+    <Resource Include="Icones\Simple_Arrow_Right.png" />
+    <Resource Include="Icones\Simple_Arrow_Right_Disabled.png" />
+    <Resource Include="Icones\Add.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

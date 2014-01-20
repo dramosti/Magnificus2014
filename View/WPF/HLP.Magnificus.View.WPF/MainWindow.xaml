@@ -23,35 +23,6 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Storyboard x:Key="OnUnChecked" FillBehavior="HoldEnd">
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="containerCadastros" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="30"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerCadastros" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerFavoritos" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="txtMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
-
-            <Storyboard x:Key="OnChecked" FillBehavior="HoldEnd"  >
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="containerCadastros" Storyboard.TargetProperty="(FrameworkElement.Width)">
-                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="200"/>
-                </DoubleAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerCadastros" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <BooleanAnimationUsingKeyFrames FillBehavior="Stop" BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerFavoritos" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                </BooleanAnimationUsingKeyFrames>
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="txtMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
-                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
-                </ObjectAnimationUsingKeyFrames>
-            </Storyboard>
             <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
             <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
@@ -88,85 +59,16 @@
         </ResourceDictionary>
 
     </Window.Resources>
-
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleBtnRecolher">
-            <BeginStoryboard Storyboard="{StaticResource OnChecked}" />
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleBtnRecolher">
-            <BeginStoryboard Storyboard="{StaticResource OnUnChecked}" />
-        </EventTrigger>
-        <EventTrigger RoutedEvent="FrameworkElement.SizeChanged">
-            <BeginStoryboard >
-                <Storyboard >
-                    <BooleanAnimationUsingKeyFrames FillBehavior="Stop"  BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerCadastros" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                        <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                    </BooleanAnimationUsingKeyFrames>
-                </Storyboard>
-            </BeginStoryboard>
-            <BeginStoryboard >
-                <Storyboard >
-                    <BooleanAnimationUsingKeyFrames FillBehavior="Stop"  BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="expanderContainerFavoritos" Storyboard.TargetProperty="(Expander.IsExpanded)">
-                        <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="False"/>
-                    </BooleanAnimationUsingKeyFrames>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
-
     <Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="95*"/>
+            <RowDefinition Height="2.3*"/>
+            <RowDefinition Height="97.7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Menu x:Name="menuPrincipal" Grid.ColumnSpan="2"/>
-        <Border Grid.Row="1" Width="200" x:Name="containerCadastros">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border BorderThickness="3">
-                    <Border>
-                        <Grid>
-                            <TextBlock x:Name="txtMenu" Margin="5,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Menu" Foreground="White" Width="auto" HorizontalAlignment="Left"/>
-                            <StackPanel Width="auto" HorizontalAlignment="Right" Orientation="Horizontal">
-                                <ToggleButton x:Name="toggleBtnRecolher" Style="{StaticResource ToggleButtonRecolher}" Width="25" IsChecked="True"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                </Border>
-                <Grid Grid.Row="1">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Expander x:Name="expanderContainerCadastros" Header="Cadastros" Style="{StaticResource expanderRecolher}">
-                            <ListBox ItemsSource="{Binding _lWindows}" Style="{DynamicResource Listbox123}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button Content="{Binding xHeader}" 
-												Style="{StaticResource btnListItem}"
-												Tag="{Binding xName}"
-												Command="{Binding DataContext.AddWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}, Mode=FindAncestor}}" CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
-                                                    />
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Expander>
-                        <Expander x:Name="expanderContainerFavoritos" Header="Favoritos" Grid.Row="1" Style="{StaticResource expanderRecolher}">
-                            <ListBox/>
-                        </Expander>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Border>
-        <Grid x:Name="grdForms" Grid.Column="1" Grid.Row="1">
+        <Grid x:Name="grdForms" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
@@ -191,13 +93,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Add_Preto_48.png" />
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Add_File_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_File_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Add_Desabilitado.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_Desabilitado.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -216,13 +118,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Edit_48.png" />
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_48.png" />
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Edit_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Edit_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -239,13 +141,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Delete_48.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_48.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Delete_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Delete_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -263,13 +165,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Save_48.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_48.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Save_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Save_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -286,13 +188,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Cancel_2_48.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_2_48.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Cancel_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Cancel_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -309,13 +211,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Copy_48.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_48.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Copy_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Copy_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -332,13 +234,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Search_48.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_48.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Search_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Search_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -358,13 +260,13 @@
                                                 <Image x:Name="ImageAdd">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Left.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Left.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Arrow_MouseOver_Left.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_MouseOver_Left.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Left_Disabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Left_Disabled.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -384,13 +286,13 @@
                                                 <Image x:Name="ImageAdd" Height="17">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Left.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Left.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_MouseOver_Left.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_MouseOver_Left.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Left_Disabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Left_Disabled.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -410,13 +312,13 @@
                                                 <Image x:Name="ImageAdd">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Right.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Right.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Arrow_MouseOver_Right.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_MouseOver_Right.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Double_Arrow_Right_Enabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Right_Enabled.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -435,13 +337,13 @@
                                                 <Image x:Name="ImageAdd" Height="17">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Right.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Right.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_MouseOver_Right.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_MouseOver_Right.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Simple_Arrow_Right_Disabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Right_Disabled.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -460,13 +362,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Printer_Enabled.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_Enabled.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Printer_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Printer_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -483,13 +385,13 @@
                                             <Image x:Name="ImageAdd">
                                                 <Image.Style>
                                                     <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Settings_Enabled.png"/>
+                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_Enabled.png"/>
                                                         <Style.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Settings_MouseOver.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_MouseOver.png"/>
                                                             </Trigger>
                                                             <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="G:\CSharp\Desenvolvimento\Projetos\Magnificus\Icones_Mag\Settings_Disabled.png"/>
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_Disabled.png"/>
                                                             </Trigger>
                                                         </Style.Triggers>
                                                     </Style>

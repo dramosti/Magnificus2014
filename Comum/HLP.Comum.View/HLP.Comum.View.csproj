@@ -78,6 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AdornerExtensions.cs" />
+    <Compile Include="Components\AdornerLabel.cs" />
     <Compile Include="Components\BaseControl.cs" />
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
@@ -102,6 +104,7 @@
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\TimePicker.cs" />
+    <Compile Include="Components\WatermarkTextBox.cs" />
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />

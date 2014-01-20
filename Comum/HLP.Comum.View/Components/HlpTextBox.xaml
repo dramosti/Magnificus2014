@@ -6,7 +6,8 @@
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
               Width="Auto" Height="Auto"  x:Name="componente" Loaded="componente_Loaded">
-    <UserControl.Resources>
+    <UserControl.Resources>   
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
@@ -16,11 +17,10 @@
     <DockPanel LastChildFill="True">
         <TextBlock x:Name="lblCaption" 
                TextWrapping="Wrap"
-               Height="{Binding ElementName=componente, Path=Height}"
-               Style="{StaticResource TextBlocktyleComponents}"
-               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}" 
-               Visibility ="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=VisibilityLabel}" 
-			   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" FontFamily="Calibri" FontSize="14"/>
+               Height="{Binding Height, ElementName=componente}"
+               Style="{StaticResource TextBlocktyleComponents}" 
+               Visibility ="{Binding VisibilityLabel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}" 
+			   Width="{Binding WidthLabel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}" FontFamily="Calibri" FontSize="14"><Run Text="Label"/></TextBlock>
         <Button DockPanel.Dock="Right" Visibility="Collapsed" x:Name="btn" HorizontalAlignment="Right" Width="25" Height="20" Grid.Column="1" Click="btn_Click">
             <Button.Template>
                 <ControlTemplate>

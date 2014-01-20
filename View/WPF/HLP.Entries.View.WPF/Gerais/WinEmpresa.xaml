@@ -148,14 +148,14 @@
                             <DataGridTemplateColumn Header="Principal" Width="60">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox IsChecked="{Binding stPrincipal, 
+                                        <CheckBox  IsChecked="{Binding stPrincipal, 
                                         UpdateSourceTrigger=PropertyChanged, 
-                                        Converter={StaticResource ByteToBoolConverter}}"/>
+                                        Converter={StaticResource ByteToBoolConverter}}" HorizontalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <CheckBox IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                        <CheckBox HorizontalAlignment="Center" IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>

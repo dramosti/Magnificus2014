@@ -51,7 +51,10 @@ namespace HLP.Comum.Resources
 
             if (cell.Column != null)
                 if (cell.Column.GetType() == typeof(DataGridComboBoxColumn) || cell.Column.GetType() == typeof(DataGridTemplateColumn))
+                {
                     dataGrid.BeginEdit();
+                    cell.IsEditing = true;                    
+                }
         }
 
 

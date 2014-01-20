@@ -22,13 +22,13 @@
                Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
                Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type UserControl}},Path=WidthLabel}" Height="{Binding ElementName=componente, Path=Height}" FontFamily="Calibri" FontSize="14"/>
 
-        <TextBox x:Name="txtID"        
+        <TextBox x:Name="txtID" Style="{StaticResource TextBoxPesquisaRapidaLeftSide}"        
                  TextChanged="ucTxt_TextChanged"
                  LostFocus="ucTxt_LostFocus"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  Width="80" Height="20" KeyDown="txtID_KeyDown" />
-        <TextBox x:Name="txtDisplay" IsReadOnly="True"
+        <TextBox x:Name="txtDisplay" IsReadOnly="True" Style="{StaticResource TextBoxPesquisaRapidaRightSide}"
                  TextChanged="ucTxtPesquisa_TextChanged"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
                  Focusable="False" Height="20"  />
