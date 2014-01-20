@@ -15,8 +15,10 @@ namespace HLP.Comum.Model.Models
         {
             if (loginFacade.loginClient == null)
                 loginFacade.loginClient = new Facade.loginService.IserviceLoginClient();
-        }
 
+            indexEmpresa = 0;
+        }
+        public int indexEmpresa { get; set; }
         public int idEmpresa { get; set; }
         public string xId { get; set; }
         public string xPassword { get; set; }

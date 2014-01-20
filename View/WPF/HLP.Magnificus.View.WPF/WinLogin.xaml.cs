@@ -24,6 +24,7 @@ namespace HLP.Magnificus.View.WPF
         {
             InitializeComponent();
             this.ViewModel = new LoginViewModel();
+            cbxEmpresa.Focus();
         }
 
         public LoginViewModel ViewModel

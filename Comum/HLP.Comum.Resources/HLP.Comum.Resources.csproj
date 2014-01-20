@@ -69,6 +69,7 @@
     <Compile Include="SingleClickEdit.cs" />
     <Compile Include="Util\Log.cs" />
     <Compile Include="Util\StaticUtil.cs" />
+    <Compile Include="PasswordBoxMonitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Styles\mainStyle.xaml">
