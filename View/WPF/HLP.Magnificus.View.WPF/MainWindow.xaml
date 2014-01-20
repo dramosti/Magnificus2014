@@ -66,9 +66,12 @@
     <DockPanel
         LastChildFill="True"
         >
-        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
-            <Expander  
-                Background="{StaticResource colorBackExpander}"
+        <DockPanel
+                Background="{StaticResource colorBackExpander}"                            
+            DockPanel.Dock="Top" LastChildFill="True">
+            <Expander                  
+                Background="Transparent"
+                Foreground="White"
                 Width="150"
                 x:Name="exLogin"
                 FlowDirection="RightToLeft"
@@ -84,12 +87,13 @@
                         x:Name="ctxLogin"
                         >
                         <MenuItem
+                            Style="{StaticResource MenuItemExpander}"                            
                             Height="50">
                             <MenuItem.Template>
                                 <ControlTemplate>
                                     <DockPanel
+                                        Height="50"         
                                         Background="{StaticResource colorItemsExpander}"
-                                        Height="50"                                        
                                         >
                                         <Image
                                             DockPanel.Dock="Right"
