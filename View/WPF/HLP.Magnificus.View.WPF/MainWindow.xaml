@@ -66,9 +66,12 @@
     <DockPanel
         LastChildFill="True"
         >
-        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
-            <Expander  
-                Background="{StaticResource colorBackExpander}"
+        <DockPanel
+                Background="{StaticResource colorBackExpander}"                            
+            DockPanel.Dock="Top" LastChildFill="True">
+            <Expander                  
+                Background="Transparent"
+                Foreground="White"
                 Width="150"
                 x:Name="exLogin"
                 FlowDirection="RightToLeft"
@@ -84,12 +87,13 @@
                         x:Name="ctxLogin"
                         >
                         <MenuItem
+                            Style="{StaticResource MenuItemExpander}"                            
                             Height="50">
                             <MenuItem.Template>
                                 <ControlTemplate>
                                     <DockPanel
+                                        Height="50"         
                                         Background="{StaticResource colorItemsExpander}"
-                                        Height="50"                                        
                                         >
                                         <Image
                                             DockPanel.Dock="Right"
@@ -119,21 +123,21 @@
                             >
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Trocar Usuário"></Button>
+                                    <Button Content="Trocar Usuário" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Trocar Empresa"></Button>
+                                    <Button Content="Trocar Empresa" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Sair"></Button>
+                                    <Button Content="Sair" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
