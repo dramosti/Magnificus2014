@@ -11,15 +11,20 @@ using HLP.Comum.Model.Models;
 using HLP.Comum.Modules;
 using HLP.Comum.Infrastructure.Static;
 using System.IO;
+using HLP.Comum.ViewModel.Commands;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
     public class FindAllViewModel : modelBase
     {
         public ICommand AddWindowCommand { get; set; }
+        public ICommand  CloseWindowCommand { get; set; }
+
+        FindAllCommand objCommand;
 
         public FindAllViewModel()
         {
+            objCommand = new FindAllCommand(this);
         }
 
         private ObservableCollection<FindAllModel> _lResult;
