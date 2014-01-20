@@ -119,21 +119,21 @@
                             >
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Trocar Usuário"></Button>
+                                    <Button Content="Trocar Usuário" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Trocar Empresa"></Button>
+                                    <Button Content="Trocar Empresa" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Sair"></Button>
+                                    <Button Content="Sair" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
