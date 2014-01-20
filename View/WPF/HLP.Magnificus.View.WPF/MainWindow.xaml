@@ -148,7 +148,7 @@
             <Menu x:Name="menuPrincipal" DockPanel.Dock="Top">
             </Menu>
         </DockPanel>
-        <Grid x:Name="grdForms">
+        <Grid x:Name="grdForms" Background="{StaticResource StyleMainWindowDefault}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
@@ -497,11 +497,9 @@
 											Style="{DynamicResource BtnFechar}"
 											Command="{Binding DataContext.DelWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}"
 											CommandParameter="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="13.333" FontFamily="OCR A Extended">
-                                            <ContentPresenter Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.833" Width="8.5"/>
+                                            <ContentPresenter Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Height="14.833" Width="8.5"/>
                                         </Button>
-                                        <Button DockPanel.Dock="Right" Width="17" Height="17" Style="{DynamicResource BtnFechar}" FontFamily="OCR A Extended" FontSize="14.667">
-                                            <ContentPresenter Content="-"/>
-                                        </Button>
+                                        
 
                                         <TextBlock Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
                                         <!--<Label Grid.Column="0" Content="{Binding _header}"
