@@ -129,7 +129,7 @@
                 </Image>
             </DockPanel>
             <StackPanel x:Name="stkLogin">
-                <ComboBox x:Name="cbxEmpresa"
+                <ComboBox x:Name="cbxEmpresa"                          
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"                    
 					SelectedValuePath="id"
