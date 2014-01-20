@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.Facade.Magnificus;
+using HLP.Comum.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             this.objViewModel = objViewModel;
             objViewModel.fecharCommand = new RelayCommand(execute: i => this.FecharExec());
-            objViewModel.loginCommand = new RelayCommand(execute: i => this.LoginExec(),
+            objViewModel.loginCommand = new RelayCommand(execute: i => this.LoginExec(objDependency: i),
                 canExecute: i => this.LoginCanExec(objDependency: i));
         }
 
@@ -25,9 +26,32 @@ namespace HLP.Comum.ViewModel.Commands
             Application.Current.Shutdown();
         }
 
-        private void LoginExec()
+        private void LoginExec(object objDependency)
         {
+            foreach (UIElement item in (objDependency as Panel).Children)
+            {
+                if (item.GetType() == typeof(PasswordBox))
+                {
+                    if (loginFacade.loginClient == null)
+                        loginFacade.loginClient = new Facade.loginService.IserviceLoginClient();
 
+                    if (loginFacade.loginClient.ValidaLogin(xId: this.objViewModel.currentLogin.xId,
+                        xSenha: (item as PasswordBox).Password) < 1)
+                        MessageBox.Show(messageBoxText: "Login e Senha incorretos.");
+                    else
+                    {
+                        SearchWindow(objeto: objDependency);
+                    }
+                }
+            }
+        }
+
+        private void SearchWindow(object objeto)
+        {
+            if (objeto.GetType().BaseType == typeof(Window))
+                (objeto as Window).Close();
+            else
+                this.SearchWindow(objeto: (objeto as Panel).Parent);
         }
 
         private bool LoginCanExec(object objDependency)

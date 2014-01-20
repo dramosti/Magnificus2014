@@ -129,7 +129,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Canal_VendaService\HLP.Comum.Facade.Canal_VendaService.Canal_vendaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -133,6 +133,7 @@
                     Validation.ErrorTemplate="{StaticResource exceptionComp}"
                     Width="200" Height="28" VerticalAlignment="Top" Margin="0,6,0,0"/>
                 <Button 
+                    x:Name="btnConectar"
                     Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=stkLogin}"
                     Height="28" Width="130" Content="Conectar"
                         Background="{StaticResource ButtonBackgroundBlueDefault}" 
