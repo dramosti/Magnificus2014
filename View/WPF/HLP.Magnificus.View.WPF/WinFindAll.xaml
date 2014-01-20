@@ -5,11 +5,11 @@
         x:Class="HLP.Magnificus.View.WPF.WinFindAll"
         Title="" Width="250" Height="300" WindowStyle="ToolWindow">
     <DockPanel LastChildFill="True" >
-        <Components:HlpSearchTextBox FocusManager.IsFocusScope="True" Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" />
+        <Components:HlpSearchTextBox FocusManager.IsFocusScope="True" Height="35" DockPanel.Dock="Top" Name="m_txtTest" Background="AliceBlue" BorderBrush="{x:Null}" />
         <StatusBar DockPanel.Dock="Bottom" Height="27" VerticalAlignment="Bottom" Background="Transparent">
             <Label Content="ESC" FontSize="10" FontFamily="Calibri"/>
         </StatusBar>
-        <ListBox Name="lstResult" ItemContainerStyle="{StaticResource ExpanderMenuListitemStyle}" ItemsSource="{Binding  Path=lResult}">
+        <ListBox Name="lstResult" ItemContainerStyle="{StaticResource ExpanderMenuListitemStyle}" ItemsSource="{Binding  Path=lResult}" BorderBrush="{x:Null}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

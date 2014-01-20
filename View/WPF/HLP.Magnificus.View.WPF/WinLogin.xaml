@@ -4,7 +4,7 @@
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.WinLogin"
-        Title="WinLogin" Height="500" Width="1000" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
+        Title="WinLogin" Height="500" Width="1500" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
     <Window.Resources>       
         <Style x:Key="shadowedLabelStyle">
             <Setter Property="TextBlock.Foreground" Value="{x:Static SystemColors.ControlDarkBrush}" />
