@@ -600,12 +600,19 @@
 								ElementStyle="{StaticResource CellErrorStyle}"
 								Binding="{Binding Path=dInicial, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 								Header="Data/Hora inicial da Revisão" Width="250"/>
-                            <DataGridComboBoxColumn  Header="Usuários" Width="150"
-                                ItemsSource="{Binding Source={StaticResource lResultUsuarios}}"
-                                SelectedValuePath="id"
-                                DisplayMemberPath="display"
-                                SelectedValueBinding="{Binding idFuncionario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                />
+                            <DataGridTemplateColumn Header="Usuários" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
+                                            ItemsSource="{Binding Source={StaticResource lResultUsuarios}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"
+                                            SelectedValue="{Binding idFuncionario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
                             <DataGridTextColumn 
 								ElementStyle="{StaticResource CellErrorStyle}"
 								Binding="{Binding Path=xRevisao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"

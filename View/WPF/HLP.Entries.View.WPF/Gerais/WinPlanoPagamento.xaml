@@ -138,11 +138,19 @@
                         VerticalAlignment="Stretch"  BorderBrush="Black">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
-                        <DataGridComboBoxColumn  Header="Tipo" Width="150"
+                        <DataGridTemplateColumn Header="Tipo" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox  
                             ItemsSource="{Binding Source={StaticResource EnumValorOuPorcentagem}}"
                             DisplayMemberPath="Key"
                             SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumValorOuPorcentagem, UpdateSourceTrigger=PropertyChanged}"/>
+                            SelectedValue ="{Binding enumValorOuPorcentagem, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                       
                         <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" Header="Valor ou Porcentagem" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>

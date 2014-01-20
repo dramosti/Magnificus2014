@@ -255,25 +255,46 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridComboBoxColumn  Header="Tipo Endereço" Width="250"
-                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
-                            DisplayMemberPath="Key"
-                            SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumTipoEndereco, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTemplateColumn  Header="Tipo Endereço" Width="250">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
+                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
+                                            DisplayMemberPath="Key"
+                                            SelectedValuePath="Value"
+                                            SelectedValue ="{Binding enumTipoEndereco, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="CEP" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}"/>
-                            <DataGridComboBoxColumn  Header="Cidades" Width="200"
+
+                            <DataGridTemplateColumn  Header="Cidades" Width="200">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
                             ItemsSource="{Binding Source={StaticResource lresult}}"
                             SelectedValuePath="id"
                             DisplayMemberPath="display"
-                            SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
-                            <DataGridComboBoxColumn  Header="Logradouro" Width="160"
-                            ItemsSource="{Binding Source={StaticResource EnumTipoLogradouro}}"
-                            DisplayMemberPath="Key"
-                            SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumTipoLogradouro, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                            </DataGridComboBoxColumn>
+                            SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn  Header="Logradouro" Width="160">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
+                                            ItemsSource="{Binding Source={StaticResource EnumTipoLogradouro}}"
+                                            DisplayMemberPath="Key"
+                                            SelectedValuePath="Value"
+                                            SelectedValue="{Binding enumTipoLogradouro, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
                             <DataGridTextColumn Header="Endereço" Width="100" 
                                                 ElementStyle="{StaticResource CellErrorStyle}"
                                             Binding="{Binding Path=xEndereco, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
@@ -314,11 +335,19 @@
                                          CanUserReorderColumns="False"  
                                          CanUserDeleteRows="True" >
                                     <DataGrid.Columns>
-                                        <DataGridComboBoxColumn  Header="Contatos" Width="*"
-                                            ItemsSource="{Binding Source={StaticResource lcontatos}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"
-                                            SelectedValueBinding="{Binding idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                                        <DataGridTemplateColumn  Header="Contatos" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                        ItemsSource="{Binding Source={StaticResource lcontatos}}"
+                                                        SelectedValuePath="id"
+                                                        DisplayMemberPath="display"
+                                                        SelectedValue="{Binding idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+
                                     </DataGrid.Columns>
                                 </DataGrid>
 
@@ -332,11 +361,17 @@
 								CanUserDeleteRows="True"
 								CanUserAddRows="True">
                                     <DataGrid.Columns>
-                                        <DataGridComboBoxColumn  Header="Contatos" Width="*"
+                                        <DataGridTemplateColumn Header="Contatos" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox  
                                             ItemsSource="{Binding Source={StaticResource lcontatos}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"
-                                            SelectedValueBinding="{Binding idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                                            SelectedValue="{Binding idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                         <DataGridTextColumn 
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xRntrc, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -359,11 +394,17 @@
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xPlacaVeiculo, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=placa}"
 											Header="Placa do Veículo" Width="200"/>
-                                        <DataGridComboBoxColumn  Header="UF" Width="*"
+                                        <DataGridTemplateColumn   Header="UF" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
                                                 ItemsSource="{Binding Source={StaticResource lUF}}"
                                                 SelectedValuePath="id"
                                                 DisplayMemberPath="display"
-                                                SelectedValueBinding="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                                                SelectedValue="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                         <DataGridTextColumn 
 											ElementStyle="{StaticResource CellErrorStyle}"
 											Binding="{Binding Path=xMarca, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"

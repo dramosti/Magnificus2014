@@ -569,13 +569,19 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn  Header="Cidades" Width="150"
-                                ItemsSource="{Binding Source={StaticResource lresultCidades}}"
-                                SelectedValuePath="id"
-                                DisplayMemberPath="display"
-                                SelectedValueBinding="{Binding idUf, Mode=TwoWay, 
-                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                />
+                            <DataGridTemplateColumn Header="Cidades" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
+                                            ItemsSource="{Binding Source={StaticResource lresultCidades}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"
+                                            SelectedValue="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                           
                             <DataGridTextColumn 
 							 ElementStyle="{StaticResource CellErrorStyle}"
                              Binding="{Binding Path=pReducaoIcms, UpdateSourceTrigger=LostFocus,

@@ -4,10 +4,7 @@
      xmlns:converter="clr-namespace:HLP.Entries.View.WPF.Crm"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Crm.WinDecisao"
-        Title="Decisão" NameView="vwDecisao">
-    <Window.Resources>
-        <converter:testeConverter x:Key="teste"/>
-    </Window.Resources>
+        Title="Decisão" NameView="vwDecisao">   
     <Grid>
         <Expander Header="Geral" IsExpanded="True">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0" >

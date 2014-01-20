@@ -60,20 +60,31 @@
                         </BindingGroup>
                     </DataGrid.BindingGroup>
                     <DataGrid.Columns>
-                        <DataGridComboBoxColumn  Header="Conversão De" Width="150"
+                        <DataGridTemplateColumn Header="Conversão De" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox 
                                         ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idDeUnidadeMedida, Mode=TwoWay, 
-                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                        />
-                        <DataGridComboBoxColumn  Header="Conversão Para" Width="150"
+                                        SelectedValue="{Binding idDeUnidadeMedida, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Conversão Para" Width="150">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox
                                         ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idParaUnidadeMedida, Mode=TwoWay, 
-                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                        />
+                                        SelectedValue="{Binding idParaUnidadeMedida, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+
                         <DataGridTextColumn                                
                                         Header="Fator" Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
@@ -86,13 +97,20 @@
                                         Binding="{Binding Path=nQuantidadeAdicional, UpdateSourceTrigger=LostFocus,
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                        <DataGridComboBoxColumn
-                                Header="Arredondamento" Width="*"                                    
+                        <DataGridTemplateColumn Header="Arredondamento" Width="*"                                    >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox                                
                                 ItemsSource="{Binding Source={StaticResource EnumDescriptionDictArrend}}"
                                 DisplayMemberPath="Key"
                                 SelectedValuePath="Value"
-                                SelectedValueBinding="{Binding enumTipoArredondamento,
-                                UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
+                                SelectedValue="{Binding enumTipoArredondamento,
+                                UpdateSourceTrigger=LostFocus}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                       
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

@@ -10,7 +10,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
-    <Window.Resources>
+    <runtime:WindowsBase.Resources>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <ObjectDataProvider 
             MethodName="GetDict"
@@ -25,8 +25,8 @@
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwCidadeToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </Window.Resources>
+        </ObjectDataProvider>        
+    </runtime:WindowsBase.Resources>
 
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -134,14 +134,17 @@
                           CanUserReorderColumns="False"  
                           CanUserDeleteRows="True" >
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn 
-                            Header="Tipo Endereço" Width="120"
-                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
-                            DisplayMemberPath="Key"
-                            SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged}">
-
-                            </DataGridComboBoxColumn>
+                            <DataGridTemplateColumn Header="Tipo Endereço" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox                                             
+                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
+                                            DisplayMemberPath="Key"
+                                            SelectedValuePath="Value"
+                                            SelectedValue ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="Principal" Width="60">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -162,12 +165,19 @@
                             <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
                             <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep, UpdateSourceTrigger=PropertyChanged}" />
                             <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal, UpdateSourceTrigger=PropertyChanged}" />
-                            <DataGridComboBoxColumn  Header="Cidades" Width="150"
-                            ItemsSource="{Binding Source={StaticResource lresult}}"
-                            SelectedValuePath="id"
-                            DisplayMemberPath="display"
-                            SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                            />
+                            <DataGridTemplateColumn Header="Cidades" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox  
+                                            ItemsSource="{Binding Source={StaticResource lresult}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"
+                                            SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                           
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>

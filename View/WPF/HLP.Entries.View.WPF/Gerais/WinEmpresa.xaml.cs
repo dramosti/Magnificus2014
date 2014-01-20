@@ -31,9 +31,9 @@ namespace HLP.Entries.View.WPF.Gerais
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
-            }            
+            }
         }
 
         public EmpresaViewModel ViewModel
@@ -48,7 +48,9 @@ namespace HLP.Entries.View.WPF.Gerais
             }
         }
 
+    
 
-       
+
+
     }
 }

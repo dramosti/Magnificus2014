@@ -126,26 +126,32 @@
                         </BindingGroup>
                     </DataGrid.BindingGroup>
                     <DataGrid.Columns>
-                        <DataGridComboBoxColumn  Header="Empresa" Width="450"
+                        <DataGridTemplateColumn Header="Empresa" Width="450">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox 
                                         ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        >
-                            <DataGridComboBoxColumn.SelectedValueBinding>
-                                <!--SelectedValueBinding="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"-->
-                                <Binding
-                                Path="idEmpresa"
-                                Mode="TwoWay"
-                                UpdateSourceTrigger="PropertyChanged"
-                                ValidatesOnDataErrors="True">
-                                </Binding>
-                            </DataGridComboBoxColumn.SelectedValueBinding>
-                        </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn  Header="Setor" Width="*"
+                                        SelectedValue="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                        />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Setor" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox  
                                         ItemsSource="{Binding Source={StaticResource lresultSetor}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                        SelectedValue="{Binding idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                       
                     </DataGrid.Columns>
                     <DataGrid.IsEnabled>
                         <MultiBinding Converter="{StaticResource boolMultiConverter}">

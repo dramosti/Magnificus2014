@@ -884,8 +884,7 @@
                                                     ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
                                                     SelectedValuePath="id"
                                                     DisplayMemberPath="display"
-                                                    SelectedValue="{Binding idProduto, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></ComboBox>
+                                                    SelectedValue="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>

@@ -178,13 +178,20 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn
-                                Header="Tipo Endereço" Width="120"                                    
+                            <DataGridTemplateColumn  Header="Tipo Endereço" Width="120"                                    >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox                               
                                 ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
                                 DisplayMemberPath="Key"
                                 SelectedValuePath="Value"
-                                SelectedValueBinding="{Binding enumTipoEnder,
-                                UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
+                                SelectedValue="{Binding enumTipoEnder,
+                                UpdateSourceTrigger=LostFocus}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                           
                             <DataGridTextColumn                                
                                 Header="Endereço" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
@@ -231,12 +238,20 @@
                                     ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                            <DataGridComboBoxColumn  Header="Cidades" Width="150"
+                            <DataGridTemplateColumn  Header="Cidades" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
                                 ItemsSource="{Binding Source={StaticResource lresultCidades}}"
                                 SelectedValuePath="id"
                                 DisplayMemberPath="display"
-                                SelectedValueBinding="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                                 />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                           
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>
@@ -565,13 +580,20 @@
                           CanUserAddRows="True"
                             >
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn
-                                Header="Tipo Certificação" Width="120"                                    
-                                ItemsSource="{Binding Source={StaticResource EnumDescriptionDictCertif}}"
+                            <DataGridTemplateColumn Header="Tipo Certificação" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
+                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDictCertif}}"
                                 DisplayMemberPath="Key"
                                 SelectedValuePath="Value"
-                                SelectedValueBinding="{Binding enumTipoCertificacao,
-                                UpdateSourceTrigger=LostFocus}"></DataGridComboBoxColumn>
+                                SelectedValue="{Binding enumTipoCertificacao,
+                                UpdateSourceTrigger=LostFocus}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            
                             <DataGridTextColumn                                
                                 Header="Certificação" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
@@ -640,12 +662,17 @@
                                     CanUserAddRows="True"
                                     >
                                 <DataGrid.Columns>
-                                    <DataGridComboBoxColumn  Header="Produtos" Width="150"
+                                    <DataGridTemplateColumn Header="Produtos" Width="150">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox  
                                         ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                        />
+                                        SelectedValue="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                         />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
                                     <DataGridTextColumn                                
                                         Header="% Comissão a Vista" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"

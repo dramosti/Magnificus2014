@@ -17,40 +17,40 @@
     </Window.Resources>
     <DockPanel>
         <Expander Header="Principal" IsExpanded="True">
-          <ScrollViewer x:Name="ScrollBar" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
+            <ScrollViewer x:Name="ScrollBar" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                    <Components:HlpTextBox 
 						IsReadOnly="True"
 						Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						Height="27" Margin="10,0,0,2" Caption="Codigo" WidthLabel="150" HorizontalAlignment="Left" Width="238"/>
-                <Components:HlpTextBox 
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xTpdoc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Nome" WidthLabel="150" HorizontalAlignment="Left" Width="431"/>
-                <Components:HlpComboBox
+                    <Components:HlpComboBox
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Tipo de Documento" WidthLabel="150" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Orçamento de venda</System:String>
-                        <System:String>1-Pedido de venda</System:String>
-                        <System:String>2-NF de Saida</System:String>
-                        <System:String>3-NF de entrada</System:String>
-                        <System:String>4-NF produtor rural</System:String>
-                        <System:String>5-Solicitação de Compra</System:String>
-                        <System:String>6-Cotação de compra</System:String>
-                        <System:String>7-Pedido de Compra</System:String>
-                        <System:String>8-Recebimento de NF</System:String>
-                        <System:String>9-Requisição de Saida</System:String>
-                        <System:String>10-Produção</System:String>
-                        <System:String>11-Movimento de Estoque</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Expander Header="Operações Válidas" IsExpanded="True" Width="445" HorizontalAlignment="Left" Height="146" Margin="10,0,0,2">
-                    <Grid>
-                        <DataGrid HorizontalAlignment="Left" Margin="10,0,0,2"
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Orçamento de venda</System:String>
+                            <System:String>1-Pedido de venda</System:String>
+                            <System:String>2-NF de Saida</System:String>
+                            <System:String>3-NF de entrada</System:String>
+                            <System:String>4-NF produtor rural</System:String>
+                            <System:String>5-Solicitação de Compra</System:String>
+                            <System:String>6-Cotação de compra</System:String>
+                            <System:String>7-Pedido de Compra</System:String>
+                            <System:String>8-Recebimento de NF</System:String>
+                            <System:String>9-Requisição de Saida</System:String>
+                            <System:String>10-Produção</System:String>
+                            <System:String>11-Movimento de Estoque</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Expander Header="Operações Válidas" IsExpanded="True" Width="445" HorizontalAlignment="Left" Height="146" Margin="10,0,0,2">
+                        <Grid>
+                            <DataGrid HorizontalAlignment="Left" Margin="10,0,0,2"
                                   ItemsSource="{Binding currentModel.lTipo_documento_oper_validaModel}"
                                   IsEnabled="{Binding bIsEnabled}"
                                   AutoGenerateColumns="False" 
@@ -58,181 +58,188 @@
                                   CanUserReorderColumns="False"
                                   CanUserDeleteRows="True"
                                   CanUserAddRows="True">
-                            <DataGrid.Columns>
-                                <DataGridComboBoxColumn  Header="Tipo de Operação" Width="*"
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Tipo de Operação" Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox 
                                                 ItemsSource="{Binding Source={StaticResource lTpOper}}"
                                                 SelectedValuePath="id"
                                                 DisplayMemberPath="display"
-                                                SelectedValueBinding="{Binding idTipoOperacao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-                            </DataGrid.Columns>
+                                                SelectedValue="{Binding idTipoOperacao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
 
-                        </DataGrid>
+                                </DataGrid.Columns>
 
-                    </Grid>
-                </Expander>
-                <Components:HlpComboBox 
+                            </DataGrid>
+
+                        </Grid>
+                    </Expander>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stRelacaoPedidoxorcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Relação do pedido com orçamento" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Nenhum</System:String>
-                        <System:String>1-Pedido depende do orçamento</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpComboBox 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Nenhum</System:String>
+                            <System:String>1-Pedido depende do orçamento</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stRelacaoPedidoxnf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Relação do pedido com faturamento" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Nenhum</System:String>
-                        <System:String>1-NF depende de pedido com edição de itens</System:String>
-                        <System:String>2-NF depende de pedido sem edição de itens</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpComboBox 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Nenhum</System:String>
+                            <System:String>1-NF depende de pedido com edição de itens</System:String>
+                            <System:String>2-NF depende de pedido sem edição de itens</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stRelacaoPedidoxproducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Relação do pedido com produção" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Nenhum</System:String>
-                        <System:String>1-Pedido gera ordem de produção</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpComboBox 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Nenhum</System:String>
+                            <System:String>1-Pedido gera ordem de produção</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stGrupoFaturamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Grupo de Faturamento" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-1</System:String>
-                        <System:String>1-2</System:String>
-                        <System:String>2-3</System:String>
-                        <System:String>3-4</System:String>
-                        <System:String>4-5</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpTextBox 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-1</System:String>
+                            <System:String>1-2</System:String>
+                            <System:String>2-3</System:String>
+                            <System:String>3-4</System:String>
+                            <System:String>4-5</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xSerieNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Série da NF" WidthLabel="283" HorizontalAlignment="Left" Width="409"/>
-                <Components:HlpTextBox 
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xEspecieVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Espécie de voume da NF" WidthLabel="283" HorizontalAlignment="Left" Width="409"/>
-                <Components:HlpTextBox 
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xMarcaVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Marca do volume da NF" WidthLabel="283" HorizontalAlignment="Left" Width="409"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stSomaIpi1Dup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="38" Margin="10,0,0,2" Caption="Soma valor do IPI somente na 1 Duplicata?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stSomaSt1Dup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="38" Margin="10,0,0,2" Caption="Soma valor da subst.Tributária somente na 1 Duplicata?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox	
+                    <Components:HlpCheckBox	
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stNfComplementar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF complementar?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stNfImportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF de importação?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpComboBox 
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stNfExportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF de exportação?" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Não</System:String>
-                        <System:String>1-Exportação Direta</System:String>
-                        <System:String>1-Exportação Indireta</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpCheckBox 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Não</System:String>
+                            <System:String>1-Exportação Direta</System:String>
+                            <System:String>1-Exportação Indireta</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stNfIndustrializacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF de Industrialização?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stNfSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF de suframa?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stNfAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF de ativo?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stNFdevolucao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="É NF de devolução" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpComboBox 
+                    <Components:HlpComboBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						SelectedIndex="{Binding currentModel.stCompoeVlTotalProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Compõem o valor total dos produtos?" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Só Produtos</System:String>
-                        <System:String>1-Só devolução</System:String>
-                        <System:String>2-Ambos</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpCheckBox 
+                        <Components:HlpComboBox.Items>
+                            <System:String>0-Só Produtos</System:String>
+                            <System:String>1-Só devolução</System:String>
+                            <System:String>2-Ambos</System:String>
+                        </Components:HlpComboBox.Items>
+                    </Components:HlpComboBox>
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stSomaDevolucaoVlTotalNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Soma devolução no total da nf?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stImprimeIcmsProprioComNormal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="40" Margin="10,0,0,2" Caption="Imprime icms próprio com normal na nf?" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stRelacaoRecebimentoPedidocpa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="40" Margin="10,0,0,2" Caption="Relação do recebimento com pedido de compra" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.stRelacaoPedidocpaCotacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="40" Margin="10,0,0,2" Caption="Relação do pedido de compra com cotação de compra" WidthLabel="283" HorizontalAlignment="Left"/>
-                <Components:HlpPesquisa 
+                    <Components:HlpPesquisa 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.idModeloDocFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Modelo de documento fiscal" WidthLabel="283" HorizontalAlignment="Left" Width="672" TableView="vwModeloDocFiscal" FieldPesquisa="ID">
-                    <Components:HlpPesquisa.Items>
-                        <System:String>xCodFiscal</System:String>
-                        <System:String>xDescrFiscal</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:HlpTextBox 
+                        <Components:HlpPesquisa.Items>
+                            <System:String>xCodFiscal</System:String>
+                            <System:String>xDescrFiscal</System:String>
+                        </Components:HlpPesquisa.Items>
+                    </Components:HlpPesquisa>
+                    <Components:HlpTextBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						Text="{Binding currentModel.xObs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Observação" WidthLabel="283" HorizontalAlignment="Left" Width="672"/>
-                <Components:HlpCheckBox 
+                    <Components:HlpCheckBox 
 						Validation.ErrorTemplate="{StaticResource exceptionComp}"
 						IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="27" Margin="10,0,0,2" Caption="Cadastro ativo?" WidthLabel="283" HorizontalAlignment="Left"/>
-            </WrapPanel>
-         </ScrollViewer>
+                </WrapPanel>
+            </ScrollViewer>
         </Expander>
     </DockPanel>
 </runtime:WindowsBase>

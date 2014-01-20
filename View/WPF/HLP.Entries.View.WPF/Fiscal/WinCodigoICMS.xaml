@@ -44,11 +44,19 @@
                          CanUserReorderColumns="False"  
                          CanUserDeleteRows="True" >
                     <DataGrid.Columns>
-                        <DataGridComboBoxColumn  Header="UF" Width="*"
-                            ItemsSource="{Binding Source={StaticResource lUF}}"
-                            SelectedValuePath="id"
-                            DisplayMemberPath="display"
-                            SelectedValueBinding="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                        <DataGridTemplateColumn Header="UF" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox 
+                                            ItemsSource="{Binding Source={StaticResource lUF}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"
+                                            SelectedValue="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq do Estado" Width="125"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna,UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq Interna de ICMS" Width="150"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de Subst. Trib. (MVA/IVA)" Width="200"/>

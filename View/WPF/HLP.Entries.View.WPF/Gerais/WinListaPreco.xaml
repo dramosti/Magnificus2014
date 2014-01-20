@@ -190,19 +190,24 @@
                             </BindingGroup>
                         </DataGrid.BindingGroup>
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn  Header="Produtos" Width="150"
+                            <DataGridTemplateColumn Header="Produtos" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox 
                                         ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                        />
+                                        SelectedValue="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
                             <DataGridTextColumn                                
                                 Header="Custo Produto" Width="100"                                
                                 ElementStyle="{StaticResource CellErrorStyle}"                                
                                 Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=LostFocus, Mode=TwoWay,
                                 Converter={StaticResource moedaConverter},
-                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                >
+                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
                                 <DataGridTextColumn.CellStyle>
                                     <Style>
                                         <Style.Triggers>
@@ -297,12 +302,18 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridComboBoxColumn  Header="Unidade Medida" Width="150"
+                            <DataGridTemplateColumn Header="Unidade Medida" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox  
                                         ItemsSource="{Binding Source={StaticResource lResultConversao}}"
                                         SelectedValuePath="id"
                                         DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idUnidadeMedida, Mode=TwoWay, 
-                            UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                        SelectedValue="{Binding idUnidadeMedida, Mode=TwoWay, 
+                                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                         <DataGrid.RowStyle>
                             <Style>

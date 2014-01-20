@@ -104,7 +104,6 @@
       <DependentUpon>WinTipoProduto.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ListaItensIsReadOnly.cs" />
-    <Compile Include="Crm\testeConverter.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
     </Compile>

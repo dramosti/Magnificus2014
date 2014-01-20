@@ -79,5 +79,15 @@ namespace HLP.Entries.View.WPF.Comercial
             this.dgvEndereco.BindingGroup.UpdateSources();
         }
 
+        private void dgvContato_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void dgvContato_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
     }
 }

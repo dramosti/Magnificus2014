@@ -47,33 +47,11 @@ namespace HLP.Comum.Resources
         static void cell_GotFocus(object sender, RoutedEventArgs e)
         {
             DataGridCell cell = sender as DataGridCell;
-            if (cell != null && !cell.IsEditing && !cell.IsReadOnly)
-            {
-                if (!cell.IsFocused)
-                {
-                    cell.Focus();
-                }
-                DataGrid dataGrid = FindVisualParent<DataGrid>(cell);
-                if (dataGrid != null)
-                {
-                    if (dataGrid.SelectionUnit != DataGridSelectionUnit.FullRow)
-                    {
-                        if (!cell.IsSelected)
-                        {
-                            cell.IsSelected = true;
-                            cell.IsEditing = true;
-                        }
-                    }
-                    else
-                    {
-                        DataGridRow row = FindVisualParent<DataGridRow>(cell);
-                        if (row != null && !row.IsSelected)
-                        {
-                            row.IsSelected = true;
-                        }
-                    }
-                }
-            }
+            DataGrid dataGrid = FindVisualParent<DataGrid>(cell);
+
+            if (cell.Column != null)
+                if (cell.Column.GetType() == typeof(DataGridComboBoxColumn) || cell.Column.GetType() == typeof(DataGridTemplateColumn))
+                    dataGrid.BeginEdit();
         }
 
 

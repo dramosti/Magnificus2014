@@ -57,16 +57,19 @@
                          CanUserDeleteRows="True" 
                   Margin="0,15,0,0">
                 <DataGrid.Columns>
-                    <DataGridComboBoxColumn Header="Semana/Mes" Width="120"
-                                            ItemsSource="{Binding Source={StaticResource EnumSemanaOuMes}}"
-                                            DisplayMemberPath="Key"
-                                            SelectedValuePath="Value"
-                                            SelectedValueBinding ="{Binding enumSemanaOuMes, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridComboBoxColumn Header="Dia útil" Width="120"
+                    <DataGridTemplateColumn Header="Dia útil" Width="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox 
                                             ItemsSource="{Binding Source={StaticResource EnumDiaUtil}}"
                                             DisplayMemberPath="Key"
                                             SelectedValuePath="Value"
-                                            SelectedValueBinding ="{Binding enumDiaUtil, UpdateSourceTrigger=PropertyChanged}"/>
+                                            SelectedValue ="{Binding enumDiaUtil, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    
                     <DataGridTextColumn Header="Dia" Width="*"
                                         Binding="{Binding Path=nDia, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ElementStyle="{StaticResource CellErrorStyle}"
