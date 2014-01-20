@@ -55,13 +55,10 @@ namespace HLP.Magnificus.View.WPF
 
         private void exLogin_Expanded(object sender, RoutedEventArgs e)
         {
-            ContextMenuService.SetPlacement(element: exLogin, value: System.Windows.Controls.Primitives.PlacementMode.Bottom);
-            this._viewModel.OpenCtxCommand.Execute(parameter: exLogin.ContextMenu);
+            ctxLogin.PlacementTarget = exLogin;
+            ctxLogin.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            ctxLogin.IsOpen = true;
             exLogin.IsExpanded = false;
-        }
-
-        private void exLogin_MouseEnter(object sender, MouseEventArgs e)
-        {
         }
     }
 }
