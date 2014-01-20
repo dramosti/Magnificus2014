@@ -51,6 +51,11 @@ namespace HLP.Magnificus.View.WPF
             set { this.DataContext = value; }
         }
 
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
 
 
     }
