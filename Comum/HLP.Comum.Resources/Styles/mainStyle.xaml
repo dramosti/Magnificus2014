@@ -1146,6 +1146,21 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="MenuItemPrincipal" TargetType="{x:Type MenuItem}">
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value= "{DynamicResource {x:Static SystemParameters.CaptionHeightKey}}"/>
+        <Style.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
         <Border x:Name="templateRoot"  BorderBrush="White" BorderThickness="{TemplateBinding BorderThickness}" Background="White" Height="22" SnapsToDevicePixels="true">
             <Grid Margin="-1">
