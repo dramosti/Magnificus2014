@@ -11,7 +11,7 @@ namespace HLP.Comum.Infrastructure.Static
         /// Usuário que esta logado no sistema.
         /// </summary>
         public static int idUser = 2; //Provisório enquanto não eé implementada tela de login
-
+        public static string xLogin;
         /// <summary>
         /// Usuário padrão da HLP
         /// </summary>

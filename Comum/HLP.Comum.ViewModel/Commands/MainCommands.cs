@@ -30,11 +30,12 @@ namespace HLP.Comum.ViewModel.Commands
                 this.objviewModel.DelWindowCommand = new RelayCommand(
                     execute: ex => DelWindow(tabItem: ex),
                     canExecute: ex => DelWindowCanExecute());
+                this.objviewModel.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
 
                 this.objviewModel.FindAllCommand = new RelayCommand
                     (
                     execute: ex => objviewModel.FindAll(),
-                    canExecute: can=> true
+                    canExecute: can => true
                     );
 
 
@@ -47,6 +48,19 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
         #region Executes & CanExecutes
+
+
+        private void OpenCtx(object ctx)
+        {
+            if (ctx != null)
+                (ctx as ContextMenu).IsOpen = true;
+        }
+
+        private bool OpenCtxCanExecute()
+        {
+            return true;
+        }
+
 
         private void AddWindow(object xNomeForm)
         {

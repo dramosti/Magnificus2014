@@ -32,6 +32,12 @@ namespace HLP.Comum.Facade.loginService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/ValidaLogin", ReplyAction="http://tempuri.org/IserviceLogin/ValidaLoginResponse")]
         System.Threading.Tasks.Task<int> ValidaLoginAsync(string xId, string xSenha);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXid", ReplyAction="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXidResponse")]
+        int GetIdFuncionarioByXid(string xId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXid", ReplyAction="http://tempuri.org/IserviceLogin/GetIdFuncionarioByXidResponse")]
+        System.Threading.Tasks.Task<int> GetIdFuncionarioByXidAsync(string xId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace HLP.Comum.Facade.loginService {
         
         public System.Threading.Tasks.Task<int> ValidaLoginAsync(string xId, string xSenha) {
             return base.Channel.ValidaLoginAsync(xId, xSenha);
+        }
+        
+        public int GetIdFuncionarioByXid(string xId) {
+            return base.Channel.GetIdFuncionarioByXid(xId);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetIdFuncionarioByXidAsync(string xId) {
+            return base.Channel.GetIdFuncionarioByXidAsync(xId);
         }
     }
 }

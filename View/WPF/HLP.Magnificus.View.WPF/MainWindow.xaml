@@ -59,16 +59,82 @@
         </ResourceDictionary>
 
     </Window.Resources>
-    <Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2.3*"/>
-            <RowDefinition Height="97.7*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Menu x:Name="menuPrincipal" Grid.ColumnSpan="2"/>
-        <Grid x:Name="grdForms" Grid.Column="0" Grid.Row="1">
+    <!--<Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">-->
+    <DockPanel
+        LastChildFill="True"
+        >
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+            <Expander  
+                Width="150"
+                x:Name="exLogin"
+                FlowDirection="RightToLeft"
+                ContextMenuService.Placement="Bottom"
+                IsExpanded="False"
+                Header="{Binding currentFuncionario.xID}"
+                DockPanel.Dock="Right" 
+                Expanded="exLogin_Expanded">
+                <Expander.ContextMenu>
+                    <ContextMenu
+                        >
+                        <MenuItem
+                            Height="50">
+                            <MenuItem.Template>
+                                <ControlTemplate>
+                                    <DockPanel
+                                        Height="50"                                        
+                                        >
+                                        <Image
+                                            Height="50"
+                                            Width="50">
+                                            <Image.Source>
+                                                <BitmapImage
+                            UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"
+                            >
+
+                                                </BitmapImage>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock 
+                                            Height="20"
+                                            Text="{Binding currentFuncionario.xNome}"
+                                                   DockPanel.Dock="Top"></TextBlock>
+                                        <TextBlock
+                                            Height="20"
+                                            Text="{Binding currentEmpresa.xNome}"
+                                                   DockPanel.Dock="Top"></TextBlock>
+                                    </DockPanel>
+                                </ControlTemplate>
+                            </MenuItem.Template>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItem.Template>
+                                <ControlTemplate>
+                                    <Button Content="Trocar Usuário"></Button>
+                                </ControlTemplate>
+                            </MenuItem.Template>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItem.Template>
+                                <ControlTemplate>
+                                    <Button Content="Trocar Empresa"></Button>
+                                </ControlTemplate>
+                            </MenuItem.Template>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItem.Template>
+                                <ControlTemplate>
+                                    <Button Content="Sair"></Button>
+                                </ControlTemplate>
+                            </MenuItem.Template>
+                        </MenuItem>
+                    </ContextMenu>
+
+                </Expander.ContextMenu>
+            </Expander>
+            <Menu x:Name="menuPrincipal" DockPanel.Dock="Top">
+            </Menu>
+        </DockPanel>
+        <Grid x:Name="grdForms">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
@@ -442,5 +508,5 @@
                 </DockPanel>
             </Border>
         </Grid>
-    </Grid>
+    </DockPanel>
 </Window>

@@ -26,6 +26,17 @@ namespace HLP.Comum.Model.Repository.Implementation
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
         }
 
+        public int GetIdFuncionarioByXid(string xId)
+        {
+
+            DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                              (
+                              string.Format("select idFuncionario from Funcionario where xID = '{0}'", xId)
+                              );
+
+            return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
+        }
+
         public int ValidaLogin(string xID, string xSenha)
         {
             DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand

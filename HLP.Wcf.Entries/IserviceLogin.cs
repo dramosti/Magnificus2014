@@ -19,5 +19,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int ValidaLogin(string xId, string xSenha);
+
+        [OperationContract]
+        int GetIdFuncionarioByXid(string xId);
     }
 }
