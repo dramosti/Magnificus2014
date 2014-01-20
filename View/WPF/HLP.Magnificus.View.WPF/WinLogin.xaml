@@ -4,7 +4,7 @@
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.WinLogin"
-        Title="WinLogin" Height="500" Width="1000" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
+        Title="WinLogin" Height="500" Width="1500" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
     <Window.Resources>       
         <Style x:Key="shadowedLabelStyle">
             <Setter Property="TextBlock.Foreground" Value="{x:Static SystemColors.ControlDarkBrush}" />
@@ -98,12 +98,29 @@
 			Grid.Column="1"
 			HorizontalAlignment="Right"
 			VerticalAlignment="Center">
-            <Button 
-				Command="{Binding fecharCommand}"
-				Height="28" Width="90" Content="_Sair"
-				Background="{StaticResource ButtonBackgroundBlueDefault}" 
-				Foreground="White" BorderBrush="white" Style="{DynamicResource ButtonStyleLoginCopy}"
-                            />
+            <Button Command="{Binding fecharCommand}" Height="28" Width="90">				
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image x:Name="ImageAdd">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Power.png"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Power_MouseOver.png"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Power_Disabled.png"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>                           
         </StackPanel>
         <Image              
 			VerticalAlignment="Stretch"
