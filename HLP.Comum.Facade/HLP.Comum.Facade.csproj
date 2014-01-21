@@ -49,6 +49,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Carga_trib_media_st_icmsServico\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\cidadeService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,6 +157,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\HLP.Comum.Facade.Carga_trib_media_st_icmsServico.Carga_trib_media_st_icmsModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.wsdl" />
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\cidadeService\HLP.Comum.Facade.cidadeService.CidadeModel.datasource">
@@ -481,6 +508,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
+    <WCFMetadataStorage Include="Service References\Carga_trib_media_st_icmsServico\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
     <WCFMetadataStorage Include="Service References\ClassificacaoFiscalServico\" />
     <WCFMetadataStorage Include="Service References\clienteService\" />
@@ -743,7 +771,21 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Carga_trib_media_st_icmsServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

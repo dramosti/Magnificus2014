@@ -39,6 +39,8 @@ namespace HLP.Comum.Facade.Sales
         public static empresaService.IserviceEmpresaClient empresaService;
         public static ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient classificFiscalService;
         public static CodigoIcmsService.IserviceCodigoIcmsClient icmsService;
+        public static Carga_trib_media_st_icmsServico.IserviceCarga_trib_media_st_icmsClient cargaTribMediaService;
+
 
         public static int GetIdCfop(int idTipoOpercacao)
         {
@@ -80,6 +82,7 @@ namespace HLP.Comum.Facade.Sales
             this.objFuncionario = new funcionarioService.FuncionarioModel();
             this.objCondicaoPagamento = new Condicao_PagamentoService.Condicao_pagamentoModel();
             this.objTipo_Operacao = new Tipo_OperacaoService.Tipo_operacaoModel();
+            this.objCargaTrib = new Carga_trib_media_st_icmsServico.Carga_trib_media_st_icmsModel();
 
             if (OrcamentoFacade.empresaService == null)
                 OrcamentoFacade.empresaService = new empresaService.IserviceEmpresaClient();
@@ -99,7 +102,7 @@ namespace HLP.Comum.Facade.Sales
         public empresaService.EmpresaModel objEmpresa;
         public int idEstadoEmpresa;
         public int idEstadoCliente;
-
+        public Carga_trib_media_st_icmsServico.Carga_trib_media_st_icmsModel objCargaTrib;
 
         #region NotifyPropertyChanged
 

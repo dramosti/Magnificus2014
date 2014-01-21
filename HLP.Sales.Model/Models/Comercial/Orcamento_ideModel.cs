@@ -61,6 +61,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (OrcamentoFacade.icmsService == null)
                     OrcamentoFacade.icmsService = new Comum.Facade.CodigoIcmsService.IserviceCodigoIcmsClient();
 
+                if (OrcamentoFacade.cargaTribMediaService == null)
+                    OrcamentoFacade.cargaTribMediaService = new Comum.Facade.Carga_trib_media_st_icmsServico.IserviceCarga_trib_media_st_icmsClient();
+
                 this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
             }
             catch (Exception)
@@ -232,6 +235,8 @@ namespace HLP.Sales.Model.Models.Comercial
                                 OrcamentoFacade.objCadastros.idEstadoCliente = objCidade.idUF;
                                 this.xCidade = objCidade != null ? objCidade.xCidade : "";
                                 this.xUf = OrcamentoFacade.ufService.getUf(idUf: objCidade.idUF).xSiglaUf;
+                                OrcamentoFacade.objCadastros.objCargaTrib = OrcamentoFacade.cargaTribMediaService.GetCarga_trib_media_st_icmsByUf(
+                                    idUf: OrcamentoFacade.objCadastros.idEstadoCliente);
                             }
                         }
                     }
@@ -922,6 +927,20 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
+        private void CalculaIcmsSubstTrib()
+        {
+            if (this.orcamento_Item_Impostos.Count < 1)
+                return;
+
+            switch (this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria)
+            {
+                case 0:
+                    {
+
+                    } break;
+            }
+        }
+
         #endregion
 
         #region Métodos de busca
@@ -1225,12 +1244,13 @@ namespace HLP.Sales.Model.Models.Comercial
 
                             this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria =
                                 objTipoOperacao.stCalculaIcmsSubstituicaoTributaria;
-
+                            this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria =
+                                objTipoOperacao.stCompoeBaseIcmsSubstituicaoTributaria;
                             //TODO: IMPLEMENTAR CÁLCULO DE SUBSTITUIÇÃO TRIBUTÁRIA
 
                             #endregion
 
-                            #region Icms Interno
+                            #region Icms Interno && Icms Mva
 
                             HLP.Comum.Facade.CodigoIcmsService.Codigo_Icms_paiModel objIcms =
                             OrcamentoFacade.icmsService.GetObjeto(idObjeto: this.orcamento_Item_Impostos.First().idCSTIcms);
@@ -1254,6 +1274,15 @@ namespace HLP.Sales.Model.Models.Comercial
                                 }
                             }
 
+                            #endregion
+
+                            #region Icms Carga Tributária Média
+
+                            this.orcamento_Item_Impostos.First().ICMS_pCargaTributariaMedia = OrcamentoFacade.objCadastros.objCargaTrib.pCargaTributariaMedia;
+
+                            #endregion
+
+                            #region
                             #endregion
                         }
                     }
