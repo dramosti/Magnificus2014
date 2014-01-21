@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Magnificus.View.WPF.WinFindAll" x:Name="winPesquisa"
-        Title="" Width="250" Height="450" WindowStyle="ToolWindow" FocusManager.FocusedElement="{Binding ElementName=m_txtTest}">
+        Title="" Width="300" Height="400" WindowStyle="ToolWindow" FocusManager.FocusedElement="{Binding ElementName=m_txtTest}">
     <Window.InputBindings>
         <KeyBinding Key="Escape" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=winPesquisa}"/>
     </Window.InputBindings>

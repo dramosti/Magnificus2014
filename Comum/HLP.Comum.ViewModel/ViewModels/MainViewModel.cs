@@ -243,7 +243,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                     {
                         Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
                     };
-                    mi.Style = rs["MenuItemPrincipal"] as Style;                    
+                    mi.Style = rs["MenuItemPrincipal"] as Style;
                 }
 
                 mi.Header = it.xHeader;

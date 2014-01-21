@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
@@ -11,6 +12,26 @@ namespace HLP.Comum.Resources.Util
 {
     public static class StaticUtil
     {
+        public static Window GetParentWindow(DependencyObject child)
+        {
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            if (parentObject == null)
+            {
+                return null;
+            }
+
+            Window parent = parentObject as Window;
+            if (parent != null)
+            {
+                return parent;
+            }
+            else
+            {
+                return GetParentWindow(parentObject);
+            }
+        }
+
         public static T GetVisualChild<T>(Visual parent) where T : Visual
         {
             T child = default(T);

@@ -20,6 +20,7 @@
                Height="{Binding Height, ElementName=componente}"
                Style="{StaticResource TextBlocktyleComponents}" 
                Visibility ="{Binding VisibilityLabel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}" 
+               Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Caption}"
 			   Width="{Binding WidthLabel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}}" FontFamily="Calibri" FontSize="14"><Run Text="Label"/></TextBlock>
         <Button DockPanel.Dock="Right" Visibility="Collapsed" x:Name="btn" HorizontalAlignment="Right" Width="25" Height="20" Grid.Column="1" Click="btn_Click">
             <Button.Template>

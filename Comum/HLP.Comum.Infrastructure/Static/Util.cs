@@ -14,25 +14,7 @@ namespace HLP.Comum.Infrastructure.Static
 {
     public static class Util
     {
-        public static Window GetParentWindow(DependencyObject child)
-        {
-            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
-
-            if (parentObject == null)
-            {
-                return null;
-            }
-
-            Window parent = parentObject as Window;
-            if (parent != null)
-            {
-                return parent;
-            }
-            else
-            {
-                return GetParentWindow(parentObject);
-            }
-        }
+       
 
 
         public static string ToUpperFirstLetter(string Texto)
