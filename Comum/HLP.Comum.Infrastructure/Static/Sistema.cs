@@ -15,7 +15,8 @@ namespace HLP.Comum.Infrastructure.Static
             public int idFkReferencia { get; set; }
             public int idFkContato { get; set; }
         }
-
         public static List<System.Configuration.KeyValueConfigurationElement> lSettings { get; set; }
+
+        public static bool bOnline { get; set; }
     }
 }

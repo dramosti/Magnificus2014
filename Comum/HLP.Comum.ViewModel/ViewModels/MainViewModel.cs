@@ -22,6 +22,20 @@ namespace HLP.Comum.ViewModel.ViewModels
     {
         empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
         funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
+        private BitmapImage _iconConexao;
+        public BitmapImage iconConexao
+        {
+            get { return _iconConexao; }
+            set { _iconConexao = value; base.NotifyPropertyChanged("iconConexao"); }
+        }
+        private string _sToolTipConexao;
+        public string sToolTipConexao
+        {
+            get { return _sToolTipConexao; }
+            set { _sToolTipConexao = value; base.NotifyPropertyChanged("sToolTipConexao"); }
+        }
+        
+
 
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
@@ -79,6 +93,25 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         public MainViewModel()
         {
+            string sPath = "";
+
+            if (Sistema.bOnline)
+            {
+                sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_online" + ".png";
+                sToolTipConexao = "Via Internet.";
+            }
+            else
+            {
+                sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_interna" + ".png";
+                sToolTipConexao = "Via rede interna.";
+            }
+
+            if (File.Exists(path: sPath))
+            {
+                this.iconConexao = new BitmapImage(new Uri(sPath));
+            }
+
+
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
             this._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
             this._lWindows = new ObservableCollection<windowsModel>();
