@@ -123,21 +123,21 @@
                             >
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Trocar Usuário"></Button>
+                                    <Button Click="trocarUsuario_Click" x:Name="trocarUsuario" Content="Trocar Usuário"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Trocar Empresa"></Button>
+                                    <Button Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Content="Trocar Empresa"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Sair"></Button>
+                                    <Button Content="Sair" Command="{Binding fecharCommand}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>

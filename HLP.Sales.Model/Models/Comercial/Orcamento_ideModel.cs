@@ -229,6 +229,7 @@ namespace HLP.Sales.Model.Models.Comercial
                                 HLP.Comum.Facade.cidadeService.CidadeModel objCidade =
                                     OrcamentoFacade.cidadeService.getCidade(idCidade:
                                     OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == 1).idCidade);
+                                OrcamentoFacade.objCadastros.idEstadoCliente = objCidade.idUF;
                                 this.xCidade = objCidade != null ? objCidade.xCidade : "";
                                 this.xUf = OrcamentoFacade.ufService.getUf(idUf: objCidade.idUF).xSiglaUf;
                             }
@@ -1224,6 +1225,29 @@ namespace HLP.Sales.Model.Models.Comercial
 
                             this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria =
                                 objTipoOperacao.stCalculaIcmsSubstituicaoTributaria;
+
+                            //TODO: IMPLEMENTAR CÁLCULO DE SUBSTITUIÇÃO TRIBUTÁRIA
+
+                            #endregion
+
+                            #region Icms Interno
+
+                            HLP.Comum.Facade.CodigoIcmsService.Codigo_Icms_paiModel objIcms =
+                            OrcamentoFacade.icmsService.GetObjeto(idObjeto: this.orcamento_Item_Impostos.First().idCSTIcms);
+
+                            if (objIcms != null)
+                            {
+                                if (objIcms.lCodigo_IcmsModel.Count(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoCliente) > 0)
+                                {
+                                    if (this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria == 1)
+                                    {
+                                        this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno =
+                                            objIcms.lCodigo_IcmsModel.FirstOrDefault(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoCliente).pIcmsInterna;
+                                        this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria =
+                                            objIcms.lCodigo_IcmsModel.FirstOrDefault(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoCliente).pMvaSubstituicaoTributaria;
+                                    }
+                                }
+                            }
 
                             #endregion
                         }

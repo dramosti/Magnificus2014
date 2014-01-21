@@ -29,6 +29,9 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand FindAllCommand { get; set; }
         public ICommand OpenCtxCommand { get; set; }
+        public ICommand TrocarUsuarioCommand { get; set; }
+        public ICommand TrocarEmpresaCommand { get; set; }
+        public ICommand SairCommand { get; set; }
         #endregion
 
         private ObservableCollection<TabPagesAtivasModel> lTabPagesAtivas;
@@ -243,7 +246,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                     {
                         Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
                     };
-                    mi.Style = rs["MenuItemPrincipal"] as Style;                    
+                    mi.Style = rs["MenuItemPrincipal"] as Style;
                 }
 
                 mi.Header = it.xHeader;

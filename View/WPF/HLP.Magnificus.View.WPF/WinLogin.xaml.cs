@@ -20,10 +20,10 @@ namespace HLP.Magnificus.View.WPF
     /// </summary>
     public partial class WinLogin : Window
     {
-        public WinLogin()
+        public WinLogin(ModoInicial stModoInicial)
         {
             InitializeComponent();
-            this.ViewModel = new LoginViewModel();
+            this.ViewModel = new LoginViewModel(st: stModoInicial);
             cbxEmpresa.Focus();
         }
 
