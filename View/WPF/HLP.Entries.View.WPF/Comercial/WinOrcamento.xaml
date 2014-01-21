@@ -752,17 +752,39 @@
 										Header="% Subst tributária" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pIcmsInterno, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=ICMS_pIcmsInterno, UpdateSourceTrigger=LostFocus,
+                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 										Header="% ICMS interna Destino" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pMvaSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=ICMS_pMvaSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% MVA ST" Width="100"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_stCalculaSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=ICMS_pCargaTributariaMedia, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Carga Tributária Média" Width="125"/>
-                                    <DataGridComboBoxColumn Header="Compõe a base do ICMS de Substituição Tributária" Width="125"/>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <ComboBox
+                                                    Text="Compõe a base do ICMS de Substituição Tributária"
+                                                    Width="125"
+                                                    SelectedIndex="{Binding ICMS_stCompoeBaseIcmsSubstituicaoTributaria, Mode=TwoWay,
+                                                    UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                    >
+                                                    <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
+                                                    <ComboBoxItem>2-PRODUTOS+IPI</ComboBoxItem>
+                                                    <ComboBoxItem>3-PRODUTOS+IPI+FRETE</ComboBoxItem>
+                                                    <ComboBoxItem>4-PRODUTOS+IPI+FRETE+SEGURO+OUTRAS</ComboBoxItem>
+                                                    <ComboBoxItem>5-DIFERENCIADO</ComboBoxItem>
+                                                    <ComboBoxItem>6-NENHUMA</ComboBoxItem>
+                                                </ComboBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridComboBoxColumn />
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"

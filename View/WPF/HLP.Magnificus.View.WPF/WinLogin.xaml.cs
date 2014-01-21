@@ -38,5 +38,11 @@ namespace HLP.Magnificus.View.WPF
                 this.DataContext = value;
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (!ViewModel.bLogado)
+                ViewModel.fecharCommand.Execute(parameter: null);
+        }
     }
 }

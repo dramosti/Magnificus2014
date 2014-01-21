@@ -43,6 +43,7 @@ namespace HLP.Comum.ViewModel.Commands
                     {
                         UserData.idUser = loginFacade.loginClient.GetIdFuncionarioByXid(xId: this.objViewModel.currentLogin.xId);
                         CompanyData.idEmpresa = this.objViewModel.currentLogin.idEmpresa;
+                        this.objViewModel.bLogado = true;
                         SearchWindow(objeto: objDependency);
                     }
                 }

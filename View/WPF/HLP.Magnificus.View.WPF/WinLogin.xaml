@@ -4,6 +4,7 @@
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.WinLogin"
+    Closed="Window_Closed"
         Title="WinLogin" Height="500" Width="1500" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
     <Window.Resources>       
         <Style x:Key="shadowedLabelStyle">
@@ -63,11 +64,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true">
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background2}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                            </Trigger>
+                            </Trigger>                            
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
@@ -146,7 +143,8 @@
                 </Image>
             </DockPanel>
             <StackPanel x:Name="stkLogin">
-                <ComboBox x:Name="cbxEmpresa"                          
+                <ComboBox x:Name="cbxEmpresa"
+                    Style="{StaticResource ComboBoxStyle}"
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"                    
 					SelectedValuePath="id"
@@ -164,10 +162,10 @@
                 <Button 
 					x:Name="btnConectar"
 					Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=stkLogin}"
-					Height="28" Width="130" Content="Conectar"
+					Height="28" Width="129" Content="Conectar"
 					Background="{StaticResource ButtonBackgroundBlueDefault}" 
-					Foreground="White" BorderBrush="white" 
-					Style="{DynamicResource ButtonStyleLoginCopy}" Margin="0,6,0,0"
+					Foreground="White" BorderBrush="{StaticResource ButtonBackgroundBlueDefault}" 
+					Style="{DynamicResource ButtonStyleLoginCopy}" Margin="0,10,68,0"
                             />
             </StackPanel>
         </DockPanel>
