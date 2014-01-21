@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c5ddbc9d-3286-4535-94fd-f63ae93d0286" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceRamoAtividade.wsdl" MetadataType="Wsdl" ID="dc51ed32-9910-4307-b4af-fc197c397fb3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?wsdl" />
+    <MetadataFile FileName="serviceRamoAtividade.xsd" MetadataType="Schema" ID="077d73d5-9d7d-403f-b2ae-6e2e45b64be3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceRamoAtividade1.xsd" MetadataType="Schema" ID="cf1a7987-75f5-45c8-aace-776897584a69" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceRamoAtividade2.xsd" MetadataType="Schema" ID="5164e0c0-a6f6-463c-8c77-1e586357e28e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceRamoAtividade3.xsd" MetadataType="Schema" ID="4b485eef-42eb-40fa-a7a0-44975f86bb4e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceRamoAtividade.disco" MetadataType="Disco" ID="04b2baa1-4b4f-4acc-991f-09e652fe9232" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?disco" />
+    <MetadataFile FileName="serviceRamoAtividade4.xsd" MetadataType="Schema" ID="87a3da1f-f2e2-4216-93c5-da9ac296d6e8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceRamoAtividade5.xsd" MetadataType="Schema" ID="4be17d20-7260-4062-8bab-664feaf9b792" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceRamoAtividade.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

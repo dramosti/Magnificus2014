@@ -103,6 +103,7 @@ namespace HLP.Comum.Facade.Sales
         public int idEstadoEmpresa;
         public int idEstadoCliente;
         public Carga_trib_media_st_icmsServico.Carga_trib_media_st_icmsModel objCargaTrib;
+        public int stContribuinteIcms;        
 
         #region NotifyPropertyChanged
 
