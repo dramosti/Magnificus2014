@@ -35,7 +35,7 @@ namespace HLP.Magnificus.View.WPF
         public App()
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            CompanyData.idEmpresa = 1;
+            Util.CarregaSettingsAppConfig();
         }
 
         void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,20 +44,15 @@ namespace HLP.Comum.Modules
         {
             try
             {
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                ConfigurationSection app = config.GetSection("appSettings");
-
-                int i = ConfigurationManager.ConnectionStrings.Count;
-
                 Contexto.CarregaConfiguracao(this.NomeModulo, this.ArquivoConfiguracao);
 
                 objectModulo = SerializeClassToXml.DeserializeClasse<ObjectsModule>(ArquivoConfiguracao);
 
-                foreach (var item in objectModulo.lFormularios)
-                {
+                List<string> lresult = Sistema.lSettings.Select(s => s.Key.ToString()).ToList();
 
-                    
-                }
+                objectModulo.lFormularios = (from c in objectModulo.lFormularios
+                            where (!lresult.Contains(c.xId.ToString()))
+                            select c).ToList();
 
                 lobjectModulo.Add(objectModulo);
             }
