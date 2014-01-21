@@ -1246,6 +1246,11 @@ namespace HLP.Sales.Model.Models.Comercial
                                         this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria =
                                             objIcms.lCodigo_IcmsModel.FirstOrDefault(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoCliente).pMvaSubstituicaoTributaria;
                                     }
+                                    else
+                                    {
+                                        this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno =
+                                        this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria = 0;
+                                    }
                                 }
                             }
 
