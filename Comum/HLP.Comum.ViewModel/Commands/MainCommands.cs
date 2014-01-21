@@ -31,6 +31,7 @@ namespace HLP.Comum.ViewModel.Commands
                     execute: ex => DelWindow(tabItem: ex),
                     canExecute: ex => DelWindowCanExecute());
                 this.objviewModel.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
+                this.objviewModel.fecharCommand = new RelayCommand(execute: i => this.Sair());
 
                 this.objviewModel.FindAllCommand = new RelayCommand
                     (
@@ -92,7 +93,6 @@ namespace HLP.Comum.ViewModel.Commands
                     if (this.objviewModel._currentTab._windows.Name == xNomeForm.ToString())
                         bReturn = false;
             return bReturn;
-            //return true;
         }
 
         private void DelWindow(object tabItem)
@@ -106,10 +106,41 @@ namespace HLP.Comum.ViewModel.Commands
                 throw ex;
             }
         }
+
         private bool DelWindowCanExecute()
         {
             return true;
         }
+
+        private void TrocarUsuario()
+        {
+        }
+
+        private bool TrocarUsuarioCanExecute()
+        {
+            return true;
+        }
+
+        private void TrocarEmpresa()
+        {
+        }
+
+        private bool TrocarEmpresaCanExecute()
+        {
+            return true;
+        }
+
+
+        private void Sair()
+        {
+            Application.Current.Shutdown();
+        }
+
+        private bool SairCanExecute()
+        {
+            return true;
+        }
+
 
         #endregion
     }

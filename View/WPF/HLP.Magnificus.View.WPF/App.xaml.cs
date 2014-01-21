@@ -115,7 +115,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                WinLogin wdLogin = new WinLogin();
+                WinLogin wdLogin = new WinLogin(stModoInicial: Comum.ViewModel.ViewModels.ModoInicial.padrao);
                 HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
                 this.MainWindow = wd;
                 wdLogin.ShowDialog();

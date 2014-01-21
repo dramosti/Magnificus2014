@@ -60,5 +60,17 @@ namespace HLP.Magnificus.View.WPF
             ctxLogin.IsOpen = true;
             exLogin.IsExpanded = false;
         }
+
+        private void trocarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            WinLogin wdLogin = new WinLogin(ModoInicial.trocaUsuario);
+            wdLogin.ShowDialog();
+        }
+
+        private void trocarEmpresa_Click(object sender, RoutedEventArgs e)
+        {
+            WinLogin wdLogin = new WinLogin(ModoInicial.trocaEmpresa);
+            wdLogin.ShowDialog();
+        }
     }
 }
