@@ -59,7 +59,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         {
             try
             {
-                //TODO: método de serviço para salvar
                 this.objViewModel.currentModel = await serviceModoEntrega.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -121,7 +120,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Model.Models.Transportes.Modos_entregaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -154,7 +152,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         {
             try
             {
-                //TODO: Implementar serviço de copy
                 this.objViewModel.currentModel = await serviceModoEntrega.CopyAsync((int)objViewModel.currentModel.idModosEntrega);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
@@ -199,7 +196,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await serviceModoEntrega.GetModoAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = await serviceModoEntrega.GetModoAsync(objViewModel.currentID);
         }
         #endregion
 

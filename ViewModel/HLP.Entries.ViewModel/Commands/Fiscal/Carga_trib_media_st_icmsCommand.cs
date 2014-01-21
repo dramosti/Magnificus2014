@@ -54,7 +54,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                //TODO: método de serviço para salvar
                 objViewModel.currentModel.idCargaTribMediaStIcms = await servico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -116,7 +115,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Model.Models.Fiscal.Carga_trib_media_st_icmsModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -187,7 +185,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             try
             {
                 e.Result = servico.Copy(objViewModel.currentModel);
-                //TODO: implementar serviço de copy
             }
             catch (Exception)
             {
@@ -230,7 +227,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
         }
         #endregion
 

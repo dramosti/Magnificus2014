@@ -126,7 +126,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Dia_pagamentoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -240,7 +239,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = await servico.GetObectAsync(objViewModel.currentID);
-            //TODO: método de serviço para pesquisar
         }
         private void Inicia_Collections()
         {

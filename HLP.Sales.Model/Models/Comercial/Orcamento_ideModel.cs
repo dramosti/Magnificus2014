@@ -64,6 +64,9 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (OrcamentoFacade.cargaTribMediaService == null)
                     OrcamentoFacade.cargaTribMediaService = new Comum.Facade.Carga_trib_media_st_icmsServico.IserviceCarga_trib_media_st_icmsClient();
 
+                if (OrcamentoFacade.ramo_AtividadeService == null)
+                    OrcamentoFacade.ramo_AtividadeService = new Comum.Facade.Ramo_AtividadeService.IserviceRamoAtividadeClient();
+
                 this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
             }
             catch (Exception)
@@ -137,6 +140,11 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idRamoAtividade = value;
+
+                if (value > 0)
+                    OrcamentoFacade.objCadastros.objRamoAtividade = OrcamentoFacade.ramo_AtividadeService.getRamo_atividade(
+                        idRamo_atividade: value);
+
                 base.NotifyPropertyChanged(propertyName: "idRamoAtividade");
             }
         }
@@ -1024,8 +1032,17 @@ namespace HLP.Sales.Model.Models.Comercial
                 && this.stConsumidorFinal == 1
                 && OrcamentoFacade.objCadastros.stContribuinteIcms == 1
                 && bStDiferencial == 0
+                && OrcamentoFacade.objCadastros.objRamoAtividade.xRamo.Trim().Contains(value: "1-COMERCIO")
+                && OrcamentoFacade.objCadastros.idEstadoCliente != OrcamentoFacade.objCadastros.idEstadoEmpresa
                 )
-            { }
+            {
+                //((Orçamento_Item_Impostos.ICMS_vBaseCalculoIcmsSubstituicaoTributaria X 
+                //    (Orçamento_Item_Impostos.ICMS_pICMS - Orçamento_Item_Impostos.ICMS_pIcmsInterno)) / 100)
+                //TODO: Conferir este cálculo
+                this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria =
+                    (this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria *
+                    (this.orcamento_Item_Impostos.First().ICMS_pICMS - this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno) / 100);
+            }
         }
 
         #endregion

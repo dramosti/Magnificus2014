@@ -50,7 +50,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                //TODO: método de serviço para salvar
                 objViewModel.currentModel.idDescontosAvista = await service.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -113,7 +112,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Model.Models.Financeiro.Descontos_AvistaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -184,7 +182,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 e.Result = service.Copy(objViewModel.currentID);
-                //TODO: implementar serviço de copy
             }
             catch (Exception)
             {
@@ -227,7 +224,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await service.GetObjectAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = await service.GetObjectAsync(objViewModel.currentID);
         }
         #endregion
 

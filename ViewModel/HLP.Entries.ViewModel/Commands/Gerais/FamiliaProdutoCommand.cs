@@ -131,7 +131,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             this.objViewModel.currentModel = new Familia_produtoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -164,7 +163,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //TODO: Implementar serviço de copy
                 this.objViewModel.currentModel = await servico.CopyAsync(this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
@@ -215,7 +213,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.GetObject((int)this.objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = this.servico.GetObject((int)this.objViewModel.currentID);
         }
 
 
