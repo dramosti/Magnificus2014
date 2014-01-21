@@ -58,7 +58,6 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                //TODO: método de serviço para salvar
                 this.objViewModel.currentModel = await servico.saveDecisaoAsync(this.objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -121,7 +120,6 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             this.objViewModel.currentModel = new DecisaoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -192,7 +190,6 @@ namespace HLP.Entries.ViewModel.Commands
             try
             {
                 e.Result = servico.copyDecisao((int)objViewModel.currentModel.idDecisao);
-                //TODO: implementar serviço de copy
             }
             catch (Exception)
             {

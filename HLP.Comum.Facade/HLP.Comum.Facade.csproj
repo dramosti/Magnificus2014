@@ -114,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\Ramo_AtividadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\Tipo_Documento_Oper_ValidaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -439,6 +444,28 @@
     <None Include="Service References\produtoService\serviceProduto6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Ramo_AtividadeService\HLP.Comum.Facade.Ramo_AtividadeService.Ramo_atividadeModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Tipo_Documento_Oper_ValidaService\HLP.Comum.Facade.Tipo_Documento_Oper_ValidaService.Tipo_documento_oper_validaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -521,6 +548,7 @@
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\loginService\" />
     <WCFMetadataStorage Include="Service References\produtoService\" />
+    <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\Tipo_Documento_Oper_ValidaService\" />
     <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
@@ -782,6 +810,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Carga_trib_media_st_icmsServico\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ramo_AtividadeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ramo_AtividadeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Ramo_AtividadeService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

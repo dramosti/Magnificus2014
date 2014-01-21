@@ -162,58 +162,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void Copy()
         {
-            //try
-            //{
-            //    BackgroundWorker bwCopy = new BackgroundWorker();
-            //    bwCopy.DoWork += bwCopy_DoWork;
-            //    bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-            //    bwCopy.RunWorkerAsync();
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    throw ex;
-            //}
+            
         }
 
-        //void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.Error != null)
-        //        {
-        //            throw new Exception(message: e.Error.Message);
-        //        }
-        //        else
-        //        {
-        //            this.objViewModel.currentID = (int)e.Result;
-        //            this.getFuncionario(this, null);
-        //            this.objViewModel.copyBaseCommand.Execute(null);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        //void bwCopy_DoWork(object sender, DoWorkEventArgs e)
-        //  {
-        //      try
-        //      {
-        //          e.Result = 
-        //          //TODO: implementar serviço de copy
-        //      }
-        //      catch (Exception)
-        //      {
-
-        //          throw;
-        //      }
-        //  }
+        
 
         public bool CopyCanExecute()
         {
-            //return this.objViewModel.copyBaseCommand.CanExecute(null);
             return false;
         }
 

@@ -54,7 +54,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                //TODO: método de serviço para salvar
                 objViewModel.currentModel.idPersonalidade = await servico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -116,7 +115,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Model.Models.Crm.PersonalidadeModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -187,7 +185,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             try
             {
                 e.Result = servico.Copy(objViewModel.currentModel);
-                //TODO: implementar serviço de copy
             }
             catch (Exception)
             {
