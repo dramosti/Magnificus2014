@@ -98,7 +98,7 @@ namespace HLP.Comum.Facade.Sales
         public Tipo_OperacaoService.Tipo_operacaoModel objTipo_Operacao;
         public empresaService.EmpresaModel objEmpresa;
         public int idEstadoEmpresa;
-
+        public int idEstadoCliente;
 
 
         #region NotifyPropertyChanged
