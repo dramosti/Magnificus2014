@@ -140,6 +140,7 @@
     <Resource Include="Icones\Simple_Arrow_Right.png" />
     <Resource Include="Icones\Simple_Arrow_Right_Disabled.png" />
     <Resource Include="Icones\Add.png" />
+    <Resource Include="Icones\online.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

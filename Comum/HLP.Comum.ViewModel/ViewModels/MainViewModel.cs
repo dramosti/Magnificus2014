@@ -213,6 +213,31 @@ namespace HLP.Comum.ViewModel.ViewModels
             try
             {
                 this.AddMenusItens(lMenuItens: this.lMenu, menuItem: m.Items);
+                Stack<object> listaMenus = new Stack<object>();
+
+                foreach (var item in m.Items)
+                {
+                    listaMenus.Push(item);
+                }
+                foreach (var item in listaMenus)
+                {
+                    m.Items.Remove(item);
+                }
+                int icount = 0;
+                foreach (var item in listaMenus)
+                {
+                    if (item.GetType() == typeof(System.Windows.Controls.MenuItem))
+                    {
+                        ResourceDictionary rs = new ResourceDictionary
+                        {
+                            Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
+                        };
+                        (item as System.Windows.Controls.MenuItem).Style = rs["MenuItemPrincipal"] as Style;
+                    }
+
+                    m.Items.Insert(icount, item);
+                    icount++;
+                }
             }
             catch (Exception ex)
             {
@@ -235,18 +260,6 @@ namespace HLP.Comum.ViewModel.ViewModels
                     {
                         Source = new BitmapImage(new Uri(sPath))
                     };
-                    //Bitmap bmp = (Bitmap)System.Drawing.Image.FromFile(filename: System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + it.xName + ".png");
-                    //Icon ic = Icon.FromHandle(bmp.GetHicon());
-                    //mi.Icon = ic;
-                }
-
-                if (it.xName == "Entries")
-                {
-                    ResourceDictionary rs = new ResourceDictionary
-                    {
-                        Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
-                    };
-                    mi.Style = rs["MenuItemPrincipal"] as Style;
                 }
 
                 mi.Header = it.xHeader;

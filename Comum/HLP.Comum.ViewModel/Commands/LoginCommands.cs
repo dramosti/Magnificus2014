@@ -29,6 +29,7 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void LoginExec(object objDependency)
         {
+            this.objViewModel.currentLogin.xError = string.Empty;
             foreach (UIElement item in (objDependency as Panel).Children)
             {
                 if (item.GetType() == typeof(PasswordBox))
@@ -38,7 +39,7 @@ namespace HLP.Comum.ViewModel.Commands
 
                     if (loginFacade.loginClient.ValidaLogin(xId: this.objViewModel.currentLogin.xId,
                         xSenha: (item as PasswordBox).Password) < 1)
-                        MessageBox.Show(messageBoxText: "Login e Senha incorretos.");
+                        this.objViewModel.currentLogin.xError = "* Senha incorreta!";
                     else
                     {
                         UserData.idUser = loginFacade.loginClient.GetIdFuncionarioByXid(xId: this.objViewModel.currentLogin.xId);
