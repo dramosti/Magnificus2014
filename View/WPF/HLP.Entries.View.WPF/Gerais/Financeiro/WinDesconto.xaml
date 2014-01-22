@@ -11,58 +11,133 @@
     <Window.Resources>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
     </Window.Resources>
-    <DockPanel>
-        <Expander Header="Geral" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>       
+        <Expander Header="Geral" IsExpanded="True">                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="2"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpTextBox 
 					Text="{Binding currentModel.idDescontosAvista, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"
-					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do Desconto, campo autoincremental." WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
-                <Components:HlpTextBox 
+					Caption="Código"  Help="Chave principal do registro do Desconto, campo autoincremental." WidthLabel="214" HorizontalAlignment="Left" Margin="0" Width="303"/>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Desconto " Help="Digite o código alfanumérico para o desconto. Por exemplo, 10D2% para indicar que o cliente recebe um desconto de 2 por cento se o pagamento for feito 10 dias antes da data de vencimento. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
-                <Components:HlpTextBox 
+				    Caption="Desconto " Help="Digite o código alfanumérico para o desconto. Por exemplo, 10D2% para indicar que o cliente recebe um desconto de 2 por cento se o pagamento for feito 10 dias antes da data de vencimento. " WidthLabel="214" Width="303" HorizontalAlignment="Left"/>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/> 
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpTextBox Grid.Column="0"
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Digite uma breve descrição do desconto à vista, por exemplo, 10 dias antecipado 2 % de Desconto para o código de desconto 10D2%." WidthLabel="214" HorizontalAlignment="Left" Width="500"/>
-                <Components:HlpPesquisa 
+					Caption="Descrição " Help="Digite uma breve descrição do desconto à vista, por exemplo, 10 dias antecipado 2 % de Desconto para o código de desconto 10D2%." WidthLabel="214" Width="500"/>
+                    </Grid>
+                    <Grid Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpPesquisa 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.idProximoDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Próximo Código de Desconto" FieldPesquisa="ID" TableView="vwDescontosAvista" WidthLabel="214" HorizontalAlignment="Left" Width="500">
-                    <Components:HlpPesquisa.Items>
-                        <System:String>xDescontos</System:String>
-                        <System:String>xDescricao</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:HlpComboBox 
+					Caption="Próximo Código de Desconto" FieldPesquisa="ID" TableView="vwDescontosAvista" WidthLabel="214" HorizontalAlignment="Left" Width="500">
+                            <Components:HlpPesquisa.Items>
+                                <System:String>xDescontos</System:String>
+                                <System:String>xDescricao</System:String>
+                            </Components:HlpPesquisa.Items>
+                        </Components:HlpPesquisa>
+                    </Grid>
+                    <Grid Grid.Row="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpComboBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					SelectedIndex="{Binding currentModel.stLiquidoAtual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Liquido/Atual" Help="Escolha o método aplicável ao seu desconto à vista. O método especificado, juntamente com o valor fornecido no campo Dias e/ou Meses, será usado para calcular a última data em que o pagamento pode ser feito para receber qualquer desconto à vista disponível. " WidthLabel="214" HorizontalAlignment="Left">
-                    <Components:HlpComboBox.Items>
-                        <System:String>0-Dias e/ou Meses</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpTextBox 
+					Caption="Liquido/Atual" Help="Escolha o método aplicável ao seu desconto à vista. O método especificado, juntamente com o valor fornecido no campo Dias e/ou Meses, será usado para calcular a última data em que o pagamento pode ser feito para receber qualquer desconto à vista disponível. " WidthLabel="214" HorizontalAlignment="Left">
+                            <Components:HlpComboBox.Items>
+                                <System:String>0-Dias e/ou Meses</System:String>
+                            </Components:HlpComboBox.Items>
+                        </Components:HlpComboBox>
+                    </Grid>
+                    <Grid Grid.Row="11">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Meses" Help="Digite o número de meses em que o desconto à vista será aplicável. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
-                <Components:HlpTextBox 
+				    Caption="Meses" Help="Digite o número de meses em que o desconto à vista será aplicável. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
+                    </Grid>
+                    <Grid Grid.Row="13">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Dias" Help="Digite o número de dias em que o desconto à vista será aplicável. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
-                <Components:HlpTextBox 
+					Caption="Dias" Help="Digite o número de dias em que o desconto à vista será aplicável. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
+                    </Grid>
+                    <Grid Grid.Row="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Components:HlpTextBox 
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.pDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Percentual de Desconto" Help="Digite o desconto à vista como um percentual do valor faturado. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
-            </WrapPanel>
+					Caption="Percentual de Desconto" Help="Digite o desconto à vista como um percentual do valor faturado. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
+                    </Grid>
+                </Grid>
         </Expander>
-    </DockPanel>
+      </Grid>
+    </Grid>
 </runtime:WindowsBase>
