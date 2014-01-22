@@ -50,6 +50,23 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="StatusBarStyle1" TargetType="{x:Type StatusBar}">
+                <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.StatusFontFamilyKey}}"/>
+                <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.StatusFontSizeKey}}"/>
+                <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.StatusFontStyleKey}}"/>
+                <Setter Property="FontWeight" Value="{DynamicResource {x:Static SystemFonts.StatusFontWeightKey}}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type StatusBar}">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
 
     </Window.Resources>
@@ -127,7 +144,7 @@
                                             HorizontalAlignment="Stretch"
 											Content="{Binding currentEmpresa.xNome}"
                                             ></Label>
-                                    </Grid>                                    
+                                    </Grid>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
@@ -540,15 +557,15 @@
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
-                        </TabControl>                        
+                        </TabControl>
                     </Grid>
                 </DockPanel>
             </Border>
-            <StatusBar Grid.Row="2">
+            <StatusBar Grid.Row="2" Style="{DynamicResource StatusBarStyle1}">
                 <StatusBarItem Margin="10,0,0,0">
                     <StatusBarItem.Template>
                         <ControlTemplate>
-                            <Label Content="Localizar ( Ctrl+L )"/>
+                            <Label Content="Localizar ( Ctrl+L )" Foreground="White"/>
                         </ControlTemplate>
                     </StatusBarItem.Template>
                 </StatusBarItem>
@@ -558,7 +575,7 @@
                             <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
                         </ControlTemplate>
                     </StatusBarItem.Template>
-                </StatusBarItem>                
+                </StatusBarItem>
             </StatusBar>
         </Grid>
     </DockPanel>

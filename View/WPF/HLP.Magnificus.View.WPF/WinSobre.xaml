@@ -1,14 +1,19 @@
 ﻿<Window x:Class="HLP.Magnificus.View.WPF.WinSobre"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Sobre" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Sobre" Height="234" Width="256" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"></RowDefinition>
-            <RowDefinition  Height="85*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition  Height="80*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-        <TextBlock Text="MAGNIFICUS" FontSize="25"></TextBlock>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <DockPanel>
+            <Image Source="icone hlp.ico" Margin="10,5,0,5" Height="32" Width="32" Stretch="Fill"/>
+            <TextBlock Text="MAGNIFICUS" Margin="10,5,0,5" FontSize="25" FontFamily="Calibri"  HorizontalAlignment="Left" Foreground="#FFDEB21C"></TextBlock>
+        </DockPanel>
         <WrapPanel Background="{StaticResource StyleMainGridDefault}"
                    Grid.Row="1"
                    Orientation="Vertical">
@@ -18,5 +23,6 @@
             <TextBlock Text="Todos direitos reservados"></TextBlock>
         </WrapPanel>
         
+
     </Grid>
 </Window>
