@@ -134,7 +134,7 @@
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.pDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 					IsEnabled="{Binding bIsEnabled}"
-					Caption="Percentual de Desconto" Help="Digite o desconto à vista como um percentual do valor faturado. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
+					 Caption="Percentual de Desconto" Help="Digite o desconto à vista como um percentual do valor faturado. " WidthLabel="214" HorizontalAlignment="Left" Width="300"/>
                     </Grid>
                 </Grid>
         </Expander>
