@@ -45,7 +45,6 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
                 _Result = value; base.NotifyPropertyChanged("Result");
                 if (_Result != null)
                     this.sTotalRegistro = _Result.Rows.Count.ToString();
-
             }
         }
 

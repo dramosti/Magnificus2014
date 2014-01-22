@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Magnificus.View.WPF.MainWindow"
+       
         Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5"
+        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5" Icon="icone hlp.ico"
         >
     <Window.Resources>
         <ResourceDictionary>
@@ -53,13 +54,13 @@
 
     </Window.Resources>
     <Window.InputBindings>
-        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding _currentTab._content}"/>
-        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding _currentTab._content}"/>
-        <KeyBinding Key="E" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandDeletar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="S" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}"/>
-        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCancelar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="V" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCopiar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandPesquisar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding winMan._currentTab._content}"/>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding winMan._currentTab._content}"/>
+        <KeyBinding Key="E" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" CommandParameter="{Binding winMan._currentTab}"/>
+        <KeyBinding Key="S" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding winMan._currentTab._content}"/>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" CommandParameter="{Binding winMan._currentTab}"/>
+        <KeyBinding Key="V" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" CommandParameter="{Binding winMan._currentTab}"/>
+        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" CommandParameter="{Binding winMan._currentTab}"/>
         <KeyBinding Key="L" Modifiers="Control" Command="{Binding FindAllCommand}"/>
     </Window.InputBindings>
     <!--<Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">-->
@@ -170,10 +171,10 @@
                             <RowDefinition Height="2"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ToolBar Style="{StaticResource toolBarCadastro}">
+                        <ToolBar   Style="{StaticResource toolBarCadastro}">
                             <Button 
-								Command="{Binding _currentTab._currentDataContext.commandNovo}" 
-								CommandParameter="{Binding _currentTab._content}"
+								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
+								CommandParameter="{Binding winMan._currentTab._content}"
 								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )">
                                 <Button.Template>
                                     <ControlTemplate>
@@ -197,8 +198,8 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" 
-								CommandParameter="{Binding _currentTab._content}"
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}" 
+								CommandParameter="{Binding winMan._currentTab._content}"
 								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )">
                                 <Button.Template>
                                     <ControlTemplate>
@@ -222,7 +223,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -245,8 +246,8 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" 
-								CommandParameter="{Binding _currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
+								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -269,7 +270,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -292,7 +293,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -315,7 +316,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -341,7 +342,7 @@
                             <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
                                 <Button       
 									x:Name="btnPrimeiro"                                     
-									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0,0,2,0">
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0,0,2,0">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -366,7 +367,7 @@
                                 </Button>
                                 <Button 
 									x:Name="btnAnterior"                                    
-									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0">
                                     <Button.Template>
                                         <ControlTemplate>
@@ -392,7 +393,7 @@
                                 </Button>
                                 <Button 
 									x:Name="btnUltimo"                                    
-									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25" Margin="2,0,0,0" Foreground="#FFECE5E5">
                                     <Button.Template>
                                         <ControlTemplate>
@@ -417,7 +418,7 @@
                                     </Button.Template>
                                 </Button>
                                 <Button x:Name="btnProximo"
-									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25">
                                     <Button.Template>
                                         <ControlTemplate>
@@ -441,7 +442,7 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                <Label Content="{Binding _currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
+                                <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                             </DockPanel>
                             <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" VerticalAlignment="Bottom" Height="25" Margin="25,0,0,0" ToolTip="Imprimir" >
                                 <Button.Template>
@@ -493,8 +494,8 @@
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         <TabControl Grid.Row="2"                                             
 							IsSynchronizedWithCurrentItem="True"
-							SelectedItem="{Binding _currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-							x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}" Background="{StaticResource StyleMainGridDefault}">
+							SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="{StaticResource StyleMainGridDefault}">
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Height="24" LastChildFill="True">
@@ -528,13 +529,20 @@
                 </DockPanel>
             </Border>
             <StatusBar Grid.Row="2">
-                <StatusBarItem HorizontalAlignment="Right" Margin="0,0,15,0">
+                <StatusBarItem Margin="10,0,0,0">
                     <StatusBarItem.Template>
                         <ControlTemplate>
-                            <Image Width="15" Height="15" Source="{Binding iconConexao}" ToolTip="{Binding sToolTipConexao}"/>
+                            <Label Content="Localizar ( Ctrl+L )"/>
                         </ControlTemplate>
                     </StatusBarItem.Template>
                 </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right" Width="18" Height="18" Margin="0,0,15,0">
+                    <StatusBarItem.Template>
+                        <ControlTemplate>
+                            <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
+                        </ControlTemplate>
+                    </StatusBarItem.Template>
+                </StatusBarItem>                
             </StatusBar>
         </Grid>
     </DockPanel>

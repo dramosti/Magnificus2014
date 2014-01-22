@@ -73,12 +73,12 @@ namespace HLP.Comum.ViewModel.Commands
                 TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
                 objTabPageAtivasModel._windows = form;
 
-                if (this.objviewModel._lTabPagesAtivas.Count(
+                if (this.objviewModel.winMan._lTabPagesAtivas.Count(
                     i => i._windows.Name == form.Name) == 0)
                 {
-                    this.objviewModel._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                    this.objviewModel.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
                 }
-                this.objviewModel._currentTab = objTabPageAtivasModel;
+                this.objviewModel.winMan._currentTab = objTabPageAtivasModel;
             }
             catch (Exception ex)
             {
@@ -88,9 +88,9 @@ namespace HLP.Comum.ViewModel.Commands
         private bool AddWindowCanExecute(object xNomeForm)
         {
             bool bReturn = true;
-            if (this.objviewModel._currentTab != null)
-                if (this.objviewModel._currentTab._windows != null)
-                    if (this.objviewModel._currentTab._windows.Name == xNomeForm.ToString())
+            if (this.objviewModel.winMan._currentTab != null)
+                if (this.objviewModel.winMan._currentTab._windows != null)
+                    if (this.objviewModel.winMan._currentTab._windows.Name == xNomeForm.ToString())
                         bReturn = false;
             return bReturn;
         }
@@ -99,7 +99,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             try
             {
-                this.objviewModel._lTabPagesAtivas.Remove(item: tabItem as TabPagesAtivasModel);
+                this.objviewModel.winMan._lTabPagesAtivas.Remove(item: tabItem as TabPagesAtivasModel);
             }
             catch (Exception ex)
             {

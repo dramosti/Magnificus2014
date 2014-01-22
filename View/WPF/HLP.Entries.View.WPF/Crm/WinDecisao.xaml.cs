@@ -38,10 +38,5 @@ namespace HLP.Entries.View.WPF.Crm
                 this.DataContext = value;
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }      
     }
 }

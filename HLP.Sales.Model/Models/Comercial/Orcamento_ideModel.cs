@@ -9,6 +9,7 @@ using HLP.Comum.Facade.Sales;
 using HLP.Entries.Model.Fiscal;
 using System.Collections.ObjectModel;
 using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -1043,6 +1044,55 @@ namespace HLP.Sales.Model.Models.Comercial
                     (this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria *
                     (this.orcamento_Item_Impostos.First().ICMS_pICMS - this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno) / 100);
             }
+            else if (
+                this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria == 1
+                && this.stConsumidorFinal == 0
+                && OrcamentoFacade.objCadastros.stContribuinteIcms == 1
+                && bStDiferencial != 1
+                && OrcamentoFacade.ufService.getUf(idUf: OrcamentoFacade.objCadastros.idEstadoCliente).xSiglaUf == "MT"
+                )
+            {
+                //(((“Orcamento_Item.vTotalItem” –  (“Orçamento_Item_Impostos.ICMS_pReduzBaseSubstituicaoTributaria” / 100) + 
+                //    “Orçamento_Item_Impostos.IPI_vIPI” + “Orcamento_Item.vFreteItem” + “Orcamento_Item.vSegurosItem” + 
+                //        “Orcamento_Item.vOutrasDespesasItem”) x (“Orçamento_Item_Impostos.ICMS_stCalculaSubstituicaoTributaria”))
+                //TODO: Conferir cálculo
+            }
+            else if (
+                this.orcamento_Item_Impostos.First().ICMS_stCalculaIcms == 1
+                    && this.stConsumidorFinal == 1
+                    && OrcamentoFacade.objCadastros.stContribuinteIcms == 0
+                    && bStDiferencial != 0
+                    && OrcamentoFacade.objCadastros.objRamoAtividade.xRamo.Trim().Contains(value: "1-COM")
+                && OrcamentoFacade.objCadastros.idEstadoCliente == OrcamentoFacade.objCadastros.idEstadoEmpresa
+                && (byte)CompanyData.parametros_FiscalEmpresa.GetType().GetProperty("stIcmsSubstDif").GetValue(obj: CompanyData.parametros_FiscalEmpresa) == (byte)1
+                )
+            {
+                this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria = this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria = 0;
+            }
+            else if (
+                this.orcamento_Item_Impostos.First().ICMS_stCalculaIcms == 1
+                    && this.stConsumidorFinal == 1
+                    && OrcamentoFacade.objCadastros.stContribuinteIcms == 1
+                    && bStDiferencial != 0
+                    && OrcamentoFacade.objCadastros.objRamoAtividade.xRamo.Trim().Contains(value: "1-COM")
+                && OrcamentoFacade.objCadastros.idEstadoCliente != OrcamentoFacade.objCadastros.idEstadoEmpresa
+                && (byte)CompanyData.parametros_FiscalEmpresa.GetType().GetProperty("stIcmsSubstDif").GetValue(obj: CompanyData.parametros_FiscalEmpresa) == (byte)0
+                )
+            {
+                this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria = this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria = 0;
+            }
+            else if (
+                this.orcamento_Item_Impostos.First().ICMS_stCalculaIcms == 1
+                    && this.stConsumidorFinal == 1
+                    && OrcamentoFacade.objCadastros.stContribuinteIcms == 1
+                    && bStDiferencial != 0
+                    && OrcamentoFacade.objCadastros.objRamoAtividade.xRamo.Trim().Contains(value: "1-COM")
+                && OrcamentoFacade.objCadastros.idEstadoCliente != OrcamentoFacade.objCadastros.idEstadoEmpresa
+                && (byte)CompanyData.parametros_FiscalEmpresa.GetType().GetProperty("stIcmsSubstDif").GetValue(obj: CompanyData.parametros_FiscalEmpresa) == (byte)1
+                )
+            {
+                this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria = this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria = 0;
+            }
         }
 
         #endregion
@@ -1272,13 +1322,10 @@ namespace HLP.Sales.Model.Models.Comercial
                         }
                         #endregion
 
-                        HLP.Comum.Facade.Tipo_OperacaoService.Tipo_operacaoModel objTipoOperacao =
-                            OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: this._idTipoOperacao);
-
-                        if (objTipoOperacao != null)
+                        if (OrcamentoFacade.objCadastros.objTipo_Operacao != null)
                         {
-                            this.orcamento_Item_Impostos.First().idClassificacaoFiscal = objTipoOperacao.idClassificacaoFiscal != 0 ?
-                                objTipoOperacao.idClassificacaoFiscal : (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto
+                            this.orcamento_Item_Impostos.First().idClassificacaoFiscal = OrcamentoFacade.objCadastros.objTipo_Operacao.idClassificacaoFiscal != 0 ?
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.idClassificacaoFiscal : (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto
                                 == this.idProduto).idClassificacaoFiscalVenda;
                             base.NotifyPropertyChanged(propertyName: "idClassificacaoFiscal");
 
@@ -1292,32 +1339,32 @@ namespace HLP.Sales.Model.Models.Comercial
                             #region IPI
 
                             this.orcamento_Item_Impostos.First().IPI_stCalculaIpi = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal
-                                .stCalculaIpi == 0 ? (byte)0 : objTipoOperacao.stCalculaIpi == 0 ? (byte)0 : (byte)1;
+                                .stCalculaIpi == 0 ? (byte)0 : OrcamentoFacade.objCadastros.objTipo_Operacao.stCalculaIpi == 0 ? (byte)0 : (byte)1;
                             base.NotifyPropertyChanged(propertyName: "IPI_stCalculaIpi");
                             int idProduto = OrcamentoFacade.objCadastros.lProdutos.Count(i => i.idProduto == this.idProduto) > 0 ?
                                 (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto == this.idProduto).idProduto : 0;
 
                             this.orcamento_Item_Impostos.First().IPI_pIPI = OrcamentoFacade.classificFiscalService.GetObjeto(
-                                idObjeto: idProduto != 0 ? idProduto : objTipoOperacao.idClassificacaoFiscal).pIPI;
+                                idObjeto: idProduto != 0 ? idProduto : OrcamentoFacade.objCadastros.objTipo_Operacao.idClassificacaoFiscal).pIPI;
 
-                            this.orcamento_Item_Impostos.First().IPI_stCompoeBaseCalculo = objTipoOperacao.stCompoeBaseIpi;
-                            this.orcamento_Item_Impostos.First().idCSTIpi = objTipoOperacao.idCSTIpi;
+                            this.orcamento_Item_Impostos.First().IPI_stCompoeBaseCalculo = OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseIpi;
+                            this.orcamento_Item_Impostos.First().idCSTIpi = OrcamentoFacade.objCadastros.objTipo_Operacao.idCSTIpi;
 
                             #endregion
 
                             #region Icms
 
                             this.orcamento_Item_Impostos.First().ICMS_stReduzBaseCalculo =
-                                objTipoOperacao.stReduzBase;
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stReduzBase;
                             this.orcamento_Item_Impostos.First().ICMS_stNaoReduzBase =
-                                objTipoOperacao.stNaoReduzBase;
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stNaoReduzBase;
                             this.orcamento_Item_Impostos.First().ICMS_stCalculaIcms =
-                                objTipoOperacao.stCalculaIcms;
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stCalculaIcms;
                             this.orcamento_Item_Impostos.First().idCodigoIcmsPai =
-                                objTipoOperacao.idCodigoIcmsPai != 0 ? objTipoOperacao.idCodigoIcmsPai :
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.idCodigoIcmsPai != 0 ? OrcamentoFacade.objCadastros.objTipo_Operacao.idCodigoIcmsPai :
                                 (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto == this.idProduto).idCodigoIcmsPaiVenda;
                             this.orcamento_Item_Impostos.First().idCSTIcms =
-                                objTipoOperacao.idCSTIcms != 0 ? objTipoOperacao.idCSTIcms :
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.idCSTIcms != 0 ? OrcamentoFacade.objCadastros.objTipo_Operacao.idCSTIcms :
                                 (int)OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto == this.idProduto).idCSTIcms;
 
                             if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stZeraIcms == 1)
@@ -1332,7 +1379,7 @@ namespace HLP.Sales.Model.Models.Comercial
                             }
 
                             HLP.Comum.Facade.Tipo_OperacaoService.Operacao_reducao_baseModel objReducao =
-                                objTipoOperacao.lOperacaoReducaoBase.FirstOrDefault(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoEmpresa);
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.lOperacaoReducaoBase.FirstOrDefault(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoEmpresa);
 
                             if (objReducao != null)
                                 this.orcamento_Item_Impostos.First().ICMS_pReduzBase = objReducao.pReducaoIcms;
@@ -1340,17 +1387,18 @@ namespace HLP.Sales.Model.Models.Comercial
                                 this.orcamento_Item_Impostos.First().ICMS_pReduzBase = 0;
 
                             this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculo =
-                                objTipoOperacao.stCompoeBaseIcms;
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseIcms;
 
                             #endregion
 
                             #region Icms Substituição Tributária
 
                             this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria =
-                                objTipoOperacao.stCalculaIcmsSubstituicaoTributaria;
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stCalculaIcmsSubstituicaoTributaria;
                             this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria =
-                                objTipoOperacao.stCompoeBaseIcmsSubstituicaoTributaria;
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseIcmsSubstituicaoTributaria;
                             this.CalculaBaseIcmsSubstTrib();
+                            this.CalcularVlrSubstTrib();
                             //TODO: IMPLEMENTAR CÁLCULO DE SUBSTITUIÇÃO TRIBUTÁRIA
 
                             #endregion
@@ -1418,7 +1466,29 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 if (value != 0)
                 {
+                    OrcamentoFacade.objCadastros.objTipo_Operacao =
+                                OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: value);
+                }
+
+                if (OrcamentoFacade.objCadastros.objTipo_Operacao != null)
+                {
                     this.idCfop = OrcamentoFacade.GetIdCfop(idTipoOpercacao: value);
+                    this.orcamento_Item_Impostos.First().stCalculaPisCofins = OrcamentoFacade.objCadastros.objTipo_Operacao.stCalculaPisCofins;
+                    this.orcamento_Item_Impostos.First().stRegimeTributacaoPisCofins = OrcamentoFacade.objCadastros.objTipo_Operacao.stRegimeTributacaoPisCofins;
+                    this.orcamento_Item_Impostos.First().PIS_nCoeficienteSubstituicaoTributaria =
+                        OrcamentoFacade.objCadastros.objTipo_Operacao.nCoeficienteSubstituicaoTributariaPis;
+                    this.orcamento_Item_Impostos.First().COFINS_nCoeficienteSubstituicaoTributaria =
+                        OrcamentoFacade.objCadastros.objTipo_Operacao.nCoeficienteSubstituicaoTributariaCofins;
+                    this.orcamento_Item_Impostos.First().PIS_pPIS = OrcamentoFacade.objCadastros.objTipo_Operacao.pPis;
+                    this.orcamento_Item_Impostos.First().COFINS_pCOFINS = OrcamentoFacade.objCadastros.objTipo_Operacao.pCofins;
+                    this.orcamento_Item_Impostos.First().idCSTPis = OrcamentoFacade.objCadastros.objTipo_Operacao.idCSTPis;
+                    this.orcamento_Item_Impostos.First().idCSTCofins = OrcamentoFacade.objCadastros.objTipo_Operacao.idCSTCofins;
+                    this.orcamento_Item_Impostos.First().stCompoeBaseCalculoPisCofins = OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseNormalPiscofins;
+                    this.orcamento_Item_Impostos.First().PIS_stCompoeBaseCalculoSubstituicaoTributaria = OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseSubtTribPis;
+                    this.orcamento_Item_Impostos.First().COFINS_stCompoeBaseCalculoSubstituicaoTributaria = OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseSubtTribCofins;
+                    this.orcamento_Item_Impostos.First().ISS_stCalculaIss = OrcamentoFacade.objCadastros.objTipo_Operacao.stCalculaIss;
+                    this.orcamento_Item_Impostos.First().PIS_pPIS = OrcamentoFacade.objCadastros.objTipo_Operacao.pIss;
+
                     base.NotifyPropertyChanged(propertyName: "idCfop");
                 }
 
@@ -1603,6 +1673,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vTotalItem = value;
+                this.orcamento_Item_Impostos.First().ISS_vBaseCalculo = value;
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
                 this.CalculaBaseIpi();
                 this.CalculaBaseIcms();
@@ -2194,6 +2265,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_vBaseCalculo = value;
+                this.ISS_vIss = value * (this.ISS_pIss / 100);
                 base.NotifyPropertyChanged(propertyName: "ISS_vBaseCalculo");
             }
         }
@@ -2205,6 +2277,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_pIss = value;
+                this.ISS_vIss = this.ISS_vBaseCalculo * (value / 100);
                 base.NotifyPropertyChanged(propertyName: "ISS_pIss");
             }
         }
@@ -2989,7 +3062,41 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             get
             {
-                return base[columnName];
+                string res = base[columnName];
+
+                if (res == null)
+                {
+                    if (columnName == "PIS_nCoeficienteSubstituicaoTributaria")
+                    {
+                        if ((this.stCalculaPisCofins == 1 || this.stCalculaPisCofins == 2) && this.PIS_nCoeficienteSubstituicaoTributaria <= 0)
+                        {
+                            return "Valor deve ser superior a 0";
+                        }
+                    }
+                    else if (columnName == "COFINS_nCoeficienteSubstituicaoTributaria")
+                    {
+                        if ((this.stCalculaPisCofins == 1 || this.stCalculaPisCofins == 2) && this.COFINS_nCoeficienteSubstituicaoTributaria <= 0)
+                        {
+                            return "Valor deve ser superior a 0";
+                        }
+                    }
+                    else if (columnName == "PIS_pPIS")
+                    {
+                        if ((this.stCalculaPisCofins == 1 || this.stCalculaPisCofins == 2) && this.PIS_pPIS <= 0)
+                        {
+                            return "Valor deve ser superior a 0";
+                        }
+                    }
+                    else if (columnName == "COFINS_pCOFINS")
+                    {
+                        if ((this.stCalculaPisCofins == 1 || this.stCalculaPisCofins == 2) && this.COFINS_pCOFINS <= 0)
+                        {
+                            return "Valor deve ser superior a 0";
+                        }
+                    }
+                }
+
+                return res;
             }
         }
     }

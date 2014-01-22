@@ -118,6 +118,13 @@ namespace HLP.Comum.ViewModel.ViewModels
             if (e.Key == Key.Return)
                 OpenWindow(sender);
         }
+        public void lstResult_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if ((sender as ListBox).Items.Count > 0)
+            {
+                (sender as ListBox).SelectedIndex = 0;
+            }
+        }
         #endregion
 
 
