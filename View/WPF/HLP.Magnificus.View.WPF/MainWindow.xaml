@@ -123,21 +123,21 @@
                             >
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Click="trocarUsuario_Click" x:Name="trocarUsuario" Content="Trocar Usuário"></Button>
+                                    <Button Click="trocarUsuario_Click" x:Name="trocarUsuario" Style="{StaticResource ButtonStyleExpander}" Content="Trocar Usuário"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Content="Trocar Empresa"></Button>
+                                    <Button Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Style="{StaticResource ButtonStyleExpander}" Content="Trocar Empresa"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Sair" Command="{Binding fecharCommand}"></Button>
+                                    <Button Content="Sair" Command="{Binding fecharCommand}" Style="{StaticResource ButtonStyleExpander}"></Button>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
@@ -148,7 +148,7 @@
             <Menu x:Name="menuPrincipal" DockPanel.Dock="Top">
             </Menu>
         </DockPanel>
-        <Grid x:Name="grdForms">
+        <Grid x:Name="grdForms" Style="{StaticResource GridStyle}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
