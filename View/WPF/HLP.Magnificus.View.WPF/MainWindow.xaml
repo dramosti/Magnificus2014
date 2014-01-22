@@ -529,13 +529,20 @@
                 </DockPanel>
             </Border>
             <StatusBar Grid.Row="2">
-                <StatusBarItem HorizontalAlignment="Right" Margin="0,0,15,0">
+                <StatusBarItem Margin="10,0,0,0">
+                    <StatusBarItem.Template>
+                        <ControlTemplate>
+                            <Label Content="Localizar ( Ctrl+L )"/>
+                        </ControlTemplate>
+                    </StatusBarItem.Template>
+                </StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right" Width="18" Height="18" Margin="0,0,15,0">
                     <StatusBarItem.Template>
                         <ControlTemplate>
                             <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
                         </ControlTemplate>
                     </StatusBarItem.Template>
-                </StatusBarItem>
+                </StatusBarItem>                
             </StatusBar>
         </Grid>
     </DockPanel>

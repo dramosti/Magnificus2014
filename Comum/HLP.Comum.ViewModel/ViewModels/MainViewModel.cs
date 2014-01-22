@@ -123,7 +123,6 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _winMan = value; base.NotifyPropertyChanged("winMan"); }
         }
 
-
         #region Assinatura de comandos
         public ICommand AddWindowCommand { get; set; }
         public ICommand DelWindowCommand { get; set; }
