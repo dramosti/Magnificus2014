@@ -22,99 +22,31 @@ namespace HLP.Comum.ViewModel.ViewModels
     {
         empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
         funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
-        private BitmapImage _iconConexao;
-        public BitmapImage iconConexao
-        {
-            get { return _iconConexao; }
-            set { _iconConexao = value; base.NotifyPropertyChanged("iconConexao"); }
-        }
-        private string _sToolTipConexao;
-        public string sToolTipConexao
-        {
-            get { return _sToolTipConexao; }
-            set { _sToolTipConexao = value; base.NotifyPropertyChanged("sToolTipConexao"); }
-        }
-        
-
-
-        #region Assinatura de comandos
-        public ICommand AddWindowCommand { get; set; }
-        public ICommand DelWindowCommand { get; set; }
-        public ICommand pesquisarBaseCommand { get; set; }
-        public ICommand FindAllCommand { get; set; }
-        public ICommand OpenCtxCommand { get; set; }
-        public ICommand TrocarUsuarioCommand { get; set; }
-        public ICommand TrocarEmpresaCommand { get; set; }
-        public ICommand SairCommand { get; set; }
-        #endregion
-
-        private ObservableCollection<TabPagesAtivasModel> lTabPagesAtivas;
-
-        public ObservableCollection<TabPagesAtivasModel> _lTabPagesAtivas
-        {
-            get { return lTabPagesAtivas; }
-            set
-            {
-                lTabPagesAtivas = value;
-                base.NotifyPropertyChanged(propertyName: "_lTabPagesAtivas");
-            }
-        }
-
-        private ObservableCollection<windowsModel> lWindows;
-
-        public ObservableCollection<windowsModel> _lWindows
-        {
-            get { return lWindows; }
-            set
-            {
-                lWindows = value;
-                base.NotifyPropertyChanged(propertyName: "_lWindows");
-            }
-        }
-
-        private TabPagesAtivasModel currentTab;
-        public TabPagesAtivasModel _currentTab
-        {
-            get { return currentTab; }
-            set
-            {
-                currentTab = value;
-                this.NotifyPropertyChanged(propertyName: "_currentTab");
-                try
-                {
-                    if (currentTab != null)
-                        try
-                        { currentTab._currentDataContext.SetPropertyValue("NameView", currentTab._windows.GetPropertyValue("NameView").ToString()); }
-                        catch (Exception) { }
-                }
-                catch (Exception) { throw; }
-            }
-        }
-
         public MainViewModel()
         {
+            winMan = new WinManModel();
             string sPath = "";
 
             if (Sistema.bOnline)
             {
                 sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_online" + ".png";
-                sToolTipConexao = "Via Internet.";
+                this.winMan.sToolTipConexao = "Online pela internet";
             }
             else
             {
                 sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_interna" + ".png";
-                sToolTipConexao = "Via rede interna.";
+                this.winMan.sToolTipConexao = "Online via rede interna.";
             }
 
             if (File.Exists(path: sPath))
             {
-                this.iconConexao = new BitmapImage(new Uri(sPath));
+                this.winMan.iconConexao = new BitmapImage(new Uri(sPath));
             }
 
 
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
-            this._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
-            this._lWindows = new ObservableCollection<windowsModel>();
+            this.winMan._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
+            this.winMan._lWindows = new ObservableCollection<windowsModel>();
             windowsModel objWindow;
 
             foreach (var item in Modulo.lobjectModulo)
@@ -124,7 +56,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                     objWindow = new windowsModel();
                     objWindow.xName = win.xId;
                     objWindow.xHeader = win.xName.Replace('_', ' ');
-                    this.lWindows.Add(item: objWindow);
+                    this.winMan._lWindows.Add(item: objWindow);
                 }
             }
 
@@ -184,6 +116,25 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         }
 
+        private WinManModel _winMan;
+        public WinManModel winMan
+        {
+            get { return _winMan; }
+            set { _winMan = value; base.NotifyPropertyChanged("winMan"); }
+        }
+
+
+        #region Assinatura de comandos
+        public ICommand AddWindowCommand { get; set; }
+        public ICommand DelWindowCommand { get; set; }
+        public ICommand pesquisarBaseCommand { get; set; }
+        public ICommand FindAllCommand { get; set; }
+        public ICommand OpenCtxCommand { get; set; }
+        public ICommand TrocarUsuarioCommand { get; set; }
+        public ICommand TrocarEmpresaCommand { get; set; }
+        public ICommand SairCommand { get; set; }
+        #endregion
+
         #region Informações Usuário e Empresa
 
         private empresaService.EmpresaModel _currentEmpresa;
@@ -213,6 +164,7 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         #endregion
 
+        #region Methods
         #region Criação de Menu
 
         private List<MenuItemModel> currentMenu;
@@ -305,7 +257,6 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         #endregion
-
         public void FindAll()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinFindAll", Modules.Interface.TipoExibeForm.Modal);
@@ -313,7 +264,6 @@ namespace HLP.Comum.ViewModel.ViewModels
             win.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             win.ShowDialog();
         }
-
         private string getHeaderWindow(string xNomeForm)
         {
             Window w;
@@ -332,5 +282,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 w = null;
             }
         }
+        #endregion
+
     }
 }

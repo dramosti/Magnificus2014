@@ -66,7 +66,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "idEmpresa").Count() > 0)
                 {
                     sExpression.Add("(idEmpresa = " + CompanyData.idEmpresa + ")");
-                    sExpression.Add("AND");
+                    //sExpression.Add("AND");
                 }
                 // NUNCA IRÁ FILTRAR OS NÃO ATIVOS, VERIFICAR DEPOIS A REGRA!!
                 //if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "Ativo").Count() > 0)
@@ -120,18 +120,12 @@ namespace HLP.Comum.ViewModel.Commands.Components
         }
         bool CanPesquisar()
         {
-            bool bReturn = true;
+            bool bReturn = false;
+
             if (_objViewModel.lFilers != null)
-            {
                 if (_objViewModel.lFilers.Where(c => c.bEnablePesquisa == false).Count() == 0)
                     bReturn = true;
-                else
-                {
-                    bReturn = false;
-                }
-            }
             return bReturn;
-
         }
 
 
@@ -141,6 +135,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
             if (_objViewModel.Result != null)
             {
                 _objViewModel.Result.Rows.Clear();
+                _objViewModel.sTotalRegistro = "0";
             }
         }
 
@@ -169,11 +164,11 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 HlpPesquisaPadraoService.PesquisaPadraoModelContract[] lResult = servicoPesquisaPadrao.GetTableInformation(sViewName: e.Argument.ToString());
 
                 e.Result = (from c in lResult
-                             select new PesquisaPadraoModel
-                             {
-                                 DATA_TYPE = c.DATA_TYPE,
-                                 COLUMN_NAME = c.COLUMN_NAME
-                             }).ToList<PesquisaPadraoModel>();               
+                            select new PesquisaPadraoModel
+                            {
+                                DATA_TYPE = c.DATA_TYPE,
+                                COLUMN_NAME = c.COLUMN_NAME
+                            }).ToList<PesquisaPadraoModel>();
 
             }
             catch (Exception ex)

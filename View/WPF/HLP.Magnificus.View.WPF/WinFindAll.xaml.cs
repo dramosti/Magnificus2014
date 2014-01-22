@@ -34,9 +34,8 @@ namespace HLP.Magnificus.View.WPF
             m_txtTest.OnSearch += new RoutedEventHandler(this.ViewModel.m_txtTest_OnSearch);
             lstResult.MouseDoubleClick += new MouseButtonEventHandler(this.ViewModel.lstResult_MouseDoubleClick);
             lstResult.KeyDown += new KeyEventHandler(this.ViewModel.lstResult_KeyDown);
+            lstResult.GotFocus += new RoutedEventHandler(this.ViewModel.lstResult_GotFocus);
         }
-
-
 
         public ICommand AddWindowCommand
         {
@@ -50,13 +49,6 @@ namespace HLP.Magnificus.View.WPF
             get { return this.DataContext as FindAllViewModel; }
             set { this.DataContext = value; }
         }
-
-        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-
 
     }
 }
