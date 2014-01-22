@@ -92,13 +92,15 @@
                             <MenuItem.Template>
                                 <ControlTemplate>
                                     <Grid
+                                        x:Name="gridLogin"
                                         Background="{StaticResource colorItemsExpander}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="30"></RowDefinition>
                                             <RowDefinition Height="30"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="{Binding sizeColunaDados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Image

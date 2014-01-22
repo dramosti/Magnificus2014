@@ -340,62 +340,64 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>Common.Logging.dll</td><td>{DC92536E-7C29-45F2-AF93-CCA31898B291}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>common.logging.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.Facade.dll</td><td>{A07B1CA2-357F-466B-86D0-D11B974114EB}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.facade.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.Infrastructure.dll</td><td>{167A5231-7FF3-4AE6-8D0B-97C6B92CCDA0}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.infrastructure.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.Model.dll</td><td>{BBC52296-C4E2-4B52-952F-C9B4A6647F5A}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.Modules.dll</td><td>{436D6752-E96E-4C53-88DB-1C9D9D687B23}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.modules.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.Resources.dll</td><td>{AE12184C-6BAB-4150-B1BB-D487F60A5FA4}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.resources.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.View.dll</td><td>{6F615575-1911-4AB2-9BC1-2A07C652FB05}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.view.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Comum.ViewModel.dll</td><td>{6A641EC8-65E6-4369-A9ED-64EA2D632ED2}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.viewmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Dependencies.dll</td><td>{427D88DA-2F83-47AF-8F67-8A4306715157}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.dependencies.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Entries.Model.dll</td><td>{B1A3B1D0-27AB-4E87-BA6B-019144D031BE}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.entries.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Entries.View.WPF.exe</td><td>{008E4C7E-4FD1-465D-BA36-71CFC53BD26A}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.entries.view.wpf.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Entries.ViewModel.dll</td><td>{2B6BF78F-D17A-41CE-8B83-7324F88E559C}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.entries.viewmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Magnificus.View.WPF.exe</td><td>{4E13D600-3AD3-4F3F-844C-AA24DEA80649}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.magnificus.view.wpf.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Magnificus.View.WPF.vshost.exe</td><td>{4F1F117E-2F4B-4EB8-8805-38570D039BBD}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.magnificus.view.wpf.vsho</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Sales.Model.dll</td><td>{E102BED8-2FBC-40FE-A7A8-D192A8436D13}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.sales.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>HLP.Sales.ViewModel.dll</td><td>{CF304F09-C679-48F7-AC92-24764387CC8B}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.sales.viewmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Common.Logging.dll</td><td>{C6015938-876F-42C6-8CDF-A01B661E2464}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>common.logging.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.Facade.dll</td><td>{0094FBEA-C96B-431F-A616-F260D8A126FD}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.facade.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.Infrastructure.dll</td><td>{83BD1913-0B5E-4F6F-AB3C-90F0BB177555}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.infrastructure.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.Model.dll</td><td>{F4B99B59-1B0F-4D13-BF0A-7B292FFE1931}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.Modules.dll</td><td>{EA3187B5-9683-45EE-BFFA-C6A4C728D5FE}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.modules.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.Resources.dll</td><td>{633E3F87-8308-428C-9A05-60FE017D3CA2}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.resources.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.View.dll</td><td>{FA017998-3823-4531-8508-35D723F05B1F}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.view.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Comum.ViewModel.dll</td><td>{3AB01505-C076-4250-8318-2FA3CA3B0979}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.comum.viewmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Dependencies.dll</td><td>{1D794835-D961-4CC7-99A1-AB6E66DEC338}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.dependencies.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Entries.Model.dll</td><td>{7CFC7326-DCA0-4619-8C8B-688B46434E84}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.entries.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Entries.View.WPF.exe</td><td>{CC9AA79B-71A6-4AE9-B8CF-233F738F48AD}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.entries.view.wpf.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Entries.ViewModel.dll</td><td>{2AA681C3-10B3-448F-8F8D-BCD1B0F74CA0}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.entries.viewmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Magnificus.View.WPF.exe</td><td>{ABC71EE8-2533-4EE7-867C-2AC8D401F091}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.magnificus.view.wpf.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Magnificus.View.WPF.vshost.exe</td><td>{6CDD2CC9-5567-4C5F-9CB9-04E5B17ED9FA}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.magnificus.view.wpf.vsho</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Sales.Model.dll</td><td>{7DEE894B-F450-4D85-9951-AEC8CE6FE7C0}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.sales.model.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>HLP.Sales.ViewModel.dll</td><td>{163CEC30-845B-4047-B136-080AFF5EC412}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>hlp.sales.viewmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{76D74E48-09EA-4568-842E-DCB40F41B605}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{7C9FCECE-9DC8-4AB1-AEC5-7D345E7DA4FC}</td><td>MAGNIFICUS1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT10</td><td>{B98F7609-FDED-4009-9831-578F3D38D3CB}</td><td>IT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT11</td><td>{8BCCD14D-CB42-4284-98CD-1950BF4EBDD0}</td><td>PT_BR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT12</td><td>{D983F24C-03D9-4BF5-9108-FC67731E1077}</td><td>RO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT13</td><td>{6FE1CCCD-01E7-418C-A411-685A7C8B814E}</td><td>RU</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT14</td><td>{27FF0561-A91C-4626-AB8A-080E98894B49}</td><td>SV</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT15</td><td>{872023E2-F332-4661-AE13-82F101EC483E}</td><td>ZH_HANS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{07376741-CBF6-4779-8711-569E32689152}</td><td>CONFIGURACOES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{1C1594E9-B075-42C5-AAB2-B2641BA52790}</td><td>MODULOS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{DCCE95C3-0AF8-4EED-A119-1EA4877E2328}</td><td>DE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT5</td><td>{183ACC48-4CDD-4969-970F-7913806BB5D7}</td><td>ES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT6</td><td>{DDF9C2F9-7C91-4BFC-987F-36B694A2D108}</td><td>FR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT7</td><td>{552B9678-D492-4248-9FC6-09B1C3827F8B}</td><td>HU</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT8</td><td>{2AFAD4DB-340D-4FE2-AC73-B7AFDD775491}</td><td>ICONES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT9</td><td>{76EF939C-FD65-4F10-B460-883B04005E21}</td><td>IMAGES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.EnterpriseLibrary.Common.dll</td><td>{78C20273-ACE7-4163-A818-2220CD6EF938}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.enterpri</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.EnterpriseLibrary.Data.dll</td><td>{A3BC842B-E319-4E07-9BD8-7BC6F3FE2230}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.enterpri1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td>{36D87F71-4597-4494-A3A3-04116E1F1058}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.servicel</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.Unity.Interception.dll</td><td>{90B1BCF3-E765-4184-8FA9-AEF2FD6EB399}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.unity.in</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Practices.Unity.dll</td><td>{152C536F-4B21-42B9-A8AF-9663F7B52314}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.unity.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Ninject.dll</td><td>{18CE1F0C-7A7D-4D96-BA1E-80E310A6826A}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>ninject.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>SearchTextBox.dll</td><td>{BEB1D71E-D323-4D17-B621-DA82FFD2094A}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>searchtextbox.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Spring.Core.dll</td><td>{A14344E7-54DC-4A88-B281-7E452270E494}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>spring.core.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.Themes.Aero.dll</td><td>{4763E148-7E21-4BF6-A91A-B12B45924A79}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.themes.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.Themes.Metro.dll</td><td>{65A81E3D-1356-49D3-B87E-FCAF992C452A}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.themes.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.Themes.VS2010.dll</td><td>{FE2C73D6-8A49-4527-B386-A580BB85F398}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.themes.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.dll</td><td>{19409F79-A23B-4222-9619-AFB407C22DBB}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll</td><td>{682EC74D-0146-44E7-A2FF-ED8CA8282F28}</td><td>DE</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll1</td><td>{111D9587-E241-4C33-84FA-7C0AC1C7EDB8}</td><td>ES</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll2</td><td>{93400346-AE88-4CC2-90B6-C82A19435F74}</td><td>FR</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll3</td><td>{340D4212-FCAF-4AB1-82E4-55CBFC2C9CEF}</td><td>HU</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll4</td><td>{E82E491A-6ED4-408C-8E8A-8A4DBA5329FB}</td><td>IT</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll5</td><td>{5907BEDD-EF89-455A-8FFC-BA6CF82460EB}</td><td>PT_BR</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll6</td><td>{1E67C6A8-AE45-4230-8FBE-C83C3AD481E3}</td><td>RO</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc6</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll7</td><td>{ED26D4FE-C84A-41F6-ABED-BCD2DA8002E6}</td><td>RU</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc7</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll8</td><td>{F4A972B3-5E7C-4033-BB54-FA3EA0BC8ABA}</td><td>SV</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc8</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll9</td><td>{0EE828FE-3FCD-4A41-BEAA-77C0CB32CD53}</td><td>ZH_HANS</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc9</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.DataGrid.dll</td><td>{0CFC7078-E1B8-441D-9438-204A75F45FE5}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.datagrid.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Xceed.Wpf.Toolkit.dll</td><td>{373C7F98-1C0D-4589-B3FB-1E6525C79BEE}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.toolkit.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{B9B71550-9849-4148-85BF-0FB76C1CA242}</td><td>MAGNIFICUS1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT10</td><td>{611A8BEE-1086-493A-A919-19FA6F048338}</td><td>IT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT11</td><td>{6EBB765F-ECF5-4589-B48E-9ACE2F79194D}</td><td>PT_BR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT12</td><td>{82040995-F30A-4604-83BF-C1E8838F576D}</td><td>RO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT13</td><td>{D6473F38-CB9B-4653-96FB-9CD2EEB04D32}</td><td>RU</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT14</td><td>{67408CF3-C93F-4061-8A8C-7F6B36F5A28E}</td><td>SV</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT15</td><td>{27C79E49-7479-4E25-83F8-D2BF78215C27}</td><td>THEMES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT16</td><td>{E0343E9B-7A3C-4537-9CCD-E16335FDF167}</td><td>ZH_HANS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{C692B6D2-405F-4C01-BF2B-CEDE1B5A493E}</td><td>CONFIGURACOES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{2D8E7595-B204-41D2-8D8E-47F428CD6103}</td><td>MODULOS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{44961167-3FFA-4833-BFEC-723B8D5ACB82}</td><td>DE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT5</td><td>{61B3027D-1680-4D4A-944E-2D2FF4EFAD2B}</td><td>ES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT6</td><td>{521A2E57-5DF8-442E-AB27-B1C40DB82BE0}</td><td>FR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT7</td><td>{D9B5DB2D-BCFB-4114-81E4-22B10240428E}</td><td>HU</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT8</td><td>{4B779EBC-4246-4671-AED7-51F7DA02846E}</td><td>ICONES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT9</td><td>{724FD31B-6038-4F23-878D-E8E145BF7784}</td><td>IMAGES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.EnterpriseLibrary.Common.dll</td><td>{A6530B30-63F7-4F73-81F0-5DB9AC5D9B44}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.enterpri</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.EnterpriseLibrary.Data.dll</td><td>{2FD2F9ED-048E-4CD9-B9B2-04755C606A9E}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.enterpri1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td>{C9E94DEF-6F85-4979-9068-8190B46E6734}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.servicel</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.Unity.Interception.dll</td><td>{3611FE95-5C60-494B-8F37-90DD30AD4657}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.unity.in</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Microsoft.Practices.Unity.dll</td><td>{FAF13313-BC0A-4BF4-87E6-2273BFE9460D}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>microsoft.practices.unity.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Ninject.dll</td><td>{CA0DC82F-B744-4E3A-AA14-D67C65731DE5}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>ninject.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>PresentationFramework.Aero2.dll</td><td>{08E9D89E-75C8-4833-8D7B-35716368E28D}</td><td>THEMES</td><td>2</td><td/><td>presentationframework.aero2.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SearchTextBox.dll</td><td>{E86E0650-D515-4B46-A8A8-68769D3E26CB}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>searchtextbox.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Spring.Core.dll</td><td>{E14A5283-91CC-4F3F-9248-756CE7D2932F}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>spring.core.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.Themes.Aero.dll</td><td>{A497412A-51CB-43A5-A69F-50FA994D48F1}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.themes.</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.Themes.Metro.dll</td><td>{117B2C5F-E636-4737-9D40-EEC2153A5FCB}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.themes.1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.Themes.VS2010.dll</td><td>{C93E87C3-153F-40FA-9969-68AC49A4E428}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.themes.2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.dll</td><td>{D9074DD2-8B43-4B06-AB7A-EFF1D45226C6}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.avalondock.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll</td><td>{A1B0D837-84B5-4BC1-B1B1-C8A38301B1FD}</td><td>DE</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll1</td><td>{014D4AA8-8DF6-4A35-A316-842B035D57EF}</td><td>ES</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll2</td><td>{186BBC62-5859-4450-A3D8-14702246823D}</td><td>FR</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll3</td><td>{882ECE29-E6F6-41C4-8979-F9EDFA0E41B6}</td><td>HU</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll4</td><td>{A42C8ACC-C649-470B-BFD3-A0B25289191C}</td><td>IT</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll5</td><td>{BDF0BE8B-2145-4A31-8B88-0EA63A30AFFB}</td><td>PT_BR</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll6</td><td>{CF2A8B52-9759-4576-8A28-517257E4BE7B}</td><td>RO</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc6</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll7</td><td>{E19464B6-70FC-497B-B539-AFBF62F41AB4}</td><td>RU</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc7</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll8</td><td>{6B5BD23A-8C69-4D9E-A074-F23202DDB87C}</td><td>SV</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc8</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll9</td><td>{86D371FE-6179-4DD4-BF53-374B34AC8E6B}</td><td>ZH_HANS</td><td>2</td><td/><td>xceed.wpf.avalondock.resourc9</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.DataGrid.dll</td><td>{EBD5A589-FA0A-4AF5-A4A4-0DD67258BB05}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.datagrid.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Xceed.Wpf.Toolkit.dll</td><td>{F613304E-DD68-453B-AA9D-9C7B1A41BE52}</td><td>MAGNIFICUS1</td><td>2</td><td/><td>xceed.wpf.toolkit.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1115,7 +1117,8 @@
 		<row><td>RO</td><td>ISX_DEFAULTCOMPONENT12</td></row>
 		<row><td>RU</td><td>ISX_DEFAULTCOMPONENT13</td></row>
 		<row><td>SV</td><td>ISX_DEFAULTCOMPONENT14</td></row>
-		<row><td>ZH_HANS</td><td>ISX_DEFAULTCOMPONENT15</td></row>
+		<row><td>THEMES</td><td>ISX_DEFAULTCOMPONENT15</td></row>
+		<row><td>ZH_HANS</td><td>ISX_DEFAULTCOMPONENT16</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1244,6 +1247,7 @@
 		<row><td>System64Folder</td><td>TARGETDIR</td><td>.:System64</td><td/><td>0</td><td/></row>
 		<row><td>SystemFolder</td><td>TARGETDIR</td><td>.:System32</td><td/><td>0</td><td/></row>
 		<row><td>TARGETDIR</td><td/><td>SourceDir</td><td/><td>0</td><td/></row>
+		<row><td>THEMES</td><td>MAGNIFICUS1</td><td>Themes</td><td/><td>0</td><td/></row>
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
 		<row><td>TemplateFolder</td><td>TARGETDIR</td><td>.:ShellNew</td><td/><td>0</td><td/></row>
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
@@ -1967,6 +1971,7 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT13</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT14</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT15</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT16</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT3</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT4</td></row>
@@ -1981,6 +1986,7 @@
 		<row><td>AlwaysInstall</td><td>Microsoft.Practices.Unity.Interception.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Microsoft.Practices.Unity.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Ninject.dll</td></row>
+		<row><td>AlwaysInstall</td><td>PresentationFramework.Aero2.dll</td></row>
 		<row><td>AlwaysInstall</td><td>SearchTextBox.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Spring.Core.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Xceed.Wpf.AvalonDock.Themes.Aero.dll</td></row>
@@ -2056,6 +2062,7 @@
 		<row><td>microsoft.practices.unity.in</td><td>Microsoft.Practices.Unity.Interception.dll</td><td>MICROS~1.DLL|Microsoft.Practices.Unity.Interception.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\Microsoft.Practices.Unity.Interception.dll</td><td>1</td><td/></row>
 		<row><td>modulos.xml</td><td>ISX_DEFAULTCOMPONENT3</td><td>Modulos.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\configuracoes\Modulos\Modulos.xml</td><td>1</td><td/></row>
 		<row><td>ninject.dll</td><td>Ninject.dll</td><td>Ninject.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\Ninject.dll</td><td>1</td><td/></row>
+		<row><td>presentationframework.aero2.</td><td>PresentationFramework.Aero2.dll</td><td>PRESEN~1.DLL|PresentationFramework.Aero2.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\Themes\PresentationFramework.Aero2.dll</td><td>1</td><td/></row>
 		<row><td>rede_interna.png</td><td>ISX_DEFAULTCOMPONENT8</td><td>REDE_I~1.PNG|rede_interna.png</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\Icones\rede_interna.png</td><td>1</td><td/></row>
 		<row><td>rede_online.png</td><td>ISX_DEFAULTCOMPONENT8</td><td>REDE_O~1.PNG|rede_online.png</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\Icones\rede_online.png</td><td>1</td><td/></row>
 		<row><td>searchtextbox.dll</td><td>SearchTextBox.dll</td><td>SEARCH~1.DLL|SearchTextBox.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\Magnificus2014\View\WPF\HLP.Magnificus.View.WPF\bin\Debug\SearchTextBox.dll</td><td>1</td><td/></row>
@@ -2222,62 +2229,64 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>Common.Logging.dll</td><td/><td/><td>_E07D1E21_C1E6_47C3_9102_0225059566E4_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.Facade.dll</td><td/><td/><td>_E0CBD146_5A64_4DA4_A921_6C3CDEC53BA0_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.Infrastructure.dll</td><td/><td/><td>_C9507D04_C200_4098_BC4E_10FDF1463B6D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.Model.dll</td><td/><td/><td>_98042E24_4427_4B0B_A8EA_1111470AA5BF_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.Modules.dll</td><td/><td/><td>_5D261D36_36F2_4B40_B8D7_68B53F962884_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.Resources.dll</td><td/><td/><td>_4BAA6A7B_26E6_43FD_B66D_F6EC74EA68BD_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.View.dll</td><td/><td/><td>_A33815B6_5D74_4978_97FE_13BE27EF0A72_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Comum.ViewModel.dll</td><td/><td/><td>_4A6646C2_47D8_462B_A370_E2310A8517E2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Dependencies.dll</td><td/><td/><td>_CC9B2ABE_D9D8_4B34_9D42_0363FE659A51_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Entries.Model.dll</td><td/><td/><td>_6B631A1E_2580_40D0_AAD5_FF1FBD3A6568_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Entries.View.WPF.exe</td><td/><td/><td>_9CB3C22B_E1EC_4019_B4B1_6ECEF4EDC8A5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Entries.ViewModel.dll</td><td/><td/><td>_3557ECE7_257B_46A3_A55D_DC6288016ACA_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Magnificus.View.WPF.exe</td><td/><td/><td>_9F49271C_1EB6_473E_9F58_92AC82651C41_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Magnificus.View.WPF.vshost.exe</td><td/><td/><td>_901ACF3A_C074_415F_87F3_12D47749A165_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Sales.Model.dll</td><td/><td/><td>_685CDE7F_9A22_4139_A2A7_CCA7B743F2F5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>HLP.Sales.ViewModel.dll</td><td/><td/><td>_F3CA2428_6405_4669_9072_ED1803EA483E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Common.Logging.dll</td><td/><td/><td>_E17FB575_A0D0_4F2F_8993_7F0249E92808_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.Facade.dll</td><td/><td/><td>_F9E8FCD7_3748_4F14_AAE1_39B8AE2533D9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.Infrastructure.dll</td><td/><td/><td>_0A767014_A242_4F55_9E60_B934A41DA791_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.Model.dll</td><td/><td/><td>_56D3ACC2_750C_4A25_942E_5F9BCD3F3046_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.Modules.dll</td><td/><td/><td>_25BE721F_128A_479A_B999_3F6065E32B6B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.Resources.dll</td><td/><td/><td>_BEC6B0F8_D8B4_4249_A1AE_99452CC5374A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.View.dll</td><td/><td/><td>_C1FD7A76_7B41_4FC1_9DF8_90C4FACBA7DE_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Comum.ViewModel.dll</td><td/><td/><td>_96DE3C21_1509_463F_B478_3AAC32A0DFD7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Dependencies.dll</td><td/><td/><td>_19137294_369B_4E1F_97F0_AD66B98ABE41_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Entries.Model.dll</td><td/><td/><td>_F6A5DD06_B0FD_4CFB_9D5D_179B523200DA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Entries.View.WPF.exe</td><td/><td/><td>_2F7CBF2E_C4B5_4314_A71E_4F0DA848070D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Entries.ViewModel.dll</td><td/><td/><td>_C70AF93B_8572_4995_98B5_438944CD0E1A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Magnificus.View.WPF.exe</td><td/><td/><td>_063EF775_BE5E_417C_8A7C_47BFF7A39D27_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Magnificus.View.WPF.vshost.exe</td><td/><td/><td>_46C459DA_E59B_42E3_9D10_BC86E181CC80_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Sales.Model.dll</td><td/><td/><td>_647F9738_C2A4_4FE3_9A88_3A2E3A139741_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>HLP.Sales.ViewModel.dll</td><td/><td/><td>_214A8A64_DC98_40FF_B830_D56DF7A9C6A7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_3D51F6F3_7C16_43AB_9FCB_E6DBE976691B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_DFAA35AA_D85D_4629_92A1_C99BF50F9ED3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT10</td><td/><td/><td>_78128D9C_CB3E_43A3_953C_7EAAFBACBF18_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT11</td><td/><td/><td>_47FDBE3D_E6FE_4E61_9732_2868DD1D87A9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT12</td><td/><td/><td>_0C59A955_4C93_4A2D_B29A_B361F11B181C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT13</td><td/><td/><td>_B660504D_1FA5_49B7_BFAE_F6359A22527B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT14</td><td/><td/><td>_14FEE513_6806_4454_9701_DB3724FA3A51_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT15</td><td/><td/><td>_98FE5665_9C42_413B_BE0D_434AAB1D4D34_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_2BBADDE9_5E28_4F4E_BDE2_46087A51BBC4_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_E83D9958_829B_44DF_A715_5F76546950EA_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_A34B8F29_703B_4436_A8E1_ECE5FCEB33C1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT5</td><td/><td/><td>_F7602C2C_D5B5_4541_AE16_9B5348AA7EF2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT6</td><td/><td/><td>_0B5BE6B9_C20A_4093_AA5D_C3CD89A3D014_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT7</td><td/><td/><td>_D8EC05A9_A2EA_4C9A_BA06_5923FACF58EE_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT8</td><td/><td/><td>_74A0DE4A_E3D3_459F_9109_48C434ACB20E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT9</td><td/><td/><td>_9F78CB8D_60C5_469B_AE5C_85F4D72EFB29_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.EnterpriseLibrary.Common.dll</td><td/><td/><td>_BE4C8DC6_13A4_4691_AFFB_BF07ACCEBFA9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.EnterpriseLibrary.Data.dll</td><td/><td/><td>_E7E1496C_3480_4F6B_8575_408E1BB18E19_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td/><td/><td>_427BA2E2_695A_4B3E_85BF_E45203A6D7D1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.Unity.Interception.dll</td><td/><td/><td>_C06E00AF_2123_4EA7_B915_31EACDC7614F_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Practices.Unity.dll</td><td/><td/><td>_07BF1213_19C0_4227_BC55_F61D3D48F4D1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Ninject.dll</td><td/><td/><td>_2511DA39_A0BE_4C8D_B29C_C83EE04C63D7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>SearchTextBox.dll</td><td/><td/><td>_B523A107_6884_4A53_B7AC_86F781211396_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Spring.Core.dll</td><td/><td/><td>_F14E6CB8_09CA_467D_ACF3_152174275E9B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.Themes.Aero.dll</td><td/><td/><td>_CF899166_9A34_48A3_8131_969B2F828CF6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.Themes.Metro.dll</td><td/><td/><td>_1AF071FC_4E11_46D6_AA30_C4CF534C9CD1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.Themes.VS2010.dll</td><td/><td/><td>_C912248C_1581_48E5_B4A0_438D70CC6246_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.dll</td><td/><td/><td>_B14D60CC_8BD6_4C64_92B6_D824C4303C27_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll</td><td/><td/><td>_327CE468_2D6F_4841_8DE4_26DDE7FC7235_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll1</td><td/><td/><td>_AB6CA4D8_8942_4099_89F1_EBB87B511955_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll2</td><td/><td/><td>_34744A40_FF0D_4564_9C3C_D8E2D0CE02B2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll3</td><td/><td/><td>_BA50F1D4_579A_4CD6_8CEB_B2A81E3C8B41_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll4</td><td/><td/><td>_080ECF86_3087_4BF3_9163_9A776A2563E2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll5</td><td/><td/><td>_781E54CA_AD79_4B96_89C9_F9C86778F3FB_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll6</td><td/><td/><td>_A8ACE512_2A96_4785_B3D7_D1FDEDFE5716_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll7</td><td/><td/><td>_17F95F15_4582_48F0_9D0F_53DEA44CA9E6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll8</td><td/><td/><td>_6440DBD8_7D54_4079_A7DA_1E0A4A2DFEAE_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.AvalonDock.resources.dll9</td><td/><td/><td>_43582483_2685_4330_9BB8_95F9EA8C3998_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.DataGrid.dll</td><td/><td/><td>_1111532C_C802_4762_9312_CF34C1C4F2CE_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Xceed.Wpf.Toolkit.dll</td><td/><td/><td>_71ADEDCF_DB40_4D49_9B13_135D479A219D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_EA123F82_C4EB_4D15_A54D_798C276AE9B7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT10</td><td/><td/><td>_AF036798_6E1D_498B_AF71_580EEA9BA2D9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT11</td><td/><td/><td>_BC01B882_90EE_4C6C_9550_6EC250600300_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT12</td><td/><td/><td>_E99B85D0_5B51_4161_ABC9_FD71FCC5AA1E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT13</td><td/><td/><td>_029B71A7_5F74_4EE4_90F9_B55D36CE5444_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT14</td><td/><td/><td>_ED51F250_A379_4E8F_8296_45184936C45A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT15</td><td/><td/><td>_5159C85E_71C1_4BB9_955F_C7E7CED50915_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT16</td><td/><td/><td>_3412ECE3_A70E_4966_AA46_FD6C72608040_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_55E6A307_2119_4F34_A317_49DE851A656F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_D4C129C7_5BB0_469C_9E84_0A157314725F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_4F339A8B_1768_49E1_A0B0_5E971FE5F443_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT5</td><td/><td/><td>_7113A345_60C6_411C_9315_78626810F0F7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT6</td><td/><td/><td>_0C0BC039_0D7C_4E32_BF32_B939F61DF5B8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT7</td><td/><td/><td>_EB53D237_1535_4D96_BC7C_80D085871228_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT8</td><td/><td/><td>_9B19B066_38ED_48DD_A829_53305EA3906B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT9</td><td/><td/><td>_1917A20F_B821_45F9_9361_2E328FDB8256_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.EnterpriseLibrary.Common.dll</td><td/><td/><td>_D2629501_9600_4EED_9E65_3FEA67F1C615_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.EnterpriseLibrary.Data.dll</td><td/><td/><td>_E37FB4DD_6018_498B_92BC_31A41887B76A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.ServiceLocation.dll</td><td/><td/><td>_6A16AB00_8AC4_414C_808C_AEFAAFE8B848_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.Unity.Interception.dll</td><td/><td/><td>_5E537C4D_4F14_4F6C_B69E_E7ACD0215465_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Microsoft.Practices.Unity.dll</td><td/><td/><td>_61B0A4ED_270A_47F3_972E_10074A5C8994_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Ninject.dll</td><td/><td/><td>_BA900433_3E60_4EC5_B9F8_C26C4B559EBB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>PresentationFramework.Aero2.dll</td><td/><td/><td>_61682830_E8E1_4C9F_B77E_DB5F4AD211AF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SearchTextBox.dll</td><td/><td/><td>_5E3461C8_AD29_4DEA_9105_12DD0D6EA3E7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Spring.Core.dll</td><td/><td/><td>_65435162_9A3F_4217_892A_F099C6759601_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.Themes.Aero.dll</td><td/><td/><td>_E3C81CAF_CBC5_4187_BF91_7EB7F5F725A1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.Themes.Metro.dll</td><td/><td/><td>_1927CF1B_9B40_4863_A4F6_9F75A905DAD5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.Themes.VS2010.dll</td><td/><td/><td>_523A0036_CED0_4154_BF27_7D13CADD94E8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.dll</td><td/><td/><td>_7B9F2BAE_3BC0_49D2_9977_0D6F112C59EA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll</td><td/><td/><td>_2245DF15_1E4D_4CD6_9786_9FA3CAC441B7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll1</td><td/><td/><td>_C0F13EAF_F17C_4E8F_8E22_A3FD49EDEA56_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll2</td><td/><td/><td>_A43CD4BA_DF41_412E_80C4_A00AF76BFE00_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll3</td><td/><td/><td>_3D617884_9E91_4399_BEF0_D7B170E71280_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll4</td><td/><td/><td>_B2AC4F12_983F_430D_B1CA_BECFEB3406C5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll5</td><td/><td/><td>_638A5794_7A53_43CA_980B_0555B2B0063A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll6</td><td/><td/><td>_1D2560DC_B34C_40A7_B140_EB24FDDD3982_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll7</td><td/><td/><td>_0D23CA45_A4FB_46F5_A368_F1D302881961_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll8</td><td/><td/><td>_A89C8CCB_28C6_4BB4_B864_B1534136CB40_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.AvalonDock.resources.dll9</td><td/><td/><td>_8F0CE70A_3CCF_4C5B_92BE_86EECBA095C4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.DataGrid.dll</td><td/><td/><td>_9EEDC66F_4663_47B3_8142_BEFAFECB3411_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Xceed.Wpf.Toolkit.dll</td><td/><td/><td>_20E2CB6F_2F54_4CAE_8DE9_351A4D812788_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -3708,12 +3717,18 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>-1331530038</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>-1331530038</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Entries.View.WPF.exe</td><td>0</td><td/><td>-1331538134</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME10</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.vshost.exe</td><td>0</td><td/><td>-1331542897</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME11</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Entries.View.WPF.exe</td><td>0</td><td/><td>-1331505969</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME12</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.exe</td><td>0</td><td/><td>-1331505969</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME13</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.vshost.exe</td><td>0</td><td/><td>-1331505969</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.exe</td><td>0</td><td/><td>-1331536086</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.vshost.exe</td><td>0</td><td/><td>-1331536086</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Entries.View.WPF.exe</td><td>0</td><td/><td>-1331556534</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.exe</td><td>0</td><td/><td>-1331556534</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.vshost.exe</td><td>0</td><td/><td>-1331556534</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>Magnificus</td><td>0</td><td/><td>-1331548310</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Entries.View.WPF.exe</td><td>0</td><td/><td>-1331542897</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>1033</td><td>LAUNCH~1.EXE|Launch HLP.Magnificus.View.WPF.exe</td><td>0</td><td/><td>-1331542897</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>-1331530038</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>-1331530038</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1331530038</td></row>
@@ -4114,10 +4129,16 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>HLP.Entries.View.W_0FB6B9D736D44BE09EF0D782FCEF4B64.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>HLP.Entries.View.W_412BF57D5C5C4BA399726C0E78F52A99.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>HLP.Entries.View.W_C0160C877B054E5B9A904548F9ADB0B0.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>HLP.Magnificus.Vie_167BBA1C3E434B78A8EF2DAAB4C94AC0.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>HLP.Magnificus.Vie_1EA7C0B649174984BF93ECF1A603931D.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>HLP.Magnificus.Vie_405756BFFF9A4DB3B044FD8819260985.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>HLP.Magnificus.Vie_B51257187E8D4488BA5E0A4150C5E7B5.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>HLP.Magnificus.Vie_DC042B9514904D6E96A6B150FDC07760.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>HLP.Magnificus.Vie_F03CE929C33B454AB713696CBEFFFF3B.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>HLP.Magnificus.Vie_F1BCA252DEAA4CD8A4EBFFE2BE74301E.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>HLP.Magnificus.Vie_F7F92B98B3364F3D9805ED67A70911C2.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 	</table>
 
@@ -4702,7 +4723,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
+		<row><td>HLP.Entries.View.WPF.exe</td><td>HLP.Entries.View.WPF.exe</td><td/><td>magnif_1_magnificus</td><td>2</td></row>
 		<row><td>HLP.Magnificus.View.WPF.exe</td><td>HLP.Magnificus.View.WPF.exe</td><td/><td>magnif_1_magnificus</td><td>2</td></row>
+		<row><td>HLP.Magnificus.View.WPF.vshost.exe</td><td>HLP.Magnificus.View.WPF.vshost.exe</td><td/><td>magnif_1_magnificus</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4788,8 +4811,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>HLP.Magnificus.View.WPF.exe</td><td>magnif_1_magnificus</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>HLP.Magnificus.View.WPF.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>HLP.Magnificus.Vie_167BBA1C3E434B78A8EF2DAAB4C94AC0.exe</td><td>0</td><td>1</td><td>MAGNIFICUS1</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>HLP.Magnificus.View.WPF.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>HLP.Magnificus.View.WPF.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>HLP.Magnificus.Vie_DC042B9514904D6E96A6B150FDC07760.exe</td><td>0</td><td>1</td><td>MAGNIFICUS1</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>HLP.Entries.View.WPF.exe</td><td>magnif_1_magnificus</td><td>##IDS_SHORTCUT_DISPLAY_NAME11##</td><td>HLP.Entries.View.WPF.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>HLP.Entries.View.W_0FB6B9D736D44BE09EF0D782FCEF4B64.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>HLP.Magnificus.View.WPF.exe</td><td>magnif_1_magnificus</td><td>##IDS_SHORTCUT_DISPLAY_NAME12##</td><td>HLP.Magnificus.View.WPF.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>HLP.Magnificus.Vie_F1BCA252DEAA4CD8A4EBFFE2BE74301E.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>HLP.Magnificus.View.WPF.vshost.exe</td><td>magnif_1_magnificus</td><td>##IDS_SHORTCUT_DISPLAY_NAME13##</td><td>HLP.Magnificus.View.WPF.vshost.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>HLP.Magnificus.Vie_1EA7C0B649174984BF93ECF1A603931D.exe</td><td>0</td><td>1</td><td>DEBUG</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

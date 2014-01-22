@@ -22,6 +22,21 @@ namespace HLP.Comum.ViewModel.ViewModels
     {
         empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
         funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
+
+
+        private int _sizeColunaDados;
+
+        public int sizeColunaDados
+        {
+            get { return _sizeColunaDados; }
+            set
+            {
+                _sizeColunaDados = value;
+                base.NotifyPropertyChanged(propertyName: "sizeColunaDados");
+            }
+        }
+
+
         public MainViewModel()
         {
             winMan = new WinManModel();
@@ -117,6 +132,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
             this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
+            this.sizeColunaDados = this.currentFuncionario.xNome.Length;
         }
 
         private WinManModel _winMan;
