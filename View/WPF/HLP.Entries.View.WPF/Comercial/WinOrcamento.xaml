@@ -962,7 +962,8 @@
                                     <DataGridComboBoxColumn Header="Cód situação tributaria iss" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ISS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=ISS_vBaseCalculo, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Base de cálculo ISS" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
@@ -971,11 +972,13 @@
 										Header="% ISS" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ISS_vIss, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=ISS_vIss, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Valor do ISS" Width="125"/>
                                     <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=pComissao, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="ICMS_vsubstituiçãotributariaretido" Width="125"/>
                                 </DataGrid.Columns>
                             </DataGrid>

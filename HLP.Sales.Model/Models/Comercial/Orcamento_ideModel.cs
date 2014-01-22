@@ -1673,6 +1673,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vTotalItem = value;
+                this.orcamento_Item_Impostos.First().ISS_vBaseCalculo = value;
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
                 this.CalculaBaseIpi();
                 this.CalculaBaseIcms();
@@ -2264,6 +2265,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_vBaseCalculo = value;
+                this.ISS_vIss = value * (this.ISS_pIss / 100);
                 base.NotifyPropertyChanged(propertyName: "ISS_vBaseCalculo");
             }
         }
@@ -2275,6 +2277,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ISS_pIss = value;
+                this.ISS_vIss = this.ISS_vBaseCalculo * (value / 100);
                 base.NotifyPropertyChanged(propertyName: "ISS_pIss");
             }
         }
