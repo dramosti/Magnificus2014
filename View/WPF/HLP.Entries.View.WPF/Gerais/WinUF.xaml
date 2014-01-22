@@ -4,27 +4,28 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"         
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
-        Title="Uf" Height="300" Width="500" NameView="vwUF">
+        Title="Uf" Height="300" Width="500" NameView="vwUF"  FocusManager.FocusedElement="{Binding txtCodigo}"
+        >
     <Grid Name="gridPropriedades">
 	<Expander Header="UF" IsExpanded="True">			
         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-            <Components:HlpTextBox Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
+            <Components:HlpTextBox x:Name="txtCodigo" Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="0"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-    		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
+    		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="2"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}" 
     		Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-    		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
+    		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="3"/>
             <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" IsEnabled="{Binding bIsEnabled}"
     		Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True                , NotifyOnValidationError=True}"
-    		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27"/>
+    		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="4"/>
                 <Components:HlpPesquisa 
                          Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                          Validation.ErrorTemplate="{StaticResource exceptionComp}"
                          IsEnabled="{Binding bIsEnabled}"
                          Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" 
-                         TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437">
+                         TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437" PreviewKeyDown="HlpPesquisa_PreviewKeyDown" KeyDown="HlpPesquisa_KeyDown" TabIndex="5">
                 <Components:HlpPesquisa.Items>
                     <System:String>xRegiao</System:String>
                     <System:String>xPais</System:String>

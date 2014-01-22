@@ -212,6 +212,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 {
                     if (item.GetType() == typeof(System.Windows.Controls.MenuItem))
                     {
+                        (item as System.Windows.Controls.MenuItem).Focusable = false;
                         ResourceDictionary rs = new ResourceDictionary
                         {
                             Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
@@ -222,6 +223,8 @@ namespace HLP.Comum.ViewModel.ViewModels
                     m.Items.Insert(icount, item);
                     icount++;
                 }
+
+
             }
             catch (Exception ex)
             {

@@ -150,8 +150,8 @@
 
                 </Expander.ContextMenu>
             </Expander>
-            <Menu x:Name="menuPrincipal" DockPanel.Dock="Top">
-                <MenuItem Header="Atalhos">
+            <Menu x:Name="menuPrincipal" DockPanel.Dock="Top" Focusable="False">
+                <MenuItem Header="Atalhos" Focusable="False">
                     <MenuItem Header="Localizar Ctrl+L" Command="{Binding FindAllCommand}" />
                 </MenuItem>
             </Menu>
@@ -175,7 +175,7 @@
                             <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
 								CommandParameter="{Binding winMan._currentTab._content}"
-								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )">
+								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -200,7 +200,7 @@
                             </Button>
                             <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}" 
 								CommandParameter="{Binding winMan._currentTab._content}"
-								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )">
+								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -223,7 +223,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -247,7 +247,7 @@
                                 </Button.Template>
                             </Button>
                             <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
-								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )">
+								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -270,7 +270,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -293,7 +293,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -316,7 +316,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -444,7 +444,7 @@
                                 </Button>
                                 <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                             </DockPanel>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" VerticalAlignment="Bottom" Height="25" Margin="25,0,0,0" ToolTip="Imprimir" >
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" VerticalAlignment="Bottom" Height="25" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" >
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -467,7 +467,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Configurações">
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Configurações" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -499,7 +499,8 @@
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Height="24" LastChildFill="True">
-                                        <Button DockPanel.Dock="Right"                                            
+                                        <Button DockPanel.Dock="Right"
+                                                Focusable="False"
 											Width="17"
 											Height="17"
 											Style="{DynamicResource BtnFechar}"
@@ -507,7 +508,7 @@
 											CommandParameter="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="13.333" FontFamily="OCR A Extended">
                                             <ContentPresenter Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.833" Width="8.5"/>
                                         </Button>
-                                        <Button DockPanel.Dock="Right" Width="17" Height="17" Style="{DynamicResource BtnFechar}" FontFamily="OCR A Extended" FontSize="14.667">
+                                        <Button DockPanel.Dock="Right" Width="17" Focusable="False" Height="17" Style="{DynamicResource BtnFechar}" FontFamily="OCR A Extended" FontSize="14.667">
                                             <ContentPresenter Content="-"/>
                                         </Button>
 
