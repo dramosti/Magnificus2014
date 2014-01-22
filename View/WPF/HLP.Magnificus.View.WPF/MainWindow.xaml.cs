@@ -66,7 +66,6 @@ namespace HLP.Magnificus.View.WPF
             WinLogin wdLogin = new WinLogin(ModoInicial.trocaUsuario);
             wdLogin.ShowDialog();
             this._viewModel.CarregaDadosLogin();
-            this.grdForms.UpdateLayout();
         }
 
         private void trocarEmpresa_Click(object sender, RoutedEventArgs e)
