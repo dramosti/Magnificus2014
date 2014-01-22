@@ -32,7 +32,7 @@ namespace HLP.Comum.ViewModel.Commands
                     canExecute: ex => DelWindowCanExecute());
                 this.objviewModel.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
                 this.objviewModel.fecharCommand = new RelayCommand(execute: i => this.Sair());
-
+                this.objviewModel.SobreCommand = new RelayCommand(execute: i => this.Sobre());
                 this.objviewModel.FindAllCommand = new RelayCommand
                     (
                     execute: ex => objviewModel.FindAll(),
@@ -49,6 +49,19 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
         #region Executes & CanExecutes
+
+
+        private void Sobre()
+        {
+            Window win = GerenciadorModulo.Instancia.CarregaForm("WinSobre", Modules.Interface.TipoExibeForm.Modal);
+            win.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            win.ShowDialog();
+        }
+
+        private bool SobreCanExecute()
+        {
+            return true;
+        }
 
 
         private void OpenCtx(object ctx)

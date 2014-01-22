@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:Util="clr-namespace:HLP.Comum.Resources"                     
                     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+                    >
+
 
     <Style x:Key="{x:Type PasswordBox}"
     	TargetType="{x:Type PasswordBox}">
@@ -37,7 +39,7 @@
     										Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                             <Setter Property="Foreground"
     										Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>                        
+                        </Trigger>
                         <Trigger Property="Util:PasswordBoxMonitor.PasswordLength" Value="0">
                             <Setter Property="Visibility" TargetName="txtPrompt" Value="Visible"/>
                         </Trigger>
@@ -48,7 +50,7 @@
     </Style>
     <Style TargetType="{x:Type DataGridCell}">
         <Setter Property="Util:GotFocusBeginEditDataGridCell.BeginEdit" Value="True"/>
-    </Style>    
+    </Style>
     <Style x:Key="BackgroundBorderTitle" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush" Value="#E8E8E8"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
@@ -601,7 +603,7 @@
     <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
-    
+
     <!--Cores do Expander-->
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="#FF5593FF"/>
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="#FFF3F9FF"/>
@@ -615,7 +617,7 @@
     <SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="Expander.Static.Circle.Stroke" Color="#FF333333"/>
     <SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="#FF333333"/>
-    
+
     <!--Cores Referentes aos botões da MainWindow-->
     <LinearGradientBrush x:Key="Button.Default.Border"
         EndPoint="0.5,1" StartPoint="0.5,0">
@@ -1115,7 +1117,7 @@
         <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
-        <Setter Property="BorderThickness" Value="1"/>        
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Padding" Value="6,3,5,3"/>
@@ -1138,9 +1140,9 @@
     </Style>
     <Style x:Key="MenuItemExpander" TargetType="{x:Type MenuItem}">
         <Setter Property="FontFamily" Value="Calibri"/>
-        <Setter Property="FontSize" Value="15"/>        
+        <Setter Property="FontSize" Value="15"/>
         <Setter Property="Foreground" Value= "Black" />
-        <Setter Property="Height" Value= "{DynamicResource {x:Static SystemParameters.CaptionHeightKey}}"/>        
+        <Setter Property="Height" Value= "{DynamicResource {x:Static SystemParameters.CaptionHeightKey}}"/>
     </Style>
     <Style TargetType="{x:Type MenuItem}">
         <Setter Property="FontFamily" Value="Calibri"/>
@@ -1445,7 +1447,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
+    </Style>
     <Style x:Key="ButtonStyleExpander" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="White"/>
@@ -1515,9 +1517,9 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--Estilo do Expander (Usuario/Empresa)-->
-    
+
     <Style x:Key="ExpanderRightHeaderStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
             <Setter.Value>
@@ -1678,7 +1680,7 @@
                             <Setter Property="Stroke" TargetName="arrow" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+                            <Setter Property="Stroke" TargetName="arrow" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
