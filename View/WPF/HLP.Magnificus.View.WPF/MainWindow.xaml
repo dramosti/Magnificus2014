@@ -80,11 +80,10 @@
 				IsExpanded="False"
 				Header="{Binding currentFuncionario.xID}"
 				DockPanel.Dock="Right" 
+                Style="{StaticResource ExpanderStyle1}"
 				Expanded="exLogin_Expanded">
                 <Expander.ContextMenu>
-                    <ContextMenu
-                        
-						Width="150"                        
+                    <ContextMenu                        
 						x:Name="ctxLogin"
                         >
                         <MenuItem
@@ -92,29 +91,41 @@
 							Height="50">
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <DockPanel
-										Height="50"         
-										Background="{StaticResource colorItemsExpander}"
-                                        >
+                                    <Grid
+                                        Background="{StaticResource colorItemsExpander}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
                                         <Image
-											DockPanel.Dock="Right"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
 											Height="50"
-											Width="50">
+                                            >
                                             <Image.Source>
                                                 <BitmapImage
 													UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"
                             />
                                             </Image.Source>
                                         </Image>
-                                        <TextBlock 
-											Height="20"
-											Text="{Binding currentFuncionario.xNome}"
-											DockPanel.Dock="Top"/>
-                                        <TextBlock
-											Height="20"
-											Text="{Binding currentEmpresa.xNome}"
-											DockPanel.Dock="Top"/>
-                                    </DockPanel>
+                                        <Label
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            HorizontalAlignment="Stretch"
+											Content="{Binding currentFuncionario.xNome}"
+                                            ></Label>
+                                        <Label
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Stretch"
+											Content="{Binding currentEmpresa.xNome}"
+                                            ></Label>
+                                    </Grid>                                    
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
@@ -153,6 +164,9 @@
             <Menu x:Name="menuPrincipal" DockPanel.Dock="Top">
                 <MenuItem Header="Atalhos">
                     <MenuItem Header="Localizar Ctrl+L" Command="{Binding FindAllCommand}" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="Sobre Magnificus" Command="{Binding SobreCommand}" />
                 </MenuItem>
             </Menu>
         </DockPanel>
