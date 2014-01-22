@@ -22,6 +22,21 @@ namespace HLP.Comum.ViewModel.ViewModels
     {
         empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
         funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
+
+
+        private int _sizeColunaDados;
+
+        public int sizeColunaDados
+        {
+            get { return _sizeColunaDados; }
+            set
+            {
+                _sizeColunaDados = value;
+                base.NotifyPropertyChanged(propertyName: "sizeColunaDados");
+            }
+        }
+
+
         public MainViewModel()
         {
             winMan = new WinManModel();
@@ -104,9 +119,6 @@ namespace HLP.Comum.ViewModel.ViewModels
                         }
                     }
                 }
-
-                this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
-                this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
             }
             catch (Exception)
             {
@@ -114,6 +126,12 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
 
 
+        }
+
+        public void CarregaDadosLogin()
+        {
+            this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
+            this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);            
         }
 
         private WinManModel _winMan;
@@ -128,6 +146,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand DelWindowCommand { get; set; }
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand FindAllCommand { get; set; }
+        public ICommand SobreCommand { get; set; }
         public ICommand OpenCtxCommand { get; set; }
         public ICommand TrocarUsuarioCommand { get; set; }
         public ICommand TrocarEmpresaCommand { get; set; }
@@ -259,6 +278,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         #endregion
+
         public void FindAll()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinFindAll", Modules.Interface.TipoExibeForm.Modal);
