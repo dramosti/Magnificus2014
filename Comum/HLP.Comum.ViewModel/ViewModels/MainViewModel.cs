@@ -131,8 +131,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public void CarregaDadosLogin()
         {
             this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
-            this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
-            this.sizeColunaDados = this.currentFuncionario.xNome.Length;
+            this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);            
         }
 
         private WinManModel _winMan;

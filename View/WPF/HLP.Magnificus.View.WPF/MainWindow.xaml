@@ -116,8 +116,7 @@
                                             <RowDefinition Height="30"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="{Binding sizeColunaDados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></ColumnDefinition>
+                                            <ColumnDefinition Width="150"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Image
@@ -135,7 +134,7 @@
                                         <Label
                                             Grid.Column="0"
                                             Grid.Row="0"
-                                            HorizontalAlignment="Stretch"
+                                            HorizontalAlignment="Stretch"                                            
 											Content="{Binding currentFuncionario.xNome}"
                                             ></Label>
                                         <Label
