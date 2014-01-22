@@ -29,10 +29,12 @@ namespace HLP.Entries.View.WPF.Comercial
             InitializeComponent();
             this.ViewModel = new ClienteViewModel();
             #region TESTES
-            //List<TabItem> lTabs = GetLogicalChildCollection<TabItem>(this);
-            //foreach (TabItem item in lTabs)
-            //    ((TabControl)item.Parent).SelectedItem = item;
-            //((TabControl)lTabs[0].Parent).SelectedItem = lTabs[0];
+            List<TabItem> lTabs = GetLogicalChildCollection<TabItem>(this);
+            foreach (TabItem item in lTabs)
+            {            
+                var dados = GetLogicalChildCollection<Control>(item);
+            }
+            ((TabControl)lTabs[0].Parent).SelectedItem = lTabs[0];
             #endregion
         }
 
