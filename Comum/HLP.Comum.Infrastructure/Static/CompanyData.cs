@@ -30,9 +30,15 @@ namespace HLP.Comum.Infrastructure.Static
                 Type tParametro_Custo = parametro.GetType().GetProperty("ObjParametro_CustosModel").PropertyType;
                 parametros_CustoEmpresa = Activator.CreateInstance(tParametro_Custo);
                 parametros_CustoEmpresa = parametro.GetType().GetProperty("ObjParametro_CustosModel").GetValue(parametro);
+
+                Type tParametro_Fiscal = parametro.GetType().GetProperty("ObjParametro_FiscalModel").PropertyType;
+                parametros_FiscalEmpresa = Activator.CreateInstance(tParametro_Fiscal);
+                parametros_FiscalEmpresa = parametro.GetType().GetProperty("ObjParametro_FiscalModel").GetValue(parametro);
             }
         }
 
         public static object parametros_CustoEmpresa { get; set; }
+
+        public static object parametros_FiscalEmpresa { get; set; }
     }
 }

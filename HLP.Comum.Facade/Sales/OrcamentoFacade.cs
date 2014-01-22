@@ -60,14 +60,19 @@ namespace HLP.Comum.Facade.Sales
                 }
             }
 
-            if (idEstadoCliente != OrcamentoFacade.objCadastros.idEstadoEmpresa)
+            if (idTipoOpercacao > 0)
             {
-                return OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: idTipoOpercacao).cCfopOutraUf;
+                if (idEstadoCliente != OrcamentoFacade.objCadastros.idEstadoEmpresa)
+                {
+                    return OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: idTipoOpercacao).cCfopOutraUf;
+                }
+                else
+                {
+                    return OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: idTipoOpercacao).cCfopNaUf;
+                }
             }
-            else
-            {
-                return OrcamentoFacade.tipoOperacaoService.GetObjeto(idObjeto: idTipoOpercacao).cCfopNaUf;
-            }
+
+            return 0;
         }
     }
 
