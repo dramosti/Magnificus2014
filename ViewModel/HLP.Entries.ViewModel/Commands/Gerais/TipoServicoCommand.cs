@@ -50,7 +50,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //TODO: método de serviço para salvar
                 objViewModel.currentModel = await servicotpServico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -108,7 +107,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             this.objViewModel.currentModel = new Model.Models.Gerais.Tipo_servicoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -141,7 +139,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //TODO: Implementar serviço de copy
                 await servicotpServico.CopyAsync((int)objViewModel.currentModel.idTipoServico);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
@@ -186,7 +183,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servicotpServico.GetTipo(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = servicotpServico.GetTipo(objViewModel.currentID);
         }
         #endregion
 

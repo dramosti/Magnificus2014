@@ -35,7 +35,7 @@ namespace HLP.Magnificus.View.WPF
         public App()
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            CompanyData.idEmpresa = 1;
+            Util.CarregaSettingsAppConfig();
         }
 
         void bwParametrosEmpresa_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -158,10 +158,10 @@ namespace HLP.Magnificus.View.WPF
                 pr = p.Send(HLP.Comum.Infrastructure.Static.WcfData.xIpServidor);
 
                 if (pr.Status == System.Net.NetworkInformation.IPStatus.Success)
-                {
-                    return true;
-                }
-                return false;
+                    Sistema.bOnline = true;
+                else
+                    Sistema.bOnline = false;
+                return Sistema.bOnline;
             }
             catch (Exception)
             {

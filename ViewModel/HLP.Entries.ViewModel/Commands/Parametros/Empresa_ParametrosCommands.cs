@@ -113,7 +113,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
         private bool NovoCanExecute()
@@ -150,7 +149,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             try
             {
                 //Acredito que não será possível copiar parametros da empresa
-                //TODO: Implementar serviço de copy
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)

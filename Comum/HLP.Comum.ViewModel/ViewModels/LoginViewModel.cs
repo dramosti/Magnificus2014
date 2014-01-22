@@ -14,6 +14,7 @@ namespace HLP.Comum.ViewModel.ViewModels
     {
         public ICommand fecharCommand { get; set; }
         public ICommand loginCommand { get; set; }
+        public bool bLogado = false;
 
         funcionarioService.IserviceFuncionarioClient funcService;
 

@@ -122,7 +122,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Plano_pagamentoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -155,7 +154,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //TODO: Implementar serviço de copy
                 objViewModel.currentModel = await servico.CopyAsync(objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }

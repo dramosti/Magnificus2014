@@ -55,7 +55,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                //TODO: método de serviço para salvar
                 objViewModel.currentModel = await servico.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -118,7 +117,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Model.Models.Crm.FidelidadeModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -189,7 +187,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             try
             {
                 e.Result = servico.Copy(objViewModel.currentModel);
-                //TODO: implementar serviço de copy
             }
             catch (Exception)
             {
@@ -232,7 +229,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         private async void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
         }
         #endregion
 

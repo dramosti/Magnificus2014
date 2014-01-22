@@ -126,7 +126,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new RotaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -251,7 +250,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID); //TODO: método de serviço para pesquisar
+            this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID);
         }
 
         private void Inicia_Collections()

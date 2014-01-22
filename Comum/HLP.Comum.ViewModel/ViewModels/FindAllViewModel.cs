@@ -67,6 +67,10 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             FindAllModel obj = ((objSelected as ListBox).SelectedItem as FindAllModel);
             this.AddWindowCommand.Execute(parameter: obj.xNome);
+
+            Window win = HLP.Comum.Resources.Util.StaticUtil.GetParentWindow(objSelected as ListBox);
+            this.CloseWindowCommand.Execute(parameter: win);
+
         }
 
         #region Events

@@ -61,6 +61,12 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (OrcamentoFacade.icmsService == null)
                     OrcamentoFacade.icmsService = new Comum.Facade.CodigoIcmsService.IserviceCodigoIcmsClient();
 
+                if (OrcamentoFacade.cargaTribMediaService == null)
+                    OrcamentoFacade.cargaTribMediaService = new Comum.Facade.Carga_trib_media_st_icmsServico.IserviceCarga_trib_media_st_icmsClient();
+
+                if (OrcamentoFacade.ramo_AtividadeService == null)
+                    OrcamentoFacade.ramo_AtividadeService = new Comum.Facade.Ramo_AtividadeService.IserviceRamoAtividadeClient();
+
                 this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
             }
             catch (Exception)
@@ -134,6 +140,11 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idRamoAtividade = value;
+
+                if (value > 0)
+                    OrcamentoFacade.objCadastros.objRamoAtividade = OrcamentoFacade.ramo_AtividadeService.getRamo_atividade(
+                        idRamo_atividade: value);
+
                 base.NotifyPropertyChanged(propertyName: "idRamoAtividade");
             }
         }
@@ -210,6 +221,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal != null)
                     {
                         this.stContribuinteIcms = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stContribuienteIcms;
+                        OrcamentoFacade.objCadastros.stContribuinteIcms = this.stContribuinteIcms;
                     }
                     this.idRamoAtividade = OrcamentoFacade.objCadastros.objCliente.idRamoAtividade;
 
@@ -232,6 +244,8 @@ namespace HLP.Sales.Model.Models.Comercial
                                 OrcamentoFacade.objCadastros.idEstadoCliente = objCidade.idUF;
                                 this.xCidade = objCidade != null ? objCidade.xCidade : "";
                                 this.xUf = OrcamentoFacade.ufService.getUf(idUf: objCidade.idUF).xSiglaUf;
+                                OrcamentoFacade.objCadastros.objCargaTrib = OrcamentoFacade.cargaTribMediaService.GetCarga_trib_media_st_icmsByUf(
+                                    idUf: OrcamentoFacade.objCadastros.idEstadoCliente);
                             }
                         }
                     }
@@ -922,6 +936,115 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
+        private void CalculaBaseIcmsSubstTrib()
+        {
+            if (this.orcamento_Item_Impostos.Count < 1)
+                return;
+
+            if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal
+                != null)
+                if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stSubsticaoTributariaIcmsDiferenciada == 0)
+                    this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria = 4;
+
+            if (this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria == 0
+                || this._stConsumidorFinal == 1
+                || OrcamentoFacade.objCadastros.stContribuinteIcms == 0)
+                this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria = 5;
+
+            switch (this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria)
+            {
+                case 0:
+                    {
+                        this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria =
+                            (this._vTotalItem * (this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria / 100)) + this._vTotalItem;
+                    } break;
+                case 1:
+                    {
+                        this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria =
+                            ((this._vTotalItem + this.orcamento_Item_Impostos.First().IPI_vIPI)
+                            * (this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria / 100)) + this._vTotalItem;
+                    } break;
+                case 2:
+                    {
+                        this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria =
+                            ((this._vTotalItem + this.orcamento_Item_Impostos.First().IPI_vIPI + this._vFreteItem)
+                            * (this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria / 100)) + this._vTotalItem;
+                    } break;
+                case 3:
+                    {
+                        this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria =
+                            ((this._vTotalItem + this.orcamento_Item_Impostos.First().IPI_vIPI + this._vFreteItem
+                            + this._vSegurosItem + this._vOutrasDespesasItem)
+                            * (this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria / 100)) + this._vTotalItem;
+                    } break;
+                case 4:
+                    {
+                        this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria =
+                            (this.orcamento_Item_Impostos.First().ICMS_vIcmsProprio +
+                            this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria) /
+                            this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno;
+                    } break;
+                case 5:
+                    {
+                        this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria =
+                            0;
+                    } break;
+            }
+
+            switch (this.orcamento_Item_Impostos.First().ICMS_stReduzBaseCalculo)
+            {
+                //(((“Orcamento_Item.vTotalItem” –  (“Orcamento_Item.vTotalItem” X  “pReduzBaseSubstituicaoTributaria” / 100)
+                //    + “Orçamento_Item_Impostos.IPI_vIPI” + “Orcamento_Item.vFreteItem” + campo “Orcamento_Item.vSegurosItem” 
+                //        + “Orcamento_Item.vOutrasDespesasItem”) X “Orçamento_Item_Impostos.ICMS_pMvaSubstituicaoTributaria” / 100) + “Orcamento_Item.vTotalItem”);
+                case 1:
+                case 3:
+                    {
+                        //TODO: Calcular substituição tributária
+                    } break;
+            }
+        }
+
+        private void CalcularVlrSubstTrib()
+        {
+            if (orcamento_Item_Impostos.Count < 1)
+                return;
+
+            byte? bStDiferencial = null;
+
+            if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal != null)
+                bStDiferencial = OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stSubsticaoTributariaIcmsDiferenciada;
+
+
+            if (this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria == 1
+                && this.stConsumidorFinal == 0
+                && OrcamentoFacade.objCadastros.stContribuinteIcms == 1
+                && bStDiferencial == 0)
+            {
+                //(((“Orçamento_Item_Impostos.ICMS_vBaseCalculoIcmsSubstituicaoTributaria” X Orçamento_Item_Impostos.ICMS_pIcmsInterno / 100) - Orcamento_Icms.vIcmsInterno ) 
+
+                //this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria =
+                //    (this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria *
+                //    (this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno / 100)) - this.orcamento_Item_Impostos.First().ICMS_vICMS
+
+                //p.s.: não existe na base o campo orcamento_icms.vicmsinterno
+            }
+            else if (this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria == 1
+                && this.stConsumidorFinal == 1
+                && OrcamentoFacade.objCadastros.stContribuinteIcms == 1
+                && bStDiferencial == 0
+                && OrcamentoFacade.objCadastros.objRamoAtividade.xRamo.Trim().Contains(value: "1-COMERCIO")
+                && OrcamentoFacade.objCadastros.idEstadoCliente != OrcamentoFacade.objCadastros.idEstadoEmpresa
+                )
+            {
+                //((Orçamento_Item_Impostos.ICMS_vBaseCalculoIcmsSubstituicaoTributaria X 
+                //    (Orçamento_Item_Impostos.ICMS_pICMS - Orçamento_Item_Impostos.ICMS_pIcmsInterno)) / 100)
+                //TODO: Conferir este cálculo
+                this.orcamento_Item_Impostos.First().ICMS_vSubstituicaoTributaria =
+                    (this.orcamento_Item_Impostos.First().ICMS_vBaseCalculoSubstituicaoTributaria *
+                    (this.orcamento_Item_Impostos.First().ICMS_pICMS - this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno) / 100);
+            }
+        }
+
         #endregion
 
         #region Métodos de busca
@@ -1225,12 +1348,14 @@ namespace HLP.Sales.Model.Models.Comercial
 
                             this.orcamento_Item_Impostos.First().ICMS_stCalculaSubstituicaoTributaria =
                                 objTipoOperacao.stCalculaIcmsSubstituicaoTributaria;
-
+                            this.orcamento_Item_Impostos.First().ICMS_stCompoeBaseCalculoSubstituicaoTributaria =
+                                objTipoOperacao.stCompoeBaseIcmsSubstituicaoTributaria;
+                            this.CalculaBaseIcmsSubstTrib();
                             //TODO: IMPLEMENTAR CÁLCULO DE SUBSTITUIÇÃO TRIBUTÁRIA
 
                             #endregion
 
-                            #region Icms Interno
+                            #region Icms Interno && Icms Mva
 
                             HLP.Comum.Facade.CodigoIcmsService.Codigo_Icms_paiModel objIcms =
                             OrcamentoFacade.icmsService.GetObjeto(idObjeto: this.orcamento_Item_Impostos.First().idCSTIcms);
@@ -1246,9 +1371,23 @@ namespace HLP.Sales.Model.Models.Comercial
                                         this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria =
                                             objIcms.lCodigo_IcmsModel.FirstOrDefault(i => i.idUf == OrcamentoFacade.objCadastros.idEstadoCliente).pMvaSubstituicaoTributaria;
                                     }
+                                    else
+                                    {
+                                        this.orcamento_Item_Impostos.First().ICMS_pIcmsInterno =
+                                        this.orcamento_Item_Impostos.First().ICMS_pMvaSubstituicaoTributaria = 0;
+                                    }
                                 }
                             }
 
+                            #endregion
+
+                            #region Icms Carga Tributária Média
+
+                            this.orcamento_Item_Impostos.First().ICMS_pCargaTributariaMedia = OrcamentoFacade.objCadastros.objCargaTrib.pCargaTributariaMedia;
+
+                            #endregion
+
+                            #region
                             #endregion
                         }
                     }

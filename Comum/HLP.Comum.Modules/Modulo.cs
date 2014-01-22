@@ -31,7 +31,7 @@ namespace HLP.Comum.Modules
         public ObjectsModule objectModulo { get; set; }
 
         public static List<ObjectsModule> lobjectModulo = new List<ObjectsModule>();
-        
+
         //public IFormModulo FormModulo { get; private set; }
 
         #endregion
@@ -47,6 +47,12 @@ namespace HLP.Comum.Modules
                 Contexto.CarregaConfiguracao(this.NomeModulo, this.ArquivoConfiguracao);
 
                 objectModulo = SerializeClassToXml.DeserializeClasse<ObjectsModule>(ArquivoConfiguracao);
+
+                List<string> lresult = Sistema.lSettings.Select(s => s.Key.ToString()).ToList();
+
+                objectModulo.lFormularios = (from c in objectModulo.lFormularios
+                                             where (!lresult.Contains(c.xId.ToString()))
+                                             select c).ToList();
 
                 lobjectModulo.Add(objectModulo);
             }
@@ -88,8 +94,14 @@ namespace HLP.Comum.Modules
         [System.Xml.Serialization.XmlAttribute("id")]
         public string xId { get; set; }
 
+        private string _xName;
+
         [System.Xml.Serialization.XmlAttribute("name")]
-        public string xName { get; set; }
+        public string xName
+        {
+            get { return _xName; }
+            set { _xName = Util.ToUpperFirstLetter(value.Replace("_", " ")); ; }
+        }
 
         [System.Xml.Serialization.XmlAttribute("singleton")]
         public string stSingleton { get; set; }

@@ -314,8 +314,6 @@ namespace HLP.Entries.Model.Models.Comercial
         {
             get
             {
-                //TODO: estudar e concluir cálculo de markup
-                //int stMarkup = 0;
                 if (CompanyData.parametros_CustoEmpresa != null)
                 {
                     byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);

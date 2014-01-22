@@ -3,20 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.MainWindow"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Magnificus.View.WPF.MainWindow"
         Title="Magnificus 2014" 
         mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5"
         >
-    <Window.InputBindings>
-        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding _currentTab._content}"/>
-        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding _currentTab._content}"/>
-        <KeyBinding Key="E" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandDeletar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="S" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}"/>
-        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCancelar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="V" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCopiar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandPesquisar}" CommandParameter="{Binding _currentTab}"/>
-        <KeyBinding Key="F" Modifiers="Control" Command="{Binding FindAllCommand}"/>
-    </Window.InputBindings>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -62,59 +52,67 @@
         </ResourceDictionary>
 
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="N" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandNovo}" CommandParameter="{Binding _currentTab._content}"/>
+        <KeyBinding Key="A" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandAlterar}" CommandParameter="{Binding _currentTab._content}"/>
+        <KeyBinding Key="E" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandDeletar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="S" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandSalvar}" CommandParameter="{Binding _currentTab._content}"/>
+        <KeyBinding Key="C" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCancelar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="V" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandCopiar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="P" Modifiers="Alt" Command="{Binding _currentTab._currentDataContext.commandPesquisar}" CommandParameter="{Binding _currentTab}"/>
+        <KeyBinding Key="L" Modifiers="Control" Command="{Binding FindAllCommand}"/>
+    </Window.InputBindings>
     <!--<Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">-->
     <DockPanel
-        LastChildFill="True"
+		LastChildFill="True"
         >
         <DockPanel
-                Background="{StaticResource colorBackExpander}"                            
-            DockPanel.Dock="Top" LastChildFill="True">
+			Background="{StaticResource colorBackExpander}"                            
+			DockPanel.Dock="Top" LastChildFill="True">
             <Expander                  
-                Background="Transparent"
-                Foreground="White"
-                Width="150"
-                x:Name="exLogin"
-                FlowDirection="RightToLeft"
-                ContextMenuService.Placement="Bottom"
-                IsExpanded="False"
-                Header="{Binding currentFuncionario.xID}"
-                DockPanel.Dock="Right" 
-                Expanded="exLogin_Expanded">
+				Background="Transparent"
+				Foreground="White"
+				Width="150"
+				x:Name="exLogin"
+				FlowDirection="RightToLeft"
+				ContextMenuService.Placement="Bottom"
+				IsExpanded="False"
+				Header="{Binding currentFuncionario.xID}"
+				DockPanel.Dock="Right" 
+				Expanded="exLogin_Expanded">
                 <Expander.ContextMenu>
                     <ContextMenu
                         
-                        Width="150"                        
-                        x:Name="ctxLogin"
+						Width="150"                        
+						x:Name="ctxLogin"
                         >
                         <MenuItem
-                            Style="{StaticResource MenuItemExpander}"                            
-                            Height="50">
+							Style="{StaticResource MenuItemExpander}"                            
+							Height="50">
                             <MenuItem.Template>
                                 <ControlTemplate>
                                     <DockPanel
-                                        Height="50"         
-                                        Background="{StaticResource colorItemsExpander}"
+										Height="50"         
+										Background="{StaticResource colorItemsExpander}"
                                         >
                                         <Image
-                                            DockPanel.Dock="Right"
-                                            Height="50"
-                                            Width="50">
+											DockPanel.Dock="Right"
+											Height="50"
+											Width="50">
                                             <Image.Source>
                                                 <BitmapImage
-                            UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"
-                            >
-
-                                                </BitmapImage>
+													UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"
+                            />
                                             </Image.Source>
                                         </Image>
                                         <TextBlock 
-                                            Height="20"
-                                            Text="{Binding currentFuncionario.xNome}"
-                                                   DockPanel.Dock="Top"></TextBlock>
+											Height="20"
+											Text="{Binding currentFuncionario.xNome}"
+											DockPanel.Dock="Top"/>
                                         <TextBlock
-                                            Height="20"
-                                            Text="{Binding currentEmpresa.xNome}"
-                                                   DockPanel.Dock="Top"></TextBlock>
+											Height="20"
+											Text="{Binding currentEmpresa.xNome}"
+											DockPanel.Dock="Top"/>
                                     </DockPanel>
                                 </ControlTemplate>
                             </MenuItem.Template>
@@ -123,21 +121,27 @@
                             >
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Click="trocarUsuario_Click" x:Name="trocarUsuario" Style="{StaticResource ButtonStyleExpander}" Content="Trocar Usuário"></Button>
+                                    <Button 
+										Style="{StaticResource ButtonStyleExpander}"
+										Click="trocarUsuario_Click" x:Name="trocarUsuario" Content="Trocar Usuário"/>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Style="{StaticResource ButtonStyleExpander}" Content="Trocar Empresa"></Button>
+                                    <Button 
+										Style="{StaticResource ButtonStyleExpander}"
+										Click="trocarEmpresa_Click" x:Name="trocarEmpresa" Content="Trocar Empresa"/>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
                         <MenuItem>
                             <MenuItem.Template>
                                 <ControlTemplate>
-                                    <Button Content="Sair" Command="{Binding fecharCommand}" Style="{StaticResource ButtonStyleExpander}"></Button>
+                                    <Button 
+										Style="{StaticResource ButtonStyleExpander}"
+										Content="Sair" Command="{Binding fecharCommand}"/>
                                 </ControlTemplate>
                             </MenuItem.Template>
                         </MenuItem>
@@ -146,14 +150,18 @@
                 </Expander.ContextMenu>
             </Expander>
             <Menu x:Name="menuPrincipal" DockPanel.Dock="Top">
+                <MenuItem Header="Atalhos">
+                    <MenuItem Header="Localizar Ctrl+L" Command="{Binding FindAllCommand}" />
+                </MenuItem>
             </Menu>
         </DockPanel>
-        <Grid x:Name="grdForms" Style="{StaticResource GridStyle}">
+        <Grid x:Name="grdForms">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="1" Margin="0,0,10,10"
+            <Border Grid.Row="1" Margin="0,0,0,0"
 				BorderThickness="1" BorderBrush="{x:Null}">
                 <DockPanel LastChildFill="True">
                     <Grid>
@@ -164,9 +172,9 @@
                         </Grid.RowDefinitions>
                         <ToolBar Style="{StaticResource toolBarCadastro}">
                             <Button 
-                                Command="{Binding _currentTab._currentDataContext.commandNovo}" 
-                                CommandParameter="{Binding _currentTab._content}"
-                                Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="60" ToolTip="Alt + N">
+								Command="{Binding _currentTab._currentDataContext.commandNovo}" 
+								CommandParameter="{Binding _currentTab._content}"
+								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -190,8 +198,8 @@
                                 </Button.Template>
                             </Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandAlterar}" 
-                                    CommandParameter="{Binding _currentTab._content}"
-                                    Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + A">
+								CommandParameter="{Binding _currentTab._content}"
+								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -214,7 +222,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + E">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -238,7 +246,7 @@
                                 </Button.Template>
                             </Button>
                             <Button Command="{Binding _currentTab._currentDataContext.commandSalvar}" 
-                                    CommandParameter="{Binding _currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + S">
+								CommandParameter="{Binding _currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -261,7 +269,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + C">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -284,7 +292,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + V">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -307,7 +315,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25" ToolTip="Alt + P">
+                            <Button Command="{Binding _currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -330,10 +338,10 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <DockPanel LastChildFill="True" Width="230" Margin="10,0,0,0">
+                            <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
                                 <Button       
-                                    x:Name="btnPrimeiro"                                     
-                                    Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="40" Margin="0,0,2,0">
+									x:Name="btnPrimeiro"                                     
+									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0,0,2,0">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -357,9 +365,9 @@
                                     </Button.Template>
                                 </Button>
                                 <Button 
-                                    x:Name="btnAnterior"                                    
-                                    Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
-                                    Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="40" Margin="0">
+									x:Name="btnAnterior"                                    
+									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
+									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -383,9 +391,9 @@
                                     </Button.Template>
                                 </Button>
                                 <Button 
-                                    x:Name="btnUltimo"                                    
-                                    Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
-                                    Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="40" Margin="2,0,0,0" Foreground="#FFECE5E5">
+									x:Name="btnUltimo"                                    
+									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
+									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25" Margin="2,0,0,0" Foreground="#FFECE5E5">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -409,8 +417,8 @@
                                     </Button.Template>
                                 </Button>
                                 <Button x:Name="btnProximo"
-                                        Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
-                                        Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="40">
+									Command="{Binding _currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
+									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -435,7 +443,7 @@
                                 </Button>
                                 <Label Content="{Binding _currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
                             </DockPanel>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="60" VerticalAlignment="Bottom" Height="25" >
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" VerticalAlignment="Bottom" Height="25" Margin="25,0,0,0" ToolTip="Imprimir" >
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -458,7 +466,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="60" Height="25">
+                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Configurações">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -484,10 +492,9 @@
                         </ToolBar>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         <TabControl Grid.Row="2"                                             
-                                    IsSynchronizedWithCurrentItem="True"
-                                    SelectedItem="{Binding _currentTab, 
-                            Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                    x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}" Background="{StaticResource StyleMainGridDefault}">
+							IsSynchronizedWithCurrentItem="True"
+							SelectedItem="{Binding _currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+							x:Name="tabControlItens" ItemsSource="{Binding _lTabPagesAtivas}" Background="{StaticResource StyleMainGridDefault}">
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Height="24" LastChildFill="True">
@@ -516,11 +523,19 @@
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
-                        </TabControl>
+                        </TabControl>                        
                     </Grid>
-
                 </DockPanel>
             </Border>
+            <StatusBar Grid.Row="2">
+                <StatusBarItem HorizontalAlignment="Right" Margin="0,0,15,0">
+                    <StatusBarItem.Template>
+                        <ControlTemplate>
+                            <Image Width="15" Height="15" Source="{Binding iconConexao}" ToolTip="{Binding sToolTipConexao}"/>
+                        </ControlTemplate>
+                    </StatusBarItem.Template>
+                </StatusBarItem>
+            </StatusBar>
         </Grid>
     </DockPanel>
 </Window>

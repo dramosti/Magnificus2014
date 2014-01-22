@@ -53,7 +53,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                //TODO: método de serviço para salvar
                 objViewModel.currentModel.idTipoProduto = await servicoProduto.SaveAsync(objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
             }
@@ -115,7 +114,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Novo(object _panel)
         {
-            //TODO: instanciar novo objeto
             objViewModel.currentModel = new Model.Comercial.Tipo_produtoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
@@ -148,7 +146,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                //TODO: Implementar serviço de copy
                 objViewModel.currentModel.idTipoProduto = await servicoProduto.CopyAsync(idTipoProduto: (int)objViewModel.currentModel.idTipoProduto);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }

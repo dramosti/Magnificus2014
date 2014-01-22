@@ -9,11 +9,25 @@ using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace HLP.Comum.Infrastructure.Static
 {
     public static class Util
     {
+
+        public static void CarregaSettingsAppConfig()
+        {
+            Sistema.lSettings = new List<System.Configuration.KeyValueConfigurationElement>();
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            AppSettingsSection app = (AppSettingsSection)config.GetSection("appSettings");
+
+            foreach (System.Configuration.KeyValueConfigurationElement item in app.Settings)
+            {
+                Sistema.lSettings.Add(item);
+            }
+        }
+
         public static string ToUpperFirstLetter(string Texto)
         {
             if (Texto == null)
@@ -787,84 +801,84 @@ namespace HLP.Comum.Infrastructure.Static
             }
         }
 
-    //    public static void ExportarExcel(KryptonDataGridView grdDados)
-    //    {
-    //        Microsoft.Office.Interop.Excel.Application excelapp =
-    //new Microsoft.Office.Interop.Excel.Application();
-    //        Microsoft.Office.Interop.Excel._Workbook workbook =
-    //            excelapp.Workbooks.Add(Type.Missing);
-    //        Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-    //        excelapp.Visible = true;
-    //        try
-    //        {
-    //            string sText = "HLP";
-    //            Control ctr = grdDados.Parent;
-    //            while (ctr.Parent != null)
-    //            {
-    //                if (ctr.GetType() == typeof(TabPage))
-    //                {
-    //                    sText = ((TabPage)ctr).Text;
-    //                    break;
-    //                }
-    //                ctr = ctr.Parent;
-    //            }
-    //            // pegando a primeira planilha do excel;
-    //            // deixando-a como ativa e ao final,
-    //            // será atribuido um nome a ela.
-    //            worksheet = (Worksheet)workbook.Sheets["Plan1"];
-    //            worksheet = (Worksheet)workbook.ActiveSheet;
-    //            worksheet.Name = sText;
+        //    public static void ExportarExcel(KryptonDataGridView grdDados)
+        //    {
+        //        Microsoft.Office.Interop.Excel.Application excelapp =
+        //new Microsoft.Office.Interop.Excel.Application();
+        //        Microsoft.Office.Interop.Excel._Workbook workbook =
+        //            excelapp.Workbooks.Add(Type.Missing);
+        //        Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+        //        excelapp.Visible = true;
+        //        try
+        //        {
+        //            string sText = "HLP";
+        //            Control ctr = grdDados.Parent;
+        //            while (ctr.Parent != null)
+        //            {
+        //                if (ctr.GetType() == typeof(TabPage))
+        //                {
+        //                    sText = ((TabPage)ctr).Text;
+        //                    break;
+        //                }
+        //                ctr = ctr.Parent;
+        //            }
+        //            // pegando a primeira planilha do excel;
+        //            // deixando-a como ativa e ao final,
+        //            // será atribuido um nome a ela.
+        //            worksheet = (Worksheet)workbook.Sheets["Plan1"];
+        //            worksheet = (Worksheet)workbook.ActiveSheet;
+        //            worksheet.Name = sText;
 
-    //            // pegando os nomes das colunas do DataGridView
-    //            for (int i = 1; i < grdDados.Columns.Count + 1; i++)
-    //            {
-    //                if (grdDados.Columns[i - 1].Visible == true)
-    //                {
-    //                    worksheet.Cells[1, i] =
-    //                        grdDados.Columns[i - 1].HeaderText;
-    //                }
-    //            }
+        //            // pegando os nomes das colunas do DataGridView
+        //            for (int i = 1; i < grdDados.Columns.Count + 1; i++)
+        //            {
+        //                if (grdDados.Columns[i - 1].Visible == true)
+        //                {
+        //                    worksheet.Cells[1, i] =
+        //                        grdDados.Columns[i - 1].HeaderText;
+        //                }
+        //            }
 
-    //            // fazendo um loop no DataGridView, que recupera as rows
-    //            // do DataGridView, correspondente a cada column.
-    //            for (int i = 0; i < grdDados.RowCount; i++)
-    //            {
-    //                for (int j = 0; j < grdDados.Columns.Count; j++)
-    //                {
-    //                    if (grdDados.Columns[j].Visible == true)
-    //                    {
-    //                        if (grdDados.Rows[i].Cells[j].GetType() == typeof(System.Windows.Forms.DataGridViewComboBoxCell))
-    //                        {
-    //                            if (grdDados.Rows[i].Cells[j].Value != null)
-    //                            {
-    //                                string Display = grdDados.Rows[i].Cells[j].EditedFormattedValue.ToString();
-    //                                worksheet.Cells[i + 2, j + 1] = Display;
-    //                            }
-    //                            else
-    //                            {
-    //                                worksheet.Cells[i + 2, j + 1] = "";
-    //                            }
-    //                        }
-    //                        else if (grdDados.Rows[i].Cells[j].GetType() == typeof(KryptonDataGridViewNumericUpDownCell))
-    //                        {
-    //                            worksheet.Cells[i + 2, j + 1] = grdDados.Rows[i].Cells[j].Value != null ? grdDados.Rows[i].Cells[j].Value.ToString().Replace(",", ".") : "";
-    //                        }
-    //                        else
-    //                        {
-    //                            worksheet.Cells[i + 2, j + 1] = grdDados.Rows[i].Cells[j].Value != null ? grdDados.Rows[i].Cells[j].Value.ToString() : "";
-    //                        }
-    //                    }
-    //                }
-    //            }
+        //            // fazendo um loop no DataGridView, que recupera as rows
+        //            // do DataGridView, correspondente a cada column.
+        //            for (int i = 0; i < grdDados.RowCount; i++)
+        //            {
+        //                for (int j = 0; j < grdDados.Columns.Count; j++)
+        //                {
+        //                    if (grdDados.Columns[j].Visible == true)
+        //                    {
+        //                        if (grdDados.Rows[i].Cells[j].GetType() == typeof(System.Windows.Forms.DataGridViewComboBoxCell))
+        //                        {
+        //                            if (grdDados.Rows[i].Cells[j].Value != null)
+        //                            {
+        //                                string Display = grdDados.Rows[i].Cells[j].EditedFormattedValue.ToString();
+        //                                worksheet.Cells[i + 2, j + 1] = Display;
+        //                            }
+        //                            else
+        //                            {
+        //                                worksheet.Cells[i + 2, j + 1] = "";
+        //                            }
+        //                        }
+        //                        else if (grdDados.Rows[i].Cells[j].GetType() == typeof(KryptonDataGridViewNumericUpDownCell))
+        //                        {
+        //                            worksheet.Cells[i + 2, j + 1] = grdDados.Rows[i].Cells[j].Value != null ? grdDados.Rows[i].Cells[j].Value.ToString().Replace(",", ".") : "";
+        //                        }
+        //                        else
+        //                        {
+        //                            worksheet.Cells[i + 2, j + 1] = grdDados.Rows[i].Cells[j].Value != null ? grdDados.Rows[i].Cells[j].Value.ToString() : "";
+        //                        }
+        //                    }
+        //                }
+        //            }
 
 
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            throw ex;
-    //        }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw ex;
+        //        }
 
-    //    }
+        //    }
 
 
         /* Valida Incrição estadual*/
@@ -2062,7 +2076,7 @@ namespace HLP.Comum.Infrastructure.Static
             return retorno;
         }
 
-               public static List<PadraoComboBox> MontaListPadraoComboBox(List<string> lItens)
+        public static List<PadraoComboBox> MontaListPadraoComboBox(List<string> lItens)
         {
             List<PadraoComboBox> lRetorno = new List<PadraoComboBox>();
             int icount = 0;

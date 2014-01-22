@@ -22,6 +22,14 @@ namespace HLP.Comum.Model.Models
         public int idEmpresa { get; set; }
         public string xId { get; set; }
         public string xPassword { get; set; }
+        private string _xError;
+
+        public string xError
+        {
+            get { return _xError; }
+            set { _xError = value; base.NotifyPropertyChanged("xError"); }
+        }
+        
     }
 
     public partial class loginModel

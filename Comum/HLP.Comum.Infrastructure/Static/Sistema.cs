@@ -10,10 +10,13 @@ namespace HLP.Comum.Infrastructure.Static
         public static ContatoStatic contatoStatico = new ContatoStatic();
         public struct ContatoStatic
         {
-            public  string nmTable { get; set; }
-            public  string fkTableReferencia { get; set; }
-            public  int idFkReferencia { get; set; }
-            public int  idFkContato { get; set; }
+            public string nmTable { get; set; }
+            public string fkTableReferencia { get; set; }
+            public int idFkReferencia { get; set; }
+            public int idFkContato { get; set; }
         }
+        public static List<System.Configuration.KeyValueConfigurationElement> lSettings { get; set; }
+
+        public static bool bOnline { get; set; }
     }
 }

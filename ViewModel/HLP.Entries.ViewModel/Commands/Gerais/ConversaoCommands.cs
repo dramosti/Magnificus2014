@@ -204,7 +204,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                //TODO: Implementar serviço de copy
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
