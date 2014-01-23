@@ -91,5 +91,10 @@ namespace HLP.Entries.View.WPF.Comercial
 
         }
 
+        private void HlpTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            tabPessoal.SelectedItem = tabFiliacao;
+        }
+
     }
 }

@@ -126,7 +126,9 @@ namespace HLP.Entries.View.WPF.Gerais
 
         private void HlpPesquisa_KeyDown(object sender, KeyEventArgs e)
         {
+            //txtCodigo.Focus();
 
+            Keyboard.Focus(txtCodigo);
         }
 
         private void HlpPesquisa_GotFocus(object sender, RoutedEventArgs e)
@@ -137,6 +139,8 @@ namespace HLP.Entries.View.WPF.Gerais
         private void HlpPesquisa_LostFocus(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+            Keyboard.Focus(txtCodigo);
+                      
         }
 
 
