@@ -3,7 +3,9 @@
                     xmlns:Util="clr-namespace:HLP.Comum.Resources"                     
                     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
 
-
+    <Style TargetType="{x:Type Expander}">
+        <Setter Property="Focusable" Value="False"/>
+    </Style>
     <Style x:Key="{x:Type PasswordBox}"
     	TargetType="{x:Type PasswordBox}">
         <Setter Property="Util:PasswordBoxMonitor.IsMonitoring"
@@ -1694,8 +1696,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        
+        <Setter Property="BorderThickness" Value="1"/>        
         
         <Setter Property="Template">
             <Setter.Value>
@@ -1733,4 +1734,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--Estilo Expander Geral das telas-->    
 </ResourceDictionary>

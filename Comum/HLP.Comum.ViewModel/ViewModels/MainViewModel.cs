@@ -42,12 +42,12 @@ namespace HLP.Comum.ViewModel.ViewModels
             winMan = new WinManModel();
             string sPath = "";
 
-            if (Sistema.bOnline)
+            if (Sistema.bOnline == TipoConexao.OnlineInternet)
             {
                 sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_online" + ".png";
                 this.winMan.sToolTipConexao = "Online pela internet";
             }
-            else
+            else if (Sistema.bOnline == TipoConexao.OnlineRede)
             {
                 sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_interna" + ".png";
                 this.winMan.sToolTipConexao = "Online via rede interna.";
@@ -131,7 +131,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public void CarregaDadosLogin()
         {
             this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
-            this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);            
+            this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
         }
 
         private WinManModel _winMan;

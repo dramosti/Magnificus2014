@@ -17,6 +17,13 @@ namespace HLP.Comum.Infrastructure.Static
         }
         public static List<System.Configuration.KeyValueConfigurationElement> lSettings { get; set; }
 
-        public static bool bOnline { get; set; }
+        public static TipoConexao bOnline { get; set; }
+    }
+
+    public enum TipoConexao
+    {
+        OnlineRede,
+        OnlineInternet,
+        Offline
     }
 }
