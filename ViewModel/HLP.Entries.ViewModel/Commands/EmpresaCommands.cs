@@ -50,7 +50,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
-        public async void Save(object _panel)
+        public void Save(object _panel)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace HLP.Entries.ViewModel.Commands
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel = await servico.SaveAsync(objEmpresa: objViewModel.currentModel);
+                this.objViewModel.currentModel = servico.Save(objEmpresa: objViewModel.currentModel);
                 this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
                 this.Inicia_Collections();
             }

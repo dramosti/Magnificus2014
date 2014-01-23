@@ -213,6 +213,8 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             _panel.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
             System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+
+            
             while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
             {
                 ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));

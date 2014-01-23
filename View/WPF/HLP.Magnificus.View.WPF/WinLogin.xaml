@@ -172,8 +172,9 @@
 					Style="{DynamicResource ButtonStyleLoginCopy}" Margin="0,6,0,0"
                             />
                 <Label  Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                        HorizontalAlignment="Center"
 					    Content="{Binding currentLogin.xError, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        Width="200" Height="27" DockPanel.Dock="Top" Margin="0,16,0,0" Foreground="#FFC99B9B"/>
+                        Height="27" DockPanel.Dock="Top" Margin="0,16,0,0" Foreground="#FFC99B9B"/>
             </StackPanel>
         </DockPanel>
         <StackPanel

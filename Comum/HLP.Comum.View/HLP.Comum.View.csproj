@@ -118,6 +118,7 @@
     <Compile Include="Converters\MoedaConverter.cs" />
     <Compile Include="Converters\OperacoesAritmetConverter.cs" />
     <Compile Include="Converters\PorcentagemConverter.cs" />
+    <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
     <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
