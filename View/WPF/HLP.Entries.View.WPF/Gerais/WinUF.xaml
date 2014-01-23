@@ -25,7 +25,7 @@
                          Validation.ErrorTemplate="{StaticResource exceptionComp}"
                          IsEnabled="{Binding bIsEnabled}"
                          Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" 
-                         TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437" PreviewKeyDown="HlpPesquisa_PreviewKeyDown" KeyDown="HlpPesquisa_KeyDown" TabIndex="5">
+                         TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437" PreviewKeyDown="HlpPesquisa_PreviewKeyDown" KeyDown="HlpPesquisa_KeyDown" TabIndex="5" GotFocus="HlpPesquisa_GotFocus" LostFocus="HlpPesquisa_LostFocus">
                 <Components:HlpPesquisa.Items>
                     <System:String>xRegiao</System:String>
                     <System:String>xPais</System:String>

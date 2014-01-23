@@ -74,5 +74,7 @@ namespace HLP.Magnificus.View.WPF
             wdLogin.ShowDialog();
             this._viewModel.CarregaDadosLogin();
         }
+
+       
     }
 }

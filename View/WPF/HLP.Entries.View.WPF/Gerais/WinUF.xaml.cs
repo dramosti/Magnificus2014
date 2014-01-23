@@ -129,6 +129,16 @@ namespace HLP.Entries.View.WPF.Gerais
 
         }
 
+        private void HlpPesquisa_GotFocus(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void HlpPesquisa_LostFocus(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+        }
+
 
 
     }

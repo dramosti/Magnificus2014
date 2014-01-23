@@ -3,11 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Magnificus.View.WPF.MainWindow"
-       
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Magnificus.View.WPF.MainWindow"       
         Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5" Icon="icone hlp.ico"
-        >
+        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5" Icon="icone hlp.ico" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -87,7 +85,8 @@
         <DockPanel
 			Background="{StaticResource colorBackExpander}"                            
 			DockPanel.Dock="Top" LastChildFill="True">
-            <Expander                  
+            <Expander 
+                Focusable="False"
 				Background="Transparent"
 				Foreground="White"
 				Width="150"
@@ -100,15 +99,15 @@
                 Style="{StaticResource ExpanderStyle1}"
 				Expanded="exLogin_Expanded">
                 <Expander.ContextMenu>
-                    <ContextMenu                        
-						x:Name="ctxLogin"
-                        >
+                    <ContextMenu  x:Name="ctxLogin" Focusable="False">
                         <MenuItem
+                            Focusable="False"
 							Style="{StaticResource MenuItemExpander}"                            
 							Height="50">
                             <MenuItem.Template>
                                 <ControlTemplate>
                                     <Grid
+                                        Focusable="False"
                                         x:Name="gridLogin"
                                         Background="{StaticResource colorItemsExpander}">
                                         <Grid.RowDefinitions>
@@ -127,8 +126,7 @@
                                             >
                                             <Image.Source>
                                                 <BitmapImage
-													UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"
-                            />
+													UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"/>
                                             </Image.Source>
                                         </Image>
                                         <Label
@@ -188,7 +186,7 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <Grid x:Name="grdForms" Style="{StaticResource GridStyle}">
+        <Grid Focusable="False" x:Name="grdForms" Style="{StaticResource GridStyle}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
@@ -197,13 +195,13 @@
             <Border Grid.Row="1" Margin="0,0,0,0"
 				BorderThickness="1" BorderBrush="{x:Null}">
                 <DockPanel LastChildFill="True">
-                    <Grid>
+                    <Grid Focusable="False" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="2"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ToolBar   Style="{StaticResource toolBarCadastro}">
+                        <ToolBar Focusable="False"   Style="{StaticResource toolBarCadastro}">
                             <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
 								CommandParameter="{Binding winMan._currentTab._content}"
@@ -524,13 +522,14 @@
                             </Button>
                         </ToolBar>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        <TabControl Grid.Row="2"                                             
+                        <TabControl Grid.Row="2"  
+                                    Focusable="False"
 							IsSynchronizedWithCurrentItem="True"
 							SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
 							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="{StaticResource StyleMainGridDefault}">
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
-                                    <DockPanel Height="24" LastChildFill="True">
+                                    <DockPanel Focusable="False" Height="24" LastChildFill="True">
                                         <Button DockPanel.Dock="Right"
                                                 Focusable="False"
 											Width="17"
@@ -544,7 +543,7 @@
                                             <ContentPresenter Content="-"/>
                                         </Button>
 
-                                        <TextBlock Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
+                                        <TextBlock Focusable="False" Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
                                         <!--<Label Grid.Column="0" Content="{Binding _header}"
 											DockPanel.Dock="Left"/>-->
                                     </DockPanel>
@@ -552,8 +551,8 @@
                             </TabControl.ItemTemplate>
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
-                                    <DockPanel LastChildFill="True">
-                                        <ContentControl Content="{Binding _content}"/>
+                                    <DockPanel Focusable="False" LastChildFill="True">
+                                        <ContentControl Focusable="False" Content="{Binding _content}"/>
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
