@@ -27,9 +27,7 @@ namespace HLP.Comum.Model.Models
             get { return Windows; }
             set
             {
-                Windows = value;
-                (value.Content as Panel).PreviewKeyDown -= new KeyEventHandler(this.Components_PreviewKeyDown);
-                (value.Content as Panel).PreviewKeyDown += new KeyEventHandler(this.Components_PreviewKeyDown);
+                Windows = value;               
                 lControlesWindow = GetLogicalChildCollection<Control>(value.Content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
                 try
                 { this.NameView = value.GetPropertyValue("NameView").ToString(); }
@@ -75,18 +73,7 @@ namespace HLP.Comum.Model.Models
         }
 
         #region Events
-
-        public void Components_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            var uie = e.OriginalSource as UIElement;
-            if (e.Key == Key.Enter)
-            {
-                e.Handled = true;
-                uie.MoveFocus(
-                new TraversalRequest(
-                FocusNavigationDirection.Next));
-            }
-        }
+     
         #endregion
 
 

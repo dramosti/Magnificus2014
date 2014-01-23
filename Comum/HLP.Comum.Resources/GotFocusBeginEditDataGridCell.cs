@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace HLP.Comum.Resources
@@ -49,12 +50,13 @@ namespace HLP.Comum.Resources
             DataGridCell cell = sender as DataGridCell;
             DataGrid dataGrid = FindVisualParent<DataGrid>(cell);
 
-            if (cell.Column != null)
-                if (cell.Column.GetType() == typeof(DataGridComboBoxColumn) || cell.Column.GetType() == typeof(DataGridTemplateColumn))
-                {
-                    dataGrid.BeginEdit();
-                    cell.IsEditing = true;                    
-                }
+            if (!cell.IsEditing)
+                if (cell.Column != null)
+                    if (cell.Column.GetType() == typeof(DataGridComboBoxColumn) || cell.Column.GetType() == typeof(DataGridTemplateColumn))
+                    {
+                        dataGrid.BeginEdit();
+                        cell.IsEditing = true;
+                    }
         }
 
 

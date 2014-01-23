@@ -687,7 +687,7 @@
             </TabItem>
             <TabItem Header="Pessoal">
                 <AdornerDecorator>
-                    <TabControl>
+                    <TabControl x:Name="tabPessoal">
                         <TabItem Header="Pessoal">
                             <AdornerDecorator>
                                 <Expander Header="Dados Pessoais" IsExpanded="True">
@@ -805,7 +805,7 @@
                                 </Expander>
                             </AdornerDecorator>
                         </TabItem>
-                        <TabItem Header="Local de trabalho">
+                        <TabItem  Header="Local de trabalho">
                             <AdornerDecorator>
                                 <Expander Header="Informações da Empresa" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
@@ -833,12 +833,12 @@
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
 											Text="{Binding currentModel.vSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Valor Atual do Salario" Help="Insira o valor atual do salario da pessoa, se aplicável." WidthLabel="277" Width="381"/>
+											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Valor Atual do Salario" Help="Insira o valor atual do salario da pessoa, se aplicável." WidthLabel="277" Width="381" KeyDown="HlpTextBox_KeyDown"/>
                                     </WrapPanel>
                                 </Expander>
                             </AdornerDecorator>
                         </TabItem>
-                        <TabItem Header="Filiação">
+                        <TabItem x:Name="tabFiliacao" Header="Filiação">
                             <AdornerDecorator>
                                 <Expander Header="Dados" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
