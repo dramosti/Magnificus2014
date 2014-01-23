@@ -40,6 +40,11 @@ namespace HLP.Comum.ViewModel.Commands
                     if (loginFacade.loginClient.ValidaLogin(xId: this.objViewModel.currentLogin.xId,
                         xSenha: (item as PasswordBox).Password) < 1)
                         this.objViewModel.currentLogin.xError = "* Senha incorreta!";
+                    else if (loginFacade.loginClient.ValidaAcesso(idEmpresa: this.objViewModel.currentLogin.idEmpresa,
+                        xId: this.objViewModel.currentLogin.xId) < 1)
+                    {
+                        this.objViewModel.currentLogin.xError = "* Usuário não tem acesso a empresa selecionada!";
+                    }
                     else
                     {
                         UserData.idUser = loginFacade.loginClient.GetIdFuncionarioByXid(xId: this.objViewModel.currentLogin.xId);

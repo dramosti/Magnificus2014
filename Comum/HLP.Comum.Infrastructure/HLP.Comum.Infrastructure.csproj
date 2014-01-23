@@ -117,7 +117,6 @@
     <Content Include="NInject\Ninject.dll" />
     <Content Include="SearchTextBox\SearchTextBox.dll" />
     <Content Include="Spring\Spring.Core.dll" />
-    <Content Include="Themes\PresentationFramework.Aero2.dll" />
     <Content Include="Zip\ICSharpCode.SharpZipLib.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
