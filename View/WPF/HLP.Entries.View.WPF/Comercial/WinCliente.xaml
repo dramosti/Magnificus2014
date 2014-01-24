@@ -225,6 +225,7 @@
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Memorando" HorizontalAlignment="Left" WidthLabel="150" Width="350"/>
                                 <Components:HlpCheckBox x:Name="chkPessoa" 
+                                                        IsEnabled="{Binding bIsEnabled}"
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
 												IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												Height="27" Margin="10,0,30,-2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="150"/>
@@ -1019,7 +1020,7 @@
                         </Expander>
                         <Expander Header="Calendário" IsExpanded="True" DockPanel.Dock="Top" Height="71">
                             <WrapPanel Orientation="Vertical">
-                                <Components:HlpPesquisa Height="27" Margin="10,10,10,2" Caption="Calendário de Recebimento" Help="Dias nos quais o cliente deseja receber seus pedidos de vendas." WidthLabel="260" Width="550" TableView="vwCalendario" FieldPesquisa="ID">
+                                <Components:HlpPesquisa Height="27" IsEnabled="{Binding bIsEnabled}" Margin="10,10,10,2" Caption="Calendário de Recebimento" Help="Dias nos quais o cliente deseja receber seus pedidos de vendas." WidthLabel="260" Width="550" TableView="vwCalendario" FieldPesquisa="ID">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xNome</System:String>
                                         <System:String>xDescricao</System:String>

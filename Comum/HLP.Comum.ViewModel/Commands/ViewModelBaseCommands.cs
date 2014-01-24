@@ -14,6 +14,7 @@ using HLP.Comum.Infrastructure.Static;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace HLP.Comum.ViewModel.Commands
 {
@@ -96,7 +97,7 @@ namespace HLP.Comum.ViewModel.Commands
         {
             bool bReturn = false;
 
-            if ((objviewModel.NameView != string.Empty) && ((this.currentOp == OperacaoCadastro.livre)||(this.currentOp == OperacaoCadastro.pesquisando)))
+            if ((objviewModel.NameView != string.Empty) && ((this.currentOp == OperacaoCadastro.livre) || (this.currentOp == OperacaoCadastro.pesquisando)))
                 bReturn = true;
             else
                 bReturn = false;
@@ -196,17 +197,12 @@ namespace HLP.Comum.ViewModel.Commands
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
-
-            if (panel != null)
-            {
-              objviewModel.SecondComponentFocus(panel as Panel);
-            }
             objviewModel.currentID = -1;
-
-
+            objviewModel.SetFocusFirstTab(panel as Panel);
         }
 
-       
+
+
         private bool novoBaseCanExecute()
         {
             return (this.currentOp == Resources.RecursosBases.OperacaoCadastro.livre
@@ -215,10 +211,11 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void alterarBase(object panel)
         {
-            this.currentOp = Resources.RecursosBases.OperacaoCadastro.alterando;
             this.objviewModel.bIsEnabled = true;
-            objviewModel.SecondComponentFocus(panel as Panel);
+            this.currentOp = Resources.RecursosBases.OperacaoCadastro.alterando;
+            this.objviewModel.SetFocusFirstTab(panel as Panel);
         }
+
         private bool alterarBaseCanExecute()
         {
             return this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando;
@@ -259,10 +256,10 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.bIsEnabled = false;
             if (panel != null)
             {
-                objviewModel.FirstComponentFocus(panel as Panel);
+                objviewModel.FocusToComponente(panel as Panel, ViewModelBase.focoComponente.Primeiro);
             }
         }
-       
+
         private bool salvarBaseCanExecute()
         {
             if (this.currentOp != Resources.RecursosBases.OperacaoCadastro.criando &&

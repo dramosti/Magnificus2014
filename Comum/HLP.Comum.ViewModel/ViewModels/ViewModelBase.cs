@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Forms;
 using HLP.Comum.Model.Models;
 using System.Windows.Controls.Primitives;
 using HLP.Comum.Resources.Util;
+using System.Windows.Threading;
+using System.Collections;
 
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
+        BackgroundWorker bwFocus = new BackgroundWorker();
+
         public ICommand salvarBaseCommand { get; set; }
         public ICommand deletarBaseCommand { get; set; }
         public ICommand novoBaseCommand { get; set; }
@@ -209,31 +212,109 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         #endregion
 
-        public void SecondComponentFocus(System.Windows.Controls.Panel _panel)
+
+        public Control FirstControl { get; set; }
+        public Control SecondControl { get; set; }
+
+
+        void FindFirstAndSecondComponente(Panel content)
         {
-            _panel.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+            {
+            if (FirstControl == null)
+            {
+                List<Control> lControlesWindow = GetLogicalChildCollection<Control>(content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
+                if (lControlesWindow.Count > 0)
+                {
+                    FirstControl = lControlesWindow.FirstOrDefault();
+
+                    for (int i = 1; i < lControlesWindow.Count; i++)
+                    {
+                        if (lControlesWindow[i].IsEnabled)
+                        {
+                            SecondControl = lControlesWindow[i];
+                            break;
+                        }
+                    }
+                }
+            }
+            }));
+        }
+
+        void SetFocus(Panel content, Control ctrFocus)
+        {
+            List<Control> lDestalhesControle = TabPagesAtivasModel.GetLogicalChildCollection<Control>(ctrFocus);
+            content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
             System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
+            while (!lDestalhesControle.Contains((System.Windows.Controls.Control)Keyboard.FocusedElement))
             {
                 ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                if (ctr.GetType() == typeof(System.Windows.Controls.ComboBox))
-                    break;
             }
-            if (ctr.GetType() == typeof(System.Windows.Controls.TextBox))
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
-        public void FirstComponentFocus(System.Windows.Controls.Panel _panel)
+
+        public void SetFocusFirstTab(System.Windows.Controls.Panel _panel)
         {
-            _panel.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
-            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
             {
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                if (ctr.GetType() == typeof(System.Windows.Controls.ComboBox))
-                    break;
+                if (SecondControl == null || FirstControl == null)
+                    FindFirstAndSecondComponente(_panel);
+
+                if (GetLogicalChildCollection<TabControl>(_panel).ToList().Count() > 0)
+                {
+                    TabItem tb;
+                    TabPagesAtivasModel.GetTabItemByControl((FirstControl as FrameworkElement), out tb);
+                    if (tb != null)
+                        (tb.Parent as TabControl).SelectedItem = tb;
+                }
+            }));
+        }
+
+        public void FocusToComponente(System.Windows.Controls.Panel _panel, focoComponente foco)
+        {
+            Control ctr;
+            if (SecondControl == null)
+                FindFirstAndSecondComponente(_panel);
+
+            if (foco == focoComponente.Primeiro)
+                ctr = FirstControl;
+            else
+                ctr = SecondControl;
+
+            if (ctr != null)
+            {
+                SetFocus(_panel, ctr);
             }
         }
+
+        public enum focoComponente { Primeiro, Segundo };
+
+        public List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
+        {
+            List<T> logicalCollection = new List<T>();
+            GetLogicalChildCollection(parent as DependencyObject, logicalCollection);
+            return logicalCollection;
+        }
+        private void GetLogicalChildCollection<T>(DependencyObject parent, List<T> logicalCollection) where T : DependencyObject
+        {
+            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+           {
+               IEnumerable children = LogicalTreeHelper.GetChildren(parent);
+               foreach (object child in children)
+               {
+                   if (child is DependencyObject)
+                   {
+                       DependencyObject depChild = child as DependencyObject;
+                       if (child is T)
+                       {
+                           logicalCollection.Add(child as T);
+                       }
+                       GetLogicalChildCollection(depChild, logicalCollection);
+                   }
+               }
+           }));
+        }
+
+
     }
 }

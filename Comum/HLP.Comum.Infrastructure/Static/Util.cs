@@ -14,8 +14,7 @@ using System.Configuration;
 namespace HLP.Comum.Infrastructure.Static
 {
     public static class Util
-    {
-
+    {        
         public static void CarregaSettingsAppConfig()
         {
             Sistema.lSettings = new List<System.Configuration.KeyValueConfigurationElement>();

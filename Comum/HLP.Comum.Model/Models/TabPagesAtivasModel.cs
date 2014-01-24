@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.Model.Models
@@ -20,50 +21,60 @@ namespace HLP.Comum.Model.Models
 
         }
 
+        #region Properties
         private Window Windows;
-
         public Window _windows
         {
             get { return Windows; }
             set
             {
-                Windows = value;               
-                lControlesWindow = GetLogicalChildCollection<Control>(value.Content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
+                Windows = value;
                 try
                 { this.NameView = value.GetPropertyValue("NameView").ToString(); }
                 catch (Exception) { }
+
+                #region Controle de Navegação das TabItens
+                lTabItemWindow = GetLogicalChildCollection<TabItem>(value.Content).ToList();
+                foreach (var item in lTabItemWindow)
+                {
+                    try
+                    {
+                        List<Control> lcontrolWindow = GetLogicalChildCollection<Control>(item).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
+                        if (lcontrolWindow.Count > 0)
+                        {
+                            lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
+                            lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+                #endregion
             }
         }
-
+        public List<TabItem> lTabItemWindow { get; set; }
         private string _NameView = string.Empty;
         public string NameView
         {
             get { return _NameView; }
             set { _NameView = value; }
         }
-
         public string _header
         {
             get { return this.Windows.Title; }
         }
-
         public UIElement _content
         {
             get
             {
                 UIElement e = _windows.Content as UIElement;
                 (e as Panel).DataContext = this.Windows.DataContext;
-                
+
                 return e;
             }
         }
-
-      
-        /// <summary>
-        /// Ainda não esta sendo usado, mas caso necessário ja existe a lista dos componentes da window
-        /// </summary>
-        public List<Control> lControlesWindow { get; set; }
-
         public object _currentDataContext
         {
             get
@@ -71,13 +82,16 @@ namespace HLP.Comum.Model.Models
                 return this.Windows.DataContext;
             }
         }
-
-        #region Events
-     
         #endregion
 
+        #region Events
+        void TabPagesAtivasModel_LostFocus(object sender, RoutedEventArgs e)
+        {
+            SetNextTabItem(sender as FrameworkElement);
+        }
+        #endregion
 
-
+        #region Methods
         public static List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
         {
             List<T> logicalCollection = new List<T>();
@@ -100,21 +114,50 @@ namespace HLP.Comum.Model.Models
                 }
             }
         }
-        public void SecondComponentFocus(System.Windows.Controls.Panel _panel)
+        public void SetNextTabItem(FrameworkElement ctr)
         {
-            _panel.Focus();
-
-            _panel.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
-            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            while (ctr.GetType() != typeof(System.Windows.Controls.TextBox))
+            TabItem tb;
+            GetTabItemByControl(ctr, out tb);
+            if (tb != null)
             {
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-                ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-                if (ctr.GetType() == typeof(System.Windows.Controls.ComboBox))
-                    break;
+                if ((tb.Parent as TabControl).SelectedIndex < ((tb.Parent as TabControl).Items.Count - 1))
+                {
+
+                    (tb.Parent as TabControl).SelectedIndex++;
+                }
+                else
+                {
+                    SetNextTabItem(tb.Parent as FrameworkElement);
+                }
             }
-            if (ctr.GetType() == typeof(System.Windows.Controls.TextBox))
-                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            else
+            {
+                (lTabItemWindow.FirstOrDefault().Parent as TabControl).SelectedItem = lTabItemWindow.FirstOrDefault();
+            }
         }
+        public static void GetTabItemByControl(FrameworkElement ctr, out TabItem tab)
+        {
+            if (ctr != null)
+            {
+                if (ctr.Parent != null)
+                {
+                    if (ctr.Parent.GetType() == typeof(TabItem))
+                    {
+                        tab = ctr.Parent as TabItem;
+                    }
+                    else
+                    {
+                        GetTabItemByControl(ctr.Parent as FrameworkElement, out tab);
+                    }
+                }
+                else
+                    tab = null;
+            }
+            else
+                tab = null;
+
+        }
+        #endregion
+
     }
 }

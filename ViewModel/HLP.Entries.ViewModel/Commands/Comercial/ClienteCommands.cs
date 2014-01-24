@@ -16,7 +16,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         clienteService.IserviceClienteClient servico = new clienteService.IserviceClienteClient();
         ClienteViewModel objViewModel;
-        object _panel;
+        BackgroundWorker bWorkerAcoes;
+
         public ClienteCommands(ClienteViewModel objViewModel)
         {
 
@@ -25,7 +26,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
             this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
@@ -52,14 +53,53 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         #region Implementação Commands
 
-        public void Save()
+        public async void Delete()
+        {
+            int idRemoved = (int)this.objViewModel.currentModel.idClienteFornecedor;
+            try
+            {
+                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
+                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
+                {
+                    if (await this.servico.deleteClienteAsync(
+                        idCliente: (int)this.objViewModel.currentModel.idClienteFornecedor)
+                    )
+                    {
+                        this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
+                        this.objViewModel.currentModel = null;
+                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private bool DeleteCanExecute()
+        {
+            if (objViewModel.currentModel == null)
+                return false;
+
+            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
+        }
+
+        public void Save(object _panel)
         {
             try
             {
-                BackgroundWorker bwSalvar = new BackgroundWorker();
-                bwSalvar.DoWork += bwSalvar_DoWork;
-                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bwSalvar.RunWorkerAsync();
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes = new BackgroundWorker();
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
             }
             catch (Exception ex)
             {
@@ -67,30 +107,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
 
         }
-
-        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            try
-            {
-                if (e.Error != null)
-                {
-                    throw new Exception(message: e.Error.Message);
-                }
-                else
-                {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
-                    this.IniciaCollection();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
+            e.Result = e.Argument;
             foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_arquivo.idExcluidos)
             {
                 this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Add(
@@ -146,18 +165,28 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     });
             }
             this.objViewModel.currentModel.idClienteFornecedor = this.servico.saveCliente(objCliente: this.objViewModel.currentModel);
-            this.Inicia_Collections();
+            this.IniciaCollection();
         }
-        private void Inicia_Collections()
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.objViewModel.currentModel.lCliente_fornecedor_arquivo.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_contato.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_Endereco.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_produto.CollectionCarregada();
-            this.objViewModel.currentModel.lCliente_fornecedor_representante.CollectionCarregada();
-        }
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.IniciaCollection();
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
         private bool SaveCanExecute(object objDependency)
         {
             if (objViewModel.currentModel == null || objDependency == null)
@@ -165,63 +194,55 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
-        }
+        }             
 
-        public async void Delete()
-        {
-            int idRemoved = (int)this.objViewModel.currentModel.idClienteFornecedor;
-            try
-            {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
-                {
-                    if (await this.servico.deleteClienteAsync(
-                        idCliente: (int)this.objViewModel.currentModel.idClienteFornecedor)
-                    )
-                    {
-                        this.objViewModel.deletarBaseCommand.Execute(parameter: idRemoved);
-                        this.objViewModel.currentModel = null;
-                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        private bool DeleteCanExecute()
-        {
-            if (objViewModel.currentModel == null)
-                return false;
-
-            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
-        }
-
+        
         private void Novo(object _panel)
         {
+            this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
-            this.objViewModel.novoBaseCommand.Execute(parameter: null);
-            this._panel = _panel;
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
-            return this.objViewModel.novoBaseCommand.CanExecute(parameter: _panel);
+            return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
+
+
 
         private void Alterar(object _panel)
         {
-            this._panel = _panel;
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
         }
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
+        }
+
+
+
+
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -357,7 +378,5 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         }
         #endregion
-
-
     }
 }
