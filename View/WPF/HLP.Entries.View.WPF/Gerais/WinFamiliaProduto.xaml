@@ -11,6 +11,7 @@
         Title="Família de Produtos" Height="660" Width="1200" NameView="vwFamiliaProduto">
 
     <Window.Resources>
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
@@ -134,28 +135,50 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="Tipo de Operação" Width="600">
+                            <DataGridTemplateColumn x:Name="clTipoOp" Header="Tipo de Operação" Width="600" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox
-                                                    ItemsSource="{Binding Source={StaticResource lTpOper}}"
-                                                    SelectedValuePath="id"
-                                                    DisplayMemberPath="display"
-                                                    SelectedValue="{Binding idTipoOperacao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                        <TextBlock Text="{Binding Path=idTipoOperacao, Converter={StaticResource cbxDisplayConv}, 
+                                            ConverterParameter={StaticResource lTpOper}}"
+                                                   />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
+                                            <ComboBox x:Name="cbxStUsuario"
+                ItemsSource="{Binding Source={StaticResource lTpOper}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idTipoOperacao,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Classe Financeira" Width="*">
+                            <DataGridTemplateColumn x:Name="clClasseFin" Header="Classe Financeira" Width="*" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox
-                                                ItemsSource="{Binding Source={StaticResource lClasses}}"
-                                                SelectedValuePath="id"
-                                                DisplayMemberPath="display"
-                                                SelectedValue="{Binding idClasseFinanceira, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                        <TextBlock Text="{Binding Path=idClasseFinanceira, Converter={StaticResource cbxDisplayConv}, 
+                                            ConverterParameter={StaticResource lClasses}}"
+                                                   />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
+                                            <ComboBox x:Name="cbxStUsuario"
+                ItemsSource="{Binding Source={StaticResource lClasses}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idClasseFinanceira,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>                            
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>

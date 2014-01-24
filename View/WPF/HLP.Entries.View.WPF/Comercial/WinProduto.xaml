@@ -12,6 +12,7 @@
         <conv:DateTimeTimeSpanConverter x:Key="timeSpanConverter"/>
         <conv:PorcentagemConverter x:Key="porcConverter"/>
         <conv:MoedaConverter x:Key="moedaConverter"/>
+        <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lResultUsuarios" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
@@ -596,31 +597,64 @@
                         CanUserDeleteRows="True"
                         CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn 
-								ElementStyle="{StaticResource CellErrorStyle}"
-								Binding="{Binding Path=dInicial, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-								Header="Data/Hora inicial da Revisão" Width="250"/>
-                            <DataGridTemplateColumn Header="Usuários" Width="150">
+                            <DataGridTemplateColumn x:Name="clDtHrInicialRevisao" Header="Data/Hora inicial da Revisão" Width="250">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox 
-                                            ItemsSource="{Binding Source={StaticResource lResultUsuarios}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"
-                                            SelectedValue="{Binding idFuncionario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                        <TextBlock Text="{Binding Path=dInicial}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
+                                            <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-
+                            <DataGridTemplateColumn x:Name="clUsuarios" Header="Usuário" Width="150" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=idFuncionario, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lResultUsuarios}}"
+                                                   />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
+                                            <ComboBox x:Name="cbxStUsuario"
+                ItemsSource="{Binding Source={StaticResource lResultUsuarios}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idFuncionario,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
 
                             <DataGridTextColumn 
 								ElementStyle="{StaticResource CellErrorStyle}"
 								Binding="{Binding Path=xRevisao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 								Header="Descrição da Revisão" Width="250"/>
-                            <DataGridTextColumn 
-								ElementStyle="{StaticResource CellErrorStyle}"
-								Binding="{Binding Path=dFinal, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-								Header="Data/Hora final da Revisão" Width="*"/>
+                            <DataGridTemplateColumn x:Name="clDtHrFinal" Header="Data/Hora final da Revisão" Width="*"
+                                                    >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=dFinal}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
+                                            <DatePicker x:Name="dateScheduledPicker" 
+                                                        SelectedDate="{Binding Path=dFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>                            
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>

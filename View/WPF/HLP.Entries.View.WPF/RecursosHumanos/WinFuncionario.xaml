@@ -10,7 +10,7 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
-    <runtime:WindowsBase.Resources>  
+    <runtime:WindowsBase.Resources>
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
@@ -199,7 +199,7 @@
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>                            
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn                                
                                 Header="Endereço" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
@@ -597,36 +597,63 @@
                           CanUserAddRows="True"
                             >
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="Tipo Certificação" Width="120">
+                            <DataGridTemplateColumn x:Name="clStCertificacao" Header="Tipo Certificação" Width="120" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox 
-                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDictCertif}}"
-                                DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-                                SelectedValue="{Binding enumTipoCertificacao,
-                                UpdateSourceTrigger=LostFocus}"/>
+                                        <TextBlock Text="{Binding Path=enumTipoCertificacao}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
 
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEdit}" >
+                                            <ComboBox x:Name="cbxEdit"
+                ItemsSource="{Binding Source={StaticResource EnumDescriptionDictCertif}}" 
+                                                      DisplayMemberPath="Key"
+                                SelectedValuePath="Value"
+            SelectedValue="{Binding enumTipoCertificacao,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
 
                             <DataGridTextColumn                                
                                 Header="Certificação" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCertificacao, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                            <DataGridTextColumn                                
-                                Header="Data de Conclusão" Width="200"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=dConclusao, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                            </DataGridTextColumn>
-                            <DataGridTextColumn                                
-                                Header="Data de Validade" Width="200"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-									Binding="{Binding Path=dValidade, UpdateSourceTrigger=LostFocus, Converter={StaticResource maskConverter}, ConverterParameter=date,
-                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
+                            <DataGridTemplateColumn x:Name="dtConclusao" Header="Data de Conclusão" Width="200">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=dConclusao, StringFormat=\{0:d\}}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
+                                            <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dConclusao, 
+                                                Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="dtValidade" Header="Data de Validade" Width="200">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=dValidade, StringFormat=\{0:d\}}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
+                                            <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dValidade, 
+                                                Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn                                
                                 Header="Memorando" Width="200"
                                     ElementStyle="{StaticResource CellErrorStyle}"
@@ -679,16 +706,27 @@
                                     CanUserAddRows="True"
                                     >
                                 <DataGrid.Columns>
-                                    <DataGridTemplateColumn Header="Produtos" Width="150">
+                                    <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="150" >
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <ComboBox  
-                                        ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValue="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                         />
+                                                <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
+                                                    ConverterParameter={StaticResource lresultProdutos}}"
+                                                   />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
+                                        <DataGridTemplateColumn.CellEditingTemplate>
+                                            <DataTemplate>
+                                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEdit}" >
+                                                    <ComboBox x:Name="cbxEdit"
+                ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idProduto,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellEditingTemplate>
                                     </DataGridTemplateColumn>
                                     <DataGridTextColumn                                
                                         Header="% Comissão a Vista" Width="200"

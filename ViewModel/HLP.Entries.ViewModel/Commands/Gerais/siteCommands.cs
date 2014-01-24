@@ -202,10 +202,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getSiteAsync(idSite:
-                this.objViewModel.currentID);
+            if (this.objViewModel.currentID > 0)
+                this.objViewModel.currentModel = this.servico.getSite(idSite:
+                    this.objViewModel.currentID);
         }
         #endregion
 
