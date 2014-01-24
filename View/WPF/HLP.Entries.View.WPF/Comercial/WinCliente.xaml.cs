@@ -28,40 +28,9 @@ namespace HLP.Entries.View.WPF.Comercial
         {
             InitializeComponent();
             this.ViewModel = new ClienteViewModel();
-            #region TESTES
-            //List<TabItem> lTabs = GetLogicalChildCollection<TabItem>(this);
-            //foreach (TabItem item in lTabs)
-            //{            
-            //    var dados = GetLogicalChildCollection<Control>(item);
-            //}
-            //((TabControl)lTabs[0].Parent).SelectedItem = lTabs[0];
-            #endregion
+           
         }
-
-        #region TESTES
-        public static List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
-        {
-            List<T> logicalCollection = new List<T>();
-            GetLogicalChildCollection(parent as DependencyObject, logicalCollection);
-            return logicalCollection;
-        }
-        private static void GetLogicalChildCollection<T>(DependencyObject parent, List<T> logicalCollection) where T : DependencyObject
-        {
-            IEnumerable children = LogicalTreeHelper.GetChildren(parent);
-            foreach (object child in children)
-            {
-                if (child is DependencyObject)
-                {
-                    DependencyObject depChild = child as DependencyObject;
-                    if (child is T)
-                    {
-                        logicalCollection.Add(child as T);
-                    }
-                    GetLogicalChildCollection(depChild, logicalCollection);
-                }
-            }
-        }
-        #endregion
+             
 
 
         public ClienteViewModel ViewModel
@@ -93,7 +62,7 @@ namespace HLP.Entries.View.WPF.Comercial
 
         private void HlpTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            tabPessoal.SelectedItem = tabFiliacao;
+           // tabPessoal.SelectedItem = tabFiliacao;
         }
 
     }

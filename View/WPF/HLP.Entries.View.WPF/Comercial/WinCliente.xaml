@@ -169,9 +169,9 @@
 												Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 												Height="27" Margin="10,0,30,2" Caption="Código" WidthLabel="150" HorizontalAlignment="Left" Width="296"/>
                                 <Components:HlpDateTimePicker 
+                                    IsEnabled="False"
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												SelectedDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="False" 
+												SelectedDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
 												Height="27" Margin="10,0,30,-2" Caption="Data do Cadastro" WidthLabel="150" HorizontalAlignment="Left"/>
                                 <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
