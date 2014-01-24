@@ -10,7 +10,8 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
-    <runtime:WindowsBase.Resources>
+    <runtime:WindowsBase.Resources>  
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
@@ -178,20 +179,27 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn  Header="Tipo Endereço" Width="120"                                    >
+                            <DataGridTemplateColumn x:Name="clStEndereco" Header="Tipo Endereço" Width="100" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox                               
-                                ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
-                                DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-                                SelectedValue="{Binding enumTipoEnder,
-                                UpdateSourceTrigger=LostFocus}"/>
+                                        <TextBlock Text="{Binding Path=enumTipoEnder}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
 
-                           
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
+                                            <ComboBox x:Name="cbxStEndereco"
+                ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}" 
+                                                      DisplayMemberPath="Key"
+                                SelectedValuePath="Value"
+            SelectedValue="{Binding enumTipoEnder,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>                            
                             <DataGridTextColumn                                
                                 Header="Endereço" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
@@ -238,20 +246,29 @@
                                     ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                            <DataGridTemplateColumn  Header="Cidades" Width="150">
+
+                            <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="150" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox 
-                                ItemsSource="{Binding Source={StaticResource lresultCidades}}"
-                                SelectedValuePath="id"
-                                DisplayMemberPath="display"
-                                SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                />
+                                        <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresultCidades}}"
+                                                   />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
+                                            <ComboBox x:Name="cbxStCidade"
+                                                      SelectionChanged="cbxStCidade_SelectionChanged"
+                ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idCidade,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-
-                           
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>
@@ -593,7 +610,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            
+
                             <DataGridTextColumn                                
                                 Header="Certificação" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"

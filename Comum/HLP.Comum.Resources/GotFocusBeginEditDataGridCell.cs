@@ -94,7 +94,6 @@ namespace HLP.Comum.Resources
                             cell.IsSelected = true;
                             cell.IsEditing = true;
                         }
-
                     }
                     else
                     {

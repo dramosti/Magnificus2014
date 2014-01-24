@@ -81,6 +81,7 @@
     <Compile Include="Components\AdornerExtensions.cs" />
     <Compile Include="Components\AdornerLabel.cs" />
     <Compile Include="Components\BaseControl.cs" />
+    <Compile Include="Components\CustomComboBox.cs" />
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
       <DependentUpon>HlpTimePicker.xaml</DependentUpon>
@@ -108,6 +109,7 @@
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />
+    <Compile Include="Converters\ComboBoxDisplayConverter.cs" />
     <Compile Include="Converters\DateTimeTimeSpanConverter.cs" />
     <Compile Include="Converters\DateTimeToStringHourConverter.cs" />
     <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
