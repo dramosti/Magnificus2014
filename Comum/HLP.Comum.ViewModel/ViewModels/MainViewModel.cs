@@ -15,6 +15,7 @@ using HLP.Comum.Infrastructure.Static;
 using System.IO;
 using System.Drawing;
 using System.Windows.Media.Imaging;
+using System.Reflection;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
@@ -33,6 +34,18 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 _sizeColunaDados = value;
                 base.NotifyPropertyChanged(propertyName: "sizeColunaDados");
+            }
+        }
+
+        private string _xVersao;
+
+        public string xVersao
+        {
+            get { return "Versão: " + _xVersao; }
+            set
+            {
+                _xVersao = value;
+                base.NotifyPropertyChanged(propertyName: "xVersao");
             }
         }
 
@@ -125,13 +138,14 @@ namespace HLP.Comum.ViewModel.ViewModels
                 throw;
             }
 
-
+            this.xVersao = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         public void CarregaDadosLogin()
         {
             this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
             this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
+            this.sizeColunaDados = this.currentFuncionario.xNome.Length * 10;
         }
 
         private WinManModel _winMan;

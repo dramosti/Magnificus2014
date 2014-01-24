@@ -46,9 +46,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type DataGridCell}">
+    <!--<Style TargetType="{x:Type ComboBox}">
+        <EventSetter Event="SelectionChanged" Handler="Util:ComumEvents.ComboBox_SelectionChanged"/>
+    </Style>-->
+    <!--<Style TargetType="{x:Type DataGridCell}">
         <Setter Property="Util:GotFocusBeginEditDataGridCell.BeginEdit" Value="True"/>
-    </Style>
+    </Style>-->
     <Style x:Key="BackgroundBorderTitle" TargetType="{x:Type Border}">
         <Setter Property="BorderBrush" Value="#E8E8E8"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>

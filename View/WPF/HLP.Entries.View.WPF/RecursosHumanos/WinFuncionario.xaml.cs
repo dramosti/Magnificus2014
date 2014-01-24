@@ -39,5 +39,16 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
                 this.DataContext = value;
             }
         }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+        }
+
+        private void cbxStCidade_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        
     }
 }
