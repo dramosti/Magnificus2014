@@ -14,6 +14,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
     public class Tipo_documentoCommand
     {
+        BackgroundWorker bWorkerAcoes;
         Tipo_documentoService.IserviceTipo_documentoClient servico = new Tipo_documentoService.IserviceTipo_documentoClient();
         Tipo_documentoViewModel objViewModel;
         public Tipo_documentoCommand(Tipo_documentoViewModel objViewModel)
@@ -43,9 +44,9 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                         canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
-                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));            
-        
-        
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+
         }
 
         private void Inicia_Collections()
@@ -55,7 +56,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         #region Implementação Commands
 
-        public async void Save(object _panel)
+        public void Save(object _panel)
         {
             try
             {
@@ -68,16 +69,43 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
 
-                this.objViewModel.currentModel.idTipoDocumento = await this.servico.SaveAsync(this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
-                this.Inicia_Collections();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.servico.Save(this.objViewModel.currentModel);
+            e.Result = e.Argument;
+        }
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.Inicia_Collections();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -128,20 +156,46 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
-
         private void Novo(object _panel)
         {
-            this.objViewModel.currentModel = new Model.Fiscal.Tipo_documentoModel();
+            this.objViewModel.currentModel = new Tipo_documentoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(millisecondsTimeout: 100);
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
-
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

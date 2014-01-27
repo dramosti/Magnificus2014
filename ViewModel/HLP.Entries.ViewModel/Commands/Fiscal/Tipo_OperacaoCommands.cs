@@ -303,7 +303,8 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                this.objViewModel.currentModel.lOperacaoReducaoBase.CollectionCarregada();
+                if (this.objViewModel.currentModel != null)
+                    this.objViewModel.currentModel.lOperacaoReducaoBase.CollectionCarregada();
             }
             catch (Exception ex)
             {
@@ -316,6 +317,8 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             if (this.objViewModel.currentID != 0)
                 this.objViewModel.currentModel =
                     this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+            else
+                this.objViewModel.currentModel = null;
         }
         #endregion
 

@@ -12,7 +12,7 @@ namespace HLP.Wcf.Entries
     public interface IserviceTipo_documento
     {
         [OperationContract]
-        int Save(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel);
+        HLP.Entries.Model.Fiscal.Tipo_documentoModel Save(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel);
 
         [OperationContract]
         HLP.Entries.Model.Fiscal.Tipo_documentoModel GetObjeto(int idObjeto);

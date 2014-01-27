@@ -14,6 +14,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
     public class StIcmsCommands
     {
+        BackgroundWorker bWorkerAcoes;
         StIcmsService.IserviceStIcmsClient servico = new StIcmsService.IserviceStIcmsClient();
         StIcmsViewModel objViewModel;
 
@@ -51,12 +52,15 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         #region Implementação Commands
 
-        public async void Save(object _panel)
+        public void Save(object _panel)
         {
             try
             {
-                this.objViewModel.currentModel.idCSTICms = await this.servico.SaveAsync(Objeto: this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
+
             }
             catch (Exception ex)
             {
@@ -64,6 +68,32 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
 
         }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel.idCSTICms = servico.Save(this.objViewModel.currentModel);
+            e.Result = e.Argument;
+        }
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         private bool SaveCanExecute(object objDependency)
         {
             if (objViewModel.currentModel == null || objDependency == null)
@@ -114,6 +144,20 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             this.objViewModel.currentModel = new Situacao_tributaria_icmsModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(millisecondsTimeout: 100);
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -123,6 +167,20 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

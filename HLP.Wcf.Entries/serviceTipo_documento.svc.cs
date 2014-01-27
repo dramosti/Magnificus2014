@@ -29,7 +29,7 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public int Save(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel)
+        public HLP.Entries.Model.Fiscal.Tipo_documentoModel Save(HLP.Entries.Model.Fiscal.Tipo_documentoModel objModel)
         {
             try
             {               
@@ -50,7 +50,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 itipo_documentoRepository.Commit();
-                return (int)objModel.idTipoDocumento;
+                return objModel;
             }
             catch (Exception ex)
             {

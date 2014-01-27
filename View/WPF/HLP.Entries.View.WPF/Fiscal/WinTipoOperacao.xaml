@@ -10,6 +10,7 @@
         x:Class="HLP.Entries.View.WPF.Fiscal.WinTipoOperacao" NameView="vwTipoOperacao"
         Title="Tipo de Operação" Height="660" Width="1200">
     <Window.Resources>
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lresultCidades" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
@@ -229,12 +230,14 @@
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.pInsumoIndustrializacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.pInsumoIndustrializacao, Converter={StaticResource porcConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Porcentagem de insumo no itme de industrialização" HorizontalAlignment="Left" WidthLabel="455" Width="561"/>
                                 <Components:HlpTextBox 
 									Validation.ErrorTemplate="{StaticResource exceptionComp}"
-									Text="{Binding currentModel.pMaoObraIndustrializacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.pMaoObraIndustrializacao, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Porcentagem de mão de obra no itme de industrialização" HorizontalAlignment="Left" WidthLabel="455" Width="561"/>
                                 <Components:HlpCheckBox 
@@ -345,27 +348,32 @@
                                         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                             <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												Text="{Binding currentModel.pIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.pIss, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,0,2" Caption="Alíquota de iss" HorizontalAlignment="Left" WidthLabel="347" Width="450"/>
                                             <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												Text="{Binding currentModel.pReducaoBaseIrrf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.pReducaoBaseIrrf, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,0,2" Caption="Alíquota de redução de base de cálculo de irrf" HorizontalAlignment="Left" WidthLabel="347" Width="450"/>
                                             <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												Text="{Binding currentModel.pIrrf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.pIrrf, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,0,2" Caption="Alíquota de irrf" HorizontalAlignment="Left" WidthLabel="347" Width="450"/>
                                             <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												Text="{Binding currentModel.pReducaoBaseInss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.pReducaoBaseInss, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,0,2" Caption="Alíquota de redução de base de cálculo de inss" HorizontalAlignment="Left" WidthLabel="347" Width="450"/>
                                             <Components:HlpTextBox 
 												Validation.ErrorTemplate="{StaticResource exceptionComp}"
-												Text="{Binding currentModel.pInss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.pInss, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,0,2" Caption="Alíquota de inss" HorizontalAlignment="Left" WidthLabel="347" Width="450"/>
                                             <Components:HlpCheckBox 
@@ -400,7 +408,8 @@
                                         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                             <Components:HlpTextBox 
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
-											Text="{Binding currentModel.nCoeficienteSubstituicaoTributariaPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											Text="{Binding currentModel.nCoeficienteSubstituicaoTributariaPis, 
+                                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Coeficiente de subst tributária do pis" WidthLabel="300" Width="449"/>
                                             <Components:HlpTextBox 
@@ -410,12 +419,14 @@
 											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Coeficiente de subst tributária do cofins" WidthLabel="300" Width="449"/>
                                             <Components:HlpTextBox 
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
-											Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, Converter={StaticResource porcConverter},
+                                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Alíquota de pis" WidthLabel="300" Width="449"/>
                                             <Components:HlpTextBox 
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
-											Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											Text="{Binding currentModel.pCofins, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Alíquota de cofins" WidthLabel="300" Width="449"/>
                                             <Components:HlpComboBox 
@@ -523,17 +534,18 @@
                                         </WrapPanel>
                                     </Expander>
                                     <Expander Header="IPI" IsExpanded="True">
-                                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                                        <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
                                             <Components:HlpTextBox 
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
-											Text="{Binding currentModel.pIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											Text="{Binding currentModel.pIpi, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                                NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Alíquota de ipi" WidthLabel="244" Width="393.5"/>
+											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Alíquota de ipi" WidthLabel="100" Width="180"/>
                                             <Components:HlpComboBox 
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
 											SelectedIndex="{Binding currentModel.stCompoeBaseIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo de ipi?" WidthLabel="244">
+											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Compõe a base de cálculo de ipi?" WidthLabel="200">
                                                 <Components:HlpComboBox.Items>
                                                     <System:String>0-Produtos</System:String>
                                                     <System:String>1-Produtos+Frete</System:String>
@@ -545,7 +557,7 @@
 											Validation.ErrorTemplate="{StaticResource exceptionComp}"
 											Text="{Binding currentModel.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Situação tributária de ipi" WidthLabel="244" Width="521" TableView="vwStIPI" FieldPesquisa="ID">
+											Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Situação tributária de ipi" WidthLabel="150" Width="521" TableView="vwStIPI" FieldPesquisa="ID">
                                                 <Components:HlpPesquisa.Items>
                                                     <System:String>cCSTIpi</System:String>
                                                     <System:String>xCSTIpi</System:String>
@@ -569,19 +581,28 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="Cidades" Width="150">
+                            <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="150" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox 
-                                            ItemsSource="{Binding Source={StaticResource lresultCidades}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"
-                                            SelectedValue="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                        <TextBlock Text="{Binding Path=idUf, Converter={StaticResource cbxDisplayConv}, 
+                                            ConverterParameter={StaticResource lresultCidades}}"
+                                                   />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
+                                            <ComboBox x:Name="cbxStCidade"
+                ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idUf, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
 
-                           
                             <DataGridTextColumn 
 							 ElementStyle="{StaticResource CellErrorStyle}"
                              Binding="{Binding Path=pReducaoIcms, UpdateSourceTrigger=LostFocus,

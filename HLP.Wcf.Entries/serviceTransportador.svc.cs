@@ -66,7 +66,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int saveTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador)
+        public HLP.Entries.Model.Models.Transportes.TransportadorModel saveTransportador(HLP.Entries.Model.Models.Transportes.TransportadorModel objTransportador)
         {
 
             try
@@ -151,7 +151,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 this.transportadorRepository.CommitTransaction();
-                return (int)objTransportador.idTransportador;
+                return objTransportador;
             }
             catch (Exception ex)
             {
@@ -166,9 +166,9 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                
 
-                this.transportadorRepository.BeginTransaction();                
+
+                this.transportadorRepository.BeginTransaction();
                 this.transportador_ContatoRepository.DeletePorTransportador(idTransportador: idTransportador);
                 this.transportador_EnderecoRepository.DeletePorTransportador(idTransportador: idTransportador);
                 this.transportador_MotoristaRepository.DeletePorTransportador(idTransportador: idTransportador);
