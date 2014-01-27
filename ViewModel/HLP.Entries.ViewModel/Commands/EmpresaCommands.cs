@@ -14,6 +14,7 @@ namespace HLP.Entries.ViewModel.Commands
 {
     public class EmpresaCommands
     {
+        BackgroundWorker bWorkerAcoes;
         EmpresaViewModel objViewModel;
         empresaService.IserviceEmpresaClient servico = new empresaService.IserviceEmpresaClient();
 
@@ -50,6 +51,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
+       
         public void Save(object _panel)
         {
             try
@@ -63,15 +65,50 @@ namespace HLP.Entries.ViewModel.Commands
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel = servico.Save(objEmpresa: objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
-                this.Inicia_Collections();
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentModel = servico.Save(objEmpresa: objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            e.Result = e.Argument;
+        }
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.Inicia_Collections();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -143,6 +180,20 @@ namespace HLP.Entries.ViewModel.Commands
         {
             this.objViewModel.currentModel = new EmpresaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -152,7 +203,22 @@ namespace HLP.Entries.ViewModel.Commands
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
         }
+
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
+        }
+
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);

@@ -42,9 +42,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
-
-
-
         }
 
 

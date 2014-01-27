@@ -18,8 +18,10 @@ using System.Collections;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase<T> : INotifyPropertyChanged where T : Object
     {
+        public T currentModel2 { get; set; }
+
         BackgroundWorker bwFocus = new BackgroundWorker();
 
         public ICommand salvarBaseCommand { get; set; }
@@ -221,23 +223,27 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
             {
-            if (FirstControl == null)
-            {
-                List<Control> lControlesWindow = GetLogicalChildCollection<Control>(content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
-                if (lControlesWindow.Count > 0)
+                if (FirstControl == null)
                 {
-                    FirstControl = lControlesWindow.FirstOrDefault();
-
-                    for (int i = 1; i < lControlesWindow.Count; i++)
+                    List<Control> lControlesWindow = GetLogicalChildCollection<Control>(content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
+                    if (lControlesWindow.Count > 0)
                     {
-                        if (lControlesWindow[i].IsEnabled)
+                        FirstControl = lControlesWindow.FirstOrDefault();
+
+                        for (int i = 1; i < lControlesWindow.Count; i++)
                         {
-                            SecondControl = lControlesWindow[i];
-                            break;
+                            if (lControlesWindow[i].IsEnabled)
+                            {
+                                SecondControl = lControlesWindow[i];
+                                break;
+                            }
+                        }
+                        if (SecondControl == null)
+                        {
+                            SecondControl = FirstControl;
                         }
                     }
                 }
-            }
             }));
         }
 

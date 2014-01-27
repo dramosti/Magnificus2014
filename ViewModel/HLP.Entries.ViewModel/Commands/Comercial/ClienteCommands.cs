@@ -199,6 +199,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         
         private void Novo(object _panel)
         {
+            this.objViewModel.currentModel = new Cliente_fornecedorModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwNovo_DoWork;
@@ -207,7 +208,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = new Cliente_fornecedorModel();
+            System.Threading.Thread.Sleep(100);
             e.Result = e.Argument;
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

@@ -14,6 +14,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class MoedaCommands
     {
+        BackgroundWorker bWorkerAcoes;
         MoedaViewModel objViewModel;
         moedaService.IserviceMoedaClient servico = new moedaService.IserviceMoedaClient();
         public MoedaCommands(MoedaViewModel objViewModel)
@@ -51,19 +52,54 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-        public async void Save(object _panel)
+        public void Save(object _panel)
         {
             try
             {
-                this.objViewModel.currentModel.idMoeda = await this.servico.saveMoedaAsync(objMoeda:
-                    this.objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentModel.idMoeda = this.servico.saveMoeda(objMoeda:
+                    this.objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            e.Result = e.Argument;
+        }
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -116,6 +152,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.currentModel = new MoedaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -125,6 +175,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

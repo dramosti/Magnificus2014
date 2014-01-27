@@ -15,9 +15,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class FuncionarioCommands
     {
+        BackgroundWorker bWorkerAcoes;
         FuncionarioViewModel objViewModel;
         funcionarioService.IserviceFuncionarioClient servico = new funcionarioService.IserviceFuncionarioClient();
-        object _panel;
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
 
@@ -26,7 +26,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => DeleteCanExecute());
 
-            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(),
+            this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
             this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
@@ -51,7 +51,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-        public void Save()
+       
+        public void Save(object _panel)
         {
             try
             {
@@ -108,17 +109,33 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         });
                 }
                 #endregion
-                BackgroundWorker bwSalvar = new BackgroundWorker();
-                bwSalvar.DoWork += bwSalvar_DoWork;
-                bwSalvar.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bwSalvar.RunWorkerAsync();
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
         }
 
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                this.objViewModel.currentModel = servico.saveFuncionario(objFuncionario:
+                    this.objViewModel.currentModel);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            e.Result = e.Argument;
+        }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -129,22 +146,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
                     this.Inicia_Collections();
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                this.objViewModel.currentModel = servico.saveFuncionario(objFuncionario:
-                    this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -202,7 +206,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.currentModel = new FuncionarioModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this._panel = _panel;
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -211,14 +228,21 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Alterar(object _panel)
         {
-            this._panel = _panel;
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.currentModel.lFuncionario_Acesso.xCampoId = "idAcesso";
-            this.objViewModel.currentModel.lFuncionario_Arquivo.xCampoId = "idFuncionarioArquivo";
-            this.objViewModel.currentModel.lFuncionario_Certificacao.xCampoId = "idFuncionarioCertificacao";
-            this.objViewModel.currentModel.lFuncionario_Comissao_Produto.xCampoId = "idFuncionarioComissaoProduto";
-            this.objViewModel.currentModel.lFuncionario_Endereco.xCampoId = "idEndereco";
-            this.objViewModel.currentModel.lFuncionario_Margem_Lucro_Comissao.xCampoId = "idFuncionarioMargemLucroComissao";
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {
