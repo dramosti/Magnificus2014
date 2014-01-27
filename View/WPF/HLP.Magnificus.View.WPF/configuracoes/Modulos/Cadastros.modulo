@@ -42,7 +42,7 @@
   <object id="WinAcesso" name="Acesso" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinAcesso, HLP.Entries.View.WPF">
   </object>
-  <object id="WinCondicaoEngtrega" name="Condição_de_Entrega" singleton="false" scope="request"
+  <object id="WinCondicaoEntrega" name="Condição_de_Entrega" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega, HLP.Entries.View.WPF">
   </object>
   <object id="WinCondicaoPagamento" name="Condição_de_Pagamento" singleton="false" scope="request"

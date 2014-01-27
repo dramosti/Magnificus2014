@@ -14,6 +14,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 {
     public class RotaCommand
     {
+        BackgroundWorker bWorkerAcoes;
         RotaViewModel objViewModel;
         rotaService.IserviceRotaClient servico = new rotaService.IserviceRotaClient();
         public RotaCommand(RotaViewModel objViewModel)
@@ -50,12 +51,10 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
 
         #region Implementação Commands
-
-        public async void Save(object _panel)
+        public void Save(object _panel)
         {
             try
             {
-
                 foreach (int id in this.objViewModel.currentModel.lRota_Praca.idExcluidos)
                 {
                     this.objViewModel.currentModel.lRota_Praca.Add(
@@ -65,15 +64,42 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                this.objViewModel.currentModel = await servico.SaveAsync(objViewModel.currentModel);
-                this.objViewModel.salvarBaseCommand.Execute(parameter: _panel);
-                this.Inicia_Collections();
+                objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes.DoWork += bwSalvar_DoWork;
+                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+                bWorkerAcoes.RunWorkerAsync(_panel);
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
 
+        }
+        void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = servico.Save(this.objViewModel.currentModel);
+            e.Result = e.Argument;
+        }
+        void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.Inicia_Collections();
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private bool SaveCanExecute(object objDependency)
         {
@@ -123,20 +149,47 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
             return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
         }
-
         private void Novo(object _panel)
         {
-            objViewModel.currentModel = new RotaModel();
+            this.objViewModel.currentModel = new RotaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwNovo_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
         }
+
+        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(millisecondsTimeout: 100);
+            e.Result = e.Argument;
+        }
+        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
+        }
+
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
-
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+            bWorkerAcoes = new BackgroundWorker();
+            bWorkerAcoes.DoWork += bwAlterar_DoWork;
+            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+            bWorkerAcoes.RunWorkerAsync(_panel);
+        }
+
+        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(100);
+            e.Result = e.Argument;
+        }
+        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

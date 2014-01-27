@@ -25,7 +25,7 @@
   <xs:element name="saveTransportadorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="saveTransportadorResult" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" minOccurs="0" name="saveTransportadorResult" nillable="true" type="q3:TransportadorModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +46,7 @@
   <xs:element name="copyTransportador">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" minOccurs="0" name="objTransportador" nillable="true" type="q3:TransportadorModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" minOccurs="0" name="objTransportador" nillable="true" type="q4:TransportadorModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
