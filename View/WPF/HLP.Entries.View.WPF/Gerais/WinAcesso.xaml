@@ -10,6 +10,7 @@
 		xmlns:System="clr-namespace:System;assembly=mscorlib"  
         Title="Acesso" Height="660" Width="1024" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
+        <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <conv:boolMultiConverter x:Key="boolMultiConverter"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lresultSetor" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
@@ -126,32 +127,51 @@
                         </BindingGroup>
                     </DataGrid.BindingGroup>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Empresa" Width="450">
+                        <DataGridTemplateColumn x:Name="clEmpresa" Header="Empresa" Width="450" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox 
-                                        ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValue="{Binding idEmpresa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                        />
+                                    <TextBlock Text="{Binding Path=idEmpresa, Converter={StaticResource cbxDisplayConv}, 
+                                        ConverterParameter={StaticResource lresultEmpresa}}"
+                                                   />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
+                                        <ComboBox x:Name="cbxEditing"
+                ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idEmpresa,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-
-                        <DataGridTemplateColumn Header="Setor" Width="*">
+                        <DataGridTemplateColumn x:Name="clSetor" Header="Setor" Width="*" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox  
-                                        ItemsSource="{Binding Source={StaticResource lresultSetor}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValue="{Binding idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                    <TextBlock Text="{Binding Path=idSetor, Converter={StaticResource cbxDisplayConv}, 
+                                        ConverterParameter={StaticResource lresultSetor}}"
+                                                   />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
+                                        <ComboBox x:Name="cbxEditing"
+                ItemsSource="{Binding Source={StaticResource lresultSetor}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idSetor,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
 
-                       
                     </DataGrid.Columns>
                     <DataGrid.IsEnabled>
                         <MultiBinding Converter="{StaticResource boolMultiConverter}">

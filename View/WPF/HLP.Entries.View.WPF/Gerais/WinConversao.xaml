@@ -9,6 +9,7 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinConversao"
         Title="Conversão" Height="660" Width="1024" NameView="vwProduto">
     <Window.Resources>
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"></convert:ComboBoxDisplayConverter>
         <ObjectDataProvider
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
@@ -60,31 +61,49 @@
                         </BindingGroup>
                     </DataGrid.BindingGroup>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Conversão De" Width="150">
+                        <DataGridTemplateColumn x:Name="clDeUnidade" Header="Conversão De" Width="150" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox 
-                                        ItemsSource="{Binding Source={StaticResource lResultConversao}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValue="{Binding idDeUnidadeMedida, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                    <TextBlock Text="{Binding Path=idDeUnidadeMedida, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lResultConversao}}"
+                                                   />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
+                                        <ComboBox x:Name="cbxStUsuario"
+                ItemsSource="{Binding Source={StaticResource lResultConversao}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idDeUnidadeMedida,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Conversão Para" Width="150">
+                        <DataGridTemplateColumn x:Name="clParaUnidade" Header="Conversão Para" Width="150" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox
-                                        ItemsSource="{Binding Source={StaticResource lResultConversao}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValue="{Binding idParaUnidadeMedida, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                    <TextBlock Text="{Binding Path=idParaUnidadeMedida, Converter={StaticResource cbxDisplayConv}, 
+                                        ConverterParameter={StaticResource lResultConversao}}"
+                                                   />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUsuario}" >
+                                        <ComboBox x:Name="cbxStUsuario"
+                ItemsSource="{Binding Source={StaticResource lResultConversao}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idParaUnidadeMedida,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-
-
-
                         <DataGridTextColumn                                
                                         Header="Fator" Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
@@ -97,20 +116,27 @@
                                         Binding="{Binding Path=nQuantidadeAdicional, UpdateSourceTrigger=LostFocus,
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                        <DataGridTemplateColumn Header="Arredondamento" Width="*"                                    >
+                        <DataGridTemplateColumn x:Name="clArredond" Header="Arredondamento" Width="*" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox                                
-                                ItemsSource="{Binding Source={StaticResource EnumDescriptionDictArrend}}"
-                                DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-                                SelectedValue="{Binding enumTipoArredondamento,
-                                UpdateSourceTrigger=LostFocus}"/>
+                                    <TextBlock Text="{Binding Path=enumTipoArredondamento}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
 
-                       
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
+                                        <ComboBox x:Name="cbxStEndereco"
+                ItemsSource="{Binding Source={StaticResource EnumDescriptionDictArrend}}" 
+                                                      DisplayMemberPath="Key"
+                                SelectedValuePath="Value"
+            SelectedValue="{Binding enumTipoArredondamento,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

@@ -11,6 +11,7 @@
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
     <runtime:WindowsBase.Resources>
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <ObjectDataProvider 
             MethodName="GetDict"
@@ -25,7 +26,7 @@
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwCidadeToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>        
+        </ObjectDataProvider>
     </runtime:WindowsBase.Resources>
 
     <Grid>
@@ -134,16 +135,26 @@
                           CanUserReorderColumns="False"  
                           CanUserDeleteRows="True" >
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="Tipo Endereço" Width="120">
+                            <DataGridTemplateColumn x:Name="clStEndereco" Header="Tipo Endereço" Width="120" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox                                             
-                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
-                                            DisplayMemberPath="Key"
-                                            SelectedValuePath="Value"
-                                            SelectedValue ="{Binding enumTipoEnder, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <TextBlock Text="{Binding Path=enumTipoEnder}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
+
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
+                                            <ComboBox x:Name="cbxStEndereco"
+                ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}" 
+                                                      DisplayMemberPath="Key"
+                                SelectedValuePath="Value"
+            SelectedValue="{Binding enumTipoEnder,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="Principal" Width="60">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -165,19 +176,28 @@
                             <DataGridTextColumn Header="Bairro" Width="*" Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"/>
                             <DataGridTextColumn Header="Cep" Width="120" Binding="{Binding Path=Cep, UpdateSourceTrigger=PropertyChanged}" />
                             <DataGridTextColumn Header="Caixa Postal" Width="100" Binding="{Binding Path=xCxPostal, UpdateSourceTrigger=PropertyChanged}" />
-                            <DataGridTemplateColumn Header="Cidades" Width="150">
+                            <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="150" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ComboBox  
-                                            ItemsSource="{Binding Source={StaticResource lresult}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"
-                                            SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                        <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, 
+                                            ConverterParameter={StaticResource lresult}}"
+                                                   />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
+                                            <ComboBox x:Name="cbxEditing"
+                ItemsSource="{Binding Source={StaticResource lresult}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idCidade,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-
-                           
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>

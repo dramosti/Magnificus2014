@@ -54,17 +54,18 @@
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True" >
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="Data" Width="*">
+                        <DataGridTemplateColumn x:Name="clData" Header="Data" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding dCalendario, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource dateLongConverter}}"/>
+                                    <TextBlock Text="{Binding Path=dCalendario}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding dCalendario, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
+                                        <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dCalendario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                    </Grid>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>

@@ -4,11 +4,13 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+    xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Transportes.WinRota"
         Title="Rotas" Height="660" Width="1024"
     NameView="vwRota">
     <Window.Resources>
+        <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odpCidade}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
@@ -57,19 +59,28 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=nOrdem, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Ordem" Width="100"/>
                         <DataGridTextColumn Binding="{Binding Path=nDistanciaProximaCidade, UpdateSourceTrigger=PropertyChanged ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Header="Distancia até a próxima Cidade em KM" Width="250"/>
-                        <DataGridTemplateColumn   Header="Cidades" Width="*">
+                        <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="*" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox
-                            ItemsSource="{Binding Source={StaticResource lresult}}"
-                            SelectedValuePath="id"
-                            DisplayMemberPath="display"
-                            SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
+                                    <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresult}}"
+                                                   />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
+                                        <ComboBox x:Name="cbxStCidade"                                                      
+                ItemsSource="{Binding Source={StaticResource lresult}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idCidade,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
 
-                      
                     </DataGrid.Columns>
                 </DataGrid>
             </Expander>

@@ -8,6 +8,7 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco"
         Title="Atribuição Coletiva" Height="400" Width="750" WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
@@ -81,20 +82,28 @@
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
 
-                <DataGridTemplateColumn Header="Produtos" Width="190">
+                <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="190" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox 
-                                        ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValue="{Binding idProduto, Mode=OneWay, ValidatesOnDataErrors=True}" 
-                                        />
-
+                            <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
+                                        ConverterParameter={StaticResource lresultProdutos}}"
+                                                   />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
+                                <ComboBox x:Name="cbxEditing"
+                ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
+                                            SelectedValuePath="id"
+                                            DisplayMemberPath="display"                      
+            SelectedValue="{Binding idProduto,
+                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
-
                 <DataGridTextColumn                                                                        
                     Header="% Desc. Máx." Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
