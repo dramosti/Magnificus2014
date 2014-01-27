@@ -185,7 +185,6 @@
                                         <TextBlock Text="{Binding Path=enumTipoEnder}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
                                         <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
