@@ -10,6 +10,7 @@
           <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
           <xs:element minOccurs="0" name="idModeloDocFiscal" type="xs:int" />
           <xs:element minOccurs="0" name="idTipoDocumento" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lTipo_documento_oper_validaModel" nillable="true" type="tns:ArrayOfTipo_documento_oper_validaModel" />
           <xs:element minOccurs="0" name="stCompoeVlTotalProdutos" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stDocumento" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stGrupoFaturamento" type="xs:unsignedByte" />
@@ -39,6 +40,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Tipo_documentoModel" nillable="true" type="tns:Tipo_documentoModel" />
+  <xs:complexType name="ArrayOfTipo_documento_oper_validaModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tipo_documento_oper_validaModel" nillable="true" type="tns:Tipo_documento_oper_validaModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipo_documento_oper_validaModel" nillable="true" type="tns:ArrayOfTipo_documento_oper_validaModel" />
+  <xs:complexType name="Tipo_documento_oper_validaModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idTipoDocumento" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoDocumentoOperValida" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tipo_documento_oper_validaModel" nillable="true" type="tns:Tipo_documento_oper_validaModel" />
   <xs:complexType name="ArrayOfTipo_documentoModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Tipo_documentoModel" nillable="true" type="tns:Tipo_documentoModel" />

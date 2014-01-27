@@ -9,6 +9,7 @@
         x:Class="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS"
         Title="Código ICMS" Height="660" Width="1101.612" NameView="vwCodigoIcmsPai">
     <Window.Resources>
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lUF" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
@@ -44,19 +45,28 @@
                          CanUserReorderColumns="False"  
                          CanUserDeleteRows="True" >
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="UF" Width="*">
+                        <DataGridTemplateColumn x:Name="clCidades" Header="UF" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox 
-                                            ItemsSource="{Binding Source={StaticResource lUF}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"
-                                            SelectedValue="{Binding idUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True }" />
+                                    <TextBlock Text="{Binding Path=idUf, Converter={StaticResource cbxDisplayConv},
+                                                    ConverterParameter={StaticResource lUF}}"
+                                                   />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
+                                        <ComboBox x:Name="cbxStCidade"
+                ItemsSource="{Binding Source={StaticResource lUF}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idUf,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-
-
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsEstado, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq do Estado" Width="125"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=pIcmsInterna,UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq Interna de ICMS" Width="150"/>
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=.pIcmsSubstituicaoTributaria, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Alíq de Subst. Trib. (MVA/IVA)" Width="200"/>
