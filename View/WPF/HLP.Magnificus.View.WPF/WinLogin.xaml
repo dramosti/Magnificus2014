@@ -153,7 +153,7 @@
                     SelectedIndex="{Binding currentModel.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
 					Height="28" VerticalAlignment="Top" Width="200" DockPanel.Dock="Top" Margin="0,6,0,0"/>
                 <Components:WatermarkTextBox Label="Login"  x:Name="txtLogin"
-					
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					Width="200" Height="27" DockPanel.Dock="Top" Template="{DynamicResource TextBoxLogin}" Margin="0,6,0,0"/>
                 <PasswordBox                     

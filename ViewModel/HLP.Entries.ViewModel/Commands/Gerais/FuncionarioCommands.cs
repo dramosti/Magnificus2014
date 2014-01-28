@@ -51,7 +51,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-       
+
         public void Save(object _panel)
         {
             try
@@ -318,8 +318,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 if (this.objViewModel.currentID != 0)
                     this.objViewModel.currentModel = this.servico.getFuncionario(idFuncionario: this.objViewModel.currentID);
                 else
-                    this.objViewModel.currentModel = new FuncionarioModel();
-                
+                    this.objViewModel.currentModel = null;
+
             }
             catch (Exception)
             {
