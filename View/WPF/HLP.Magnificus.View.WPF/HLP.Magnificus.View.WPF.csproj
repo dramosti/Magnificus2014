@@ -27,7 +27,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>HLP</PublisherName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -53,10 +53,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>76EF6C35F4B624862F578849433A9095536FE594</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>9AFBEF449FB24089E67C85DF79686E73DC192039</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>HLP.Magnificus.View.WPF_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>HLP.Magnificus.View.WPF_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
