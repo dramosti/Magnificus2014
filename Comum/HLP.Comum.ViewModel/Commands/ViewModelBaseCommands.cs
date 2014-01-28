@@ -272,6 +272,7 @@ namespace HLP.Comum.ViewModel.Commands
 
         private void cancelarBase()
         {
+            System.Threading.Thread.Sleep(200);
             if (objviewModel.currentID == 0)
             {
                 this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
