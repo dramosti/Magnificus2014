@@ -136,7 +136,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 if (navigatePesquisa.Count > 0)
                     if (this.navigatePesquisa[this.iPositionCollection] != _currentID)
                         _currentID = this.navigatePesquisa[this.iPositionCollection];
-                
+
                 return _currentID;
             }
         }
@@ -311,9 +311,11 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         public void SetFocusFirstTab(System.Windows.Controls.Panel _panel)
-        {            
+        {
             System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
-            ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            if (ctr != null)
+                ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
             {
                 if (SecondControl == null || FirstControl == null)

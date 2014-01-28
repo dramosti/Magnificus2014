@@ -201,7 +201,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             //this.objViewModel.currentModel = null;
             this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);        
         }
         private bool CancelarCanExecute()
         {
