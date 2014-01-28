@@ -43,15 +43,5 @@ namespace HLP.Entries.View.WPF.Gerais
         {
             //bool b = this.ViewModel.IsValid(obj: this.gridPropriedades);
         }
-
-        private void HlpTextBox_MouseMove(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void TextBox_MouseEnter(object sender, MouseEventArgs e)
-        {
-            IInputElement a = (System.Windows.Controls.Control)System.Windows.Input.Keyboard.FocusedElement;
-        }
     }
 }
