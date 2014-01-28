@@ -18,29 +18,29 @@
 					IsReadOnly="True"
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do juros" WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Juros" Help="Insira um código para o Juros." WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Descrição" Help="Insira a descrição do código de juros. " WidthLabel="166" HorizontalAlignment="Left" Width="400"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.pJuros, Mode=TwoWay, 
                     Converter={StaticResource PorcentagemConverter},
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="% de Juros" Help="Insira a porcentagem de juros que se aplica" WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.nQuantidadeDiasMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Quantidade Juros por:" Help="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês. " WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
                 <Components:HlpComboBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					SelectedIndex="{Binding currentModel.stDiaMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Dias/Mês" Help="Selecione se é Dia ou Mês para aplicar a quantidade informada no campo quantidade. " WidthLabel="166" HorizontalAlignment="Left">
@@ -50,7 +50,7 @@
                     </Components:HlpComboBox.Items>
                 </Components:HlpComboBox>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.nCarencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Carência" Help="Insira o número de dias de carência permitidos antes da aplicação do juros. Os juros são calculados após o número especificado de dias de carência a partir da data de vencimento do pagamento. " WidthLabel="166" HorizontalAlignment="Left" Width="275"/>

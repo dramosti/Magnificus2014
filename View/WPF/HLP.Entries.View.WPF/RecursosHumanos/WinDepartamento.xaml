@@ -12,7 +12,7 @@
         <Expander Header="Departamento" IsExpanded="True">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
-			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
+			 
 			IsReadOnly="True" 
 			Text="{Binding currentModel.idDepartamento, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"		
 			Caption="Código" 
@@ -21,17 +21,17 @@
 			Help="Chave principal do registro departamento"
 		    WidthLabel="110" Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Width="200" />
                 <Components:HlpTextBox
-        	Validation.ErrorTemplate="{StaticResource exceptionComp}" 
+        	 
         	IsEnabled="{Binding bIsEnabled}" 
         	Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
         	Height="27" Margin="10,0,10,2" Caption="Departamento" Field="xDepartamento" Help="Informe um departamento de forma reduzida" Table="idDepartamento" WidthLabel="110" HorizontalAlignment="Left" Width="225"/>
                 <Components:HlpTextBox
-			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
+			 
 			IsEnabled="{Binding bIsEnabled}" 
 			Text="{Binding currentModel.xDescricao, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" 
 			Height="27" Margin="10,0,10,2" Caption="Descrição" Field="xDescrição" Help="Descrição do Departamento" Table="Departamento" WidthLabel="110" HorizontalAlignment="Left" Width="331"/>
                 <Components:HlpTextBox
-			Validation.ErrorTemplate="{StaticResource exceptionComp}" 
+			 
 			IsEnabled="{Binding bIsEnabled}" 
 			Text="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"			
 			Height="27" Margin="10,0,10,2" Caption="Setor" Field="idSetor" Help="Selecione um setor da empresa já cadastrado, mais detalhes no formulário de Setor." Table="Departamento" WidthLabel="110" HorizontalAlignment="Left" Width="225"/>

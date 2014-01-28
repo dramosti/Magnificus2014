@@ -47,12 +47,12 @@
                     <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                         <Components:HlpCheckBox
                         Name="cbUtilizaSistema"
-                		Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                		
                 		IsChecked="{Binding currentModel.stUsuarioAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                 		IsEnabled="{Binding bIsEnabled}" 
                 		Height="27" Margin="10,0,10,2" Caption="Utiliza Sistema" WidthLabel="102" Field="stUsuarioAtivo" Table="Funcionario" HorizontalAlignment="Left"/>
                         <Components:HlpComboBox 
-                        Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                        
 								SelectedIndex="{Binding currentModel.stUsuario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                         Height="27" Margin="10,0,10,2" Caption="Tipo Usuário" Field="stUsuario" Table="Funcionario"
                                             Help="Seleciona o tipo do Usuário" WidthLabel="102" HorizontalAlignment="Left">
@@ -72,7 +72,7 @@
                         isFindFiles="False" 
                         isFindFolder="False"
                         Name="txtLogin"
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.xID, Mode=TwoWay, 
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						Height="27" Margin="10,0,10,2" Caption="Login" WidthLabel="102"
@@ -86,7 +86,7 @@
                         </Components:HlpTextBox>
                         <Components:HlpTextBox 
                         Name="txtSenha"
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.xSenha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						Height="27" Margin="10,0,10,2" Caption="Senha" Field="xSenha" Table="Funcionario" Help="Seleciona a senha do Usuario" WidthLabel="102"
                         LostFocus="controlsBgLogin_LostFocus" HorizontalAlignment="Left" Width="252">

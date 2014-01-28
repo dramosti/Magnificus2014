@@ -18,7 +18,7 @@
 					Text="{Binding currentModel.idCargaTribMediaStIcms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					Height="27" Margin="10,0,0,2" Caption="Código" WidthLabel="192" Width="271" HorizontalAlignment="Left"/>
                 <Components:HlpPesquisa 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Ramo Atividade" FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="192" HorizontalAlignment="Left" Width="500">
@@ -28,7 +28,7 @@
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
                 <Components:HlpPesquisa 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 				 FieldPesquisa="ID"	 TableView="vwUF" Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Uf" WidthLabel="192" HorizontalAlignment="Left" Width="500">
@@ -38,7 +38,7 @@
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,
                     Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"

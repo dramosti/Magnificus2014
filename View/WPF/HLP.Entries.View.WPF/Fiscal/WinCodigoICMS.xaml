@@ -28,7 +28,7 @@
 						Height="27" Margin="10,10,10,2" Width="146" Caption="Código" Help="Código principal do Registro, campo autoicremental" 
                         HorizontalAlignment="Left" WidthLabel="70"/>
                     <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.cIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"		
 						Height="27" Margin="8,10,10,2" Width="190" Caption="Código do ICMS" Help="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto." WidthLabel="118" HorizontalAlignment="Left"/>

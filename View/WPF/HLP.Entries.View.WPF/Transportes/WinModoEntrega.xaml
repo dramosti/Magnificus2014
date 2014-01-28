@@ -15,17 +15,17 @@
                     IsReadOnly="True"
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro dos modos de entrega, auto incremental." WidthLabel="237" HorizontalAlignment="Left" Width="350"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"	
 					Height="27" Margin="10,0,0,2" Caption="Modo de Entrega " Help="Digite um código alfanumérico para o modo de entrega (até 10 caracteres)." WidthLabel="237" HorizontalAlignment="Left" Width="350"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Digite uma breve descrição do modo de entrega. Você pode usar o nome como um nome de pesquisa para localizar um modo de entrega específico. O nome de pesquisa aparece em formulários impressos, como ordens de venda e notas fiscais de clientes. " WidthLabel="237" HorizontalAlignment="Left" Width="520"/>
                 <Components:HlpComboBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					SelectedIndex="{Binding currentModel.stServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Tipo de Serviço" Help="Selecione o tipo de serviço de remessa usado para o modo de entrega selecionado. Eles podem ser:" WidthLabel="237" HorizontalAlignment="Left">
@@ -37,7 +37,7 @@
                     </Components:HlpComboBox.Items>
                 </Components:HlpComboBox>
                 <Components:HlpPesquisa 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Identificação do Transportador" Help="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="237" FieldPesquisa="ID" TableView="vwTransportador" HorizontalAlignment="Left" Width="520">

@@ -55,7 +55,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Valor, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
-                                       Validation.ErrorTemplate="{StaticResource exceptionComp}"/>
+                                       />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                         <DataGridTemplateColumn.CellEditingTemplate>
@@ -68,7 +68,7 @@
                                              DockPanel.Dock="Right"/>
                                     <TextBox TabIndex="0" 
                                              Text="{Binding Path=Valor, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
-                                             Validation.ErrorTemplate="{StaticResource exceptionComp}" 
+                                              
                                              FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" 
                                              Height="Auto" 
                                              HorizontalAlignment="Stretch"

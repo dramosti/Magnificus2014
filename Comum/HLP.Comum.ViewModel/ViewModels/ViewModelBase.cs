@@ -120,7 +120,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                         if (pk != null)
                         {
                             if (((PrimaryKey)pk).isPrimary)
-                            {
+                            {                                
                                 int? value = (int?)(property.GetValue(obj: this.currentModel));
                                 if (value != null)
                                     _currentID = (int)value;

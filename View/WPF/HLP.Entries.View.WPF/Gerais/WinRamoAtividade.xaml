@@ -9,22 +9,22 @@
 		<Expander Header="Principal" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Width="563.5" IsExpanded="True">
 			<StackPanel>
 				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
 					Height="27" Margin="10,10,191.5,2" Caption="Código" Help="Chave principal do registro do Ramo de Atividade, campo auto incremental." WidthLabel="222"/>
 				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xRamo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,191.5,2" Caption="Ramo de Atividade " Help="Digite um nome resumido para o Ramo de Atividade " WidthLabel="222"/>
 				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Descrição " Help="Descrição mais ampla do Ramo de Atividade " WidthLabel="222"/>
 				<Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xCnae, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,191.5,0" Caption="CNAE" Help="Informar a Classificação Nacional de Atividades Econômicas" WidthLabel="222"/>

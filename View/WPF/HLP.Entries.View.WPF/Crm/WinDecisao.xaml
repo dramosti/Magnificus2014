@@ -11,13 +11,13 @@
                 <Components:HlpTextBox Margin="10,0,0,2" Caption="Código" WidthLabel="100" Text="{Binding currentModel.idDecisao, Mode=TwoWay}"                                   
                                    IsReadOnly="True" HorizontalAlignment="Left" Height="27" Width="200"/>
                 <Components:HlpTextBox x:Name="txtdecisao" Margin="10,0,0,2" Caption="Decisao" WidthLabel="100"
-                                   Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                   
                                    Text="{Binding currentModel.xDecisao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                                    IsEnabled="{Binding bIsEnabled}" HorizontalAlignment="Left" Height="27" Width="200"                                 />
                 <Components:HlpTextBox 
                                    Margin="10,0,0,2" Caption="Descrição" WidthLabel="100" Text="{Binding currentModel.xDescricao, Mode=TwoWay, 
                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                                   Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                   
                                    IsEnabled="{Binding bIsEnabled}" HorizontalAlignment="Left" Height="27" Width="475" />
 
             </WrapPanel>

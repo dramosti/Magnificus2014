@@ -57,47 +57,47 @@
                                     IsReadOnly="True"
 									Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do Contato, campo autoincremental" WidthLabel="115" HorizontalAlignment="Left" Width="205"/>
                                     <Components:HlpTextBox 
-                                    	Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                    	
                                     	Text="{Binding currentModel.xTitulo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                     	IsEnabled="{Binding bIsEnabled}"
                                     	Height="27" Margin="10,0,0,2" Caption="Titulo" Help="Especifique a forma de tratamento preferida do contato" WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Nome " Help="Informe o Nome do Contato ou Pessoa" WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xFuncao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Função" Help="Informar a Função do Contato ou Pessoa dentro da organização." WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xProfissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Profissão" Help="Informar a Profissão do Contato ou Pessoa dentro da organização." WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Departamento" Help="Insira o departamento em que o contato está localizado." WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xApelido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Apelido" Help="Especifique o apelido do contato (se houver)." WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpCheckBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									IsChecked="{Binding currentModel.stAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Ativo" Help="Informar se o Contato é ativo na organização." WidthLabel="115" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xCPF, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="C.P.F." Help="Informar o CPF do contato." WidthLabel="115" HorizontalAlignment="Left" Width="250"/>
                                     <Components:HlpComboBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedIndex="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Sexo" Help="Especifique o sexo do contato." WidthLabel="115" HorizontalAlignment="Left">
@@ -107,7 +107,7 @@
                                         </Components:HlpComboBox.Items>
                                     </Components:HlpComboBox>
                                     <Components:HlpComboBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedIndex="{Binding currentModel.stSensibilidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Sensibilidade" Help="Selecione a sensibilidade das atividades que envolvem o contato." WidthLabel="115" HorizontalAlignment="Left">
@@ -124,7 +124,7 @@
                             <Expander Header="Contato" Height="62" IsExpanded="True" DockPanel.Dock="Top">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idContatoGerente, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,0,0" Caption="Gerente" Help="Selecione o gerente do contato principal." WidthLabel="171" FieldPesquisa="ID" TableView="vwContato" Width="442">
@@ -138,7 +138,7 @@
                             <Expander Header="Contato Principal" Height="77" IsExpanded="True" DockPanel.Dock="Top">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,0,2" Caption="Funcionário" Help="Selecione o contato principal do parceiro comercial na empresa. " WidthLabel="171" FieldPesquisa="ID" TableView="vwFuncionario" Width="442">
@@ -152,7 +152,7 @@
                             <Expander Header="Tempo Disponivel" IsExpanded="True">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTimePicker 
-                                        Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                        
                                         Caption="Disponível a partir das:" Help="Insira a hora inicial da disponibilidade do contato."
                                         IsEnabled="{Binding bIsEnabled}"
                                         Value="{Binding currentModel.dDisponivelaPartir, 
@@ -162,7 +162,7 @@
                                         WidthLabel="170"
                                         ></Components:HlpTimePicker>
                                     <Components:HlpTimePicker 
-                                        Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                        
                                         Caption="Disponível até as:" Help="Insira a hora final da disponibilidade do contato."
                                         IsEnabled="{Binding bIsEnabled}"
                                         Value="{Binding currentModel.dDisponivelAte, 
@@ -183,7 +183,7 @@
                         <Expander Header="Personalidade e Influência" Height="129" DockPanel.Dock="Top" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpPesquisa 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.idFidelidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Fidelidade" Help="Selecione a fidelidade percebida do contato em relação à empresa." WidthLabel="113" FieldPesquisa="ID" TableView="vwFidelidade" HorizontalAlignment="Left" Width="375">
@@ -193,7 +193,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.idDecisao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Decisão" Help="Selecione a influência percebida do contato na tomada de decisões." WidthLabel="113" FieldPesquisa="ID" TableView="vwDecisao" HorizontalAlignment="Left" Width="375">
@@ -203,7 +203,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.idPersonalidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Personalidade" Help="Selecione a personalidade percebida do contato." WidthLabel="113" FieldPesquisa="ID" TableView="vwPersonalidade" HorizontalAlignment="Left" Width="375">
@@ -217,12 +217,12 @@
                         <Expander Header="Vip ou Mala Direta" Height="83" DockPanel.Dock="Top" IsExpanded="True">
                             <StackPanel>
                                 <Components:HlpCheckBox 								
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.stVip, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="VIP" Help="Marque esta caixa de seleção se o contato for VIP. " WidthLabel="113" HorizontalAlignment="Left"/>
                                 <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.stMalaDireta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Mala Direta" Help="Marque esta caixa de seleção se o contato for receber mala direta." WidthLabel="113" HorizontalAlignment="Left"/>
@@ -231,7 +231,7 @@
                         <Expander Header="Outros" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xMemorando, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Caption="Memorando" Help="Redija uma anotação interna ou um memorando sobre o contato." Height="27" Margin="10,0,0,2" WidthLabel="113" HorizontalAlignment="Left" Width="500"/>
@@ -346,52 +346,52 @@
                             <Expander Header="Comercial" Height="599" IsExpanded="True">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xTelefoneComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Telefone Comercial" Help="Insira o número do telefone comercial do contato" WidthLabel="160" HorizontalAlignment="Left" Width="275"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xRamalComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Ramal" Help="Insira o número do Ramal do contato" WidthLabel="160" HorizontalAlignment="Left" Width="275"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xCelularComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Celular" Help="Insira o número do Celular do contato." WidthLabel="160" HorizontalAlignment="Left" Width="275"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xRadioFoneComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Radio" Help="Insira o número do Radio do contato" WidthLabel="160" HorizontalAlignment="Left" Width="275"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xPagerComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Pager" Help="Insira o número do Pager do contato." WidthLabel="160" HorizontalAlignment="Left" Width="275"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xFaxComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Fax" Help="Insira o número do Fax do contato" WidthLabel="160" HorizontalAlignment="Left" Width="275"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xEmailComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="E-mail" Help="Insira o e-mail do contato." WidthLabel="160" HorizontalAlignment="Left" Width="400"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xSkypeComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Skype" Help="Insira o Skype do contato." WidthLabel="160" HorizontalAlignment="Left" Width="400"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xMSNComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="MSN" Help="Insira o MSN do Contato." WidthLabel="160" HorizontalAlignment="Left" Width="400"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xhttpComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,0,2" Caption="Endereço na Internet" Help="Insira o endereço do Site do Contato." WidthLabel="160" HorizontalAlignment="Left" Width="400"/>
@@ -402,37 +402,37 @@
                             <Expander Header="Residencial" IsExpanded="True" DockPanel.Dock="Top" HorizontalAlignment="Left" VerticalAlignment="Top" Height="597" Width="571">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xTelefoneResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="275" Caption="Telefone Residencial" Help="Insira o número do telefone particular do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xCelularResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cel}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="275" Caption="Celular" Help="Insira o número do Celular Particular do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xRadioFoneResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="275" Caption="Radio" Help="Insira o endereço do Radio  pessoal do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xEmailResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="400" Caption="E-mail " Help="Insira o e-mail particular do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xSkypeResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="400" Caption="Skype" Help="Insira o Skype particular do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xMsnResidencial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="400" Caption="MSN" Help="Insira o MSN particular do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
                                     <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.XhttpPessoal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Width="400" Caption="Home page pessoal" Help="Insira o endereço de internet  pessoal do contato, caso possua." WidthLabel="155" Margin="10,0,0,-2" HorizontalAlignment="Left"/>
@@ -448,22 +448,22 @@
                         <Expander Header="Família" Height="161" DockPanel.Dock="Top" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xFilhos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Filhos" Help="Insira o nome dos filhos do contato." WidthLabel="189" HorizontalAlignment="Left" Width="350"/>
                                 <Components:HlpDateTimePicker 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								SelectedDate="{Binding currentModel.dAniversario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Data de Aniversário" Help="Insira a data do aniversário do contato." WidthLabel="189" HorizontalAlignment="Left"/>
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xConjuge, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Cônjuge" Help="Insira o nome do(a) cônjuge do contato." WidthLabel="189" HorizontalAlignment="Left" Width="350"/>
                                 <Components:HlpComboBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								SelectedIndex="{Binding currentModel.stEstadoCivil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Estado Civil" Help="Informar o estado civil do contato." WidthLabel="189" HorizontalAlignment="Left">
@@ -481,7 +481,7 @@
                         <Expander Header="Hobbies" Height="69" DockPanel.Dock="Top" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xHobbies, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,0" Caption="Hobbies" Help="Insira os Hobbies do contato." WidthLabel="189" HorizontalAlignment="Left" Width="476"/>
@@ -490,7 +490,7 @@
                         <Expander Header="Empresa" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpDateTimePicker 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								SelectedDate="{Binding currentModel.dAniversarioTempoServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,0" Caption="Data de Tempo de Serviço " Help="Insira a data de aniversário de tempo de serviço." WidthLabel="189" HorizontalAlignment="Left"/>

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
+             xmlns:local="clr-namespace:HLP.Comum.View.Components"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="HLP.Comum.View.Components.HlpTimePicker"
              mc:Ignorable="d"
              Width="Auto" Height="Auto" x:Name="componente">
@@ -13,6 +14,33 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type local:HlpTimePicker}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="True">
+                                        <Border Background="#FFECA933" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                            ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"
+                                ></TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                            <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsVisible" Value="false">
+                        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
             <Style x:Key="TimePickerStyle" TargetType="{x:Type wpfTool:TimePicker}">
                 <Setter Property="WatermarkTemplate">
                     <Setter.Value>

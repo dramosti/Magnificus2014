@@ -13,17 +13,17 @@
         <Expander Header="Geral" IsExpanded="True" DockPanel.Dock="Top" Height="144">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsReadOnly="True"
 					Height="27" Margin="10,0,10,2" Caption="Código" Field="idCondicaoPagamento" Help="Chave principal do registro da Condição de Pagamento, auto incremental." Table="Condicao_pagamento" WidthLabel="153" HorizontalAlignment="Left" Width="250"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Código da Condição " Field="xCondicaoPagamento" Help="Insira um código ou um nome abreviado para as condições de pagamento." Table="Condicao_pagamento" WidthLabel="153" HorizontalAlignment="Left" Width="250"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Descrição " Field="xDescricao" Help="Insira um nome descritivo para os termos de pagamento." Table="Condicao_pagamento" WidthLabel="153" HorizontalAlignment="Left" Width="500"/>
@@ -32,7 +32,7 @@
         <Expander Header="Configuração" IsExpanded="True">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpComboBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
                     SelectedIndex="{Binding currentModel.stMetodo, Mode=TwoWay, NotifyOnValidationError=True, 
                     UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"					
 					IsEnabled="{Binding bIsEnabled}"
@@ -46,7 +46,7 @@
                     </Components:HlpComboBox.Items>
                 </Components:HlpComboBox>
                 <Components:HlpComboBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
                     SelectedIndex="{Binding currentModel.stCondicao, Mode=TwoWay, NotifyOnValidationError=True,
                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"					
 					IsEnabled="{Binding bIsEnabled}"
@@ -59,7 +59,7 @@
                     </Components:HlpComboBox.Items>
                 </Components:HlpComboBox>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"					
+										
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Meses" Field="nMeses" Help="Insira o número de meses a ser adicionado ao método de pagamento para calcular a data de vencimento." Table="Condicao_pagamento" WidthLabel="166" HorizontalAlignment="Left" Width="264">
                     <Components:HlpTextBox.Text>
@@ -74,7 +74,7 @@
                         </Binding>
                     </Components:HlpTextBox.Text>
                 </Components:HlpTextBox>
-                <Components:HlpTextBox	Validation.ErrorTemplate="{StaticResource exceptionComp}"					
+                <Components:HlpTextBox						
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Semanas" Field="nSemanas"
                     Help="Insira o número de semanas a ser adicionado ao método de pagamento para calcular a data de vencimento." Table="Condicao_pagamento" WidthLabel="166" HorizontalAlignment="Left" Width="264">
@@ -91,7 +91,7 @@
                     </Components:HlpTextBox.Text>
                 </Components:HlpTextBox>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Dias" Field="nDias" 
                     Help="Insira o número de dias a ser adicionado ao método de pagamento para calcular a data de vencimento." Table="Condicao_pagamento" WidthLabel="166" HorizontalAlignment="Left" Width="264">
@@ -108,7 +108,7 @@
                     </Components:HlpTextBox.Text>
                 </Components:HlpTextBox>
                 <Components:HlpPesquisa 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Plano de Pagamento" Field="idPlanoPagamento" Help="Vincule condições de pagamento a um plano de pagamento que define como um valor faturado " Table="Condicao_pagamento" FieldPesquisa="ID" TableView="vwPlanoPagamento" WidthLabel="166" HorizontalAlignment="Left" Width="493">
@@ -118,7 +118,7 @@
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
                 <Components:HlpPesquisa 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,10,2" Caption="Dia de Pagamento" Field="idDiaPagamento" Help="Selecione um dia de pagamento a ser usado para calcular a data de vencimento. A data de vencimento é sempre arredondada para a data mais próxima especificada. O dia de pagamento pode ser especificado: " Table="Condicao_pagamento" FieldPesquisa="ID" TableView="vwDiaPagamento" WidthLabel="166" HorizontalAlignment="Left" Width="493">
@@ -128,7 +128,7 @@
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
                 <Components:HlpComboBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
                     SelectedIndex="{Binding currentModel.stDataVencimento, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
 					IsEnabled="{Binding bIsEnabled}"				

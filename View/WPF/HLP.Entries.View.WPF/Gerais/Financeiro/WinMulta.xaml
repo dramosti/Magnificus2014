@@ -17,24 +17,24 @@
 					IsReadOnly="True"
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Multa, autoincremental." WidthLabel="151" Width="240" HorizontalAlignment="Left"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Nome" Help="Insira nome do código da multa. " WidthLabel="151" HorizontalAlignment="Left" Width="371"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Descrição" Help="Insira uma descrição detalhada da Multa." WidthLabel="151" HorizontalAlignment="Left" Width="371"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
                     Converter={StaticResource porcConverter},
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Percentual da Multa " Help="Insira a porcentagem da multa que se aplica ao código da multa. " WidthLabel="151" HorizontalAlignment="Left" Width="240"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Dias de Carência" Help="Insira o número de dias no período de carência antes da aplicação da porcentagem de multa " WidthLabel="151" HorizontalAlignment="Left" Width="240"/>

@@ -15,16 +15,16 @@
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox Caption="Código" Padding="0,3,0,0" WidthLabel="75" Margin="10,0,10,2"
                                Text="{Binding currentModel.idCidade, Mode=TwoWay}" IsReadOnly="True" Height="27" HorizontalAlignment="Left" Width="200"/>
-                <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                <Components:HlpTextBox 
             Caption="Cidade" Padding="0,3,0,0" WidthLabel="75"
                                Text="{Binding currentModel.xCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                 ValidatesOnDataErrors=True, NotifyOnValidationError=True}" IsEnabled="{Binding bIsEnabled}" Margin="10,0,10,2" Height="27" HorizontalAlignment="Left" Width="200"/>
-                <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                <Components:HlpTextBox 
             Caption="Ibge" Padding="0,3,0,0" WidthLabel="75"
                                IsEnabled="{Binding bIsEnabled}" Margin="10,0,10,2" Text="{Binding currentModel.cIbge, Converter={StaticResource intStringConverter}, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Height="27" HorizontalAlignment="Left" Width="200"/>
                 <Components:HlpPesquisa 
             Text="{Binding currentModel.idUF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-            Validation.ErrorTemplate="{StaticResource exceptionComp}"
+            
             x:Name="teste" Caption="UF" Padding="0,3,0,0" WidthLabel="75" TableView="vwUF" FieldPesquisa="ID"
                                  IsEnabled="{Binding bIsEnabled}" Margin="10,0,10,2" Height="27" HorizontalAlignment="Left" Width="396"
                                  >
