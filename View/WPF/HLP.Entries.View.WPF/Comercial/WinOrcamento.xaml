@@ -106,14 +106,14 @@
 					Text="{Binding currentModel.idOrcamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código" Help="O número de identificação automático e exclusivo do orçamento de venda." WidthLabel="61" Width="162"/>
                 <Components:HlpDateTimePicker 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					SelectedDate="{Binding currentModel.dDataHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data e Hora Criado" Help="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento." WidthLabel="152" Width="258"/>
                 <Components:HlpPesquisa 
                     x:Name="pesquisaCliente"                     
                     ucTxtPesquisaTextChanged="pesquisaCliente_ucTxtPesquisaTextChanged"
-                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                    
 					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="63" Width="341.5" RenderTransformOrigin="0.5,0.5">
@@ -131,12 +131,12 @@
                         <Expander Header="Principal" IsExpanded="True" DockPanel.Dock="Top" Height="158.5">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idOrcamentoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do orçamento de origem" Help="É o código de origem do Orçamento, quando é gerado uma Revisão de Orçamento pelo botão Status, quando se gera um orçamento o campo Versão é gerado conforme as versões criadas.Ex." WidthLabel="231" Width="329"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.xDepartamento, Mode=OneWay}"
 									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Departamento" Help="Departamento do contato do orçamento de vendas, o software busca da Tabela de Contatos no Cadastro de Clientes" WidthLabel="231" Width="329"/>
@@ -145,14 +145,14 @@
                                     ItemsSource="{Binding Source={StaticResource lResultContatos}}"
                                     SelectedValuePath="id"
                                     DisplayMemberPath="display"                                
-                                    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                                    
 									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contato" Help="Informar a pessoa de contato externo para quem o orçamento é emitido. Busca da Tabela de Contatos no Cadastro de Clientes." WidthLabel="231" Width="473">
 
                                 </Components:HlpComboBox>
                                 <Components:HlpCheckBox
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									IsChecked="{Binding currentModel.stContribuienteIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contribuinte de ICMS" Help="O sistema informara automaticamente se o cliente é contribuinte de ICMS conforme o campo " WidthLabel="231"/>
@@ -167,7 +167,7 @@
                                     Caption="Tipo de Documento" Width="471" WidthLabel="231"
                                     Help="Só poderá ser escolhidos tipos de documentos a qual o campo stDocumento da tabela tipo_documento seja igual a 1-ORÇAMENTO DE VENDA"/>
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idFuncionarioRepresentante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" 
@@ -179,7 +179,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Condição de pagamento" Help="Informar uma condição de pagamento ao orçamento de vendas, o sistema traz automaticamente a condição usada no cadastro de cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwCondicaoPagamento" WidthLabel="231" Width="473">
@@ -194,7 +194,7 @@
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpComboBox 
                                     x:Name="cbxOrcamento"
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedIndex="{Binding currentModel.stOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Status do Orçamento" Help="O status da cotação ativa. Use o botão Atualizações para alterar o status de uma cotação de venda" WidthLabel="205">
@@ -208,7 +208,7 @@
                                     </Components:HlpComboBox.Items>
                                 </Components:HlpComboBox>
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idTipoOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Tipo do Orçamento" Help="Selecione a categoria de cotação. As categorias são configuradas e mantidas no formulário Tipo de Orçamentos. Elas podem ser Telemarketing, Prospect, Internet, etc..." FieldPesquisa="ID" TableView="vwTipoOrcamento" WidthLabel="205" Width="528">
@@ -218,22 +218,22 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpDateTimePicker 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedDate="{Binding currentModel.dVencimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de vencimento" Help="A data em que o orçamento de venda expira e não é mais válida." WidthLabel="205"/>
                                 <Components:HlpDateTimePicker 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedDate="{Binding currentModel.dAcompanhamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de acompanhamento" Help="A data inicial de qualquer atividade de acompanhamento da cotação de venda." WidthLabel="205"/>
                                 <Components:HlpDateTimePicker 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedDate="{Binding currentModel.dConfirmacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de confirmação" Help="Informar a data de confirmação do orçamento de vendas." WidthLabel="205"/>
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idMotivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"									
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Motivo da perda" Help="O campo só é liberado e obrigatório caso a situação é de Perdido ou Cancelado, após liberado informar o motivo da perda da proposta comercial." FieldPesquisa="ID" TableView="vwMotivoPerdaOrcam" WidthLabel="205" Width="528">
                                     <Components:HlpPesquisa.Items>
@@ -293,7 +293,7 @@
                                                                    HorizontalAlignment="Left" Margin="10,0,10,2" 
                                                                    Caption="UF" Help="Estado" WidthLabel="149" Width="273"/>
                                             <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idRamoAtividade, Mode=OneWay}"
 												IsEnabled="False"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Ramo de Atividade" Help="O Sistema informará automaticamente qual é o ramo de atividade do Cliente" FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="149" Width="426">
@@ -309,7 +309,7 @@
                                     <Expander Header="Informações de Venda" IsExpanded="True">
                                         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                             <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Funcionário do  orçamento de Vendas" Help="Identifica quem é Responsável  pelo orçamento." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="272" Width="619">
@@ -319,7 +319,7 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idFuncionarioResponsavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Responsável de Vendas" Help="Trazer automaticamente o responsável pelo funcionário do orçamento. Informado no cadastro do Funcionário." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="272" Width="619">
@@ -329,7 +329,7 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idUnidadeVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Vendas" Help="A equipe de vendedores responsável por uma meta de vendas comum. " FieldPesquisa="ID" TableView="vwUnidadeVenda" WidthLabel="272" Width="619">
@@ -338,7 +338,7 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Canal de Vendas" Help="O sistema trará do cadastro do cliente ao qual canal de venda ele pertence" FieldPesquisa="ID" TableView="vwCanalVenda" WidthLabel="272" Width="619">
@@ -348,7 +348,7 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Moeda" Help="O código de moeda usado para os valores e os preços da cotação de venda ativa." FieldPesquisa="ID" TableView="vwMoeda" WidthLabel="272" Width="619">
@@ -358,12 +358,12 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xObservacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Observação" Help="Informe uma observação ao orçamento de vendas" WidthLabel="272" Width="619"/>
                                             <Components:HlpCheckBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												IsChecked="{Binding currentModel.stWeb, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Orçamento veio da Web" Help="O sistema irá informar se o orçamento foi provido do sistema web." WidthLabel="272"/>
@@ -380,7 +380,7 @@
 										 Header="Estoque" IsExpanded="True" DockPanel.Dock="Top" Height="113">
                                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Site" Help="Informar o site que será retirado os produtos, uma vez informado o sistema trará automaticamente nos itens, mas nada impede de ser alterado pelo usuário." FieldPesquisa="ID" TableView="vwSite" Width="331" WidthLabel="67">
@@ -390,7 +390,7 @@
                                                     </Components:HlpPesquisa.Items>
                                                 </Components:HlpPesquisa>
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Depósito" Help="Informar o Deposito do site que será retirado os produtos, uma vez informado o sistema trará automaticamente nos itens, mas nada impede de ser alterado pelo usuário." FieldPesquisa="ID" TableView="vwDeposito" Width="331" WidthLabel="67">
@@ -404,7 +404,7 @@
                                         <Expander Header="Transportes" IsExpanded="True">
                                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"	
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Condição de Entrega" Help="Use esta opção para especificar as condições de entrega usadas por fornecedores, clientes . As condições de entrega especificam as condições para a transferência de um item do vendedor para o comprador; elas são usadas em ordens de venda e de compra. São utilizadas condições internacionais, como, por exemplo, FOB (frete a bordo), CIF (transporte, seguro e frete) etc. " FieldPesquisa="ID" TableView="vwCondicaoEntrega" WidthLabel="152" Width="403">
@@ -414,7 +414,7 @@
                                                     </Components:HlpPesquisa.Items>
                                                 </Components:HlpPesquisa>
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idModosentrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Modos de Entrega" Help="Use esta opção para configurar modos de entrega para clientes e fornecedores. O modo de entrega indica o meio de transporte usado na entrega de uma ordem do vendedor para o comprador." TableView="vwModoEntrega" FieldPesquisa="ID" WidthLabel="152" Width="403">
@@ -424,7 +424,7 @@
                                                     </Components:HlpPesquisa.Items>
                                                 </Components:HlpPesquisa>
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Transportadora" Help="Informar a transportadora se houver para esse orçamento." FieldPesquisa="ID" TableView="vwTransportador" WidthLabel="152" Width="403">
@@ -440,12 +440,12 @@
                                         <Expander Header="Referencia" IsExpanded="True" DockPanel.Dock="top" Height="112.833">
                                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                                 <Components:HlpTextBox 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.xCotacaoComprasCliente, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cotação de compras do cliente" Help="Informar a cotação de compras do cliente quando a situação for Vendido." WidthLabel="313" Width="434.5"/>
                                                 <Components:HlpTextBox 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.xPedidoCliente, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Referencia do pedido de compras do cliente" Help="Se existir preencher com o código de referencia do pedido de compras do cliente" WidthLabel="313" Width="434.5"/>
@@ -454,7 +454,7 @@
                                         <Expander Header="Financeiro" IsExpanded="True">
                                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Descontos" Help="Informar os tipos de descontos." FieldPesquisa="ID" TableView="vwDescontosAvista" WidthLabel="74" Width="404.5">
@@ -464,7 +464,7 @@
                                                     </Components:HlpPesquisa.Items>
                                                 </Components:HlpPesquisa>
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idMulta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Multa" Help="Informar o código da multa quando houver." FieldPesquisa="ID" TableView="vwMultas" WidthLabel="74" Width="404.5">
@@ -474,7 +474,7 @@
                                                     </Components:HlpPesquisa.Items>
                                                 </Components:HlpPesquisa>
                                                 <Components:HlpPesquisa 
-													Validation.ErrorTemplate="{StaticResource exceptionComp}"
+													
 													Text="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Juros" Help="Informar o código para o juros quando houver." FieldPesquisa="ID" TableView="vwJuros" WidthLabel="74" Width="404.5">
@@ -1205,122 +1205,122 @@
                         <Expander Header="Detalhes" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vProdutoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Total dos Produtos" Help="O Sistema irá trazer a somatória de todos os produtos lançado no orçamento" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vServicoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Total de Serviços" Help="O Sistema irá trazer a somatória de todos os serviços lançado no orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor de Desconto" Help="O Sistema irá trazer o total dos descontos concebidos nos itens lançados." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.pDescontoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="% de Desconto" Help="" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoSuframaTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total de Desconto do SUFRAMA" Help="O sistema irá informar quando o cliente tiver Suframa o seu valor de desconto." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vFreteTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do Frete" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vSeguroTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do Seguro" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vOutrasDespesasTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total de Outras Despesas" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do ICMS" Help="O Sistema informará o valor total da base de calculo do ICMS conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vICMSTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do ICMS" Help="O Sistema informará o valor total do Icms conforme os cálculos mencionados nos itens do orçamento" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsProprioTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do ICMS Próprio" Help="Valor Total da Base de Cálculo do ICMS Próprio" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsProprioTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do ICMS Próprio" Help="O Sistema informará o valor total do ICMS Próprio conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIpiTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total da Base de Cálculo do IPI" Help="O sistema informará o valor total da base de cálculo do IPI conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vIPITotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do IPI" Help="O sistema informará o valor total do IPI conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoICmsSubstituicaoTributariaTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="40" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total da base de cálculo ICMS de Substituição Tributária" Help="O sistema informará o valor total da Base de Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsSubstituicaoTributariaTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do ICMS de Substituição Tributária" Help="O sistema informará o valor total da Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total" Help="O Sistema informará o valor total dos itens agregados a esse orçamento ((Valor dos Itens + IPI + Substituição Tributária do ICMS + Seguro + Outras Despesas) – (Descontos – Desconto de SUFRAMA))" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoPisTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									 Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do PIS" Help="O sistema informará o valor total da Base de cálculo do PIS (Programa de Integração Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vIPITotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do PIS" Help="O sistema informará o valor total do PIS (Programa de Integração Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoCofinsTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do COFINS" Help="O sistema informará o valor total da base de calculo do COFINS (Contribuição para o Financiamento da Seguridade Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vCOFINSTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do COFINS" Help="O sistema informará o valor total do COFINS (Contribuição para o Financiamento da Seguridade Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIssTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total da base de cálculo do ISS" Help="O sistema informará o valor total da base de cálculo do ISS (Imposto sobre o Serviço) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.orcamento_Total_Impostos.vIssTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do ISS" Help="O sistema informará o valor total do ISS (Imposto sobre o Serviço) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpComboBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									SelectedIndex="{Binding currentModel.orcamento_Total_Impostos.stFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Situação do Frete" Help="Informar em qual vai ser a situação do frete." WidthLabel="356" Width="510">
@@ -1333,7 +1333,7 @@
                                     </Components:HlpComboBox.Items>
                                 </Components:HlpComboBox>
                                 <Components:HlpCheckBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									IsChecked="{Binding currentModel.orcamento_Total_Impostos.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Tipo de Rateio do Frete" Help="" WidthLabel="356" Width="510"/>
@@ -1347,32 +1347,32 @@
                     <Expander Header="Detalhes" IsExpanded="True">
                         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.vPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Bruto" Help="O Sistema informa o peso bruto do produto conforme a quantidade lançada nos itens multiplicado pelo seu peso liquido definido no cadastro de produtos." WidthLabel="191" Width="301"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.vPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Líquido" Help="O Sistema informa o peso líquido do produto conforme a quantidade lançada nos itens multiplicado pelo seu peso liquido definido no cadastro de produtos." WidthLabel="191" Width="301"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.vVolume, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Quantidade de Volume" Help="nformar a quantidade de volume para esse transporte." WidthLabel="191" Width="301"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.xEspecieVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Volume" Help="Informar o volume para esse tipo de Lançamento." WidthLabel="191" Width="301"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.xMarcaVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Marca" Help="Informar a marca para esse tipo de Lançamento." WidthLabel="191" Width="301"/>
                             <Components:HlpPesquisa 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Transportadora" Help="Informar a transportadora para esse orçamento" FieldPesquisa="ID" TableView="vwTransportador" WidthLabel="191" Width="505">
@@ -1382,7 +1382,7 @@
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
                             <Components:HlpPesquisa 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.orcamento_retTransp.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Redespacho" Help="Informar a transportadora para esse orçamento" FieldPesquisa="ID" TableView="vwTransportador" WidthLabel="191" Width="505">
@@ -1392,7 +1392,7 @@
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
                             <Components:HlpComboBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								SelectedIndex="{Binding currentModel.orcamento_retTransp.stFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Condição do Frete" Help="Informar qual vai ser a condição do Frete." WidthLabel="191">
@@ -1404,7 +1404,7 @@
                                 </Components:HlpComboBox.Items>
                             </Components:HlpComboBox>
                             <Components:HlpComboBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								SelectedIndex="{Binding currentModel.orcamento_retTransp.stTransporte, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Tipo de Transporte" Help="Informar o tipo de transporte para esse lançamento." WidthLabel="191">

@@ -35,12 +35,12 @@
 					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					Height="27" Caption="Código " Help="Chave principal do registro dia de pagamento" WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="220"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Caption="Dia de pagamento " Help="Insira uma breve identificação para o dia de pagamento. " WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="220"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Caption="Descrição " Help="Insira uma descrição da identificação do dia de pagamento." WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="349.9"/>

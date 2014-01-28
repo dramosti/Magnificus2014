@@ -12,13 +12,13 @@
                                IsReadOnly="True"
                                Width="170"
                                HorizontalAlignment="Left" WidthLabel="100" Padding="0,3,0,0" Height="27" Margin="10,0,10,2"/>
-                <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" Caption="Cargo"
+                <Components:HlpTextBox  Caption="Cargo"
                                Text="{Binding currentModel.xCargo, Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                    IsEnabled="{Binding bIsEnabled}"
                                Width="251"
                                HorizontalAlignment="Left" WidthLabel="100" Padding="0,3,0,0" Height="27" Margin="10,0,10,2"/>
-                <Components:HlpTextBox Validation.ErrorTemplate="{StaticResource exceptionComp}" Caption="Descrição"
+                <Components:HlpTextBox  Caption="Descrição"
                                Text="{Binding currentModel.xDescricao, Mode=TwoWay, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                    IsEnabled="{Binding bIsEnabled}"

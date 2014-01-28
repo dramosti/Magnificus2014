@@ -40,23 +40,23 @@
 					IsReadOnly="True"
 					Height="27" Margin="10,0,40,2" Caption="Código" Help="Chave principal do registro da Origem de Venda" WidthLabel="242" HorizontalAlignment="Left" Width="325"/>
                     <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xCodigoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Código da Lista de Preço " Help="Digite um código para a recém-criada Lista de preço " WidthLabel="242" HorizontalAlignment="Left" Width="325"/>
                     <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Descrição " Help="Descrição da Lista de preço. " WidthLabel="242" HorizontalAlignment="Left" Width="551"/>
                     <Components:HlpDateTimePicker 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					SelectedDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Data de Criação da Lista de Preço" Help="Este campo mostra a data em que a lista de preços foi gerada " WidthLabel="242" HorizontalAlignment="Left"/>
                     <Components:HlpComboBox 
                         Name="cbxStAtualizacao"
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					SelectedIndex="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Tipo de Atualização" Help="Informar o tipo de atualização para o campo Preço de Venda para essa lista de preço, elas podem ser Manual ou Automática." WidthLabel="242" UCSelectionChanged="cbxStAtualizacao_UCSelectionChanged" HorizontalAlignment="Left">
@@ -66,7 +66,7 @@
                         </Components:HlpComboBox.Items>
                     </Components:HlpComboBox>
                     <Components:HlpPesquisa 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.idListaPrecoOrigem, Mode=TwoWay, 
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
 					Height="27" Margin="10,0,40,2" Caption="Lista de Preço Origem" Help="Informar qual é a Lista de Preço Origem quando a Lista for automática, o campo só é disponibilizado quando a lista for automática." WidthLabel="242" FieldPesquisa="ID" TableView="vwListaPrecoPai" HorizontalAlignment="Left" Width="551">
@@ -89,7 +89,7 @@
                     </Components:HlpPesquisa>
                     <Components:HlpTextBox 
                         x:Name="txtPercentual"                        
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"                        
+					                        
 					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
                         Converter={StaticResource PorcentagemConverter},
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
@@ -114,42 +114,42 @@
                         Content="Gerar Lista" Height="27" Margin="252,0,0,2" HorizontalAlignment="Left" Width="97"/>
                     <Components:HlpTextBox 
                         Name="nDiasSemAtual"
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.nDiasSemAtualicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="36" Margin="10,0,40,2" Caption="N.° dias sem Atualização no valor de custo" Help="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campo" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
                     <Components:HlpCheckBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					IsChecked="{Binding currentModel.stContrato, Mode=TwoWay, 
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="É Contrato" WidthLabel="222" HorizontalAlignment="Left"/>
                     <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xNrContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Nº do Contrato" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
                     <Components:HlpDateTimePicker 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					SelectedDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Data de validade do Contrato" WidthLabel="222" HorizontalAlignment="Left"/>
                     <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, 
                         Converter={StaticResource PorcentagemConverter},
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Desconto Máximo" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
                     <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, 
                         Converter={StaticResource PorcentagemConverter},
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,40,2" Caption="Acréscimo Máximo" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
                     <Components:HlpCheckBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, 
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"

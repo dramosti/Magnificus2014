@@ -13,17 +13,17 @@
 					Text="{Binding currentModel.idCSTIpi, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="have principal do registro da Situação Tributária para COFINS, campo autoinclemental." WidthLabel="216" HorizontalAlignment="Left" Width="312"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.cCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Código Origem da CST IPI." Help="Digite o Código da Situação Tributária de Cofins definida pela legislação. " WidthLabel="216" HorizontalAlignment="Left" Width="312"/>
                 <Components:HlpTextBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Descrição do código da Situação Tributária de Cofins" WidthLabel="216" HorizontalAlignment="Left" Width="470"/>
                 <Components:HlpCheckBox 
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					IsChecked="{Binding currentModel.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Simples Nacional?" Help="Informar se a Situação Tributária de Cofins é de Simples Nacional." WidthLabel="216" HorizontalAlignment="Left"/>

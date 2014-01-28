@@ -145,7 +145,7 @@
             <StackPanel x:Name="stkLogin">
                 <ComboBox x:Name="cbxEmpresa"
                     Style="{StaticResource ComboBoxStyle}"
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"                    
 					SelectedValuePath="id"
 					DisplayMemberPath="display"
@@ -153,11 +153,11 @@
                     SelectedIndex="{Binding currentModel.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
 					Height="28" VerticalAlignment="Top" Width="200" DockPanel.Dock="Top" Margin="0,6,0,0"/>
                 <Components:WatermarkTextBox Label="Login"  x:Name="txtLogin"
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Text="{Binding currentModel.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					Width="200" Height="27" DockPanel.Dock="Top" Template="{DynamicResource TextBoxLogin}" Margin="0,6,0,0"/>
                 <PasswordBox                     
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					
 					Width="200" Height="28" VerticalAlignment="Top" Margin="0,6,0,0">
                     <PasswordBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=stkLogin}"/>
@@ -171,7 +171,7 @@
 					Foreground="White" BorderBrush="{StaticResource ButtonBackgroundBlueDefault}" 
 					Style="{DynamicResource ButtonStyleLoginCopy}" Margin="0,6,0,0"
                             />
-                <Label  Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                <Label  
                         HorizontalAlignment="Center"
 					    Content="{Binding currentModel.xError, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                         Height="27" DockPanel.Dock="Top" Margin="0,16,0,0" Foreground="#FFC99B9B"/>

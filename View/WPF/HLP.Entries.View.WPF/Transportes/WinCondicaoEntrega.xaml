@@ -16,22 +16,22 @@
         <Expander Header="Geral" IsExpanded="True">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                 <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsReadOnly="True"
 						Height="30" Margin="10,0,10,2" Caption="Código" Field="idCondicaoEntrega" Help="Chave principal do registro da Condição de Entrega." Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
                 <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.xCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Condição de Entrega " Field="xCondicaoEntrega" Help="Digite um código para a recém-criada origem de venda. " Table="Condicoes_Entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
                 <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Descrição " Field="xDescricao" Help="Descrição da condição de entrega" Table="Codicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="456"/>
                 <Components:HlpComboBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
                         SelectedIndex="{Binding currentModel.stEnderecoImpostoSobreVendas, Mode=TwoWay, NotifyOnValidationError=True, 
                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource convByteToIntConverter}}"
                         
@@ -53,19 +53,19 @@
                     </Components:HlpComboBox.Items>
                 </Components:HlpComboBox>
                 <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"
+						
 						Text="{Binding currentModel.nIntrastat, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Código Intrastat" Field="nIntrastat" Help="Intrastat é uma declaração estatística de entrega obrigatória ao INE por parte dos contribuintes que adquirem ou vendem produtos ao Mercado Comunitário. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
                 <Components:HlpCheckBox 
                         IsChecked="{Binding currentModel.stAplicarMinGratis, Mode=TwoWay, NotifyOnValidationError=True,
                         UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource convByteToBoolConverter}}"
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"						
+												
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Aplicar Mínimo Máximo" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left">
                 </Components:HlpCheckBox>
                 <Components:HlpTextBox 
-						Validation.ErrorTemplate="{StaticResource exceptionComp}"						
+												
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Valor do Mínimo Grátis" Field="vMinimoGratis" Help="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375">
                     <Components:HlpTextBox.Text>

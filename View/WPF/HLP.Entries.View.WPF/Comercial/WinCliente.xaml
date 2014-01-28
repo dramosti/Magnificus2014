@@ -198,26 +198,26 @@
 												Height="27" Margin="10,0,30,2" Caption="Código" WidthLabel="150" HorizontalAlignment="Left" Width="296"/>
                                 <Components:HlpDateTimePicker 
                                     IsEnabled="False"
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												SelectedDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
 												Height="27" Margin="10,0,30,-2" Caption="Data do Cadastro" WidthLabel="150" HorizontalAlignment="Left"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Código Alternativo" WidthLabel="150" HorizontalAlignment="Left" Width="341"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Nome do Cliente" WidthLabel="150" HorizontalAlignment="Left" Width="522"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Nome Fantasia" WidthLabel="150" HorizontalAlignment="Left" Width="522"/>
                                 <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Ramo de Atividade" WidthLabel="150" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwRamoAtividade">
@@ -227,7 +227,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Moeda" WidthLabel="150" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwMoeda">
@@ -237,7 +237,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Contato Principal" WidthLabel="150" HorizontalAlignment="Left" Width="522" TableView="vwFuncionario" FieldPesquisa="ID">
@@ -248,17 +248,17 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xMemorando, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Memorando" HorizontalAlignment="Left" WidthLabel="150" Width="350"/>
                                 <Components:HlpCheckBox x:Name="chkPessoa" 
                                                         IsEnabled="{Binding bIsEnabled}"
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												Height="27" Margin="10,0,30,-2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="150"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												Height="27" Margin="10,0,30,-2" Caption="C.P.F." HorizontalAlignment="Left" WidthLabel="150" Width="380">
                                     <Components:HlpTextBox.Style>
@@ -275,7 +275,7 @@
                                     </Components:HlpTextBox.Style>
                                 </Components:HlpTextBox>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												Height="27" Margin="10,0,30,2" Caption="R.G." HorizontalAlignment="Left" WidthLabel="150" Width="380">
                                     <Components:HlpTextBox.Style>
@@ -292,7 +292,7 @@
                                     </Components:HlpTextBox.Style>
                                 </Components:HlpTextBox>
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}"
 								Height="27" Margin="10,0,30,2" Caption="CNPJ" Help="Informar o Cadastro Nacional de Pessoa Jurídica da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
                                     <Components:HlpTextBox.Style>
@@ -309,7 +309,7 @@
                                     </Components:HlpTextBox.Style>
                                 </Components:HlpTextBox>
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xIE, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								Margin="10,0,30,2" Height="27" Caption="Inscrição Estadual" Help="Informar a Inscrição Estadual da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
                                     <Components:HlpTextBox.Style>
@@ -326,7 +326,7 @@
                                     </Components:HlpTextBox.Style>
                                 </Components:HlpTextBox>
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								Margin="10,0,30,2" Height="27" Caption="Inscrição Municipal" Help="Informar a Inscrição Municipal da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
                                     <Components:HlpTextBox.Style>
@@ -343,32 +343,32 @@
                                     </Components:HlpTextBox.Style>
                                 </Components:HlpTextBox>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="1° Telefone" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="2° Telefone" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="FAX" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="E-mail" HorizontalAlignment="Left" WidthLabel="150" Width="400"/>
                                 <Components:HlpTextBox 
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												Text="{Binding currentModel.xHttp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Endereço na Internet" HorizontalAlignment="Left" WidthLabel="150" Width="400"/>
                                 <Components:HlpCheckBox                                     
-												Validation.ErrorTemplate="{StaticResource exceptionComp}"
+												
 												IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" Margin="10,0,30,-2" Caption="Ativo?" HorizontalAlignment="Left" WidthLabel="150"/>
@@ -419,7 +419,7 @@
                                 <Expander Header="Informações Gerais" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                         <Components:HlpPesquisa
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Canal de Vendas" WidthLabel="207" Width="500" TableView="vwCanalVenda" FieldPesquisa="ID">
@@ -429,12 +429,12 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.nFuncionarios, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Número de Funcionários" WidthLabel="207" Width="356"/>
                                         <Components:HlpComboBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedIndex="{Binding currentModel.stCategoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Categoria do Cliente" WidthLabel="207">
@@ -446,7 +446,7 @@
                                             </Components:HlpComboBox.Items>
                                         </Components:HlpComboBox>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Lista de Preço" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwListaPrecoPai">
@@ -456,7 +456,7 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idRota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Rota para Transporte" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwRota">
@@ -466,12 +466,12 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpCheckBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											IsChecked="{Binding currentModel.stFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Frete" WidthLabel="207"/>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Site" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwSite">
@@ -481,7 +481,7 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Depósito" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwDeposito">
@@ -491,12 +491,12 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpCheckBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											IsChecked="{Binding currentModel.stSpc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Ocorrência no S.P.C.?" WidthLabel="207"/>
                                         <Components:HlpComboBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedIndex="{Binding currentModel.stSituacaoSci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Situação no S.C.I.?" WidthLabel="207">
@@ -507,12 +507,12 @@
                                             </Components:HlpComboBox.Items>
                                         </Components:HlpComboBox>
                                         <Components:HlpCheckBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											IsChecked="{Binding currentModel.stAssociacaoComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="34" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Ocorrência na Associação Comercial?" WidthLabel="207"/>
                                         <Components:HlpCheckBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											IsChecked="{Binding currentModel.stObrigaListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Obriga lista de preço ?" WidthLabel="207"/>
@@ -526,7 +526,7 @@
                                     <Expander Height="99"  DockPanel.Dock="Top"  Header="Principais" IsExpanded="True">
                                         <WrapPanel Orientation="Vertical">
                                             <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Transportadora" WidthLabel="130" Width="500" FieldPesquisa="ID" TableView="vwTransportador">
@@ -536,7 +536,7 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Redespacho" WidthLabel="130" Width="500" TableView="vwTransportador" FieldPesquisa="ID">
@@ -620,7 +620,7 @@
                                 <Expander Header="Dados de Pagamento" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Condição de Pagamento" WidthLabel="184" Width="470" FieldPesquisa="ID" TableView="vwPlanoPagamento">
@@ -630,7 +630,7 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Plano de Pagamento" WidthLabel="184" Width="470" TableView="vwPlanoPagamento" FieldPesquisa="ID">
@@ -640,7 +640,7 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Dia de Pagamento" WidthLabel="184" Width="470" TableView="vwDiaPagamento" FieldPesquisa="ID">
@@ -650,7 +650,7 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.idDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Desconto Combinado" WidthLabel="184" Width="470" TableView="vwDescontosAvista" FieldPesquisa="ID">
@@ -672,22 +672,22 @@
                         <Expander Header="Crédito" IsExpanded="True" DockPanel.Dock="Top" Height="161">
                             <WrapPanel Orientation="Vertical">
                                 <Components:HlpTextBox 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										Text="{Binding currentModel.vLimiteCredito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Valor do Limite de Crédito" WidthLabel="223" Width="320"/>
                                 <Components:HlpCheckBox 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										IsChecked="{Binding currentModel.stCreditoAprovado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Crédito Aprovado?" WidthLabel="223"/>
                                 <Components:HlpCheckBox 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										IsChecked="{Binding currentModel.stLimiteCreditoObrigatorio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Limite de Credito Obrigatório?" WidthLabel="223"/>
                                 <Components:HlpComboBox 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										SelectedIndex="{Binding currentModel.stParado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Parado?" WidthLabel="223">
@@ -702,7 +702,7 @@
                         <Expander Header="Informações para Pagamento" IsExpanded="True">
                             <WrapPanel Orientation="Vertical">
                                 <Components:HlpPesquisa 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Conta Bancária" WidthLabel="135" Width="400" FieldPesquisa="ID" TableView="vwContaBancaria">
@@ -712,7 +712,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										Text="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Código do Juros" WidthLabel="135" Width="400" FieldPesquisa="ID" TableView="vwJuros">
@@ -722,7 +722,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-										Validation.ErrorTemplate="{StaticResource exceptionComp}"
+										
 										Text="{Binding currentModel.idMultas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Código da Multa" WidthLabel="135" Width="400" FieldPesquisa="ID" TableView="vwMultas">
@@ -744,12 +744,12 @@
                                 <Expander Header="Dados Pessoais" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xSaudacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Saudação" WidthLabel="274" Width="1006"/>
                                         <Components:HlpComboBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedIndex="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Sexo" WidthLabel="274">
@@ -759,12 +759,12 @@
                                             </Components:HlpComboBox.Items>
                                         </Components:HlpComboBox>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xApelido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Apelido" WidthLabel="274" Width="626"/>
                                         <Components:HlpComboBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedIndex="{Binding currentModel.stEstadoCivil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Estado Civil" WidthLabel="274">
@@ -778,22 +778,22 @@
                                             </Components:HlpComboBox.Items>
                                         </Components:HlpComboBox>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dDataNascimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data de Nascimento" WidthLabel="274"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xLocalNascimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Local de Nascimento" WidthLabel="274" Width="425"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xUFNascimento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="UF de Nascimento" WidthLabel="274" Width="425"/>
                                         <Components:HlpComboBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedIndex="{Binding currentModel.stResidencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Situação da Residência em que mora" WidthLabel="274">
@@ -805,7 +805,7 @@
                                             </Components:HlpComboBox.Items>
                                         </Components:HlpComboBox>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xPontoReferenciaResidencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Ponto de Referencia da Residência" WidthLabel="274" Width="799"/>
@@ -818,37 +818,37 @@
                                 <Expander Header="Dados do Conjugue" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xConjugue, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Nome do(a) Conjugue" WidthLabel="228" Width="753"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xRGConjugue, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="R.G. do(a) Conjugue" WidthLabel="228" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xCPFConjugue, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="C.P.F. do(a) Conjugue" WidthLabel="228" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xProfissaoConjugue, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Profissão do(a) Conjugue" WidthLabel="228" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xEmpresaConjugue, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Empresa do(a) Conjugue" WidthLabel="228" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.vSalarioConjugue, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Salário atual do(a) Conjugue" WidthLabel="228" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xFilhos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Nome dos Filhos" WidthLabel="228" Width="400"/>
@@ -861,27 +861,27 @@
                                 <Expander Header="Informações da Empresa" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xEmpresaTrabalha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Nome da Empresa em que Trabalha" Help="Insira o nome da Empresa em que trabalha da pessoa, se aplicável." WidthLabel="277" Width="813"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xTelefoneEmpresaTrabalha, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Telefone da Empresa em que Trabalha" Help="Insira o telefone da Empresa em que a pessoa trabalha, se aplicável." WidthLabel="277" Width="381"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dDataAdmissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data de Admissão" Help="Insira ou exiba a data de Admissão da pessoa, se aplicável." WidthLabel="277"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xProfissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Profissão" Help="Insira a profissão da pessoa, se aplicável." WidthLabel="277" Width="584"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.vSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Valor Atual do Salario" Help="Insira o valor atual do salario da pessoa, se aplicável." WidthLabel="277" Width="381" KeyDown="HlpTextBox_KeyDown"/>
@@ -894,32 +894,32 @@
                                 <Expander Header="Dados" IsExpanded="True">
                                     <WrapPanel Orientation="Vertical">
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xNomePai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Nome do Pai" Help="Insira nome do pai da pessoa, se aplicável." WidthLabel="135" Width="530"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xRGPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="R.G. do Pai" Help="Insira o Registro Geral do pai da pessoa, se aplicável." WidthLabel="135" Width="314"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xCPFPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="C.P.F. do Pai" Help="Insira o Cadastro de Pessoa Física do pai da pessoa, se aplicável." WidthLabel="135" Width="314"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xNomeMae, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Nome da Mãe" Help="Insira nome do mãe da pessoa, se aplicável" WidthLabel="135" Width="530"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xRGMae, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="R.G. da Mãe" Help="Insira o Registro Geral da mãe da pessoa, se aplicável." WidthLabel="135" Width="314"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xCPFMae, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="C.P.F. da Mãe" Help="Insira o Cadastro de Pessoa Física da mãe da pessoa, se aplicável." WidthLabel="135" Width="314"/>
@@ -932,91 +932,91 @@
                                 <Expander Header="Referencias" IsExpanded="True" Margin="10,0,-10,0">
                                     <WrapPanel Orientation="Vertical">
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialNome1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Empresa 1" Help="Insira o nome da empresa em que a pessoa fez a compra, se aplicável." WidthLabel="200" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Telefone 1" Help="Insira o telefone da empresa em que a pessoa fez a compra, se aplicável." WidthLabel="200" Width="325"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dInformacaoComercialClienteDesde1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Cliente Desde 1" Help="Insira ou exiba a data desde em que a pessoa é cliente da organização, se aplicável." WidthLabel="200"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.vInformacaoComercialMaiorCompra1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Maior Compra 1" Help="Insira o valor da Maior compra que a pessoa realizou." WidthLabel="200" Width="325"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dInformacaoComercialUltimaCompra1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data da Ultima Compra 1" Help="Insira ou exiba a data da ultima compra que a pessoa realizou." WidthLabel="200"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialInformante1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Informante 1" Help="Insira o nome da pessoa que informou os dados cadastrais." WidthLabel="200" Width="325"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialNome2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Empresa 2" Help="Insira o nome da empresa em que a pessoa fez a compra, se aplicável." WidthLabel="200" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Telefone 2" Help="Insira o telefone da empresa em que a pessoa fez a compra, se aplicável." WidthLabel="200" Width="325"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dInformacaoComercialClienteDesde2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Cliente Desde 2" Help="Insira ou exiba a data desde em que a pessoa é cliente da organização, se aplicável." WidthLabel="200"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.vInformacaoComercialMaiorCompra2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Maior Compra 2" Help="Insira o valor da Maior compra que a pessoa realizou." WidthLabel="200" Width="325"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dInformacaoComercialUltimaCompra2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data da Ultima Compra 2" Help="Insira ou exiba a data da ultima compra que a pessoa realizou." WidthLabel="200"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialInformante2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Informante 2" Help="Insira o nome da pessoa que informou os dados cadastrais." WidthLabel="200" Width="325"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialNome3, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,00,10,2" HorizontalAlignment="Left" Caption="Empresa 3" Help="Insira o nome da empresa em que a pessoa fez a compra, se aplicável." WidthLabel="200" Width="400"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialTelefone3, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Telefone 3" Help="Insira o telefone da empresa em que a pessoa fez a compra, se aplicável." WidthLabel="200" Width="325"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dInformacaoComercialClienteDesde3, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Cliente Desde 3" Help="Insira ou exiba a data desde em que a pessoa é cliente da organização, se aplicável." WidthLabel="200"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.vInformacaoComercialMaiorCompra3, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Maior Compra 3" Help="Insira o valor da Maior compra que a pessoa realizou." WidthLabel="200" Width="325"/>
                                         <Components:HlpDateTimePicker 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											SelectedDate="{Binding currentModel.dInformacaoComercialUltimaCompra3, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data da Ultima Compra 3" Help="Insira ou exiba a data da ultima compra que a pessoa realizou." WidthLabel="200"/>
                                         <Components:HlpTextBox 
-											Validation.ErrorTemplate="{StaticResource exceptionComp}"
+											
 											Text="{Binding currentModel.xInformacaoComercialInformante3, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Informante 3" Help="Insira o nome da pessoa que informou os dados cadastrais." WidthLabel="200" Width="325"/>
@@ -1033,7 +1033,7 @@
                         <Expander Header="Entrega" IsExpanded="True" DockPanel.Dock="Top" Height="98">
                             <WrapPanel Orientation="Vertical">
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,10,10,2" Caption="Condição de Entrega" Help="Selecione as condições de entrega padrão para o cliente selecionado. Você pode alterar as condições de entrega no cabeçalho da Pedido de venda antes de faturar, se apropriado. " WidthLabel="260" Width="550" HorizontalAlignment="Left" FieldPesquisa="ID" TableView="vwCondicaoEntrega">
@@ -1043,7 +1043,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,10,2" Caption="Modo de Entrega" Help="Modo de entrega que se aplica à venda para o cliente selecionado. " WidthLabel="260" Width="550" HorizontalAlignment="Left" FieldPesquisa="ID" TableView="vwModoEntrega">
@@ -1057,12 +1057,12 @@
                         <Expander Header="Produtos" IsExpanded="True" DockPanel.Dock="Top" Height="108.5">
                             <WrapPanel Orientation="Vertical">
                                 <Components:HlpCheckBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									IsChecked="{Binding currentModel.stExigeRelacaoProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Exibe Relação dos próprios Produtos" Help="Caso opte por SIM o software irá mostrar para esse cliente somente os produtos para ele cadastrado, impossibilitando a visão de produtos não cadastrados." WidthLabel="260"/>
                                 <Components:HlpCheckBox 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									IsChecked="{Binding currentModel.stMostraProdutosRelacionado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Mostrar somente produto do Cliente" Help="Informar se o cliente somente verá na tela de vendas os produtos selecionados na  guia Produto do Cliente, nessa guia terá que ser preenchida os produtos que poderão fornecer ao Cliente e com suas respectivas listas e valores." WidthLabel="260"/>
@@ -1081,7 +1081,7 @@
                         <Expander Header="Documento" IsExpanded="True">
                             <WrapPanel Orientation="Vertical">
                                 <Components:HlpPesquisa 
-									Validation.ErrorTemplate="{StaticResource exceptionComp}"
+									
 									Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,10,10,2" Caption="Tipo de Documento para Pedido de Vendas" Help="Informar o tipo de documento que tornará padrão para o cliente, caso esteja em branco o software utilizará como padrão o Tipo de Documento definido em configurações do comercial" WidthLabel="260" Width="550" FieldPesquisa="ID" TableView="vwTipoDocumento">
@@ -1112,7 +1112,7 @@
                             <DataGridTemplateColumn Header="Caminho do arquivo" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock  Text="{Binding Path=xLinkArquivo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Validation.ErrorTemplate="{StaticResource exceptionComp}"/>
+                                        <TextBlock  Text="{Binding Path=xLinkArquivo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
@@ -1199,112 +1199,112 @@
                         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
 
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Margin="10,0,10,2" Height="27" Caption="Optante pelo Simples Nacional/Super Simples?" Help="Informar se o cliente é Simples Nacional/Super Simples." WidthLabel="315" HorizontalAlignment="Left"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stProdutorRural, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Margin="10,0,10,2" Height="27" Caption="É Produtor Rural?" Help="Informar se o cliente é Produtor Rural" WidthLabel="315" HorizontalAlignment="Left"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stExportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Margin="10,0,10,2" Height="27" Caption="É Exportador?" Help="Informar se o cliente é exportador" WidthLabel="315" HorizontalAlignment="Left"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stCooperativaAgricola, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Margin="10,0,10,2" Height="27" Caption="É Cooperativa Agrícola?" Help="Informar se o cliente é Cooperativa Agrícola" WidthLabel="315" HorizontalAlignment="Left"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.cliente_fornecedor_fiscal.xCodigoSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Margin="10,0,10,2" Height="27" Caption="Código do Suframa" Help="Informar o código do convenio da SUFRAMA (Superintendência da Zona Franca de Manaus) do cliente, esse campo só estará habilitado para clientes que sejam do estado do Amazonas." WidthLabel="315" HorizontalAlignment="Left" Width="450"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stDescontaIcmsSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Desconta Suframa da base do ICMS?" Help="Informar se descontará ou não o Suframa sobre a base de ICMS o valor da alíquota informado no campo Valor da ALiquota do suframa para base do ICMS, esse parâmetro é aberto somente quando o código SUFRAMA for preenchido." WidthLabel="315"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.cliente_fornecedor_fiscal.pDescontaIcmsSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								Caption="Valor da alíquota para desconto do Suframa na base do ICMS." Height="41.667" HorizontalAlignment="Left" Margin="10,0,10,-2" Width="450" WidthLabel="314" Help="Informar a alíquota correta para o desconto sobre a base de ICMS , esse parâmetro é aberto somente quando o código SUFRAMA for preenchido"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.cliente_fornecedor_fiscal.pDescontaPisSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="42" Caption="Valor da alíquota para desconto do Suframa na base do PIS." Help="Informar a alíquota correta para o desconto sobre a base de PIS/COFINS, esse parâmetro é aberto somente quando o código SUFRAMA for preenchido" WidthLabel="314" Width="450"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stDescontaPisCofinsSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Desconta Suframa da base do PIS/COFINS?" Help="Informar se descontará ou não o Suframa sobre a base de PIS/COFINS o valor da alíquota informado no campo Valor da ALiquota do suframa para base do PIS e Valor da ALiquota do suframa para base do COFINS , esse parâmetro é aberto somente quando o código SUFRAMA for preenchido." WidthLabel="314"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.cliente_fornecedor_fiscal.pDescontaPisSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="42" Caption="Valor da alíquota para desconto do Suframa na base do COFINS" Help="Informar a alíquota correta para o desconto sobre a base de PIS/COFINS, esse parâmetro é aberto somente quando o código SUFRAMA for preenchido" WidthLabel="314" Width="450"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stCalculaFunrural, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Calcula Funrural?" Help="Informar se haverá calculo para o Funrural ou contribuição social Rural. O Funrural ou Contribuição Social Rural é uma contribuição social destinada a custear a seguridade (INSS) geral. Este tributo é cobrado sobre o resultado bruto da comercialização rural (de 2,3% a 2,85%) e " WidthLabel="314"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.cliente_fornecedor_fiscal.pFunrural, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Valor da alíquota para o Funrural." Help="Informar o valor da alíquota para o calculo do Funrural ou Contribuição Social Rural." WidthLabel="314" Width="450"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.cliente_fornecedor_fiscal.xCodigoSuspensaoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Código de Suspensão PIS/COFINS" Help="Informar o código da suspensão do PIS/COFINS, caso tenha." WidthLabel="314" Width="450"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stRetemIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Retém ISS?" Help="Informar se haverá a retenção do ISS (Imposto Sobre o Serviço) pelo cliente e não pela própria empresa." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stRetemCsll, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Retém CSLL?" Help="Informar se haverá a retenção da  CSLL (Contribuição Social Sobre o Lucro Líquido) pelo cliente e não pela própria empresa." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stRetemInss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Retém INSS?" Help="Informar se haverá a retenção do INSS (Instituto Nacional do Seguro Social) pelo cliente e não pela própria empresa." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stRetemPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Retém Pis/COFINS?" Help="Informar se haverá a retenção do PIS (Programa de Integração Social) / COFINS (Contribuição para o Financiamento da Seguridade Social) pelo cliente e não pela própria empresa." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stRetemIrrf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Retém IRRF?" Help="Informar se haverá a retenção do IRRF (Imposto de Renda Retido na Fonte) pelo cliente e não pela própria empresa." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Calcula ICMS?" Help="Uma vez informado 'Não' zerar a alíquota do ICMS, o sistema irá zerar sempre, independentemente de qualquer parametrização." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Calcula IPI?" Help="Uma vez informado 'Não' zerar a alíquota do IPI, o sistema irá zerar sempre, independentemente de qualquer parametrização." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stConsumidorFinal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Consumidor Final?" Help="Informar se o cliente é Consumidor final." WidthLabel="314"/>
                             <Components:HlpCheckBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								IsChecked="{Binding currentModel.cliente_fornecedor_fiscal.stContribuienteIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								HorizontalAlignment="Left" Margin="10,0,10,2" Height="27" Caption="Contribuinte de ICMS?" Help="Informar se o cliente é Contribuinte do ICMS (Imposto sobre Operações relativas à Circulação de Mercadorias e sobre Prestações de Serviços de Transporte Interestadual e Intermunicipal e de Comunicação)." WidthLabel="314"/>

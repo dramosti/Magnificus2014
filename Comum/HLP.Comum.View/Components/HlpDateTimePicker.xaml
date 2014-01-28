@@ -5,12 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
+             xmlns:local="clr-namespace:HLP.Comum.View.Components"
              Width="Auto" Height="Auto" x:Name="componente">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type local:HlpDateTimePicker}">
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                        <Setter Property="Validation.ErrorTemplate">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <DockPanel LastChildFill="True">
+                                        <Border Background="#FFECA933" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                            ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                            <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"
+                                ></TextBlock>
+                                        </Border>
+                                        <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                            <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                        </AdornedElementPlaceholder>
+                                    </DockPanel>
+                                </ControlTemplate>
+
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsVisible" Value="false">
+                        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
             <Style x:Key="DatePickerStyle" TargetType="{x:Type DatePicker}">
                 <Setter Property="Foreground" Value="#FF333333"/>
                 <Setter Property="IsTodayHighlighted" Value="True"/>

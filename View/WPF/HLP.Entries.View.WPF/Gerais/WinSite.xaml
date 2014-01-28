@@ -48,13 +48,13 @@
 								IsReadOnly="True"
 								Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do Site. Sendo gerada automaticamente pelo software." WidthLabel="143" HorizontalAlignment="Left" Width="220"/>
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xSite, Mode=TwoWay, 
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Site " Help="Informe de forma resumida o nome do Site" WidthLabel="143" HorizontalAlignment="Left" Width="426"/>
                                 <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xDescricao, Mode=TwoWay, 
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"

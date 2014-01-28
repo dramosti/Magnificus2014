@@ -17,12 +17,12 @@
                     <Expander Header="Geral" IsExpanded="True">
                         <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsReadOnly="True"
 								Height="27" Margin="10,0,10,2" Caption="Código" Field="Deposito.idDepósito" Help="Chave principal do registro do depósito" Table="Deposito" WidthLabel="171" HorizontalAlignment="Left" Width="264"/>
                             <Components:HlpPesquisa 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" Caption="Site " Field="Deposito.idSite" Help="Informar qual Site o Depósito se origina." Table="Site" WidthLabel="171" FieldPesquisa="ID" TableView="vwSite" HorizontalAlignment="Left" Width="498">
@@ -32,17 +32,17 @@
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" Caption="Depósito" Field="Deposito.xDeposito" Table="Deposito" Help="Insira uma identidade para o Depósito " WidthLabel="171" HorizontalAlignment="Left" Width="321"/>
                             <Components:HlpTextBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
 								Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" Caption="Nome" Field="Deposito.xDescricao" Help="Insira uma identidade para o Depósito " Table="Deposito" WidthLabel="171" HorizontalAlignment="Left" Width="321"/>
                             <Components:HlpComboBox
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
                                 SelectedIndex="{Binding currentModel.stTipo, Mode=TwoWay, NotifyOnValidationError=True, 
                                 UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"								
 								IsEnabled="{Binding bIsEnabled}"
@@ -54,7 +54,7 @@
                                 </Components:HlpComboBox.Items>
                             </Components:HlpComboBox>
                             <Components:HlpComboBox 
-								Validation.ErrorTemplate="{StaticResource exceptionComp}"
+								
                                 SelectedIndex="{Binding currentModel.stGrupoIdentificacao, Mode=TwoWay, 
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
 								IsEnabled="{Binding bIsEnabled}"
