@@ -303,10 +303,15 @@ namespace HLP.Comum.ViewModel.ViewModels
             List<Control> lDestalhesControle = TabPagesAtivasModel.GetLogicalChildCollection<Control>(ctrFocus);
             content.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
             System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+
+            // caso retorne nesse componente ctrValidacao é pq esta em looping e deve sair do while.
+            System.Windows.Controls.Control ctrValidacao = (System.Windows.Controls.Control)Keyboard.FocusedElement;
             while (!lDestalhesControle.Contains((System.Windows.Controls.Control)Keyboard.FocusedElement))
             {
                 ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+                if (ctr == ctrValidacao)
+                    break;
             }
         }
 

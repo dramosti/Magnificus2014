@@ -280,8 +280,9 @@ namespace HLP.Comum.ViewModel.Commands
             else
             {
                 this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
-            }
+            }            
             this.objviewModel.bIsEnabled = false;
+            
         }
         private bool cancelarBaseCanExecute()
         {
