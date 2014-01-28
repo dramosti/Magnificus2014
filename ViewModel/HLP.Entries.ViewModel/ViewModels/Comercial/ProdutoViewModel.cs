@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class ProdutoViewModel : ViewModelBase
+    public class ProdutoViewModel : ViewModelBase<ProdutoModel>
     {
 
         #region Icommands
@@ -29,16 +29,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             ProdutoCommands comm = new ProdutoCommands(objViewModel: this);
         }
 
-        private ProdutoModel _currentModel;
-
-        public ProdutoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+       
     }
 }

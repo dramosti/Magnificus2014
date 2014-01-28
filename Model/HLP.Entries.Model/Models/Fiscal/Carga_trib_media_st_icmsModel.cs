@@ -12,7 +12,7 @@ namespace HLP.Entries.Model.Models.Fiscal
     {
         public Carga_trib_media_st_icmsModel() : base("Carga_trib_media_st_icms") { }
         private int? _idCargaTribMediaStIcms;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCargaTribMediaStIcms
         {
             get { return _idCargaTribMediaStIcms; }

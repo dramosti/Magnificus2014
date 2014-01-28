@@ -16,7 +16,7 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         }
 
         private int? _idCargo;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCargo
         {
             get

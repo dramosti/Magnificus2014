@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class StIpiViewModel : ViewModelBase
+    public class StIpiViewModel : ViewModelBase<Situacao_tributaria_ipiModel>
     {
 
         #region Icommands
@@ -30,18 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
             StIpiCommands comm = new StIpiCommands(objViewModel: this);
         }
 
-
-        private Situacao_tributaria_ipiModel _currentModel;
-
-        public Situacao_tributaria_ipiModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
 
     }
 }

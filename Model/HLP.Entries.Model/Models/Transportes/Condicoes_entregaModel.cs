@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Transportes
 
         private int? _idCondicaoEntrega;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCondicaoEntrega
         {
             get

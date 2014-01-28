@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class CargoViewModel : ViewModelBase
+    public class CargoViewModel : ViewModelBase<CargoModel>
     {
 
         #region IcommandsBase
@@ -63,18 +63,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand navegarCommand { get; set; }
         #endregion
 
-        CargoModel _currentModel;
-
-        public CargoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-
-            }
-        }
+      
 
         public CargoViewModel()
             : base()

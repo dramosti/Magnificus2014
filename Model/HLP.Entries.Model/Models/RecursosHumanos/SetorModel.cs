@@ -20,7 +20,7 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
 
         private int? _idSetor;
 
-        [ParameterOrder(Order = 2)]
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idSetor
         {
             get

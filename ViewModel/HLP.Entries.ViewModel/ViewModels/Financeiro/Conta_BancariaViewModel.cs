@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class Conta_BancariaViewModel : ViewModelBase
+    public class Conta_BancariaViewModel : ViewModelBase<Conta_bancariaModel>
     {
 
         #region Icommands
@@ -28,19 +28,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         public Conta_BancariaViewModel()
         {
             Conta_BancariaCommands comm = new Conta_BancariaCommands(objViewModel: this);
-        }
-
-
-        private Conta_bancariaModel _currentModel;
-
-        public Conta_bancariaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
         }
 
     }

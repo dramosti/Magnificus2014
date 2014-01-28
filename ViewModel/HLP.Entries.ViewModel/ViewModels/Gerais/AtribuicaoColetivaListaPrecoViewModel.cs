@@ -8,10 +8,11 @@ using HLP.Entries.Model.Models.Comercial;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System.Windows.Input;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class AtribuicaoColetivaListaPrecoViewModel : ViewModelBase
+    public class AtribuicaoColetivaListaPrecoViewModel : ViewModelBase<CalendarioModel>
     {
         public ICommand commAplicarAtribuicaoColetiva { get; set; }
 

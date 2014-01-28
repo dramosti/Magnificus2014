@@ -12,7 +12,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class CalendarioDetalheViewModel : ViewModelBase
+    public class CalendarioDetalheViewModel : ViewModelBase<CalendarioGeraDetalhesModel>
     {
         public CalendarioDetalheViewModel()
         {
@@ -26,20 +26,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         CalendarioDetalheCommand commands;
 
-        private CalendarioGeraDetalhesModel _currentModel;
-
-        public CalendarioGeraDetalhesModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
-
-
         private ObservableCollectionBaseCadastros<Calendario_DetalheModel> _lCalendarioDetalhes;
 
         public ObservableCollectionBaseCadastros<Calendario_DetalheModel> lCalendarioDetalhes
@@ -51,9 +37,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 base.NotifyPropertyChanged(propertyName: "lCalendarioDetalhes");
             }
         }
-
-
-
 
         public Dictionary<DateTime, DateTime> GeraIntervalos()
         {

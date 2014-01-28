@@ -12,7 +12,7 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public int? _idRegiao;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idRegiao
         {
             get { return _idRegiao; }

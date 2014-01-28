@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class JurosViewModel : ViewModelBase
+    public class JurosViewModel : ViewModelBase<JurosModel>
     {
 
         #region Icommands
@@ -24,22 +24,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand navegarCommand { get; set; }
         #endregion
 
-
         public JurosViewModel()
         {
             JurosCommands comm = new JurosCommands(objViewModel: this);
-        }
-
-        private JurosModel _currentModel;
-
-        public JurosModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+        }      
     }
 }

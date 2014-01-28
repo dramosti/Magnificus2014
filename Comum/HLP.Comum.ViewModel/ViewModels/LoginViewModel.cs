@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase<loginModel>
     {
         public ICommand fecharCommand { get; set; }
         public ICommand loginCommand { get; set; }
@@ -21,13 +21,13 @@ namespace HLP.Comum.ViewModel.ViewModels
         public LoginViewModel(ModoInicial st)
         {
             LoginCommands cmm = new LoginCommands(objViewModel: this);
-            this.currentLogin = new loginModel();
+            this.currentModel = new loginModel();
 
             switch (st)
             {
                 case ModoInicial.trocaUsuario:
                     {
-                        this.currentLogin.idEmpresa = CompanyData.idEmpresa;
+                        this.currentModel.idEmpresa = CompanyData.idEmpresa;
                     }
                     break;
                 case ModoInicial.trocaEmpresa:
@@ -36,26 +36,14 @@ namespace HLP.Comum.ViewModel.ViewModels
 
                         funcionarioService.FuncionarioModel objFunc = funcService.getFuncionario(idFuncionario: UserData.idUser);
                         if (objFunc != null)
-                            this.currentLogin.xId = objFunc.xID;
+                            this.currentModel.xId = objFunc.xID;
                     }
                     break;
                 default:
                     break;
             }
         }
-
-        private loginModel _currentLogin;
-
-        public loginModel currentLogin
-        {
-            get { return _currentLogin; }
-            set
-            {
-                _currentLogin = value;
-                base.NotifyPropertyChanged(propertyName: "currentLogin");
-            }
-        }
-
+              
     }
 
     public enum ModoInicial

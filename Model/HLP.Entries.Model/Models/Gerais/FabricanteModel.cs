@@ -16,7 +16,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
         private int? _idFabricante;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFabricante
         {
             get { return _idFabricante; }

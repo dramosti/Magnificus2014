@@ -26,7 +26,7 @@ namespace HLP.Entries.Model.Models.Comercial
 
         private int? _idClienteFornecedor;
 
-        [ParameterOrder(Order = 1)]
+       [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idClienteFornecedor
         {
             get { return _idClienteFornecedor; }

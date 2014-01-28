@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class AgenciaViewModel : ViewModelBase
+    public class AgenciaViewModel : ViewModelBase<AgenciaModel>
     {
 
 
@@ -31,16 +31,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
                 this);
         }
 
-        private AgenciaModel _currentModel;
-
-        public AgenciaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+      
     }
 }

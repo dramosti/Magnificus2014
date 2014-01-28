@@ -14,7 +14,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class RegiaoViewModel : ViewModelBase
+    public class RegiaoViewModel : ViewModelBase<RegiaoModel>
     {       
 
         public ICommand commandTeste { get; set; }

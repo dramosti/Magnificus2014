@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class Condicao_entregaViewModel : ViewModelBase
+    public class Condicao_entregaViewModel : ViewModelBase<Condicoes_entregaModel>
     {
 
         #region Icommands
@@ -30,19 +30,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
             Condicao_entregaCommands comm = new Condicao_entregaCommands(
             objViewModel: this);
         }
-
-        private Condicoes_entregaModel _currentModel;
-
-        public Condicoes_entregaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
+        
     }
 
 }

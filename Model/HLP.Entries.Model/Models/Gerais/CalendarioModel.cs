@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public CalendarioModel() : base("Calendario") { this.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<Calendario_DetalheModel>(); }
 
         public int? _idCalendario;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCalendario
         {
             get { return _idCalendario; }

@@ -22,7 +22,7 @@ namespace HLP.Entries.Model.Models.Comercial
         public int idEmpresa { get; set; }
         private int? _idListaPrecoPai;
 
-        [ParameterOrder(Order = 2)]
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idListaPrecoPai
         {
             get { return _idListaPrecoPai; }

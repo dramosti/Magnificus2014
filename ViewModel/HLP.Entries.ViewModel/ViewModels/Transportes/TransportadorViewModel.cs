@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class TransportadorViewModel : ViewModelBase
+    public class TransportadorViewModel : ViewModelBase<TransportadorModel>
     {
 
         #region Icommands
@@ -30,16 +30,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
             TransportadorCommands comm = new TransportadorCommands(objViewModel: this);
         }
 
-        private TransportadorModel _currentModel;
-
-        public TransportadorModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

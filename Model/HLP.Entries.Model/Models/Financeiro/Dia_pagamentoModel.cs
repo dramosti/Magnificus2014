@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Financeiro
             this.lDia_pagamento_linhas = new ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel>();
         }
         public int? _idDiaPagamento;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idDiaPagamento
         {
             get { return _idDiaPagamento; }

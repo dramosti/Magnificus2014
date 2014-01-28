@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Tipo_OperacaoViewModel: ViewModelBase
+    public class Tipo_OperacaoViewModel: ViewModelBase<Tipo_operacaoModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -30,17 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         }
 
         
-        private Tipo_operacaoModel _currentModel;
-
-        public Tipo_operacaoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
         
     }
 }

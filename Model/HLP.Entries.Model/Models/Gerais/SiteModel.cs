@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             this.lSite_Endereco = new ObservableCollectionBaseCadastros<Site_enderecoModel>();
         }
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idSite { get; set; }
         [ParameterOrder(Order = 2)]
         public string xSite { get; set; }

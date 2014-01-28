@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class Condicao_PagamentoViewModel : ViewModelBase
+    public class Condicao_PagamentoViewModel : ViewModelBase<Condicao_pagamentoModel>
     {
 
         #region Icommands
@@ -29,17 +29,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             Condicao_PagamentoCommands comm = new Condicao_PagamentoCommands(objViewModel: this);
         }
 
-        private Condicao_pagamentoModel _currentModel;
-
-        public Condicao_pagamentoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-
-            }
-        }
     }
 }

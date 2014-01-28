@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Crm;
 
 namespace HLP.Entries.ViewModel.ViewModels.Crm
 {
-    public class FidelidadeViewModel : ViewModelBase
+    public class FidelidadeViewModel : ViewModelBase<FidelidadeModel>
     {
 
         #region Icommands
@@ -31,16 +31,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Crm
             commands = new FidelidadeCommand(objViewModel: this);
         }
 
-        private FidelidadeModel _currentModel;
-        public FidelidadeModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+        
 
     }
 }

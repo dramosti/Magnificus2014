@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Transportes;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class ModoEntregaViewModel : ViewModelBase
+    public class ModoEntregaViewModel : ViewModelBase<Modos_entregaModel>
     {
         
         #region Icommands
@@ -30,17 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
         {
             commands = new ModoEntregaCommands(objViewModel: this);
         }
-        private Modos_entregaModel _currentModel;
-        public Modos_entregaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
-
+      
     }
 }

@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class DepartamentoViewModel : ViewModelBase
+    public class DepartamentoViewModel : ViewModelBase<DepartamentoModel>
     {
 
         #region Icommands
@@ -24,17 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand navegarCommand { get; set; }
         #endregion
 
-        DepartamentoModel _currentModel;
-
-        public DepartamentoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+      
 
         public DepartamentoViewModel()
             : base()

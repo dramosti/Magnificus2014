@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class ClassificacaoFiscalViewModel : ViewModelBase
+    public class ClassificacaoFiscalViewModel : ViewModelBase<Classificacao_fiscalModel>
     {
 
         #region Icommands
@@ -23,20 +23,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-
-        
-        private Classificacao_fiscalModel _currentModel;
-
-        public Classificacao_fiscalModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
+                     
         public ClassificacaoFiscalViewModel() 
         {
             commands = new ClassificacaoFiscalCommand(objViewModel: this);

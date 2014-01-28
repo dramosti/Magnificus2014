@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class Funcionario_AcessoViewModel : ViewModelBase
+    public class Funcionario_AcessoViewModel : ViewModelBase<FuncionarioModel>
     {
 
         #region Icommands
@@ -30,17 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             comm = new Funcionario_AcessoCommands(objViewModel: this);
         }
 
-        private FuncionarioModel _currentModel;
-
-        public FuncionarioModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
 
         public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario)
         {

@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Financeiro
 
 
         private int? _idBanco;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idBanco
         {
             get { return _idBanco; }

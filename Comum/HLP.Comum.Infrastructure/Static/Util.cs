@@ -14,7 +14,9 @@ using System.Configuration;
 namespace HLP.Comum.Infrastructure.Static
 {
     public static class Util
-    {        
+    {
+        public enum focoComponente { Primeiro, Segundo };
+
         public static void CarregaSettingsAppConfig()
         {
             Sistema.lSettings = new List<System.Configuration.KeyValueConfigurationElement>();

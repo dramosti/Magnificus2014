@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class MoedaViewModel : ViewModelBase
+    public class MoedaViewModel : ViewModelBase<MoedaModel>
     {
 
         #region Icommands
@@ -30,16 +30,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             MoedaCommands comm = new MoedaCommands(objViewModel: this);
         }
 
-        private MoedaModel _currentModel;
-
-        public MoedaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

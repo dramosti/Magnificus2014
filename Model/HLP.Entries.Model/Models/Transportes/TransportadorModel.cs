@@ -22,7 +22,7 @@ namespace HLP.Entries.Model.Models.Transportes
 
         private int? _idTransportador;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idTransportador
         {
             get { return _idTransportador; }

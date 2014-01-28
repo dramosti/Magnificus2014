@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Tipo_documentoViewModel : ViewModelBase
+    public class Tipo_documentoViewModel : ViewModelBase<Tipo_documentoModel>
     {
 
         #region Icommands
@@ -31,19 +31,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
             this.objCommands = new Tipo_documentoCommand(this);
         }
 
-        
-        private Tipo_documentoModel _currentModel;
-
-        public Tipo_documentoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
-       
     }
 }

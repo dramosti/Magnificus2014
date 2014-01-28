@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Parametros
 {
-    public class Empresa_ParametrosViewModel : ViewModelBase
+    public class Empresa_ParametrosViewModel : ViewModelBase<EmpresaModel>
     {
 
         #region Icommands
@@ -31,16 +31,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
             this.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
 
-        private EmpresaModel _currentModel;
-
-        public EmpresaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

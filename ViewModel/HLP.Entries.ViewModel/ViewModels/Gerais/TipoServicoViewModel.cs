@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class TipoServicoViewModel : ViewModelBase
+    public class TipoServicoViewModel : ViewModelBase<Tipo_servicoModel>
     {        
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -24,16 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         #endregion
         
         TipoServicoCommand commands;       
-
-        private Tipo_servicoModel _currentModel;
-
-        public Tipo_servicoModel currentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged("currentModel"); }
-        }
-
-
+        
         public TipoServicoViewModel() 
         {
             commands = new TipoServicoCommand(this);

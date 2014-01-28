@@ -15,7 +15,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         {
         }
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idTipoDocumentoOperValida { get; set; }
 
         [ParameterOrder(Order = 2)]

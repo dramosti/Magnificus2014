@@ -14,7 +14,7 @@ namespace HLP.Entries.Model.Models.Parametros
             : base(xTabela: "Parametro_Ordem_Producao")
         {
         }
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idParametroOrdemProducao { get; set; }
         [ParameterOrder(Order = 2)]
         public byte stProducaoGera { get; set; }

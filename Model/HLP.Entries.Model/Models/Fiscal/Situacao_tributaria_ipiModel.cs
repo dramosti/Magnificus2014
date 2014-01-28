@@ -16,7 +16,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         }
         
         private int? _idCSTIpi;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCSTIpi
         {
             get { return _idCSTIpi; }

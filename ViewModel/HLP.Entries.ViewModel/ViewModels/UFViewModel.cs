@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class UFViewModel : ViewModelBase
+    public class UFViewModel : ViewModelBase<UFModel>
     {
 
         #region Icommands
@@ -37,25 +37,7 @@ namespace HLP.Entries.ViewModel.ViewModels
             : base()
         {
             objUFCommands = new UFCommands(objViewModel: this);
-        }
-
-        private UFModel _currentModel;
-
-        public UFModel currentModel
-        {
-            get
-            {
-                return this._currentModel;
-            }
-            set
-            {
-                this._currentModel = value;
-                base.NotifyPropertyChanged("currentModel");
-            }
-        }
-
-
-
+        }     
 
     }
 }

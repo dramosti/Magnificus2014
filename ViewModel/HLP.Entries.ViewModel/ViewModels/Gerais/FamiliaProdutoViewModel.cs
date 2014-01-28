@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class FamiliaProdutoViewModel : ViewModelBase
+    public class FamiliaProdutoViewModel : ViewModelBase<Familia_produtoModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -29,15 +29,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             commands = new FamiliaProdutoCommand(objViewModel: this);
         }
-
-        private Familia_produtoModel _currentModel;
-
-        public Familia_produtoModel currentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged(propertyName: "currentModel"); }
-        }
-
-                
+                        
     }
 }

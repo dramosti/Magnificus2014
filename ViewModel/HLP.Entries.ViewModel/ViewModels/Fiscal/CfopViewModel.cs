@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class CfopViewModel : ViewModelBase
+    public class CfopViewModel : ViewModelBase<CfopModel>
     {
 
         #region Icommands
@@ -24,18 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         public ICommand navegarCommand { get; set; }
         #endregion
         
-        private CfopModel _currentModel;
-
-        public CfopModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
+       
         public CfopViewModel() 
         {
 

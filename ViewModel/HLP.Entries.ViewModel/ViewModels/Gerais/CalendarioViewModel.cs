@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class CalendarioViewModel : ViewModelBase
+    public class CalendarioViewModel : ViewModelBase<CalendarioModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -34,19 +34,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             commands = new CalendarioCommand(objViewModel: this);
         }
 
-        CalendarioCommand commands;
-        
-        private CalendarioModel _currentModel;
-
-        public CalendarioModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+        CalendarioCommand commands;      
+       
         
 
     }

@@ -11,7 +11,7 @@ using HLP.Entries.ViewModel.Commands.Comercial;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class Tipo_ProdutoViewModel : ViewModelBase
+    public class Tipo_ProdutoViewModel : ViewModelBase<Tipo_produtoModel>
     {
 
         #region Icommands
@@ -32,12 +32,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             objCommands = new Tipo_ProdutoCommands(_objViewModel: this);
         }
 
-        private Tipo_produtoModel _currentModel;
-
-        public Tipo_produtoModel currentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged("currentModel"); }
-        }
+       
     }
 }

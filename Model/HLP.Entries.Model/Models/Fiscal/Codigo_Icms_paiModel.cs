@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         public int idEmpresa { get; set; }
 
         private int? _idCodigoIcmsPai;
-        [ParameterOrder(Order = 2)]
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idCodigoIcmsPai
         {
             get { return _idCodigoIcmsPai; }

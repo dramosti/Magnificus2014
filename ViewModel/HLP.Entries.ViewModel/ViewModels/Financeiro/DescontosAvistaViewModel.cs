@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Financeiro;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class DescontosAvistaViewModel : ViewModelBase
+    public class DescontosAvistaViewModel : ViewModelBase<Descontos_AvistaModel>
     {
 
 
@@ -30,18 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
             commands = new DescontosAvistaCommand(objViewModel: this);
         }
         DescontosAvistaCommand commands;
-        
-        private Descontos_AvistaModel _currentModel;
-
-        public Descontos_AvistaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
         
     }
 }

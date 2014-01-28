@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Models.Comercial
 
         private int? _idJuros;
 
-        [ParameterOrder(Order = 1)]
+         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idJuros
         {
             get { return _idJuros; }

@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Models.Crm
         public PersonalidadeModel() : base("Personalidade") { }
         public int? _idPersonalidade;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idPersonalidade
         {
             get { return _idPersonalidade; }

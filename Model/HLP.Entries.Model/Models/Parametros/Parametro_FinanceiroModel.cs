@@ -16,7 +16,7 @@ namespace HLP.Entries.Model.Models.Parametros
         }
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
-        [ParameterOrder(Order = 2)]
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idParametroFinanceiro { get; set; }
         [ParameterOrder(Order = 3)]
         public byte stPedidoCompraGeraPrevisao { get; set; }

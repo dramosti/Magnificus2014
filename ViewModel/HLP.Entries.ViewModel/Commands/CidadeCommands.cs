@@ -45,6 +45,9 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
                 canExecute: paramCanExec => this.CopyCanExecute());
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+               canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
         }
 
         public void GetCidadeByUf(int idUF)
@@ -168,7 +171,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -191,7 +194,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.ViewModel.ViewModels.ViewModelBase.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
         }
 
         private bool AlterarCanExecute()
@@ -208,27 +211,7 @@ namespace HLP.Entries.ViewModel.Commands
         private bool CancelarCanExecute()
         {
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
-        }
-
-        public void ExecPesquisa()
-        {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.PesquisarRegistro();
-        }
-
-        private void PesquisarRegistro()
-        {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
-            bw.RunWorkerAsync();
-
-        }
-
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
-        {
-            this.objViewModel.currentModel = await
-                this.servico.getCidadeAsync(this.objViewModel.currentID);
-        }
+        }        
 
         public async void Copy()
         {
@@ -243,10 +226,43 @@ namespace HLP.Entries.ViewModel.Commands
                 throw ex;
             }
         }
-
         public bool CopyCanExecute()
         {
             return this.objViewModel.copyBaseCommand.CanExecute(null);
+        }
+
+
+
+
+        public void Navegar(object ContentBotao)
+        {
+            try
+            {
+                objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                this.PesquisarRegistro();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void ExecPesquisa()
+        {
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
+        }
+
+        private void PesquisarRegistro()
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.GetCidadeBackground);
+            bw.RunWorkerAsync();
+        }
+
+        private async void GetCidadeBackground(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = await this.servico.getCidadeAsync(this.objViewModel.currentID);
         }
 
         #endregion

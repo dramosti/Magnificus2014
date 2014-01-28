@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Models.Financeiro
         public Descontos_AvistaModel() : base("Descontos_Avista") { }
 
         public int? _idDescontosAvista;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idDescontosAvista
         {
             get { return _idDescontosAvista; }

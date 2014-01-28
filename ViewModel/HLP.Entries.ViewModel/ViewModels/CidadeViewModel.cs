@@ -13,7 +13,7 @@ using HLP.Entries.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class CidadeViewModel : ViewModelBase
+    public class CidadeViewModel : ViewModelBase<CidadeModel>
     {
 
         #region Icommands
@@ -24,6 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels
         public ICommand commandCancelar { get; set; }
         public ICommand commandPesquisar { get; set; }
         public ICommand commandCopiar { get; set; }
+        public ICommand navegarCommand { get; set; }
         #endregion
 
         private ObservableCollection<CidadeModel> _lCidade;
@@ -37,22 +38,7 @@ namespace HLP.Entries.ViewModel.ViewModels
                 base.NotifyPropertyChanged("lCidade");
             }
         }
-
-        private CidadeModel _currentModel;
-
-        public CidadeModel currentModel
-        {
-            get
-            {
-                return this._currentModel;
-            }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
+                
         public CidadeCommands objCidadeCommands;
 
         public CidadeViewModel()

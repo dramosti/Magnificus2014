@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Carga_trib_media_st_icmsViewModel : ViewModelBase
+    public class Carga_trib_media_st_icmsViewModel : ViewModelBase<Carga_trib_media_st_icmsModel>
     {
 
         #region Icommands
@@ -29,19 +29,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         public Carga_trib_media_st_icmsViewModel() 
         {
             commands = new Carga_trib_media_st_icmsCommand(objViewModel: this);
-        }
-        
-        private Carga_trib_media_st_icmsModel _currentModel;
-
-        public Carga_trib_media_st_icmsModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+        }      
         
     }
 }

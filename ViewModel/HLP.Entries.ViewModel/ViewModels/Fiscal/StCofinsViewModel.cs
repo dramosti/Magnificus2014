@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class StCofinsViewModel : ViewModelBase
+    public class StCofinsViewModel : ViewModelBase<Situacao_tributaria_cofinsModel>
     {
 
         #region Icommands
@@ -29,19 +29,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         {
             StCofinsCommands comm = new StCofinsCommands(objViewModel: this);
         }
-
-
-        private Situacao_tributaria_cofinsModel _currentModel;
-
-        public Situacao_tributaria_cofinsModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
     }
 }

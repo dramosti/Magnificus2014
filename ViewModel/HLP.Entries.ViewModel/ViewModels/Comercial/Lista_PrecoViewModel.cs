@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class Lista_PrecoViewModel : ViewModelBase
+    public class Lista_PrecoViewModel : ViewModelBase<Lista_Preco_PaiModel>
     {
 
         #region Icommands
@@ -35,16 +35,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
                 objViewModel: this);
         }
 
-        private Lista_Preco_PaiModel _currentModel;
-
-        public Lista_Preco_PaiModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+       
     }
 }

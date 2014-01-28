@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class Situacao_tributaria_pisViewModel : ViewModelBase
+    public class Situacao_tributaria_pisViewModel : ViewModelBase<Situacao_tributaria_pisModel>
     {
 
         #region Icommands
@@ -31,18 +31,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 
         Situacao_tributaria_pisCommand commands;
         
-        private Situacao_tributaria_pisModel _currentModel;
-
-        public Situacao_tributaria_pisModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
-
-    }
+           }
 }

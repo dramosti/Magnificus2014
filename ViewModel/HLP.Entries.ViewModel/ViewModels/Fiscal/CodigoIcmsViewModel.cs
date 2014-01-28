@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Fiscal;
 
 namespace HLP.Entries.ViewModel.ViewModels.Fiscal
 {
-    public class CodigoIcmsViewModel : ViewModelBase
+    public class CodigoIcmsViewModel : ViewModelBase<Codigo_Icms_paiModel>
     {
 
         #region Icommands
@@ -30,16 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Fiscal
         }
         CodigoIcmsCommand commands;
 
-        private Codigo_Icms_paiModel _currentModel;
-        public Codigo_Icms_paiModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
+              
     }
 }

@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class PlanoPagamentoViewModel : ViewModelBase
+    public class PlanoPagamentoViewModel : ViewModelBase<Plano_pagamentoModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -30,12 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             commands = new PlanoPagamentoCommand(objViewModel: this);    
         }
 
-        private Plano_pagamentoModel _currentModel;
-        public Plano_pagamentoModel currentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged("currentModel"); }
-        }
 
 
 

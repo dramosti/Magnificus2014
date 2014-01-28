@@ -19,7 +19,7 @@ namespace HLP.Entries.Model.Fiscal
         [ParameterOrder(Order = 1)]
         public int idEmpresa { get; set; }
         public int? _idTipoDocumento;
-        [ParameterOrder(Order = 2)]
+        [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idTipoDocumento
         {
             get { return _idTipoDocumento; }

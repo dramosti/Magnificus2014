@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         public Classificacao_fiscalModel() : base("Classificacao_fiscal") { }
         
         private int? _idClassificacaoFiscal;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idClassificacaoFiscal
         {
             get { return _idClassificacaoFiscal; }

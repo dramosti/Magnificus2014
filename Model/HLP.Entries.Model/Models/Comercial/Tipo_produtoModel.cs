@@ -16,7 +16,7 @@ namespace HLP.Entries.Model.Comercial
             : base(xTabela: "Tipo_produto") { }
         
         private int? _idTipoProduto;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idTipoProduto
         {
             get { return _idTipoProduto; }

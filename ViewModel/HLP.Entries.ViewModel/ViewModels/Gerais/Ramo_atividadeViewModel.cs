@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class Ramo_atividadeViewModel : ViewModelBase
+    public class Ramo_atividadeViewModel : ViewModelBase<Ramo_atividadeModel>
     {
 
         #region Icommands
@@ -30,16 +30,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             Ramo_atividadeCommands comm = new Ramo_atividadeCommands(objViewModel: this);
         }
 
-        private Ramo_atividadeModel _currentModel;
-
-        public Ramo_atividadeModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         public CfopModel() : base("Cfop") { }
 
         private int? _idCfop;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCfop
         {
             get { return _idCfop; }

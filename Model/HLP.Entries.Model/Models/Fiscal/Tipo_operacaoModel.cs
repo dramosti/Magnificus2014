@@ -24,7 +24,7 @@ namespace HLP.Entries.Model.Models.Fiscal
 
         private int? _idTipoOperacao;
 
-        [ParameterOrder(Order = 3)]
+        [ParameterOrder(Order = 3), PrimaryKey(isPrimary = true)]
         public int? idTipoOperacao
         {
             get { return _idTipoOperacao; }

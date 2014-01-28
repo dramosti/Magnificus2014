@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class ContatoViewModel : ViewModelBase
+    public class ContatoViewModel : ViewModelBase<ContatoModel>
     {
 
         #region Icommands
@@ -29,14 +29,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             commands = new ContatoCommand(this);
         }
-
-        private ContatoModel _currentModel;
-
-        public ContatoModel currentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged("currentModel"); }
-        }
+        
 
     }
 }

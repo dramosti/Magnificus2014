@@ -41,7 +41,7 @@ namespace HLP.Entries.View.WPF.Gerais
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bool b = this.ViewModel.IsValid(obj: this.gridPropriedades);
+            //bool b = this.ViewModel.IsValid(obj: this.gridPropriedades);
         }
     }
 }

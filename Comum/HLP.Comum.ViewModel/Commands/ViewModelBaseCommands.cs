@@ -18,9 +18,9 @@ using System.ComponentModel;
 
 namespace HLP.Comum.ViewModel.Commands
 {
-    public class ViewModelBaseCommands
+    public class ViewModelBaseCommands<T> where T : class
     {
-        ViewModelBase objviewModel;
+        public ViewModelBase<T> objviewModel;
         private OperacaoCadastro _currentOp;
         public OperacaoCadastro currentOp
         {
@@ -33,9 +33,9 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
 
-        public ViewModelBaseCommands(ViewModelBase vViewModel)
+        public ViewModelBaseCommands(object vViewModel)
         {
-            this.objviewModel = vViewModel;
+            this.objviewModel = vViewModel as ViewModelBase<T>;
             this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(panel: pExec),
                 canExecute: pCanExec => this.novoBaseCanExecute());
             this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(panel: pExec),
@@ -130,12 +130,13 @@ namespace HLP.Comum.ViewModel.Commands
                 {
                     try
                     {
-                        objviewModel.currentID = 0;
-                        if (objviewModel.navigatePesquisa.Count > 0)
-                        {
-                            objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
-                        }
+                        //objviewModel.currentID = 0;
+                        //if (objviewModel.navigatePesquisa.Count > 0)
+                        //{
+                        //    objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
+                        //}
                         objviewModel.sText = (objviewModel.navigatePesquisa.CurrentPosition + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
+                        objviewModel.iPositionCollection = objviewModel.navigatePesquisa.CurrentPosition;
                     }
                     catch (Exception ex)
                     {
@@ -197,7 +198,7 @@ namespace HLP.Comum.ViewModel.Commands
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
-            objviewModel.currentID = -1;
+            //objviewModel.currentID = -1;
             objviewModel.SetFocusFirstTab(panel as Panel);
         }
 
@@ -256,7 +257,7 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.bIsEnabled = false;
             if (panel != null)
             {
-                objviewModel.FocusToComponente(panel as Panel, ViewModelBase.focoComponente.Primeiro);
+                objviewModel.FocusToComponente(panel as Panel, Util.focoComponente.Primeiro);
             }
         }
 

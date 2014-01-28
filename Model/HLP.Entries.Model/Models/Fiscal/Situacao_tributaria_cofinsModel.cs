@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Models.Fiscal
 
         private int? _idCSTCofins;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCSTCofins
         {
             get { return _idCSTCofins; }

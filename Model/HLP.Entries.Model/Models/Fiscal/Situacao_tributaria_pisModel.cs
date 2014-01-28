@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Models.Fiscal
         public Situacao_tributaria_pisModel() : base("Situacao_tributaria_pis") { }
 
         private int? _idCSTPis;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCSTPis
         {
             get { return _idCSTPis; }

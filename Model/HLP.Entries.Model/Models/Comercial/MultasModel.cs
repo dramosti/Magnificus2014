@@ -16,7 +16,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
         private int? _idMultas;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idMultas
         {
             get { return _idMultas; }

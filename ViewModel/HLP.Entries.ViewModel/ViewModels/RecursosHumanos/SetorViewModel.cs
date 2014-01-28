@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.RecursosHumanos
 {
-    public class SetorViewModel : ViewModelBase
+    public class SetorViewModel : ViewModelBase<SetorModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -23,18 +23,7 @@ namespace HLP.Entries.ViewModel.ViewModels.RecursosHumanos
         public ICommand navegarCommand { get; set; }
         #endregion
 
-        SetorModel _currentModel;
-
-        public SetorModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
+        
         public SetorViewModel()
         {
             SetorCommands comm = new SetorCommands(this);

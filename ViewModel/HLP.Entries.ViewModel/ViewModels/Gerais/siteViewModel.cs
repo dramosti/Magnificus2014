@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class siteViewModel : ViewModelBase
+    public class siteViewModel : ViewModelBase<SiteModel>
     {
 
         #region Icommands
@@ -29,16 +29,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             siteCommands comm = new siteCommands(objViewModel: this);
         }
 
-        private SiteModel _currentModel;
-
-        public SiteModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {                
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

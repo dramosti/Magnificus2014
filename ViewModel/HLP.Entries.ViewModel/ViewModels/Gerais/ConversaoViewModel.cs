@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class ConversaoViewModel : ViewModelBase
+    public class ConversaoViewModel : ViewModelBase<ProdutoModel>
     {
 
         #region Icommands
@@ -26,26 +26,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand navegarCommand { get; set; }
         #endregion
 
-
         public ConversaoViewModel()
         {
             ConversaoCommands comm = new ConversaoCommands(objViewModel: this);
         }
-
-        ProdutoModel _currentModel;
-
-        public ProdutoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-
         int _idProdutoSelecionado;
-
         public int idProdutoSelecionado
         {
             get { return _idProdutoSelecionado; }

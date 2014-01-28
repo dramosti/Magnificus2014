@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class FabricanteViewModel : ViewModelBase
+    public class FabricanteViewModel : ViewModelBase<FabricanteModel>
     {
 
         #region Icommands
@@ -30,16 +30,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             FabricanteCommands comm = new FabricanteCommands(objViewModel: this);
         }
 
-        private FabricanteModel _currentModel;
-
-        public FabricanteModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

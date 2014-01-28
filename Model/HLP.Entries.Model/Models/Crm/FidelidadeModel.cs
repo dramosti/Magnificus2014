@@ -11,7 +11,7 @@ namespace HLP.Entries.Model.Models.Crm
     public partial class FidelidadeModel : modelBase
     {
         public FidelidadeModel() : base("Fidelidade") { }
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idFidelidade { get; set; }
         [ParameterOrder(Order = 2)]
         public string xFidelidade { get; set; }

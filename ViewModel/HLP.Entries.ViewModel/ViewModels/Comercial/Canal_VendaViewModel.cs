@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class Canal_VendaViewModel : ViewModelBase
+    public class Canal_VendaViewModel : ViewModelBase<Canal_vendaModel>
     {
 
 
@@ -31,16 +31,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             Canal_VendaCommands comm = new Canal_VendaCommands(objViewModel: this);
         }
 
-        private Canal_vendaModel _currentModel;
-
-        public Canal_vendaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

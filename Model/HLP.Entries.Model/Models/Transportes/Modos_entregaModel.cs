@@ -12,7 +12,7 @@ namespace HLP.Entries.Model.Models.Transportes
     {
         public Modos_entregaModel() : base("Modos_entrega") { }
         public int? _idModosEntrega;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idModosEntrega
         {
             get { return _idModosEntrega; }

@@ -14,7 +14,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
 
         public int? _idTipoServico;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idTipoServico
         {
             get { return _idTipoServico; }

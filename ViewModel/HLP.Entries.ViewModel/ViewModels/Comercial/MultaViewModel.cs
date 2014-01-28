@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {
-    public class MultaViewModel : ViewModelBase
+    public class MultaViewModel : ViewModelBase<MultasModel>
     {
 
         #region Icommands
@@ -30,16 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             MultaCommands comm = new MultaCommands(objViewModel: this);
         }
 
-        private MultasModel _currentModel;
-
-        public MultasModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+       
     }
 }

@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         private int? _idRamoAtividade;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idRamoAtividade
         {
             get { return _idRamoAtividade; }

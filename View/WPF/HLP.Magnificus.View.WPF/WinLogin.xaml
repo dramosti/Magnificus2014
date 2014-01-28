@@ -149,12 +149,12 @@
 					ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"                    
 					SelectedValuePath="id"
 					DisplayMemberPath="display"
-					SelectedValue="{Binding currentLogin.idEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
-                    SelectedIndex="{Binding currentLogin.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
+					SelectedValue="{Binding currentModel.idEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
+                    SelectedIndex="{Binding currentModel.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
 					Height="28" VerticalAlignment="Top" Width="200" DockPanel.Dock="Top" Margin="0,6,0,0"/>
                 <Components:WatermarkTextBox Label="Login"  x:Name="txtLogin"
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentLogin.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					Text="{Binding currentModel.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					Width="200" Height="27" DockPanel.Dock="Top" Template="{DynamicResource TextBoxLogin}" Margin="0,6,0,0"/>
                 <PasswordBox                     
 					Validation.ErrorTemplate="{StaticResource exceptionComp}"
@@ -173,7 +173,7 @@
                             />
                 <Label  Validation.ErrorTemplate="{StaticResource exceptionComp}"
                         HorizontalAlignment="Center"
-					    Content="{Binding currentLogin.xError, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					    Content="{Binding currentModel.xError, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                         Height="27" DockPanel.Dock="Top" Margin="0,16,0,0" Foreground="#FFC99B9B"/>
             </StackPanel>
         </DockPanel>

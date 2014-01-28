@@ -10,9 +10,8 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class Unidade_MedidaViewModel : ViewModelBase
+    public class Unidade_MedidaViewModel : ViewModelBase<Unidade_medidaModel>
     {
-
 
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -31,18 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels
             : base()
         {
             objCommands = new Unidade_MedidaCommands(this);
-        }
-
-        private Unidade_medidaModel _currentModel;
-
-        public Unidade_medidaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
         }
     }
 }

@@ -14,16 +14,31 @@ using System.Windows.Controls.Primitives;
 using HLP.Comum.Resources.Util;
 using System.Windows.Threading;
 using System.Collections;
+using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Infrastructure;
 
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
-    public class ViewModelBase<T> : INotifyPropertyChanged where T : Object
+    public class ViewModelBase<T> : INotifyPropertyChanged where T : class
     {
-        public T currentModel2 { get; set; }
 
+        private T _currentModel;
+        public T currentModel
+        {
+            get { return _currentModel; }
+            set { _currentModel = value; NotifyPropertyChanged("currentModel"); }
+        }
+
+
+        public ViewModelBase()
+        {
+            this.bIsEnabled = false;
+
+            viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
+        }
+        public ViewModelBaseCommands<T> viewModelBaseCommands;
         BackgroundWorker bwFocus = new BackgroundWorker();
-
         public ICommand salvarBaseCommand { get; set; }
         public ICommand deletarBaseCommand { get; set; }
         public ICommand novoBaseCommand { get; set; }
@@ -48,6 +63,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _sText = value; this.NotifyPropertyChanged("sText"); }
 
         }
+        public int iPositionCollection { get; set; }
 
         private MyObservableCollection<int> _navigatePesquisa;
 
@@ -66,21 +82,62 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _visibilityNavegacao = value; this.NotifyPropertyChanged("visibilityNavegacao"); }
         }
 
-        private int _currentID;
+        //private int _currentID;
+        //public int currentID
+        //{
+        //    get { return _currentID; }
+        //    set
+        //    {
+        //        if (value == -1)
+        //        {
+        //            _currentID = 0;
+        //        }
+        //        else if ((value != _currentID) && (value != 0))
+        //        {
+        //            _currentID = value;
+        //        }
+
+        //    }
+        //}
+
+        private int _currentID = 0;
+
         public int currentID
         {
-            get { return _currentID; }
             set
             {
-                if (value == -1)
-                {
-                    _currentID = 0;
-                }
-                else if ((value != _currentID) && (value != 0))
-                {
-                    _currentID = value;
-                }
+                _currentID = value;
+            }
 
+            get
+            {
+                if (this.currentModel != null)
+                {
+                    object pk;
+                    foreach (var property in this.currentModel.GetType().GetProperties())
+                    {
+                        pk = property.GetCustomAttributes(true).FirstOrDefault(t => t.GetType() == typeof(PrimaryKey));
+                        if (pk != null)
+                        {
+                            if (((PrimaryKey)pk).isPrimary)
+                            {
+                                int? value = (int?)(property.GetValue(obj: this.currentModel));
+                                if (value != null)
+                                    _currentID = (int)value;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (this.navigatePesquisa.Count() > 0 && _currentID == 0)
+                {
+                    _currentID = this.navigatePesquisa[this.iPositionCollection];
+                }
+                if (navigatePesquisa.Count > 0)
+                    if (this.navigatePesquisa[this.iPositionCollection] != _currentID)
+                        _currentID = this.navigatePesquisa[this.iPositionCollection];
+                
+                return _currentID;
             }
         }
 
@@ -107,13 +164,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
 
-        public ViewModelBaseCommands viewModelBaseCommands;
 
-        public ViewModelBase()
-        {
-            this.bIsEnabled = false;
-            viewModelBaseCommands = new ViewModelBaseCommands(vViewModel: this);
-        }
 
 
         #region NotifyPropertyChanged
@@ -260,7 +311,9 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         public void SetFocusFirstTab(System.Windows.Controls.Panel _panel)
-        {
+        {            
+            System.Windows.Controls.Control ctr = (System.Windows.Controls.Control)Keyboard.FocusedElement;
+            ctr.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
             {
                 if (SecondControl == null || FirstControl == null)
@@ -276,13 +329,13 @@ namespace HLP.Comum.ViewModel.ViewModels
             }));
         }
 
-        public void FocusToComponente(System.Windows.Controls.Panel _panel, focoComponente foco)
+        public void FocusToComponente(System.Windows.Controls.Panel _panel, Util.focoComponente foco)
         {
             Control ctr;
             if (SecondControl == null)
                 FindFirstAndSecondComponente(_panel);
 
-            if (foco == focoComponente.Primeiro)
+            if (foco == Util.focoComponente.Primeiro)
                 ctr = FirstControl;
             else
                 ctr = SecondControl;
@@ -293,7 +346,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
-        public enum focoComponente { Primeiro, Segundo };
+
 
         public List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
         {

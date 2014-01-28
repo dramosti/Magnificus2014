@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels
 {
-    public class EmpresaViewModel : ViewModelBase
+    public class EmpresaViewModel : ViewModelBase<EmpresaModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -31,17 +31,7 @@ namespace HLP.Entries.ViewModel.ViewModels
             EmpresaCommands com = new EmpresaCommands(objViewModel: this);            
         }
 
-        private EmpresaModel _currentModel;
-
-        public EmpresaModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+       
 
     }
 }

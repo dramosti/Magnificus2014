@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Transportes;
 
 namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
-    public class RotaViewModel : ViewModelBase
+    public class RotaViewModel : ViewModelBase<RotaModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -30,13 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
 
         RotaCommand commands;
 
-        private RotaModel _currentModel;
-
-        public RotaModel currentModel
-        {
-            get { return _currentModel; }
-            set { _currentModel = value; base.NotifyPropertyChanged("currentModel"); }
-        }
 
     }
 }

@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Crm;
 
 namespace HLP.Entries.ViewModel.ViewModels.Crm
 {
-    public class PersonalidadeViewModel : ViewModelBase
+    public class PersonalidadeViewModel : ViewModelBase<PersonalidadeModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -28,20 +28,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Crm
         public PersonalidadeViewModel() 
         {
             commands = new PersonalidadeCommand(this);
-        }
-        
-        private PersonalidadeModel _currentModel;
-
-        public PersonalidadeModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
+        }   
 
 
 

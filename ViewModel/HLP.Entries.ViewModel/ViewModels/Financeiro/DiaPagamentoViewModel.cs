@@ -10,7 +10,7 @@ using HLP.Entries.ViewModel.Commands.Financeiro;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
 {
-    public class DiaPagamentoViewModel : ViewModelBase
+    public class DiaPagamentoViewModel : ViewModelBase<Dia_pagamentoModel>
     {
 
 
@@ -31,18 +31,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         }
 
         DiaPagamentoCommand commands;
-        private Dia_pagamentoModel _currentModel;
-
-        public Dia_pagamentoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
-        
+              
 
     }
 }

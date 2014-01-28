@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class depositoViewModel : ViewModelBase
+    public class depositoViewModel : ViewModelBase<DepositoModel>
     {
             
         #region Icommands
@@ -30,16 +30,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             depositoCommands comm = new depositoCommands(objViewModel: this);
         }
 
-        DepositoModel _currentModel;
 
-        public DepositoModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
     }
 }

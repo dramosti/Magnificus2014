@@ -17,7 +17,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
         private int? _idUnidadeMedida;
 
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idUnidadeMedida
         {
             get { return _idUnidadeMedida; }

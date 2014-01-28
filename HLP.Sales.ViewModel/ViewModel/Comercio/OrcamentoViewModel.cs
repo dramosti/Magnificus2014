@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace HLP.Sales.ViewModel.ViewModel.Comercio
 {
-    public class OrcamentoViewModel : ViewModelBase
+    public class OrcamentoViewModel : ViewModelBase<Orcamento_ideModel>
     {
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -38,18 +38,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 return false;
             }
         }
-
-        private Orcamento_ideModel _currentModel;
-
-        public Orcamento_ideModel currentModel
-        {
-            get { return _currentModel; }
-            set
-            {
-                _currentModel = value;
-                base.NotifyPropertyChanged(propertyName: "currentModel");
-            }
-        }
+              
 
 
         private Orcamento_ItemModel _currentItem;
