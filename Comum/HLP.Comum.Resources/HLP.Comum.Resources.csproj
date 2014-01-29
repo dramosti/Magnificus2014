@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="AutoSelectTextBoxAttachedProperty.cs" />
     <Compile Include="ComumEvents.cs" />
+    <Compile Include="Converter\MultiplyConverter.cs" />
     <Compile Include="GotFocusBeginEditDataGridCell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosBases\Enumeradores.cs" />

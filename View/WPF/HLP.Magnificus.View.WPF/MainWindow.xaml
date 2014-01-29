@@ -1,12 +1,14 @@
 ﻿<Window
+        x:Class="HLP.Magnificus.View.WPF.MainWindow"    
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"         
         xmlns:c="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Magnificus.View.WPF.MainWindow"       
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        xmlns:System="clr-namespace:System;assembly=mscorlib" 
         Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5" Icon="icone hlp.ico" >
+        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5" Icon="Principal.ico" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -80,9 +82,7 @@
         <KeyBinding Key="L" Modifiers="Control" Command="{Binding FindAllCommand}"/>
     </Window.InputBindings>
     <!--<Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">-->
-    <DockPanel
-		LastChildFill="True"
-        >
+    <DockPanel LastChildFill="True">
         <DockPanel
 			Background="{StaticResource colorBackExpander}"                            
 			DockPanel.Dock="Top" LastChildFill="True">
@@ -196,22 +196,36 @@
                 </Expander.ContextMenu>
             </Expander>
             <Menu x:Name="menuPrincipal" DockPanel.Dock="Top" Focusable="False">
-                <MenuItem Header="Atalhos" Focusable="False">
-                    <MenuItem Header="Localizar Ctrl+L" Command="{Binding FindAllCommand}" />
-                </MenuItem>
                 <MenuItem Header="Help">
                     <MenuItem Header="Sobre Magnificus" Command="{Binding SobreCommand}" />
                 </MenuItem>
+                <MenuItem Header="Atalhos" Focusable="False">
+                    <MenuItem Header="Localizar Ctrl+L" Command="{Binding FindAllCommand}" />
+                </MenuItem>
             </Menu>
         </DockPanel>
+        <StackPanel DockPanel.Dock="Top"  Focusable="False">
+            <StackPanel.Resources>
+                <Style x:Key="ContentFuncionalidades" TargetType="Grid">
+                    <Setter Property="MinWidth" Value="400"/>
+                    <Setter Property="MinHeight" Value="100"/>
+                </Style>
+            </StackPanel.Resources>
+            <Expander Focusable="False" x:Name="expanderFuncionalidades" Template="{StaticResource RevealExpanderTemp}"
+                  OverridesDefaultStyle="True"
+                  Header=". . ."
+                  VerticalAlignment="Stretch">
+                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainGridDefault}">                    
+                </Grid>
+            </Expander>
+        </StackPanel>
         <Grid Focusable="False" x:Name="grdForms" Style="{StaticResource GridStyle}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
+                <RowDefinition Height="0"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="1" Margin="0,0,0,0"
-				BorderThickness="1" BorderBrush="{x:Null}">
+            <Border Grid.Row="1" Margin="0,0,0,0" BorderThickness="1" BorderBrush="{x:Null}">
                 <DockPanel LastChildFill="True">
                     <Grid Focusable="False" >
                         <Grid.RowDefinitions>
@@ -388,7 +402,8 @@
                                 </Button.Template>
                             </Button>
                             <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
-                                <Button       
+                                <Button 
+                                    Focusable="False"
 									x:Name="btnPrimeiro"                                     
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0,0,2,0">
                                     <Button.Template>
@@ -414,6 +429,7 @@
                                     </Button.Template>
                                 </Button>
                                 <Button 
+                                    Focusable="False"
 									x:Name="btnAnterior"                                    
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0">
@@ -440,6 +456,7 @@
                                     </Button.Template>
                                 </Button>
                                 <Button 
+                                    Focusable="False"
 									x:Name="btnUltimo"                                    
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25" Margin="2,0,0,0" Foreground="#FFECE5E5">
@@ -466,6 +483,7 @@
                                     </Button.Template>
                                 </Button>
                                 <Button x:Name="btnProximo"
+                                        Focusable="False"
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25">
                                     <Button.Template>

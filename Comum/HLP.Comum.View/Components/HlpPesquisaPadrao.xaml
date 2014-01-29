@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
-             x:Name="winPesquisaPadrao">
+             x:Name="winPesquisaPadrao"
+             FocusManager.FocusedElement="{Binding ElementName=dgvFilter}" >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -64,7 +65,7 @@
                                     <Button Content="Find"  TabIndex="1" Width="28"
                                              Command="{Binding DataContext.commandPesquisar,
                                              RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"
-                                             IsEnabled="{Binding bEnablePesquisa}"
+                                             IsEnabled="{Binding bEnablePesquisa}" CommandParameter="{Binding ElementName=dgvResult}"
                                              DockPanel.Dock="Right"/>
                                     <TextBox TabIndex="0" 
                                              Text="{Binding Path=Valor, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
@@ -75,7 +76,7 @@
                                              DockPanel.Dock="Left">
                                         <TextBox.InputBindings>
                                             <KeyBinding Key="Enter" Command="{Binding DataContext.commandPesquisar,
-                                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                                RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding ElementName=dgvResult}"/>
                                         </TextBox.InputBindings>
                                     </TextBox>
 
@@ -108,6 +109,7 @@
                 <Button Content="Pesquisar"
                 Style="{StaticResource StyleButton1}"
                 Command="{Binding commandPesquisar}"
+                CommandParameter="{Binding ElementName=dgvResult}"
                 HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="20"/>
                 <Button Content="Limpar"
                     Style="{StaticResource StyleButton1}"
@@ -116,7 +118,7 @@
             </StackPanel>
         </Border>
         <Border DockPanel.Dock="Bottom">
-            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}"/>
+            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}" />
         </Border>
         <Border Margin="0,3,0,0">
             <DataGrid x:Name="dgvResult" 
@@ -130,7 +132,7 @@
                   RowStyle="{StaticResource rowStyle}"
                   SelectionUnit="FullRow"
                   AlternationCount="2"                       
-                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick"
+                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"
                       >
             </DataGrid>
         </Border>

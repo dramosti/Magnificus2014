@@ -111,6 +111,8 @@ namespace HLP.Comum.ViewModel.ViewModels
 
             get
             {
+                if (navigatePesquisa == null)
+                    navigatePesquisa = new MyObservableCollection<int>(new List<int>());
                 if (this.currentModel != null)
                 {
                     object pk;
@@ -133,6 +135,9 @@ namespace HLP.Comum.ViewModel.ViewModels
                 {
                     _currentID = this.navigatePesquisa[this.iPositionCollection];
                 }
+
+
+
                 if (navigatePesquisa.Count > 0)
                     if (this.navigatePesquisa[this.iPositionCollection] != _currentID)
                         _currentID = this.navigatePesquisa[this.iPositionCollection];

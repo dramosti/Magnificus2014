@@ -26,41 +26,36 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
         {
-
             _objViewModel = objViewModel;
             CarregaInformationTable(_objViewModel.sView);
-
-            _objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => WorkerPesquisa(_objViewModel.sView),
+            _objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => WorkerPesquisa(paramExec),
                 canExecute: paramCanExec => CanPesquisar());
             _objViewModel.commandLimpar = new RelayCommand(execute: paramExec => ExecLimpar(),
                 canExecute: paramCanExec => true);
-
-
         }
 
-        void WorkerPesquisa(string param)
+        void WorkerPesquisa(object gdvResult)
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.bw_DoWorkExecPesquisa);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
-            if (param != null)
-                if (param.ToString() != string.Empty)
-                {
-                    bw.RunWorkerAsync(argument: param);
-                }
+            bw.RunWorkerAsync(gdvResult);
+            
+
+
+
         }
-        async void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            await Application.Current.Dispatcher.BeginInvoke(
-                    DispatcherPriority.Background, new Action(() => this._objViewModel.Result = (DataTable)e.Result));
+            _objViewModel.bIniciaFocusFirstRow = true;
         }
-        void bw_DoWorkExecPesquisa(object sender, DoWorkEventArgs e)
+        async void bw_DoWorkExecPesquisa(object sender, DoWorkEventArgs e)
         {
+
             try
             {
-
                 StringBuilder sql = new StringBuilder();
-                sql.Append("SELECT * FROM " + e.Argument.ToString());
+                sql.Append("SELECT * FROM " + _objViewModel.sView);
                 List<string> sExpression = new List<string>();
 
                 if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "idEmpresa").Count() > 0)
@@ -111,7 +106,18 @@ namespace HLP.Comum.ViewModel.Commands.Components
                     servicoPesquisaPadrao = new HlpPesquisaPadraoService.IservicePesquisaPadraoClient();
 
                 DataSet retorno = servicoPesquisaPadrao.GetData(sql.ToString(), false, "", true);
-                e.Result = retorno.Tables[0];
+                await Application.Current.Dispatcher.BeginInvoke(
+                     DispatcherPriority.Background, new Action(() => this._objViewModel.Result = retorno.Tables[0]));
+
+                if (e.Argument != null)
+                {
+                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                    {
+                        System.Windows.Input.Keyboard.ClearFocus();
+                        System.Windows.Input.Keyboard.Focus((e.Argument as System.Windows.Controls.DataGrid));
+                    }));
+                }
+
             }
             catch (Exception ex)
             {
@@ -121,10 +127,11 @@ namespace HLP.Comum.ViewModel.Commands.Components
         bool CanPesquisar()
         {
             bool bReturn = false;
-
-            if (_objViewModel.lFilers != null)
-                if (_objViewModel.lFilers.Where(c => c.bEnablePesquisa == false).Count() == 0)
-                    bReturn = true;
+            if (_objViewModel.sView != null)
+                if (_objViewModel.sView != "")
+                    if (_objViewModel.lFilers != null)
+                        if (_objViewModel.lFilers.Where(c => c.bEnablePesquisa == false).Count() == 0)
+                            bReturn = true;
             return bReturn;
         }
 
