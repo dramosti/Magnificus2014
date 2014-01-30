@@ -52,7 +52,7 @@ namespace HLP.Wcf.Entries
                 
                 objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
                     this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
-                    idFuncionario: idFuncionario));
+                    idFuncionario: idFuncionario)) ?? new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>();
 
                 objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>(list:
                     this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(

@@ -105,10 +105,9 @@
 					IsReadOnly="True"
 					Text="{Binding currentModel.idOrcamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código" Help="O número de identificação automático e exclusivo do orçamento de venda." WidthLabel="61" Width="162"/>
-                <Components:HlpDateTimePicker 
-					
+                <Components:HlpDateTimePicker 					
 					SelectedDate="{Binding currentModel.dDataHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsEnabled="False"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data e Hora Criado" Help="O Sistema preenche automaticamente com a data e hora (dd/mm/aaaa - hh:mm) em que foi criado o orçamento." WidthLabel="152" Width="258"/>
                 <Components:HlpPesquisa 
                     x:Name="pesquisaCliente"                     
