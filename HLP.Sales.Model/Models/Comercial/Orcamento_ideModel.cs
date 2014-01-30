@@ -545,8 +545,11 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _idFuncionarioRepresentante = value;
                 if (value != 0)
-                    OrcamentoFacade.objCadastros.objFuncionario = OrcamentoFacade.funcionarioService.getFuncionario(
+                {
+                    var obj = OrcamentoFacade.funcionarioService.getFuncionario(
                             idFuncionario: value);
+                    OrcamentoFacade.objCadastros.objFuncionario = obj;
+                }
                 base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
             }
         }
