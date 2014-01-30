@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HLP.Magnificus.View.WPF")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Magníficus")]
+[assembly: AssemblyDescription("Sistema integrado de gestão empresarial.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HLP.Magnificus.View.WPF")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCompany("HLP Estratégia em Software")]
+[assembly: AssemblyProduct("ERP")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

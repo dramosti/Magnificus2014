@@ -11,6 +11,7 @@
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
     <runtime:WindowsBase.Resources>
+        <convert:MaskConverter x:Key="maskConverter"/>
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <ObjectDataProvider 
@@ -49,10 +50,8 @@
     		                                Text="{Binding currentModel.xFantasia, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="400"/>
                             <Components:HlpTextBox Caption="CNPJ" WidthLabel="158" Margin="10,0,10,2"
-                                           IsEnabled="{Binding bIsEnabled}"
-                                           
-    		Text="{Binding currentModel.xCNPJ, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="285"/>
+                                           IsEnabled="{Binding bIsEnabled}"                                           
+    		Text="{Binding currentModel.xCNPJ, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}" Height="27" HorizontalAlignment="Left" Width="285"/>
                             <Components:HlpTextBox Caption="IE" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
                                            
@@ -66,18 +65,14 @@
                             <Components:HlpTextBox Caption="Suframa" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
                                            
-    		Text="{Binding currentModel.xSuframa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
+    		Text="{Binding currentModel.xSuframa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
                             <Components:HlpTextBox Caption="Telefone" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"                                                   
                                            
-    		Text="{Binding currentModel.xTelefone, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
+    		Text="{Binding currentModel.xTelefone, Mode=TwoWay, UpdateSourceTrigger=LostFocus,ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}" Height="27" HorizontalAlignment="Left" Width="260"/>
                             <Components:HlpTextBox Caption="Fax" WidthLabel="158" Margin="10,0,10,2"
-                                           IsEnabled="{Binding bIsEnabled}"
-                                           
-    		Text="{Binding currentModel.xFax, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Height="27" HorizontalAlignment="Left" Width="260"/>
+                                           IsEnabled="{Binding bIsEnabled}"                                           
+    		Text="{Binding currentModel.xFax, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}" Height="27" HorizontalAlignment="Left" Width="260"/>
                             <Components:HlpTextBox Caption="Email" WidthLabel="158" Margin="10,0,10,2"
                                            IsEnabled="{Binding bIsEnabled}"
                                            
@@ -97,7 +92,7 @@
                     	IsEnabled="{Binding bIsEnabled}"
                                                    
                     	Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID" Margin="10,0,10,2" WidthLabel="158" Height="27" HorizontalAlignment="Left" Width="415"
+                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwRamoAtividade" FieldPesquisa="ID" Margin="10,0,10,2" WidthLabel="158" Height="27" HorizontalAlignment="Left" Width="400"
                                             >
                                 <Components:HlpPesquisa.Items>
                                     <sys:String>xRamo</sys:String>
