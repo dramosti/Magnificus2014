@@ -175,20 +175,19 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lresult}}"
-                                                   />
+                                            ConverterParameter={StaticResource lresult}}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
                                         <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
                                             <ComboBox x:Name="cbxEditing"
-                ItemsSource="{Binding Source={StaticResource lresult}}"
+                                            ItemsSource="{Binding Source={StaticResource lresult}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"                      
-            SelectedValue="{Binding idCidade,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                            SelectedValue="{Binding idCidade,
+                                            UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                            IsSynchronizedWithCurrentItem="False"/>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
