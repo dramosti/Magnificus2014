@@ -1028,7 +1028,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <ComboBox
-                                                    SelectedIndex="{Binding stCalculaPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                    
+                                                    SelectedIndex="{Binding stCalculaPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"                                                    
                                                     >
                                                         <ComboBoxItem>1-NÃO</ComboBoxItem>
                                                         <ComboBoxItem>2-NORMAL</ComboBoxItem>
@@ -1112,8 +1112,11 @@
                                                     <ComboBox
                                                     SelectedIndex="{Binding stCompoeBaseCalculoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                        <ComboBoxItem>0 - PRODUTOS</ComboBoxItem>
+                                                        <ComboBoxItem>1 - PRODUTOS+IPI</ComboBoxItem>
+                                                        <ComboBoxItem>2 - PRODUTOS+IPI+FRETE</ComboBoxItem>
+                                                        <ComboBoxItem>3 - PRODUTOS+IPI+FRETE+SEGURO+OUTRAS DESPESAS</ComboBoxItem>
+                                                        <ComboBoxItem>4 - NENHUM</ComboBoxItem>
                                                     </ComboBox>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -1127,8 +1130,11 @@
                                                     SelectedIndex="{Binding PIS_stCompoeBaseCalculoSubstituicaoTributaria, 
                                                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                        <ComboBoxItem>0 - PRODUTOS</ComboBoxItem>
+                                                        <ComboBoxItem>1 - PRODUTOS+IPI</ComboBoxItem>
+                                                        <ComboBoxItem>2 - PRODUTOS+IPI+FRETE</ComboBoxItem>
+                                                        <ComboBoxItem>3 - PRODUTOS+IPI+FRETE+SEGURO+OUTRAS DESPESAS</ComboBoxItem>
+                                                        <ComboBoxItem>4 - NENHUM</ComboBoxItem>
                                                     </ComboBox>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
@@ -1142,27 +1148,34 @@
                                                     SelectedIndex="{Binding COFINS_stCompoeBaseCalculoSubstituicaoTributaria, 
                                                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                        <ComboBoxItem>0 - PRODUTOS</ComboBoxItem>
+                                                        <ComboBoxItem>1 - PRODUTOS+IPI</ComboBoxItem>
+                                                        <ComboBoxItem>2 - PRODUTOS+IPI+FRETE</ComboBoxItem>
+                                                        <ComboBoxItem>3 - PRODUTOS+IPI+FRETE+SEGURO+OUTRAS DESPESAS</ComboBoxItem>
+                                                        <ComboBoxItem>4 - NENHUM</ComboBoxItem>
                                                     </ComboBox>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=PIS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=PIS_vBaseCalculo, Converter={StaticResource moedaConverter},
+                                            UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Base de cálculo PIS" Width="125"/>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=PIS_vPIS, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=PIS_vPIS, Converter={StaticResource moedaConverter},
+                                            UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Valor do PIS" Width="125"/>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=COFINS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=COFINS_vBaseCalculo, Converter={StaticResource moedaConverter},
+                                            UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Base de cálculo COFINS" Width="125"/>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=COFINS_vCOFINS, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Binding="{Binding Path=COFINS_vCOFINS, Converter={StaticResource moedaConverter},
+                                            UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Valor do COFINS" Width="125"/>
                                         <DataGridTemplateColumn
                                         Header="Calcula ISS?" Width="125">
