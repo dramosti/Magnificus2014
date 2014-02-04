@@ -348,7 +348,7 @@
                                             </Components:HlpPesquisa>
                                             <Components:HlpPesquisa 
 												
-												Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+												Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
 												Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Moeda" Help="O código de moeda usado para os valores e os preços da cotação de venda ativa." FieldPesquisa="ID" TableView="vwMoeda" WidthLabel="272" Width="619">
                                                 <Components:HlpPesquisa.Items>
@@ -414,7 +414,7 @@
                                                 </Components:HlpPesquisa>
                                                 <Components:HlpPesquisa 
 													
-													Text="{Binding currentModel.idModosentrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+													Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 													IsEnabled="{Binding bIsEnabled}"
 													Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Modos de Entrega" Help="Use esta opção para configurar modos de entrega para clientes e fornecedores. O modo de entrega indica o meio de transporte usado na entrega de uma ordem do vendedor para o comprador." TableView="vwModoEntrega" FieldPesquisa="ID" WidthLabel="152" Width="403">
                                                     <Components:HlpPesquisa.Items>
@@ -482,6 +482,17 @@
                                                         <System:String>xDescricao</System:String>
                                                     </Components:HlpPesquisa.Items>
                                                 </Components:HlpPesquisa>
+                                                <Components:HlpPesquisa 													
+													Text="{Binding currentModel.idContaContabil, Mode=TwoWay, 
+                                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+													IsEnabled="{Binding bIsEnabled}"
+													Height="35" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Conta Contábil" 
+                                                    FieldPesquisa="ID" TableView="vwContaContabil" 
+                                                    WidthLabel="74" Width="404.5">
+                                                    <Components:HlpPesquisa.Items>
+                                                        <System:String>TESTE</System:String>
+                                                    </Components:HlpPesquisa.Items>
+                                                </Components:HlpPesquisa>
                                             </WrapPanel>
                                         </Expander>
                                     </DockPanel>
@@ -505,485 +516,14 @@
                                 </Components:HlpComboBox.Items>
                             </Components:HlpComboBox>
                         </DockPanel>
-                        <Expander Header="Fiscal" DockPanel.Dock="Bottom" Height="100" IsExpanded="True">
-                            <DataGrid
-                                CanUserAddRows="False"
-                                CanUserDeleteRows="False"
-                                x:Name="dgFiscalItens"                                                                                   
-                                IsEnabled="{Binding bIsEnabled}"
-								AutoGenerateColumns="False" 
-								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"								                 
-                                ItemsSource="{Binding ElementName=dgItens, Path=CurrentItem.orcamento_Item_Impostos}"																								
-								>
-                                <DataGrid.Columns>
-                                    <DataGridComboBoxColumn  Header="Origem Mercadoria" Width="125" IsReadOnly="True"
-                            ItemsSource="{Binding Source={StaticResource EnumOrigemMercadoria}}"
-                            DisplayMemberPath="Key"
-                            SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumstOrigem, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <DataGridTemplateColumn
-                                        Header="Calcula IPI" Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding Path=IPI_stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True,
-                                                    ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
-                                                    <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>1 - SIM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn                                        
-                                        Header="Classificação Fiscal" Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    x:Name="clClassifFiscal"
-                                                    ItemsSource="{Binding Source={StaticResource lResultClassifFiscal}}"
-                                                    SelectedValuePath="id"
-                                                    DisplayMemberPath="display"
-                                                    SelectedValue="{Binding idClassificacaoFiscal, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn
-                                        IsReadOnly="True"
-                                        Header="Ncm" Width="125"
-                                        Binding="{Binding Path=xNcm, Mode=OneWay}"></DataGridTextColumn>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, 
-                                        ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-										Header="% IPI" Width="100"/>
-                                    <DataGridTemplateColumn
-                                        Header="Compõe base do IPI" Width="150">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding IPI_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                    <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
-                                                    <ComboBoxItem>2-PRODUTOS+FRETE</ComboBoxItem>
-                                                    <ComboBoxItem>3-PRODUTOS+FRETE+SEGURO+OUTRAS DESPESAS</ComboBoxItem>
-                                                    <ComboBoxItem>4-NENHUM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Cód situação tributária" Width="150">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    x:Name="clCstIpi"  
-                                                    IsEnabled="False"
-                                                    ItemsSource="{Binding Source={StaticResource lResultCstIpi}}"
-                                                    SelectedValuePath="id"
-                                                    DisplayMemberPath="display"
-                                                    SelectedValue="{Binding idCSTIpi, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                                    ></ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=IPI_vBaseCalculo, UpdateSourceTrigger=LostFocus,
-                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
-										Header="R$ vlr base IPI" Width="125"/>
-                                    <DataGridTextColumn
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=IPI_vIPI, UpdateSourceTrigger=LostFocus,
-                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
-										Header="R$ vlr IPI" Width="100"/>
-                                    <DataGridTemplateColumn
-                                         Header="Reduz base de calc icms?" Width="175">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding ICMS_stReduzBaseCalculo, Mode=TwoWay, ValidatesOnDataErrors=True,
-                                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
-                                                    <ComboBoxItem>1-NENHUMA</ComboBoxItem>
-                                                    <ComboBoxItem>2-ICMS E SUBST TRIBUTÁRIA</ComboBoxItem>
-                                                    <ComboBoxItem>3-ICMS</ComboBoxItem>
-                                                    <ComboBoxItem>4-SUBSTITUIÇÃO TRIBUTÁRIA</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Não reduz base de calc icms?" Width="200">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox         
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding ICMS_stNaoReduzBase, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
-                                                    UpdateSourceTrigger=PropertyChanged}">
-                                                    <ComboBoxItem>1 - TODAS</ComboBoxItem>
-                                                    <ComboBoxItem>2 - CONSUMIDOR FINAL</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Calcula ICMS?" Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding ICMS_stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
-                                                    UpdateSourceTrigger=PropertyChanged}">
-                                                    <ComboBoxItem>0-Não</ComboBoxItem>
-                                                    <ComboBoxItem>1-Sim</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        x:Name="clCodIcms"
-                                        Header="Cód de ICMS" Width="125" IsReadOnly="True"
-                                        >
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox                
-                                                    IsEnabled="False"
-                                                    ItemsSource="{Binding Source={StaticResource lResultIcmsPai}}"
-                                                    SelectedValuePath="id"
-                                                    DisplayMemberPath="display"
-                                                    SelectedValue="{Binding idCodigoIcmsPai, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        x:Name="clCstIcms"
-                                        Header="Cód situação tributária" Width="150" IsReadOnly="True">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox 
-                                                    IsEnabled="False"
-                                                    ItemsSource="{Binding Source={StaticResource lResultCstIcms}}"
-                                                          SelectedValuePath="id"
-                                                          DisplayMemberPath="display"
-                                                          SelectedValue="{Binding idCSTIcms, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pICMS, Converter={StaticResource porcentagemConverter}, Mode=TwoWay,
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% ICMS" Width="100"/>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pReduzBase, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% redução base de calculo ICMS" Width="150"/>
-                                    <DataGridTemplateColumn
-                                        Header="Compõe base do ICMS?" Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding ICMS_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                    <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
-                                                    <ComboBoxItem>2-PRODUTOS+IPI</ComboBoxItem>
-                                                    <ComboBoxItem>3-PRODUTOS+IPI+FRETE</ComboBoxItem>
-                                                    <ComboBoxItem>4-PRODUTOS+IPI+FRETE+SEGURO+OUTRAS</ComboBoxItem>
-                                                    <ComboBoxItem>5-NENHUMA</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vBaseCalculo, Converter={StaticResource moedaConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="R$ valor base de calculo ICMS" Width="200"/>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vICMS, Converter={StaticResource moedaConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="R$ valor ICMS" Width="100"/>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vBaseCalculoIcmsProprio, Converter={StaticResource moedaConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="R$ vlr base de cálculo icms próprio" Width="150"/>
-                                    <DataGridTextColumn 
-                                        IsReadOnly="True"
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vIcmsProprio, Converter={StaticResource moedaConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="R$ valor icms próprio" Width="125"/>
-                                    <DataGridTemplateColumn
-                                        Header="Calcula icms substituição tributária?" Width="200">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    IsEnabled="False"
-                                                    SelectedIndex="{Binding stCalculaIcmsSubstituicaoTributaria, Mode=TwoWay,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
-                                                    <ComboBoxItem>0-NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>1-SIM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pReduzBaseSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% redução base de calculo substituição tributária" Width="150"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="R$ redução base de calculo substituição tributária" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% Subst tributária" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pIcmsInterno, UpdateSourceTrigger=LostFocus,
-                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-										Header="% ICMS interna Destino" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pMvaSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% MVA ST" Width="100"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_pCargaTributariaMedia, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% Carga Tributária Média" Width="125"/>
-                                    <DataGridTemplateColumn
-                                        Header="Compõe a base do ICMS de Substituição Tributária"
-                                                    Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox                                                    
-                                                    SelectedIndex="{Binding ICMS_stCompoeBaseIcmsSubstituicaoTributaria, Mode=TwoWay,
-                                                    UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                                    >
-                                                    <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
-                                                    <ComboBoxItem>2-PRODUTOS+IPI</ComboBoxItem>
-                                                    <ComboBoxItem>3-PRODUTOS+IPI+FRETE</ComboBoxItem>
-                                                    <ComboBoxItem>4-PRODUTOS+IPI+FRETE+SEGURO+OUTRAS</ComboBoxItem>
-                                                    <ComboBoxItem>5-DIFERENCIADO</ComboBoxItem>
-                                                    <ComboBoxItem>6-NENHUMA</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Vlr de Base de Calc do ICMS Substituição Tributária" Width="150"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ICMS_vSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Vlr do ICMS Substituição Tributária" Width="125"/>
-                                    <DataGridTemplateColumn
-                                        Header="Calcula Pis/Cofins?"
-                                        Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    SelectedIndex="{Binding stCalculaPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                    
-                                                    >
-                                                    <ComboBoxItem>1-NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>2-NORMAL</ComboBoxItem>
-                                                    <ComboBoxItem>3-SUBSTITUIÇÃO TRIBUTARIA</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Regime Tributação PIS/COFINS?"
-                                                    Width="125"
-                                        >
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox                                                    
-                                                    SelectedIndex="{Binding stRegimeTributacaoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                                    <ComboBoxItem>1-CUMULATIVO</ComboBoxItem>
-                                                    <ComboBoxItem>2-NÃO CUMULATIVO</ComboBoxItem>
-                                                    <ComboBoxItem>3-REGIME DIFERENCIADOS</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=PIS_nCoeficienteSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Coeficiente de Substituição Tributária do PIS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=COFINS_nCoeficienteSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Coeficiente de Substituição Tributária do COFINS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=PIS_pPIS, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% PIS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=COFINS_pCOFINS, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% COFINS" Width="125"/>
-                                    <DataGridTemplateColumn
-                                        x:Name="clCstPis"
-                                        Header="Código da Situação Tributária do PIS" Width="125" IsReadOnly="True">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox 
-                                                    IsEnabled="False"
-                                                    ItemsSource="{Binding Source={StaticResource lResultStPis}}"
-                                                          SelectedValuePath="id"
-                                                          DisplayMemberPath="display"
-                                                          SelectedValue="{Binding idCSTPis, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        x:Name="clCstCofins"
-                                        Header="Código da Situação Tributária do COFINS" Width="125" IsReadOnly="True">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox 
-                                                    IsEnabled="False"
-                                                    ItemsSource="{Binding Source={StaticResource lResultiCofins}}"
-                                                          SelectedValuePath="id"
-                                                          DisplayMemberPath="display"
-                                                          SelectedValue="{Binding idCSTCofins, Mode=TwoWay, 
-                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Compõe a base de cálculo do PIS/COFINS?"
-                                        Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    SelectedIndex="{Binding stCompoeBaseCalculoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                    <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>1 - SIM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Compõe base de cálc subst trib PIS?"
-                                        Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    SelectedIndex="{Binding PIS_stCompoeBaseCalculoSubstituicaoTributaria, 
-                                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                    <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>1 - SIM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn
-                                        Header="Compõe base de cálc da subs trib COFINS?"
-                                        Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    SelectedIndex="{Binding COFINS_stCompoeBaseCalculoSubstituicaoTributaria, 
-                                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                    <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>1 - SIM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=PIS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Base de cálculo PIS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=PIS_vPIS, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Valor do PIS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=COFINS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Base de cálculo COFINS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=COFINS_vCOFINS, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Valor do COFINS" Width="125"/>
-                                    <DataGridTemplateColumn
-                                        Header="Calcula ISS?" Width="125">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
-                                                    SelectedIndex="{Binding ISS_stCalculaIss, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
-                                                    <ComboBoxItem>0 - NÃO</ComboBoxItem>
-                                                    <ComboBoxItem>1 - SIM</ComboBoxItem>
-                                                </ComboBox>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridComboBoxColumn Header="Cód situação tributaria iss" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ISS_vBaseCalculo, Converter={StaticResource moedaConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Base de cálculo ISS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ISS_pIss, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="% ISS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=ISS_vIss, Converter={StaticResource moedaConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Valor do ISS" Width="125"/>
-                                    <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=pComissao, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="ICMS_vsubstituiçãotributariaretido" Width="125"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Expander>
-                        <Expander Header="Itens do Orçamento" IsExpanded="True">
-                            <DataGrid      
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Expander Header="Itens do Orçamento" IsExpanded="True">
+                                <DataGrid      
                                 x:Name="dgItens"
                                 CurrentItem="{Binding currentItem, Mode=TwoWay}"
                                 AddingNewItem="DataGrid_AddingNewItem"                                
@@ -993,8 +533,8 @@
 								CanUserDeleteRows="True"
 								CanUserAddRows="True"
                                 ItemsSource="{Binding currentModel.lOrcamento_Itens}" SelectionChanged="DataGrid_SelectionChanged">
-                                <DataGrid.Columns>
-                                    <DataGridComboBoxColumn                                         
+                                    <DataGrid.Columns>
+                                        <DataGridComboBoxColumn                                         
                                         x:Name="clTipoOperacao"
                                         Header="Operação" Width="100"
                                                             ItemsSource="{Binding Source={StaticResource lResultContatos}}"
@@ -1002,58 +542,59 @@
                                                             DisplayMemberPath="display"
                                                             SelectedValueBinding="{Binding Path=idTipoOperacao, Mode=TwoWay,
                                         UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTemplateColumn Header="Consumidor Final" Width="110">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <CheckBox IsChecked="{Binding stConsumidorFinal, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                            <DataTemplate>
-                                                <CheckBox  IsChecked="{Binding stConsumidorFinal, Converter={StaticResource ByteToBoolConverter}}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
+                                        <DataGridTemplateColumn Header="Consumidor Final" Width="110"
+                                                            IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsChecked="{Binding stConsumidorFinal, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox  IsChecked="{Binding stConsumidorFinal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xPedidoCliente, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Pedido Cliente" Width="150"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nItemCliente, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Num.iten Cliente" Width="125"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xCodigoProdutoCliente, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Cod.Prod Cliente" Width="125"/>
-                                    <DataGridTemplateColumn
+                                        <DataGridTemplateColumn
                                         Header="Produtos" Width="150">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <ComboBox
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
                                                     x:Name="clProdutos"
                                                     ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
                                                     SelectedValuePath="id"
                                                     DisplayMemberPath="display"
                                                     SelectedValue="{Binding idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn 
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xComercial, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Desc Comercial" Width="125">
-                                        <DataGridTextColumn.CellStyle>
-                                            <Style>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding bXComercialEnabled}" Value="False">
-                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGridTextColumn.CellStyle>
-                                    </DataGridTextColumn>
-                                    <DataGridComboBoxColumn
+                                            <DataGridTextColumn.CellStyle>
+                                                <Style>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding bXComercialEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </DataGridTextColumn.CellStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridComboBoxColumn
                                         x:Name="clUnidadeMedida"
                                         Header="UM" Width="100"
                                                             ItemsSource="{Binding Source={StaticResource lResultUnidadeMedida}}"
@@ -1061,12 +602,12 @@
                                         DisplayMemberPath="display"
                                         SelectedValueBinding="{Binding idUnidadeMedida, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                                                             >
-                                    </DataGridComboBoxColumn>
-                                    <DataGridTextColumn 
+                                        </DataGridComboBoxColumn>
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=qProduto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Quantidade" Width="125"/>
-                                    <DataGridComboBoxColumn 
+                                        <DataGridComboBoxColumn 
                                         x:Name="clListaPreco"
                                         Header="Lista Preço" Width="125"
                                                                                 ItemsSource="{Binding Source={StaticResource lResultListaPreco}}"
@@ -1074,115 +615,602 @@
                                                             DisplayMemberPath="display"
                                                             SelectedValueBinding="{Binding idListaPrecoPai, Mode=TwoWay, 
                                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" >
-                                        <DataGridComboBoxColumn.CellStyle>
-                                            <Style>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding bListaPrecoItemHabil}" Value="False">
-                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGridComboBoxColumn.CellStyle>
-                                    </DataGridComboBoxColumn>
-                                    <DataGridTextColumn 
+                                            <DataGridComboBoxColumn.CellStyle>
+                                                <Style>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding bListaPrecoItemHabil}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </DataGridComboBoxColumn.CellStyle>
+                                        </DataGridComboBoxColumn>
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=pDesconto, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Desc" Width="100"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vDesconto, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ Desc" Width="100"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vVenda, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ Venda" Width="100"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
 										Binding="{Binding Path=vVendaSemDesconto, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R% Venda s/desc" Width="150"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vTotalSemDescontoItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total s/desc" Width="125"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vTotalItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Total" Width="100"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
                                         IsReadOnly="True"
 										Binding="{Binding Path=vDescontoSuframa, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Desc Suframa" Width="150"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vFreteItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Frete" Width="100"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=dPrevisaoEntrega, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Prev.Entrega" Width="125"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPesoLiquido, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Peso Liq" Width="100"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPesoBruto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Peso Bruto" Width="100"/>
-                                    <DataGridComboBoxColumn Header="Status" Width="150"/>
-                                    <DataGridTextColumn 
+                                        <DataGridComboBoxColumn Header="Status" Width="150"/>
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPedidoClienteItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Ped Cliente" Width="150"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=xObservacaoItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Observação" Width="125"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vSegurosItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         IsReadOnly="True"
 										Header="Seguros" Width="125"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=vOutrasDespesasItem, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         IsReadOnly="True"
 										Header="Outras Despesas" Width="150"/>
-                                    <DataGridComboBoxColumn	Header="Representante" Width="125"
+                                        <DataGridComboBoxColumn	Header="Representante" Width="125"
                                                             ItemsSource="{Binding Source={StaticResource lResultRepresentantes}}"
                                                             SelectedValuePath="id"
                                                             DisplayMemberPath="display"
                                                             SelectedValueBinding="{Binding idFuncionarioRepresentante, Mode=TwoWay, 
                                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn 
+                                        <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Comissão" Width="125"/>
-                                    <DataGridComboBoxColumn Header="Depósito" Width="125"/>
-                                    <DataGridComboBoxColumn Header="Site"/>
-                                    <DataGridTextColumn	Header="id Orçamento" Width="125"/>
-                                    <DataGridTextColumn Header="id Empresa" Width="125"/>
-                                    <DataGridTextColumn Header="Dconfirmaçãoitem" Width="125"/>
-                                    <DataGridComboBoxColumn Header="Idcfop" Width="125"
+                                        <DataGridComboBoxColumn Header="Depósito" Width="125"/>
+                                        <DataGridComboBoxColumn Header="Site"/>
+                                        <DataGridTextColumn	Header="id Orçamento" Width="125"/>
+                                        <DataGridTextColumn Header="id Empresa" Width="125"/>
+                                        <DataGridTextColumn Header="Dconfirmaçãoitem" Width="125"/>
+                                        <DataGridComboBoxColumn Header="Idcfop" Width="125"
                                                             ItemsSource="{Binding Source={StaticResource lResultCfop}}"
                                                             SelectedValuePath="id"
                                                             DisplayMemberPath="display"
                                                             SelectedValueBinding="{Binding idCfop, Mode=TwoWay, 
                                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Expander>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Expander>
+                            <Expander Header="Fiscal" IsExpanded="True" Grid.Row="2">
+                                <DataGrid
+                                CanUserAddRows="False"
+                                CanUserDeleteRows="False"
+                                x:Name="dgFiscalItens"                                                                                   
+                                IsEnabled="{Binding bIsEnabled}"
+								AutoGenerateColumns="False" 
+								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"								                 
+                                ItemsSource="{Binding Path=currentModel.lOrcamento_Item_Impostos}"				                
+								>
+                                    <DataGrid.Columns>
+                                        <DataGridComboBoxColumn  Header="Origem Mercadoria" Width="125" IsReadOnly="True"
+                            ItemsSource="{Binding Source={StaticResource EnumOrigemMercadoria}}"
+                            DisplayMemberPath="Key"
+                            SelectedValuePath="Value"
+                            SelectedValueBinding ="{Binding enumstOrigem, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <DataGridTemplateColumn
+                                        Header="Calcula IPI" Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding Path=IPI_stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True,
+                                                    ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn                                        
+                                        Header="Classificação Fiscal" Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    x:Name="clClassifFiscal"
+                                                    ItemsSource="{Binding Source={StaticResource lResultClassifFiscal}}"
+                                                    SelectedValuePath="id"
+                                                    DisplayMemberPath="display"
+                                                    SelectedValue="{Binding idClassificacaoFiscal, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"></ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn
+                                        IsReadOnly="True"
+                                        Header="Ncm" Width="125"
+                                        Binding="{Binding Path=xNcm, Mode=OneWay}"></DataGridTextColumn>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, 
+                                        ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+										Header="% IPI" Width="100"/>
+                                        <DataGridTemplateColumn
+                                        Header="Compõe base do IPI" Width="150">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding IPI_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                        <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
+                                                        <ComboBoxItem>2-PRODUTOS+FRETE</ComboBoxItem>
+                                                        <ComboBoxItem>3-PRODUTOS+FRETE+SEGURO+OUTRAS DESPESAS</ComboBoxItem>
+                                                        <ComboBoxItem>4-NENHUM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Cód situação tributária" Width="150">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    x:Name="clCstIpi"  
+                                                    IsEnabled="False"
+                                                    ItemsSource="{Binding Source={StaticResource lResultCstIpi}}"
+                                                    SelectedValuePath="id"
+                                                    DisplayMemberPath="display"
+                                                    SelectedValue="{Binding idCSTIpi, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                    ></ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=IPI_vBaseCalculo, UpdateSourceTrigger=LostFocus,
+                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
+										Header="R$ vlr base IPI" Width="125"/>
+                                        <DataGridTextColumn
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=IPI_vIPI, UpdateSourceTrigger=LostFocus,
+                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
+										Header="R$ vlr IPI" Width="100"/>
+                                        <DataGridTemplateColumn
+                                         Header="Reduz base de calc icms?" Width="175">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding ICMS_stReduzBaseCalculo, Mode=TwoWay, ValidatesOnDataErrors=True,
+                                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>1-NENHUMA</ComboBoxItem>
+                                                        <ComboBoxItem>2-ICMS E SUBST TRIBUTÁRIA</ComboBoxItem>
+                                                        <ComboBoxItem>3-ICMS</ComboBoxItem>
+                                                        <ComboBoxItem>4-SUBSTITUIÇÃO TRIBUTÁRIA</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Não reduz base de calc icms?" Width="200">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox         
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding ICMS_stNaoReduzBase, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                                    UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>1 - TODAS</ComboBoxItem>
+                                                        <ComboBoxItem>2 - CONSUMIDOR FINAL</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Calcula ICMS?" Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding ICMS_stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                                    UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>0-Não</ComboBoxItem>
+                                                        <ComboBoxItem>1-Sim</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        x:Name="clCodIcms"
+                                        Header="Cód de ICMS" Width="125" IsReadOnly="True"
+                                        >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox                
+                                                    IsEnabled="False"
+                                                    ItemsSource="{Binding Source={StaticResource lResultIcmsPai}}"
+                                                    SelectedValuePath="id"
+                                                    DisplayMemberPath="display"
+                                                    SelectedValue="{Binding idCodigoIcmsPai, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        x:Name="clCstIcms"
+                                        Header="Cód situação tributária" Width="150" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox 
+                                                    IsEnabled="False"
+                                                    ItemsSource="{Binding Source={StaticResource lResultCstIcms}}"
+                                                          SelectedValuePath="id"
+                                                          DisplayMemberPath="display"
+                                                          SelectedValue="{Binding idCSTIcms, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pICMS, Converter={StaticResource porcentagemConverter}, Mode=TwoWay,
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% ICMS" Width="100"/>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pReduzBase, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% redução base de calculo ICMS" Width="150"/>
+                                        <DataGridTemplateColumn
+                                        Header="Compõe base do ICMS?" Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding ICMS_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                        <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
+                                                        <ComboBoxItem>2-PRODUTOS+IPI</ComboBoxItem>
+                                                        <ComboBoxItem>3-PRODUTOS+IPI+FRETE</ComboBoxItem>
+                                                        <ComboBoxItem>4-PRODUTOS+IPI+FRETE+SEGURO+OUTRAS</ComboBoxItem>
+                                                        <ComboBoxItem>5-NENHUMA</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vBaseCalculo, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="R$ valor base de calculo ICMS" Width="200"/>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vICMS, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="R$ valor ICMS" Width="100"/>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vBaseCalculoIcmsProprio, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="R$ vlr base de cálculo icms próprio" Width="150"/>
+                                        <DataGridTextColumn 
+                                        IsReadOnly="True"
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vIcmsProprio, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="R$ valor icms próprio" Width="125"/>
+                                        <DataGridTemplateColumn
+                                        Header="Calcula icms substituição tributária?" Width="200">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    IsEnabled="False"
+                                                    SelectedIndex="{Binding stCalculaIcmsSubstituicaoTributaria, Mode=TwoWay,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>0-NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>1-SIM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pReduzBaseSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% redução base de calculo substituição tributária" Width="150"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="R$ redução base de calculo substituição tributária" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% Subst tributária" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pIcmsInterno, UpdateSourceTrigger=LostFocus,
+                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+										Header="% ICMS interna Destino" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pMvaSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% MVA ST" Width="100"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_pCargaTributariaMedia, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% Carga Tributária Média" Width="125"/>
+                                        <DataGridTemplateColumn
+                                        Header="Compõe a base do ICMS de Substituição Tributária"
+                                                    Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox                                                    
+                                                    SelectedIndex="{Binding ICMS_stCompoeBaseIcmsSubstituicaoTributaria, Mode=TwoWay,
+                                                    UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                    >
+                                                        <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
+                                                        <ComboBoxItem>2-PRODUTOS+IPI</ComboBoxItem>
+                                                        <ComboBoxItem>3-PRODUTOS+IPI+FRETE</ComboBoxItem>
+                                                        <ComboBoxItem>4-PRODUTOS+IPI+FRETE+SEGURO+OUTRAS</ComboBoxItem>
+                                                        <ComboBoxItem>5-DIFERENCIADO</ComboBoxItem>
+                                                        <ComboBoxItem>6-NENHUMA</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Vlr de Base de Calc do ICMS Substituição Tributária" Width="150"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ICMS_vSubstituicaoTributaria, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Vlr do ICMS Substituição Tributária" Width="125"/>
+                                        <DataGridTemplateColumn
+                                        Header="Calcula Pis/Cofins?"
+                                        Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    SelectedIndex="{Binding stCalculaPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                    
+                                                    >
+                                                        <ComboBoxItem>1-NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>2-NORMAL</ComboBoxItem>
+                                                        <ComboBoxItem>3-SUBSTITUIÇÃO TRIBUTARIA</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Regime Tributação PIS/COFINS?"
+                                                    Width="125"
+                                        >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox                                                    
+                                                    SelectedIndex="{Binding stRegimeTributacaoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>1-CUMULATIVO</ComboBoxItem>
+                                                        <ComboBoxItem>2-NÃO CUMULATIVO</ComboBoxItem>
+                                                        <ComboBoxItem>3-REGIME DIFERENCIADOS</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=PIS_nCoeficienteSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Coeficiente de Substituição Tributária do PIS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=COFINS_nCoeficienteSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Coeficiente de Substituição Tributária do COFINS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=PIS_pPIS, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% PIS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=COFINS_pCOFINS, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% COFINS" Width="125"/>
+                                        <DataGridTemplateColumn
+                                        x:Name="clCstPis"
+                                        Header="Código da Situação Tributária do PIS" Width="125" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox 
+                                                    IsEnabled="False"
+                                                    ItemsSource="{Binding Source={StaticResource lResultStPis}}"
+                                                          SelectedValuePath="id"
+                                                          DisplayMemberPath="display"
+                                                          SelectedValue="{Binding idCSTPis, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        x:Name="clCstCofins"
+                                        Header="Código da Situação Tributária do COFINS" Width="125" IsReadOnly="True">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox 
+                                                    IsEnabled="False"
+                                                    ItemsSource="{Binding Source={StaticResource lResultiCofins}}"
+                                                          SelectedValuePath="id"
+                                                          DisplayMemberPath="display"
+                                                          SelectedValue="{Binding idCSTCofins, Mode=TwoWay, 
+                                                    UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Compõe a base de cálculo do PIS/COFINS?"
+                                        Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    SelectedIndex="{Binding stCompoeBaseCalculoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Compõe base de cálc subst trib PIS?"
+                                        Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    SelectedIndex="{Binding PIS_stCompoeBaseCalculoSubstituicaoTributaria, 
+                                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn
+                                        Header="Compõe base de cálc da subs trib COFINS?"
+                                        Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    SelectedIndex="{Binding COFINS_stCompoeBaseCalculoSubstituicaoTributaria, 
+                                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=PIS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Base de cálculo PIS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=PIS_vPIS, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Valor do PIS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=COFINS_vBaseCalculo, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Base de cálculo COFINS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=COFINS_vCOFINS, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Valor do COFINS" Width="125"/>
+                                        <DataGridTemplateColumn
+                                        Header="Calcula ISS?" Width="125">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                    SelectedIndex="{Binding ISS_stCalculaIss, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                                        <ComboBoxItem>0 - NÃO</ComboBoxItem>
+                                                        <ComboBoxItem>1 - SIM</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridComboBoxColumn Header="Cód situação tributaria iss" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ISS_vBaseCalculo, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Base de cálculo ISS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ISS_pIss, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="% ISS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=ISS_vIss, Converter={StaticResource moedaConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="Valor do ISS" Width="125"/>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=pComissao, Converter={StaticResource porcentagemConverter},
+                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="ICMS_vsubstituiçãotributariaretido" Width="125"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Expander>
+                            <GridSplitter 
+                    ResizeDirection="Rows" 
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Width="Auto" 
+                    Height="3"
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" 
+                    Margin="0"/>
+                        </Grid>
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>

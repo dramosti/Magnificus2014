@@ -76,7 +76,6 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .AddParameter<int>("idOrcamento"),
                                  MapBuilder<Orcamento_ItemModel>
                                  .MapAllProperties()
-                                 .DoNotMap(i => i.orcamento_Item_Impostos)
                                  .DoNotMap(i => i.status)
                                  .DoNotMap(i => i.bXComercialEnabled)
                                  .Build());

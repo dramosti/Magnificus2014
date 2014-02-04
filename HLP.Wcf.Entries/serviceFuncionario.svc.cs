@@ -34,7 +34,7 @@ namespace HLP.Wcf.Entries
 
         [Inject]
         public IFuncionario_Margem_Lucro_ComissaoRepository funcionario_Margem_Lucro_ComissaoRepository { get; set; }
-        
+
         public serviceFuncionario()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -49,26 +49,36 @@ namespace HLP.Wcf.Entries
             {
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
-                
-                objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
-                    this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
-                    idFuncionario: idFuncionario)) ?? new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>();
 
-                objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>(list:
-                    this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
-                    idFuncionario: idFuncionario));
+                var listaArquivos = this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
+                    idFuncionario: idFuncionario);
+                if (listaArquivos.Count > 0)
+                    objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
+                        listaArquivos);
 
-                objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel>(list:
-                    this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
-                    idFuncionario: idFuncionario));
+                var listaCertif = this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
+                    idFuncionario: idFuncionario);
+                if (listaCertif.Count > 0)
+                    objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>(list:
+                        listaCertif);
 
-                objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel>(list:
-                    this.funcionario_EnderecoRepository.GetAllFuncionario_Endereco(idFuncionario:
-                    idFuncionario));
+                var listaComissaoProduto = this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
+                    idFuncionario: idFuncionario);
+                if (listaComissaoProduto.Count > 0)
+                    objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel>(list:
+                        listaComissaoProduto);
 
-                objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel>(list:
-                    this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
-                    idFuncionario: idFuncionario));
+                var listaEndereco = this.funcionario_EnderecoRepository.GetAllFuncionario_Endereco(idFuncionario:
+                    idFuncionario);
+                if (listaEndereco.Count > 0)
+                    objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_EnderecoModel>(list:
+                        listaEndereco);
+
+                var listaMargem = this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
+                    idFuncionario: idFuncionario);
+                if (listaMargem.Count > 0)
+                    objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel>(list:
+                        listaMargem);
 
                 return objFuncionario;
             }
@@ -237,7 +247,7 @@ namespace HLP.Wcf.Entries
             catch (Exception ex)
             {
                 this.funcionarioRepository.RollackTransaction();
-                Log.AddLog(xLog: ex.Message);                
+                Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
 
@@ -292,7 +302,7 @@ namespace HLP.Wcf.Entries
             catch (Exception ex)
             {
                 this.funcionarioRepository.RollackTransaction();
-                Log.AddLog(xLog: ex.Message);                
+                Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
 

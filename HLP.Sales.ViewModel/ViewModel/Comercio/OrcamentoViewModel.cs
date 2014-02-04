@@ -34,12 +34,9 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             {
                 if (currentModel != null)
                     return !this.currentModel.bListaPrecoItemHabil;
-
                 return false;
             }
         }
-              
-
 
         private Orcamento_ItemModel _currentItem;
 
