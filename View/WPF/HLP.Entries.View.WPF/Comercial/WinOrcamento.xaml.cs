@@ -15,6 +15,7 @@ using HLP.Comum.View.Formularios;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using System.Reflection;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Entries.View.WPF.Comercial
 {

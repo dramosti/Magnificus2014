@@ -2427,9 +2427,10 @@ namespace HLP.Sales.Model.Models.Comercial
                         this.ICMS_pICMS = decimal.Zero;
 
                     if (this.ICMS_stCalculaSubstituicaoTributaria == 1)
-                        this.ICMS_pIcmsInterno = this.ICMS_pMvaSubstituicaoTributaria = objIcms.pMvaSubstituicaoTributaria;
-                    else
-                        this.ICMS_pIcmsInterno = this.ICMS_pMvaSubstituicaoTributaria = decimal.Zero;
+                        if (objIcms != null)
+                            this.ICMS_pIcmsInterno = this.ICMS_pMvaSubstituicaoTributaria = objIcms.pMvaSubstituicaoTributaria;
+                        else
+                            this.ICMS_pIcmsInterno = this.ICMS_pMvaSubstituicaoTributaria = decimal.Zero;
                 }
                 base.NotifyPropertyChanged(propertyName: "ICMS_pICMS");
                 base.NotifyPropertyChanged(propertyName: "idCodigoIcmsPai");
