@@ -15,7 +15,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
     public class OrcamentoCommands
     {
         OrcamentoViewModel objViewModel;
-        orcamentoService.ServiceOrcamentoClient servico = new orcamentoService.ServiceOrcamentoClient();
+        sales_OrcamentoService.IserviceSales_OrcamentoClient servico = new sales_OrcamentoService.IserviceSales_OrcamentoClient();
         BackgroundWorker bWorkerAcoes;
 
 
@@ -85,7 +85,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             e.Result = e.Argument;

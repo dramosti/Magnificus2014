@@ -5,11 +5,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace HLP.Wcf.Sales
+namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IServiceOrcamento" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceSales_Orcamento" in both code and config file together.
     [ServiceContract]
-    public interface IServiceOrcamento
+    public interface IserviceSales_Orcamento
     {
         [OperationContract]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Save(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);

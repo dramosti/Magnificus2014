@@ -6,6 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+    x:Name="wd"
         x:Class="HLP.Entries.View.WPF.Comercial.WinOrcamento"        
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="WinOrcamento" Height="660" Width="1024" NameView="vwOrcamento"
@@ -24,6 +25,21 @@
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
         <convert:MoedaConverter x:Key="moedaConverter"/>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="lResultDeposito" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwDepositoToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lResultSite" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwSiteToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="lResultUnMedida" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider.MethodParameters>
+                <System:String>vwUnidadeMedidaToComboBox</System:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
         <ObjectDataProvider x:Key="lResultCstIcms" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwSituacao_tributaria_IcmsToComboBox</System:String>
@@ -65,11 +81,10 @@
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwTipoDocumentoToComboBoxOrcamento</System:String>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        </ObjectDataProvider>        
         <ObjectDataProvider x:Key="lResultTipoOperacao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
-                <System:String>getTipoOperacaoValidaToComboBoxOrcamento</System:String>
-                <System:String>0</System:String>
+                <System:String>vwTipoOperacaoToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
@@ -158,7 +173,6 @@
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contribuinte de ICMS" Help="O sistema informara automaticamente se o cliente é contribuinte de ICMS conforme o campo " WidthLabel="231"/>
                                 <Components:HlpComboBox
                                     x:Name="cbxStDocumento"
-                                    UCSelectionChanged="cbxStDocumento_UCSelectionChanged"
                                     IsEnabled="{Binding bIsEnabled}"
                                     ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"
                                     SelectedValuePath="id"
@@ -527,22 +541,37 @@
                                 <DataGrid      
                                 x:Name="dgItens"
                                 CurrentItem="{Binding currentItem, Mode=TwoWay}"
-                                AddingNewItem="DataGrid_AddingNewItem"                                
                                 IsEnabled="{Binding bIsEnabled}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
 								CanUserAddRows="True"
-                                ItemsSource="{Binding currentModel.lOrcamento_Itens}" SelectionChanged="DataGrid_SelectionChanged">
+                                ItemsSource="{Binding currentModel.lOrcamento_Itens}"
+                                    >
                                     <DataGrid.Columns>
-                                        <DataGridComboBoxColumn                                         
-                                        x:Name="clTipoOperacao"
-                                        Header="Operação" Width="100"
-                                                            ItemsSource="{Binding Source={StaticResource lResultContatos}}"
-                                                            SelectedValuePath="id"
-                                                            DisplayMemberPath="display"
-                                                            SelectedValueBinding="{Binding Path=idTipoOperacao, Mode=TwoWay,
-                                        UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                        <DataGridTemplateColumn Header="Operação" Width="100" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Path=idTipoOperacao, 
+                                                        Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lResultTipoOperacao},
+                                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                   />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
+                                                        <ComboBox x:Name="elem"
+                ItemsSource="{Binding lTipoOperacao}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idTipoOperacao,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
                                         <DataGridTemplateColumn Header="Consumidor Final" Width="110"
                                                             IsReadOnly="True">
                                             <DataGridTemplateColumn.CellTemplate>
@@ -604,15 +633,29 @@
                                                 </Style>
                                             </DataGridTextColumn.CellStyle>
                                         </DataGridTextColumn>
-                                        <DataGridComboBoxColumn
-                                        x:Name="clUnidadeMedida"
-                                        Header="UM" Width="100"
-                                                            ItemsSource="{Binding Source={StaticResource lResultUnidadeMedida}}"
-                                        SelectedValuePath="id"
-                                        DisplayMemberPath="display"
-                                        SelectedValueBinding="{Binding idUnidadeMedida, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                                            >
-                                        </DataGridComboBoxColumn>
+                                        <DataGridTemplateColumn Header="UM" Width="100" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Path=idUnidadeMedida, 
+                                                        Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lResultUnMedida},
+                                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                   />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
+                                                        <ComboBox x:Name="elem"
+                ItemsSource="{Binding lUnMedida}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idUnidadeMedida,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=qProduto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -740,8 +783,50 @@
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Comissão" Width="125"/>
-                                        <DataGridComboBoxColumn Header="Depósito" Width="125"/>
-                                        <DataGridComboBoxColumn Header="Site"/>
+                                        <DataGridTemplateColumn x:Name="clDeposito" Header="Depósito" Width="125" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Path=idDeposito, Converter={StaticResource cbxDisplayConv}, 
+                                                        ConverterParameter={StaticResource lResultDeposito}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                   />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
+                                                        <ComboBox x:Name="elem"
+                ItemsSource="{Binding Source={StaticResource lResultDeposito}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idDeposito,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn x:Name="clSite" Header="Site" Width="125" >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Path=idSite, Converter={StaticResource cbxDisplayConv}, 
+                                                        ConverterParameter={StaticResource lResultSite}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                   />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                            <DataGridTemplateColumn.CellEditingTemplate>
+                                                <DataTemplate>
+                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= elem}" >
+                                                        <ComboBox x:Name="elem"
+                ItemsSource="{Binding Source={StaticResource lResultSite}}" 
+                                                      SelectedValuePath="id"
+                                            DisplayMemberPath="display"                                
+            SelectedValue="{Binding idSite,
+                                UpdateSourceTrigger=LostFocus}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellEditingTemplate>
+                                        </DataGridTemplateColumn>
                                         <DataGridTextColumn	Header="id Orçamento" Width="125"/>
                                         <DataGridTextColumn Header="id Empresa" Width="125"/>
                                         <DataGridTextColumn Header="Dconfirmaçãoitem" Width="125"/>                                        

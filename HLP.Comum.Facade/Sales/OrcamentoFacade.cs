@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HLP.Comum.Facade.FillComboBoxService;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,7 @@ namespace HLP.Comum.Facade.Sales
     public static class OrcamentoFacade
     {
         public static clienteService.IserviceClienteClient clienteServico;
+        public static FillComboBoxService.IserviceFillComboBoxClient servico;
         public static contato_Service.IserviceContatoClient contatoServico;
         public static cidadeService.IserviceCidadeClient cidadeService;
         public static ufService.IserviceUfClient ufService;
@@ -73,6 +76,13 @@ namespace HLP.Comum.Facade.Sales
             }
 
             return 0;
+        }
+
+        public static ObservableCollection<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter = "")
+        {
+            if (servico == null)
+                servico = new IserviceFillComboBoxClient();
+            return new ObservableCollection<modelToComboBox>(servico.GetAllValuesToComboBox(sNameView, sParameter));
         }
     }
 

@@ -90,14 +90,25 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             foreach (Orcamento_ItemModel item in e.NewItems)
                             {
+                                objImposto = null;
                                 item.idOrcamentoItem = this.lOrcamento_Itens.Count;
-                                objImposto = new Orcamento_Item_ImpostosModel
+                                if (this.lOrcamento_Item_Impostos.Count > 0)
                                 {
-                                    idOrcamentoItem = (int)item.idOrcamentoItem,
-                                    objItem = item,
-                                    ICMS_pCargaTributariaMedia = OrcamentoFacade.objCadastros.objCargaTrib.pCargaTributariaMedia
-                                };
-                                this.lOrcamento_Item_Impostos.Add(item: objImposto);
+                                    Orcamento_Item_ImpostosModel objImp = this.lOrcamento_Item_Impostos.FirstOrDefault(
+                                        i => i.idOrcamentoItem == item.idOrcamentoItem);
+                                    if (objImp != null)
+                                        objImposto = objImp;
+                                }
+                                if (objImposto == null)
+                                {
+                                    objImposto = new Orcamento_Item_ImpostosModel
+                                    {
+                                        idOrcamentoItem = (int)item.idOrcamentoItem,
+                                        objItem = item,
+                                        ICMS_pCargaTributariaMedia = OrcamentoFacade.objCadastros.objCargaTrib.pCargaTributariaMedia
+                                    };
+                                    this.lOrcamento_Item_Impostos.Add(item: objImposto);
+                                }
                                 item.objImposto = objImposto;
                             }
                             base.NotifyPropertyChanged(propertyName: "lOrcamento_Item_Impostos");
@@ -632,6 +643,13 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idTipoDocumento = value;
+
+                if (value > 0)
+                    foreach (var item in this._lOrcamento_Itens)
+                    {
+                        item.lTipoOperacao = OrcamentoFacade.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento", sParameter: value.ToString());
+                    }
+
                 base.NotifyPropertyChanged(propertyName: "idTipoDocumento");
             }
         }
@@ -848,6 +866,10 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
                     base.NotifyPropertyChanged(propertyName: "idFuncionarioRepresentante");
                 }
+
+            this.lTipoOperacao = OrcamentoFacade.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento", sParameter: "2");
+            this.objImposto = new Orcamento_Item_ImpostosModel();
+
         }
 
         #region Métodos de Cálculos
@@ -1288,6 +1310,30 @@ namespace HLP.Sales.Model.Models.Comercial
 
         #region Propriedades não mapeadas
 
+        private ObservableCollection<HLP.Comum.Facade.FillComboBoxService.modelToComboBox> _lUnMedida;
+
+        public ObservableCollection<HLP.Comum.Facade.FillComboBoxService.modelToComboBox> lUnMedida
+        {
+            get { return _lUnMedida; }
+            set
+            {
+                _lUnMedida = value;
+                base.NotifyPropertyChanged(propertyName: "lUnMedida");
+            }
+        }
+
+        private ObservableCollection<HLP.Comum.Facade.FillComboBoxService.modelToComboBox> _lTipoOperacao;
+
+        public ObservableCollection<HLP.Comum.Facade.FillComboBoxService.modelToComboBox> lTipoOperacao
+        {
+            get { return _lTipoOperacao; }
+            set
+            {
+                _lTipoOperacao = value;
+                base.NotifyPropertyChanged(propertyName: "lTipoOperacao");
+            }
+        }
+
         private bool _bXComercialEnabled;
 
         public bool bXComercialEnabled
@@ -1300,8 +1346,6 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
-        #endregion
-
         private Orcamento_Item_ImpostosModel _objImposto;
 
         public Orcamento_Item_ImpostosModel objImposto
@@ -1309,6 +1353,8 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _objImposto; }
             set { _objImposto = value; }
         }
+
+        #endregion
 
         private int? _idOrcamentoItem;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -1367,6 +1413,8 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     if (value != 0)
                     {
+                        this.lUnMedida = OrcamentoFacade.GetAllValuesToComboBox(sNameView: "getUnidadeMedidaToComboBox", sParameter: value.ToString());
+
                         HLP.Comum.Facade.produtoService.ProdutoModel objProduto = OrcamentoFacade.produtoService.getProduto(idProduto: value);
 
                         if (OrcamentoFacade.objCadastros.lProdutos.Count(i => i.idProduto == objProduto.idProduto) < 1)
@@ -1375,7 +1423,8 @@ namespace HLP.Sales.Model.Models.Comercial
                         if (OrcamentoFacade.objCadastros.objTipo_Operacao.idClassificacaoFiscal == 0
                             && objProduto != null)
                         {
-                            this.objImposto.idClassificacaoFiscal = objProduto.idClassificacaoFiscalVenda ?? 0;
+                            if (this.objImposto != null)
+                                this.objImposto.idClassificacaoFiscal = objProduto.idClassificacaoFiscalVenda ?? 0;
                             base.NotifyPropertyChanged(propertyName: "idClassificacaoFiscal");
                         }
 
@@ -1383,15 +1432,18 @@ namespace HLP.Sales.Model.Models.Comercial
                             if (objProduto.idClassificacaoFiscalVenda != null &&
                                 objProduto.idClassificacaoFiscalVenda != 0)
                             {
-                                this.objImposto.IPI_pIPI = OrcamentoFacade.classificFiscalService.GetObjeto(
-                                    idObjeto: (int)objProduto.idClassificacaoFiscalVenda).pIPI;
+                                if (this.objImposto != null)
+                                    this.objImposto.IPI_pIPI = OrcamentoFacade.classificFiscalService.GetObjeto(
+                                        idObjeto: (int)objProduto.idClassificacaoFiscalVenda).pIPI;
                             }
                             else
                             {
-                                this.objImposto.IPI_pIPI = OrcamentoFacade.objCadastros.objTipo_Operacao.pIpi;
+                                if (this.objImposto != null)
+                                    this.objImposto.IPI_pIPI = OrcamentoFacade.objCadastros.objTipo_Operacao.pIpi;
                             }
                         else
-                            this.objImposto.IPI_pIPI = OrcamentoFacade.objCadastros.objTipo_Operacao.pIpi;
+                            if (this.objImposto != null)
+                                this.objImposto.IPI_pIPI = OrcamentoFacade.objCadastros.objTipo_Operacao.pIpi;
                         base.NotifyPropertyChanged(propertyName: "pIpi");
 
                         HLP.Comum.Facade.Familia_ProdutoService.Familia_produtoModel objFamiliaProduto =
@@ -1410,15 +1462,18 @@ namespace HLP.Sales.Model.Models.Comercial
                         #region icms
 
                         if (OrcamentoFacade.objCadastros.objTipo_Operacao.idCodigoIcmsPai == 0)
-                            this.objImposto.idCodigoIcmsPai = OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(
-                                i => i.idProduto == this.idProduto).idCodigoIcmsPaiVenda ?? 0;
+                            if (this.objImposto != null)
+                                this.objImposto.idCodigoIcmsPai = OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(
+                                    i => i.idProduto == this.idProduto).idCodigoIcmsPaiVenda ?? 0;
 
                         if (OrcamentoFacade.objCadastros.objTipo_Operacao.idCSTIcms == 0)
-                            this.objImposto.idCSTIcms = OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(
-                                i => i.idProduto == this.idProduto).idCSTIcms ?? 0;
+                            if (this.objImposto != null)
+                                this.objImposto.idCSTIcms = OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(
+                                    i => i.idProduto == this.idProduto).idCSTIcms ?? 0;
 
-                        this.objImposto.ICMS_stCompoeBaseCalculo =
-                            OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseIcms;
+                        if (this.objImposto != null)
+                            this.objImposto.ICMS_stCompoeBaseCalculo =
+                                OrcamentoFacade.objCadastros.objTipo_Operacao.stCompoeBaseIcms;
 
                         #endregion
 
@@ -1552,27 +1607,6 @@ namespace HLP.Sales.Model.Models.Comercial
                                 }; break;
                         }
                         #endregion
-
-                        //if (OrcamentoFacade.objCadastros.objTipo_Operacao != null)
-                        //    if (OrcamentoFacade.objCadastros.objTipo_Operacao.idClassificacaoFiscal != 0)
-                        //        this.orcamento_Item_Impostos.First().idClassificacaoFiscal = OrcamentoFacade.objCadastros.objTipo_Operacao.idClassificacaoFiscal;
-                        //    else
-                        //        this.orcamento_Item_Impostos.First().idClassificacaoFiscal = OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto
-                        //        == this.idProduto).idClassificacaoFiscalVenda ?? 0;
-                        //else
-                        //    this.orcamento_Item_Impostos.First().idClassificacaoFiscal = OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(i => i.idProduto
-                        //        == this.idProduto).idClassificacaoFiscalVenda ?? 0;
-                        //base.NotifyPropertyChanged(propertyName: "idClassificacaoFiscal");
-
-                        //if (this.idProduto != 0)
-                        //    if (OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(
-                        //    i => i.idProduto == this.idProduto).idClassificacaoFiscalVenda != null)
-                        //        this.orcamento_Item_Impostos.First().IPI_pIPI =
-                        //            OrcamentoFacade.classificFiscalService.GetObjeto((int)
-                        //            OrcamentoFacade.objCadastros.lProdutos.FirstOrDefault(
-                        //    i => i.idProduto == this.idProduto).idClassificacaoFiscalVenda).pIPI;
-                        //    else
-                        //        this.orcamento_Item_Impostos.First().IPI_pIPI = OrcamentoFacade.objCadastros.objTipo_Operacao.pPis;
                     }
                 }
                 base.NotifyPropertyChanged(propertyName: "idProduto");
@@ -2072,11 +2106,9 @@ namespace HLP.Sales.Model.Models.Comercial
 
     public partial class Orcamento_Item_ImpostosModel : modelBase
     {
-        Orcamento_ideModel objParent;
         public Orcamento_Item_ImpostosModel()
             : base(xTabela: "Orcamento_Item_Impostos")
         {
-            this.objParent = objParent;
         }
 
         #region Propriedades não Mapeadas
@@ -2299,8 +2331,11 @@ namespace HLP.Sales.Model.Models.Comercial
                     OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stZeraIcms == 1)
                     this._ICMS_stCompoeBaseCalculo = 4;
 
-                this.objItem.CalculaBaseIcms();
-                this.objItem.CalculaBaseIcmsProprio();
+                if (objItem != null)
+                {
+                    this.objItem.CalculaBaseIcms();
+                    this.objItem.CalculaBaseIcmsProprio();
+                }
 
                 base.NotifyPropertyChanged(propertyName: "ICMS_stCompoeBaseCalculo");
             }
@@ -2481,10 +2516,13 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _IPI_vIPI = value;
-                this.objItem.CalculaBaseIcms();
-                this.objItem.CalculaBaseIcmsProprio();
-                this.objItem.CalcularVlrBasePis();
-                this.objItem.CalcularVlrBaseCofins();
+                if (this.objItem != null)
+                {
+                    this.objItem.CalculaBaseIcms();
+                    this.objItem.CalculaBaseIcmsProprio();
+                    this.objItem.CalcularVlrBasePis();
+                    this.objItem.CalcularVlrBaseCofins();
+                }
                 base.NotifyPropertyChanged(propertyName: "IPI_vIPI");
             }
         }
@@ -2511,7 +2549,8 @@ namespace HLP.Sales.Model.Models.Comercial
                 else
                     _IPI_stCompoeBaseCalculo = value;
 
-                this.objItem.CalculaBaseIpi();
+                if (this.objItem != null)
+                    this.objItem.CalculaBaseIpi();
                 base.NotifyPropertyChanged(propertyName: "IPI_stCompoeBaseCalculo");
             }
         }
@@ -2671,8 +2710,11 @@ namespace HLP.Sales.Model.Models.Comercial
                             this.COFINS_stCompoeBaseCalculoSubstituicaoTributaria = this._COFINS_stCompoeBaseCalculoSubstituicaoTributaria;
                         } break;
                 }
-                this.objItem.CalcularVlrBasePis();
-                this.objItem.CalcularVlrBaseCofins();
+                if (this.objItem != null)
+                {
+                    this.objItem.CalcularVlrBasePis();
+                    this.objItem.CalcularVlrBaseCofins();
+                }
             }
         }
         private byte _stRegimeTributacaoPisCofins;
@@ -2716,8 +2758,11 @@ namespace HLP.Sales.Model.Models.Comercial
                             _stCompoeBaseCalculoPisCofins = value;
                         } break;
                 }
-                this.objItem.CalcularVlrBasePis();
-                this.objItem.CalcularVlrBaseCofins();
+                if (this.objItem != null)
+                {
+                    this.objItem.CalcularVlrBasePis();
+                    this.objItem.CalcularVlrBaseCofins();
+                }
                 base.NotifyPropertyChanged(propertyName: "stCompoeBaseCalculoPisCofins");
             }
         }
@@ -2740,7 +2785,8 @@ namespace HLP.Sales.Model.Models.Comercial
                             this._PIS_stCompoeBaseCalculoSubstituicaoTributaria = value;
                         } break;
                 }
-                this.objItem.CalcularVlrBasePis();
+                if (this.objItem != null)
+                    this.objItem.CalcularVlrBasePis();
                 base.NotifyPropertyChanged(propertyName: "PIS_stCompoeBaseCalculoSubstituicaoTributaria");
             }
         }
@@ -2820,7 +2866,8 @@ namespace HLP.Sales.Model.Models.Comercial
                             this._COFINS_stCompoeBaseCalculoSubstituicaoTributaria = value;
                         } break;
                 }
-                this.objItem.CalcularVlrBaseCofins();
+                if (this.objItem != null)
+                    this.objItem.CalcularVlrBaseCofins();
                 base.NotifyPropertyChanged(propertyName: "COFINS_stCompoeBaseCalculoSubstituicaoTributaria");
             }
         }

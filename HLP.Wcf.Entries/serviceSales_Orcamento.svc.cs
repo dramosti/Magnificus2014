@@ -10,11 +10,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace HLP.Wcf.Sales
+namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "ServiceOrcamento" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceOrcamento.svc or ServiceOrcamento.svc.cs at the Solution Explorer and start debugging.
-    public class ServiceOrcamento : IServiceOrcamento
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceSales_Orcamento" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceSales_Orcamento.svc or serviceSales_Orcamento.svc.cs at the Solution Explorer and start debugging.
+    public class serviceSales_Orcamento : IserviceSales_Orcamento
     {
         [Inject]
         public IOrcamento_ideRepository orcamento_ideRepository { get; set; }
@@ -31,9 +31,8 @@ namespace HLP.Wcf.Sales
         [Inject]
         public IOrcamento_Total_ImpostosRepository orcamento_Total_ImpostosRepository { get; set; }
 
-        public ServiceOrcamento()
+        public serviceSales_Orcamento()
         {
-
             try
             {
                 Log.xPath = @"C:\inetpub\wwwroot\log";
@@ -121,7 +120,7 @@ namespace HLP.Wcf.Sales
         {
             try
             {
-                Log.AddLog(xLog: "Inicio Pesquisa");
+                Log.AddLog(xLog: "Inicio Pesquisa - "+idObjeto.ToString());
                 HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa = idEmpresa;
 
                 HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objOrcamento =

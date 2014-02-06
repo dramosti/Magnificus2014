@@ -94,6 +94,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\FillComboBoxService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\funcionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -365,6 +370,19 @@
     <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\FillComboBoxService\HLP.Comum.Facade.FillComboBoxService.modelToComboBox.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox.wsdl" />
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\funcionarioService\HLP.Comum.Facade.funcionarioService.FuncionarioModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -544,6 +562,7 @@
     <WCFMetadataStorage Include="Service References\contato_Service\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
+    <WCFMetadataStorage Include="Service References\FillComboBoxService\" />
     <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\Lista_PrecoService\" />
     <WCFMetadataStorage Include="Service References\loginService\" />
@@ -825,6 +844,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Ramo_AtividadeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\serviceFillComboBox.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FillComboBoxService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

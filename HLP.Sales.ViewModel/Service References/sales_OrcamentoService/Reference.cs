@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Sales.ViewModel.orcamentoService {
+namespace HLP.Sales.ViewModel.sales_OrcamentoService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,8 +17,8 @@ namespace HLP.Sales.ViewModel.orcamentoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Sales.Model.Models.Comercial.Orcamento_Total_ImpostosModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Sales.Model.Models.Comercial.Orcamento_retTranspModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel))]
@@ -28,10 +28,10 @@ namespace HLP.Sales.ViewModel.orcamentoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Sales.ViewModel.orcamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private HLP.Sales.ViewModel.sales_OrcamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Sales.ViewModel.orcamentoService.statusModel statusField;
+        private HLP.Sales.ViewModel.sales_OrcamentoService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -44,7 +44,7 @@ namespace HLP.Sales.ViewModel.orcamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Sales.ViewModel.orcamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public HLP.Sales.ViewModel.sales_OrcamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -57,7 +57,7 @@ namespace HLP.Sales.ViewModel.orcamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Sales.ViewModel.orcamentoService.statusModel status {
+        public HLP.Sales.ViewModel.sales_OrcamentoService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -218,59 +218,120 @@ namespace HLP.Sales.ViewModel.orcamentoService {
         ESTRMERCINTERNOSEMSIMILNACION = 7,
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="orcamentoService.IServiceOrcamento")]
-    public interface IServiceOrcamento {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelToComboBox", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.SerializableAttribute()]
+    public partial class modelToComboBox : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Save", ReplyAction="http://tempuri.org/IServiceOrcamento/SaveResponse")]
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string displayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string display {
+            get {
+                return this.displayField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.displayField, value) != true)) {
+                    this.displayField = value;
+                    this.RaisePropertyChanged("display");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="sales_OrcamentoService.IserviceSales_Orcamento")]
+    public interface IserviceSales_Orcamento {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Save", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/SaveResponse")]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Save(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Save", ReplyAction="http://tempuri.org/IServiceOrcamento/SaveResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Save", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/SaveResponse")]
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> SaveAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/GetObjeto", ReplyAction="http://tempuri.org/IServiceOrcamento/GetObjetoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/GetObjeto", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/GetObjetoResponse")]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/GetObjeto", ReplyAction="http://tempuri.org/IServiceOrcamento/GetObjetoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/GetObjeto", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/GetObjetoResponse")]
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GetObjetoAsync(int idObjeto, int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Delete", ReplyAction="http://tempuri.org/IServiceOrcamento/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Delete", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/DeleteResponse")]
         bool Delete(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Delete", ReplyAction="http://tempuri.org/IServiceOrcamento/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Delete", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/DeleteResponse")]
         System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Copy", ReplyAction="http://tempuri.org/IServiceOrcamento/CopyResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Copy", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/CopyResponse")]
         int Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceOrcamento/Copy", ReplyAction="http://tempuri.org/IServiceOrcamento/CopyResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Copy", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/CopyResponse")]
         System.Threading.Tasks.Task<int> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceOrcamentoChannel : HLP.Sales.ViewModel.orcamentoService.IServiceOrcamento, System.ServiceModel.IClientChannel {
+    public interface IserviceSales_OrcamentoChannel : HLP.Sales.ViewModel.sales_OrcamentoService.IserviceSales_Orcamento, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceOrcamentoClient : System.ServiceModel.ClientBase<HLP.Sales.ViewModel.orcamentoService.IServiceOrcamento>, HLP.Sales.ViewModel.orcamentoService.IServiceOrcamento {
+    public partial class IserviceSales_OrcamentoClient : System.ServiceModel.ClientBase<HLP.Sales.ViewModel.sales_OrcamentoService.IserviceSales_Orcamento>, HLP.Sales.ViewModel.sales_OrcamentoService.IserviceSales_Orcamento {
         
-        public ServiceOrcamentoClient() {
+        public IserviceSales_OrcamentoClient() {
         }
         
-        public ServiceOrcamentoClient(string endpointConfigurationName) : 
+        public IserviceSales_OrcamentoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ServiceOrcamentoClient(string endpointConfigurationName, string remoteAddress) : 
+        public IserviceSales_OrcamentoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceOrcamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceSales_OrcamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceOrcamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public IserviceSales_OrcamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         

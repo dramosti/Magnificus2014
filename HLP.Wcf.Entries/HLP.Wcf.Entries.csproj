@@ -128,6 +128,7 @@
     <Content Include="serviceRamoAtividade.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceRota.svc" />
+    <Content Include="serviceSales_Orcamento.svc" />
     <Content Include="serviceSetor.svc" />
     <Content Include="serviceSite.svc" />
     <Content Include="serviceSituacao_tributaria_pis.svc" />
@@ -187,6 +188,7 @@
     <Compile Include="IserviceModoEntrega.cs" />
     <Compile Include="IserviceMoeda.cs" />
     <Compile Include="IserviceMulta.cs" />
+    <Compile Include="IserviceOrcamento.cs" />
     <Compile Include="IservicePersonalidade.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IservicePesquisaRapida.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="IserviceRamoAtividade.cs" />
     <Compile Include="IserviceRegiao.cs" />
     <Compile Include="IserviceRota.cs" />
+    <Compile Include="IserviceSales_Orcamento.cs" />
     <Compile Include="IserviceSetor.cs" />
     <Compile Include="IserviceSite.cs" />
     <Compile Include="IserviceSituacao_tributaria_pis.cs" />
@@ -337,6 +340,9 @@
     <Compile Include="serviceRota.svc.cs">
       <DependentUpon>serviceRota.svc</DependentUpon>
     </Compile>
+    <Compile Include="serviceSales_Orcamento.svc.cs">
+      <DependentUpon>serviceSales_Orcamento.svc</DependentUpon>
+    </Compile>
     <Compile Include="serviceSetor.svc.cs">
       <DependentUpon>serviceSetor.svc</DependentUpon>
     </Compile>
@@ -411,6 +417,10 @@
     <ProjectReference Include="..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
+      <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>
+      <Name>HLP.Sales.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
       <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
