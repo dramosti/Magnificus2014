@@ -56,10 +56,14 @@ namespace HLP.Comum.Facade.Sales
                     idEstadoCliente = OrcamentoFacade.cidadeService.getCidade(
                         idCidade: OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == 1).idCidade).idUF;
                 }
-                else
+                else if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count() > 0)
                 {
                     idEstadoCliente = OrcamentoFacade.cidadeService.getCidade(
                         idCidade: OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault().idCidade).idUF;
+                }
+                else
+                {
+                    idEstadoCliente = 0;
                 }
             }
 

@@ -63,33 +63,15 @@ namespace HLP.Wcf.Entries
                             {
                                 item.idOrcamento = (int)objModel.idOrcamento;
                                 this.orcamento_itemRepository.Save(objOrcamento_Item: item);
+                                item.objImposto.idOrcamentoItem = (int)item.idOrcamentoItem;
+                                this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item.objImposto);
                             }
                             break;
                         case statusModel.excluido:
                             {
                                 this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
+                                this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.objImposto.idOrcamentoTotalizadorImpostos);
                             }
-                            break;
-                    }
-                }
-                foreach (HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel item in objModel.lOrcamento_Item_Impostos)
-                {
-                    switch (item.status)
-                    {
-                        case statusModel.nenhum:
-                            break;
-                        case statusModel.criado:
-                        case statusModel.alterado:
-                            {
-                                this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item);
-                            }
-                            break;
-                        case statusModel.excluido:
-                            {
-                                this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.idOrcamentoTotalizadorImpostos);
-                            }
-                            break;
-                        default:
                             break;
                     }
                 }
