@@ -51,10 +51,8 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                Log.AddLog(xLog: "Inicio Save");
                 this.orcamento_ideRepository.BeginTransaction();
                 this.orcamento_ideRepository.Save(objOrcamento_ide: objModel);
-                Log.AddLog(xLog: "Ide Salvo");
 
                 foreach (HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel item in objModel.lOrcamento_Itens)
                 {
@@ -74,7 +72,6 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
-                Log.AddLog(xLog: "Item Salvo");
                 foreach (HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel item in objModel.lOrcamento_Item_Impostos)
                 {
                     switch (item.status)
@@ -96,13 +93,10 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
-                Log.AddLog(xLog: "Imposto Salvo");
                 if (objModel.orcamento_retTransp != null)
                     this.orcamento_retTranspRepository.Save(objOrcamento_retTransp: objModel.orcamento_retTransp);
-                Log.AddLog(xLog: "Transportes Salvo");
                 if (objModel.orcamento_Total_Impostos != null)
                     this.orcamento_Total_ImpostosRepository.Save(objOrcamento_Total_Impostos: objModel.orcamento_Total_Impostos);
-                Log.AddLog(xLog: "Total Impostos Salvo");
 
                 this.orcamento_ideRepository.CommitTransaction();
                 return objModel;
@@ -120,7 +114,6 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                Log.AddLog(xLog: "Inicio Pesquisa - "+idObjeto.ToString());
                 HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa = idEmpresa;
 
                 HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objOrcamento =
