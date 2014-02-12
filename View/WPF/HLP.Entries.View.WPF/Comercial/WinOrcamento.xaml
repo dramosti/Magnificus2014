@@ -81,7 +81,7 @@
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwTipoDocumentoToComboBoxOrcamento</System:String>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>        
+        </ObjectDataProvider>
         <ObjectDataProvider x:Key="lResultTipoOperacao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwTipoOperacaoToComboBox</System:String>
@@ -736,7 +736,22 @@
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPesoBruto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Peso Bruto" Width="100"/>
-                                        <DataGridComboBoxColumn Header="Status" Width="150"/>
+                                        <DataGridTemplateColumn Header="Status Item" Width="150"
+                                                                >
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox
+                                                        IsEnabled="False"
+                                                        SelectedIndex="{Binding stOrcamentoItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                        <ComboBoxItem>0-Criado</ComboBoxItem>
+                                                        <ComboBoxItem>1-Enviado</ComboBoxItem>
+                                                        <ComboBoxItem>2-Confirmado</ComboBoxItem>
+                                                        <ComboBoxItem>3-Perdido</ComboBoxItem>
+                                                        <ComboBoxItem>4-Cancelado</ComboBoxItem>
+                                                    </ComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPedidoClienteItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -829,7 +844,7 @@
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn	Header="id Orçamento" Width="125"/>
                                         <DataGridTextColumn Header="id Empresa" Width="125"/>
-                                        <DataGridTextColumn Header="Dconfirmaçãoitem" Width="125"/>                                        
+                                        <DataGridTextColumn Header="Dconfirmaçãoitem" Width="125"/>
                                         <DataGridTemplateColumn x:Name="clCfop" Header="Cfop" Width="125" >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
@@ -1378,7 +1393,7 @@
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Base de Cálculo">
+            <TabItem Header="Base de Cálculo" GotFocus="TabItem_GotFocus">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
                         <DockPanel DockPanel.Dock="Top" Height="36.5">
@@ -1390,6 +1405,7 @@
                                     <System:String>2-CONFIRMADO</System:String>
                                     <System:String>3-PERDIDO</System:String>
                                     <System:String>4-CANCELADO</System:String>
+                                    <System:String>5-TODOS</System:String>
                                 </Components:HlpComboBox.Items>
                             </Components:HlpComboBox>
                         </DockPanel>
@@ -1397,118 +1413,141 @@
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vProdutoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vProdutoTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Total dos Produtos" Help="O Sistema irá trazer a somatória de todos os produtos lançado no orçamento" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vServicoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vServicoTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Total de Serviços" Help="O Sistema irá trazer a somatória de todos os serviços lançado no orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor de Desconto" Help="O Sistema irá trazer o total dos descontos concebidos nos itens lançados." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.pDescontoTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.pDescontoTotal, Converter={StaticResource porcentagemConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="% de Desconto" Help="" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoSuframaTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vDescontoSuframaTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total de Desconto do SUFRAMA" Help="O sistema irá informar quando o cliente tiver Suframa o seu valor de desconto." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vFreteTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vFreteTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do Frete" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vSeguroTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vSeguroTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do Seguro" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vOutrasDespesasTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vOutrasDespesasTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total de Outras Despesas" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do ICMS" Help="O Sistema informará o valor total da base de calculo do ICMS conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vICMSTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vICMSTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do ICMS" Help="O Sistema informará o valor total do Icms conforme os cálculos mencionados nos itens do orçamento" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsProprioTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsProprioTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do ICMS Próprio" Help="Valor Total da Base de Cálculo do ICMS Próprio" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsProprioTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsProprioTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total do ICMS Próprio" Help="O Sistema informará o valor total do ICMS Próprio conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIpiTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIpiTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total da Base de Cálculo do IPI" Help="O sistema informará o valor total da base de cálculo do IPI conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vIPITotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vIPITotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do IPI" Help="O sistema informará o valor total do IPI conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoICmsSubstituicaoTributariaTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoICmsSubstituicaoTributariaTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="40" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total da base de cálculo ICMS de Substituição Tributária" Help="O sistema informará o valor total da Base de Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsSubstituicaoTributariaTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vIcmsSubstituicaoTributariaTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do ICMS de Substituição Tributária" Help="O sistema informará o valor total da Substituição Tributária do ICMS conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vTotal, Mode=TwoWay, Converter={StaticResource moedaConverter},
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total" Help="O Sistema informará o valor total dos itens agregados a esse orçamento ((Valor dos Itens + IPI + Substituição Tributária do ICMS + Seguro + Outras Despesas) – (Descontos – Desconto de SUFRAMA))" WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoPisTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoPisTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									 Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do PIS" Help="O sistema informará o valor total da Base de cálculo do PIS (Programa de Integração Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vIPITotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vPISTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do PIS" Help="O sistema informará o valor total do PIS (Programa de Integração Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoCofinsTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoCofinsTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor Total da Base de Cálculo do COFINS" Help="O sistema informará o valor total da base de calculo do COFINS (Contribuição para o Financiamento da Seguridade Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vCOFINSTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vCOFINSTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do COFINS" Help="O sistema informará o valor total do COFINS (Contribuição para o Financiamento da Seguridade Social) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIssTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vBaseCalculoIssTotal,Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total da base de cálculo do ISS" Help="O sistema informará o valor total da base de cálculo do ISS (Imposto sobre o Serviço) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpTextBox 
 									
-									Text="{Binding currentModel.orcamento_Total_Impostos.vIssTotal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									Text="{Binding currentModel.orcamento_Total_Impostos.vIssTotal, Converter={StaticResource moedaConverter},
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,1" Caption="Valor total do ISS" Help="O sistema informará o valor total do ISS (Imposto sobre o Serviço) conforme os cálculos mencionados nos itens do orçamento." WidthLabel="356" Width="450"/>
                                 <Components:HlpComboBox 
 									

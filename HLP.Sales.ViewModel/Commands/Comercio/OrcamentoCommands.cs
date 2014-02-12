@@ -67,6 +67,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 }
 
                 objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
@@ -81,13 +82,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
+                e.Result = e.Argument;
                 this.objViewModel.currentModel = this.servico.Save(objModel: this.objViewModel.currentModel);
+                this.IniciaCollection();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            e.Result = e.Argument;
+
         }
 
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -101,6 +104,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 else
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.IniciaCollection();
                 }
             }
             catch (Exception ex)
@@ -117,6 +121,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
+        }
+
+        private void IniciaCollection()
+        {
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lOrcamento_Item_Impostos.CollectionCarregada();
+                this.objViewModel.currentModel.lOrcamento_Itens.CollectionCarregada();
+            }
+
         }
 
         public void Delete()
@@ -208,7 +222,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -304,6 +318,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             if (e.Error != null)
             {
                 throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                this.IniciaCollection();
+                foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
+                {
+                    item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
+                        .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
+                }
             }
         }
 
