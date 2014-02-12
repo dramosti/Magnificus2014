@@ -176,6 +176,7 @@
           <xs:element minOccurs="0" name="qProduto" type="xs:decimal" />
           <xs:element minOccurs="0" name="stConsumidorFinal" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stOrcamentoItem" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stServico" type="xs:boolean" />
           <xs:element minOccurs="0" name="vDesconto" type="xs:decimal" />
           <xs:element minOccurs="0" name="vDescontoSuframa" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="vFreteItem" type="xs:decimal" />

@@ -76,9 +76,15 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 if (objModel.orcamento_retTransp != null)
+                {
+                    objModel.orcamento_retTransp.idOrcamento = (int)objModel.idOrcamento;
                     this.orcamento_retTranspRepository.Save(objOrcamento_retTransp: objModel.orcamento_retTransp);
+                }
                 if (objModel.orcamento_Total_Impostos != null)
+                {
+                    objModel.orcamento_Total_Impostos.idOrcamento = (int)objModel.idOrcamento;
                     this.orcamento_Total_ImpostosRepository.Save(objOrcamento_Total_Impostos: objModel.orcamento_Total_Impostos);
+                }
 
                 this.orcamento_ideRepository.CommitTransaction();
                 return objModel;
