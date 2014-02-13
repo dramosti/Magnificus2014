@@ -48,5 +48,10 @@ namespace HLP.Entries.View.WPF.Comercial
             cbxContato.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getAuthorsToComboBox", sParameter: pesquisaCliente.Text);
             clListaPreco.IsReadOnly = this.ViewModel.bListaPrecoHabilitado;
         }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.CalculaTotais();
+        }
     }
 }

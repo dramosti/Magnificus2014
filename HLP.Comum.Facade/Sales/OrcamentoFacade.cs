@@ -56,10 +56,14 @@ namespace HLP.Comum.Facade.Sales
                     idEstadoCliente = OrcamentoFacade.cidadeService.getCidade(
                         idCidade: OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.stPrincipal == 1).idCidade).idUF;
                 }
-                else
+                else if (OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.Count() > 0)
                 {
                     idEstadoCliente = OrcamentoFacade.cidadeService.getCidade(
                         idCidade: OrcamentoFacade.objCadastros.objCliente.lCliente_fornecedor_Endereco.FirstOrDefault().idCidade).idUF;
+                }
+                else
+                {
+                    idEstadoCliente = 0;
                 }
             }
 
@@ -94,9 +98,9 @@ namespace HLP.Comum.Facade.Sales
             this.objCliente = new clienteService.Cliente_fornecedorModel();
             this.objListaPreco = new Lista_PrecoService.Lista_Preco_PaiModel();
             lProdutos = new List<produtoService.ProdutoModel>();
+            this.lTipoOperacao = new List<Tipo_OperacaoService.Tipo_operacaoModel>();
             this.objFuncionario = new funcionarioService.FuncionarioModel();
             this.objCondicaoPagamento = new Condicao_PagamentoService.Condicao_pagamentoModel();
-            this.objTipo_Operacao = new Tipo_OperacaoService.Tipo_operacaoModel();
             this.objCargaTrib = new Carga_trib_media_st_icmsServico.Carga_trib_media_st_icmsModel();
             this.objRamoAtividade = new Ramo_AtividadeService.Ramo_atividadeModel();
 
@@ -110,12 +114,12 @@ namespace HLP.Comum.Facade.Sales
 
         public contato_Service.ContatoModel objContato;
         public List<produtoService.ProdutoModel> lProdutos;
+        public List<Tipo_OperacaoService.Tipo_operacaoModel> lTipoOperacao { get; set; }
         public int idTipoOperacao;
         public Lista_PrecoService.Lista_Preco_PaiModel objListaPreco;
         public clienteService.Cliente_fornecedorModel objCliente;
         public funcionarioService.FuncionarioModel objFuncionario;
         public Condicao_PagamentoService.Condicao_pagamentoModel objCondicaoPagamento;
-        public Tipo_OperacaoService.Tipo_operacaoModel objTipo_Operacao;
         public empresaService.EmpresaModel objEmpresa;
         public int idEstadoEmpresa;
         public int idEstadoCliente;
