@@ -204,7 +204,7 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <StackPanel DockPanel.Dock="Top"  Focusable="False">
+        <StackPanel DockPanel.Dock="Top" Background="{StaticResource StyleMainWindowDefault}" Focusable="False">
             <StackPanel.Resources>
                 <Style x:Key="ContentFuncionalidades" TargetType="Grid">
                     <Setter Property="MinWidth" Value="400"/>
@@ -213,9 +213,9 @@
             </StackPanel.Resources>
             <Expander Focusable="False" x:Name="expanderFuncionalidades" Template="{StaticResource RevealExpanderTemp}"
                   OverridesDefaultStyle="True"
-                  Header=". . ."
+                  Header="..."
                   VerticalAlignment="Stretch">
-                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainGridDefault}">                    
+                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainWindowDefault}">                    
                 </Grid>
             </Expander>
         </StackPanel>
