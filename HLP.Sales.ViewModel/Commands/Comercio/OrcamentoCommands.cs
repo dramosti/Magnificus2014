@@ -65,7 +65,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-
+                                
+                this.objViewModel.CalculaTotais((byte)5);
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
@@ -322,10 +323,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             else
             {
                 this.IniciaCollection();
-                foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
+                if (this.objViewModel.currentModel != null)
                 {
-                    item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
-                        .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
+                    foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
+                    {
+                        item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
+                            .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
+                        item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
+                        item.objImposto.vTotalItem = item.vTotalItem;
+                    }
                 }
             }
         }
@@ -335,7 +341,10 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 if (this.objViewModel.currentID != 0)
+                {
+                    e.Result =
                     this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID, idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
+                }
             }
             catch (Exception ex)
             {

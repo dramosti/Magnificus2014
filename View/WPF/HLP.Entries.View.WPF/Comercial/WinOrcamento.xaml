@@ -6,12 +6,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
     x:Name="wd"
         x:Class="HLP.Entries.View.WPF.Comercial.WinOrcamento"        
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="WinOrcamento" Height="660" Width="1024" NameView="vwOrcamento"
     >
     <runtime:WindowsBase.Resources>
+        <CollectionViewSource 
+    Source="{Binding currentModel.lOrcamento_Itens, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+    x:Key="cvsItens"
+    x:Name="cvsItens"
+    CollectionViewType="{x:Type dat:ListCollectionView}" />
+        <CollectionViewSource 
+    Source="{Binding currentModel.lOrcamento_Item_Impostos, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+    x:Key="cvsImpostos"
+    x:Name="cvsImpostos"
+    CollectionViewType="{x:Type dat:ListCollectionView}" />
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider 
             MethodName="GetDict"
@@ -521,13 +532,17 @@
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
                         <DockPanel DockPanel.Dock="Top" Height="35.5">
-                            <Components:HlpComboBox Height="27" Margin="10,5,10,3.5" Width="253.5" HorizontalAlignment="Left" Caption="Status itens" WidthLabel="96">
+                            <Components:HlpComboBox
+                                SetNext="False"
+                                SelectedIndex="{Binding currentModel.iStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Height="27" Margin="10,5,10,3.5" Width="253.5" HorizontalAlignment="Left" Caption="Status itens" WidthLabel="96" UCSelectionChanged="HlpComboBox_UCSelectionChanged">
                                 <Components:HlpComboBox.Items>
                                     <System:String>0-CRIADO</System:String>
                                     <System:String>1-ENVIADO</System:String>
                                     <System:String>2-CONFIRMADO</System:String>
                                     <System:String>3-PERDIDO</System:String>
                                     <System:String>4-CANCELADO</System:String>
+                                    <System:String>5-TODOS</System:String>
                                 </Components:HlpComboBox.Items>
                             </Components:HlpComboBox>
                         </DockPanel>
@@ -546,7 +561,7 @@
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
 								CanUserAddRows="True"
-                                ItemsSource="{Binding currentModel.lOrcamento_Itens}"
+                                ItemsSource="{Binding Source={StaticResource cvsItens}}"
                                     >
                                     <DataGrid.Columns>
                                         <DataGridTemplateColumn Header="Operação" Width="100" >
@@ -878,7 +893,7 @@
                                 IsEnabled="{Binding bIsEnabled}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"								                 
-                                ItemsSource="{Binding Path=currentModel.lOrcamento_Item_Impostos}"				                
+                                ItemsSource="{Binding Source={StaticResource cvsImpostos}}"				                
 								>
                                     <DataGrid.Columns>
                                         <DataGridComboBoxColumn  Header="Origem Mercadoria" Width="125" IsReadOnly="True"
@@ -1112,7 +1127,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <ComboBox
-                                                    SelectedIndex="{Binding stCalculaIcmsSubstituicaoTributaria, Mode=TwoWay,
+                                                    SelectedIndex="{Binding ICMS_stCalculaSubstituicaoTributaria, Mode=TwoWay,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>0-NÃO</ComboBoxItem>
                                                         <ComboBoxItem>1-SIM</ComboBoxItem>
@@ -1153,7 +1168,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <ComboBox                                                    
-                                                    SelectedIndex="{Binding ICMS_stCompoeBaseIcmsSubstituicaoTributaria, Mode=TwoWay,
+                                                    SelectedIndex="{Binding ICMS_stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                                     >
                                                         <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
@@ -1398,7 +1413,8 @@
                     <DockPanel LastChildFill="True">
                         <DockPanel DockPanel.Dock="Top" Height="36.5">
                             <Components:HlpComboBox 
-								Height="27" Caption="Status Itens" HorizontalAlignment="Left" Margin="10,5,10,5" WidthLabel="92">
+                                x:Name="cbxStatusFinanceiro"
+								Height="27" Caption="Status Itens" HorizontalAlignment="Left" Margin="10,5,10,5" WidthLabel="92" UCSelectionChanged="HlpComboBox_UCSelectionChanged_1">
                                 <Components:HlpComboBox.Items>
                                     <System:String>0-CRIADO</System:String>
                                     <System:String>1-ENVIADO</System:String>

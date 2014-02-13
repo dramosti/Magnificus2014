@@ -42,8 +42,12 @@ namespace HLP.Comum.Model.Models
                         List<Control> lcontrolWindow = GetLogicalChildCollection<Control>(item).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
                         if (lcontrolWindow.Count > 0)
                         {
-                            lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
-                            lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
+                            bool bValida = (bool)lcontrolWindow.LastOrDefault().GetPropertyValue("SetNext");
+                            if (bValida)
+                            {
+                                lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
+                                lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
+                            }
                         }
                     }
                     catch (Exception)
@@ -69,8 +73,12 @@ namespace HLP.Comum.Model.Models
         {
             get
             {
-                UIElement e = _windows.Content as UIElement;
+                UIElement e = _windows.Content as UIElement;                
                 (e as Panel).DataContext = this.Windows.DataContext;
+
+                foreach (var item in this.Windows.DataContext.GetType().GetProperties())
+                {
+                }
 
                 return e;
             }

@@ -588,6 +588,14 @@
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
                                     <DockPanel Focusable="False" LastChildFill="True">
+                                        <DockPanel DockPanel.Dock="Right">
+                                            <Expander ExpandDirection="Up" IsExpanded="False" DockPanel.Dock="Bottom">
+                                                <StackPanel>
+                                                    <Button Width="100" Content="btn1"></Button>
+                                                    <Button Width="100" Content="btn2"></Button>
+                                                </StackPanel>
+                                            </Expander>
+                                        </DockPanel>
                                         <ContentControl Focusable="False" Content="{Binding _content}"/>
                                     </DockPanel>
                                 </DataTemplate>

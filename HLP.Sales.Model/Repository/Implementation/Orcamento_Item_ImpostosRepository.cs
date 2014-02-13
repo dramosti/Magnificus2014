@@ -65,6 +65,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.vFreteItem)
                                  .DoNotMap(i => i.vSeguroItem)
                                  .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                  .Build());
             }
 
@@ -86,6 +87,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.vFreteItem)
                                  .DoNotMap(i => i.vSeguroItem)
                                  .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute().ToList();
@@ -108,6 +110,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.vFreteItem)
                                  .DoNotMap(i => i.vSeguroItem)
                                  .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento).ToList();
@@ -129,6 +132,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.vFreteItem)
                                  .DoNotMap(i => i.vSeguroItem)
                                  .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento_Item).FirstOrDefault();

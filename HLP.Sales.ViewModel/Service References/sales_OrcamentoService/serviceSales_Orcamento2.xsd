@@ -13,6 +13,7 @@
           <xs:element minOccurs="0" name="dDataRecebimentoSolicitado" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dDataRemessaSolicitada" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dVencimento" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="iStatus" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="idCanalVenda" type="xs:int" />
           <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
           <xs:element minOccurs="0" name="idCondicaoEntrega" type="xs:int" />
@@ -127,6 +128,7 @@
           <xs:element minOccurs="0" name="idOrcamentoTotalizadorImpostos" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="stCalculaPisCofins" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stCompoeBaseCalculoPisCofins" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stOrcamentoImpostos" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stRegimeTributacaoPisCofins" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="vFreteItem" type="xs:decimal" />
           <xs:element minOccurs="0" name="vOutrasDespesasItem" type="xs:decimal" />
