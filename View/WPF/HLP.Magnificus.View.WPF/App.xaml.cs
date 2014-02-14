@@ -115,8 +115,8 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                string x = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
-                this.SalvaTamanhoMensagensWcf();
+                bool bModificado = false;
+                bModificado = this.SalvaTamanhoMensagensWcf();
                 if (this.EmRedeLocal() != TipoConexao.OnlineRede)
                 {
                     InternetCS internetUtil = new InternetCS();
@@ -124,7 +124,7 @@ namespace HLP.Magnificus.View.WPF
                     if (internetUtil.Conexao())
                     {
                         Sistema.bOnline = TipoConexao.OnlineInternet;
-                        this.SalvaEndPoint(xUri: HLP.Comum.Infrastructure.Static.WcfData.xEnderWeb);
+                        bModificado = this.SalvaEndPoint(xUri: HLP.Comum.Infrastructure.Static.WcfData.xEnderWeb);
                     }
                     else
                     {
@@ -136,6 +136,12 @@ namespace HLP.Magnificus.View.WPF
 
                 if (Sistema.bOnline != TipoConexao.Offline)
                 {
+
+                    if(bModificado)
+                    {
+                        System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                        Application.Current.Shutdown();
+                    }
 
                     HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
                     this.MainWindow = wd;
@@ -187,9 +193,13 @@ namespace HLP.Magnificus.View.WPF
             }
         }
 
-        public void SalvaTamanhoMensagensWcf()
-        {            
+        public bool SalvaTamanhoMensagensWcf()
+        {
             Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            bool bModificado = false;
+
+            int iTamanho = 2147483647;
 
             ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
             //BindingCollectionElement be = serviceModeGroup.Bindings.BindingCollections.FirstOrDefault(i => i.BindingName == "basicHttpBinding");
@@ -197,39 +207,77 @@ namespace HLP.Magnificus.View.WPF
             foreach (BasicHttpBindingElement item in serviceModeGroup.Bindings.BasicHttpBinding.Bindings
                 )
             {
-                item.MaxReceivedMessageSize = 2147483647;
-                item.ReaderQuotas.MaxDepth = 2147483647;
-                item.ReaderQuotas.MaxStringContentLength = 2147483647;
-                item.ReaderQuotas.MaxArrayLength = 2147483647;
-                item.ReaderQuotas.MaxBytesPerRead = 2147483647;
-                item.ReaderQuotas.MaxNameTableCharCount = 2147483647;
+                if (item.MaxReceivedMessageSize != iTamanho)
+                {
+                    item.MaxReceivedMessageSize = iTamanho;
+                    bModificado = true;
+                }
+                if (item.ReaderQuotas.MaxDepth != iTamanho)
+                {
+                    item.ReaderQuotas.MaxDepth = iTamanho;
+                    bModificado = true;
+                }
+                if (item.ReaderQuotas.MaxStringContentLength != iTamanho)
+                {
+                    item.ReaderQuotas.MaxStringContentLength = iTamanho;
+                    bModificado = true;
+                }
+                if (item.ReaderQuotas.MaxArrayLength != iTamanho)
+                {
+                    item.ReaderQuotas.MaxArrayLength = iTamanho;
+                    bModificado = true;
+                }
+                if (item.ReaderQuotas.MaxBytesPerRead != iTamanho)
+                {
+                    item.ReaderQuotas.MaxBytesPerRead = iTamanho;
+                    bModificado = true;
+                }
+                if (item.ReaderQuotas.MaxNameTableCharCount != iTamanho)
+                {
+                    item.ReaderQuotas.MaxNameTableCharCount = iTamanho;
+                    bModificado = true;
+                }
             }
 
             try
             {
-                c.Save();
+                if (bModificado)
+                    c.Save();
+
+                return bModificado;
             }
             catch (Exception)
             {
 
                 throw;
-            }            
+            }
         }
 
-        private void SalvaEndPoint(string xUri)
+        private bool SalvaEndPoint(string xUri)
         {
             Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
             string xNomeServico;
+            Uri _uri;
+            bool bModificado = false;
+
             foreach (ChannelEndpointElement item in serviceModeGroup.Client.Endpoints)
             {
                 xNomeServico = item.Address.ToString().Split('/').ToList().Last();
-                item.Address = new Uri(xUri + xNomeServico);
+                _uri = new Uri(xUri + xNomeServico);
+                if (_uri != item.Address)
+                {
+                    bModificado = true;
+                    item.Address = _uri;
+                }
             }
 
             try
             {
-                c.Save();
+                if (bModificado)
+                    c.Save();
+
+                return bModificado;
             }
             catch (Exception)
             {
