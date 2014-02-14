@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using HLP.Comum.Infrastructure.Static;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace HLP.Comum.Model.Models
 {
@@ -22,7 +24,7 @@ namespace HLP.Comum.Model.Models
         public string sToolTipConexao
         {
             get { return _sToolTipConexao; }
-            set { _sToolTipConexao = value; base.NotifyPropertyChanged("sToolTipConexao"); }
+            set { _sToolTipConexao = value; base.NotifyPropertyChanged("sToolTipConexao");  }
         }
 
         private ObservableCollection<TabPagesAtivasModel> lTabPagesAtivas;
@@ -65,5 +67,25 @@ namespace HLP.Comum.Model.Models
                 catch (Exception) { throw; }
             }
         }
+
+        private Visibility _vToolBar = Visibility.Collapsed;
+
+        public Visibility vToolBar
+        {
+            get { return _vToolBar ; }
+            set { _vToolBar = value; base.NotifyPropertyChanged("vToolBar"); }
+        }
+
+        private double _iHeightToolBar = 0;
+
+        public double iHeightToolBar
+        {
+            get { return _iHeightToolBar;  }
+            set { _iHeightToolBar = value; base.NotifyPropertyChanged("iHeightToolBar"); }
+        }
+        
+        
+        
+        
     }
 }

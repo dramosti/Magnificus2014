@@ -92,6 +92,8 @@ namespace HLP.Comum.ViewModel.Commands
                     this.objviewModel.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
                 }
                 this.objviewModel.winMan._currentTab = objTabPageAtivasModel;
+                this.objviewModel.winMan.vToolBar = Visibility.Visible;
+                this.objviewModel.winMan.iHeightToolBar = 30;
             }
             catch (Exception ex)
             {
@@ -113,6 +115,11 @@ namespace HLP.Comum.ViewModel.Commands
             try
             {
                 this.objviewModel.winMan._lTabPagesAtivas.Remove(item: tabItem as TabPagesAtivasModel);
+                if (objviewModel.winMan._lTabPagesAtivas.Count() == 0)
+                {
+                    this.objviewModel.winMan.vToolBar = Visibility.Collapsed;
+                    this.objviewModel.winMan.iHeightToolBar = 0;
+                }
             }
             catch (Exception ex)
             {
