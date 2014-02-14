@@ -24,25 +24,13 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand commandCancelar { get; set; }
         public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
-        public ICommand navegarCommand { get; set; }
-        public ICommand testeCommand { get; set; }
+        public ICommand navegarCommand { get; set; }        
         #endregion
 
         public OrcamentoViewModel()
         {
             OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
-            this.Botoes = new StackPanel();
-
-            Button b1 = new Button();
-            b1.Content = "b1";
-
-            b1.Command = this.testeCommand;
-
-            Button b2 = new Button();
-            b2.Content = "b2";
-
-            this.Botoes.Children.Add(element: b1);
-            this.Botoes.Children.Add(element: b2);
+            this.Botoes = new StackPanel();            
         }
 
         public bool bListaPrecoHabilitado
@@ -67,15 +55,6 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                 base.NotifyPropertyChanged(propertyName: "currentItem");
             }
         }
-
-        private StackPanel _botoes;
-
-        public StackPanel Botoes
-        {
-            get { return _botoes; }
-            set { _botoes = value; }
-        }
-
 
         public void CalculaTotais(byte iStatus)
         {

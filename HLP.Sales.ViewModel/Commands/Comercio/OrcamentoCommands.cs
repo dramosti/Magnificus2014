@@ -47,8 +47,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
-
-            this.objViewModel.testeCommand = new RelayCommand(execute: paramExec => this.TesteExecute());
         }
 
         private void TesteExecute()
@@ -334,10 +332,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 {
                     foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
                     {
-                        item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
-                            .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
-                        item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
-                        item.objImposto.vTotalItem = item.vTotalItem;
+                        if (item.objImposto != null)
+                        {
+                            item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
+                                .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
+                            item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
+                            item.objImposto.vTotalItem = item.vTotalItem;
+                        }
                     }
                 }
             }

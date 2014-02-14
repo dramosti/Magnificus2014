@@ -30,6 +30,13 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _currentModel = value; NotifyPropertyChanged("currentModel"); }
         }
 
+        private StackPanel _botoes;
+
+        public StackPanel Botoes
+        {
+            get { return _botoes; }
+            set { _botoes = value; }
+        }
 
         public ViewModelBase()
         {
