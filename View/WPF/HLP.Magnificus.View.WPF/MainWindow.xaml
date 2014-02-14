@@ -598,7 +598,8 @@
                                                             Height="500"
                                                             >
                                                             <MenuItem.Template>
-                                                                <ControlTemplate>                                                                    
+                                                                <ControlTemplate>
+                                                                    <ContentControl Content="{Binding Botoes}"></ContentControl>
                                                                 </ControlTemplate>
                                                             </MenuItem.Template>
                                                         </MenuItem>

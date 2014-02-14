@@ -47,6 +47,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            this.objViewModel.testeCommand = new RelayCommand(execute: paramExec => this.TesteExecute());
+        }
+
+        private void TesteExecute()
+        {
+            MessageBox.Show(messageBoxText: "Teste");
         }
 
 
@@ -65,7 +72,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
-                                
+
                 this.objViewModel.CalculaTotais((byte)5);
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes = new BackgroundWorker();
