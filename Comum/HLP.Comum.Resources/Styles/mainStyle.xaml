@@ -509,21 +509,25 @@
              TargetType="DataGridColumnHeader">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Border.CornerRadius" Value="2"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
-        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>            
-        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="#FFABABB8"/>
+        <Setter Property="Background" Value="#FFABABB8"/>            
+        <Setter Property="Foreground" Value="Black" />
         <Setter Property="Height" Value="19"/>
     </Style>
     <Style x:Key="rowStyle" TargetType="DataGridRow">
         <Setter Property="FontFamily" Value="Verdana" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Height" Value="19"/>
-        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
-        <Setter Property="Foreground" Value="White"/>       
+        <Setter Property="Background" Value="#FFABABB8"/>
+        <Setter Property="Foreground" Value="Black"/>       
         <Style.Triggers>   
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#BBBBBB" />
-            </Trigger>            
+                <Setter Property="Background" Value="#BBBBBB"/>                
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -1944,7 +1948,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Control}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Background="White"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                     </Border>

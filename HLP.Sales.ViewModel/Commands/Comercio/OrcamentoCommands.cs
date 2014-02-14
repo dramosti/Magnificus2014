@@ -49,12 +49,6 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
         }
 
-        private void TesteExecute()
-        {
-            MessageBox.Show(messageBoxText: "Teste");
-        }
-
-
         #region Implementação Commands
 
         public void Save(object _panel)
@@ -361,6 +355,10 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         }
         #endregion
 
+        #region Implementação Commands de Funcionalidades
 
+
+
+        #endregion
     }
 }
