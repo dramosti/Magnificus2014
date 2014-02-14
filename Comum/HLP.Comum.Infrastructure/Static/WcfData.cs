@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.ServiceModel.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +19,7 @@ namespace HLP.Comum.Infrastructure.Static
         }
 
         private static string _xEnderLocal;
-        
+
         public static string xEnderLocal
         {
             get { return "http://192.168.9.33:8080/wcf/"; }
@@ -30,7 +32,7 @@ namespace HLP.Comum.Infrastructure.Static
         {
             get { return "http://hlpsistemas.no-ip.org:8081/wcf/"; }
             set { _xEnderLocal = value; }
-        }
-        
+        }       
+
     }
 }

@@ -16,12 +16,13 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
     {
         BackgroundWorker bWorkerAcoes;
         SetorViewModel objViewModel;
-        setrService.IserviceSetorClient service = new setrService.IserviceSetorClient();
+        setrService.IserviceSetorClient service;
 
 
         public SetorCommands(SetorViewModel objViewModel)
         {
-
+            string x = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
+            service = new setrService.IserviceSetorClient();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),

@@ -115,6 +115,8 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
+                string x = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
+                this.SalvaTamanhoMensagensWcf();
                 if (this.EmRedeLocal() != TipoConexao.OnlineRede)
                 {
                     InternetCS internetUtil = new InternetCS();
@@ -134,6 +136,7 @@ namespace HLP.Magnificus.View.WPF
 
                 if (Sistema.bOnline != TipoConexao.Offline)
                 {
+
                     HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
                     this.MainWindow = wd;
 
@@ -182,6 +185,35 @@ namespace HLP.Magnificus.View.WPF
             {
                 return TipoConexao.Offline;
             }
+        }
+
+        public void SalvaTamanhoMensagensWcf()
+        {            
+            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
+            //BindingCollectionElement be = serviceModeGroup.Bindings.BindingCollections.FirstOrDefault(i => i.BindingName == "basicHttpBinding");
+
+            foreach (BasicHttpBindingElement item in serviceModeGroup.Bindings.BasicHttpBinding.Bindings
+                )
+            {
+                item.MaxReceivedMessageSize = 2147483647;
+                item.ReaderQuotas.MaxDepth = 2147483647;
+                item.ReaderQuotas.MaxStringContentLength = 2147483647;
+                item.ReaderQuotas.MaxArrayLength = 2147483647;
+                item.ReaderQuotas.MaxBytesPerRead = 2147483647;
+                item.ReaderQuotas.MaxNameTableCharCount = 2147483647;
+            }
+
+            try
+            {
+                c.Save();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
 
         private void SalvaEndPoint(string xUri)
