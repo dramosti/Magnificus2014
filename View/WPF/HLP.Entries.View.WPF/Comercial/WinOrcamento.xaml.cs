@@ -16,6 +16,7 @@ using HLP.Sales.ViewModel.ViewModel.Comercio;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using System.Reflection;
 using HLP.Comum.Infrastructure.Static;
+using System.ComponentModel;
 
 namespace HLP.Entries.View.WPF.Comercial
 {
@@ -51,7 +52,23 @@ namespace HLP.Entries.View.WPF.Comercial
 
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)
         {
-            this.ViewModel.CalculaTotais();
+            byte b = Convert.ToByte(value: cbxStatusFinanceiro.SelectedIndex);
+            this.ViewModel.CalculaTotais(iStatus: b);
+        }
+
+        private void HlpComboBox_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionViewSource cvs = FindResource(resourceKey: "cvsItens") as CollectionViewSource;
+            cvs.Filter += new FilterEventHandler(this.ViewModel.ItensOrcamentoFilter);
+
+            CollectionViewSource cvsImpostos = FindResource(resourceKey: "cvsImpostos") as CollectionViewSource;
+            cvsImpostos.Filter += new FilterEventHandler(this.ViewModel.ItensOrcamentoFilter);
+        }
+
+        private void HlpComboBox_UCSelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            byte b = Convert.ToByte(value: cbxStatusFinanceiro.SelectedIndex);
+            this.ViewModel.CalculaTotais(iStatus: b);
         }
     }
 }

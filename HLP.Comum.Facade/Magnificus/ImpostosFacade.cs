@@ -202,6 +202,7 @@ namespace HLP.Comum.Facade.Magnificus
                 case 1:
                 case 3:
                     {
+
                     } break;
             }
 
@@ -210,7 +211,7 @@ namespace HLP.Comum.Facade.Magnificus
 
         public static decimal CalcularVlrSubstTrib(byte stSubsticaoTributariaIcmsDiferenciada, byte ICMS_stCalculaSubstituicaoTributaria, byte stConsumidorFinal,
             byte stContribuinteIcms, string xRamo, int idEstadoCliente, int idEstadoEmpresa, decimal? ICMS_vBaseCalculoSubstituicaoTributaria,
-            decimal? ICMS_pICMS, decimal? ICMS_pIcmsInterno, string xSiglaUf, byte ICMS_stCalculaIcms, byte parametros_FiscalEmpresa)
+            decimal? ICMS_pICMS, decimal? ICMS_pIcmsInterno, string xSiglaUf, byte ICMS_stCalculaIcms, byte parametros_FiscalEmpresa, decimal ICMS_vICMS)
         {
             decimal ICMS_vSubstituicaoTributaria = decimal.Zero;
             if (ICMS_stCalculaSubstituicaoTributaria == 1
@@ -218,13 +219,9 @@ namespace HLP.Comum.Facade.Magnificus
                 && stContribuinteIcms == 1
                 && stSubsticaoTributariaIcmsDiferenciada == 0)
             {
-                //(((“Orçamento_Item_Impostos.ICMS_vBaseCalculoIcmsSubstituicaoTributaria” X Orçamento_Item_Impostos.ICMS_pIcmsInterno / 100) - Orcamento_Icms.vIcmsInterno ) 
+                ICMS_vBaseCalculoSubstituicaoTributaria = (ICMS_vBaseCalculoSubstituicaoTributaria * (ICMS_pIcmsInterno / 100)
+                    ) - ICMS_vICMS;
 
-                //this.objImposto.ICMS_vSubstituicaoTributaria =
-                //    (this.objImposto.ICMS_vBaseCalculoSubstituicaoTributaria *
-                //    (this.objImposto.ICMS_pIcmsInterno / 100)) - this.objImposto.ICMS_vICMS
-
-                //p.s.: não existe na base o campo orcamento_icms.vicmsinterno
             }
             else if (ICMS_stCalculaSubstituicaoTributaria == 1
                 && stConsumidorFinal == 1
@@ -234,9 +231,6 @@ namespace HLP.Comum.Facade.Magnificus
                 && idEstadoCliente != idEstadoEmpresa
                 )
             {
-                //((Orçamento_Item_Impostos.ICMS_vBaseCalculoIcmsSubstituicaoTributaria X 
-                //    (Orçamento_Item_Impostos.ICMS_pICMS - Orçamento_Item_Impostos.ICMS_pIcmsInterno)) / 100)
-                //TODO: Conferir este cálculo
                 ICMS_vSubstituicaoTributaria =
                     (((ICMS_vBaseCalculoSubstituicaoTributaria ?? 0) *
                     ((ICMS_pICMS ?? 0) - (ICMS_pIcmsInterno ?? 0)) / 100));

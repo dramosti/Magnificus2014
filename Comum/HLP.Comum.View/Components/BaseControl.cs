@@ -88,6 +88,19 @@ namespace HLP.Comum.View.Components
 
 
 
+        public bool SetNext
+        {
+            get { return (bool)GetValue(SetNextProperty); }
+            set { SetValue(SetNextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SetNext.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SetNextProperty =
+            DependencyProperty.Register("SetNext", typeof(bool), typeof(BaseControl), new PropertyMetadata(true));
+
+
+
+
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
-             mc:Ignorable="d" Loaded="UserControl_Loaded"
+             xmlns:osc="clr-namespace:HLP.Comum.View.Components"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" 
              x:Name="winPesquisaPadrao"
              FocusManager.FocusedElement="{Binding ElementName=dgvFilter}" >
     <UserControl.Resources>
@@ -14,33 +15,21 @@
             <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}">
                 <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus"></EventSetter>
             </Style>
+
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Background="{StaticResource StyleMainWindowDefault}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"></RowDefinition>
-            <RowDefinition Height="1.5"></RowDefinition>
-            <RowDefinition Height="48*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Grid.ColumnSpan="3" LastChildFill="True" Background="{StaticResource StyleMainWindowDefault}">
-            <DockPanel Height="20" DockPanel.Dock="Bottom" Margin="0,0,0,3">
-                <Button Content="Pesquisar"                
-                Command="{Binding commandPesquisar}"
-                CommandParameter="{Binding ElementName=dgvResult}"
-                HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="20"/>
-                <Button Content="Limpar"                    
-                	Command="{Binding commandLimpar}"
-                	HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,0,0,0" Height="20"/>
-            </DockPanel>
-            <Expander Focusable="False" x:Name="expanderFuncionalidades" IsExpanded="True" DockPanel.Dock="Top" VerticalAlignment="Top"
-                  OverridesDefaultStyle="True" >                
-                <Grid Focusable="False" MinHeight="100" MinWidth="200" Background="{StaticResource StyleMainWindowDefault}">                  
-                        <DataGrid x:Name="dgvFilter"                     
+    <DockPanel LastChildFill="True">
+        <DockPanel.Resources>
+        </DockPanel.Resources>
+        <Grid DockPanel.Dock="Top">
+            <Expander Focusable="False" x:Name="expanderFuncionalidades" 
+                      Template="{StaticResource RevealExpanderTemp}"
+                      OverridesDefaultStyle="True"
+                      Header=". . ."
+                      IsExpanded="True"
+                      VerticalAlignment="Top">
+                <Grid Focusable="False"  Background="{StaticResource StyleMainGridDefault}">
+                    <DataGrid x:Name="dgvFilter"                     
                   DockPanel.Dock="Top"
                   Background="Transparent"
                   BorderBrush="Transparent"
@@ -53,89 +42,94 @@
                   ColumnHeaderStyle="{StaticResource columnHeaderStyle}" 
                   SelectionUnit="Cell" 
                   CellStyle="{StaticResource RightAlignedCell}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Path=COLUMN_NAME}" IsReadOnly="True" Header="Campos" Width="150"></DataGridTextColumn>
-                                <DataGridTemplateColumn Header="Operador" Width="150">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Operador}"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <ComboBox Height="22"
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="clCampos" Binding="{Binding Path=COLUMN_NAME}" IsReadOnly="True" Header="Campos" Width="150"></DataGridTextColumn>
+                            <DataGridTemplateColumn x:Name="clOperador" Header="Operador" Width="150">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Operador}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Height="22"
                                       FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"
                                       ItemsSource="{Binding lOperadores}"
                                       SelectedItem="{Binding Operador}"  />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn  x:Name="clValor" Header="Valor(es)" Width="*">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Path=Valor, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <DockPanel  LastChildFill="True">
-                                                <Button Content="Encontrar"  TabIndex="1" Width="60"                                            
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn    x:Name="clValor" Header="Valor(es)" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Valor, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <DockPanel  LastChildFill="True">
+                                            <Button Content="Encontrar"  TabIndex="1" Width="60"                                            
                                             Style="{StaticResource ButtonDataGrid}"
                                              Command="{Binding DataContext.commandPesquisar,
                                              RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"
                                              IsEnabled="{Binding bEnablePesquisa}" CommandParameter="{Binding ElementName=dgvResult}"
                                              DockPanel.Dock="Right"/>
-                                                <TextBox TabIndex="0" 
+                                            <TextBox TabIndex="0" 
                                              Text="{Binding Path=Valor, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
                                               
                                              FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" 
                                              Height="Auto" 
                                              HorizontalAlignment="Stretch"
                                              DockPanel.Dock="Left">
-                                                    <TextBox.InputBindings>
-                                                        <KeyBinding Key="Enter" Command="{Binding DataContext.commandPesquisar,
+                                                <TextBox.InputBindings>
+                                                    <KeyBinding Key="Enter" Command="{Binding DataContext.commandPesquisar,
                                                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding ElementName=dgvResult}"/>
-                                                    </TextBox.InputBindings>
-                                                </TextBox>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="E/OU" Width="70">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding EOU}"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                    <DataGridTemplateColumn.CellEditingTemplate>
-                                        <DataTemplate>
-                                            <ComboBox SelectedItem="{Binding EOU}"
+                                                </TextBox.InputBindings>
+                                            </TextBox>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn x:Name="cleou" Header="E/OU" Width="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding EOU}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox SelectedItem="{Binding EOU}"
                                       FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"                                          
                                       ItemsSource="{Binding leou }"/>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellEditingTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>           
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </Expander>
-        </DockPanel>
-        <GridSplitter 
-          ResizeDirection="Rows" 
-          Grid.Column="0"
-          Width="Auto"          
-          Height="3"
-          HorizontalAlignment="Stretch" 
-          VerticalAlignment="Stretch" 
-          Margin="0"
-          Grid.Row="1" Grid.ColumnSpan="3">
-        </GridSplitter>
-        <DockPanel Grid.Row="2" Grid.ColumnSpan="3" LastChildFill="True">
-            <DockPanel DockPanel.Dock="Bottom" Height="25">
-                <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}" />
-            </DockPanel>
-            <DataGrid x:Name="dgvResult"
-                  DockPanel.Dock="Top"
+        </Grid>
+        <osc:DockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top"/>
+        <Grid
+            Height="22"               
+                DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" >
+                <Button Content="Pesquisar"
+                Style="{StaticResource StyleButton1}"
+                Command="{Binding commandPesquisar}"
+                CommandParameter="{Binding ElementName=dgvResult}"
+                HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="20"/>
+                <Button Content="Limpar"
+                    Style="{StaticResource StyleButton1}"
+                	Command="{Binding commandLimpar}"
+                	HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,0,0,0" Height="20"/>
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}" />
+        </Grid>
+        <Grid Margin="0,3,0,0">
+            <DataGrid x:Name="dgvResult" 
                   Background="Transparent"
                   IsReadOnly="True"
                   CanUserAddRows="False"
@@ -149,7 +143,6 @@
                   ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"
                       >
             </DataGrid>
-        </DockPanel>
-    </Grid>
-
+        </Grid>
+    </DockPanel>
 </UserControl>

@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using HLP.Comum.Infrastructure.Static;
+using System.Reflection;
 
 namespace HLP.Comum.Model.Models
 {
@@ -42,8 +43,12 @@ namespace HLP.Comum.Model.Models
                         List<Control> lcontrolWindow = GetLogicalChildCollection<Control>(item).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
                         if (lcontrolWindow.Count > 0)
                         {
-                            lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
-                            lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
+                            bool bValida = (bool)lcontrolWindow.LastOrDefault().GetPropertyValue("SetNext");
+                            if (bValida)
+                            {
+                                lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
+                                lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
+                            }
                         }
                     }
                     catch (Exception)
@@ -65,12 +70,38 @@ namespace HLP.Comum.Model.Models
         {
             get { return this.Windows.Title; }
         }
+
+        private StackPanel _Botoes;
+
+        public StackPanel Botoes
+        {
+            get { return _Botoes; }
+            set
+            {
+                _Botoes = value;
+                base.NotifyPropertyChanged(propertyName: "Botoes");
+            }
+        }
+
+
         public UIElement _content
         {
             get
             {
                 UIElement e = _windows.Content as UIElement;
                 (e as Panel).DataContext = this.Windows.DataContext;
+
+                foreach (PropertyInfo item in this.Windows.DataContext.GetType().GetProperties())
+                {
+                    if (item.PropertyType == typeof(StackPanel))
+                    {
+                        Type t = this.Windows.DataContext.GetType();
+                        object parametro = Activator.CreateInstance(t);
+                        parametro = this.Windows.DataContext;
+
+                        this.Botoes = item.GetValue(obj: parametro) as StackPanel;
+                    }
+                }
 
                 return e;
             }

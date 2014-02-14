@@ -82,6 +82,7 @@
     <Compile Include="Components\AdornerLabel.cs" />
     <Compile Include="Components\BaseControl.cs" />
     <Compile Include="Components\CustomComboBox.cs" />
+    <Compile Include="Components\DockPanelSplitter.cs" />
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
       <DependentUpon>HlpTimePicker.xaml</DependentUpon>
