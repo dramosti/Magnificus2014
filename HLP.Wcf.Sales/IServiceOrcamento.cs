@@ -1,5 +1,4 @@
-﻿using HLP.Sales.Model.Models.Comercial;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,15 +12,15 @@ namespace HLP.Wcf.Sales
     public interface IServiceOrcamento
     {
         [OperationContract]
-        Orcamento_ideModel Save(Orcamento_ideModel objModel);
+        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Save(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
 
         [OperationContract]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa);
 
         [OperationContract]
-        bool Delete(Orcamento_ideModel objModel);
+        bool Delete(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
 
         [OperationContract]
-        int Copy(Orcamento_ideModel objModel);
+        int Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
     }
 }

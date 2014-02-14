@@ -60,6 +60,12 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.status)
                                  .DoNotMap(i => i.enumstOrigem)
                                  .DoNotMap(i => i.xNcm)
+                                 .DoNotMap(i => i.codItem)
+                                 .DoNotMap(i => i.vTotalItem)
+                                 .DoNotMap(i => i.vFreteItem)
+                                 .DoNotMap(i => i.vSeguroItem)
+                                 .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                  .Build());
             }
 
@@ -76,9 +82,38 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.enumstOrigem)
                                 .DoNotMap(i => i.xNcm)
+                                .DoNotMap(i => i.codItem)
+                                .DoNotMap(i => i.vTotalItem)
+                                 .DoNotMap(i => i.vFreteItem)
+                                 .DoNotMap(i => i.vSeguroItem)
+                                 .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute().ToList();
+        }
+
+        public List<Orcamento_Item_ImpostosModel> GetAllOrcamento_Item_ImpostosByOrcamento(int idOrcamento)
+        {
+            if (regAllOrcamento_Item_ImpostosAccessor == null)
+            {
+                regAllOrcamento_Item_ImpostosAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("select * from Orcamento_Item_Impostos imp " +
+                "inner join Orcamento_Item i on i.idOrcamentoItem = imp.idOrcamentoItem where i.idOrcamento = @idOrcamento",
+                new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idOrcamento"),
+                                MapBuilder<Orcamento_Item_ImpostosModel>
+                                .MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.enumstOrigem)
+                                .DoNotMap(i => i.xNcm)
+                                .DoNotMap(i => i.codItem)
+                                .DoNotMap(i => i.vTotalItem)
+                                 .DoNotMap(i => i.vFreteItem)
+                                 .DoNotMap(i => i.vSeguroItem)
+                                 .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
+                                .Build());
+            }
+            return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento).ToList();
         }
 
         public Orcamento_Item_ImpostosModel GetOrcamento_Item_ImpostosByItem(int idOrcamento_Item)
@@ -92,6 +127,12 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.enumstOrigem)
                                 .DoNotMap(i => i.xNcm)
+                                .DoNotMap(i => i.codItem)
+                                .DoNotMap(i => i.vTotalItem)
+                                 .DoNotMap(i => i.vFreteItem)
+                                 .DoNotMap(i => i.vSeguroItem)
+                                 .DoNotMap(i => i.vOutrasDespesasItem)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                 .Build());
             }
             return regAllOrcamento_Item_ImpostosAccessor.Execute(idOrcamento_Item).FirstOrDefault();

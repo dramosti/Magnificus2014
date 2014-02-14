@@ -507,35 +507,23 @@
 
     <Style x:Key="columnHeaderStyle"
              TargetType="DataGridColumnHeader">
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.5,0"
-                         EndPoint="0.5,1" >
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="Navy" Offset="0" />
-                        <GradientStop Color="LightBlue" Offset="1" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Border.CornerRadius" Value="2"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>            
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Height" Value="19"/>
     </Style>
-
     <Style x:Key="rowStyle" TargetType="DataGridRow">
         <Setter Property="FontFamily" Value="Verdana" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Height" Value="19"/>
-        <Style.Triggers>
-            <Trigger Property="AlternationIndex" Value="0">
-                <Setter Property="Background" Value="White" />
-            </Trigger>
-            <Trigger Property="AlternationIndex" Value="1">
-                <Setter Property="Background" Value="#DDDDDD" />
-            </Trigger>
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Foreground" Value="White"/>       
+        <Style.Triggers>   
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#BBBBBB" />
-            </Trigger>
+            </Trigger>            
         </Style.Triggers>
     </Style>
 
@@ -1520,6 +1508,40 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="ButtonDataGrid" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="#FF4774B5"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="White"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                        </Trigger>                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <!--Estilo do Expander (Usuario/Empresa)-->
 
@@ -1737,12 +1759,12 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Expander}">
-        <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>-->
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -1799,7 +1821,7 @@
                                Grid.ColumnSpan="2"/>
                 <Ellipse Name="Circle"
                          Grid.Column="0"
-                         Stroke="DarkGray"
+                         Stroke="Transparent"
                          Width="20"
                          Height="20"
                          HorizontalAlignment="Center"
@@ -1808,7 +1830,7 @@
                 <Path x:Name="Arrow"
                       Grid.Column="0"
                       Data="M 1,1.5 L 4.5,5 8,1.5"
-                      Stroke="#FF666666"
+                      Stroke="{StaticResource ButtonBackgroundBlueDefault}"
                       StrokeThickness="2"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
@@ -1852,24 +1874,15 @@
 
             <!-- MouseOver, Pressed behaviours-->
             <Trigger Property="IsMouseOver"
-                                 Value="true">
+                                 Value="true">                                   
                 <Setter Property="Stroke"
-                                    Value="#FF3C7FB1"
-                                    TargetName="Circle"/>
-                <Setter Property="Stroke"
-                                    Value="#222"
+                                    Value="White"
                                     TargetName="Arrow"/>
             </Trigger>
             <Trigger Property="IsPressed"
-                                 Value="true">
+                                 Value="true">               
                 <Setter Property="Stroke"
-                                    Value="#FF526C7B"
-                                    TargetName="Circle"/>
-                <Setter Property="StrokeThickness"
-                                    Value="1.5"
-                                    TargetName="Circle"/>
-                <Setter Property="Stroke"
-                                    Value="#FF003366"
+                                    Value="{StaticResource ButtonBackgroundBlueDefault}"
                                     TargetName="Arrow"/>
             </Trigger>
         </ControlTemplate.Triggers>

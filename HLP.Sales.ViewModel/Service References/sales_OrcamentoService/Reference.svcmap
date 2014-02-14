@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2aadefea-6ee7-4c50-9d7c-0de6e5a0ca49" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Sales.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceSales_Orcamento.xsd" MetadataType="Schema" ID="9ef1b404-c457-44ce-985d-b516621d7df7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceSales_Orcamento1.xsd" MetadataType="Schema" ID="dfa17f22-bbd5-47db-9782-97498999770e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceSales_Orcamento2.xsd" MetadataType="Schema" ID="46ad38f4-2c6a-47b1-8518-7ac579c496c6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceSales_Orcamento3.xsd" MetadataType="Schema" ID="475bf7cd-ebbc-4bba-bfba-a07a69da5f36" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceSales_Orcamento4.xsd" MetadataType="Schema" ID="38206c2d-71fc-4bff-9f6e-a7279fea6bec" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceSales_Orcamento.disco" MetadataType="Disco" ID="a3e02d80-d802-4da6-8f28-18cd08089d7e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?disco" />
+    <MetadataFile FileName="serviceSales_Orcamento.wsdl" MetadataType="Wsdl" ID="4ba6942b-60fd-44f2-8f0d-91bd40ddffab" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?wsdl" />
+    <MetadataFile FileName="serviceSales_Orcamento5.xsd" MetadataType="Schema" ID="3d24a31b-a702-4c96-bb94-0a60ede5192d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

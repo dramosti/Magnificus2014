@@ -5,25 +5,27 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Comercial.WinCanalVenda"
         Title="Canal de Vendas" Height="660" Width="1024" NameView="vwCanalVenda">
-    <Grid>
-        <Expander Header="Geral" HorizontalAlignment="Left" Height="136.5" VerticalAlignment="Top" Width="633.5" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+    <DockPanel>
+        <Expander Header="Geral" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="2"/>
+                </Grid.RowDefinitions>
                 <Components:HlpTextBox 
-					Text="{Binding currentModel.idCanalVenda, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+					Text="{Binding currentModel.idCanalVenda, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="1"
 					IsReadOnly="True"
-					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro do Código de Vendas" WidthLabel="202" Width="300" HorizontalAlignment="Left"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.cCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Código do Canal de Vendas" Help="Digite um código para o Canal de Vendas" WidthLabel="202" Width="300" HorizontalAlignment="Left"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Descrição" Help="Descrição detalhada do Canal de Vendas " WidthLabel="202" Width="478" HorizontalAlignment="Left"/>
-            </WrapPanel>
+					Caption="Código" Help="Chave principal do registro do Código de Vendas" WidthLabel="202" HorizontalAlignment="Left"/>                
+            </Grid>
         </Expander>
-
-    </Grid>
+    </DockPanel>
 </runtime:WindowsBase>

@@ -15,7 +15,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
     public class OrcamentoCommands
     {
         OrcamentoViewModel objViewModel;
-        orcamentoService.ServiceOrcamentoClient servico = new orcamentoService.ServiceOrcamentoClient();
+        sales_OrcamentoService.IserviceSales_OrcamentoClient servico = new sales_OrcamentoService.IserviceSales_OrcamentoClient();
         BackgroundWorker bWorkerAcoes;
 
 
@@ -47,6 +47,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            this.objViewModel.testeCommand = new RelayCommand(execute: paramExec => this.TesteExecute());
+        }
+
+        private void TesteExecute()
+        {
+            MessageBox.Show(messageBoxText: "Teste");
         }
 
 
@@ -66,7 +73,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         });
                 }
 
+                this.objViewModel.CalculaTotais((byte)5);
                 objViewModel.SetFocusFirstTab(_panel as Panel);
+                bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
@@ -81,14 +90,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
+                e.Result = e.Argument;
                 this.objViewModel.currentModel = this.servico.Save(objModel: this.objViewModel.currentModel);
+                this.IniciaCollection();
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-            e.Result = e.Argument;
+
         }
 
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -102,6 +112,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 else
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.IniciaCollection();
                 }
             }
             catch (Exception ex)
@@ -118,6 +129,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
+        }
+
+        private void IniciaCollection()
+        {
+            if (this.objViewModel.currentModel != null)
+            {
+                this.objViewModel.currentModel.lOrcamento_Item_Impostos.CollectionCarregada();
+                this.objViewModel.currentModel.lOrcamento_Itens.CollectionCarregada();
+            }
+
         }
 
         public void Delete()
@@ -209,7 +230,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void Cancelar()
         {
-            this.objViewModel.currentModel = null;
+            this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -306,13 +327,31 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 throw new Exception(message: e.Error.Message);
             }
+            else
+            {
+                this.IniciaCollection();
+                if (this.objViewModel.currentModel != null)
+                {
+                    foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
+                    {
+                        item.objImposto = this.objViewModel.currentModel.lOrcamento_Item_Impostos
+                            .FirstOrDefault(i => i.idOrcamentoItem == item.idOrcamentoItem);
+                        item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
+                        item.objImposto.vTotalItem = item.vTotalItem;
+                    }
+                }
+            }
         }
 
         private void getOrcamento(object sender, DoWorkEventArgs e)
         {
             try
             {
-                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID, idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
+                if (this.objViewModel.currentID != 0)
+                {
+                    e.Result =
+                    this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID, idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
+                }
             }
             catch (Exception ex)
             {

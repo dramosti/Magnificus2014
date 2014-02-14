@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1cfd07af-b413-4241-8dce-8088f31e8bc1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Comum.Infrastructure" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="serviceFillComboBox.xsd" MetadataType="Schema" ID="ac669356-5d63-4c65-b9e5-1453e9f6f85f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceFillComboBox.wsdl" MetadataType="Wsdl" ID="e07a4c71-55f5-44fb-980e-aa13b2daf164" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?wsdl" />
+    <MetadataFile FileName="serviceFillComboBox1.xsd" MetadataType="Schema" ID="975731f5-e3a8-40ff-93cb-321079d77911" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceFillComboBox.disco" MetadataType="Disco" ID="67f6f945-2dc1-429b-9de4-1ca7a76d8183" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?disco" />
+    <MetadataFile FileName="serviceFillComboBox2.xsd" MetadataType="Schema" ID="1386573a-6973-4bea-be2c-37dba691a75e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

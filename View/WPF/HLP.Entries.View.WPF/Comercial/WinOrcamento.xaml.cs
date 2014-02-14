@@ -15,6 +15,8 @@ using HLP.Comum.View.Formularios;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using System.Reflection;
+using HLP.Comum.Infrastructure.Static;
+using System.ComponentModel;
 
 namespace HLP.Entries.View.WPF.Comercial
 {
@@ -41,42 +43,6 @@ namespace HLP.Entries.View.WPF.Comercial
             }
         }
 
-        private void DataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
-        {
-            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
-            int? valor = (int?)cbxStDocumento.SelectedValue;
-            clTipoOperacao.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento",
-                sParameter: valor != null ? valor.ToString() : "");
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender != null)
-            {
-                if ((sender as DataGrid).CurrentColumn != null)
-                {
-                    if ((sender as DataGrid).CurrentColumn.Header.ToString() == "Produtos")
-                    {
-                        int? id = null;
-                        PropertyInfo pi;
-                        foreach (var item in e.AddedItems)
-                        {
-                            pi = item.GetType().GetProperty(name: "id");
-
-                            if (pi != null)
-                                id = (int?)pi.GetValue(obj: item);
-                        }
-
-                        FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
-
-                        if (id != null)
-                            clUnidadeMedida.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getUnidadeMedidaToComboBox",
-                                sParameter: id.ToString());
-                    }
-                }
-            }
-        }
-
         private void pesquisaCliente_ucTxtPesquisaTextChanged(object sender, TextChangedEventArgs e)
         {
             FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
@@ -84,12 +50,25 @@ namespace HLP.Entries.View.WPF.Comercial
             clListaPreco.IsReadOnly = this.ViewModel.bListaPrecoHabilitado;
         }
 
-        private void cbxStDocumento_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
         {
-            FillComboBoxViewModel cbxFill = new FillComboBoxViewModel();
-            int? valor = (int?)cbxStDocumento.SelectedValue;
-            clTipoOperacao.ItemsSource = cbxFill.GetAllValuesToComboBox(sNameView: "getTipoOperacaoValidaToComboBoxOrcamento",
-                sParameter: valor != null ? valor.ToString() : "");
+            byte b = Convert.ToByte(value: cbxStatusFinanceiro.SelectedIndex);
+            this.ViewModel.CalculaTotais(iStatus: b);
+        }
+
+        private void HlpComboBox_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionViewSource cvs = FindResource(resourceKey: "cvsItens") as CollectionViewSource;
+            cvs.Filter += new FilterEventHandler(this.ViewModel.ItensOrcamentoFilter);
+
+            CollectionViewSource cvsImpostos = FindResource(resourceKey: "cvsImpostos") as CollectionViewSource;
+            cvsImpostos.Filter += new FilterEventHandler(this.ViewModel.ItensOrcamentoFilter);
+        }
+
+        private void HlpComboBox_UCSelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            byte b = Convert.ToByte(value: cbxStatusFinanceiro.SelectedIndex);
+            this.ViewModel.CalculaTotais(iStatus: b);
         }
     }
 }
