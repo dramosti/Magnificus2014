@@ -16,19 +16,19 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="{StaticResource StyleMainWindowDefault}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"></ColumnDefinition>
             <ColumnDefinition Width="20*"></ColumnDefinition>
             <ColumnDefinition Width="20*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="48*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="1.5"></RowDefinition>
             <RowDefinition Height="48*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Grid.ColumnSpan="3" LastChildFill="True">
-            <DockPanel Height="20" DockPanel.Dock="Bottom">
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="3" LastChildFill="True" Background="{StaticResource StyleMainWindowDefault}">
+            <DockPanel Height="20" DockPanel.Dock="Bottom" Margin="0,0,0,3">
                 <Button Content="Pesquisar"                
                 Command="{Binding commandPesquisar}"
                 CommandParameter="{Binding ElementName=dgvResult}"
@@ -37,7 +37,7 @@
                 	Command="{Binding commandLimpar}"
                 	HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,0,0,0" Height="20"/>
             </DockPanel>
-            <Expander Focusable="False" x:Name="expanderFuncionalidades" IsExpanded="True" Template="{StaticResource RevealExpanderTemp}"
+            <Expander Focusable="False" x:Name="expanderFuncionalidades" IsExpanded="True" DockPanel.Dock="Top" VerticalAlignment="Top"
                   OverridesDefaultStyle="True" >                
                 <Grid Focusable="False" MinHeight="100" MinWidth="200" Background="{StaticResource StyleMainWindowDefault}">                  
                         <DataGrid x:Name="dgvFilter"                     
@@ -123,7 +123,7 @@
         <GridSplitter 
           ResizeDirection="Rows" 
           Grid.Column="0"
-          Width="Auto" 
+          Width="Auto"          
           Height="3"
           HorizontalAlignment="Stretch" 
           VerticalAlignment="Stretch" 
