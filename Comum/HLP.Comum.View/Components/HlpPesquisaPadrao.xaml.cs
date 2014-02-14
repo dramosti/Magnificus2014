@@ -75,6 +75,9 @@ namespace HLP.Comum.View.Components
             timerFocus.Interval = 10;
             timerFocus.Tick += timerFocus_Tick;
             timerFocus.Start();
+            //clCampos.Width = 150;
+            //clOperador.Width = 150;
+            //cleou.Width = 150;
 
         }
         void timerFocus_Tick(object sender, EventArgs e)
@@ -217,13 +220,13 @@ namespace HLP.Comum.View.Components
         }
         private void FocusCellInicial(DataGrid dgv)
         {
-            DataGridRow row = dgv.ItemContainerGenerator.ContainerFromIndex(0) as DataGridRow;
-            if (row != null)
-            {
-                DataGridCell cell = GetCell(dgv, row, 2);
-                if (cell != null)
-                    cell.Focus();
-            }
+            //DataGridRow row = dgv.ItemContainerGenerator.ContainerFromIndex(0) as DataGridRow;
+            //if (row != null)
+            //{
+            //    DataGridCell cell = GetCell(dgv, row, 2);
+            //    if (cell != null)
+            //        cell.Focus();
+            //}
         }
         #endregion
 
