@@ -69,6 +69,7 @@ namespace HLP.Comum.Model.Models
         {
             get { return this.Windows.Title; }
         }
+                
         public UIElement _content
         {
             get
