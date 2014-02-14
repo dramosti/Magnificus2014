@@ -18,17 +18,10 @@
 
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" Background="{StaticResource StyleMainWindowDefault}">
         <DockPanel.Resources>
         </DockPanel.Resources>
-        <Grid DockPanel.Dock="Top">
-            <Expander Focusable="False" x:Name="expanderFuncionalidades" 
-                      Template="{StaticResource RevealExpanderTemp}"
-                      OverridesDefaultStyle="True"
-                      Header=". . ."
-                      IsExpanded="True"
-                      VerticalAlignment="Top">
-                <Grid Focusable="False"  Background="{StaticResource StyleMainGridDefault}">
+        <Grid DockPanel.Dock="Top">            
                     <DataGrid x:Name="dgvFilter"                     
                   DockPanel.Dock="Top"
                   Background="Transparent"
@@ -105,22 +98,18 @@
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </Expander>
+                    </DataGrid>             
         </Grid>
-        <osc:DockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top"/>
+        <osc:DockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top" Height="1"/>
         <Grid
             Height="22"               
                 DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" >
-                <Button Content="Pesquisar"
-                Style="{StaticResource StyleButton1}"
+                <Button Content="Pesquisar"                
                 Command="{Binding commandPesquisar}"
                 CommandParameter="{Binding ElementName=dgvResult}"
                 HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="20"/>
-                <Button Content="Limpar"
-                    Style="{StaticResource StyleButton1}"
+                <Button Content="Limpar"                    
                 	Command="{Binding commandLimpar}"
                 	HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,0,0,0" Height="20"/>
             </StackPanel>

@@ -220,13 +220,13 @@ namespace HLP.Comum.View.Components
         }
         private void FocusCellInicial(DataGrid dgv)
         {
-            //DataGridRow row = dgv.ItemContainerGenerator.ContainerFromIndex(0) as DataGridRow;
-            //if (row != null)
-            //{
-            //    DataGridCell cell = GetCell(dgv, row, 2);
-            //    if (cell != null)
-            //        cell.Focus();
-            //}
+            DataGridRow row = dgv.ItemContainerGenerator.ContainerFromIndex(0) as DataGridRow;
+            if (row != null)
+            {
+                DataGridCell cell = GetCell(dgv, row, 2);
+                if (cell != null)
+                    cell.Focus();
+            }
         }
         #endregion
 
