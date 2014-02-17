@@ -59,6 +59,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comercial\StatusItensOrcamento.xaml.cs">
+      <DependentUpon>StatusItensOrcamento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,8 +88,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Comercial\" />
+    <Page Include="Comercial\StatusItensOrcamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

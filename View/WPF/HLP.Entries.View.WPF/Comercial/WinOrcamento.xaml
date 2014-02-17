@@ -564,6 +564,10 @@
                                 ItemsSource="{Binding Source={StaticResource cvsItens}}"
                                     >
                                     <DataGrid.Columns>
+                                        <DataGridTextColumn 
+										ElementStyle="{StaticResource CellErrorStyle}"
+										Binding="{Binding Path=nItem, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+										Header="No Item" Width="150"/>
                                         <DataGridTemplateColumn Header="Operação" Width="100" >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>

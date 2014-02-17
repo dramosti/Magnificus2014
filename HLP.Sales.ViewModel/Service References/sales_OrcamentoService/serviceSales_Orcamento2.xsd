@@ -115,7 +115,6 @@
           <xs:element minOccurs="0" name="PIS_stCompoeBaseCalculoSubstituicaoTributaria" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="PIS_vBaseCalculo" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="PIS_vPIS" nillable="true" type="xs:decimal" />
-          <xs:element minOccurs="0" name="codItem" type="xs:int" />
           <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumstOrigem" type="q3:stOrigem" />
           <xs:element minOccurs="0" name="idCSTCofins" type="xs:int" />
           <xs:element minOccurs="0" name="idCSTIcms" type="xs:int" />
@@ -126,6 +125,7 @@
           <xs:element minOccurs="0" name="idCodigoIcmsPai" type="xs:int" />
           <xs:element minOccurs="0" name="idOrcamentoItem" type="xs:int" />
           <xs:element minOccurs="0" name="idOrcamentoTotalizadorImpostos" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nItem" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="stCalculaPisCofins" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stCompoeBaseCalculoPisCofins" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stOrcamentoImpostos" type="xs:unsignedByte" />
@@ -151,7 +151,6 @@
       <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="bXComercialEnabled" type="xs:boolean" />
-          <xs:element minOccurs="0" name="codItem" type="xs:int" />
           <xs:element minOccurs="0" name="dConfirmacaoItem" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dPrevisaoEntrega" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="idCfop" nillable="true" type="xs:int" />
@@ -168,6 +167,7 @@
           <xs:element minOccurs="0" name="idUnidadeMedida" type="xs:int" />
           <xs:element minOccurs="0" name="lTipoOperacao" nillable="true" type="q4:ArrayOfmodelToComboBox" />
           <xs:element minOccurs="0" name="lUnMedida" nillable="true" type="q4:ArrayOfmodelToComboBox" />
+          <xs:element minOccurs="0" name="nItem" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="nItemCliente" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="nPedidoClienteItem" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="nPesoBruto" type="xs:decimal" />
