@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Sales.Model.Repository.Interfaces;
@@ -35,6 +36,7 @@ namespace HLP.Wcf.Entries
         {
             try
             {
+                Sistema.stSender = TipoSender.WCF;
                 Log.xPath = @"C:\inetpub\wwwroot\log";
                 IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
                 kernel.Settings.ActivationCacheDisabled = false;

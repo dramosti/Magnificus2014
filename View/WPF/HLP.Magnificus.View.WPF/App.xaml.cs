@@ -89,7 +89,8 @@ namespace HLP.Magnificus.View.WPF
             else
             {
                 xMessage = e.Exception.Message;
-                xInner = e.Exception.InnerException.Message;
+                if (e.Exception.InnerException != null)
+                    xInner = e.Exception.InnerException.Message;
             }
 
             MessageBox.Show(messageBoxText: "Erro: " +
@@ -137,7 +138,7 @@ namespace HLP.Magnificus.View.WPF
                 if (Sistema.bOnline != TipoConexao.Offline)
                 {
 
-                    if(bModificado)
+                    if (bModificado)
                     {
                         System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                         Application.Current.Shutdown();
