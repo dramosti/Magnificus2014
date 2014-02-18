@@ -33,6 +33,7 @@ namespace HLP.Magnificus.View.WPF
             {
                 this._viewModel = new MainViewModel();
                 this._viewModel.CarregaMenu(m: this.menuPrincipal);
+                
             }
             catch (Exception)
             {

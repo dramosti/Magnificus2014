@@ -71,12 +71,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Components\HlpPesquisaPadraoCommands.cs" />
-    <Compile Include="Commands\FindAllCommand.cs" />
-    <Compile Include="Commands\LoginCommands.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Commands\MainCommands.cs" />
-    <Compile Include="Commands\ViewModelBaseCommands.cs" />
+    <Compile Include="ViewModels\Commands\Components\HlpPesquisaPadraoCommands.cs" />
+    <Compile Include="ViewModels\Commands\FindAllCommand.cs" />
+    <Compile Include="ViewModels\Commands\LoginCommands.cs" />
+    <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\Commands\MainCommands.cs" />
+    <Compile Include="ViewModels\Commands\ViewModelBaseCommands.cs" />
     <Compile Include="Service References\empresaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

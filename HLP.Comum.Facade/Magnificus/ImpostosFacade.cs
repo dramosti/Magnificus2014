@@ -39,34 +39,7 @@ namespace HLP.Comum.Facade.Magnificus
             decimal ICMS_vBaseCalculo = decimal.Zero;
             if (ICMS_stCalculaSubstituicaoTributaria == 0)
             {
-                switch (ICMS_stCompoeBaseCalculo)
-                {
-                    case 0:
-                        {
-                            ICMS_vBaseCalculo =
-                                (_vTotalItem ?? 0);
-                        } break;
-                    case 1:
-                        {
-                            ICMS_vBaseCalculo =
-                                (_vTotalItem ?? 0) + (IPI_vIPI ?? 0);
-                        } break;
-                    case 2:
-                        {
-                            ICMS_vBaseCalculo =
-                                (_vTotalItem ?? 0) + (IPI_vIPI ?? 0) + (_vFreteItem ?? 0);
-                        } break;
-                    case 3:
-                        {
-                            ICMS_vBaseCalculo =
-                                (_vTotalItem ?? 0) + (IPI_vIPI ?? 0) + (_vFreteItem ?? 0)
-                                + (_vSegurosItem ?? 0) + (_vOutrasDespesasItem ?? 0);
-                        } break;
-                    case 4:
-                        {
-                            ICMS_vBaseCalculo = decimal.Zero;
-                        } break;
-                }
+                ICMS_vBaseCalculo = _vTotalItem ?? 0;
 
                 if (ICMS_stCompoeBaseCalculo != 5)
                 {
@@ -80,6 +53,30 @@ namespace HLP.Comum.Facade.Magnificus
                             } break;
                     }
                 }
+
+                switch (ICMS_stCompoeBaseCalculo)
+                {
+                    case 1:
+                        {
+                            ICMS_vBaseCalculo +=
+                                (IPI_vIPI ?? 0);
+                        } break;
+                    case 2:
+                        {
+                            ICMS_vBaseCalculo +=
+                                (IPI_vIPI ?? 0) + (_vFreteItem ?? 0);
+                        } break;
+                    case 3:
+                        {
+                            ICMS_vBaseCalculo +=
+                                (IPI_vIPI ?? 0) + (_vFreteItem ?? 0)
+                                + (_vSegurosItem ?? 0) + (_vOutrasDespesasItem ?? 0);
+                        } break;
+                    case 4:
+                        {
+                            ICMS_vBaseCalculo = decimal.Zero;
+                        } break;
+                }
             }
             return ICMS_vBaseCalculo;
         }
@@ -92,34 +89,8 @@ namespace HLP.Comum.Facade.Magnificus
 
             if (ICMS_stCalculaSubstituicaoTributaria == 1)
             {
-                switch (ICMS_stCompoeBaseCalculo)
-                {
-                    case 0:
-                        {
-                            ICMS_vBaseCalculoIcmsProprio
+                ICMS_vBaseCalculoIcmsProprio
                                 = (vTotalItem ?? 0);
-                        } break;
-                    case 1:
-                        {
-                            ICMS_vBaseCalculoIcmsProprio
-                                = (vTotalItem ?? 0) + (PIS_vPIS ?? 0);
-                        } break;
-                    case 2:
-                        {
-                            ICMS_vBaseCalculoIcmsProprio
-                                = (vTotalItem ?? 0) + (PIS_vPIS ?? 0) + (vFreteItem ?? 0);
-                        } break;
-                    case 3:
-                        {
-                            ICMS_vBaseCalculoIcmsProprio
-                                = (vTotalItem ?? 0) + (PIS_vPIS ?? 0) + (vFreteItem ?? 0)
-                                + (vSegurosItem ?? 0) + (vOutrasDespesasItem ?? 0);
-                        } break;
-                    case 4:
-                        {
-                            ICMS_vBaseCalculoIcmsProprio = 0;
-                        } break;
-                }
 
                 if (ICMS_stCompoeBaseCalculo != 5)
                 {
@@ -135,6 +106,30 @@ namespace HLP.Comum.Facade.Magnificus
                             break;
                     }
                 }
+
+                switch (ICMS_stCompoeBaseCalculo)
+                {
+                    case 1:
+                        {
+                            ICMS_vBaseCalculoIcmsProprio
+                                += (PIS_vPIS ?? 0);
+                        } break;
+                    case 2:
+                        {
+                            ICMS_vBaseCalculoIcmsProprio
+                                += (PIS_vPIS ?? 0) + (vFreteItem ?? 0);
+                        } break;
+                    case 3:
+                        {
+                            ICMS_vBaseCalculoIcmsProprio
+                                += (PIS_vPIS ?? 0) + (vFreteItem ?? 0)
+                                + (vSegurosItem ?? 0) + (vOutrasDespesasItem ?? 0);
+                        } break;
+                    case 4:
+                        {
+                            ICMS_vBaseCalculoIcmsProprio = 0;
+                        } break;
+                }
             }
             return ICMS_vBaseCalculoIcmsProprio;
         }
@@ -142,7 +137,7 @@ namespace HLP.Comum.Facade.Magnificus
         public static decimal CalculaBaseIcmsSubstTrib(byte stSubsticaoTributariaIcmsDiferenciada, byte ICMS_stCompoeBaseCalculoSubstituicaoTributaria,
             byte _stConsumidorFinal, byte stContribuinteIcms, decimal? _vTotalItem, decimal? ICMS_pMvaSubstituicaoTributaria,
             decimal? IPI_vIPI, decimal? _vFreteItem, decimal? _vSegurosItem, decimal? _vOutrasDespesasItem, decimal? ICMS_pIcmsInterno, decimal? ICMS_vIcmsProprio,
-            decimal? ICMS_vSubstituicaoTributaria, byte ICMS_stReduzBaseCalculo)
+            decimal? ICMS_vSubstituicaoTributaria, byte ICMS_stReduzBaseCalculo, decimal? pReduzBaseSubstituicaoTributaria)
         {
             decimal ICMS_vBaseCalculoSubstituicaoTributaria = decimal.Zero;
             if (stSubsticaoTributariaIcmsDiferenciada == 0)
@@ -153,31 +148,37 @@ namespace HLP.Comum.Facade.Magnificus
                 || stContribuinteIcms == 0)
                 ICMS_stCompoeBaseCalculoSubstituicaoTributaria = 5;
 
+            ICMS_vBaseCalculoSubstituicaoTributaria = _vTotalItem ?? 0;
+
+            switch (ICMS_stReduzBaseCalculo)
+            {
+                //(((“Orcamento_Item.vTotalItem” –  (“Orcamento_Item.vTotalItem” X  “pReduzBaseSubstituicaoTributaria” / 100)
+                //    + “Orçamento_Item_Impostos.IPI_vIPI” + “Orcamento_Item.vFreteItem” + campo “Orcamento_Item.vSegurosItem” 
+                //        + “Orcamento_Item.vOutrasDespesasItem”) X “Orçamento_Item_Impostos.ICMS_pMvaSubstituicaoTributaria” / 100) + “Orcamento_Item.vTotalItem”);
+                case 1:
+                case 3:
+                    {
+                        ICMS_vBaseCalculoSubstituicaoTributaria -=
+                            (ICMS_vBaseCalculoSubstituicaoTributaria * (pReduzBaseSubstituicaoTributaria ?? 0));
+                    } break;
+            }
             switch (ICMS_stCompoeBaseCalculoSubstituicaoTributaria)
             {
-                case 0:
-                    {
-                        ICMS_vBaseCalculoSubstituicaoTributaria =
-                            ((_vTotalItem ?? 0) * ((ICMS_pMvaSubstituicaoTributaria ?? 0) / 100)) + (_vTotalItem ?? 0);
-                    } break;
                 case 1:
                     {
-                        ICMS_vBaseCalculoSubstituicaoTributaria =
-                            (((_vTotalItem ?? 0) + (IPI_vIPI ?? 0))
-                            * ((ICMS_pMvaSubstituicaoTributaria ?? 0) / 100)) + (_vTotalItem ?? 0);
+                        ICMS_vBaseCalculoSubstituicaoTributaria +=
+                            (IPI_vIPI ?? 0);
                     } break;
                 case 2:
                     {
-                        ICMS_vBaseCalculoSubstituicaoTributaria =
-                            (((_vTotalItem ?? 0) + (IPI_vIPI ?? 0) + (_vFreteItem ?? 0)
-                            * ((ICMS_pMvaSubstituicaoTributaria ?? 0) / 100)) + (_vTotalItem ?? 0));
+                        ICMS_vBaseCalculoSubstituicaoTributaria +=
+                            (IPI_vIPI ?? 0) + (_vFreteItem ?? 0);
                     } break;
                 case 3:
                     {
-                        ICMS_vBaseCalculoSubstituicaoTributaria =
-                            (((_vTotalItem ?? 0) + (IPI_vIPI ?? 0) + (_vFreteItem ?? 0)
-                            + (_vSegurosItem ?? 0) + (_vOutrasDespesasItem ?? 0))
-                            * ((ICMS_pMvaSubstituicaoTributaria ?? 0) / 100)) + (_vTotalItem ?? 0);
+                        ICMS_vBaseCalculoSubstituicaoTributaria +=
+                            (IPI_vIPI ?? 0) + (_vFreteItem ?? 0)
+                            + (_vSegurosItem ?? 0) + (_vOutrasDespesasItem ?? 0);
                     } break;
                 case 4:
                     {
@@ -194,19 +195,7 @@ namespace HLP.Comum.Facade.Magnificus
                     } break;
             }
 
-            switch (ICMS_stReduzBaseCalculo)
-            {
-                //(((“Orcamento_Item.vTotalItem” –  (“Orcamento_Item.vTotalItem” X  “pReduzBaseSubstituicaoTributaria” / 100)
-                //    + “Orçamento_Item_Impostos.IPI_vIPI” + “Orcamento_Item.vFreteItem” + campo “Orcamento_Item.vSegurosItem” 
-                //        + “Orcamento_Item.vOutrasDespesasItem”) X “Orçamento_Item_Impostos.ICMS_pMvaSubstituicaoTributaria” / 100) + “Orcamento_Item.vTotalItem”);
-                case 1:
-                case 3:
-                    {
-
-                    } break;
-            }
-
-            return ICMS_vBaseCalculoSubstituicaoTributaria;
+            return ICMS_vBaseCalculoSubstituicaoTributaria + (ICMS_vBaseCalculoSubstituicaoTributaria * ((ICMS_pMvaSubstituicaoTributaria ?? 0) / 100));
         }
 
         public static decimal CalcularVlrSubstTrib(byte stSubsticaoTributariaIcmsDiferenciada, byte ICMS_stCalculaSubstituicaoTributaria, byte stConsumidorFinal,

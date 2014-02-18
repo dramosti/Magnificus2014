@@ -8,6 +8,7 @@ namespace HLP.Comum.Infrastructure.Static
     public class Sistema
     {
         public static ContatoStatic contatoStatico = new ContatoStatic();
+        public static TipoSender stSender = TipoSender.Sistema;
         public struct ContatoStatic
         {
             public string nmTable { get; set; }
@@ -25,5 +26,12 @@ namespace HLP.Comum.Infrastructure.Static
         OnlineRede,
         OnlineInternet,
         Offline
+    }
+
+    public enum TipoSender
+    {
+        WCF,
+        Sistema
+
     }
 }

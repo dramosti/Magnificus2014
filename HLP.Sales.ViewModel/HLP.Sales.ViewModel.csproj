@@ -52,6 +52,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Comercio\OrcamentoConfirmarViewModel.cs" />
     <Compile Include="ViewModel\Comercio\OrcamentoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

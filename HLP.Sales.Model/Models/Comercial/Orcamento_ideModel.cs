@@ -97,7 +97,7 @@ namespace HLP.Sales.Model.Models.Comercial
                             foreach (Orcamento_ItemModel item in e.NewItems)
                             {
                                 item.stOrcamentoItem = 0;
-                                item.codItem = this.lOrcamento_Itens.Count;
+                                item.nItem = this._lOrcamento_Itens.Count;
                                 objImposto = null;
                                 if (this.lOrcamento_Item_Impostos.Count > 0)
                                 {
@@ -115,7 +115,7 @@ namespace HLP.Sales.Model.Models.Comercial
                                     this.lOrcamento_Item_Impostos.Add(item: objImposto);
                                 }
 
-                                objImposto.codItem = item.codItem;
+                                objImposto.nItem = item.nItem;
                                 item.objImposto = objImposto;
                             }
                             base.NotifyPropertyChanged(propertyName: "lOrcamento_Item_Impostos");
@@ -128,10 +128,10 @@ namespace HLP.Sales.Model.Models.Comercial
                         {
                             foreach (Orcamento_ItemModel item in e.OldItems)
                             {
-                                if (this.lOrcamento_Item_Impostos.Count(i => i.codItem == item.codItem) > 0)
+                                if (this.lOrcamento_Item_Impostos.Count(i => i.nItem == item.nItem) > 0)
                                 {
                                     this.lOrcamento_Item_Impostos.RemoveAt(index: this.lOrcamento_Item_Impostos.IndexOf(item:
-                                        this.lOrcamento_Item_Impostos.FirstOrDefault(i => i.codItem == item.codItem)));
+                                        this.lOrcamento_Item_Impostos.FirstOrDefault(i => i.nItem == item.nItem)));
                                 }
                             }
                         }
@@ -919,7 +919,9 @@ namespace HLP.Sales.Model.Models.Comercial
 
         public bool stServico { get; set; }
 
-        public int codItem { get; set; }
+
+
+        //public int codItem { get; set; }
 
         private ObservableCollection<HLP.Comum.Facade.FillComboBoxService.modelToComboBox> _lUnMedida;
 
@@ -1108,10 +1110,9 @@ namespace HLP.Sales.Model.Models.Comercial
 
                         if (objListaPrecoItem != null)
                         {
-                            if (this.status != statusModel.nenhum)
+                            if (Sistema.stSender == TipoSender.WCF)
                             {
-                                this.vVendaSemDesconto = objListaPrecoItem.vVenda;
-                                this.vVenda = this._vVendaSemDesconto * ((this._pDesconto / 100) + 1);
+                                this.vVendaSemDesconto = this.vVenda = objListaPrecoItem.vVenda;
                                 base.NotifyPropertyChanged(propertyName: "vVenda");
                                 base.NotifyPropertyChanged(propertyName: "vVendaSemDesconto");
                             }
@@ -1322,11 +1323,9 @@ namespace HLP.Sales.Model.Models.Comercial
 
                     #region Icms Substituição Tributária
 
-                    //TODO:  IMPLEMENTAR CÁLCULO REDUÇÃO DE BASE DE CÁLCULO DE SUBSTITUIÇÃO TRIBUTÁRIA
-
                     this.objImposto.ICMS_stCompoeBaseCalculoSubstituicaoTributaria =
                          OrcamentoFacade.objCadastros.lTipoOperacao.FirstOrDefault(i => i.idTipoOperacao == this.idTipoOperacao).stCompoeBaseIcmsSubstituicaoTributaria;
-                    if (this.status != statusModel.nenhum)
+                    if (Sistema.stSender == TipoSender.WCF)
                     {
                         this.objImposto.CalculaBaseIcmsSubstTrib();
                     }
@@ -1462,18 +1461,9 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                this.vTotalItem = this._vVenda * this._qProduto;
+                this.vTotalItem = (this._vVenda + this._vDesconto) * this._qProduto;
                 base.NotifyPropertyChanged(propertyName: "vVenda");
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
-
-                if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal != null)
-                {
-                    if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stDescontaIcmsSuframa == 1)
-                    {
-                        this.vDescontoSuframa = this._vTotalItem *
-                            OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.pDescontaIcmsSuframa;
-                    }
-                }
             }
         }
         private decimal _qProduto;
@@ -1486,7 +1476,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 _qProduto = value;
                 base.NotifyPropertyChanged(propertyName: "qProduto");
                 this._vTotalSemDescontoItem = this._qProduto * this._vVendaSemDesconto;
-                this.vTotalItem = this._qProduto * this._vVenda;
+                this.vTotalItem = this._qProduto * (this._vVenda + this._vDesconto);
                 base.NotifyPropertyChanged(propertyName: "vTotalSemDescontoItem");
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
             }
@@ -1499,14 +1489,14 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _pDesconto = value;
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender != TipoSender.WCF)
                 {
-                    this._vDesconto = this.vVendaSemDesconto * (pDesconto / 100);
-                    this.vVenda = this.vVendaSemDesconto - this._vDesconto;
+                    decimal vDesconto = this._vVenda * (value / 100);
+                    this.vTotalItem = (this._vVenda + (vDesconto)) * this._qProduto;
+                    this._vDesconto = vDesconto;
                 }
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
                 base.NotifyPropertyChanged(propertyName: "vDesconto");
-                base.NotifyPropertyChanged(propertyName: "vVenda");
             }
         }
         private decimal _vDesconto;
@@ -1516,13 +1506,14 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _vDesconto; }
             set
             {
-                _vDesconto = value;
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender != TipoSender.WCF)
                 {
-                    this._pDesconto = (this.vVendaSemDesconto != 0 ?
-                    (this._vDesconto / this.vVendaSemDesconto) : 0) * 100;
-                    this.vVenda = this._vVendaSemDesconto - this.vDesconto;
+                    if (this._vVenda != 0)
+                        this._pDesconto = (value / this._vVenda) * 100;
+
+                    this.vTotalItem = (this._vVenda + value) * this._qProduto;
                 }
+                _vDesconto = value;
                 base.NotifyPropertyChanged(propertyName: "vDesconto");
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
                 base.NotifyPropertyChanged(propertyName: "vVenda");
@@ -1552,8 +1543,16 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
                 this.objImposto.vTotalItem = value;
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
+                    if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal != null)
+                    {
+                        if (OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stDescontaIcmsSuframa == 1)
+                        {
+                            this.vDescontoSuframa = this._vTotalItem *
+                                OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.pDescontaIcmsSuframa;
+                        }
+                    }
                     this.objImposto.CalculaBaseIpi();
                     this.objImposto.CalculaBaseIcms();
                     this.objImposto.CalculaBaseIcmsSubstTrib();
@@ -1575,7 +1574,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     (this.status == statusModel.nenhum && value > 0))
                     _vFreteItem = value;
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     _vFreteItem = value;
                     this.objImposto.vFreteItem = value;
@@ -1688,7 +1687,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     _vSegurosItem = value;
 
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.objImposto.vSeguroItem = value;
                     this.objImposto.CalculaBaseIpi();
@@ -1711,7 +1710,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     (this.status == statusModel.nenhum && value > 0))
                     _vOutrasDespesasItem = value;
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.objImposto.vOutrasDespesasItem = value;
                     this.objImposto.CalculaBaseIpi();
@@ -1768,6 +1767,18 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "vDescontoSuframa");
             }
         }
+
+        private int? _nItem;
+        [ParameterOrder(Order = 37)]
+        public int? nItem
+        {
+            get { return _nItem; }
+            set
+            {
+                _nItem = value;
+                base.NotifyPropertyChanged(propertyName: "nItem");
+            }
+        }
     }
 
     public partial class Orcamento_Item_ImpostosModel : modelBase
@@ -1811,7 +1822,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 stContribuinteIcms: stContribuinteIcms, _vTotalItem: this.vTotalItem, ICMS_pMvaSubstituicaoTributaria: this.ICMS_pMvaSubstituicaoTributaria,
                 IPI_vIPI: this._IPI_vIPI, _vFreteItem: this.vFreteItem, _vSegurosItem: this.vSeguroItem, _vOutrasDespesasItem: this.vOutrasDespesasItem,
                 ICMS_pIcmsInterno: this._ICMS_pIcmsInterno, ICMS_vIcmsProprio: this._ICMS_vIcmsProprio, ICMS_vSubstituicaoTributaria: this._ICMS_vSubstituicaoTributaria,
-                ICMS_stReduzBaseCalculo: this._ICMS_stReduzBaseCalculo);
+                ICMS_stReduzBaseCalculo: this._ICMS_stReduzBaseCalculo, pReduzBaseSubstituicaoTributaria: this._ICMS_pReduzBaseSubstituicaoTributaria);
             this.CalculaVlrSubstTrib();
         }
 
@@ -1823,9 +1834,9 @@ namespace HLP.Sales.Model.Models.Comercial
             byte stIcmsSubstDif = 0;
 
             string xUf = "";
-            object o = CompanyData.parametros_FiscalEmpresa;            
+            object o = CompanyData.parametros_FiscalEmpresa;
 
-            if (o != null)                
+            if (o != null)
                 stIcmsSubstDif = (byte)CompanyData.parametros_FiscalEmpresa.GetType().GetProperty("stIcmsSubstDif").GetValue(CompanyData.parametros_FiscalEmpresa);
 
             if (OrcamentoFacade.objCadastros.idEstadoCliente != 0)
@@ -1881,8 +1892,6 @@ namespace HLP.Sales.Model.Models.Comercial
         public decimal vSeguroItem { get; set; }
 
         public decimal vOutrasDespesasItem { get; set; }
-
-        public int codItem { get; set; }
 
         private string _xNcm;
 
@@ -2095,7 +2104,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     OrcamentoFacade.objCadastros.objCliente.cliente_fornecedor_fiscal.stZeraIcms == 1)
                     this._ICMS_stCompoeBaseCalculo = 4;
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.CalculaBaseIcms();
                     this.CalculaBaseIcmsProprio();
@@ -2260,7 +2269,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     base.NotifyPropertyChanged(propertyName: "IPI_vBaseCalculo");
                 }
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.IPI_vIPI = value * (this.IPI_pIPI / 100);
                 }
@@ -2291,7 +2300,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     (this.status == statusModel.nenhum && value > 0))
                     _IPI_vIPI = value;
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.CalculaBaseIcms();
                     this.CalculaBaseIcmsProprio();
@@ -2324,7 +2333,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 else
                     _IPI_stCompoeBaseCalculo = value;
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.CalculaBaseIpi();
                 }
@@ -2465,7 +2474,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
                 base.NotifyPropertyChanged(propertyName: "stCalculaPisCofins");
 
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     switch (value)
                     {
@@ -2540,7 +2549,7 @@ namespace HLP.Sales.Model.Models.Comercial
                             _stCompoeBaseCalculoPisCofins = value;
                         } break;
                 }
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.CalculaBasePis();
                     this.CalculaBaseCofins();
@@ -2567,7 +2576,7 @@ namespace HLP.Sales.Model.Models.Comercial
                             this._PIS_stCompoeBaseCalculoSubstituicaoTributaria = value;
                         } break;
                 }
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.CalculaBasePis();
                 }
@@ -2650,7 +2659,7 @@ namespace HLP.Sales.Model.Models.Comercial
                             this._COFINS_stCompoeBaseCalculoSubstituicaoTributaria = value;
                         } break;
                 }
-                if (this.status != statusModel.nenhum)
+                if (Sistema.stSender == TipoSender.WCF)
                 {
                     this.CalculaBaseCofins();
                 }
@@ -2677,6 +2686,18 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _ICMS_stNaoReduzBase = value;
                 base.NotifyPropertyChanged(propertyName: "ICMS_stNaoReduzBase");
+            }
+        }
+
+        private int? _nItem;
+        [ParameterOrder(Order = 54)]
+        public int? nItem
+        {
+            get { return _nItem; }
+            set
+            {
+                _nItem = value;
+                base.NotifyPropertyChanged(propertyName: "nItem");
             }
         }
     }
