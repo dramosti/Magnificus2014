@@ -46,8 +46,8 @@ namespace HLP.Comum.Model.Models
                             bool bValida = (bool)lcontrolWindow.LastOrDefault().GetPropertyValue("SetNext");
                             if (bValida)
                             {
-                                lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
-                                lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
+                                //lcontrolWindow.LastOrDefault().LostFocus -= TabPagesAtivasModel_LostFocus;
+                                //lcontrolWindow.LastOrDefault().LostFocus += TabPagesAtivasModel_LostFocus;
                             }
                         }
                     }
