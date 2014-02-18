@@ -69,8 +69,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             if (File.Exists(path: sPath))
             {
                 this.winMan.iconConexao = new BitmapImage(new Uri(sPath));
-            }
-
+            }            
 
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
             this.winMan._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();

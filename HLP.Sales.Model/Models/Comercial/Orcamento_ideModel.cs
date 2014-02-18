@@ -13,6 +13,7 @@ using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Facade.Magnificus;
 using System.Reactive.Linq;
 using HLP.Entries.Model.Models.Parametros;
+using System.Windows;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -72,6 +73,7 @@ namespace HLP.Sales.Model.Models.Comercial
                     OrcamentoFacade.ramo_AtividadeService = new Comum.Facade.Ramo_AtividadeService.IserviceRamoAtividadeClient();
 
                 this.orcamento_Total_Impostos = new Orcamento_Total_ImpostosModel();
+                this.orcamento_Total_Impostos.objOrcamento_ide = this;
                 this.orcamento_retTransp = new Orcamento_retTranspModel();
                 this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
                 this.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>();
@@ -144,6 +146,54 @@ namespace HLP.Sales.Model.Models.Comercial
 
         #region Propriedades apenas para visualização na tela
 
+        private bool _bCriado;
+
+        public bool bCriado
+        {
+            get { return _bCriado; }
+            set { _bCriado = value; }
+        }
+
+        private bool _bEnviado;
+
+        public bool bEnviado
+        {
+            get { return _bEnviado; }
+            set { _bEnviado = value; }
+        }
+
+        private bool _bConfirmado;
+
+        public bool bConfirmado
+        {
+            get { return _bConfirmado; }
+            set { _bConfirmado = value; }
+        }
+
+        private bool _bPerdido;
+
+        public bool bPerdido
+        {
+            get { return _bPerdido; }
+            set { _bPerdido = value; }
+        }
+
+        private bool _bCancelado;
+
+        public bool bCancelado
+        {
+            get { return _bCancelado; }
+            set { _bCancelado = value; }
+        }
+
+        private bool _bTodos;
+
+        public bool bTodos
+        {
+            get { return _bTodos; }
+            set { _bTodos = value; }
+        }
+        
         private string _xDepartamento;
         public string xDepartamento
         {
@@ -2710,6 +2760,12 @@ namespace HLP.Sales.Model.Models.Comercial
         {
         }
 
+        #region propriedades não mapeadas
+
+        public Orcamento_ideModel objOrcamento_ide { get; set; }
+
+        #endregion
+
         private int? _idOrcamentoTotalImpostos;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idOrcamentoTotalImpostos
@@ -2805,8 +2861,18 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _vDescontoTotal; }
             set
             {
+                if (this._vTotal != 0)
+                {
+                    decimal vBruto = objOrcamento_ide.lOrcamento_Itens.Sum(i => i.vTotalItem) - this._vDescontoTotal;
+                    this._pDescontoTotal = value / vBruto;
+                    foreach (Orcamento_ItemModel item in this.objOrcamento_ide.lOrcamento_Itens)
+                    {
+                        item.pDesconto = (((item.vTotalItem - item.vDesconto) / vBruto) * this._pDescontoTotal) * 100;
+                    }
+                }
                 _vDescontoTotal = value;
                 base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
+                base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
             }
         }
         private decimal _vIITotal;

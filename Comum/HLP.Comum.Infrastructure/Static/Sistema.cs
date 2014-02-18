@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace HLP.Comum.Infrastructure.Static
 {
@@ -19,6 +20,11 @@ namespace HLP.Comum.Infrastructure.Static
         public static List<System.Configuration.KeyValueConfigurationElement> lSettings { get; set; }
 
         public static TipoConexao bOnline { get; set; }
+
+        public static Window GetOpenWindow()
+        {
+            return null;
+        }
     }
 
     public enum TipoConexao
