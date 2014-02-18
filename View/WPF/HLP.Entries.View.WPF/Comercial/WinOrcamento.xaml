@@ -172,7 +172,8 @@
                                     SelectedValuePath="id"
                                     DisplayMemberPath="display"                                
                                     
-									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, 
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contato" Help="Informar a pessoa de contato externo para quem o orçamento é emitido. Busca da Tabela de Contatos no Cadastro de Clientes." WidthLabel="231" Width="473">
 

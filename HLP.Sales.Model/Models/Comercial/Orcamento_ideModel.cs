@@ -241,7 +241,8 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             get
             {
-                return OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai;
+                return OrcamentoFacade.objCadastros.objCliente != null ?
+                    OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai : 0;
             }
         }
 

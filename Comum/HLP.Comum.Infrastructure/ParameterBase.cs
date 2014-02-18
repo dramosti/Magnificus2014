@@ -23,7 +23,7 @@ namespace HLP.Comum.Infrastructure
                 {
                     value = type.GetProperty(property.Name)
                         .GetValue(classe, ModelDefinition.ARRAY_OBJECTS);
-                    list.Add(value);
+                    list.Add(value);                    
                 }
         
 
