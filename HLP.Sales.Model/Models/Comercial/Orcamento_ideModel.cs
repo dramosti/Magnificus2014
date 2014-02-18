@@ -1461,11 +1461,6 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-
-                if (Sistema.stSender != TipoSender.WCF &&
-                    this.status != statusModel.nenhum)
-                    _vVenda += this._vDesconto;
-
                 this.vTotalItem = (this._vVenda + this._vDesconto) * this._qProduto;
                 base.NotifyPropertyChanged(propertyName: "vVenda");
                 base.NotifyPropertyChanged(propertyName: "vTotalItem");
