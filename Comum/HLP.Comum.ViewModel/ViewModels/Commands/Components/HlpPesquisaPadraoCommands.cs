@@ -15,7 +15,6 @@ using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
 using HLP.Comum.ViewModel.Services.Service;
-using HLP.Comum.ViewModel.Services.Interface;
 using Ninject;
 
 namespace HLP.Comum.ViewModel.Commands.Components
