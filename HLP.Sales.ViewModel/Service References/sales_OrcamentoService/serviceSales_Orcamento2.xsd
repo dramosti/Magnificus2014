@@ -19,7 +19,6 @@
           <xs:element minOccurs="0" name="dDataRecebimentoSolicitado" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dDataRemessaSolicitada" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dVencimento" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="iStatus" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="idCanalVenda" type="xs:int" />
           <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
           <xs:element minOccurs="0" name="idCondicaoEntrega" type="xs:int" />

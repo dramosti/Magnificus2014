@@ -16,6 +16,9 @@ using HLP.Entries.Model.Models.Parametros;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
+using System.Windows.Controls;
+using HLP.Comum.Resources.Util;
+using System.Windows.Media;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -361,7 +364,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 return OrcamentoFacade.objCadastros.objCliente != null ?
                     OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai : 0;
             }
-        }      
+        }
 
 
         #endregion
@@ -3072,7 +3075,9 @@ namespace HLP.Sales.Model.Models.Comercial
                     }
 
                     this._vDescontoTotal = dTotalVlrDescontos;
-                    this._pDescontoTotal = this._vDescontoTotal / (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                    decimal valorTotal = (this._vProdutoTotal + (this._vServicoTotal ?? 0));
+                    if (valorTotal != 0)
+                        this._pDescontoTotal = this._vDescontoTotal / valorTotal;
                     base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
 
                     #endregion
@@ -3962,9 +3967,39 @@ namespace HLP.Sales.Model.Models.Comercial
 
                         decimal vBruto = objOrcamento_ide.lOrcamento_Itens.Sum(i => i.vVenda * i.qProduto);
                         this._pDescontoTotal = value / vBruto;
+
                         foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
                         {
                             item.vDesconto = ((((item.vTotalItem / item.qProduto) - item.vDesconto) / vBruto) * value);
+                        }
+
+                        DataGrid dg = wd.FindName(name: "dgItens") as DataGrid;
+                        DataGridRow row = null;
+                        DataGridColumn column = dg.Columns.FirstOrDefault(i => i.Header.ToString() == "% Desc"); ;
+                        object o;
+                        bool valido = true;
+
+                        foreach (var item in dg.ItemsSource)
+                        {
+                            row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                            if (row != null)
+                            {
+                                o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
+
+                                if (o.GetType().Name.ToString() == "TextBlock")
+                                {
+                                    if (Validation.GetHasError(o as TextBlock))
+                                        valido = false;
+                                }
+                            }
+                        }
+
+                        if (!valido)
+                        {
+                            MessageBox.Show(messageBoxText: "Alguns itens ultrapassaram o limite de porcentagem. Verifique!",
+                                caption: "Verifique!", button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+                            TabControl t = wd.FindName(name: "tabControlPrincipal") as TabControl;
+                            t.SelectedIndex = 2;
                         }
                     }
                 }
@@ -4047,6 +4082,7 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _pDescontoTotal = value;
+                this.vDescontoTotal = (value / 100) * (this._vProdutoTotal + (this._vServicoTotal ?? 0));
                 base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
             }
         }

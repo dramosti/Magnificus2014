@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using System.Collections;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Infrastructure;
+using System.Windows.Media;
 
 
 namespace HLP.Comum.ViewModel.ViewModels
@@ -110,7 +111,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                         if (pk != null)
                         {
                             if (((PrimaryKey)pk).isPrimary)
-                            {                                
+                            {
                                 int? value = (int?)(property.GetValue(obj: this.currentModel));
                                 if (value != null)
                                     _currentID = (int)value;
@@ -243,6 +244,19 @@ namespace HLP.Comum.ViewModel.ViewModels
                             {
                                 if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
                                     return true;
+                            }
+                            else if (o.GetType().Name.ToString() == "ContentPresenter")
+                            {                                
+
+                                for (int cont = 0; cont < VisualTreeHelper.GetChildrenCount(reference: (o as ContentPresenter)); cont++)
+                                {
+                                    object child = VisualTreeHelper.GetChild(o as ContentPresenter, cont);
+
+                                    if(child.GetType().Name.ToString() == "TextBlock")
+                                        if (Validation.GetHasError(child as TextBlock))
+                                        return true;
+                                }                               
+                                    
                             }
                         }
                     }

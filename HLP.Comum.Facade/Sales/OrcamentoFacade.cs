@@ -108,7 +108,7 @@ namespace HLP.Comum.Facade.Sales
             if (OrcamentoFacade.empresaService == null)
                 OrcamentoFacade.empresaService = new empresaService.IserviceEmpresaClient();
 
-            //this.objEmpresa = new empresaService.EmpresaModel();
+            //this.objEmpresa = new empresaService.EmpresaModel();            
             this.objEmpresa = OrcamentoFacade.empresaService.getEmpresa(idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
         }
 

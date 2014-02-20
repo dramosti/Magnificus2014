@@ -65,7 +65,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         });
                 }
 
-                this.objViewModel.CalculaTotais((byte)5);
+                this.objViewModel.currentModel.bTodos = true;
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
