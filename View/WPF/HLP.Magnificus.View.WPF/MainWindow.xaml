@@ -213,10 +213,9 @@
             </StackPanel.Resources>
             <Expander Focusable="False" x:Name="expanderFuncionalidades" Template="{StaticResource RevealExpanderTemp}"
                   OverridesDefaultStyle="True"
-                  Header="..."
+                  Header=""
                   VerticalAlignment="Stretch">
-                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainWindowDefault}">
-                   
+                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainWindowDefault}">                   
                 </Grid>
             </Expander>
         </StackPanel>
