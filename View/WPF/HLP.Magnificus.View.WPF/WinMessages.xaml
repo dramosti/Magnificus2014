@@ -1,86 +1,31 @@
 ﻿<Window x:Class="HLP.Magnificus.View.WPF.WinMessages"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinMessages" Height="400" Width="451.064" AllowsTransparency="True" Background="{x:Null}" WindowStyle="None">
-    <Window.Resources>
-        <Style x:Key="ExpanderStyleToggleButton" TargetType="{x:Type ToggleButton}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Border Padding="{TemplateBinding Padding}">
-                            <Grid Background="Transparent" SnapsToDevicePixels="False">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="19"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path x:Name="arrow" Data="M 1,1.5 L 4.5,5 L 8,1.5" HorizontalAlignment="Center" SnapsToDevicePixels="false" Stroke="Black" StrokeThickness="2" VerticalAlignment="Center"/>
-                                <ContentPresenter Grid.Column="1" HorizontalAlignment="Left" Margin="4,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="Center"/>
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="true">
-                                <Setter Property="Data" TargetName="arrow" Value="M 1,4.5  L 4.5,1  L 8,4.5"/>
-                                <Setter Property="Stroke" TargetName="arrow" Value="White"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Stroke" TargetName="arrow" Value="White"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="ExpanderStyle2" TargetType="{x:Type Expander}">
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Expander}">
-                        <Border Focusable="False" Background="Transparent">
-                            <DockPanel Focusable="False">
-                                <ToggleButton Focusable="False" x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}" FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" Style="{StaticResource ExpanderStyleToggleButton}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <ContentPresenter x:Name="ExpandSite" DockPanel.Dock="Bottom" Focusable="false" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </DockPanel>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsExpanded" Value="true">
-                                <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
-                            </Trigger>
-                            <Trigger Property="ExpandDirection" Value="Right">
-                                <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Right"/>
-                                <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Left"/>
-                                <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderRightHeaderStyle}"/>
-                            </Trigger>
-                            <Trigger Property="ExpandDirection" Value="Up">
-                                <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Top"/>
-                                <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Bottom"/>
-                                <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderUpHeaderStyle}"/>
-                            </Trigger>
-                            <Trigger Property="ExpandDirection" Value="Left">
-                                <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Left"/>
-                                <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Right"/>
-                                <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderLeftHeaderStyle}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Window.Resources>
+        Title="WinMessages" Height="450" Width="500" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" WindowStyle="None">
+    
     <Grid>
-        <Rectangle Fill="{StaticResource MouseOverBrush}" Stroke="Black" RadiusY="11.702" Height="250" VerticalAlignment="Top" RadiusX="11.702"/>
+        <Button Width="26" Height="26" Focusable="False" Margin="471,5,3,419">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Name="Bd" CornerRadius="15" Background="White" BorderBrush="Black" Height="26" Width="26" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd" Height="20" Width="20">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/x-mark-20.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/x-mark-Red.png"/>                                            
+                                        </Trigger>                                        
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>                        
+                    </Border>                    
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Grid Height="400" Width="451.064">        
+        <Rectangle Fill="{StaticResource MouseOverBrush}" Stroke="Black" RadiusY="11.702" Height="250" VerticalAlignment="Top" RadiusX="11.702"/>        
         <DockPanel LastChildFill="True">
             <DockPanel Height="30" DockPanel.Dock="Top"></DockPanel>
             <DockPanel Height="60" DockPanel.Dock="Top">
@@ -88,7 +33,7 @@
                 <Image Source="error-7-64.png" Height="64" Width="64" HorizontalAlignment="Right" Margin="0,0,20,0" />
             </DockPanel>
             <DockPanel LastChildFill="True">
-                <TextBox DockPanel.Dock="Top" Background="Transparent" BorderBrush="Transparent" FontFamily="Calibri" FontWeight="Normal" TextWrapping="Wrap" Width="430" HorizontalAlignment="Left" FontSize="12" VerticalScrollBarVisibility="Disabled" Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" Height="61" Margin="10,5,0,0"></TextBox>
+                <TextBox DockPanel.Dock="Top" Background="Transparent" BorderBrush="Transparent" FontFamily="Calibri" FontWeight="Normal" TextWrapping="Wrap" Width="430" HorizontalAlignment="Left" FontSize="12" VerticalScrollBarVisibility="Disabled" Text="" Height="61" Margin="10,5,0,0"></TextBox>
                 <ListBox Background="Transparent" Style="{StaticResource ListBoxStyleMessage}" BorderBrush="Transparent" DockPanel.Dock="Top" Height="77">
                     <ListBoxItem>
                     </ListBoxItem>
@@ -115,7 +60,8 @@
                     </Expander>
                 </StackPanel>
             </DockPanel>
-        </DockPanel>
+        </DockPanel>    
+        </Grid>        
     </Grid>
 </Window>
 

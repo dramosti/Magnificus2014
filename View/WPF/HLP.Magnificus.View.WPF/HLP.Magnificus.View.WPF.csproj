@@ -156,6 +156,7 @@
     <Compile Include="WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
+    <Resource Include="x-mark-48.png" />
     <Resource Include="error-7-64.png" />
     <Resource Include="Principal.ico" />
     <None Include="packages.config" />
