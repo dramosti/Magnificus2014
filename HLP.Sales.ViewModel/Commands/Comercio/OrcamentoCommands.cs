@@ -105,6 +105,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
                     this.IniciaCollection();
+                    this.objViewModel.currentModel.bTodos = true;
                 }
             }
             catch (Exception ex)
@@ -165,7 +166,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Orcamento_ideModel();
