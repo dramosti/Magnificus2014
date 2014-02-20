@@ -207,6 +207,7 @@
     <EmbeddedResource Include="Icones\WinModoEntrega.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Resource Include="Icones\broom-48.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace HLP.Comum.Infrastructure.Static
 {
@@ -19,6 +21,25 @@ namespace HLP.Comum.Infrastructure.Static
         public static List<System.Configuration.KeyValueConfigurationElement> lSettings { get; set; }
 
         public static TipoConexao bOnline { get; set; }
+
+        public static Window GetOpenWindow(string xName)
+        {
+
+            Window wd = null;
+            if (Application.Current != null)
+            {
+                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                {
+                    foreach (Window item in Application.Current.Windows)
+                    {
+                        if (item.Name == xName)
+                            wd = item;
+                    }
+                }));
+            }
+            return wd;
+
+        }
     }
 
     public enum TipoConexao

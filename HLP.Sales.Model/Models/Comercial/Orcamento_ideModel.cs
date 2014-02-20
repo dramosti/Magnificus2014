@@ -13,6 +13,9 @@ using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Facade.Magnificus;
 using System.Reactive.Linq;
 using HLP.Entries.Model.Models.Parametros;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Threading;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -144,6 +147,120 @@ namespace HLP.Sales.Model.Models.Comercial
 
         #region Propriedades apenas para visualização na tela
 
+        private bool _bCriado;
+
+        public bool bCriado
+        {
+            get { return _bCriado; }
+            set
+            {
+                _bCriado = value;
+                if (!value)
+                {
+                    this._bTodos = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodos");
+                }
+                this.FiltrarItems();
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bCriado");
+            }
+        }
+
+        private bool _bEnviado;
+
+        public bool bEnviado
+        {
+            get { return _bEnviado; }
+            set
+            {
+                _bEnviado = value;
+                if (!value)
+                {
+                    this._bTodos = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodos");
+                }
+                this.FiltrarItems();
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bEnviado");
+            }
+        }
+
+        private bool _bConfirmado;
+
+        public bool bConfirmado
+        {
+            get { return _bConfirmado; }
+            set
+            {
+                _bConfirmado = value;
+                if (!value)
+                {
+                    this._bTodos = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodos");
+                }
+                this.FiltrarItems();
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bConfirmado");
+            }
+        }
+
+        private bool _bPerdido;
+
+        public bool bPerdido
+        {
+            get { return _bPerdido; }
+            set
+            {
+                _bPerdido = value;
+                if (!value)
+                {
+                    this._bTodos = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodos");
+                }
+                this.FiltrarItems();
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bPerdido");
+            }
+        }
+
+        private bool _bCancelado;
+
+        public bool bCancelado
+        {
+            get { return _bCancelado; }
+            set
+            {
+                _bCancelado = value;
+                if (!value)
+                {
+                    this._bTodos = false;
+                    base.NotifyPropertyChanged(propertyName: "bTodos");
+                }
+                this.FiltrarItems();
+                this.orcamento_Total_Impostos.CalcularTotais();
+                base.NotifyPropertyChanged(propertyName: "bCancelado");
+            }
+        }
+
+        private bool _bTodos;
+
+        public bool bTodos
+        {
+            get { return _bTodos; }
+            set
+            {
+                _bTodos = this._bCriado = this._bEnviado = this._bConfirmado = this._bPerdido = this._bCancelado = value;
+                this.FiltrarItems();
+                this.orcamento_Total_Impostos.CalcularTotais();
+                this.NotifyPropertyChanged(propertyName: "bCriado");
+                this.NotifyPropertyChanged(propertyName: "bEnviado");
+                this.NotifyPropertyChanged(propertyName: "bConfirmado");
+                this.NotifyPropertyChanged(propertyName: "bPerdido");
+                this.NotifyPropertyChanged(propertyName: "bCancelado");
+                this.NotifyPropertyChanged(propertyName: "bTodos");
+            }
+        }
+
         private string _xDepartamento;
         public string xDepartamento
         {
@@ -241,7 +358,8 @@ namespace HLP.Sales.Model.Models.Comercial
         {
             get
             {
-                return OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai;
+                return OrcamentoFacade.objCadastros.objCliente != null ?
+                    OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai : 0;
             }
         }
 
@@ -261,6 +379,114 @@ namespace HLP.Sales.Model.Models.Comercial
 
 
         #endregion
+
+        private void FiltrarItems()
+        {
+            Window w = Sistema.GetOpenWindow(xName: "WinOrcamento");
+            if (w != null)
+            {
+                CollectionViewSource cvs = w.FindResource(resourceKey: "cvsItens") as CollectionViewSource;
+                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                {
+                    cvs.Filter += new FilterEventHandler(this.ItensOrcamentoFilter);
+                }));
+
+                CollectionViewSource cvsImpostos = w.FindResource(resourceKey: "cvsImpostos") as CollectionViewSource;
+                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                {
+                    cvsImpostos.Filter += new FilterEventHandler(this.ItensOrcamentoFilter);
+                }));
+            }
+        }
+
+        public void ItensOrcamentoFilter(object sender, FilterEventArgs e)
+        {
+            if (e.Item.GetType() == typeof(Orcamento_ItemModel))
+            {
+                Orcamento_ItemModel i = e.Item as Orcamento_ItemModel;
+
+                if (i != null)
+                {
+                    bool valido = false;
+                    switch (i.stOrcamentoItem)
+                    {
+                        case 0:
+                            {
+                                if (this._bCriado)
+                                    valido = true;
+                            } break;
+                        case 1:
+                            {
+                                if (this._bEnviado)
+                                    valido = true;
+                            } break;
+                        case 2:
+                            {
+                                if (this._bConfirmado)
+                                    valido = true;
+                            } break;
+                        case 3:
+                            {
+                                if (this._bPerdido)
+                                    valido = true;
+                            } break;
+                        case 4:
+                            {
+                                if (this._bCancelado)
+                                    valido = true;
+                            } break;
+                        case 5:
+                            {
+                                valido = true;
+                            } break;
+                    }
+                    e.Accepted = valido;
+                }
+            }
+            else if (e.Item.GetType() == typeof(Orcamento_Item_ImpostosModel))
+            {
+                Orcamento_Item_ImpostosModel i = e.Item as Orcamento_Item_ImpostosModel;
+
+                if (i != null)
+                {
+                    bool valido = false;
+                    switch (i.stOrcamentoImpostos)
+                    {
+                        case 0:
+                            {
+                                if (this._bCriado)
+                                    valido = true;
+                            } break;
+                        case 1:
+                            {
+                                if (this._bEnviado)
+                                    valido = true;
+                            } break;
+                        case 2:
+                            {
+                                if (this._bConfirmado)
+                                    valido = true;
+                            } break;
+                        case 3:
+                            {
+                                if (this._bPerdido)
+                                    valido = true;
+                            } break;
+                        case 4:
+                            {
+                                if (this._bCancelado)
+                                    valido = true;
+                            } break;
+                        case 5:
+                            {
+                                valido = true;
+                            } break;
+                    }
+                    e.Accepted = valido;
+                }
+            }
+        }
+
 
         private int? _idOrcamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -2709,6 +2935,940 @@ namespace HLP.Sales.Model.Models.Comercial
         {
         }
 
+        #region propriedades não mapeadas
+
+
+        #endregion
+
+        #region métodos públicos
+
+        public void CalcularTotais()
+        {
+            Window wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+            if (wd != null)
+            {
+                Orcamento_ideModel objOrcamento_ide = null;
+
+                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                {
+                    objOrcamento_ide = wd.DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: wd.DataContext)
+                    as Orcamento_ideModel;
+                }));
+
+                if (objOrcamento_ide != null)
+                {
+                    #region Cálculo de totais produtos
+
+                    decimal dTotalProdutos = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => !i.stServico && i.stOrcamentoItem == 0)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => !i.stServico && i.stOrcamentoItem == 1)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => !i.stServico && i.stOrcamentoItem == 2)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => !i.stServico && i.stOrcamentoItem == 3)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalProdutos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => !i.stServico && i.stOrcamentoItem == 4)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    this._vProdutoTotal = dTotalProdutos;
+                    base.NotifyPropertyChanged(propertyName: "vProdutoTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais servicos
+
+                    decimal dTotalServicos = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalServicos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stServico && i.stOrcamentoItem == 0)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalServicos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stServico && i.stOrcamentoItem == 1)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalServicos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stServico && i.stOrcamentoItem == 2)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalServicos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stServico && i.stOrcamentoItem == 3)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalServicos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stServico && i.stOrcamentoItem == 4)
+                            .Sum(i => (i.vVenda * i.qProduto));
+                    }
+
+                    this._vServicoTotal = dTotalServicos;
+                    base.NotifyPropertyChanged(propertyName: "vServicoTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais descontos
+
+                    decimal dTotalVlrDescontos = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 0)
+                            .Sum(i => i.vDesconto * i.qProduto);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 1)
+                            .Sum(i => i.vDesconto * i.qProduto);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 2)
+                            .Sum(i => i.vDesconto * i.qProduto);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 3)
+                            .Sum(i => i.vDesconto * i.qProduto);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalVlrDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 4)
+                            .Sum(i => i.vDesconto * i.qProduto);
+                    }
+
+                    this._vDescontoTotal = dTotalVlrDescontos;
+                    base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais porc. Desconto
+
+                    decimal dTotalPorcDescontos = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 0)
+                            .Sum(i => i.pDesconto);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 1)
+                            .Sum(i => i.pDesconto);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 2)
+                            .Sum(i => i.pDesconto);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 3)
+                            .Sum(i => i.pDesconto);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 4)
+                            .Sum(i => i.pDesconto);
+                    }
+
+                    this._pDescontoTotal = dTotalPorcDescontos;
+                    base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
+
+                    #endregion
+
+                    #region Cálculo de Vlr Suframa
+
+                    decimal dTotalDescSuframa = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 0)
+                            .Sum(i => i.vDescontoSuframa ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 1)
+                            .Sum(i => i.vDescontoSuframa ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 2)
+                            .Sum(i => i.vDescontoSuframa ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 3)
+                            .Sum(i => i.vDescontoSuframa ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalDescSuframa += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 4)
+                            .Sum(i => i.vDescontoSuframa ?? 0);
+                    }
+
+                    this._vDescontoSuframaTotal = dTotalDescSuframa;
+                    base.NotifyPropertyChanged(propertyName: "vDescontoSuframaTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais frete
+
+                    decimal dTotalFrete = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalFrete += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 0)
+                            .Sum(i => i.vFreteItem);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalFrete += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 1)
+                            .Sum(i => i.vFreteItem);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalFrete += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 2)
+                            .Sum(i => i.vFreteItem);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalFrete += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 3)
+                            .Sum(i => i.vFreteItem);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalFrete += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 4)
+                            .Sum(i => i.vFreteItem);
+                    }
+
+                    this._vFreteTotal = dTotalFrete;
+                    base.NotifyPropertyChanged(propertyName: "vFreteTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais seguro
+
+                    decimal dTotalSeguro = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 0)
+                            .Sum(i => i.vSegurosItem);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 1)
+                            .Sum(i => i.vSegurosItem);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 2)
+                            .Sum(i => i.vSegurosItem);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 3)
+                            .Sum(i => i.vSegurosItem);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dTotalSeguro += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 4)
+                            .Sum(i => i.vSegurosItem);
+                    }
+
+                    this._vSeguroTotal = dTotalSeguro;
+                    base.NotifyPropertyChanged(propertyName: "vSeguroTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais outras despesas
+
+                    decimal dOutrasDespesas = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 0)
+                            .Sum(i => i.vOutrasDespesasItem);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 1)
+                            .Sum(i => i.vOutrasDespesasItem);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 2)
+                            .Sum(i => i.vOutrasDespesasItem);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 3)
+                            .Sum(i => i.vOutrasDespesasItem);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dOutrasDespesas += objOrcamento_ide.lOrcamento_Itens
+                            .Where(i => i.stOrcamentoItem == 4)
+                            .Sum(i => i.vOutrasDespesasItem);
+                    }
+
+                    this._vOutrasDespesasTotal = dOutrasDespesas;
+                    base.NotifyPropertyChanged(propertyName: "vOutrasDespesasTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Base de Cálculo ICMS
+
+                    decimal dBaseCalcIcms = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dBaseCalcIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dBaseCalcIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dBaseCalcIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dBaseCalcIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dBaseCalcIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    this._vBaseCalculoIcmsTotal = dBaseCalcIcms;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoIcmsTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor ICMS
+
+                    decimal dVlrIcms = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcms += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ICMS_vBaseCalculo ?? 0);
+                    }
+
+                    this._vICMSTotal = dVlrIcms;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoIcmsTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Base de Cálculo Icms Próprio
+
+                    decimal dVlrBaseIcmsProprio = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseIcmsProprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
+                    }
+
+                    this._vBaseCalculoIcmsProprioTotal = dVlrBaseIcmsProprio;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoIcmsTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor Icms Próprio
+
+                    decimal dVlrIcmsPróprio = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ICMS_vIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ICMS_vIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ICMS_vIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ICMS_vIcmsProprio ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIcmsPróprio += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ICMS_vIcmsProprio ?? 0);
+                    }
+
+                    this._vIcmsProprioTotal = dVlrBaseIcmsProprio;
+                    base.NotifyPropertyChanged(propertyName: "vIcmsProprioTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor Base de Cálculo Ipi
+
+                    decimal dVlrBaseCalculoIpi = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.IPI_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.IPI_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.IPI_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.IPI_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalculoIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.IPI_vBaseCalculo ?? 0);
+                    }
+
+                    this._vBaseCalculoIpiTotal = dVlrBaseCalculoIpi;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoIpiTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor Ipi
+
+                    decimal dVlrIpi = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.IPI_vIPI ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.IPI_vIPI ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.IPI_vIPI ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.IPI_vIPI ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIpi += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.IPI_vIPI ?? 0);
+                    }
+
+                    this._vIPITotal = dVlrIpi;
+                    base.NotifyPropertyChanged(propertyName: "vIPITotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor de Base Substituição Tributária
+
+                    decimal dVlrBaseSubstTribut = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseSubstTribut += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
+                    }
+
+                    this._vBaseCalculoICmsSubstituicaoTributariaTotal = dVlrBaseSubstTribut;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoICmsSubstituicaoTributariaTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor Substituição Tributária
+
+                    decimal dVlrSubsTrib = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrSubsTrib += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrSubsTrib += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrSubsTrib += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrSubsTrib += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrSubsTrib += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
+                    }
+
+                    this._vIcmsSubstituicaoTributariaTotal = dVlrSubsTrib;
+                    base.NotifyPropertyChanged(propertyName: "vIcmsSubstituicaoTributariaTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais base de cálculo Pis
+
+                    decimal dVlrBaseCalcPis = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.PIS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.PIS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.PIS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.PIS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.PIS_vBaseCalculo ?? 0);
+                    }
+
+                    this._vBaseCalculoPisTotal = dVlrBaseCalcPis;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoPisTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais valor Pis
+
+                    decimal dVlrPis = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.PIS_vPIS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.PIS_vPIS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.PIS_vPIS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.PIS_vPIS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrPis += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.PIS_vPIS ?? 0);
+                    }
+
+                    this._vPISTotal = dVlrPis;
+                    base.NotifyPropertyChanged(propertyName: "vPISTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais base de cálculo Cofins
+
+                    decimal dVlrBaseCalcCofins = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.COFINS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.COFINS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.COFINS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.COFINS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.COFINS_vBaseCalculo ?? 0);
+                    }
+
+                    this._vBaseCalculoCofinsTotal = dVlrBaseCalcCofins;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoCofinsTotal");
+
+                    #endregion
+
+                    #region Cálculo de totais Valor Cofins
+
+                    decimal dVlrCofins = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.COFINS_vCOFINS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.COFINS_vCOFINS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.COFINS_vCOFINS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.COFINS_vCOFINS ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrCofins += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.COFINS_vCOFINS ?? 0);
+                    }
+
+                    this._vCOFINSTotal = dVlrCofins;
+                    base.NotifyPropertyChanged(propertyName: "vCOFINSTotal");
+
+                    #endregion
+
+                    #region Cálculo de Valor Base de Cálculo Iss
+
+                    decimal dVlrBaseCalcIss = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ISS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ISS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ISS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ISS_vBaseCalculo ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrBaseCalcIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ISS_vBaseCalculo ?? 0);
+                    }
+
+                    this._vBaseCalculoIssTotal = dVlrBaseCalcIss;
+                    base.NotifyPropertyChanged(propertyName: "vBaseCalculoIssTotal");
+
+                    #endregion
+
+                    #region Cálculo de Valor Iss
+
+                    decimal dVlrIss = decimal.Zero;
+
+                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 0).Sum(i => i.ISS_vIss ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 1).Sum(i => i.ISS_vIss ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 2).Sum(i => i.ISS_vIss ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 3).Sum(i => i.ISS_vIss ?? 0);
+                    }
+
+                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    {
+                        dVlrIss += objOrcamento_ide.lOrcamento_Item_Impostos
+                            .Where(i => i.stOrcamentoImpostos == 4).Sum(i => i.ISS_vIss ?? 0);
+                    }
+
+                    this._vIssTotal = dVlrIss;
+                    base.NotifyPropertyChanged(propertyName: "vIssTotal");
+
+                    #endregion
+
+                    #region Valor Total
+
+                    this._vTotal = this._vProdutoTotal + (this._vServicoTotal ?? 0) + this._vDescontoTotal - (this._vDescontoSuframaTotal ?? 0)
+                        + this._vIPITotal + this._vIcmsSubstituicaoTributariaTotal + this._vSeguroTotal + this._vOutrasDespesasTotal;
+                    base.NotifyPropertyChanged(propertyName: "vTotal");
+
+                    #endregion
+                }
+            }
+        }
+
+        #endregion
+
         private int? _idOrcamentoTotalImpostos;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idOrcamentoTotalImpostos
@@ -2804,8 +3964,26 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _vDescontoTotal; }
             set
             {
+                if (this._vTotal != 0)
+                {
+                    Window wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
+
+                    if (wd != null)
+                    {
+                        Orcamento_ideModel objOrcamento_ide = wd.DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: wd.DataContext)
+                            as Orcamento_ideModel;
+
+                        decimal vBruto = objOrcamento_ide.lOrcamento_Itens.Sum(i => i.vVenda * i.qProduto);
+                        this._pDescontoTotal = value / vBruto;
+                        foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
+                        {
+                            item.vDesconto = ((((item.vTotalItem / item.qProduto) - item.vDesconto) / vBruto) * value);
+                        }
+                    }
+                }
                 _vDescontoTotal = value;
                 base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
+                base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
             }
         }
         private decimal _vIITotal;
