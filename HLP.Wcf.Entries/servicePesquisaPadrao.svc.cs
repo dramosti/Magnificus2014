@@ -43,7 +43,7 @@ namespace HLP.Wcf.Entries
             
         }
 
-        public System.Data.DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
+        public DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true)
         {
             object dados = iHlpPesquisaPadraoRepository.GetData(sSelect,
                 addDefault,

@@ -192,7 +192,8 @@ namespace HLP.Dependencies
 
         protected void ResolveServices()
         {
-            //Bind<IConfigPesquisaService>().To<ConfigPesquisaService>();
+
+           //Bind<IConfigPesquisaService>().To<ConfigPesquisaService>();
             //Bind<IPesquisaPadraoService>().To<PesquisaPadraoService>();
             //Bind<IConfiguraBaseService>().To<ConfiguraBaseService>();
             //Bind<IConfigFormulariosService>().To<ConfigFormulariosService>();
