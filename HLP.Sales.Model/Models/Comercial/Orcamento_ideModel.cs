@@ -79,7 +79,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 this.lOrcamento_Itens = new ObservableCollectionBaseCadastros<Orcamento_ItemModel>();
                 this.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<Orcamento_Item_ImpostosModel>();
                 this.lOrcamento_Itens.CollectionChanged += lOrcamento_Itens_CollectionChanged;
-                this.iStatus = 5;
+                this.bTodos = true;
             }
             catch (Exception)
             {
@@ -361,21 +361,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 return OrcamentoFacade.objCadastros.objCliente != null ?
                     OrcamentoFacade.objCadastros.objCliente.idListaPrecoPai : 0;
             }
-        }
-
-        private byte _iStatus;
-
-        public byte iStatus
-        {
-            get { return _iStatus; }
-            set
-            {
-                _iStatus = value;
-                base.NotifyPropertyChanged(propertyName: "iStatus");
-                base.NotifyPropertyChanged(propertyName: "lOrcamento_Itens");
-                base.NotifyPropertyChanged(propertyName: "lOrcamento_Item_Impostos");
-            }
-        }
+        }      
 
 
         #endregion
@@ -3086,53 +3072,54 @@ namespace HLP.Sales.Model.Models.Comercial
                     }
 
                     this._vDescontoTotal = dTotalVlrDescontos;
+                    this._pDescontoTotal = this._vDescontoTotal / (this._vProdutoTotal + (this._vServicoTotal ?? 0));
                     base.NotifyPropertyChanged(propertyName: "vDescontoTotal");
 
                     #endregion
 
-                    #region Cálculo de totais porc. Desconto
+                    //#region Cálculo de totais porc. Desconto
 
-                    decimal dTotalPorcDescontos = decimal.Zero;
+                    //decimal dTotalPorcDescontos = decimal.Zero;
 
-                    if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
-                    {
-                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
-                            .Where(i => i.stOrcamentoItem == 0)
-                            .Sum(i => i.pDesconto);
-                    }
+                    //if (objOrcamento_ide.bCriado || objOrcamento_ide.bTodos)
+                    //{
+                    //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                    //        .Where(i => i.stOrcamentoItem == 0)
+                    //        .Sum(i => i.pDesconto);
+                    //}
 
-                    if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
-                    {
-                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
-                            .Where(i => i.stOrcamentoItem == 1)
-                            .Sum(i => i.pDesconto);
-                    }
+                    //if (objOrcamento_ide.bEnviado || objOrcamento_ide.bTodos)
+                    //{
+                    //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                    //        .Where(i => i.stOrcamentoItem == 1)
+                    //        .Sum(i => i.pDesconto);
+                    //}
 
-                    if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
-                    {
-                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
-                            .Where(i => i.stOrcamentoItem == 2)
-                            .Sum(i => i.pDesconto);
-                    }
+                    //if (objOrcamento_ide.bConfirmado || objOrcamento_ide.bTodos)
+                    //{
+                    //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                    //        .Where(i => i.stOrcamentoItem == 2)
+                    //        .Sum(i => i.pDesconto);
+                    //}
 
-                    if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
-                    {
-                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
-                            .Where(i => i.stOrcamentoItem == 3)
-                            .Sum(i => i.pDesconto);
-                    }
+                    //if (objOrcamento_ide.bPerdido || objOrcamento_ide.bTodos)
+                    //{
+                    //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                    //        .Where(i => i.stOrcamentoItem == 3)
+                    //        .Sum(i => i.pDesconto);
+                    //}
 
-                    if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
-                    {
-                        dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
-                            .Where(i => i.stOrcamentoItem == 4)
-                            .Sum(i => i.pDesconto);
-                    }
+                    //if (objOrcamento_ide.bCancelado || objOrcamento_ide.bTodos)
+                    //{
+                    //    dTotalPorcDescontos += objOrcamento_ide.lOrcamento_Itens
+                    //        .Where(i => i.stOrcamentoItem == 4)
+                    //        .Sum(i => i.pDesconto);
+                    //}
 
-                    this._pDescontoTotal = dTotalPorcDescontos;
-                    base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
+                    //this._pDescontoTotal = dTotalPorcDescontos;
+                    //base.NotifyPropertyChanged(propertyName: "pDescontoTotal");
 
-                    #endregion
+                    //#endregion
 
                     #region Cálculo de Vlr Suframa
 

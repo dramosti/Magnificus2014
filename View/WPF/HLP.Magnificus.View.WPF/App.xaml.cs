@@ -116,6 +116,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
+               
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();
                 if (this.EmRedeLocal() != TipoConexao.OnlineRede)
