@@ -140,41 +140,5 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             //        this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vTotalItem);
             //}
         }
-
-        public void ItensOrcamentoFilter(object sender, FilterEventArgs e)
-        {
-            if (e.Item.GetType() == typeof(Orcamento_ItemModel))
-            {
-                Orcamento_ItemModel i = e.Item as Orcamento_ItemModel;
-
-                if (i != null)
-                {
-                    if (i.stOrcamentoItem == this.currentModel.iStatus || this.currentModel.iStatus == 5)
-                    {
-                        e.Accepted = true;
-                    }
-                    else
-                    {
-                        e.Accepted = false;
-                    }
-                }
-            }
-            else if (e.Item.GetType() == typeof(Orcamento_Item_ImpostosModel))
-            {
-                Orcamento_Item_ImpostosModel i = e.Item as Orcamento_Item_ImpostosModel;
-
-                if (i != null)
-                {
-                    if (i.stOrcamentoImpostos == this.currentModel.iStatus || this.currentModel.iStatus == 5)
-                    {
-                        e.Accepted = true;
-                    }
-                    else
-                    {
-                        e.Accepted = false;
-                    }
-                }
-            }
-        }
     }
 }

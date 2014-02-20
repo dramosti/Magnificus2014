@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Sales.Model.Repository.Interfaces;
@@ -52,6 +53,7 @@ namespace HLP.Wcf.Sales
         {
             try
             {
+
                 Log.AddLog(xLog: "Inicio Save");
                 this.orcamento_ideRepository.BeginTransaction();
                 this.orcamento_ideRepository.Save(objOrcamento_ide: objModel);
