@@ -1,35 +1,31 @@
-﻿<runtime:WindowsBase		
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
-	xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
-	x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinSetor"
-	x:Name="Window"
-	Title="Setor"
-	Width="640" Height="480" NameView="vwSetor">
+<runtime:WindowsBase  
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+ xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+ x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinSetor"
+ x:Name="Window"
+ Title="Setor"
+ Width="640" Height="480" NameView="vwSetor">
     <Grid>
-    <Expander Header="Setor" IsExpanded="True">
-        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-            <Components:HlpTextBox           
-			Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-			IsReadOnly="True"
-			Height="27" Margin="10,0,10,2" Caption="Código" Field="idSetor" Table="Setor" Help="Chave principal do registro Setor" WidthLabel="119" HorizontalAlignment="Left" Width="206"/>
-            <Components:HlpTextBox
-            
-			Text="{Binding currentModel.xSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
-			IsEnabled="{Binding bIsEnabled}"
-			Height="27" Margin="10,0,10,2" Caption="Código do Setor" Field="xSetor" Help="Informar um código para o Setor" Table="Setor" WidthLabel="119" HorizontalAlignment="Left" Width="206"/>
-            <Components:HlpTextBox
-            
-			Text="{Binding currentModel.xDescricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
-			IsEnabled="{Binding bIsEnabled}" 
-			Height="27" Margin="10,0,10,2" Caption="Descrição" Field="xDescrição" Help="Informar uma descrição mais detalhada do Setor da Empresa" Table="Setro" WidthLabel="119" HorizontalAlignment="Left" Width="420"/>
-            <Components:HlpTextBox
-            
-			Text="{Binding currentModel.xEmail, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
-			IsEnabled="{Binding bIsEnabled}"
-			Height="27" Margin="10,0,10,2" Caption="E-mail do Setor" Field="xEmail" Help="Informar um e-mail geral caso tenha do setor." Table="Setor" WidthLabel="119" HorizontalAlignment="Left" Width="420"/>
-        </WrapPanel>
-    </Expander>
-   </Grid>
+        <Expander Header="Setor" IsExpanded="True">
+            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Components:HlpTextBox           
+                    Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                    IsReadOnly="True"  Height="27" Margin="10,0,10,2" Caption="Codigo" Field="idSetor" Table="Setor" Help="Chave principal do registro Setor" WidthLabel="119" HorizontalAlignment="Left" Width="206"/>
+                <Components:HlpTextBox
+                    Text="{Binding currentModel.xSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
+                    IsEnabled="{Binding bIsEnabled}"
+                    Height="27" Margin="10,0,10,2" Caption="Codigo do Setor" Field="xSetor" Help="Informar um codigo para o Setor" Table="Setor" WidthLabel="119" HorizontalAlignment="Left" Width="206"/>
+                <Components:HlpTextBox
+                    Text="{Binding currentModel.xDescricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
+                    IsEnabled="{Binding bIsEnabled}" 
+                    Height="27" Margin="10,0,10,2" Caption="Descricao" Field="xDescricao" Help="Informar uma descricao mais detalhada do Setor da Empresa" Table="Setro" WidthLabel="119" HorizontalAlignment="Left" Width="420"/>
+                <Components:HlpTextBox
+                    Text="{Binding currentModel.xEmail, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
+                    IsEnabled="{Binding bIsEnabled}"
+                    Height="27" Margin="10,0,10,2" Caption="E-mail do Setor" Field="xEmail" Help="Informar um e-mail geral caso tenha do setor." Table="Setor" WidthLabel="119" HorizontalAlignment="Left" Width="420"/>
+            </WrapPanel>
+        </Expander>
+    </Grid>
 </runtime:WindowsBase>

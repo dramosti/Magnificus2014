@@ -24,7 +24,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
-                    paramCanExec => DeleteCanExecute());
+                    paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
@@ -113,18 +113,19 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void Delete()
         {
+            int iExcluir = 0;
+
             try
             {
-                int iExcluir = (int)this.objViewModel.currentModel.idFabricante;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteFabricante(idFabricante: (int)this.objViewModel.currentModel.idFabricante))
+                    if (this.servico.deleteFabricante((int)this.objViewModel.currentModel.idFabricante))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                        iExcluir = (int)this.objViewModel.currentModel.idFabricante;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -138,14 +139,14 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 throw ex;
             }
-        }
-
-        private bool DeleteCanExecute()
-        {
-            if (objViewModel.currentModel == null)
-                return false;
-
-            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
+            finally
+            {
+                if (this.objViewModel.currentModel == null)
+                {
+                    this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                    this.PesquisarRegistro();
+                }
+            }
         }
 
         private void Novo(object _panel)
@@ -197,7 +198,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            //this.objViewModel.currentModel = null;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

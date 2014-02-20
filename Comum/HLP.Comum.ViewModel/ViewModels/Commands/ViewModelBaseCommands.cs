@@ -39,15 +39,15 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(panel: pExec),
                 canExecute: pCanExec => this.novoBaseCanExecute());
             this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(panel: pExec),
-                canExecute: pCanExec => this.alterarBaseCanExecute());
+                canExecute: pCanExec => this.GenericCanExecute());
             this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved: pExec),
-                canExecute: pCanExec => this.delBaseCanExecute());
+                canExecute: pCanExec => this.GenericCanExecute());
             this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(panel: pExec),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-            this.objviewModel.copyBaseCommand = new RelayCommand(execute: pExec => this.copyBase(),
-                canExecute: pCanExec => this.copyBaseCanExecute());
+            this.objviewModel.copyBaseCommand = new RelayCommand(execute: pExec => this.GenericCanExecute(),
+                canExecute: pCanExec => this.GenericCanExecute());
             this.objviewModel.fecharCommand = new RelayCommand(execute: pExec => this.Fechar(wd: pExec),
                 canExecute: pCanExec => this.FecharCanExecute(wd: pCanExec));
 
@@ -87,6 +87,7 @@ namespace HLP.Comum.ViewModel.Commands
                 if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
                 {
                     objviewModel.navigatePesquisa = new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
+                    //MessageBox.Show(this.delBaseCanExecute().ToString());
                     objviewModel.navegarBaseCommand.Execute("Primeiro");
                     objviewModel.visibilityNavegacao = Visibility.Visible;
                     this.currentOp = OperacaoCadastro.pesquisando;
@@ -130,13 +131,14 @@ namespace HLP.Comum.ViewModel.Commands
                 {
                     try
                     {
-                        //objviewModel.currentID = 0;
-                        //if (objviewModel.navigatePesquisa.Count > 0)
-                        //{
-                        //    objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
-                        //}
+                        //int i =  objviewModel.currentID;
+
+                        if (objviewModel.navigatePesquisa.Count > 0)
+                        {
+                            objviewModel.iPositionCollection = objviewModel.navigatePesquisa.CurrentPosition;
+                            objviewModel.currentID = (int)objviewModel.navigatePesquisa.CurrentValue;
+                        }
                         objviewModel.sText = (objviewModel.navigatePesquisa.CurrentPosition + 1).ToString() + " de " + objviewModel.navigatePesquisa.Count.ToString();
-                        objviewModel.iPositionCollection = objviewModel.navigatePesquisa.CurrentPosition;
                     }
                     catch (Exception ex)
                     {
@@ -198,7 +200,7 @@ namespace HLP.Comum.ViewModel.Commands
             this.currentOp = Resources.RecursosBases.OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
-            //objviewModel.currentID = -1;
+            objviewModel.currentID = 0;
             objviewModel.SetFocusFirstTab(panel as Panel);
         }
 
@@ -207,7 +209,7 @@ namespace HLP.Comum.ViewModel.Commands
         private bool novoBaseCanExecute()
         {
             return (this.currentOp == Resources.RecursosBases.OperacaoCadastro.livre
-                || this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando);
+                || this.GenericCanExecute());
         }
 
         private void alterarBase(object panel)
@@ -217,15 +219,8 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.SetFocusFirstTab(panel as Panel);
         }
 
-        private bool alterarBaseCanExecute()
-        {
-            return this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando;
-        }
-
         private void delBase(object iRemoved)
         {
-
-            this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
             if (this.objviewModel.navigatePesquisa != null)
             {
                 if (iRemoved == null)
@@ -239,16 +234,18 @@ namespace HLP.Comum.ViewModel.Commands
                         objviewModel.navigatePesquisa.Remove((int)iRemoved);
                     }
 
-                    if (objviewModel.navigatePesquisa.Where(c => c > (int)iRemoved).Count() > 0)
-                        this.ExecAcao("Proximo");
+                    if (objviewModel.navigatePesquisa.Count() > 0)
+                    {
+                        this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
+                    }
                     else
-                        this.ExecAcao("Ultimo");
+                    {
+                        this.currentOp = Resources.RecursosBases.OperacaoCadastro.livre;
+                    }
+                    this.ExecAcao("");
+
                 }
             }
-        }
-        private bool delBaseCanExecute()
-        {
-            return this.currentOp == Resources.RecursosBases.OperacaoCadastro.pesquisando;
         }
 
         private void salvarBase(object panel)
@@ -280,9 +277,9 @@ namespace HLP.Comum.ViewModel.Commands
             else
             {
                 this.currentOp = Resources.RecursosBases.OperacaoCadastro.pesquisando;
-            }            
+            }
             this.objviewModel.bIsEnabled = false;
-            
+
         }
         private bool cancelarBaseCanExecute()
         {
@@ -290,13 +287,12 @@ namespace HLP.Comum.ViewModel.Commands
                 this.currentOp == Resources.RecursosBases.OperacaoCadastro.alterando);
         }
 
-        private void copyBase()
-        {
-        }
-        private bool copyBaseCanExecute()
+
+        private bool GenericCanExecute()
         {
             return this.currentOp == OperacaoCadastro.pesquisando;
         }
+
 
         #endregion
 

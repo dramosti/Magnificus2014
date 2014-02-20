@@ -25,7 +25,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
-                    paramCanExec => DeleteCanExecute());
+                    paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
@@ -165,14 +165,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
         }
 
-        private bool DeleteCanExecute()
-        {
-            if (objViewModel.currentModel == null)
-                return false;
-
-            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
-        }
-
+        
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Orcamento_ideModel();
@@ -222,6 +215,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void Cancelar()
         {
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

@@ -261,8 +261,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}" 
-								CommandParameter="{Binding winMan._currentTab._content}"
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"  CommandParameter="{Binding winMan._currentTab._content}"  
 								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
@@ -286,7 +285,8 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )" Focusable="False">
+                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" 
+                                    Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )" Focusable="False">
                                 <Button.Template>
                                     <ControlTemplate>
                                         <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -590,7 +590,7 @@
                                 <DataTemplate>
                                     <DockPanel Focusable="False" LastChildFill="True">
                                         <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-                                            <Button DockPanel.Dock="Bottom" Content="/\"
+                                            <Button Focusable="False" DockPanel.Dock="Bottom" Content="/\"
                                                     ContextMenuService.Placement="Top">
                                                 <Button.ContextMenu>
                                                     <ContextMenu>

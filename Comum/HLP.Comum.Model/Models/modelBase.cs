@@ -10,6 +10,7 @@ using HLP.Comum.Model.StaticModels;
 using HLP.Comum.Model.Components;
 using HLP.Comum.Infrastructure.Static;
 using System.Data.SqlTypes;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.Model.Models
 {
@@ -111,7 +112,18 @@ namespace HLP.Comum.Model.Models
         {
             get
             {
-                return this.GetValidationError(columnName: columnName, objeto: this);
+                object valor = this.GetType().GetProperty(columnName).GetValue(this);
+                string sMessage = string.Empty;
+                sMessage = this.GetValidationError(columnName: columnName, objeto: this);
+
+                if (sMessage == null)
+                    if (columnName.ToUpper().Contains("XEMAIL"))
+                        if (valor != null)
+                            if (valor != "")
+                                if (!(valor.ToString()).IsValidEmailAddress())
+                                    sMessage = "Email inválido.";
+
+                return sMessage;
             }
         }
 

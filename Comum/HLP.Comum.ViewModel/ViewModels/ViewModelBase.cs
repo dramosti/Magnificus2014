@@ -89,26 +89,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _visibilityNavegacao = value; this.NotifyPropertyChanged("visibilityNavegacao"); }
         }
 
-        //private int _currentID;
-        //public int currentID
-        //{
-        //    get { return _currentID; }
-        //    set
-        //    {
-        //        if (value == -1)
-        //        {
-        //            _currentID = 0;
-        //        }
-        //        else if ((value != _currentID) && (value != 0))
-        //        {
-        //            _currentID = value;
-        //        }
-
-        //    }
-        //}
-
         private int _currentID = 0;
-
         public int currentID
         {
             set
@@ -168,16 +149,11 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
         private string _NameView = string.Empty;
-
         public string NameView
         {
             get { return _NameView; }
             set { _NameView = value; }
         }
-
-
-
-
 
         #region NotifyPropertyChanged
 

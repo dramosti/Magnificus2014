@@ -3,7 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:Util="clr-namespace:HLP.Comum.Resources" 
                     xmlns:local="clr-namespace:HLP.Comum.Resources.Converter"
-                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">  
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
 
 
     <Style x:Key="{x:Type PasswordBox}"
@@ -510,7 +510,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Border.CornerRadius" Value="2"/>
         <Setter Property="BorderBrush" Value="#FFABABB8"/>
-        <Setter Property="Background" Value="#FFABABB8"/>            
+        <Setter Property="Background" Value="#FFABABB8"/>
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="Height" Value="19"/>
     </Style>
@@ -519,10 +519,10 @@
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Height" Value="19"/>
         <Setter Property="Background" Value="#FFABABB8"/>
-        <Setter Property="Foreground" Value="Black"/>       
-        <Style.Triggers>   
+        <Setter Property="Foreground" Value="Black"/>
+        <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#BBBBBB"/>                
+                <Setter Property="Background" Value="#BBBBBB"/>
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
@@ -1012,22 +1012,22 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
             </Grid.ColumnDefinitions>
-            <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">                
-                    <Border x:Name="dropDownBorder" BorderBrush="{StaticResource ComboBox.Static.Border}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
-                        <ScrollViewer x:Name="DropDownScrollViewer">
-                            <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                                <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                    <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
-                                </Canvas>
-                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Grid>
-                        </ScrollViewer>
-                    </Border>                
+            <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border x:Name="dropDownBorder" BorderBrush="{StaticResource ComboBox.Static.Border}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                    <ScrollViewer x:Name="DropDownScrollViewer">
+                        <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                            </Canvas>
+                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
             </Popup>
             <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}" Margin="1,-1,-1,1" Background="White"/>
             <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
         </Grid>
-        <ControlTemplate.Triggers>            
+        <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
@@ -1065,19 +1065,20 @@
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>            </Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
+            </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                
-                    <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
-                        <ScrollViewer x:Name="DropDownScrollViewer">
-                            <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                                <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                    <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
-                                </Canvas>
-                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Grid>
-                        </ScrollViewer>
-                    </Border>                
+
+                <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                    <ScrollViewer x:Name="DropDownScrollViewer">
+                        <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                            </Canvas>
+                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
             </Popup>
             <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
             <Border x:Name="border" Background="{StaticResource TextBox.Static.Background}" Margin="{TemplateBinding BorderThickness}">
@@ -1090,7 +1091,7 @@
             </Trigger>
             <Trigger Property="IsKeyboardFocusWithin" Value="true">
                 <Setter Property="Foreground" Value="Black"/>
-            </Trigger>            
+            </Trigger>
             <Trigger Property="HasItems" Value="false">
                 <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
@@ -1540,7 +1541,7 @@
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                        </Trigger>                        
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -1725,7 +1726,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>                
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Expander}">
@@ -1804,7 +1805,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>        
+        </Setter>
     </Style>
     <!--Estilo Expander Geral das telas-->
 
@@ -1878,13 +1879,13 @@
 
             <!-- MouseOver, Pressed behaviours-->
             <Trigger Property="IsMouseOver"
-                                 Value="true">                                   
+                                 Value="true">
                 <Setter Property="Stroke"
                                     Value="White"
                                     TargetName="Arrow"/>
             </Trigger>
             <Trigger Property="IsPressed"
-                                 Value="true">               
+                                 Value="true">
                 <Setter Property="Stroke"
                                     Value="{StaticResource ButtonBackgroundBlueDefault}"
                                     TargetName="Arrow"/>
@@ -1894,6 +1895,7 @@
     <ControlTemplate x:Key="RevealExpanderTemp" TargetType="{x:Type Expander}">
         <DockPanel>
             <ToggleButton x:Name="ExpanderButton" 
+                             Focusable="False"
                               DockPanel.Dock="Top"
                               Template="{StaticResource AnimatedExpanderButtonTemp}"
                               Content="{TemplateBinding Header}"
@@ -1942,7 +1944,7 @@
                     </BeginStoryboard>
                 </Trigger.ExitActions>
             </Trigger>
-        </ControlTemplate.Triggers>        
+        </ControlTemplate.Triggers>
     </ControlTemplate>
     <Style x:Key="DockSplliterStyle" TargetType="{x:Type Control}">
         <Setter Property="Template">
@@ -1955,5 +1957,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
+    </Style>
 </ResourceDictionary>
