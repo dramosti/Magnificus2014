@@ -175,10 +175,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Formularios\WinPesquisaPadrao.xaml">
-      <SubType>Designer</SubType>
+    <ApplicationDefinition Include="Formularios\WinPesquisaPadrao.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">

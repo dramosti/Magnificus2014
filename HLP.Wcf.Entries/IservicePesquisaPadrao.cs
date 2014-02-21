@@ -16,6 +16,6 @@ namespace HLP.Wcf.Entries
         HLP.Comum.Model.Components.PesquisaPadraoModelContract[] GetTableInformation(string sViewName);
 
         [OperationContract]
-        System.Data.DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true);
+        DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true);
     }
 }

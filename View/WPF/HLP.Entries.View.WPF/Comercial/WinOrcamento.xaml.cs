@@ -52,6 +52,7 @@ namespace HLP.Entries.View.WPF.Comercial
 
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)
         {
+            this.ViewModel.AtualizarTotais();
         }
     }
 }

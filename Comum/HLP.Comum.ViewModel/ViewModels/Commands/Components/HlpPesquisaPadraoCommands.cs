@@ -14,6 +14,8 @@ using HLP.Comum.Model.Repository.Interfaces.Components;
 //using HLP.Comum.ViewModel.HlpPesquisaPadraoService;
 using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
+using HLP.Comum.ViewModel.Services.Service;
+using Ninject;
 
 namespace HLP.Comum.ViewModel.Commands.Components
 {
@@ -22,16 +24,19 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
         private HlpPesquisaPadraoViewModel _objViewModel;
 
-        private HlpPesquisaPadraoService.IservicePesquisaPadraoClient servicoPesquisaPadrao;
+        public HlpPesqPadraoService service { get; set; }
 
         public HlpPesquisaPadraoCommands(HlpPesquisaPadraoViewModel objViewModel)
         {
+            service = new HlpPesqPadraoService();
             _objViewModel = objViewModel;
             CarregaInformationTable(_objViewModel.sView);
             _objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => WorkerPesquisa(paramExec),
                 canExecute: paramCanExec => CanPesquisar());
             _objViewModel.commandLimpar = new RelayCommand(execute: paramExec => ExecLimpar(),
                 canExecute: paramCanExec => true);
+
+            
         }
 
         void WorkerPesquisa(object gdvResult)
@@ -40,7 +45,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
             bw.DoWork += new DoWorkEventHandler(this.bw_DoWorkExecPesquisa);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
             bw.RunWorkerAsync(gdvResult);
-            
+
 
 
 
@@ -102,10 +107,9 @@ namespace HLP.Comum.ViewModel.Commands.Components
                         sql.Append(s + " ");
                     }
                 }
-                if (servicoPesquisaPadrao == null)
-                    servicoPesquisaPadrao = new HlpPesquisaPadraoService.IservicePesquisaPadraoClient();
 
-                DataSet retorno = servicoPesquisaPadrao.GetData(sql.ToString(), false, "", true);
+
+                DataSet retorno = service.GetData(sql.ToString(), false, "", true);
                 await Application.Current.Dispatcher.BeginInvoke(
                      DispatcherPriority.Background, new Action(() => this._objViewModel.Result = retorno.Tables[0]));
 
@@ -165,18 +169,16 @@ namespace HLP.Comum.ViewModel.Commands.Components
         {
             try
             {
-                if (servicoPesquisaPadrao == null)
-                    servicoPesquisaPadrao = new HlpPesquisaPadraoService.IservicePesquisaPadraoClient();
 
-                HlpPesquisaPadraoService.PesquisaPadraoModelContract[] lResult = servicoPesquisaPadrao.GetTableInformation(sViewName: e.Argument.ToString());
+                //HlpPesquisaPadraoService.PesquisaPadraoModelContract[] lResult = servicoPesquisaPadrao.GetTableInformation(sViewName: e.Argument.ToString());
 
-                e.Result = (from c in lResult
-                            select new PesquisaPadraoModel
-                            {
-                                DATA_TYPE = c.DATA_TYPE,
-                                COLUMN_NAME = c.COLUMN_NAME
-                            }).ToList<PesquisaPadraoModel>();
-
+                //e.Result = (from c in lResult
+                //            select new PesquisaPadraoModel
+                //            {
+                //                DATA_TYPE = c.DATA_TYPE,
+                //                COLUMN_NAME = c.COLUMN_NAME
+                //            }).ToList<PesquisaPadraoModel>();
+                e.Result = service.GetTableInformation(sViewName: e.Argument.ToString());
             }
             catch (Exception ex)
             {
