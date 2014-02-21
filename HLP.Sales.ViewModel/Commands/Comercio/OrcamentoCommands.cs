@@ -1,4 +1,6 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.Util;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using System;
@@ -17,7 +19,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         OrcamentoViewModel objViewModel;
         sales_OrcamentoService.IserviceSales_OrcamentoClient servico = new sales_OrcamentoService.IserviceSales_OrcamentoClient();
         BackgroundWorker bWorkerAcoes;
-
+        Window wd = null;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
@@ -47,6 +49,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            this.objViewModel.aprovarDescontosCommand = new RelayCommand(execute: paramExec => this.AprovarDescontosExecute(),
+                canExecute: paramCanExec => this.AprovarDescontosCanExecute());
         }
 
         #region Implementação Commands
@@ -317,6 +322,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             else
             {
                 this.IniciaCollection();
+
                 if (this.objViewModel.currentModel != null)
                 {
                     foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
@@ -352,7 +358,48 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         #region Implementação Commands de Funcionalidades
 
+        private void AprovarDescontosExecute()
+        {
 
+        }
+
+        private bool AprovarDescontosCanExecute()
+        {
+
+
+            if (this.objViewModel.bIsEnabled)
+            {
+                wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
+                if (wd != null)
+                {
+                    DataGrid dg = wd.FindName(name: "dgItens") as DataGrid;
+
+
+                    DataGridRow row = null;
+                    DataGridColumn column = dg.Columns.FirstOrDefault(i => i.Header.ToString() == "% Desc"); ;
+                    object o;
+
+                    if (dg.ItemsSource != null)
+                    {
+                        foreach (var item in dg.ItemsSource)
+                        {
+                            row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                            if (row != null)
+                            {
+                                o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
+
+                                if (o.GetType().Name.ToString() == "TextBlock")
+                                {
+                                    if (Validation.GetHasError(o as TextBlock))
+                                        return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
 
         #endregion
     }

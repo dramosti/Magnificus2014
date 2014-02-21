@@ -47,6 +47,16 @@ namespace HLP.Comum.Model.Repository.Implementation
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
         }
 
+        public int ValidaAdmnistrador(string xID, string xSenha)
+        {
+            DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                              (
+                              string.Format("SELECT COUNT(*) FROM FUNCIONARIO WHERE xid = '{0}' and xSenha = '{1}'", xID, xSenha)
+                              );
+
+            return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
+        }
+
         public int ValidaAcesso(string xId, int idEmpresa)
         {
             DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand

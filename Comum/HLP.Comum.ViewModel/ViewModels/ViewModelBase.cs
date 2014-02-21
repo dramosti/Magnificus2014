@@ -44,6 +44,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             this.bIsEnabled = false;
 
             viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
+            this.Botoes = new StackPanel();
         }
         public ViewModelBaseCommands<T> viewModelBaseCommands;
         BackgroundWorker bwFocus = new BackgroundWorker();
@@ -246,17 +247,17 @@ namespace HLP.Comum.ViewModel.ViewModels
                                     return true;
                             }
                             else if (o.GetType().Name.ToString() == "ContentPresenter")
-                            {                                
+                            {
 
                                 for (int cont = 0; cont < VisualTreeHelper.GetChildrenCount(reference: (o as ContentPresenter)); cont++)
                                 {
                                     object child = VisualTreeHelper.GetChild(o as ContentPresenter, cont);
 
-                                    if(child.GetType().Name.ToString() == "TextBlock")
+                                    if (child.GetType().Name.ToString() == "TextBlock")
                                         if (Validation.GetHasError(child as TextBlock))
-                                        return true;
-                                }                               
-                                    
+                                            return true;
+                                }
+
                             }
                         }
                     }

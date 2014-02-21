@@ -25,12 +25,17 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
+        public ICommand aprovarDescontosCommand { get; set; }
         #endregion
 
         public OrcamentoViewModel()
         {
             OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
-            this.Botoes = new StackPanel();
+            Button btnAprovarDescontos = new Button();
+            btnAprovarDescontos.Content = "Aprovar descontos?";
+            btnAprovarDescontos.Command = this.aprovarDescontosCommand;
+
+            this.Botoes.Children.Add(element: btnAprovarDescontos);
         }
 
         public bool bListaPrecoHabilitado

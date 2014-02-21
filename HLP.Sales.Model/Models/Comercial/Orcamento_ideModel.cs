@@ -1136,7 +1136,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
 
 
-        //public int codItem { get; set; }
+        public bool bPermitePorcentagem { get; set; }
 
         private ObservableCollection<HLP.Comum.Facade.FillComboBoxService.modelToComboBox> _lUnMedida;
 
@@ -4439,22 +4439,25 @@ namespace HLP.Sales.Model.Models.Comercial
                 {
                     if (columnName == "pDesconto")
                     {
-                        if (OrcamentoFacade.objCadastros.objListaPreco.lLista_preco != null)
+                        if (!bPermitePorcentagem)
                         {
-                            HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel objListaPrecoItem
-                                    = OrcamentoFacade.objCadastros.objListaPreco.lLista_preco.
-                                    FirstOrDefault(i => i.idProduto == this.idProduto);
-                            if (objListaPrecoItem != null)
+                            if (OrcamentoFacade.objCadastros.objListaPreco.lLista_preco != null)
                             {
-                                if (this.pDesconto < 0)
+                                HLP.Comum.Facade.Lista_PrecoService.Lista_precoModel objListaPrecoItem
+                                        = OrcamentoFacade.objCadastros.objListaPreco.lLista_preco.
+                                        FirstOrDefault(i => i.idProduto == this.idProduto);
+                                if (objListaPrecoItem != null)
                                 {
-                                    if (this.pDesconto > objListaPrecoItem.pDescontoMaximo)
-                                        valid = "% de desconto informada maior que a permitida('" + objListaPrecoItem.pDescontoMaximo + "')";
-                                }
-                                else
-                                {
-                                    if (this.pDesconto > objListaPrecoItem.pAcrescimoMaximo)
-                                        valid = "% de acréscimo informada maior que a permitida('" + objListaPrecoItem.pAcrescimoMaximo + "')";
+                                    if (this.pDesconto < 0)
+                                    {
+                                        if (this.pDesconto > objListaPrecoItem.pDescontoMaximo)
+                                            valid = "% de desconto informada maior que a permitida('" + objListaPrecoItem.pDescontoMaximo + "')";
+                                    }
+                                    else
+                                    {
+                                        if (this.pDesconto > objListaPrecoItem.pAcrescimoMaximo)
+                                            valid = "% de acréscimo informada maior que a permitida('" + objListaPrecoItem.pAcrescimoMaximo + "')";
+                                    }
                                 }
                             }
                         }
