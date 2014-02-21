@@ -123,6 +123,9 @@
     <Compile Include="Converters\PorcentagemConverter.cs" />
     <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
+    <Compile Include="Formularios\wdSenhaSupervisor.xaml.cs">
+      <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
       <DependentUpon>WinPesquisaPadrao.xaml</DependentUpon>
@@ -175,10 +178,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <ApplicationDefinition Include="Formularios\WinPesquisaPadrao.xaml">
+    <Page Include="Formularios\wdSenhaSupervisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Formularios\WinPesquisaPadrao.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">

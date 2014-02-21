@@ -52,6 +52,20 @@ namespace HLP.Wcf.Entries
             }
         }
 
+        public int ValidaAdministrador(string xID, string xSenha, int idEmpresa)
+        {
+            try
+            {
+                return loginRepository.ValidaAdministrador(xID: xID, xSenha:
+                    HLP.Comum.Infrastructure.Static.Criptografia.Encripta(xSenha), idEmpresa: idEmpresa);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        }
+
         public int ValidaAcesso(int idEmpresa, string xId)
         {
             try
@@ -77,6 +91,6 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-        }        
+        }
     }
 }

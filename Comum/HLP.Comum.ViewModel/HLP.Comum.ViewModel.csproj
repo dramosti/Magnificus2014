@@ -82,6 +82,7 @@
     <Compile Include="ViewModels\Commands\LoginCommands.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Commands\MainCommands.cs" />
+    <Compile Include="ViewModels\Commands\SenhaSupervisorCommands.cs" />
     <Compile Include="ViewModels\Commands\ViewModelBaseCommands.cs" />
     <Compile Include="Service References\empresaService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -109,6 +110,7 @@
     <Compile Include="ViewModels\FindAllViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SenhaSupervisorViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>

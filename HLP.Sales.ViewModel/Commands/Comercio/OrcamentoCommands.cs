@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Resources.Util;
+using HLP.Comum.View.Formularios;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
@@ -360,12 +361,19 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private void AprovarDescontosExecute()
         {
-
+            wdSenhaSupervisor wdSenhaSupervisor = new wdSenhaSupervisor();
+            if (wdSenhaSupervisor.ShowDialog() == true)
+            {
+                foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens)
+                {
+                    item.bPermitePorcentagem = true;
+                    item.pDesconto = item.pDesconto;
+                }
+            }
         }
 
         private bool AprovarDescontosCanExecute()
         {
-
 
             if (this.objViewModel.bIsEnabled)
             {
