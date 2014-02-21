@@ -24,7 +24,9 @@
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             <TextBlock Text="Senha" 
                            Margin="4, 2, 0, 0"
-                           Foreground="Gray" 
+                           Foreground="Gray"
+                           FontWeight="SemiBold"
+                           FontFamily="Calibri"
                            Opacity="0.8"
                            FontStyle="Italic"            
                            Visibility="Collapsed"
