@@ -26,6 +26,8 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         public ICommand aprovarDescontosCommand { get; set; }
+        public ICommand alterarStatusItenCommand { get; set; }
+
         #endregion
 
         public OrcamentoViewModel()
@@ -41,6 +43,8 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
 
             Button btnConfirmarItens = new Button();
             btnConfirmarItens.Content = "Confirmar Itens";
+            btnConfirmarItens.Command = this.alterarStatusItenCommand;
+            btnConfirmarItens.CommandParameter = 'c';
 
             Button btnItensPerdidos = new Button();
             btnItensPerdidos.Content = "Definir Itens Perdidos";

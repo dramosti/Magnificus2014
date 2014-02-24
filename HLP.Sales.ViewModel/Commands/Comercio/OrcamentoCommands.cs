@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Modules;
 using HLP.Comum.Resources.Util;
 using HLP.Comum.View.Formularios;
 using HLP.Comum.ViewModel.Commands;
@@ -53,6 +54,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.aprovarDescontosCommand = new RelayCommand(execute: paramExec => this.AprovarDescontosExecute(),
                 canExecute: paramCanExec => this.AprovarDescontosCanExecute());
+
+            this.objViewModel.alterarStatusItenCommand = new RelayCommand(execute: paramExec => this.AlterarStatusExecute(o: paramExec),
+                canExecute: paramCanExec => this.AlterarStatusCanExecute());
         }
 
         #region Implementação Commands
@@ -358,6 +362,36 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         #endregion
 
         #region Implementação Commands de Funcionalidades
+
+        private void AlterarStatusExecute(object o)
+        {
+            Window form = GerenciadorModulo.Instancia.CarregaForm(nome: "StatusItensOrcamento",
+                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+
+            if (((char)o) == 'c')
+            {
+                (form.DataContext as OrcamentoConfirmarViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
+
+                foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
+                    i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
+                {
+                    (form.DataContext as OrcamentoConfirmarViewModel).lOrcamento_Itens.Add(
+                        item: new TrocaStatus_Orcamento_Itens
+                        {
+                            codItem = (int)item.nItem,
+                            codProduto = item.idProduto,
+                            dataPrevEntrega = item.dConfirmacaoItem,
+                            quantEnvPend = item.qProduto
+                        });
+                }
+            }
+            form.ShowDialog();
+        }
+
+        private bool AlterarStatusCanExecute()
+        {
+            return true;
+        }
 
         private void AprovarDescontosExecute()
         {
