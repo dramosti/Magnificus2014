@@ -31,11 +31,28 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public OrcamentoViewModel()
         {
             OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
+
             Button btnAprovarDescontos = new Button();
             btnAprovarDescontos.Content = "Aprovar descontos?";
             btnAprovarDescontos.Command = this.aprovarDescontosCommand;
 
+            Button btnEnviarItens = new Button();
+            btnEnviarItens.Content = "Enviar Itens";
+
+            Button btnConfirmarItens = new Button();
+            btnConfirmarItens.Content = "Confirmar Itens";
+
+            Button btnItensPerdidos = new Button();
+            btnItensPerdidos.Content = "Definir Itens Perdidos";
+
+            Button btnItensCancelados = new Button();
+            btnItensCancelados.Content = "Definir Itens Cancelados";
+
             this.Botoes.Children.Add(element: btnAprovarDescontos);
+            this.Botoes.Children.Add(element: btnEnviarItens);
+            this.Botoes.Children.Add(element: btnConfirmarItens);
+            this.Botoes.Children.Add(element: btnItensPerdidos);
+            this.Botoes.Children.Add(element: btnItensCancelados);
         }
 
         public bool bListaPrecoHabilitado
