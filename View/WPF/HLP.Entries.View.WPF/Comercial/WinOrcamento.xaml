@@ -9,7 +9,7 @@
         xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
         x:Class="HLP.Entries.View.WPF.Comercial.WinOrcamento"        
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
-        Title="WinOrcamento" Height="660" Width="1024" NameView="vwOrcamento"
+        Title="Orçamento" Height="660" Width="1024" NameView="vwOrcamento"
     >
     <runtime:WindowsBase.Resources>
         <CollectionViewSource 

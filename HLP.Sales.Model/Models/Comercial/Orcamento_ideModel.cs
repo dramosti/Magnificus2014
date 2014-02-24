@@ -254,7 +254,8 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _bTodos = this._bCriado = this._bEnviado = this._bConfirmado = this._bPerdido = this._bCancelado = value;
                 this.FiltrarItems();
-                this.orcamento_Total_Impostos.CalcularTotais();
+                if (orcamento_Total_Impostos != null)
+                    this.orcamento_Total_Impostos.CalcularTotais();
                 this.NotifyPropertyChanged(propertyName: "bCriado");
                 this.NotifyPropertyChanged(propertyName: "bEnviado");
                 this.NotifyPropertyChanged(propertyName: "bConfirmado");

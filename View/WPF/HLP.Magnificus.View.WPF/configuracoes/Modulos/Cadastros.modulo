@@ -171,4 +171,7 @@
   <object id="WinTipoProduto" name="Tipo_de_Produto" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Comercial.WinTipoProduto, HLP.Entries.View.WPF">
   </object>
+  <object id="StatusItensOrcamento" name="Status_Itens_Orçamento" singleton="false" scope="request"
+      type="HLP.Sales.View.WPF.Comercial.StatusItensOrcamento, HLP.Sales.View.WPF">
+  </object>
 </objects>

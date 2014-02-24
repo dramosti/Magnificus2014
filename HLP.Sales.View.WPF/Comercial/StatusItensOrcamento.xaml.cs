@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Sales.ViewModel.ViewModel.Comercio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,19 @@ namespace HLP.Sales.View.WPF.Comercial
         public StatusItensOrcamento()
         {
             InitializeComponent();
+            this.ViewModel = new OrcamentoConfirmarViewModel();
+        }
+
+        public OrcamentoConfirmarViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as OrcamentoConfirmarViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
         }
     }
 }
