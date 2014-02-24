@@ -91,7 +91,7 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
-        void lOrcamento_Itens_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public void lOrcamento_Itens_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
@@ -1082,7 +1082,7 @@ namespace HLP.Sales.Model.Models.Comercial
         }
     }
 
-    public partial class Orcamento_ItemModel : modelBase
+    public partial class Orcamento_ItemModel : modelBase, ICloneable
     {
         public Orcamento_ItemModel()
             : base(xTabela: "Orcamento_Item")
@@ -1995,9 +1995,17 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "nItem");
             }
         }
+
+        public object Clone()
+        {
+            Orcamento_ItemModel objItem = (Orcamento_ItemModel)this.MemberwiseClone();
+            objItem.objImposto = this.objImposto.Clone() as Orcamento_Item_ImpostosModel;
+
+            return objItem;
+        }
     }
 
-    public partial class Orcamento_Item_ImpostosModel : modelBase
+    public partial class Orcamento_Item_ImpostosModel : modelBase, ICloneable
     {
         public void CalculaBaseIpi()
         {
@@ -2915,6 +2923,11 @@ namespace HLP.Sales.Model.Models.Comercial
                 _nItem = value;
                 base.NotifyPropertyChanged(propertyName: "nItem");
             }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 

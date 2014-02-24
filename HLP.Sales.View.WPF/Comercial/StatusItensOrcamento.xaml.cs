@@ -23,14 +23,14 @@ namespace HLP.Sales.View.WPF.Comercial
         public StatusItensOrcamento()
         {
             InitializeComponent();
-            this.ViewModel = new OrcamentoConfirmarViewModel();
+            this.ViewModel = new OrcamentoTrocarStatusViewModel();
         }
 
-        public OrcamentoConfirmarViewModel ViewModel
+        public OrcamentoTrocarStatusViewModel ViewModel
         {
             get
             {
-                return this.DataContext as OrcamentoConfirmarViewModel;
+                return this.DataContext as OrcamentoTrocarStatusViewModel;
             }
             set
             {

@@ -341,6 +341,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         }
                     }
                 }
+                this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
             }
         }
 
@@ -367,15 +368,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             Window form = GerenciadorModulo.Instancia.CarregaForm(nome: "StatusItensOrcamento",
                 exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+            byte novoStatus = 0;
 
             if (((char)o) == 'c')
             {
-                (form.DataContext as OrcamentoConfirmarViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
+                (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
 
                 foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
                     i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
                 {
-                    (form.DataContext as OrcamentoConfirmarViewModel).lOrcamento_Itens.Add(
+                    (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens.Add(
                         item: new TrocaStatus_Orcamento_Itens
                         {
                             codItem = (int)item.nItem,
@@ -384,8 +386,30 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             quantEnvPend = item.qProduto
                         });
                 }
+                novoStatus = 2;
             }
-            form.ShowDialog();
+
+            if (form.ShowDialog() == true)
+            {
+                foreach (var item in ((form.DataContext) as OrcamentoTrocarStatusViewModel).lOrcamento_Itens)
+                {
+                    if (item.quantItens == item.quantEnvPend)
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoItem = novoStatus;
+                    else if (item.quantItens > 0)
+                    {
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto = (item.quantEnvPend - item.quantItens);
+                        this.objViewModel.currentModel.lOrcamento_Itens.Add(item:
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).Clone() as Orcamento_ItemModel);
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().qProduto = item.quantItens;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().stOrcamentoItem = novoStatus;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = Comum.Resources.RecursosBases.statusModel.criado;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().idOrcamentoItem = null;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;                        
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
+                    }
+                }
+            }
         }
 
         private bool AlterarStatusCanExecute()

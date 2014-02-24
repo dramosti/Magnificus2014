@@ -1,6 +1,7 @@
 ﻿<Window x:Class="HLP.Sales.View.WPF.Comercial.StatusItensOrcamento"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Name="wd"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
@@ -17,7 +18,9 @@
     <DockPanel LastChildFill="True">
         <StackPanel Height="50" VerticalAlignment="Center" DockPanel.Dock="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Height="30" Content="Cancelar"></Button>
-            <Button Height="30" Content="Confirmar"></Button>
+            <Button Height="30" Content="Confirmar" 
+                    Command="{Binding confirmarCommand}"
+                    CommandParameter="{Binding ElementName=wd}"></Button>
         </StackPanel>
         <DataGrid ItemsSource="{Binding lOrcamento_Itens}"
                   AutoGenerateColumns="False">

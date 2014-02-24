@@ -46,13 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Comercio\OrcamentoCommands.cs" />
+    <Compile Include="Commands\Comercio\OrcamentoTrocarStatusCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\sales_OrcamentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Comercio\OrcamentoConfirmarViewModel.cs" />
+    <Compile Include="ViewModel\Comercio\OrcamentoTrocarStatusViewModel.cs" />
     <Compile Include="ViewModel\Comercio\OrcamentoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
