@@ -50,6 +50,50 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="PasswordBoxSupervisor"
+    	TargetType="{x:Type PasswordBox}">
+        <Setter Property="Util:PasswordBoxMonitor.IsMonitoring"
+              Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Name="Bd"
+                    CornerRadius="5"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="Black"
+                    SnapsToDevicePixels="true">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Senha" 
+                           Margin="4, 2, 0, 0"
+                           Foreground="Black"
+                           FontWeight="SemiBold"
+                           FontFamily="Calibri"
+                           Opacity="0.8"
+                           FontStyle="Italic"            
+                           Visibility="Collapsed"
+                           Name="txtPrompt"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+    									 Value="false">
+                            <Setter TargetName="Bd"
+    										Property="Background"
+    										Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                            <Setter Property="Foreground"
+    										Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="Util:PasswordBoxMonitor.PasswordLength" Value="0">
+                            <Setter Property="Visibility" TargetName="txtPrompt" Value="Visible"/>
+                        </Trigger>                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <!--<Style TargetType="{x:Type ComboBox}">
         <EventSetter Event="SelectionChanged" Handler="Util:ComumEvents.ComboBox_SelectionChanged"/>
     </Style>-->

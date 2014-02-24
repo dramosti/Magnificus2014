@@ -239,7 +239,7 @@
     <EmbeddedResource Include="Icones\WinOrcamento.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Icones\WinFabricante.png">
+    <EmbeddedResource Include="Icones\WinEmpresa.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Icones\WinCondicaoPagamento.png">
@@ -264,6 +264,28 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Icones\WinCliente.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Resource Include="Icones\Cancelar_MouseOver.png" />
+    <Resource Include="Icones\Cancelar_Preto.png" />
+    <Resource Include="Icones\Confirmar_MouseOver.png" />
+    <Resource Include="Icones\Confirmar_Preto.png" />
+    <EmbeddedResource Include="Icones\WinListaPreco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icones\WinFabricante.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icones\WinUnidadeMedida.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icones\WinRamoAtividade.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icones\WinTipoProduto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icones\WinTipoServico.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <Content Include="Images\Folder.png">

@@ -5,30 +5,120 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             x:Name="wdSenha"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400" WindowStartupLocation="CenterScreen">
+             d:DesignHeight="200" d:DesignWidth="275" Height="200" Width="275" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+    <Window.Resources>
+
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate1" TargetType="{x:Type TextBoxBase}">
+            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="#FF4774B5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid x:Name="GridPrincipal">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="55*"></ColumnDefinition>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="51*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="23*"></ColumnDefinition>
+            <ColumnDefinition Width="56*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="51"></RowDefinition>
+            <RowDefinition Height="31*"></RowDefinition>
+            <RowDefinition Height="8"></RowDefinition>
+            <RowDefinition Height="28*"></RowDefinition>
+            <RowDefinition Height="31"></RowDefinition>
+            <RowDefinition Height="36*"></RowDefinition>
             <RowDefinition Height="15"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="15"></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="1" Content="Login" HorizontalAlignment="Right"></Label>
-        <Label Grid.Column="0" Grid.Row="3" Content="Senha" HorizontalAlignment="Right"></Label>
-        <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"
-                 Text="{Binding currentModel.xId, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <PasswordBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"></PasswordBox>
-        <Button Grid.Column="2" Grid.Row="5" Content="Confirmar" Command="{Binding autorizarCommand}" CommandParameter="{Binding ElementName=wdSenha}"></Button>
-        <Button Grid.Column="3" Grid.Row="5" Content="Cancelar"></Button>
-        <Label Grid.Column="1" Grid.Row="4" Content="{Binding error, Mode=TwoWay}"></Label>
+        <Rectangle Grid.RowSpan="10" Grid.ColumnSpan="10" RadiusY="17" RadiusX="17" Stroke="Black" StrokeThickness="1.">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF44C3FF" Offset="0.5"/>
+                    <GradientStop Color="#FF2756D4" Offset="0.996"/>
+                    <GradientStop Color="#FF2756D4"/>
+                    <GradientStop Color="#FF44A1FF" Offset="0.234"/>
+                    <GradientStop Color="#FF4488FF" Offset="0.75"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="5">
+            <Grid.Resources>
+                <VisualBrush x:Key="LoginHint" Stretch="None" AlignmentX="Left" AlignmentY="Center" >
+                    <VisualBrush.Visual>
+                        <Grid>
+                            <TextBlock FontFamily="Calibri" FontSize="12" FontWeight="SemiBold" Foreground="Black" FontStyle="Italic" Opacity="1" Text="Usuário"/>
+                        </Grid>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="waterMarkTextBox" Width="159" Height="28" Grid.Column="1" Template="{StaticResource TextBoxBaseControlTemplate1}"
+        VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="Black">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=waterMarkTextBox,Path=Text}" Value="" >
+                                <Setter Property="Background" Value="{StaticResource LoginHint}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </Grid>
+        <PasswordBox Grid.Column="1" Grid.Row="3" Background="Transparent" Style="{StaticResource PasswordBoxSupervisor}" Grid.ColumnSpan="5"/>
+        <Button Grid.Column="2" Grid.Row="5">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Confirmar_Preto.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Confirmar_MouseOver.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="0,0,19,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancelar_Preto.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancelar_MouseOver.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Label Grid.Column="2" Grid.Row="4" Content="{Binding error, Mode=TwoWay}" Margin="0,0,0,1"/>
     </Grid>
 
 </Window>
