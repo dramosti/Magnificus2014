@@ -16,7 +16,8 @@
         </ObjectDataProvider>
     </Window.Resources>
     <Grid>
-        <Rectangle Fill="#FF4774B5" Stroke="Black" StrokeThickness="1.3" RadiusY="20" RadiusX="20" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown"></Rectangle>
+        <Rectangle Stroke="Black" Fill="{StaticResource FillRectangle}" StrokeThickness="1.3" RadiusY="20" RadiusX="20" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown">            
+        </Rectangle>
         <DockPanel LastChildFill="True" Height="380" Width="930">
             <DockPanel Height="50" DockPanel.Dock="Bottom" LastChildFill="True">
                 <DockPanel Height="50" Width="834"/>
