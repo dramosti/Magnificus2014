@@ -223,7 +223,10 @@ namespace HLP.Comum.ViewModel.ViewModels
                         return false;
                     foreach (DataGridColumn c in obj.Columns)
                     {
-                        o = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex).Content;
+                        DataGridCell _cell = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex);
+                        if (_cell == null)
+                            return false;
+                        o = _cell.Content;
                         if (o != null)
                         {
                             if (o.GetType() == typeof(System.Windows.Controls.TextBlock))

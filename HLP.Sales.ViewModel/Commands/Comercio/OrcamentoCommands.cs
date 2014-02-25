@@ -340,8 +340,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             item.objImposto.vTotalItem = item.vTotalItem;
                         }
                     }
+                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                        this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
                 }
-                this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
             }
         }
 
@@ -372,15 +373,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             if (((char)o) == 'c')
             {
-                novoStatus = 2;
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 2;
             }
             else if (((char)o) == 'p')
             {
-                novoStatus = 4;
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 4;
+
             }
             else if (((char)o) == 'e')
             {
-                novoStatus = 5;
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 5;
             }
 
             (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
@@ -428,7 +430,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private bool AlterarStatusCanExecute()
         {
-            return true;
+            if (!this.objViewModel.bIsEnabled)
+                return false;
+
+            if (this.objViewModel.currentModel != null)
+                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                    if (this.objViewModel.currentModel.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 0 ||
+                        i.stOrcamentoItem == 1) > 0)
+                        return true;
+
+            return false;
         }
 
         private void AprovarDescontosExecute()

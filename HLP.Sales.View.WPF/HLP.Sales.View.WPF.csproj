@@ -57,11 +57,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Util\BindingProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comercial\StatusItensOrcamento.xaml.cs">
       <DependentUpon>StatusItensOrcamento.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StatusItensOrcamentoVisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
