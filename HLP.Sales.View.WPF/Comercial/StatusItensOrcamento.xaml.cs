@@ -37,5 +37,10 @@ namespace HLP.Sales.View.WPF.Comercial
                 this.DataContext = value;
             }
         }
+
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
