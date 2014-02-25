@@ -372,21 +372,30 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             if (((char)o) == 'c')
             {
-                (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
-
-                foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
-                    i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
-                {
-                    (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens.Add(
-                        item: new TrocaStatus_Orcamento_Itens
-                        {
-                            codItem = (int)item.nItem,
-                            codProduto = item.idProduto,
-                            dataPrevEntrega = item.dConfirmacaoItem,
-                            quantEnvPend = item.qProduto
-                        });
-                }
                 novoStatus = 2;
+            }
+            else if (((char)o) == 'p')
+            {
+                novoStatus = 4;
+            }
+            else if (((char)o) == 'e')
+            {
+                novoStatus = 5;
+            }
+
+            (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
+
+            foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
+                i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
+            {
+                (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens.Add(
+                    item: new TrocaStatus_Orcamento_Itens
+                    {
+                        codItem = (int)item.nItem,
+                        codProduto = item.idProduto,
+                        dataPrevEntrega = item.dConfirmacaoItem,
+                        quantEnvPend = item.qProduto
+                    });
             }
 
             if (form.ShowDialog() == true)
@@ -403,10 +412,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().qProduto = item.quantItens;
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().stOrcamentoItem = novoStatus;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = Comum.Resources.RecursosBases.statusModel.criado;
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().idOrcamentoItem = null;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;                        
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto =
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.Clone() as Orcamento_Item_ImpostosModel;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.stOrcamentoImpostos = novoStatus;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.status
+                            = Comum.Resources.RecursosBases.statusModel.criado;
+                        this.objViewModel.currentModel.lOrcamento_Item_Impostos.Add(item: this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto);
                     }
                 }
             }
