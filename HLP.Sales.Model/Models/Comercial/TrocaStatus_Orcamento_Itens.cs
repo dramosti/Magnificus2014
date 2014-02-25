@@ -1,6 +1,7 @@
 ﻿using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +57,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "dataPrevEntrega");
             }
         }
-        
+
         private decimal _quantItens; //Essa propriedade será de acordo com a operação de mudança de status, podendo ser de quant. itens confirmados/perdidos/cancelados
 
         public decimal quantItens
@@ -93,6 +94,18 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
+        private int _idMotivoPercaCanc;
+
+        public int idMotivoPercaCanc
+        {
+            get { return _idMotivoPercaCanc; }
+            set
+            {
+                _idMotivoPercaCanc = value;
+                base.NotifyPropertyChanged(propertyName: "idMotivoPercaCanc");
+            }
+        }
+
         private string _xObservacao;
 
         public string xObservacao
@@ -102,6 +115,22 @@ namespace HLP.Sales.Model.Models.Comercial
             {
                 _xObservacao = value;
                 base.NotifyPropertyChanged(propertyName: "xObservacao");
+            }
+        }
+    }
+
+    public partial class TrocaStatus_Orcamento_Itens : IDataErrorInfo
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                if (columnName == "quantItens")
+                {
+                    if (this.quantItens > this.quantEnvPend)
+                        return "Número de itens não pode ultrapassar quantidade de itens Enviados/Pendentes";
+                }
+                return null;
             }
         }
     }

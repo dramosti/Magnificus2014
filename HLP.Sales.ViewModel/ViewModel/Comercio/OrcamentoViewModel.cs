@@ -48,9 +48,13 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
 
             Button btnItensPerdidos = new Button();
             btnItensPerdidos.Content = "Definir Itens Perdidos";
+            btnItensPerdidos.Command = this.alterarStatusItenCommand;
+            btnItensPerdidos.CommandParameter = 'p';
 
             Button btnItensCancelados = new Button();
             btnItensCancelados.Content = "Definir Itens Cancelados";
+            btnItensCancelados.Command = this.alterarStatusItenCommand;
+            btnItensCancelados.CommandParameter = 'e';
 
             this.Botoes.Children.Add(element: btnAprovarDescontos);
             this.Botoes.Children.Add(element: btnEnviarItens);

@@ -340,8 +340,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             item.objImposto.vTotalItem = item.vTotalItem;
                         }
                     }
+                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                        this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
                 }
-                this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
             }
         }
 
@@ -372,21 +373,31 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             if (((char)o) == 'c')
             {
-                (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 2;
+            }
+            else if (((char)o) == 'p')
+            {
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 4;
 
-                foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
-                    i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
-                {
-                    (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens.Add(
-                        item: new TrocaStatus_Orcamento_Itens
-                        {
-                            codItem = (int)item.nItem,
-                            codProduto = item.idProduto,
-                            dataPrevEntrega = item.dConfirmacaoItem,
-                            quantEnvPend = item.qProduto
-                        });
-                }
-                novoStatus = 2;
+            }
+            else if (((char)o) == 'e')
+            {
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 5;
+            }
+
+            (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
+
+            foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
+                i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
+            {
+                (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens.Add(
+                    item: new TrocaStatus_Orcamento_Itens
+                    {
+                        codItem = (int)item.nItem,
+                        codProduto = item.idProduto,
+                        dataPrevEntrega = item.dConfirmacaoItem,
+                        quantEnvPend = item.qProduto
+                    });
             }
 
             if (form.ShowDialog() == true)
@@ -403,10 +414,15 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().qProduto = item.quantItens;
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().stOrcamentoItem = novoStatus;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = Comum.Resources.RecursosBases.statusModel.criado;
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().idOrcamentoItem = null;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;                        
                         this.objViewModel.currentModel.lOrcamento_Itens.Last().nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto =
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.Clone() as Orcamento_Item_ImpostosModel;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.stOrcamentoImpostos = novoStatus;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.status
+                            = Comum.Resources.RecursosBases.statusModel.criado;
+                        this.objViewModel.currentModel.lOrcamento_Item_Impostos.Add(item: this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto);
                     }
                 }
             }
@@ -414,7 +430,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         private bool AlterarStatusCanExecute()
         {
-            return true;
+            if (!this.objViewModel.bIsEnabled)
+                return false;
+
+            if (this.objViewModel.currentModel != null)
+                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                    if (this.objViewModel.currentModel.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 0 ||
+                        i.stOrcamentoItem == 1) > 0)
+                        return true;
+
+            return false;
         }
 
         private void AprovarDescontosExecute()

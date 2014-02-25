@@ -1998,10 +1998,7 @@ namespace HLP.Sales.Model.Models.Comercial
 
         public object Clone()
         {
-            Orcamento_ItemModel objItem = (Orcamento_ItemModel)this.MemberwiseClone();
-            objItem.objImposto = this.objImposto.Clone() as Orcamento_Item_ImpostosModel;
-
-            return objItem;
+            return this.MemberwiseClone();
         }
     }
 
