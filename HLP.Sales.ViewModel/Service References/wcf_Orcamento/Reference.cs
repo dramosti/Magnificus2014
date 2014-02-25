@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Sales.ViewModel.sales_OrcamentoService {
+namespace HLP.Sales.ViewModel.wcf_Orcamento {
     using System.Runtime.Serialization;
     using System;
     
@@ -28,10 +28,10 @@ namespace HLP.Sales.ViewModel.sales_OrcamentoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Sales.ViewModel.sales_OrcamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private HLP.Sales.ViewModel.wcf_Orcamento.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Sales.ViewModel.sales_OrcamentoService.statusModel statusField;
+        private HLP.Sales.ViewModel.wcf_Orcamento.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -44,7 +44,7 @@ namespace HLP.Sales.ViewModel.sales_OrcamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Sales.ViewModel.sales_OrcamentoService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public HLP.Sales.ViewModel.wcf_Orcamento.PesquisaPadraoModelContract[] lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -57,7 +57,7 @@ namespace HLP.Sales.ViewModel.sales_OrcamentoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Sales.ViewModel.sales_OrcamentoService.statusModel status {
+        public HLP.Sales.ViewModel.wcf_Orcamento.statusModel status {
             get {
                 return this.statusField;
             }
@@ -280,58 +280,58 @@ namespace HLP.Sales.ViewModel.sales_OrcamentoService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="sales_OrcamentoService.IserviceSales_Orcamento")]
-    public interface IserviceSales_Orcamento {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Orcamento.Iwcf_Orcamento")]
+    public interface Iwcf_Orcamento {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Save", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/SaveResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Save", ReplyAction="http://tempuri.org/Iwcf_Orcamento/SaveResponse")]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Save(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Save", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/SaveResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Save", ReplyAction="http://tempuri.org/Iwcf_Orcamento/SaveResponse")]
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> SaveAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/GetObjeto", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/GetObjetoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetObjeto", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetObjetoResponse")]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GetObjeto(int idObjeto, int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/GetObjeto", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/GetObjetoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetObjeto", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetObjetoResponse")]
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GetObjetoAsync(int idObjeto, int idEmpresa);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Delete", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Delete", ReplyAction="http://tempuri.org/Iwcf_Orcamento/DeleteResponse")]
         bool Delete(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Delete", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Delete", ReplyAction="http://tempuri.org/Iwcf_Orcamento/DeleteResponse")]
         System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Copy", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/CopyResponse")]
-        int Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Copy", ReplyAction="http://tempuri.org/Iwcf_Orcamento/CopyResponse")]
+        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceSales_Orcamento/Copy", ReplyAction="http://tempuri.org/IserviceSales_Orcamento/CopyResponse")]
-        System.Threading.Tasks.Task<int> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Copy", ReplyAction="http://tempuri.org/Iwcf_Orcamento/CopyResponse")]
+        System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceSales_OrcamentoChannel : HLP.Sales.ViewModel.sales_OrcamentoService.IserviceSales_Orcamento, System.ServiceModel.IClientChannel {
+    public interface Iwcf_OrcamentoChannel : HLP.Sales.ViewModel.wcf_Orcamento.Iwcf_Orcamento, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceSales_OrcamentoClient : System.ServiceModel.ClientBase<HLP.Sales.ViewModel.sales_OrcamentoService.IserviceSales_Orcamento>, HLP.Sales.ViewModel.sales_OrcamentoService.IserviceSales_Orcamento {
+    public partial class Iwcf_OrcamentoClient : System.ServiceModel.ClientBase<HLP.Sales.ViewModel.wcf_Orcamento.Iwcf_Orcamento>, HLP.Sales.ViewModel.wcf_Orcamento.Iwcf_Orcamento {
         
-        public IserviceSales_OrcamentoClient() {
+        public Iwcf_OrcamentoClient() {
         }
         
-        public IserviceSales_OrcamentoClient(string endpointConfigurationName) : 
+        public Iwcf_OrcamentoClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceSales_OrcamentoClient(string endpointConfigurationName, string remoteAddress) : 
+        public Iwcf_OrcamentoClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceSales_OrcamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_OrcamentoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceSales_OrcamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_OrcamentoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -359,11 +359,11 @@ namespace HLP.Sales.ViewModel.sales_OrcamentoService {
             return base.Channel.DeleteAsync(objModel);
         }
         
-        public int Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
+        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
             return base.Channel.Copy(objModel);
         }
         
-        public System.Threading.Tasks.Task<int> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
+        public System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
             return base.Channel.CopyAsync(objModel);
         }
     }

@@ -65,15 +65,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ServiceOrcamento.svc" />
+    <Content Include="wcf_Orcamento.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServiceOrcamento.cs" />
+    <Compile Include="Iwcf_Orcamento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceOrcamento.svc.cs">
       <DependentUpon>ServiceOrcamento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Orcamento.svc.cs">
+      <DependentUpon>wcf_Orcamento.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

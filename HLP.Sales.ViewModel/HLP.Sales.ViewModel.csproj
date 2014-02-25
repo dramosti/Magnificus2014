@@ -48,11 +48,12 @@
     <Compile Include="Commands\Comercio\OrcamentoCommands.cs" />
     <Compile Include="Commands\Comercio\OrcamentoTrocarStatusCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\sales_OrcamentoService\Reference.cs">
+    <Compile Include="Service References\wcf_Orcamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\OrcamentoService.cs" />
     <Compile Include="ViewModel\Comercio\OrcamentoTrocarStatusViewModel.cs" />
     <Compile Include="ViewModel\Comercio\OrcamentoViewModel.cs" />
   </ItemGroup>
@@ -85,6 +86,10 @@
       <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>
       <Name>HLP.Sales.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Wcf.Sales\HLP.Wcf.Sales.csproj">
+      <Project>{8c718c6c-dd19-43c8-aa18-4fe453d9c6a2}</Project>
+      <Name>HLP.Wcf.Sales</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -92,40 +97,40 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Sales.Model.Models.Comercial.Orcamento_ideModel.datasource" />
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento.wsdl" />
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento.xsd">
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.wsdl" />
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento1.xsd">
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento2.xsd">
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento3.xsd">
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento4.xsd">
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento5.xsd">
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento5.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\sales_OrcamentoService\" />
+    <WCFMetadataStorage Include="Service References\wcf_Orcamento\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\sales_OrcamentoService\serviceSales_Orcamento.disco" />
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\sales_OrcamentoService\configuration91.svcinfo" />
+    <None Include="Service References\wcf_Orcamento\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\sales_OrcamentoService\configuration.svcinfo" />
+    <None Include="Service References\wcf_Orcamento\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\sales_OrcamentoService\Reference.svcmap">
+    <None Include="Service References\wcf_Orcamento\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

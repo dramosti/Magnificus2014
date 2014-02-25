@@ -2138,6 +2138,7 @@ namespace HLP.Sales.Model.Models.Comercial
             get { return _idOrcamentoTotalizadorImpostos; }
             set
             {
+                
                 _idOrcamentoTotalizadorImpostos = value;
                 base.NotifyPropertyChanged(propertyName: "idOrcamentoTotalizadorImpostos");
             }
@@ -3976,31 +3977,36 @@ namespace HLP.Sales.Model.Models.Comercial
                         Orcamento_ideModel objOrcamento_ide = wd.DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: wd.DataContext)
                             as Orcamento_ideModel;
 
-                        decimal vBruto = objOrcamento_ide.lOrcamento_Itens.Sum(i => i.vVenda * i.qProduto);
-                        this._pDescontoTotal = value / vBruto;
-
-                        foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
+                        if (objOrcamento_ide != null)
                         {
-                            item.vDesconto = ((((item.vTotalItem / item.qProduto) - item.vDesconto) / vBruto) * value);
-                        }
+                            decimal vBruto = objOrcamento_ide.lOrcamento_Itens.Sum(i => i.vVenda * i.qProduto);
+                            this._pDescontoTotal = value / vBruto;
 
+                            foreach (Orcamento_ItemModel item in objOrcamento_ide.lOrcamento_Itens)
+                            {
+                                item.vDesconto = ((((item.vTotalItem / item.qProduto) - item.vDesconto) / vBruto) * value);
+                            }
+                        }
                         DataGrid dg = wd.FindName(name: "dgItens") as DataGrid;
                         DataGridRow row = null;
                         DataGridColumn column = dg.Columns.FirstOrDefault(i => i.Header.ToString() == "% Desc"); ;
                         object o;
                         bool valido = true;
 
-                        foreach (var item in dg.ItemsSource)
+                        if (dg.ItemsSource != null)
                         {
-                            row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
-                            if (row != null)
+                            foreach (var item in dg.ItemsSource)
                             {
-                                o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
-
-                                if (o.GetType().Name.ToString() == "TextBlock")
+                                row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                                if (row != null)
                                 {
-                                    if (Validation.GetHasError(o as TextBlock))
-                                        valido = false;
+                                    o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
+
+                                    if (o.GetType().Name.ToString() == "TextBlock")
+                                    {
+                                        if (Validation.GetHasError(o as TextBlock))
+                                            valido = false;
+                                    }
                                 }
                             }
                         }

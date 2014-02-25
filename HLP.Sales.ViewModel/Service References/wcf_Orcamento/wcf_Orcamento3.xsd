@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceSales_Orcamento.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Sales.Model.Models.Comercial" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Sales.Model.Models.Comercial" />
   <xs:element name="Save">
     <xs:complexType>
       <xs:sequence>
@@ -54,7 +54,7 @@
   <xs:element name="CopyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CopyResult" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Sales.Model.Models.Comercial" minOccurs="0" name="CopyResult" nillable="true" type="q6:Orcamento_ideModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
