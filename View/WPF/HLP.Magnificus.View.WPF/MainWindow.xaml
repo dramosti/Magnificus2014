@@ -590,12 +590,10 @@
                                 <DataTemplate>
                                     <DockPanel Focusable="False" LastChildFill="True">
                                         <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-                                            <Button Focusable="False" DockPanel.Dock="Bottom" Content="/\"
-                                                    >
+                                            <Button Focusable="False" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Content="/\">                                                    
                                                 <Button.ContextMenu>
-                                                    <ContextMenu Style="{StaticResource ContextMenu}" Height="700">
-                                                        <MenuItem                                                            
-                                                            Width="120"
+                                                    <ContextMenu Style="{StaticResource ContextMenu}" Height="700" ContextMenuService.Placement="Top">
+                                                        <MenuItem HorizontalAlignment="Right"                                                                
                                                             Height="Auto"
                                                             >
                                                             <MenuItem.Template>
