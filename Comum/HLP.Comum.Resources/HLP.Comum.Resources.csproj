@@ -294,6 +294,8 @@
     </EmbeddedResource>
     <Resource Include="Icones\Botao_Enviar.png" />
     <Resource Include="Icones\Botao_Enviar_MouseOver.png" />
+    <Resource Include="Icones\Enviar_Botao_Branco.png" />
+    <Resource Include="Icones\Enviar_Botao_Disabled.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

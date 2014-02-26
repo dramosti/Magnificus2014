@@ -8,7 +8,7 @@
     <!--Control Template Botões Específicos das Telas-->
     <!--Botao Enviar-->
     <ControlTemplate x:Key="ControlTemplateBotaoEnviar" TargetType="{x:Type Button}">
-        <Border Height="50" Width="50">
+        <Border Height="62" Width="Auto">
             <Border.Style>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="Border.Background" Value="#FF4774B5"/>
@@ -20,7 +20,7 @@
                 </Style>
             </Border.Style>
             <DockPanel LastChildFill="True">
-                <TextBlock Text="Enviar"  DockPanel.Dock="Bottom" Height="18" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Center">
+                <TextBlock Text="Enviar" Margin="10,0,0,0" DockPanel.Dock="Bottom" Height="22" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Center">
                     <TextBlock.Style>
                         <Style>
                             <Style.Triggers>
@@ -35,13 +35,13 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                <Image x:Name="ImagemContextMenu" Height="32" Width="32">
+                <Image x:Name="ImagemContextMenu" Height="40" Width="40">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Botao_Enviar.png"/>
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Enviar_Botao_Branco.png"/>
                             <Style.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Botao_Enviar_MouseOver.png"/>
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Enviar_Botao_Disabled.png"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
