@@ -294,9 +294,9 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <DockPanel LastChildFill="True">
-                            <DockPanel DockPanel.Dock="Right" Width="700" Background="Black">
+                            <ContentControl DockPanel.Dock="Right" Width="850">
                                 
-                            </DockPanel>
+                            </ContentControl>
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="{Binding winMan.iHeightToolBar}" Focusable="False"   Style="{StaticResource toolBarCadastro}">
                                 <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
