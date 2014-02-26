@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -158,6 +159,20 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .Build());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();
+        }
+
+        public int GetIdOrcamentoFilho(int idOrcamentoOrigem)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idOrcamento from Orcamento_ide where idOrcamentoOrigem = " + idOrcamentoOrigem);
+            object o = UndTrabalho.dbPrincipal.ExecuteScalar(command);
+            return o != null ? o.ToInt32() : 0;
+        }
+
+        public int GetIdOrcamentoPai(int idOrcamento)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idOrcamentoOrigem from Orcamento_ide where idOrcamento = " + idOrcamento);
+            object o = UndTrabalho.dbPrincipal.ExecuteScalar(command);
+            return o != null ? o.ToInt32() : 0;
         }
 
         public void BeginTransaction()

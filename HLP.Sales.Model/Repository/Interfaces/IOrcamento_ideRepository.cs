@@ -19,5 +19,7 @@ namespace HLP.Sales.Model.Repository.Interfaces
         void RollackTransaction();
         Orcamento_ideModel GetOrcamentoByOrigem(int idOrcamento);
         Orcamento_ideModel GetOrcamentoFilho(int idOrcamento);
+        int GetIdOrcamentoPai(int idOrcamento);
+        int GetIdOrcamentoFilho(int idOrcamentoOrigem);
     }
 }

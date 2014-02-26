@@ -8,6 +8,7 @@
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
       <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Iwcf_Orcamento_Save_InputMessage">
@@ -40,6 +41,12 @@
   <wsdl:message name="Iwcf_Orcamento_GerarVersao_OutputMessage">
     <wsdl:part name="parameters" element="tns:GerarVersaoResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Orcamento_GetListaVersoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListaVersoes" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Orcamento_GetListaVersoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListaVersoesResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Orcamento">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/Save" message="tns:Iwcf_Orcamento_Save_InputMessage" />
@@ -60,6 +67,10 @@
     <wsdl:operation name="GerarVersao">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GerarVersao" message="tns:Iwcf_Orcamento_GerarVersao_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GerarVersaoResponse" message="tns:Iwcf_Orcamento_GerarVersao_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListaVersoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes" message="tns:Iwcf_Orcamento_GetListaVersoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse" message="tns:Iwcf_Orcamento_GetListaVersoes_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Orcamento" type="tns:Iwcf_Orcamento">
@@ -102,6 +113,15 @@
     </wsdl:operation>
     <wsdl:operation name="GerarVersao">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Orcamento/GerarVersao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListaVersoes">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

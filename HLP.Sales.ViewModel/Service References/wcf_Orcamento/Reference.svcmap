@@ -25,10 +25,11 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="wcf_Orcamento.xsd" MetadataType="Schema" ID="af4e9a86-74ba-4806-8735-6ea24293afb8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Orcamento4.xsd" MetadataType="Schema" ID="e1a309e8-8c8c-433e-8045-3cabf1127cc5" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd1" />
     <MetadataFile FileName="wcf_Orcamento1.xsd" MetadataType="Schema" ID="74a43f26-39ed-4733-bc59-1b7ad3e43288" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd3" />
     <MetadataFile FileName="wcf_Orcamento2.xsd" MetadataType="Schema" ID="ad36753d-f22d-48a2-a7ea-0db7b472b343" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd5" />
     <MetadataFile FileName="wcf_Orcamento3.xsd" MetadataType="Schema" ID="33ac9b9c-0d0b-45af-8d28-b403456fbe39" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Orcamento4.xsd" MetadataType="Schema" ID="e1a309e8-8c8c-433e-8045-3cabf1127cc5" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Orcamento6.xsd" MetadataType="Schema" ID="3845a80b-96eb-469f-8be4-9c5b3911aecd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd6" />
     <MetadataFile FileName="wcf_Orcamento.disco" MetadataType="Disco" ID="482b58ad-8a66-473b-b037-d7a255706943" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?disco" />
     <MetadataFile FileName="wcf_Orcamento.wsdl" MetadataType="Wsdl" ID="625d3f92-3d7e-4455-8b77-6e8b21635ce6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?wsdl" />
     <MetadataFile FileName="wcf_Orcamento5.xsd" MetadataType="Schema" ID="deec090c-9fe9-4778-acd1-69e571beb32a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/wcf_Orcamento.svc?xsd=xsd4" />

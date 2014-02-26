@@ -234,5 +234,30 @@ namespace HLP.Wcf.Sales
                 throw new FaultException(reason: ex.Message);
             }
         }
+
+        public List<int> GetListaVersoes(int idOrcamento)
+        {
+            List<int> lItens = new List<int>();
+
+            lItens.Add(item: idOrcamento);
+
+            int i = idOrcamento;
+            do
+            {
+                i = this.orcamento_ideRepository.GetIdOrcamentoPai(idOrcamento: i);
+                if (i != 0)
+                    lItens.Insert(index: 0, item: i);
+            } while (i != 0);
+
+            i = idOrcamento;
+            do
+            {
+                i = this.orcamento_ideRepository.GetIdOrcamentoFilho(idOrcamentoOrigem: i);
+                if (i != 0)
+                    lItens.Add(item: i);
+            } while (i != 0);
+
+            return lItens;
+        }
     }
 }
