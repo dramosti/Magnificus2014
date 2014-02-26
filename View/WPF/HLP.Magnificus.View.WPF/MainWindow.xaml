@@ -7,23 +7,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         xmlns:System="clr-namespace:System;assembly=mscorlib" 
+        xmlns:util="clr-namespace:HLP.Comum.Infrastructure.Util;assembly=HLP.Comum.Infrastructure"
         Title="Magnificus 2014"
         x:Name="manWin"
-        mc:Ignorable="d" WindowState="Maximized"  Closed="Window_Closed" Height="557.5" Icon="Principal.ico" >
+        mc:Ignorable="d" Closed="Window_Closed" Icon="Principal.ico" StateChanged="manWin_StateChanged" SizeChanged="manWin_SizeChanged" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
+            <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
             <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
             <SolidColorBrush x:Key="colorBackExpander" Color="#FF4774B5"/>
             <SolidColorBrush x:Key="colorItemsExpander" Color="White"/>
-            <c:TextFormatConverter x:Key="TextFormatConv"/>
-
+            <c:TextFormatConverter x:Key="TextFormatConv"/>            
             <Style x:Key="Listbox123" TargetType="{x:Type ListBox}">
                 <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
@@ -83,7 +83,7 @@
         <KeyBinding Key="L" Modifiers="Control" Command="{Binding FindAllCommand}"/>
     </Window.InputBindings>
     <!--<Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">-->
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" x:Name="dockPrinc">
         <DockPanel
 			Background="{StaticResource colorBackExpander}"                            
 			DockPanel.Dock="Top" LastChildFill="True">
@@ -224,10 +224,69 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="25"/>
+                
             </Grid.RowDefinitions>
             <Border Grid.Row="1" Margin="0,0,0,0" BorderThickness="1" BorderBrush="{x:Null}">
                 <DockPanel LastChildFill="True">
+                    <StatusBar x:Name="statusBarPrinc" Grid.Row="2" Style="{DynamicResource StatusBarStyle1}" DockPanel.Dock="Bottom">
+                        <StatusBar.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="120"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </ItemsPanelTemplate>
+                        </StatusBar.ItemsPanel>
+                        <StatusBarItem Grid.Column="0">
+                            <StatusBarItem.Template>
+                                <ControlTemplate>
+                                    <Label Content="Localizar ( Ctrl+L )" Foreground="White"/>
+                                </ControlTemplate>
+                            </StatusBarItem.Template>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="5" HorizontalAlignment="Right">
+                            <StatusBarItem.Template>
+                                <ControlTemplate>
+                                    <Label Content="{Binding Path=xVersao, Mode=TwoWay}" Foreground="White"/>
+                                </ControlTemplate>
+                            </StatusBarItem.Template>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="6" HorizontalAlignment="Right" Margin="0,0,10,0">
+                            <StatusBarItem.Template>
+                                <ControlTemplate>
+                                    <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
+                                </ControlTemplate>
+                            </StatusBarItem.Template>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="7" x:Name="statusBarItemAtalhos"
+                                       ContextMenuService.Placement="Top"
+                               >
+                            <StatusBarItem.ContextMenu>
+                                <ContextMenu Style="{StaticResource ContextMenu}">
+                                    <MenuItem                                                            
+                                                            Width="120"            
+                                                            Height="{Binding Data.heightWindow,
+                        Source={StaticResource proxy}}">
+                                        <MenuItem.Template>
+                                            <ControlTemplate>
+                                                <ContentControl Content="{Binding winMan._currentTab.Botoes}"></ContentControl>
+                                            </ControlTemplate>
+                                        </MenuItem.Template>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StatusBarItem.ContextMenu>
+                            Clique
+                        </StatusBarItem>
+                    </StatusBar>
+
                     <Grid Focusable="False" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="{Binding ElementName=toolbarPrincipal, Path=Height}"/>
@@ -590,24 +649,7 @@
                                 <DataTemplate>
                                     <DockPanel Focusable="False" LastChildFill="True">
                                         <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-                                            <Button Focusable="False" DockPanel.Dock="Bottom" Content="/\"
-                                                    >
-                                                <Button.ContextMenu>
-                                                    <ContextMenu Style="{StaticResource ContextMenu}" Height="700">
-                                                        <MenuItem                                                            
-                                                            Width="120"
-                                                            Height="Auto"
-                                                            >
-                                                            <MenuItem.Template>
-                                                                <ControlTemplate>
-                                                                    <ContentControl Content="{Binding Botoes}"></ContentControl>
-                                                                </ControlTemplate>
-                                                            </MenuItem.Template>
-                                                        </MenuItem>
-                                                    </ContextMenu>
-
-                                                </Button.ContextMenu>
-                                            </Button>
+                                            
                                         </DockPanel>
                                         <ContentControl 
                                                         Focusable="False" Content="{Binding _content}"/>
@@ -617,46 +659,7 @@
                         </TabControl>
                     </Grid>
                 </DockPanel>
-            </Border>
-            <StatusBar Grid.Row="2" Style="{DynamicResource StatusBarStyle1}">
-                <StatusBar.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-                    </ItemsPanelTemplate>
-                </StatusBar.ItemsPanel>
-                <StatusBarItem Grid.Column="0">
-                    <StatusBarItem.Template>
-                        <ControlTemplate>
-                            <Label Content="Localizar ( Ctrl+L )" Foreground="White"/>
-                        </ControlTemplate>
-                    </StatusBarItem.Template>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="6" HorizontalAlignment="Right">
-                    <StatusBarItem.Template>
-                        <ControlTemplate>
-                            <Label Content="{Binding Path=xVersao, Mode=TwoWay}" Foreground="White"/>
-                        </ControlTemplate>
-                    </StatusBarItem.Template>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="7" HorizontalAlignment="Right" Margin="0,0,10,0">
-                    <StatusBarItem.Template>
-                        <ControlTemplate>
-                            <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
-                        </ControlTemplate>
-                    </StatusBarItem.Template>
-                </StatusBarItem>
-            </StatusBar>
+            </Border>            
         </Grid>
     </DockPanel>
 </Window>

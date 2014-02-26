@@ -25,6 +25,19 @@ namespace HLP.Comum.ViewModel.ViewModels
         funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
 
 
+        private double _heightWindow;
+
+        public double heightWindow
+        {
+            get { return _heightWindow; }
+            set
+            {
+                _heightWindow = value;
+                base.NotifyPropertyChanged(propertyName: "heightWindow");
+            }
+        }
+
+
         private int _sizeColunaDados;
 
         public int sizeColunaDados
@@ -69,7 +82,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             if (File.Exists(path: sPath))
             {
                 this.winMan.iconConexao = new BitmapImage(new Uri(sPath));
-            }            
+            }
 
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
             this.winMan._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();

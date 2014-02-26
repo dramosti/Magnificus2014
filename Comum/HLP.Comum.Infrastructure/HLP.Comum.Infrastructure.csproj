@@ -105,6 +105,7 @@
     <Compile Include="Static\Util.cs" />
     <Compile Include="Static\WcfData.cs" />
     <Compile Include="UnitOfWorkBase.cs" />
+    <Compile Include="Util\BindingProxy.cs" />
     <Compile Include="Util\InternetCS.cs" />
   </ItemGroup>
   <ItemGroup>
