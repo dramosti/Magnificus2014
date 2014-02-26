@@ -77,6 +77,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\Main\MainWindow_Templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Sales\Orcamento\Template\Buttons_Shurtcut.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -296,6 +300,7 @@
     <Resource Include="Icones\Botao_Enviar_MouseOver.png" />
     <Resource Include="Icones\Enviar_Botao_Branco.png" />
     <Resource Include="Icones\Enviar_Botao_Disabled.png" />
+    <Resource Include="Icones\Arrow_Navigation.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
