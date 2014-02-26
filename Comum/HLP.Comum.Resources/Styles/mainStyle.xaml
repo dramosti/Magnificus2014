@@ -2251,7 +2251,7 @@
                         Fill="#FFECA933" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Center"
                         StrokeThickness="0.5"/>
                         <TextBlock FontWeight="Bold" Padding="4,0,0,0"
-                        VerticalAlignment="Top" Foreground="White" Text="!"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Text="!"
                         ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
                     </Grid>
                 </ControlTemplate>
@@ -2712,4 +2712,40 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+<!--ContextMenu-->
+
+    <SolidColorBrush x:Key="WindowBackgroundBrush2" Color="#FFF" />
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+
+    <Style x:Key="ContextMenu" TargetType="ContextMenu">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+        <Setter Property="HasDropShadow" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border 
+          Name="Border"
+          Background="{StaticResource ButtonBackgroundBlueDefault}"
+          BorderBrush="{StaticResource ButtonBackgroundBlueDefault}"
+          BorderThickness="0" >
+                        <StackPanel IsItemsHost="True"
+                      KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>
+                            <Setter TargetName="Border" Property="CornerRadius" Value="10"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>   
+    
+    
+    <!--...-->
 </ResourceDictionary>

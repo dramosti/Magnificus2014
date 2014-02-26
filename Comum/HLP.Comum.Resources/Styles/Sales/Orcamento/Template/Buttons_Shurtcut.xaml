@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Util="clr-namespace:HLP.Comum.Resources" 
+                    xmlns:local="clr-namespace:HLP.Comum.Resources.Converter"
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+
+    <!--Control Template Botões Específicos das Telas-->
+    <!--Botao Enviar-->
+    <ControlTemplate x:Key="ControlTemplateBotaoEnviar" TargetType="{x:Type Button}">
+        <Border Height="50" Width="50">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Border.Background" Value="#FF4774B5"/>
+                    <Style.Triggers>
+                        <Trigger Property="Border.IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF709AD6"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="JAPA"  DockPanel.Dock="Bottom" Height="18" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="#FFC9C9C9"/>
+                                    <Setter Property="TextElement.FontWeight" Value="Normal"/>
+                                </Trigger>
+                                <Trigger Property="FrameworkElement.IsEnabled" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Image x:Name="ImagemContextMenu" Height="32" Width="32">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Botao_Enviar.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Botao_Enviar_MouseOver.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>
+    
+</ResourceDictionary>

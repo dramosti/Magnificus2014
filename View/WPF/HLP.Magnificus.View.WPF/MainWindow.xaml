@@ -592,10 +592,10 @@
                                             <Button Focusable="False" DockPanel.Dock="Bottom" Content="/\"
                                                     ContextMenuService.Placement="Top">
                                                 <Button.ContextMenu>
-                                                    <ContextMenu>
+                                                    <ContextMenu Style="{StaticResource ContextMenu}">
                                                         <MenuItem                                                            
                                                             Width="150"
-                                                            Height="500"
+                                                            Height="645"
                                                             >
                                                             <MenuItem.Template>
                                                                 <ControlTemplate>
