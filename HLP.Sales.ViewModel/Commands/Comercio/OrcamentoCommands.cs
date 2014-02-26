@@ -60,6 +60,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
             this.objViewModel.alterarStatusItenCommand = new RelayCommand(execute: paramExec => this.AlterarStatusExecute(o: paramExec),
                 canExecute: paramCanExec => this.AlterarStatusCanExecute());
+
+            this.objViewModel.gerarVersaoCommand = new RelayCommand(execute: ex => this.GerarVersaoExecute(),
+                canExecute: canEx => this.GerarVersaoCanExecute());
         }
 
         #region Implementação Commands
@@ -371,6 +374,16 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         #endregion
 
         #region Implementação Commands de Funcionalidades
+
+        private void GerarVersaoExecute()
+        {
+            this.objViewModel.currentModel = this.objServico.GerarVersao(objModel: this.objViewModel.currentModel);
+        }
+
+        private bool GerarVersaoCanExecute()
+        {
+            return !this.objViewModel.bIsEnabled && this.objViewModel.currentModel != null;
+        }
 
         private void AlterarStatusExecute(object o)
         {

@@ -174,6 +174,8 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             // The dependency object is valid if it has no errors, 
             //and all of its children (that are dependency objects) are error-free.
+            if (obj == null)
+                return true;
             bool resultado = ((!Validation.GetHasError(obj)
                 ) &&
                 LogicalTreeHelper.GetChildren(obj)

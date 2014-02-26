@@ -28,6 +28,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand navegarCommand { get; set; }
         public ICommand aprovarDescontosCommand { get; set; }
         public ICommand alterarStatusItenCommand { get; set; }
+        public ICommand gerarVersaoCommand { get; set; }
 
         #endregion
 
@@ -44,7 +45,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             btnAprovarDescontos.Content = "Aprovar descontos?";
             btnAprovarDescontos.Command = this.aprovarDescontosCommand;
 
-            Button btnEnviarItens = new Button();            
+            Button btnEnviarItens = new Button();
             btnEnviarItens.Template = resource["ControlTemplateBotaoEnviar"] as ControlTemplate;
 
             Button btnConfirmarItens = new Button();
@@ -62,11 +63,16 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             btnItensCancelados.Command = this.alterarStatusItenCommand;
             btnItensCancelados.CommandParameter = 'e';
 
+            Button btnGerarVersao = new Button();
+            btnGerarVersao.Content = "Gerar Nova Versão";
+            btnGerarVersao.Command = this.gerarVersaoCommand;
+
             this.Botoes.Children.Add(element: btnAprovarDescontos);
             this.Botoes.Children.Add(element: btnEnviarItens);
             this.Botoes.Children.Add(element: btnConfirmarItens);
             this.Botoes.Children.Add(element: btnItensPerdidos);
             this.Botoes.Children.Add(element: btnItensCancelados);
+            this.Botoes.Children.Add(element: btnGerarVersao);
         }
 
         public bool bListaPrecoHabilitado

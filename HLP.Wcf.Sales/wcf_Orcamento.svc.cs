@@ -194,5 +194,45 @@ namespace HLP.Wcf.Sales
             }
 
         }
+
+        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GerarVersao(
+            HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel)
+        {
+
+            try
+            {
+                this.orcamento_ideRepository.BeginTransaction();
+                objModel.idOrcamentoOrigem = objModel.idOrcamento;
+                objModel.idOrcamento = null;
+
+                this.orcamento_ideRepository.Save(objOrcamento_ide: objModel);
+
+                foreach (var item in objModel.lOrcamento_Itens)
+                {
+                    item.idOrcamentoItem = null;
+                    item.idOrcamento = objModel.idOrcamento ?? 0;
+                    this.orcamento_itemRepository.Save(objOrcamento_Item: item);
+                    item.objImposto.idOrcamentoTotalizadorImpostos = null;
+                    item.objImposto.idOrcamentoItem = item.idOrcamentoItem ?? 0;
+                    this.IOrcamento_Item_ImpostosRepository.Save(objOrcamento_Item_Impostos: item.objImposto);
+                }
+
+                objModel.orcamento_retTransp.idRetTransp = null;
+                objModel.orcamento_retTransp.idOrcamento = objModel.idOrcamento ?? 0;
+                this.orcamento_retTranspRepository.Save(objOrcamento_retTransp: objModel.orcamento_retTransp);
+
+                objModel.orcamento_Total_Impostos.idOrcamentoTotalImpostos = null;
+                objModel.orcamento_Total_Impostos.idOrcamento = objModel.idOrcamento ?? 0;
+                this.orcamento_Total_ImpostosRepository.Save(objModel.orcamento_Total_Impostos);
+                this.orcamento_ideRepository.CommitTransaction();
+                return objModel;
+            }
+            catch (Exception ex)
+            {
+                this.orcamento_ideRepository.RollackTransaction();
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        }
     }
 }

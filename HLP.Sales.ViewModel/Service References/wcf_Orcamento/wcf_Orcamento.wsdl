@@ -34,6 +34,12 @@
   <wsdl:message name="Iwcf_Orcamento_Copy_OutputMessage">
     <wsdl:part name="parameters" element="tns:CopyResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Orcamento_GerarVersao_InputMessage">
+    <wsdl:part name="parameters" element="tns:GerarVersao" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Orcamento_GerarVersao_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GerarVersaoResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Orcamento">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/Save" message="tns:Iwcf_Orcamento_Save_InputMessage" />
@@ -50,6 +56,10 @@
     <wsdl:operation name="Copy">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/Copy" message="tns:Iwcf_Orcamento_Copy_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Orcamento/CopyResponse" message="tns:Iwcf_Orcamento_Copy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GerarVersao">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GerarVersao" message="tns:Iwcf_Orcamento_GerarVersao_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GerarVersaoResponse" message="tns:Iwcf_Orcamento_GerarVersao_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Orcamento" type="tns:Iwcf_Orcamento">
@@ -83,6 +93,15 @@
     </wsdl:operation>
     <wsdl:operation name="Copy">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Orcamento/Copy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarVersao">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Orcamento/GerarVersao" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
