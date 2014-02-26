@@ -4,6 +4,7 @@ using HLP.Comum.Resources.Util;
 using HLP.Comum.View.Formularios;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Sales.Model.Models.Comercial;
+using HLP.Sales.ViewModel.Services;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using System;
 using System.Collections.Generic;
@@ -13,18 +14,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace HLP.Sales.ViewModel.Commands.Comercio
 {
     public class OrcamentoCommands
     {
         OrcamentoViewModel objViewModel;
-        sales_OrcamentoService.IserviceSales_OrcamentoClient servico = new sales_OrcamentoService.IserviceSales_OrcamentoClient();
         BackgroundWorker bWorkerAcoes;
         Window wd = null;
+        OrcamentoService objServico;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
+            objServico = new OrcamentoService();
 
             this.objViewModel = objViewModel;
 
@@ -93,7 +96,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 e.Result = e.Argument;
-                this.objViewModel.currentModel = this.servico.Save(objModel: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
                 this.IniciaCollection();
             }
             catch (Exception ex)
@@ -153,7 +156,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (servico.Delete(objModel: objViewModel.currentModel))
+                    if (this.objServico.Delete(objModel: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -277,7 +280,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 e.Result =
-                    servico.Copy(objModel: this.objViewModel.currentModel);
+                    objServico.Copy(objModel: this.objViewModel.currentModel);
             }
             catch (Exception)
             {
@@ -352,8 +355,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 if (this.objViewModel.currentID != 0)
                 {
-                    e.Result =
-                    this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID, idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
+                    Application.Current.Dispatcher.BeginInvoke(
+                     DispatcherPriority.Background, new Action(
+                         () =>
+                             e.Result =
+                        this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID)
+                         ));
                 }
             }
             catch (Exception ex)
@@ -405,7 +412,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 foreach (var item in ((form.DataContext) as OrcamentoTrocarStatusViewModel).lOrcamento_Itens)
                 {
                     if (item.quantItens == item.quantEnvPend)
-                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoItem = novoStatus;
+                    {
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoItem =
+                    this.objViewModel.currentModel.lOrcamento_Item_Impostos.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoImpostos =
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.stOrcamentoImpostos
+                            = novoStatus;
+                    }
                     else if (item.quantItens > 0)
                     {
                         this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto = (item.quantEnvPend - item.quantItens);
