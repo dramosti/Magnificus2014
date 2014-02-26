@@ -312,6 +312,12 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GerarVersao", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GerarVersaoResponse")]
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GerarVersaoAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse")]
+        int[] GetListaVersoes(int idOrcamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse")]
+        System.Threading.Tasks.Task<int[]> GetListaVersoesAsync(int idOrcamento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -379,6 +385,14 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         
         public System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GerarVersaoAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
             return base.Channel.GerarVersaoAsync(objModel);
+        }
+        
+        public int[] GetListaVersoes(int idOrcamento) {
+            return base.Channel.GetListaVersoes(idOrcamento);
+        }
+        
+        public System.Threading.Tasks.Task<int[]> GetListaVersoesAsync(int idOrcamento) {
+            return base.Channel.GetListaVersoesAsync(idOrcamento);
         }
     }
 }

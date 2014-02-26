@@ -26,5 +26,8 @@ namespace HLP.Wcf.Sales
         [OperationContract]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GerarVersao(
             HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+
+        [OperationContract]
+        List<int> GetListaVersoes(int idOrcamento);
     }
 }
