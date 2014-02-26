@@ -93,5 +93,10 @@ namespace HLP.Sales.ViewModel.Services
             }
             return null;
         }
+
+        public Orcamento_ideModel GerarVersao(Orcamento_ideModel objModel)
+        {
+            return null;
+        }
     }
 }

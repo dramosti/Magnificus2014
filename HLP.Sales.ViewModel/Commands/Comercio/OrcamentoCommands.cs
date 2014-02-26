@@ -330,6 +330,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             else
             {
                 this.IniciaCollection();
+                this.objViewModel.currentModel = e.Result as Orcamento_ideModel;
 
                 if (this.objViewModel.currentModel != null)
                 {
@@ -355,12 +356,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 if (this.objViewModel.currentID != 0)
                 {
-                    Application.Current.Dispatcher.BeginInvoke(
-                     DispatcherPriority.Background, new Action(
-                         () =>
-                             e.Result =
-                        this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID)
-                         ));
+                    Application.Current.Dispatcher.Invoke(
+                        (Action)(() =>
+    {
+        e.Result = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+    }));
                 }
             }
             catch (Exception ex)
