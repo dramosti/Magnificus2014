@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Util="clr-namespace:HLP.Comum.Resources" 
+                    xmlns:local="clr-namespace:HLP.Comum.Resources.Converter"
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+    
+    <!--Template Button Navigation-->
+
+    <ControlTemplate x:Key="TemplateNavigationButton" TargetType="{x:Type Button}">
+        <Border Height="30" Width="85">
+            <DockPanel LastChildFill="True">
+                <Image x:Name="ImagemSeta" Height="14" Width="14" DockPanel.Dock="Right" Margin="3,0,0,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_Navigation.png"/>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <TextBlock Text="" FontFamily="Calibri" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left">
+                </TextBlock>
+            </DockPanel>
+        </Border>
+    </ControlTemplate>
+
+</ResourceDictionary>

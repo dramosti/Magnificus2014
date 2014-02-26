@@ -6,7 +6,7 @@
                     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
 
     <!--Control Template Botões Específicos das Telas-->
-    <!--Botao Enviar-->
+    <!--BotaoEnviar-->
     <ControlTemplate x:Key="ControlTemplateBotaoEnviar" TargetType="{x:Type Button}">
         <Border Height="62" Width="Auto">
             <Border.Style>

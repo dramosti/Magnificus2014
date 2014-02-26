@@ -2736,8 +2736,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
-                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>
-                            <Setter TargetName="Border" Property="CornerRadius" Value="10"/>
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>                            
                             <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
