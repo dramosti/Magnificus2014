@@ -22,5 +22,9 @@ namespace HLP.Wcf.Sales
 
         [OperationContract]
         HLP.Sales.Model.Models.Comercial.Orcamento_ideModel Copy(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+
+        [OperationContract]
+        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GerarVersao(
+            HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
     }
 }

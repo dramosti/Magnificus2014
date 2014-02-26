@@ -96,6 +96,17 @@ namespace HLP.Sales.ViewModel.Services
 
         public Orcamento_ideModel GerarVersao(Orcamento_ideModel objModel)
         {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GerarVersao(objModel: objModel);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.GerarVersao(objModel: objModel);
+                    }
+            }
             return null;
         }
     }

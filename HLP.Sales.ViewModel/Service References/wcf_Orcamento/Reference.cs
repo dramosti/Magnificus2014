@@ -306,6 +306,12 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/Copy", ReplyAction="http://tempuri.org/Iwcf_Orcamento/CopyResponse")]
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GerarVersao", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GerarVersaoResponse")]
+        HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GerarVersao(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GerarVersao", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GerarVersaoResponse")]
+        System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GerarVersaoAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -365,6 +371,14 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         
         public System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> CopyAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
             return base.Channel.CopyAsync(objModel);
+        }
+        
+        public HLP.Sales.Model.Models.Comercial.Orcamento_ideModel GerarVersao(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
+            return base.Channel.GerarVersao(objModel);
+        }
+        
+        public System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GerarVersaoAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel) {
+            return base.Channel.GerarVersaoAsync(objModel);
         }
     }
 }
