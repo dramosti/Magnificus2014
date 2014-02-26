@@ -20,7 +20,7 @@
                 </Style>
             </Border.Style>
             <DockPanel LastChildFill="True">
-                <TextBlock Text="JAPA"  DockPanel.Dock="Bottom" Height="18" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Center">
+                <TextBlock Text="Enviar"  DockPanel.Dock="Bottom" Height="18" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Center">
                     <TextBlock.Style>
                         <Style>
                             <Style.Triggers>

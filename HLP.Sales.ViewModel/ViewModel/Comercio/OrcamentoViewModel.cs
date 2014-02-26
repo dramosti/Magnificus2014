@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -32,14 +33,19 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
 
         public OrcamentoViewModel()
         {
+            ResourceDictionary resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Comum.Resources;component/Styles/Sales/Orcamento/Template/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
+            };
+
             OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
 
             Button btnAprovarDescontos = new Button();
             btnAprovarDescontos.Content = "Aprovar descontos?";
             btnAprovarDescontos.Command = this.aprovarDescontosCommand;
 
-            Button btnEnviarItens = new Button();
-            btnEnviarItens.Content = "Enviar Itens";
+            Button btnEnviarItens = new Button();            
+            btnEnviarItens.Template = resource["ControlTemplateBotaoEnviar"] as ControlTemplate;
 
             Button btnConfirmarItens = new Button();
             btnConfirmarItens.Content = "Confirmar Itens";
