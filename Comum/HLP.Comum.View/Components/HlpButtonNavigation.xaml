@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="70">
+             d:DesignHeight="25" d:DesignWidth="70">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,8 +12,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel Height="30" Width="70" LastChildFill="True">
-        <Image DockPanel.Dock="Right" Width="16" Height="16" Style="{StaticResource ImageStyleButtonNavigation}">            
+    <DockPanel Height="22" Width="70" LastChildFill="True">
+        <Image DockPanel.Dock="Right" Width="16" Height="16" x:Name="ImgBtnNavigation" Style="{StaticResource ImageStyleButtonNavigation}">            
         </Image>
         <Button x:Name="btn" Style="{StaticResource ButtonStyleButtonNavigation}">             
         </Button>
