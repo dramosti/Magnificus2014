@@ -31,6 +31,31 @@ namespace HLP.Comum.ViewModel.ViewModels
             set { _currentModel = value; NotifyPropertyChanged("currentModel"); }
         }
 
+        private List<int> _lIds;
+
+        public List<int> lIds
+        {
+            get { return _lIds; }
+            set {
+                _lIds = value;
+
+            }
+        }
+
+
+        private StackPanel _lItensHierarquia;
+
+        public StackPanel lItensHierarquia
+        {
+            get { return _lItensHierarquia; }
+            set
+            {
+                _lItensHierarquia = value;
+                NotifyPropertyChanged(propertyName: "lItensHierarquia");
+            }
+        }
+
+
         private StackPanel _botoes;
 
         public StackPanel Botoes

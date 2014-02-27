@@ -109,5 +109,21 @@ namespace HLP.Sales.ViewModel.Services
             }
             return null;
         }
+
+        public List<int> GetIdVersoes(int idOrcamento)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetListaVersoes(idOrcamento: idOrcamento);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.GetListaVersoes(idOrcamento: idOrcamento);
+                    }
+            }
+            return null;
+        }
     }
 }

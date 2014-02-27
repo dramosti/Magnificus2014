@@ -116,6 +116,9 @@
     <None Include="Service References\wcf_Orcamento\wcf_Orcamento5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Orcamento\wcf_Orcamento6.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\wcf_Orcamento\" />
