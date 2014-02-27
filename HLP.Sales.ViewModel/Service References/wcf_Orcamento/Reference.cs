@@ -28,7 +28,7 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Sales.ViewModel.wcf_Orcamento.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Sales.ViewModel.wcf_Orcamento.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private HLP.Sales.ViewModel.wcf_Orcamento.statusModel statusField;
@@ -44,7 +44,7 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Sales.ViewModel.wcf_Orcamento.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Sales.ViewModel.wcf_Orcamento.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -314,10 +314,10 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         System.Threading.Tasks.Task<HLP.Sales.Model.Models.Comercial.Orcamento_ideModel> GerarVersaoAsync(HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse")]
-        int[] GetListaVersoes(int idOrcamento);
+        System.Collections.Generic.List<int> GetListaVersoes(int idOrcamento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse")]
-        System.Threading.Tasks.Task<int[]> GetListaVersoesAsync(int idOrcamento);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<int>> GetListaVersoesAsync(int idOrcamento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -387,11 +387,11 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
             return base.Channel.GerarVersaoAsync(objModel);
         }
         
-        public int[] GetListaVersoes(int idOrcamento) {
+        public System.Collections.Generic.List<int> GetListaVersoes(int idOrcamento) {
             return base.Channel.GetListaVersoes(idOrcamento);
         }
         
-        public System.Threading.Tasks.Task<int[]> GetListaVersoesAsync(int idOrcamento) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<int>> GetListaVersoesAsync(int idOrcamento) {
             return base.Channel.GetListaVersoesAsync(idOrcamento);
         }
     }

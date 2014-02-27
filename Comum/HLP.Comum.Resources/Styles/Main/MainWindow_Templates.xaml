@@ -9,7 +9,7 @@
 
     <ControlTemplate x:Key="TemplateNavigationButton" TargetType="{x:Type Button}">
         <Border Height="30" Width="85">
-            <DockPanel LastChildFill="True">
+            <DockPanel LastChildFill="True" x:Name="container">
                 <Image x:Name="ImagemSeta" Height="14" Width="14" DockPanel.Dock="Right" Margin="3,0,0,0">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
@@ -17,7 +17,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <TextBlock Text="" FontFamily="Calibri" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <TextBlock x:Name="txt" Text="" FontFamily="Calibri" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left">
                 </TextBlock>
             </DockPanel>
         </Border>
