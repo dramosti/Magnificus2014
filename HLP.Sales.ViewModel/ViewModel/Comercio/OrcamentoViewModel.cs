@@ -44,6 +44,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             Button btnAprovarDescontos = new Button();
             btnAprovarDescontos.Content = "Aprovar descontos?";
             btnAprovarDescontos.Command = this.aprovarDescontosCommand;
+            btnAprovarDescontos.Template = resource["ControlTemplateBotaoAprovar"] as ControlTemplate;
 
             Button btnEnviarItens = new Button();
             btnEnviarItens.Template = resource["ControlTemplateBotaoEnviar"] as ControlTemplate;
@@ -52,6 +53,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             btnConfirmarItens.Content = "Confirmar Itens";
             btnConfirmarItens.Command = this.alterarStatusItenCommand;
             btnConfirmarItens.CommandParameter = 'c';
+            btnConfirmarItens.Template = resource["ControlTemplateBotaoConfirmar"] as ControlTemplate;
 
             Button btnItensPerdidos = new Button();
             btnItensPerdidos.Content = "Definir Itens Perdidos";
@@ -62,6 +64,7 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             btnItensCancelados.Content = "Definir Itens Cancelados";
             btnItensCancelados.Command = this.alterarStatusItenCommand;
             btnItensCancelados.CommandParameter = 'e';
+            btnItensCancelados.Template = resource["ControlTemplateBotaoCancelado"] as ControlTemplate;
 
             Button btnGerarVersao = new Button();
             btnGerarVersao.Content = "Gerar Nova Versão";

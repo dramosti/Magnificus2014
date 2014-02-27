@@ -296,17 +296,18 @@
     <EmbeddedResource Include="Icones\WinTipoServico.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Resource Include="Icones\Botao_Enviar.png" />
-    <Resource Include="Icones\Botao_Enviar_MouseOver.png" />
-    <Resource Include="Icones\Enviar_Botao_Branco.png" />
-    <Resource Include="Icones\Enviar_Botao_Disabled.png" />
     <Resource Include="Icones\Arrow_Navigation.png" />
     <Resource Include="Icones\ArrowNavigationLeft.png" />
     <Resource Include="Icones\ArrowNavigationRight.png" />
     <Resource Include="Icones\ArrowNavigationLeftDisabled.png" />
     <Resource Include="Icones\ArrowNavigationRightDisabled.png" />
+    <Resource Include="Icones\ConfirmadoBranco.png" />
+    <Resource Include="Icones\ConfirmadoDisabled.png" />
     <Resource Include="Icones\AprovadoBranco.png" />
     <Resource Include="Icones\AprovadoDisabled.png" />
+    <Resource Include="Icones\Enviar_Botao_Branco.png" />
+    <Resource Include="Icones\Enviar_Botao_Disabled.png" />
+    <Resource Include="Icones\Cancel_Branco.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -44,25 +44,41 @@
     </Style>
     
     <!--Style Arrow Navigation Left HlpNavigation-->
-    
-    <Style x:Key="ImageStyleArrowNavigationLeft" TargetType="{x:Type Image}">
-        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeft.png"/>
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeftDisabled.png"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
+
+    <ControlTemplate x:Key="ButtonArrowNavigationLeft" TargetType="{x:Type Button}">
+        <Border Height="15" Width="15" BorderBrush="{x:Null}" Background="Transparent">                       
+                <Image x:Name="ImagemContextMenu">
+                    <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeft.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeftDisabled.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                     </Style>
+                    </Image.Style>
+                </Image>          
+        </Border>
+    </ControlTemplate>    
     
     <!--Style Arrow Navigation Right HlpNavigation-->
-    
-    <Style x:Key="ImageStyleArrowNavigationRight" TargetType="{x:Type Image}">
-        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRight.png"/>
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRightDisabled.png"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
+
+    <ControlTemplate x:Key="ButtonArrowNavigationRight" TargetType="{x:Type Button}">
+        <Border Height="15" Width="15" BorderBrush="{x:Null}" Background="Transparent">
+            <Image x:Name="ImagemContextMenu">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRight.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRightDisabled.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Border>
+    </ControlTemplate>   
     
 </ResourceDictionary>
