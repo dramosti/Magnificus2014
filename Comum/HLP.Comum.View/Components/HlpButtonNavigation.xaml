@@ -5,10 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="70">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/Main/MainWindow_Templates.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <DockPanel Height="30" Width="70" LastChildFill="True">
-        <Image DockPanel.Dock="Right" Width="16" Height="16">            
+        <Image DockPanel.Dock="Right" Width="16" Height="16" Style="{StaticResource ImageStyleButtonNavigation}">            
         </Image>
-        <Button>            
+        <Button Style="{StaticResource ButtonStyleButtonNavigation}">             
         </Button>
     </DockPanel>
 </UserControl>
