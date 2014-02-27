@@ -16,11 +16,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel>
-        <DockPanel Width="63" DockPanel.Dock="Left" HorizontalAlignment="Left">
-            <Image Height="30" Width="30" Style="{StaticResource ImageStyleArrowNavigationLeft}">
-            </Image>
-            <Image Height="30" Width="30" Margin="0,0,0,0" Style="{StaticResource ImageStyleArrowNavigationRight}">
-            </Image>
+        <DockPanel Width="33" DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <Button Height="30" Width="15" Template="{StaticResource ButtonArrowNavigationLeft}">
+            </Button>
+            <Button Height="30" Width="15" Margin="0,0,0,0" Template="{StaticResource ButtonArrowNavigationRight}">
+            </Button>
         </DockPanel>
         <ContentControl x:Name="ContentControlNavigation" 
                         Content="{Binding ElementName=ucNavegacao, Path=lIdsHierarquia, Converter={StaticResource hlpNavConv}}"></ContentControl>
