@@ -10,18 +10,18 @@ using System.Windows.Media;
 
 namespace HLP.Comum.View.Components
 {
-    public class DockPanelSplitter : Control
+    public class CustomDockPanelSplitter : Control
     {
-        static DockPanelSplitter()
+        static CustomDockPanelSplitter()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DockPanelSplitter),
-                new FrameworkPropertyMetadata(typeof(DockPanelSplitter)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomDockPanelSplitter),
+                new FrameworkPropertyMetadata(typeof(CustomDockPanelSplitter)));
 
             // override the Background property
-            BackgroundProperty.OverrideMetadata(typeof(DockPanelSplitter), new FrameworkPropertyMetadata(Brushes.Transparent));
+            BackgroundProperty.OverrideMetadata(typeof(CustomDockPanelSplitter), new FrameworkPropertyMetadata(Brushes.Transparent));
 
             // override the Dock property to get notifications when Dock is changed
-            DockPanel.DockProperty.OverrideMetadata(typeof(DockPanelSplitter),
+            DockPanel.DockProperty.OverrideMetadata(typeof(CustomDockPanelSplitter),
                 new FrameworkPropertyMetadata(Dock.Left, new PropertyChangedCallback(DockChanged)));
         }
 
@@ -36,7 +36,7 @@ namespace HLP.Comum.View.Components
         }
 
         public static readonly DependencyProperty ProportionalResizeProperty =
-            DependencyProperty.Register("ProportionalResize", typeof(bool), typeof(DockPanelSplitter),
+            DependencyProperty.Register("ProportionalResize", typeof(bool), typeof(CustomDockPanelSplitter),
             new UIPropertyMetadata(true));
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace HLP.Comum.View.Components
         }
 
         public static readonly DependencyProperty ThicknessProperty =
-            DependencyProperty.Register("Thickness", typeof(double), typeof(DockPanelSplitter),
+            DependencyProperty.Register("Thickness", typeof(double), typeof(CustomDockPanelSplitter),
             new UIPropertyMetadata(4.0, ThicknessChanged));
 
 
@@ -61,7 +61,7 @@ namespace HLP.Comum.View.Components
         private double previousParentHeight;  // current height of parent element, used for proportional resize
         #endregion
 
-        public DockPanelSplitter()
+        public CustomDockPanelSplitter()
         {
             Loaded += DockPanelSplitterLoaded;
             Unloaded += DockPanelSplitterUnloaded;
@@ -97,12 +97,12 @@ namespace HLP.Comum.View.Components
 
         private static void DockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((DockPanelSplitter)d).UpdateHeightOrWidth();
+            ((CustomDockPanelSplitter)d).UpdateHeightOrWidth();
         }
 
         private static void ThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((DockPanelSplitter)d).UpdateHeightOrWidth();
+            ((CustomDockPanelSplitter)d).UpdateHeightOrWidth();
         }
 
         private void UpdateHeightOrWidth()

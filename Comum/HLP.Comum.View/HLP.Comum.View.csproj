@@ -81,8 +81,12 @@
     <Compile Include="Components\AdornerExtensions.cs" />
     <Compile Include="Components\AdornerLabel.cs" />
     <Compile Include="Components\BaseControl.cs" />
+    <Compile Include="Components\CustomCheckBox.cs" />
     <Compile Include="Components\CustomComboBox.cs" />
-    <Compile Include="Components\DockPanelSplitter.cs" />
+    <Compile Include="Components\CustomDatePicker.cs" />
+    <Compile Include="Components\CustomTextBlock.cs" />
+    <Compile Include="Components\CustomTextBox.cs" />
+    <Compile Include="Components\CustomDockPanelSplitter.cs" />
     <Compile Include="Components\HlpButtonNavigation.xaml.cs">
       <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
     </Compile>
@@ -111,7 +115,7 @@
     <Compile Include="Components\HlpTextBox.xaml.cs">
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\TimePicker.cs" />
+    <Compile Include="Components\CustomTimePicker.cs" />
     <Compile Include="Components\WatermarkTextBox.cs" />
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />

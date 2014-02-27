@@ -78,8 +78,8 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <Components:TimePicker Value="{Binding dHoraInicio, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:TimePicker>
+                                    <Components:CustomTimePicker Value="{Binding dHoraInicio, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTimePicker>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
@@ -92,8 +92,8 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <Components:TimePicker Value="{Binding dHoraTermino, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:TimePicker>
+                                    <Components:CustomTimePicker Value="{Binding dHoraTermino, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTimePicker>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
