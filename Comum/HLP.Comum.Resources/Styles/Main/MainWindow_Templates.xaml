@@ -7,20 +7,8 @@
     
     <!--Template Button Navigation-->
 
-    <ControlTemplate x:Key="TemplateNavigationButton" TargetType="{x:Type Button}">
-        <Border Height="30" Width="85">
-            <DockPanel LastChildFill="True">
-                <Image x:Name="ImagemSeta" Height="14" Width="14" DockPanel.Dock="Right" Margin="3,0,0,0">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_Navigation.png"/>
-                        </Style>
-                    </Image.Style>
-                </Image>
-                <TextBlock Text="" FontFamily="Calibri" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left">
-                </TextBlock>
-            </DockPanel>
-        </Border>
-    </ControlTemplate>
+    <Style x:Name="ImageStyleButtonNavigation" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_Navigation.png"/>
+    </Style>
 
 </ResourceDictionary>

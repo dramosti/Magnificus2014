@@ -83,6 +83,15 @@
     <Compile Include="Components\BaseControl.cs" />
     <Compile Include="Components\CustomComboBox.cs" />
     <Compile Include="Components\DockPanelSplitter.cs" />
+    <Compile Include="Components\HlpButtonNavigation.xaml.cs">
+      <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpNavigation.xaml.cs">
+      <DependentUpon>HlpNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpNavigationPanel.xaml.cs">
+      <DependentUpon>HlpNavigationPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
       <DependentUpon>HlpTimePicker.xaml</DependentUpon>
@@ -150,6 +159,18 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\HlpButtonNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpNavigationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\HlpTimePicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
