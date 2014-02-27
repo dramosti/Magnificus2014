@@ -8,28 +8,45 @@
         Title="CFOP" Height="660" Width="1024" NameView="vwCfop">
     <StackPanel>
         <Expander Header="Principal" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
-					IsReadOnly="True"
-					Text="{Binding currentModel.idCfop, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					Height="27"  Caption="Código" Help="Chave principal do registro da CFOP" WidthLabel="173" HorizontalAlignment="Left" Width="266" Margin="10,0,0,2"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.cCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					Height="27"  Caption="CFOP " Help="Informar o código padrão da CFOP fornecida pelo seu Órgão Emissor." WidthLabel="173" HorizontalAlignment="Left" Width="267" Margin="10,0,0,2"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xCfopResumida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					Height="27"  Caption="Descrição Resumida" Help="Informar uma descrição abreviada do CFOP. Esse campo sairá na NF por isso que há necessidade da abreviação da Descrição da CFOP." WidthLabel="173" HorizontalAlignment="Left" Width="349" Margin="10,0,0,2"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					Height="27"  Caption="Descrição" Help="Descrição Detalhada da CFOP." WidthLabel="173" HorizontalAlignment="Left" Width="509" Margin="10,0,0,2"/>
-            </WrapPanel>
+            <Grid Margin="15,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Components:CustomTextBlock Text="Código"/>
+                <Components:CustomTextBox Width="100" 
+                                      IsReadOnly="True"
+                                      Text="{Binding currentModel.idCfop, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+                                      ToolTip="Chave principal do registro da CFOP"
+                                      Grid.Column="1" HorizontalAlignment="Left"/>
+                <Components:CustomTextBlock Text="CFOP" Grid.Row="1"/>
+                <Components:CustomTextBox  Grid.Column="1" Grid.Row="1"
+                                       Text="{Binding currentModel.cCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       IsEnabled="{Binding bIsEnabled}"
+                                       ToolTip="Informar o código padrão da CFOP fornecida pelo seu Órgão Emissor"/>
+
+                <Components:CustomTextBlock Text="Descrição Resumida" Grid.Row="2"/>
+                <Components:CustomTextBox  Grid.Column="1" Grid.Row="2"
+                                       Text="{Binding currentModel.xCfopResumida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       IsEnabled="{Binding bIsEnabled}"
+                                       ToolTip="Informar uma descrição abreviada do CFOP. Esse campo sairá na NF por isso que há necessidade da abreviação da Descrição da CFOP."
+                                       />
+                <Components:CustomTextBlock Text="Descrição" Grid.Row="3"/>
+                <Components:CustomTextBox  Grid.Column="1" Grid.Row="3"
+                                       Text="{Binding currentModel.xCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       IsEnabled="{Binding bIsEnabled}"
+                                       ToolTip="Descrição Detalhada da CFOP"
+                                       />
+            </Grid>
         </Expander>
+        
 
     </StackPanel>
 </runtime:WindowsBase>

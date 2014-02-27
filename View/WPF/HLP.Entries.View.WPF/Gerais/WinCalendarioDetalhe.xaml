@@ -52,8 +52,8 @@
                         </DataGridTemplateColumn.CellTemplate>
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
-                                <Components:TimePicker Value="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:TimePicker>
+                                <Components:CustomTimePicker Value="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTimePicker>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
@@ -66,8 +66,8 @@
                         </DataGridTemplateColumn.CellTemplate>
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
-                                <Components:TimePicker Value="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:TimePicker>
+                                <Components:CustomTimePicker Value="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged,
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTimePicker>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>

@@ -99,7 +99,7 @@
                         </DataGrid.Columns>
                     </DataGrid>             
         </Grid>
-        <osc:DockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top" Height="1"/>
+        <osc:CustomDockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top" Height="1"/>
         <Grid
             Height="22"               
                 DockPanel.Dock="Top">
