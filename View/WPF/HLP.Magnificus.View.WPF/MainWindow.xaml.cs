@@ -33,7 +33,7 @@ namespace HLP.Magnificus.View.WPF
             try
             {
                 this._viewModel = new MainViewModel();
-                this._viewModel.CarregaMenu(m: this.menuPrincipal);                 
+                this._viewModel.CarregaMenu(m: this.menuPrincipal);
             }
             catch (Exception)
             {
@@ -86,7 +86,7 @@ namespace HLP.Magnificus.View.WPF
             this._viewModel.heightWindow = this.dockPrinc.ActualHeight - this.statusBarPrinc.ActualHeight;
             //(((this.statusBarItemAtalhos.ContextMenu.Items[0] as MenuItem).Template.LoadContent()) as ContentControl).Content
             //    = new object();
-            
+
             //(((this.statusBarItemAtalhos.ContextMenu.Items[0] as MenuItem).Template.LoadContent()) as ContentControl).Content
             //= ((this.Resources["proxy"] as BindingProxy).Data as MainViewModel).winMan._currentTab.Botoes;            
         }

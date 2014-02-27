@@ -20,15 +20,21 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpButtonNavigation : UserControl
     {
-        public string xContentBtn
-        {
-            get { return this.btn.Content.ToString(); }
-            set { this.btn.Content = value; }
-        }
-
         public HlpButtonNavigation()
         {
             InitializeComponent();
+        }
+
+        public string xContentButton
+        {
+            get
+            {
+                return this.btn.Content.ToString();
+            }
+            set
+            {
+                this.btn.Content = value;
+            }
         }
     }
 }

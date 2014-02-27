@@ -23,7 +23,6 @@ namespace HLP.Comum.ViewModel.ViewModels
 {
     public class ViewModelBase<T> : INotifyPropertyChanged where T : class
     {
-
         private T _currentModel;
         public T currentModel
         {
@@ -38,7 +37,6 @@ namespace HLP.Comum.ViewModel.ViewModels
             get { return _lIds; }
             set {
                 _lIds = value;
-
             }
         }
 

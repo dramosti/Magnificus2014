@@ -351,11 +351,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
                         this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
 
-                    this.objViewModel.lIds = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
-
-
-                    this.objViewModel.lItensHierarquia = this.objViewModel.lIds;
-                    (Application.Current.MainWindow.FindName("compHierarquia") as HLP.Comum.View.Components.HlpNavigationPanel).lIdsHierarquia = this.objViewModel.lItensHierarquia;
+                    this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
                 }
             }
         }
