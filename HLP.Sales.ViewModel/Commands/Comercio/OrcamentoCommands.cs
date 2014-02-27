@@ -351,33 +351,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
                         this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
 
-                    this.objViewModel.lIds = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
-
-                    ResourceDictionary resource = new ResourceDictionary
-                    {
-                        Source = new Uri("/HLP.Comum.Resources;component/Styles/Main/MainWindow_Templates.xaml", UriKind.RelativeOrAbsolute)
-                    };
-
-                    Button btn;
-                    StackPanel stk = new StackPanel();
-                    stk.Orientation = Orientation.Horizontal;
-                    foreach (int item in this.objViewModel.lIds)
-                    {
-                        ControlTemplate t = resource[key: "TemplateNavigationButton"] as ControlTemplate;
-                        Border b = t.LoadContent() as Border;
-                        DockPanel d = b.Child as DockPanel;
-
-                        TextBlock txt = d.FindName("txt") as TextBlock;
-                        txt.Text = item.ToString();
-
-                        btn = new Button();
-                        btn.Template = t;
-
-                        stk.Children.Add(element: btn);
-                    }
-
-                    this.objViewModel.lItensHierarquia = stk;
-                    (Application.Current.MainWindow.FindName("contHierarquia") as ContentControl).Content = this.objViewModel.lItensHierarquia;
+                    this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
                 }
             }
         }

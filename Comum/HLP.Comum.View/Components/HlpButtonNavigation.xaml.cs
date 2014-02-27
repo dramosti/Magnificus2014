@@ -24,5 +24,17 @@ namespace HLP.Comum.View.Components
         {
             InitializeComponent();
         }
+
+        public string xContentButton
+        {
+            get
+            {
+                return this.btn.Content.ToString();
+            }
+            set
+            {
+                this.btn.Content = value;
+            }
+        }
     }
 }

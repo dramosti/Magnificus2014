@@ -89,9 +89,6 @@
     <Compile Include="Components\HlpNavigation.xaml.cs">
       <DependentUpon>HlpNavigation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\HlpNavigationPanel.xaml.cs">
-      <DependentUpon>HlpNavigationPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
       <DependentUpon>HlpTimePicker.xaml</DependentUpon>
@@ -125,6 +122,7 @@
     <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
     <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Converters\HlpNavigationConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />
@@ -164,10 +162,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpNavigation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Components\HlpNavigationPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
