@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Comum.View.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,17 +14,18 @@ namespace HLP.Comum.View.Converters
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             StackPanel stk = new StackPanel();
+
             stk.Orientation = Orientation.Horizontal;
 
             if (value == null)
                 return stk;
 
 
-            HLP.Comum.View.Components.HlpButtonNavigation btn;
+            HlpButtonNavigation btn;
 
             foreach (int item in (value as List<int>))
             {
-                btn = new Components.HlpButtonNavigation();
+                btn = new HlpButtonNavigation();
                 btn.xContentButton = item.ToString();
                 stk.Children.Add(element: btn);
             }
