@@ -8,7 +8,11 @@
     <!--Colors for Styles-->
 
     <SolidColorBrush x:Key="BlueStandard" Color="#FF4774B5"/>
-    <SolidColorBrush x:Key="BorderBrushMouseOverButton" Color="#FF4984D8"/>  
+    <SolidColorBrush x:Key="BorderBrushMouseOverButton" Color="#FF4984D8"/>
+    <SolidColorBrush x:Key="MouseOverButtonYellow" Color="#FFFFD35B"/>
+    <SolidColorBrush x:Key="WhiteButton" Color="White"/>
+    <SolidColorBrush x:Key="EnabledFalseGrayButton" Color="Gray"/>
+    <SolidColorBrush x:Key="MouseOverForegroundBlack" Color="Black"/>
     
     <!--Style Arrow HlpButtonNavigation-->
 
@@ -27,16 +31,16 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource BlueStandard}" TargetName="Border"/>
-                            <Setter Property="TextElement.Foreground" Value="White" TargetName="Content"/>
-                            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushMouseOverButton}" TargetName="Border"/>
+                            <Setter Property="Background" Value="{StaticResource MouseOverButtonYellow}" TargetName="Border"/>
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource MouseOverForegroundBlack}" TargetName="Content"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource MouseOverButtonYellow}" TargetName="Border"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextElement.Foreground" Value="Gray" TargetName="Content"/>
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource EnabledFalseGrayButton}" TargetName="Content"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="True">
                             <Setter Property="TextElement.FontWeight" Value="SemiBold" TargetName="Content"/>
-                        </Trigger>
+                        </Trigger>                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

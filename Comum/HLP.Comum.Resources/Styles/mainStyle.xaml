@@ -2250,7 +2250,7 @@
                         <Ellipse Width="12" Height="12" Margin="1,2,1,0"
                         Fill="#FFECA933" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Center"
                         StrokeThickness="0.5"/>
-                        <TextBlock FontWeight="Bold" Padding="4,0,0,0"
+                        <TextBlock FontWeight="Bold" Padding="0,0,0,0"
                         VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Text="!"
                         ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
                     </Grid>
