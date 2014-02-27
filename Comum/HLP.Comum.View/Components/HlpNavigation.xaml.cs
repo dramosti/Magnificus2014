@@ -27,8 +27,17 @@ namespace HLP.Comum.View.Components
             InitializeComponent();
             //this.ViewModel = new HlpNavigationViewModel();
         }
+        
+        public int selectedId
+        {
+            get { return (int)GetValue(selectedIdProperty); }
+            set { SetValue(selectedIdProperty, value); }
+        }
 
-
+        // Using a DependencyProperty as the backing store for selectedId.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty selectedIdProperty =
+            DependencyProperty.Register("selectedId", typeof(int), typeof(HlpNavigation), new PropertyMetadata(0));
+        
 
         public List<int> lIdsHierarquia
         {
@@ -42,6 +51,18 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for lIdsHierarquia.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty lIdsHierarquiaProperty =
             DependencyProperty.Register("lIdsHierarquia", typeof(List<int>), typeof(HlpNavigation), new PropertyMetadata(new List<int>()));
+
+
+
+        public ICommand commButton
+        {
+            get { return (ICommand)GetValue(commButtonProperty); }
+            set { SetValue(commButtonProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for commButton.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty commButtonProperty =
+            DependencyProperty.Register("commButton", typeof(ICommand), typeof(HlpNavigation), new PropertyMetadata(null));
 
 
 
