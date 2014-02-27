@@ -5,23 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace HLP.Comum.View.Components
 {
-    public class CustomComboBox : ComboBox
+    public class CustomCheckBox : CheckBox
     {
-        public CustomComboBox()
+        public CustomCheckBox() 
         {
             ResourceDictionary resource = new ResourceDictionary
             {
                 Source = new Uri("/HLP.Comum.Resources;component/Styles/mainStyle.xaml", UriKind.RelativeOrAbsolute)
             };
 
-            this.Style = resource["ComboBoxStyle"] as Style;
+            this.Style = resource["CheckBoxStyle"] as Style;
 
-     
         }
+
     }
 }

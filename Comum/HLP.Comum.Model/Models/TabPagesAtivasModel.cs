@@ -91,17 +91,18 @@ namespace HLP.Comum.Model.Models
                 UIElement e = _windows.Content as UIElement;
                 (e as Panel).DataContext = this.Windows.DataContext;
 
-                foreach (PropertyInfo item in this.Windows.DataContext.GetType().GetProperties())
-                {
-                    if (item.PropertyType == typeof(StackPanel))
+                if (this.Windows.DataContext != null)
+                    foreach (PropertyInfo item in this.Windows.DataContext.GetType().GetProperties())
                     {
-                        Type t = this.Windows.DataContext.GetType();
-                        object parametro = Activator.CreateInstance(t);
-                        parametro = this.Windows.DataContext;
+                        if (item.PropertyType == typeof(StackPanel))
+                        {
+                            Type t = this.Windows.DataContext.GetType();
+                            object parametro = Activator.CreateInstance(t);
+                            parametro = this.Windows.DataContext;
 
-                        this.Botoes = item.GetValue(obj: parametro) as StackPanel;
+                            this.Botoes = item.GetValue(obj: parametro) as StackPanel;
+                        }
                     }
-                }
 
                 return e;
             }
