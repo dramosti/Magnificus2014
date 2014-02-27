@@ -8,7 +8,7 @@
     <DockPanel Height="30" Width="70" LastChildFill="True">
         <Image DockPanel.Dock="Right" Width="16" Height="16">            
         </Image>
-        <Button>            
+        <Button x:Name="btn">            
         </Button>
     </DockPanel>
 </UserControl>

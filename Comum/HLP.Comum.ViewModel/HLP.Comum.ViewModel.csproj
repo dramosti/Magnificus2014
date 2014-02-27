@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\Service\HlpPesqPadraoService.cs" />
+    <Compile Include="ViewModels\Commands\Components\HlpNavigationPanelViewModel.cs" />
     <Compile Include="ViewModels\Commands\Components\HlpPesquisaPadraoCommands.cs" />
     <Compile Include="ViewModels\Commands\Components\IKernel.cs" />
     <Compile Include="ViewModels\Commands\FindAllCommand.cs" />

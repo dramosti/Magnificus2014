@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.ViewModels.Commands.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,29 @@ namespace HLP.Comum.View.Components
         public HlpNavigationPanel()
         {
             InitializeComponent();
+
         }
+
+        public List<int> lIdsHierarquia
+        {
+            set
+            {
+                StackPanel stkPanel = new StackPanel();
+                stkPanel.Orientation = Orientation.Horizontal;
+                HlpButtonNavigation btn;
+
+                foreach (int item in ((List<int>)value))
+                {
+                    btn = new HlpButtonNavigation();
+                    btn.xContentBtn = item.ToString();
+                    stkPanel.Children.Add(element: btn);
+                }
+
+                this.ctrlHierarquia.Content = stkPanel;
+            }
+        }
+
+
+
     }
 }

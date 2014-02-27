@@ -125,6 +125,7 @@
     <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
     <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Converters\HlpNavigationPanelConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />

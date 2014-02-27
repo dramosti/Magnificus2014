@@ -4,7 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:localConv="clr-namespace:HLP.Comum.View.Converters"
              d:DesignHeight="30" d:DesignWidth="300">
-    <StackPanel>            
-    </StackPanel>
+    <UserControl.Resources>
+        <localConv:HlpNavigationPanelConverter x:Key="hlpNavigationConv"/>
+    </UserControl.Resources>
+    <ContentControl x:Name="ctrlHierarquia"></ContentControl>
 </UserControl>

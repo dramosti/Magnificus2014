@@ -205,21 +205,6 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <StackPanel DockPanel.Dock="Top" Background="{StaticResource StyleMainWindowDefault}" Focusable="False">
-            <StackPanel.Resources>
-                <Style x:Key="ContentFuncionalidades" TargetType="Grid">
-                    <Setter Property="MinWidth" Value="400"/>
-                    <Setter Property="MinHeight" Value="100"/>
-                </Style>
-            </StackPanel.Resources>
-            <Expander Focusable="False" x:Name="expanderFuncionalidades" Template="{StaticResource RevealExpanderTemp}"
-                  OverridesDefaultStyle="True"
-                  Header=""
-                  VerticalAlignment="Stretch">
-                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainWindowDefault}">                   
-                </Grid>
-            </Expander>
-        </StackPanel>
         <Grid Focusable="False" x:Name="grdForms" Style="{StaticResource GridStyle}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0"/>
@@ -294,9 +279,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <DockPanel LastChildFill="True">
-                            <ContentControl x:Name="contHierarquia" Content="{Binding winMan._currentTab.lItensHierarquia}" DockPanel.Dock="Right" Width="850">
-                                
-                            </ContentControl>
+                            <Components:HlpNavigationPanel x:Name="compHierarquia" DockPanel.Dock="Right"/>
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="{Binding winMan.iHeightToolBar}" Focusable="False"   Style="{StaticResource toolBarCadastro}">
                                 <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
@@ -620,7 +603,7 @@
                                     </ControlTemplate>
                                 </Button.Template>
                             </Button>                            
-                            </ToolBar>
+                            </ToolBar>                            
                         </DockPanel>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         <TabControl Grid.Row="2"  

@@ -43,9 +43,9 @@ namespace HLP.Comum.ViewModel.ViewModels
         }
 
 
-        private StackPanel _lItensHierarquia;
+        private List<int> _lItensHierarquia;
 
-        public StackPanel lItensHierarquia
+        public List<int> lItensHierarquia
         {
             get { return _lItensHierarquia; }
             set
