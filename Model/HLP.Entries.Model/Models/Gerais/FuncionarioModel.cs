@@ -15,7 +15,7 @@ namespace HLP.Entries.Model.Models.Gerais
             : base(xTabela: "Funcionario")
         {
             this.lFuncionario_Endereco =
-                new ObservableCollectionBaseCadastros<Funcionario_EnderecoModel>();
+                new ObservableCollectionBaseCadastros<EnderecoModel>();
             this.lFuncionario_Certificacao =
                 new ObservableCollectionBaseCadastros<Funcionario_CertificacaoModel>();
             this.lFuncionario_Comissao_Produto =
@@ -175,9 +175,9 @@ namespace HLP.Entries.Model.Models.Gerais
         public bool stUsuarioAtivo { get; set; }
 
 
-        private ObservableCollectionBaseCadastros<Funcionario_EnderecoModel> _lFuncionario_Endereco;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lFuncionario_Endereco;
 
-        public ObservableCollectionBaseCadastros<Funcionario_EnderecoModel> lFuncionario_Endereco
+        public ObservableCollectionBaseCadastros<EnderecoModel> lFuncionario_Endereco
         {
             get { return _lFuncionario_Endereco; }
             set
@@ -253,199 +253,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
     }
 
-    public partial class Funcionario_EnderecoModel : modelBase
-    {
-
-
-        public Funcionario_EnderecoModel()
-            : base(xTabela: "Funcionario_Endereco")
-        {
-        }
-
-        private int? _idEndereco;
-        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idEndereco
-        {
-            get { return _idEndereco; }
-            set
-            {
-                _idEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "idEndereco");
-            }
-        }
-
-
-        private TipoEndereco _enumTipoEnder;
-
-        public TipoEndereco enumTipoEnder
-        {
-            get { return _enumTipoEnder; }
-            set
-            {
-                _enumTipoEnder = value;
-                base.NotifyPropertyChanged(propertyName: "enumTipoEnder");
-                _stTipoEndereco = (int)value;
-            }
-        }
-
-
-        private int _stTipoEndereco;
-        [ParameterOrder(Order = 2)]
-        public int stTipoEndereco
-        {
-            get { return _stTipoEndereco; }
-            set
-            {
-                _stTipoEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "stTipoEndereco");
-                _enumTipoEnder = (TipoEndereco)value;
-            }
-        }
-        private string _xEndereco;
-        [ParameterOrder(Order = 3)]
-        public string xEndereco
-        {
-            get { return _xEndereco; }
-            set
-            {
-                _xEndereco = value;
-                base.NotifyPropertyChanged(propertyName: "xEndereco");
-            }
-        }
-        private string _xCep;
-        [ParameterOrder(Order = 4)]
-        public string xCep
-        {
-            get { return _xCep; }
-            set
-            {
-                _xCep = value;
-                base.NotifyPropertyChanged(propertyName: "xCep");
-            }
-        }
-        private string _xNumero;
-        [ParameterOrder(Order = 5)]
-        public string xNumero
-        {
-            get { return _xNumero; }
-            set
-            {
-                _xNumero = value;
-                base.NotifyPropertyChanged(propertyName: "xNumero");
-            }
-        }
-        private string _xComplemento;
-        [ParameterOrder(Order = 6)]
-        public string xComplemento
-        {
-            get { return _xComplemento; }
-            set
-            {
-                _xComplemento = value;
-                base.NotifyPropertyChanged(propertyName: "xComplemento");
-            }
-        }
-        private string _xBairro;
-        [ParameterOrder(Order = 7)]
-        public string xBairro
-        {
-            get { return _xBairro; }
-            set
-            {
-                _xBairro = value;
-                base.NotifyPropertyChanged(propertyName: "xBairro");
-            }
-        }
-        private string _xLatitude;
-        [ParameterOrder(Order = 8)]
-        public string xLatitude
-        {
-            get { return _xLatitude; }
-            set
-            {
-                _xLatitude = value;
-                base.NotifyPropertyChanged(propertyName: "xLatitude");
-            }
-        }
-        private string _xLongitude;
-        [ParameterOrder(Order = 9)]
-        public string xLongitude
-        {
-            get { return _xLongitude; }
-            set
-            {
-                _xLongitude = value;
-                base.NotifyPropertyChanged(propertyName: "xLongitude");
-            }
-        }
-        private string _xFusoHorario;
-        [ParameterOrder(Order = 10)]
-        public string xFusoHorario
-        {
-            get { return _xFusoHorario; }
-            set
-            {
-                _xFusoHorario = value;
-                base.NotifyPropertyChanged(propertyName: "xFusoHorario");
-            }
-        }
-        private string _xCaixaPostal;
-        [ParameterOrder(Order = 11)]
-        public string xCaixaPostal
-        {
-            get { return _xCaixaPostal; }
-            set
-            {
-                _xCaixaPostal = value;
-                base.NotifyPropertyChanged(propertyName: "xCaixaPostal");
-            }
-        }
-        private int _idFuncionario;
-        [ParameterOrder(Order = 12)]
-        public int idFuncionario
-        {
-            get { return _idFuncionario; }
-            set
-            {
-                _idFuncionario = value;
-                base.NotifyPropertyChanged(propertyName: "idFuncionario");
-            }
-        }
-        private int _idCidade;
-        [ParameterOrder(Order = 13)]
-        public int idCidade
-        {
-            get { return _idCidade; }
-            set
-            {
-                _idCidade = value;
-                base.NotifyPropertyChanged(propertyName: "idCidade");
-            }
-        }
-        private byte? _stPrincipal;
-        [ParameterOrder(Order = 14)]
-        public byte? stPrincipal
-        {
-            get { return _stPrincipal; }
-            set
-            {
-                _stPrincipal = value;
-                base.NotifyPropertyChanged(propertyName: "stPrincipal");
-            }
-        }
-        private string _xNome;
-        [ParameterOrder(Order = 15)]
-        public string xNome
-        {
-            get { return _xNome; }
-            set
-            {
-                _xNome = value;
-                base.NotifyPropertyChanged(propertyName: "xNome");
-            }
-        }
-    }
-
+   
     public partial class Funcionario_ArquivoModel : modelBase
     {
         public Funcionario_ArquivoModel()
@@ -626,18 +434,7 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
     }
-
-    public partial class Funcionario_EnderecoModel
-    {
-        public override string this[string columnName]
-        {
-            get
-            {
-                return base[columnName];
-            }
-        }
-    }
-
+        
     public partial class Funcionario_ArquivoModel
     {
         public override string this[string columnName]

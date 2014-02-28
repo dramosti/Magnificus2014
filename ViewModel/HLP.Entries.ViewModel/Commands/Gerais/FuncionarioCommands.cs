@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -92,7 +93,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 foreach (int id in objViewModel.currentModel.lFuncionario_Endereco.idExcluidos)
                 {
                     this.objViewModel.currentModel.lFuncionario_Endereco.Add(
-                        item: new Funcionario_EnderecoModel
+                        item: new EnderecoModel
                         {
                             idEndereco = id,
                             status = statusModel.excluido

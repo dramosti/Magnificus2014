@@ -104,6 +104,7 @@
     <Compile Include="Models\Gerais\DepositoModel.cs" />
     <Compile Include="Models\Gerais\FabricanteModel.cs" />
     <Compile Include="Models\Gerais\Familia_produtoModel.cs" />
+    <Compile Include="Models\Gerais\FuncionarioModel.cs" />
     <Compile Include="Models\Gerais\MoedaModel.cs" />
     <Compile Include="Models\Gerais\Plano_pagamentoModel.cs" />
     <Compile Include="Models\Gerais\Ramo_atividadeModel.cs" />
@@ -118,7 +119,6 @@
     <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
-    <Compile Include="Models\Gerais\FuncionarioModel.cs" />
     <Compile Include="Models\Gerais\RegiaoModel.cs" />
     <Compile Include="Models\Gerais\Tipo_servicoModel.cs" />
     <Compile Include="Models\Gerais\Tipo_servicoRepository.cs" />
@@ -204,7 +204,6 @@
     <Compile Include="Repository\Implementation\Gerais\Funcionario_ArquivoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Funcionario_CertificacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Funcionario_Comissao_ProdutoRepository.cs" />
-    <Compile Include="Repository\Implementation\Gerais\Funcionario_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Funcionario_Margem_LucroComissaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\RegiaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\UFRepository.cs" />
@@ -293,7 +292,6 @@
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_ArquivoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_CertificacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Comissao_ProdutoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Margem_Lucro_ComissaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IRegiaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ITipo_servicoRepository.cs" />
