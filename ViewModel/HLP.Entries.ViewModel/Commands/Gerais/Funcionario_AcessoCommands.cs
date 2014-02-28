@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
@@ -21,13 +22,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
-                    paramCanExec => DeleteCanExecute());
+                    paramCanExec => false);
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
 
             this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
-                   canExecute: paramCanExec => this.NovoCanExecute());
+                   canExecute: paramCanExec => false);
 
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
@@ -120,29 +121,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
         public void Delete()
-        {
-           
-        }
-
-        private bool DeleteCanExecute()
-        {
-            return false;
-            //if (objViewModel.currentModel == null)
-            //    return false;
-
-            //return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
+        {           
         }
 
         private void Novo()
-        {
-            //this.objViewModel.novoBaseCommand.Execute(parameter: null);
+        {       
         }
-        private bool NovoCanExecute()
-        {
-            return false;
-            //return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
-        }
-
+       
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
@@ -169,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            //this.objViewModel.currentModel = null;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

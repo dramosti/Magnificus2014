@@ -21,7 +21,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         {
             this.objViewModel = objViewModel;
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
-                    paramCanExec => DeleteCanExecute());
+                    paramCanExec => false);
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
@@ -129,14 +129,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             }
         }
 
-        private bool DeleteCanExecute()
-        {
-            //if (objViewModel.currentModel == null)
-            //    return false;
 
-            //return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
-            return false;
-        }
         private void Novo(object _panel)
         {
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
@@ -187,6 +180,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 
         private void Cancelar()
         {
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

@@ -29,8 +29,8 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel = objViewModel;
 
-            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(this.objViewModel.currentModel),
-                    paramCanExec => DeleteCanExecute());
+            this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
+                    paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
@@ -117,7 +117,7 @@ namespace HLP.Entries.ViewModel.Commands
                 (objDependency as Panel)));
         }
 
-        public void Delete(object objUFModel)
+        public void Delete()
         {
             int iExcluir = 0;
 
@@ -147,17 +147,14 @@ namespace HLP.Entries.ViewModel.Commands
             }
             finally
             {
-                if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                if (this.objViewModel.currentModel == null)
+                {
+                    this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                    this.PesquisarRegistro();
+                }
             }
         }
-        private bool DeleteCanExecute()
-        {
-            if (objViewModel.currentModel == null)
-                return false;
-
-            return this.objViewModel.deletarBaseCommand.CanExecute(parameter: null);
-        }
-
+        
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new UFModel();
@@ -207,6 +204,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             //this.PesquisarRegistro();
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);

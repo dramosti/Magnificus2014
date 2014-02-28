@@ -73,16 +73,16 @@ namespace HLP.Magnificus.View.WPF
         private void Application_DispatcherUnhandledException(object sender,
                                System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            string xMessage = "";
+            string xMessage = e.Exception.Message + Environment.NewLine + e.Exception.InnerException;
             string xInner = "";
             e.Handled = true;
 
-            if (e.Exception.Message.Contains("Violation of UNIQUE KEY constraint"))
+            if (xMessage.Contains("Violation of UNIQUE KEY constraint"))
             {
-                xMessage = "Não é possível inserir o valor '" + e.Exception.Message.Split('(')[1].Split(')')[0]
+                xMessage = "Não é possível inserir o valor '" + xMessage.Split('(')[1].Split(')')[0]
                     + "' porque ele já existe na base de dados.";
             }
-            else if (e.Exception.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+            else if (xMessage.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
             {
                 xMessage = "Não é possível excluir o cadastro porque ele está sendo utilizado nos cadastros";
             }
