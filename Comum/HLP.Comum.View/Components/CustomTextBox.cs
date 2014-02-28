@@ -14,7 +14,7 @@ namespace HLP.Comum.View.Components
         {
             ResourceDictionary resource = new ResourceDictionary
             {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/mainStyle.xaml", UriKind.RelativeOrAbsolute)
+                Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
             this.Style = resource["TextBoxComponentStyle"] as Style;

@@ -279,7 +279,6 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <DockPanel LastChildFill="True">
-                            <Components:HlpNavigation DockPanel.Dock="Right" x:Name="ctrHierarquia" lIdsHierarquia="{Binding winMan._currentTab._currentDataContext.lItensHierarquia}"></Components:HlpNavigation>
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="{Binding winMan.iHeightToolBar}" Focusable="False"   Style="{StaticResource toolBarCadastro}">
                                 <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
@@ -603,6 +602,14 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
+                                <Components:HlpNavigation x:Name="ctrHierarquia" 
+                                                      lIdsHierarquia="{Binding winMan._currentTab._currentDataContext.lItensHierarquia}"
+                                                      commButton="{Binding winMan._currentTab._currentDataContext.commandPesquisar}"   
+                                                      selectedId="{Binding winMan._currentTab._currentDataContext.selectedId}"
+                                                      MaxWidth="600"
+                                                          MaxHeight="100"
+                                                      ></Components:HlpNavigation>
+
                             </ToolBar>
                         </DockPanel>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>

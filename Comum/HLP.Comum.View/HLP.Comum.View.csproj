@@ -90,6 +90,9 @@
     <Compile Include="Components\HlpButtonNavigation.xaml.cs">
       <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpEndereco.xaml.cs">
+      <DependentUpon>HlpEndereco.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpNavigation.xaml.cs">
       <DependentUpon>HlpNavigation.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,7 @@
     <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\HlpNavigationConverter.cs" />
+    <Compile Include="Converters\HlpNavigationMultiConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />
@@ -162,6 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Components\HlpButtonNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpEndereco.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

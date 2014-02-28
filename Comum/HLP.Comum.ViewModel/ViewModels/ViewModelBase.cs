@@ -35,8 +35,21 @@ namespace HLP.Comum.ViewModel.ViewModels
         public List<int> lIds
         {
             get { return _lIds; }
-            set {
+            set
+            {
                 _lIds = value;
+            }
+        }
+
+        private int _selectedId;
+
+        public int selectedId
+        {
+            get { return _selectedId; }
+            set
+            {
+                _selectedId = value;
+                this.NotifyPropertyChanged(propertyName: "selectedId");
             }
         }
 

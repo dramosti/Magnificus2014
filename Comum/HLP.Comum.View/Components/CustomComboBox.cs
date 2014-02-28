@@ -19,7 +19,7 @@ namespace HLP.Comum.View.Components
                 Source = new Uri("/HLP.Comum.Resources;component/Styles/mainStyle.xaml", UriKind.RelativeOrAbsolute)
             };
 
-            this.Style = resource["ComboBoxStyle"] as Style;
+             //this.Style = resource["ComboBoxStyle"] as Style;
 
      
         }
