@@ -13,7 +13,8 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/Main/MainWindow_Templates.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <localConv:HlpNavigationConverter x:Key="hlpNavConv"/>
-        </ResourceDictionary>
+            <localConv:HlpNavigationMultiConverter x:Key="hlpNavMultiConv"></localConv:HlpNavigationMultiConverter>
+        </ResourceDictionary>        
     </UserControl.Resources>
     <DockPanel>
         <DockPanel Width="33" DockPanel.Dock="Left" HorizontalAlignment="Left">
@@ -22,7 +23,19 @@
             <Button Height="30" Width="15" Margin="0,0,0,0" Template="{StaticResource ButtonArrowNavigationRight}">
             </Button>
         </DockPanel>
-        <ContentControl x:Name="ContentControlNavigation" 
-                        Content="{Binding ElementName=ucNavegacao, Path=lIdsHierarquia, Converter={StaticResource hlpNavConv}}"></ContentControl>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <ContentControl x:Name="ContentControlNavigation"
+                        >
+                <ContentControl.Content>
+                    <MultiBinding Converter="{StaticResource hlpNavMultiConv}">
+                        <MultiBinding.Bindings>
+                            <Binding ElementName="ucNavegacao" Path="lIdsHierarquia"></Binding>
+                            <Binding ElementName="ucNavegacao" Path="commButton"></Binding>
+                            <Binding ElementName="ucNavegacao" Path="selectedId"></Binding>
+                        </MultiBinding.Bindings>
+                    </MultiBinding>
+                </ContentControl.Content>
+            </ContentControl>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>
