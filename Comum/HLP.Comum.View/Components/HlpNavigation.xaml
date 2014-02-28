@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="HLP.Comum.View.Components.HlpNavigation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             x:Name="ucNavegacao"
+             xmlns:localConv="clr-namespace:HLP.Comum.View.Converters"
+             d:DesignHeight="30" d:DesignWidth="500">
+    <UserControl.Resources>        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/Main/MainWindow_Templates.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <localConv:HlpNavigationConverter x:Key="hlpNavConv"/>
+            <localConv:HlpNavigationMultiConverter x:Key="hlpNavMultiConv"></localConv:HlpNavigationMultiConverter>
+        </ResourceDictionary>        
+    </UserControl.Resources>
+    <DockPanel>
+        <DockPanel Width="33" DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <Button Height="30" Width="15" Template="{StaticResource ButtonArrowNavigationLeft}">
+            </Button>
+            <Button Height="30" Width="15" Margin="0,0,0,0" Template="{StaticResource ButtonArrowNavigationRight}">
+            </Button>
+        </DockPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <ContentControl x:Name="ContentControlNavigation"
+                        >
+                <ContentControl.Content>
+                    <MultiBinding Converter="{StaticResource hlpNavMultiConv}">
+                        <MultiBinding.Bindings>
+                            <Binding ElementName="ucNavegacao" Path="lIdsHierarquia"></Binding>
+                            <Binding ElementName="ucNavegacao" Path="commButton"></Binding>
+                            <Binding ElementName="ucNavegacao" Path="selectedId"></Binding>
+                        </MultiBinding.Bindings>
+                    </MultiBinding>
+                </ContentControl.Content>
+            </ContentControl>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

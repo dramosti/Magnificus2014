@@ -58,4 +58,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ValidaAdministrador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="xID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xSenha" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidaAdministradorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidaAdministradorResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

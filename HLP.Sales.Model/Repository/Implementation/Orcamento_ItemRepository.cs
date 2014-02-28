@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.Util;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Model.Repository.Interfaces;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -59,9 +60,10 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_ItemModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
-                                 .DoNotMap(i => i.bXComercialEnabled)    
+                                 .DoNotMap(i => i.bXComercialEnabled)
                                  .DoNotMap(i => i.objImposto)
                                  .DoNotMap(i => i.stServico)
+                                 .DoNotMap(i => i.bPermitePorcentagem)
                                  .Build());
             }
 
@@ -82,6 +84,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.bXComercialEnabled)
                                  .DoNotMap(i => i.objImposto)
                                  .DoNotMap(i => i.stServico)
+                                 .DoNotMap(i => i.bPermitePorcentagem)
                                  .Build());
             }
             return regOrcamento_ItemAccessor.Execute(idOrcamento).ToList();
@@ -98,6 +101,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.bXComercialEnabled)
                                 .DoNotMap(i => i.objImposto)
                                 .DoNotMap(i => i.stServico)
+                                .DoNotMap(i => i.bPermitePorcentagem)
                                 .Build());
             }
             return regAllOrcamento_ItemAccessor.Execute().ToList();

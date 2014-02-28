@@ -6,6 +6,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -68,7 +69,12 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.idCanalVenda)
                                 .DoNotMap(i => i.bListaPrecoItemHabil)
                                 .DoNotMap(i => i.idListaPrecoPaiCliente)
-                                .DoNotMap(i => i.iStatus)
+                                .DoNotMap(i => i.bCriado)
+                                .DoNotMap(i => i.bEnviado)
+                                .DoNotMap(i => i.bCancelado)
+                                .DoNotMap(i => i.bPerdido)
+                                .DoNotMap(i => i.bConfirmado)
+                                .DoNotMap(i => i.bTodos)
                                  .Build());
             }
 
@@ -92,7 +98,12 @@ namespace HLP.Sales.Model.Repository.Implementation
             .DoNotMap(i => i.idCanalVenda)
             .DoNotMap(i => i.bListaPrecoItemHabil)
             .DoNotMap(i => i.idListaPrecoPaiCliente)
-            .DoNotMap(i => i.iStatus)
+                                .DoNotMap(i => i.bCriado)
+                                .DoNotMap(i => i.bEnviado)
+                                .DoNotMap(i => i.bCancelado)
+                                .DoNotMap(i => i.bPerdido)
+                                .DoNotMap(i => i.bConfirmado)
+                                .DoNotMap(i => i.bTodos)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -114,7 +125,12 @@ namespace HLP.Sales.Model.Repository.Implementation
             .DoNotMap(i => i.idCanalVenda)
             .DoNotMap(i => i.bListaPrecoItemHabil)
             .DoNotMap(i => i.idListaPrecoPaiCliente)
-            .DoNotMap(i => i.iStatus)
+            .DoNotMap(i => i.bCriado)
+                                .DoNotMap(i => i.bEnviado)
+                                .DoNotMap(i => i.bCancelado)
+                                .DoNotMap(i => i.bPerdido)
+                                .DoNotMap(i => i.bConfirmado)
+                                .DoNotMap(i => i.bTodos)
             .Build());
             return reg.Execute(parameterValues: idOrcamento).FirstOrDefault();
         }
@@ -134,10 +150,29 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 .DoNotMap(i => i.idRamoAtividade)
                                 .DoNotMap(i => i.bListaPrecoItemHabil)
                                 .DoNotMap(i => i.idListaPrecoPaiCliente)
-                                .DoNotMap(i => i.iStatus)
+                                .DoNotMap(i => i.bCriado)
+                                .DoNotMap(i => i.bEnviado)
+                                .DoNotMap(i => i.bCancelado)
+                                .DoNotMap(i => i.bPerdido)
+                                .DoNotMap(i => i.bConfirmado)
+                                .DoNotMap(i => i.bTodos)
                                 .Build());
             }
             return regAllOrcamento_ideAccessor.Execute().ToList();
+        }
+
+        public int GetIdOrcamentoFilho(int idOrcamentoOrigem)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idOrcamento from Orcamento_ide where idOrcamentoOrigem = " + idOrcamentoOrigem);
+            object o = UndTrabalho.dbPrincipal.ExecuteScalar(command);
+            return o != null ? o.ToInt32() : 0;
+        }
+
+        public int GetIdOrcamentoPai(int idOrcamento)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idOrcamentoOrigem from Orcamento_ide where idOrcamento = " + idOrcamento);
+            object o = UndTrabalho.dbPrincipal.ExecuteScalar(command);
+            return o != null ? o.ToInt32() : 0;
         }
 
         public void BeginTransaction()

@@ -7,14 +7,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         xmlns:System="clr-namespace:System;assembly=mscorlib" 
-        Title="Magnificus 2014" 
-        mc:Ignorable="d" WindowState="Maximized" Width="1523.425" Closed="Window_Closed" Height="557.5" Icon="Principal.ico" >
+        xmlns:util="clr-namespace:HLP.Comum.Infrastructure.Util;assembly=HLP.Comum.Infrastructure"
+        Title="Magnificus 2014"
+        x:Name="manWin"
+        mc:Ignorable="d" Closed="Window_Closed" Icon="Principal.ico" StateChanged="manWin_StateChanged" SizeChanged="manWin_SizeChanged" >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
+            <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
             <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
@@ -22,7 +24,6 @@
             <SolidColorBrush x:Key="colorBackExpander" Color="#FF4774B5"/>
             <SolidColorBrush x:Key="colorItemsExpander" Color="White"/>
             <c:TextFormatConverter x:Key="TextFormatConv"/>
-
             <Style x:Key="Listbox123" TargetType="{x:Type ListBox}">
                 <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
@@ -82,7 +83,7 @@
         <KeyBinding Key="L" Modifiers="Control" Command="{Binding FindAllCommand}"/>
     </Window.InputBindings>
     <!--<Grid x:Name="Principal" Style="{StaticResource StylePrincipal}">-->
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" x:Name="dockPrinc">
         <DockPanel
 			Background="{StaticResource colorBackExpander}"                            
 			DockPanel.Dock="Top" LastChildFill="True">
@@ -204,222 +205,98 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <StackPanel DockPanel.Dock="Top" Background="{StaticResource StyleMainWindowDefault}" Focusable="False">
-            <StackPanel.Resources>
-                <Style x:Key="ContentFuncionalidades" TargetType="Grid">
-                    <Setter Property="MinWidth" Value="400"/>
-                    <Setter Property="MinHeight" Value="100"/>
-                </Style>
-            </StackPanel.Resources>
-            <Expander Focusable="False" x:Name="expanderFuncionalidades" Template="{StaticResource RevealExpanderTemp}"
-                  OverridesDefaultStyle="True"
-                  Header="..."
-                  VerticalAlignment="Stretch">
-                <Grid Focusable="False" Style="{StaticResource ContentFuncionalidades}" Background="{StaticResource StyleMainWindowDefault}">
-                   
-                </Grid>
-            </Expander>
-        </StackPanel>
         <Grid Focusable="False" x:Name="grdForms" Style="{StaticResource GridStyle}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="25"/>
+
             </Grid.RowDefinitions>
             <Border Grid.Row="1" Margin="0,0,0,0" BorderThickness="1" BorderBrush="{x:Null}">
                 <DockPanel LastChildFill="True">
+                    <StatusBar x:Name="statusBarPrinc" Grid.Row="2" Style="{DynamicResource StatusBarStyle1}" DockPanel.Dock="Bottom">
+                        <StatusBar.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="120"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </ItemsPanelTemplate>
+                        </StatusBar.ItemsPanel>
+                        <StatusBarItem Grid.Column="0">
+                            <StatusBarItem.Template>
+                                <ControlTemplate>
+                                    <Label Content="Localizar ( Ctrl+L )" Foreground="White"/>
+                                </ControlTemplate>
+                            </StatusBarItem.Template>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="5" HorizontalAlignment="Right">
+                            <StatusBarItem.Template>
+                                <ControlTemplate>
+                                    <Label Content="{Binding Path=xVersao, Mode=TwoWay}" Foreground="White"/>
+                                </ControlTemplate>
+                            </StatusBarItem.Template>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="6" HorizontalAlignment="Right" Margin="0,0,10,0">
+                            <StatusBarItem.Template>
+                                <ControlTemplate>
+                                    <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
+                                </ControlTemplate>
+                            </StatusBarItem.Template>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="7" x:Name="statusBarItemAtalhos"
+                                       ContextMenuService.Placement="Top"
+                               >
+                            <StatusBarItem.ContextMenu>
+                                <ContextMenu Style="{StaticResource ContextMenu}">
+                                    <MenuItem                                                            
+                                                            Width="120"            
+                                                            Height="{Binding Data.heightWindow,
+                        Source={StaticResource proxy}}">
+                                        <MenuItem.Template>
+                                            <ControlTemplate>
+                                                <ContentControl Content="{Binding winMan._currentTab.Botoes}"></ContentControl>
+                                            </ControlTemplate>
+                                        </MenuItem.Template>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StatusBarItem.ContextMenu>
+                            Clique
+                        </StatusBarItem>
+                    </StatusBar>
+
                     <Grid Focusable="False" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="{Binding ElementName=toolbarPrincipal, Path=Height}"/>
                             <RowDefinition Height="2"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="{Binding winMan.iHeightToolBar}" Focusable="False"   Style="{StaticResource toolBarCadastro}">
-                            <Button 
+                        <DockPanel LastChildFill="True">
+                            <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="{Binding winMan.iHeightToolBar}" Focusable="False"   Style="{StaticResource toolBarCadastro}">
+                                <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
 								CommandParameter="{Binding winMan._currentTab._content}"
 								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_File_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_Desabilitado.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"  CommandParameter="{Binding winMan._currentTab._content}"  
-								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_48.png" />
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" 
-                                    Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_48.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
-								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_48.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_2_48.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_48.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_48.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
-                                <Button 
-                                    Focusable="False"
-									x:Name="btnPrimeiro"                                     
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0,0,2,0">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                                 <Image x:Name="ImageAdd">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Left.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_MouseOver_Left.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_File_MouseOver.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Left_Disabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_Desabilitado.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -429,24 +306,270 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                <Button 
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"  CommandParameter="{Binding winMan._currentTab._content}"  
+								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_48.png" />
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_MouseOver.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandDeletar}" 
+                                    Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )" Focusable="False">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_48.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_MouseOver.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
+								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_48.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )" Focusable="False">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_2_48.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_MouseOver.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandCopiar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )" Focusable="False">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_48.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_MouseOver.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Pesquisar ( Alt + P )" Focusable="False">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_48.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_MouseOver.png"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_Disabled.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
+                                    <Button 
+                                    Focusable="False"
+									x:Name="btnPrimeiro"                                     
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0,0,2,0">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <Image x:Name="ImageAdd">
+                                                        <Image.Style>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Left.png"/>
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_MouseOver_Left.png"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Left_Disabled.png"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Image.Style>
+                                                    </Image>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <Button 
                                     Focusable="False"
 									x:Name="btnAnterior"                                    
 									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
 									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Left" Height="20"  Width="25" Margin="0">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <Image x:Name="ImageAdd" Height="17">
+                                                        <Image.Style>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Left.png"/>
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_MouseOver_Left.png"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Left_Disabled.png"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Image.Style>
+                                                    </Image>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <Button 
+                                    Focusable="False"
+									x:Name="btnUltimo"                                    
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
+									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25" Margin="2,0,0,0" Foreground="#FFECE5E5">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <Image x:Name="ImageAdd">
+                                                        <Image.Style>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Right.png"/>
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_MouseOver_Right.png"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Right_Enabled.png"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Image.Style>
+                                                    </Image>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <Button x:Name="btnProximo"
+                                        Focusable="False"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
+									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25">
+                                        <Button.Template>
+                                            <ControlTemplate>
+                                                <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                    <Image x:Name="ImageAdd" Height="17">
+                                                        <Image.Style>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Right.png"/>
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_MouseOver_Right.png"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Right_Disabled.png"/>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Image.Style>
+                                                    </Image>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
+                                </DockPanel>
+                                <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" VerticalAlignment="Center" Height="25" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" >
                                     <Button.Template>
                                         <ControlTemplate>
-                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                                <Image x:Name="ImageAdd" Height="17">
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                                                <Image x:Name="ImageAdd">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Left.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_Enabled.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_MouseOver_Left.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_MouseOver.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Left_Disabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_Disabled.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -456,24 +579,20 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                <Button 
-                                    Focusable="False"
-									x:Name="btnUltimo"                                    
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
-									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25" Margin="2,0,0,0" Foreground="#FFECE5E5">
+                                <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Configurações" Focusable="False">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                                 <Image x:Name="ImageAdd">
                                                     <Image.Style>
                                                         <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Right.png"/>
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_Enabled.png"/>
                                                             <Style.Triggers>
                                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_MouseOver_Right.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_MouseOver.png"/>
                                                                 </Trigger>
                                                                 <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Double_Arrow_Right_Enabled.png"/>
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_Disabled.png"/>
                                                                 </Trigger>
                                                             </Style.Triggers>
                                                         </Style>
@@ -483,81 +602,16 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                <Button x:Name="btnProximo"
-                                        Focusable="False"
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
-									Style="{StaticResource ButtonsMainWindow}" DockPanel.Dock="Right" Height="20"  Width="25">
-                                    <Button.Template>
-                                        <ControlTemplate>
-                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                                <Image x:Name="ImageAdd" Height="17">
-                                                    <Image.Style>
-                                                        <Style TargetType="{x:Type Image}">
-                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Right.png"/>
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_MouseOver_Right.png"/>
-                                                                </Trigger>
-                                                                <Trigger Property="IsEnabled" Value="False">
-                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Simple_Arrow_Right_Disabled.png"/>
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Image.Style>
-                                                </Image>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
-                                <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>
-                            </DockPanel>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" VerticalAlignment="Center" Height="25" Margin="25,0,0,0" ToolTip="Imprimir" Focusable="False" >
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_Enabled.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Printer_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <Button Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Configurações" Focusable="False">
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                            <Image x:Name="ImageAdd">
-                                                <Image.Style>
-                                                    <Style TargetType="{x:Type Image}">
-                                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_Enabled.png"/>
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_MouseOver.png"/>
-                                                            </Trigger>
-                                                            <Trigger Property="IsEnabled" Value="False">
-                                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Settings_Disabled.png"/>
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Image.Style>
-                                            </Image>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                        </ToolBar>
+                                <Components:HlpNavigation x:Name="ctrHierarquia" 
+                                                      lIdsHierarquia="{Binding winMan._currentTab._currentDataContext.lItensHierarquia}"
+                                                      commButton="{Binding winMan._currentTab._currentDataContext.commandPesquisar}"   
+                                                      selectedId="{Binding winMan._currentTab._currentDataContext.selectedId}"
+                                                      MaxWidth="600"
+                                                          MaxHeight="100"
+                                                      ></Components:HlpNavigation>
+
+                            </ToolBar>
+                        </DockPanel>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                         <TabControl Grid.Row="2"  
                                     Focusable="False"
@@ -590,24 +644,7 @@
                                 <DataTemplate>
                                     <DockPanel Focusable="False" LastChildFill="True">
                                         <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-                                            <Button Focusable="False" DockPanel.Dock="Bottom" Content="/\"
-                                                    ContextMenuService.Placement="Top">
-                                                <Button.ContextMenu>
-                                                    <ContextMenu>
-                                                        <MenuItem                                                            
-                                                            Width="150"
-                                                            Height="500"
-                                                            >
-                                                            <MenuItem.Template>
-                                                                <ControlTemplate>
-                                                                    <ContentControl Content="{Binding Botoes}"></ContentControl>
-                                                                </ControlTemplate>
-                                                            </MenuItem.Template>
-                                                        </MenuItem>
-                                                    </ContextMenu>
 
-                                                </Button.ContextMenu>
-                                            </Button>
                                         </DockPanel>
                                         <ContentControl 
                                                         Focusable="False" Content="{Binding _content}"/>
@@ -618,45 +655,6 @@
                     </Grid>
                 </DockPanel>
             </Border>
-            <StatusBar Grid.Row="2" Style="{DynamicResource StatusBarStyle1}">
-                <StatusBar.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-                    </ItemsPanelTemplate>
-                </StatusBar.ItemsPanel>
-                <StatusBarItem Grid.Column="0">
-                    <StatusBarItem.Template>
-                        <ControlTemplate>
-                            <Label Content="Localizar ( Ctrl+L )" Foreground="White"/>
-                        </ControlTemplate>
-                    </StatusBarItem.Template>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="6" HorizontalAlignment="Right">
-                    <StatusBarItem.Template>
-                        <ControlTemplate>
-                            <Label Content="{Binding Path=xVersao, Mode=TwoWay}" Foreground="White"/>
-                        </ControlTemplate>
-                    </StatusBarItem.Template>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="7" HorizontalAlignment="Right" Margin="0,0,10,0">
-                    <StatusBarItem.Template>
-                        <ControlTemplate>
-                            <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
-                        </ControlTemplate>
-                    </StatusBarItem.Template>
-                </StatusBarItem>
-            </StatusBar>
         </Grid>
     </DockPanel>
 </Window>

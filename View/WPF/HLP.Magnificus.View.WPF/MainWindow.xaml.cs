@@ -17,6 +17,7 @@ using HLP.Comum.Modules.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.View.WPF.Gerais;
+using HLP.Comum.Infrastructure.Util;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -33,7 +34,6 @@ namespace HLP.Magnificus.View.WPF
             {
                 this._viewModel = new MainViewModel();
                 this._viewModel.CarregaMenu(m: this.menuPrincipal);
-                
             }
             catch (Exception)
             {
@@ -76,6 +76,21 @@ namespace HLP.Magnificus.View.WPF
             this._viewModel.CarregaDadosLogin();
         }
 
-       
+        private void manWin_StateChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void manWin_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            this._viewModel.heightWindow = this.dockPrinc.ActualHeight - this.statusBarPrinc.ActualHeight;
+            //(((this.statusBarItemAtalhos.ContextMenu.Items[0] as MenuItem).Template.LoadContent()) as ContentControl).Content
+            //    = new object();
+
+            //(((this.statusBarItemAtalhos.ContextMenu.Items[0] as MenuItem).Template.LoadContent()) as ContentControl).Content
+            //= ((this.Resources["proxy"] as BindingProxy).Data as MainViewModel).winMan._currentTab.Botoes;            
+        }
+
+
     }
 }

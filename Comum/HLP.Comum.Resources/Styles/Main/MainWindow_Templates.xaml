@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:Util="clr-namespace:HLP.Comum.Resources" 
+                    xmlns:local="clr-namespace:HLP.Comum.Resources.Converter"
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+    
+    <!--Colors for Styles-->
+
+    <SolidColorBrush x:Key="BlueStandard" Color="#FF4774B5"/>
+    <SolidColorBrush x:Key="BorderBrushMouseOverButton" Color="#FF4984D8"/>
+    <SolidColorBrush x:Key="MouseOverButtonYellow" Color="#FFFFD35B"/>
+    <SolidColorBrush x:Key="WhiteButton" Color="White"/>
+    <SolidColorBrush x:Key="EnabledFalseGrayButton" Color="Gray"/>
+    <SolidColorBrush x:Key="MouseOverForegroundBlack" Color="Black"/>
+    
+    <!--Style Arrow HlpButtonNavigation-->
+
+    <Style x:Key="ImageStyleButtonNavigation" TargetType="{x:Type Image}">
+        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Arrow_Navigation.png"/>        
+    </Style>
+    
+    <!--Style Button HlpButtonNavigation-->
+    
+    <Style x:Key="ButtonStyleButtonNavigation" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" BorderBrush="{x:Null}" BorderThickness="0.5" Background="Transparent" CornerRadius="4">
+                        <ContentPresenter x:Name="Content" HorizontalAlignment="Left" VerticalAlignment="Center" Focusable="False" Margin="0,0,3,0"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource MouseOverButtonYellow}" TargetName="Border"/>
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource MouseOverForegroundBlack}" TargetName="Content"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource MouseOverButtonYellow}" TargetName="Border"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="{StaticResource EnabledFalseGrayButton}" TargetName="Content"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="TextElement.FontWeight" Value="SemiBold" TargetName="Content"/>
+                        </Trigger>                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Style Arrow Navigation Left HlpNavigation-->
+
+    <ControlTemplate x:Key="ButtonArrowNavigationLeft" TargetType="{x:Type Button}">
+        <Border Height="15" Width="15" BorderBrush="{x:Null}" Background="Transparent">                       
+                <Image x:Name="ImagemContextMenu">
+                    <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeft.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeftDisabled.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                     </Style>
+                    </Image.Style>
+                </Image>          
+        </Border>
+    </ControlTemplate>    
+    
+    <!--Style Arrow Navigation Right HlpNavigation-->
+
+    <ControlTemplate x:Key="ButtonArrowNavigationRight" TargetType="{x:Type Button}">
+        <Border Height="15" Width="15" BorderBrush="{x:Null}" Background="Transparent">
+            <Image x:Name="ImagemContextMenu">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRight.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRightDisabled.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Border>
+    </ControlTemplate>   
+    
+</ResourceDictionary>

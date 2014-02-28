@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -24,13 +25,57 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
         public ICommand commandCancelar { get; set; }
         public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
-        public ICommand navegarCommand { get; set; }        
+        public ICommand navegarCommand { get; set; }
+        public ICommand aprovarDescontosCommand { get; set; }
+        public ICommand alterarStatusItenCommand { get; set; }
+        public ICommand gerarVersaoCommand { get; set; }
+
         #endregion
 
         public OrcamentoViewModel()
         {
+            ResourceDictionary resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Comum.Resources;component/Styles/Sales/Orcamento/Template/Buttons_Shurtcut.xaml", UriKind.RelativeOrAbsolute)
+            };
+
             OrcamentoCommands comm = new OrcamentoCommands(objViewModel: this);
-            this.Botoes = new StackPanel();            
+
+            Button btnAprovarDescontos = new Button();
+            btnAprovarDescontos.Content = "Aprovar descontos?";
+            btnAprovarDescontos.Command = this.aprovarDescontosCommand;
+            btnAprovarDescontos.Template = resource["ControlTemplateBotaoAprovar"] as ControlTemplate;
+
+            Button btnEnviarItens = new Button();
+            btnEnviarItens.Template = resource["ControlTemplateBotaoEnviar"] as ControlTemplate;
+
+            Button btnConfirmarItens = new Button();
+            btnConfirmarItens.Content = "Confirmar Itens";
+            btnConfirmarItens.Command = this.alterarStatusItenCommand;
+            btnConfirmarItens.CommandParameter = 'c';
+            btnConfirmarItens.Template = resource["ControlTemplateBotaoConfirmar"] as ControlTemplate;
+
+            Button btnItensPerdidos = new Button();
+            btnItensPerdidos.Content = "Definir Itens Perdidos";
+            btnItensPerdidos.Command = this.alterarStatusItenCommand;
+            btnItensPerdidos.CommandParameter = 'p';
+
+            Button btnItensCancelados = new Button();
+            btnItensCancelados.Content = "Definir Itens Cancelados";
+            btnItensCancelados.Command = this.alterarStatusItenCommand;
+            btnItensCancelados.CommandParameter = 'e';
+            btnItensCancelados.Template = resource["ControlTemplateBotaoCancelado"] as ControlTemplate;
+
+            Button btnGerarVersao = new Button();
+            btnGerarVersao.Content = "Gerar Nova Versão";
+            btnGerarVersao.Command = this.gerarVersaoCommand;
+
+            this.Botoes.Children.Add(element: btnAprovarDescontos);
+            this.Botoes.Children.Add(element: btnEnviarItens);
+            this.Botoes.Children.Add(element: btnConfirmarItens);
+            this.Botoes.Children.Add(element: btnItensPerdidos);
+            this.Botoes.Children.Add(element: btnItensCancelados);
+            this.Botoes.Children.Add(element: btnGerarVersao);
         }
 
         public bool bListaPrecoHabilitado
@@ -56,125 +101,13 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             }
         }
 
-        public void CalculaTotais(byte iStatus)
+        #region Métodos Públicos
+        public void AtualizarTotais()
         {
-            if (this.currentModel == null)
-                return;
-
-            if (iStatus == 5)
-            {
-                this.currentModel.orcamento_Total_Impostos.pDescontoTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.pDesconto);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoCofinsTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.COFINS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsProprioTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoICmsSubstituicaoTributariaTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ICMS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIpiTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.IPI_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIssTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ISS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoPisTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.PIS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vCOFINSTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.COFINS_vCOFINS ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vDescontoSuframaTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.vDescontoSuframa ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vDescontoTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.vDesconto);
-                this.currentModel.orcamento_Total_Impostos.vFreteTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.vFreteItem);
-                this.currentModel.orcamento_Total_Impostos.vIcmsProprioTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ICMS_vIcmsProprio ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIcmsSubstituicaoTributariaTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vICMSTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ICMS_vICMS ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIITotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ISS_vIss ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIPITotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.IPI_vIPI ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIssTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.ISS_vIss ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vOutrasDespesasTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.vOutrasDespesasItem);
-                this.currentModel.orcamento_Total_Impostos.vPISTotal = this.currentModel.lOrcamento_Item_Impostos.Sum(i => i.PIS_vPIS ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vProdutoTotal = this.currentModel.lOrcamento_Itens.Where(i => !i.stServico).Sum(i => i.vTotalItem);
-                this.currentModel.orcamento_Total_Impostos.vSeguroTotal = this.currentModel.lOrcamento_Itens.Where(i => i.stServico).Sum(i => i.vSegurosItem);
-                this.currentModel.orcamento_Total_Impostos.vServicoTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.vTotalItem);
-                this.currentModel.orcamento_Total_Impostos.vTotal = this.currentModel.lOrcamento_Itens.Sum(i => i.vTotalItem);
-            }
-            else
-            {
-                this.currentModel.orcamento_Total_Impostos.pDescontoTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.pDesconto);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoCofinsTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.COFINS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsProprioTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ICMS_vBaseCalculoIcmsProprio ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoICmsSubstituicaoTributariaTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ICMS_vBaseCalculoSubstituicaoTributaria ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIcmsTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ICMS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIpiTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.IPI_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoIssTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ISS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vBaseCalculoPisTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.PIS_vBaseCalculo ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vCOFINSTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.COFINS_vCOFINS ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vDescontoSuframaTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vDescontoSuframa ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vDescontoTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vDesconto);
-                this.currentModel.orcamento_Total_Impostos.vFreteTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vFreteItem);
-                this.currentModel.orcamento_Total_Impostos.vIcmsProprioTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ICMS_vIcmsProprio ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIcmsSubstituicaoTributariaTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ICMS_vSubstituicaoTributaria ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vICMSTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ICMS_vICMS ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIITotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ISS_vIss ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIPITotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.IPI_vIPI ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vIssTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.ISS_vIss ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vOutrasDespesasTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vOutrasDespesasItem);
-                this.currentModel.orcamento_Total_Impostos.vPISTotal =
-                    this.currentModel.lOrcamento_Item_Impostos.Where(i => i.stOrcamentoImpostos == iStatus).Sum(i => i.PIS_vPIS ?? 0);
-                this.currentModel.orcamento_Total_Impostos.vProdutoTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Where(i => !i.stServico).Sum(i => i.vTotalItem);
-                this.currentModel.orcamento_Total_Impostos.vSeguroTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Where(i => i.stServico).Sum(i => i.vSegurosItem);
-                this.currentModel.orcamento_Total_Impostos.vServicoTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vTotalItem);
-                this.currentModel.orcamento_Total_Impostos.vTotal =
-                    this.currentModel.lOrcamento_Itens.Where(i => i.stOrcamentoItem == iStatus).Sum(i => i.vTotalItem);
-            }
+            if (currentModel != null)
+                this.currentModel.orcamento_Total_Impostos.CalcularTotais();
         }
 
-        public void ItensOrcamentoFilter(object sender, FilterEventArgs e)
-        {
-            if (e.Item.GetType() == typeof(Orcamento_ItemModel))
-            {
-                Orcamento_ItemModel i = e.Item as Orcamento_ItemModel;
-
-                if (i != null)
-                {
-                    if (i.stOrcamentoItem == this.currentModel.iStatus || this.currentModel.iStatus == 5)
-                    {
-                        e.Accepted = true;
-                    }
-                    else
-                    {
-                        e.Accepted = false;
-                    }
-                }
-            }
-            else if (e.Item.GetType() == typeof(Orcamento_Item_ImpostosModel))
-            {
-                Orcamento_Item_ImpostosModel i = e.Item as Orcamento_Item_ImpostosModel;
-
-                if (i != null)
-                {
-                    if (i.stOrcamentoImpostos == this.currentModel.iStatus || this.currentModel.iStatus == 5)
-                    {
-                        e.Accepted = true;
-                    }
-                    else
-                    {
-                        e.Accepted = false;
-                    }
-                }
-            }
-        }
+        #endregion
     }
 }

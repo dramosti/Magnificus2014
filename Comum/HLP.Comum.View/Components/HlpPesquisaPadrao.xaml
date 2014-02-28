@@ -21,23 +21,22 @@
     <DockPanel LastChildFill="True" Background="{StaticResource StyleMainWindowDefault}">
         <DockPanel.Resources>
         </DockPanel.Resources>
-        <Grid DockPanel.Dock="Top">            
-                    <DataGrid x:Name="dgvFilter"                     
-                  DockPanel.Dock="Top"
+        <Grid DockPanel.Dock="Top" Height="200">            
+                    <DataGrid x:Name="dgvFilter"            
+                  DockPanel.Dock="Top"                              
                   Background="Transparent"
                   BorderBrush="Transparent"
                   ItemsSource="{Binding lFilers}" 
-                  CanUserAddRows="False"
+                  CanUserAddRows="False"                             
                   CanUserDeleteRows="False"                  
                   AutoGenerateColumns="False" 
                   FontSize="10"   
-                  RowHeight="19"                    
-                  ColumnHeaderStyle="{StaticResource columnHeaderStyle}" 
+                  RowHeight="19"                        
                   SelectionUnit="Cell" 
-                  CellStyle="{StaticResource RightAlignedCell}">
+                  CellStyle="{StaticResource RightAlignedCell}" ColumnWidth="SizeToHeader">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="clCampos" Binding="{Binding Path=COLUMN_NAME}" IsReadOnly="True" Header="Campos" Width="150"></DataGridTextColumn>
-                            <DataGridTemplateColumn x:Name="clOperador" Header="Operador" Width="150">
+                            <DataGridTextColumn x:Name="clCampos" Binding="{Binding Path=COLUMN_NAME}" IsReadOnly="True" Header="Campos" Width="150"/>
+                    <DataGridTemplateColumn x:Name="clOperador" Header="Operador" Width="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Operador}"/>
@@ -100,18 +99,54 @@
                         </DataGrid.Columns>
                     </DataGrid>             
         </Grid>
-        <osc:DockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top" Height="1"/>
+        <osc:CustomDockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top" Height="1"/>
         <Grid
             Height="22"               
                 DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" >
-                <Button Content="Pesquisar"                
+                <Button 
+                Margin="5,0,0,0"
                 Command="{Binding commandPesquisar}"
-                CommandParameter="{Binding ElementName=dgvResult}"
-                HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Height="20"/>
-                <Button Content="Limpar"                    
-                	Command="{Binding commandLimpar}"
-                	HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="7,0,0,0" Height="20"/>
+                CommandParameter="{Binding ElementName=dgvResult}">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_48.png"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_Disabled.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button
+                    Margin="10,0,0,0"
+                	Command="{Binding commandLimpar}">
+                	 <Button.Template>
+                            <ControlTemplate>
+                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image x:Name="ImageAdd">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/broom-48.png"/>                                        
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Border>
+                    </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Bottom">
@@ -124,9 +159,8 @@
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   ItemsSource="{Binding Result}"                  
-                  AutoGenerateColumns="True"
-                  ColumnHeaderStyle="{StaticResource columnHeaderStyle}"
-                  RowStyle="{StaticResource rowStyle}"
+                  AutoGenerateColumns="True"                  
+                  
                   SelectionUnit="FullRow"
                   AlternationCount="2"                       
                   ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"

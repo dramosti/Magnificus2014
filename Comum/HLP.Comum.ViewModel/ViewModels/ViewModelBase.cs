@@ -16,19 +16,56 @@ using System.Windows.Threading;
 using System.Collections;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Infrastructure;
+using System.Windows.Media;
 
 
 namespace HLP.Comum.ViewModel.ViewModels
 {
     public class ViewModelBase<T> : INotifyPropertyChanged where T : class
     {
-
         private T _currentModel;
         public T currentModel
         {
             get { return _currentModel; }
             set { _currentModel = value; NotifyPropertyChanged("currentModel"); }
         }
+
+        private List<int> _lIds;
+
+        public List<int> lIds
+        {
+            get { return _lIds; }
+            set
+            {
+                _lIds = value;
+            }
+        }
+
+        private int _selectedId;
+
+        public int selectedId
+        {
+            get { return _selectedId; }
+            set
+            {
+                _selectedId = value;
+                this.NotifyPropertyChanged(propertyName: "selectedId");
+            }
+        }
+
+
+        private List<int> _lItensHierarquia;
+
+        public List<int> lItensHierarquia
+        {
+            get { return _lItensHierarquia; }
+            set
+            {
+                _lItensHierarquia = value;
+                NotifyPropertyChanged(propertyName: "lItensHierarquia");
+            }
+        }
+
 
         private StackPanel _botoes;
 
@@ -43,6 +80,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             this.bIsEnabled = false;
 
             viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
+            this.Botoes = new StackPanel();
         }
         public ViewModelBaseCommands<T> viewModelBaseCommands;
         BackgroundWorker bwFocus = new BackgroundWorker();
@@ -110,7 +148,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                         if (pk != null)
                         {
                             if (((PrimaryKey)pk).isPrimary)
-                            {                                
+                            {
                                 int? value = (int?)(property.GetValue(obj: this.currentModel));
                                 if (value != null)
                                     _currentID = (int)value;
@@ -172,6 +210,8 @@ namespace HLP.Comum.ViewModel.ViewModels
         {
             // The dependency object is valid if it has no errors, 
             //and all of its children (that are dependency objects) are error-free.
+            if (obj == null)
+                return true;
             bool resultado = ((!Validation.GetHasError(obj)
                 ) &&
                 LogicalTreeHelper.GetChildren(obj)
@@ -221,7 +261,10 @@ namespace HLP.Comum.ViewModel.ViewModels
                         return false;
                     foreach (DataGridColumn c in obj.Columns)
                     {
-                        o = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex).Content;
+                        DataGridCell _cell = StaticUtil.GetCell(grid: obj, row: row, column: c.DisplayIndex);
+                        if (_cell == null)
+                            return false;
+                        o = _cell.Content;
                         if (o != null)
                         {
                             if (o.GetType() == typeof(System.Windows.Controls.TextBlock))
@@ -243,6 +286,19 @@ namespace HLP.Comum.ViewModel.ViewModels
                             {
                                 if (Validation.GetHasError(element: o as System.Windows.Controls.ComboBox))
                                     return true;
+                            }
+                            else if (o.GetType().Name.ToString() == "ContentPresenter")
+                            {
+
+                                for (int cont = 0; cont < VisualTreeHelper.GetChildrenCount(reference: (o as ContentPresenter)); cont++)
+                                {
+                                    object child = VisualTreeHelper.GetChild(o as ContentPresenter, cont);
+
+                                    if (child.GetType().Name.ToString() == "TextBlock")
+                                        if (Validation.GetHasError(child as TextBlock))
+                                            return true;
+                                }
+
                             }
                         }
                     }

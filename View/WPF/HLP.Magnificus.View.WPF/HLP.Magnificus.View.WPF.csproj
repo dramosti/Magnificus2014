@@ -144,6 +144,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="WinMessages.xaml.cs">
+      <DependentUpon>WinMessages.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WinSobre.xaml.cs">
       <DependentUpon>WinSobre.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,8 @@
     <Compile Include="WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
+    <Resource Include="x-mark-48.png" />
+    <Resource Include="error-7-64.png" />
     <Resource Include="Principal.ico" />
     <None Include="packages.config" />
     <None Include="Resources\UserSilhouette.png" />
@@ -192,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="WinMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WinSobre.xaml">
       <SubType>Designer</SubType>
@@ -284,6 +293,10 @@
     <ProjectReference Include="..\..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Sales.View.WPF\HLP.Sales.View.WPF.csproj">
+      <Project>{629160d8-8a40-4515-a5d8-9c20024fc0e2}</Project>
+      <Name>HLP.Sales.View.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.View.WPF\HLP.Entries.View.WPF.csproj">
       <Project>{f6e2fd5e-5581-4362-a072-fce5099cccc1}</Project>

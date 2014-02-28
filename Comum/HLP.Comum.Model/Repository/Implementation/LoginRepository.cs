@@ -47,6 +47,21 @@ namespace HLP.Comum.Model.Repository.Implementation
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
         }
 
+        public int ValidaAdministrador(string xID, string xSenha, int idEmpresa)
+        {
+            DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                              (
+                              string.Format("select count(*) from Acesso a" +
+                                            " inner join Funcionario f" +
+                                            " on f.idFuncionario = a.idFuncionario" +
+                                            " where" +
+                                            " f.xID = '{0}'  AND f.xSenha = '{1}'" +
+            " AND a.idEmpresa = {2} and f.stUsuario = 1", xID, xSenha, idEmpresa)
+                              );
+
+            return (int)UndTrabalho.dbPrincipal.ExecuteScalar(comand);
+        }
+
         public int ValidaAcesso(string xId, int idEmpresa)
         {
             DbCommand comand = UndTrabalho.dbPrincipal.GetSqlStringCommand

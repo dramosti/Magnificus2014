@@ -7,10 +7,9 @@
 		xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
-    x:Name="wd"
         x:Class="HLP.Entries.View.WPF.Comercial.WinOrcamento"        
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
-        Title="WinOrcamento" Height="660" Width="1024" NameView="vwOrcamento"
+        Title="Orçamento" Height="660" Width="1024" NameView="vwOrcamento"
     >
     <runtime:WindowsBase.Resources>
         <CollectionViewSource 
@@ -150,7 +149,7 @@
                 </Components:HlpPesquisa>
             </WrapPanel>
         </Expander>
-        <TabControl>
+        <TabControl x:Name="tabControlPrincipal">
             <TabItem Header="Principal">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
@@ -172,7 +171,8 @@
                                     SelectedValuePath="id"
                                     DisplayMemberPath="display"                                
                                     
-									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, 
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contato" Help="Informar a pessoa de contato externo para quem o orçamento é emitido. Busca da Tabela de Contatos no Cadastro de Clientes." WidthLabel="231" Width="473">
 
@@ -531,21 +531,14 @@
             <TabItem Header="Itens">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
-                        <DockPanel DockPanel.Dock="Top" Height="35.5">
-                            <Components:HlpComboBox
-                                SetNext="False"
-                                SelectedIndex="{Binding currentModel.iStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                Height="27" Margin="10,5,10,3.5" Width="253.5" HorizontalAlignment="Left" Caption="Status itens" WidthLabel="96" UCSelectionChanged="HlpComboBox_UCSelectionChanged">
-                                <Components:HlpComboBox.Items>
-                                    <System:String>0-CRIADO</System:String>
-                                    <System:String>1-ENVIADO</System:String>
-                                    <System:String>2-CONFIRMADO</System:String>
-                                    <System:String>3-PERDIDO</System:String>
-                                    <System:String>4-CANCELADO</System:String>
-                                    <System:String>5-TODOS</System:String>
-                                </Components:HlpComboBox.Items>
-                            </Components:HlpComboBox>
-                        </DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Height="40" Orientation="Horizontal">
+                            <CheckBox Height="20" Content="0-CRIADO" IsChecked="{Binding currentModel.bCriado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="1-ENVIADO" IsChecked="{Binding currentModel.bEnviado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="2-CONFIRMADO" IsChecked="{Binding currentModel.bConfirmado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="3-PERDIDO" IsChecked="{Binding currentModel.bPerdido}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="4-CANCELADO" IsChecked="{Binding currentModel.bCancelado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="5-TODOS" IsChecked="{Binding currentModel.bTodos}" Margin="20,0,0,0"></CheckBox>
+                        </StackPanel>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -702,6 +695,7 @@
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTextColumn 
+                                            x:Name="clDesconto"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=pDesconto, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -1415,20 +1409,14 @@
             <TabItem Header="Base de Cálculo" GotFocus="TabItem_GotFocus">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
-                        <DockPanel DockPanel.Dock="Top" Height="36.5">
-                            <Components:HlpComboBox 
-                                x:Name="cbxStatusFinanceiro"
-								Height="27" Caption="Status Itens" HorizontalAlignment="Left" Margin="10,5,10,5" WidthLabel="92" UCSelectionChanged="HlpComboBox_UCSelectionChanged_1">
-                                <Components:HlpComboBox.Items>
-                                    <System:String>0-CRIADO</System:String>
-                                    <System:String>1-ENVIADO</System:String>
-                                    <System:String>2-CONFIRMADO</System:String>
-                                    <System:String>3-PERDIDO</System:String>
-                                    <System:String>4-CANCELADO</System:String>
-                                    <System:String>5-TODOS</System:String>
-                                </Components:HlpComboBox.Items>
-                            </Components:HlpComboBox>
-                        </DockPanel>
+                        <StackPanel DockPanel.Dock="Top" Height="40" Orientation="Horizontal">
+                            <CheckBox Height="20" Content="0-CRIADO" IsChecked="{Binding currentModel.bCriado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="1-ENVIADO" IsChecked="{Binding currentModel.bEnviado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="2-CONFIRMADO" IsChecked="{Binding currentModel.bConfirmado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="3-PERDIDO" IsChecked="{Binding currentModel.bPerdido}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="4-CANCELADO" IsChecked="{Binding currentModel.bCancelado}" Margin="20,0,0,0"></CheckBox>
+                            <CheckBox Height="20" Content="5-TODOS" IsChecked="{Binding currentModel.bTodos}" Margin="20,0,0,0"></CheckBox>
+                        </StackPanel>
                         <Expander Header="Detalhes" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpTextBox 

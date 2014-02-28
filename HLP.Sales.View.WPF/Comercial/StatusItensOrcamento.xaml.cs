@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Sales.ViewModel.ViewModel.Comercio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,24 @@ namespace HLP.Sales.View.WPF.Comercial
         public StatusItensOrcamento()
         {
             InitializeComponent();
+            this.ViewModel = new OrcamentoTrocarStatusViewModel();
+        }
+
+        public OrcamentoTrocarStatusViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as OrcamentoTrocarStatusViewModel;
+            }
+            set
+            {
+                this.DataContext = value;
+            }
+        }
+
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

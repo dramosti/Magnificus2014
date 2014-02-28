@@ -81,8 +81,21 @@
     <Compile Include="Components\AdornerExtensions.cs" />
     <Compile Include="Components\AdornerLabel.cs" />
     <Compile Include="Components\BaseControl.cs" />
+    <Compile Include="Components\CustomCheckBox.cs" />
     <Compile Include="Components\CustomComboBox.cs" />
-    <Compile Include="Components\DockPanelSplitter.cs" />
+    <Compile Include="Components\CustomDatePicker.cs" />
+    <Compile Include="Components\CustomTextBlock.cs" />
+    <Compile Include="Components\CustomTextBox.cs" />
+    <Compile Include="Components\CustomDockPanelSplitter.cs" />
+    <Compile Include="Components\HlpButtonNavigation.xaml.cs">
+      <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpEndereco.xaml.cs">
+      <DependentUpon>HlpEndereco.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpNavigation.xaml.cs">
+      <DependentUpon>HlpNavigation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
       <DependentUpon>HlpTimePicker.xaml</DependentUpon>
@@ -105,7 +118,7 @@
     <Compile Include="Components\HlpTextBox.xaml.cs">
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\TimePicker.cs" />
+    <Compile Include="Components\CustomTimePicker.cs" />
     <Compile Include="Components\WatermarkTextBox.cs" />
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
@@ -116,6 +129,8 @@
     <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
     <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
+    <Compile Include="Converters\HlpNavigationConverter.cs" />
+    <Compile Include="Converters\HlpNavigationMultiConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />
@@ -123,6 +138,9 @@
     <Compile Include="Converters\PorcentagemConverter.cs" />
     <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
+    <Compile Include="Formularios\wdSenhaSupervisor.xaml.cs">
+      <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\WindowsBase.cs" />
     <Compile Include="Formularios\WinPesquisaPadrao.xaml.cs">
       <DependentUpon>WinPesquisaPadrao.xaml</DependentUpon>
@@ -147,6 +165,18 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\HlpButtonNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpEndereco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\HlpTimePicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -175,9 +205,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Formularios\WinPesquisaPadrao.xaml">
+    <Page Include="Formularios\wdSenhaSupervisor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Formularios\WinPesquisaPadrao.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -116,6 +116,8 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
+
+
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();
                 if (this.EmRedeLocal() != TipoConexao.OnlineRede)
@@ -163,6 +165,7 @@ namespace HLP.Magnificus.View.WPF
                     bwParametrosEmpresa.RunWorkerAsync();
 
                     base.OnStartup(e);
+                    wd.WindowState = WindowState.Maximized;
                     wd.Show();
                 }
             }

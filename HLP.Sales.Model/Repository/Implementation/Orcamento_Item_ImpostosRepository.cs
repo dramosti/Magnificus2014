@@ -64,7 +64,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.vFreteItem)
                                  .DoNotMap(i => i.vSeguroItem)
                                  .DoNotMap(i => i.vOutrasDespesasItem)
-                                 .DoNotMap(i => i.stOrcamentoImpostos)
+                                 .DoNotMap(i => i.stOrcamentoImpostos)                                 
                                  .Build());
             }
 

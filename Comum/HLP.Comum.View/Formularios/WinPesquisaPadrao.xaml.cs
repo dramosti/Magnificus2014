@@ -48,12 +48,5 @@ namespace HLP.Comum.View.Formularios
                 this.Close();
             }
         }
-
-
-
-
-
-
-
     }
 }

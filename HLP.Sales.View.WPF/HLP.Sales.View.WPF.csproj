@@ -57,11 +57,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Util\BindingProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comercial\StatusItensOrcamento.xaml.cs">
       <DependentUpon>StatusItensOrcamento.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StatusItensOrcamentoVisibilityConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,7 +90,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
+      <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
+      <Name>HLP.Comum.View</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Sales.ViewModel\HLP.Sales.ViewModel.csproj">
+      <Project>{d366257c-5ed0-425e-9ef3-125a2cec5afd}</Project>
+      <Name>HLP.Sales.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Comercial\StatusItensOrcamento.xaml">
       <SubType>Designer</SubType>

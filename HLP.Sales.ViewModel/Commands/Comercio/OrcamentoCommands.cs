@@ -1,5 +1,10 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Modules;
+using HLP.Comum.Resources.Util;
+using HLP.Comum.View.Formularios;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Sales.Model.Models.Comercial;
+using HLP.Sales.ViewModel.Services;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using System;
 using System.Collections.Generic;
@@ -9,18 +14,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace HLP.Sales.ViewModel.Commands.Comercio
 {
     public class OrcamentoCommands
     {
         OrcamentoViewModel objViewModel;
-        sales_OrcamentoService.IserviceSales_OrcamentoClient servico = new sales_OrcamentoService.IserviceSales_OrcamentoClient();
         BackgroundWorker bWorkerAcoes;
-
+        Window wd = null;
+        OrcamentoService objServico;
 
         public OrcamentoCommands(OrcamentoViewModel objViewModel)
         {
+            objServico = new OrcamentoService();
 
             this.objViewModel = objViewModel;
 
@@ -42,11 +50,20 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
             canExecute: paramCanExec => this.CopyCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(paramExec),
                         canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            this.objViewModel.aprovarDescontosCommand = new RelayCommand(execute: paramExec => this.AprovarDescontosExecute(),
+                canExecute: paramCanExec => this.AprovarDescontosCanExecute());
+
+            this.objViewModel.alterarStatusItenCommand = new RelayCommand(execute: paramExec => this.AlterarStatusExecute(o: paramExec),
+                canExecute: paramCanExec => this.AlterarStatusCanExecute());
+
+            this.objViewModel.gerarVersaoCommand = new RelayCommand(execute: ex => this.GerarVersaoExecute(),
+                canExecute: canEx => this.GerarVersaoCanExecute());
         }
 
         #region Implementação Commands
@@ -65,7 +82,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         });
                 }
 
-                this.objViewModel.CalculaTotais((byte)5);
+                this.objViewModel.currentModel.bTodos = true;
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes = new BackgroundWorker();
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
@@ -83,7 +100,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 e.Result = e.Argument;
-                this.objViewModel.currentModel = this.servico.Save(objModel: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
                 this.IniciaCollection();
             }
             catch (Exception ex)
@@ -105,6 +122,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
                     this.IniciaCollection();
+                    this.objViewModel.currentModel.bTodos = true;
                 }
             }
             catch (Exception ex)
@@ -142,7 +160,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (servico.Delete(objModel: objViewModel.currentModel))
+                    if (this.objServico.Delete(objModel: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -165,7 +183,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Orcamento_ideModel();
@@ -216,7 +234,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         private void Cancelar()
         {
             if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
+            this.PesquisarRegistro(this.objViewModel.currentID);
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
@@ -266,7 +284,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 e.Result =
-                    servico.Copy(objModel: this.objViewModel.currentModel);
+                    objServico.Copy(objModel: this.objViewModel.currentModel);
             }
             catch (Exception)
             {
@@ -285,7 +303,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             try
             {
                 objViewModel.navegarBaseCommand.Execute(ContentBotao);
-                this.PesquisarRegistro();
+                this.PesquisarRegistro(this.objViewModel.currentID);
             }
             catch (Exception ex)
             {
@@ -293,18 +311,33 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
         }
 
-        public void ExecPesquisa()
+        public void ExecPesquisa(object o)
         {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.PesquisarRegistro();
+            int id = 0;
+
+            if (o == null)
+            {
+                this.objViewModel.pesquisarBaseCommand.Execute(null);
+                id = this.objViewModel.currentID;
+            }
+            else if (o.GetType() != typeof(string))
+            {
+                this.objViewModel.pesquisarBaseCommand.Execute(null);
+                id = this.objViewModel.currentID;
+            }
+            else
+                id = Convert.ToInt32(value: o);
+
+            this.objViewModel.selectedId = id;
+            this.PesquisarRegistro(id: id);
         }
 
-        private void PesquisarRegistro()
+        private void PesquisarRegistro(int id)
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.getOrcamento);
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
+            bw.RunWorkerAsync(id);
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -316,6 +349,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             else
             {
                 this.IniciaCollection();
+                this.objViewModel.currentModel = e.Result as Orcamento_ideModel;
+
                 if (this.objViewModel.currentModel != null)
                 {
                     foreach (Orcamento_ItemModel item in this.objViewModel.currentModel.lOrcamento_Itens)
@@ -328,6 +363,10 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                             item.objImposto.vTotalItem = item.vTotalItem;
                         }
                     }
+                    if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                        this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
+
+                    this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
                 }
             }
         }
@@ -336,10 +375,13 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         {
             try
             {
-                if (this.objViewModel.currentID != 0)
+                if ((int)e.Argument != 0)
                 {
-                    e.Result =
-                    this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto: this.objViewModel.currentID, idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
+                    Application.Current.Dispatcher.Invoke(
+                        (Action)(() =>
+    {
+        e.Result = this.objServico.GetObjeto(id: (int)e.Argument);
+    }));
                 }
             }
             catch (Exception ex)
@@ -351,7 +393,148 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         #region Implementação Commands de Funcionalidades
 
+        private void GerarVersaoExecute()
+        {
+            this.objViewModel.currentModel = this.objServico.GerarVersao(objModel: this.objViewModel.currentModel);
+            this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentModel.idOrcamento ?? 0);
+        }
 
+        private bool GerarVersaoCanExecute()
+        {
+            return !this.objViewModel.bIsEnabled && this.objViewModel.currentModel != null;
+        }
+
+        private void AlterarStatusExecute(object o)
+        {
+            Window form = GerenciadorModulo.Instancia.CarregaForm(nome: "StatusItensOrcamento",
+                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+            byte novoStatus = 0;
+
+            if (((char)o) == 'c')
+            {
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 2;
+            }
+            else if (((char)o) == 'p')
+            {
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 4;
+
+            }
+            else if (((char)o) == 'e')
+            {
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 5;
+            }
+
+            (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
+
+            foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens.Where(
+                i => i.stOrcamentoItem == 0 || i.stOrcamentoItem == 1).ToList())
+            {
+                (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens.Add(
+                    item: new TrocaStatus_Orcamento_Itens
+                    {
+                        codItem = (int)item.nItem,
+                        codProduto = item.idProduto,
+                        dataPrevEntrega = item.dConfirmacaoItem,
+                        quantEnvPend = item.qProduto
+                    });
+            }
+
+            if (form.ShowDialog() == true)
+            {
+                foreach (var item in ((form.DataContext) as OrcamentoTrocarStatusViewModel).lOrcamento_Itens)
+                {
+                    if (item.quantItens == item.quantEnvPend)
+                    {
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoItem =
+                    this.objViewModel.currentModel.lOrcamento_Item_Impostos.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoImpostos =
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.stOrcamentoImpostos
+                            = novoStatus;
+                    }
+                    else if (item.quantItens > 0)
+                    {
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto = (item.quantEnvPend - item.quantItens);
+                        this.objViewModel.currentModel.lOrcamento_Itens.Add(item:
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).Clone() as Orcamento_ItemModel);
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().qProduto = item.quantItens;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().stOrcamentoItem = novoStatus;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().idOrcamentoItem = null;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto =
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.Clone() as Orcamento_Item_ImpostosModel;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.stOrcamentoImpostos = novoStatus;
+                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.status
+                            = Comum.Resources.RecursosBases.statusModel.criado;
+                        this.objViewModel.currentModel.lOrcamento_Item_Impostos.Add(item: this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto);
+                    }
+                }
+            }
+        }
+
+        private bool AlterarStatusCanExecute()
+        {
+            if (!this.objViewModel.bIsEnabled)
+                return false;
+
+            if (this.objViewModel.currentModel != null)
+                if (this.objViewModel.currentModel.lOrcamento_Itens != null)
+                    if (this.objViewModel.currentModel.lOrcamento_Itens.Count(i => i.stOrcamentoItem == 0 ||
+                        i.stOrcamentoItem == 1) > 0)
+                        return true;
+
+            return false;
+        }
+
+        private void AprovarDescontosExecute()
+        {
+            wdSenhaSupervisor wdSenhaSupervisor = new wdSenhaSupervisor();
+            if (wdSenhaSupervisor.ShowDialog() == true)
+            {
+                foreach (var item in this.objViewModel.currentModel.lOrcamento_Itens)
+                {
+                    item.bPermitePorcentagem = true;
+                    item.pDesconto = item.pDesconto;
+                }
+            }
+        }
+
+        private bool AprovarDescontosCanExecute()
+        {
+
+            if (this.objViewModel.bIsEnabled)
+            {
+                wd = Sistema.GetOpenWindow(xName: "WinOrcamento");
+                if (wd != null)
+                {
+                    DataGrid dg = wd.FindName(name: "dgItens") as DataGrid;
+
+
+                    DataGridRow row = null;
+                    DataGridColumn column = dg.Columns.FirstOrDefault(i => i.Header.ToString() == "% Desc"); ;
+                    object o;
+
+                    if (dg.ItemsSource != null)
+                    {
+                        foreach (var item in dg.ItemsSource)
+                        {
+                            row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                            if (row != null)
+                            {
+                                o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
+
+                                if (o.GetType().Name.ToString() == "TextBlock")
+                                {
+                                    if (Validation.GetHasError(o as TextBlock))
+                                        return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
 
         #endregion
     }

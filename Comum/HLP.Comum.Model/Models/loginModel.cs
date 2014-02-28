@@ -18,6 +18,8 @@ namespace HLP.Comum.Model.Models
 
             indexEmpresa = 0;
         }
+
+
         public int indexEmpresa { get; set; }
         public int idEmpresa { get; set; }
         public string xId { get; set; }
@@ -29,7 +31,7 @@ namespace HLP.Comum.Model.Models
             get { return _xError; }
             set { _xError = value; base.NotifyPropertyChanged("xError"); }
         }
-        
+
     }
 
     public partial class loginModel
@@ -48,9 +50,9 @@ namespace HLP.Comum.Model.Models
                     if (this.xId == "")
                         return "Necessário informar Nome de Usuário!";
                     else if (loginFacade.loginClient.ValidaUsuario(xId: this.xId) < 1)
-                        return "Nome de Usuário não existe na base de dados!";
+                        return "Nome de Usuário não existe na base de dados!";                   
                 }
-                else if(columnName == "xPassword")
+                else if (columnName == "xPassword")
                 {
                     if (this.xPassword == "")
                         return "Campo de senha não pode ser vazio!";
