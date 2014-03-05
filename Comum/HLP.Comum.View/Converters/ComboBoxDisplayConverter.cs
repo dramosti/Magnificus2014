@@ -13,23 +13,38 @@ namespace HLP.Comum.View.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-
-            string retorno = "";
-            if (value != null)
+            try
             {
-                modelToComboBox obj =
-                    ((parameter as ObjectDataProvider).Data as ObservableCollection<modelToComboBox>).FirstOrDefault(i => i.id == (int)value);
+                string retorno = "";
+                if (value != null)
+                {
+                    modelToComboBox obj =
+                        ((parameter as ObjectDataProvider).Data as ObservableCollection<modelToComboBox>).FirstOrDefault(i => i.id == (int)value);
 
-                if (obj != null)
-                    retorno = obj.display;
+                    if (obj != null)
+                        retorno = obj.display;
+                }
+                return retorno;
             }
-
-            return retorno;
+            catch (Exception)
+            {
+                
+                throw;
+            }
+           
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            throw new NotImplementedException();
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
     }
 }

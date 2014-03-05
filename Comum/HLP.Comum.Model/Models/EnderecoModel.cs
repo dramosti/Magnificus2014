@@ -9,19 +9,22 @@ namespace HLP.Comum.Model.Models
 {
     public partial class EnderecoModel : modelBase
     {
+
+        CidadeService.IserviceCidadeClient cidadeService = new CidadeService.IserviceCidadeClient();
+
         public EnderecoModel()
-            : base(xTabela: "EnderecoModel")
+            : base(xTabela: "Enderecos")
         {
         }
         private int? _idEndereco;
-        [ParameterOrder(Order = 1)]
+        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idEndereco
         {
             get { return _idEndereco; }
             set { _idEndereco = value; base.NotifyPropertyChanged(propertyName: "idEndereco"); }
         }
 
-        private byte? _stPrincipal;
+        private byte? _stPrincipal = 0;
         [ParameterOrder(Order = 2)]
         public byte? stPrincipal
         {
@@ -126,55 +129,19 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        private string _xLatitude;
         [ParameterOrder(Order = 13)]
-        public string xLatitude
-        {
-            get { return _xLatitude; }
-            set
-            {
-                _xLatitude = value;
-                base.NotifyPropertyChanged(propertyName: "xLatitude");
-            }
-        }
-
-        private string _xLongitude;
-        [ParameterOrder(Order = 14)]
-        public string xLongitude
-        {
-            get { return _xLongitude; }
-            set
-            {
-                _xLongitude = value;
-                base.NotifyPropertyChanged(propertyName: "xLongitude");
-            }
-        }
-
-        private string _xFusoHorario;
-        [ParameterOrder(Order = 15)]
-        public string xFusoHorario
-        {
-            get { return _xFusoHorario; }
-            set
-            {
-                _xFusoHorario = value;
-                base.NotifyPropertyChanged(propertyName: "xFusoHorario");
-            }
-        }
-
-        [ParameterOrder(Order = 16)]
         public int? idClienteFornecedor { get; set; }
-        [ParameterOrder(Order = 17)]
+        [ParameterOrder(Order = 14)]
         public int? idContato { get; set; }
-        [ParameterOrder(Order = 18)]
+        [ParameterOrder(Order = 15)]
         public int? idEmpresa { get; set; }
-        [ParameterOrder(Order = 19)]
+        [ParameterOrder(Order = 16)]
         public int? idFuncionario { get; set; }
-        [ParameterOrder(Order = 20)]
+        [ParameterOrder(Order = 17)]
         public int? idSite { get; set; }
-        [ParameterOrder(Order = 21)]
+        [ParameterOrder(Order = 18)]
         public int? idTransportador { get; set; }
-        [ParameterOrder(Order = 22)]
+        [ParameterOrder(Order = 19)]
         public int? idAgencia { get; set; }
     }
 
@@ -184,7 +151,28 @@ namespace HLP.Comum.Model.Models
         {
             get
             {
-                return base[columnName];
+                string sReturn = base[columnName];
+                
+                if (columnName == "xCEP" && sReturn == null)
+                {
+                    object valor = this.GetType().GetProperty(columnName).GetValue(this);
+                    if (valor != null)
+                    {
+                        HLP.WebServices.Cep ws = new HLP.WebServices.Cep();
+                        HLP.WebServices.Endereco end = ws.BuscaEndereco(valor.ToString());
+                        if (end != null)
+                        {
+                            xEndereco = end.Logradouro;
+                            xBairro = end.Bairro;
+                            int? icidade = cidadeService.GetCidadeByName(end.Cidade);
+                            if (icidade != null)
+                            {
+                                idCidade = (int)icidade;
+                            }
+                        }
+                    }
+                }
+                return sReturn;
             }
         }
     }

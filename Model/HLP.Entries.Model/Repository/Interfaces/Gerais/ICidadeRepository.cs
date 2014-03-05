@@ -11,6 +11,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface ICidadeRepository
     {
         ObservableCollection<CidadeModel> GetCidadeByUf(int idUf);
+        int? GetCidadeByName(string xName);
         int Copy(int idCidade);
         void Save(CidadeModel cidade);
         void Delete(int idCidade);

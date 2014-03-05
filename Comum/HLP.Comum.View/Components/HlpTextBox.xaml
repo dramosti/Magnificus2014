@@ -7,8 +7,7 @@
              xmlns:local="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" 
               Width="Auto" Height="Auto"  x:Name="componente" Loaded="componente_Loaded">
-    <UserControl.Resources>   
-        
+    <UserControl.Resources>  
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
@@ -39,7 +38,6 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">

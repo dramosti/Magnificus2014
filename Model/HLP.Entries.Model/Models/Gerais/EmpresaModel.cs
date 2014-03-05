@@ -329,6 +329,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 objParametro_ComercialModel = value;
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_ComercialModel");
             }
+
         }
 
         private Parametro_FinanceiroModel objParametro_FinanceiroModel;
