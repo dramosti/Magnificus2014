@@ -171,7 +171,6 @@
                 <Grid>
                     <Components:HlpEndereco 
                         ItemsSource="{Binding currentModel.lFuncionario_Endereco}" 
-                        IsEnabled="{Binding bIsEnabled}"
                         />
 
                 </Grid>

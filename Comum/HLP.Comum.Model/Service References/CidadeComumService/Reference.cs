@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.cidadeService {
+namespace HLP.Comum.Model.CidadeComumService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,17 +17,17 @@ namespace HLP.Entries.ViewModel.cidadeService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.CidadeModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Comum.Model.CidadeComumService.CidadeModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.ObjectModel.Collection<HLP.Entries.ViewModel.cidadeService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Comum.Model.CidadeComumService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.cidadeService.statusModel statusField;
+        private HLP.Comum.Model.CidadeComumService.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -40,7 +40,7 @@ namespace HLP.Entries.ViewModel.cidadeService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.ObjectModel.Collection<HLP.Entries.ViewModel.cidadeService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Comum.Model.CidadeComumService.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -53,7 +53,7 @@ namespace HLP.Entries.ViewModel.cidadeService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.cidadeService.statusModel status {
+        public HLP.Comum.Model.CidadeComumService.statusModel status {
             get {
                 return this.statusField;
             }
@@ -71,6 +71,93 @@ namespace HLP.Entries.ViewModel.cidadeService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CidadeModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais")]
+    [System.SerializableAttribute()]
+    public partial class CidadeModel : HLP.Comum.Model.CidadeComumService.modelBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int _idUFField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int cIbgeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idCidadeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idUFField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xCidadeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int _idUF {
+            get {
+                return this._idUFField;
+            }
+            set {
+                if ((this._idUFField.Equals(value) != true)) {
+                    this._idUFField = value;
+                    this.RaisePropertyChanged("_idUF");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int cIbge {
+            get {
+                return this.cIbgeField;
+            }
+            set {
+                if ((this.cIbgeField.Equals(value) != true)) {
+                    this.cIbgeField = value;
+                    this.RaisePropertyChanged("cIbge");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idCidade {
+            get {
+                return this.idCidadeField;
+            }
+            set {
+                if ((this.idCidadeField.Equals(value) != true)) {
+                    this.idCidadeField = value;
+                    this.RaisePropertyChanged("idCidade");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idUF {
+            get {
+                return this.idUFField;
+            }
+            set {
+                if ((this.idUFField.Equals(value) != true)) {
+                    this.idUFField = value;
+                    this.RaisePropertyChanged("idUF");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xCidade {
+            get {
+                return this.xCidadeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xCidadeField, value) != true)) {
+                    this.xCidadeField = value;
+                    this.RaisePropertyChanged("xCidade");
+                }
             }
         }
     }
@@ -186,14 +273,14 @@ namespace HLP.Entries.ViewModel.cidadeService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="cidadeService.IserviceCidade")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CidadeComumService.IserviceCidade")]
     public interface IserviceCidade {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/getCidade", ReplyAction="http://tempuri.org/IserviceCidade/getCidadeResponse")]
-        HLP.Entries.Model.Models.Gerais.CidadeModel getCidade(int idCidade);
+        HLP.Comum.Model.CidadeComumService.CidadeModel getCidade(int idCidade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/getCidade", ReplyAction="http://tempuri.org/IserviceCidade/getCidadeResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CidadeModel> getCidadeAsync(int idCidade);
+        System.Threading.Tasks.Task<HLP.Comum.Model.CidadeComumService.CidadeModel> getCidadeAsync(int idCidade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/GetCidadeByName", ReplyAction="http://tempuri.org/IserviceCidade/GetCidadeByNameResponse")]
         System.Nullable<int> GetCidadeByName(string xName);
@@ -202,10 +289,10 @@ namespace HLP.Entries.ViewModel.cidadeService {
         System.Threading.Tasks.Task<System.Nullable<int>> GetCidadeByNameAsync(string xName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/saveCidade", ReplyAction="http://tempuri.org/IserviceCidade/saveCidadeResponse")]
-        int saveCidade(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade);
+        int saveCidade(HLP.Comum.Model.CidadeComumService.CidadeModel objCidade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/saveCidade", ReplyAction="http://tempuri.org/IserviceCidade/saveCidadeResponse")]
-        System.Threading.Tasks.Task<int> saveCidadeAsync(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade);
+        System.Threading.Tasks.Task<int> saveCidadeAsync(HLP.Comum.Model.CidadeComumService.CidadeModel objCidade);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/delCidade", ReplyAction="http://tempuri.org/IserviceCidade/delCidadeResponse")]
         bool delCidade(int idCidade);
@@ -221,12 +308,12 @@ namespace HLP.Entries.ViewModel.cidadeService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceCidadeChannel : HLP.Entries.ViewModel.cidadeService.IserviceCidade, System.ServiceModel.IClientChannel {
+    public interface IserviceCidadeChannel : HLP.Comum.Model.CidadeComumService.IserviceCidade, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceCidadeClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.cidadeService.IserviceCidade>, HLP.Entries.ViewModel.cidadeService.IserviceCidade {
+    public partial class IserviceCidadeClient : System.ServiceModel.ClientBase<HLP.Comum.Model.CidadeComumService.IserviceCidade>, HLP.Comum.Model.CidadeComumService.IserviceCidade {
         
         public IserviceCidadeClient() {
         }
@@ -247,11 +334,11 @@ namespace HLP.Entries.ViewModel.cidadeService {
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.CidadeModel getCidade(int idCidade) {
+        public HLP.Comum.Model.CidadeComumService.CidadeModel getCidade(int idCidade) {
             return base.Channel.getCidade(idCidade);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CidadeModel> getCidadeAsync(int idCidade) {
+        public System.Threading.Tasks.Task<HLP.Comum.Model.CidadeComumService.CidadeModel> getCidadeAsync(int idCidade) {
             return base.Channel.getCidadeAsync(idCidade);
         }
         
@@ -263,11 +350,11 @@ namespace HLP.Entries.ViewModel.cidadeService {
             return base.Channel.GetCidadeByNameAsync(xName);
         }
         
-        public int saveCidade(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade) {
+        public int saveCidade(HLP.Comum.Model.CidadeComumService.CidadeModel objCidade) {
             return base.Channel.saveCidade(objCidade);
         }
         
-        public System.Threading.Tasks.Task<int> saveCidadeAsync(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade) {
+        public System.Threading.Tasks.Task<int> saveCidadeAsync(HLP.Comum.Model.CidadeComumService.CidadeModel objCidade) {
             return base.Channel.saveCidadeAsync(objCidade);
         }
         

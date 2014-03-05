@@ -10,7 +10,7 @@ namespace HLP.Comum.Model.Models
     public partial class EnderecoModel : modelBase
     {
 
-        CidadeService.IserviceCidadeClient cidadeService = new CidadeService.IserviceCidadeClient();
+        CidadeComumService.IserviceCidadeClient cidadeService = new CidadeComumService.IserviceCidadeClient();
 
         public EnderecoModel()
             : base(xTabela: "Enderecos")
@@ -164,7 +164,8 @@ namespace HLP.Comum.Model.Models
                         {
                             xEndereco = end.Logradouro;
                             xBairro = end.Bairro;
-                            int? icidade = cidadeService.GetCidadeByName(end.Cidade);
+                            
+                             int? icidade = cidadeService.GetCidadeByName(end.Cidade);
                             if (icidade != null)
                             {
                                 idCidade = (int)icidade;
