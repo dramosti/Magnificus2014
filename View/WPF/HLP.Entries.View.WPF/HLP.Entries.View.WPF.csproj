@@ -88,6 +88,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comercial\Converters\CanUserAddOrcamentoItemConverter.cs" />
+    <Compile Include="Comercial\Converters\IdMotivoVisibilityConverter.cs" />
+    <Compile Include="Comercial\Converters\StatusOrcamentoConverter.cs" />
     <Compile Include="Comercial\WinCanalVenda.xaml.cs">
       <DependentUpon>WinCanalVenda.xaml</DependentUpon>
     </Compile>

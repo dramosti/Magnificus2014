@@ -94,9 +94,9 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
-        private int _idMotivoPercaCanc;
+        private int? _idMotivoPercaCanc;
 
-        public int idMotivoPercaCanc
+        public int? idMotivoPercaCanc
         {
             get { return _idMotivoPercaCanc; }
             set
