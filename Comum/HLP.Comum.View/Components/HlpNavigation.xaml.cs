@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.ViewModel.Commands;
+using HLP.Comum.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,12 +23,43 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpNavigation : UserControl
     {
+        public ICommand btnAntComm { get; set; }
+
+        public ICommand btnProxComm { get; set; }
+
         public HlpNavigation()
         {
             InitializeComponent();
-            //this.ViewModel = new HlpNavigationViewModel();
+            this.btnAntComm = new RelayCommand(execute: execut => this.AntExecute(), canExecute: canExec => this.AntCanExecute());
+            this.btnProxComm = new RelayCommand(execute: execut => this.ProxExecute(), canExecute: canExec => this.ProxCanExecute());
+            this.btnAnt.Command = this.btnAntComm;
+            this.btnProx.Command = this.btnProxComm;
         }
-        
+
+        #region Commands
+
+        private void AntExecute()
+        {
+            this.scroll.ScrollToHorizontalOffset(offset: this.scroll.HorizontalOffset - 74);
+        }
+
+        private bool AntCanExecute()
+        {            
+            return (this.scroll.HorizontalOffset > 0);
+        }
+
+        private void ProxExecute()
+        {
+            this.scroll.ScrollToHorizontalOffset(offset: this.scroll.HorizontalOffset + 74);
+        }
+
+        private bool ProxCanExecute()
+        {
+            return (this.scroll.HorizontalOffset < this.scroll.ScrollableWidth);
+        }
+
+        #endregion
+
         public int selectedId
         {
             get { return (int)GetValue(selectedIdProperty); }
@@ -37,7 +69,7 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for selectedId.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty selectedIdProperty =
             DependencyProperty.Register("selectedId", typeof(int), typeof(HlpNavigation), new PropertyMetadata(0));
-        
+
 
         public List<int> lIdsHierarquia
         {

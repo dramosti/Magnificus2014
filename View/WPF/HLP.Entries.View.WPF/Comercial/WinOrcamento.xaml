@@ -125,7 +125,7 @@
         <convert:MaskConverter x:Key="maskConverter"/>
     </runtime:WindowsBase.Resources>
     <DockPanel LastChildFill="True">
-        <Expander Header="Cadastro" IsExpanded="True" DockPanel.Dock="Top" Height="75">
+        <Expander Header="Cadastro" IsExpanded="True" DockPanel.Dock="Top" Height="110">
             <WrapPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <Components:HlpTextBox                     
 					IsReadOnly="True"
@@ -147,6 +147,16 @@
                         <System:String>xFantasia</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
+                <Components:HlpTextBox 
+									
+                	Text="{Binding currentModel.idOrcamentoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                	IsEnabled="{Binding bIsEnabled}"
+                	Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do orçamento de origem" Help="É o código de origem do Orçamento, quando é gerado uma Revisão de Orçamento pelo botão Status, quando se gera um orçamento o campo Versão é gerado conforme as versões criadas.Ex." WidthLabel="231" Width="329"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Criado" Focusable="False" Width="150"></Label>
+                    <Label Content="Enviado" Focusable="False" Width="150"></Label>
+                    <Label Content="Finalizado" Focusable="False" Width="150"></Label>
+                </StackPanel>
             </WrapPanel>
         </Expander>
         <TabControl x:Name="tabControlPrincipal">
@@ -155,11 +165,6 @@
                     <DockPanel LastChildFill="True">
                         <Expander Header="Principal" IsExpanded="True" DockPanel.Dock="Top" Height="158.5">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.idOrcamentoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do orçamento de origem" Help="É o código de origem do Orçamento, quando é gerado uma Revisão de Orçamento pelo botão Status, quando se gera um orçamento o campo Versão é gerado conforme as versões criadas.Ex." WidthLabel="231" Width="329"/>
                                 <Components:HlpTextBox 
 									
 									Text="{Binding currentModel.xDepartamento, Mode=OneWay}"
@@ -171,12 +176,9 @@
                                     SelectedValuePath="id"
                                     DisplayMemberPath="display"                                
                                     
-									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, 
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									SelectedValue="{Binding currentModel.idContato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contato" Help="Informar a pessoa de contato externo para quem o orçamento é emitido. Busca da Tabela de Contatos no Cadastro de Clientes." WidthLabel="231" Width="473">
-
-                                </Components:HlpComboBox>
+									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Contato" Help="Informar a pessoa de contato externo para quem o orçamento é emitido. Busca da Tabela de Contatos no Cadastro de Clientes." WidthLabel="231" Width="473"/>
                                 <Components:HlpCheckBox
 									
 									IsChecked="{Binding currentModel.stContribuienteIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -188,7 +190,7 @@
                                     ItemsSource="{Binding Source={StaticResource lResultTipoDocumento}}"
                                     SelectedValuePath="id"
                                     DisplayMemberPath="display"
-                                    SelectedValue="{Binding currentModel.idTipoDocumento, Mode=TwoWay, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                                    SelectedValue="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                     Caption="Tipo de Documento" Width="471" WidthLabel="231"
                                     Help="Só poderá ser escolhidos tipos de documentos a qual o campo stDocumento da tabela tipo_documento seja igual a 1-ORÇAMENTO DE VENDA"/>
                                 <Components:HlpPesquisa 
@@ -218,10 +220,9 @@
                         <Expander Header="Status" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpComboBox 
-                                    x:Name="cbxOrcamento"
-									
+                                    x:Name="cbxOrcamento"									
 									SelectedIndex="{Binding currentModel.stOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsEnabled="False"
 									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Status do Orçamento" Help="O status da cotação ativa. Use o botão Atualizações para alterar o status de uma cotação de venda" WidthLabel="205">
                                     <Components:HlpComboBox.Items>
                                         <System:String>0-Criado</System:String>
