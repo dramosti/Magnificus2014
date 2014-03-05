@@ -9,7 +9,7 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="Alterar Status Itens Orçamento" Height="400" Width="950" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Window.Resources>
-        <convLocal:StatusItensOrcamentoVisibilityConverter x:Key="visibilityConverter"/>
+        <convLocal:StatusItensOrcamentoVisibilityConverter x:Key="visibilityConverter"/>        
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">

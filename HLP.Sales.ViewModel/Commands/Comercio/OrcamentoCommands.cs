@@ -218,6 +218,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            Sistema.stSender = TipoSender.Sistema;
         }
         private bool NovoCanExecute()
         {
@@ -240,6 +241,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            Sistema.stSender = TipoSender.Sistema;
         }
         private bool AlterarCanExecute()
         {
@@ -426,18 +428,24 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
             byte novoStatus = 0;
 
+            //<ComboBoxItem>0-Criado</ComboBoxItem>
+            //                                            <ComboBoxItem>1-Enviado</ComboBoxItem>
+            //                                            <ComboBoxItem>2-Confirmado</ComboBoxItem>
+            //                                            <ComboBoxItem>3-Perdido</ComboBoxItem>
+            //                                            <ComboBoxItem>4-Cancelado</ComboBoxItem>
+
             if (((char)o) == 'c')
             {
                 novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 2;
             }
             else if (((char)o) == 'p')
             {
-                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 4;
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 3;
 
             }
             else if (((char)o) == 'e')
             {
-                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 5;
+                novoStatus = (form.DataContext as OrcamentoTrocarStatusViewModel).statusItens = 4;
             }
 
             (form.DataContext as OrcamentoTrocarStatusViewModel).lOrcamento_Itens = new System.Collections.ObjectModel.ObservableCollection<TrocaStatus_Orcamento_Itens>();
@@ -451,7 +459,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         codItem = (int)item.nItem,
                         codProduto = item.idProduto,
                         dataPrevEntrega = item.dConfirmacaoItem,
-                        quantEnvPend = item.qProduto
+                        quantEnvPend = item.qProduto,
+                        dataConf = DateTime.Now
                     });
             }
 
@@ -459,6 +468,11 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             {
                 foreach (var item in ((form.DataContext) as OrcamentoTrocarStatusViewModel).lOrcamento_Itens)
                 {
+                    this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).dConfirmacaoItem =
+                        item.dataConf;
+
+                    this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).idMotivo = item.idMotivoPercaCanc;
+
                     if (item.quantItens == item.quantEnvPend)
                     {
                         this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).stOrcamentoItem =
@@ -468,7 +482,26 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     }
                     else if (item.quantItens > 0)
                     {
+
+                        decimal vFrete = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).vFreteItem;
+                        decimal vSeguro = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).vSegurosItem;
+                        decimal vOutrasDespesas = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).vOutrasDespesasItem;
+                        decimal qItem = this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto;
+
                         this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto = (item.quantEnvPend - item.quantItens);
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).vFreteItem =
+                            (this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto / qItem) *
+                            vFrete;
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).vSegurosItem =
+                            (this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto / qItem) *
+                            vSeguro;
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).vOutrasDespesasItem =
+                            (this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto / qItem) *
+                            vOutrasDespesas;
+
                         Orcamento_ItemModel objItem = new Orcamento_ItemModel();
                         objItem =
                             this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).Clone() as Orcamento_ItemModel;
@@ -476,9 +509,12 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         objItem.objImposto =
                             objItem.objImposto.Clone() as Orcamento_Item_ImpostosModel;
                         objItem.qProduto = item.quantItens;
+                        objItem.vFreteItem = (objItem.qProduto / qItem) * vFrete;
+                        objItem.vSegurosItem = (objItem.qProduto / qItem) * vSeguro;
+                        objItem.vOutrasDespesasItem = (objItem.qProduto / qItem) * vOutrasDespesas;
                         objItem.stOrcamentoItem = novoStatus;
                         objItem.idOrcamentoItem = null;
-                        objItem.nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;                        
+                        objItem.nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
                         objItem.objImposto.idOrcamentoTotalizadorImpostos = null;
                         objItem.objImposto.stOrcamentoImpostos = novoStatus;
                         objItem.objImposto.nItem = objItem.nItem;
@@ -538,7 +574,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     if (dg.ItemsSource != null)
                     {
                         foreach (var item in dg.ItemsSource)
-                        {                            
+                        {
                             row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
                             if (row != null)
                             {

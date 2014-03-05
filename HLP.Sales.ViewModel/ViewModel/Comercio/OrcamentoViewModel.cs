@@ -96,10 +96,27 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
             set
             {
                 if (value != null)
+                {
                     _currentItem = value;
-                base.NotifyPropertyChanged(propertyName: "currentItem");
+                    this.currentItemImposto = value.objImposto;
+                    base.NotifyPropertyChanged(propertyName: "currentItem");
+                }
             }
         }
+
+
+        private Orcamento_Item_ImpostosModel _currentItemImposto;
+
+        public Orcamento_Item_ImpostosModel currentItemImposto
+        {
+            get { return _currentItemImposto; }
+            set
+            {
+                _currentItemImposto = value;
+                base.NotifyPropertyChanged(propertyName: "currentItemImposto");
+            }
+        }
+
 
         #region Métodos Públicos
         public void AtualizarTotais()
