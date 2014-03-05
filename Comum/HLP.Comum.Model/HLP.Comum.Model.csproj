@@ -74,6 +74,7 @@
     <Compile Include="Components\PesquisaPadraoModelContract.cs" />
     <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\DateTimeEnumerator.cs" />
+    <Compile Include="Models\EnderecoModel.cs" />
     <Compile Include="Models\FindAllModel.cs" />
     <Compile Include="Models\loginModel.cs" />
     <Compile Include="Models\modelBase.cs" />
@@ -85,11 +86,13 @@
     <Compile Include="Models\WinManModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implementation\Components\FillComboBoxRepository.cs" />
+    <Compile Include="Repository\Implementation\Components\HlpEnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaRapidaRepository.cs" />
     <Compile Include="Repository\Implementation\LoginRepository.cs" />
     <Compile Include="Repository\Interfaces\ClassesBases\ImodelBaseRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IFillComboBoxRepository.cs" />
+    <Compile Include="Repository\Interfaces\Components\IHlpEnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaRapidaRepository.cs" />
     <Compile Include="Repository\Interfaces\ILoginRepository.cs" />
