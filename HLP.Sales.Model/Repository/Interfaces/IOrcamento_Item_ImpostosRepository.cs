@@ -16,5 +16,6 @@ namespace HLP.Sales.Model.Repository.Interfaces
         List<Orcamento_Item_ImpostosModel> GetAllOrcamento_Item_Impostos();
         Orcamento_Item_ImpostosModel GetOrcamento_Item_ImpostosByItem(int idOrcamento_Item);
         List<Orcamento_Item_ImpostosModel> GetAllOrcamento_Item_ImpostosByOrcamento(int idOrcamento);
+        void DeleteByIdOrcamento(int idOrcamentoItem);
     }
 }

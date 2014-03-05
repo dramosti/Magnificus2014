@@ -33,7 +33,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
-                    paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
+                    paramCanExec => this.DeleteCanExec());
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
@@ -77,7 +77,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     this.objViewModel.currentModel.lOrcamento_Itens.Add(item:
                         new Orcamento_ItemModel
                         {
-                            idOrcamento = item,
+                            idOrcamentoItem = item,
                             status = Comum.Resources.RecursosBases.statusModel.excluido
                         });
                 }
@@ -153,9 +153,9 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
         public void Delete()
         {
+            int iExcluir = (int)0;
             try
             {
-                int iExcluir = (int)this.objViewModel.currentModel.idOrcamento;
                 if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
@@ -164,6 +164,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        iExcluir = (int)this.objViewModel.currentModel.idOrcamento;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -179,10 +180,24 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
             }
             finally
             {
-                this.objViewModel.deletarBaseCommand.Execute(parameter: null);
+                this.objViewModel.deletarBaseCommand.Execute(parameter: iExcluir);
+                this.objViewModel.lItensHierarquia = new List<int>();
             }
         }
 
+        private bool DeleteCanExec()
+        {
+            try
+            {
+                return this.objViewModel.deletarBaseCommand.CanExecute(null)
+                    && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.selectedId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         private void Novo(object _panel)
         {
@@ -228,7 +243,8 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         }
         private bool AlterarCanExecute()
         {
-            return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
+            return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null)
+                && !this.objServico.PossuiFilho(idOrcamento: this.objViewModel.selectedId);
         }
 
         private void Cancelar()
@@ -453,20 +469,24 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     else if (item.quantItens > 0)
                     {
                         this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).qProduto = (item.quantEnvPend - item.quantItens);
-                        this.objViewModel.currentModel.lOrcamento_Itens.Add(item:
-                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).Clone() as Orcamento_ItemModel);
+                        Orcamento_ItemModel objItem = new Orcamento_ItemModel();
+                        objItem =
+                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).Clone() as Orcamento_ItemModel;
 
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().qProduto = item.quantItens;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().stOrcamentoItem = novoStatus;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().idOrcamentoItem = null;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto =
-                            this.objViewModel.currentModel.lOrcamento_Itens.FirstOrDefault(i => i.nItem == item.codItem).objImposto.Clone() as Orcamento_Item_ImpostosModel;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.idOrcamentoTotalizadorImpostos = null;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.stOrcamentoImpostos = novoStatus;
-                        this.objViewModel.currentModel.lOrcamento_Itens.Last().status = this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto.status
+                        objItem.objImposto =
+                            objItem.objImposto.Clone() as Orcamento_Item_ImpostosModel;
+                        objItem.qProduto = item.quantItens;
+                        objItem.stOrcamentoItem = novoStatus;
+                        objItem.idOrcamentoItem = null;
+                        objItem.nItem = this.objViewModel.currentModel.lOrcamento_Itens.Count;                        
+                        objItem.objImposto.idOrcamentoTotalizadorImpostos = null;
+                        objItem.objImposto.stOrcamentoImpostos = novoStatus;
+                        objItem.objImposto.nItem = objItem.nItem;
+
+                        objItem.status = objItem.objImposto.status
                             = Comum.Resources.RecursosBases.statusModel.criado;
-                        this.objViewModel.currentModel.lOrcamento_Item_Impostos.Add(item: this.objViewModel.currentModel.lOrcamento_Itens.Last().objImposto);
+
+                        this.objViewModel.currentModel.lOrcamento_Itens.Add(item: objItem);
                     }
                 }
             }
@@ -512,21 +532,26 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
 
                     DataGridRow row = null;
                     DataGridColumn column = dg.Columns.FirstOrDefault(i => i.Header.ToString() == "% Desc"); ;
+                    DataGridCell c = null;
                     object o;
 
                     if (dg.ItemsSource != null)
                     {
                         foreach (var item in dg.ItemsSource)
-                        {
+                        {                            
                             row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
                             if (row != null)
                             {
-                                o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
-
-                                if (o.GetType().Name.ToString() == "TextBlock")
+                                c = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex);
+                                if (c != null)
                                 {
-                                    if (Validation.GetHasError(o as TextBlock))
-                                        return true;
+                                    o = c.Content;
+
+                                    if (o.GetType().Name.ToString() == "TextBlock")
+                                    {
+                                        if (Validation.GetHasError(o as TextBlock))
+                                            return true;
+                                    }
                                 }
                             }
                         }

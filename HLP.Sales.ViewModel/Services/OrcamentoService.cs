@@ -125,5 +125,21 @@ namespace HLP.Sales.ViewModel.Services
             }
             return null;
         }
+
+        public bool PossuiFilho(int idOrcamento)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.PossuiFilho(idOrcamento: idOrcamento);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.PossuiFilho(idOrcamento: idOrcamento);
+                    }
+            }
+            return false;
+        }
     }
 }

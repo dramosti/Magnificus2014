@@ -318,6 +318,12 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes", ReplyAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<int>> GetListaVersoesAsync(int idOrcamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/PossuiFilho", ReplyAction="http://tempuri.org/Iwcf_Orcamento/PossuiFilhoResponse")]
+        bool PossuiFilho(int idOrcamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Orcamento/PossuiFilho", ReplyAction="http://tempuri.org/Iwcf_Orcamento/PossuiFilhoResponse")]
+        System.Threading.Tasks.Task<bool> PossuiFilhoAsync(int idOrcamento);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -393,6 +399,14 @@ namespace HLP.Sales.ViewModel.wcf_Orcamento {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<int>> GetListaVersoesAsync(int idOrcamento) {
             return base.Channel.GetListaVersoesAsync(idOrcamento);
+        }
+        
+        public bool PossuiFilho(int idOrcamento) {
+            return base.Channel.PossuiFilho(idOrcamento);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PossuiFilhoAsync(int idOrcamento) {
+            return base.Channel.PossuiFilhoAsync(idOrcamento);
         }
     }
 }

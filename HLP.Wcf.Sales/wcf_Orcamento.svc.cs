@@ -71,8 +71,8 @@ namespace HLP.Wcf.Sales
                             break;
                         case statusModel.excluido:
                             {
+                                this.IOrcamento_Item_ImpostosRepository.DeleteByIdOrcamento(idOrcamentoItem: (int)item.idOrcamentoItem);
                                 this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
-                                this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: (int)item.objImposto.idOrcamentoTotalizadorImpostos);
                             }
                             break;
                     }
@@ -87,14 +87,13 @@ namespace HLP.Wcf.Sales
                     objModel.orcamento_Total_Impostos.idOrcamento = (int)objModel.idOrcamento;
                     this.orcamento_Total_ImpostosRepository.Save(objOrcamento_Total_Impostos: objModel.orcamento_Total_Impostos);
                 }
-
                 this.orcamento_ideRepository.CommitTransaction();
                 return objModel;
             }
             catch (Exception ex)
             {
-                Log.AddLog(xLog: ex.Message);
                 this.orcamento_ideRepository.RollackTransaction();
+                Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
 
@@ -120,10 +119,13 @@ namespace HLP.Wcf.Sales
                     item.objImposto =
                         objOrcamento.lOrcamento_Item_Impostos.FirstOrDefault(
                         i => i.nItem == item.nItem);
-                    item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
-                    objOrcamento.lOrcamento_Item_Impostos
-                        .FirstOrDefault(i => i.idOrcamentoTotalizadorImpostos == item.objImposto.idOrcamentoTotalizadorImpostos)
-                        .stOrcamentoImpostos = item.stOrcamentoItem;
+                    if (item.objImposto != null)
+                    {
+                        item.objImposto.stOrcamentoImpostos = item.stOrcamentoItem;
+                        objOrcamento.lOrcamento_Item_Impostos
+                            .FirstOrDefault(i => i.idOrcamentoTotalizadorImpostos == item.objImposto.idOrcamentoTotalizadorImpostos)
+                            .stOrcamentoImpostos = item.stOrcamentoItem;
+                    }
                 }
 
                 objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);
@@ -143,19 +145,24 @@ namespace HLP.Wcf.Sales
         {
             try
             {
+                this.orcamento_ideRepository.BeginTransaction();
                 foreach (HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel item in objModel.lOrcamento_Itens)
                 {
+                    if (item.objImposto != null)
+                        this.IOrcamento_Item_ImpostosRepository.Delete(idOrcamentoTotalizadorImpostos: item.objImposto.idOrcamentoTotalizadorImpostos ?? 0);
+
                     this.orcamento_itemRepository.Delete(idOrcamentoItem: (int)item.idOrcamentoItem);
                 }
 
                 this.orcamento_Total_ImpostosRepository.Delete(idOrcamentoTotalImpostos: (int)objModel.orcamento_Total_Impostos.idOrcamentoTotalImpostos);
                 this.orcamento_retTranspRepository.Delete(idRetTransp: (int)objModel.orcamento_retTransp.idRetTransp);
                 this.orcamento_ideRepository.Delete(idOrcamento: (int)objModel.idOrcamento);
-
+                this.orcamento_ideRepository.CommitTransaction();
                 return true;
             }
             catch (Exception ex)
             {
+                this.orcamento_ideRepository.RollackTransaction();
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
@@ -258,6 +265,21 @@ namespace HLP.Wcf.Sales
             } while (i != 0);
 
             return lItens;
+        }
+
+        public bool PossuiFilho(int idOrcamento)
+        {
+
+            try
+            {
+                return this.orcamento_ideRepository.GetIdOrcamentoFilho(idOrcamentoOrigem: idOrcamento) > 0;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
         }
     }
 }
