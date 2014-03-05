@@ -779,8 +779,7 @@
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPesoBruto, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Peso Bruto" Width="100"/>
-                                        <DataGridTemplateColumn Header="Status Item" Width="150"
-                                                                >
+                                        <DataGridTemplateColumn Header="Status Item" Width="150">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <ComboBox

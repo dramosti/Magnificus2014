@@ -18,7 +18,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         FuncionarioViewModel objViewModel;
-        funcionarioService.IserviceFuncionarioClient servico = new funcionarioService.IserviceFuncionarioClient();
+        FuncionarioService.IserviceFuncionarioClient servico = new FuncionarioService.IserviceFuncionarioClient();
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
 

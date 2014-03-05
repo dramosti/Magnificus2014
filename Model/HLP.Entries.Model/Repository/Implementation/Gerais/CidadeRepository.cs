@@ -11,6 +11,8 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Model.Models;
+using System.Data.Common;
+using System.Data;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
@@ -34,6 +36,33 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
 
             return new ObservableCollection<CidadeModel>(regCidadeByUfAccessor.Execute(idUf).ToList());
+        }
+
+        public int? GetCidadeByName(string xName) 
+        {
+            try
+            {
+                string sQuery = string.Format("SELECT idCidade FROM Cidade WHERE xCidade like('%{0}%')", xName);
+                DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand(sQuery);
+                IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
+
+                List<int> lReturn = new List<int>();
+                while (reader.Read())
+                    lReturn.Add((int)reader.GetValue(0));
+
+                if (lReturn.Count > 0 )
+                {
+                    return lReturn.FirstOrDefault();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
         }
 
         public int Copy(int idCidade)

@@ -16,6 +16,9 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.CidadeModel getCidade(int idCidade);
 
         [OperationContract]
+        int? GetCidadeByName(string xName);
+
+        [OperationContract]
         int saveCidade(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade);
 
         [OperationContract]
