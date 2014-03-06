@@ -535,7 +535,7 @@
     </Style>
     <Style x:Key="TextBlocktyleComponents" TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontFamily" Value="Lucida Handwriting"/>
+        <Setter Property="FontFamily" Value="Calibri"/>
     </Style>
 
     <ControlTemplate x:Key="exceptionComp">
