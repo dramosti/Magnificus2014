@@ -420,6 +420,8 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Calibri"/>
     </Style>
+    
+   
 
 
 </ResourceDictionary>

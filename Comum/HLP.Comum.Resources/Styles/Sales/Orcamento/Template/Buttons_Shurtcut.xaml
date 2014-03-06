@@ -241,5 +241,6 @@
                 </Image>
             </DockPanel>
         </Border>
-    </ControlTemplate>
+    </ControlTemplate>   
+    
 </ResourceDictionary>

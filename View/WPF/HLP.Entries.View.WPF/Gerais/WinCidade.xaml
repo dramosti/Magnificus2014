@@ -57,6 +57,7 @@
                         <System:String>xUf</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
+                <Components:HlpButtonStatus Grid.Column="3" Grid.Row="9" IsEnabled="True" line="Collapsed"></Components:HlpButtonStatus>
             </Grid>
         </Expander>
     </Grid>

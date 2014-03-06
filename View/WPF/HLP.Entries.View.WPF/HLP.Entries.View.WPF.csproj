@@ -88,9 +88,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Comercial\Converters\CanUserAddOrcamentoItemConverter.cs" />
-    <Compile Include="Comercial\Converters\IdMotivoVisibilityConverter.cs" />
-    <Compile Include="Comercial\Converters\StatusOrcamentoConverter.cs" />
     <Compile Include="Comercial\WinCanalVenda.xaml.cs">
       <DependentUpon>WinCanalVenda.xaml</DependentUpon>
     </Compile>
@@ -264,6 +261,9 @@
       <DependentUpon>WinTransportadora.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validates\ValidaUsuarioValidationRule.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Page Include="Comercial\WinCanalVenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -494,6 +494,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transportes\WinTransportadora.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
