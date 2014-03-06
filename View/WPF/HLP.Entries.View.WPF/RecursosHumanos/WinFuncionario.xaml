@@ -12,6 +12,7 @@
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
+        <convert:NotConverter x:Key="notConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
@@ -171,8 +172,8 @@
                 <Grid>
                     <Components:HlpEndereco 
                         ItemsSource="{Binding currentModel.lFuncionario_Endereco}" 
-                        />
-
+                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                        IsEnabled="{Binding bIsEnabled}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Informações">

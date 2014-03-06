@@ -40,7 +40,17 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(HlpEndereco), new PropertyMetadata());
 
-        
+
+
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(false));
 
 
 
@@ -54,13 +64,9 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.Register("IsEnabled", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));
 
-        private void dgvEndereco_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-            {
-
-        }
-
         
 
-
+        
+        
     }
 }

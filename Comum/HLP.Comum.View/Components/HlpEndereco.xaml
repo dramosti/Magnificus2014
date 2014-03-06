@@ -27,24 +27,27 @@
     <Grid>
         <DataGrid x:Name="dgvEndereco" 
                    ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}"
-                   IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"             
+                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"    
                    AutoGenerateColumns="False"                       
                    SelectionUnit="CellOrRowHeader" 
                    CanUserReorderColumns="False" 
                    CanUserDeleteRows="True" 
-                   CanUserAddRows="True" CellEditEnding="dgvEndereco_CellEditEnding">
+                   CanUserAddRows="True" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Principal" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Components:CustomCheckBox    IsChecked="{Binding stPrincipal, 
+                            <Components:CustomCheckBox    
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
+                                IsChecked="{Binding stPrincipal, 
                                         UpdateSourceTrigger=PropertyChanged, 
                                         Converter={StaticResource ByteToBoolConverter}}" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <Components:CustomCheckBox HorizontalAlignment="Center" IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                            <Components:CustomCheckBox HorizontalAlignment="Center"                                                        
+                                                       IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -54,7 +57,9 @@
                 <DataGridTemplateColumn Header="Tipo de Endereco" Width="140" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox SelectedIndex="{Binding stTipoEndereco, Mode=TwoWay, ValidatesOnDataErrors=True,
+                            <ComboBox 
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
+                                SelectedIndex="{Binding stTipoEndereco, Mode=TwoWay, ValidatesOnDataErrors=True,
                                       NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBoxItem>0-COMERCIAL</ComboBoxItem>
                                 <ComboBoxItem>1-ENTREGA</ComboBoxItem>
@@ -76,7 +81,9 @@
                 <DataGridTemplateColumn Header="Tipo de Logradouro" Width="160" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox SelectedIndex="{Binding stLogradouro, Mode=TwoWay, ValidatesOnDataErrors=True,
+                            <ComboBox 
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
+                                SelectedIndex="{Binding stLogradouro, Mode=TwoWay, ValidatesOnDataErrors=True,
                                       NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBoxItem>00-AER-AEROPORTO</ComboBoxItem>
                                 <ComboBoxItem>01-AL-ALAMEDA</ComboBoxItem>
@@ -131,7 +138,9 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                <ComboBox x:Name="cbxStCidade" ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
+                                <ComboBox 
+                                    IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
+                                    x:Name="cbxStCidade" ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
                                 SelectedValuePath="id" DisplayMemberPath="display" 
                                 SelectedValue="{Binding idCidade, UpdateSourceTrigger=LostFocus}" IsSynchronizedWithCurrentItem="False"/>
                             </Grid>
