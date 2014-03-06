@@ -90,6 +90,9 @@
     <Compile Include="Components\HlpButtonNavigation.xaml.cs">
       <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpButtonStatus.xaml.cs">
+      <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpEndereco.xaml.cs">
       <DependentUpon>HlpEndereco.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Components\HlpButtonNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpButtonStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
