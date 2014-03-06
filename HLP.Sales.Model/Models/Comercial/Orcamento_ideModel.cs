@@ -375,7 +375,7 @@ namespace HLP.Sales.Model.Models.Comercial
                 if (dg != null)
                 {
                     dg.CommitEdit(editingUnit: DataGridEditingUnit.Row, exitEditingMode: true);
-                }                    
+                }
 
                 CollectionViewSource cvs = w.FindResource(resourceKey: "cvsItens") as CollectionViewSource;
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
@@ -643,6 +643,19 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idDeposito = value;
+                if (value != 0 && value != null)
+                {
+                    if (Sistema.stSender != TipoSender.WCF)
+                    {
+                        if (this._lOrcamento_Itens != null)
+                        {
+                            foreach (Orcamento_ItemModel item in this._lOrcamento_Itens)
+                            {
+                                item.idDeposito = (int)value;
+                            }
+                        }
+                    }
+                }
                 base.NotifyPropertyChanged(propertyName: "idDeposito");
             }
         }
@@ -978,6 +991,20 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _idSite = value;
+
+                if (value != 0 && value != null)
+                {
+                    if (Sistema.stSender != TipoSender.WCF)
+                    {
+                        if (this._lOrcamento_Itens != null)
+                        {
+                            foreach (Orcamento_ItemModel item in this._lOrcamento_Itens)
+                            {
+                                item.idSite = (int)value;
+                            }
+                        }
+                    }
+                }
                 base.NotifyPropertyChanged(propertyName: "idSite");
             }
         }
