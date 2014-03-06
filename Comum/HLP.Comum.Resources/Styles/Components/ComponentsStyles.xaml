@@ -18,7 +18,7 @@
             <Setter.Value>
                 <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
                     <Border x:Name="border" CornerRadius="5" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" FontFamily="Calibri"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -413,5 +413,13 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <!--Style Custom TextBlock-->
+
+    <Style x:Key="TextBlocktyleComponents" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Calibri"/>
+    </Style>
+
 
 </ResourceDictionary>
