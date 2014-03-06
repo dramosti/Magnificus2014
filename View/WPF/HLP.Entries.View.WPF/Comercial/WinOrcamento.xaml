@@ -347,7 +347,8 @@
                                                     <System:String>xDescricao</System:String>
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
-                                            <Components:HlpPesquisa Height="27" HorizontalAlignment="Left" Margin="10,0,10,2"                                                                    
+                                            <Components:HlpPesquisa IsEnabled="{Binding bIsEnabled}"
+                                                Height="27" HorizontalAlignment="Left" Margin="10,0,10,2"                                                                    
                                                                     Caption="Conta Contábil" FieldPesquisa="ID" TableView="vwContaContabil" WidthLabel="149" Width="426"/>
                                         </WrapPanel>
                                     </Expander>
@@ -598,22 +599,26 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idTipoOperacao,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
                                         <DataGridTemplateColumn Header="Consumidor Final" Width="110"
-                                                            IsReadOnly="True">
+                                                            >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <CheckBox IsChecked="{Binding stConsumidorFinal, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
+                                                    <CheckBox   
+                                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
+                                                        IsChecked="{Binding stConsumidorFinal, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                             <DataGridTemplateColumn.CellEditingTemplate>
                                                 <DataTemplate>
-                                                    <CheckBox  IsChecked="{Binding stConsumidorFinal, Converter={StaticResource ByteToBoolConverter}}"/>
+                                                    <CheckBox         
+                                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
+                                                        IsChecked="{Binding stConsumidorFinal, Converter={StaticResource ByteToBoolConverter}}"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
@@ -646,6 +651,7 @@
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idProduto,
                                 UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -683,6 +689,7 @@
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idUnidadeMedida,
                                 UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -709,6 +716,7 @@
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idListaPrecoPai,
                                 UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -767,7 +775,7 @@
                                                 <DataTemplate>
                                                     <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
                                                         <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dPrevisaoEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" IsEnabled="{Binding bIsEnabled}" />
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
@@ -832,6 +840,7 @@
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idFuncionarioRepresentante,
                                 UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -858,6 +867,7 @@
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idDeposito,
                                 UpdateSourceTrigger=LostFocus}"
+                                                                  IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -879,7 +889,7 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idSite,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -895,7 +905,7 @@
                                                 <DataTemplate>
                                                     <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
                                                         <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dConfirmacaoItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" IsEnabled="{Binding bIsEnabled}" />
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
@@ -919,7 +929,7 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idMotivo, Mode=TwoWay,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" 
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -942,7 +952,7 @@
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCfop,
                                 UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
+                                                      IsSynchronizedWithCurrentItem="False" IsEnabled="{Binding bIsEnabled}"/>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
@@ -956,7 +966,7 @@
                                 CanUserAddRows="False"
                                 CanUserDeleteRows="False"
                                 x:Name="dgFiscalItens"                                                                                   
-                                IsEnabled="{Binding bIsEnabled}"
+                                IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                 SelectedItem="{Binding currentItemImposto, Mode=TwoWay}"                                
                                 IsSynchronizedWithCurrentItem="True"
 								AutoGenerateColumns="False" 
@@ -964,7 +974,8 @@
                                 ItemsSource="{Binding Source={StaticResource cvsImpostos}}"
 								>
                                     <DataGrid.Columns>
-                                        <DataGridComboBoxColumn  Header="Origem Mercadoria" Width="125" IsReadOnly="True"
+                                        <DataGridComboBoxColumn
+                                            Header="Origem Mercadoria" Width="125" IsReadOnly="True"
                             ItemsSource="{Binding Source={StaticResource EnumOrigemMercadoria}}"
                             DisplayMemberPath="Key"
                             SelectedValuePath="Value"
@@ -973,7 +984,7 @@
                                         Header="Calcula IPI" Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox                                                    
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding Path=IPI_stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True,
                                                     ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>0 - NÃO</ComboBoxItem>
@@ -998,7 +1009,7 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idClassificacaoFiscal,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -1008,7 +1019,7 @@
                                         IsReadOnly="True"
                                         Header="Ncm" Width="125"
                                         Binding="{Binding Path=xNcm, Mode=OneWay}"></DataGridTextColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=IPI_pIPI, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, 
                                         ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
@@ -1018,6 +1029,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <ComboBox
+                                                        IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding IPI_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
                                                         <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
@@ -1044,18 +1056,18 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCSTIpi,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=IPI_vBaseCalculo, UpdateSourceTrigger=LostFocus,
                                         NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 										Header="R$ vlr base IPI" Width="125"/>
-                                        <DataGridTextColumn
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=IPI_vIPI, UpdateSourceTrigger=LostFocus,
                                         NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
@@ -1064,7 +1076,7 @@
                                          Header="Reduz base de calc icms?" Width="175">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ICMS_stReduzBaseCalculo, Mode=TwoWay, ValidatesOnDataErrors=True,
                                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>1-NENHUMA</ComboBoxItem>
@@ -1079,7 +1091,7 @@
                                         Header="Não reduz base de calc icms?" Width="200">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox         
+                                                    <ComboBox     IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ICMS_stNaoReduzBase, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                                                     UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>1 - TODAS</ComboBoxItem>
@@ -1092,7 +1104,7 @@
                                         Header="Calcula ICMS?" Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ICMS_stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                                                     UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>0-Não</ComboBoxItem>
@@ -1117,7 +1129,7 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCodigoIcmsPai,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -1139,18 +1151,18 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCSTIcms,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pICMS, Converter={StaticResource porcentagemConverter}, Mode=TwoWay,
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% ICMS" Width="100"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pReduzBase, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% redução base de calculo ICMS" Width="150"/>
@@ -1158,7 +1170,7 @@
                                         Header="Compõe base do ICMS?" Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ICMS_stCompoeBaseCalculo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
                                                         <ComboBoxItem>1-PRODUTOS</ComboBoxItem>
@@ -1170,22 +1182,22 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vBaseCalculo, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ valor base de calculo ICMS" Width="200"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vICMS, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ valor ICMS" Width="100"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vBaseCalculoIcmsProprio, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ vlr base de cálculo icms próprio" Width="150"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vIcmsProprio, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -1194,7 +1206,7 @@
                                         Header="Calcula icms substituição tributária?" Width="200">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ICMS_stCalculaSubstituicaoTributaria, Mode=TwoWay,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>0-NÃO</ComboBoxItem>
@@ -1203,29 +1215,29 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pReduzBaseSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% redução base de calculo substituição tributária" Width="150"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="R$ redução base de calculo substituição tributária" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pSubstituicaoTributaria, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% Subst tributária" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pIcmsInterno, UpdateSourceTrigger=LostFocus,
                                         NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
 										Header="% ICMS interna Destino" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pMvaSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% MVA ST" Width="100"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_pCargaTributariaMedia, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -1235,7 +1247,7 @@
                                                     Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox                                                    
+                                                    <ComboBox      IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ICMS_stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                                     >
@@ -1249,12 +1261,12 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vBaseCalculoSubstituicaoTributaria, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Vlr de Base de Calc do ICMS Substituição Tributária" Width="150"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ICMS_vSubstituicaoTributaria, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -1264,7 +1276,7 @@
                                         Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding stCalculaPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"                                                    
                                                     >
                                                         <ComboBoxItem>1-NÃO</ComboBoxItem>
@@ -1280,7 +1292,7 @@
                                         >
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox                                                    
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding stRegimeTributacaoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                                         <ComboBoxItem>1-CUMULATIVO</ComboBoxItem>
                                                         <ComboBoxItem>2-NÃO CUMULATIVO</ComboBoxItem>
@@ -1289,22 +1301,22 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=PIS_nCoeficienteSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Coeficiente de Substituição Tributária do PIS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=COFINS_nCoeficienteSubstituicaoTributaria, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Coeficiente de Substituição Tributária do COFINS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=PIS_pPIS, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% PIS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=COFINS_pCOFINS, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -1325,7 +1337,7 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCSTPis,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -1347,7 +1359,7 @@
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
             SelectedValue="{Binding idCSTCofins,
-                                UpdateSourceTrigger=LostFocus}"
+                                UpdateSourceTrigger=LostFocus}" IsEnabled="{Binding bIsEnabled}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                                     </Grid>
                                                 </DataTemplate>
@@ -1358,7 +1370,7 @@
                                         Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding stCompoeBaseCalculoPisCofins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
                                                         <ComboBoxItem>0 - PRODUTOS</ComboBoxItem>
@@ -1375,7 +1387,7 @@
                                         Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding PIS_stCompoeBaseCalculoSubstituicaoTributaria, 
                                                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
@@ -1393,7 +1405,7 @@
                                         Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding COFINS_stCompoeBaseCalculoSubstituicaoTributaria, 
                                                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
@@ -1406,22 +1418,22 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=PIS_vBaseCalculo, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Base de cálculo PIS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=PIS_vPIS, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Valor do PIS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=COFINS_vBaseCalculo, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Base de cálculo COFINS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=COFINS_vCOFINS, Converter={StaticResource moedaConverter},
                                             UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -1430,7 +1442,7 @@
                                         Header="Calcula ISS?" Width="125">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <ComboBox
+                                                    <ComboBox IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},Path=DataContext.bIsEnabled}"
                                                     SelectedIndex="{Binding ISS_stCalculaIss, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                                                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
                                                         <ComboBoxItem>0 - NÃO</ComboBoxItem>
@@ -1439,27 +1451,21 @@
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
-                                        <DataGridComboBoxColumn Header="Cód situação tributaria iss" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ISS_vBaseCalculo, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="Base de cálculo ISS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ISS_pIss, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
                                         UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
 										Header="% ISS" Width="125"/>
-                                        <DataGridTextColumn 
+                                        <DataGridTextColumn IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ISS_vIss, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Valor do ISS" Width="125"/>
-                                        <DataGridTextColumn 
-										ElementStyle="{StaticResource CellErrorStyle}"
-										Binding="{Binding Path=pComissao, Converter={StaticResource porcentagemConverter},
-                                        UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="ICMS_vsubstituiçãotributariaretido" Width="125"/>
+										Header="Valor do ISS" Width="125"/>                                        
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Expander>
