@@ -94,5 +94,19 @@ namespace HLP.Wcf.Entries
         //    }
         
         //}
+
+
+        public int? GetCidadeByName(string xName)
+        {
+            try
+            {
+                return cidadeRepository.GetCidadeByName(xName);
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        }
     }
 }

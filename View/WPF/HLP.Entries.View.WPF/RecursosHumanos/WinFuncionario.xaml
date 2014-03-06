@@ -11,11 +11,11 @@
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
         Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
-        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:OperacoesAritmetConverter x:Key="operacoesAritmetConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <ObjectDataProvider
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
@@ -32,7 +32,7 @@
                 <x:Type TypeName="enums:TipoCertificacao"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>        
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwProdutoToComboBox</System:String>
@@ -168,109 +168,12 @@
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Endereços">
-                <AdornerDecorator>
+                <Grid>
+                    <Components:HlpEndereco 
+                        ItemsSource="{Binding currentModel.lFuncionario_Endereco}" 
+                        />
 
-                    <DataGrid
-                            Name="gridEnderecos"
-						  ItemsSource="{Binding currentModel.lFuncionario_Endereco}"                          
-                          IsEnabled="{Binding bIsEnabled}"
-                          AutoGenerateColumns="False" 
-                          SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                          CanUserDeleteRows="True"
-                          CanUserAddRows="True">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="clStEndereco" Header="Tipo Endereço" Width="100" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Path=enumTipoEnder}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
-                                            <ComboBox x:Name="cbxStEndereco"
-                ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}" 
-                                                      DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-            SelectedValue="{Binding enumTipoEnder,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn                                
-                                Header="Endereço" Width="200"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xEndereco, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Cep" Width="100"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xCep, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, 
-                                    ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Nº" Width="50"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xNumero, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Complemento" Width="100"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xComplemento, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Bairro" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xBairro, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Latitude" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xLatitude, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Longitude" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xLongitude, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Fuso Horário" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xFusoHorario, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Caixa Postal" Width="100"
-                                    ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                ></DataGridTextColumn>
-
-                            <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="150" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresultCidades}}"
-                                                   />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                            <ComboBox x:Name="cbxStCidade"
-                                                      SelectionChanged="cbxStCidade_SelectionChanged"
-                ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding idCidade,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </AdornerDecorator>
+                </Grid>
             </TabItem>
             <TabItem Header="Informações">
                 <AdornerDecorator>
@@ -837,6 +740,7 @@
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
+            <Components:HlpEndereco/>
         </TabControl>
     </Grid>
 </runtime:WindowsBase>

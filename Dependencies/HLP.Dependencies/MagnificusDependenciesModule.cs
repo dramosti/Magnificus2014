@@ -38,6 +38,8 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+
+            Bind<IHlpEnderecoRepository>().To<HlpEnderecoRepository>();
             Bind<ILoginRepository>().To<LoginRepository>();
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
             Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
@@ -128,7 +130,6 @@ namespace HLP.Dependencies
             Bind<ISiteRepository>().To<SiteRepository>();
             Bind<IContato_EnderecoRepository>().To<Contato_EnderecoRepository>();
             Bind<IFuncionario_Margem_Lucro_ComissaoRepository>().To<Funcionario_Margem_LucroComissaoRepository>();
-            Bind<IFuncionario_EnderecoRepository>().To<Funcionario_EnderecoRepository>();
             Bind<IFuncionario_Comissao_ProdutoRepository>().To<Funcionario_Comissao_ProdutoRepository>();
             Bind<IFuncionario_ArquivoRepository>().To<Funcionario_ArquivoRepository>();
             Bind<IFuncionario_CertificacaoRepository>().To<Funcionario_CertificacaoRepository>();

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HLP.WebServices">
+      <HintPath>..\HLP.Comum.Infrastructure\CEP\HLP.WebServices.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\HLP.Comum.Infrastructure\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -58,8 +61,10 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -74,6 +79,7 @@
     <Compile Include="Components\PesquisaPadraoModelContract.cs" />
     <Compile Include="Components\PesquisaRapidaModel.cs" />
     <Compile Include="Models\DateTimeEnumerator.cs" />
+    <Compile Include="Models\EnderecoModel.cs" />
     <Compile Include="Models\FindAllModel.cs" />
     <Compile Include="Models\loginModel.cs" />
     <Compile Include="Models\modelBase.cs" />
@@ -84,16 +90,28 @@
     <Compile Include="Models\windowsModel.cs" />
     <Compile Include="Models\WinManModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Repository\Implementation\Components\FillComboBoxRepository.cs" />
+    <Compile Include="Repository\Implementation\Components\HlpEnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Implementation\Components\HlpPesquisaRapidaRepository.cs" />
     <Compile Include="Repository\Implementation\LoginRepository.cs" />
     <Compile Include="Repository\Interfaces\ClassesBases\ImodelBaseRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IFillComboBoxRepository.cs" />
+    <Compile Include="Repository\Interfaces\Components\IHlpEnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaPadraoRepository.cs" />
     <Compile Include="Repository\Interfaces\Components\IHlpPesquisaRapidaRepository.cs" />
     <Compile Include="Repository\Interfaces\ILoginRepository.cs" />
     <Compile Include="Service References\camposNotNullService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CidadeComumService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -116,6 +134,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Service References\camposNotNullService\camposBaseDadosService.wsdl" />
     <None Include="Service References\camposNotNullService\camposBaseDadosService.xsd">
       <SubType>Designer</SubType>
@@ -129,6 +151,28 @@
     <None Include="Service References\camposNotNullService\HLP.Comum.Model.camposNotNullService.PesquisaPadraoModelContract.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\CidadeComumService\HLP.Comum.Model.CidadeComumService.CidadeModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CidadeComumService\serviceCidade.wsdl" />
+    <None Include="Service References\CidadeComumService\serviceCidade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CidadeComumService\serviceCidade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CidadeComumService\serviceCidade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CidadeComumService\serviceCidade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CidadeComumService\serviceCidade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CidadeComumService\serviceCidade5.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repository\Implementation\ClassesBases\" />
@@ -138,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\camposNotNullService\" />
+    <WCFMetadataStorage Include="Service References\CidadeComumService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\camposNotNullService\camposBaseDadosService.disco" />
@@ -150,6 +195,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\camposNotNullService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CidadeComumService\serviceCidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CidadeComumService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CidadeComumService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CidadeComumService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

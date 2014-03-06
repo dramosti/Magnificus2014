@@ -47,6 +47,12 @@
   <wsdl:message name="Iwcf_Orcamento_GetListaVersoes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetListaVersoesResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Orcamento_PossuiFilho_InputMessage">
+    <wsdl:part name="parameters" element="tns:PossuiFilho" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Orcamento_PossuiFilho_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PossuiFilhoResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Orcamento">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/Save" message="tns:Iwcf_Orcamento_Save_InputMessage" />
@@ -71,6 +77,10 @@
     <wsdl:operation name="GetListaVersoes">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes" message="tns:Iwcf_Orcamento_GetListaVersoes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Orcamento/GetListaVersoesResponse" message="tns:Iwcf_Orcamento_GetListaVersoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PossuiFilho">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Orcamento/PossuiFilho" message="tns:Iwcf_Orcamento_PossuiFilho_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Orcamento/PossuiFilhoResponse" message="tns:Iwcf_Orcamento_PossuiFilho_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Orcamento" type="tns:Iwcf_Orcamento">
@@ -122,6 +132,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetListaVersoes">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Orcamento/GetListaVersoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PossuiFilho">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Orcamento/PossuiFilho" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

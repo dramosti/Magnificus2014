@@ -1,5 +1,8 @@
-﻿using System;
+﻿using HLP.Comum.Model.Models;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,5 +27,40 @@ namespace HLP.Comum.View.Components
         {
             InitializeComponent();
         }
+
+
+
+        public IEnumerable ItemsSource
+        {
+            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ItemsSource.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemsSourceProperty =
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(HlpEndereco), new PropertyMetadata());
+
+        
+
+
+
+        public bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsEnabledProperty =
+            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));
+
+        private void dgvEndereco_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+            {
+
+        }
+
+        
+
+
     }
 }

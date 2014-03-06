@@ -32,7 +32,7 @@ namespace HLP.Comum.View.Converters
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             try
-            {
+                {
                 if ((bool)value)
                     return 1;
                 else return 0;

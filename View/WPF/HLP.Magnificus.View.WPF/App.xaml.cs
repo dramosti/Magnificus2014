@@ -92,11 +92,11 @@ namespace HLP.Magnificus.View.WPF
                 if (e.Exception.InnerException != null)
                     xInner = e.Exception.InnerException.Message;
             }
-
-            MessageBox.Show(messageBoxText: "Erro: " +
-                xMessage + Environment.NewLine +
-            "Inner Exception: " + xInner, caption: "Erro.",
-                button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
+            if (!xMessage.Contains("NewItemPlaceholderPosition"))
+                MessageBox.Show(messageBoxText: "Erro: " +
+                    xMessage + Environment.NewLine +
+                "Inner Exception: " + xInner, caption: "Erro.",
+                    button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

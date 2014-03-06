@@ -29,5 +29,8 @@ namespace HLP.Wcf.Sales
 
         [OperationContract]
         List<int> GetListaVersoes(int idOrcamento);
+
+        [OperationContract]
+        bool PossuiFilho(int idOrcamento);
     }
 }

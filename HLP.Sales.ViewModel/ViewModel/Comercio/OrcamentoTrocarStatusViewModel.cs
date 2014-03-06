@@ -48,13 +48,13 @@ namespace HLP.Sales.ViewModel.ViewModel.Comercio
                             this.visibNumPedidoCliente = true;
                             this.visibMotivoPerdaCancel = false;
                         } break;
-                    case 4:
+                    case 3:
                         {
                             this.xHeaderQuant = "Qtd. Perdida";
                             this.visibNumPedidoCliente = false;
                             this.visibMotivoPerdaCancel = true;
                         } break;
-                    case 5:
+                    case 4:
                         {
                             this.xHeaderQuant = "Qtd. Cancelada";
                             this.visibNumPedidoCliente = false;

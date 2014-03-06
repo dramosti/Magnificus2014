@@ -10,16 +10,13 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
 {
     public class FillComboBoxViewModel
     {
-        FillComboBoxService.IserviceFillComboBoxClient servico = new FillComboBoxService.IserviceFillComboBoxClient();
-
-        public FillComboBoxViewModel()
-        {
-
-        }
-
+        FillComboBoxService.IserviceFillComboBoxClient servico = null;
+        
         public ObservableCollection<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter = "")
         {
-                return new ObservableCollection<modelToComboBox>(servico.GetAllValuesToComboBox(sNameView, sParameter));
+            if (servico == null)
+                servico = new FillComboBoxService.IserviceFillComboBoxClient();
+            return new ObservableCollection<modelToComboBox>(servico.GetAllValuesToComboBox(sNameView, sParameter));
         }
     }
 }

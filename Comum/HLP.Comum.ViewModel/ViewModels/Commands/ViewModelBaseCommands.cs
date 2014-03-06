@@ -201,6 +201,7 @@ namespace HLP.Comum.ViewModel.Commands
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;
+            objviewModel.lItensHierarquia = new List<int>();
             objviewModel.SetFocusFirstTab(panel as Panel);
         }
 

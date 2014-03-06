@@ -6,24 +6,25 @@
              mc:Ignorable="d" 
              x:Name="ucNavegacao"
              xmlns:localConv="clr-namespace:HLP.Comum.View.Converters"
-             d:DesignHeight="30" d:DesignWidth="500">
+             d:DesignHeight="50" d:DesignWidth="500">
     <UserControl.Resources>        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/Main/MainWindow_Templates.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <localConv:HlpNavigationConverter x:Key="hlpNavConv"/>
+            <localConv:HlpNavigationVisibilityConverter x:Key="hlpNavVisibConv"/>
             <localConv:HlpNavigationMultiConverter x:Key="hlpNavMultiConv"></localConv:HlpNavigationMultiConverter>
         </ResourceDictionary>        
     </UserControl.Resources>
     <DockPanel>
-        <DockPanel Width="33" DockPanel.Dock="Left" HorizontalAlignment="Left">
-            <Button Height="30" Width="15" Template="{StaticResource ButtonArrowNavigationLeft}">
+        <DockPanel Width="33" DockPanel.Dock="Left" HorizontalAlignment="Left"
+                   Visibility="{Binding ElementName=ucNavegacao, Path=lIdsHierarquia, Converter={StaticResource hlpNavVisibConv}}">
+            <Button x:Name="btnAnt" Height="30" Width="15" Template="{StaticResource ButtonArrowNavigationLeft}">
             </Button>
-            <Button Height="30" Width="15" Margin="0,0,0,0" Template="{StaticResource ButtonArrowNavigationRight}">
+            <Button x:Name="btnProx" Height="30" Width="15" Margin="0,0,0,0" Template="{StaticResource ButtonArrowNavigationRight}">
             </Button>
         </DockPanel>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer x:Name="scroll" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
             <ContentControl x:Name="ContentControlNavigation"
                         >
                 <ContentControl.Content>

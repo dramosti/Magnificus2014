@@ -57,9 +57,11 @@ namespace HLP.Comum.Resources.Util
             if (row != null)
             {
                 DataGridCellsPresenter presenter = StaticUtil.GetVisualChild<DataGridCellsPresenter>(row);
+                System.Windows.Controls.DataGridCell cell = null;
 
-                System.Windows.Controls.DataGridCell cell =
-                    (System.Windows.Controls.DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(column);
+                if (presenter != null)
+                    cell =
+                        (System.Windows.Controls.DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(column);
                 return cell;
             }
             return null;

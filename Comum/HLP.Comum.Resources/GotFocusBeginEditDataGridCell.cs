@@ -40,9 +40,25 @@ namespace HLP.Comum.Resources
 
             if (cell != null)
             {
-                cell.GotFocus -= cell_GotFocus;
-                cell.GotFocus += cell_GotFocus;
+                //cell.GotFocus -= cell_GotFocus;
+                //cell.GotFocus += cell_GotFocus;
+
+                //DataGrid dataGrid = FindVisualParent<DataGrid>(cell);
+
+                //dataGrid.LostFocus -= dataGrid_LostFocus;
+                //dataGrid.LostFocus += dataGrid_LostFocus;
             }
+        }
+
+        static void dataGrid_LostFocus(object sender, RoutedEventArgs e)
+        {
+            DataGrid dataGrid = FindVisualParent<DataGrid>(Keyboard.FocusedElement as Control);
+
+            if (dataGrid == null)
+            {
+                (sender as DataGrid).CommitEdit(editingUnit: DataGridEditingUnit.Row, exitEditingMode: true);
+            }
+           // throw new NotImplementedException();
         }
 
         static void cell_GotFocus(object sender, RoutedEventArgs e)
@@ -58,8 +74,6 @@ namespace HLP.Comum.Resources
                         cell.IsEditing = true;
                     }
         }
-
-
         static T FindVisualParent<T>(UIElement element) where T : UIElement
         {
             UIElement parent = element;

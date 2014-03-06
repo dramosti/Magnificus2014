@@ -41,6 +41,13 @@ namespace HLP.Sales.Model.Repository.Implementation
                  idOrcamentoTotalizadorImpostos);
         }
 
+        public void DeleteByIdOrcamento(int idOrcamentoItem)
+        {
+            UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_delete_Orcamento_Item_Impostos_by_idOrcamentoItem",
+                 UserData.idUser,
+                 idOrcamentoItem);
+        }
+
         public int Copy(int idOrcamentoTotalizadorImpostos, int idOrcamentoItem)
         {
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(
@@ -64,7 +71,7 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  .DoNotMap(i => i.vFreteItem)
                                  .DoNotMap(i => i.vSeguroItem)
                                  .DoNotMap(i => i.vOutrasDespesasItem)
-                                 .DoNotMap(i => i.stOrcamentoImpostos)                                 
+                                 .DoNotMap(i => i.stOrcamentoImpostos)
                                  .Build());
             }
 

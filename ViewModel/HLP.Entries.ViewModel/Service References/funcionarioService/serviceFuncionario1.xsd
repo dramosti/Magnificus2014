@@ -9,4 +9,38 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="modelBase" nillable="true" type="tns:modelBase" />
+  <xs:complexType name="ArrayOfEnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnderecoModel" nillable="true" type="tns:ArrayOfEnderecoModel" />
+  <xs:complexType name="EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idSite" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stLogradouro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
 </xs:schema>
