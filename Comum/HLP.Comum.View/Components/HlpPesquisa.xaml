@@ -56,9 +56,11 @@
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  Width="80" Height="20" KeyDown="txtID_KeyDown" />
+        <Button DockPanel.Dock="Left" Content="..." Click="Button_Click"></Button>
         <TextBox x:Name="txtDisplay" IsReadOnly="True" Style="{StaticResource TextBoxPesquisaRapidaRightSide}"
                  TextChanged="ucTxtPesquisa_TextChanged"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
                  Focusable="False" Height="20"  />
     </DockPanel>
+
 </runtime:BaseControl>

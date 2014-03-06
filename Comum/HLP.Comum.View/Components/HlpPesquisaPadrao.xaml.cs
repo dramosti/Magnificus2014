@@ -216,7 +216,7 @@ namespace HLP.Comum.View.Components
         {
             lResult = (from c in dgvResult.SelectedItems.Cast<DataRowView>()
                        select (int)c.Row["ID"]).ToList<int>();
-            this.Visibility = System.Windows.Visibility.Collapsed;
+            this.Visibility = System.Windows.Visibility.Collapsed;                        
         }
         private void FocusCellInicial(DataGrid dgv)
         {

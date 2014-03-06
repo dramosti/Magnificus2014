@@ -51,7 +51,7 @@ namespace HLP.Comum.View.Components
             InitializeComponent();
             //this.DataContext = this;
         }
-       
+
         public async void ExecutaPesquisa(string sValor)
         {
             if (sValor.Equals("") || sValor.Equals("0"))
@@ -225,21 +225,31 @@ namespace HLP.Comum.View.Components
         {
             if (e.Key == Key.F5)
             {
-                Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Modules.Interface.TipoExibeForm.Normal);
-                winPesquisa.WindowState = WindowState.Maximized;
-                winPesquisa.SetPropertyValue("NameView", this.TableView);
-
-                if (winPesquisa != null)
-                {
-                    winPesquisa.ShowDialog();
-
-                    if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
-                    {
-                        this.Text = (winPesquisa.GetPropertyValue("lResult") as List<int>).FirstOrDefault().ToString();
-                    }
-                }
-                
+                this.IniciaPesquisa();
             }
+        }
+
+        private void IniciaPesquisa()
+        {
+            Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Modules.Interface.TipoExibeForm.Normal);
+            this.txtID.Focus();
+            winPesquisa.WindowState = WindowState.Maximized;
+            winPesquisa.SetPropertyValue("NameView", this.TableView);
+
+            if (winPesquisa != null)
+            {
+                winPesquisa.ShowDialog();
+
+                if ((winPesquisa.GetPropertyValue("lResult") as List<int>).Count > 0)
+                {
+                    this.Text = (winPesquisa.GetPropertyValue("lResult") as List<int>).FirstOrDefault().ToString();
+                }
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.IniciaPesquisa();
         }
     }
 }

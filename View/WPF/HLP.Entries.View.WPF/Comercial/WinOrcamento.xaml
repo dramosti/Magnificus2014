@@ -160,7 +160,7 @@
                 <Components:HlpTextBox 
 									
                 	Text="{Binding currentModel.idOrcamentoOrigem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                	IsEnabled="{Binding bIsEnabled}"
+                	IsEnabled="False"
                 	Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do orçamento de origem" Help="É o código de origem do Orçamento, quando é gerado uma Revisão de Orçamento pelo botão Status, quando se gera um orçamento o campo Versão é gerado conforme as versões criadas.Ex." WidthLabel="231" Width="329"/>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Criado" Focusable="False" Width="150"
