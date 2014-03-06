@@ -26,6 +26,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 new ObservableCollectionBaseCadastros<Funcionario_ArquivoModel>();
             this.lFuncionario_Acesso =
                 new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>();
+            this.Ativo = true;
         }
 
         private int? _idFuncionario;
@@ -253,7 +254,7 @@ namespace HLP.Entries.Model.Models.Gerais
         }
     }
 
-   
+
     public partial class Funcionario_ArquivoModel : modelBase
     {
         public Funcionario_ArquivoModel()
@@ -434,7 +435,7 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
     }
-        
+
     public partial class Funcionario_ArquivoModel
     {
         public override string this[string columnName]
