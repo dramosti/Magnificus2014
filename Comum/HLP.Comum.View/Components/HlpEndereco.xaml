@@ -76,7 +76,13 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="CEP" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}">
+                                Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus,
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}">
+                    <DataGridTextColumn.EditingElementStyle>
+                        <Style TargetType="TextBox">
+                            <Setter Property="MaxLength" Value="8"></Setter>
+                        </Style>
+                    </DataGridTextColumn.EditingElementStyle>
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Tipo de Logradouro" Width="160" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -129,7 +135,7 @@
                 <DataGridTextColumn Header="Caixa Postal" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="150" >
+                <DataGridTemplateColumn x:Name="clCidades" Header="Cidade" Width="150" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresultCidades}}"/>

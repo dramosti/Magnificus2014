@@ -117,7 +117,6 @@
     <Content Include="serviceFamiliaProduto.svc" />
     <Content Include="serviceFidelidade.svc" />
     <Content Include="serviceFillComboBox.svc" />
-    <Content Include="serviceFuncionario.svc" />
     <Content Include="serviceJuros.svc" />
     <Content Include="serviceLista_Preco.svc" />
     <Content Include="serviceLogin.svc" />
@@ -147,6 +146,7 @@
     <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
+    <Content Include="wcf_Funcionario.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -184,7 +184,6 @@
     <Compile Include="IserviceFamiliaProduto.cs" />
     <Compile Include="IserviceFidelidade.cs" />
     <Compile Include="IserviceFillComboBox.cs" />
-    <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IserviceFuncionario_Acesso.cs" />
     <Compile Include="IserviceJuros.cs" />
     <Compile Include="IserviceLista_Preco.cs" />
@@ -215,6 +214,7 @@
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
     </Compile>
@@ -298,9 +298,6 @@
     </Compile>
     <Compile Include="serviceFillComboBox.svc.cs">
       <DependentUpon>serviceFillComboBox.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceFuncionario.svc.cs">
-      <DependentUpon>serviceFuncionario.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceJuros.svc.cs">
       <DependentUpon>serviceJuros.svc</DependentUpon>
@@ -390,6 +387,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="serviceUnidadeMedida.svc.cs">
       <DependentUpon>serviceUnidadeMedida.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Funcionario.svc.cs">
+      <DependentUpon>wcf_Funcionario.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -115,7 +115,7 @@
 								
 								SelectedIndex="{Binding currentModel.stPerfil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,0" FontFamily="Segoe UI" Caption="Perfil do Usuário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128" HorizontalAlignment="Left">
+								Height="27" Margin="10,0,10,0" FontFamily="Segoe UI" Caption="Perfil do Funcionário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128" HorizontalAlignment="Left">
                                         <Components:HlpComboBox.Items>
                                             <System:String>0-Centro de Trabalho</System:String>
                                             <System:String>1-Funcionário</System:String>
@@ -181,11 +181,12 @@
                     <DockPanel LastChildFill="True">
                         <DockPanel LastChildFill="True" DockPanel.Dock="left">
                             <Expander Header="Pessoais" IsExpanded="True" DockPanel.Dock="Top" Height="268">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpDateTimePicker
-									                                        
-									SelectedDate="{Binding currentModel.dAniversario, Mode=TwoWay, 
+                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">                                    
+                                    <Components:HlpDateTimePicker   
+                                        Text="{Binding currentModel.dAniversario, Mode=TwoWay,
+                                        Converter={StaticResource maskConverter}, ConverterParameter=date,
                                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									SelectedDate="{Binding RelativeSource={RelativeSource Self},Path=Text}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="12,15,338,-1" Caption="Data de Aniversário" 
                                         Field="dAniversario" Help="Informe a data de aniversário do funcionário." Table="Funcionario" WidthLabel="154">
@@ -240,13 +241,12 @@
                                     </Components:HlpPesquisa>
                                 </WrapPanel>
                             </Expander>
-                            <Expander Header="Visto de Trabalho" IsExpanded="True" >
+                            <Expander Header="Visto" IsExpanded="True" >
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox 
-									
+                                    <Components:HlpTextBox									
 									Text="{Binding currentModel.xVisto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Visto" Field="xVisto" Help="Informar o Visto de permanência Brasileira do funcionário" Table="Funcionario" WidthLabel="133" HorizontalAlignment="Left" Width="238"/>
+									Height="27" Margin="10,0,10,2" Caption="Visto de Permanência" Field="xVisto" Help="Informar o Visto de permanência Brasileira do funcionário" Table="Funcionario" WidthLabel="133" HorizontalAlignment="Left" Width="238"/>
                                     <Components:HlpDateTimePicker 
 									
 									SelectedDate="{Binding currentModel.dFinalVisto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"

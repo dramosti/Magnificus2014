@@ -2,6 +2,7 @@
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         FuncionarioViewModel objViewModel;
-        funcionarioService.IserviceFuncionarioClient servico = new funcionarioService.IserviceFuncionarioClient();
+        FuncionarioService objService;        
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
 
@@ -47,6 +48,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            this.objService = new FuncionarioService();
         }
 
 
@@ -127,8 +130,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = servico.saveFuncionario(objFuncionario:
-                    this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -176,7 +178,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteFuncionario((int)this.objViewModel.currentModel.idFuncionario))
+                    if (this.objService.Delete(objModel: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -203,7 +205,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
             }
         }
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new FuncionarioModel();
@@ -253,7 +255,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -262,11 +264,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idFuncionario = await this.servico.copyFuncionarioAsync(objFuncionario: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.Copy(objModel: this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -318,7 +320,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 if (this.objViewModel.currentID != 0)
-                    this.objViewModel.currentModel = this.servico.getFuncionario(idFuncionario: this.objViewModel.currentID);
+                    this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
                 else
                     this.objViewModel.currentModel = null;
 

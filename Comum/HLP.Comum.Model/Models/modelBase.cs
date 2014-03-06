@@ -37,7 +37,7 @@ namespace HLP.Comum.Model.Models
                         o = p.GetValue(obj: this);
                         if (o != null)
                             if (p.GetValue(obj: this).GetType() == typeof(DateTime))
-                                p.SetValue(obj: this, value: ((DateTime)SqlDateTime.MinValue));
+                                p.SetValue(obj: this, value: (DateTime.Now));
                     }
                 }
             }

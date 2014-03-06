@@ -41,8 +41,17 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("SelectedDateFormat", typeof(DatePickerFormat), typeof(HlpDateTimePicker), new PropertyMetadata(DatePickerFormat.Short));
 
 
+        [Category("HLP.Owner")]
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
 
-
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(HlpDateTimePicker), new PropertyMetadata(String.Empty));
+        
         [Category("HLP.Owner")]
         public DateTime? SelectedDate
         {

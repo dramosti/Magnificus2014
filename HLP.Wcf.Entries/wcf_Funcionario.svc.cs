@@ -13,9 +13,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceFuncionario" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceFuncionario.svc or serviceFuncionario.svc.cs at the Solution Explorer and start debugging.
-    public class serviceFuncionario : IserviceFuncionario
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "wcf_Funcionario" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select wcf_Funcionario.svc or wcf_Funcionario.svc.cs at the Solution Explorer and start debugging.
+    public class wcf_Funcionario : Iwcf_Funcionario
     {
         [Inject]
         public IFuncionarioRepository funcionarioRepository { get; set; }
@@ -37,7 +37,7 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IFuncionario_Margem_Lucro_ComissaoRepository funcionario_Margem_Lucro_ComissaoRepository { get; set; }
 
-        public serviceFuncionario()
+        public wcf_Funcionario()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -250,7 +250,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
 
             try
@@ -293,7 +293,7 @@ namespace HLP.Wcf.Entries
                 }
 
                 this.funcionarioRepository.CommitTransaction();
-                return (int)objFuncionario.idFuncionario;
+                return objFuncionario;
             }
             catch (Exception ex)
             {

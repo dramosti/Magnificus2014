@@ -7,9 +7,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceFuncionario" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "Iwcf_Funcionario" in both code and config file together.
     [ServiceContract]
-    public interface IserviceFuncionario
+    public interface Iwcf_Funcionario
     {
         [OperationContract]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
@@ -21,6 +21,6 @@ namespace HLP.Wcf.Entries
         bool deleteFuncionario(int idFuncionario);
 
         [OperationContract]
-        int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
     }
 }

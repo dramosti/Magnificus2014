@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.funcionarioService {
+namespace HLP.Entries.ViewModel.wcf_Funcionario {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,12 +17,12 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.funcionarioService.EnderecoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_AcessoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.ViewModel.wcf_Funcionario.EnderecoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.FuncionarioModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -30,10 +30,10 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private HLP.Entries.ViewModel.wcf_Funcionario.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.funcionarioService.statusModel statusField;
+        private HLP.Entries.ViewModel.wcf_Funcionario.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46,7 +46,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public HLP.Entries.ViewModel.wcf_Funcionario.PesquisaPadraoModelContract[] lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -59,7 +59,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.funcionarioService.statusModel status {
+        public HLP.Entries.ViewModel.wcf_Funcionario.statusModel status {
             get {
                 return this.statusField;
             }
@@ -85,7 +85,7 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EnderecoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    public partial class EnderecoModel : HLP.Entries.ViewModel.funcionarioService.modelBase {
+    public partial class EnderecoModel : HLP.Entries.ViewModel.wcf_Funcionario.modelBase {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> idAgenciaField;
@@ -532,58 +532,58 @@ namespace HLP.Entries.ViewModel.funcionarioService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="funcionarioService.IserviceFuncionario")]
-    public interface IserviceFuncionario {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Funcionario.Iwcf_Funcionario")]
+    public interface Iwcf_Funcionario {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/getFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/getFuncionarioResponse")]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/getFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/getFuncionarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/getFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/getFuncionarioResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> getFuncionarioAsync(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/saveFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/saveFuncionarioResponse")]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/saveFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/saveFuncionarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/saveFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/saveFuncionarioResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> saveFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/deleteFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/deleteFuncionarioResponse")]
         bool deleteFuncionario(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/deleteFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/deleteFuncionarioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/deleteFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/deleteFuncionarioResponse")]
         System.Threading.Tasks.Task<bool> deleteFuncionarioAsync(int idFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/copyFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/copyFuncionarioResponse")]
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceFuncionario/copyFuncionario", ReplyAction="http://tempuri.org/IserviceFuncionario/copyFuncionarioResponse")]
-        System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/copyFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/copyFuncionarioResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceFuncionarioChannel : HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario, System.ServiceModel.IClientChannel {
+    public interface Iwcf_FuncionarioChannel : HLP.Entries.ViewModel.wcf_Funcionario.Iwcf_Funcionario, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceFuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario>, HLP.Entries.ViewModel.funcionarioService.IserviceFuncionario {
+    public partial class Iwcf_FuncionarioClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.wcf_Funcionario.Iwcf_Funcionario>, HLP.Entries.ViewModel.wcf_Funcionario.Iwcf_Funcionario {
         
-        public IserviceFuncionarioClient() {
+        public Iwcf_FuncionarioClient() {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName) : 
+        public Iwcf_FuncionarioClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName, string remoteAddress) : 
+        public Iwcf_FuncionarioClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionarioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_FuncionarioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceFuncionarioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_FuncionarioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -611,11 +611,11 @@ namespace HLP.Entries.ViewModel.funcionarioService {
             return base.Channel.deleteFuncionarioAsync(idFuncionario);
         }
         
-        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
             return base.Channel.copyFuncionario(objFuncionario);
         }
         
-        public System.Threading.Tasks.Task<int> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
             return base.Channel.copyFuncionarioAsync(objFuncionario);
         }
     }
