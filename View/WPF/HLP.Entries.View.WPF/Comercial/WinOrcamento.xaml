@@ -13,6 +13,7 @@
         Title="Orçamento" Height="660" Width="1024" NameView="vwOrcamento"
     >
     <runtime:WindowsBase.Resources>
+        <convert:NotConverter x:Key="notConverter"></convert:NotConverter>
         <convertLocal:StatusOrcamentoConverter x:Key="statusOrcamentoConv"></convertLocal:StatusOrcamentoConverter>
         <convertLocal:CanUserAddOrcamentoItemConverter x:Key="canUserAddConv"></convertLocal:CanUserAddOrcamentoItemConverter>
         <CollectionViewSource 
@@ -568,7 +569,7 @@
                                 <DataGrid      
                                 x:Name="dgItens"
                                 CurrentItem="{Binding currentItem, Mode=TwoWay}"
-                                IsEnabled="{Binding bIsEnabled}"
+                                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
@@ -770,7 +771,7 @@
                                                     </Grid>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellEditingTemplate>
-                                        </DataGridTemplateColumn>                                        
+                                        </DataGridTemplateColumn>
                                         <DataGridTextColumn 
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=nPesoLiquido, UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
@@ -948,6 +949,7 @@
                                         </DataGridTemplateColumn>
                                     </DataGrid.Columns>
                                 </DataGrid>
+
                             </Expander>
                             <Expander Header="Fiscal" IsExpanded="True" Grid.Row="2">
                                 <DataGrid

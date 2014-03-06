@@ -152,9 +152,6 @@ namespace HLP.Comum.Facade.Magnificus
 
             switch (ICMS_stReduzBaseCalculo)
             {
-                //(((“Orcamento_Item.vTotalItem” –  (“Orcamento_Item.vTotalItem” X  “pReduzBaseSubstituicaoTributaria” / 100)
-                //    + “Orçamento_Item_Impostos.IPI_vIPI” + “Orcamento_Item.vFreteItem” + campo “Orcamento_Item.vSegurosItem” 
-                //        + “Orcamento_Item.vOutrasDespesasItem”) X “Orçamento_Item_Impostos.ICMS_pMvaSubstituicaoTributaria” / 100) + “Orcamento_Item.vTotalItem”);
                 case 1:
                 case 3:
                     {
