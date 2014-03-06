@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
-  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/serviceFuncionario.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Funcionario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Funcionario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Funcionario.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="FuncionarioModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
-          <xs:element minOccurs="0" name="dAdmissao" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dAniversario" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dFalecimento" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dFinalVisto" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dFinalVistoTrabalho" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Ativo" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="dAdmissao" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dAniversario" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dFalecimento" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dFinalVisto" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dFinalVistoTrabalho" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dQtdHorasDomingo" type="ser:duration" />
           <xs:element minOccurs="0" name="dQtdHorasQuarta" type="ser:duration" />
           <xs:element minOccurs="0" name="dQtdHorasQuinta" type="ser:duration" />
@@ -33,22 +33,23 @@
           <xs:element minOccurs="0" name="lFuncionario_Arquivo" nillable="true" type="tns:ArrayOfFuncionario_ArquivoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Certificacao" nillable="true" type="tns:ArrayOfFuncionario_CertificacaoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Comissao_Produto" nillable="true" type="tns:ArrayOfFuncionario_Comissao_ProdutoModel" />
-          <xs:element minOccurs="0" name="lFuncionario_Endereco" nillable="true" type="tns:ArrayOfFuncionario_EnderecoModel" />
+          <xs:element minOccurs="0" name="lFuncionario_Endereco" nillable="true" type="q1:ArrayOfEnderecoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Margem_Lucro_Comissao" nillable="true" type="tns:ArrayOfFuncionario_Margem_Lucro_ComissaoModel" />
-          <xs:element minOccurs="0" name="pComissaoAprazo" type="xs:decimal" />
-          <xs:element minOccurs="0" name="pComissaoAvista" type="xs:decimal" />
-          <xs:element minOccurs="0" name="stComissao" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stEstadoCivil" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="pComissaoAprazo" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAvista" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stComissao" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stEstadoCivil" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stLiberaHoraExtra" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stPerfil" type="xs:int" />
           <xs:element minOccurs="0" name="stSalario" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stSexo" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stTipo" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stTipoContaContabil" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSexo" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipo" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoContaContabil" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stUsuario" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stUsuarioAtivo" type="xs:boolean" />
-          <xs:element minOccurs="0" name="vDiaria" type="xs:decimal" />
-          <xs:element minOccurs="0" name="vSalario" type="xs:decimal" />
-          <xs:element minOccurs="0" name="vSalarioHora" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vDiaria" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vSalario" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vSalarioHora" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="xCelularComercial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xCelularResidencial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xCodigoAlternativo" nillable="true" type="xs:string" />
@@ -167,37 +168,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Funcionario_Comissao_ProdutoModel" nillable="true" type="tns:Funcionario_Comissao_ProdutoModel" />
-  <xs:complexType name="ArrayOfFuncionario_EnderecoModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario_EnderecoModel" nillable="true" type="tns:Funcionario_EnderecoModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFuncionario_EnderecoModel" nillable="true" type="tns:ArrayOfFuncionario_EnderecoModel" />
-  <xs:complexType name="Funcionario_EnderecoModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q7:modelBase">
-        <xs:sequence>
-          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoEnder" type="q8:TipoEndereco" />
-          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
-          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
-          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:int" />
-          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xCep" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xFusoHorario" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xLatitude" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xLongitude" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="xNumero" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Funcionario_EnderecoModel" nillable="true" type="tns:Funcionario_EnderecoModel" />
   <xs:complexType name="ArrayOfFuncionario_Margem_Lucro_ComissaoModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario_Margem_Lucro_ComissaoModel" nillable="true" type="tns:Funcionario_Margem_Lucro_ComissaoModel" />
@@ -206,7 +176,7 @@
   <xs:element name="ArrayOfFuncionario_Margem_Lucro_ComissaoModel" nillable="true" type="tns:ArrayOfFuncionario_Margem_Lucro_ComissaoModel" />
   <xs:complexType name="Funcionario_Margem_Lucro_ComissaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q9:modelBase">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q7:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioMargemLucroComissao" nillable="true" type="xs:int" />

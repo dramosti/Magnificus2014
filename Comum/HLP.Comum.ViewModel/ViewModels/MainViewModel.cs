@@ -22,7 +22,7 @@ namespace HLP.Comum.ViewModel.ViewModels
     public class MainViewModel : ViewModelBase<WinManModel>
     {
         empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
-        funcionarioService.IserviceFuncionarioClient funcionarioService = new funcionarioService.IserviceFuncionarioClient();
+        wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();       
 
 
         private double _heightWindow;
@@ -193,9 +193,9 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
-        private funcionarioService.FuncionarioModel _currentFuncionario;
+        private wcf_Funcionario.FuncionarioModel _currentFuncionario;
 
-        public funcionarioService.FuncionarioModel currentFuncionario
+        public wcf_Funcionario.FuncionarioModel currentFuncionario
         {
             get { return _currentFuncionario; }
             set

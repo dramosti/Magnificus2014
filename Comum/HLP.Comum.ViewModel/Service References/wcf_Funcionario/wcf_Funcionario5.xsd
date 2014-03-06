@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Funcionario.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
+  <xs:import schemaLocation="http://192.168.9.33:8080/wcf/wcf_Funcionario.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+  <xs:complexType name="modelBase">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" minOccurs="0" name="lcamposSqlNotNull" nillable="true" type="q1:ArrayOfPesquisaPadraoModelContract" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="status" type="q2:statusModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="modelBase" nillable="true" type="tns:modelBase" />
+  <xs:complexType name="ArrayOfEnderecoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnderecoModel" nillable="true" type="tns:ArrayOfEnderecoModel" />
+  <xs:complexType name="EnderecoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEndereco" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idSite" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="nNumero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stLogradouro" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrincipal" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stTipoEndereco" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xBairro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCEP" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xCaixaPostal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xComplemento" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEndereco" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNome" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
+</xs:schema>

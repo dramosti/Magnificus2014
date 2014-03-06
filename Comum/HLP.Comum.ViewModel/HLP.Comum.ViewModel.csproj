@@ -75,6 +75,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Service References\wcf_Funcionario\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services\Service\HlpPesqPadraoService.cs" />
     <Compile Include="ViewModels\Commands\Components\HlpNavigationPanelViewModel.cs" />
     <Compile Include="ViewModels\Commands\Components\HlpPesquisaPadraoCommands.cs" />
@@ -91,11 +96,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\FillComboBoxService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\funcionarioService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -192,28 +192,6 @@
     <None Include="Service References\FillComboBoxService\serviceFillComboBox2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\funcionarioService\HLP.Comum.ViewModel.funcionarioService.FuncionarioModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario.wsdl" />
-    <None Include="Service References\funcionarioService\serviceFuncionario.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\funcionarioService\serviceFuncionario5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\HlpPesquisaPadraoService\HLP.Comum.ViewModel.HlpPesquisaPadraoService.GetDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -236,12 +214,34 @@
     <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Funcionario\HLP.Comum.ViewModel.wcf_Funcionario.FuncionarioModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario5.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\FillComboBoxService\" />
-    <WCFMetadataStorage Include="Service References\funcionarioService\" />
     <WCFMetadataStorage Include="Service References\HlpPesquisaPadraoService\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\HlpPesquisaPadraoService\servicePesquisaPadrao.disco" />
@@ -289,16 +289,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\serviceFuncionario.disco" />
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\configuration91.svcinfo" />
+    <None Include="Service References\wcf_Funcionario\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\configuration.svcinfo" />
+    <None Include="Service References\wcf_Funcionario\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\funcionarioService\Reference.svcmap">
+    <None Include="Service References\wcf_Funcionario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

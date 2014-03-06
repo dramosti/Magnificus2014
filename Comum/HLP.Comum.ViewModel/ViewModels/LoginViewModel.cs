@@ -16,7 +16,7 @@ namespace HLP.Comum.ViewModel.ViewModels
         public ICommand loginCommand { get; set; }
         public bool bLogado = false;
 
-        funcionarioService.IserviceFuncionarioClient funcService;
+        wcf_Funcionario.Iwcf_FuncionarioClient funcService;
 
         public LoginViewModel(ModoInicial st)
         {
@@ -32,9 +32,9 @@ namespace HLP.Comum.ViewModel.ViewModels
                     break;
                 case ModoInicial.trocaEmpresa:
                     {
-                        funcService = new funcionarioService.IserviceFuncionarioClient();
-
-                        funcionarioService.FuncionarioModel objFunc = funcService.getFuncionario(idFuncionario: UserData.idUser);
+                        funcService = new wcf_Funcionario.Iwcf_FuncionarioClient();
+                        
+                        wcf_Funcionario.FuncionarioModel objFunc = funcService.getFuncionario(idFuncionario: UserData.idUser);
                         if (objFunc != null)
                             this.currentModel.xId = objFunc.xID;
                     }
@@ -43,7 +43,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                     break;
             }
         }
-              
+
     }
 
     public enum ModoInicial
