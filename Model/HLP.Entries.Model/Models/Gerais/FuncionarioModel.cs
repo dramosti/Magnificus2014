@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
@@ -708,6 +709,17 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stComissao = value;
+
+                if(value == 2)
+                {
+                    Window w = HLP.Comum.Infrastructure.Static.Sistema.GetOpenWindow(xName: "WinFuncionario");
+
+                    if(w != null)
+                    {
+
+                    }
+                }
+
                 base.NotifyPropertyChanged(propertyName: "stComissao");
             }
         }
@@ -855,6 +867,20 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "lFuncionario_Acesso");
             }
         }
+        
+
+        private ObservableCollectionBaseCadastros<Familia_produtoModel> _lFamiliaProduto;
+
+        public ObservableCollectionBaseCadastros<Familia_produtoModel> lFamiliaProduto
+        {
+            get { return _lFamiliaProduto; }
+            set
+            {
+                _lFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "lFamiliaProduto");
+            }
+        }
+        
     }
 
 

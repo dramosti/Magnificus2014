@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
@@ -29,5 +30,23 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
         }
 
+        public void GetListaFamiliaProduto()
+        {
+            Familia_ProdutoService.IserviceFamiliaProdutoClient servicoInternet;
+            Wcf.Entries.serviceFamiliaProduto servicoRede;
+
+            if (this.currentModel.lFamiliaProduto == null)
+            {
+                this.currentModel.lFamiliaProduto = new Comum.Model.Models.ObservableCollectionBaseCadastros<Familia_produtoModel>();
+                if (Sistema.bOnline == TipoConexao.OnlineInternet)
+                {
+                    servicoInternet = new Familia_ProdutoService.IserviceFamiliaProdutoClient();
+                }
+                if (Sistema.bOnline == TipoConexao.OnlineRede)
+                {
+                    servicoRede = new Wcf.Entries.serviceFamiliaProduto();
+                }
+            }
+        }
     }
 }
