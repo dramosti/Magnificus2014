@@ -37,6 +37,31 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty lineProperty =
             DependencyProperty.Register("line", typeof(Visibility), typeof(HlpButtonStatus), new PropertyMetadata(Visibility.Visible));
 
-        
+
+
+        public String Text
+        {
+            get { return (String)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(String), typeof(HlpButtonStatus), new PropertyMetadata(String.Empty));
+
+
+
+
+        public Visibility lineleft
+        {
+            get { return (Visibility)GetValue(lineleftProperty); }
+            set { SetValue(lineleftProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for lineleft.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty lineleftProperty =
+            DependencyProperty.Register("lineleft", typeof(Visibility), typeof(HlpButtonStatus), new PropertyMetadata(Visibility.Visible));
+
+
     }
 }

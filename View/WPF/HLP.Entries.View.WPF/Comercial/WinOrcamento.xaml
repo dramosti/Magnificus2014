@@ -163,16 +163,16 @@
                 	IsEnabled="False"
                 	Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código do orçamento de origem" Help="É o código de origem do Orçamento, quando é gerado uma Revisão de Orçamento pelo botão Status, quando se gera um orçamento o campo Versão é gerado conforme as versões criadas.Ex." WidthLabel="231" Width="329"/>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Criado" Focusable="False" Width="150"
-                           IsEnabled="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, 
-                        Converter={StaticResource statusOrcamentoConv}, ConverterParameter=c}">
-                    </Label>
-                    <Label Content="Enviado" Focusable="False" Width="150"
-                           IsEnabled="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, 
-                        Converter={StaticResource statusOrcamentoConv}, ConverterParameter=e}"></Label>
-                    <Label Content="Finalizado" Focusable="False" Width="150"
-                           IsEnabled="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, 
-                        Converter={StaticResource statusOrcamentoConv}, ConverterParameter=f}"></Label>
+                    <Components:HlpButtonStatus Text="Criado" Focusable="False" lineleft="Hidden"
+                                                IsEnabled="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, 
+                                                Converter={StaticResource statusOrcamentoConv}, ConverterParameter=c}"/>
+                    <Components:HlpButtonStatus Text="Enviado" Focusable="False"
+                                                IsEnabled="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, 
+                                                Converter={StaticResource statusOrcamentoConv}, ConverterParameter=e}"/>
+                    <Components:HlpButtonStatus Text="Finalizado" Focusable="False" line="Collapsed"
+                                                IsEnabled="{Binding ElementName=cbxOrcamento, Path=SelectedIndex, 
+                                                Converter={StaticResource statusOrcamentoConv}, ConverterParameter=f}"/>
+
                 </StackPanel>
             </WrapPanel>
         </Expander>
@@ -1465,7 +1465,7 @@
 										ElementStyle="{StaticResource CellErrorStyle}"
 										Binding="{Binding Path=ISS_vIss, Converter={StaticResource moedaConverter},
                                         UpdateSourceTrigger=LostFocus,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-										Header="Valor do ISS" Width="125"/>                                        
+										Header="Valor do ISS" Width="125"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Expander>

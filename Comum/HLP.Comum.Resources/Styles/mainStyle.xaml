@@ -88,7 +88,7 @@
                         </Trigger>
                         <Trigger Property="Util:PasswordBoxMonitor.PasswordLength" Value="0">
                             <Setter Property="Visibility" TargetName="txtPrompt" Value="Visible"/>
-                        </Trigger>                        
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -529,6 +529,9 @@
     <Style TargetType="{x:Type wpfTool:WatermarkTextBox}">
         <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
     </Style>
+    <Style x:Key="TimePickerStyle1" TargetType="{x:Type wpfTool:TimePicker}">
+        <Setter Property="Background" Value="White"/>
+    </Style>
     <Style x:Key="LabelStyleComponents" TargetType="Label">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Lucida Handwriting"/>
@@ -941,7 +944,7 @@
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Border" Color="#FFDADADA"/>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewFocus.Border" Color="#FF26A0DA"/>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="#5426A0DA"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF26A0DA"/>    
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF26A0DA"/>
     <LinearGradientBrush x:Key="ComboBox.Static.Background" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#FFF0F0F0" Offset="0.0"/>
         <GradientStop Color="#FFE5E5E5" Offset="1.0"/>
@@ -1145,7 +1148,7 @@
                 <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
             </Trigger>
         </ControlTemplate.Triggers>
-    </ControlTemplate>    
+    </ControlTemplate>
     <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
@@ -1419,6 +1422,63 @@
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="TextBoxPesquisaRapidaLeftSideComPesquisa" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="Border1" CornerRadius="3,0,0,3" BorderBrush="#FFABADB3" BorderThickness="1.3" Background="White" SnapsToDevicePixels="True">
+                        <DockPanel>
+                            <Button DockPanel.Dock="Right" Content="..." Height="15" Width="15" Margin="0,0,1.5,0">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Border x:Name="border" BorderBrush="#FFABADB3" CornerRadius="2" BorderThickness="{TemplateBinding BorderThickness}" Background="White" SnapsToDevicePixels="true">
+                                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsPressed" Value="True">
+                                                            <Setter Property="Background" TargetName="border" Value="#FF4774B5"/>
+                                                            <Setter Property="BorderBrush" TargetName="border" Value="White"/>
+                                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsEnabled" Value="false">
+                                                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            </Border>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Border1" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border1" Value="#FF7EB4EA"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border1" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -2090,7 +2150,7 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="SeparatorBrush" Value="#FFC9CACA" />
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="FontFamily" Value="Calibri"/>        
+        <Setter Property="FontFamily" Value="Calibri"/>
         <Setter Property="FontWeight" Value="Black"/>
         <Setter Property="Padding" Value="4 0 0 0"/>
         <Setter Property="Template">
@@ -2208,12 +2268,12 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="Margin" Value="5"/>        
+        <Setter Property="Margin" Value="5"/>
         <Setter Property="CanUserAddRows" Value="False"/>
-        <Setter Property="CanUserAddRows" Value="False"/>         
+        <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="SelectionUnit" Value="CellOrRowHeader"/>
-        <Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>        
-        <Setter Property="AlternatingRowBackground" Value="{StaticResource AlternateBackgroundBrush}"/>        
+        <Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource AlternateBackgroundBrush}"/>
         <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource NormalBorderBrush}"/>
         <Setter Property="VerticalGridLinesBrush" Value="{StaticResource NormalBorderBrush}"/>
         <Setter Property="Template">
@@ -2260,9 +2320,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <!--Estilo do Validation Error-->
-    
+
     <Style TargetType="{x:Type DataGridRow}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
@@ -2356,8 +2416,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type DataGridCell}">        
-        <Setter Property="Template">        
+    <Style TargetType="{x:Type DataGridCell}">
+        <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
                     <ControlTemplate.Resources>
@@ -2735,7 +2795,7 @@
         </Setter>
     </Style>
 
-<!--ContextMenu-->
+    <!--ContextMenu-->
 
     <SolidColorBrush x:Key="WindowBackgroundBrush2" Color="#FFF" />
     <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
@@ -2758,15 +2818,15 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="true">
-                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>                            
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>
                             <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>   
-    
-    
+    </Style>
+
+
     <!--...-->
 </ResourceDictionary>
