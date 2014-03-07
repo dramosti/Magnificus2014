@@ -11,15 +11,14 @@
         <conv:PorcentagemConverter x:Key="porcentagemConverter"/>
         <conv:MoedaConverter x:Key="MoedaConverter"/>
     </runtime:WindowsBase.Resources>
-    <DockPanel LastChildFill="True" >      
+    <DockPanel LastChildFill="True" >
         <TabControl  VerticalAlignment="Stretch" Margin="0,10,0,0">
             <TabItem Header="Estoque">
                 <AdornerDecorator Margin="0,-4,0,4">
                     <DockPanel LastChildFill="True">
                         <Expander Header="Parâmetros de Estoque" IsExpanded="True">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpComboBox 
-								
+                                <Components:HlpComboBox								
 								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Tipo do estoque mínimo." Help="Informar se o tipo de estoque mínimo será Automático ou Manual." WidthLabel="340" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
@@ -764,8 +763,58 @@
                     </Expander>
                 </AdornerDecorator>
             </TabItem>
+            <TabItem Header="Departamento Pessoal / Cartão Ponto">
+                <AdornerDecorator>
+                    <Expander IsExpanded="True" Header="Geral">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="210*" MaxWidth="210" MinWidth="210"></ColumnDefinition>
+                                <ColumnDefinition Width="167*" MaxWidth="210" MinWidth="100"></ColumnDefinition>
+                                <ColumnDefinition Width="504*"></ColumnDefinition>
+                                <ColumnDefinition Width="293*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Utilizar Função de Cartão Ponto?" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                            <Components:CustomCheckBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stCartaoPonto, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				                IsEnabled="{Binding bIsEnabled}"
+				                HorizontalAlignment="Left"/>
+                            <Components:CustomTimePicker Grid.Column="2" Grid.Row="3" ToolTip="Informar a tolerância máxima permitida antes da Entrada do funcionário." Value="{Binding currentModel.tToleranciaEntradaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Tolerância antes da entrada" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                            <Components:CustomTimePicker Grid.Column="2" Grid.Row="5" ToolTip="Informar a tolerância máxima permitida depois da Entrada do funcionário." Value="{Binding currentModel.tToleranciaEntradaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Tolerância depois da Entrada" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                            <Components:CustomTimePicker Grid.Column="2" Grid.Row="7" ToolTip="Informar a tolerância máxima permitida antes da Saída do funcionário." Value="{Binding currentModel.tToleranciaSaidaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Tolerância antes da Saida" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                            <Components:CustomTimePicker Grid.Column="2" Grid.Row="9" ToolTip="Informar a tolerância máxima permitida depois da Saída do funcionário." Value="{Binding currentModel.tToleranciaSaidaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Tolerância depois da Saida" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                            <Components:CustomTimePicker Grid.Column="2" Grid.Row="11" ToolTip="Informar a tolerância máxima permitida para início das horas extras, caso seja de 5 minutos o sistema começara a contar somente como hora extra quando o funcionário passar o cartão 5 depois da sua saída ou contar como hora extra o tempo total passado antes de sua entrada." Value="{Binding currentModel.tToleranciaHoraExtra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Tolerância para contagem de Hora Extra" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                            <Components:CustomCheckBox Grid.Column="2" Grid.Row="13" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stLiberacaoHoraExtra, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				                IsEnabled="{Binding bIsEnabled}"
+				                HorizontalAlignment="Left"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Liberação das Horas Extras" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                        </Grid>
+                    </Expander>
+                </AdornerDecorator>
+            </TabItem>
         </TabControl>
-
-
     </DockPanel>
 </runtime:WindowsBase>

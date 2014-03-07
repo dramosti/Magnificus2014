@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
-             
+
     <UserControl.Resources>
         <SolidColorBrush x:Key="VerdeBackground" Color="#FF1CE42E"/>
         <SolidColorBrush x:Key="WhitePadrao" Color="White"/>
-        
+        <SolidColorBrush x:Key="GrayPadrao" Color="Gray"/>
+
         <Style x:Key="ButtonStatusOrcamento" TargetType="{x:Type Button}">
-            <Setter Property="Foreground" Value="{StaticResource WhitePadrao}"/>
+            <Setter Property="Foreground" Value="{StaticResource GrayPadrao}"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -18,30 +19,52 @@
                         <Border>
                             <DockPanel Height="40">
                                 <DockPanel DockPanel.Dock="Top" Height="20">
-                                    <Ellipse x:Name="circle" Fill="{StaticResource VerdeBackground}" HorizontalAlignment="Center" Height="19" Stroke="{StaticResource VerdeBackground}" VerticalAlignment="Center" Width="19"/>
+                                    <Path x:Name="line2"
+                                          Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=lineleft}"
+                                          Data="M21,4.5 L134.33333,4.5" Height="2" Stretch="Fill" Stroke="{StaticResource VerdeBackground}" StrokeThickness="2" Width="20" HorizontalAlignment="Left" Margin="-5,0,0,0"/>
+                                    <Ellipse x:Name="circle" Fill="{StaticResource VerdeBackground}"  HorizontalAlignment="Center" Height="19" Stroke="{StaticResource VerdeBackground}" VerticalAlignment="Center" Width="19" Margin="-1.2,0,0,0"/>
                                     <Path x:Name="check" Width="11" Height="11" Margin="-20,0,0,0" SnapsToDevicePixels="True" Stroke="{StaticResource WhitePadrao}" StrokeThickness="2" Data="M 2,4 C 2,4 3,5 5,13 C 5,13 5,3 12,0"/>
                                     <Path x:Name="line"                                          
                                           Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=line}" 
-                                          Data="M21,4.5 L134.33333,4.5" Height="2" Margin="-1.5,0,0,0" Stretch="Fill" Stroke="{StaticResource VerdeBackground}" StrokeThickness="2" Width="40" HorizontalAlignment="Left"/>
+                                          Data="M21,4.5 L134.33333,4.5" Height="2" Margin="-1.5,0,0,0" Stretch="Fill" Stroke="{StaticResource VerdeBackground}" StrokeThickness="2" Width="60" HorizontalAlignment="Left"/>
                                 </DockPanel>
                                 <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
-                                    <TextBlock Text="" Width="53"  Height="20" FontSize="10" HorizontalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                    <Label DockPanel.Dock="Left"                                               
+                                               Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Text}"
+                                               Height="20" Width="51" FontSize="10" HorizontalAlignment="Center">
+                                        <Label.Style>
+                                            <Style TargetType="{x:Type Label}">
+                                                <Setter Property="Foreground" Value="{StaticResource GrayPadrao}"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Label}">
+                                                            <Border>
+                                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Label.Style>
+                                    </Label>
                                 </DockPanel>
                             </DockPanel>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Fill" TargetName="circle" Value="Gray"/>
-                                <Setter Property="Stroke" TargetName="circle" Value="Gray"/>
-                                <Setter Property="Stroke" TargetName="line" Value="Gray"/>
+                                <Setter Property="Fill" TargetName="circle" Value="{StaticResource GrayPadrao}"/>
+                                <Setter Property="Stroke" TargetName="circle" Value="{StaticResource GrayPadrao}"/>
+                                <Setter Property="Stroke" TargetName="line" Value="{StaticResource GrayPadrao}"/>
+                                <Setter Property="Stroke" TargetName="line2" Value="{StaticResource GrayPadrao}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
-                    </ControlTemplate>                    
+                    </ControlTemplate>
                 </Setter.Value>
-            </Setter>              
+            </Setter>
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Button Style="{StaticResource ButtonStatusOrcamento}"></Button>  
+        <Button Style="{StaticResource ButtonStatusOrcamento}"></Button>
     </Grid>
 </UserControl>

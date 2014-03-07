@@ -257,6 +257,8 @@ namespace HLP.Entries.Model.Models.Gerais
             this.ObjParametro_FinanceiroModel = new Parametro_FinanceiroModel();
             this.ObjParametro_FiscalModel = new Parametro_FiscalModel();
             this.ObjParametro_Ordem_ProducaoModel = new Parametro_Ordem_ProducaoModel();
+            this.objParametro_Cartao_PontoModel = new Parametro_Cartao_PontoModel();
+            
         }
 
         private Parametro_EstoqueModel objParametro_EstoqueModel;
@@ -318,6 +320,20 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "ObjParametro_FiscalModel");
             }
         }
+
+        
+        private Parametro_Cartao_PontoModel _objParametro_Cartao_PontoModel;
+
+        public Parametro_Cartao_PontoModel objParametro_Cartao_PontoModel
+        {
+            get { return _objParametro_Cartao_PontoModel; }
+            set
+            {
+                _objParametro_Cartao_PontoModel = value;
+                base.NotifyPropertyChanged(propertyName: "objParametro_Cartao_PontoModel");
+            }
+        }
+        
 
         private Parametro_ComercialModel objParametro_ComercialModel;
 

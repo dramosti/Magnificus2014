@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SilverlightApplicationList>
+    </SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="camposBaseDadosService.svc" />
+    <Content Include="ClientBin\HLP.Magnificus.View.Web.xap" />
+    <Content Include="HLP.Magnificus.View.WebTestPage.aspx" />
+    <Content Include="HLP.Magnificus.View.WebTestPage.html" />
     <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
     <Content Include="serviceBanco.svc" />
@@ -146,6 +151,7 @@
     <Content Include="serviceTransportador.svc" />
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
+    <Content Include="Silverlight.js" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
