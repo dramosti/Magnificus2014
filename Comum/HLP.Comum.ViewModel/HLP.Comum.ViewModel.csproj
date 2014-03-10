@@ -85,6 +85,7 @@
     <Compile Include="ViewModels\Commands\Components\HlpPesquisaPadraoCommands.cs" />
     <Compile Include="ViewModels\Commands\Components\IKernel.cs" />
     <Compile Include="ViewModels\Commands\FindAllCommand.cs" />
+    <Compile Include="ViewModels\Commands\HlpPesquisaInsertCommands.cs" />
     <Compile Include="ViewModels\Commands\LoginCommands.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Commands\MainCommands.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="ViewModels\Components\HlpPesquisaPadraoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FindAllViewModel.cs" />
+    <Compile Include="ViewModels\HlpPesquisaInsertViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SenhaSupervisorViewModel.cs" />

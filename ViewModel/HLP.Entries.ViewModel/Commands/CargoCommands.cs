@@ -55,7 +55,7 @@ namespace HLP.Entries.ViewModel.Commands
         public void Save(object _panel)
         {
             try
-            {
+            {                
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;

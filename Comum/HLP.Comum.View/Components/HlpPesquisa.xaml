@@ -55,7 +55,13 @@
                  LostFocus="ucTxt_LostFocus"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
-                 Width="80" Height="20" KeyDown="txtID_KeyDown" />
+                 Width="80" Height="20" KeyDown="txtID_KeyDown" >
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Inserir novo item" Command="{Binding InserirCommand}"></MenuItem>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
 
         <TextBox x:Name="txtDisplay" IsReadOnly="True" Style="{StaticResource TextBoxPesquisaRapidaRightSide}"
                  TextChanged="ucTxtPesquisa_TextChanged"

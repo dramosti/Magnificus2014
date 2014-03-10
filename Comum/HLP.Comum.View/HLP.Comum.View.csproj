@@ -142,6 +142,9 @@
     <Compile Include="Converters\PorcentagemConverter.cs" />
     <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
+    <Compile Include="Formularios\HlpPesquisaInsert.xaml.cs">
+      <DependentUpon>HlpPesquisaInsert.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\wdSenhaSupervisor.xaml.cs">
       <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Formularios\HlpPesquisaInsert.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

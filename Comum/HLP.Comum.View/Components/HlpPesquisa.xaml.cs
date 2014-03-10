@@ -34,6 +34,7 @@ namespace HLP.Comum.View.Components
         private IservicePesquisaRapidaClient servicoPesquisaRapida;
 
         private ICommand PesquisarCommand { get; set; }
+        private ICommand InserirCommand { get; set; }
 
         public string Display
         {
@@ -46,10 +47,20 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("Display", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
 
 
+
         public HlpPesquisa()
         {
             InitializeComponent();
+            this.InserirCommand = new RelayCommand(execute: e => this.InserirExecute());
             //this.DataContext = this;
+        }
+
+        private void InserirExecute()
+        {
+            if(this.nameWindow != null)
+            {
+
+            }
         }
 
         public async void ExecutaPesquisa(string sValor)
@@ -217,6 +228,17 @@ namespace HLP.Comum.View.Components
             {
                 ucTxtPesquisaTextChanged(sender: sender, e: e);
             }
+        }
+
+        #endregion
+
+        #region Propriedades
+        private string _nameWindow;
+
+        public string nameWindow
+        {
+            get { return _nameWindow; }
+            set { _nameWindow = value; }
         }
 
         #endregion
