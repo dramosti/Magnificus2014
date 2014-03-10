@@ -312,6 +312,9 @@
     <Resource Include="Icones\Enviar_Botao_Branco.png" />
     <Resource Include="Icones\Enviar_Botao_Disabled.png" />
     <Resource Include="Icones\Cancel_Branco.png" />
+    <Resource Include="Icones\Pesquisa_componente.png" />
+    <Resource Include="Icones\Pesquisa_componente_mouseover.png" />
+    <Resource Include="Icones\Pesquisa_desabilitado.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

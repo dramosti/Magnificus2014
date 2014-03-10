@@ -29,13 +29,13 @@
                     <RowDefinition Height="20"></RowDefinition>
                     <RowDefinition Height="3"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center" Height="15" Margin="0,3"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center"/>
                 <Components:CustomTextBox 
                                       IsReadOnly="True"
                                       Text="{Binding currentModel.idUnidadeMedida, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro da Unidade de Medida"
                                       Grid.Column="2" Grid.Row="1"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Sigla Padrão" VerticalAlignment="Center" Height="15" Margin="0,3"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Sigla Padrão" VerticalAlignment="Center"/>
                 <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3"
                                        Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"/>

@@ -17,68 +17,109 @@
                 <AdornerDecorator Margin="0,-4,0,4">
                     <DockPanel LastChildFill="True">
                         <Expander Header="Parâmetros de Estoque" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpComboBox								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Tipo do estoque mínimo." Help="Informar se o tipo de estoque mínimo será Automático ou Manual." WidthLabel="340" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition Width="280" MinWidth="280" MaxWidth="280"></ColumnDefinition>
+                                    <ColumnDefinition Width="175*" MaxWidth="200" MinWidth="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="145*"></ColumnDefinition>
+                                    <ColumnDefinition Width="704*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Tipo do estoque mínimo" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox 
+                                    Grid.Column="2" Grid.Row="1" SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMinimo, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar se o tipo de estoque mínimo será Automático ou Manual">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Automático</System:String>
                                         <System:String>1-Manual</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Tipo do estoque máximo." Help="Informar se o tipo de estoque máximo será Automático ou Manual." WidthLabel="340" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Tipo do estoque máximo" VerticalAlignment="Center"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMaximo,
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar se o tipo de estoque máximo será Automático ou Manual.">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Automático</System:String>
                                         <System:String>1-Manual</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stMediaConsumo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Tipo de média consumo" Help="Informar ao sistema em quanto tempo será a feita de média de consumo:" WidthLabel="340" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Tipo de média consumo" VerticalAlignment="Center"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stMediaConsumo, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar ao sistema em quanto tempo será a feita de média de consumo">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Semanal</System:String>
                                         <System:String>1-Mensal</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stVendasGera, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Vendas Gera?" Help="Quando a empresa trabalha sem estoque, quando faz o pedido de venda o sistema já gera automaticamente uma necessidade de compra para atendimento da venda." WidthLabel="340" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Vendas Gera?" VerticalAlignment="Center"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="7"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stVendasGera, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Quando a empresa trabalha sem estoque, quando faz o pedido de venda o sistema já gera automaticamente uma necessidade de compra para atendimento da venda.">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Nenhum</System:String>
                                         <System:String>1-Requisição</System:String>
                                         <System:String>2-Cotação</System:String>
                                         <System:String>3-Pedido</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stGradeEstoque
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Utiliza grade nos produtos?" VerticalAlignment="Center"/>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="9"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stGradeEstoque
                                     , Mode=TwoWay, NotifyOnValidationError=True, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Utiliza grade nos produtos?" Help="Informar se o Magnificus irá trabalhar com grades, além dessa informação para que veja as opções das grades nas movimentações de vendas, compras ou movimentação, no cadastro do produto deve estar definido em qual grade ele pertence." WidthLabel="340" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stRastreabilidadeMaterial, 
+								    IsEnabled="{Binding bIsEnabled}"
+                                    VerticalAlignment="Center"
+								    ToolTip="Informar se o Magnificus irá trabalhar com grades, além dessa informação para que veja as opções das grades nas movimentações de vendas, compras ou movimentação, no cadastro do produto deve estar definido em qual grade ele pertence.">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Utiliza rastreabilidade dos materiais?" VerticalAlignment="Center"/>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="11"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stRastreabilidadeMaterial, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Utiliza rastreabilidade dos materiais?" Help="Informar se o Magníficus irá fazer a rastreabilidade de todos os materias de consumo, compras, aquisição, etc. Menos os produtos acabados." WidthLabel="340" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stRastreabilidadeProdutoAcabado, 
+								    IsEnabled="{Binding bIsEnabled}"
+                                    VerticalAlignment="Center"
+								    ToolTip="Informar se o Magníficus irá fazer a rastreabilidade de todos os materias de consumo, compras, aquisição, etc. Menos os produtos acabados.">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Utiliza rastreabilidade dos produtos acabados?" VerticalAlignment="Center"/>
+                                <Components:CustomCheckBox 
+                                    Grid.Column="2" Grid.Row="13"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stRastreabilidadeProdutoAcabado, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Utiliza rastreabilidade dos produtos acabados?" Help="Informar se o Magníficus irá fazer a rastreabilidade de todos os produtos acabados inclusive a rastreabilidade dos materiais." WidthLabel="340" HorizontalAlignment="Left"/>
-                            </WrapPanel>
+								    IsEnabled="{Binding bIsEnabled}"
+                                    VerticalAlignment="Center"
+								    ToolTip="Informar se o Magníficus irá fazer a rastreabilidade de todos os produtos acabados inclusive a rastreabilidade dos materiais.">
+                                </Components:CustomCheckBox>
+                            </Grid>
                         </Expander>
                     </DockPanel>
                 </AdornerDecorator>
@@ -87,103 +128,157 @@
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
                         <Expander Header="Parâmetros Custo" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xHorasTrabalhadasDia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Caption="Horas trabalhada dia" Help="de custo hora homem. " WidthLabel="484" Width="567" HorizontalAlignment="Left" Margin="10,0,0,2"/>
-                                <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xDiasTrabalhadasSemana, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Quantidade de dias trabalhada na semana" Help="Informar a quantidade de dias trabalhada na semana para calculo de custo." WidthLabel="484" Width="567" HorizontalAlignment="Left" Margin="10,0,0,2"/>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoComposicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Caption="Qual o custo do Material na composição do produto final" Help="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)" WidthLabel="483" Width="647" HorizontalAlignment="Left" Margin="10,0,0,2">
-                                    <Components:HlpComboBox.Items>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MinWidth="400" MaxWidth="400" Width="364*"></ColumnDefinition>
+                                    <ColumnDefinition Width="125*" MinWidth="125" MaxWidth="125"></ColumnDefinition>
+                                    <ColumnDefinition Width="102*"></ColumnDefinition>
+                                    <ColumnDefinition Width="81*"></ColumnDefinition>
+                                    <ColumnDefinition Width="185*"></ColumnDefinition>
+                                    <ColumnDefinition Width="317*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="3"/>
+                                </Grid.RowDefinitions>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Horas trabalhadas dia" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomTimePicker
+                                    Grid.Column="2" Grid.Row="1"
+                                    Value="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xHorasTrabalhadasDia, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+							        ToolTip="de custo hora homem. ">
+                                </Components:CustomTimePicker>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Quantidade de dias trabalhada na semana" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.xDiasTrabalhadasSemana, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar a quantidade de dias trabalhada na semana para calculo de custo.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Qual o custo do Material na composição do produto final" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox 
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoComposicao, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Compra</System:String>
                                         <System:String>1-Venda</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.st_Markup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Custo baseado em" Help="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)" WidthLabel="483" Width="650" HorizontalAlignment="Left" Margin="10,0,0,2">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Custo baseado em?" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.st_Markup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="QUAL CUSTO DO MATERIAL NA COMPOSIÇÃO DO PRODUTO FINAL (1-COMPRA 2-VENDA)">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Preço de Compra</System:String>
                                         <System:String>1- Preço de Venda</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stValorVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Tipo de Valor de Venda" Help="Após calculado o custo de um produto o sistema irá por padrão assumir o preço de venda, 1- NENHUM(sem preço), 2-SUGERIDO (o calculado pelo sistema) ou3-MERCADO (é o valor de mercado informado na composição de preços).  " WidthLabel="484" HorizontalAlignment="Left" Width="645" Margin="10,0,0,2">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Tipo de Valor de Venda" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="9"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stValorVenda, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Após calculado o custo de um produto o sistema irá por padrão assumir o preço de venda, 1- NENHUM(sem preço), 2-SUGERIDO (o calculado pelo sistema) ou3-MERCADO (é o valor de mercado informado na composição de preços)">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-NENHUM(sem preço)</System:String>
                                         <System:String>1-SUGERIDO(o calculado pelo sistema)</System:String>
                                         <System:String>2-MERCADO(é o valor de mercado informado na composição de preços)</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorCusto, 
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Atualiza valor de custo" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomCheckBox 
+                                    Grid.Column="2" Grid.Row="11"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorCusto, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Atualiza valor de custo" WidthLabel="484" HorizontalAlignment="Left" Margin="10,0,0,2"/>
-                                <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorVenda, 
+								    IsEnabled="{Binding bIsEnabled}"
+                                    VerticalAlignment="Center" Height="14" Margin="0,7">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Atualiza valor de Venda pós Recebimento?" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="13"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stAtualizaValorVenda, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Atualiza valor de Venda pós Recebimento?" Help="Informar se o valor de venda será atualizado automaticamente pelo sistema após o recebimento, seja produto acabado ou material de venda." WidthLabel="484" HorizontalAlignment="Left" Margin="10,0,0,2"/>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoDefault, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Tipo de Custo Default?" Help="Informar qual o tipo custo Default quando é incluído um novo produto, lembrando que não é esse tipo de custo que o software se baseará ele se baseia pelo tipo de custo que esta no cadastro de produto no campo formação de custo." WidthLabel="484" HorizontalAlignment="Left" Margin="10,0,0,2">
-                                    <Components:HlpComboBox.Items>
+								    IsEnabled="{Binding bIsEnabled}"
+                                    VerticalAlignment="Center"
+								    ToolTip="Informar se o valor de venda será atualizado automaticamente pelo sistema após o recebimento, seja produto acabado ou material de venda" Height="14" Margin="0,7">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="15" Text="Tipo de Custo Default?" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="15"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoDefault, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar qual o tipo custo Default quando é incluído um novo produto, lembrando que não é esse tipo de custo que o software se baseará ele se baseia pelo tipo de custo que esta no cadastro de produto no campo formação de custo.">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Custo de Composição</System:String>
                                         <System:String>1-Custo Manual</System:String>
                                         <System:String>2-Custo Automático</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoMedio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Custo Médio Default" Help="Informar qual o custo médio Default quando é incluído um novo produto, lembrando que não é esse tipo de custo médio que o software se baseará ele se baseia pelo que esta no cadastro de produto no campo tipo de custo." WidthLabel="484" HorizontalAlignment="Left" Margin="10,0,0,2">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="17" Text="Custo Médio Default" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="17"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCustoMedio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar qual o custo médio Default quando é incluído um novo produto, lembrando que não é esse tipo de custo médio que o software se baseará ele se baseia pelo que esta no cadastro de produto no campo tipo de custo.">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Custo Médio(Ponderado)</System:String>
                                         <System:String>1-Custo Atual</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCompoeBaseCalculoCustoOperacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Caption="Base de calculo para o custo operacional" Help="1- VALOR DE CUSTO DO MATERIAL(DEFAULT)" WidthLabel="484" HorizontalAlignment="Left" Margin="10,0,0,2">
-                                    <Components:HlpComboBox.Items>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="19" Text="Base de calculo para o custo operacional" VerticalAlignment="Center" Height="14" Margin="0,7"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="19"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.stCompoeBaseCalculoCustoOperacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="1- VALOR DE CUSTO DO MATERIAL(DEFAULT)"    >
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-Nenhum</System:String>
                                         <System:String>1-VALOR DE CUSTO DO MATERIAL(DEFAULT)</System:String>
                                         <System:String>2-VALOR DE CUSTO DO MATERIAL + TEMPO APLICADO + VALOR DO RATEIO DO CUSTO FIXO + VALOR DO CUSTO DE DEPRECIAÇÃO + VALOR DO CUSTO FIXO SOBRE O PRODUTO + TOTAL DO CUSTO FIXO SOBRE O PRODUTO + CUSTO VARIÁVEL</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="21" Text="Tipo de operação padrão para calculo de custo do produto/material" VerticalAlignment="Center"/>
                                 <Components:HlpPesquisa 
-								
+								Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="21"
 								Text="{Binding currentModel.empresaParametros.ObjParametro_CustosModel.idTipoOperacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27"  Caption="Tipo de operação padrão para calculo de custo do produto/material" WidthLabel="484" FieldPesquisa="ID" TableView="vwTipoOperacao" HorizontalAlignment="Left" Width="850" Margin="10,0,0,2">
+                                WidthLabel="0"
+								FieldPesquisa="ID" TableView="vwTipoOperacao">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                            </WrapPanel>
+                            </Grid>
                         </Expander>
                     </DockPanel>
                 </AdornerDecorator>
@@ -191,112 +286,174 @@
             <TabItem Header="Compras">
                 <DockPanel LastChildFill="True">
                     <Expander Header="Parâmetros de Compras" IsExpanded="True">
-                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                            <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.vAprovacaoAutomaticaPedidoCompras, 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="275*" MaxWidth="300" MinWidth="300"></ColumnDefinition>
+                                <ColumnDefinition Width="150*" MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                <ColumnDefinition Width="60*" MaxWidth="60"></ColumnDefinition>
+                                <ColumnDefinition Width="689*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                                <RowDefinition Height="27"></RowDefinition>
+                                <RowDefinition Height="3"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Total máximo para liberação automática do pedido" VerticalAlignment="Center" Height="20" Margin="0,4"/>
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="1"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.vAprovacaoAutomaticaPedidoCompras, 
                                 Mode=TwoWay, NotifyOnValidationError=True, 
                                 UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Total máximo para liberação automática do pedido" Help="Informar o total máximo para aquele determinado pedido de compras para ser liberado automaticamente pelo sistema, sem aprovação de um supervisor." WidthLabel="380" HorizontalAlignment="Left" Width="475"/>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoRequisicao, Mode=TwoWay, 
+								ToolTip="Informar o total máximo para aquele determinado pedido de compras para ser liberado automaticamente pelo sistema, sem aprovação de um supervisor.">
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Requer aprovação da requisição?" VerticalAlignment="Center" Height="20" Margin="0,4"/>
+                            <Components:CustomCheckBox 
+                                Grid.Column="2" Grid.Row="3"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoRequisicao, Mode=TwoWay, 
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Requer aprovação da requisição?" Help="Informar se será obrigatória a aprovação da Requisição seja ela de consumo ou de compras. Quando 'SIM' o sistema só irá liberar a Requisição para cotação de compras quando aprovado por algum supervisor." WidthLabel="380" HorizontalAlignment="Left"/>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoCotacaoCompras, 
+                                VerticalAlignment="Center"
+								ToolTip="Informar se será obrigatória a aprovação da Requisição seja ela de consumo ou de compras. Quando 'SIM' o sistema só irá liberar a Requisição para cotação de compras quando aprovado por algum supervisor." Height="14" Margin="0,7">
+                            </Components:CustomCheckBox>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Requer aprovação de cotação de compras?" VerticalAlignment="Center" Height="20" Margin="0,4"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="5"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoCotacaoCompras, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Requer aprovação de cotação de compras?" Help="Informar se será obrigatória a aprovação da cotação de compras. Quando 'SIM' o sistema só irá liberar a cotação para montagem do pedido quando aprovado por algum supervisor" WidthLabel="380" HorizontalAlignment="Left"/>
-                            <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoPedidoCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                VerticalAlignment="Center"
+								ToolTip="Informar se será obrigatória a aprovação da cotação de compras. Quando 'SIM' o sistema só irá liberar a cotação para montagem do pedido quando aprovado por algum supervisor" Height="14" Margin="0,7">
+                            </Components:CustomCheckBox>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Requer aprovação de pedido de compras?" VerticalAlignment="Center" Height="20" Margin="0,4"/>
+                            <Components:CustomComboBox 
+                                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stAprovacaoPedidoCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Requer aprovação de pedido de compras?" Help="- Quando o campo St_aprova_pedido é igual a 0-NÃO o campo Vl_aprova_auto_pedido deve ser igual a zero;" WidthLabel="380" HorizontalAlignment="Left">
-                                <Components:HlpComboBox.Items>
+								ToolTip="Quando o campo St_aprova_pedido é igual a 0-NÃO o campo Vl_aprova_auto_pedido deve ser igual a zero;">
+                                <Components:CustomComboBox.Items>
                                     <System:String>0-NÃO</System:String>
                                     <System:String>1-TOTAL</System:String>
                                     <System:String>2-PARCIAL</System:String>
                                     <System:String>3-USUARIO</System:String>
-                                </Components:HlpComboBox.Items>
-                            </Components:HlpComboBox>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stIgnoraSaldoRequisicao, 
+                                </Components:CustomComboBox.Items>
+                            </Components:CustomComboBox>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Ignora saldo do estoque na requisição?" VerticalAlignment="Center" Height="20" Margin="0,4"/>
+                            <Components:CustomCheckBox 
+                                Grid.Column="2" Grid.Row="9" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComprasModel.stIgnoraSaldoRequisicao, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Ignora saldo do estoque na requisição?" Help="Informar se o sistema irá ignorar o saldo de estoque quando gerado uma requisição de consumo ou compra." WidthLabel="380" HorizontalAlignment="Left"/>
-                        </WrapPanel>
+								ToolTip="Informar se o sistema irá ignorar o saldo de estoque quando gerado uma requisição de consumo ou compra." Height="14" Margin="0,7">
+                            </Components:CustomCheckBox>
+                        </Grid>
                     </Expander>
-
                 </DockPanel>
             </TabItem>
             <TabItem Header="Ordem de Produção">
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
                         <Expander Header="Parâmetros de Ordem de Produção" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stProducaoGera, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Produção gera?" Help="Quando a ordem de produção é gerada o calculará a sua necessidade de consumo para aquela Ordem de produção se não possuir a quantidade necessária em estoque, o que deve ser gerado." WidthLabel="462" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition Width="380*" MaxWidth="380" MinWidth="380"></ColumnDefinition>
+                                    <ColumnDefinition Width="127*" MinWidth="120" MaxWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition Width="216*" MaxWidth="300"></ColumnDefinition>
+                                    <ColumnDefinition Width="451*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="3"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Produção gera?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stProducaoGera, 
+                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Quando a ordem de produção é gerada o calculará a sua necessidade de consumo para aquela Ordem de produção se não possuir a quantidade necessária em estoque, o que deve ser gerado.">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-NENHUM</System:String>
                                         <System:String>1-REQUISIÇÃO</System:String>
                                         <System:String>2-COTAÇÃO</System:String>
                                         <System:String>3-PEDIDO</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stGeraOPFilhas, 
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Gera ordem de produção filhas?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="3" VerticalAlignment="Center"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stGeraOPFilhas, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Gera ordem de produção filhas? " Help="Informar ao sistema que ao gerar uma ordem de produção e a mesma conter em sua engenharia subprodutos (produtos com estruturas própria) e o mesmo não ter em estoque será gerado uma outra ordem de produção referente aos subprodutos " WidthLabel="462" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox	
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stFechaOPSaldoAproduzir, 
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar ao sistema que ao gerar uma ordem de produção e a mesma conter em sua engenharia subprodutos (produtos com estruturas própria) e o mesmo não ter em estoque será gerado uma outra ordem de produção referente aos subprodutos " Height="14" Margin="0,7">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Fechar ordem de produção com saldo a produzir?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="5" VerticalAlignment="Center"
+                                    IsChecked="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.stFechaOPSaldoAproduzir, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Fechar ordem de produção com saldo a produzir?" Help="Informar ao sistema se poderá fechar ou finalizar a ordem de produção mesmo com saldo aberto a produzir." WidthLabel="462" HorizontalAlignment="Left"/>
-                                <Components:HlpPesquisa 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Operação padrão para ordem de produção para produtos." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos" WidthLabel="462" FieldPesquisa="ID" TableView="vwTipoOperacao" HorizontalAlignment="Left" Width="765">
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar ao sistema se poderá fechar ou finalizar a ordem de produção mesmo com saldo aberto a produzir." Height="14" Margin="0,7">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Operação padrão para ordem de produção para produtos" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                <Components:HlpPesquisa
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="7"
+                                    Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos" WidthLabel="0" FieldPesquisa="ID" TableView="vwTipoOperacao">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" 
-                                    Caption="Operação padrão para ordem de produção para serviços." 
-                                    Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para serviços." 
-                                    WidthLabel="462" FieldPesquisa="ID" TableView="vwTipoOperacao" HorizontalAlignment="Left" Width="765">
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Operação padrão para ordem de produção para serviços" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                <Components:HlpPesquisa
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="9"
+								    Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"								                                          
+                                    ToolTip="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para serviços." 
+                                    WidthLabel="0" FieldPesquisa="ID" TableView="vwTipoOperacao">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPBenificiamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Operação padrão para ordem de produção para beneficiamento." Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para beneficiamento." WidthLabel="462" FieldPesquisa="ID" TableView="vwTipoOperacao" HorizontalAlignment="Left" Width="765">
+                                <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Operação padrão para ordem de produção para beneficiamento" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                <Components:HlpPesquisa
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="11"
+								    Text="{Binding currentModel.empresaParametros.ObjParametro_Ordem_ProducaoModel.idTipoOperacaoparaOPBenificiamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para beneficiamento." WidthLabel="0" FieldPesquisa="ID" TableView="vwTipoOperacao">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xOperacao</System:String>
                                         <System:String>xClassificacaoFiscal</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                            </WrapPanel>
+                            </Grid>
                         </Expander>
                     </DockPanel>
                 </AdornerDecorator>
@@ -307,162 +464,232 @@
                         <AdornerDecorator>
                             <Expander Header="Fiscal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True">
                                 <DockPanel LastChildFill="True">
-                                    <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPIS,
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition Width="125*" MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                                            <ColumnDefinition Width="61*" MaxWidth="105" MinWidth="105"></ColumnDefinition>
+                                            <ColumnDefinition Width="35*" MaxWidth="70" MinWidth="50"/>
+                                            <ColumnDefinition Width="45*"></ColumnDefinition>
+                                            <ColumnDefinition Width="170*" MaxWidth="340" MinWidth="340"></ColumnDefinition>
+                                            <ColumnDefinition Width="86*" MaxWidth="175" MinWidth="125"></ColumnDefinition>
+                                            <ColumnDefinition Width="62*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                            <RowDefinition Height="27"></RowDefinition>
+                                            <RowDefinition Height="3"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <!--Label dos Componentes-->
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Alíquota PIS" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Alíquota COFINS" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Alíquota CSLL" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Regime de apuração do IRPJ" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Tipo de apuração do IPI" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Regime de tributação do PIS e COFINS" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Tipo apuração do PIS e COFINS" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="15" Text="Produtor Rural?" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="17" Text="Cooperativa Agrícola?" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="19" Text="Destaca ISS na nota fiscal de serviços?" VerticalAlignment="Center" Height="16" Margin="0,6"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="1" Text="Destaca CSLL na nota fiscal de serviços?" VerticalAlignment="Center" Height="16" Margin="0,5,0,6"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="3" Text="Destaca IRRF na nota fiscal de serviços?" VerticalAlignment="Center" Height="16" Margin="0,5,0,6"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="5" Text="Destaca PIS e COFINS na nota fiscal de serviços?" VerticalAlignment="Center" Height="16" Margin="0,5,0,6"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="7" Text="Destaca INSS na nota fiscal de serviços?" VerticalAlignment="Center" Height="18" Margin="0,5,0,4"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="9" Text="Ambiente para NF-e de Produtos" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="11" Text="Ambiente para NF-e de Serviços?" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="13" Text="Imprimi mensagem de SUFRAMA na Nota Fiscal?" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="15" Text="Qual código do produto será impresso na NF-e?" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <Components:CustomTextBlock Grid.Column="5" Grid.Row="17" Text="Calcula ICMS de Substituição Tributária por Diferença?" VerticalAlignment="Center" Height="17" Margin="0,5"/>
+                                        <!--Label dos Componentes-->
+
+                                        <!--Componentes-->
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="1"
+                                            Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPIS,
                                             Mode=TwoWay, NotifyOnValidationError=True, 
                                             Converter={StaticResource porcentagemConverter},
                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,0" Caption="Alíquota PIS " Help="Informar a alíquota do PIS - Programas de Integração Social e de Formação do Patrimônio do Servidor Público" WidthLabel="400" HorizontalAlignment="Left" Width="500"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINS,
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar a alíquota do PIS - Programas de Integração Social e de Formação do Patrimônio do Servidor Público" />
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="3"
+                                            Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINS,
                                             Mode=TwoWay, NotifyOnValidationError=True, 
                                             Converter={StaticResource porcentagemConverter},
                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Alíquota COFINS" Help="Informar a alíquota do COFINS - Contribuição para Financiamento da Seguridade Social." WidthLabel="400" HorizontalAlignment="Left" Width="500"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaCSLL, 
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar a alíquota do COFINS - Contribuição para Financiamento da Seguridade Social."/>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="5"
+                                            Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pAliquotaCSLL, 
                                             Mode=TwoWay, NotifyOnValidationError=True, 
                                             Converter={StaticResource porcentagemConverter},
                                             UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Alíquota CSLL" Help="Informar a alíquota da Contribuição Social sobre o Lucro Líquido." WidthLabel="400" HorizontalAlignment="Left" Width="500"/>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeApuracaoIRPJ, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Regime de apuração do IRPJ" Help="As disposições tributárias do IR aplicam-se a todas as firmas e sociedades, registradas ou não.As entidades submetidas aos regimes de liquidação extrajudicial e de falência sujeitam-se às normas de incidência do imposto aplicáveis às pessoas jurídicas, em relação às operações praticadas durante o período em que perdurarem os procedimentos para a realização de seu ativo e o pagamento do passivo (Lei 9.430/96, art. 60)." WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar a alíquota da Contribuição Social sobre o Lucro Líquido."/>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="7"
+                                            SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeApuracaoIRPJ, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="As disposições tributárias do IR aplicam-se a todas as firmas e sociedades, registradas ou não.As entidades submetidas aos regimes de liquidação extrajudicial e de falência sujeitam-se às normas de incidência do imposto aplicáveis às pessoas jurídicas, em relação às operações praticadas durante o período em que perdurarem os procedimentos para a realização de seu ativo e o pagamento do passivo (Lei 9.430/96, art. 60)." Grid.ColumnSpan="2">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-Simples</System:String>
                                                 <System:String>1-Lucro Presumido</System:String>
                                                 <System:String>2-Lucro Real</System:String>
                                                 <System:String>3-Lucro Arbitrado</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeApuracaoIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Tipo de apuração do IPI" Help="Definir o tipo de apuração para o IPI – Imposto sobre produtos industrializados." WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="9"                                           
+										    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeApuracaoIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Definir o tipo de apuração para o IPI – Imposto sobre produtos industrializados." Grid.ColumnSpan="2">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-Decendial</System:String>
                                                 <System:String>1-Quinzenal</System:String>
                                                 <System:String>2-Mensal</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeTributacaoPISCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Regime de tributação do PIS e COFINS" Help="Informar qual é o tipo de Regime de tributação ao PIS e COFINS." WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="11"
+                                            SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeTributacaoPISCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar qual é o tipo de Regime de tributação ao PIS e COFINS." Grid.ColumnSpan="2">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-Regime cumulativo</System:String>
                                                 <System:String>1-Regime não cumulativo</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeApuracaoPISCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Tipo apuração do PIS e COFINS" Help="Informar qual é o tipo de apuração do PIS e COFINS." WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="13"
+                                            SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stRegimeApuracaoPISCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar qual é o tipo de apuração do PIS e COFINS." Grid.ColumnSpan="2">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-MENSAL</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stProdutorRural, 
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="2" Grid.Row="15" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stProdutorRural, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Produtor Rural?" Help="Informar se a organização é uma Produtora Rural." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stCooperativaAgricola, 
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se a organização é uma Produtora Rural." Height="15" Margin="0,6" Grid.ColumnSpan="2"/>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="2" Grid.Row="17" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stCooperativaAgricola, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Cooperativa Agrícola?" Help="Informar se a organização é uma cooperativa Agrícola." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaISSnfServico, 
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se a organização é uma cooperativa Agrícola." Height="15" Margin="0,6" Grid.ColumnSpan="2"/>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="2" Grid.Row="19" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaISSnfServico, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Destaca ISS na nota fiscal de serviços?" Help="Informar se o ISS – Imposto sobre Serviço será destacado na nota fiscal de Serviços." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaCSLLnfServico, 
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se o ISS – Imposto sobre Serviço será destacado na nota fiscal de Serviços." Height="16" Margin="0,6" Grid.ColumnSpan="2"/>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="6" Grid.Row="1" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaCSLLnfServico, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,-1" Caption="Destaca CSLL na nota fiscal de serviços?" Help="Informar se a CSLL – Contribuição Social sobre o Lucro Líquido será destacado na nota fiscal de serviços." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaIRRFnfServico, 
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se a CSLL – Contribuição Social sobre o Lucro Líquido será destacado na nota fiscal de serviços." Height="16" Margin="0,5,0,6"/>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="6" Grid.Row="3" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaIRRFnfServico, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Destaca IRRF na nota fiscal de serviços?" Help="Informar se o IRRF – Imposto de Renda Retido na Fonte será destacado na nota fiscal de serviços." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaPISCOFINSnfServico, 
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se o IRRF – Imposto de Renda Retido na Fonte será destacado na nota fiscal de serviços." Height="15" Margin="0,6"/>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="6" Grid.Row="5" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaPISCOFINSnfServico, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Destaca PIS e COFINS na nota fiscal de serviços?" WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaINSSnfServico, 
+										    IsEnabled="{Binding bIsEnabled}" Height="15" Margin="0,6"/>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="6" Grid.Row="7" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stDestacaINSSnfServico, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Destaca INSS na nota fiscal de serviços?" Help="Informar se o INSS – Instituto Nacional de Seguro Social, será destacado na nota fiscal de serviços." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stAmbienteNfeProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Ambiente para NF-e de Produtos" Help="Nota Fiscal eletrônica para produtos." WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se o INSS – Instituto Nacional de Seguro Social, será destacado na nota fiscal de serviços." Height="15" Margin="0,6"/>
+                                        <Components:CustomComboBox
+                                            Grid.Column="6" Grid.Row="9"
+                                            SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stAmbienteNfeProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Nota Fiscal eletrônica para produtos.">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-NÃO SE APLICA</System:String>
                                                 <System:String>1-HOMOLOGAÇÃO</System:String>
                                                 <System:String>2-PRODUÇÃO</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpComboBox		
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stAmbienteNfeServicos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Ambiente para NF-e de Serviços?" Help="Informar se a organização está em ambiente para emissão de Nota Fiscal eletrônica para serviços." WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="6" Grid.Row="11"
+                                            SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stAmbienteNfeServicos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se a organização está em ambiente para emissão de Nota Fiscal eletrônica para serviços.">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-NÃO SE APLICA</System:String>
                                                 <System:String>1-HOMOLOGAÇÃO</System:String>
                                                 <System:String>2-PRODUÇÃO</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgSuframaNf, 
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="6" Grid.Row="13" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgSuframaNf, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Imprimi mensagem de SUFRAMA na Nota Fiscal?" Help="Informar se a mensagem obrigatória de SUFRAMA será impressa na Nota Fiscal ou na Nota Fiscal Eletrônica." WidthLabel="400" HorizontalAlignment="Left"/>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeCodigoNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Qual código do produto será impresso na NF-e?" Help="Informar qual será o código do produto será impresso na NF-e" WidthLabel="400" HorizontalAlignment="Left">
-                                            <Components:HlpComboBox.Items>
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se a mensagem obrigatória de SUFRAMA será impressa na Nota Fiscal ou na Nota Fiscal Eletrônica." Height="15" Margin="0,6"/>
+                                        <Components:CustomComboBox
+                                            Grid.Column="6" Grid.Row="15"
+                                            SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeCodigoNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar qual será o código do produto será impresso na NF-e">
+                                            <Components:CustomComboBox.Items>
                                                 <System:String>0-ALTERNATIVO</System:String>
                                                 <System:String>1-BARRAS</System:String>
                                                 <System:String>2-PADRÃO</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stIcmsSubstDif, 
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomCheckBox
+                                            Grid.Column="6" Grid.Row="17" VerticalAlignment="Center"
+                                            IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stIcmsSubstDif, 
                                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Width="558" Margin="10,0,0,-1" Caption="Calcula ICMS de Substituição Tributária por Diferença?" Help="Informar se o sistema irá calcular o ICMS de Substituição Tributária por diferença" WidthLabel="400" HorizontalAlignment="Left"/>
-                                    </WrapPanel>
-
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Informar se o sistema irá calcular o ICMS de Substituição Tributária por diferença" Height="15" Margin="0,6"/>
+                                        <!--Componentes-->
+                                    </Grid>
                                 </DockPanel>
                             </Expander>
                         </AdornerDecorator>
