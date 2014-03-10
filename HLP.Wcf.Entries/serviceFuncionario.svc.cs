@@ -13,9 +13,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "wcf_Funcionario" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select wcf_Funcionario.svc or wcf_Funcionario.svc.cs at the Solution Explorer and start debugging.
-    public class wcf_Funcionario : Iwcf_Funcionario
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceFuncionario" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceFuncionario.svc or serviceFuncionario.svc.cs at the Solution Explorer and start debugging.
+    public class serviceFuncionario : IserviceFuncionario
     {
         [Inject]
         public IFuncionarioRepository funcionarioRepository { get; set; }
@@ -30,17 +30,14 @@ namespace HLP.Wcf.Entries
         public IFuncionario_Comissao_ProdutoRepository funcionario_Comissao_ProdutoRepository { get; set; }
 
         [Inject]
-        public IFamilia_ProdutoRepository familia_ProdutoRepository { get; set; }
-
+        public HLP.Comum.Model.Repository.Interfaces.Components.IHlpEnderecoRepository hlpEnderecoRepository { get; set; }
         //[Inject]
         //public IFuncionario_EnderecoRepository funcionario_EnderecoRepository { get; set; }
-        [Inject]
-        public HLP.Comum.Model.Repository.Interfaces.Components.IHlpEnderecoRepository hlpEnderecoRepository { get; set; }
 
         [Inject]
         public IFuncionario_Margem_Lucro_ComissaoRepository funcionario_Margem_Lucro_ComissaoRepository { get; set; }
 
-        public wcf_Funcionario()
+        public serviceFuncionario()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -93,6 +90,8 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
         }
+
+
 
         public HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
@@ -209,23 +208,6 @@ namespace HLP.Wcf.Entries
                     }
                 }
 
-                if (objFuncionario.stComissao == 2 && objFuncionario.lFamiliaProduto != null)
-                {
-                    foreach (HLP.Entries.Model.Models.Gerais.Familia_produtoModel item in objFuncionario.lFamiliaProduto)
-                    {
-
-                        switch (item.status)
-                        {
-                            case statusModel.criado:
-                            case statusModel.alterado:
-                                {
-                                    this.familia_ProdutoRepository.Save(familia_produto: item);
-                                }
-                                break;
-                        }
-
-                    }
-                }
 
                 this.funcionarioRepository.CommitTransaction();
                 return objFuncionario;
@@ -270,7 +252,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public HLP.Entries.Model.Models.Gerais.FuncionarioModel copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
+        public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
 
             try
@@ -313,7 +295,7 @@ namespace HLP.Wcf.Entries
                 }
 
                 this.funcionarioRepository.CommitTransaction();
-                return objFuncionario;
+                return (int)objFuncionario.idFuncionario;
             }
             catch (Exception ex)
             {

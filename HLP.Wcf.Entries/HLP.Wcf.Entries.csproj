@@ -91,9 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="camposBaseDadosService.svc" />
-    <Content Include="ClientBin\HLP.Magnificus.View.Web.xap" />
-    <Content Include="HLP.Magnificus.View.WebTestPage.aspx" />
-    <Content Include="HLP.Magnificus.View.WebTestPage.html" />
     <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
     <Content Include="serviceBanco.svc" />
@@ -122,6 +119,7 @@
     <Content Include="serviceFamiliaProduto.svc" />
     <Content Include="serviceFidelidade.svc" />
     <Content Include="serviceFillComboBox.svc" />
+    <Content Include="serviceFuncionario.svc" />
     <Content Include="serviceJuros.svc" />
     <Content Include="serviceLista_Preco.svc" />
     <Content Include="serviceLogin.svc" />
@@ -152,6 +150,7 @@
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Silverlight.js" />
+    <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -190,6 +189,7 @@
     <Compile Include="IserviceFamiliaProduto.cs" />
     <Compile Include="IserviceFidelidade.cs" />
     <Compile Include="IserviceFillComboBox.cs" />
+    <Compile Include="IserviceFuncionario.cs" />
     <Compile Include="IserviceFuncionario_Acesso.cs" />
     <Compile Include="IserviceJuros.cs" />
     <Compile Include="IserviceLista_Preco.cs" />
@@ -220,6 +220,7 @@
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
@@ -304,6 +305,9 @@
     </Compile>
     <Compile Include="serviceFillComboBox.svc.cs">
       <DependentUpon>serviceFillComboBox.svc</DependentUpon>
+    </Compile>
+    <Compile Include="serviceFuncionario.svc.cs">
+      <DependentUpon>serviceFuncionario.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceJuros.svc.cs">
       <DependentUpon>serviceJuros.svc</DependentUpon>
@@ -393,6 +397,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="serviceUnidadeMedida.svc.cs">
       <DependentUpon>serviceUnidadeMedida.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_FamiliaProduto.svc.cs">
+      <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Funcionario.svc.cs">
       <DependentUpon>wcf_Funcionario.svc</DependentUpon>

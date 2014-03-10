@@ -22,34 +22,155 @@ namespace HLP.Entries.Model.Models.Gerais
         public int? idFamiliaProduto
         {
             get { return _idFamiliaProduto; }
-            set { _idFamiliaProduto = value; base.NotifyPropertyChanged("idFamiliaProduto"); }
+            set
+            {
+                _idFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "idFamiliaProduto");
+            }
         }
+        private int _idEmpresa;
         [ParameterOrder(Order = 2)]
-        public int idEmpresa { get; set; }
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
+        private string _xFamiliaProduto;
         [ParameterOrder(Order = 3)]
-        public string xFamiliaProduto { get; set; }
+        public string xFamiliaProduto
+        {
+            get { return _xFamiliaProduto; }
+            set
+            {
+                _xFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "xFamiliaProduto");
+            }
+        }
+        private string _xDescricao;
         [ParameterOrder(Order = 4)]
-        public string xDescricao { get; set; }
+        public string xDescricao
+        {
+            get { return _xDescricao; }
+            set
+            {
+                _xDescricao = value;
+                base.NotifyPropertyChanged(propertyName: "xDescricao");
+            }
+        }
+        private string _xSigla;
         [ParameterOrder(Order = 5)]
-        public string xSigla { get; set; }
+        public string xSigla
+        {
+            get { return _xSigla; }
+            set
+            {
+                _xSigla = value;
+                base.NotifyPropertyChanged(propertyName: "xSigla");
+            }
+        }
+        private decimal _pDescontoMaximo;
         [ParameterOrder(Order = 6)]
-        public decimal pDescontoMaximo { get; set; }
+        public decimal pDescontoMaximo
+        {
+            get { return _pDescontoMaximo; }
+            set
+            {
+                _pDescontoMaximo = value;
+                base.NotifyPropertyChanged(propertyName: "pDescontoMaximo");
+            }
+        }
+        private decimal _pAcressimoMaximo;
         [ParameterOrder(Order = 7)]
-        public decimal pAcressimoMaximo { get; set; }
+        public decimal pAcressimoMaximo
+        {
+            get { return _pAcressimoMaximo; }
+            set
+            {
+                _pAcressimoMaximo = value;
+                base.NotifyPropertyChanged(propertyName: "pAcressimoMaximo");
+            }
+        }
+        private decimal _pComissaoAvista;
         [ParameterOrder(Order = 8)]
-        public decimal pComissaoAvista { get; set; }
+        public decimal pComissaoAvista
+        {
+            get { return _pComissaoAvista; }
+            set
+            {
+                _pComissaoAvista = value;
+                base.NotifyPropertyChanged(propertyName: "pComissaoAvista");
+            }
+        }
+        private decimal _pComissaoAprazo;
         [ParameterOrder(Order = 9)]
-        public decimal pComissaoAprazo { get; set; }
+        public decimal pComissaoAprazo
+        {
+            get { return _pComissaoAprazo; }
+            set
+            {
+                _pComissaoAprazo = value;
+                base.NotifyPropertyChanged(propertyName: "pComissaoAprazo");
+            }
+        }
+        private int? _idContaContabil;
         [ParameterOrder(Order = 10)]
-        public int? idContaContabil { get; set; }
+        public int? idContaContabil
+        {
+            get { return _idContaContabil; }
+            set
+            {
+                _idContaContabil = value;
+                base.NotifyPropertyChanged(propertyName: "idContaContabil");
+            }
+        }
+        private int? _idCentroCusto;
         [ParameterOrder(Order = 11)]
-        public int? idCentroCusto { get; set; }
+        public int? idCentroCusto
+        {
+            get { return _idCentroCusto; }
+            set
+            {
+                _idCentroCusto = value;
+                base.NotifyPropertyChanged(propertyName: "idCentroCusto");
+            }
+        }
+        private int? _idFamiliaProdutoBase;
         [ParameterOrder(Order = 12)]
-        public int? idFamiliaProdutoBase { get; set; }
+        public int? idFamiliaProdutoBase
+        {
+            get { return _idFamiliaProdutoBase; }
+            set
+            {
+                _idFamiliaProdutoBase = value;
+                base.NotifyPropertyChanged(propertyName: "idFamiliaProdutoBase");
+            }
+        }
+        private byte _stGrau;
         [ParameterOrder(Order = 13)]
-        public byte stGrau { get; set; }
+        public byte stGrau
+        {
+            get { return _stGrau; }
+            set
+            {
+                _stGrau = value;
+                base.NotifyPropertyChanged(propertyName: "stGrau");
+            }
+        }
+        private byte _stAlteraDescricaoComercialProdutoVenda;
         [ParameterOrder(Order = 14)]
-        public byte stAlteraDescricaoComercialProdutoVenda { get; set; }
+        public byte stAlteraDescricaoComercialProdutoVenda
+        {
+            get { return _stAlteraDescricaoComercialProdutoVenda; }
+            set
+            {
+                _stAlteraDescricaoComercialProdutoVenda = value;
+                base.NotifyPropertyChanged(propertyName: "stAlteraDescricaoComercialProdutoVenda");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel> _lFamilia_Produto_ClassesModel;
         public ObservableCollectionBaseCadastros<Familia_Produto_ClassesModel> lFamilia_Produto_ClassesModel

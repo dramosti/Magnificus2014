@@ -1,26 +1,26 @@
-﻿using System;
+﻿using HLP.Comum.Resources.Util;
+using HLP.Dependencies;
+using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Comum.Resources.Util;
-using HLP.Dependencies;
-using HLP.Entries.Model.Repository.Interfaces.Gerais;
-using Ninject;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceFamiliaProduto" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceFamiliaProduto.svc or serviceFamiliaProduto.svc.cs at the Solution Explorer and start debugging.
-    public class serviceFamiliaProduto : IserviceFamiliaProduto
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "wcf_FamiliaProduto" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select wcf_FamiliaProduto.svc or wcf_FamiliaProduto.svc.cs at the Solution Explorer and start debugging.
+    public class wcf_FamiliaProduto : Iwcf_FamiliaProduto
     {
         [Inject]
         public IFamilia_ProdutoRepository iFamilia_ProdutoRepository { get; set; }
         [Inject]
         public IFamilia_Produto_ClassesRepository iFamilia_Produto_ClassesRepository { get; set; }
 
-        public serviceFamiliaProduto()
+        public wcf_FamiliaProduto()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
