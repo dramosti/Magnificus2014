@@ -1,7 +1,10 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace HLP.Comum.View.Formularios
 {
@@ -23,6 +27,14 @@ namespace HLP.Comum.View.Formularios
         public HlpPesquisaInsert()
         {
             InitializeComponent();
+        }
+
+        private int _idSalvo;
+
+        public int idSalvo
+        {
+            get { return _idSalvo; }
+            set { _idSalvo = value; }
         }
     }
 }

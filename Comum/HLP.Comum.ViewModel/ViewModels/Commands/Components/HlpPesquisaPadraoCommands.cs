@@ -16,6 +16,10 @@ using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
 using HLP.Comum.ViewModel.Services.Service;
 using Ninject;
+using System.Reflection;
+using HLP.Comum.Modules;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace HLP.Comum.ViewModel.Commands.Components
 {
@@ -35,8 +39,47 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 canExecute: paramCanExec => CanPesquisar());
             _objViewModel.commandLimpar = new RelayCommand(execute: paramExec => ExecLimpar(),
                 canExecute: paramCanExec => true);
+            _objViewModel.commandAdd = new RelayCommand(execute: parameExec => CriarExecute(parameExec),
+                canExecute: paramCanExec => this.CriarCanExecute(paramCanExec));
 
-            
+        }
+
+        void CriarExecute(object nameWindow)
+        {
+            if (nameWindow != null)
+            {
+                object form = GerenciadorModulo.Instancia.CarregaForm(nome: nameWindow.ToString(),
+                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+
+                Type t = form.GetType();
+                ConstructorInfo constr = t.GetConstructor(Type.EmptyTypes);
+                object inst = constr.Invoke(new object[] { });
+
+
+                Window w = GerenciadorModulo.Instancia.CarregaForm(nome: "HlpPesquisaInsert",
+                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+
+                (w.FindName(name: "ctrContent") as ContentControl).DataContext = (inst as Window).DataContext;
+                (w.FindName(name: "ctrContent") as ContentControl).Content = (inst as Window).Content;
+
+                Type tVm = (w.FindName(name: "ctrContent") as ContentControl).DataContext.GetType();
+                object instVm = (w.FindName(name: "ctrContent") as ContentControl).DataContext;
+                MethodInfo met = tVm.GetMethod(name: "get_commandNovo");
+                ICommand comm = met.Invoke(instVm, new object[] { }) as ICommand;
+                comm.Execute(parameter: (w.FindName(name: "ctrContent") as ContentControl).Content);
+                if (w.ShowDialog() == true)
+                {
+                    this.bw_DoWorkExecPesquisa(sender: this, e: null);
+                }
+            }
+        }
+
+        bool CriarCanExecute(object nameWindow)
+        {
+            if (nameWindow == null)
+                return false;
+
+            return nameWindow.ToString() != "";
         }
 
         void WorkerPesquisa(object gdvResult)
@@ -45,10 +88,6 @@ namespace HLP.Comum.ViewModel.Commands.Components
             bw.DoWork += new DoWorkEventHandler(this.bw_DoWorkExecPesquisa);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
             bw.RunWorkerAsync(gdvResult);
-
-
-
-
         }
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -113,13 +152,16 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 await Application.Current.Dispatcher.BeginInvoke(
                      DispatcherPriority.Background, new Action(() => this._objViewModel.Result = retorno.Tables[0]));
 
-                if (e.Argument != null)
+                if (e != null)
                 {
-                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                    if (e.Argument != null)
                     {
-                        System.Windows.Input.Keyboard.ClearFocus();
-                        System.Windows.Input.Keyboard.Focus((e.Argument as System.Windows.Controls.DataGrid));
-                    }));
+                        Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                        {
+                            System.Windows.Input.Keyboard.ClearFocus();
+                            System.Windows.Input.Keyboard.Focus((e.Argument as System.Windows.Controls.DataGrid));
+                        }));
+                    }
                 }
 
             }

@@ -51,11 +51,11 @@ namespace HLP.Entries.ViewModel.Commands
 
         #region Implementação Commands
 
-       
+
         public void Save(object _panel)
         {
             try
-            {                
+            {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -93,6 +93,16 @@ namespace HLP.Entries.ViewModel.Commands
                 else
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+
+                    object w = objViewModel.GetParentWindow(e.Result);
+
+                    if (w != null)
+                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        {
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                        }
                 }
             }
             catch (Exception ex)
@@ -148,7 +158,7 @@ namespace HLP.Entries.ViewModel.Commands
             }
         }
 
-              private void Novo(object _panel)
+        private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new CargoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
@@ -197,7 +207,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.commandCancelarBase.Execute(parameter: null);
         }

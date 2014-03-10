@@ -49,6 +49,20 @@ namespace HLP.Comum.View.Components
                     this.ViewModel = new HlpPesquisaPadraoViewModel(value);
             }
         }
+
+        [Category("HLP.Owner")]
+        public string NameWindowCadastro
+        {
+            get { return (string)GetValue(NameWindowCadastroProperty); }
+            set { SetValue(NameWindowCadastroProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for NameWindowCadastro.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty NameWindowCadastroProperty =
+            DependencyProperty.Register("NameWindowCadastro", typeof(string), typeof(HlpPesquisaPadrao), new PropertyMetadata(String.Empty));
+
+
+
         // Using a DependencyProperty as the backing store for NameView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameViewProperty =
             DependencyProperty.Register("NameView", typeof(string), typeof(HlpPesquisaPadrao), new PropertyMetadata(string.Empty));
@@ -63,6 +77,8 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for lResult.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty lResultProperty =
             DependencyProperty.Register("lResult", typeof(List<int>), typeof(HlpPesquisaPadrao), new PropertyMetadata(new List<int>()));
+
+
         #endregion
 
         #region Events
