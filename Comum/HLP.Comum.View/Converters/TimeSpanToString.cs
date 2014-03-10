@@ -23,28 +23,32 @@ namespace HLP.Comum.View.Converters
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             TimeSpan time = TimeSpan.Zero;
-            string[] estrTime = new string[3];
+            TimeSpan timeMax = new TimeSpan(hours: 23, minutes: 59, seconds: 59);
             int hours = 0;
             int minutes = 0;
             int seconds = 0;
+            string[] estHoras = new string[3];
 
             if (value != null)
             {
-                estrTime = value.ToString().Split(':');
+                estHoras = value.ToString().Split(':');
+                if (estHoras.Count() > 0)
+                    if (estHoras[0] != "")
+                        hours = int.Parse(s: estHoras[0].Trim(trimChars: ':'));
 
-                if (estrTime.Count() > 0)
-                    hours = int.Parse(s: estrTime[0].Trim(trimChars: ':'));
+                if (estHoras.Count() > 1)
+                    if (estHoras[0] != "")
+                        minutes = int.Parse(s: estHoras[1].Trim(trimChars: ':'));
 
-                if (estrTime.Count() > 1)
-                    if (estrTime[1].ToString() != "")
-                        minutes = int.Parse(s: estrTime[1].Trim(trimChars: ':'));
-
-                if (estrTime.Count() > 2)
-                    seconds = int.Parse(s: estrTime[2].Trim(trimChars: ':'));
+                if (estHoras.Count() > 2)
+                    if (estHoras[0] != "")
+                        seconds = int.Parse(s: estHoras[2].Trim(trimChars: ':'));
 
                 time = new TimeSpan(hours: hours, minutes: minutes, seconds: seconds);
-            }
 
+                if (time > timeMax)
+                    time = timeMax;
+            }
             return time;
         }
     }

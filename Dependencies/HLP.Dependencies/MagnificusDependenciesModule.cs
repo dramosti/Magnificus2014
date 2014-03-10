@@ -44,7 +44,7 @@ namespace HLP.Dependencies
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
             Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
             Bind<IFillComboBoxRepository>().To<FillComboBoxRepository>();
-
+           
             //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();
             //Bind<IConfigFormulariosRepository>().To<ConfigFormulariosRepository>();
@@ -171,6 +171,7 @@ namespace HLP.Dependencies
             Bind<IParametro_FiscalRepository>().To<Parametro_FiscalRepository>();
             Bind<IParametro_ComercialRepository>().To<Parametro_ComercialRepository>();
             Bind<IParametro_FinanceiroRepository>().To<Parametro_FinanceiroRepository>();
+            Bind<IParametro_Cartao_PontoRepository>().To<Parametro_Cartao_PontoRepository>();
 
             //#endregion
 

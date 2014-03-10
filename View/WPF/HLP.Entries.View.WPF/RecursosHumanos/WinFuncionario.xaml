@@ -4,13 +4,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:convLocal="clr-namespace:HLP.Entries.View.WPF.RecursosHumanos.Converter"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinFuncionario"
-        Title="Funcionario" Height="664" Width="1224" NameView="vwFuncionario">
+        Title="Funcionários" Height="664" Width="1224" NameView="vwFuncionario">
     <runtime:WindowsBase.Resources>
+        <convLocal:TabItemRepresentantesVisibilityConverter x:Key="tabItemRepresentanteVisibilityConv"></convLocal:TabItemRepresentantesVisibilityConverter>
+        <convert:MoedaConverter x:Key="moedaConverter"></convert:MoedaConverter>
         <convert:TimeSpanToString x:Key="timeSpanConverter"/>
         <convert:NotConverter x:Key="notConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
@@ -112,7 +115,7 @@
                             <Expander Header="Administração" IsExpanded="True" Height="114.5" DockPanel.Dock="Top">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpComboBox
-								
+								x:Name="cbxStPerfil"
 								SelectedIndex="{Binding currentModel.stPerfil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,0" FontFamily="Segoe UI" Caption="Perfil do Funcionário" Field="stPxerfil" Help="Informe o tipo de perfil do funcionário sendo:0-Centro de Trabalho, 1-Funcionário, 2-Prestador de Serviços, 3-Representante" Table="stPerfil" WidthLabel="128" HorizontalAlignment="Left">
@@ -180,7 +183,7 @@
                 <AdornerDecorator>
                     <DockPanel LastChildFill="True">
                         <DockPanel LastChildFill="True" DockPanel.Dock="left">
-                            <Expander Header="Pessoais" IsExpanded="True" DockPanel.Dock="Top" Height="268">
+                            <Expander Header="Pessoais" IsExpanded="True" DockPanel.Dock="Top" Height="287">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">                                    
                                     <Components:HlpDateTimePicker   
                                         Text="{Binding currentModel.dAniversario, Mode=TwoWay,
@@ -208,12 +211,14 @@
 									Height="27" Margin="10,0,338,-1" Caption="Data de Falecimento" Field="dFalecimento" Help="Informe a data de falecimento do funcionário." Table="Funcionario" WidthLabel="156"/>
                                     <Components:HlpTextBox
 									
-									Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xCpf, Mode=TwoWay, Converter={StaticResource maskConverter}, ConverterParameter=cpf,
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,320,-1" Caption="CPF" Field="xCpf" Help="Informar o Cadastro de Pessoa Física do funcionário" Table="Funcionario" WidthLabel="156"/>
                                     <Components:HlpTextBox
 									
-									Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									Text="{Binding currentModel.xRg, Mode=TwoWay, Converter={StaticResource maskConverter}, ConverterParameter=rg,
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}" 
 									Height="27" Margin="10,0,320,-1" Caption="RG" Field="xRg" Help="Informar o Registro Geral do funcionário" Table="Funcionario" WidthLabel="156"/>
                                     <Components:HlpTextBox	
@@ -239,6 +244,21 @@
                                             <System:String>stConta</System:String>
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
+                                    <Components:HlpComboBox
+                                        Margin="10,0,0,0"
+                                        Caption="Estado Civil"
+                                        WidthLabel="156"
+                                        IsEnabled="{Binding bIsEnabled}"
+                                        SelectedIndex="{Binding currentModel.stEstadoCivil}"
+                                        Help="Informar o Estado Civil para o Funcionário. 0 - Solteiro(a) - quem nunca se casou, ou que teve o casamento anulado 1 - Casado(a) - quem contraiu matrimônio, independente do regime de bens adotado 2 - Divorciado(a) - após a homologação do divórcio pela justiça ou por uma escritura pública. 3 - Viúvo(a) - pessoa cujo cônjuge faleceu."
+                                        >                                        
+                                        <Components:HlpComboBox.Items>
+                                            <System:String>0 - Solteiro(a) - quem nunca se casou, ou que teve o casamento anulado</System:String>
+                                            <System:String>1 - Casado(a) - quem contraiu matrimônio, independente do regime de bens adotado</System:String>
+                                            <System:String>2 - Divorciado(a) - após a homologação do divórcio pela justiça ou por uma escritura pública.</System:String>
+                                            <System:String>3 - Viúvo(a) - pessoa cujo cônjuge faleceu.</System:String>
+                                        </Components:HlpComboBox.Items>
+                                    </Components:HlpComboBox>
                                 </WrapPanel>
                             </Expander>
                             <Expander Header="Visto" IsExpanded="True" >
@@ -265,7 +285,71 @@
                                 </WrapPanel>
                             </Expander>
                         </DockPanel>
-                        <DockPanel LastChildFill="True">
+                        <DockPanel LastChildFill="False">
+                            <Expander Header="Departamento Pessoal" IsExpanded="True" DockPanel.Dock="Top">
+                                <WrapPanel Orientation="Vertical">
+                                    <Components:HlpDateTimePicker 
+									 
+									SelectedDate="{Binding currentModel.dAdmissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" Margin="10,0,10,2" Caption="Admissão" Field="dAdmissao" Help="Informar a data de Admissão do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left"/>
+                                    <Components:HlpTextBox 									
+									Text="{Binding currentModel.vDiaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" Margin="10,0,10,2" Caption="Diária" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267"/>
+                                    <Components:HlpComboBox x:Name="cbxSalario"
+									SelectedIndex="{Binding currentModel.stSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									Height="27" Margin="10,0,10,2" Caption="Tipo de Salário" Field="stSalario" Help="Informar se a condição de salario do  funcionário é:" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left">
+                                        <Components:HlpComboBox.Items>
+                                            <System:String>0-Horista</System:String>
+                                            <System:String>1-Mensalista</System:String>
+                                        </Components:HlpComboBox.Items>
+                                    </Components:HlpComboBox>
+                                    <Components:HlpTextBox
+									Text="{Binding currentModel.vSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"									
+									Height="27" Margin="10,0,10,2" Caption="Salário" Field="vSalario" Help="Informar o valor mensal quando o campo Tipo de Salário tiver Mensalista ou valor hora quando o campo tipo de salário tiver horista." Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=cbxSalario, Path=SelectedIndex}" Value="0">                                                        
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>                                                        
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
+                                    <Components:HlpTextBox
+									Text="{Binding currentModel.vSalarioHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
+									Height="27" Margin="10,0,10,2" Caption="Salário Hora" Field="vSalarioHora" Help="Informar o valor do salário hora do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267">
+                                        <Components:HlpTextBox.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=cbxSalario, Path=SelectedIndex}" Value="1">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
+                                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Components:HlpTextBox.Style>
+                                    </Components:HlpTextBox>
+                                    <Components:HlpPesquisa 
+									
+									Text="{Binding currentModel.idResponsavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"	
+									Height="27" Margin="10,0,10,2" Caption="Responsável" Field="idResponsavel" Help="Informar o responsável pelo funcionário na empresa" Table="Funcionario" WidthLabel="117" FieldPesquisa="ID" TableView="vwFuncionario" HorizontalAlignment="Left" Width="400">
+                                        <Components:HlpPesquisa.Items>
+                                            <System:String>xCodigoAlternativo</System:String>
+                                            <System:String>xNome</System:String>
+                                        </Components:HlpPesquisa.Items>
+                                    </Components:HlpPesquisa>
+                                </WrapPanel>
+                            </Expander>
                             <Expander Header="Quantidade de Horas de Trabalho" IsExpanded="True" Height="200" DockPanel.Dock="Top">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                     <Components:HlpTextBox
@@ -333,50 +417,6 @@
                                             </MultiBinding>
                                         </Components:HlpTextBox.Text>
                                     </Components:HlpTextBox>
-                                </WrapPanel>
-                            </Expander>
-                            <Expander Header="Departamento Pessoal" IsExpanded="True">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpDateTimePicker 
-									 
-									SelectedDate="{Binding currentModel.dAdmissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Admissão" Field="dAdmissao" Help="Informar a data de Admissão do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.vDiaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Diaria" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267"/>
-                                    <Components:HlpComboBox 									
-									
-									SelectedIndex="{Binding currentModel.stSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Tipo de Salário" Field="stSalario" Help="Informar se a condição de salario do  funcionário é:" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left">
-                                        <Components:HlpComboBox.Items>
-                                            <System:String>0-Horista</System:String>
-                                            <System:String>1-Mensalista</System:String>
-                                        </Components:HlpComboBox.Items>
-                                    </Components:HlpComboBox>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.vSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Salário" Field="vSalario" Help="Informar o valor mensal quando o campo Tipo de Salário tiver Mensalista ou valor hora quando o campo tipo de salário tiver horista." Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.vSalarioHora, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Salario Hora" Field="vSalarioHora" Help="Informar o valor do salário hora do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267"/>
-                                    <Components:HlpPesquisa 
-									
-									Text="{Binding currentModel.idResponsavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"	
-									Height="27" Margin="10,0,10,2" Caption="Responsável" Field="idResponsavel" Help="Informar o responsável pelo funcionário na empresa" Table="Funcionario" WidthLabel="117" FieldPesquisa="ID" TableView="vwFuncionario" HorizontalAlignment="Left" Width="400">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>xCodigoAlternativo</System:String>
-                                            <System:String>xNome</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
                                 </WrapPanel>
                             </Expander>
                         </DockPanel>
@@ -500,7 +540,7 @@
                           CanUserAddRows="True"
                             >
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="clStCertificacao" Header="Tipo Certificação" Width="120" >
+                            <DataGridTemplateColumn x:Name="clStCertificacao" Header="Tipo de Certificação" Width="120" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path=enumTipoCertificacao}" />
@@ -527,7 +567,7 @@
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCertificacao, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                            <DataGridTemplateColumn x:Name="dtConclusao" Header="Data de Conclusão" Width="200">
+                            <DataGridTemplateColumn x:Name="dtConclusao" Header="Conclusão" Width="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path=dConclusao, StringFormat=\{0:d\}}" />
@@ -542,7 +582,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn x:Name="dtValidade" Header="Data de Validade" Width="200">
+                            <DataGridTemplateColumn x:Name="dtValidade" Header="Validade" Width="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path=dValidade, StringFormat=\{0:d\}}" />
@@ -566,13 +606,14 @@
                     </DataGrid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Representantes">
+            <TabItem Header="Regras de Comissões" 
+                     Visibility="{Binding ElementName=cbxStPerfil, Path=SelectedIndex, Converter={StaticResource tabItemRepresentanteVisibilityConv}}">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
+                    <DockPanel LastChildFill="False">
                         <Expander Header="Geral" IsExpanded="True" DockPanel.Dock="Top" Height="134">
                             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
                                 <Components:HlpComboBox 								
-								
+								x:Name="cbxStComissao"
 								SelectedIndex="{Binding currentModel.stComissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,10,10,2" Caption="Tipo de Comissão" Field="stComissao" Help="Informar o tipo de comissão a ser calculada para o Representante, são elas: 0-Por Representante (Default) (Os valores de comissão Avista e Aprazo virão do cadastro de Funcionário da guia Representantes) 1-Por Lista de Preço (Quando por lista de preço o sistema buscará a comissão quando Avista e Aprazo das Listas de preços e depois o que define é os produtos da lista, caso tenha os campos de comissão preenchido) 2-Por Família de Produto (O sistema pegará as comissões do cadastro de Familia de Produto e todas as outras comissões serão descartadas pelo sistema) 3-Por Produto (Caso seja por produto definir no próprio formulário de funcionários os produtos relacionado a esse representantes e suas respectivas comissões, o sistema somente liberará a visualização dos produtos que estiverem cadastrado nessa tabela para o representante, outros produtos não cadastrado não poderão ser vendidos) 4-Por Faixa Margem de Venda Quando por faixa o sistema pegará o valor vendido pelo representante calculara a faixa de margem da venda e colocará na faixa que representa essa margem e chegará na comissão a vista ou a prazo." Table="Funcionario" WidthLabel="213" HorizontalAlignment="Left">
@@ -581,21 +622,69 @@
                                         <System:String>1-Por Lista de Preço</System:String>
                                         <System:String>2-Por Família de Produto</System:String>
                                         <System:String>3-Por Produto</System:String>
-                                        <System:String>4-Por Faixa Margem de Venda</System:String>
+                                        <System:String>4-Por Faixa de Lucro</System:String>
+                                        <System:String>5-Por Faixa Margem de Venda</System:String>
                                     </Components:HlpComboBox.Items>
                                 </Components:HlpComboBox>
-                                <Components:HlpTextBox 
-								
+                                <Components:HlpTextBox
 								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo Condicao_Pagamento.stCondicao for igual Avista" Table="Funcionario" WidthLabel="213" HorizontalAlignment="Left" Width="364"/>
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"								
+								Height="27" Margin="10,0,10,2" Caption="Percentual Comissão a Vista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo Condicao_Pagamento.stCondicao for igual Avista" Table="Funcionario" WidthLabel="213" HorizontalAlignment="Left" Width="364">
+                                    <Components:HlpTextBox.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
+                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="4">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Components:HlpTextBox.Style>
+                                </Components:HlpTextBox>
                                 <Components:HlpTextBox 
 								
 								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a Condicao_Pagamento.stCondicao for Aprazo. " Table="Funcionario" WidthLabel="213" HorizontalAlignment="Left" Width="364"/>
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"								
+								Height="27" Margin="10,0,10,2" Caption="Percentual Comissão a Prazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a Condicao_Pagamento.stCondicao for Aprazo. " Table="Funcionario" WidthLabel="213" HorizontalAlignment="Left" Width="364">
+                                    <Components:HlpTextBox.Style>
+                                        <Style>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
+                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="4">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Components:HlpTextBox.Style>
+                                </Components:HlpTextBox>
                             </WrapPanel>
                         </Expander>
                         <Expander Header="Produtos Representante" IsExpanded="True">
@@ -647,13 +736,83 @@
                                         ></DataGridTextColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            <Expander.Style>
+                                <Style>
+                                    <Style.Triggers>   
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="4">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Expander.Style>
                         </Expander>
-                    </DockPanel>
-                </AdornerDecorator>
-            </TabItem>
-            <TabItem Header="Comissão / Faixa de lucro">
-                <AdornerDecorator>
-                    <DataGrid
+                        <Expander Header="Família de Produto" IsExpanded="True">
+                            <DataGrid
+                                ItemsSource="{Binding currentModel.lFamiliaProduto}"
+                                IsEnabled="{Binding bIsEnabled}"
+                                    AutoGenerateColumns="False" 
+                                    SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"                                
+                                >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn 
+                                        Header="Id Fam. Produto" Width="80"
+                                        IsReadOnly="True"
+                                        Binding="{Binding idFamiliaProduto}"></DataGridTextColumn>
+                                    <DataGridTextColumn 
+                                        Header="Descrição Fam. Produto" Width="150" 
+                                        IsReadOnly="True"
+                                        Binding="{Binding xDescricao}"></DataGridTextColumn>
+                                    <DataGridTextColumn 
+                                        Header="Sigla Fam. Produto" Width="100"  
+                                        IsReadOnly="True"
+                                        Binding="{Binding xSigla}"></DataGridTextColumn>
+                                    <DataGridTextColumn 
+                                        Header="% Comis. à Vista" Width="100"                                        
+                                        Binding="{Binding pComissaoAvista, Converter={StaticResource porcentagemConverter}}"></DataGridTextColumn>
+                                    <DataGridTextColumn 
+                                        Header="% Comis. à Prazo" Width="100"                                        
+                                        Binding="{Binding pComissaoAprazo, Converter={StaticResource porcentagemConverter}}"></DataGridTextColumn>
+                                    <DataGridTextColumn 
+                                        Header="% Desc. Máx" Width="100"                                        
+                                        Binding="{Binding pDescontoMaximo, Converter={StaticResource porcentagemConverter}}"></DataGridTextColumn>
+                                    <DataGridTextColumn 
+                                        Header="% Acrésc. Máx" Width="100"                                        
+                                        Binding="{Binding pAcressimoMaximo, Converter={StaticResource porcentagemConverter}}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Expander.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="4">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="5">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Expander.Style>
+                        </Expander>
+                        <Expander Header="Faixa de Lucro" IsExpanded="True">
+                            <DataGrid
                             Name="gridComissoes"
                                     ItemsSource="{Binding currentModel.lFuncionario_Margem_Lucro_Comissao}"                          
                                     IsEnabled="{Binding bIsEnabled}"
@@ -662,38 +821,60 @@
                                     CanUserDeleteRows="True"
                                     CanUserAddRows="True"
                             >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn                                
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn                                
                                         Header="% Margem Venda 'De'" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pDeMargemVenda, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                            <DataGridTextColumn                                
+                                    <DataGridTextColumn                                
                                         Header="% Margem Venda 'Até'" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pAteMargemVenda, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                            <DataGridTextColumn                                
+                                    <DataGridTextColumn                                
                                         Header="% Comissão à Vista" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                            <DataGridTextColumn                                
+                                    <DataGridTextColumn                                
                                         Header="% Comissão a Prazo" Width="200"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource porcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-
-                        </DataGrid.Columns>
-                    </DataGrid>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Expander.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="5">
+                                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Expander.Style>
+                        </Expander>
+                    </DockPanel>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Arquivos">
@@ -716,8 +897,10 @@
                             <DataGridTemplateColumn Header="Caminho" Width="400">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Components:HlpTextBox
+                                        <Components:HlpTextBox                                            
+                                            isFindFiles="True"
                                             Caption="" WidthLabel="0"
+                                            UcMouseDoubleClick="HlpTextBox_UcMouseDoubleClick"
                                             Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:HlpTextBox>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>

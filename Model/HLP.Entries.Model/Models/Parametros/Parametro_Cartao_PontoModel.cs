@@ -104,6 +104,20 @@ namespace HLP.Entries.Model.Models.Parametros
             }
         }
 
+        
+        private int _idEmpresa;
+        [ParameterOrder(Order = 9)]
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
+        
+
     }
 
 

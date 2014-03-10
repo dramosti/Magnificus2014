@@ -40,17 +40,16 @@ namespace HLP.Entries.Model.Repository.Implementation.Parametros
                        idParametroCartaoPonto);
         }
 
-        public Parametro_Cartao_PontoModel GetParametro_Cartao_Ponto(int idParametroCartaoPonto)
+        public Parametro_Cartao_PontoModel GetParametro_Cartao_Ponto(int idEmpresa)
         {
             if (regParametro_Cartao_PontoAccessor == null)
             {
-                regParametro_Cartao_PontoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Parametro_Cartao_Ponto",
-                                 new Parameters(UndTrabalho.dbPrincipal)
-                                 .AddParameter<int>("idParametroCartaoPonto"),
-                                 MapBuilder<Parametro_Cartao_PontoModel>.MapAllProperties().Build());
+                regParametro_Cartao_PontoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Parametro_Cartao_Ponto" +
+                " where idEmpresa = " + idEmpresa,
+                                MapBuilder<Parametro_Cartao_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
 
-            return regParametro_Cartao_PontoAccessor.Execute(idParametroCartaoPonto).FirstOrDefault();
+            return regParametro_Cartao_PontoAccessor.Execute().FirstOrDefault();
         }
 
         public List<Parametro_Cartao_PontoModel> GetAllParametro_Cartao_Ponto()

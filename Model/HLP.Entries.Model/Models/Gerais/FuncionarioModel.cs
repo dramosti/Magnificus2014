@@ -4,8 +4,11 @@ using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace HLP.Entries.Model.Models.Gerais
 {
@@ -708,6 +711,32 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stComissao = value;
+
+                if (value == 2)
+                {
+                    Window w = HLP.Comum.Infrastructure.Static.Sistema.GetOpenWindow(xName: "WinFuncionario");
+
+                    if (w != null)
+                    {
+                        if (this.lFamiliaProduto == null)
+                        {
+                            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                            {
+                                Type t = w.DataContext.GetType();
+                                ConstructorInfo constr = t.GetConstructor(Type.EmptyTypes);
+                                object inst = constr.Invoke(new object[] { });
+                                MethodInfo met = t.GetMethod(name: "GetListaFamiliaProduto");
+                                List<Familia_produtoModel> lFamiliaProduto = met.Invoke(inst, new object[] { }) as List<Familia_produtoModel>;
+
+                                if (lFamiliaProduto != null)
+                                    this.lFamiliaProduto = new ObservableCollectionBaseCadastros<Familia_produtoModel>(list:
+                                        lFamiliaProduto);
+                            }));
+                            
+                        }
+                    }
+                }
+
                 base.NotifyPropertyChanged(propertyName: "stComissao");
             }
         }
@@ -855,6 +884,20 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "lFuncionario_Acesso");
             }
         }
+
+
+        private ObservableCollectionBaseCadastros<Familia_produtoModel> _lFamiliaProduto;
+
+        public ObservableCollectionBaseCadastros<Familia_produtoModel> lFamiliaProduto
+        {
+            get { return _lFamiliaProduto; }
+            set
+            {
+                _lFamiliaProduto = value;
+                base.NotifyPropertyChanged(propertyName: "lFamiliaProduto");
+            }
+        }
+
     }
 
 

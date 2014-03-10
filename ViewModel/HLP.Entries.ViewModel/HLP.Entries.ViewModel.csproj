@@ -72,11 +72,17 @@
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
+    <Compile Include="Service References\wcf_FamiliaProduto\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Funcionario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
@@ -1468,6 +1474,25 @@
     <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.wsdl" />
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
       <SubType>Designer</SubType>
@@ -1539,6 +1564,7 @@
     <WCFMetadataStorage Include="Service References\transportadorService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
+    <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
   </ItemGroup>
   <ItemGroup>
@@ -2302,6 +2328,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Funcionario\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FamiliaProduto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

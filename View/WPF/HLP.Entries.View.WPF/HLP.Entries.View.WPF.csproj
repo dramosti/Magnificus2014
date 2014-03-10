@@ -233,6 +233,7 @@
     <Compile Include="Parametrização\WinParametrizacao.xaml.cs">
       <DependentUpon>WinParametrizacao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecursosHumanos\Converter\TabItemRepresentantesVisibilityConverter.cs" />
     <Compile Include="RecursosHumanos\WinCargo.xaml.cs">
       <DependentUpon>WinCargo.xaml</DependentUpon>
     </Compile>

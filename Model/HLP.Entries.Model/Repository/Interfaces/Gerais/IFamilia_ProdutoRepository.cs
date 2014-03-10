@@ -13,7 +13,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void Save(Familia_produtoModel familia_produto);
         void Delete(int idFamiliaProduto);
         int Copy(Familia_produtoModel familia_produto);
-
+        List<Familia_produtoModel> GetAll();
 
         void BeginTransaction();
         void CommitTransaction();

@@ -24,7 +24,10 @@ namespace HLP.Comum.View.Converters
                         }
                     } break;
             }
-            return valorTotal.ToString();
+
+            return Math.Round(value: (valorTotal.Hours + (valorTotal.Days * 24)), digits: 0).ToString() + ":" +
+                Math.Round(value: valorTotal.Minutes, digits: 0).ToString().PadRight(totalWidth: 2, paddingChar: '0') + ":" +
+                Math.Round(value: valorTotal.Seconds, digits: 0).ToString().PadRight(totalWidth: 2, paddingChar: '0');
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)

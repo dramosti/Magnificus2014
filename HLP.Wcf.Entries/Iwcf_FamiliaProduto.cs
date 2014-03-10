@@ -7,9 +7,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceFamiliaProduto" in both code and config file together.
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "Iwcf_FamiliaProduto" in both code and config file together.
     [ServiceContract]
-    public interface IserviceFamiliaProduto
+    public interface Iwcf_FamiliaProduto
     {
         [OperationContract]
         HLP.Entries.Model.Models.Gerais.Familia_produtoModel GetObject(int idFamiliaProduto);

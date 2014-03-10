@@ -22,7 +22,7 @@ namespace HLP.Comum.ViewModel.ViewModels
     public class MainViewModel : ViewModelBase<WinManModel>
     {
         empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
-        wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();       
+        wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
 
 
         private double _heightWindow;
@@ -223,12 +223,16 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         private void AddMenuItem(string xNome, string xHeader, bool bLast)
         {
+            string header = bLast ? string.Concat(xHeader.Select(c => char.IsUpper(c) ? " " + c.ToString() : c.ToString()))
+                .TrimStart() : string.Concat(xNome.Select(c => char.IsUpper(c) ? " " + c.ToString() : c.ToString()))
+                .TrimStart();
+
             if (currentMenu.Count(i => i.xName == xNome) < 1)
             {
                 this.currentMenu.Add(item:
                     new MenuItemModel
                     {
-                        xHeader = bLast ? xHeader : xNome,
+                        xHeader = header,
                         xName = xNome,
                         lItens = new List<MenuItemModel>()
                     });
@@ -312,6 +316,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             win.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             win.ShowDialog();
         }
+
         private string getHeaderWindow(string xNomeForm)
         {
             Window w;

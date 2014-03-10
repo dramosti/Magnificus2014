@@ -19,6 +19,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         private DataAccessor<Familia_produtoModel> regFamiliaProdAccessor;
 
+        public List<Familia_produtoModel> GetAll()
+        {
+            DataAccessor<Familia_produtoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
+            ("SELECT * FROM Familia_produto",
+            MapBuilder<Familia_produtoModel>.MapAllProperties()
+            .DoNotMap(c=>c.status)
+            .Build());
+
+            return reg.Execute().ToList();
+        }
+
         public Familia_produtoModel GetFamilia_produto(int idFamiliaProduto)
         {
             Familia_produtoModel familia;

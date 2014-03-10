@@ -150,6 +150,17 @@ namespace HLP.Comum.View.Components
             }
         }
 
+        public event MouseButtonEventHandler UcMouseDoubleClick;
+
+
+        private void txtControle_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (UcMouseDoubleClick != null)
+            {
+                UcMouseDoubleClick(sender: sender, e: e);
+            }
+        }
+
     }
 
 }

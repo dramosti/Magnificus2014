@@ -57,7 +57,7 @@ namespace HLP.Comum.Modules
             {
                 if (form == null)
                 {
-                    form = Contexto.GetServico<Window>(nome);
+                    form = Contexto.GetServico<Window>(nome.Replace(" ", ""));
                     if (form != null)
                     {
                         form.Name = nome;
@@ -69,7 +69,7 @@ namespace HLP.Comum.Modules
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 return null;
-            }          
+            }
         }
 
         #region [Métodos privados]
@@ -95,7 +95,7 @@ namespace HLP.Comum.Modules
             this.CaminhoConfiguracoes = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                 "configuracoes\\Modulos");
 
-           
+
 
             this.Modulos = (from modulo in System.IO.Directory.EnumerateFiles(this.CaminhoConfiguracoes, "*.modulo")
                             select new Modulo(modulo)).ToList();
@@ -118,7 +118,7 @@ namespace HLP.Comum.Modules
                 MessageBox.Show("Ocorreu um erro não tratado, favor entrar em contato com o Suporte tecnico.", "Informacao", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        
+
         public static class Collection
         {
             public static List<OrdemModulo> LIST_ORDEM_MODULOS;

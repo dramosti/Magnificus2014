@@ -42,7 +42,7 @@ namespace HLP.Comum.View.Converters
                         string sReturn = (string)value;
 
                         return sReturn.Insert(3, "-");
-                    } 
+                    }
                     break;
                 case "cep":
                     {
@@ -96,6 +96,52 @@ namespace HLP.Comum.View.Converters
 
                         return DateTime.MinValue;
                     } break;
+                case "cpf":
+                    {
+                        string ret = "";
+                        int cont = 0;
+                        value = value.ToString().Replace(oldValue: " ", newValue: "");
+                        value = value.ToString().Replace(oldValue: ".", newValue: "");
+                        value = value.ToString().Replace(oldValue: "-", newValue: "");
+                        value = value.ToString().Replace(oldValue: ",", newValue: "");
+
+                        foreach (char c in value.ToString())
+                        {
+                            ret += c;
+
+                            if (cont == 2 || cont == 5)
+                                ret += '.';
+                            else if (cont == 8)
+                                ret += '-';
+
+                            cont++;
+                        }
+
+                        return ret;
+                    }
+                case "rg":
+                    {
+                        string ret = "";
+                        int cont = 0;
+                        value = value.ToString().Replace(oldValue: " ", newValue: "");
+                        value = value.ToString().Replace(oldValue: ".", newValue: "");
+                        value = value.ToString().Replace(oldValue: "-", newValue: "");
+                        value = value.ToString().Replace(oldValue: ",", newValue: "");
+
+                        foreach (char c in value.ToString())
+                        {
+                            ret += c;
+
+                            if (cont == 1 || cont == 4)
+                                ret += '.';
+                            else if (cont == 7)
+                                ret += '-';
+
+                            cont++;
+                        }
+                        return ret;
+                    }
+
             }
             return value.ToString();
         }

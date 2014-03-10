@@ -29,6 +29,7 @@
           <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idResponsavel" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idSite" type="xs:int" />
+          <xs:element minOccurs="0" name="lFamiliaProduto" nillable="true" type="tns:ArrayOfFamilia_produtoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Acesso" nillable="true" type="tns:ArrayOfFuncionario_AcessoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Arquivo" nillable="true" type="tns:ArrayOfFuncionario_ArquivoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Certificacao" nillable="true" type="tns:ArrayOfFuncionario_CertificacaoModel" />
@@ -86,6 +87,55 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="FuncionarioModel" nillable="true" type="tns:FuncionarioModel" />
+  <xs:complexType name="ArrayOfFamilia_produtoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Familia_produtoModel" nillable="true" type="tns:Familia_produtoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFamilia_produtoModel" nillable="true" type="tns:ArrayOfFamilia_produtoModel" />
+  <xs:complexType name="Familia_produtoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idCentroCusto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContaContabil" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamiliaProduto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamiliaProdutoBase" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="lFamilia_Produto_ClassesModel" nillable="true" type="tns:ArrayOfFamilia_Produto_ClassesModel" />
+          <xs:element minOccurs="0" name="pAcressimoMaximo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAprazo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pComissaoAvista" type="xs:decimal" />
+          <xs:element minOccurs="0" name="pDescontoMaximo" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stAlteraDescricaoComercialProdutoVenda" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stGrau" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFamiliaProduto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xSigla" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Familia_produtoModel" nillable="true" type="tns:Familia_produtoModel" />
+  <xs:complexType name="ArrayOfFamilia_Produto_ClassesModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Familia_Produto_ClassesModel" nillable="true" type="tns:Familia_Produto_ClassesModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFamilia_Produto_ClassesModel" nillable="true" type="tns:ArrayOfFamilia_Produto_ClassesModel" />
+  <xs:complexType name="Familia_Produto_ClassesModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idClasseFinanceira" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamiliaProduto" type="xs:int" />
+          <xs:element minOccurs="0" name="idFamilia_Produto_Classes" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idTipoOperacao" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Familia_Produto_ClassesModel" nillable="true" type="tns:Familia_Produto_ClassesModel" />
   <xs:complexType name="ArrayOfFuncionario_AcessoModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario_AcessoModel" nillable="true" type="tns:Funcionario_AcessoModel" />
@@ -94,7 +144,7 @@
   <xs:element name="ArrayOfFuncionario_AcessoModel" nillable="true" type="tns:ArrayOfFuncionario_AcessoModel" />
   <xs:complexType name="Funcionario_AcessoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idAcesso" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
@@ -114,7 +164,7 @@
   <xs:element name="ArrayOfFuncionario_ArquivoModel" nillable="true" type="tns:ArrayOfFuncionario_ArquivoModel" />
   <xs:complexType name="Funcionario_ArquivoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q5:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioArquivo" nillable="true" type="xs:int" />
@@ -133,11 +183,11 @@
   <xs:element name="ArrayOfFuncionario_CertificacaoModel" nillable="true" type="tns:ArrayOfFuncionario_CertificacaoModel" />
   <xs:complexType name="Funcionario_CertificacaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="dConclusao" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dValidade" type="xs:dateTime" />
-          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoCertificacao" type="q5:TipoCertificacao" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoCertificacao" type="q7:TipoCertificacao" />
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioCertificacao" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="stCertificacao" type="xs:unsignedByte" />
@@ -156,7 +206,7 @@
   <xs:element name="ArrayOfFuncionario_Comissao_ProdutoModel" nillable="true" type="tns:ArrayOfFuncionario_Comissao_ProdutoModel" />
   <xs:complexType name="Funcionario_Comissao_ProdutoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q8:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioComissaoProduto" nillable="true" type="xs:int" />
@@ -176,7 +226,7 @@
   <xs:element name="ArrayOfFuncionario_Margem_Lucro_ComissaoModel" nillable="true" type="tns:ArrayOfFuncionario_Margem_Lucro_ComissaoModel" />
   <xs:complexType name="Funcionario_Margem_Lucro_ComissaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q7:modelBase">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q9:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioMargemLucroComissao" nillable="true" type="xs:int" />

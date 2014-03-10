@@ -1,6 +1,8 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
+using HLP.Entries.ViewModel.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +25,16 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand navegarCommand { get; set; }
         #endregion
 
+        FamiliaProdutoService objService = new FamiliaProdutoService();
 
         public FuncionarioViewModel()
         {
             FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
         }
 
+        public List<Familia_produtoModel> GetListaFamiliaProduto()
+        {
+            return this.objService.GetAll();
+        }
     }
 }

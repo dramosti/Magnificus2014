@@ -74,6 +74,7 @@
         <TextBox x:Name="txtControle" Style="{DynamicResource TextBoxComponentStyle}" DockPanel.Dock="Left"
                  TextChanged="txtControle_TextChanged"
                  LostFocus="txtControle_LostFocus"
+                 MouseDoubleClick="txtControle_MouseDoubleClick"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Height="20" FontFamily="Calibri" FontSize="14">

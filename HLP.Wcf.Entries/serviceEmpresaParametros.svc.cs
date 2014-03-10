@@ -40,6 +40,9 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IParametro_Ordem_ProducaoRepository parametro_Ordem_ProducaoRepository { get; set; }
 
+        [Inject]
+        public IParametro_Cartao_PontoRepository parametro_Cartao_PontoRepository { get; set; }
+
         public serviceEmpresaParametros()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -74,8 +77,12 @@ namespace HLP.Wcf.Entries
                     idEmpresa: idEmpresa) ?? new HLP.Entries.Model.Models.Parametros.Parametro_FiscalModel();
                 objEmpresaParametros.ObjParametro_Ordem_ProducaoModel = parametro_Ordem_ProducaoRepository.GetParametro_Ordem_Producao(
                     idEmpresa: idEmpresa) ?? new HLP.Entries.Model.Models.Parametros.Parametro_Ordem_ProducaoModel();
+                objEmpresaParametros.objParametro_Cartao_PontoModel = parametro_Cartao_PontoRepository.GetParametro_Cartao_Ponto(
+                    idEmpresa: idEmpresa) ?? new HLP.Entries.Model.Models.Parametros.Parametro_Cartao_PontoModel();
 
-                objEmpresaParametros.ObjParametro_ComercialModel.idEmpresa = objEmpresaParametros.ObjParametro_ComprasModel.idEmpresa =
+
+                objEmpresaParametros.objParametro_Cartao_PontoModel.idEmpresa = objEmpresaParametros.ObjParametro_ComercialModel.idEmpresa =
+                    objEmpresaParametros.ObjParametro_ComprasModel.idEmpresa =
                     objEmpresaParametros.ObjParametro_CustosModel.idEmpresa = objEmpresaParametros.ObjParametro_EstoqueModel.idEmpresa =
                     objEmpresaParametros.ObjParametro_FinanceiroModel.idEmpresa = objEmpresaParametros.ObjParametro_FiscalModel.idEmpresa =
                     objEmpresaParametros.ObjParametro_Ordem_ProducaoModel.idEmpresa = idEmpresa;
@@ -105,6 +112,7 @@ namespace HLP.Wcf.Entries
                 this.parametro_FinanceiroRepository.Save(objParametro_Financeiro: objEmpresaParametros.ObjParametro_FinanceiroModel);
                 this.parametro_FiscalRepository.Save(objParametro_Fiscal: objEmpresaParametros.ObjParametro_FiscalModel);
                 this.parametro_Ordem_ProducaoRepository.Save(objParametro_Ordem_Producao: objEmpresaParametros.ObjParametro_Ordem_ProducaoModel);
+                this.parametro_Cartao_PontoRepository.Save(objParametro_Cartao_Ponto: objEmpresaParametros.objParametro_Cartao_PontoModel);
             }
             catch (Exception ex)
             {
