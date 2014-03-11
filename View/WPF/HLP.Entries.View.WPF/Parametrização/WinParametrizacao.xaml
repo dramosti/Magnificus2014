@@ -697,122 +697,173 @@
                     <TabItem Header="Super Simples">
                         <AdornerDecorator>
                             <Expander Header="Fiscal" IsExpanded="True">
-                                <DockPanel LastChildFill="True">
-                                    <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pICMSss,
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="300*" MaxWidth="300" MinWidth="300"></ColumnDefinition>
+                                        <ColumnDefinition Width="75*" MaxWidth="75" MinWidth="75"></ColumnDefinition>
+                                        <ColumnDefinition Width="95*"></ColumnDefinition>
+                                        <ColumnDefinition Width="377*" MaxWidth="375" MinWidth="375"></ColumnDefinition>
+                                        <ColumnDefinition Width="150*" MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                        <ColumnDefinition Width="171*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                        <RowDefinition Height="27"></RowDefinition>
+                                        <RowDefinition Height="3"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <!--Label dos Componentes-->
+
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Alíquota de ICMS para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Alíquota de ISS para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Alíquota de CSLL para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Alíquota de IRRF para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Alíquota de PIS para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Alíquota de COFINS para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Número de Itens para emissão da NF-e Formulário" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="15" Text="Número de Itens para emissão da NFS-e Formulário" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="1" Text="Alíquota de INSS para o super simples" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="3" Text="Optante do Super Simples?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="5" Text="Código de Regime Tributário (CRT)?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="7" Text="Imprimi mensagem padrão para o super simples?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="9" Text="Imprimi mensagem de crédito de ICMS do super Simples?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="11" Text="Código da observação para impressão do super simples." VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                                    <Components:CustomTextBlock Grid.Column="4" Grid.Row="15" Grid.ColumnSpan="2" Text="Código da observação para impressão da mensagem de crédito de ICMS do super simples." VerticalAlignment="Center" Height="18" Margin="0,5"/>
+
+                                    <!--Fim Label Componentes-->
+
+                                    <!--Componentes-->
+
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="1"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pICMSss,
                                         Converter={StaticResource porcentagemConverter},
                                         Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de ICMS para o super simples" Help="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pISSss, 
+										ToolTip="Informar a alíquota de ICMS – Imposto sobre Circulação de Mercadorias e prestação de Serviço, para o super simples."/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="3"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pISSss, 
                                         Converter={StaticResource porcentagemConverter},
                                         Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de ISS para o super simples" Help="Informar a alíquota de ISS – Imposto sobre serviços para o super simples." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCSLLss, 
-                                            Converter={StaticResource porcentagemConverter},
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a alíquota de ISS – Imposto sobre serviços para o super simples."/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="5"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCSLLss, 
+                                        Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de CSLL para o super simples" Help="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pIRRFss, 
-                                            Converter={StaticResource porcentagemConverter},
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a alíquota do CSLL – Contribuição Social sobre o Lucro Líquido para o super simples."/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="7"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pIRRFss, 
+                                        Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de IRRF para o super simples" Help="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples" WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPISss, 
-                                            Converter={StaticResource porcentagemConverter},
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a alíquota do IRRF – Imposto de Renda Retido na Fonte para o super simples"/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="9"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pPISss, 
+                                        Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de PIS para o super simples" Help="Informar a alíquota do PIS – Programa de Integração Social para o super simples." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINSss, 
-                                            Converter={StaticResource porcentagemConverter},
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a alíquota do PIS – Programa de Integração Social para o super simples."/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="11"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pCOFINSss, 
+                                        Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de COFINS para o super simples" Help="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.nItensNfProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a alíquota do COFINS – Contribuição para o Financiamento da Seguridade Social para o super simples."/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="13"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.nItensNfProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Número de Itens para emissão da NF-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal quando for formulário continuo." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.nItensNfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a quantidade de  itens a ser impresso na nota fiscal quando for formulário continuo."/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="15"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.nItensNfServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Número de Itens para emissão da NFS-e Formulário" Help="Informar a quantidade de  itens a ser impresso na nota fiscal de serviços, quando for formulário continuo." WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pINSSss, 
-                                            Converter={StaticResource porcentagemConverter},
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a quantidade de  itens a ser impresso na nota fiscal de serviços, quando for formulário continuo"/>
+                                    <Components:CustomTextBox
+                                        Grid.Column="5" Grid.Row="1"
+                                        Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.pINSSss, 
+                                        Converter={StaticResource porcentagemConverter},
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Alíquota de INSS para o super simples" Help="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples" WidthLabel="365" HorizontalAlignment="Left" Width="450"/>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stSuperSimples, 
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="Informar a alíquota do INSS – Instituo Nacional do Seguro Social para o super simples"/>
+                                    <Components:CustomCheckBox
+                                        Grid.Column="5" Grid.Row="3" VerticalAlignment="Center"
+                                        IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stSuperSimples, 
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Optante do Super Simples?" Help="O Simples Nacional é um regime compartilhado de arrecadação, cobrança e fiscalização de tributos aplicável às Microempresas e Empresas de Pequeno Porte, previsto na Lei Complementar nº 123, de 14 de dezembro de 2006." WidthLabel="365" HorizontalAlignment="Left"/>
-                                        <Components:HlpComboBox 
-										
-										SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stCRT, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+										ToolTip="O Simples Nacional é um regime compartilhado de arrecadação, cobrança e fiscalização de tributos aplicável às Microempresas e Empresas de Pequeno Porte, previsto na Lei Complementar nº 123, de 14 de dezembro de 2006." Height="14" Margin="0,7"/>
+                                    <Components:CustomComboBox
+                                        Grid.Column="5" Grid.Row="5"
+                                        SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stCRT, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Código de Regime Tributário (CRT)?" Help="O Código de Regime Tributário ou CRT deve ser indicado na nota fiscal eletrônica." WidthLabel="365" HorizontalAlignment="Left" Width="515">
-                                            <Components:HlpComboBox.Items>
-                                                <System:String>0-Simples Nacional</System:String>
-                                                <System:String>1-Simples Nacional-excesso de sublimite da receita bruta</System:String>
-                                                <System:String>2</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgPadraoSs, 
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										ToolTip="O Código de Regime Tributário ou CRT deve ser indicado na nota fiscal eletrônica.">
+                                        <Components:CustomComboBox.Items>
+                                            <System:String>0-Simples Nacional</System:String>
+                                            <System:String>1-Simples Nacional-excesso de sublimite da receita bruta</System:String>
+                                            <System:String>2</System:String>
+                                        </Components:CustomComboBox.Items>
+                                    </Components:CustomComboBox>
+                                    <Components:CustomCheckBox
+                                        Grid.Column="5" Grid.Row="7" VerticalAlignment="Center"
+                                        IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgPadraoSs, 
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										Height="36.333" Width="{Binding ElementName=stack2,Path=Width}" Margin="10,0,0,2" Caption="Imprimi mensagem padrão para o super simples?" Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="365" HorizontalAlignment="Left"/>
-                                        <Components:HlpPesquisa 
-										
+										ToolTip="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " Height="14" Margin="0,7"/>
+                                    <Components:CustomCheckBox
+                                        Grid.Column="5" Grid.Row="9" VerticalAlignment="Center"
+                                        IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgCreditoIcmsSs, 
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										IsEnabled="{Binding bIsEnabled}"
+										ToolTip="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão de crédito de ICMS do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " Height="14" Margin="0,7"/>
+                                    <Components:HlpPesquisa
+                                        Grid.Column="4" Grid.Row="13"									
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.idObservacaoMsgSuperSimples,
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="36" Width="627" Margin="10,0,0,2" 
-                                            Caption="Código da observação para impressão do super simples." WidthLabel="365" 
-                                            Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem padrão do super simples? estiver como opção 1-Sim" 
-                                            FieldPesquisa="ID" TableView="vwObservacao" HorizontalAlignment="Left">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xObservacao</System:String>
-                                                <System:String>xDescricao</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpCheckBox 
-										
-										IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.stImprimeMsgCreditoIcmsSs, 
-                                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="37.667" Width="{Binding ElementName=stack2,Path=Width}" Margin="10,0,0,2" Caption="Imprimi mensagem de crédito de ICMS do super Simples? " Help="Informar se o sistema irá imprimir junto a nota fiscal eletrônica a mensagem padrão de crédito de ICMS do super simples, o sistema buscara a mensagem pelo código cadastrado no parâmetro fiscal " WidthLabel="365" HorizontalAlignment="Left"/>
-                                        <Components:HlpPesquisa 
-										
+                                        Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										IsEnabled="{Binding bIsEnabled}" WidthLabel="0"						                                           
+                                        ToolTip="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem padrão do super simples? estiver como opção 1-Sim" 
+                                        FieldPesquisa="ID" TableView="vwObservacao">
+                                        <Components:HlpPesquisa.Items>
+                                            <System:String>xObservacao</System:String>
+                                            <System:String>xDescricao</System:String>
+                                        </Components:HlpPesquisa.Items>
+                                    </Components:HlpPesquisa>
+                                    <Components:HlpPesquisa
+                                        Grid.Column="4" Grid.Row="17"
 										Text="{Binding currentModel.empresaParametros.ObjParametro_FiscalModel.idObservacaoMsgCreditoSuperSimples, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="48" Width="621" Margin="10,0,0,2" Caption="Código da observação para impressão da mensagem de crédito de ICMS do super simples." Help="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem de crédito de ICMS do super simples? estiver como opção 1-Sim." WidthLabel="365" FieldPesquisa="ID" TableView="vwObservacao" HorizontalAlignment="Left">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xObservacao</System:String>
-                                                <System:String>xDescricao</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                    </WrapPanel>
-                                </DockPanel>
+										IsEnabled="{Binding bIsEnabled}" WidthLabel="0"
+								        ToolTip="Informar o código da observação que será impresso na nota fiscal eletrônica se o parâmetro Imprimi mensagem de crédito de ICMS do super simples? estiver como opção 1-Sim." FieldPesquisa="ID" TableView="vwObservacao">
+                                        <Components:HlpPesquisa.Items>
+                                            <System:String>xObservacao</System:String>
+                                            <System:String>xDescricao</System:String>
+                                        </Components:HlpPesquisa.Items>
+                                    </Components:HlpPesquisa>
+                                </Grid>
                             </Expander>
                         </AdornerDecorator>
                     </TabItem>
@@ -821,172 +872,268 @@
             <TabItem Header="Comercial">
                 <AdornerDecorator>
                     <Expander Header="Parâmetros Comercial" IsExpanded="True">
-                        <DockPanel>
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.xMaskCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,0,-1" Caption="Mascara Centro de Custo" Help="Informar a característica do formato para o centro de custo." WidthLabel="400" HorizontalAlignment="Left" Width="494"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.nQuantidadeDiasOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Quantidade de dias para validade do orçamento" Help="Informar a quantidade de dias validos para o orçamento, após o prazo vencido só terá acesso quando o administrador liberar o orçamento." WidthLabel="400" HorizontalAlignment="Left" Width="494"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaCreditoAprovado, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Obriga Análise e aprovação de Crédito?" Help="Informar se será obrigatório a análise para aprovação de crédito." WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraOrcamento, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Orçamento de Vendas" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um orçamento para o cliente" WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraPedidoVenda, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Pedido de Vendas" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um pedido de venda para o cliente" WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraFaturamento, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Obriga análise financeira para o Faturamento" Help="O sistema obrigará uma analise financeira do cliente antes de fazer um nf para o cliente" WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaUsoListaPreco, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Obriga o uso da Lista de Preço" Help="O sistema obrigará o uso da lista de preço definida no cadastro do cliente, não deixando o uso de nenhuma outra lista de preço" WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpComboBox 
-									
-									SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.tDescontoPor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,143,-1" Caption="Conceder desconto baseado em?" Help="Informar ao sistema em que ele se baseará com default os desconto, sendo para:" WidthLabel="400" HorizontalAlignment="Left" Width="551">
-                                    <Components:HlpComboBox.Items>
-                                        <System:String>0-Família do Produto</System:String>
-                                        <System:String>1-Lista de Preço</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpComboBox 
-									
-									SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,143,-1" Caption="Tipo de Desconto" Help="Informar se o desconto irá aparecer ou não na nota fiscal." WidthLabel="400" HorizontalAlignment="Left" Width="551">
-                                    <Components:HlpComboBox.Items>
-                                        <System:String>0-Oculto</System:String>
-                                        <System:String>1-Visível</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrcamentoProjeto,
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Usar projeto no Orçamento" Help="É o mesmo esquema hoje do magnificus, daquele que ao lançar um item no orçamento aparece a pergunta? Se for não será necessário o campo iremos montar uma tela só para projetos, não servirá só para projetos de produtos e sim até para serviços. Pensaremos nisso mais para frente quando chegar Ordem de produção." WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAprovacaoPedidoVenda, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,106,-1" Caption="Obrigar a aprovação do Pedido de Vendas" Help="Informar se o sistema irá obrigar a aprovação do Pedido de Vendas, após confirmado a obrigação (1-Sim) o sistema não deixará prosseguir os processos após a venda, tais como a emissão do faturamento, geração de Ordem de produção, impressão da Nota Fiscal, etc..." WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpPesquisa 
-									
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="330*" MaxWidth="330" MinWidth="330"/>
+                                <ColumnDefinition Width="100*" MaxWidth="125" MinWidth="100"/>
+                                <ColumnDefinition Width="75*" MaxWidth="100" MinWidth="75"/>
+                                <ColumnDefinition Width="56*"/>
+                                <ColumnDefinition Width="300*" MaxWidth="300" MinWidth="300"/>
+                                <ColumnDefinition Width="150*" MaxWidth="150" MinWidth="100"/>
+                                <ColumnDefinition Width="163*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="6"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                            </Grid.RowDefinitions>
+
+                            <!--Label Componentes-->
+
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Mascara Centro de Custo" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Quantidade de dias para validade do orçamento" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Obriga Análise e aprovação de Crédito?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Obriga análise financeira para o Orçamento de Vendas" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Obriga análise financeira para o Pedido de Vendas" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Obriga análise financeira para o Faturamento" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Obriga o uso da Lista de Preço" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="15" Text="Conceder desconto baseado em?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="17" Text="Tipo de Desconto" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="1" Text="Usar projeto no Orçamento" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="3" Text="Obrigar a aprovação do Pedido de Vendas" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="5" Text="Moeda padrão para todo o módulo Comercial" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="9" Text="Origem da Lista de Preço" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="11" Text="Utiliza venda casada?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="13" Text="Utiliza venda de Kit?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="5" Grid.Row="15" Text="Tipo de Rateio sobre o Frete" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+
+                            <!--Fim Labew-->
+
+                            <!--Componentes-->
+
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="1"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.xMaskCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+							    IsEnabled="{Binding bIsEnabled}"
+						    	ToolTip="Informar a característica do formato para o centro de custo."/>
+                            <Components:CustomTextBlock
+                                Grid.Column="2" Grid.Row="3"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.nQuantidadeDiasOrcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Informar a quantidade de dias validos para o orçamento, após o prazo vencido só terá acesso quando o administrador liberar o orçamento."/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="5" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaCreditoAprovado, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Informar se será obrigatório a análise para aprovação de crédito." Height="14" Margin="0,7" Grid.ColumnSpan="2"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="7" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraOrcamento, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="O sistema obrigará uma analise financeira do cliente antes de fazer um orçamento para o cliente" Height="14" Margin="0,7" Grid.ColumnSpan="2"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="9" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraPedidoVenda, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+							    ToolTip="O sistema obrigará uma analise financeira do cliente antes de fazer um pedido de venda para o cliente" Height="14" Margin="0,7" Grid.ColumnSpan="2"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="11" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAnaliseFinanceiraFaturamento, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="O sistema obrigará uma analise financeira do cliente antes de fazer um nf para o cliente" Height="14" Margin="0,7" Grid.ColumnSpan="2"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="13" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaUsoListaPreco, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="O sistema obrigará o uso da lista de preço definida no cadastro do cliente, não deixando o uso de nenhuma outra lista de preço" Height="14" Margin="0,7" Grid.ColumnSpan="2"/>
+                            <Components:CustomComboBox
+                                Grid.Column="2" Grid.Row="15"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.tDescontoPor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Informar ao sistema em que ele se baseará com default os desconto, sendo para:" Grid.ColumnSpan="2">
+                                <Components:CustomComboBox.Items>
+                                    <System:String>0-Família do Produto</System:String>
+                                    <System:String>1-Lista de Preço</System:String>
+                                </Components:CustomComboBox.Items>
+                            </Components:CustomComboBox>
+                            <Components:CustomComboBox
+                                Grid.Column="2" Grid.Row="17"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stDesconto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Informar se o desconto irá aparecer ou não na nota fiscal." Grid.ColumnSpan="2">
+                                <Components:CustomComboBox.Items>
+                                    <System:String>0-Oculto</System:String>
+                                    <System:String>1-Visível</System:String>
+                                </Components:CustomComboBox.Items>
+                            </Components:CustomComboBox>
+                            <Components:CustomCheckBox
+                                Grid.Column="6" Grid.Row="1" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrcamentoProjeto,
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="É o mesmo esquema hoje do magnificus, daquele que ao lançar um item no orçamento aparece a pergunta? Se for não será necessário o campo iremos montar uma tela só para projetos, não servirá só para projetos de produtos e sim até para serviços. Pensaremos nisso mais para frente quando chegar Ordem de produção." Height="14" Margin="0,7"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="6" Grid.Row="3" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stObrigaAprovacaoPedidoVenda, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Informar se o sistema irá obrigar a aprovação do Pedido de Vendas, após confirmado a obrigação (1-Sim) o sistema não deixará prosseguir os processos após a venda, tais como a emissão do faturamento, geração de Ordem de produção, impressão da Nota Fiscal, etc..." Height="14" Margin="0,7"/>
+                            <Components:HlpPesquisa 
+									Grid.Column="5" Grid.Row="7"
 									Text="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,-1" Caption="Moeda padrão para todo o módulo Comercial" Help="Informar qual moeda será padrão para emissão de orçamento, pedido de vendas e faturamento, mesmo trazendo a moeda nada impede que o usuário troque no ato da montagem das ordens." WidthLabel="400" FieldPesquisa="ID" TableView="vwMoeda" HorizontalAlignment="Left" Width="643">
-                                    <Components:HlpPesquisa.Items>
-                                        <System:String>xSiglaMoeda</System:String>
-                                        <System:String>xMoeda</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpComboBox 
-									
-									SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrigemListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Width="551" Margin="10,0,0,2" Caption="Origem da Lista de Preço" Help="Informar de onde vem a lista padrão de preço, assim temos:" WidthLabel="400" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
-                                        <System:String>0-Cadastro de Clientes</System:String>
-                                        <System:String>1-Condição de Pagamento</System:String>
-                                        <System:String>2-Nenhum</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaCasada, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Width="428" Margin="10,0,0,-1" Caption="Utiliza venda casada?" Help="Sem especificação" WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaKitMaterial, 
-                                    Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Width="426" Margin="10,0,0,-1" Caption="Utiliza venda de Kit?" Help="Sem especificação" WidthLabel="400" HorizontalAlignment="Left"/>
-                                <Components:HlpComboBox 
-                                	
-                                	SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                	IsEnabled="{Binding bIsEnabled}"
-                                	Height="27" Width="555" Margin="10,0,0,-1" Caption="Tipo de Rateio sobre o Frete" Help="Informar qual será a situação do rateio sobre o frete." WidthLabel="400" HorizontalAlignment="Left">
-                                    <Components:HlpComboBox.Items>
-                                        <System:String>0-Por Quantidade do Item</System:String>
-                                        <System:String>1-Pelo Valor Total do Item</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
-                            </WrapPanel>
-                        </DockPanel>
+									ToolTip="Informar qual moeda será padrão para emissão de orçamento, pedido de vendas e faturamento, mesmo trazendo a moeda nada impede que o usuário troque no ato da montagem das ordens." WidthLabel="0" FieldPesquisa="ID" TableView="vwMoeda">
+                                <Components:HlpPesquisa.Items>
+                                    <System:String>xSiglaMoeda</System:String>
+                                    <System:String>xMoeda</System:String>
+                                </Components:HlpPesquisa.Items>
+                            </Components:HlpPesquisa>
+                            <Components:CustomComboBox
+                                Grid.Column="6" Grid.Row="9"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stOrigemListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Informar de onde vem a lista padrão de preço, assim temos">
+                                <Components:CustomComboBox.Items>
+                                    <System:String>0-Cadastro de Clientes</System:String>
+                                    <System:String>1-Condição de Pagamento</System:String>
+                                    <System:String>2-Nenhum</System:String>
+                                </Components:CustomComboBox.Items>
+                            </Components:CustomComboBox>
+                            <Components:CustomCheckBox
+                                Grid.Column="6" Grid.Row="11" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaCasada, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Sem especificação" Margin="0,6" Height="16"/>
+                            <Components:CustomCheckBox
+                                Grid.Column="6" Grid.Row="13"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stUtilizaVendaKitMaterial, 
+                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								IsEnabled="{Binding bIsEnabled}"
+								ToolTip="Sem especificação"/>
+                            <Components:CustomComboBox
+                                Grid.Column="6" Grid.Row="15"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                               	IsEnabled="{Binding bIsEnabled}"
+                                ToolTip="Informar qual será a situação do rateio sobre o frete.">
+                                <Components:CustomComboBox.Items>
+                                    <System:String>0-Por Quantidade do Item</System:String>
+                                    <System:String>1-Pelo Valor Total do Item</System:String>
+                                </Components:CustomComboBox.Items>
+                            </Components:CustomComboBox>
+                            <!--Fim Componentes-->
+                        </Grid>
                     </Expander>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Financeiro">
                 <AdornerDecorator>
                     <Expander Header="Parâmetros Financeiro" IsExpanded="True">
-                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                            <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.xMaskClasseFinanceira, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition Width="288*" MaxWidth="288" MinWidth="288"></ColumnDefinition>
+                                <ColumnDefinition Width="182*" MaxWidth="175" MinWidth="150"></ColumnDefinition>
+                                <ColumnDefinition Width="75*"></ColumnDefinition>
+                                <ColumnDefinition Width="292*" MaxWidth="292" MinWidth="292"></ColumnDefinition>
+                                <ColumnDefinition Width="144*" MaxWidth="175" MinWidth="175"></ColumnDefinition>
+                                <ColumnDefinition Width="193*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                                <RowDefinition Height="27"/>
+                                <RowDefinition Height="3"/>
+                            </Grid.RowDefinitions>
+                            <!--Label Componentes-->
+
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Mascara para Classes Financeira" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Pedido de Compra gera previsão no financeiro?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Pedido de Venda gera previsão no financeiro?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="4" Grid.Row="1" Text="Comissão paga por?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="4" Grid.Row="3" Text="Credito aprovado?" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            <Components:CustomTextBlock Grid.Column="4" Grid.Row="5" Text="Bloqueia Cliente após carta de cobrança enviada" VerticalAlignment="Center" Height="18" Margin="0,5"/>
+                            
+                            <!--Fim Label-->
+                            
+                            <!--Componentes-->
+                            
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="1"
+                                Text="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.xMaskClasseFinanceira, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Mascara para Classes Financeira" Help="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos." WidthLabel="361" HorizontalAlignment="Left" Width="453"/>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoCompraGeraPrevisao, 
+								ToolTip="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos."/>
+                            
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="3" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoCompraGeraPrevisao, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Pedido de Compra gera previsão no financeiro?" Help="Informar ao sistema se ao montar um pedido de compras o sistema irá gerar previsão de pagamento para o financeiro, quando sim serão criados registros de previsão de pagamento, a quantidade de registros dependerá da condição de pagamento, a cada recebimento vinculado ao pedido de compra o sistema elimina de forma automática as previsões, sendo parcial ou total." WidthLabel="361" HorizontalAlignment="Left"/>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoVendaGeraPrevisao, 
+								ToolTip="Informar ao sistema se ao montar um pedido de compras o sistema irá gerar previsão de pagamento para o financeiro, quando sim serão criados registros de previsão de pagamento, a quantidade de registros dependerá da condição de pagamento, a cada recebimento vinculado ao pedido de compra o sistema elimina de forma automática as previsões, sendo parcial ou total."/>
+                            <Components:CustomCheckBox
+                                Grid.Column="2" Grid.Row="5" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stPedidoVendaGeraPrevisao, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Pedido de Venda gera previsão no financeiro?" Help="Informar ao sistema se ao montar um pedido de vendas e o mesmo estiver em carteira, o sistema irá gerar previsão de recebimento para o financeiro, quando sim serão criados registros de previsões de recebimento, a quantidade de registros dependerá da condição de pagamento, a cada liberação do pedido de vendas o sistema elimina de forma automática as previsões, sendo parcial ou total." WidthLabel="361" HorizontalAlignment="Left"/>
-                            <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								ToolTip="Informar ao sistema se ao montar um pedido de vendas e o mesmo estiver em carteira, o sistema irá gerar previsão de recebimento para o financeiro, quando sim serão criados registros de previsões de recebimento, a quantidade de registros dependerá da condição de pagamento, a cada liberação do pedido de vendas o sistema elimina de forma automática as previsões, sendo parcial ou total."/>
+                            <Components:CustomComboBox
+                                Grid.Column="5" Grid.Row="1"
+                                SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stRateioFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Comissão paga por?" Help="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos" WidthLabel="361" HorizontalAlignment="Left">
-                                <Components:HlpComboBox.Items>
+								ToolTip="Informar conforme cadastro de tipo de operação qual será a operação default para a Ordem de produção para produtos">
+                                <Components:CustomComboBox.Items>
                                     <System:String>0-Títulos Emitidos</System:String>
                                     <System:String>1-Títulos Recebidos</System:String>
-                                </Components:HlpComboBox.Items>
-                            </Components:HlpComboBox>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stCreditoAprovado, 
+                                </Components:CustomComboBox.Items>
+                            </Components:CustomComboBox>
+                            <Components:CustomCheckBox
+                                Grid.Column="5" Grid.Row="3" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stCreditoAprovado, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Credito aprovado?" Help="Informar ao sistema se para aprovar uma venda será necessário estar com o crédito aprovado, para isso o cliente terá que passar por aprovação através dos parâmetros financeiro de credito." WidthLabel="361" HorizontalAlignment="Left"/>
-                            <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stBloqueiaClientePosCartaCobranca, 
+								ToolTip="Informar ao sistema se para aprovar uma venda será necessário estar com o crédito aprovado, para isso o cliente terá que passar por aprovação através dos parâmetros financeiro de credito."/>
+                            <Components:CustomCheckBox
+                                Grid.Column="5" Grid.Row="5" VerticalAlignment="Center"
+                                IsChecked="{Binding currentModel.empresaParametros.ObjParametro_FinanceiroModel.stBloqueiaClientePosCartaCobranca, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,0,2" Caption="Bloqueia Cliente após carta de cobrança enviada." Help="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos." WidthLabel="361" HorizontalAlignment="Left"/>
-                        </WrapPanel>
+								ToolTip="Informar o formato da mascara que será usado para as classes financeira, após a definição o sistema usará a mascara definida para todos os lançamentos."/>
+                            <!--Fim Componentes-->
+                            
+                        </Grid>
                     </Expander>
                 </AdornerDecorator>
             </TabItem>

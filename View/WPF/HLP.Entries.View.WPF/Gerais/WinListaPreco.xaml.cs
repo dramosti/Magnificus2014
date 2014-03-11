@@ -90,7 +90,7 @@ namespace HLP.Entries.View.WPF.Gerais
                 this.gridItens.Columns[3].IsReadOnly =
                 this.gridItens.Columns[6].IsReadOnly =
                 this.gridItens.Columns[7].IsReadOnly =
-                this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.HlpComboBox)sender).SelectedIndex == 0);
+                this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.CustomComboBox)sender).SelectedIndex == 0);
         }
     }
 }
