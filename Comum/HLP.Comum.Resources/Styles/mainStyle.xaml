@@ -785,7 +785,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TabItem">
-                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="4,4,0,0" Margin="1,0">
+                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="0,15,0,0" Margin="1,0">
                         <ContentPresenter x:Name="ContentSite"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -795,6 +795,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="False">
@@ -2222,7 +2223,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGrid}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" CornerRadius="5" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                    <Border BorderBrush="{StaticResource ButtonBackgroundBlueDefault}" BorderThickness="2" CornerRadius="0,5,5,5" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -2765,6 +2766,27 @@
                             <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--Nome DataGrid , BUTTON-->
+
+    <Style x:Key="ButtonDatagridName" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>               
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" Background="{StaticResource ButtonBackgroundBlueDefault}" BorderBrush="{StaticResource ButtonBackgroundBlueDefault}" SnapsToDevicePixels="true" CornerRadius="0,30,0,0">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Left" Margin="6,0,0,0" TextElement.Foreground="White" TextElement.FontFamily="Calibri" TextElement.FontWeight="Bold" TextElement.FontSize="16" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

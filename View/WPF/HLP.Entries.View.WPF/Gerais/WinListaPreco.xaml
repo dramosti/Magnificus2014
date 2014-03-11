@@ -5,7 +5,7 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
-    xmlns:convL ="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
+        xmlns:convL ="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Entries.View.WPF.Gerais.WinListaPreco"
@@ -221,6 +221,7 @@
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="27"/>
                         <RowDefinition Height="10"/>
+                        <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button Grid.Column="1" Grid.Row="1"
@@ -233,7 +234,9 @@
                         IsEnabled="{Binding bIsEnabled}"
                         Content="Carregar todos os produtos"/>
 
-                    <DataGrid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4"
+                    <Button Grid.Column="1" Grid.Row="3" Content="Produtos" Style="{StaticResource ButtonDatagridName}" Margin="4.5,0,0,-5"/>
+
+                    <DataGrid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4"
 						 Name="gridItens"
                                     ItemsSource="{Binding currentModel.lLista_preco}"                          
                                     IsEnabled="{Binding bIsEnabled}"
