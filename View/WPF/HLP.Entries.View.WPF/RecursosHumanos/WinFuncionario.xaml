@@ -89,7 +89,7 @@
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" Caption="Nome" Field="xNome" Help="Informe o nome do funcionário." Table="Funcionario" WidthLabel="200" HorizontalAlignment="Left" Width="450"/>
                                     <Components:HlpPesquisa
-                                
+                                        nameWindow="WinCargo"
 								Text="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" Caption="Cargo" Field="idCargo" Help="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="200" TableView="vwCargo" FieldPesquisa="ID" HorizontalAlignment="Left" Width="500">

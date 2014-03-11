@@ -147,6 +147,7 @@
                     </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <Button Content="+" Command="{Binding commandAdd}" CommandParameter="{Binding ElementName=winPesquisaPadrao, Path=NameWindowCadastro}"></Button>
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Bottom">

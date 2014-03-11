@@ -397,8 +397,6 @@ namespace HLP.Comum.ViewModel.ViewModels
             }
         }
 
-
-
         public List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
         {
             List<T> logicalCollection = new List<T>();
@@ -425,6 +423,27 @@ namespace HLP.Comum.ViewModel.ViewModels
            }));
         }
 
+        public object GetParentWindow(object comp)
+        {
+            object o = null;
 
+            while (true)
+            {
+                if (comp == null)
+                    break;
+
+                if (comp.GetType().BaseType == typeof(Window))
+                {
+                    o = comp;
+                    break;
+                }
+                else
+                {
+                    comp = (comp as FrameworkElement).Parent;
+                }
+            }
+
+            return o;
+        }
     }
 }

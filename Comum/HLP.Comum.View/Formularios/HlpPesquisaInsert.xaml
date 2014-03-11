@@ -1,0 +1,16 @@
+﻿<Window x:Class="HLP.Comum.View.Formularios.HlpPesquisaInsert"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" x:Name="wd"
+             d:DesignHeight="300" d:DesignWidth="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Button Content="Salvar"
+                    Command="{Binding ElementName=ctrContent, Path=DataContext.commandSalvar}" CommandParameter="{Binding ElementName=ctrContent, Path=Content}"></Button>
+        </StackPanel>
+        <ContentControl x:Name="ctrContent"
+            Content="{Binding currentModel.objContent}"></ContentControl>
+    </DockPanel>
+</Window>

@@ -22,6 +22,9 @@ using HLP.Comum.View.PesquisaRapidaService;
 using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Comum.Modules;
+using System.Reflection;
+using HLP.Comum.View.Formularios;
+using HLP.Comum.ViewModel.ViewModels;
 
 namespace HLP.Comum.View.Components
 {
@@ -34,6 +37,7 @@ namespace HLP.Comum.View.Components
         private IservicePesquisaRapidaClient servicoPesquisaRapida;
 
         private ICommand PesquisarCommand { get; set; }
+        private ICommand InserirCommand { get; set; }
 
         public string Display
         {
@@ -46,10 +50,16 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("Display", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
 
 
+
         public HlpPesquisa()
         {
             InitializeComponent();
+            this.InserirCommand = new RelayCommand(execute: e => this.InserirExecute());
             //this.DataContext = this;
+        }
+
+        private void InserirExecute()
+        {
         }
 
         public async void ExecutaPesquisa(string sValor)
@@ -156,6 +166,15 @@ namespace HLP.Comum.View.Components
             }
         }
 
+        private string _NameWindowCadastro;
+
+        public string NameWindowCadastro
+        {
+            get { return _NameWindowCadastro; }
+            set { _NameWindowCadastro = value; }
+        }
+
+
         // Using a DependencyProperty as the backing store for TableView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TableViewProperty =
             DependencyProperty.Register("TableView", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
@@ -221,6 +240,17 @@ namespace HLP.Comum.View.Components
 
         #endregion
 
+        #region Propriedades
+        private string _nameWindow;
+
+        public string nameWindow
+        {
+            get { return _nameWindow; }
+            set { _nameWindow = value; }
+        }
+
+        #endregion
+
         private void txtID_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F5)
@@ -235,6 +265,7 @@ namespace HLP.Comum.View.Components
             this.txtID.Focus();
             winPesquisa.WindowState = WindowState.Maximized;
             winPesquisa.SetPropertyValue("NameView", this.TableView);
+            winPesquisa.GetType().GetProperty(name: "NameWindowCadastro").SetValue(obj: winPesquisa, value: this.nameWindow);
 
             if (winPesquisa != null)
             {
@@ -250,6 +281,36 @@ namespace HLP.Comum.View.Components
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.IniciaPesquisa();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.nameWindow != null)
+            {
+                object form = GerenciadorModulo.Instancia.CarregaForm(nome: this.nameWindow,
+                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+
+                Type t = form.GetType();
+                ConstructorInfo constr = t.GetConstructor(Type.EmptyTypes);
+                object inst = constr.Invoke(new object[] { });
+
+
+                Window w = GerenciadorModulo.Instancia.CarregaForm(nome: "HlpPesquisaInsert",
+                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+
+                (w.FindName(name: "ctrContent") as ContentControl).DataContext = (inst as Window).DataContext;
+                (w.FindName(name: "ctrContent") as ContentControl).Content = (inst as Window).Content;
+
+                Type tVm = (w.FindName(name: "ctrContent") as ContentControl).DataContext.GetType();
+                object instVm = (w.FindName(name: "ctrContent") as ContentControl).DataContext;
+                MethodInfo met = tVm.GetMethod(name: "get_commandNovo");
+                ICommand comm = met.Invoke(instVm, new object[] { }) as ICommand;
+                comm.Execute(parameter: (w.FindName(name: "ctrContent") as ContentControl).Content);
+                if (w.ShowDialog() == true)
+                {
+                    this.Text = w.GetType().GetProperty(name: "idSalvo").GetValue(obj: w).ToString();
+                }
+            }
         }
     }
 }

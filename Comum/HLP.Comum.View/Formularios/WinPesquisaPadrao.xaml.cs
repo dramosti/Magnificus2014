@@ -25,6 +25,11 @@ namespace HLP.Comum.View.Formularios
             InitializeComponent();
         }
 
+        public string NameWindowCadastro
+        {
+            get { return hlpCompPesquisaPadrao.NameWindowCadastro; }
+            set { hlpCompPesquisaPadrao.NameWindowCadastro = value; }
+        }
 
 
         public string NameView

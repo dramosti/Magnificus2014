@@ -21,6 +21,7 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
 
         public ICommand commandPesquisar { get; set; }
         public ICommand commandLimpar { get; set; }
+        public ICommand commandAdd { get; set; }
         private bool _bIniciaFocusFirstRow = true;
 
         public bool bIniciaFocusFirstRow
@@ -28,7 +29,7 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
             get { return _bIniciaFocusFirstRow; }
             set { _bIniciaFocusFirstRow = value; base.NotifyPropertyChanged("bIniciaFocusFirstRow"); }
         }
-        
+
 
 
         private ObservableCollection<PesquisaPadraoModel> _lFilers;
