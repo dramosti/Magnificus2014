@@ -254,7 +254,6 @@ namespace HLP.Wcf.Entries
 
         public int copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario)
         {
-
             try
             {
                 this.funcionarioRepository.BeginTransaction();
@@ -303,8 +302,6 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
-
         }
     }
 }

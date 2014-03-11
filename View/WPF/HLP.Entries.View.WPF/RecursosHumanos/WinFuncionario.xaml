@@ -184,7 +184,7 @@
                     <DockPanel LastChildFill="True">
                         <DockPanel LastChildFill="True" DockPanel.Dock="left">
                             <Expander Header="Pessoais" IsExpanded="True" DockPanel.Dock="Top" Height="287">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">                                    
+                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">     
                                     <Components:HlpDateTimePicker   
                                         Text="{Binding currentModel.dAniversario, Mode=TwoWay,
                                         Converter={StaticResource maskConverter}, ConverterParameter=date,
@@ -351,10 +351,10 @@
                                 </WrapPanel>
                             </Expander>
                             <Expander Header="Quantidade de Horas de Trabalho" IsExpanded="True" Height="200" DockPanel.Dock="Top">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox
+                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">                                    
+                                    <Components:HlpTextBox                                        
                                         Name="txtHorasSegunda"
-                                        Text="{Binding currentModel.dQtdHorasSegunda, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                                        Text="{Binding currentModel.dQtdHorasSegunda, Mode=TwoWay,
                                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
                                         

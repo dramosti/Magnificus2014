@@ -81,6 +81,7 @@
     <Compile Include="Models\DateTimeEnumerator.cs" />
     <Compile Include="Models\EnderecoModel.cs" />
     <Compile Include="Models\FindAllModel.cs" />
+    <Compile Include="Models\HlpDatePickerModel.cs" />
     <Compile Include="Models\HlpPesquisaInsertModel.cs" />
     <Compile Include="Models\loginModel.cs" />
     <Compile Include="Models\modelBase.cs" />

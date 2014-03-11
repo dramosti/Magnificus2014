@@ -93,6 +93,9 @@
     <Compile Include="Components\HlpButtonStatus.xaml.cs">
       <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpDatePicker.xaml.cs">
+      <DependentUpon>HlpDatePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpEndereco.xaml.cs">
       <DependentUpon>HlpEndereco.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,7 @@
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />
     <Compile Include="Converters\ComboBoxDisplayConverter.cs" />
+    <Compile Include="Converters\DateShortConverter.cs" />
     <Compile Include="Converters\DateTimeTimeSpanConverter.cs" />
     <Compile Include="Converters\DateTimeToStringHourConverter.cs" />
     <Compile Include="Converters\DateTimeToStringLongConverter.cs" />
@@ -142,6 +146,7 @@
     <Compile Include="Converters\PorcentagemConverter.cs" />
     <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
+    <Compile Include="Converters\VisibilityDatePickerConverter.cs" />
     <Compile Include="Formularios\HlpPesquisaInsert.xaml.cs">
       <DependentUpon>HlpPesquisaInsert.xaml</DependentUpon>
     </Compile>
@@ -177,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpButtonStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

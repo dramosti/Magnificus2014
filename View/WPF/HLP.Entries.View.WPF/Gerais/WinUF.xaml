@@ -31,7 +31,7 @@
                     <System:String>xPais</System:String>
                 </Components:HlpPesquisa.Items>
             </Components:HlpPesquisa>
-        </WrapPanel>
+            </WrapPanel>
 	</Expander>
     </Grid>
 </runtime:WindowsBase>
