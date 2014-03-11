@@ -608,7 +608,7 @@
                                                           IsEnabled="{Binding winMan._currentTab._currentDataContext.bIsEnabled, Converter={StaticResource notConv}}"
                                                       lIdsHierarquia="{Binding winMan._currentTab._currentDataContext.lItensHierarquia}"
                                                       commButton="{Binding winMan._currentTab._currentDataContext.commandPesquisar}"   
-                                                      selectedId="{Binding winMan._currentTab._currentDataContext.selectedId}"
+                                                      selectedId="{Binding winMan._currentTab._currentDataContext.selectedId, UpdateSourceTrigger=PropertyChanged}"
                                                       MaxWidth="600"
                                                           MaxHeight="100"
                                                       ></Components:HlpNavigation>

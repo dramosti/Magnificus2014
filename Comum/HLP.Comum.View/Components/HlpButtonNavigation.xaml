@@ -15,7 +15,7 @@
     <DockPanel Height="22" Width="70" LastChildFill="True">
         <Image DockPanel.Dock="Right" Width="16" Height="16" x:Name="ImgBtnNavigation" Style="{StaticResource ImageStyleButtonNavigation}">            
         </Image>
-        <Button x:Name="btn" Style="{StaticResource ButtonStyleButtonNavigation}">             
+        <Button x:Name="btn" Style="{StaticResource ButtonStyleButtonNavigation}">           
         </Button>
     </DockPanel>
 </UserControl>

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -16,6 +17,7 @@ namespace HLP.Comum.View.Converters
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             StackPanel stk = new StackPanel();
+            int tg = 100;
 
             stk.Orientation = Orientation.Horizontal;
 
@@ -24,20 +26,25 @@ namespace HLP.Comum.View.Converters
             else if (values[0] == null)
                 return stk;
 
-            HlpButtonNavigation btn;
+            Button btn;
+            ResourceDictionary resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+            };
+
 
             foreach (int item in (values[0] as List<int>))
             {
-                btn = new HlpButtonNavigation();
+                btn = new Button();
+                btn.Content = item.ToString();
+                btn.Command = values[1] as ICommand;
+                btn.CommandParameter = btn.Content;
+                btn.Style = resource["ButtonVersao"] as Style;
+                btn.Tag = tg;
 
-                if ((values[0] as List<int>).Last() == item)
-                    btn.ImgBtnNavigation.Visibility = System.Windows.Visibility.Collapsed;
-
-                btn.xContentButton = item.ToString().PadLeft(totalWidth: 8, paddingChar: '0');
-                btn.btn.Command = values[1] as ICommand;
-                btn.btn.CommandParameter = btn.xContentButton;
                 if (item == (int)values[2])
                 {
+                    tg = 0;
                 }
 
                 stk.Children.Add(element: btn);

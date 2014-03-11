@@ -467,7 +467,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Width="100">
-                        <Path x:Name="Path" Fill="#FFC5C5C5" Data="M258.06027,212.91466 L368.16645,213.08232 382.98641,226.45662 368.99986,238.66522 258.66633,238.58156 272.87172,226.4146 z" HorizontalAlignment="Left" Height="27" Stretch="Fill" Stroke="#FFA29D9D" StrokeThickness="1" VerticalAlignment="Top" Width="100"/>
+                        <Path x:Name="Path" Fill="#FFC5C5C5" Data="M258.06027,212.91466 L368.16645,213.08232 382.98641,226.45662 368.99986,238.66522 258.66633,238.58156 272.87172,226.4146 z" HorizontalAlignment="Left" Height="22" Stretch="Fill" Stroke="#FFA29D9D" StrokeThickness="1" VerticalAlignment="Top" Width="100"/>
                         <ContentPresenter x:Name="contentPresenter" Focusable="False" TextElement.Foreground="Gray" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>

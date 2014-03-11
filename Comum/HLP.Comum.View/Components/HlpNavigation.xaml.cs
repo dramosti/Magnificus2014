@@ -44,7 +44,7 @@ namespace HLP.Comum.View.Components
         }
 
         private bool AntCanExecute()
-        {            
+        {
             return (this.scroll.HorizontalOffset > 0);
         }
 
@@ -63,7 +63,10 @@ namespace HLP.Comum.View.Components
         public int selectedId
         {
             get { return (int)GetValue(selectedIdProperty); }
-            set { SetValue(selectedIdProperty, value); }
+            set
+            {
+                SetValue(selectedIdProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for selectedId.  This enables animation, styling, binding, etc...
