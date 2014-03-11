@@ -17,7 +17,7 @@ namespace HLP.Comum.View.Converters
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             StackPanel stk = new StackPanel();
-            int tg = 100;
+            string tg = "100";
 
             stk.Orientation = Orientation.Horizontal;
 
@@ -44,7 +44,7 @@ namespace HLP.Comum.View.Converters
 
                 if (item == (int)values[2])
                 {
-                    tg = 0;
+                    tg = "0";
                 }
 
                 stk.Children.Add(element: btn);
