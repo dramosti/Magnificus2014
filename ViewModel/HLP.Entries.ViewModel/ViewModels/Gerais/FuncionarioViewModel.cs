@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Model.Models;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
@@ -26,15 +28,35 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         #endregion
 
         FamiliaProdutoService objService = new FamiliaProdutoService();
+        FuncionarioCommands comm;
 
         public FuncionarioViewModel()
         {
-            FuncionarioCommands comm = new FuncionarioCommands(objViewModel: this);
+            comm = new FuncionarioCommands(objViewModel: this);
         }
 
         public List<Familia_produtoModel> GetListaFamiliaProduto()
         {
             return this.objService.GetAll();
+        }
+
+
+        private TreeView _hierarquiaFunc;
+
+        public TreeView hierarquiaFunc
+        {
+            get { return _hierarquiaFunc; }
+            set
+            {
+                _hierarquiaFunc = value;
+                base.NotifyPropertyChanged(propertyName: "hierarquiaFunc");
+            }
+        }
+
+
+        public void GetHierarquia()
+        {
+            comm.GetHierarquiaFuncionario();
         }
     }
 }

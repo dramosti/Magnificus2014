@@ -3,6 +3,7 @@ using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using HLP.Entries.Model.Repository.Interfaces.RecursosHumanos;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,9 @@ namespace HLP.Wcf.Entries
 
         [Inject]
         public IFuncionario_Margem_Lucro_ComissaoRepository funcionario_Margem_Lucro_ComissaoRepository { get; set; }
+
+        [Inject]
+        public ICargoRepository cargo_Repository { get; set; }
 
         public wcf_Funcionario()
         {
@@ -323,6 +327,68 @@ namespace HLP.Wcf.Entries
             }
 
 
+        }
+
+        public modelToTreeView GetHierarquiaFuncionario(int idFuncionario)
+        {
+            if (idFuncionario == 0)
+                return null;
+
+            modelToTreeView nodeTemp;
+
+            HLP.Entries.Model.Models.Gerais.FuncionarioModel f = this.getFuncionario(idFuncionario: idFuncionario);
+            int? idResponsavel = f.idResponsavel;
+            modelToTreeView nodeActual = new modelToTreeView
+            {
+                id = (int)f.idFuncionario,
+                xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
+            };
+
+            while (f.idResponsavel != null)
+            {
+                f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
+
+                nodeTemp = new modelToTreeView
+                {
+                    id = (int)f.idFuncionario,
+                    xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
+                    lFilhos = new List<modelToTreeView>()
+                    {
+                        new modelToTreeView
+                        {
+                            id = nodeActual.id,
+                            xDisplay = nodeActual.xDisplay,
+                            lFilhos = nodeActual.lFilhos
+                        }
+                    }
+                };
+
+                nodeActual = nodeTemp;
+
+            }
+
+            nodeTemp = nodeActual;
+            while (nodeActual.id != idFuncionario)
+            {
+                nodeActual = nodeActual.lFilhos.FirstOrDefault();
+            }
+
+            var lFilhos = this.funcionarioRepository.GetFuncionarioFilho(idResponsavel: nodeActual.id);
+
+            if (lFilhos != null)
+            {
+                nodeActual.lFilhos = new List<modelToTreeView>();
+                foreach (var i in lFilhos)
+                {
+                    nodeActual.lFilhos.Add(
+                        item: new modelToTreeView
+                        {
+                            id = (int)i.idFuncionario,
+                            xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
+                        });
+                }
+            }
+            return nodeTemp;
         }
     }
 }

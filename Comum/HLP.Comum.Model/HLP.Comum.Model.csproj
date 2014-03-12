@@ -86,6 +86,7 @@
     <Compile Include="Models\loginModel.cs" />
     <Compile Include="Models\modelBase.cs" />
     <Compile Include="Models\modelToComboBox.cs" />
+    <Compile Include="Models\modelToTreeView.cs" />
     <Compile Include="Models\MyObservableCollection.cs" />
     <Compile Include="Models\ObservableCollectionBaseCadastros.cs" />
     <Compile Include="Models\TabPagesAtivasModel.cs" />

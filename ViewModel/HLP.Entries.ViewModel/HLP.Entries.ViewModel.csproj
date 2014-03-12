@@ -1493,6 +1493,9 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Funcionario\HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
       <SubType>Designer</SubType>

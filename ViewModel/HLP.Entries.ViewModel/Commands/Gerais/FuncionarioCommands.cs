@@ -19,7 +19,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         FuncionarioViewModel objViewModel;
-        FuncionarioService objService;        
+        FuncionarioService objService;
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
 
@@ -313,6 +313,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Inicia_Collections();
+            this.GetHierarquiaFuncionario();
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
@@ -346,6 +347,45 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         #endregion
 
+        public void GetHierarquiaFuncionario()
+        {
+            TreeView t = new TreeView();
+
+            t.Items.Add(newItem:
+                new TreeViewItem
+                {
+                    Header = "Hierarquia Funcionários"
+                });
+
+            modelToTreeView m = new modelToTreeView();
+            m = this.objService.GetHierarquia(idFuncionario: this.objViewModel.currentID);
+
+            this.MontaHierarquia(m: m, tvi: t.Items[0] as TreeViewItem);
+
+            this.objViewModel.hierarquiaFunc = t;
+        }
+
+        private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
+        {
+            if (m != null)
+            {
+                TreeViewItem i = null;
+                i = new TreeViewItem
+                {
+                    Header = m.id.ToString() + ". " + m.xDisplay
+                };
+
+                tvi.Items.Add(newItem: i);
+                if (m.lFilhos != null)
+                {                    
+
+                    foreach (modelToTreeView item in m.lFilhos)
+                    {
+                        this.MontaHierarquia(m: item, tvi: i);
+                    }
+                }
+            }
+        }
 
     }
 }

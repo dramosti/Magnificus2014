@@ -919,9 +919,7 @@
             </TabItem>
             <TabItem Header="Hierarquia">
                 <AdornerDecorator>
-                    <Grid>
-                        <TreeView HorizontalAlignment="Left" Height="424.04" VerticalAlignment="Top" Width="363"/>
-                    </Grid>
+                    <ContentControl Content="{ Binding Path=hierarquiaFunc, Mode=OneWay}"></ContentControl>
                 </AdornerDecorator>
             </TabItem>
             <Components:HlpEndereco/>

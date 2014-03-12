@@ -17,6 +17,8 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         int ValidaNomeUsuario(string xId);
         int ValidaAcesso(int idEmpresa, int idUsuario);
         FuncionarioModel ValidaUsuario(string xID, string xSenha);
+        FuncionarioModel GetFuncionarioPai(int idFuncionario);
+        List<FuncionarioModel> GetFuncionarioFilho(int idResponsavel);
         int GetIdUserHLP();
         int GetIdUserDEFAULT();
 

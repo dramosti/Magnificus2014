@@ -34,6 +34,12 @@
   <wsdl:message name="Iwcf_Funcionario_copyFuncionario_OutputMessage">
     <wsdl:part name="parameters" element="tns:copyFuncionarioResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_GetHierarquiaFuncionario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHierarquiaFuncionario" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_GetHierarquiaFuncionario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHierarquiaFuncionarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Funcionario">
     <wsdl:operation name="getFuncionario">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario/getFuncionario" message="tns:Iwcf_Funcionario_getFuncionario_InputMessage" />
@@ -50,6 +56,10 @@
     <wsdl:operation name="copyFuncionario">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario/copyFuncionario" message="tns:Iwcf_Funcionario_copyFuncionario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario/copyFuncionarioResponse" message="tns:Iwcf_Funcionario_copyFuncionario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarquiaFuncionario">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionario" message="tns:Iwcf_Funcionario_GetHierarquiaFuncionario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionarioResponse" message="tns:Iwcf_Funcionario_GetHierarquiaFuncionario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Funcionario" type="tns:Iwcf_Funcionario">
@@ -83,6 +93,15 @@
     </wsdl:operation>
     <wsdl:operation name="copyFuncionario">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario/copyFuncionario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarquiaFuncionario">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

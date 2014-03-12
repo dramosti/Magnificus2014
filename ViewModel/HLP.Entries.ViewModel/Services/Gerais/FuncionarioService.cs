@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,46 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                     }
             }
             return null;
+        }
+
+        public modelToTreeView GetHierarquia(int idFuncionario)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetHierarquiaFuncionario(idFuncionario: idFuncionario);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        modelToTreeView m = new modelToTreeView();
+
+                        this.ConvertModelWcfToModel(mWcf: this.servicoInternet.GetHierarquiaFuncionario(idFuncionario: idFuncionario),
+                            m: m);
+
+                        return m;
+                    }
+            }
+            return null;
+        }
+
+        private void ConvertModelWcfToModel(HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView mWcf, modelToTreeView m)
+        {
+            m.id = mWcf.id;
+            m.xDisplay = mWcf.xDisplay;
+
+            foreach (var item in mWcf.lFilhos)
+            {
+                m.lFilhos.Add(item:
+                    new modelToTreeView
+                    {
+                        id = item.id,
+                        xDisplay = item.xDisplay
+                    });
+
+                if (item.lFilhos.Count > 0)
+                    this.ConvertModelWcfToModel(mWcf: mWcf, m: m);
+            }
         }
     }
 }

@@ -20,6 +20,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         private DataAccessor<FuncionarioModel> regFuncionarioAccessor;
 
+        private DataAccessor<FuncionarioModel> getFuncionarioPaiAcessor;
+
+        private DataAccessor<FuncionarioModel> GetListFuncionarioFilhoAcessor;
+
         public void Save(FuncionarioModel objFuncionario)
         {
             if (objFuncionario.idFuncionario == null)
@@ -68,6 +72,30 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
 
             return regFuncionarioAccessor.Execute(idFuncionario).FirstOrDefault();
+        }
+
+        public FuncionarioModel GetFuncionarioPai(int idFuncionario)
+        {
+
+            getFuncionarioPaiAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                    "select * from Funcionario where idFuncionario = " + idFuncionario,
+                                         new Parameters(UndTrabalho.dbPrincipal),
+                                         MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status)
+                                         .Build());
+
+            return getFuncionarioPaiAcessor.Execute().FirstOrDefault();
+        }
+
+        public List<FuncionarioModel> GetFuncionarioFilho(int idResponsavel)
+        {
+
+            GetListFuncionarioFilhoAcessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                    "select * from Funcionario where idResponsavel = " + idResponsavel,
+                                         new Parameters(UndTrabalho.dbPrincipal),
+                                         MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status)
+                                         .Build());
+
+            return GetListFuncionarioFilhoAcessor.Execute().ToList();
         }
 
         public void BeginTransaction()

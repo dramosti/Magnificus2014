@@ -32,7 +32,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.wcf_Funcionario.PesquisaPadraoModelContract[] lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private HLP.Entries.ViewModel.wcf_Funcionario.statusModel statusField;
@@ -48,7 +48,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.wcf_Funcionario.PesquisaPadraoModelContract[] lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -533,6 +533,83 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario {
         OUTROS = 7,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelToTreeView", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.SerializableAttribute()]
+    public partial class modelToTreeView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView> lFilhosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xDisplayField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                if ((this.idField.Equals(value) != true)) {
+                    this.idField = value;
+                    this.RaisePropertyChanged("id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView> lFilhos {
+            get {
+                return this.lFilhosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.lFilhosField, value) != true)) {
+                    this.lFilhosField = value;
+                    this.RaisePropertyChanged("lFilhos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xDisplay {
+            get {
+                return this.xDisplayField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xDisplayField, value) != true)) {
+                    this.xDisplayField = value;
+                    this.RaisePropertyChanged("xDisplay");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Funcionario.Iwcf_Funcionario")]
     public interface Iwcf_Funcionario {
@@ -560,6 +637,12 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/copyFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/copyFuncionarioResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionarioResponse")]
+        HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView GetHierarquiaFuncionario(int idFuncionario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionario", ReplyAction="http://tempuri.org/Iwcf_Funcionario/GetHierarquiaFuncionarioResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView> GetHierarquiaFuncionarioAsync(int idFuncionario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -619,6 +702,14 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario {
         
         public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.FuncionarioModel> copyFuncionarioAsync(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario) {
             return base.Channel.copyFuncionarioAsync(objFuncionario);
+        }
+        
+        public HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView GetHierarquiaFuncionario(int idFuncionario) {
+            return base.Channel.GetHierarquiaFuncionario(idFuncionario);
+        }
+        
+        public System.Threading.Tasks.Task<HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView> GetHierarquiaFuncionarioAsync(int idFuncionario) {
+            return base.Channel.GetHierarquiaFuncionarioAsync(idFuncionario);
         }
     }
 }
