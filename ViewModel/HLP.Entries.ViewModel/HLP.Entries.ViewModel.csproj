@@ -82,6 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />

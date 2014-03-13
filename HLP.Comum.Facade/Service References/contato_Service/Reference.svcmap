@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceContato.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceContato.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceContato.xsd" MetadataType="Schema" ID="b0cd60ac-0f28-4ce0-b095-0f013d7eb8fc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceContato1.xsd" MetadataType="Schema" ID="1a8662c4-897f-45a3-a1ee-6b6d8c103b6f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceContato2.xsd" MetadataType="Schema" ID="4db5a566-ca98-405a-a665-6771c83f043f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceContato.wsdl" MetadataType="Wsdl" ID="fb9aef6a-f0bc-4829-9947-01a8aa107cf1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?wsdl" />
-    <MetadataFile FileName="serviceContato3.xsd" MetadataType="Schema" ID="89a39507-d6e9-4ed1-be1b-cadcdb3b2574" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceContato.disco" MetadataType="Disco" ID="6eb38b8c-9019-41fe-8b61-43f171ca880e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?disco" />
-    <MetadataFile FileName="serviceContato4.xsd" MetadataType="Schema" ID="d3162c23-aefe-4ea9-a218-a51a5965fe05" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceContato5.xsd" MetadataType="Schema" ID="ca549c13-38ff-430e-a9aa-4cb3ba5051a6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceContato.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceContato.xsd" MetadataType="Schema" ID="b0cd60ac-0f28-4ce0-b095-0f013d7eb8fc" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceContato1.xsd" MetadataType="Schema" ID="1a8662c4-897f-45a3-a1ee-6b6d8c103b6f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceContato2.xsd" MetadataType="Schema" ID="4db5a566-ca98-405a-a665-6771c83f043f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceContato.wsdl" MetadataType="Wsdl" ID="fb9aef6a-f0bc-4829-9947-01a8aa107cf1" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?wsdl" />
+    <MetadataFile FileName="serviceContato3.xsd" MetadataType="Schema" ID="89a39507-d6e9-4ed1-be1b-cadcdb3b2574" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceContato.disco" MetadataType="Disco" ID="6eb38b8c-9019-41fe-8b61-43f171ca880e" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?disco" />
+    <MetadataFile FileName="serviceContato4.xsd" MetadataType="Schema" ID="d3162c23-aefe-4ea9-a218-a51a5965fe05" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceContato5.xsd" MetadataType="Schema" ID="ca549c13-38ff-430e-a9aa-4cb3ba5051a6" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceContato.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -6,6 +6,7 @@ using HLP.Entries.ViewModel.Commands.Gerais;
 using HLP.Entries.ViewModel.Services.Gerais;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         FamiliaProdutoService objService = new FamiliaProdutoService();
         FuncionarioCommands comm;
-
+        public BackgroundWorker bwHierarquia;
+        public bool bTreeCarregada = true;
         public FuncionarioViewModel()
         {
             comm = new FuncionarioCommands(objViewModel: this);
@@ -41,9 +43,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
 
-        private TreeView _hierarquiaFunc;
+        private object _hierarquiaFunc;
 
-        public TreeView hierarquiaFunc
+        public object hierarquiaFunc
         {
             get { return _hierarquiaFunc; }
             set
@@ -53,10 +55,20 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
+        private modelToTreeView _lObjHierarquia;
 
-        public void GetHierarquia()
+        public modelToTreeView lObjHierarquia
         {
-            comm.GetHierarquiaFuncionario();
+            get { return _lObjHierarquia; }
+            set { _lObjHierarquia = value; }
+        }
+
+        public void MontaTreeView()
+        {
+            if (!bTreeCarregada)
+            {
+                this.comm.MontraTreeView();                
+            }
         }
     }
 }

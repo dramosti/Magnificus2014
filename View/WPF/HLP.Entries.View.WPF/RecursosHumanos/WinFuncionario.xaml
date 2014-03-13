@@ -95,17 +95,18 @@
 								Height="27" Margin="10,0,10,2" Caption="Cargo" Field="idCargo" Help="Informe o Cargo do funcionário" Table="Cargo" WidthLabel="200" TableView="vwCargo" FieldPesquisa="ID" HorizontalAlignment="Left" Width="500">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xCargo</System:String>
-                                            <System:String>xDescricao</System:String>
+                                            <System:String>xDescricao</System:String>                                            
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
                                     <Components:HlpPesquisa
-								 
+								 nameWindow="WinDepartamento"
 								Text="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,2" Caption="Departamento" Field="idDepartamento" Help="Informar o Departamento do funcionário" Table="Departamento" WidthLabel="200" FieldPesquisa="ID" TableView="vwDepartamento" HorizontalAlignment="Left" Width="500">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xDepartamento</System:String>
                                             <System:String>xDescricao</System:String>
+                                            <System:String>xSetor</System:String>
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
                                 </WrapPanel>
@@ -127,7 +128,7 @@
                                         </Components:HlpComboBox.Items>
                                     </Components:HlpComboBox>
                                     <Components:HlpPesquisa
-								
+								nameWindow="WinCalendario"
 								Text="{Binding currentModel.idCalendario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,0" Caption="Calendário" Field="idCalendário" Help="Informe um tipo de Calendário para o funcionário." Table="Calendario" WidthLabel="128" FieldPesquisa="ID" TableView="vwCalendario" HorizontalAlignment="Left" Width="433">
@@ -141,7 +142,7 @@
                             <Expander Header="Requisição de Compras" IsExpanded="True">
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0" >
                                     <Components:HlpPesquisa
-								
+								nameWindow="WinSite"
 								Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,20,10,-1" Caption="Site Padrão" Field="idSite" Help="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." Table="Site" WidthLabel="178" FieldPesquisa="ID" TableView="vwSite" Width="465">
@@ -151,7 +152,7 @@
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
                                     <Components:HlpPesquisa
-								
+								nameWindow="WinDeposito"
 								Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,10,-1" Caption="Depósito Padrão" Field="idDeposito" Help="Selecione um depósito. Quando um funcionário criar uma requisição de compra, o depósito será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra" Table="Deposito" WidthLabel="178" FieldPesquisa="ID" TableView="vwDeposito" Width="465">
@@ -232,7 +233,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,202,-1" Caption="Filhos" Field="xFilhos" Help="Informar o nome dos filhos do funcionário, quando houver." Table="Funcionario" WidthLabel="156"/>
                                     <Components:HlpPesquisa 
-									
+									nameWindow="WinContaBancaria"
 									Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									Height="27" Margin="10,0,30,-1" Caption="Conta Bancária" Field="idContaBancaria" Help="Informar a conta bancária do funcionário para eventual pagamento ou recebidos."
@@ -288,6 +289,7 @@
                         <DockPanel LastChildFill="False">
                             <Expander Header="Departamento Pessoal" IsExpanded="True" DockPanel.Dock="Top">
                                 <WrapPanel Orientation="Vertical">
+                                    
                                     <Components:HlpDateTimePicker 
 									 
 									SelectedDate="{Binding currentModel.dAdmissao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -296,7 +298,7 @@
                                     <Components:HlpTextBox 									
 									Text="{Binding currentModel.vDiaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Diária" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267"/>
+									Height="27" Margin="10,0,10,2" Caption="Diária" Field="vDiaria" Help="Informar o valor da diária do funcionário" Table="Funcionario" WidthLabel="117" HorizontalAlignment="Left" Width="267"/>                                    
                                     <Components:HlpComboBox x:Name="cbxSalario"
 									SelectedIndex="{Binding currentModel.stSalario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
@@ -339,8 +341,9 @@
                                         </Components:HlpTextBox.Style>
                                     </Components:HlpTextBox>
                                     <Components:HlpPesquisa 
-									
-									Text="{Binding currentModel.idResponsavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									nameWindow="WinFuncionario"
+									Text="{Binding currentModel.idResponsavel, Mode=TwoWay, TargetNullValue={x:Null}, FallbackValue={x:Null},
+                                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"	
 									Height="27" Margin="10,0,10,2" Caption="Responsável" Field="idResponsavel" Help="Informar o responsável pelo funcionário na empresa" Table="Funcionario" WidthLabel="117" FieldPesquisa="ID" TableView="vwFuncionario" HorizontalAlignment="Left" Width="400">
                                         <Components:HlpPesquisa.Items>
@@ -354,14 +357,13 @@
                                 <WrapPanel Orientation="Vertical" Margin="0,10,0,0">                                    
                                     <Components:HlpTextBox                                        
                                         Name="txtHorasSegunda"
-                                        Text="{Binding currentModel.dQtdHorasSegunda, Mode=TwoWay,
+                                        Text="{Binding currentModel.dQtdHorasSegunda, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-                                        
-									Height="27" Margin="10,0,10,2" Caption="Segunda-Feira" Field="nQtdHorasSegunda" Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113" HorizontalAlignment="Left" Width="200"/>
+									IsEnabled="{Binding bIsEnabled}"                                        
+									Height="27" Margin="10,0,10,2" Caption="Segunda-Feira" Field="nQtdHorasSegunda"
+                                        Help="Informar a quantidade de horas trabalhada" Table="Funcionario" WidthLabel="113" HorizontalAlignment="Left" Width="200"/>
                                     <Components:HlpTextBox
-                                        Name="txtHorasTerca"
-									
+                                        Name="txtHorasTerca"									
 									Text="{Binding currentModel.dQtdHorasTerca, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
@@ -917,7 +919,7 @@
 
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Hierarquia">
+            <TabItem Header="Hierarquia" GotFocus="TabItem_GotFocus">
                 <AdornerDecorator>
                     <ContentControl Content="{ Binding Path=hierarquiaFunc, Mode=OneWay}"></ContentControl>
                 </AdornerDecorator>

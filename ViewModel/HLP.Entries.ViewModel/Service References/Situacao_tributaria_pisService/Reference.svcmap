@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceSituacao_tributaria_pis.xsd" MetadataType="Schema" ID="8e2d87f6-cb39-4d14-8f2e-dbd4e4140078" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis1.xsd" MetadataType="Schema" ID="c5da81c1-92c7-4fa8-ad58-389fb3713fbb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis.disco" MetadataType="Disco" ID="37c0bd37-0af3-44a7-b2db-a8571230ebee" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?disco" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis2.xsd" MetadataType="Schema" ID="972dfedd-142c-41e9-a6b6-2bced88a893c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis3.xsd" MetadataType="Schema" ID="496069aa-0197-472c-852e-5ed79ccc94fc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis.wsdl" MetadataType="Wsdl" ID="d6abf5c5-cbf3-45e5-b9e4-ec875861a931" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?wsdl" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis4.xsd" MetadataType="Schema" ID="99bba2c4-fe2f-4ee1-ba8f-4473b943101b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceSituacao_tributaria_pis5.xsd" MetadataType="Schema" ID="57884bfd-5d91-4f70-a882-475f09ef7452" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis.xsd" MetadataType="Schema" ID="8e2d87f6-cb39-4d14-8f2e-dbd4e4140078" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis1.xsd" MetadataType="Schema" ID="c5da81c1-92c7-4fa8-ad58-389fb3713fbb" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis.disco" MetadataType="Disco" ID="37c0bd37-0af3-44a7-b2db-a8571230ebee" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?disco" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis2.xsd" MetadataType="Schema" ID="972dfedd-142c-41e9-a6b6-2bced88a893c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis3.xsd" MetadataType="Schema" ID="496069aa-0197-472c-852e-5ed79ccc94fc" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis.wsdl" MetadataType="Wsdl" ID="d6abf5c5-cbf3-45e5-b9e4-ec875861a931" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?wsdl" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis4.xsd" MetadataType="Schema" ID="99bba2c4-fe2f-4ee1-ba8f-4473b943101b" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceSituacao_tributaria_pis5.xsd" MetadataType="Schema" ID="57884bfd-5d91-4f70-a882-475f09ef7452" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSituacao_tributaria_pis.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

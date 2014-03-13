@@ -21,17 +21,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceFabricante.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceFabricante.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceFabricante.xsd" MetadataType="Schema" ID="4facbaba-a3df-49ea-aeb3-492611146e43" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceFabricante.disco" MetadataType="Disco" ID="5abb9308-7b46-43b5-b5ac-eeac600e10b0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?disco" />
-    <MetadataFile FileName="serviceFabricante1.xsd" MetadataType="Schema" ID="bae4af8b-92f3-444d-b9b1-4bcec81691c7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceFabricante2.xsd" MetadataType="Schema" ID="6061ca7d-e495-4a62-b28c-b6e5175d2c9a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceFabricante.wsdl" MetadataType="Wsdl" ID="f104ccdd-8d8d-495b-b519-b451c3570864" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?wsdl" />
-    <MetadataFile FileName="serviceFabricante3.xsd" MetadataType="Schema" ID="18b86f2e-e13f-42cf-8aee-5dac205bc1b1" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceFabricante4.xsd" MetadataType="Schema" ID="6b7945cc-42cf-4153-bd5b-3d9b79270cc5" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceFabricante5.xsd" MetadataType="Schema" ID="8261a092-1b34-492c-85c4-7545297ffc23" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFabricante.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceFabricante.xsd" MetadataType="Schema" ID="4facbaba-a3df-49ea-aeb3-492611146e43" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceFabricante.disco" MetadataType="Disco" ID="5abb9308-7b46-43b5-b5ac-eeac600e10b0" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?disco" />
+    <MetadataFile FileName="serviceFabricante1.xsd" MetadataType="Schema" ID="bae4af8b-92f3-444d-b9b1-4bcec81691c7" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceFabricante2.xsd" MetadataType="Schema" ID="6061ca7d-e495-4a62-b28c-b6e5175d2c9a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceFabricante.wsdl" MetadataType="Wsdl" ID="f104ccdd-8d8d-495b-b519-b451c3570864" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?wsdl" />
+    <MetadataFile FileName="serviceFabricante3.xsd" MetadataType="Schema" ID="18b86f2e-e13f-42cf-8aee-5dac205bc1b1" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceFabricante4.xsd" MetadataType="Schema" ID="6b7945cc-42cf-4153-bd5b-3d9b79270cc5" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceFabricante5.xsd" MetadataType="Schema" ID="8261a092-1b34-492c-85c4-7545297ffc23" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFabricante.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

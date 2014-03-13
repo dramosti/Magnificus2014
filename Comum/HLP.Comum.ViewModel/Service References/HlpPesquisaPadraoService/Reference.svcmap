@@ -21,15 +21,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="servicePesquisaPadrao.wsdl" MetadataType="Wsdl" ID="80d2e700-391f-4853-9271-3516e23a7edb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc?wsdl" />
-    <MetadataFile FileName="servicePesquisaPadrao.disco" MetadataType="Disco" ID="527e2a6e-2cdd-445b-b616-42be198c792e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc?disco" />
-    <MetadataFile FileName="servicePesquisaPadrao.xsd" MetadataType="Schema" ID="d4b38b3c-4a2d-4cfd-929c-5a210ec1000d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc?xsd=xsd2" />
-    <MetadataFile FileName="servicePesquisaPadrao1.xsd" MetadataType="Schema" ID="d677cf04-2f38-4ee2-84c7-a92bc9d4e853" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc?xsd=xsd1" />
-    <MetadataFile FileName="servicePesquisaPadrao2.xsd" MetadataType="Schema" ID="3ef4aec8-395e-4a8b-997d-33b622f41bf8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc?xsd=xsd3" />
-    <MetadataFile FileName="servicePesquisaPadrao3.xsd" MetadataType="Schema" ID="a7320041-e177-4f5f-b18c-e4c12af02634" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaPadrao.svc?xsd=xsd0" />
+    <MetadataFile FileName="servicePesquisaPadrao.wsdl" MetadataType="Wsdl" ID="80d2e700-391f-4853-9271-3516e23a7edb" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc?wsdl" />
+    <MetadataFile FileName="servicePesquisaPadrao.disco" MetadataType="Disco" ID="527e2a6e-2cdd-445b-b616-42be198c792e" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc?disco" />
+    <MetadataFile FileName="servicePesquisaPadrao.xsd" MetadataType="Schema" ID="d4b38b3c-4a2d-4cfd-929c-5a210ec1000d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc?xsd=xsd2" />
+    <MetadataFile FileName="servicePesquisaPadrao1.xsd" MetadataType="Schema" ID="d677cf04-2f38-4ee2-84c7-a92bc9d4e853" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc?xsd=xsd1" />
+    <MetadataFile FileName="servicePesquisaPadrao2.xsd" MetadataType="Schema" ID="3ef4aec8-395e-4a8b-997d-33b622f41bf8" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc?xsd=xsd3" />
+    <MetadataFile FileName="servicePesquisaPadrao3.xsd" MetadataType="Schema" ID="a7320041-e177-4f5f-b18c-e4c12af02634" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaPadrao.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

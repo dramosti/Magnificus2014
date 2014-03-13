@@ -72,8 +72,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
 
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)
         {
-            this.ViewModel.GetHierarquia();
+            this.ViewModel.MontaTreeView();
         }
-
     }
 }

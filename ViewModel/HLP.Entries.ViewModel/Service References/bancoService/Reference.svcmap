@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceBanco.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceBanco.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceBanco.xsd" MetadataType="Schema" ID="9a5b0753-7d3d-4361-8e08-61af64c3744c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceBanco1.xsd" MetadataType="Schema" ID="7fa8fd94-d613-46f3-9dc3-673d6fcec2c3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceBanco2.xsd" MetadataType="Schema" ID="d35ab320-006f-4cf7-9382-e67c8826e264" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceBanco.wsdl" MetadataType="Wsdl" ID="7a9acfad-7e0b-4fc3-8dd2-a9b958924e8d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?wsdl" />
-    <MetadataFile FileName="serviceBanco.disco" MetadataType="Disco" ID="f9cf6d24-c03a-4a2a-aa5c-748be43fc39f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?disco" />
-    <MetadataFile FileName="serviceBanco3.xsd" MetadataType="Schema" ID="f1a3fef3-16c2-405b-ab9b-e76dee9e4470" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceBanco4.xsd" MetadataType="Schema" ID="b670e87f-bc56-44fe-8265-0d56147e8037" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceBanco5.xsd" MetadataType="Schema" ID="c57be509-a52c-4efb-a173-8a24013f5e1e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceBanco.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceBanco.xsd" MetadataType="Schema" ID="9a5b0753-7d3d-4361-8e08-61af64c3744c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceBanco1.xsd" MetadataType="Schema" ID="7fa8fd94-d613-46f3-9dc3-673d6fcec2c3" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceBanco2.xsd" MetadataType="Schema" ID="d35ab320-006f-4cf7-9382-e67c8826e264" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceBanco.wsdl" MetadataType="Wsdl" ID="7a9acfad-7e0b-4fc3-8dd2-a9b958924e8d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?wsdl" />
+    <MetadataFile FileName="serviceBanco.disco" MetadataType="Disco" ID="f9cf6d24-c03a-4a2a-aa5c-748be43fc39f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?disco" />
+    <MetadataFile FileName="serviceBanco3.xsd" MetadataType="Schema" ID="f1a3fef3-16c2-405b-ab9b-e76dee9e4470" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceBanco4.xsd" MetadataType="Schema" ID="b670e87f-bc56-44fe-8265-0d56147e8037" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceBanco5.xsd" MetadataType="Schema" ID="c57be509-a52c-4efb-a173-8a24013f5e1e" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceBanco.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

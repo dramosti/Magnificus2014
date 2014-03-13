@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IserviceAcesso" contract="AcessoFuncionarioService.IserviceAcesso" bindingType="basicHttpBinding" address="http://192.168.9.33:8080/wcf/serviceAcesso.svc" bindingConfiguration="BasicHttpBinding_IserviceAcesso">
+    <endpoint name="BasicHttpBinding_IserviceAcesso" contract="AcessoFuncionarioService.IserviceAcesso" bindingType="basicHttpBinding" address="http://192.168.9.33:8081/wcf/serviceAcesso.svc" bindingConfiguration="BasicHttpBinding_IserviceAcesso">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.9.33:8080/wcf/serviceAcesso.svc</serializedValue>
+          <serializedValue>http://192.168.9.33:8081/wcf/serviceAcesso.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

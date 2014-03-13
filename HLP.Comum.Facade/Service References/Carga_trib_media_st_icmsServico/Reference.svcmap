@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms.xsd" MetadataType="Schema" ID="acfe4bde-4638-41c1-9995-376df34ff416" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms1.xsd" MetadataType="Schema" ID="fbbd94cd-018e-42bf-9ae4-7b4fb016391f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms2.xsd" MetadataType="Schema" ID="1356d134-b5fd-4e56-bd20-71a7cb6fdb24" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms.wsdl" MetadataType="Wsdl" ID="f258514d-899c-41d8-8805-40d2f2e715cd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?wsdl" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms.disco" MetadataType="Disco" ID="9034615e-e05e-4307-aab6-06dc49e0ded6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?disco" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms3.xsd" MetadataType="Schema" ID="139c4ac0-d390-4272-8a11-2aa6c3f794e5" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms4.xsd" MetadataType="Schema" ID="1295a745-dd52-4b1a-9e51-6869083f2dcb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceCarga_trib_media_st_icms5.xsd" MetadataType="Schema" ID="e4ab3f2e-3f0b-4ec8-8099-09009f0dd977" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms.xsd" MetadataType="Schema" ID="acfe4bde-4638-41c1-9995-376df34ff416" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms1.xsd" MetadataType="Schema" ID="fbbd94cd-018e-42bf-9ae4-7b4fb016391f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms2.xsd" MetadataType="Schema" ID="1356d134-b5fd-4e56-bd20-71a7cb6fdb24" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms.wsdl" MetadataType="Wsdl" ID="f258514d-899c-41d8-8805-40d2f2e715cd" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?wsdl" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms.disco" MetadataType="Disco" ID="9034615e-e05e-4307-aab6-06dc49e0ded6" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?disco" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms3.xsd" MetadataType="Schema" ID="139c4ac0-d390-4272-8a11-2aa6c3f794e5" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms4.xsd" MetadataType="Schema" ID="1295a745-dd52-4b1a-9e51-6869083f2dcb" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceCarga_trib_media_st_icms5.xsd" MetadataType="Schema" ID="e4ab3f2e-3f0b-4ec8-8099-09009f0dd977" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCarga_trib_media_st_icms.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

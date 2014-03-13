@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceMulta.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceMulta.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceMulta.disco" MetadataType="Disco" ID="c012eee2-c756-4a37-a253-af37540d490f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?disco" />
-    <MetadataFile FileName="serviceMulta.xsd" MetadataType="Schema" ID="e279e7eb-f91d-4168-aaa9-82294e761bca" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceMulta.wsdl" MetadataType="Wsdl" ID="175d6631-02b9-4476-b068-bfbf02fe430b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?wsdl" />
-    <MetadataFile FileName="serviceMulta1.xsd" MetadataType="Schema" ID="5e5af0b4-6a91-457d-b0e7-156db7cfc9eb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceMulta2.xsd" MetadataType="Schema" ID="ce951d76-9784-4af5-b3f1-533fdcd4b324" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceMulta3.xsd" MetadataType="Schema" ID="591243d8-62c8-4b92-8288-01df8aa3b5c2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceMulta4.xsd" MetadataType="Schema" ID="d5eca80a-01f3-4c5c-8cd1-dc550b48a00c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceMulta5.xsd" MetadataType="Schema" ID="848d635e-2c5e-4459-9ce4-c786e4fa3771" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceMulta.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceMulta.disco" MetadataType="Disco" ID="c012eee2-c756-4a37-a253-af37540d490f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?disco" />
+    <MetadataFile FileName="serviceMulta.xsd" MetadataType="Schema" ID="e279e7eb-f91d-4168-aaa9-82294e761bca" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceMulta.wsdl" MetadataType="Wsdl" ID="175d6631-02b9-4476-b068-bfbf02fe430b" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?wsdl" />
+    <MetadataFile FileName="serviceMulta1.xsd" MetadataType="Schema" ID="5e5af0b4-6a91-457d-b0e7-156db7cfc9eb" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceMulta2.xsd" MetadataType="Schema" ID="ce951d76-9784-4af5-b3f1-533fdcd4b324" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceMulta3.xsd" MetadataType="Schema" ID="591243d8-62c8-4b92-8288-01df8aa3b5c2" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceMulta4.xsd" MetadataType="Schema" ID="d5eca80a-01f3-4c5c-8cd1-dc550b48a00c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceMulta5.xsd" MetadataType="Schema" ID="848d635e-2c5e-4459-9ce4-c786e4fa3771" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceMulta.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

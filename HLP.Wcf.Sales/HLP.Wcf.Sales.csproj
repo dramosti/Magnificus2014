@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Sales_Wcf.pubxml" />
+    <None Include="Properties\PublishProfiles\Sales_wcf050.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

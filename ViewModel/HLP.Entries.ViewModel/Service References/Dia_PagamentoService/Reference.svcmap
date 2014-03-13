@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceDiaPagamento.xsd" MetadataType="Schema" ID="3667a48c-138d-4c68-9877-08cde61ec10a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceDiaPagamento.wsdl" MetadataType="Wsdl" ID="477a33bd-4c25-4155-bb5b-e56d8588f647" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?wsdl" />
-    <MetadataFile FileName="serviceDiaPagamento1.xsd" MetadataType="Schema" ID="9f069ee5-ce75-4ce4-be1c-5a54bebebdd2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceDiaPagamento.disco" MetadataType="Disco" ID="3497a9d8-6e61-4c2e-a2c5-45c8507d7b25" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?disco" />
-    <MetadataFile FileName="serviceDiaPagamento2.xsd" MetadataType="Schema" ID="13f899b4-7bae-42ea-9a8d-183e2edfa05c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceDiaPagamento3.xsd" MetadataType="Schema" ID="bb4b6d42-bac5-4691-9cfc-c2d0093028bc" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceDiaPagamento4.xsd" MetadataType="Schema" ID="771fcee3-ec82-47c6-a536-990d31fcc218" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceDiaPagamento5.xsd" MetadataType="Schema" ID="0f2e4979-e184-468a-b749-10aa8cb86c2b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceDiaPagamento.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceDiaPagamento.xsd" MetadataType="Schema" ID="3667a48c-138d-4c68-9877-08cde61ec10a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceDiaPagamento.wsdl" MetadataType="Wsdl" ID="477a33bd-4c25-4155-bb5b-e56d8588f647" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?wsdl" />
+    <MetadataFile FileName="serviceDiaPagamento1.xsd" MetadataType="Schema" ID="9f069ee5-ce75-4ce4-be1c-5a54bebebdd2" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceDiaPagamento.disco" MetadataType="Disco" ID="3497a9d8-6e61-4c2e-a2c5-45c8507d7b25" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?disco" />
+    <MetadataFile FileName="serviceDiaPagamento2.xsd" MetadataType="Schema" ID="13f899b4-7bae-42ea-9a8d-183e2edfa05c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceDiaPagamento3.xsd" MetadataType="Schema" ID="bb4b6d42-bac5-4691-9cfc-c2d0093028bc" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceDiaPagamento4.xsd" MetadataType="Schema" ID="771fcee3-ec82-47c6-a536-990d31fcc218" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceDiaPagamento5.xsd" MetadataType="Schema" ID="0f2e4979-e184-468a-b749-10aa8cb86c2b" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd5" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -23,14 +23,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceFillComboBox.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceFillComboBox.xsd" MetadataType="Schema" ID="459939d5-1c87-4c03-8244-b47d28321901" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceFillComboBox.wsdl" MetadataType="Wsdl" ID="945ea57c-7a8e-496a-af69-383e5fa62c5a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?wsdl" />
-    <MetadataFile FileName="serviceFillComboBox1.xsd" MetadataType="Schema" ID="7fd2efdf-3262-4a02-9884-9d061ba2280f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceFillComboBox.disco" MetadataType="Disco" ID="35ea1460-0b99-4355-8d5a-e7c9c293ca4d" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?disco" />
-    <MetadataFile FileName="serviceFillComboBox2.xsd" MetadataType="Schema" ID="c75da727-f084-4bb5-b5a8-cd8d94e02b9a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFillComboBox.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceFillComboBox.xsd" MetadataType="Schema" ID="459939d5-1c87-4c03-8244-b47d28321901" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFillComboBox.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceFillComboBox.wsdl" MetadataType="Wsdl" ID="945ea57c-7a8e-496a-af69-383e5fa62c5a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFillComboBox.svc?wsdl" />
+    <MetadataFile FileName="serviceFillComboBox1.xsd" MetadataType="Schema" ID="7fd2efdf-3262-4a02-9884-9d061ba2280f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFillComboBox.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceFillComboBox.disco" MetadataType="Disco" ID="35ea1460-0b99-4355-8d5a-e7c9c293ca4d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFillComboBox.svc?disco" />
+    <MetadataFile FileName="serviceFillComboBox2.xsd" MetadataType="Schema" ID="c75da727-f084-4bb5-b5a8-cd8d94e02b9a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFillComboBox.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

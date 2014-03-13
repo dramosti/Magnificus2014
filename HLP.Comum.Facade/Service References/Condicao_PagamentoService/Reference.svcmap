@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceCondicao_Pagamento.wsdl" MetadataType="Wsdl" ID="b1c234a1-aa91-4eab-9b40-57654904abe6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?wsdl" />
-    <MetadataFile FileName="serviceCondicao_Pagamento.xsd" MetadataType="Schema" ID="107234f7-200d-4f70-919f-bcaf98c89b00" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceCondicao_Pagamento1.xsd" MetadataType="Schema" ID="028a90aa-2ded-4b54-8573-d7881b8e6303" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceCondicao_Pagamento2.xsd" MetadataType="Schema" ID="c48ce0c4-b1d7-4a01-8f5d-29dde3196d78" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceCondicao_Pagamento3.xsd" MetadataType="Schema" ID="92c4a3bb-7b91-4195-b280-e6c3ce2e3798" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceCondicao_Pagamento4.xsd" MetadataType="Schema" ID="ebb4f2b9-521f-484e-8c8f-4984d2c26044" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceCondicao_Pagamento5.xsd" MetadataType="Schema" ID="cdc9ae7a-f688-4e6b-9f87-395af019377c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceCondicao_Pagamento.disco" MetadataType="Disco" ID="de8c12e3-425b-4a85-9073-32262d42ae54" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc?disco" />
+    <MetadataFile FileName="serviceCondicao_Pagamento.wsdl" MetadataType="Wsdl" ID="b1c234a1-aa91-4eab-9b40-57654904abe6" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?wsdl" />
+    <MetadataFile FileName="serviceCondicao_Pagamento.xsd" MetadataType="Schema" ID="107234f7-200d-4f70-919f-bcaf98c89b00" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceCondicao_Pagamento1.xsd" MetadataType="Schema" ID="028a90aa-2ded-4b54-8573-d7881b8e6303" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCondicao_Pagamento2.xsd" MetadataType="Schema" ID="c48ce0c4-b1d7-4a01-8f5d-29dde3196d78" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceCondicao_Pagamento3.xsd" MetadataType="Schema" ID="92c4a3bb-7b91-4195-b280-e6c3ce2e3798" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceCondicao_Pagamento4.xsd" MetadataType="Schema" ID="ebb4f2b9-521f-484e-8c8f-4984d2c26044" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceCondicao_Pagamento5.xsd" MetadataType="Schema" ID="cdc9ae7a-f688-4e6b-9f87-395af019377c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceCondicao_Pagamento.disco" MetadataType="Disco" ID="de8c12e3-425b-4a85-9073-32262d42ae54" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         BackgroundWorker bWorkerAcoes;
         FuncionarioViewModel objViewModel;
         FuncionarioService objService;
+        bool bOpCancelada = false;
         public FuncionarioCommands(FuncionarioViewModel objViewModel)
         {
 
@@ -50,6 +52,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
             this.objService = new FuncionarioService();
+
+            this.objViewModel.bwHierarquia = new BackgroundWorker();
+            this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
         }
 
 
@@ -208,6 +215,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Novo(object _panel)
         {
+            if (this.objViewModel.bwHierarquia != null)
+                if (this.objViewModel.bwHierarquia.IsBusy)
+                    this.objViewModel.bwHierarquia.CancelAsync();
+
             this.objViewModel.currentModel = new FuncionarioModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
             bWorkerAcoes = new BackgroundWorker();
@@ -304,6 +315,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void PesquisarRegistro()
         {
+            if (this.objViewModel.bwHierarquia != null)
+                if (this.objViewModel.bwHierarquia.IsBusy)
+                {
+                    this.bOpCancelada = true;
+                }
+
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
@@ -313,7 +330,73 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.Inicia_Collections();
-            this.GetHierarquiaFuncionario();
+            this.objViewModel.bTreeCarregada = false;
+        }
+
+        public void MontraTreeView()
+        {
+            TreeView t = new TreeView();
+            t.Items.Add(newItem:
+            new TreeViewItem
+            {
+                Header = "Hierarquia Funcionários"
+            });
+
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "Carregando Hierarquia...";
+
+            this.objViewModel.hierarquiaFunc = txt;
+
+            if (this.bOpCancelada)
+            {
+                txt.Text = "Cancelando carregamento de Hierarquia anterior, por favor, aguarde...";
+                this.objViewModel.hierarquiaFunc = txt;
+            }
+            else
+            {
+                this.objViewModel.bwHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bTreeCarregada = true;
+            }
+        }
+
+        void bwHierarquia_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                if (this.bOpCancelada)
+                {                    
+                    this.bOpCancelada = false;
+                    this.MontraTreeView();
+                }
+                else
+                {
+                    this.objViewModel.hierarquiaFunc = (TreeView)e.Result;
+                }
+            }
+        }
+
+        void bwHierarquia_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (!this.bOpCancelada)
+                    this.GetHierarquiaFuncionario();
+                if (!this.bOpCancelada)
+                {
+                    MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                        tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
+                    e.Result = e.Argument;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
@@ -349,20 +432,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void GetHierarquiaFuncionario()
         {
-            TreeView t = new TreeView();
-
-            t.Items.Add(newItem:
-                new TreeViewItem
-                {
-                    Header = "Hierarquia Funcionários"
-                });
-
-            modelToTreeView m = new modelToTreeView();
-            m = this.objService.GetHierarquia(idFuncionario: this.objViewModel.currentID);
-
-            this.MontaHierarquia(m: m, tvi: t.Items[0] as TreeViewItem);
-
-            this.objViewModel.hierarquiaFunc = t;
+            this.objViewModel.lObjHierarquia = new modelToTreeView();
+            this.objViewModel.lObjHierarquia = this.objService.GetHierarquia(idFuncionario: this.objViewModel.currentID);
         }
 
         private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
@@ -370,20 +441,24 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             if (m != null)
             {
                 TreeViewItem i = null;
-                i = new TreeViewItem
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    Header = m.id.ToString() + ". " + m.xDisplay
-                };
-
-                tvi.Items.Add(newItem: i);
-                if (m.lFilhos != null)
-                {                    
-
-                    foreach (modelToTreeView item in m.lFilhos)
+                    i = new TreeViewItem
                     {
-                        this.MontaHierarquia(m: item, tvi: i);
+                        Header = m.id.ToString() + ". " + m.xDisplay
+                    };
+
+                    tvi.Items.Add(newItem: i);
+                    if (m.lFilhos != null)
+                    {
+
+                        foreach (modelToTreeView item in m.lFilhos)
+                        {
+                            this.MontaHierarquia(m: item, tvi: i);
+                        }
                     }
-                }
+                }));
+
             }
         }
 

@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IserviceSite" contract="siteService.IserviceSite" bindingType="basicHttpBinding" address="http://192.168.9.33:8080/wcf/serviceSite.svc" bindingConfiguration="BasicHttpBinding_IserviceSite">
+    <endpoint name="BasicHttpBinding_IserviceSite" contract="siteService.IserviceSite" bindingType="basicHttpBinding" address="http://192.168.9.33:8081/wcf/serviceSite.svc" bindingConfiguration="BasicHttpBinding_IserviceSite">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.9.33:8080/wcf/serviceSite.svc</serializedValue>
+          <serializedValue>http://192.168.9.33:8081/wcf/serviceSite.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

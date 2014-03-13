@@ -19,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida.wsdl" MetadataType="Wsdl" ID="952b1269-21ce-4cf4-bdc5-670b3014781e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?wsdl" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida.xsd" MetadataType="Schema" ID="62ab80c7-b0ef-4833-8a80-f0c539a6a1df" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida1.xsd" MetadataType="Schema" ID="d858438e-b792-4117-8d50-efc7828ce39a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida2.xsd" MetadataType="Schema" ID="f444ec30-9cdd-4be0-9720-fecbc68aabe6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida.disco" MetadataType="Disco" ID="5e075da6-5d12-4c40-a9ed-929b53de8210" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?disco" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida3.xsd" MetadataType="Schema" ID="989c8975-5a5b-41f8-b0c8-c6835ddcfdda" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida4.xsd" MetadataType="Schema" ID="13cf2b96-c7f8-473e-9c8b-f10447966ec6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida5.xsd" MetadataType="Schema" ID="3b56d206-4eca-4a3e-801e-de1fcb800838" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida.wsdl" MetadataType="Wsdl" ID="952b1269-21ce-4cf4-bdc5-670b3014781e" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?wsdl" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida.xsd" MetadataType="Schema" ID="62ab80c7-b0ef-4833-8a80-f0c539a6a1df" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida1.xsd" MetadataType="Schema" ID="d858438e-b792-4117-8d50-efc7828ce39a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida2.xsd" MetadataType="Schema" ID="f444ec30-9cdd-4be0-9720-fecbc68aabe6" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida.disco" MetadataType="Disco" ID="5e075da6-5d12-4c40-a9ed-929b53de8210" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?disco" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida3.xsd" MetadataType="Schema" ID="989c8975-5a5b-41f8-b0c8-c6835ddcfdda" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida4.xsd" MetadataType="Schema" ID="13cf2b96-c7f8-473e-9c8b-f10447966ec6" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTipo_documento_Operacao_Valida5.xsd" MetadataType="Schema" ID="3b56d206-4eca-4a3e-801e-de1fcb800838" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento_Operacao_Valida.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

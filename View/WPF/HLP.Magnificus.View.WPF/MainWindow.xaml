@@ -16,7 +16,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>            
             <conv:NotConverter x:Key="notConv"></conv:NotConverter>
             <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>

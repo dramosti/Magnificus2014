@@ -22,17 +22,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipoServico.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceTipoServico.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceTipoServico.disco" MetadataType="Disco" ID="7690ae28-4fc9-419e-9d2b-46c266caf590" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?disco" />
-    <MetadataFile FileName="serviceTipoServico3.xsd" MetadataType="Schema" ID="64c6d7c6-0fb6-4e54-8590-2ec09b491afb" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceTipoServico.wsdl" MetadataType="Wsdl" ID="ec6ec858-11e4-43e6-a734-a23db1816f85" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?wsdl" />
-    <MetadataFile FileName="serviceTipoServico1.xsd" MetadataType="Schema" ID="f65d0e8f-e7be-461b-b879-a33c622b9585" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceTipoServico2.xsd" MetadataType="Schema" ID="6f666f4a-4f49-4136-9bd4-43d70267a097" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceTipoServico31.xsd" MetadataType="Schema" ID="bbf1fc22-7d29-43f0-81e6-8bc7c98e9f7f" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceTipoServico.xsd" MetadataType="Schema" ID="f91c4e11-f657-4136-9123-d4b213c150bd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceTipoServico32.xsd" MetadataType="Schema" ID="f4183c20-3a80-4be4-8103-312f758cb046" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipoServico.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTipoServico.disco" MetadataType="Disco" ID="7690ae28-4fc9-419e-9d2b-46c266caf590" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?disco" />
+    <MetadataFile FileName="serviceTipoServico3.xsd" MetadataType="Schema" ID="64c6d7c6-0fb6-4e54-8590-2ec09b491afb" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceTipoServico.wsdl" MetadataType="Wsdl" ID="ec6ec858-11e4-43e6-a734-a23db1816f85" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?wsdl" />
+    <MetadataFile FileName="serviceTipoServico1.xsd" MetadataType="Schema" ID="f65d0e8f-e7be-461b-b879-a33c622b9585" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipoServico2.xsd" MetadataType="Schema" ID="6f666f4a-4f49-4136-9bd4-43d70267a097" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTipoServico31.xsd" MetadataType="Schema" ID="bbf1fc22-7d29-43f0-81e6-8bc7c98e9f7f" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceTipoServico.xsd" MetadataType="Schema" ID="f91c4e11-f657-4136-9123-d4b213c150bd" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTipoServico32.xsd" MetadataType="Schema" ID="f4183c20-3a80-4be4-8103-312f758cb046" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipoServico.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

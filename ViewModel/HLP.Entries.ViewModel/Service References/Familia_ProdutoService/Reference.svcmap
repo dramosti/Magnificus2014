@@ -24,17 +24,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceFamiliaProduto.xsd" MetadataType="Schema" ID="488b824c-6fa2-4ae2-911c-31ef855a0162" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceFamiliaProduto.wsdl" MetadataType="Wsdl" ID="e4e76ead-de11-448f-9e3d-8b0569153a76" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?wsdl" />
-    <MetadataFile FileName="serviceFamiliaProduto1.xsd" MetadataType="Schema" ID="7cc66e20-da5a-4b6e-bf6e-db765c9b1f9c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceFamiliaProduto2.xsd" MetadataType="Schema" ID="dff10c58-c650-429a-afb4-2fce7504f0a4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceFamiliaProduto.disco" MetadataType="Disco" ID="5ed5bb81-b6b2-4e6b-a71c-03c961ddb982" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?disco" />
-    <MetadataFile FileName="serviceFamiliaProduto3.xsd" MetadataType="Schema" ID="48ce5758-4a1e-4350-ade5-88500ffab690" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceFamiliaProduto4.xsd" MetadataType="Schema" ID="f429b6c2-7f77-4b45-9c0a-22bca68cb915" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceFamiliaProduto5.xsd" MetadataType="Schema" ID="c972b94a-b5a2-4ca5-b426-e1853242ba34" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceFamiliaProduto.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceFamiliaProduto.xsd" MetadataType="Schema" ID="488b824c-6fa2-4ae2-911c-31ef855a0162" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceFamiliaProduto.wsdl" MetadataType="Wsdl" ID="e4e76ead-de11-448f-9e3d-8b0569153a76" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?wsdl" />
+    <MetadataFile FileName="serviceFamiliaProduto1.xsd" MetadataType="Schema" ID="7cc66e20-da5a-4b6e-bf6e-db765c9b1f9c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceFamiliaProduto2.xsd" MetadataType="Schema" ID="dff10c58-c650-429a-afb4-2fce7504f0a4" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceFamiliaProduto.disco" MetadataType="Disco" ID="5ed5bb81-b6b2-4e6b-a71c-03c961ddb982" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?disco" />
+    <MetadataFile FileName="serviceFamiliaProduto3.xsd" MetadataType="Schema" ID="48ce5758-4a1e-4350-ade5-88500ffab690" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceFamiliaProduto4.xsd" MetadataType="Schema" ID="f429b6c2-7f77-4b45-9c0a-22bca68cb915" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceFamiliaProduto5.xsd" MetadataType="Schema" ID="c972b94a-b5a2-4ca5-b426-e1853242ba34" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceFamiliaProduto.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

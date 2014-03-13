@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
@@ -33,8 +34,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         {
             Lista_PrecoCommands comm = new Lista_PrecoCommands(
                 objViewModel: this);
+
+            Button btnAtribuicaoColetiva = new Button();
+            btnAtribuicaoColetiva.Content = "Atribuição Coletiva";
+            btnAtribuicaoColetiva.Command = this.AtribuicaoColetivaCommand;
+            btnAtribuicaoColetiva.CommandParameter = "WinAtribuicaoColetivaListaPreco";
+            this.Botoes.Children.Add(element: btnAtribuicaoColetiva);
         }
 
-       
+
     }
 }

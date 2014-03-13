@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IserviceCondicao_Pagamento" contract="Condicao_PagamentoService.IserviceCondicao_Pagamento" bindingType="basicHttpBinding" address="http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc" bindingConfiguration="BasicHttpBinding_IserviceCondicao_Pagamento">
+    <endpoint name="BasicHttpBinding_IserviceCondicao_Pagamento" contract="Condicao_PagamentoService.IserviceCondicao_Pagamento" bindingType="basicHttpBinding" address="http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc" bindingConfiguration="BasicHttpBinding_IserviceCondicao_Pagamento">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.9.33:8080/wcf/serviceCondicao_Pagamento.svc</serializedValue>
+          <serializedValue>http://192.168.9.33:8081/wcf/serviceCondicao_Pagamento.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

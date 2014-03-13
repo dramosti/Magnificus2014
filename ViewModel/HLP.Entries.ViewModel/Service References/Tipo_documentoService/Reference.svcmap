@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceTipo_documento.xsd" MetadataType="Schema" ID="bd8a9dd9-1d4f-4e6f-bca3-29cba1dd7e9b" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceTipo_documento1.xsd" MetadataType="Schema" ID="869fb9a0-0b95-47dd-a729-46d4baa2aeda" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceTipo_documento2.xsd" MetadataType="Schema" ID="0b9a5617-193c-4b79-9ada-5d0725027c77" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceTipo_documento5.xsd" MetadataType="Schema" ID="a91ba3ff-c765-499b-9c67-c45dd7aa1525" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceTipo_documento.disco" MetadataType="Disco" ID="18190673-2ca2-4409-a874-90c7586778d9" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?disco" />
-    <MetadataFile FileName="serviceTipo_documento.wsdl" MetadataType="Wsdl" ID="6508c195-249a-4ff7-81fd-4d8e072dcbcd" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?wsdl" />
-    <MetadataFile FileName="serviceTipo_documento3.xsd" MetadataType="Schema" ID="29aef033-bd36-4dd2-bcd2-44b93154e419" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceTipo_documento4.xsd" MetadataType="Schema" ID="c07dcf81-a0a2-4648-8bca-1f7ab6d88b71" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceTipo_documento.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceTipo_documento.xsd" MetadataType="Schema" ID="bd8a9dd9-1d4f-4e6f-bca3-29cba1dd7e9b" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceTipo_documento1.xsd" MetadataType="Schema" ID="869fb9a0-0b95-47dd-a729-46d4baa2aeda" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceTipo_documento2.xsd" MetadataType="Schema" ID="0b9a5617-193c-4b79-9ada-5d0725027c77" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceTipo_documento5.xsd" MetadataType="Schema" ID="a91ba3ff-c765-499b-9c67-c45dd7aa1525" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceTipo_documento.disco" MetadataType="Disco" ID="18190673-2ca2-4409-a874-90c7586778d9" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?disco" />
+    <MetadataFile FileName="serviceTipo_documento.wsdl" MetadataType="Wsdl" ID="6508c195-249a-4ff7-81fd-4d8e072dcbcd" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?wsdl" />
+    <MetadataFile FileName="serviceTipo_documento3.xsd" MetadataType="Schema" ID="29aef033-bd36-4dd2-bcd2-44b93154e419" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceTipo_documento4.xsd" MetadataType="Schema" ID="c07dcf81-a0a2-4648-8bca-1f7ab6d88b71" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceTipo_documento.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

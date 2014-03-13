@@ -21,17 +21,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceSetor.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceSetor.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceSetor.wsdl" MetadataType="Wsdl" ID="d8a47399-80ac-42bd-ba25-70bb7420f5d8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?wsdl" />
-    <MetadataFile FileName="serviceSetor.xsd" MetadataType="Schema" ID="b0c175de-40e1-4b7f-a68a-23c5ad501272" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceSetor1.xsd" MetadataType="Schema" ID="1c1a8a3c-23c0-4995-b71d-f3fe851aba04" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceSetor.disco" MetadataType="Disco" ID="b47bb999-de51-40bb-950b-d0742e66bf86" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?disco" />
-    <MetadataFile FileName="serviceSetor2.xsd" MetadataType="Schema" ID="b2970ba7-cba7-4e50-8f46-e97ff0b6493c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceSetor3.xsd" MetadataType="Schema" ID="f002f581-aea8-49ed-a1cb-19a2e7a0a786" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceSetor4.xsd" MetadataType="Schema" ID="4b9f9ae1-9b3a-4a36-b24a-75b4356640a4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceSetor5.xsd" MetadataType="Schema" ID="604f5670-79ac-4a65-bf9a-28ea8587d0f8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceSetor.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceSetor.wsdl" MetadataType="Wsdl" ID="d8a47399-80ac-42bd-ba25-70bb7420f5d8" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?wsdl" />
+    <MetadataFile FileName="serviceSetor.xsd" MetadataType="Schema" ID="b0c175de-40e1-4b7f-a68a-23c5ad501272" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceSetor1.xsd" MetadataType="Schema" ID="1c1a8a3c-23c0-4995-b71d-f3fe851aba04" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceSetor.disco" MetadataType="Disco" ID="b47bb999-de51-40bb-950b-d0742e66bf86" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?disco" />
+    <MetadataFile FileName="serviceSetor2.xsd" MetadataType="Schema" ID="b2970ba7-cba7-4e50-8f46-e97ff0b6493c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceSetor3.xsd" MetadataType="Schema" ID="f002f581-aea8-49ed-a1cb-19a2e7a0a786" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceSetor4.xsd" MetadataType="Schema" ID="4b9f9ae1-9b3a-4a36-b24a-75b4356640a4" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceSetor5.xsd" MetadataType="Schema" ID="604f5670-79ac-4a65-bf9a-28ea8587d0f8" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceSetor.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -29,7 +29,6 @@
                                         </AdornedElementPlaceholder>
                                     </DockPanel>
                                 </ControlTemplate>
-
                             </Setter.Value>
                         </Setter>
                     </Trigger>

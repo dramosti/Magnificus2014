@@ -64,7 +64,7 @@ namespace HLP.Comum.Model.Models
                     lCampos.lCamposSqlModel.Add(item: new PesquisaPadraoModelContract
                     {
                         COLUMN_NAME = item.COLUMN_NAME,
-                        DATA_TYPE = item.DATA_TYPE,
+                        DATA_TYPE = item.DATA_TYPE != null ? item.DATA_TYPE.Replace(" ", "") : null,
                         CHARACTER_MAXIMUM_LENGTH = item.CHARACTER_MAXIMUM_LENGTH,
                         IS_NULLABLE = item.IS_NULLABLE
                     });
@@ -136,6 +136,13 @@ namespace HLP.Comum.Model.Models
                     i => i.COLUMN_NAME == columnName);
                 if (campo != null)
                 {
+                    if (campo.DATA_TYPE == "F")
+                    {
+                        if (valor != null)
+                            if (valor.ToString() == "0")
+                                return "Campos de pesquisa não podem conter valor igual a 0";
+
+                    }
                     if (campo.IS_NULLABLE == "NO" && campo.DATA_TYPE == "F ")
                     {
                         try
@@ -143,7 +150,7 @@ namespace HLP.Comum.Model.Models
                             if (valor == null)
                                 return "Necessário que campo possua valor!";
                             else if (valor.ToString() == "0")
-                                return "Necessário que campo possua valor!";
+                                return "Campos de pesquisa não podem conter valor igual a 0";
                         }
                         catch (Exception)
                         {

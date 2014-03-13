@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceAcesso.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceAcesso.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceAcesso.xsd" MetadataType="Schema" ID="79b74d38-2f5e-4c98-b20c-9cf5ee742aef" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceAcesso.wsdl" MetadataType="Wsdl" ID="e14b0811-f1e8-469d-997f-eddcf8a8e033" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?wsdl" />
-    <MetadataFile FileName="serviceAcesso1.xsd" MetadataType="Schema" ID="23d03e7e-91ad-4999-96a3-87a99dd0fcf0" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceAcesso2.xsd" MetadataType="Schema" ID="f99b3d18-58e8-4748-91fd-36d4aea58660" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceAcesso3.xsd" MetadataType="Schema" ID="dfd72366-fe9d-4445-a38f-5906021768ba" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceAcesso.disco" MetadataType="Disco" ID="e257338a-883c-45b5-aa0a-cbe531cd7cd2" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?disco" />
-    <MetadataFile FileName="serviceAcesso4.xsd" MetadataType="Schema" ID="3f631b52-8b31-4590-a295-b6c08be2a68c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd2" />
-    <MetadataFile FileName="serviceAcesso5.xsd" MetadataType="Schema" ID="23562bb2-fa3b-4879-88dc-e54a69bf7a2a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceAcesso.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceAcesso.xsd" MetadataType="Schema" ID="79b74d38-2f5e-4c98-b20c-9cf5ee742aef" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceAcesso.wsdl" MetadataType="Wsdl" ID="e14b0811-f1e8-469d-997f-eddcf8a8e033" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?wsdl" />
+    <MetadataFile FileName="serviceAcesso1.xsd" MetadataType="Schema" ID="23d03e7e-91ad-4999-96a3-87a99dd0fcf0" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceAcesso2.xsd" MetadataType="Schema" ID="f99b3d18-58e8-4748-91fd-36d4aea58660" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceAcesso3.xsd" MetadataType="Schema" ID="dfd72366-fe9d-4445-a38f-5906021768ba" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceAcesso.disco" MetadataType="Disco" ID="e257338a-883c-45b5-aa0a-cbe531cd7cd2" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?disco" />
+    <MetadataFile FileName="serviceAcesso4.xsd" MetadataType="Schema" ID="3f631b52-8b31-4590-a295-b6c08be2a68c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceAcesso5.xsd" MetadataType="Schema" ID="23562bb2-fa3b-4879-88dc-e54a69bf7a2a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceAcesso.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

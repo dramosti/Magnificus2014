@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceStCofins.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceStCofins.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceStCofins.xsd" MetadataType="Schema" ID="47a1b40f-ec8b-40f6-929e-13dbbc3f080e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceStCofins1.xsd" MetadataType="Schema" ID="61b5a670-510a-43dd-a283-89fefa808e33" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceStCofins.disco" MetadataType="Disco" ID="2ec4660c-bdb4-4372-92c7-f08031ebee5e" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?disco" />
-    <MetadataFile FileName="serviceStCofins2.xsd" MetadataType="Schema" ID="b3e6a0b1-70ff-47e9-8278-97585e253ba6" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceStCofins.wsdl" MetadataType="Wsdl" ID="1c975fa4-4502-43eb-93ff-83ec7f8648a3" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?wsdl" />
-    <MetadataFile FileName="serviceStCofins3.xsd" MetadataType="Schema" ID="ef1ed1d7-efed-4830-a895-bf86265b24b4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceStCofins4.xsd" MetadataType="Schema" ID="f82c3518-34e9-4f58-9888-6d16ce582d2a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceStCofins5.xsd" MetadataType="Schema" ID="dd0742d8-d0d4-4d39-8fe6-96c4739055c9" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceStCofins.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceStCofins.xsd" MetadataType="Schema" ID="47a1b40f-ec8b-40f6-929e-13dbbc3f080e" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceStCofins1.xsd" MetadataType="Schema" ID="61b5a670-510a-43dd-a283-89fefa808e33" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceStCofins.disco" MetadataType="Disco" ID="2ec4660c-bdb4-4372-92c7-f08031ebee5e" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?disco" />
+    <MetadataFile FileName="serviceStCofins2.xsd" MetadataType="Schema" ID="b3e6a0b1-70ff-47e9-8278-97585e253ba6" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceStCofins.wsdl" MetadataType="Wsdl" ID="1c975fa4-4502-43eb-93ff-83ec7f8648a3" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?wsdl" />
+    <MetadataFile FileName="serviceStCofins3.xsd" MetadataType="Schema" ID="ef1ed1d7-efed-4830-a895-bf86265b24b4" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceStCofins4.xsd" MetadataType="Schema" ID="f82c3518-34e9-4f58-9888-6d16ce582d2a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceStCofins5.xsd" MetadataType="Schema" ID="dd0742d8-d0d4-4d39-8fe6-96c4739055c9" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceStCofins.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

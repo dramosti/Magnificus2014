@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IserviceLista_Preco" contract="Lista_PrecoService.IserviceLista_Preco" bindingType="basicHttpBinding" address="http://192.168.9.33:8080/wcf/serviceLista_Preco.svc" bindingConfiguration="BasicHttpBinding_IserviceLista_Preco">
+    <endpoint name="BasicHttpBinding_IserviceLista_Preco" contract="Lista_PrecoService.IserviceLista_Preco" bindingType="basicHttpBinding" address="http://192.168.9.33:8081/wcf/serviceLista_Preco.svc" bindingConfiguration="BasicHttpBinding_IserviceLista_Preco">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.9.33:8080/wcf/serviceLista_Preco.svc</serializedValue>
+          <serializedValue>http://192.168.9.33:8081/wcf/serviceLista_Preco.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

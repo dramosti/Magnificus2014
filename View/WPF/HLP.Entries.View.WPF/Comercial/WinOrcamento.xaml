@@ -148,7 +148,7 @@
                 <Components:HlpPesquisa 
                     x:Name="pesquisaCliente"                     
                     ucTxtPesquisaTextChanged="pesquisaCliente_ucTxtPesquisaTextChanged"
-                    
+                    nameWindow="WinCliente"
 					Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cliente" Help="Informar ao orçamento de vendas o cliente." TableView="vwCliente" FieldPesquisa="ID" WidthLabel="63" Width="341.5" RenderTransformOrigin="0.5,0.5">

@@ -23,14 +23,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/servicePesquisaRapida.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/servicePesquisaRapida.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="servicePesquisaRapida.xsd" MetadataType="Schema" ID="2da294be-91da-400f-a0a9-ccee027cf562" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaRapida.svc?xsd=xsd2" />
-    <MetadataFile FileName="servicePesquisaRapida.disco" MetadataType="Disco" ID="dc06d9f1-b494-4300-adaa-bd998a26403a" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaRapida.svc?disco" />
-    <MetadataFile FileName="servicePesquisaRapida.wsdl" MetadataType="Wsdl" ID="fa2e482c-2fe3-409c-aa7a-f9281d3b3bd8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaRapida.svc?wsdl" />
-    <MetadataFile FileName="servicePesquisaRapida1.xsd" MetadataType="Schema" ID="0a7509aa-6081-4e25-b9f2-aa0dd649f4d8" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaRapida.svc?xsd=xsd1" />
-    <MetadataFile FileName="servicePesquisaRapida2.xsd" MetadataType="Schema" ID="f4da3ac0-4bcf-48cd-bfb8-d688886c5e75" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/servicePesquisaRapida.svc?xsd=xsd0" />
+    <MetadataFile FileName="servicePesquisaRapida.xsd" MetadataType="Schema" ID="2da294be-91da-400f-a0a9-ccee027cf562" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaRapida.svc?xsd=xsd2" />
+    <MetadataFile FileName="servicePesquisaRapida.disco" MetadataType="Disco" ID="dc06d9f1-b494-4300-adaa-bd998a26403a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaRapida.svc?disco" />
+    <MetadataFile FileName="servicePesquisaRapida.wsdl" MetadataType="Wsdl" ID="fa2e482c-2fe3-409c-aa7a-f9281d3b3bd8" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaRapida.svc?wsdl" />
+    <MetadataFile FileName="servicePesquisaRapida1.xsd" MetadataType="Schema" ID="0a7509aa-6081-4e25-b9f2-aa0dd649f4d8" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaRapida.svc?xsd=xsd1" />
+    <MetadataFile FileName="servicePesquisaRapida2.xsd" MetadataType="Schema" ID="f4da3ac0-4bcf-48cd-bfb8-d688886c5e75" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/servicePesquisaRapida.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

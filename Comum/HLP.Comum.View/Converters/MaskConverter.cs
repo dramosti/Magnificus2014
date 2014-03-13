@@ -59,31 +59,37 @@ namespace HLP.Comum.View.Converters
                 case "tel":
                 case "cel":
                     {
-                        value = value.ToString().Replace(oldValue: " ", newValue: "");
-                        if (value.ToString().Length > 11)
-                            value = value.ToString().Substring(startIndex: 0, length: 10);
-
-                        long valor;
-                        if (long.TryParse(s: value.ToString(), result: out valor))
+                        if (value.ToString().Count() > 0)
                         {
-                            switch (valor.ToString().Length)
+                            if (value.ToString()[0] == '0')
+                                value = value.ToString().Remove(startIndex: 0, count: 1);
+
+                            value = value.ToString().Replace(oldValue: " ", newValue: "");
+                            if (value.ToString().Length > 11)
+                                value = value.ToString().Substring(startIndex: 0, length: 10);
+
+                            long valor;
+                            if (long.TryParse(s: value.ToString(), result: out valor))
                             {
-                                case 8:
-                                    {
-                                        return String.Format(@"{0:####\-####}", valor);
-                                    }
-                                case 9:
-                                    {
-                                        return String.Format(@"{0:#####\-####}", valor);
-                                    }
-                                case 10:
-                                    {
-                                        return String.Format(@"{0:\(##\) ####\-####}", valor);
-                                    }
-                                case 11:
-                                    {
-                                        return String.Format(@"{0:\(##\) #####\-####}", valor);
-                                    }
+                                switch (valor.ToString().Length)
+                                {
+                                    case 8:
+                                        {
+                                            return String.Format(@"{0:####\-####}", valor);
+                                        }
+                                    case 9:
+                                        {
+                                            return String.Format(@"{0:#####\-####}", valor);
+                                        }
+                                    case 10:
+                                        {
+                                            return String.Format(@"{0:\(##\) ####\-####}", valor);
+                                        }
+                                    case 11:
+                                        {
+                                            return String.Format(@"{0:\(##\) #####\-####}", valor);
+                                        }
+                                }
                             }
                         }
                     } break;

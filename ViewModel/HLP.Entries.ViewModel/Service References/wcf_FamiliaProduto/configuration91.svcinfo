@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_Iwcf_FamiliaProduto" contract="wcf_FamiliaProduto.Iwcf_FamiliaProduto" bindingType="basicHttpBinding" address="http://192.168.9.33:8080/wcf/wcf_FamiliaProduto.svc" bindingConfiguration="BasicHttpBinding_Iwcf_FamiliaProduto">
+    <endpoint name="BasicHttpBinding_Iwcf_FamiliaProduto" contract="wcf_FamiliaProduto.Iwcf_FamiliaProduto" bindingType="basicHttpBinding" address="http://192.168.9.33:8081/wcf/wcf_FamiliaProduto.svc" bindingConfiguration="BasicHttpBinding_Iwcf_FamiliaProduto">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.9.33:8080/wcf/wcf_FamiliaProduto.svc</serializedValue>
+          <serializedValue>http://192.168.9.33:8081/wcf/wcf_FamiliaProduto.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

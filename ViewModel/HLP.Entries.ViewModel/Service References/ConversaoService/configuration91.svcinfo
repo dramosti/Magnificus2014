@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IserviceConversao" contract="ConversaoService.IserviceConversao" bindingType="basicHttpBinding" address="http://192.168.9.33:8080/wcf/serviceConversao.svc" bindingConfiguration="BasicHttpBinding_IserviceConversao">
+    <endpoint name="BasicHttpBinding_IserviceConversao" contract="ConversaoService.IserviceConversao" bindingType="basicHttpBinding" address="http://192.168.9.33:8081/wcf/serviceConversao.svc" bindingConfiguration="BasicHttpBinding_IserviceConversao">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.9.33:8080/wcf/serviceConversao.svc</serializedValue>
+          <serializedValue>http://192.168.9.33:8081/wcf/serviceConversao.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

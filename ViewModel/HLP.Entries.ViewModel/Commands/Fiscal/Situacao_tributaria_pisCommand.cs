@@ -86,6 +86,15 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                 else
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    object w = objViewModel.GetParentWindow(e.Result);
+
+                    if (w != null)
+                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        {
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                        }
                 }
             }
             catch (Exception ex)

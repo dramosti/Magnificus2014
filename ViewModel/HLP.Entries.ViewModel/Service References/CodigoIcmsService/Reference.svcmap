@@ -23,17 +23,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="serviceCodigoIcms.xsd" MetadataType="Schema" ID="5c92a07a-9c6a-4915-b738-ba1e09da9765" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?xsd=xsd3" />
-    <MetadataFile FileName="serviceCodigoIcms.wsdl" MetadataType="Wsdl" ID="531b7f95-a3ba-47f0-be0b-9b694c30e6aa" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?wsdl" />
-    <MetadataFile FileName="serviceCodigoIcms1.xsd" MetadataType="Schema" ID="93fe75ad-b1dc-4f48-80d4-296917f28699" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?xsd=xsd1" />
-    <MetadataFile FileName="serviceCodigoIcms2.xsd" MetadataType="Schema" ID="69661dbc-ba37-4bfb-b0b7-be40899cdc0c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?xsd=xsd0" />
-    <MetadataFile FileName="serviceCodigoIcms.disco" MetadataType="Disco" ID="a13d43d5-1825-4edc-9834-144a7f3ac6a7" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?disco" />
-    <MetadataFile FileName="serviceCodigoIcms3.xsd" MetadataType="Schema" ID="5c17f9f5-9ce4-46a7-a97c-e1c220f42d4c" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?xsd=xsd5" />
-    <MetadataFile FileName="serviceCodigoIcms4.xsd" MetadataType="Schema" ID="0a21e9f1-0ac2-470a-85fc-8aa5171c6523" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?xsd=xsd4" />
-    <MetadataFile FileName="serviceCodigoIcms5.xsd" MetadataType="Schema" ID="a57b8cde-b832-420c-8d03-0080422b0ac4" SourceId="1" SourceUrl="http://192.168.9.33:8080/wcf/serviceCodigoIcms.svc?xsd=xsd2" />
+    <MetadataFile FileName="serviceCodigoIcms.xsd" MetadataType="Schema" ID="5c92a07a-9c6a-4915-b738-ba1e09da9765" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?xsd=xsd3" />
+    <MetadataFile FileName="serviceCodigoIcms.wsdl" MetadataType="Wsdl" ID="531b7f95-a3ba-47f0-be0b-9b694c30e6aa" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?wsdl" />
+    <MetadataFile FileName="serviceCodigoIcms1.xsd" MetadataType="Schema" ID="93fe75ad-b1dc-4f48-80d4-296917f28699" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?xsd=xsd1" />
+    <MetadataFile FileName="serviceCodigoIcms2.xsd" MetadataType="Schema" ID="69661dbc-ba37-4bfb-b0b7-be40899cdc0c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?xsd=xsd0" />
+    <MetadataFile FileName="serviceCodigoIcms.disco" MetadataType="Disco" ID="a13d43d5-1825-4edc-9834-144a7f3ac6a7" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?disco" />
+    <MetadataFile FileName="serviceCodigoIcms3.xsd" MetadataType="Schema" ID="5c17f9f5-9ce4-46a7-a97c-e1c220f42d4c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?xsd=xsd5" />
+    <MetadataFile FileName="serviceCodigoIcms4.xsd" MetadataType="Schema" ID="0a21e9f1-0ac2-470a-85fc-8aa5171c6523" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?xsd=xsd4" />
+    <MetadataFile FileName="serviceCodigoIcms5.xsd" MetadataType="Schema" ID="a57b8cde-b832-420c-8d03-0080422b0ac4" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/serviceCodigoIcms.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

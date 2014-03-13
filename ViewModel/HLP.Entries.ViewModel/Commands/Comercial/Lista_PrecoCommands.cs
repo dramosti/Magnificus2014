@@ -57,9 +57,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
 
-            this.objViewModel.CarregarProdutosCommand = new RelayCommand(execute: paramExec => this.CarregarProdutos(),
-                canExecute: paramCanExec => this.CarregarProdutosCanExecute());
-
             this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
                 canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
         }
@@ -95,31 +92,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private bool AtribuirPercentualCanExecute(object param)
         {
-            return true;
+            return this.objViewModel.bIsEnabled;
         }
-
-
-        private void CarregarProdutos()
-        {
-            foreach (ProdutoModel p in this.servicoProduto.getAll())
-            {
-                if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == p.idProduto) == 0)
-                {
-                    this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
-                    {
-                        idProduto = (int)p.idProduto,
-                        idUnidadeMedida = p.idUnidadeMedidaVendas,
-                        vCustoProduto = p.vCompra
-                    });
-                }
-            }
-        }
-
-        private bool CarregarProdutosCanExecute()
-        {
-            return true;
-        }
-
 
         private void AtribuicaoColetiva(object xForm)
         {
@@ -133,29 +107,46 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 list: this.objViewModel.currentModel.lLista_preco);
 
             form.Show();
-
         }
 
         private bool AtribuicaoColetivaCanExecute()
         {
-            return true;
+            return this.objViewModel.bIsEnabled;
         }
 
 
         private void GerarLista()
         {
-            foreach (Lista_precoModel item in
-                this.servico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
+            if (this.objViewModel.currentModel.idListaPrecoOrigem != null)
             {
-                if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == item.idProduto) == 0)
+                foreach (Lista_precoModel item in
+                    this.servico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
                 {
-                    this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
+                    if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == item.idProduto) == 0)
                     {
-                        idProduto = item.idProduto,
-                        idUnidadeMedida = item.idUnidadeMedida,
-                        vCustoProduto = item.vCustoProduto,
-                        vVenda = item.vVenda * (1 + ((this.objViewModel.currentModel.pPercentual ?? 0) / 100))
-                    });
+                        this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
+                        {
+                            idProduto = item.idProduto,
+                            idUnidadeMedida = item.idUnidadeMedida,
+                            vCustoProduto = item.vCustoProduto,
+                            vVenda = item.vVenda * (1 + ((this.objViewModel.currentModel.pPercentual ?? 0) / 100))
+                        });
+                    }
+                }
+            }
+            else
+            {
+                foreach (ProdutoModel p in this.servicoProduto.getAll())
+                {
+                    if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == p.idProduto) == 0)
+                    {
+                        this.objViewModel.currentModel.lLista_preco.Add(item: new Lista_precoModel
+                        {
+                            idProduto = (int)p.idProduto,
+                            idUnidadeMedida = p.idUnidadeMedidaVendas,
+                            vCustoProduto = p.vCompra
+                        });
+                    }
                 }
             }
         }
@@ -165,8 +156,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             if (this.objViewModel.currentModel == null)
                 return false;
 
-            return this.objViewModel.currentModel.idListaPrecoOrigem != null &&
-                this.objViewModel.bIsEnabled;
+            return this.objViewModel.bIsEnabled;
         }
 
 
@@ -215,6 +205,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 else
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    object w = objViewModel.GetParentWindow(e.Result);
+
+                    if (w != null)
+                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        {
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
+                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                        }
                     this.IniciaCollection();
                 }
             }
@@ -297,7 +296,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
-       
+
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
@@ -323,7 +322,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

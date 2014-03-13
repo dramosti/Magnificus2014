@@ -22,7 +22,7 @@ namespace HLP.Comum.Infrastructure.Static
 
         public static string xEnderLocal
         {
-            get { return "http://192.168.9.33:8080/wcf/"; }
+            get { return "http://192.168.9.33:8081/wcf/"; }
             set { _xEnderLocal = value; }
         }
 
