@@ -71,6 +71,17 @@ namespace HLP.Entries.Model.Models.Comercial
         [ParameterOrder(Order = 15)]
         public int? idListaPrecoOrigem { get; set; }
 
+        private bool _stPreferencial;
+        [ParameterOrder(Order = 16)]
+        public bool stPreferencial
+        {
+            get { return _stPreferencial; }
+            set
+            {
+                _stPreferencial = value;
+                base.NotifyPropertyChanged(propertyName: "stPreferencial");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Lista_precoModel> _lLista_preco;
 
@@ -180,8 +191,7 @@ namespace HLP.Entries.Model.Models.Comercial
                     - (this._vCustoProduto * ((this._pComissao ?? 0) / 100))
                     - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
                                 this._pMarkup = this.pMarkup;
-                                base.NotifyPropertyChanged(propertyName: "pLucro");
-                                base.NotifyPropertyChanged(propertyName: "vVenda");
+                                base.NotifyPropertyChanged(propertyName: "pLucro");                                
                                 base.NotifyPropertyChanged(propertyName: "pMarkup");
                             } break;
                         case 1://Por preço de venda
@@ -193,6 +203,7 @@ namespace HLP.Entries.Model.Models.Comercial
                             } break;
                     }
                 }
+                base.NotifyPropertyChanged(propertyName: "vVenda");
             }
         }
         private decimal? _pDescontoMaximo;
@@ -339,6 +350,36 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "pMarkup");
             }
         }
+
+        #region Propriedades não mapeadas
+
+
+        private decimal _vlrEsperado;
+
+        public decimal vlrEsperado
+        {
+            get { return _vlrEsperado; }
+            set
+            {
+                _vlrEsperado = value;
+                base.NotifyPropertyChanged(propertyName: "vlrEsperado");
+            }
+        }
+
+
+        private bool _bChecked;
+
+        public bool bChecked
+        {
+            get { return _bChecked; }
+            set
+            {
+                _bChecked = value;
+                base.NotifyPropertyChanged(propertyName: "bChecked");
+            }
+        }
+        
+        #endregion
     }
 
     #region Validações

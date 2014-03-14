@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Windows.Forms;
 namespace HLP.Comum.Infrastructure.Static
 {
-   public static class Extensions
+    public static class Extensions
     {
 
         #region isValid
@@ -333,7 +333,10 @@ namespace HLP.Comum.Infrastructure.Static
         #region Extension Object
         public static int ToInt32(this object value)
         {
-            int number;
+            int number = 0;
+            if (value == null)
+                return number;
+
             Int32.TryParse(value.ToString(), out number);
             return number;
         }

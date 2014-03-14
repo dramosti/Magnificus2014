@@ -18,6 +18,7 @@
           <xs:element minOccurs="0" name="pPercentual" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="stAtualizacao" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stContrato" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPreferencial" type="xs:boolean" />
           <xs:element minOccurs="0" name="xCodigoListaPreco" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xLista" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xNrContrato" nillable="true" type="xs:string" />
@@ -36,6 +37,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
         <xs:sequence>
+          <xs:element minOccurs="0" name="bChecked" type="xs:boolean" />
           <xs:element minOccurs="0" name="dAlteracaoCusto" type="xs:dateTime" />
           <xs:element minOccurs="0" name="idListaPreco" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idListaPrecoPai" nillable="true" type="xs:int" />
@@ -52,6 +54,7 @@
           <xs:element minOccurs="0" name="pOutros" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="vCustoProduto" type="xs:decimal" />
           <xs:element minOccurs="0" name="vVenda" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vlrEsperado" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

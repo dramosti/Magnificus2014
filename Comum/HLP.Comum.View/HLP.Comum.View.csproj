@@ -147,6 +147,7 @@
     <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
     <Compile Include="Converters\VisibilityDatePickerConverter.cs" />
+    <Compile Include="Converters\VisibilityVisibleToCollapsedNot.cs" />
     <Compile Include="Formularios\HlpPesquisaInsert.xaml.cs">
       <DependentUpon>HlpPesquisaInsert.xaml</DependentUpon>
     </Compile>

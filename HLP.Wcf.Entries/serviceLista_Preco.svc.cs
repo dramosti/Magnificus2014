@@ -137,7 +137,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int copyLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco)
+        public HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel copyLista_Preco(HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objListaPreco)
         {
 
             try
@@ -155,7 +155,7 @@ namespace HLP.Wcf.Entries
                         objLista_preco: item);
                 }
                 this.lista_Preco_PaiRepository.CommitTransaction();
-                return (int)objListaPreco.idListaPrecoPai;
+                return objListaPreco;
             }
             catch (Exception ex)
             {
@@ -163,7 +163,16 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
+        }
 
+        public List<int> GetAllIdsListaPreco()
+        {
+            return this.lista_Preco_PaiRepository.GetAllIdListaPreco();
+        }
+
+        public int GetIdListaPreferencial()
+        {
+            return this.lista_Preco_PaiRepository.GetIdListaPreferencial();
         }
     }
 }
