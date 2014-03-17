@@ -50,11 +50,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             btnAumVlr.Command = this.AumVlrVendaCustoCommand;
 
             this.Botoes.Children.Add(element: btnAtribuicaoColetiva);
-            this.Botoes.Children.Add(element: btnAumVlr);            
-            
+            this.Botoes.Children.Add(element: btnAumVlr);                        
         }
 
         #region Propriedades utilizadas na View
+
         private Visibility _visAumentoVlr;
 
         public Visibility visAumentoVlr

@@ -73,9 +73,26 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 collection: this.objServico.GetAllIdsListaPreco());
 
             int currentId = objServico.getIdListaPreferencial();
+            int currentPosition = 0;
+            int i = 0;
+            if (currentId != 0)
+            {
+                currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
 
-            this.objViewModel.currentID = currentId != 0 ? currentId : this.objViewModel.navigatePesquisa.FirstOrDefault();
+                while (i < currentPosition)
+                {
+                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                    i++;
+                }
+
+            }
+            else
+            {
+                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
+            }
             this.getListaPreco(this, null);
+            this.objViewModel.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
 
         private void IniciaCollection()
@@ -329,6 +346,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
+            this.objViewModel.currentModel.dListaPreco = DateTime.Now;
+            this.objViewModel.currentModel.stAtualizacao = (byte)1;
+            this.objViewModel.currentModel.Ativo = true;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwNovo_DoWork;

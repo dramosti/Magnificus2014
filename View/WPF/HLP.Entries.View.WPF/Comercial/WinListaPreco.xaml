@@ -25,11 +25,12 @@
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwProdutoToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>        
+        </ObjectDataProvider>
         <conv:VisibilityVisibleToCollapsedNot x:Key="visibilityConverter"></conv:VisibilityVisibleToCollapsedNot>
         <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
         <convL:RowDateListaPrecoConverter x:Key="RowDateConverter"/>
         <convL:StCustoProdutoConverter x:Key="stCustoProdutoConverter"/>
+        <convL:IsEnabledCompMultiConverter x:Key="isEnabledMultiConverter"></convL:IsEnabledCompMultiConverter>
         <conv:MoedaConverter x:Key="moedaConverter"/>
         <util:BindingProxy x:Key="proxy" Data="{Binding}" />
     </Window.Resources>
@@ -113,11 +114,13 @@
                     Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Descrição da Lista de preço"/>
-                        <Components:CustomDatePicker
-                    Grid.Column="2" Grid.Row="7"
-                    SelectedDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Este campo mostra a data em que a lista de preços foi gerada "/>
+                        <Components:HlpDatePicker
+                            Grid.Column="2" Grid.Row="7"
+                            xTextDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            IsEnabled="False"
+                            stFormatoDtPicker="date"
+                            Help="Este campo mostra a data em que a lista de preços foi gerada"
+                            ></Components:HlpDatePicker>
                         <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
                     Name="cbxStAtualizacao"					
@@ -138,18 +141,13 @@
                                 <System:String>xCodigoListaPreco</System:String>
                                 <System:String>xLista</System:String>
                             </Components:HlpPesquisa.Items>
-                            <Components:HlpPesquisa.Style>
-                                <Style>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=cbxStAtualizacao, Path=SelectedIndex}" Value="1">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Components:HlpPesquisa.Style>
+                            <Components:HlpPesquisa.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cbx">
+                                    <Binding Path="bIsEnabled"/>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
+                                </MultiBinding>
+                            </Components:HlpPesquisa.IsEnabled>
                         </Components:HlpPesquisa>
                         <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="13"
@@ -158,18 +156,13 @@
                         Converter={StaticResource PorcentagemConverter},
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					     
                         ToolTip="Este campo serve para se definir o % de acréscimo (valor positivo) ou % de desconto (valor negativo) para a lista que está sendo mostrada na tela e definida como automática, porém para este tipo de cálculo o sistema pegará sempre como base a lista 00001.">
-                            <Components:CustomTextBox.Style>
-                                <Style>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=cbxStAtualizacao, Path=SelectedIndex}" Value="1">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Components:CustomTextBox.Style>
+                            <Components:CustomTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cbx">
+                                    <Binding Path="bIsEnabled"/>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
+                                </MultiBinding>
+                            </Components:CustomTextBox.IsEnabled>
                         </Components:CustomTextBox>
                         <Components:CustomTextBox
                     Grid.Column="7" Grid.Row="1"
@@ -178,17 +171,27 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campos"/>
                         <Components:CustomCheckBox
+                            x:Name="cbContrato"
                     Grid.Column="7" Grid.Row="3" VerticalAlignment="Center"
                     IsChecked="{Binding currentModel.stContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                       			
 					IsEnabled="{Binding bIsEnabled}"/>
-                        <Components:CustomTextBlock
-                    Grid.Column="7" Grid.Row="5"
+                        <Components:CustomTextBox
+                            Grid.Column="7" Grid.Row="5"
                     Text="{Binding currentModel.xNrContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"/>
-                        <Components:CustomDatePicker
-                    Grid.Column="7" Grid.Row="7"
-                    SelectedDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"/>
+					Margin="0,1,0,3" Grid.RowSpan="2">
+                            <Components:CustomTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cb">
+                                    <Binding Path="bIsEnabled"/>
+                                    <Binding ElementName="cbContrato" Path="IsChecked"/>
+                                </MultiBinding>
+                            </Components:CustomTextBox.IsEnabled>
+                        </Components:CustomTextBox>
+                        <Components:HlpDatePicker
+                            Grid.Column="7" Grid.Row="7"
+                            IsEnabled="{Binding bIsEnabled}"
+                            xTextDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            ></Components:HlpDatePicker>
                         <Components:CustomTextBox
                     Grid.Column="7" Grid.Row="9"
                     Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, 
@@ -250,10 +253,20 @@
                                     IsEnabled="{Binding bIsEnabled}"
                                     AutoGenerateColumns="False" 
                                     SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    CanUserDeleteRows="{Binding visAumentoVlr, Converter={StaticResource canUserAddListaItensConv}}"
-                                    CanUserAddRows="{Binding visAumentoVlr, Converter={StaticResource canUserAddListaItensConv}}"
                                     CellEditEnding="gridItens_CellEditEnding"
-                        >                            
+                        >
+                            <DataGrid.CanUserDeleteRows>
+                                <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
+                                    <Binding Path="visAumentoVlr"></Binding>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"></Binding>
+                                </MultiBinding>
+                            </DataGrid.CanUserDeleteRows>
+                            <DataGrid.CanUserAddRows>
+                                <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
+                                    <Binding Path="visAumentoVlr"></Binding>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"></Binding>
+                                </MultiBinding>
+                            </DataGrid.CanUserAddRows>
                             <DataGrid.BindingGroup>
                                 <BindingGroup NotifyOnValidationError="True">
                                     <BindingGroup.ValidationRules>
@@ -458,7 +471,7 @@
                                 </Style>
                             </DataGrid.RowStyle>
                         </DataGrid>
-                    </DockPanel>                    
+                    </DockPanel>
                 </Grid>
             </Grid>
         </Expander>

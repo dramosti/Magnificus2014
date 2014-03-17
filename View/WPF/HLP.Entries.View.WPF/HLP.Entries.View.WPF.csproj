@@ -90,6 +90,7 @@
     <Compile Include="Comercial\Converter\CanUserAddListaItensConverter.cs" />
     <Compile Include="Comercial\Converter\CanUserAddOrcamentoItemConverter.cs" />
     <Compile Include="Comercial\Converter\IdMotivoVisibilityConverter.cs" />
+    <Compile Include="Comercial\Converter\IsEnabledCompMultiConverter.cs" />
     <Compile Include="Comercial\Converter\RowDateListaPrecoConverter.cs" />
     <Compile Include="Comercial\Converter\StatusOrcamentoConverter.cs" />
     <Compile Include="Comercial\Converter\StCustoProdutoConverter.cs" />

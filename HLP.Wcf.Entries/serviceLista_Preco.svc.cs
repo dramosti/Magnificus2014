@@ -117,7 +117,6 @@ namespace HLP.Wcf.Entries
 
         public bool deleteLista_Preco(int idListaPrecoPai)
         {
-
             try
             {
                 this.lista_Preco_PaiRepository.BeginTransaction();

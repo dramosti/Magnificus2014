@@ -8,17 +8,29 @@ using System.Windows.Data;
 
 namespace HLP.Entries.View.WPF.Comercial.Converter
 {
-    public class CanUserAddListaItensConverter : IValueConverter
+    public class CanUserAddListaItensConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        //public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        //{
+        //    if (((Visibility)value) == Visibility.Visible)
+        //        return false;
+        //    else
+        //        return true;
+        //}
+
+        //public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (((Visibility)value) == Visibility.Visible)
+            if (((Visibility)values[0]) == Visibility.Visible || (int)values[1] == (int)0)
                 return false;
             else
                 return true;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
         {
             throw new NotImplementedException();
         }
