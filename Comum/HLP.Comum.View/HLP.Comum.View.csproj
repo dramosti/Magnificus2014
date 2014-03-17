@@ -128,6 +128,9 @@
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\CustomTimePicker.cs" />
+    <Compile Include="Components\HlpUserControlBtnImage.xaml.cs">
+      <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\WatermarkTextBox.cs" />
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpUserControlBtnImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

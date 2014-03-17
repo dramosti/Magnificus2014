@@ -48,7 +48,8 @@ namespace HLP.Wcf.Entries
         public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario)
         {
             try
-            {
+            {               
+
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
 

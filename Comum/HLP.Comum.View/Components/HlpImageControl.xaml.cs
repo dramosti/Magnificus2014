@@ -20,7 +20,7 @@ namespace HLP.Comum.View.Components
     /// <summary>
     /// Interaction logic for HlpImageControl.xaml
     /// </summary>
-    public partial class HlpImageControl : UserControl
+    public partial class HlpImageControl : Window
     {
         public HlpImageControl()
         {
@@ -52,7 +52,6 @@ namespace HLP.Comum.View.Components
         }
 
 
-
         public byte[] byteImg
         {
             get { return (byte[])GetValue(byteImgProperty); }
@@ -70,6 +69,18 @@ namespace HLP.Comum.View.Components
             {
                 this.xPathImg = fd.FileName;
             }
+        }
+
+        private void btnAplicar_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
+
+        private void btnLimpar_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.byteImg = null;
+            this.xPathImg = null;
         }
 
 

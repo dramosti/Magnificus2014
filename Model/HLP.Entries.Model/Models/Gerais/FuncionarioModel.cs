@@ -807,9 +807,9 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        private byte[] _imgFoto;
+        private Byte[] _imgFoto;
         [ParameterOrder(Order = 69)]
-        public byte[] imgFoto
+        public Byte[] imgFoto
         {
             get { return _imgFoto; }
             set

@@ -303,7 +303,7 @@ namespace HLP.Entries.Model.Models.Comercial
                     - (this._vCustoProduto * ((this._pComissao ?? 0) / 100))
                     - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
                                 this._pMarkup = this.pMarkup;
-                                base.NotifyPropertyChanged(propertyName: "pLucro");                                
+                                base.NotifyPropertyChanged(propertyName: "pLucro");
                                 base.NotifyPropertyChanged(propertyName: "pMarkup");
                             } break;
                         case 1://Por preço de venda
@@ -490,7 +490,7 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "bChecked");
             }
         }
-        
+
         #endregion
     }
 
@@ -501,7 +501,15 @@ namespace HLP.Entries.Model.Models.Comercial
         {
             get
             {
-                return base[columnName];
+                string retorno = base[columnName];
+
+                if (retorno == "" || retorno == null)
+                {
+                    if (columnName == "idListaPrecoOrigem")
+                        if (this.stAtualizacao == 0 && (this.idListaPrecoOrigem == 0 || this.idListaPrecoOrigem == null))
+                            retorno = "Listas automáticas devem possuir uma lista origem!";
+                }
+                return retorno;
             }
         }
     }
