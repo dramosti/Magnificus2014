@@ -99,6 +99,9 @@
     <Compile Include="Components\HlpEndereco.xaml.cs">
       <DependentUpon>HlpEndereco.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpImageControl.xaml.cs">
+      <DependentUpon>HlpImageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpNavigation.xaml.cs">
       <DependentUpon>HlpNavigation.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,7 @@
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converters\HlpNavigationMultiConverter.cs" />
+    <Compile Include="Converters\ImageToaByteConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />
@@ -191,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpEndereco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpImageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,7 +313,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

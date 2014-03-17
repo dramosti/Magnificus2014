@@ -108,7 +108,11 @@
                                             <System:String>xDescricao</System:String>
                                             <System:String>xSetor</System:String>
                                         </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
+                                    </Components:HlpPesquisa> 
+                                    <Components:HlpImageControl 
+                                        IsEnabled="{Binding bIsEnabled}"
+                                        byteImg="{Binding currentModel.imgFoto}"
+                                        Height="320"></Components:HlpImageControl>
                                 </WrapPanel>
                             </Expander>
                         </DockPanel>
