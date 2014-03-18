@@ -18,10 +18,18 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lLista_preco = new ObservableCollectionBaseCadastros<Lista_precoModel>();
         }
 
+        private int _idEmpresa;
         [ParameterOrder(Order = 1)]
-        public int idEmpresa { get; set; }
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
         private int? _idListaPrecoPai;
-
         [ParameterOrder(Order = 2), PrimaryKey(isPrimary = true)]
         public int? idListaPrecoPai
         {
@@ -32,32 +40,131 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
             }
         }
-
+        private string _xLista;
         [ParameterOrder(Order = 3)]
-        public string xLista { get; set; }
+        public string xLista
+        {
+            get { return _xLista; }
+            set
+            {
+                _xLista = value;
+                base.NotifyPropertyChanged(propertyName: "xLista");
+            }
+        }
+        private byte _stContrato;
         [ParameterOrder(Order = 4)]
-        public byte stContrato { get; set; }
+        public byte stContrato
+        {
+            get { return _stContrato; }
+            set
+            {
+                _stContrato = value;
+                base.NotifyPropertyChanged(propertyName: "stContrato");
+            }
+        }
+        private string _xNrContrato;
         [ParameterOrder(Order = 5)]
-        public string xNrContrato { get; set; }
+        public string xNrContrato
+        {
+            get { return _xNrContrato; }
+            set
+            {
+                _xNrContrato = value;
+                base.NotifyPropertyChanged(propertyName: "xNrContrato");
+            }
+        }
+        private DateTime? _dValidadeContrato;
         [ParameterOrder(Order = 6)]
-        public DateTime? dValidadeContrato { get; set; }
+        public DateTime? dValidadeContrato
+        {
+            get { return _dValidadeContrato; }
+            set
+            {
+                _dValidadeContrato = value;
+                base.NotifyPropertyChanged(propertyName: "dValidadeContrato");
+            }
+        }
+        private bool _Ativo;
         [ParameterOrder(Order = 7)]
-        public bool Ativo { get; set; }
+        public bool Ativo
+        {
+            get { return _Ativo; }
+            set
+            {
+                _Ativo = value;
+                base.NotifyPropertyChanged(propertyName: "Ativo");
+            }
+        }
+        private DateTime _dListaPreco;
         [ParameterOrder(Order = 8)]
-        public DateTime dListaPreco { get; set; }
+        public DateTime dListaPreco
+        {
+            get { return _dListaPreco; }
+            set
+            {
+                _dListaPreco = value;
+                base.NotifyPropertyChanged(propertyName: "dListaPreco");
+            }
+        }
+        private byte _stAtualizacao;
         [ParameterOrder(Order = 9)]
-        public byte stAtualizacao { get; set; }
+        public byte stAtualizacao
+        {
+            get { return _stAtualizacao; }
+            set
+            {
+                _stAtualizacao = value;
+
+                this.idListaPrecoOrigem = this.idListaPrecoOrigem;
+
+                base.NotifyPropertyChanged(propertyName: "stAtualizacao");
+            }
+        }
+        private decimal? _nDiasSemAtualicao;
         [ParameterOrder(Order = 10)]
-        public decimal? nDiasSemAtualicao { get; set; }
+        public decimal? nDiasSemAtualicao
+        {
+            get { return _nDiasSemAtualicao; }
+            set
+            {
+                _nDiasSemAtualicao = value;
+                base.NotifyPropertyChanged(propertyName: "nDiasSemAtualicao");
+            }
+        }
+        private decimal? _pDescontoMaximo;
         [ParameterOrder(Order = 11)]
-        public decimal? pDescontoMaximo { get; set; }
+        public decimal? pDescontoMaximo
+        {
+            get { return _pDescontoMaximo; }
+            set
+            {
+                _pDescontoMaximo = value;
+                base.NotifyPropertyChanged(propertyName: "pDescontoMaximo");
+            }
+        }
+        private decimal? _pAcressimoMaximo;
         [ParameterOrder(Order = 12)]
-        public decimal? pAcressimoMaximo { get; set; }
+        public decimal? pAcressimoMaximo
+        {
+            get { return _pAcressimoMaximo; }
+            set
+            {
+                _pAcressimoMaximo = value;
+                base.NotifyPropertyChanged(propertyName: "pAcressimoMaximo");
+            }
+        }
+        private string _xCodigoListaPreco;
         [ParameterOrder(Order = 13)]
-        public string xCodigoListaPreco { get; set; }
-
+        public string xCodigoListaPreco
+        {
+            get { return _xCodigoListaPreco; }
+            set
+            {
+                _xCodigoListaPreco = value;
+                base.NotifyPropertyChanged(propertyName: "xCodigoListaPreco");
+            }
+        }
         private decimal? _pPercentual;
-
         [ParameterOrder(Order = 14)]
         public decimal? pPercentual
         {
@@ -65,12 +172,31 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _pPercentual = value;
+                base.NotifyPropertyChanged(propertyName: "pPercentual");
             }
         }
-
+        private int? _idListaPrecoOrigem;
         [ParameterOrder(Order = 15)]
-        public int? idListaPrecoOrigem { get; set; }
-
+        public int? idListaPrecoOrigem
+        {
+            get { return _idListaPrecoOrigem; }
+            set
+            {
+                _idListaPrecoOrigem = value;
+                base.NotifyPropertyChanged(propertyName: "idListaPrecoOrigem");
+            }
+        }
+        private bool _stPreferencial;
+        [ParameterOrder(Order = 16)]
+        public bool stPreferencial
+        {
+            get { return _stPreferencial; }
+            set
+            {
+                _stPreferencial = value;
+                base.NotifyPropertyChanged(propertyName: "stPreferencial");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Lista_precoModel> _lLista_preco;
 
@@ -181,7 +307,6 @@ namespace HLP.Entries.Model.Models.Comercial
                     - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
                                 this._pMarkup = this.pMarkup;
                                 base.NotifyPropertyChanged(propertyName: "pLucro");
-                                base.NotifyPropertyChanged(propertyName: "vVenda");
                                 base.NotifyPropertyChanged(propertyName: "pMarkup");
                             } break;
                         case 1://Por preço de venda
@@ -193,6 +318,7 @@ namespace HLP.Entries.Model.Models.Comercial
                             } break;
                     }
                 }
+                base.NotifyPropertyChanged(propertyName: "vVenda");
             }
         }
         private decimal? _pDescontoMaximo;
@@ -339,6 +465,36 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "pMarkup");
             }
         }
+
+        #region Propriedades não mapeadas
+
+
+        private decimal _vlrEsperado;
+
+        public decimal vlrEsperado
+        {
+            get { return _vlrEsperado; }
+            set
+            {
+                _vlrEsperado = value;
+                base.NotifyPropertyChanged(propertyName: "vlrEsperado");
+            }
+        }
+
+
+        private bool _bChecked;
+
+        public bool bChecked
+        {
+            get { return _bChecked; }
+            set
+            {
+                _bChecked = value;
+                base.NotifyPropertyChanged(propertyName: "bChecked");
+            }
+        }
+
+        #endregion
     }
 
     #region Validações
@@ -348,7 +504,15 @@ namespace HLP.Entries.Model.Models.Comercial
         {
             get
             {
-                return base[columnName];
+                string retorno = base[columnName];
+
+                if (retorno == "" || retorno == null)
+                {
+                    if (columnName == "idListaPrecoOrigem")
+                        if (this.stAtualizacao == 0 && (this.idListaPrecoOrigem == 0 || this.idListaPrecoOrigem == null))
+                            retorno = "Listas automáticas devem possuir uma lista origem!";
+                }
+                return retorno;
             }
         }
     }

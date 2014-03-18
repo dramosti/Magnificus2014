@@ -99,6 +99,9 @@
     <Compile Include="Components\HlpEndereco.xaml.cs">
       <DependentUpon>HlpEndereco.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpImageControl.xaml.cs">
+      <DependentUpon>HlpImageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpNavigation.xaml.cs">
       <DependentUpon>HlpNavigation.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,9 @@
       <DependentUpon>HlpTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\CustomTimePicker.cs" />
+    <Compile Include="Components\HlpUserControlBtnImage.xaml.cs">
+      <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\WatermarkTextBox.cs" />
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
@@ -138,6 +144,7 @@
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converters\HlpNavigationMultiConverter.cs" />
+    <Compile Include="Converters\ImageToaByteConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />
@@ -147,6 +154,7 @@
     <Compile Include="Converters\TextFormatConverter.cs" />
     <Compile Include="Converters\TimeSpanToString.cs" />
     <Compile Include="Converters\VisibilityDatePickerConverter.cs" />
+    <Compile Include="Converters\VisibilityVisibleToCollapsedNot.cs" />
     <Compile Include="Formularios\HlpPesquisaInsert.xaml.cs">
       <DependentUpon>HlpPesquisaInsert.xaml</DependentUpon>
     </Compile>
@@ -193,6 +201,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\HlpImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\HlpNavigation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpUserControlBtnImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -304,7 +320,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

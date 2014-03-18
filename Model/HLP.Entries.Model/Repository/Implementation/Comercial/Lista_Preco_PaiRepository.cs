@@ -1,11 +1,14 @@
 ﻿using HLP.Comum.Infrastructure;
 using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,10 +64,36 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                 regLista_Preco_PaiAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Lista_Preco_Pai",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idListaPrecoPai"),
-                                         MapBuilder<Lista_Preco_PaiModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                                         MapBuilder<Lista_Preco_PaiModel>.MapAllProperties()
+                                         .DoNotMap(i => i.stPreferencial)
+                                         .DoNotMap(i => i.status).Build());
             }
 
             return regLista_Preco_PaiAccessor.Execute(idListaPrecoPai).FirstOrDefault();
+        }
+
+        public List<int> GetAllIdListaPreco()
+        {
+            List<int> ids = new List<int>();
+            SqlConnection connection = new SqlConnection(connectionString: UndTrabalho.dbPrincipal.ConnectionString);
+            SqlCommand cmd = connection.CreateCommand();
+            string res = string.Empty;
+            connection.Open();
+            cmd.CommandText = "select idListaPrecoPai from Lista_Preco_Pai"; // update select command accordingly
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                res = reader["idListaPrecoPai"].ToString();
+                ids.Add(item:
+                Convert.ToInt32(value: res));
+            }
+            return ids;
+        }
+
+        public int GetIdListaPreferencial()
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idListaPrecoPai from Lista_Preco_Pai where stPreferencial = 1");
+            return UndTrabalho.dbPrincipal.ExecuteScalar(command).ToInt32();
         }
 
         public void BeginTransaction()

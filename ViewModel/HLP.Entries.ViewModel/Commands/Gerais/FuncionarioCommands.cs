@@ -406,8 +406,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 if (this.objViewModel.currentID != 0)
                     this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
                 else
-                    this.objViewModel.currentModel = null;
-
+                    this.objViewModel.currentModel = null;                
             }
             catch (Exception)
             {

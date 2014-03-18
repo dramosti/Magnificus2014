@@ -807,6 +807,17 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
+        private Byte[] _imgFoto;
+        [ParameterOrder(Order = 69)]
+        public Byte[] imgFoto
+        {
+            get { return _imgFoto; }
+            set
+            {
+                _imgFoto = value;
+                base.NotifyPropertyChanged(propertyName: "imgFoto");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<EnderecoModel> _lFuncionario_Endereco;
 

@@ -1,6 +1,7 @@
 ﻿using HLP.Comum.Modules;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -18,12 +19,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         BackgroundWorker bWorkerAcoes;
         Lista_PrecoViewModel objViewModel;
-        Lista_PrecoService.IserviceLista_PrecoClient servico = new Lista_PrecoService.IserviceLista_PrecoClient();
         produtoService.IserviceProdutoClient servicoProduto = new produtoService.IserviceProdutoClient();
-
+        Lista_PrecoService objServico;
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
+            objServico = new Lista_PrecoService();
 
             this.objViewModel = objViewModel;
 
@@ -46,7 +47,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             canExecute: paramCanExec => this.CopyCanExecute());
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
+                    canExecute: paramCanExec => false);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -57,8 +58,41 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
 
-            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
-                canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
+            //this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
+            //    canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
+
+            this.objViewModel.AumVlrVendaCustoCommand = new RelayCommand(execute: paramExec => this.AumentarVlrVendaCustoExecute(),
+                canExecute: paramCanExec => this.AumentarVlrVendaCustoCanExecute());
+
+            this.objViewModel.ConfAumVlrVendaCommand = new RelayCommand(execute: paramExec => this.ConfAumVlrExecute(),
+                canExecute: paramCanExec => this.ConfAumVlrCanExec());
+
+            this.objViewModel.CancAumVlrVendaCommand = new RelayCommand(execute: paramExec => this.CancAumVlrExecute());
+
+            this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
+                collection: this.objServico.GetAllIdsListaPreco());
+
+            int currentId = objServico.getIdListaPreferencial();
+            int currentPosition = 0;
+            int i = 0;
+            if (currentId != 0)
+            {
+                currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+
+                while (i < currentPosition)
+                {
+                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                    i++;
+                }
+
+            }
+            else
+            {
+                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
+            }
+            this.getListaPreco(this, null);
+            this.objViewModel.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
 
         private void IniciaCollection()
@@ -69,6 +103,46 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         #region Implementação Commands
 
+        private void ConfAumVlrExecute()
+        {
+            decimal p = decimal.Zero;
+
+            if (decimal.TryParse(s: this.objViewModel.dPorcAumento.ToString(), result: out p))
+            {
+                foreach (Lista_precoModel item in this.objViewModel.currentModel.lLista_preco.Where(i => i.bChecked).ToList())
+                {
+                    if (this.objViewModel.byteIndex == 0)
+                        item.vVenda *= (1 + (this.objViewModel.dPorcAumento / 100));
+                    else if (this.objViewModel.byteIndex == 1)
+                        item.vCustoProduto *= (1 + (this.objViewModel.dPorcAumento / 100));
+                }
+            }
+
+            this.objViewModel.visAumentoVlr = Visibility.Collapsed;
+        }
+
+        private bool ConfAumVlrCanExec()
+        {
+            decimal p = decimal.Zero;
+
+            return decimal.TryParse(s: this.objViewModel.dPorcAumento.ToString(), result: out p);
+        }
+
+        private void CancAumVlrExecute()
+        {
+            this.objViewModel.visAumentoVlr = Visibility.Collapsed;
+        }
+
+        private void AumentarVlrVendaCustoExecute()
+        {
+            this.objViewModel.visAumentoVlr = Visibility.Visible;
+            this.objViewModel.dPorcAumento = decimal.Zero;
+        }
+
+        private bool AumentarVlrVendaCustoCanExecute()
+        {
+            return this.objViewModel.bIsEnabled && this.objViewModel.visAumentoVlr != Visibility.Visible;
+        }
 
         private void AtribuirPercentual(object param)
         {
@@ -114,13 +188,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.bIsEnabled;
         }
 
-
         private void GerarLista()
         {
             if (this.objViewModel.currentModel.idListaPrecoOrigem != null)
             {
                 foreach (Lista_precoModel item in
-                    this.servico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
+                    this.objServico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
                 {
                     if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == item.idProduto) == 0)
                     {
@@ -159,8 +232,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.bIsEnabled;
         }
 
-
-
         public void Save(object _panel)
         {
             try
@@ -169,7 +240,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
-
             }
             catch (Exception ex)
             {
@@ -190,10 +260,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         status = Comum.Resources.RecursosBases.statusModel.excluido
                     });
             }
-            objViewModel.currentModel = this.servico.saveLista_Preco(objListaPreco: this.objViewModel.currentModel);
+            objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
 
             e.Result = e.Argument;
         }
+
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -215,6 +286,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
                         }
                     this.IniciaCollection();
+                    this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
                 }
             }
             catch (Exception ex)
@@ -223,7 +295,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 throw ex;
             }
         }
-
 
         private bool SaveCanExecute(object objDependency)
         {
@@ -244,7 +315,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteLista_Preco((int)this.objViewModel.currentModel.idListaPrecoPai))
+                    if (this.objServico.Delete(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -272,11 +343,14 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
+            this.objViewModel.currentModel.dListaPreco = DateTime.Now;
+            this.objViewModel.currentModel.stAtualizacao = (byte)1;
+            this.objViewModel.currentModel.Ativo = true;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = true;
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwNovo_DoWork;
             bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
@@ -300,6 +374,17 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+
+            if (this.objViewModel.currentModel.stAtualizacao == 0)
+            {
+                this.objViewModel.bCompListaManual = true;
+
+            }
+            else
+            {
+                this.objViewModel.bCompListaAut = true;
+            }
+
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwAlterar_DoWork;
             bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
@@ -325,6 +410,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
         }
         private bool CancelarCanExecute()
         {
@@ -367,7 +453,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                e.Result = this.servico.copyLista_Preco(objListaPreco: this.objViewModel.currentModel);
+                e.Result = this.objServico.Copy(objModel: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -429,8 +515,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void getListaPreco(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.getLista_Preco(
-                idListaPrecoPai: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
         }
         #endregion
 

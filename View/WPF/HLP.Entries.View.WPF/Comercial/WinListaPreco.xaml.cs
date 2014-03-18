@@ -1,4 +1,8 @@
-﻿using System;
+﻿using HLP.Comum.Resources.Util;
+using HLP.Comum.View.Formularios;
+using HLP.Entries.View.WPF.Gerais;
+using HLP.Entries.ViewModel.ViewModels.Comercial;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios;
-using HLP.Entries.ViewModel.ViewModels.Comercial;
-using HLP.Entries.ViewModel.ViewModels.Gerais;
-using System.Collections;
-using HLP.Comum.Resources.Util;
-using System.Reflection;
 
-namespace HLP.Entries.View.WPF.Gerais
+namespace HLP.Entries.View.WPF.Comercial
 {
     /// <summary>
     /// Interaction logic for WinListaPreco.xaml
@@ -86,11 +84,16 @@ namespace HLP.Entries.View.WPF.Gerais
 
         private void cbxStAtualizacao_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.gridItens.Columns[2].IsReadOnly =
-                this.gridItens.Columns[3].IsReadOnly =
-                this.gridItens.Columns[6].IsReadOnly =
-                this.gridItens.Columns[7].IsReadOnly =
-                this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.CustomComboBox)sender).SelectedIndex == 0);
+            //this.gridItens.Columns[2].IsReadOnly =
+            //    this.gridItens.Columns[3].IsReadOnly =
+            //    this.gridItens.Columns[6].IsReadOnly =
+            //    this.gridItens.Columns[7].IsReadOnly =
+            //    this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.CustomComboBox)sender).SelectedIndex == 0);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

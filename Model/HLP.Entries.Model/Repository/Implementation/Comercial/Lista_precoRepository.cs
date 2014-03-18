@@ -70,7 +70,11 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Lista_preco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPreco"),
-                   MapBuilder<Lista_precoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                   MapBuilder<Lista_precoModel>.MapAllProperties()
+                   .DoNotMap(i => i.status)
+                   .DoNotMap(i => i.bChecked)
+                   .DoNotMap(i => i.vlrEsperado)
+                   .Build());
             }
             return regAcessor.Execute(idListaPreco).FirstOrDefault();
         }
@@ -79,7 +83,12 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DataAccessor<Lista_precoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Lista_preco WHERE idListaPrecoPai = @idListaPrecoPai", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idListaPrecoPai"),
-            MapBuilder<Lista_precoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            MapBuilder<Lista_precoModel>.MapAllProperties()
+            .DoNotMap(i => i.status)
+            .DoNotMap(i => i.status)
+            .DoNotMap(i => i.bChecked)
+            .DoNotMap(i => i.vlrEsperado)
+            .Build());
 
             try
             {

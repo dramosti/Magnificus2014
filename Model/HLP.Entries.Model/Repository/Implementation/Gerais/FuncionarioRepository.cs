@@ -67,11 +67,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regFuncionarioAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Funcionario",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idFuncionario"),
-                                         MapBuilder<FuncionarioModel>.MapAllProperties().DoNotMap(i => i.status)
+                                         MapBuilder<FuncionarioModel>.MapAllProperties()
+                                         .DoNotMap(i => i.status)
+                                         .DoNotMap(i => i.imgFoto)
                                          .Build());
             }
 
-            return regFuncionarioAccessor.Execute(idFuncionario).FirstOrDefault();
+            FuncionarioModel func = regFuncionarioAccessor.Execute(idFuncionario).FirstOrDefault();
+
+            object o = this.GetImageFuncionario(idFuncionario: idFuncionario);
+
+            if (o != null)
+                func.imgFoto = o as byte[];
+
+            return func;
         }
 
         public FuncionarioModel GetFuncionarioPai(int idFuncionario)
@@ -153,6 +162,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                    MapBuilder<FuncionarioModel>.MapAllProperties().Build()
                                   );
             return regUsuario.Execute().FirstOrDefault();
+        }
+
+        public object GetImageFuncionario(int idFuncionario)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand(string.Format(
+                format: "select imgFoto from Funcionario where idFuncionario = '{0}'", arg0: idFuncionario));
+
+            return UndTrabalho.dbPrincipal.ExecuteScalar(command);
         }
 
         public int GetIdUserHLP()

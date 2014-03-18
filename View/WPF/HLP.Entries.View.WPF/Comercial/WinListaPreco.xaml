@@ -5,31 +5,35 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
-        xmlns:convL ="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
+        xmlns:convL ="clr-namespace:HLP.Entries.View.WPF.Comercial.Converter"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
-        x:Class="HLP.Entries.View.WPF.Gerais.WinListaPreco"
+        xmlns:util="clr-namespace:HLP.Comum.Infrastructure.Util;assembly=HLP.Comum.Infrastructure"
+        x:Class="HLP.Entries.View.WPF.Comercial.WinListaPreco"
         Name="winListaPreco"        
-        Title="Listas de Preço" Height="660" Width="1024" NameView="vwListaPrecoPai"
-    >
+        Title="Listas de Preço" Height="660" Width="1024" NameView="vwListaPrecoPai">
     <Window.Resources>
+        <convL:ReadOnlyColumnsListaAutomaticaConverter x:Key="readOnlyConverter"></convL:ReadOnlyColumnsListaAutomaticaConverter>
         <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
+        <convL:CanUserAddListaItensConverter x:Key="canUserAddListaItensConv"></convL:CanUserAddListaItensConverter>
         <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
         <ObjectDataProvider x:Key="lResultConversao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwUnidadeMedidaToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-
         <ObjectDataProvider x:Key="lresultProdutos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
             <ObjectDataProvider.MethodParameters>
                 <System:String>vwProdutoToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <conv:VisibilityVisibleToCollapsedNot x:Key="visibilityConverter"></conv:VisibilityVisibleToCollapsedNot>
         <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
         <convL:RowDateListaPrecoConverter x:Key="RowDateConverter"/>
         <convL:StCustoProdutoConverter x:Key="stCustoProdutoConverter"/>
+        <convL:IsEnabledCompMultiConverter x:Key="isEnabledMultiConverter"></convL:IsEnabledCompMultiConverter>
         <conv:MoedaConverter x:Key="moedaConverter"/>
+        <util:BindingProxy x:Key="proxy" Data="{Binding}" />
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <Expander Header="Principal" IsExpanded="True">
@@ -93,6 +97,7 @@
                         <!--Componentes-->
 
                         <Button Grid.Column="2" Grid.Row="21"
+                                IsEnabled="{Binding bCompListaManual}"
                         Command="{Binding gerarListaCommand}"
                         Content="Gerar Lista"/>
 
@@ -104,23 +109,25 @@
                         <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="3"
                     Text="{Binding currentModel.xCodigoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsEnabled="{Binding bCompGeral}"
 					ToolTip="Digite um código para a recém-criada Lista de preço "/>
                         <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="5"
                     Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Descrição da Lista de preço"/>
-                        <Components:CustomDatePicker
-                    Grid.Column="2" Grid.Row="7"
-                    SelectedDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Este campo mostra a data em que a lista de preços foi gerada "/>
+                        <Components:HlpDatePicker
+                            Grid.Column="2" Grid.Row="7"
+                            xTextDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            IsEnabled="False"
+                            stFormatoDtPicker="date"
+                            Help="Este campo mostra a data em que a lista de preços foi gerada"
+                            ></Components:HlpDatePicker>
                         <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
                     Name="cbxStAtualizacao"					
 					SelectedIndex="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+					IsEnabled="{Binding bCompGeral}"
 					ToolTip="Informar o tipo de atualização para o campo Preço de Venda para essa lista de preço, elas podem ser Manual ou Automática." SelectionChanged="cbxStAtualizacao_UCSelectionChanged">
                             <Components:CustomComboBox.Items>
                                 <System:String>0-Automatica</System:String>
@@ -136,18 +143,13 @@
                                 <System:String>xCodigoListaPreco</System:String>
                                 <System:String>xLista</System:String>
                             </Components:HlpPesquisa.Items>
-                            <Components:HlpPesquisa.Style>
-                                <Style>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=cbxStAtualizacao, Path=SelectedIndex}" Value="1">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Components:HlpPesquisa.Style>
+                            <Components:HlpPesquisa.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cbx">
+                                    <Binding Path="bCompGeral"/>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
+                                </MultiBinding>
+                            </Components:HlpPesquisa.IsEnabled>
                         </Components:HlpPesquisa>
                         <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="13"
@@ -156,18 +158,13 @@
                         Converter={StaticResource PorcentagemConverter},
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					     
                         ToolTip="Este campo serve para se definir o % de acréscimo (valor positivo) ou % de desconto (valor negativo) para a lista que está sendo mostrada na tela e definida como automática, porém para este tipo de cálculo o sistema pegará sempre como base a lista 00001.">
-                            <Components:CustomTextBox.Style>
-                                <Style>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=cbxStAtualizacao, Path=SelectedIndex}" Value="1">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Components:CustomTextBox.Style>
+                            <Components:CustomTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cbx">
+                                    <Binding Path="bCompListaManual"/>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
+                                </MultiBinding>
+                            </Components:CustomTextBox.IsEnabled>
                         </Components:CustomTextBox>
                         <Components:CustomTextBox
                     Grid.Column="7" Grid.Row="1"
@@ -176,17 +173,27 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campos"/>
                         <Components:CustomCheckBox
+                            x:Name="cbContrato"
                     Grid.Column="7" Grid.Row="3" VerticalAlignment="Center"
                     IsChecked="{Binding currentModel.stContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                       			
-					IsEnabled="{Binding bIsEnabled}"/>
-                        <Components:CustomTextBlock
-                    Grid.Column="7" Grid.Row="5"
+					IsEnabled="{Binding bCompGeral}"/>
+                        <Components:CustomTextBox
+                            Grid.Column="7" Grid.Row="5"
                     Text="{Binding currentModel.xNrContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"/>
-                        <Components:CustomDatePicker
-                    Grid.Column="7" Grid.Row="7"
-                    SelectedDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"/>
+					Margin="0,1,0,3" Grid.RowSpan="2">
+                            <Components:CustomTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cb">
+                                    <Binding Path="bCompGeral"/>
+                                    <Binding ElementName="cbContrato" Path="IsChecked"/>
+                                </MultiBinding>
+                            </Components:CustomTextBox.IsEnabled>
+                        </Components:CustomTextBox>
+                        <Components:HlpDatePicker
+                            Grid.Column="7" Grid.Row="7"
+                            IsEnabled="{Binding bCompListaAut}"
+                            xTextDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            ></Components:HlpDatePicker>
                         <Components:CustomTextBox
                     Grid.Column="7" Grid.Row="9"
                     Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, 
@@ -230,25 +237,38 @@
                         Command="{Binding AtribuicaoColetivaCommand}" CommandParameter="WinAtribuicaoColetivaListaPreco"
                         Content="Atribuição Coletiva"/>
 
-                    
-                    <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Orientation="Vertical">
-                        <StackPanel Height="30" Visibility="Visible" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <DockPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" LastChildFill="True">
+                        <StackPanel Height="30" Visibility="{Binding visAumentoVlr}" HorizontalAlignment="Left" Orientation="Horizontal" DockPanel.Dock="Top">
+                            <ComboBox Width="150" SelectedIndex="{Binding byteIndex, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem>Preço de Venda</ComboBoxItem>
+                                <ComboBoxItem>Custo do Produto</ComboBoxItem>
+                            </ComboBox>
                             <TextBlock>% de aumento</TextBlock>
-                            <TextBox Width="80"></TextBox>
-                            <Button Width="70">Confirmar</Button>
-                            <Button Width="70">Cancelar</Button>
+                            <TextBox Width="80" Text="{Binding dPorcAumento, Converter={StaticResource PorcentagemConverter}}"></TextBox>
+                            <Button Width="70" Command="{Binding ConfAumVlrVendaCommand}">Confirmar</Button>
+                            <Button Width="70" Command="{Binding CancAumVlrVendaCommand}">Cancelar</Button>
                         </StackPanel>
-                        <Button Content="Produtos" Style="{StaticResource ButtonDatagridName}" Margin="5,0,0,-5" HorizontalAlignment="Left" Width="100"/>
+                        <Button Content="Produtos" Style="{StaticResource ButtonDatagridName}" Margin="5,0,0,-5" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
                         <DataGrid
 						 Name="gridItens"
                                     ItemsSource="{Binding currentModel.lLista_preco}"                          
                                     IsEnabled="{Binding bIsEnabled}"
                                     AutoGenerateColumns="False" 
                                     SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    CanUserDeleteRows="True"
-                                    CanUserAddRows="True"
                                     CellEditEnding="gridItens_CellEditEnding"
                         >
+                            <DataGrid.CanUserDeleteRows>
+                                <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
+                                    <Binding Path="visAumentoVlr"></Binding>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"></Binding>
+                                </MultiBinding>
+                            </DataGrid.CanUserDeleteRows>
+                            <DataGrid.CanUserAddRows>
+                                <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
+                                    <Binding Path="visAumentoVlr"></Binding>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"></Binding>
+                                </MultiBinding>
+                            </DataGrid.CanUserAddRows>
                             <DataGrid.BindingGroup>
                                 <BindingGroup NotifyOnValidationError="True">
                                     <BindingGroup.ValidationRules>
@@ -259,7 +279,16 @@
                                 </BindingGroup>
                             </DataGrid.BindingGroup>
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="150" >
+                                <DataGridCheckBoxColumn Binding="{Binding bChecked}"
+                                                        Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"
+                                                        >
+                                    <DataGridCheckBoxColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding Data.bCheckAll, Source={StaticResource proxy}}"></CheckBox>
+                                        </DataTemplate>
+                                    </DataGridCheckBoxColumn.HeaderTemplate>
+                                </DataGridCheckBoxColumn>
+                                <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="150">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
@@ -286,7 +315,8 @@
                                 ElementStyle="{StaticResource CellErrorStyle}"                                
                                 Binding="{Binding Path=vCustoProduto, UpdateSourceTrigger=LostFocus, Mode=TwoWay,
                                 Converter={StaticResource moedaConverter},
-                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}">
+                                NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}">
                                     <DataGridTextColumn.CellStyle>
                                         <Style>
                                             <Style.Triggers>
@@ -297,8 +327,36 @@
                                         </Style>
                                     </DataGridTextColumn.CellStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn                                
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
+                                        Header="% Desconto" Width="120"
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pDesconto, UpdateSourceTrigger=LostFocus,
+                                            Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
+                                        Header="% Comissão" Width="120"
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,
+                                            Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
+                                        Header="% Outros" Width="120"
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pOutros, UpdateSourceTrigger=LostFocus,
+                                            Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                                <DataGridTextColumn Visibility="{Binding ElementName=winListaPreco, Path=DataContext.visAumentoVlr, Converter={StaticResource visibilityConverter}}"                               
                                         Header="% Lucro" Width="100"
+                                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pLucro, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource PorcentagemConverter},
@@ -308,66 +366,54 @@
                                 <DataGridTextColumn                                
                                 Header="Valor Venda" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                 Binding="{Binding Path=vVenda, UpdateSourceTrigger=LostFocus,
                                 StringFormat={}{0:C},
                                 NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                                <DataGridTextColumn                                
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
                                         Header="% Desc. Máx." Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pDescontoMaximo, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                <DataGridTextColumn                                
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
                                         Header="% Acréc. Máx." Width="100"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pAcrescimoMaximo, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                <DataGridTextColumn                                
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
                                         Header="% Comissão à Vista" Width="120"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                <DataGridTextColumn                                
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
                                         Header="% Comissão à Prazo" Width="120"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, UpdateSourceTrigger=LostFocus,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                <DataGridTextColumn                                
-                                        Header="% Desconto" Width="120"
-                                            ElementStyle="{StaticResource CellErrorStyle}"
-                                        Binding="{Binding Path=pDesconto, UpdateSourceTrigger=LostFocus,
-                                            Converter={StaticResource PorcentagemConverter},
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
-                                <DataGridTextColumn                                
-                                        Header="% Comissão" Width="120"
-                                            ElementStyle="{StaticResource CellErrorStyle}"
-                                        Binding="{Binding Path=pComissao, UpdateSourceTrigger=LostFocus,
-                                            Converter={StaticResource PorcentagemConverter},
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
-                                <DataGridTextColumn                                
-                                        Header="% Outros" Width="120"
-                                            ElementStyle="{StaticResource CellErrorStyle}"
-                                        Binding="{Binding Path=pOutros, UpdateSourceTrigger=LostFocus,
-                                            Converter={StaticResource PorcentagemConverter},
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
-                                <DataGridTextColumn                                
+                                <DataGridTextColumn 
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
                                         Header="Markup" Width="120" IsReadOnly="True"                                        
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pMarkup, UpdateSourceTrigger=LostFocus,                                            
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
-                                <DataGridTemplateColumn x:Name="dtAlterCusto" Header="Data Alteração Custo" Width="125">
+                                <DataGridTemplateColumn 
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
+                                    x:Name="dtAlterCusto" Header="Data Alteração Custo" Width="125">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Path=dAlteracaoCusto}" />
@@ -382,7 +428,10 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="clUnidMedida" Header="Unidade Medida" Width="150" >
+                                <DataGridTemplateColumn 
+                                    IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
+                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
+                                    x:Name="clUnidMedida" Header="Unidade Medida" Width="150" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Path=idUnidadeMedida, Converter={StaticResource cbxDisplayConv}, 
@@ -404,7 +453,12 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellEditingTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="Vlr. Final" Visibility="Collapsed"></DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding vlrEsperado, Converter={StaticResource moedaConverter}}" 
+                                                    Header="Vlr. Final" 
+                                                    Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}}"
+                                                    >
+
+                                </DataGridTextColumn>
                             </DataGrid.Columns>
                             <DataGrid.RowStyle>
                                 <Style>
@@ -427,7 +481,7 @@
                                 </Style>
                             </DataGrid.RowStyle>
                         </DataGrid>
-                    </StackPanel>
+                    </DockPanel>
                 </Grid>
             </Grid>
         </Expander>

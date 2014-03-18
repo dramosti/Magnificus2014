@@ -1,0 +1,24 @@
+﻿<Window x:Class="HLP.Comum.View.Components.HlpImageControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:conv="clr-namespace:HLP.Comum.View.Converters"
+             mc:Ignorable="d"
+             x:Name="ucImg"
+             d:DesignHeight="300" d:DesignWidth="380">
+    <Window.Resources>
+        <conv:ImageToaByteConverter x:Key="imgConverter"></conv:ImageToaByteConverter>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Right" Width="80" Orientation="Vertical">
+            <Button Content="Selecionar" Click="Button_Click_1"></Button>
+            <Button x:Name="btnLimpar" Content="Limpar" Click="btnLimpar_Click_1"></Button>
+            <Button x:Name="btnAplicar" Content="Aplicar" Click="btnAplicar_Click"></Button>
+        </StackPanel>
+        <Image 
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Source="{Binding ElementName=ucImg, Path=byteImg, Converter={StaticResource imgConverter}}"></Image>
+    </DockPanel>    
+</Window>

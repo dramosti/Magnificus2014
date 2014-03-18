@@ -109,6 +109,9 @@
                                             <System:String>xSetor</System:String>
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
+                                    <Components:HlpUserControlBtnImage 
+                                        IsEnabled="{Binding bIsEnabled}"
+                                        byteImage="{Binding currentModel.imgFoto, Mode=TwoWay}"></Components:HlpUserControlBtnImage>
                                 </WrapPanel>
                             </Expander>
                         </DockPanel>

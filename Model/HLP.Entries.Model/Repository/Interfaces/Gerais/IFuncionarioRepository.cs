@@ -20,7 +20,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         FuncionarioModel GetFuncionarioPai(int idFuncionario);
         List<FuncionarioModel> GetFuncionarioFilho(int idResponsavel);
         int GetIdUserHLP();
-        int GetIdUserDEFAULT();
+        int GetIdUserDEFAULT();        
 
         void BeginTransaction();
         void CommitTransaction();
