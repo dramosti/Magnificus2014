@@ -114,6 +114,9 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _stAtualizacao = value;
+
+                this.idListaPrecoOrigem = this.idListaPrecoOrigem;
+
                 base.NotifyPropertyChanged(propertyName: "stAtualizacao");
             }
         }

@@ -84,11 +84,11 @@ namespace HLP.Entries.View.WPF.Comercial
 
         private void cbxStAtualizacao_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.gridItens.Columns[2].IsReadOnly =
-                this.gridItens.Columns[3].IsReadOnly =
-                this.gridItens.Columns[6].IsReadOnly =
-                this.gridItens.Columns[7].IsReadOnly =
-                this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.CustomComboBox)sender).SelectedIndex == 0);
+            //this.gridItens.Columns[2].IsReadOnly =
+            //    this.gridItens.Columns[3].IsReadOnly =
+            //    this.gridItens.Columns[6].IsReadOnly =
+            //    this.gridItens.Columns[7].IsReadOnly =
+            //    this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.CustomComboBox)sender).SelectedIndex == 0);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

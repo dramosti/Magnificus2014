@@ -50,10 +50,48 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             btnAumVlr.Command = this.AumVlrVendaCustoCommand;
 
             this.Botoes.Children.Add(element: btnAtribuicaoColetiva);
-            this.Botoes.Children.Add(element: btnAumVlr);                        
+            this.Botoes.Children.Add(element: btnAumVlr);
+
+            this.bCompGeral = this.bCompListaAut = this.bCompListaManual = false;
         }
 
         #region Propriedades utilizadas na View
+
+        private bool _bCompGeral;
+
+        public bool bCompGeral
+        {
+            get { return _bCompGeral; }
+            set
+            {
+                _bCompGeral = value;
+                base.NotifyPropertyChanged(propertyName: "bCompGeral");
+            }
+        }
+
+        private bool _bCompListaAut;
+
+        public bool bCompListaAut
+        {
+            get { return _bCompListaAut; }
+            set
+            {
+                _bCompListaAut = value;
+                base.NotifyPropertyChanged(propertyName: "bCompListaAut");
+            }
+        }
+
+        private bool _bCompListaManual;
+
+        public bool bCompListaManual
+        {
+            get { return _bCompListaManual; }
+            set
+            {
+                _bCompListaManual = value;
+                base.NotifyPropertyChanged(propertyName: "bCompListaManual");
+            }
+        }
 
         private Visibility _visAumentoVlr;
 

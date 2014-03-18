@@ -58,8 +58,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
 
-            this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
-                canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
+            //this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
+            //    canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
 
             this.objViewModel.AumVlrVendaCustoCommand = new RelayCommand(execute: paramExec => this.AumentarVlrVendaCustoExecute(),
                 canExecute: paramCanExec => this.AumentarVlrVendaCustoCanExecute());
@@ -240,7 +240,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
-
             }
             catch (Exception ex)
             {
@@ -287,6 +286,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
                         }
                     this.IniciaCollection();
+                    this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
                 }
             }
             catch (Exception ex)
@@ -350,6 +350,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.currentModel.stAtualizacao = (byte)1;
             this.objViewModel.currentModel.Ativo = true;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
+            this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = true;
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwNovo_DoWork;
             bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
@@ -373,6 +374,17 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
+
+            if (this.objViewModel.currentModel.stAtualizacao == 0)
+            {
+                this.objViewModel.bCompListaManual = true;
+
+            }
+            else
+            {
+                this.objViewModel.bCompListaAut = true;
+            }
+
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwAlterar_DoWork;
             bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
@@ -398,6 +410,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
         }
         private bool CancelarCanExecute()
         {
