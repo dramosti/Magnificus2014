@@ -29,9 +29,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-        
+
         private int _selectedIndex;
-        
+
         public int selectedIndex
         {
             get { return _selectedIndex; }
@@ -41,7 +41,46 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 base.NotifyPropertyChanged(propertyName: "selectedIndex");
             }
         }
-        
+
+        private byte _stAtualizacaoLista;
+
+        public byte stAtualizacaoLista
+        {
+            get { return _stAtualizacaoLista; }
+            set
+            {
+                _stAtualizacaoLista = value;
+                List<string> lItens = new List<string>();
+                lItens.Add(item: "Desconto Máximo"); //0
+                lItens.Add(item: "Acréscimo Máximo"); //1
+                lItens.Add(item: "Comissão A vista"); //2
+                lItens.Add(item: "Comissão A prazo"); //3
+                if (value == (byte)1)
+                {
+                    lItens.Add(item: "Custo do Produto"); //4
+                    lItens.Add(item: "Porc. de Comissão"); //5
+                    lItens.Add(item: "Porc. de desconto"); //6
+                    lItens.Add(item: "Outros"); //7
+                    lItens.Add(item: "Margem de Lucro"); //8
+                    lItens.Add(item: "Valor de Venda"); //9
+                }
+                this._lItensCbx = lItens;
+            }
+        }
+
+
+        private List<string> _lItensCbx;
+
+        public List<string> lItensCbx
+        {
+            get { return _lItensCbx; }
+            set
+            {
+                _lItensCbx = value;
+                base.NotifyPropertyChanged(propertyName: "lItensCbx");
+            }
+        }
+
 
         public AtribuicaoColetivaListaPrecoViewModel()
         {

@@ -159,6 +159,7 @@
     <Compile Include="Gerais\Converters\RowDateListaPrecoConverter.cs" />
     <Compile Include="Gerais\Converters\StCustoProdutoConverter.cs" />
     <Compile Include="Gerais\Converters\StTipoAtualizacaoConverter.cs" />
+    <Compile Include="Gerais\Converters\VisibilityColumnsAtribuicaoListaPrecoConverter.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
     </Compile>
@@ -531,23 +532,27 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\produtoService\HLP.Entries.View.WPF.produtoService.ProdutoModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\produtoService\wcf_Produto.wsdl" />
+    <None Include="Service References\produtoService\wcf_Produto.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto.wsdl" />
-    <None Include="Service References\produtoService\serviceProduto.xsd">
+    <None Include="Service References\produtoService\wcf_Produto1.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto1.xsd">
+    <None Include="Service References\produtoService\wcf_Produto2.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto2.xsd">
+    <None Include="Service References\produtoService\wcf_Produto3.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto3.xsd">
+    <None Include="Service References\produtoService\wcf_Produto4.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto4.xsd">
+    <None Include="Service References\produtoService\wcf_Produto5.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto5.xsd">
-    </None>
-    <None Include="Service References\produtoService\serviceProduto6.xsd">
+    <None Include="Service References\produtoService\wcf_Produto6.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -594,11 +599,14 @@
   <ItemGroup>
     <Folder Include="Fonts\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\produtoService\serviceProduto.disco" />
+    <WCFMetadataStorage Include="Service References\produtoService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\produtoService\wcf_Produto.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\produtoService\configuration91.svcinfo" />

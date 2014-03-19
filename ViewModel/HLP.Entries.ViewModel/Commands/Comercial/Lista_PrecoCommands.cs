@@ -19,7 +19,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         BackgroundWorker bWorkerAcoes;
         Lista_PrecoViewModel objViewModel;
-        produtoService.IserviceProdutoClient servicoProduto = new produtoService.IserviceProdutoClient();
+        ProdutoService objServicoProduto;
+
         Lista_PrecoService objServico;
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
@@ -72,6 +73,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
                 collection: this.objServico.GetAllIdsListaPreco());
 
+            this.objServicoProduto = new ProdutoService();
+
             int currentId = objServico.getIdListaPreferencial();
             int currentPosition = 0;
             int i = 0;
@@ -92,6 +95,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
             }
             this.getListaPreco(this, null);
+
             this.objViewModel.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
 
@@ -180,6 +184,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             ((AtribuicaoColetivaListaPrecoViewModel)vm).currentList = new Comum.Model.Models.ObservableCollectionBaseCadastros<Lista_precoModel>(
                 list: this.objViewModel.currentModel.lLista_preco);
 
+            ((AtribuicaoColetivaListaPrecoViewModel)vm).stAtualizacaoLista = this.objViewModel.currentModel.stAtualizacao;
+
             form.Show();
         }
 
@@ -209,7 +215,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             else
             {
-                foreach (ProdutoModel p in this.servicoProduto.getAll())
+                foreach (ProdutoModel p in this.objServicoProduto.GetAll())
                 {
                     if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == p.idProduto) == 0)
                     {
@@ -237,6 +243,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
+                foreach (int id in objViewModel.currentModel.lLista_preco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lLista_preco.Add(
+                        item: new Lista_precoModel
+                        {
+                            idListaPreco = id,
+                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                        });
+                }
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
@@ -250,18 +265,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            // metodo de salvar -->
-            foreach (int id in objViewModel.currentModel.lLista_preco.idExcluidos)
+            Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
             {
-                this.objViewModel.currentModel.lLista_preco.Add(
-                    item: new Lista_precoModel
-                    {
-                        idListaPreco = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
-                    });
-            }
-            objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
-
+                objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
+            });
+            
             e.Result = e.Argument;
         }
 
@@ -346,6 +354,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
+            this.objViewModel.currentModel.nDiasSemAtualicao = 0;
             this.objViewModel.currentModel.dListaPreco = DateTime.Now;
             this.objViewModel.currentModel.stAtualizacao = (byte)1;
             this.objViewModel.currentModel.Ativo = true;

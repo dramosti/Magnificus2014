@@ -29,6 +29,7 @@
         </ObjectDataProvider>
         <conv:VisibilityVisibleToCollapsedNot x:Key="visibilityConverter"></conv:VisibilityVisibleToCollapsedNot>
         <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+        <conv:NotConverter x:Key="notConverter"/>
         <convL:RowDateListaPrecoConverter x:Key="RowDateConverter"/>
         <convL:StCustoProdutoConverter x:Key="stCustoProdutoConverter"/>
         <convL:IsEnabledCompMultiConverter x:Key="isEnabledMultiConverter"></convL:IsEnabledCompMultiConverter>
@@ -251,8 +252,8 @@
                         <Button Content="Produtos" Style="{StaticResource ButtonDatagridName}" Margin="5,0,0,-5" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
                         <DataGrid
 						 Name="gridItens"
-                                    ItemsSource="{Binding currentModel.lLista_preco}"                          
-                                    IsEnabled="{Binding bIsEnabled}"
+                                    ItemsSource="{Binding currentModel.lLista_preco}"                                    
+                                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     AutoGenerateColumns="False" 
                                     SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                                     CellEditEnding="gridItens_CellEditEnding"

@@ -15,6 +15,8 @@ namespace HLP.Entries.Model.Repository.Interfaces.Comercial
         void Save(ProdutoModel produto);
         void Delete(int idProduto);
         void Copy(ProdutoModel produto);
+        object GetStCustoProduto(int idProduto);
+        decimal? GetValorCompraProduto(int idProduto);
 
         void BeginTransaction();
         void CommitTransaction();

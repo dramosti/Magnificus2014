@@ -12,7 +12,7 @@ namespace HLP.Entries.View.WPF.Comercial.Converter
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             DateTime date;
-            double dateAdd;
+            double dateAdd = 0;
 
             foreach (object o in values)
             {
@@ -28,6 +28,9 @@ namespace HLP.Entries.View.WPF.Comercial.Converter
                 }
                 date = date.AddDays(value: dateAdd);
             }
+
+            if (dateAdd == 0)
+                return true;
 
             bool res = date < DateTime.Now ? false : true;
 
