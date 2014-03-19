@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Parametros;
+using Xceed.Wpf.Toolkit;
 
 namespace HLP.Entries.View.WPF.Parametrização
 {
