@@ -13,9 +13,9 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceProduto" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceProduto.svc or serviceProduto.svc.cs at the Solution Explorer and start debugging.
-    public class serviceProduto : IserviceProduto
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "wcf_Produto" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select wcf_Produto.svc or wcf_Produto.svc.cs at the Solution Explorer and start debugging.
+    public class wcf_Produto : Iwcf_Produto
     {
         [Inject]
         public IProdutoRepository produtoRepository { get; set; }
@@ -26,7 +26,7 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IProduto_Fornecedor_HomologadoRepository produto_Fornecedor_HomologadoRepository { get; set; }
 
-        public serviceProduto()
+        public wcf_Produto()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -34,7 +34,7 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Comercial.ProdutoModel getProduto(int idProduto)
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel GetObjeto(int idProduto)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public HLP.Entries.Model.Models.Comercial.ProdutoModel saveProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel Save(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
 
             try
@@ -124,7 +124,52 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public bool deleteProduto(int idProduto)
+        public HLP.Entries.Model.Models.Comercial.ProdutoModel Copy(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
+        {
+
+            try
+            {
+                this.produtoRepository.BeginTransaction();
+                this.produtoRepository.Copy(produto: objProduto);
+
+                foreach (HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel item in objProduto.lProduto_Revisao)
+                {
+                    item.idProduto = (int)objProduto.idProduto;
+                    this.produto_RevisaoRepository.Copy(produtoRevisao: item);
+                }
+
+                foreach (HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel item in objProduto.lProduto_Fornecedor_Homologado)
+                {
+                    item.idProduto = (int)objProduto.idProduto;
+                    this.produto_Fornecedor_HomologadoRepository.Copy(produtoFornHom: item);
+                }
+                this.produtoRepository.CommitTransaction();
+                return objProduto;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                this.produtoRepository.RollackTransaction();
+                throw new FaultException(reason: ex.Message);
+            }
+        }
+
+        public List<HLP.Entries.Model.Models.Comercial.ProdutoModel> getAll()
+        {
+
+            try
+            {
+                return this.produtoRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
+        }
+
+        public bool Delete(int idProduto)
         {
 
             try
@@ -147,50 +192,33 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int copyProduto(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
+        public bool PrecoCustoManual(int idProduto)
         {
-
             try
             {
-                this.produtoRepository.BeginTransaction();
-                this.produtoRepository.Copy(produto: objProduto);
-
-                foreach (HLP.Entries.Model.Models.Comercial.Produto_RevisaoModel item in objProduto.lProduto_Revisao)
-                {
-                    item.idProduto = (int)objProduto.idProduto;
-                    this.produto_RevisaoRepository.Copy(produtoRevisao: item);
-                }
-
-                foreach (HLP.Entries.Model.Models.Comercial.Produto_Fornecedor_HomologadoModel item in objProduto.lProduto_Fornecedor_Homologado)
-                {
-                    item.idProduto = (int)objProduto.idProduto;
-                    this.produto_Fornecedor_HomologadoRepository.Copy(produtoFornHom: item);
-                }
-                this.produtoRepository.CommitTransaction();
-                return (int)objProduto.idProduto;
-            }
-            catch (Exception ex)
-            {
-                Log.AddLog(xLog: ex.Message);
-                this.produtoRepository.RollackTransaction();
-                throw new FaultException(reason: ex.Message);
-            }
-        }
-
-        public List<HLP.Entries.Model.Models.Comercial.ProdutoModel> getAll()
-        {
-
-            try
-            {
-                return this.produtoRepository.GetAll();
+                return (byte?)this.produtoRepository.GetStCustoProduto(idProduto: idProduto) == (byte)1;
             }
             catch (Exception ex)
             {
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
+
         }
 
+        public decimal GetValorCompraProduto(int idProduto)
+        {
 
+            try
+            {
+                return this.produtoRepository.GetValorCompraProduto(idProduto: idProduto) ?? decimal.Zero;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+
+        }
     }
 }

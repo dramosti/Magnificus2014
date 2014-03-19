@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         ProdutoViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
-        produtoService.IserviceProdutoClient servico = new produtoService.IserviceProdutoClient();
+        ProdutoService objService;
+
         public ProdutoCommands(ProdutoViewModel objViewModel)
         {
 
@@ -46,7 +48,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-
+            this.objService = new ProdutoService();
         }
 
         private void IniciaCollection()
@@ -60,7 +62,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         #region Implementação Commands
 
-       
+
         public void Save(object _panel)
         {
             try
@@ -102,8 +104,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             // metodo de salvar -->
             try
             {
-               this.objViewModel.currentModel = this.servico.saveProduto(objProduto: this.objViewModel.currentModel);
-               e.Result = e.Argument;
+                this.objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
+                e.Result = e.Argument;
             }
             catch (Exception ex)
             {
@@ -159,7 +161,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteProduto((int)this.objViewModel.currentModel.idProduto))
+                    if (this.objService.Delete(objModel: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -236,7 +238,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -281,7 +283,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                e.Result = this.servico.copyProduto(objProduto: objViewModel.currentModel);
+                e.Result = this.objService.Copy(objModel: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -339,8 +341,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             if (this.objViewModel.currentID != 0)
             {
-                this.objViewModel.currentModel = this.servico.getProduto(idProduto:
-                    this.objViewModel.currentID);
+                this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
             }
             else
             {

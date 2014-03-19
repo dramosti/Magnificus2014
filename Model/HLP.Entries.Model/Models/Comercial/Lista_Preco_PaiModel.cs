@@ -224,6 +224,7 @@ namespace HLP.Entries.Model.Models.Comercial
                 return;
 
             byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
+
             switch (stMarkup)
             {
                 case 0://Por preço de custo
@@ -232,7 +233,8 @@ namespace HLP.Entries.Model.Models.Comercial
                     } break;
                 case 1://Por preço de venda
                     {
-                        this._vVenda = (decimal)(_vCustoProduto / this.pMarkup);
+                        if (this.pMarkup != 0)
+                            this._vVenda = (decimal)(_vCustoProduto / this.pMarkup);
                     } break;
             }
 
@@ -301,17 +303,19 @@ namespace HLP.Entries.Model.Models.Comercial
                     {
                         case 0://Por preço de custo
                             {
-                                this._pLucro = ((100 * (this._vVenda - this._vCustoProduto)) / this._vCustoProduto)
-                    + (this._vCustoProduto * ((this._pDesconto ?? 0) / 100))
-                    - (this._vCustoProduto * ((this._pComissao ?? 0) / 100))
-                    - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
+                                if (this._vCustoProduto != 0)
+                                    this._pLucro = ((100 * (this._vVenda - this._vCustoProduto)) / this._vCustoProduto)
+                        + (this._vCustoProduto * ((this._pDesconto ?? 0) / 100))
+                        - (this._vCustoProduto * ((this._pComissao ?? 0) / 100))
+                        - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
                                 this._pMarkup = this.pMarkup;
                                 base.NotifyPropertyChanged(propertyName: "pLucro");
                                 base.NotifyPropertyChanged(propertyName: "pMarkup");
                             } break;
                         case 1://Por preço de venda
                             {
-                                this._pLucro = (this._vVenda - this._vCustoProduto) * 100 / this._vVenda;
+                                if (this._vVenda != 0)
+                                    this._pLucro = (this._vVenda - this._vCustoProduto) * 100 / this._vVenda;
                                 this._pMarkup = this.pMarkup;
                                 base.NotifyPropertyChanged(propertyName: "pLucro");
                                 base.NotifyPropertyChanged(propertyName: "pMarkup");

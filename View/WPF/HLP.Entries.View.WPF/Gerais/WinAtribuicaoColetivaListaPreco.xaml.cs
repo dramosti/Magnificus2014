@@ -24,7 +24,7 @@ namespace HLP.Entries.View.WPF.Gerais
         public WinAtribuicaoColetivaListaPreco()
         {
             InitializeComponent();
-            this.ViewModel = new AtribuicaoColetivaListaPrecoViewModel();
+            this.ViewModel = new AtribuicaoColetivaListaPrecoViewModel();            
         }
 
         public AtribuicaoColetivaListaPrecoViewModel ViewModel

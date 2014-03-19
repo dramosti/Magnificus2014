@@ -28,7 +28,8 @@ namespace HLP.Magnificus.View.WPF
     /// </summary>
     public partial class App : Application
     {
-        private bool unhandledException = false;
+        private bool unhandledException = false;      
+ 
         empresaParametrosService.IserviceEmpresaParametrosClient empresaServico =
             new empresaParametrosService.IserviceEmpresaParametrosClient();
 

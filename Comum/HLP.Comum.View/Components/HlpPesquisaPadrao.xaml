@@ -164,7 +164,7 @@
                   
                   SelectionUnit="FullRow"
                   AlternationCount="2"                       
-                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"
+                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"                       
                       >
             </DataGrid>
         </Grid>

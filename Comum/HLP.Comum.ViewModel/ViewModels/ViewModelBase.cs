@@ -382,19 +382,19 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         public void FocusToComponente(System.Windows.Controls.Panel _panel, Util.focoComponente foco)
         {
-            Control ctr;
-            if (SecondControl == null)
-                FindFirstAndSecondComponente(_panel);
+            //Control ctr;
+            //if (SecondControl == null)
+            //    FindFirstAndSecondComponente(_panel);
 
-            if (foco == Util.focoComponente.Primeiro)
-                ctr = FirstControl;
-            else
-                ctr = SecondControl;
+            //if (foco == Util.focoComponente.Primeiro)
+            //    ctr = FirstControl;
+            //else
+            //    ctr = SecondControl;
 
-            if (ctr != null)
-            {
-                SetFocus(_panel, ctr);
-            }
+            //if (ctr != null)
+            //{
+            //    SetFocus(_panel, ctr);
+            //}
         }
 
         public List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject

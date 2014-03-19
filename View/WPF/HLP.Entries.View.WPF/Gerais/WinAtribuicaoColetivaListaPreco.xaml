@@ -3,8 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:convLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         x:Name="wdAtribuicao"
+        xmlns:util="clr-namespace:HLP.Comum.Infrastructure.Util;assembly=HLP.Comum.Infrastructure"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco"
         Title="Atribuição Coletiva" Height="400" Width="750" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -16,6 +18,8 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+        <convLocal:VisibilityColumnsAtribuicaoListaPrecoConverter x:Key="VisibilityConverter"></convLocal:VisibilityColumnsAtribuicaoListaPrecoConverter>
+        <util:BindingProxy x:Key="proxy" Data="{Binding}" />
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <Grid DockPanel.Dock="Top">
@@ -36,15 +40,8 @@
                     SelectedIndex="{Binding selectedIndex, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     UCSelectionChanged="HlpComboBox_UCSelectionChanged"
                     HorizontalAlignment="Left" Width="325" 
-                                        Caption="Trocar conteúdo do campo" Height="27" WidthLabel="170" Margin="10,0,0,2" >
-                        <Components:HlpComboBox.Items>
-                            <System:String>Desconto Máximo</System:String>
-                            <System:String>Acréscimo Máximo</System:String>
-                            <System:String>Comissão a Vista</System:String>
-                            <System:String>Comissão a Prazo</System:String>
-                            <System:String>Valor de Custo</System:String>
-                            <System:String>Valor de Venda</System:String>
-                        </Components:HlpComboBox.Items>
+                    Caption="Trocar conteúdo do campo" Height="27" WidthLabel="170" Margin="10,0,0,2"
+                        ItemsSource="{Binding lItensCbx, Mode=OneWay}">                        
                     </Components:HlpComboBox>
                     <Components:HlpTextBox Name="txtPor"
                                            Text="{Binding valor, 
@@ -82,37 +79,28 @@
                     </DataGridCheckBoxColumn.Header>
                 </DataGridCheckBoxColumn>
 
-                <DataGridTemplateColumn x:Name="clProdutos" Header="Produtos" Width="190" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
-                                        ConverterParameter={StaticResource lresultProdutos}}"
-                                                   />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
-                                <ComboBox x:Name="cbxEditing"
-                ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"                      
-            SelectedValue="{Binding idProduto,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                            </Grid>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn
+                    x:Name="clProdutos" Header="Produtos" Width="190"
+                    ItemsSource="{Binding Source={StaticResource lresultProdutos}}"
+                    SelectedValuePath="id"
+                    DisplayMemberPath="display"                               
+                SelectedValueBinding="{Binding idProduto,
+                                Mode=OneWay, ValidatesOnDataErrors=True}"                                                      
+                    ></DataGridComboBoxColumn>
                 <DataGridTextColumn                                                                        
                     Header="% Desc. Máx." Width="100"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=0}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pDescontoMaximo, Mode=OneWay,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
+                                        >
+                </DataGridTextColumn>
                 <DataGridTextColumn                                
                                         Header="% Acréc. Máx." Width="100"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=1}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pAcrescimoMaximo, Mode=OneWay,
                                             Converter={StaticResource PorcentagemConverter},
@@ -120,6 +108,8 @@
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
                                         Header="% Comissão à Vista" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=2}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAvista, Mode=OneWay,
                                             Converter={StaticResource PorcentagemConverter},
@@ -127,23 +117,62 @@
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
                                         Header="% Comissão à Prazo" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=3}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pComissaoAprazo, Mode=OneWay,
                                             Converter={StaticResource PorcentagemConverter},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
-                                        Header="R$ Custo" Width="120"
+                                        Header="R$ Custo Produto" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=4}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=vCustoProduto, Mode=OneWay, StringFormat={}{0:C},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
                 <DataGridTextColumn                                
+                                        Header="% Comissão" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=5}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pComissao, Mode=OneWay, Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="% Desconto" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=6}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pDesconto, Mode=OneWay, Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="% Outros" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=7}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pOutros, Mode=OneWay, Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
+                                        Header="% Lucro" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=8}"
+                                            ElementStyle="{StaticResource CellErrorStyle}"
+                                        Binding="{Binding Path=pLucro, Mode=OneWay, Converter={StaticResource PorcentagemConverter},
+                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                        ></DataGridTextColumn>
+                <DataGridTextColumn                                
                                         Header="R$ Venda" Width="120"
+                    Visibility="{Binding Data.selectedIndex, Source={StaticResource proxy},
+                    Converter={StaticResource VisibilityConverter}, ConverterParameter=9}"
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=vVenda, Mode=OneWay, StringFormat={}{0:C},
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ></DataGridTextColumn>
+
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
