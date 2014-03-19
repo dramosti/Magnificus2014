@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.Resources.Util;
 using HLP.Comum.ViewModel.Commands;
+using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     public class AtribuicaoColetivaListaPrecoCommands
     {
         AtribuicaoColetivaListaPrecoViewModel objViewModel;
+        ProdutoService objServico;
 
         public AtribuicaoColetivaListaPrecoCommands(AtribuicaoColetivaListaPrecoViewModel objViewModel)
         {
@@ -31,6 +33,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 object cell;
                 int id = 0;
+                string msgCustoNaoAtualizado = "";
+
                 if (((DataGrid)o).ItemsSource != null)
                 {
                     foreach (object i in ((DataGrid)o).ItemsSource)
@@ -45,45 +49,79 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                 cell = StaticUtil.GetCell((DataGrid)o, r, 1);
                                 //id = Convert.ToInt32(value: ((DataGridCell)cell).Content);
 
-                                id = Convert.ToInt32(value: ((ComboBox)((DataGridCell)cell).Content).SelectedValue);
+                                var v = ((ComboBox)((DataGridCell)cell).Content).SelectedValue;
 
-                                switch (this.objViewModel.selectedIndex)
+                                if (int.TryParse(s: v.ToString(), result: out id))
                                 {
-                                    case 0:
-                                        {
-                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pDescontoMaximo
-                                                = this.objViewModel.valor;
-                                        } break;
-                                    case 1:
-                                        {
-                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pAcrescimoMaximo
-                                                = this.objViewModel.valor;
-                                        } break;
-                                    case 2:
-                                        {
-                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pComissaoAvista
-                                                = this.objViewModel.valor;
-                                        } break;
-                                    case 3:
-                                        {
-                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pComissaoAprazo
-                                                = this.objViewModel.valor;
-                                        } break;
-                                    case 4:
-                                        {
-                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).vCustoProduto
-                                                *= (1 + (this.objViewModel.valor / 100));
-                                        } break;
-                                    case 5:
-                                        {
-                                            this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).vVenda
-                                                *= (1 + (this.objViewModel.valor / 100));
-                                        } break;
+
+                                    switch (this.objViewModel.selectedIndex)
+                                    {
+                                        case 0:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pDescontoMaximo
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 1:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pAcrescimoMaximo
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 2:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pComissaoAvista
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 3:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pComissaoAprazo
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 4:
+                                            {
+                                                objServico = new ProdutoService();
+                                                if (objServico.PrecoCustoManual(idProduto: id))
+                                                    this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).vCustoProduto
+                                                        *= (1 + (this.objViewModel.valor / 100));
+                                                else
+                                                    msgCustoNaoAtualizado += msgCustoNaoAtualizado == "" ? "Os itens com os seguintes códigos não foram atualizados." +
+                                                        Environment.NewLine + "Motivo: Tipo de atualização no cadastro de produtos é diferente de 1 - Manual. " +
+                                                        Environment.NewLine + "Ids: " + id.ToString() : ", " + id.ToString();
+                                            } break;
+                                        case 5:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pComissao
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 6:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pDesconto
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 7:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pOutros
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 8:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).pLucro
+                                                    = this.objViewModel.valor;
+                                            } break;
+                                        case 9:
+                                            {
+                                                this.objViewModel.currentList.FirstOrDefault(it => it.idProduto == id).vVenda
+                                                    *= (1 + (this.objViewModel.valor / 100));
+                                            } break;
+                                    }
                                 }
 
                             }
                         }
                     }
+
+                    if (msgCustoNaoAtualizado != "")
+                        MessageBox.Show(messageBoxText: msgCustoNaoAtualizado, caption: "Atenção!",
+                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                 }
                 this.objViewModel.FechaForm(p: ((DataGrid)o).Parent);
             }

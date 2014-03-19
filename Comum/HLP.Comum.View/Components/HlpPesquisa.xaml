@@ -53,9 +53,10 @@
         <TextBox x:Name="txtID"
                  TextChanged="ucTxt_TextChanged"
                  LostFocus="ucTxt_LostFocus"
+                 CharacterCasing="Upper"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
-                 Width="80" Height="20" KeyDown="txtID_KeyDown" >
+                 Width="80" KeyDown="txtID_KeyDown" >
             <TextBox.Style>
                 <Style TargetType="{x:Type TextBoxBase}">                    
                     <Setter Property="Template">
@@ -95,7 +96,7 @@
                                             </Button.Style>
                                         </Button>
                                         <Border>
-                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Center" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                                         </Border>
                                     </DockPanel>
                                 </Border>
@@ -125,8 +126,9 @@
 
         <TextBox x:Name="txtDisplay" IsReadOnly="True" Style="{StaticResource TextBoxPesquisaRapidaRightSide}"
                  TextChanged="ucTxtPesquisa_TextChanged"
+                 CharacterCasing="Upper"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Display}"
-                 Focusable="False" Height="20"  />
+                 Focusable="False"  />
     </DockPanel>
 
 </runtime:BaseControl>

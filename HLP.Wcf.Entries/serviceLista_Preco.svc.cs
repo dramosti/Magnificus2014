@@ -102,8 +102,16 @@ namespace HLP.Wcf.Entries
                             }
                             break;
                     }
-                }
+                }                
+
                 this.lista_Preco_PaiRepository.CommitTransaction();
+
+                while (objListaPreco.lLista_preco.Count(i => i.status == statusModel.excluido) > 0)
+                {
+                    objListaPreco.lLista_preco.RemoveAt(index: objListaPreco.lLista_preco.IndexOf(item:
+                        objListaPreco.lLista_preco.FirstOrDefault(i => i.status == statusModel.excluido)));
+                }
+
                 return objListaPreco;
             }
             catch (Exception ex)

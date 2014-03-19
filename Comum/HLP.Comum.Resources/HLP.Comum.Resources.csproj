@@ -315,6 +315,12 @@
     <Resource Include="Icones\Pesquisa_componente.png" />
     <Resource Include="Icones\Pesquisa_componente_mouseover.png" />
     <Resource Include="Icones\Pesquisa_desabilitado.png" />
+    <Resource Include="Icones\save-32.png" />
+    <Resource Include="Icones\folder-3-32 %281%29.png" />
+    <Resource Include="Icones\erase-32.png" />
+    <Resource Include="Icones\CalendarioComponent.png" />
+    <Resource Include="Icones\CalendarioComponentDisabled.png" />
+    <Resource Include="Icones\CalendarioComponentMouseOver.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

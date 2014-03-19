@@ -157,11 +157,6 @@
     <Compile Include="WinLogin.xaml.cs">
       <DependentUpon>WinLogin.xaml</DependentUpon>
     </Compile>
-    <Resource Include="x-mark-48.png" />
-    <Resource Include="error-7-64.png" />
-    <Resource Include="Principal.ico" />
-    <None Include="packages.config" />
-    <None Include="Resources\UserSilhouette.png" />
     <None Include="Service References\empresaParametrosService\HLP.Magnificus.View.WPF.empresaParametrosService.EmpresaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -172,12 +167,33 @@
     <None Include="Service References\empresaParametrosService\configuration.svcinfo" />
     <None Include="Service References\empresaParametrosService\configuration91.svcinfo" />
     <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.disco" />
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.wsdl" />
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\empresaParametrosService\serviceEmpresaParametros5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaParametrosService\serviceEmpresaParametros6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="x-mark-48.png" />
+    <Resource Include="error-7-64.png" />
+    <Resource Include="Principal.ico" />
+    <None Include="packages.config" />
+    <None Include="Resources\UserSilhouette.png" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -243,22 +259,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.wsdl" />
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\empresaParametrosService\serviceEmpresaParametros4.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config">
@@ -308,9 +308,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\empresaParametrosService\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
@@ -326,6 +323,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\empresaParametrosService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

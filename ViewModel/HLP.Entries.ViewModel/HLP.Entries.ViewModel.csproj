@@ -87,7 +87,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Produto\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
+    <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
@@ -298,11 +304,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\Plano_PagamentoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\produtoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1155,28 +1156,6 @@
     <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\produtoService\serviceProduto.wsdl" />
-    <None Include="Service References\produtoService\serviceProduto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\serviceProduto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\serviceProduto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\serviceProduto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\serviceProduto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\serviceProduto5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\produtoService\serviceProduto6.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.xsd">
       <SubType>Designer</SubType>
@@ -1519,6 +1498,28 @@
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto.wsdl" />
+    <None Include="Service References\wcf_Produto\wcf_Produto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Produto\wcf_Produto6.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
@@ -1554,7 +1555,6 @@
     <WCFMetadataStorage Include="Service References\multaService\" />
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Plano_PagamentoService\" />
-    <WCFMetadataStorage Include="Service References\produtoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\rotaService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
@@ -1573,6 +1573,7 @@
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
+    <WCFMetadataStorage Include="Service References\wcf_Produto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ufService\serviceUf.disco" />
@@ -1945,21 +1946,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Familia_ProdutoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\serviceProduto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\produtoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2350,6 +2336,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_ListaPreco\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\wcf_Produto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Produto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -23,7 +23,28 @@
             Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtHora}"></TextBox>
         <Button x:Name="btnCalendar" DockPanel.Dock="Right" Width="40" ContextMenuService.Placement="Right" Click="btnCalendar_Click"
                 Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
-            Converter={StaticResource visDtPickerConverter}, ConverterParameter=btnCalendar}">
+            Converter={StaticResource visDtPickerConverter}, ConverterParameter=btnCalendar}" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/CalendarioComponent.png"/>
+                                    <Style.Triggers>                                 
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/CalendarioComponentMouseOver.png"/>
+                                        </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/CalendarioComponentDisabled.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
             <Button.ContextMenu>
                 <ContextMenu>
                     <MenuItem Height="150">

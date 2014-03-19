@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Parametros" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceEmpresaParametros.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="Parametro_ComercialModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
@@ -165,4 +166,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Parametro_Ordem_ProducaoModel" nillable="true" type="tns:Parametro_Ordem_ProducaoModel" />
+  <xs:complexType name="Parametro_Cartao_PontoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q8:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
+          <xs:element minOccurs="0" name="idParametroCartaoPonto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="stCartaoPonto" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stLiberacaoHoraExtra" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="tToleranciaEntradaAntes" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tToleranciaEntradaDepois" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tToleranciaHoraExtra" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tToleranciaSaidaAntes" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="tToleranciaSaidaDepois" nillable="true" type="ser:duration" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Parametro_Cartao_PontoModel" nillable="true" type="tns:Parametro_Cartao_PontoModel" />
 </xs:schema>

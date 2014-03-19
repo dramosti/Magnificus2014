@@ -10,13 +10,17 @@
     <Window.Resources>
         <conv:ImageToaByteConverter x:Key="imgConverter"></conv:ImageToaByteConverter>
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Right" Width="80" Orientation="Vertical">
-            <Button Content="Selecionar" Click="Button_Click_1"></Button>
-            <Button x:Name="btnLimpar" Content="Limpar" Click="btnLimpar_Click_1"></Button>
-            <Button x:Name="btnAplicar" Content="Aplicar" Click="btnAplicar_Click"></Button>
+    <DockPanel LastChildFill="True" Background="{StaticResource WhiteStandard}">
+        <StackPanel DockPanel.Dock="Top" Background="{StaticResource BlueStandard}" Orientation="Horizontal">
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="10" Direction="314" Color="#FF4774B5"/>
+            </StackPanel.Effect>
+            <Button Content="Selecionar" Margin="0,0,10,0" Width="100" Style="{StaticResource ButtonSelecionarImgSelecionar}" Click="Button_Click_1"></Button>
+            <Button x:Name="btnLimpar" Margin="0,0,10,0" Width="100" Style="{StaticResource ButtonSelecionarImgLimpar}" Content="Limpar" Click="btnLimpar_Click_1"></Button>
+            <Button x:Name="btnAplicar" Margin="0,0,10,0" Width="100" Style="{StaticResource ButtonSelecionarImgAplicar}" Content="Aplicar" Click="btnAplicar_Click"></Button>
+            <Button x:Name="btnCancelar" Margin="0,0,10,0" Width="100" Style="{StaticResource ButtonSelecionarImgCancelar}" Content="Cancelar"/>
         </StackPanel>
-        <Image 
+        <Image Margin="0,10,0,0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Source="{Binding ElementName=ucImg, Path=byteImg, Converter={StaticResource imgConverter}}"></Image>

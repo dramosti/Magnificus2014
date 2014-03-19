@@ -155,8 +155,22 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
                 base.NotifyPropertyChanged(propertyName: "bCheckAll");
             }
         }
-
+        
         #endregion
 
+        #region Métodos utilizados na View
+
+        public bool ProdutoJaInserido(int idProduto)
+        {
+            if (this.currentModel == null)
+                return false;
+
+            if (this.currentModel.lLista_preco == null)
+                return false;
+
+            return this.currentModel.lLista_preco.Count(i => i.idProduto == idProduto) > 1;
+        }
+
+        #endregion
     }
 }

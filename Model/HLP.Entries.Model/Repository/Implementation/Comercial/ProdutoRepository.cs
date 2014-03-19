@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -99,6 +100,22 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                   .Build());
             }
             return regProdutoByTypeAccessor.Execute().ToList();
+        }
+
+        public object GetStCustoProduto(int idProduto)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand(string.Format(
+                format: "select stCusto from Produto where idProduto = '{0}'", arg0: idProduto));
+
+            return UndTrabalho.dbPrincipal.ExecuteScalar(command);
+        }
+
+        public decimal? GetValorCompraProduto(int idProduto)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand(string.Format(
+                format: "select vCompra from Produto where idProduto = '{0}'", arg0: idProduto));
+
+            return UndTrabalho.dbPrincipal.ExecuteScalar(command) as decimal?;
         }
 
         public void BeginTransaction()

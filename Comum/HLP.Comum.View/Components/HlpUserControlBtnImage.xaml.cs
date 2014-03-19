@@ -45,7 +45,7 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for byteImage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty byteImageProperty =
-            DependencyProperty.Register("byteImage", typeof(byte[]), typeof(HlpUserControlBtnImage), new PropertyMetadata(null));
+            DependencyProperty.Register("byteImage", typeof(byte[]), typeof(HlpUserControlBtnImage), new PropertyMetadata());
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {

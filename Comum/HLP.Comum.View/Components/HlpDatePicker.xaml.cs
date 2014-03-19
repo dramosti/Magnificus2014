@@ -22,9 +22,14 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpDatePicker : UserControl
     {
+        ResourceDictionary resource;
         public HlpDatePicker()
         {
             InitializeComponent();
+            resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+            };
             //this.ViewModel = new HlpDatePickerViewModel();
         }
 
@@ -33,7 +38,30 @@ namespace HLP.Comum.View.Components
         public StFormatoDatePicker stFormatoDtPicker
         {
             get { return (StFormatoDatePicker)GetValue(stFormatoDtPickerProperty); }
-            set { SetValue(stFormatoDtPickerProperty, value); }
+            set
+            {
+                SetValue(stFormatoDtPickerProperty, value);
+
+                switch (value)
+                {
+                    case StFormatoDatePicker.date:
+                        {
+                            this.txtHora.Style = resource[key: "BorderPadrao"] as Style;
+                        }
+                        break;
+                    case StFormatoDatePicker.time:
+                        {
+                            this.txtData.Style = resource[key: "BorderPadrao"] as Style;
+                        }
+                        break;
+                    case StFormatoDatePicker.datetime:
+                        {
+                            this.txtHora.Style = resource[key: "BorderRight"] as Style;
+                            this.txtData.Style = resource[key: "BorderLeft"] as Style;
+                        }
+                        break;
+                }
+            }
         }
 
         // Using a DependencyProperty as the backing store for stFormatoDtPicker.  This enables animation, styling, binding, etc...
