@@ -284,7 +284,7 @@
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="{Binding winMan.iHeightToolBar}" Focusable="False"   Style="{StaticResource toolBarCadastro}">
                                 <Button 
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
-								CommandParameter="{Binding winMan._currentTab._content}"
+								CommandParameter="{Binding winMan._currentTab._content}" Cursor="Hand"
 								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )" Focusable="False">
                                     <Button.Template>
                                         <ControlTemplate>
@@ -309,7 +309,7 @@
                                     </Button.Template>
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"  CommandParameter="{Binding winMan._currentTab._content}"  
-								Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
+								Style="{DynamicResource ButtonsMainWindow}" ToolTipService.ShowOnDisabled="True" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
