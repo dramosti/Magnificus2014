@@ -10,9 +10,9 @@
     <SolidColorBrush x:Key="BorderBrushTextStandard" Color="#FFABADB3"/>
     <SolidColorBrush x:Key="WhiteStandard" Color="White"/>
     <SolidColorBrush x:Key="BlueStandard" Color="#FF4774B5"/>
-    <SolidColorBrush x:Key="BackgroundError" Color="#FFECA933"/>  
-     
-    
+    <SolidColorBrush x:Key="BackgroundError" Color="#FFECA933"/>
+
+
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
         <Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
@@ -226,7 +226,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -321,7 +321,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
@@ -360,7 +360,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
     <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
@@ -408,7 +408,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
     <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
@@ -448,7 +448,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--Style Custom TextBlock-->
 
     <Style x:Key="TextBlocktyleComponents" TargetType="{x:Type TextBlock}">
@@ -456,8 +456,8 @@
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="FontFamily" Value="Calibri"/>
         <Setter Property="FontSize" Value="14"/>
-   </Style>
-    
+    </Style>
+
     <!--Button Versão-->
 
     <Style x:Key="ButtonVersao" TargetType="{x:Type Button}">
@@ -497,10 +497,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--ButtonSelecionarImage (COMPONENTE IMG)-->
-    
-    
+
+
     <Style x:Key="ButtonSelecionarImgSelecionar" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
@@ -536,8 +536,8 @@
                                         <GradientStop Color="#FF4774B5" Offset="1"/>
                                     </RadialGradientBrush>
                                 </Setter.Value>
-                            </Setter>                            
-                        </Trigger>                        
+                            </Setter>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
@@ -691,7 +691,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
+    </Style>
 
 
     <Style x:Key="ButtonSeperator" TargetType="{x:Type Button}">
@@ -722,119 +722,136 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <!--Templates borda componente HORA/DATA-->
-
-    <DataTemplate x:Key="BorderLeft" DataType="{x:Type TextBox}">
-        <Border x:Name="border" CornerRadius="5,0,0,5" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-            <ScrollViewer VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" FontFamily="Calibri" Focusable="False"/>
-        </Border>
-        <DataTemplate.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-            </Trigger>
-            <Trigger Property="Validation.HasError" Value="True">
-                <Setter Property="Validation.ErrorTemplate">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <DockPanel LastChildFill="True">
-                                <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+    <Style x:Key="BorderLeft" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type TextBox}">
+                    <Border x:Name="border" CornerRadius="5,0,0,5" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
+                        <ScrollViewer VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" FontFamily="Calibri" Focusable="False"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
                                                 ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
-                                    <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
-                                </Border>
-                                <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
-                                    <Border BorderBrush="Transparent" BorderThickness="1"></Border>
-                                </AdornedElementPlaceholder>
-                            </DockPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-            <Trigger Property="IsVisible" Value="false">
-                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-            </Trigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
-    <DataTemplate x:Key="BorderRight" DataType="{x:Type TextBox}">
-        <Border x:Name="border" CornerRadius="0,5,5,0" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-            <ScrollViewer VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" FontFamily="Calibri" Focusable="False"/>
-        </Border>
-        <DataTemplate.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-            </Trigger>
-            <Trigger Property="Validation.HasError" Value="True">
-                <Setter Property="Validation.ErrorTemplate">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <DockPanel LastChildFill="True">
-                                <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                                <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                            </AdornedElementPlaceholder>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsVisible" Value="false">
+                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BorderRight" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type TextBox}">
+                    <Border x:Name="border" CornerRadius="0,5,5,0" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
+                        <ScrollViewer VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" FontFamily="Calibri" Focusable="False"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
                                                 ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
-                                    <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
-                                </Border>
-                                <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
-                                    <Border BorderBrush="Transparent" BorderThickness="1"></Border>
-                                </AdornedElementPlaceholder>
-                            </DockPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-            <Trigger Property="IsVisible" Value="false">
-                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-            </Trigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
+                                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                                <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                            </AdornedElementPlaceholder>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsVisible" Value="false">
+                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style  x:Key="BorderPadrao" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border" CornerRadius="5" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
+                        <ScrollViewer VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" FontFamily="Calibri" Focusable="False"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Validation.ErrorTemplate">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <DockPanel LastChildFill="True">
+                                            <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+                                                ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                                            </Border>
+                                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                                <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                            </AdornedElementPlaceholder>
+                                        </DockPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsVisible" Value="false">
+                            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
-    <DataTemplate x:Key="BorderPadrao" DataType="{x:Type TextBox}">
-        <Border x:Name="border" CornerRadius="5" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-            <ScrollViewer VerticalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" FontFamily="Calibri" Focusable="False"/>
-        </Border>
-        <DataTemplate.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-            </Trigger>
-            <Trigger Property="Validation.HasError" Value="True">
-                <Setter Property="Validation.ErrorTemplate">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <DockPanel LastChildFill="True">
-                                <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
-                                                ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
-                                    <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
-                                </Border>
-                                <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
-                                    <Border BorderBrush="Transparent" BorderThickness="1"></Border>
-                                </AdornedElementPlaceholder>
-                            </DockPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-            <Trigger Property="IsVisible" Value="false">
-                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-            </Trigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
 
 
 </ResourceDictionary>
