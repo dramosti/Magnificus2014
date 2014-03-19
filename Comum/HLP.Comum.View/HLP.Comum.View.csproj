@@ -176,6 +176,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Util\DatePickerTemplateSelector.cs" />
     <Compile Include="Validates\ListUniqueValuesValidationRule.cs" />
     <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
     <Compile Include="Validates\NumericDecimalValidationRule.cs" />
