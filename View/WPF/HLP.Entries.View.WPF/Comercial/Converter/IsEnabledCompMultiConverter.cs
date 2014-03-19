@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace HLP.Entries.View.WPF.Comercial.Converter
@@ -11,6 +12,9 @@ namespace HLP.Entries.View.WPF.Comercial.Converter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (values[0] == DependencyProperty.UnsetValue)
+                return true;
+
             if (parameter.ToString() == "cbx")
             {
                 if ((bool)values[0] == false || (int)values[1] == (int)1)

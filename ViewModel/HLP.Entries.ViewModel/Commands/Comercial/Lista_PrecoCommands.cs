@@ -269,7 +269,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             {
                 objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
             });
-            
+
             e.Result = e.Argument;
         }
 
@@ -513,6 +513,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 else
                 {
                     this.IniciaCollection();
+                    
                 }
             }
             catch (Exception ex)
@@ -525,6 +526,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void getListaPreco(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+
+            if (this.objViewModel.currentModel.lLista_preco != null)
+                this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
         }
         #endregion
 

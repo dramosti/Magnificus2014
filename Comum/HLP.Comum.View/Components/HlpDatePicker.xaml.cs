@@ -22,17 +22,51 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpDatePicker : UserControl
     {
-        ResourceDictionary resource;
         public HlpDatePicker()
         {
-            InitializeComponent();
-            resource = new ResourceDictionary
-            {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
-            };
+            //InitializeComponent();
+            //ResourceDictionary resource = new ResourceDictionary
+            //{
+            //    Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+            //};
+
+            //Style styleBorderPadrao = this.FindResource(resourceKey: "BorderPadrao") as Style;
+
+            //switch (this.stFormatoDtPicker)
+            //{
+            //    case StFormatoDatePicker.date:
+            //        {
+            //            txtHora.Style = styleBorderPadrao;
+            //            this.UpdateLayout();
+            //        }
+            //        break;
+            //    case StFormatoDatePicker.time:
+            //        {
+            //            txtData.Style = resource[key: "BorderPadrao"] as Style;
+            //            this.UpdateLayout();
+            //        }
+            //        break;
+            //    case StFormatoDatePicker.datetime:
+            //        {
+            //            txtHora.Style = resource[key: "BorderRight"] as Style;
+            //            txtData.Style = resource[key: "BorderLeft"] as Style;
+            //            this.UpdateLayout();
+            //        }
+            //        break;
+            //}
             //this.ViewModel = new HlpDatePickerViewModel();
         }
 
+        //private StFormatoDatePicker _stFormatoDtPicker;
+
+        //public StFormatoDatePicker stFormatoDtPicker
+        //{
+        //    get { return _stFormatoDtPicker; }
+        //    set
+        //    {
+        //        _stFormatoDtPicker = value;                
+        //    }
+        //}
 
 
         public StFormatoDatePicker stFormatoDtPicker
@@ -41,26 +75,6 @@ namespace HLP.Comum.View.Components
             set
             {
                 SetValue(stFormatoDtPickerProperty, value);
-
-                switch (value)
-                {
-                    case StFormatoDatePicker.date:
-                        {
-                            this.txtHora.Style = resource[key: "BorderPadrao"] as Style;
-                        }
-                        break;
-                    case StFormatoDatePicker.time:
-                        {
-                            this.txtData.Style = resource[key: "BorderPadrao"] as Style;
-                        }
-                        break;
-                    case StFormatoDatePicker.datetime:
-                        {
-                            this.txtHora.Style = resource[key: "BorderRight"] as Style;
-                            this.txtData.Style = resource[key: "BorderLeft"] as Style;
-                        }
-                        break;
-                }
             }
         }
 
