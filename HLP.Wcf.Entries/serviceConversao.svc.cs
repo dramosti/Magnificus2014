@@ -53,7 +53,6 @@ namespace HLP.Wcf.Entries
 
         public Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
-
             try
             {
                 this.conversaoRepository.BeginTransaction();

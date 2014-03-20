@@ -44,8 +44,8 @@ namespace HLP.Dependencies
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();
             Bind<IHlpPesquisaPadraoRepository>().To<HlpPesquisaPadraoRepository>();
             Bind<IFillComboBoxRepository>().To<FillComboBoxRepository>();
-           
-            //Bind<IPesquisaPadraoRepository>().To<PesquisaPadraoRepository>();
+
+            Bind<IFuncionario_Controle_Horas_PontoRepository>().To<Funcionario_Controle_Horas_PontoRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();
             //Bind<IConfigFormulariosRepository>().To<ConfigFormulariosRepository>();
             //Bind<IRelatoriosRepository>().To<RelatoriosRepository>();

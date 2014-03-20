@@ -152,6 +152,7 @@
     <Content Include="Silverlight.js" />
     <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_Funcionario.svc" />
+    <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -223,6 +224,7 @@
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
+    <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
@@ -405,6 +407,9 @@
     </Compile>
     <Compile Include="wcf_Funcionario.svc.cs">
       <DependentUpon>wcf_Funcionario.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Funcionario_Controle_Horas_Ponto.svc.cs">
+      <DependentUpon>wcf_Funcionario_Controle_Horas_Ponto.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>
