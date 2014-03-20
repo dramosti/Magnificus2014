@@ -89,6 +89,7 @@
     </ApplicationDefinition>
     <Compile Include="Comercial\Converter\CanUserAddListaItensConverter.cs" />
     <Compile Include="Comercial\Converter\CanUserAddOrcamentoItemConverter.cs" />
+    <Compile Include="Comercial\Converter\HeaderMarkupConverter.cs" />
     <Compile Include="Comercial\Converter\IdMotivoVisibilityConverter.cs" />
     <Compile Include="Comercial\Converter\IsEnabledCompMultiConverter.cs" />
     <Compile Include="Comercial\Converter\ReadOnlyColumnsListaAutomaticaConverter.cs" />

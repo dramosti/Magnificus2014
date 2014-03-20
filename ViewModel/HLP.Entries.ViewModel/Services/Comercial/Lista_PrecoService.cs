@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Entries.Model.Models.Comercial;
 using System;
 using System.Collections.Generic;
@@ -140,6 +141,22 @@ namespace HLP.Entries.ViewModel.Services.Comercial
                     }
             }
             return 0;
+        }
+
+        public List<HlpButtonHierarquiaStruct> getHierarquiaLista(int idListaPreco)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                    }
+            }
+            return null;
         }
     }
 }

@@ -24,6 +24,9 @@ namespace HLP.Entries.View.WPF.Comercial.Converter
         //}
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (values[0] == DependencyProperty.UnsetValue)
+                return true;
+
             if (((Visibility)values[0]) == Visibility.Visible || (int)values[1] == (int)0)
                 return false;
             else

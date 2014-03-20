@@ -28,7 +28,7 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_ListaPreco.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.wcf_ListaPreco.statusModel statusField;
+        private HLP.Comum.Resources.RecursosBases.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -54,7 +54,7 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.wcf_ListaPreco.statusModel status {
+        public HLP.Comum.Resources.RecursosBases.statusModel status {
             get {
                 return this.statusField;
             }
@@ -169,23 +169,6 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
-    public enum statusModel : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        nenhum = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        criado = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        alterado = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        excluido = 3,
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_ListaPreco.IserviceLista_Preco")]
     public interface IserviceLista_Preco {
@@ -231,6 +214,12 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/GetIdListaPreferencial", ReplyAction="http://tempuri.org/IserviceLista_Preco/GetIdListaPreferencialResponse")]
         System.Threading.Tasks.Task<int> GetIdListaPreferencialAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquia", ReplyAction="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquiaResponse")]
+        System.Collections.Generic.List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquia", ReplyAction="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquiaResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct>> GetLista_PrecoHierarquiaAsync(int idListaPreco);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -314,6 +303,14 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         
         public System.Threading.Tasks.Task<int> GetIdListaPreferencialAsync() {
             return base.Channel.GetIdListaPreferencialAsync();
+        }
+        
+        public System.Collections.Generic.List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco) {
+            return base.Channel.GetLista_PrecoHierarquia(idListaPreco);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct>> GetLista_PrecoHierarquiaAsync(int idListaPreco) {
+            return base.Channel.GetLista_PrecoHierarquiaAsync(idListaPreco);
         }
     }
 }

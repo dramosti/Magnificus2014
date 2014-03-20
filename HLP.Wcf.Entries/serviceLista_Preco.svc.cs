@@ -31,7 +31,34 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
+        public List<HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco)
+        {
+            HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objLista_Preco_Pai
+                = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: idListaPreco);
+            List<HlpButtonHierarquiaStruct> lListHierarquia = new List<HlpButtonHierarquiaStruct>();
+            lListHierarquia.Add(item:
+                new HlpButtonHierarquiaStruct
+                {
+                    xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
+                    xOpcional = objLista_Preco_Pai.pPercentual.ToString()
+                });
+            while (true)
+            {
+                if (objLista_Preco_Pai.idListaPrecoOrigem == null || objLista_Preco_Pai.idListaPrecoOrigem == 0)
+                    break;
 
+                objLista_Preco_Pai
+                = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: (int)objLista_Preco_Pai.idListaPrecoOrigem);
+
+                lListHierarquia.Add(item:
+                    new HlpButtonHierarquiaStruct
+                    {
+                        xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
+                        xOpcional = objLista_Preco_Pai.pPercentual.ToString()
+                    });
+            }
+            return lListHierarquia;
+        }
 
         public HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel getLista_Preco(int idListaPrecoPai)
         {
@@ -102,7 +129,7 @@ namespace HLP.Wcf.Entries
                             }
                             break;
                     }
-                }                
+                }
 
                 this.lista_Preco_PaiRepository.CommitTransaction();
 
