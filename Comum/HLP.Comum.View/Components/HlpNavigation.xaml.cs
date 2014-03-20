@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Comum.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -74,9 +75,9 @@ namespace HLP.Comum.View.Components
             DependencyProperty.Register("selectedId", typeof(int), typeof(HlpNavigation), new PropertyMetadata(0));
 
 
-        public List<int> lIdsHierarquia
+        public List<HlpButtonHierarquiaStruct> lIdsHierarquia
         {
-            get { return (List<int>)GetValue(lIdsHierarquiaProperty); }
+            get { return (List<HlpButtonHierarquiaStruct>)GetValue(lIdsHierarquiaProperty); }
             set
             {
                 SetValue(lIdsHierarquiaProperty, value);
@@ -85,7 +86,8 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for lIdsHierarquia.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty lIdsHierarquiaProperty =
-            DependencyProperty.Register("lIdsHierarquia", typeof(List<int>), typeof(HlpNavigation), new PropertyMetadata(new List<int>()));
+            DependencyProperty.Register("lIdsHierarquia", typeof(List<HlpButtonHierarquiaStruct>), typeof(HlpNavigation),
+            new PropertyMetadata(new List<HlpButtonHierarquiaStruct>()));
 
 
 

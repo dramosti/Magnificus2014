@@ -31,5 +31,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int GetIdListaPreferencial();
+
+        [OperationContract]
+        List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco);
     }
 }

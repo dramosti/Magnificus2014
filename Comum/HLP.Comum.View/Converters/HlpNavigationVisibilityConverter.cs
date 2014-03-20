@@ -1,4 +1,5 @@
-﻿using HLP.Comum.View.Components;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.View.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace HLP.Comum.View.Converters
             if (value == null)
                 return Visibility.Hidden;
 
-            if ((value as List<int>).Count == 0)
+            if ((value as List<HlpButtonHierarquiaStruct>).Count == 0)
                 return Visibility.Hidden;
 
             return Visibility.Visible;

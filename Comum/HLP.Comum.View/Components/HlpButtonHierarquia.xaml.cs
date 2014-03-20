@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HLP.Comum.View.Components
 {
     /// <summary>
-    /// Interaction logic for HlpButtonNavigation.xaml
+    /// Interaction logic for HlpButtonHierarquia.xaml
     /// </summary>
-    public partial class HlpButtonNavigation : UserControl
+    public partial class HlpButtonHierarquia : UserControl
     {
-        public HlpButtonNavigation()
+        public HlpButtonHierarquia()
         {
             InitializeComponent();
         }
@@ -60,6 +60,5 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for xTextOpcional.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty xTextOpcionalProperty =
             DependencyProperty.Register("xTextOpcional", typeof(string), typeof(HlpButtonNavigation), new PropertyMetadata(String.Empty));
-
     }
 }

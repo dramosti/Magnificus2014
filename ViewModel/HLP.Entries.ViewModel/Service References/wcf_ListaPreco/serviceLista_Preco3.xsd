@@ -18,6 +18,7 @@
           <xs:element minOccurs="0" name="pPercentual" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="stAtualizacao" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stContrato" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stMarkup" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stPreferencial" type="xs:boolean" />
           <xs:element minOccurs="0" name="xCodigoListaPreco" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xLista" nillable="true" type="xs:string" />
@@ -52,6 +53,7 @@
           <xs:element minOccurs="0" name="pLucro" type="xs:decimal" />
           <xs:element minOccurs="0" name="pMarkup" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="pOutros" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="stMarkupLista" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="vCustoProduto" type="xs:decimal" />
           <xs:element minOccurs="0" name="vVenda" type="xs:decimal" />
           <xs:element minOccurs="0" name="vlrEsperado" type="xs:decimal" />

@@ -35,11 +35,15 @@
         <convL:IsEnabledCompMultiConverter x:Key="isEnabledMultiConverter"></convL:IsEnabledCompMultiConverter>
         <conv:MoedaConverter x:Key="moedaConverter"/>
         <util:BindingProxy x:Key="proxy" Data="{Binding}" />
+        <convL:HeaderMarkupConverter x:Key="headerMarkupConverter"/>
     </Window.Resources>
     <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top">
+            <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia, Mode=OneWay}"></Components:HlpNavigation>
+        </StackPanel>
         <Expander Header="Principal" IsExpanded="True">
             <Grid>
-                <Grid.RowDefinitions>
+                <Grid.RowDefinitions>                    
                     <RowDefinition Height="281*"></RowDefinition>
                     <RowDefinition Height="2.5"></RowDefinition>
                     <RowDefinition Height="319*"></RowDefinition>
@@ -420,11 +424,12 @@
                                         ></DataGridTextColumn>
                                 <DataGridTextColumn 
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
-                                        Header="Markup" Width="120" IsReadOnly="True"                                        
+                                        Header="{Binding Data.currentModel.stMarkup, Source={StaticResource proxy}, Converter={StaticResource headerMarkupConverter}}" Width="120" IsReadOnly="True"                                        
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pMarkup, UpdateSourceTrigger=LostFocus,                                            
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
+                                        >
+                                </DataGridTextColumn>
                                 <DataGridTemplateColumn 
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"

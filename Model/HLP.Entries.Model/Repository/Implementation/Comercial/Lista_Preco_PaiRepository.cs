@@ -94,7 +94,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idListaPrecoPai from Lista_Preco_Pai where stPreferencial = 1");
             return UndTrabalho.dbPrincipal.ExecuteScalar(command).ToInt32();
-        }
+        }        
 
         public void BeginTransaction()
         {

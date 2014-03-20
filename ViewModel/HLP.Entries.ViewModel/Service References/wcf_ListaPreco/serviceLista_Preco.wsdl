@@ -53,6 +53,12 @@
   <wsdl:message name="IserviceLista_Preco_GetIdListaPreferencial_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetIdListaPreferencialResponse" />
   </wsdl:message>
+  <wsdl:message name="IserviceLista_Preco_GetLista_PrecoHierarquia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLista_PrecoHierarquia" />
+  </wsdl:message>
+  <wsdl:message name="IserviceLista_Preco_GetLista_PrecoHierarquia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLista_PrecoHierarquiaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IserviceLista_Preco">
     <wsdl:operation name="getLista_Preco">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceLista_Preco/getLista_Preco" message="tns:IserviceLista_Preco_getLista_Preco_InputMessage" />
@@ -81,6 +87,10 @@
     <wsdl:operation name="GetIdListaPreferencial">
       <wsdl:input wsaw:Action="http://tempuri.org/IserviceLista_Preco/GetIdListaPreferencial" message="tns:IserviceLista_Preco_GetIdListaPreferencial_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IserviceLista_Preco/GetIdListaPreferencialResponse" message="tns:IserviceLista_Preco_GetIdListaPreferencial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLista_PrecoHierarquia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquia" message="tns:IserviceLista_Preco_GetLista_PrecoHierarquia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquiaResponse" message="tns:IserviceLista_Preco_GetLista_PrecoHierarquia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IserviceLista_Preco" type="tns:IserviceLista_Preco">
@@ -141,6 +151,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetIdListaPreferencial">
       <soap:operation soapAction="http://tempuri.org/IserviceLista_Preco/GetIdListaPreferencial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLista_PrecoHierarquia">
+      <soap:operation soapAction="http://tempuri.org/IserviceLista_Preco/GetLista_PrecoHierarquia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
