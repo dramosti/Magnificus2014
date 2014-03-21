@@ -71,14 +71,13 @@
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
-    <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
-    <Compile Include="Service References\wcf_FamiliaProduto\Reference.cs">
+    <Compile Include="Service References\wcf_Cliente\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_FuncionarioPonto\Reference.cs">
+    <Compile Include="Service References\wcf_FamiliaProduto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -98,11 +97,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Rota\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Comercial\ClienteService.cs" />
     <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
-    <Compile Include="Services\Gerais\FuncionarioPontoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioService.cs" />
+    <Compile Include="Services\Transportes\RotaService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioDetalheCommand.cs" />
@@ -225,11 +230,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\clienteService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\condicaoEntregaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -316,11 +316,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\Ramo_AtividadeService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\rotaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -416,7 +411,6 @@
     <Compile Include="ViewModels\Gerais\FamiliaProdutoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Funcionario_AcessoViewModel.cs" />
-    <Compile Include="ViewModels\Gerais\Funcionario_Controle_Horas_PontoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\MoedaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\PlanoPagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />
@@ -517,7 +511,6 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Familia_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
-    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Ramo_atividadeModel.datasource" />
@@ -718,25 +711,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ClassificacaoFiscalServico\serviceClassificacaoFiscal5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente.wsdl" />
-    <None Include="Service References\clienteService\serviceCliente.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\clienteService\serviceCliente5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\CodigoIcmsService\serviceCodigoIcms.wsdl" />
@@ -1185,25 +1159,6 @@
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\rotaService\serviceRota.wsdl" />
-    <None Include="Service References\rotaService\serviceRota.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\rotaService\serviceRota1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\rotaService\serviceRota2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\rotaService\serviceRota3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\rotaService\serviceRota4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\rotaService\serviceRota5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\setrService\serviceSetor.wsdl" />
     <None Include="Service References\setrService\serviceSetor.xsd">
       <SubType>Designer</SubType>
@@ -1445,6 +1400,25 @@
     <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente.wsdl" />
+    <None Include="Service References\wcf_Cliente\wcf_Cliente.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.wsdl" />
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.xsd">
       <SubType>Designer</SubType>
@@ -1462,25 +1436,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Funcionario\HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView.datasource">
@@ -1549,6 +1504,25 @@
     <None Include="Service References\wcf_Produto\wcf_Produto6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Rota\wcf_Rota.wsdl" />
+    <None Include="Service References\wcf_Rota\wcf_Rota.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Rota\wcf_Rota1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Rota\wcf_Rota2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Rota\wcf_Rota3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Rota\wcf_Rota4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Rota\wcf_Rota5.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
@@ -1561,7 +1535,6 @@
     <WCFMetadataStorage Include="Service References\CfopServico\" />
     <WCFMetadataStorage Include="Service References\cidadeService\" />
     <WCFMetadataStorage Include="Service References\ClassificacaoFiscalServico\" />
-    <WCFMetadataStorage Include="Service References\clienteService\" />
     <WCFMetadataStorage Include="Service References\CodigoIcmsService\" />
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
@@ -1585,7 +1558,6 @@
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Plano_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
-    <WCFMetadataStorage Include="Service References\rotaService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
     <WCFMetadataStorage Include="Service References\Situacao_tributaria_pisService\" />
@@ -1599,11 +1571,12 @@
     <WCFMetadataStorage Include="Service References\transportadorService\" />
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
+    <WCFMetadataStorage Include="Service References\wcf_Cliente\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
-    <WCFMetadataStorage Include="Service References\wcf_FuncionarioPonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
+    <WCFMetadataStorage Include="Service References\wcf_Rota\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ufService\serviceUf.disco" />
@@ -1921,21 +1894,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\clienteService\serviceCliente.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\clienteService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\jurosService\serviceJuros.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2006,21 +1964,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\agenciaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\rotaService\serviceRota.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\rotaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\rotaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\rotaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2386,16 +2329,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
+    <None Include="Service References\wcf_Rota\wcf_Rota.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioPonto\configuration91.svcinfo" />
+    <None Include="Service References\wcf_Rota\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioPonto\configuration.svcinfo" />
+    <None Include="Service References\wcf_Rota\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioPonto\Reference.svcmap">
+    <None Include="Service References\wcf_Rota\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cliente\wcf_Cliente.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cliente\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cliente\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cliente\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

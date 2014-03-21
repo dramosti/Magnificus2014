@@ -1,5 +1,6 @@
 ﻿using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,13 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 {
     class ClienteCommands
     {
-        clienteService.IserviceClienteClient servico = new clienteService.IserviceClienteClient();
         ClienteViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
+        ClienteService objServico;
+
 
         public ClienteCommands(ClienteViewModel objViewModel)
         {
-
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -47,7 +48,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-
+            this.objServico = new ClienteService();
         }
 
 
@@ -63,11 +64,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteCliente((int)this.objViewModel.currentModel.idClienteFornecedor))
+                    if (this.objServico.Delete(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        iExcluir = (int)this.objViewModel.currentModel.idClienteFornecedor  ;
+                        iExcluir = (int)this.objViewModel.currentModel.idClienteFornecedor;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -91,7 +92,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-     
+
 
         public void Save(object _panel)
         {
@@ -166,7 +167,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         status = Comum.Resources.RecursosBases.statusModel.excluido
                     });
             }
-            this.objViewModel.currentModel.idClienteFornecedor = this.servico.saveCliente(objCliente: this.objViewModel.currentModel);
+            this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
             this.IniciaCollection();
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -205,9 +206,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
-        }             
+        }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
@@ -262,7 +263,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -313,9 +314,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentID =
-                    this.servico.copyCliente(objCliente:
-                    this.objViewModel.currentModel);
+                this.objViewModel.currentModel =
+                    this.objServico.Copy(this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -366,8 +366,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentModel = this.servico.getCliente(
-                idCliente: this.objViewModel.currentID);
+                this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
             }
             catch (Exception ex)
             {

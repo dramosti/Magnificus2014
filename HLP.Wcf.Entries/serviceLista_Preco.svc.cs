@@ -50,12 +50,12 @@ namespace HLP.Wcf.Entries
                 objLista_Preco_Pai
                 = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: (int)objLista_Preco_Pai.idListaPrecoOrigem);
 
-                lListHierarquia.Add(item:
+                lListHierarquia.Insert(item:
                     new HlpButtonHierarquiaStruct
                     {
                         xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
                         xOpcional = objLista_Preco_Pai.pPercentual.ToString()
-                    });
+                    }, index: 0);
             }
             return lListHierarquia;
         }

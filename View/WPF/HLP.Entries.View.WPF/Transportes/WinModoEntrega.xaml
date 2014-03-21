@@ -5,7 +5,7 @@
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
      NameView="vwModoEntrega"
-        x:Class="HLP.Entries.View.WPF.Transportes.WinModoEntrega"
+        x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinModoEntrega"
         Title="Modos de Entrega" Height="660" Width="1024">
     <Grid>
         <Expander Header="Geral" IsExpanded="True">
@@ -25,7 +25,7 @@
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Digite uma breve descrição do modo de entrega. Você pode usar o nome como um nome de pesquisa para localizar um modo de entrega específico. O nome de pesquisa aparece em formulários impressos, como ordens de venda e notas fiscais de clientes. " WidthLabel="237" HorizontalAlignment="Left" Width="520"/>
                 <Components:HlpComboBox 
-					
+					x:Name="cbxStServico"
 					SelectedIndex="{Binding currentModel.stServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					Height="27" Margin="10,0,0,2" Caption="Tipo de Serviço" Help="Selecione o tipo de serviço de remessa usado para o modo de entrega selecionado. Eles podem ser:" WidthLabel="237" HorizontalAlignment="Left">
@@ -36,15 +36,25 @@
                         <System:String>3-Via aéria</System:String>
                     </Components:HlpComboBox.Items>
                 </Components:HlpComboBox>
-                <Components:HlpPesquisa 
-					
-					Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
+                <Components:HlpPesquisa 					
+					Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
 					Height="27" Margin="10,0,0,2" Caption="Identificação do Transportador" Help="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="237" FieldPesquisa="ID" TableView="vwTransportador" HorizontalAlignment="Left" Width="520">
                     <Components:HlpPesquisa.Items>
                         <System:String>xNome</System:String>
                         <System:String>xCodigoAlternativo</System:String>
                     </Components:HlpPesquisa.Items>
+                    <Components:HlpPesquisa.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxStServico, Path=SelectedIndex}" Value="1">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:HlpPesquisa.Style>
                 </Components:HlpPesquisa>
 
             </WrapPanel>

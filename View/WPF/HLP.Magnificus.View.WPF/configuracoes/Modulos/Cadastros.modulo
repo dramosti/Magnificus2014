@@ -43,7 +43,7 @@
     type="HLP.Entries.View.WPF.Gerais.WinAcesso, HLP.Entries.View.WPF">
   </object>
   <object id="WinCondicaoEntrega" name="Condição_de_Entrega" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeLogística.WinCondicaoEntrega, HLP.Entries.View.WPF">
   </object>
   <object id="WinCondicaoPagamento" name="Condição_de_Pagamento" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento, HLP.Entries.View.WPF">
@@ -79,7 +79,7 @@
     type="HLP.Entries.View.WPF.Crm.WinContato, HLP.Entries.View.WPF">
   </object>
   <object id="WinModoEntrega" name="Modos_de_Entrega" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Transportes.WinModoEntrega, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeLogística.WinModoEntrega, HLP.Entries.View.WPF">
   </object>
   <object id="WinRota" name="Rotas" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Transportes.WinRota, HLP.Entries.View.WPF">
@@ -97,7 +97,7 @@
     type="HLP.Entries.View.WPF.Comercial.WinListaPreco, HLP.Entries.View.WPF">
   </object>
   <object id="WinMulta" name="Multas" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinMulta, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinMulta, HLP.Entries.View.WPF">
   </object>
   <object id="WinFidelidade" name="Fidelidade" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Crm.WinFidelidade, HLP.Entries.View.WPF">

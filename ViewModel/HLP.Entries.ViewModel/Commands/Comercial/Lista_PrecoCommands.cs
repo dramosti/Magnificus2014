@@ -95,7 +95,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
                 //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
             }
-            this.getListaPreco(this, null);
+            this.PesquisarRegistro();
 
             this.objViewModel.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
         }
@@ -296,6 +296,29 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         }
                     this.IniciaCollection();
                     this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
+
+                    this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
+                collection: this.objServico.GetAllIdsListaPreco());
+
+                    int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
+                    int currentPosition = 0;
+                    int i = 0;
+
+                    if (currentId != 0)
+                    {
+                        currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+
+                        while (i < currentPosition)
+                        {
+                            this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                            i++;
+                        }
+
+                    }
+                    else
+                    {
+                        this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                    }
                 }
             }
             catch (Exception ex)
@@ -356,6 +379,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             idOld = this.objViewModel.currentID;
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
+            this.objViewModel.lIdsHierarquia = new List<Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct>();
             this.objViewModel.currentModel.nDiasSemAtualicao = 0;
             this.objViewModel.currentModel.dListaPreco = DateTime.Now;
             this.objViewModel.currentModel.stAtualizacao = (byte)1;
