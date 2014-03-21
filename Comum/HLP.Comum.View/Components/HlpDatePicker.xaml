@@ -147,9 +147,8 @@
                  Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
             Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtData}"></TextBox>
                 <TextBox x:Name="txtHora" Width="60" BorderThickness="0"
-                 Text="{Binding ElementName=ucDtPicker, Path=xTextTime, Converter={StaticResource tmShortConverter}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                 Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
-            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtHora}"></TextBox>
+                 Text="{Binding xTextTime, Converter={StaticResource tmShortConverter}, ElementName=ucDtPicker, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                 Visibility="{Binding stFormatoDtPicker, ConverterParameter=txtHora, Converter={StaticResource visDtPickerConverter}, ElementName=ucDtPicker}"/>
             </StackPanel>
         </Border>
         <Button x:Name="btnCalendar" DockPanel.Dock="Right" Width="40" ContextMenuService.Placement="Right" Click="btnCalendar_Click"

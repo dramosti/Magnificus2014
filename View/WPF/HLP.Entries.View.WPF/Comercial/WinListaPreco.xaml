@@ -41,7 +41,7 @@
         <StackPanel DockPanel.Dock="Top">
             <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia, Mode=OneWay}"></Components:HlpNavigation>
         </StackPanel>
-        <Expander Header="Principal" IsExpanded="True">
+        <Expander Header="Principal" IsExpanded="True" Focusable="False">
             <Grid>
                 <Grid.RowDefinitions>                    
                     <RowDefinition Height="281*"></RowDefinition>
@@ -49,8 +49,8 @@
                     <RowDefinition Height="319*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="#FF4774B5"/>
-                <ScrollViewer>
-                    <Grid>
+                <ScrollViewer Focusable="False">
+                    <Grid Focusable="False">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10"></ColumnDefinition>
                             <ColumnDefinition Width="213*"></ColumnDefinition>

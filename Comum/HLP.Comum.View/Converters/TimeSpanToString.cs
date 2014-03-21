@@ -27,22 +27,19 @@ namespace HLP.Comum.View.Converters
             int hours = 0;
             int minutes = 0;
             int seconds = 0;
-            string[] estHoras = new string[3];
+
+            char[] estrutTime = value.ToString().Replace(oldValue: ":", newValue: "").PadRight(totalWidth: 6, paddingChar: '0').ToArray();
 
             if (value != null)
             {
-                estHoras = value.ToString().Split(':');
-                if (estHoras.Count() > 0)
-                    if (estHoras[0] != "")
-                        hours = int.Parse(s: estHoras[0].Trim(trimChars: ':'));
+                int.TryParse(s: estrutTime[0].ToString() + estrutTime[1].ToString(),
+                    result: out hours);
 
-                if (estHoras.Count() > 1)
-                    if (estHoras[0] != "")
-                        minutes = int.Parse(s: estHoras[1].Trim(trimChars: ':'));
+                int.TryParse(s: estrutTime[2].ToString() + estrutTime[3].ToString(),
+                    result: out minutes);
 
-                if (estHoras.Count() > 2)
-                    if (estHoras[0] != "")
-                        seconds = int.Parse(s: estHoras[2].Trim(trimChars: ':'));
+                int.TryParse(s: estrutTime[4].ToString() + estrutTime[5].ToString(),
+                    result: out seconds);
 
                 time = new TimeSpan(hours: hours, minutes: minutes, seconds: seconds);
 
