@@ -331,7 +331,8 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vVenda) * 100;
+                if (this._vVenda > 0)
+                    this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vVenda) * 100;
                 this.CalculaMarkup(objItemLista: this);
                 base.NotifyPropertyChanged(propertyName: "vVenda");
                 base.NotifyPropertyChanged(propertyName: "pLucro");
