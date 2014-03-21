@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
+using HLP.Entries.ViewModel.Services.Transportes;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -16,10 +17,10 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
     {
         BackgroundWorker bWorkerAcoes;
         RotaViewModel objViewModel;
-        rotaService.IserviceRotaClient servico = new rotaService.IserviceRotaClient();
+        RotaService objService;
         public RotaCommand(RotaViewModel objViewModel)
         {
-
+            objService = new RotaService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -78,7 +79,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.Save(this.objViewModel.currentModel);
+            this.objViewModel.currentModel = objService.Save(this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -129,7 +130,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete((int)this.objViewModel.currentModel.idRota))
+                    if (this.objService.Delete(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -206,7 +207,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -256,7 +257,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         {
             try
             {
-                e.Result = (int)servico.Copy(objViewModel.currentModel).idRota;
+                e.Result = objService.Copy(objViewModel.currentModel);
             }
             catch (Exception)
             {
@@ -311,7 +312,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID);
+            this.objViewModel.currentModel = objService.GetObjeto(objViewModel.currentID);
         }
 
         private void Inicia_Collections()

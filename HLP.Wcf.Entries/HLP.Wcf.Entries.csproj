@@ -150,9 +150,11 @@
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Silverlight.js" />
+    <Content Include="wcf_Cliente.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Produto.svc" />
+    <Content Include="wcf_Rota.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -221,9 +223,11 @@
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Produto.cs" />
+    <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
     </Compile>
@@ -400,6 +404,9 @@
     <Compile Include="serviceUnidadeMedida.svc.cs">
       <DependentUpon>serviceUnidadeMedida.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_Cliente.svc.cs">
+      <DependentUpon>wcf_Cliente.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_FamiliaProduto.svc.cs">
       <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
     </Compile>
@@ -408,6 +415,9 @@
     </Compile>
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Rota.svc.cs">
+      <DependentUpon>wcf_Rota.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

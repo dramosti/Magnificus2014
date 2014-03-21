@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 
-namespace HLP.Entries.View.WPF.Gerais.Financeiro
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
 {
     /// <summary>
     /// Interaction logic for WinMulta.xaml

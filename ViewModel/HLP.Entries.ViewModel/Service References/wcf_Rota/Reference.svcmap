@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="81784c72-dad2-4596-b1f5-a8a28ee8e266" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/wcf_Rota.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Rota.wsdl" MetadataType="Wsdl" ID="69f878a8-970b-4530-810d-5bb993a75d23" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?wsdl" />
+    <MetadataFile FileName="wcf_Rota.xsd" MetadataType="Schema" ID="23a83938-7b2d-4ddd-94d9-68d1ff8b7f4d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Rota1.xsd" MetadataType="Schema" ID="c41bfa71-f7ff-48bf-a0f9-4c808a0abbc3" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Rota2.xsd" MetadataType="Schema" ID="c1586ca1-b3dd-4f64-824b-ba777218bc59" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Rota.disco" MetadataType="Disco" ID="a8811f17-9ca6-4959-8bfb-c99e79a842e5" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?disco" />
+    <MetadataFile FileName="wcf_Rota3.xsd" MetadataType="Schema" ID="dbdd3624-9061-4d56-9815-976e5ca130d4" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Rota4.xsd" MetadataType="Schema" ID="53beec86-d497-413b-8756-4d1ad3d62f22" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Rota5.xsd" MetadataType="Schema" ID="ad543829-b187-4760-acc3-c424afba2593" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Rota.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

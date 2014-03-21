@@ -10,7 +10,11 @@ namespace HLP.Entries.Model.Models.Transportes
 {
     public partial class Modos_entregaModel : modelBase
     {
-        public Modos_entregaModel() : base("Modos_entrega") { }
+        public Modos_entregaModel()
+            : base("Modos_entrega")
+        {
+            this.stServico = 2;
+        }
         public int? _idModosEntrega;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idModosEntrega
