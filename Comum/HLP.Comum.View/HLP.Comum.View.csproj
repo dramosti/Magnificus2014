@@ -93,6 +93,9 @@
     <Compile Include="Components\HlpButtonStatus.xaml.cs">
       <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\HlpCalendarioPonto.xaml.cs">
+      <DependentUpon>HlpCalendarioPonto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpDatePicker.xaml.cs">
       <DependentUpon>HlpDatePicker.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpButtonStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpCalendarioPonto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
