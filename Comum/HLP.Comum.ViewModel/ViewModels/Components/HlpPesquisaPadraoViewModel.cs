@@ -22,6 +22,8 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
         public ICommand commandPesquisar { get; set; }
         public ICommand commandLimpar { get; set; }
         public ICommand commandAdd { get; set; }
+        public ICommand commandPesquisaFiltrada { get; set; }
+
         private bool _bIniciaFocusFirstRow = true;
 
         public bool bIniciaFocusFirstRow
@@ -30,7 +32,13 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
             set { _bIniciaFocusFirstRow = value; base.NotifyPropertyChanged("bIniciaFocusFirstRow"); }
         }
 
+        private List<PesquisaPadraoModel> _lFiltroAtivo;
 
+        public List<PesquisaPadraoModel> lFiltroAtivo
+        {
+            get { return _lFiltroAtivo; }
+            set { _lFiltroAtivo = value; }
+        }
 
         private ObservableCollection<PesquisaPadraoModel> _lFilers;
 
@@ -79,11 +87,34 @@ namespace HLP.Comum.ViewModel.ViewModels.Components
             objCommands = new HlpPesquisaPadraoCommands(objViewModel: this);
         }
 
+        private List<PesquisaPadraoModel> _lFiltros;
+
+        public List<PesquisaPadraoModel> lFiltros
+        {
+            get { return _lFiltros; }
+            set { _lFiltros = value; }
+        }
+
+        private string _campoSelecionado;
+
+        public string campoSelecionado
+        {
+            get { return _campoSelecionado; }
+            set { _campoSelecionado = value; }
+        }
 
 
+        private int _stOrdenacao;
 
-
-
+        public int stOrdenacao
+        {
+            get { return _stOrdenacao; }
+            set
+            {
+                _stOrdenacao = value;
+                base.NotifyPropertyChanged(propertyName: "stOrdenacao");
+            }
+        }
 
     }
 }

@@ -20,8 +20,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         BackgroundWorker bWorkerAcoes;
         Lista_PrecoViewModel objViewModel;
         ProdutoService objServicoProduto;
-
         Lista_PrecoService objServico;
+        int idOld = 0;
+
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
@@ -269,7 +270,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             {
                 objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
             });
-            
+
             e.Result = e.Argument;
         }
 
@@ -353,6 +354,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Novo(object _panel)
         {
+            idOld = this.objViewModel.currentID;
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
             this.objViewModel.currentModel.nDiasSemAtualicao = 0;
             this.objViewModel.currentModel.dListaPreco = DateTime.Now;
@@ -417,6 +419,22 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Cancelar()
         {
             if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
+            this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
+                collection: this.objServico.GetAllIdsListaPreco());
+            int currentId = this.idOld;
+            int currentPosition = 0;
+            int i = 0;
+            if (currentId != 0)
+            {
+                currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+
+                while (i < currentPosition)
+                {
+                    i++;
+                }
+
+            }
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
             this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
@@ -513,6 +531,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 else
                 {
                     this.IniciaCollection();
+                    if (this.objViewModel.currentID > 0)
+                        this.objViewModel.lIdsHierarquia = this.objServico.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
                 }
             }
             catch (Exception ex)
@@ -525,6 +545,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void getListaPreco(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+
+            if (this.objViewModel.currentModel != null)
+                if (this.objViewModel.currentModel.lLista_preco != null)
+                    this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
         }
         #endregion
 

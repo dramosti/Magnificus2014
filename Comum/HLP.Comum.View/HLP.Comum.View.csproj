@@ -87,6 +87,9 @@
     <Compile Include="Components\CustomTextBlock.cs" />
     <Compile Include="Components\CustomTextBox.cs" />
     <Compile Include="Components\CustomDockPanelSplitter.cs" />
+    <Compile Include="Components\HlpButtonHierarquia.xaml.cs">
+      <DependentUpon>HlpButtonHierarquia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\HlpButtonNavigation.xaml.cs">
       <DependentUpon>HlpButtonNavigation.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,9 @@
     </Compile>
     <Compile Include="Components\HlpNavigation.xaml.cs">
       <DependentUpon>HlpNavigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\HlpPesquisaFiltrada.xaml.cs">
+      <DependentUpon>HlpPesquisaFiltrada.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\HlpSearchTextBox.cs" />
     <Compile Include="Components\HlpTimePicker.xaml.cs">
@@ -179,6 +185,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Util\DatePickerTemplateSelector.cs" />
     <Compile Include="Validates\ListUniqueValuesValidationRule.cs" />
     <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
     <Compile Include="Validates\NumericDecimalValidationRule.cs" />
@@ -188,6 +195,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\HlpButtonHierarquia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\HlpButtonNavigation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -213,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\HlpNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\HlpPesquisaFiltrada.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

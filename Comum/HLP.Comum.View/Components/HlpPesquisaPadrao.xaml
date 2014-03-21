@@ -6,7 +6,7 @@
              xmlns:osc="clr-namespace:HLP.Comum.View.Components"
              mc:Ignorable="d" Loaded="UserControl_Loaded" 
              x:Name="winPesquisaPadrao"
-             FocusManager.FocusedElement="{Binding ElementName=dgvFilter}" >
+             FocusManager.FocusedElement="{Binding ElementName=dgvFilter}" Keyboard.KeyUp="winPesquisaPadrao_KeyUp_1">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,7 +15,6 @@
             <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}">
                 <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus"></EventSetter>
             </Style>
-
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True" Background="{StaticResource StyleMainWindowDefault}">
@@ -33,7 +32,7 @@
                   FontSize="10"   
                   RowHeight="19"                        
                   SelectionUnit="Cell" 
-                  CellStyle="{StaticResource RightAlignedCell}" ColumnWidth="SizeToHeader">
+                  CellStyle="{StaticResource RightAlignedCell}" ColumnWidth="SizeToHeader" >
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="clCampos" Binding="{Binding Path=COLUMN_NAME}" IsReadOnly="True" Header="Campos" Width="150"/>
                     <DataGridTemplateColumn x:Name="clOperador" Header="Operador" Width="150">
@@ -164,8 +163,13 @@
                   
                   SelectionUnit="FullRow"
                   AlternationCount="2"                       
-                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"                       
+                  ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"                      
                       >
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridColumnHeader">
+                        <EventSetter Event="Click" Handler="columnHeader_Click" />
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </Grid>
     </DockPanel>

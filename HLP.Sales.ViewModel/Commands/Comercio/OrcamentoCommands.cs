@@ -383,8 +383,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                     }
                     if (this.objViewModel.currentModel.lOrcamento_Itens != null)
                         this.objViewModel.currentModel.lOrcamento_Itens.CollectionChanged += this.objViewModel.currentModel.lOrcamento_Itens_CollectionChanged;
-
-                    this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
+                    //this.objViewModel.lItensHierarquia = this.objServico.GetIdVersoes(idOrcamento: this.objViewModel.currentID);
                 }
             }
         }

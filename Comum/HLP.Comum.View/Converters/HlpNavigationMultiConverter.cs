@@ -1,4 +1,5 @@
-﻿using HLP.Comum.View.Components;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.View.Components;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,27 +26,27 @@ namespace HLP.Comum.View.Converters
                 return stk;
             else if (values[0] == null)
                 return stk;
+            else if ((values[0] as List<HlpButtonHierarquiaStruct>).Count < 1)
+                return stk;
 
-            Button btn;
-            ResourceDictionary resource = new ResourceDictionary
+            HlpButtonHierarquia btn;
+
+
+            foreach (HlpButtonHierarquiaStruct item in (values[0] as List<HlpButtonHierarquiaStruct>))
             {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
-            };
-
-
-            foreach (int item in (values[0] as List<int>))
-            {
-                btn = new Button();
-                btn.Content = item.ToString();
-                btn.Command = values[1] as ICommand;
-                btn.CommandParameter = btn.Content;
-                btn.Style = resource["ButtonVersao"] as Style;
-                btn.Tag = tg;
-
-                if (item == (int)values[2])
+                btn = new HlpButtonHierarquia();
+                btn.xTextId = item.xId;
+                if (item.xOpcional != "")
                 {
-                    tg = "0";
+                    btn.xTextOpcional = item.xOpcional;
+                    btn.ExibeTextOpcional = true;
                 }
+                else
+                {
+                    btn.ExibeTextOpcional = false;
+                }
+                btn.btn.Command = values[1] as ICommand;
+                btn.btn.CommandParameter = btn.Content;
 
                 stk.Children.Add(element: btn);
             }

@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.Resources.RecursosBases;
+using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;
@@ -155,7 +156,21 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
                 base.NotifyPropertyChanged(propertyName: "bCheckAll");
             }
         }
-        
+
+
+        private List<HlpButtonHierarquiaStruct> _lIdsHierarquia;
+
+        public List<HlpButtonHierarquiaStruct> lIdsHierarquia
+        {
+            get { return _lIdsHierarquia; }
+            set
+            {
+                _lIdsHierarquia = value;
+                base.NotifyPropertyChanged(propertyName: "lIdsHierarquia");
+            }
+        }
+
+
         #endregion
 
         #region Métodos utilizados na View

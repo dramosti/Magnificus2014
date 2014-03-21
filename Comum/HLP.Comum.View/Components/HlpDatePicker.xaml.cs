@@ -24,16 +24,58 @@ namespace HLP.Comum.View.Components
     {
         public HlpDatePicker()
         {
-            InitializeComponent();
+            //InitializeComponent();
+            //ResourceDictionary resource = new ResourceDictionary
+            //{
+            //    Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+            //};
+
+            //Style styleBorderPadrao = this.FindResource(resourceKey: "BorderPadrao") as Style;
+
+            //switch (this.stFormatoDtPicker)
+            //{
+            //    case StFormatoDatePicker.date:
+            //        {
+            //            txtHora.Style = styleBorderPadrao;
+            //            this.UpdateLayout();
+            //        }
+            //        break;
+            //    case StFormatoDatePicker.time:
+            //        {
+            //            txtData.Style = resource[key: "BorderPadrao"] as Style;
+            //            this.UpdateLayout();
+            //        }
+            //        break;
+            //    case StFormatoDatePicker.datetime:
+            //        {
+            //            txtHora.Style = resource[key: "BorderRight"] as Style;
+            //            txtData.Style = resource[key: "BorderLeft"] as Style;
+            //            this.UpdateLayout();
+            //        }
+            //        break;
+            //}
             //this.ViewModel = new HlpDatePickerViewModel();
         }
 
+        //private StFormatoDatePicker _stFormatoDtPicker;
+
+        //public StFormatoDatePicker stFormatoDtPicker
+        //{
+        //    get { return _stFormatoDtPicker; }
+        //    set
+        //    {
+        //        _stFormatoDtPicker = value;                
+        //    }
+        //}
 
 
         public StFormatoDatePicker stFormatoDtPicker
         {
             get { return (StFormatoDatePicker)GetValue(stFormatoDtPickerProperty); }
-            set { SetValue(stFormatoDtPickerProperty, value); }
+            set
+            {
+                SetValue(stFormatoDtPickerProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for stFormatoDtPicker.  This enables animation, styling, binding, etc...

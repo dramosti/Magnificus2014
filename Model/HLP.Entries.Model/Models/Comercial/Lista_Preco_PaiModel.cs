@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
@@ -16,6 +18,22 @@ namespace HLP.Entries.Model.Models.Comercial
             : base(xTabela: "Lista_Preco_Pai")
         {
             this.lLista_preco = new ObservableCollectionBaseCadastros<Lista_precoModel>();
+            this.lLista_preco.CollectionChanged += lLista_preco_CollectionChanged;
+        }
+
+        public void lLista_preco_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
+                    {
+                        foreach (Lista_precoModel it in e.NewItems)
+                        {
+                            it.stMarkupLista = this.stMarkup;
+                        }
+                    }
+                    break;
+            }
         }
 
         private int _idEmpresa;
@@ -198,6 +216,25 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
+        private byte? _stMarkup;
+        [ParameterOrder(Order = 17)]
+        public byte? stMarkup
+        {
+            get { return _stMarkup; }
+            set
+            {
+                _stMarkup = value;
+
+                if (this.lLista_preco != null)
+                    foreach (Lista_precoModel it in this.lLista_preco)
+                    {
+                        it.stMarkupLista = value;
+                    }
+
+                base.NotifyPropertyChanged(propertyName: "stMarkup");
+            }
+        }
+
         private ObservableCollectionBaseCadastros<Lista_precoModel> _lLista_preco;
 
         public ObservableCollectionBaseCadastros<Lista_precoModel> lLista_preco
@@ -218,27 +255,23 @@ namespace HLP.Entries.Model.Models.Comercial
         {
         }
 
-        private void CalculaPrecoVenda()
+        public void CalculaMarkup(Lista_precoModel objItemLista)
         {
-            if (CompanyData.parametros_CustoEmpresa == null)
-                return;
-
-            byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
-
-            switch (stMarkup)
+            decimal vCustoTotal = objItemLista._vCustoProduto + (objItemLista._vVenda * (objItemLista._pComissao ?? 0))
+                    + (objItemLista._vVenda * (objItemLista._pOutros ?? 0));
+            switch (objItemLista._stMarkupLista)
             {
-                case 0://Por preço de custo
+                case 0://Margem Bruta
                     {
-                        this._vVenda = (decimal)(_vCustoProduto * this.pMarkup);
+                        if (objItemLista._vVenda > 0)
+                            objItemLista.pMarkup = (objItemLista._vVenda - vCustoTotal) / objItemLista._vVenda;
                     } break;
-                case 1://Por preço de venda
+                case 1://Markup
                     {
-                        if (this.pMarkup != 0)
-                            this._vVenda = (decimal)(_vCustoProduto / this.pMarkup);
+                        if (vCustoTotal > 0)
+                            objItemLista.pMarkup = objItemLista._vVenda / vCustoTotal;
                     } break;
             }
-
-            base.NotifyPropertyChanged(propertyName: "vVenda");
             base.NotifyPropertyChanged(propertyName: "pMarkup");
         }
 
@@ -273,7 +306,7 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _vCustoProduto = value;
                 base.NotifyPropertyChanged(propertyName: "vCustoProduto");
-                this.CalculaPrecoVenda();
+                this.CalculaMarkup(objItemLista: this);
             }
         }
         private decimal _pLucro;
@@ -284,8 +317,10 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _pLucro = value;
+                this._vVenda = (1 + (this._pLucro / 100)) * this._vCustoProduto;
                 base.NotifyPropertyChanged(propertyName: "pLucro");
-                this.CalculaPrecoVenda();
+                base.NotifyPropertyChanged(propertyName: "vVenda");
+                this.CalculaMarkup(objItemLista: this);
             }
         }
         private decimal _vVenda;
@@ -296,33 +331,10 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                if (CompanyData.parametros_CustoEmpresa != null)
-                {
-                    byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
-                    switch (stMarkup)
-                    {
-                        case 0://Por preço de custo
-                            {
-                                if (this._vCustoProduto != 0)
-                                    this._pLucro = ((100 * (this._vVenda - this._vCustoProduto)) / this._vCustoProduto)
-                        + (this._vCustoProduto * ((this._pDesconto ?? 0) / 100))
-                        - (this._vCustoProduto * ((this._pComissao ?? 0) / 100))
-                        - (this._vCustoProduto * ((this._pOutros ?? 0) / 100));
-                                this._pMarkup = this.pMarkup;
-                                base.NotifyPropertyChanged(propertyName: "pLucro");
-                                base.NotifyPropertyChanged(propertyName: "pMarkup");
-                            } break;
-                        case 1://Por preço de venda
-                            {
-                                if (this._vVenda != 0)
-                                    this._pLucro = (this._vVenda - this._vCustoProduto) * 100 / this._vVenda;
-                                this._pMarkup = this.pMarkup;
-                                base.NotifyPropertyChanged(propertyName: "pLucro");
-                                base.NotifyPropertyChanged(propertyName: "pMarkup");
-                            } break;
-                    }
-                }
+                this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vVenda) * 100;
+                this.CalculaMarkup(objItemLista: this);
                 base.NotifyPropertyChanged(propertyName: "vVenda");
+                base.NotifyPropertyChanged(propertyName: "pLucro");
             }
         }
         private decimal? _pDescontoMaximo;
@@ -389,7 +401,6 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _pDesconto = value;
                 base.NotifyPropertyChanged(propertyName: "pDesconto");
-                this.CalculaPrecoVenda();
             }
         }
         private decimal? _pComissao;
@@ -401,7 +412,7 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _pComissao = value;
                 base.NotifyPropertyChanged(propertyName: "pComissao");
-                this.CalculaPrecoVenda();
+                this.CalculaMarkup(objItemLista: this);
             }
         }
         private decimal? _pOutros;
@@ -413,7 +424,7 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _pOutros = value;
                 base.NotifyPropertyChanged(propertyName: "pOutros");
-                this.CalculaPrecoVenda();
+                this.CalculaMarkup(objItemLista: this);
             }
         }
         private DateTime _dAlteracaoCusto;
@@ -444,23 +455,6 @@ namespace HLP.Entries.Model.Models.Comercial
         {
             get
             {
-                if (CompanyData.parametros_CustoEmpresa != null)
-                {
-                    byte stMarkup = (byte)CompanyData.parametros_CustoEmpresa.GetType().GetProperty("st_Markup").GetValue(CompanyData.parametros_CustoEmpresa);
-                    switch (stMarkup)
-                    {
-                        case 0://Por preço de custo
-                            {
-                                _pMarkup = (1 + (((this._pComissao ?? (decimal)0) + (this._pLucro) +
-                                    (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
-                            } break;
-                        case 1://Por preço de venda
-                            {
-                                _pMarkup = (1 - (((this._pComissao ?? (decimal)0) + (this._pLucro) +
-                                    (this._pOutros ?? (decimal)0) - (this._pDesconto ?? 0)) / 100));
-                            } break;
-                    }
-                }
                 return _pMarkup;
             }
             set
@@ -471,6 +465,18 @@ namespace HLP.Entries.Model.Models.Comercial
         }
 
         #region Propriedades não mapeadas
+
+        private byte? _stMarkupLista;
+
+        public byte? stMarkupLista
+        {
+            get { return _stMarkupLista; }
+            set
+            {
+                _stMarkupLista = value;
+                this.CalculaMarkup(objItemLista: this);
+            }
+        }
 
 
         private decimal _vlrEsperado;

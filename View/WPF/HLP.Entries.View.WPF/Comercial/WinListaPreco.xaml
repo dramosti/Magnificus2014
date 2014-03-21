@@ -35,11 +35,15 @@
         <convL:IsEnabledCompMultiConverter x:Key="isEnabledMultiConverter"></convL:IsEnabledCompMultiConverter>
         <conv:MoedaConverter x:Key="moedaConverter"/>
         <util:BindingProxy x:Key="proxy" Data="{Binding}" />
+        <convL:HeaderMarkupConverter x:Key="headerMarkupConverter"/>
     </Window.Resources>
     <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top">
+            <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia, Mode=OneWay}"></Components:HlpNavigation>
+        </StackPanel>
         <Expander Header="Principal" IsExpanded="True">
             <Grid>
-                <Grid.RowDefinitions>
+                <Grid.RowDefinitions>                    
                     <RowDefinition Height="281*"></RowDefinition>
                     <RowDefinition Height="2.5"></RowDefinition>
                     <RowDefinition Height="319*"></RowDefinition>
@@ -75,6 +79,8 @@
                             <RowDefinition Height="27"/>
                             <RowDefinition Height="3"/>
                             <RowDefinition Height="27"/>
+                            <RowDefinition Height="3"/>
+                            <RowDefinition Height="27"/>
 
                         </Grid.RowDefinitions>
                         <!--Label Componentes-->
@@ -92,6 +98,7 @@
                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="9" Text="Desconto Máximo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="11" Text="Acréscimo Máximo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
                         <Components:CustomTextBlock Grid.Column="6" Grid.Row="13" Text="Ativo ?" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Text="Formação de Preço" Grid.Column="6" Grid.Row="15" VerticalAlignment="Center" Margin="0,5" Height="18"></Components:CustomTextBlock>
 
                         <!--Fim Label-->
 
@@ -112,7 +119,7 @@
                     Text="{Binding currentModel.xCodigoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bCompGeral}"
 					ToolTip="Digite um código para a recém-criada Lista de preço "/>
-                        <Components:CustomTextBox
+                        <Components:CustomTextBox                            
                     Grid.Column="2" Grid.Row="5"
                     Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -190,10 +197,12 @@
                                 </MultiBinding>
                             </Components:CustomTextBox.IsEnabled>
                         </Components:CustomTextBox>
-                        <Components:HlpDatePicker
+                        <Components:HlpDatePicker   
+                            stFormatoDtPicker="date"
                             Grid.Column="7" Grid.Row="7"
                             IsEnabled="{Binding bCompListaAut}"
-                            xTextDate="{Binding currentModel.dValidadeContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            xTextDate="{Binding currentModel.dValidadeContrato, 
+                            Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             ></Components:HlpDatePicker>
                         <Components:CustomTextBox
                     Grid.Column="7" Grid.Row="9"
@@ -212,6 +221,15 @@
                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"/>
+                        <Components:CustomComboBox x:Name="cbxMarkup" Grid.Column="7" Grid.Row="15"
+                                                   SelectedIndex="{Binding currentModel.stMarkup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                                                   IsEnabled="{Binding bIsEnabled}">
+                            <Components:CustomComboBox.Items>
+                                <ComboBoxItem>0 – Margem Bruta (Default)</ComboBoxItem>
+                                <ComboBoxItem>1 – Mark-up</ComboBoxItem>
+                            </Components:CustomComboBox.Items>
+                        </Components:CustomComboBox>
 
                         <!--Fim Componentes-->
 
@@ -406,11 +424,12 @@
                                         ></DataGridTextColumn>
                                 <DataGridTextColumn 
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"
-                                        Header="Markup" Width="120" IsReadOnly="True"                                        
+                                        Header="{Binding Data.currentModel.stMarkup, Source={StaticResource proxy}, Converter={StaticResource headerMarkupConverter}}" Width="120" IsReadOnly="True"                                        
                                             ElementStyle="{StaticResource CellErrorStyle}"
                                         Binding="{Binding Path=pMarkup, UpdateSourceTrigger=LostFocus,                                            
                                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ></DataGridTextColumn>
+                                        >
+                                </DataGridTextColumn>
                                 <DataGridTemplateColumn 
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}"
                                     Visibility="{Binding Data.visAumentoVlr, Source={StaticResource proxy}, Converter={StaticResource visibilityConverter}}"

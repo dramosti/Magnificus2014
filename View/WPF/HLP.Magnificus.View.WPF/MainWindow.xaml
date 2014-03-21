@@ -604,14 +604,14 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
-                                <Components:HlpNavigation x:Name="ctrHierarquia" 
+                                <!--<Components:HlpNavigation x:Name="ctrHierarquia" 
                                                           IsEnabled="{Binding winMan._currentTab._currentDataContext.bIsEnabled, Converter={StaticResource notConv}}"
                                                       lIdsHierarquia="{Binding winMan._currentTab._currentDataContext.lItensHierarquia}"
                                                       commButton="{Binding winMan._currentTab._currentDataContext.commandPesquisar}"   
                                                       selectedId="{Binding winMan._currentTab._currentDataContext.selectedId, UpdateSourceTrigger=PropertyChanged}"
                                                       MaxWidth="600"
                                                           MaxHeight="100"
-                                                      ></Components:HlpNavigation>
+                                                      ></Components:HlpNavigation>-->
 
                             </ToolBar>
                         </DockPanel>

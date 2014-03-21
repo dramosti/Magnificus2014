@@ -41,7 +41,8 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 canExecute: paramCanExec => true);
             _objViewModel.commandAdd = new RelayCommand(execute: parameExec => CriarExecute(parameExec),
                 canExecute: paramCanExec => this.CriarCanExecute(paramCanExec));
-
+            _objViewModel.commandPesquisaFiltrada = new RelayCommand(execute: paramExec => this.PesquisaFiltradaExecute(
+                gdvResult: paramExec));
         }
 
         void CriarExecute(object nameWindow)
@@ -82,17 +83,27 @@ namespace HLP.Comum.ViewModel.Commands.Components
             return nameWindow.ToString() != "";
         }
 
-        void WorkerPesquisa(object gdvResult)
+        void PesquisaFiltradaExecute(object gdvResult)
         {
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.bw_DoWorkExecPesquisa);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
             bw.RunWorkerAsync(gdvResult);
         }
+
+        void WorkerPesquisa(object gdvResult)
+        {
+            BackgroundWorker bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(this.bw_DoWorkExecPesquisa);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
+            this._objViewModel.lFiltroAtivo = this._objViewModel.lFilers.ToList();
+            bw.RunWorkerAsync(gdvResult);
+        }
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             _objViewModel.bIniciaFocusFirstRow = true;
         }
+
         async void bw_DoWorkExecPesquisa(object sender, DoWorkEventArgs e)
         {
 
@@ -102,7 +113,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 sql.Append("SELECT * FROM " + _objViewModel.sView);
                 List<string> sExpression = new List<string>();
 
-                if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "idEmpresa").Count() > 0)
+                if (_objViewModel.lFiltroAtivo.Where(C => C.COLUMN_NAME == "idEmpresa").Count() > 0)
                 {
                     sExpression.Add("(idEmpresa = " + CompanyData.idEmpresa + ")");
                     //sExpression.Add("AND");
@@ -114,7 +125,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 //    sExpression.Add("AND");
                 //}
 
-                foreach (PesquisaPadraoModel filtro in _objViewModel.lFilers)
+                foreach (PesquisaPadraoModel filtro in _objViewModel.lFiltroAtivo)
                 {
                     if (filtro.Valor != null)
                     {
@@ -133,9 +144,21 @@ namespace HLP.Comum.ViewModel.Commands.Components
                     }
                 }
 
+                if (this._objViewModel.campoSelecionado != ""
+                    && this._objViewModel.campoSelecionado != null
+                    && this._objViewModel.stOrdenacao != null)
+                {
+                    sExpression.Add(item:
+                        string.Format(format: " ORDER BY {0} {1} ", arg0: this._objViewModel.campoSelecionado, arg1: this._objViewModel.stOrdenacao == (int)0 ?
+                        "ASC" : "DESC"));
+                }
+
                 if (sExpression.Count() > 0)
                 {
                     sql.Append(" WHERE ");
+
+                    if (sExpression.Count == 1 && sExpression.FirstOrDefault().Contains(value: "ORDER BY"))
+                        sql = sql.Replace(oldValue: " WHERE ", newValue: "");
 
                     if (sExpression[sExpression.Count() - 1] == "AND" || sExpression[sExpression.Count() - 1] == "OR")
                     {
@@ -170,6 +193,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
                 throw ex;
             }
         }
+
         bool CanPesquisar()
         {
             bool bReturn = false;
