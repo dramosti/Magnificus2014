@@ -12,12 +12,12 @@ namespace HLP.Comum.View.Components
     {
         public CustomDatePicker()
         {
-            ResourceDictionary resource = new ResourceDictionary
-            {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/mainStyle.xaml", UriKind.RelativeOrAbsolute)
-            };
+            //ResourceDictionary resource = new ResourceDictionary
+            //{
+            //    Source = new Uri("/HLP.Comum.Resources;component/Styles/mainStyle.xaml", UriKind.RelativeOrAbsolute)
+            //};
 
-            this.Style = resource["DatePickerStyle"] as Style;
+            //this.Style = resource["DatePickerStyle"] as Style;
         }
     }
 }

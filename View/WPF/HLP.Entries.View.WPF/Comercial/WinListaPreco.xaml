@@ -199,7 +199,7 @@
                             </Components:CustomTextBox.IsEnabled>
                         </Components:CustomTextBox>
                         <Components:HlpDatePicker   
-                            stFormatoDtPicker="date"
+                            stFormatoDtPicker="datetime"
                             Grid.Column="7" Grid.Row="7"
                             IsEnabled="{Binding bCompListaAut}"
                             xTextDate="{Binding currentModel.dValidadeContrato, 

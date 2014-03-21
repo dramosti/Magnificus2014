@@ -92,5 +92,21 @@ namespace HLP.Entries.ViewModel.Services.Transportes
             }
             return null;
         }
+
+        //public bool PossuiListaPreco(int id)
+        //{
+        //    switch (Sistema.bOnline)
+        //    {
+        //        case TipoConexao.OnlineRede:
+        //            {
+        //                return this.servicoRede.GetObject(idRota: id);
+        //            }
+        //        case TipoConexao.OnlineInternet:
+        //            {
+        //                return this.servicoInternet.GetObject(idRota: id);
+        //            }
+        //    }
+        //    return false;
+        //}
     }
 }

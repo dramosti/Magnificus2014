@@ -48,6 +48,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
+            this.objServico = new ClienteService();
         }
 
 
@@ -67,7 +68,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                        iExcluir = (int)this.objViewModel.currentModel.idClienteFornecedor  ;
+                        iExcluir = (int)this.objViewModel.currentModel.idClienteFornecedor;
                         this.objViewModel.currentModel = null;
                     }
                     else
@@ -91,7 +92,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-     
+
 
         public void Save(object _panel)
         {
@@ -205,9 +206,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
-        }             
+        }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
@@ -262,7 +263,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

@@ -24,37 +24,7 @@ namespace HLP.Comum.View.Components
     {
         public HlpDatePicker()
         {
-            //InitializeComponent();
-            //ResourceDictionary resource = new ResourceDictionary
-            //{
-            //    Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
-            //};
-
-            //Style styleBorderPadrao = this.FindResource(resourceKey: "BorderPadrao") as Style;
-
-            //switch (this.stFormatoDtPicker)
-            //{
-            //    case StFormatoDatePicker.date:
-            //        {
-            //            txtHora.Style = styleBorderPadrao;
-            //            this.UpdateLayout();
-            //        }
-            //        break;
-            //    case StFormatoDatePicker.time:
-            //        {
-            //            txtData.Style = resource[key: "BorderPadrao"] as Style;
-            //            this.UpdateLayout();
-            //        }
-            //        break;
-            //    case StFormatoDatePicker.datetime:
-            //        {
-            //            txtHora.Style = resource[key: "BorderRight"] as Style;
-            //            txtData.Style = resource[key: "BorderLeft"] as Style;
-            //            this.UpdateLayout();
-            //        }
-            //        break;
-            //}
-            //this.ViewModel = new HlpDatePickerViewModel();
+            InitializeComponent();
         }
 
         //private StFormatoDatePicker _stFormatoDtPicker;
