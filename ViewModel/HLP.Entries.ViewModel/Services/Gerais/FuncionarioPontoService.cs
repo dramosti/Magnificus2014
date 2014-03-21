@@ -10,7 +10,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
 {
     public class FuncionarioPontoService
     {
-        wcf_FuncionarioPonto.Iwcf_Funcionario_Controle_Horas_PontoClient servicoInternet;
+        wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_PontoClient servicoInternet;
         HLP.Wcf.Entries.wcf_Funcionario_Controle_Horas_Ponto servicoRede;
 
         public FuncionarioPontoService() 
@@ -24,7 +24,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                     break;
                 case TipoConexao.OnlineInternet:
                     {
-                        this.servicoInternet = new wcf_FuncionarioPonto.Iwcf_Funcionario_Controle_Horas_PontoClient();
+                        this.servicoInternet = new wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_PontoClient();
                     }
                     break;
             }            
