@@ -5,12 +5,13 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
     xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Transportes.WinCondicaoEntrega"    
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinCondicaoEntrega"    
         Title="Condição de Entrega" Height="660" Width="1024" NameView="vwCondicaoEntrega">
     <Window.Resources>
         <conv:ByteToIntConverter x:Key="convByteToIntConverter"/>
         <conv:DecimalToStringConverter x:Key="decimalToStringConverter"/>
         <conv:ByteToBoolConverter x:Key="convByteToBoolConverter"/>
+        <conv:MoedaConverter x:Key="moedaConverter"></conv:MoedaConverter>
     </Window.Resources>
     <Grid>
         <Expander Header="Geral" IsExpanded="True">
@@ -38,7 +39,7 @@
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Endereço para Imposto sobre Vendas" Field="stEnderecoImpostoSobreVendas" Help="Selecione o endereço no qual as mercadorias trocam de propriedade (INTRASTAT). São eles:" Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left">
                     <Components:HlpComboBox.Items>
-                        <System:String>0 – BRANCO (DEFAULT)</System:String>
+                        <System:String>0 – BRANCO</System:String>
                         <System:String>1 - COMERCIAL</System:String>
                         <System:String>2 - ENTREGA</System:String>
                         <System:String>3 - ENTREGA ALTERNATIVO</System:String>
@@ -58,18 +59,17 @@
 						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Código Intrastat" Field="nIntrastat" Help="Intrastat é uma declaração estatística de entrega obrigatória ao INE por parte dos contribuintes que adquirem ou vendem produtos ao Mercado Comunitário. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375"/>
                 <Components:HlpCheckBox 
+                        x:Name="cbMinimoGratis"
                         IsChecked="{Binding currentModel.stAplicarMinGratis, Mode=TwoWay, NotifyOnValidationError=True,
-                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource convByteToBoolConverter}}"
-												
+                        UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource convByteToBoolConverter}}"												
 						IsEnabled="{Binding bIsEnabled}"
-						Height="30" Margin="10,0,10,2" Caption="Aplicar Mínimo Máximo" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left">
+						Height="30" Margin="10,0,10,2" Caption="Aplicar Mínimo Grátis" Field="stAplicarMinGratis" Help="Caso esta opção esteja selecionada, os encargos de remessa serão cancelados, se o valor da nota fiscal ultrapassar um determinado valor. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left">
                 </Components:HlpCheckBox>
                 <Components:HlpTextBox 
-												
-						IsEnabled="{Binding bIsEnabled}"
 						Height="30" Margin="10,0,10,2" Caption="Valor do Mínimo Grátis" Field="vMinimoGratis" Help="Se a caixa de seleção Aplicar mínimo grátis estiver marcada como sim, insira o valor mínimo da nota fiscal de venda para o qual os encargos de remessa serão cancelados. Este é o valor de vendas antes de impostos, frete e encargos diversos. " Table="Condicoes_entrega" WidthLabel="262" HorizontalAlignment="Left" Width="375">
                     <Components:HlpTextBox.Text>
                         <Binding Path="currentModel.vMinimoGratis"
+                                 Converter="{StaticResource moedaConverter}"
                                      Mode="TwoWay"
                                      NotifyOnValidationError="True"
                                      UpdateSourceTrigger="PropertyChanged"
@@ -79,6 +79,18 @@
                             </Binding.ValidationRules>
                         </Binding>
                     </Components:HlpTextBox.Text>
+                    <Components:HlpTextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbMinimoGratis, Path=IsChecked}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:HlpTextBox.Style>
                 </Components:HlpTextBox>
             </WrapPanel>
         </Expander>

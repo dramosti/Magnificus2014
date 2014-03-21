@@ -39,7 +39,8 @@
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Top">
-            <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia, Mode=OneWay}"></Components:HlpNavigation>
+            <Components:HlpNavigation                
+                lIdsHierarquia="{Binding lIdsHierarquia, Mode=OneWay}"></Components:HlpNavigation>
         </StackPanel>
         <Expander Header="Principal" IsExpanded="True" Focusable="False">
             <Grid>

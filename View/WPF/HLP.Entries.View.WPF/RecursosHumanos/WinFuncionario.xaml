@@ -1025,7 +1025,25 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Expander Header="Produtos Representante" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">                                
+                            <Expander Header="Produtos Representante" IsExpanded="True" >  
+                                <Expander.Style>
+                                    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ExpanderPadrao}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                                <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="4">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Expander.Style>
                                 <Grid>
                                 <DataGrid
                                     Name="gridRepresentantes"
@@ -1077,7 +1095,28 @@
                                 </DataGrid>                                
                                 </Grid>
                             </Expander>
-                            <Expander Grid.Column="0" Header="Família de Produto" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                            <Expander Grid.Column="0" Header="Família de Produto" IsExpanded="True" >
+                                <Expander.Style>
+                                    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ExpanderPadrao}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="4">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="5">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Expander.Style>
                                 <Grid>
                                     <DataGrid
                                 ItemsSource="{Binding currentModel.lFamiliaProduto}"
@@ -1114,7 +1153,28 @@
                                     </DataGrid>
                                 </Grid>
                             </Expander>
-                            <Expander IsExpanded="True" Header="Faixa de Lucro" Style="{StaticResource ExpanderPadrao}">
+                            <Expander IsExpanded="True" Header="Faixa de Lucro">
+                                <Expander.Style>
+                                    <Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ExpanderPadrao}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="5">
+                                                <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Expander.Style>
                                 <Grid>
                                     <DataGrid
                             Name="gridComissoes"

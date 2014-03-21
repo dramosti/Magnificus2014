@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
 
-namespace HLP.Entries.View.WPF.Transportes
+namespace HLP.Entries.View.WPF.GestãoDeLogística
 {
     /// <summary>
     /// Interaction logic for WinCondicaoEntrega.xaml

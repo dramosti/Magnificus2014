@@ -30,6 +30,7 @@ namespace HLP.Entries.Model.Models.Gerais
             this.lFuncionario_Acesso =
                 new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>();
             this.Ativo = true;
+            this.stComissao = 0;
         }
 
         private int? _idFuncionario;
@@ -732,7 +733,7 @@ namespace HLP.Entries.Model.Models.Gerais
                                     this.lFamiliaProduto = new ObservableCollectionBaseCadastros<Familia_produtoModel>(list:
                                         lFamiliaProduto);
                             }));
-                            
+
                         }
                     }
                 }
