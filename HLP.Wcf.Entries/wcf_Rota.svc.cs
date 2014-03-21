@@ -127,5 +127,26 @@ namespace HLP.Wcf.Entries
             }
         }
 
+        public bool PossuiListaPreco(int idRota)
+        {
+            try
+            {
+                int? result = this.iRotaRepository.GetIdListaPrecoRota(idRota: idRota);
+
+                if (result == null)
+                    return false;
+
+                if (result > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
+        }
+
     }
 }

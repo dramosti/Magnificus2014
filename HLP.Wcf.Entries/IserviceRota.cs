@@ -18,6 +18,6 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         HLP.Entries.Model.Models.Transportes.RotaModel Copy(HLP.Entries.Model.Models.Transportes.RotaModel objRota);
         [OperationContract]
-        HLP.Entries.Model.Models.Transportes.RotaModel GetObject(int idRota);
+        HLP.Entries.Model.Models.Transportes.RotaModel GetObject(int idRota);        
     }
 }

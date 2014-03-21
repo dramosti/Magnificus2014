@@ -9,6 +9,7 @@ using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
+using System.Data.Common;
 
 namespace HLP.Entries.Model.Repository.Implementation.Transportes
 {
@@ -62,10 +63,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
                 regRotaAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Rota",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idRota"),
-                                         MapBuilder<RotaModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
+                                         MapBuilder<RotaModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
 
             return regRotaAccessor.Execute(idRota).FirstOrDefault();
+        }
+
+        public int? GetIdListaPrecoRota(int idRota)
+        {
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand(String.Format(format:
+                "select idListaPrecoPai from Rota where idRota = {0}", arg0: idRota));
+            return UndTrabalho.dbPrincipal.ExecuteScalar(command) as int?;
         }
 
         public void BeginTransaction()

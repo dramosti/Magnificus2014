@@ -22,5 +22,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         HLP.Entries.Model.Models.Transportes.RotaModel GetObject(int idRota);
+
+        [OperationContract]
+        bool PossuiListaPreco(int idRota);
     }
 }
