@@ -39,12 +39,12 @@
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Top">
-            <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia, Mode=OneWay}"></Components:HlpNavigation>
+
         </StackPanel>
         <Expander Header="Principal" IsExpanded="True" Focusable="False">
             <Grid>
-                <Grid.RowDefinitions>                    
-                    <RowDefinition Height="281*"></RowDefinition>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="2.5"></RowDefinition>
                     <RowDefinition Height="319*"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -64,75 +64,66 @@
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
-                            <RowDefinition Height="3"/>
-                            <RowDefinition Height="27"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
+                            <RowDefinition Height="Auto" MaxHeight="23"/>
 
                         </Grid.RowDefinitions>
                         <!--Label Componentes-->
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Código da Lista de Preço" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Descrição" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Data de Criação" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="Tipo de Atualização" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Lista de Preço Origem" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="13" Text="Percentual" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="1" Text="N.° dias sem Atualização no valor de custo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="3" Text="É Contrato" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="5" Text="Nº do Contrato" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="7" Text="Data de validade da Lista" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="9" Text="Desconto Máximo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="11" Text="Acréscimo Máximo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="13" Text="Ativo ?" VerticalAlignment="Center" Margin="0,5" Height="18"/>
-                        <Components:CustomTextBlock Text="Formação de Preço" Grid.Column="6" Grid.Row="15" VerticalAlignment="Center" Margin="0,5" Height="18"></Components:CustomTextBlock>
-
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center" Height="20"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código da Lista de Preço" VerticalAlignment="Center" Height="20"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Data de Criação" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Tipo de Atualização" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="É Contrato" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Nº do Contrato" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Data de validade da Lista" VerticalAlignment="Center" Margin="0,5" Height="18"/>                                                
+                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="1" Text="Desconto Máximo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="2" Text="Acréscimo Máximo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="3" Text="Ativo ?" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Text="Formação de Preço" Grid.Column="6" Grid.Row="4" VerticalAlignment="Center" Margin="0,5" Height="18"></Components:CustomTextBlock>
+                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="5" Text="Lista de Preço Origem" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="6" Text="Percentual" VerticalAlignment="Center" Margin="0,5" Height="18"/>
+                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="7" Text="N.° dias sem Atualização no valor de custo" VerticalAlignment="Center" Margin="0,5" Height="18"/>
                         <!--Fim Label-->
 
                         <!--Componentes-->
 
-                        <Button Grid.Column="2" Grid.Row="21"
+                        <Button Grid.Column="7" Grid.Row="8"
                                 IsEnabled="{Binding bCompListaManual}"
                         Command="{Binding gerarListaCommand}"
                         Content="Gerar Lista"/>
 
                         <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="1"
+                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro da Origem de Venda"/>
                         <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3"
+                    Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.xCodigoListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bCompGeral}"
 					ToolTip="Digite um código para a recém-criada Lista de preço "/>
                         <Components:CustomTextBox                            
-                    Grid.Column="2" Grid.Row="5"
+                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.xLista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Descrição da Lista de preço"/>
                         <Components:HlpDatePicker
-                            Grid.Column="2" Grid.Row="7"
+                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
                             xTextDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             IsEnabled="False"
                             stFormatoDtPicker="date"
                             Help="Este campo mostra a data em que a lista de preços foi gerada"
                             ></Components:HlpDatePicker>
                         <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" Height="20" Margin="0,0,0,3"
                     Name="cbxStAtualizacao"					
 					SelectedIndex="{Binding currentModel.stAtualizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bCompGeral}"
@@ -143,7 +134,7 @@
                             </Components:CustomComboBox.Items>
                         </Components:CustomComboBox>
                         <Components:HlpPesquisa 
-					Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="3"
+					Grid.Column="7" Grid.Row="5" Grid.ColumnSpan="2" Height="20" Margin="0,0,0,3"
 					Text="{Binding currentModel.idListaPrecoOrigem, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
 					ToolTip="Informar qual é a Lista de Preço Origem quando a Lista for automática, o campo só é disponibilizado quando a lista for automática." WidthLabel="0" FieldPesquisa="ID" TableView="vwListaPrecoPai">
@@ -160,7 +151,7 @@
                             </Components:HlpPesquisa.IsEnabled>
                         </Components:HlpPesquisa>
                         <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="13"
+                    Grid.Column="7" Grid.Row="6" Height="20" Margin="0,0,0,3"
                     x:Name="txtPercentual"                	                        
 					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
                         Converter={StaticResource PorcentagemConverter},
@@ -175,20 +166,19 @@
                             </Components:CustomTextBox.IsEnabled>
                         </Components:CustomTextBox>
                         <Components:CustomTextBox
-                    Grid.Column="7" Grid.Row="1"
+                    Grid.Column="7" Grid.Row="7" Height="20" Margin="0,0,0,3"
                     Name="nDiasSemAtual"					
 					Text="{Binding currentModel.nDiasSemAtualicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campos"/>
                         <Components:CustomCheckBox
                             x:Name="cbContrato"
-                    Grid.Column="7" Grid.Row="3" VerticalAlignment="Center"
+                    Grid.Column="2" Grid.Row="6" VerticalAlignment="Center"
                     IsChecked="{Binding currentModel.stContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                       			
 					IsEnabled="{Binding bCompGeral}"/>
                         <Components:CustomTextBox
-                            Grid.Column="7" Grid.Row="5"
-                    Text="{Binding currentModel.xNrContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					Margin="0,1,0,3" Grid.RowSpan="2">
+                            Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3"
+                    Text="{Binding currentModel.xNrContrato, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                             <Components:CustomTextBox.IsEnabled>
                                 <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
                   ConverterParameter="cb">
@@ -199,29 +189,29 @@
                         </Components:CustomTextBox>
                         <Components:HlpDatePicker   
                             stFormatoDtPicker="date"
-                            Grid.Column="7" Grid.Row="7"
+                            Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3"
                             IsEnabled="{Binding bCompListaAut}"
                             xTextDate="{Binding currentModel.dValidadeContrato, 
                             Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             ></Components:HlpDatePicker>
                         <Components:CustomTextBox
-                    Grid.Column="7" Grid.Row="9"
+                    Grid.Column="7" Grid.Row="1" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, 
                     Converter={StaticResource PorcentagemConverter},
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"/>
                         <Components:CustomTextBox
-                    Grid.Column="7" Grid.Row="11"
+                    Grid.Column="7" Grid.Row="2" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, 
                     Converter={StaticResource PorcentagemConverter},
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"/>
                         <Components:CustomCheckBox
-                    Grid.Column="7" Grid.Row="13" VerticalAlignment="Center"
+                    Grid.Column="7" Grid.Row="3" VerticalAlignment="Center"
                     IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, 
                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"/>
-                        <Components:CustomComboBox x:Name="cbxMarkup" Grid.Column="7" Grid.Row="15"
+					IsEnabled="{Binding bIsEnabled}"/> 
+                        <Components:CustomComboBox x:Name="cbxMarkup" Grid.Column="7" Grid.Row="4" Height="20" Margin="0,0,0,3"
                                                    SelectedIndex="{Binding currentModel.stMarkup, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                             NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                                    IsEnabled="{Binding bIsEnabled}">
@@ -258,14 +248,52 @@
 
                     <DockPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" LastChildFill="True">
                         <StackPanel Height="30" Visibility="{Binding visAumentoVlr}" HorizontalAlignment="Left" Orientation="Horizontal" DockPanel.Dock="Top">
-                            <ComboBox Width="150" SelectedIndex="{Binding byteIndex, UpdateSourceTrigger=PropertyChanged}">
+                            <Components:CustomComboBox Width="150" Margin="10,0,10,0" SelectedIndex="{Binding byteIndex, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBoxItem>Preço de Venda</ComboBoxItem>
                                 <ComboBoxItem>Custo do Produto</ComboBoxItem>
-                            </ComboBox>
-                            <TextBlock>% de aumento</TextBlock>
-                            <TextBox Width="80" Text="{Binding dPorcAumento, Converter={StaticResource PorcentagemConverter}}"></TextBox>
-                            <Button Width="70" Command="{Binding ConfAumVlrVendaCommand}">Confirmar</Button>
-                            <Button Width="70" Command="{Binding CancAumVlrVendaCommand}">Cancelar</Button>
+                            </Components:CustomComboBox>
+                            <Components:CustomTextBlock Margin="10,0,10,0" >% de aumento</Components:CustomTextBlock>
+                            <Components:CustomTextBox Margin="10,0,10,0" Width="80" Text="{Binding dPorcAumento, Converter={StaticResource PorcentagemConverter}}"></Components:CustomTextBox>                            
+                                <Button Margin="10,0,10,0" Width="50" Command="{Binding ConfAumVlrVendaCommand}">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Confirmar_Preto.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Confirmar_MouseOver.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>                       
+                                  <Button Margin="10,0,1,0" Width="50" Command="{Binding CancAumVlrVendaCommand}">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <Image x:Name="ImageAdd">
+                                                    <Image.Style>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancelar_Preto.png"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancelar_MouseOver.png"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>                            
                         </StackPanel>
                         <Button Content="Produtos" Style="{StaticResource ButtonDatagridName}" Margin="5,0,0,-5" HorizontalAlignment="Left" Width="100" DockPanel.Dock="Top"/>
                         <DataGrid
@@ -494,8 +522,16 @@
                                             <DataTrigger.Value>
                                                 False
                                             </DataTrigger.Value>
-                                            <Setter Property="Panel.Background" Value="Red"></Setter>
-
+                                            <Setter Property="Panel.Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#FF9E3A24" Offset="1"/>
+                                                        <GradientStop Color="#FF9E3A24"/>
+                                                        <GradientStop Color="#FFE06D6D" Offset="0.5"/>
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="TextElement.Foreground" Value="White"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
