@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="90" d:DesignWidth="110">
+             d:DesignHeight="90" d:DesignWidth="120">
     <UserControl.Resources>
         <Style x:Key="ButtonPontoCalendario" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -18,11 +18,13 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
+                        <Grid Margin="5">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2"></RowDefinition>
@@ -33,11 +35,23 @@
                             <Border Grid.ColumnSpan="2" Grid.RowSpan="4" x:Name="border" BorderBrush="{x:Null}" BorderThickness="{TemplateBinding BorderThickness}" Background="{x:Null}" SnapsToDevicePixels="true">
                                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
-                            <TextBlock Grid.Row="1" Text="04" VerticalAlignment="Center" FontSize="18" FontWeight="Black"></TextBlock>
-                            <TextBlock Grid.Column="1" Text="00:00" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="18" FontWeight="Black" Grid.Row="1"/>
-                            <ListBox Grid.ColumnSpan="2" Grid.Row="3" Style="{DynamicResource ListBoxStyle1}">
-                                <ListBoxItem Style="{DynamicResource ListBoxItemPonto}"></ListBoxItem>
-                                <ListBoxItem Style="{DynamicResource ListBoxItemPonto}"></ListBoxItem>
+                            <TextBlock Grid.Row="1" Text="" Grid.Column="1" VerticalAlignment="Center" FontSize="18" FontWeight="Black" Foreground="#FF4774B5"></TextBlock>
+                            <TextBlock Grid.Column="2" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="18" FontWeight="Black" Grid.Row="1"/>
+                            <ListBox Grid.ColumnSpan="5" Height="50" BorderBrush="#FFABADB3" Grid.Row="3" Style="{DynamicResource ListBoxStyle1}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                                <ColumnDefinition Width="44"/>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                                <ColumnDefinition Width="45"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock FontFamily="Calibri" Text="" FontSize="18" FontWeight="Black" Foreground="Gray" Grid.Column="1"></TextBlock>
+                                            <TextBlock Grid.Column="3" Text="" FontFamily="Calibri" FontSize="18" Foreground="Gray" FontWeight="Black"></TextBlock>                                            
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
                         </Grid>
                     </ControlTemplate>
@@ -69,7 +83,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>                                
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -88,35 +102,7 @@
         <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
         <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
         <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
-        <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
-        <Style x:Key="ListBoxItemPonto" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="Padding" Value="4,1"/>
-            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock FontFamily="Calibri" Text="00:00" FontSize="18" FontWeight="Black"></TextBlock>
-                            <TextBlock Grid.Column="2" Text="00:00" FontFamily="Calibri" FontSize="18" FontWeight="Black"></TextBlock>
-                            <Border Grid.Column="1" x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>        
     </UserControl.Resources>
     <Grid>
         <Button Style="{DynamicResource ButtonPontoCalendario}"></Button>
