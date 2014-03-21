@@ -249,6 +249,9 @@
     <Compile Include="RecursosHumanos\WinFuncionario.xaml.cs">
       <DependentUpon>WinFuncionario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecursosHumanos\WinLancamentoManualPonto.xaml.cs">
+      <DependentUpon>WinLancamentoManualPonto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RecursosHumanos\WinSetor.xaml.cs">
       <DependentUpon>WinSetor.xaml</DependentUpon>
     </Compile>
@@ -483,6 +486,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RecursosHumanos\WinFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecursosHumanos\WinLancamentoManualPonto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

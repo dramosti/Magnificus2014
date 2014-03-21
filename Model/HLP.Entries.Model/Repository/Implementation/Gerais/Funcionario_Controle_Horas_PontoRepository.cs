@@ -67,8 +67,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             if (regAllFuncionario_Controle_Horas_PontoAccessor == null)
             {
                 regAllFuncionario_Controle_Horas_PontoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto "
-                    + string.Format("where idFuncionario = {0} and concat(DATEPART(MM,dRelogioPonto),DATEPART(YY,dRelogioPonto)) = {1}", idFuncionario, data.Day.ToString() + data.Year.ToString()),
-                                MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().Build());
+                    + string.Format("where idFuncionario = {0} and concat(DATEPART(MM,dRelogioPonto),DATEPART(YY,dRelogioPonto)) = {1}", idFuncionario, data.Month.ToString() + data.Year.ToString()),
+                                MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regAllFuncionario_Controle_Horas_PontoAccessor.Execute().ToList();
         }

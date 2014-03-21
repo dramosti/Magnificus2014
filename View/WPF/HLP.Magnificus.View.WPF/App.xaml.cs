@@ -21,6 +21,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.ServiceModel.Configuration;
 using HLP.Comum.Infrastructure.Util;
+using HLP.Entries.View.WPF.RecursosHumanos;
 namespace HLP.Magnificus.View.WPF
 {
     /// <summary>
@@ -117,7 +118,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-
+                
 
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();
@@ -168,6 +169,8 @@ namespace HLP.Magnificus.View.WPF
                     base.OnStartup(e);
                     wd.WindowState = WindowState.Maximized;
                     wd.Show();
+                    WinLancamentoManualPonto win = new WinLancamentoManualPonto();
+                    win.ShowDialog();
                 }
             }
             catch (Exception ex)

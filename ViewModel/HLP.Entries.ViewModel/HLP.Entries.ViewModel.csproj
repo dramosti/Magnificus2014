@@ -71,8 +71,14 @@
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
+    <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
     <Compile Include="Service References\wcf_FamiliaProduto\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_FuncionarioPonto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -95,6 +101,7 @@
     <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
+    <Compile Include="Services\Gerais\FuncionarioPontoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
@@ -409,6 +416,7 @@
     <Compile Include="ViewModels\Gerais\FamiliaProdutoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Funcionario_AcessoViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\Funcionario_Controle_Horas_PontoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\MoedaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\PlanoPagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />
@@ -509,6 +517,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Familia_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Ramo_atividadeModel.datasource" />
@@ -1455,6 +1464,25 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Funcionario\HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -1572,6 +1600,7 @@
     <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
+    <WCFMetadataStorage Include="Service References\wcf_FuncionarioPonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
@@ -2352,6 +2381,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Produto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FuncionarioPonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FuncionarioPonto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FuncionarioPonto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FuncionarioPonto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

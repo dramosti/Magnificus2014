@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4dd4089e-e421-4e44-a118-f175bed4411b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.wsdl" MetadataType="Wsdl" ID="1a375444-d5fc-4a58-ab65-bd8da3269ba2" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?wsdl" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.xsd" MetadataType="Schema" ID="6f92f311-4444-4a21-9703-e4fcbfdf7477" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto1.xsd" MetadataType="Schema" ID="bf958e6b-9b96-4dce-a065-f3ea1bb98e64" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto2.xsd" MetadataType="Schema" ID="f431b539-4bef-481f-8d55-501921e65079" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto3.xsd" MetadataType="Schema" ID="91e42b68-86c5-4a29-9e97-56cc0030e533" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto4.xsd" MetadataType="Schema" ID="8d20f172-7795-402c-ab97-2d030909adcf" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto5.xsd" MetadataType="Schema" ID="8c8f203a-53d4-42a7-897f-975b222480c7" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.disco" MetadataType="Disco" ID="b2b59b19-c506-4b52-b6c8-5b07f15eb9d5" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
