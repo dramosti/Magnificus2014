@@ -45,7 +45,12 @@
                 <RowDefinition Height="360*"></RowDefinition>
             </Grid.RowDefinitions>
             <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="#FF4774B5"/>
-            <Expander IsExpanded="True" Header="Principal" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Top" Height="30" Margin="5,0,0,3" Orientation="Horizontal">
+                    <Components:HlpButtonNavigation Height="30"  HorizontalAlignment="Left">                        
+                    </Components:HlpButtonNavigation>
+                </StackPanel>
+                <Expander IsExpanded="True" Header="Principal" Style="{StaticResource ExpanderPadrao}" Focusable="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"></ColumnDefinition>
@@ -223,6 +228,7 @@
                     <!--Fim Componentes-->
                 </Grid>
             </Expander>
+            </DockPanel>
             <Expander Grid.Row="2" IsExpanded="True" Header="Produtos" Style="{StaticResource ExpanderPadrao}">
                 <DockPanel>
                 <StackPanel Height="30" Margin="0,0,0,5" Visibility="{Binding visAumentoVlr}" HorizontalAlignment="Left" Orientation="Horizontal" DockPanel.Dock="Top">

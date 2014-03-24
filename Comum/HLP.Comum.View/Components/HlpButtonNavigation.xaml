@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="50">
+             d:DesignHeight="30" d:DesignWidth="90">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,16 +12,39 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Button Style="{DynamicResource ButtonStyle1}">
-        <Button.Content>
-            <Grid Margin="0,3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="txtId" Grid.Row="0" FontSize="16"  VerticalAlignment="Center" Foreground="white" FontFamily="Calibri" Style="{DynamicResource TextBoxStyle1}"></TextBox>
-                <TextBox x:Name="txtOpcional" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Foreground="White" FontFamily="Calibri" Style="{DynamicResource TextBoxStyle1}"></TextBox>
-            </Grid>
-        </Button.Content>
-    </Button>
+    <Grid Width="85">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Style="{DynamicResource ButtonStyle1}">
+            <Button.Content>
+                <Grid Margin="0,3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="txtId" Grid.Row="0" FontSize="16"  VerticalAlignment="Center" Foreground="white" FontFamily="Calibri"></TextBlock>
+                    <TextBlock x:Name="txtOpcional" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Foreground="White" FontFamily="Calibri"></TextBlock>
+                </Grid>
+            </Button.Content>
+        </Button>
+        <Button Width="20" Grid.Column="1" HorizontalAlignment="Left" Command="{Binding ConfAumVlrVendaCommand}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Image x:Name="ImageAdd">
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/arrow-36-32.png"/>
+                                    <Style.Triggers>                                        
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
 </UserControl>
