@@ -33,7 +33,8 @@
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Descrição da Rota " Help="Informe a Descrição desejada para essa Rota." WidthLabel="157" HorizontalAlignment="Left" Width="450"/>
                     <Components:HlpPesquisa								
-								Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay,
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								Height="27" Margin="10,0,0,2" Caption="Lista de Preço" Help="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." WidthLabel="157" FieldPesquisa="ID" TableView="vwListaPrecoPai" HorizontalAlignment="Left" Width="450">
                         <Components:HlpPesquisa.Items>

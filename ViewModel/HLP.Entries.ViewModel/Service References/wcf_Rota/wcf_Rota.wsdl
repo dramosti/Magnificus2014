@@ -34,6 +34,12 @@
   <wsdl:message name="Iwcf_Rota_GetObject_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetObjectResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Rota_PossuiListaPreco_InputMessage">
+    <wsdl:part name="parameters" element="tns:PossuiListaPreco" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Rota_PossuiListaPreco_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PossuiListaPrecoResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Rota">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Rota/Save" message="tns:Iwcf_Rota_Save_InputMessage" />
@@ -50,6 +56,10 @@
     <wsdl:operation name="GetObject">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Rota/GetObject" message="tns:Iwcf_Rota_GetObject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Rota/GetObjectResponse" message="tns:Iwcf_Rota_GetObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PossuiListaPreco">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Rota/PossuiListaPreco" message="tns:Iwcf_Rota_PossuiListaPreco_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Rota/PossuiListaPrecoResponse" message="tns:Iwcf_Rota_PossuiListaPreco_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Rota" type="tns:Iwcf_Rota">
@@ -83,6 +93,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetObject">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Rota/GetObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PossuiListaPreco">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Rota/PossuiListaPreco" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

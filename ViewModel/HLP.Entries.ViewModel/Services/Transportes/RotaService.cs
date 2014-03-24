@@ -95,15 +95,17 @@ namespace HLP.Entries.ViewModel.Services.Transportes
 
         public bool PossuiListaPreco(int id)
         {
-            //switch (Sistema.bOnline)
-            //{
-            //    case TipoConexao.OnlineRede:
-            //        {
-            //        }
-            //    case TipoConexao.OnlineInternet:
-            //        {
-            //        }
-            //}
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.PossuiListaPreco(idRota: id);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.PossuiListaPreco(idRota: id);
+                    }
+            }
             return false;
         }
     }

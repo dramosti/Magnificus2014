@@ -92,6 +92,7 @@
     <Compile Include="Comercial\Converter\HeaderMarkupConverter.cs" />
     <Compile Include="Comercial\Converter\IdMotivoVisibilityConverter.cs" />
     <Compile Include="Comercial\Converter\IsEnabledCompMultiConverter.cs" />
+    <Compile Include="Comercial\Converter\ListaPrecoClienteEnabled.cs" />
     <Compile Include="Comercial\Converter\ReadOnlyColumnsListaAutomaticaConverter.cs" />
     <Compile Include="Comercial\Converter\RowDateListaPrecoConverter.cs" />
     <Compile Include="Comercial\Converter\StatusOrcamentoConverter.cs" />

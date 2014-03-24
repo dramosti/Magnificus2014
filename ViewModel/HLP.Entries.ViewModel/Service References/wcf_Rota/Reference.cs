@@ -213,6 +213,12 @@ namespace HLP.Entries.ViewModel.wcf_Rota {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Rota/GetObject", ReplyAction="http://tempuri.org/Iwcf_Rota/GetObjectResponse")]
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.RotaModel> GetObjectAsync(int idRota);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Rota/PossuiListaPreco", ReplyAction="http://tempuri.org/Iwcf_Rota/PossuiListaPrecoResponse")]
+        bool PossuiListaPreco(int idRota);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Rota/PossuiListaPreco", ReplyAction="http://tempuri.org/Iwcf_Rota/PossuiListaPrecoResponse")]
+        System.Threading.Tasks.Task<bool> PossuiListaPrecoAsync(int idRota);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -272,6 +278,14 @@ namespace HLP.Entries.ViewModel.wcf_Rota {
         
         public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Transportes.RotaModel> GetObjectAsync(int idRota) {
             return base.Channel.GetObjectAsync(idRota);
+        }
+        
+        public bool PossuiListaPreco(int idRota) {
+            return base.Channel.PossuiListaPreco(idRota);
+        }
+        
+        public System.Threading.Tasks.Task<bool> PossuiListaPrecoAsync(int idRota) {
+            return base.Channel.PossuiListaPrecoAsync(idRota);
         }
     }
 }

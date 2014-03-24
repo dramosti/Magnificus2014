@@ -1,5 +1,7 @@
 ﻿using HLP.Comum.Infrastructure.Static;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.ViewModel.Services.Transportes;
+using HLP.Wcf.Entries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,12 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         HLP.Wcf.Entries.wcf_Cliente servicoRede;
         wcf_Cliente.Iwcf_ClienteClient servicoInternet;
 
+        RotaService objServico;
+
         public ClienteService()
         {
+            objServico = new RotaService();
+
             switch (Sistema.bOnline)
             {
                 case TipoConexao.OnlineRede:
@@ -92,6 +98,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
                     }
             }
             return null;
+        }
+
+        public bool RotaPossuiListaPrecoPai(int idRota)
+        {
+            return this.objServico.PossuiListaPreco(id: idRota);
         }
     }
 }
