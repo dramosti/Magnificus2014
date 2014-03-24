@@ -22,8 +22,7 @@ namespace HLP.Wcf.Entries
 
         [Inject]
         public ISite_enderecoRepository site_enderecoRepository { get; set; }
-
-
+        
         public serviceSite()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
@@ -40,6 +39,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: idSite);
                 objSite.lSite_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Site_enderecoModel>
                 (list: this.site_enderecoRepository.GetAllSite_Endereco(idSite: idSite));
+
                 return objSite;
             }
             catch (Exception ex)
@@ -127,6 +127,6 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
 
-        }
+        }        
     }
 }

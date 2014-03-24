@@ -1,8 +1,10 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.Resources.Models;
+using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +26,41 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand navegarCommand { get; set; }
         #endregion
 
+        public bool bTreeCarregada = true;
+        siteCommands comm;
+        public BackgroundWorker bwHierarquia;
+
         public siteViewModel()
         {
-            siteCommands comm = new siteCommands(objViewModel: this);
+            comm = new siteCommands(objViewModel: this);
         }
 
+        private object _hierarquiaFunc;
+
+        public object hierarquiaFunc
+        {
+            get { return _hierarquiaFunc; }
+            set
+            {
+                _hierarquiaFunc = value;
+                base.NotifyPropertyChanged(propertyName: "hierarquiaFunc");
+            }
+        }
+
+        private List<modelToTreeView> _lObjHierarquia;
+
+        public List<modelToTreeView> lObjHierarquia
+        {
+            get { return _lObjHierarquia; }
+            set { _lObjHierarquia = value; }
+        }
+
+        public void MontaTreeView()
+        {
+            if (!bTreeCarregada)
+            {
+                this.comm.MontraTreeView();
+            }
+        }
     }
 }

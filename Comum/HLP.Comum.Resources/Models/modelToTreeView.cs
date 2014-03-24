@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Comum.Model.Models
+namespace HLP.Comum.Resources.Models
 {
     public class modelToTreeView
     {

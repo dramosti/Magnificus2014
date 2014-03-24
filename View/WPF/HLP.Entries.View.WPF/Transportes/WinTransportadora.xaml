@@ -7,7 +7,7 @@
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
-        x:Class="HLP.Entries.View.WPF.Transportes.WinTransportadora"
+        x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinTransportadora"
         xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         Title="WinTransportadora" Height="660" Width="1024" NameView="vwTransportador">
     <Window.Resources>
@@ -229,6 +229,7 @@
                          IsEnabled="{Binding bIsEnabled}"
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
+                         CanUserAddRows="True"
                          CanUserReorderColumns="False"  
                          CanUserDeleteRows="True" 
                          CurrentCellChanged="dgvEndereco_CurrentCellChanged" >
@@ -364,6 +365,7 @@
                                          IsEnabled="{Binding bIsEnabled}"
                                          AutoGenerateColumns="False" 
                                          SelectionUnit="CellOrRowHeader" 
+                                         CanUserAddRows="True"
                                          CanUserReorderColumns="False"  
                                          CanUserDeleteRows="True" >
                                     <DataGrid.Columns>

@@ -17,6 +17,7 @@
     <UseSerializerForFaults>true</UseSerializerForFaults>
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Comum.Resources" />
       <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
     </ReferencedAssemblies>
     <ReferencedDataContractTypes />
@@ -26,14 +27,15 @@
     <MetadataSource Address="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="wcf_Funcionario5.xsd" MetadataType="Schema" ID="08ed45e7-8e68-475f-bcea-c73a8754b93c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Funcionario6.xsd" MetadataType="Schema" ID="ae223587-3b98-4739-9d73-c5ddaf17f2f3" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd6" />
     <MetadataFile FileName="wcf_Funcionario.wsdl" MetadataType="Wsdl" ID="c1ec27f9-c199-4fa3-a46b-3ac30caf0975" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?wsdl" />
     <MetadataFile FileName="wcf_Funcionario.xsd" MetadataType="Schema" ID="c87db1fa-d65b-4141-9f60-79b999a96d7c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd4" />
     <MetadataFile FileName="wcf_Funcionario1.xsd" MetadataType="Schema" ID="6d362a49-49db-4d5b-b880-82b036cdae39" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Funcionario.disco" MetadataType="Disco" ID="d7217e13-2a6e-481e-9adf-d0cc96625346" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?disco" />
     <MetadataFile FileName="wcf_Funcionario2.xsd" MetadataType="Schema" ID="6cb921c3-0368-4f41-8123-e5b1a215a5c2" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd0" />
     <MetadataFile FileName="wcf_Funcionario3.xsd" MetadataType="Schema" ID="811effa5-0212-44a6-b093-23c070a07420" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd1" />
     <MetadataFile FileName="wcf_Funcionario4.xsd" MetadataType="Schema" ID="56641404-27b3-4064-9bfa-b6a4f3522f86" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Funcionario5.xsd" MetadataType="Schema" ID="08ed45e7-8e68-475f-bcea-c73a8754b93c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Funcionario.disco" MetadataType="Disco" ID="d7217e13-2a6e-481e-9adf-d0cc96625346" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

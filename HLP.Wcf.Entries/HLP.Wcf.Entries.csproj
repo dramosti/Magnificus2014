@@ -156,6 +156,7 @@
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
+    <Content Include="wcf_Site.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -230,6 +231,7 @@
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
+    <Compile Include="Iwcf_Site.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
     </Compile>
@@ -423,6 +425,9 @@
     </Compile>
     <Compile Include="wcf_Rota.svc.cs">
       <DependentUpon>wcf_Rota.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Site.svc.cs">
+      <DependentUpon>wcf_Site.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

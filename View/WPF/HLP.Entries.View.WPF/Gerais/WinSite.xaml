@@ -8,8 +8,8 @@
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
-        x:Class="HLP.Entries.View.WPF.Gerais.WinSite"
-        Title="Sites" Height="660" Width="1831.463" NameView="vwSite">
+        x:Class="HLP.Entries.View.WPF.GestãoDeMateriais.WinSite"
+        Title="Site" Height="660" Width="1831.463" NameView="vwSite">
     <runtime:WindowsBase.Resources>
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:MaskConverter x:Key="maskConverter"/>
@@ -201,9 +201,9 @@
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Hierarquia">
+            <TabItem Header="Hierarquia" GotFocus="TabItem_GotFocus">
                 <AdornerDecorator>
-
+                    <ContentControl Content="{ Binding Path=hierarquiaFunc, Mode=OneWay}"></ContentControl>
                 </AdornerDecorator>
             </TabItem>
         </TabControl>

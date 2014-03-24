@@ -13,6 +13,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Transportes
         void Delete(int idRota);
         void Copy(RotaModel objRota);
         RotaModel GetRota(int idRota);
+        int? GetIdListaPrecoRota(int idRota);
 
         void BeginTransaction();
         void CommitTransaction();

@@ -12,12 +12,16 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Button>
+    <Button Style="{DynamicResource ButtonStyle1}">
         <Button.Content>
-            <DockPanel LastChildFill="True">                
-                <TextBlock x:Name="txtId" DockPanel.Dock="Bottom"></TextBlock>
-                <TextBlock x:Name="txtOpcional"></TextBlock>
-            </DockPanel>
+            <Grid Margin="0,3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox x:Name="txtId" Grid.Row="0" FontSize="16"  VerticalAlignment="Center" Foreground="white" FontFamily="Calibri" Style="{DynamicResource TextBoxStyle1}"></TextBox>
+                <TextBox x:Name="txtOpcional" Grid.Row="1" FontSize="16" VerticalAlignment="Center" Foreground="White" FontFamily="Calibri" Style="{DynamicResource TextBoxStyle1}"></TextBox>
+            </Grid>
         </Button.Content>
     </Button>
 </UserControl>

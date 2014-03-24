@@ -1266,12 +1266,7 @@
                 <AdornerDecorator>
                     <ContentControl Content="{ Binding Path=hierarquiaFunc, Mode=OneWay}"></ContentControl>
                 </AdornerDecorator>
-            </TabItem>
-            <TabItem Header="Endereço">
-                <AdornerDecorator>
-                    <Components:HlpEndereco/>
-                </AdornerDecorator>
-            </TabItem>
+            </TabItem>            
         </TabControl>
     </Grid>
 </runtime:WindowsBase>

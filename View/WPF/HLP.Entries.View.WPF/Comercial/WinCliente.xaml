@@ -4,6 +4,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Comercial.Converter"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
@@ -16,6 +17,7 @@
         <convert:MaskConverter x:Key="maskConverter"/>
         <convert:PorcentagemConverter x:Key="PorcentagemConverter"/>
         <convert:MoedaConverter x:Key="moedaConverter"/>
+        <convertLocal:ListaPrecoClienteEnabled x:Key="ListaPrecoEnabled"/>
         <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
@@ -448,16 +450,22 @@
                                         <Components:HlpPesquisa 
 											
 											Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Lista de Preço" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwListaPrecoPai">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xCodigoListaPreco</System:String>
                                                 <System:String>xLista</System:String>
                                             </Components:HlpPesquisa.Items>
+                                            <Components:HlpPesquisa.IsEnabled>
+                                                <MultiBinding Converter="{StaticResource ListaPrecoEnabled}">
+                                                    <Binding Path="bIsEnabled"/>
+                                                    <Binding Path="currentModel.idRota"/>
+                                                </MultiBinding>
+                                            </Components:HlpPesquisa.IsEnabled>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa 
-											
-											Text="{Binding currentModel.idRota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                            x:Name="txtRota"
+											Text="{Binding currentModel.idRota, Mode=TwoWay, 
+                                            NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Rota para Transporte" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwRota">
                                             <Components:HlpPesquisa.Items>
