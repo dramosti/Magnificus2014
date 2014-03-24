@@ -11,6 +11,7 @@
     <AssemblyName>HLP.Comum.Resources</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -323,6 +325,7 @@
     <Resource Include="Icones\CalendarioComponent.png" />
     <Resource Include="Icones\CalendarioComponentDisabled.png" />
     <Resource Include="Icones\CalendarioComponentMouseOver.png" />
+    <Resource Include="Icones\arrow-36-32.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
