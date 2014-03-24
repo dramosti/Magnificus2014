@@ -236,7 +236,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             if (this.objViewModel.currentModel == null)
                 return false;
 
-            if (this.objViewModel.currentModel.stAtualizacao == (byte)1
+            if (this.objViewModel.currentModel.stAtualizacao == (byte)0
                 && (this.objViewModel.currentModel.idListaPrecoOrigem == 0 ||
                 this.objViewModel.currentModel.idListaPrecoOrigem == null))
                 return false;

@@ -47,8 +47,7 @@
             <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="#FF4774B5"/>
             <DockPanel LastChildFill="True">
                 <StackPanel DockPanel.Dock="Top" Height="30" Margin="5,0,0,3" Orientation="Horizontal">
-                    <Components:HlpButtonNavigation Height="30"  HorizontalAlignment="Left">                        
-                    </Components:HlpButtonNavigation>
+                    <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia}"></Components:HlpNavigation>
                 </StackPanel>
                 <Expander IsExpanded="True" Header="Principal" Style="{StaticResource ExpanderPadrao}" Focusable="False">
                 <Grid>

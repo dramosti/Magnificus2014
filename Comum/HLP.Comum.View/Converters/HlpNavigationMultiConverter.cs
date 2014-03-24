@@ -45,8 +45,9 @@ namespace HLP.Comum.View.Converters
                 {
                     btn.ExibeTextOpcional = false;
                 }
-                btn.btn.Command = values[1] as ICommand;
-                btn.btn.CommandParameter = btn.Content;
+                                
+                (btn.FindName(name: "btn") as Button).Command = values[1] as ICommand;
+                (btn.FindName(name: "btn") as Button).CommandParameter = btn.Content;
 
                 stk.Children.Add(element: btn);
             }
