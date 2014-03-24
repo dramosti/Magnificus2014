@@ -166,7 +166,7 @@
                   ColumnWidth="*"   PreviewKeyDown="dgvResult_PreviewKeyDown" MouseDoubleClick="dgvResult_MouseDoubleClick" GotFocus="dgvResult_GotFocus"                      
                       >
                 <DataGrid.Resources>
-                    <Style TargetType="DataGridColumnHeader">
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
                         <EventSetter Event="Click" Handler="columnHeader_Click" />
                     </Style>
                 </DataGrid.Resources>
