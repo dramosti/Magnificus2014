@@ -19,5 +19,9 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel GetFuncionario_Controle_Horas_Ponto(int idFuncionarioControleHorasPonto);
         [OperationContract]
         List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_Ponto(int idFuncionario, DateTime data);
+        [OperationContract]
+        List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dtDia);
+        [OperationContract]
+        List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia);
     }
 }
