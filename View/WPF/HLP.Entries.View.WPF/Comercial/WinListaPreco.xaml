@@ -46,7 +46,7 @@
             </Grid.RowDefinitions>
             <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="#FF4774B5"/>
             <DockPanel LastChildFill="True">
-                <StackPanel DockPanel.Dock="Top" Height="30" Margin="5,0,0,3" Orientation="Horizontal">
+                <StackPanel DockPanel.Dock="Top" Height="40" Margin="5,0,0,3" Orientation="Horizontal">
                     <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia}"></Components:HlpNavigation>
                 </StackPanel>
                 <Expander IsExpanded="True" Header="Principal" Style="{StaticResource ExpanderPadrao}" Focusable="False">
@@ -131,51 +131,7 @@
                             <System:String>0-Automatica</System:String>
                             <System:String>1-Manual</System:String>
                         </Components:CustomComboBox.Items>
-                    </Components:CustomComboBox>
-                    <Components:CustomCheckBox Grid.Column="8" Grid.Row="1" Height="20" Margin="0,0,0,3"                       
-                    Width="40" HorizontalAlignment="Left"
-                    IsEnabled="{Binding bIsEnabled}"
-                    IsChecked="{Binding currentModel.stPreferencial, Mode=TwoWay, 
-                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">					
-                    </Components:CustomCheckBox>
-                    <Components:HlpPesquisa 
-					Grid.Column="8" Grid.Row="2" Margin="0,0,0,3" Height="20"
-					Text="{Binding currentModel.idListaPrecoOrigem, Mode=TwoWay, 
-                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
-					ToolTip="Informar qual é a Lista de Preço Origem quando a Lista for automática, o campo só é disponibilizado quando a lista for automática." WidthLabel="0" FieldPesquisa="ID" TableView="vwListaPrecoPai">
-                        <Components:HlpPesquisa.Items>
-                            <System:String>xCodigoListaPreco</System:String>
-                            <System:String>xLista</System:String>
-                        </Components:HlpPesquisa.Items>
-                        <Components:HlpPesquisa.IsEnabled>
-                            <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
-                  ConverterParameter="cbx">
-                                <Binding Path="bCompGeral"/>
-                                <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
-                            </MultiBinding>
-                        </Components:HlpPesquisa.IsEnabled>
-                    </Components:HlpPesquisa>
-                    <Components:CustomTextBox
-                    Grid.Column="8" Grid.Row="3" Margin="0,0,0,3"
-                    x:Name="txtPercentual"                	                        
-					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
-                        Converter={StaticResource PorcentagemConverter},
-                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					     
-                        ToolTip="Este campo serve para se definir o % de acréscimo (valor positivo) ou % de desconto (valor negativo) para a lista que está sendo mostrada na tela e definida como automática, porém para este tipo de cálculo o sistema pegará sempre como base a lista 00001.">
-                        <Components:CustomTextBox.IsEnabled>
-                            <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
-                  ConverterParameter="cbx">
-                                <Binding Path="bCompListaManual"/>
-                                <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
-                            </MultiBinding>
-                        </Components:CustomTextBox.IsEnabled>
-                    </Components:CustomTextBox>
-                    <Components:CustomTextBox
-                    Grid.Column="8" Grid.Row="4" Margin="0,0,0,3"
-                    Name="nDiasSemAtual"					
-					Text="{Binding currentModel.nDiasSemAtualicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campos"/>
+                    </Components:CustomComboBox>                    
                     <Components:CustomCheckBox
                             x:Name="cbContrato"
                     Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Width="40" HorizontalAlignment="Left"
@@ -225,8 +181,51 @@
                             <ComboBoxItem>1 – Mark-up</ComboBoxItem>
                         </Components:CustomComboBox.Items>
                     </Components:CustomComboBox>
-
-                    <!--Fim Componentes-->
+                        <Components:CustomCheckBox Grid.Column="8" Grid.Row="1" Height="20" Margin="0,0,0,3"                       
+                    Width="40" HorizontalAlignment="Left"
+                    IsEnabled="{Binding bIsEnabled}"
+                    IsChecked="{Binding currentModel.stPreferencial, Mode=TwoWay, 
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                        </Components:CustomCheckBox>
+                        <Components:HlpPesquisa 
+					Grid.Column="8" Grid.Row="2" Margin="0,0,0,3" Height="20"
+					Text="{Binding currentModel.idListaPrecoOrigem, Mode=TwoWay, 
+                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
+					ToolTip="Informar qual é a Lista de Preço Origem quando a Lista for automática, o campo só é disponibilizado quando a lista for automática." WidthLabel="0" FieldPesquisa="ID" TableView="vwListaPrecoPai">
+                            <Components:HlpPesquisa.Items>
+                                <System:String>xCodigoListaPreco</System:String>
+                                <System:String>xLista</System:String>
+                            </Components:HlpPesquisa.Items>
+                            <Components:HlpPesquisa.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cbx">
+                                    <Binding Path="bCompGeral"/>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
+                                </MultiBinding>
+                            </Components:HlpPesquisa.IsEnabled>
+                        </Components:HlpPesquisa>
+                        <Components:CustomTextBox
+                    Grid.Column="8" Grid.Row="3" Margin="0,0,0,3"
+                    x:Name="txtPercentual"                	                        
+					Text="{Binding currentModel.pPercentual, Mode=TwoWay,
+                        Converter={StaticResource PorcentagemConverter},
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					     
+                        ToolTip="Este campo serve para se definir o % de acréscimo (valor positivo) ou % de desconto (valor negativo) para a lista que está sendo mostrada na tela e definida como automática, porém para este tipo de cálculo o sistema pegará sempre como base a lista 00001.">
+                            <Components:CustomTextBox.IsEnabled>
+                                <MultiBinding Converter="{StaticResource isEnabledMultiConverter}"
+                  ConverterParameter="cbx">
+                                    <Binding Path="bCompListaManual"/>
+                                    <Binding ElementName="cbxStAtualizacao" Path="SelectedIndex"/>
+                                </MultiBinding>
+                            </Components:CustomTextBox.IsEnabled>
+                        </Components:CustomTextBox>
+                        <Components:CustomTextBox
+                    Grid.Column="8" Grid.Row="4" Margin="0,0,0,3"
+                    Name="nDiasSemAtual"					
+					Text="{Binding currentModel.nDiasSemAtualicao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Muda a cor para vermelho no registro que não sofrem alteração no preço de custo a mais do que o número de dias estabelecido no campos"/>
+                        <!--Fim Componentes-->
                 </Grid>
             </Expander>
             </DockPanel>

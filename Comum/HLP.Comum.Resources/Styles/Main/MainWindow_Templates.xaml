@@ -119,7 +119,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border CornerRadius="30" Background="#FF4361A0" BorderBrush="White">
+                    <Border CornerRadius="40" Background="{StaticResource BlueStandard}" BorderBrush="White">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontFamily="Calibri" TextElement.FontSize="10" TextElement.Foreground="White" TextElement.FontWeight="Black"></ContentPresenter>
                     </Border>
                 </ControlTemplate>
