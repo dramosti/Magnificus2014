@@ -277,9 +277,12 @@ namespace HLP.Comum.View.Components
             if (rowIndex < 0 || rowIndex > (dataGrid.Items.Count - 1))
                 throw new ArgumentException(string.Format("{0} is an invalid row index.", rowIndex));
 
-            if (dataGrid.SelectedItems.Count > 0)
+            if (dataGrid.Items.Count > 0)
             {
-                dataGrid.SelectedItems.Clear();
+                if (dataGrid.SelectedItems.Count > 0)
+                {
+                    dataGrid.SelectedItems.Clear();
+                }
             }
             /* set the SelectedItem property */
             object item = dataGrid.Items[rowIndex]; // = Product X

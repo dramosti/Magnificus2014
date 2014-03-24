@@ -43,18 +43,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EnderecoModel" nillable="true" type="tns:EnderecoModel" />
-  <xs:complexType name="modelToTreeView">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="lFilhos" nillable="true" type="tns:ArrayOfmodelToTreeView" />
-      <xs:element minOccurs="0" name="xDisplay" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="modelToTreeView" nillable="true" type="tns:modelToTreeView" />
-  <xs:complexType name="ArrayOfmodelToTreeView">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="modelToTreeView" nillable="true" type="tns:modelToTreeView" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfmodelToTreeView" nillable="true" type="tns:ArrayOfmodelToTreeView" />
 </xs:schema>

@@ -82,10 +82,10 @@
     type="HLP.Entries.View.WPF.GestãoDeLogística.WinModoEntrega, HLP.Entries.View.WPF">
   </object>
   <object id="WinRota" name="Rotas" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Transportes.WinRota, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeLogística.WinRota, HLP.Entries.View.WPF">
   </object>
-  <object id="WinSite" name="Sites" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.WinSite, HLP.Entries.View.WPF">
+  <object id="WinSite" name="Site" singleton="false" scope="request"
+    type="HLP.Entries.View.WPF.GestãoDeMateriais.WinSite, HLP.Entries.View.WPF">
   </object>
   <object id="WinCanalVenda" name="Canal_de_Venda" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
@@ -154,7 +154,7 @@
   type="HLP.Entries.View.WPF.Gerais.WinCalendarioDetalhe, HLP.Entries.View.WPF">
   </object>
   <object id="WinTransportadora" name="Transportadora" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Transportes.WinTransportadora, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeLogística.WinTransportadora, HLP.Entries.View.WPF">
   </object>
   <object id="WinCliente" name="Clientes" singleton="false" scope="request"
   type="HLP.Entries.View.WPF.Comercial.WinCliente, HLP.Entries.View.WPF">

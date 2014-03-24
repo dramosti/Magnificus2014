@@ -1,5 +1,7 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Comum.Resources.Models;
+using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.ViewModel.Services.GestaoMateriais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -16,9 +18,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         siteViewModel objViewModel;
-        siteService.IserviceSiteClient servico = new siteService.IserviceSiteClient();
+        SiteService objService;
+        bool bOpCancelada = false;
         public siteCommands(siteViewModel objViewModel)
         {
+            this.objService = new SiteService();
 
             this.objViewModel = objViewModel;
 
@@ -46,7 +50,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-
+            this.objViewModel.bwHierarquia = new BackgroundWorker();
+            this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
         }
 
 
@@ -83,8 +90,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = this.servico.saveSite(
-                    objSite: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.Save(
+                    objModel: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -129,7 +136,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             int idRemoved = 0;
             try
@@ -138,7 +145,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteSiteAsync(idSite: (int)this.objViewModel.currentModel.idSite)
+                    if (this.objService.Delete(objModel: this.objViewModel.currentModel)
                     )
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
@@ -163,7 +170,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new SiteModel();
@@ -213,7 +220,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -222,11 +229,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idSite = await servico.copySiteAsync(objSite:
+                this.objViewModel.currentModel = objService.Copy(objModel:
                     this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
@@ -263,17 +270,130 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void PesquisarRegistro()
         {
+            if (this.objViewModel.bwHierarquia.IsBusy)
+            {
+                this.bOpCancelada = true;
+            }
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
 
+        }
+
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.objViewModel.bTreeCarregada = false;
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             if (this.objViewModel.currentID > 0)
-                this.objViewModel.currentModel = this.servico.getSite(idSite:
+            {
+                this.objViewModel.currentModel = this.objService.GetObjeto(id:
                     this.objViewModel.currentID);
+                this.objViewModel.hierarquiaFunc = null;                
+            }
+        }
+
+        public void MontraTreeView()
+        {
+            TreeView t = new TreeView();
+            t.Items.Add(newItem:
+            new TreeViewItem
+            {
+                Header = "Hierarquia Sites"
+            });
+
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "Carregando Hierarquia...";
+
+            this.objViewModel.hierarquiaFunc = txt;
+
+            if (this.bOpCancelada)
+            {
+                txt.Text = "Cancelando carregamento de Hierarquia anterior, por favor, aguarde...";
+                this.objViewModel.hierarquiaFunc = txt;
+            }
+            else
+            {
+                this.objViewModel.bwHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bTreeCarregada = true;
+            }
+        }
+
+        void bwHierarquia_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                if (this.bOpCancelada)
+                {
+                    this.bOpCancelada = false;
+                    this.MontraTreeView();
+                }
+                else
+                {
+                    this.objViewModel.hierarquiaFunc = (TreeView)e.Result;
+                }
+            }
+        }
+
+        void bwHierarquia_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (!this.bOpCancelada)
+                    this.GetHierarquiaSite();
+                if (!this.bOpCancelada)
+                {
+                    MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                        tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
+                    e.Result = e.Argument;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void GetHierarquiaSite()
+        {
+            this.objViewModel.lObjHierarquia = new List<modelToTreeView>();
+            this.objViewModel.lObjHierarquia = this.objService.GetHierarquia(idSite: this.objViewModel.currentID);
+        }
+
+        private void MontaHierarquia(List<modelToTreeView> m, TreeViewItem tvi)
+        {
+            if (m != null)
+            {
+                TreeViewItem i = null;
+
+                foreach (modelToTreeView item in m)
+                {
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        i = new TreeViewItem
+                        {
+                            Header = item.id.ToString() + ". " + item.xDisplay
+                        };
+
+                        tvi.Items.Add(newItem: i);
+                        if (item.lFilhos != null)
+                        {
+
+                            this.MontaHierarquia(m: item.lFilhos, tvi: i);
+                        }
+                    }));
+                }
+
+
+            }
         }
         #endregion
 

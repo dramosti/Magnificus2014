@@ -175,7 +175,6 @@ namespace HLP.Magnificus.View.WPF
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

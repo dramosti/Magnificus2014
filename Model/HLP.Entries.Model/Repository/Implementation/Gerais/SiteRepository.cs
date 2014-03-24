@@ -79,7 +79,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                   MapBuilder<SiteModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
             return regAllSiteAccessor.Execute().ToList();
-        }
+        }        
 
         public void BeginTransaction()
         {

@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Model.Models;
+using HLP.Comum.Resources.Models;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
@@ -369,7 +370,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             else
             {
                 if (this.bOpCancelada)
-                {                    
+                {
                     this.bOpCancelada = false;
                     this.MontraTreeView();
                 }
@@ -404,9 +405,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 if (this.objViewModel.currentID != 0)
+                {
                     this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
+                    this.objViewModel.lObjHierarquia = null;
+                }
                 else
-                    this.objViewModel.currentModel = null;                
+                    this.objViewModel.currentModel = null;
             }
             catch (Exception)
             {

@@ -153,6 +153,7 @@
     <Compile Include="Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Converters\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converters\HlpNavigationMultiConverter.cs" />
+    <Compile Include="Converters\HlpPesquisaConverter.cs" />
     <Compile Include="Converters\ImageToaByteConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />

@@ -18,19 +18,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public UnitOfWorkBase UndTrabalho { get; set; }
 
         private DataAccessor<DepositoModel> regDepositoBySiteAccessor;
-        private DataAccessor<DepositoModel> regDepositoAccessor;
-
+        private DataAccessor<DepositoModel> regDepositoAccessor;        
 
         public List<DepositoModel> GetBySite(int idSite)
         {
-            if (regDepositoBySiteAccessor == null)
-            {
-                regDepositoBySiteAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Deposito WHERE idSite = @idSite",
+            regDepositoBySiteAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Deposito WHERE idSite = @idSite",
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idSite"),
                                   MapBuilder<DepositoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
-            }
-
 
             return regDepositoBySiteAccessor.Execute(idSite).ToList();
         }
