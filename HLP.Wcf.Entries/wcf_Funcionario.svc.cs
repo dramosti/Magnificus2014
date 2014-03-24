@@ -329,16 +329,16 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public modelToTreeView GetHierarquiaFuncionario(int idFuncionario)
+        public HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaFuncionario(int idFuncionario)
         {
             if (idFuncionario == 0)
                 return null;
 
-            modelToTreeView nodeTemp;
+            HLP.Comum.Resources.Models.modelToTreeView nodeTemp;
 
             HLP.Entries.Model.Models.Gerais.FuncionarioModel f = this.getFuncionario(idFuncionario: idFuncionario);
             int? idResponsavel = f.idResponsavel;
-            modelToTreeView nodeActual = new modelToTreeView
+            HLP.Comum.Resources.Models.modelToTreeView nodeActual = new HLP.Comum.Resources.Models.modelToTreeView
             {
                 id = (int)f.idFuncionario,
                 xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
@@ -348,13 +348,13 @@ namespace HLP.Wcf.Entries
             {
                 f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
 
-                nodeTemp = new modelToTreeView
+                nodeTemp = new HLP.Comum.Resources.Models.modelToTreeView
                 {
                     id = (int)f.idFuncionario,
                     xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
-                    lFilhos = new List<modelToTreeView>()
+                    lFilhos = new List<HLP.Comum.Resources.Models.modelToTreeView>()
                     {
-                        new modelToTreeView
+                        new HLP.Comum.Resources.Models.modelToTreeView
                         {
                             id = nodeActual.id,
                             xDisplay = nodeActual.xDisplay,
@@ -377,11 +377,11 @@ namespace HLP.Wcf.Entries
 
             if (lFilhos != null)
             {
-                nodeActual.lFilhos = new List<modelToTreeView>();
+                nodeActual.lFilhos = new List<HLP.Comum.Resources.Models.modelToTreeView>();
                 foreach (var i in lFilhos)
                 {
                     nodeActual.lFilhos.Add(
-                        item: new modelToTreeView
+                        item: new HLP.Comum.Resources.Models.modelToTreeView
                         {
                             id = (int)i.idFuncionario,
                             xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao

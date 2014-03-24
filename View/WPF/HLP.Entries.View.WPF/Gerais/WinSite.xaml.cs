@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 
-namespace HLP.Entries.View.WPF.Gerais
+namespace HLP.Entries.View.WPF.GestãoDeMateriais
 {
     /// <summary>
     /// Interaction logic for WinSite.xaml
@@ -42,6 +42,11 @@ namespace HLP.Entries.View.WPF.Gerais
         private void gridEnderecos_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             this.gridEnderecos.BindingGroup.UpdateSources();
+        }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.MontaTreeView();
         }
     }
 }

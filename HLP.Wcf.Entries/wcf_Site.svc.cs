@@ -13,17 +13,20 @@ using System.Text;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceSite" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceSite.svc or serviceSite.svc.cs at the Solution Explorer and start debugging.
-    public class serviceSite : IserviceSite
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "wcf_Site" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select wcf_Site.svc or wcf_Site.svc.cs at the Solution Explorer and start debugging.
+    public class wcf_Site : Iwcf_Site
     {
         [Inject]
         public ISiteRepository siteRepository { get; set; }
 
         [Inject]
         public ISite_enderecoRepository site_enderecoRepository { get; set; }
-        
-        public serviceSite()
+
+        [Inject]
+        public IDepositoRepository depositoRepository { get; set; }
+
+        public wcf_Site()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -31,15 +34,14 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Gerais.SiteModel getSite(int idSite)
+        public HLP.Entries.Model.Models.Gerais.SiteModel GetObject(int id)
         {
 
             try
             {
-                HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: idSite);
+                HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: id);
                 objSite.lSite_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Site_enderecoModel>
-                (list: this.site_enderecoRepository.GetAllSite_Endereco(idSite: idSite));
-
+                (list: this.site_enderecoRepository.GetAllSite_Endereco(idSite: id));
                 return objSite;
             }
             catch (Exception ex)
@@ -50,21 +52,21 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public HLP.Entries.Model.Models.Gerais.SiteModel saveSite(HLP.Entries.Model.Models.Gerais.SiteModel objSite)
+        public HLP.Entries.Model.Models.Gerais.SiteModel Save(HLP.Entries.Model.Models.Gerais.SiteModel obj)
         {
 
             try
             {
                 this.siteRepository.BeginTransaction();
-                this.siteRepository.Save(objSite: objSite);
-                foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in objSite.lSite_Endereco)
+                this.siteRepository.Save(objSite: obj);
+                foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in obj.lSite_Endereco)
                 {
                     switch (item.status)
                     {
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
-                                item.idSite = (int)objSite.idSite;
+                                item.idSite = (int)obj.idSite;
                                 this.site_enderecoRepository.Save(objSite_Endereco: item);
                             }
                             break;
@@ -76,7 +78,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 this.siteRepository.CommitTransaction();
-                return objSite;
+                return obj;
             }
             catch (Exception ex)
             {
@@ -87,13 +89,13 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public bool deleteSite(int idSite)
+        public bool Delete(int id)
         {
             try
             {
                 this.siteRepository.BeginTransaction();
-                this.site_enderecoRepository.DeletePorSite(idSite: idSite);
-                this.siteRepository.Delete(idSite: idSite);
+                this.site_enderecoRepository.DeletePorSite(idSite: id);
+                this.siteRepository.Delete(idSite: id);
                 this.siteRepository.CommitTransaction();
                 return true;
             }
@@ -106,19 +108,19 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int copySite(HLP.Entries.Model.Models.Gerais.SiteModel objSite)
+        public HLP.Entries.Model.Models.Gerais.SiteModel Copy(HLP.Entries.Model.Models.Gerais.SiteModel obj)
         {
             try
             {
                 this.siteRepository.BeginTransaction();
-                this.siteRepository.Copy(objSite: objSite);
-                foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in objSite.lSite_Endereco)
+                this.siteRepository.Copy(objSite: obj);
+                foreach (HLP.Entries.Model.Models.Gerais.Site_enderecoModel item in obj.lSite_Endereco)
                 {
-                    item.idSite = (int)objSite.idSite;
+                    item.idSite = (int)obj.idSite;
                     this.site_enderecoRepository.Copy(objSite_Endereco: item);
                 }
                 this.siteRepository.CommitTransaction();
-                return (int)objSite.idSite;
+                return obj;
             }
             catch (Exception ex)
             {
@@ -127,6 +129,38 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
 
-        }        
+        }
+
+        public List<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSite(int idSite)
+        {
+            try
+            {
+                List<HLP.Comum.Resources.Models.modelToTreeView> lTreeView = new List<HLP.Comum.Resources.Models.modelToTreeView>();
+                HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: idSite);
+
+                foreach (var item in this.depositoRepository.GetBySite(idSite: idSite))
+                {
+                    lTreeView.Add(item: new HLP.Comum.Resources.Models.modelToTreeView
+                    {
+                        id = item.idDeposito ?? 0,
+                        xDisplay = item.xDeposito + " - " + item.xDescricao,
+                        lFilhos = new List<HLP.Comum.Resources.Models.modelToTreeView>
+                        {
+                            new HLP.Comum.Resources.Models.modelToTreeView
+                            {
+                                id = objSite.idSite ?? 0,
+                                xDisplay = objSite.xSite + " - " +objSite.xDescricao 
+                            }
+                        }
+                    });
+                }
+
+                return lTreeView;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

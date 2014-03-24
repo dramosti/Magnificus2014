@@ -26,8 +26,17 @@ namespace HLP.Entries.Model.Models.Transportes
         [ParameterOrder(Order = 2)]
         public string xRota { get; set; }
 
+        private int? _idListaPrecoPai;
         [ParameterOrder(Order = 3)]
-        public int idListaPrecoPai { get; set; }
+        public int? idListaPrecoPai
+        {
+            get { return _idListaPrecoPai; }
+            set
+            {
+                _idListaPrecoPai = value;
+                base.NotifyPropertyChanged(propertyName: "idListaPrecoPai");
+            }
+        }
 
         [ParameterOrder(Order = 4)]
         public bool Ativo { get; set; }

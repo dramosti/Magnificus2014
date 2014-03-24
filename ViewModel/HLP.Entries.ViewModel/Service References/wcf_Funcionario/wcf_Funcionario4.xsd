@@ -29,6 +29,7 @@
           <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idResponsavel" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idSite" type="xs:int" />
+          <xs:element minOccurs="0" name="imgFoto" nillable="true" type="xs:base64Binary" />
           <xs:element minOccurs="0" name="lFamiliaProduto" nillable="true" type="tns:ArrayOfFamilia_produtoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Acesso" nillable="true" type="tns:ArrayOfFuncionario_AcessoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Arquivo" nillable="true" type="tns:ArrayOfFuncionario_ArquivoModel" />

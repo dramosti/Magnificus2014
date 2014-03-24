@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:runtime="clr-namespace:HLP.Comum.View.Components"
              xmlns:local="clr-namespace:HLP.Comum.View.Components"
+             xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
@@ -40,7 +41,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
+            <convertLocal:HlpPesquisaConverter x:Key="hlpPesquisaConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
@@ -55,7 +56,8 @@
                  LostFocus="ucTxt_LostFocus"
                  CharacterCasing="Upper"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
-                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text}"
+                 Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text, 
+            UpdateSourceTrigger=LostFocus, Converter={StaticResource hlpPesquisaConverter}}"
                  Width="80" KeyDown="txtID_KeyDown" >
             <TextBox.Style>
                 <Style TargetType="{x:Type TextBoxBase}">                    

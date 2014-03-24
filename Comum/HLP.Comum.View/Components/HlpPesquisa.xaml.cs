@@ -222,7 +222,7 @@ namespace HLP.Comum.View.Components
 
         private void ucTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (ucTxtTextChanged != null)
+            if (ucTxtLostFocus != null)
             {
                 ucTxtLostFocus(sender: sender, e: e);
             }
