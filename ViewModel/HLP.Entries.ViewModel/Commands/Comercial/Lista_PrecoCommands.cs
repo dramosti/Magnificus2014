@@ -197,7 +197,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void GerarLista()
         {
-            if (this.objViewModel.currentModel.idListaPrecoOrigem != null)
+            if (this.objViewModel.currentModel.stAtualizacao == (byte)0)
             {
                 foreach (Lista_precoModel item in
                     this.objServico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
@@ -234,6 +234,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private bool GerarListaCanExecute()
         {
             if (this.objViewModel.currentModel == null)
+                return false;
+
+            if (this.objViewModel.currentModel.stAtualizacao == (byte)1
+                && (this.objViewModel.currentModel.idListaPrecoOrigem == 0 ||
+                this.objViewModel.currentModel.idListaPrecoOrigem == null))
                 return false;
 
             return this.objViewModel.bIsEnabled;

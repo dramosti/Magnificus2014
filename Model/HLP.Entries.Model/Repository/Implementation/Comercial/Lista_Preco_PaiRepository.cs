@@ -65,7 +65,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idListaPrecoPai"),
                                          MapBuilder<Lista_Preco_PaiModel>.MapAllProperties()
-                                         .DoNotMap(i => i.stPreferencial)
                                          .DoNotMap(i => i.status).Build());
             }
 
