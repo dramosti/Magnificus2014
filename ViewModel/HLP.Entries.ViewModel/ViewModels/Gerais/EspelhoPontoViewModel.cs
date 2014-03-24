@@ -15,6 +15,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         EspelhoPontoCommand command;
 
+        public int idFuncionario { get; set; }
+        public DateTime dataPonto { get; set; }
+
 
         public EspelhoPontoViewModel( int idFuncionario, DateTime dataPonto) 
         {

@@ -525,6 +525,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EspelhoPontoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Familia_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
