@@ -36,16 +36,36 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             {
                 case TipoConexao.OnlineRede:
                     {
-                        return this.servicoRede.GetAllFuncionario_Controle_Horas_Ponto(idFuncionario, data);
+                        return this.servicoRede.GetAllFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
                     }
                 case TipoConexao.OnlineInternet:
                     {
-                        return this.servicoInternet.GetAllFuncionario_Controle_Horas_Ponto(idFuncionario, data);
+                        return this.servicoInternet.GetAllFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
                     }
             }
             return null;
 
         }
+
+
+        public List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dtDia)
+        {
+
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetHorasAtrabalhadasDia(idFuncionario, dtDia);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.GetHorasAtrabalhadasDia(idFuncionario, dtDia);
+                    }
+            }
+            return null;
+        }
+
+
 
 
     }

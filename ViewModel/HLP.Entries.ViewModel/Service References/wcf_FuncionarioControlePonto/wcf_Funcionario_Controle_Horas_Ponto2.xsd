@@ -26,4 +26,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Funcionario_Controle_Horas_PontoModel" nillable="true" type="tns:Funcionario_Controle_Horas_PontoModel" />
+  <xs:complexType name="ArrayOfEspelhoPontoModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEspelhoPontoModel" nillable="true" type="tns:ArrayOfEspelhoPontoModel" />
+  <xs:complexType name="EspelhoPontoModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="tEntrada" type="ser:duration" />
+          <xs:element minOccurs="0" name="tSaida" type="ser:duration" />
+          <xs:element minOccurs="0" name="tTotal" type="ser:duration" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
 </xs:schema>

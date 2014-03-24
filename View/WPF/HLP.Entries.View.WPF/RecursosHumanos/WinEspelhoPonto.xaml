@@ -4,6 +4,7 @@
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:convLocal="clr-namespace:HLP.Entries.View.WPF.RecursosHumanos.Converter"
+        xmlns:compPonto="clr-namespace:HLP.Entries.View.WPF.RecursosHumanos"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
@@ -112,41 +113,41 @@
             <Button Grid.Column="5" Content="SEXTA" Style="{DynamicResource ButtonDias}"></Button>
             <Button Grid.Column="6" Content="SABADO" Style="{DynamicResource ButtonDias}"></Button>
 
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="0" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="1" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="2" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="3" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="4" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="5" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="1" Grid.Column="6" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="0" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="1" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="2" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="3" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="4" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="5" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="2" Grid.Column="6" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="0" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="1" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="2" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="3" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="4" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="5" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="3" Grid.Column="6" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="0" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="1" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="2" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="3" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="4" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="5" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="4" Grid.Column="6" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="0" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="1" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="2" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="3" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="4" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="5" ></Components:HlpCalendarioPonto>
-            <Components:HlpCalendarioPonto Grid.Row="5" Grid.Column="6" ></Components:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="1" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="2" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="3" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="4" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+            <compPonto:HlpCalendarioPonto Grid.Row="5" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
         </Grid>
         <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>

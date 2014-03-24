@@ -857,10 +857,10 @@
                                     <DataTemplate>
                                         <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEdit}" >
                                             <ComboBox x:Name="cbxEdit"
-                ItemsSource="{Binding Source={StaticResource EnumDescriptionDictCertif}}" 
+                                                         ItemsSource="{Binding Source={StaticResource EnumDescriptionDictCertif}}" 
                                                       DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-            SelectedValue="{Binding enumTipoCertificacao,
+                                                SelectedValuePath="Value"
+                                                SelectedValue="{Binding enumTipoCertificacao,
                                 UpdateSourceTrigger=LostFocus}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                         </Grid>

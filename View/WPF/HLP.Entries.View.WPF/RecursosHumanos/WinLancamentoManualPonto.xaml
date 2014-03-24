@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
              mc:Ignorable="d" x:Name="wd"
              d:DesignHeight="600" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
     <Window.Resources>
+        <CollectionViewSource x:Key="colecaoPonto" Source="{Binding Path=lPonto}">
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="idSequenciaInterna"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
         <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
     </Window.Resources>
     <DockPanel LastChildFill="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" Background="#FFD4D1D1">
@@ -61,43 +67,34 @@
                     <TextBlock Text="Data" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left"/>
                     <TextBlock x:Name="dtPonto" Grid.Row="0" Grid.Column="1" Margin="60,0,0,0" HorizontalAlignment="Left" Width="100"/>
                     <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="2"
-                           ItemsSource="{Binding lPonto}"                           
+                           ItemsSource="{Binding Source={StaticResource colecaoPonto}}"                           
                            AutoGenerateColumns="False"                       
                            SelectionUnit="CellOrRowHeader" 
                            CanUserReorderColumns="False" 
                            CanUserDeleteRows="True" 
                            CanUserAddRows="True" Margin="0,20,0,0" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn    Header="Sequencia" Width="70"
+                            <DataGridTextColumn x:Name="clSeq"  FocusManager.FocusedElement="{Binding ElementName= clSeq}"  Header="Sequencia" Width="70"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                            <DataGridTemplateColumn Header="Hora do Ponto" Width="150">
+                            <DataGridTemplateColumn Header="Hora Ponto" Width="72">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <Components:HlpDatePicker 
+                                        <Components:HlpDatePicker HorizontalAlignment="Center"
                                             xTextTime="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                                             stFormatoDtPicker="time"/>
                                     </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
+                                </DataGridTemplateColumn.CellTemplate>                                
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Hora Alterada" Width="150">
+                            <DataGridTemplateColumn Header="Hora alterada" Width="82">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
                                         <Components:HlpDatePicker 
+                                            HorizontalAlignment="Center"
                                             xTextTime="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                                             stFormatoDtPicker="time"/>
                                     </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
+                                </DataGridTemplateColumn.CellTemplate>                                
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Header="Férias / Abono" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>

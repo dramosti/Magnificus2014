@@ -34,6 +34,18 @@
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_Ponto_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasAtrabalhadasDia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasAtrabalhadasDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoDia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoDiaResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Funcionario_Controle_Horas_Ponto">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/Save" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_Save_InputMessage" />
@@ -50,6 +62,14 @@
     <wsdl:operation name="GetAllFuncionario_Controle_Horas_Ponto">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_Ponto" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_Ponto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_Ponto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorasAtrabalhadasDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFuncionario_Controle_Horas_PontoDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Funcionario_Controle_Horas_Ponto" type="tns:Iwcf_Funcionario_Controle_Horas_Ponto">
@@ -83,6 +103,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllFuncionario_Controle_Horas_Ponto">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_Ponto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorasAtrabalhadasDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFuncionario_Controle_Horas_PontoDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -78,6 +78,15 @@ namespace HLP.Wcf.Entries
             return this.funcionario_Controle_Horas_PontoRepository.GetAllFuncionario_Controle_Horas_Ponto(idFuncionario, data);
         }
 
-       
+        public List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dtDia)
+        {
+            return this.funcionario_Controle_Horas_PontoRepository.GetHorasAtrabalhadasDia(idFuncionario, dtDia);
+        }
+
+
+        public List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
+        {
+            return this.funcionario_Controle_Horas_PontoRepository.GetAllFuncionario_Controle_Horas_PontoDia(idFuncionario, dtDia);
+        }
     }
 }

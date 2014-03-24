@@ -71,6 +71,7 @@
     <Compile Include="Commands\Fiscal\Situacao_tributaria_pisCommand.cs" />
     <Compile Include="Commands\Fiscal\Tipo_documentoCommand.cs" />
     <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
+    <Compile Include="Commands\Gerais\EspelhoPontoCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
     <Compile Include="Service References\wcf_Cliente\Reference.cs">
@@ -420,6 +421,7 @@
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ConversaoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\depositoViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\EspelhoPontoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FabricanteViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FamiliaProdutoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
@@ -523,6 +525,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaParametrosModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EspelhoPontoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FabricanteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Familia_produtoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
