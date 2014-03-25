@@ -68,7 +68,7 @@
   <xs:element name="GetHierarquiaSiteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.Models" minOccurs="0" name="GetHierarquiaSiteResult" nillable="true" type="q6:ArrayOfmodelToTreeView" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.Models" minOccurs="0" name="GetHierarquiaSiteResult" nillable="true" type="q6:modelToTreeView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

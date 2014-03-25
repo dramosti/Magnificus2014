@@ -96,7 +96,7 @@ namespace HLP.Entries.ViewModel.Services.GestaoMateriais
             return null;
         }
 
-        public List<modelToTreeView> GetHierarquia(int idSite)
+        public modelToTreeView GetHierarquia(int idSite)
         {
             switch (Sistema.bOnline)
             {
