@@ -166,7 +166,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             set
             {
                 _lIdsHierarquia = value;
-                base.NotifyPropertyChanged(propertyName: "lIdsHierarquia");
+                base.NotifyPropertyChanged(propertyName: "lIdsHierarquia");                
             }
         }
 

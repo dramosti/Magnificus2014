@@ -18,7 +18,7 @@ namespace HLP.Comum.View.Converters
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             StackPanel stk = new StackPanel();
-            string tg = "100";
+            const string tg = "100";
 
             stk.Orientation = Orientation.Horizontal;
 
@@ -51,6 +51,9 @@ namespace HLP.Comum.View.Converters
                 {
                     btn.ExibeTextOpcional = false;
                 }
+
+                if (item.xId == values[2].ToString())
+                    btn.btn.Tag = tg;
 
                 (btn.FindName(name: "btn") as Button).Command = values[1] as ICommand;
                 (btn.FindName(name: "btn") as Button).CommandParameter = btn.Content;
