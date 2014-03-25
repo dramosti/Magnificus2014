@@ -129,8 +129,9 @@
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF88B8FB" Offset="0"/>
                                         <GradientStop Color="#FF4875B5" Offset="1"/>
-                                        <GradientStop Color="#FFAEB1B6"/>
+                                        <GradientStop Color="#FFC9DCF5" Offset="0.519"/>
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
