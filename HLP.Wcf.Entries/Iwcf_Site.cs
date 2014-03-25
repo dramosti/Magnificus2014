@@ -24,6 +24,6 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.SiteModel GetObject(int id);
 
         [OperationContract]
-        List<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSite(int idSite);
+        HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaSite(int idSite);
     }
 }

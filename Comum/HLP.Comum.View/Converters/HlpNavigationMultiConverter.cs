@@ -38,14 +38,20 @@ namespace HLP.Comum.View.Converters
                 btn.xTextId = item.xId;
                 if (item.xOpcional != "")
                 {
-                    btn.xTextOpcional = item.xOpcional;
+                    decimal porc = decimal.Zero;
+
+                    decimal.TryParse(s: item.xOpcional, result: out porc);
+
+                    porc = Math.Round(d: porc, decimals: 1);
+
+                    btn.xTextOpcional = String.Format("{0:P1}", (porc / 100));
                     btn.ExibeTextOpcional = true;
                 }
                 else
                 {
                     btn.ExibeTextOpcional = false;
                 }
-                                
+
                 (btn.FindName(name: "btn") as Button).Command = values[1] as ICommand;
                 (btn.FindName(name: "btn") as Button).CommandParameter = btn.Content;
 
