@@ -50,7 +50,10 @@
                         <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="#FF4774B5"/>
                         <DockPanel LastChildFill="True">
                             <StackPanel DockPanel.Dock="Top" Height="40" Margin="5,0,0,3" Orientation="Horizontal">
-                                <Components:HlpNavigation lIdsHierarquia="{Binding lIdsHierarquia}"></Components:HlpNavigation>
+                                <Components:HlpNavigation x:Name="navHierarquia"
+                                                          lIdsHierarquia="{Binding lIdsHierarquia}"
+                                                          commButton="{Binding commandPesquisar}" 
+                                                          selectedId="{Binding currentID}"></Components:HlpNavigation>
                             </StackPanel>
                             <Expander IsExpanded="True" Header="Principal" Style="{StaticResource ExpanderPadrao}" Focusable="False">
                                 <Grid>

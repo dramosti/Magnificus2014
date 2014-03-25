@@ -144,7 +144,7 @@
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>                    
-                    <Border CornerRadius="40" Background="{StaticResource BlueStandard}" BorderBrush="White">
+                    <Border x:Name="border" CornerRadius="40" Background="{StaticResource BlueStandard}" BorderBrush="White">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontFamily="Calibri" TextElement.FontSize="10" TextElement.Foreground="White" TextElement.FontWeight="Black"></ContentPresenter>
                     </Border>
                     <ControlTemplate.Triggers>
