@@ -36,7 +36,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
 
 
         public Lista_PrecoViewModel()
-        {
+        {            
             Lista_PrecoCommands comm = new Lista_PrecoCommands(
                 objViewModel: this);
 

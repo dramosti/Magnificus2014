@@ -31,6 +31,7 @@ namespace HLP.Comum.View.Converters
 
             HlpButtonHierarquia btn;
 
+            object o = values[1];
 
             foreach (HlpButtonHierarquiaStruct item in (values[0] as List<HlpButtonHierarquiaStruct>))
             {
@@ -52,12 +53,14 @@ namespace HLP.Comum.View.Converters
                     btn.ExibeTextOpcional = false;
                 }
 
-                if (item.xId == values[2].ToString())
+                if (item.xId == o.GetType().GetProperty(name: "selectedId").GetValue(obj: o).ToString())
                     btn.btn.Tag = tg;
+                else
+                    btn.btn.Tag = null;
 
-                (btn.FindName(name: "btn") as Button).Command = values[1] as ICommand;
-                (btn.FindName(name: "btn") as Button).CommandParameter = btn.Content;
 
+                btn.btn.DataContext = o;
+                btn.btn.Command = btn.btnPesquisaComm;
                 stk.Children.Add(element: btn);
             }
 

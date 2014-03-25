@@ -33,6 +33,7 @@ namespace HLP.Entries.View.WPF.Comercial
             {
                 this.ViewModel = new Lista_PrecoViewModel();
                 this.servico = new ProdutoService();
+                object o = navHierarquia.DataContext;
             }
             catch (Exception ex)
             {

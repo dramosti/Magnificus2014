@@ -7,14 +7,14 @@
              x:Name="ucNavegacao"
              xmlns:localConv="clr-namespace:HLP.Comum.View.Converters"
              d:DesignHeight="50" d:DesignWidth="500">
-    <UserControl.Resources>        
+    <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/Main/MainWindow_Templates.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <localConv:HlpNavigationVisibilityConverter x:Key="hlpNavVisibConv"/>
             <localConv:HlpNavigationMultiConverter x:Key="hlpNavMultiConv"></localConv:HlpNavigationMultiConverter>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel>
         <DockPanel Width="33" DockPanel.Dock="Left" HorizontalAlignment="Left"
@@ -31,8 +31,7 @@
                     <MultiBinding Converter="{StaticResource hlpNavMultiConv}">
                         <MultiBinding.Bindings>
                             <Binding ElementName="ucNavegacao" Path="lIdsHierarquia"></Binding>
-                            <Binding ElementName="ucNavegacao" Path="commButton"></Binding>
-                            <Binding ElementName="ucNavegacao" Path="selectedId"></Binding>
+                            <Binding ElementName="ucNavegacao" Path="DataContext"></Binding>
                         </MultiBinding.Bindings>
                     </MultiBinding>
                 </ContentControl.Content>
