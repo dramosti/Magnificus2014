@@ -115,6 +115,8 @@
     <Compile Include="Comercial\WinTipoProduto.xaml.cs">
       <DependentUpon>WinTipoProduto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\dataEspelhoPontoConverter.cs" />
+    <Compile Include="Converters\HoraMinConverter.cs" />
     <Compile Include="Converters\ListaItensIsReadOnly.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
@@ -613,6 +615,10 @@
     <ProjectReference Include="..\..\..\HLP.Sales.ViewModel\HLP.Sales.ViewModel.csproj">
       <Project>{d366257c-5ed0-425e-9ef3-125a2cec5afd}</Project>
       <Name>HLP.Sales.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ViewModel\HLP.Entries.ViewModel\HLP.Entries.ViewModel.csproj">
       <Project>{63e0a405-18c8-44fa-a436-c7e0b3d2fa7a}</Project>
