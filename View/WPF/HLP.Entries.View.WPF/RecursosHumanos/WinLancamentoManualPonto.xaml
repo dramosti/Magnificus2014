@@ -7,8 +7,8 @@
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
-             mc:Ignorable="d" x:Name="winLancamentoManual"             
-             d:DesignHeight="600" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+             mc:Ignorable="d" x:Name="winLancamentoManual"            
+             d:DesignHeight="400" d:DesignWidth="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{x:Null}" Title="Lançamento Manual do Ponto">
     <Window.Resources>
         <CollectionViewSource x:Key="colecaoPonto" Source="{Binding Path=lPonto}">
             <CollectionViewSource.SortDescriptions>
@@ -48,6 +48,31 @@
     <DockPanel LastChildFill="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" Background="#FFD4D1D1">
         <Border DockPanel.Dock="Bottom" Background="{StaticResource ButtonBackgroundBlueDefault}">
         </Border>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Button Command="{Binding commandSalvar}" CommandParameter="{Binding ElementName=winLancamentoManual}" Width="40" Height="27" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image x:Name="ImageAdd">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/save_48.png"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" MaxHeight="23"/>
@@ -73,7 +98,6 @@
             <TextBlock Text="Data" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" Width="25"/>
             <TextBlock Text="Nome do Funcionário" Grid.Column="0" Margin="5,0,0,0"></TextBlock>
             <TextBlock x:Name="dtPonto" Grid.Row="1" Grid.Column="1" Margin="10,0,0,3" />
-            <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Content="Salvar" Style="{StaticResource ButtonSalvar}"></Button>
             <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="4"
                            ItemsSource="{Binding Source={StaticResource colecaoPonto}}"                           
                            AutoGenerateColumns="False"                       
