@@ -326,6 +326,9 @@
     <Resource Include="Icones\CalendarioComponentDisabled.png" />
     <Resource Include="Icones\CalendarioComponentMouseOver.png" />
     <Resource Include="Icones\arrow-36-32.png" />
+    <Resource Include="Icones\Atualizar_Disabled.png" />
+    <Resource Include="Icones\Atualizar.png" />
+    <Resource Include="Icones\Atualizar_MouseOver.png" />
     <Content Include="Images\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

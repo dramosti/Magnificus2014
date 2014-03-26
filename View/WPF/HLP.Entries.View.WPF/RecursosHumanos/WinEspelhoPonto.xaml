@@ -13,7 +13,55 @@
         Title="WinEspelhoPonto" Height="700" Width="1000" NameView="vwFuncionario">
     <Window.Resources>
         <convert:dataEspelhoPontoConverter x:Key="dataConvert"/>
-        
+        <Style x:Key="ButtonDias" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="Black" BorderThickness="1,0,1,0" Background="#FF4774B5" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Style Arrow Navigation Left HlpNavigation-->
+
+        <ControlTemplate x:Key="ButtonArrowNavigationLeft" TargetType="{x:Type Button}">
+            <Border Height="15" Width="15" BorderBrush="{x:Null}" Background="Transparent">
+                <Image x:Name="ImagemContextMenu">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeft.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationLeftDisabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Border>
+        </ControlTemplate>
+
+        <!--Style Arrow Navigation Right HlpNavigation-->
+
+        <ControlTemplate x:Key="ButtonArrowNavigationRight" TargetType="{x:Type Button}">
+            <Border Height="15" Width="15" BorderBrush="{x:Null}" Background="Transparent">
+                <Image x:Name="ImagemContextMenu">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRight.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/ArrowNavigationRightDisabled.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Border>
+        </ControlTemplate>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -22,31 +70,31 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <Style x:Key="ButtonDias" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
+        </Style>       
+        <Style x:Key="ButtonRefresh" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="Transparent" BorderThickness="1,0,1,0" Background="#FF4774B5" SnapsToDevicePixels="true">
-                            <ContentPresenter TextElement.Foreground="White" TextElement.FontFamily="Calibri" TextElement.FontWeight="Black" x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar.png"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar_Disabled.png"/>
+                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar_MouseOver.png"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -54,7 +102,8 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="17"></RowDefinition>
@@ -62,23 +111,24 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
-            <ColumnDefinition Width="75*" MaxWidth="150" MinWidth="150"></ColumnDefinition>
-            <ColumnDefinition Width="200*" MaxWidth="400" MinWidth="300"></ColumnDefinition>
-            <ColumnDefinition Width="50*" MaxWidth="100" MinWidth="100"/>
-            <ColumnDefinition Width="70" MaxWidth="150" MinWidth="70"/>
-            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="150*" MaxWidth="150" MinWidth="150"></ColumnDefinition>
+            <ColumnDefinition Width="365*" MaxWidth="400" MinWidth="300"></ColumnDefinition>
+            <ColumnDefinition Width="50*" MaxWidth="50" MinWidth="50"/>
+            <ColumnDefinition Width="41*" MaxWidth="40" MinWidth="40"/>
+            <ColumnDefinition Width="141" MaxWidth="150" MinWidth="70"/>
+            <ColumnDefinition Width="225*" MaxWidth="225" MinWidth="225"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
 
         <!--Label-->
 
-        <Components:CustomTextBlock Text="Nome do Funcionário" Height="18" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,3" ></Components:CustomTextBlock>
-        <Components:CustomTextBlock Text="Período" Height="18" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Margin="0,3"></Components:CustomTextBlock>
+        <Components:CustomTextBlock Text="Nome do Funcionário" Height="18" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,3,0,2" ></Components:CustomTextBlock>
+        <Components:CustomTextBlock Text="Período" Height="18" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Margin="0,3,0,2" Grid.ColumnSpan="2"></Components:CustomTextBlock>
 
         <!--Components-->
 
         <Components:HlpPesquisa
-                    Grid.Column="2" Grid.Row="1" Margin="0,1,0,3" Height="20"
+                    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,0,5,3" Height="20"
 					Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"					 
                     ToolTip="Informar o representante do orçamento de vendas, o sistema traz automaticamente o representante cadastrado no cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="0">
@@ -90,33 +140,39 @@
         <Components:CustomTextBox
             IsEnabled="{Binding bIsEnabled}"
             Text="{Binding currentModel.data, Converter={StaticResource dataConvert}}"
-            Grid.Column="4" Grid.Row="1" Margin="0,1,0,3"/>
-        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Grid.Row="1" Grid.Column="5" Content="Carregar" />
-        <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="5">
+            Grid.Column="3" Grid.Row="2" Margin="0,1,5,3" Grid.ColumnSpan="2"/>
+        <DockPanel Width="33" Grid.Column="4" Grid.Row="1" Focusable="False" DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <Button x:Name="btnAnt" Height="20" Width="15" Focusable="False" Template="{StaticResource ButtonArrowNavigationLeft}">
+            </Button>
+            <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Template="{StaticResource ButtonArrowNavigationRight}">
+            </Button>
+        </DockPanel>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="-4,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Atualizar" Style="{StaticResource ButtonRefresh}"/>
+        <Grid Margin="0,3,0,0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="27"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Content="{Binding PrimeiroDia}" Style="{DynamicResource ButtonDias}"></Button>
-            <Button Grid.Column="1" Content="{Binding SegundoDia}" Style="{DynamicResource ButtonDias}"></Button>
-            <Button Grid.Column="2" Content="{Binding TerceiroDia}" Style="{DynamicResource ButtonDias}"></Button>
-            <Button Grid.Column="3" Content="{Binding QuartoDia}" Style="{DynamicResource ButtonDias}"></Button>
-            <Button Grid.Column="4" Content="{Binding QuintoDia}" Style="{DynamicResource ButtonDias}"></Button>
-            <Button Grid.Column="5" Content="{Binding SextoDia}" Style="{DynamicResource ButtonDias}"></Button>
-            <Button Grid.Column="6" Content="{Binding SetimoDia}" Style="{DynamicResource ButtonDias}"></Button>
+            <Button Content="{Binding PrimeiroDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button Grid.Column="1" Content="{Binding SegundoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button Grid.Column="2" Content="{Binding TerceiroDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button Grid.Column="3" Content="{Binding QuartoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button Grid.Column="4" Content="{Binding QuintoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button Grid.Column="5" Content="{Binding SextoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button Grid.Column="6" Content="{Binding SetimoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
             <compPonto:HlpCalendarioPonto x:Name="d1" Grid.Row="1" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
             <compPonto:HlpCalendarioPonto x:Name="d2" Grid.Row="1" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
             <compPonto:HlpCalendarioPonto x:Name="d3" Grid.Row="1" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
@@ -149,35 +205,45 @@
             <compPonto:HlpCalendarioPonto x:Name="d30"  Grid.Row="5" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
             <compPonto:HlpCalendarioPonto  x:Name="d31" Grid.Row="5" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="5">
+        <Grid Grid.Column="6" Grid.Row="3" Margin="0,48,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="205*" MaxWidth="200" MinWidth="200"></ColumnDefinition>
-                <ColumnDefinition Width="281*" MaxWidth="200" MinWidth="200"></ColumnDefinition>
-                <ColumnDefinition Width="243*" MaxWidth="200" MinWidth="200"></ColumnDefinition>
-                <ColumnDefinition Width="243*" MaxWidth="200" MinWidth="200"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+
             </Grid.RowDefinitions>
             <!--Label-->
 
-            <Components:CustomTextBlock Text="Dias trabalhados no período" VerticalAlignment="Center" Height="18"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas à trabalhar" VerticalAlignment="Center" Height="18" Grid.Row="1"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="18" Grid.Row="2"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Horas acumuladas no periodo" VerticalAlignment="Center" Height="18" Grid.Row="0" Grid.Column="2"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="18" Grid.Row="1" Grid.Column="2"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="18" Grid.Row="2" Grid.Column="2"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Dias trabalhados no período" VerticalAlignment="Center" Height="20" Margin="0,0,0,3"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Total de horas à trabalhar" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="2"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="4"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Horas acumuladas no periodo" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="6"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="8"></Components:CustomTextBlock>
+            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="10"></Components:CustomTextBlock>
 
             <!--Components-->
 
-            <Components:CustomTextBlock Text="" VerticalAlignment="Center" Height="18" Grid.Column="1" Grid.Row="0" Margin="0,3,0,3"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="" VerticalAlignment="Center" Height="18" Grid.Column="1" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="" VerticalAlignment="Center" Height="18" Grid.Column="1" Grid.Row="2" Margin="0,3,0,3"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="" VerticalAlignment="Center" Height="18" Grid.Column="3" Grid.Row="0" Margin="0,3,0,3"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="" VerticalAlignment="Center" Height="18" Grid.Column="3" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="" VerticalAlignment="Center" Height="18" Grid.Column="3" Grid.Row="2" Margin="0,3,0,3"></Components:CustomTextBlock>
+            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="3" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="5" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="7" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="9" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="11" Margin="0,3,0,3"></Components:CustomTextBox>
 
         </Grid>
     </Grid>
