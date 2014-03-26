@@ -21,12 +21,59 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
         private DateTime? _data = null;
-
         public DateTime? data
         {
             get { return _data; }
             set { _data = value; base.NotifyPropertyChanged("data"); }
         }
+
+        private int _iDiasTrabalhados = 0;
+        public int iDiasTrabalhados
+        {
+            get { return _iDiasTrabalhados; }
+            set { _iDiasTrabalhados = value; base.NotifyPropertyChanged(propertyName: "iDiasTrabalhados"); }
+        }
+
+        private TimeSpan _tsHorasAtrabalhar = new TimeSpan();
+        public TimeSpan tsHorasAtrabalhar
+        {
+            get { return _tsHorasAtrabalhar; }
+            set { _tsHorasAtrabalhar = value; base.NotifyPropertyChanged(propertyName: "tsHorasAtrabalhar"); }
+        }
+
+        private TimeSpan _tsHorasTrabalhadas = new TimeSpan();
+        public TimeSpan tsHorasTrabalhadas
+        {
+            get { return _tsHorasTrabalhadas; }
+            set { _tsHorasTrabalhadas = value; base.NotifyPropertyChanged(propertyName: "tsHorasTrabalhadas"); }
+        }
+
+        private TimeSpan _tsHorasAcumuladasNoPeriodo = new TimeSpan();
+        public TimeSpan tsHorasAcumuladasNoPeriodo
+        {
+            get { return _tsHorasAcumuladasNoPeriodo; }
+            set { _tsHorasAcumuladasNoPeriodo = value; base.NotifyPropertyChanged(propertyName: "tsHorasAcumuladasNoPeriodo"); }
+        }
+
+        private TimeSpan _tsSaldoBancoHoras = new TimeSpan();
+        public TimeSpan tsSaldoBancoHoras
+        {
+            get { return _tsSaldoBancoHoras; }
+            set { _tsSaldoBancoHoras = value; base.NotifyPropertyChanged(propertyName: "tsSaldoBancoHoras"); }
+        }
+
+        private TimeSpan _tsSaldoAteMomento = new TimeSpan();
+        public TimeSpan tsSaldoAteMomento
+        {
+            get { return _tsSaldoAteMomento; }
+            set
+            {
+                _tsSaldoAteMomento = value;
+                base.NotifyPropertyChanged(propertyName: "tsSaldoAteMomento");
+            }
+        }
+
+
 
 
 

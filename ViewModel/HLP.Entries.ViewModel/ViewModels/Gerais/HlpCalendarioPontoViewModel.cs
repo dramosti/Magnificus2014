@@ -22,8 +22,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             
         }
 
-
-        private ObservableCollection<EspelhoPontoModel> _lPonto;
+        private ObservableCollection<EspelhoPontoModel> _lPonto = new ObservableCollection<EspelhoPontoModel>();
         public ObservableCollection<EspelhoPontoModel> lPonto
         {
             get { return _lPonto; }
@@ -76,10 +75,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _iDia; }
             set { _iDia = value; this.NotifyPropertyChanged("iDia"); }
         }
-
-
-
-
 
 
         #region NotifyPropertyChanged

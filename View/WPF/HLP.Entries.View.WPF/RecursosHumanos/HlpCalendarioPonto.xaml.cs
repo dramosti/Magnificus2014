@@ -28,30 +28,27 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
             set { _idFuncionario = value; this.ViewModel.idFuncionario = value; }
         }
 
-
         private string _dtPonto;
-
         public string dtPonto
         {
             get { return _dtPonto; }
             set { _dtPonto = value; this.ViewModel.dataPonto = value; }
         }
-        
+
 
         public HlpCalendarioPontoViewModel ViewModel
         {
             get { return this.DataContext as HlpCalendarioPontoViewModel; }
             set { this.DataContext = value; }
         }
-     
         public void CarregaDados()
         {
             if (this.ViewModel.command != null)
                 this.ViewModel.command.CarregaDados();
         }
 
-        
 
-       
+        public TimeSpan totalHoras { get { return this.ViewModel.hTotal; } }
+
     }
 }

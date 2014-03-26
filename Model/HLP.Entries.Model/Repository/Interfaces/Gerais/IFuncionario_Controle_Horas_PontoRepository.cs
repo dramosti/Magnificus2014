@@ -19,5 +19,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void BeginTransaction();
         void CommitTransaction();
         void RollbackTransaction();
+        int GetTotalDiasTrabalhadosMes(int idFuncionario, DateTime dtMes);
+        TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes);
     }
 }

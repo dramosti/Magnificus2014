@@ -15,7 +15,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
     public class EspelhoPontoViewModel : ViewModelBase<FuncionarioPonto>
     {
-
         #region Icommands
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
@@ -31,12 +30,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             this.currentModel = new FuncionarioPonto();
             this.lControlsPonto = lControlsPonto;
             command = new EspelhoPontoCommand(this);
-            
         }
         public EspelhoPontoViewModel() 
         {
         }
-
 
         private string _PrimeiroDia;
         public string PrimeiroDia
@@ -44,6 +41,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _PrimeiroDia; }
             set { _PrimeiroDia = value; this.NotifyPropertyChanged("PrimeiroDia"); }
         }
+
         private string _SegundoDia;
         public string SegundoDia
         {
@@ -52,14 +50,13 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
         private string _TerceiroDia;
-
         public string TerceiroDia
         {
             get { return _TerceiroDia; }
             set { _TerceiroDia = value; this.NotifyPropertyChanged("TerceiroDia"); }
         }
-        private string _QuartoDia;
 
+        private string _QuartoDia;
         public string QuartoDia
         {
             get { return _QuartoDia; }
@@ -67,7 +64,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
         private string _QuintoDia;
-
         public string QuintoDia
         {
             get { return _QuintoDia; }
@@ -75,16 +71,13 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
         private string _SextoDia;
-
         public string SextoDia
         {
             get { return _SextoDia; }
             set { _SextoDia = value; this.NotifyPropertyChanged("SextoDia"); }
         }
         
-
         private string _SetimoDia;
-
         public string SetimoDia
         {
             get { return _SetimoDia;  }

@@ -102,7 +102,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 EspelhoPontoModel objEspelhoPontoModel;
                 List<EspelhoPontoModel> lret = new List<EspelhoPontoModel>();
                 if (dados.Count() > 1)
-                    for (int i = 0; i+1 < dados.Count(); )
+                    for (int i = 0; i + 1 < dados.Count(); )
                     {
                         objEspelhoPontoModel = new EspelhoPontoModel();
                         objEspelhoPontoModel.tEntrada = dados[i].hRelogioPonto;
@@ -124,7 +124,35 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 throw ex;
             }
         }
+        private List<TimeSpan> GetListHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
+        {
 
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                (
+                string.Format("select Calendario_Detalhe.dHoraInicio, Calendario_Detalhe.dHoraTermino from Funcionario inner join Calendario "
+                + "on Funcionario.idCalendario = Calendario.idCalendario inner join Calendario_Detalhe "
+                + "on Calendario.idCalendario = Calendario_Detalhe.idCalendario "
+                + "where Funcionario.idFuncionario = {0} and Calendario_Detalhe.dCalendario = '{1}' ", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd"))
+                );
+
+            IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
+
+            List<TimeSpan> lReturn = new List<TimeSpan>();
+            DateTime dInicio;
+            DateTime dFinal;
+            while (reader.Read())
+            {
+                dInicio = new DateTime();
+                dFinal = new DateTime();
+                if (reader["dHoraInicio"] != null && reader["dHoraTermino"] != null)
+                {
+                    dInicio = Convert.ToDateTime(reader["dHoraInicio"].ToString());
+                    dFinal = Convert.ToDateTime(reader["dHoraTermino"].ToString());
+                    lReturn.Add(dFinal.TimeOfDay.Subtract(dInicio.TimeOfDay));
+                }
+            }
+            return lReturn;
+        }
 
         public void BeginTransaction()
         {
@@ -139,6 +167,47 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public void RollbackTransaction()
         {
             UndTrabalho.RollBackTransaction();
+        }
+
+        public int GetTotalDiasTrabalhadosMes(int idFuncionario, DateTime dtMes)
+        {
+            try
+            {
+                DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand
+               (
+                    string.Format("selselect  DISTINCT dRelogioPonto from Funcionario_Controle_Horas_Ponto " +
+                    "where idFuncionario = {0} and concat(DATEPART(MM,dRelogioPonto),DATEPART(YY,dRelogioPonto)) = {1}",
+                    idFuncionario, dtMes.Month.ToString() + dtMes.Year.ToString())
+               );
+                IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
+                return reader.RecordsAffected;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes)
+        {
+            try
+            {
+                int iDias = DateTime.DaysInMonth(dtMes.Year,dtMes.Month);
+                TimeSpan tsReturn = new TimeSpan();
+                for (int i = 1; i < iDias; i++)
+                {
+                    foreach (TimeSpan ts in this.GetListHorasAtrabalharDia(idFuncionario,new DateTime(dtMes.Year, dtMes.Month, i)))
+                    {
+                        tsReturn = tsReturn.Add(ts);
+                    }                    
+                }
+                return tsReturn;
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
         }
     }
 }
