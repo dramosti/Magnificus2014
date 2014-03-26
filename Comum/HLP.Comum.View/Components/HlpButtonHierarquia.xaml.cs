@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace HLP.Comum.View.Components
     /// </summary>
     public partial class HlpButtonHierarquia : UserControl
     {
+        public ICommand btnPesquisaComm { get; set; }
+
         public HlpButtonHierarquia()
         {
             InitializeComponent();
+            this.btnPesquisaComm = new RelayCommand(execute: execut => this.ExecPesquisa());
+        }
+
+        private void ExecPesquisa()
+        {
+            ICommand comm = this.DataContext.GetType().GetProperty(name: "commandPesquisar").GetValue(obj: this.DataContext) as ICommand;
+
+            comm.Execute(parameter: Convert.ToInt32(value: this.xTextId));
         }
 
         public string xTextId

@@ -47,9 +47,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-        private List<modelToTreeView> _lObjHierarquia;
+        private modelToTreeView _lObjHierarquia;
 
-        public List<modelToTreeView> lObjHierarquia
+        public modelToTreeView lObjHierarquia
         {
             get { return _lObjHierarquia; }
             set { _lObjHierarquia = value; }

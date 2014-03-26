@@ -48,7 +48,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
             canExecute: paramCanExec => this.CopyCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(id: paramExec),
                     canExecute: paramCanExec => false);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
@@ -197,7 +197,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void GerarLista()
         {
-            if (this.objViewModel.currentModel.idListaPrecoOrigem != null)
+            if (this.objViewModel.currentModel.stAtualizacao == (byte)0)
             {
                 foreach (Lista_precoModel item in
                     this.objServico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
@@ -234,6 +234,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private bool GerarListaCanExecute()
         {
             if (this.objViewModel.currentModel == null)
+                return false;
+
+            if (this.objViewModel.currentModel.stAtualizacao == (byte)0
+                && (this.objViewModel.currentModel.idListaPrecoOrigem == 0 ||
+                this.objViewModel.currentModel.idListaPrecoOrigem == null))
                 return false;
 
             return this.objViewModel.bIsEnabled;
@@ -313,7 +318,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
                             i++;
                         }
-
+                        this.PesquisarRegistro();
                     }
                     else
                     {
@@ -377,7 +382,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Novo(object _panel)
         {
-            idOld = this.objViewModel.currentID;
+            idOld = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
             this.objViewModel.lIdsHierarquia = new List<Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct>();
             this.objViewModel.currentModel.nDiasSemAtualicao = 0;
@@ -451,13 +456,18 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             if (currentId != 0)
             {
                 currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
-                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
 
                 while (i < currentPosition)
                 {
+                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
                     i++;
                 }
 
+            }
+            else
+            {
+                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
             }
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
@@ -530,10 +540,21 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-        public void ExecPesquisa()
+        public void ExecPesquisa(object id)
         {
-            this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.PesquisarRegistro();
+            //this.objViewModel.pesquisarBaseCommand.Execute(null);
+            //this.PesquisarRegistro();
+            int iId;
+
+            if (id != null)
+                if (int.TryParse(s: id.ToString(), result: out iId))
+                {
+                    this.objViewModel.selectedId = iId;
+                    BackgroundWorker bw = new BackgroundWorker();
+                    bw.DoWork += new DoWorkEventHandler(this.getListaPrecoHierarquia);
+                    bw.RunWorkerCompleted += bw_RunWorkerCompleted;
+                    bw.RunWorkerAsync(iId);
+                }
         }
 
         private void PesquisarRegistro()
@@ -566,9 +587,19 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
+        private void getListaPrecoHierarquia(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.selectedId);
+
+            if (this.objViewModel.currentModel != null)
+                if (this.objViewModel.currentModel.lLista_preco != null)
+                    this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
+        }
+
         private void getListaPreco(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+            this.objViewModel.selectedId = this.objViewModel.currentID;
 
             if (this.objViewModel.currentModel != null)
                 if (this.objViewModel.currentModel.lLista_preco != null)

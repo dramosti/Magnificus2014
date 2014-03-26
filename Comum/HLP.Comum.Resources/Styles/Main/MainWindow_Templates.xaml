@@ -3,7 +3,8 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:Util="clr-namespace:HLP.Comum.Resources" 
                     xmlns:local="clr-namespace:HLP.Comum.Resources.Converter"
-                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
+                    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+                    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing">
     
     <!--Colors for Styles-->
 
@@ -118,13 +119,30 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border CornerRadius="30" Background="#FF4361A0" BorderBrush="White">
+                    <ControlTemplate.Resources>                        
+                    </ControlTemplate.Resources>                    
+                    <Border x:Name="border" CornerRadius="40" Background="{StaticResource BlueStandard}" BorderBrush="White">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontFamily="Calibri" TextElement.FontSize="10" TextElement.Foreground="White" TextElement.FontWeight="Black"></ContentPresenter>
                     </Border>
-                </ControlTemplate>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="100">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF88B8FB" Offset="0"/>
+                                        <GradientStop Color="#FF4875B5" Offset="1"/>
+                                        <GradientStop Color="#FFC9DCF5" Offset="0.519"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>                
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
     <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
@@ -159,4 +177,6 @@
         </Style.Triggers>
     </Style>
 
+	
+    
 </ResourceDictionary>

@@ -18,7 +18,7 @@ namespace HLP.Comum.View.Converters
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             StackPanel stk = new StackPanel();
-            string tg = "100";
+            const string tg = "100";
 
             stk.Orientation = Orientation.Horizontal;
 
@@ -31,6 +31,7 @@ namespace HLP.Comum.View.Converters
 
             HlpButtonHierarquia btn;
 
+            object o = values[1];
 
             foreach (HlpButtonHierarquiaStruct item in (values[0] as List<HlpButtonHierarquiaStruct>))
             {
@@ -38,16 +39,28 @@ namespace HLP.Comum.View.Converters
                 btn.xTextId = item.xId;
                 if (item.xOpcional != "")
                 {
-                    btn.xTextOpcional = item.xOpcional;
+                    decimal porc = decimal.Zero;
+
+                    decimal.TryParse(s: item.xOpcional, result: out porc);
+
+                    porc = Math.Round(d: porc, decimals: 1);
+
+                    btn.xTextOpcional = String.Format("{0:P1}", (porc / 100));
                     btn.ExibeTextOpcional = true;
                 }
                 else
                 {
                     btn.ExibeTextOpcional = false;
                 }
-                btn.btn.Command = values[1] as ICommand;
-                btn.btn.CommandParameter = btn.Content;
 
+                if (item.xId == o.GetType().GetProperty(name: "selectedId").GetValue(obj: o).ToString())
+                    btn.btn.Tag = tg;
+                else
+                    btn.btn.Tag = null;
+
+
+                btn.btn.DataContext = o;
+                btn.btn.Command = btn.btnPesquisaComm;
                 stk.Children.Add(element: btn);
             }
 

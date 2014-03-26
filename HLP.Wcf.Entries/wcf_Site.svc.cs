@@ -131,31 +131,28 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public List<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSite(int idSite)
+        public HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaSite(int idSite)
         {
             try
             {
-                List<HLP.Comum.Resources.Models.modelToTreeView> lTreeView = new List<HLP.Comum.Resources.Models.modelToTreeView>();
+                HLP.Comum.Resources.Models.modelToTreeView TreeView = new HLP.Comum.Resources.Models.modelToTreeView();
                 HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: idSite);
+
+                TreeView.id = objSite.idSite ?? 0;
+                TreeView.xDisplay = objSite.xSite + " - " + objSite.xDescricao;
+                TreeView.lFilhos = new List<Comum.Resources.Models.modelToTreeView>();
 
                 foreach (var item in this.depositoRepository.GetBySite(idSite: idSite))
                 {
-                    lTreeView.Add(item: new HLP.Comum.Resources.Models.modelToTreeView
-                    {
-                        id = item.idDeposito ?? 0,
-                        xDisplay = item.xDeposito + " - " + item.xDescricao,
-                        lFilhos = new List<HLP.Comum.Resources.Models.modelToTreeView>
+                    TreeView.lFilhos.Add(
+                        item: new Comum.Resources.Models.modelToTreeView
                         {
-                            new HLP.Comum.Resources.Models.modelToTreeView
-                            {
-                                id = objSite.idSite ?? 0,
-                                xDisplay = objSite.xSite + " - " +objSite.xDescricao 
-                            }
-                        }
-                    });
+                            id = item.idDeposito ?? 0,
+                            xDisplay = item.xDeposito + " - " + item.xDescricao
+                        });
                 }
 
-                return lTreeView;
+                return TreeView;
             }
             catch (Exception ex)
             {

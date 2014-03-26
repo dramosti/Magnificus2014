@@ -292,7 +292,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 this.objViewModel.currentModel = this.objService.GetObjeto(id:
                     this.objViewModel.currentID);
-                this.objViewModel.hierarquiaFunc = null;                
+                this.objViewModel.hierarquiaFunc = null;
             }
         }
 
@@ -364,17 +364,22 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void GetHierarquiaSite()
         {
-            this.objViewModel.lObjHierarquia = new List<modelToTreeView>();
+            this.objViewModel.lObjHierarquia = new modelToTreeView();
             this.objViewModel.lObjHierarquia = this.objService.GetHierarquia(idSite: this.objViewModel.currentID);
         }
 
-        private void MontaHierarquia(List<modelToTreeView> m, TreeViewItem tvi)
+        private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
         {
             if (m != null)
             {
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    tvi.Header = m.id + ". " + m.xDisplay;
+                }));
+
                 TreeViewItem i = null;
 
-                foreach (modelToTreeView item in m)
+                foreach (modelToTreeView item in m.lFilhos)
                 {
                     Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                     {
@@ -384,11 +389,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         };
 
                         tvi.Items.Add(newItem: i);
-                        if (item.lFilhos != null)
-                        {
-
-                            this.MontaHierarquia(m: item.lFilhos, tvi: i);
-                        }
                     }));
                 }
 

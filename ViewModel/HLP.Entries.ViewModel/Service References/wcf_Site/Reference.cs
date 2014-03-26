@@ -198,10 +198,10 @@ namespace HLP.Entries.ViewModel.wcf_Site {
         System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.SiteModel> GetObjectAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Site/GetHierarquiaSite", ReplyAction="http://tempuri.org/Iwcf_Site/GetHierarquiaSiteResponse")]
-        System.Collections.Generic.List<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSite(int idSite);
+        HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaSite(int idSite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Site/GetHierarquiaSite", ReplyAction="http://tempuri.org/Iwcf_Site/GetHierarquiaSiteResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Comum.Resources.Models.modelToTreeView>> GetHierarquiaSiteAsync(int idSite);
+        System.Threading.Tasks.Task<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSiteAsync(int idSite);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -263,11 +263,11 @@ namespace HLP.Entries.ViewModel.wcf_Site {
             return base.Channel.GetObjectAsync(id);
         }
         
-        public System.Collections.Generic.List<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSite(int idSite) {
+        public HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaSite(int idSite) {
             return base.Channel.GetHierarquiaSite(idSite);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Comum.Resources.Models.modelToTreeView>> GetHierarquiaSiteAsync(int idSite) {
+        public System.Threading.Tasks.Task<HLP.Comum.Resources.Models.modelToTreeView> GetHierarquiaSiteAsync(int idSite) {
             return base.Channel.GetHierarquiaSiteAsync(idSite);
         }
     }
