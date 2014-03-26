@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.ViewModel.Services.Gerais;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
@@ -23,34 +17,41 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         public HlpCalendarioPonto()
         {
             InitializeComponent();
+            this.ViewModel = new HlpCalendarioPontoViewModel();
         }
 
 
+        private int _idFuncionario;
         public int idFuncionario
         {
-            get { return (int)GetValue(idFuncionarioProperty); }
-            set { SetValue(idFuncionarioProperty, value); }
+            get { return _idFuncionario; }
+            set { _idFuncionario = value; this.ViewModel.idFuncionario = value; }
         }
 
-        // Using a DependencyProperty as the backing store for idFuncionario.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty idFuncionarioProperty =
-            DependencyProperty.Register("idFuncionario", typeof(int), typeof(HlpCalendarioPonto), new PropertyMetadata());
 
+        private string _dtPonto;
 
-
-
-        public DateTime dtPonto
+        public string dtPonto
         {
-            get { return (DateTime)GetValue(dtPontoProperty); }
-            set { SetValue(dtPontoProperty, value); }
+            get { return _dtPonto; }
+            set { _dtPonto = value; this.ViewModel.dataPonto = value; }
+        }
+        
+
+        public HlpCalendarioPontoViewModel ViewModel
+        {
+            get { return this.DataContext as HlpCalendarioPontoViewModel; }
+            set { this.DataContext = value; }
+        }
+     
+        public void CarregaDados()
+        {
+            if (this.ViewModel.command != null)
+                this.ViewModel.command.CarregaDados();
         }
 
-        // Using a DependencyProperty as the backing store for dtPonto.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty dtPontoProperty =
-            DependencyProperty.Register("dtPonto", typeof(DateTime), typeof(HlpCalendarioPonto), new PropertyMetadata(null));
+        
 
-        
-              
-        
+       
     }
 }

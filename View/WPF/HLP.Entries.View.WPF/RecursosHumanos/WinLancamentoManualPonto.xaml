@@ -7,7 +7,7 @@
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
-             mc:Ignorable="d" x:Name="wd"
+             mc:Ignorable="d" x:Name="winLancamentoManual"             
              d:DesignHeight="600" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
     <Window.Resources>
         <CollectionViewSource x:Key="colecaoPonto" Source="{Binding Path=lPonto}">
@@ -20,7 +20,7 @@
     <DockPanel LastChildFill="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" Background="#FFD4D1D1">
         <Border DockPanel.Dock="Bottom" Background="{StaticResource ButtonBackgroundBlueDefault}">
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                <Button Command="{Binding DataContext.commandSalvar, ElementName=ctrContent}" CommandParameter="{Binding Content, ElementName=ctrContent}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                <Button Command="{Binding commandSalvar}" CommandParameter="{Binding ElementName=winLancamentoManual}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
                     <Button.Template>
                         <ControlTemplate>
                             <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

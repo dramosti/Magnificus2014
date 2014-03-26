@@ -169,8 +169,8 @@ namespace HLP.Magnificus.View.WPF
                     base.OnStartup(e);
                     wd.WindowState = WindowState.Maximized;
                     wd.Show();
-                    WinLancamentoManualPonto win = new WinLancamentoManualPonto();
-                    win.ShowDialog();
+                    //WinEspelhoPonto win = new WinEspelhoPonto();
+                    //win.ShowDialog();
                 }
             }
             catch (Exception ex)

@@ -196,11 +196,13 @@ namespace HLP.Comum.ViewModel.ViewModels
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        public statusModel status { get; set; }
         protected void NotifyPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            if (this.status == statusModel.nenhum)
+                this.status = statusModel.alterado;
         }
 
         #endregion
