@@ -62,7 +62,6 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             }
             return null;
         }
-
         public List<Funcionario_Controle_Horas_PontoModel> Salvar(int idFuncionario, List<Funcionario_Controle_Horas_PontoModel> lPonto)
         {
             switch (Sistema.bOnline)
@@ -77,6 +76,40 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                     }
             }
             return null;
+        }
+
+        public int GetTotalDiasTrabalhadosMes(int idFuncionario, DateTime dtMes) 
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return 0;
+                       // return this.servicoInternet.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
+                    }
+            }
+            return 0;
+        }
+
+        public TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes) 
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetHorasATrabalharMes(idFuncionario, dtMes);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return new TimeSpan();
+                        // return this.servicoInternet.GetHorasATrabalharMes(idFuncionario, dtMes);
+                    }
+            }
+            return new TimeSpan();
         }
 
     }

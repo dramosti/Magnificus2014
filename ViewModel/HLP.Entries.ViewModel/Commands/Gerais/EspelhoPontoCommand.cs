@@ -83,6 +83,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             controle.Visibility = System.Windows.Visibility.Visible;
                         }
                     }));
+                objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
 
 
             }

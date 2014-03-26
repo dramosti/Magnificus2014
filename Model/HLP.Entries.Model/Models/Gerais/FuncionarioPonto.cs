@@ -20,8 +20,8 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _idFuncionario = value; base.NotifyPropertyChanged("idFuncionario"); }
         }
 
-        private DateTime? _data = null;
-        public DateTime? data
+        private DateTime _data = DateTime.Today;
+        public DateTime data
         {
             get { return _data; }
             set { _data = value; base.NotifyPropertyChanged("data"); }
