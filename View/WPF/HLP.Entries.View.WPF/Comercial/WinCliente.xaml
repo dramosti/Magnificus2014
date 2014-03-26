@@ -15,6 +15,7 @@
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <convert:MaskConverter x:Key="maskConverter"/>
+        <convert:NotConverter x:Key="notConverter"/>
         <convert:PorcentagemConverter x:Key="PorcentagemConverter"/>
         <convert:MoedaConverter x:Key="moedaConverter"/>
         <convertLocal:ListaPrecoClienteEnabled x:Key="ListaPrecoEnabled"/>
@@ -65,352 +66,368 @@
         <TabControl x:Name="tbPrincipal">
             <TabItem Header="Principal">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <Expander Header="Endereço" Height="150"  DockPanel.Dock="Bottom" IsExpanded="True">
-                            <DataGrid 
-                         x:Name="dgvEndereco"
-                         ItemsSource="{Binding currentModel.lCliente_fornecedor_Endereco}"                          
-                         IsEnabled="{Binding bIsEnabled}"
-                         AutoGenerateColumns="False" 
-                         SelectionUnit="CellOrRowHeader" 
-                         CanUserReorderColumns="False"  
-                         CanUserDeleteRows="True" 
-                         CurrentCellChanged="dgvEndereco_CurrentCellChanged" >
-                                <DataGrid.BindingGroup>
-                                    <BindingGroup NotifyOnValidationError="True">
-                                        <BindingGroup.ValidationRules>
-                                            <v:ListUniqueValueTrueValidationRule                                
-                                ValidatesOnTargetUpdated="True"
-                                xCampo="stPrincipal"/>
-                                        </BindingGroup.ValidationRules>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="402*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="150*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Expander IsExpanded="True" Header="Geral" Style="{StaticResource ExpanderPadrao}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="120" Width="120*"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="90" MinWidth="90" Width="120*"></ColumnDefinition>
+                                            <ColumnDefinition Width="39*" MaxWidth="20" MinWidth="20"></ColumnDefinition>
+                                            <ColumnDefinition Width="271*" MaxWidth="250" MinWidth="200"/>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Label-->
 
-                                    </BindingGroup>
-                                </DataGrid.BindingGroup>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn     Header="Nome" Width="100" ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xNome, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTemplateColumn Header="Principal" Width="60">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <CheckBox IsChecked="{Binding stPrincipal, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                            <DataTemplate>
-                                                <CheckBox  IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn x:Name="clStEndereco" Header="Tipo Endereço" Width="250" >
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Path=enumTipoEndereco}" />
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                            <DataTemplate>
-                                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
-                                                    <ComboBox x:Name="cbxStEndereco"
-                ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}" 
-                                                      DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-            SelectedValue="{Binding enumTipoEndereco,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="CEP" Width="100"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, 
-                                        Converter={StaticResource maskConverter}, ConverterParameter=cep}"/>
-                                    <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="200" >
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv},
-                                                    ConverterParameter={StaticResource lresult}}"
-                                                   />
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                            <DataTemplate>
-                                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                                    <ComboBox x:Name="cbxStCidade"
-                ItemsSource="{Binding Source={StaticResource lresult}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding idCidade,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn x:Name="clStLogradouro" Header="Logradouro" Width="160" >
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Path=enumTipoLogradouro}" />
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                            <DataTemplate>
-                                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStEndereco}" >
-                                                    <ComboBox x:Name="cbxStEndereco"
-                ItemsSource="{Binding Source={StaticResource EnumTipoLogradouro}}" 
-                                                      DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-            SelectedValue="{Binding enumTipoLogradouro,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Endereço" Width="100" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xEndereco, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn Header="Numero" Width="80" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=nNumero, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn Header="Bairro" Width="100" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn Header="Latitude" Width="60" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xLatitude, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn Header="Latitude" Width="60" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xLongitude, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn Header="Fuso Horario" Width="80" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xFusoHorario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                    <DataGridTextColumn Header="Caixa Postal" Width="80" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                </DataGrid.Columns>
+                                        <Components:CustomTextBlock Text="Código" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Data do Cadastro" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Código Alternativo" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Nome do Cliente" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Nome Fantasia" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Ramo de Atividade" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Moeda" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Contato Principal" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Pessoa Jurídica?" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
 
-                            </DataGrid>
-                        </Expander>
-                        <Expander DockPanel.Dock="Top" Header="Identificação" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical"  Margin="0,10,0,0" VerticalAlignment="Top">
-                                <Components:HlpTextBox 
-												IsReadOnly="True"
-												Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-												Height="27" Margin="10,0,30,2" Caption="Código" WidthLabel="150" HorizontalAlignment="Left" Width="296"/>
-                                <Components:HlpDateTimePicker 
-                                    IsEnabled="False"
-												
-												SelectedDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-												Height="27" Margin="10,0,30,-2" Caption="Data do Cadastro" WidthLabel="150" HorizontalAlignment="Left"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Código Alternativo" WidthLabel="150" HorizontalAlignment="Left" Width="341"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Nome do Cliente" WidthLabel="150" HorizontalAlignment="Left" Width="522"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Nome Fantasia" WidthLabel="150" HorizontalAlignment="Left" Width="522"/>
-                                <Components:HlpPesquisa 
-												
-												Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Ramo de Atividade" WidthLabel="150" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwRamoAtividade">
-                                    <Components:HlpPesquisa.Items>
-                                        <System:String>xRamo</System:String>
-                                        <System:String>xDescricao</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
-												
+                                        <!--Components-->
+
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
+                                            IsReadOnly="True"
+										    Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">
+                                        </Components:CustomTextBox>
+                                        <Components:HlpDatePicker
+                                            Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
+                                            IsEnabled="False"												
+											xTextDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                        </Components:HlpDatePicker>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                                            Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+                                            Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+                                            Text="{Binding currentModel.xFantasia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:HlpPesquisa
+                                            Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"           
+											Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwRamoAtividade">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>xRamo</System:String>
+                                                <System:String>xDescricao</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:HlpPesquisa 
+												Grid.Column="2" Grid.Row="7" Height="20" Grid.ColumnSpan="3"
 												Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Moeda" WidthLabel="150" HorizontalAlignment="Left" Width="522" FieldPesquisa="ID" TableView="vwMoeda">
-                                    <Components:HlpPesquisa.Items>
-                                        <System:String>xSiglaMoeda</System:String>
-                                        <System:String>xMoeda</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
-												
+												WidthLabel="0" FieldPesquisa="ID" TableView="vwMoeda" Margin="0,1,0,2">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>xSiglaMoeda</System:String>
+                                                <System:String>xMoeda</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:HlpPesquisa 
+												Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 												Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Contato Principal" WidthLabel="150" HorizontalAlignment="Left" Width="522" TableView="vwFuncionario" FieldPesquisa="ID">
-                                    <Components:HlpPesquisa.Items>
-                                        <System:String>xNome</System:String>
-                                        <System:String>xCodigoAlternativo</System:String>
-                                        <System:String>xTelefoneComercial</System:String>
-                                    </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xMemorando, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Memorando" HorizontalAlignment="Left" WidthLabel="150" Width="350"/>
-                                <Components:HlpCheckBox x:Name="chkPessoa" 
-                                                        IsEnabled="{Binding bIsEnabled}"
-												
-												IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												Height="27" Margin="10,0,30,-2" Caption="Pessoa Jurídica?" HorizontalAlignment="Left" WidthLabel="150"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												Height="27" Margin="10,0,30,-2" Caption="C.P.F." HorizontalAlignment="Left" WidthLabel="150" Width="380">
-                                    <Components:HlpTextBox.Style>
-                                        <Style>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:HlpTextBox.Style>
-                                </Components:HlpTextBox>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												Height="27" Margin="10,0,30,2" Caption="R.G." HorizontalAlignment="Left" WidthLabel="150" Width="380">
-                                    <Components:HlpTextBox.Style>
-                                        <Style>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:HlpTextBox.Style>
-                                </Components:HlpTextBox>
-                                <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}"
-								Height="27" Margin="10,0,30,2" Caption="CNPJ" Help="Informar o Cadastro Nacional de Pessoa Jurídica da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
-                                    <Components:HlpTextBox.Style>
-                                        <Style>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:HlpTextBox.Style>
-                                </Components:HlpTextBox>
-                                <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.xIE, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								Margin="10,0,30,2" Height="27" Caption="Inscrição Estadual" Help="Informar a Inscrição Estadual da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
-                                    <Components:HlpTextBox.Style>
-                                        <Style>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:HlpTextBox.Style>
-                                </Components:HlpTextBox>
-                                <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								Margin="10,0,30,2" Height="27" Caption="Inscrição Municipal" Help="Informar a Inscrição Municipal da organização quando a pergunta Pessoa Jurídica estiver como SIM" WidthLabel="150" HorizontalAlignment="Left" Width="381">
-                                    <Components:HlpTextBox.Style>
-                                        <Style>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Components:HlpTextBox.Style>
-                                </Components:HlpTextBox>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="1° Telefone" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="2° Telefone" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="FAX" HorizontalAlignment="Left" WidthLabel="150" Width="300"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="E-mail" HorizontalAlignment="Left" WidthLabel="150" Width="400"/>
-                                <Components:HlpTextBox 
-												
-												Text="{Binding currentModel.xHttp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Endereço na Internet" HorizontalAlignment="Left" WidthLabel="150" Width="400"/>
-                                <Components:HlpCheckBox                                     
-												
-												IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-												IsEnabled="{Binding bIsEnabled}"
-												Height="27" Margin="10,0,30,-2" Caption="Ativo?" HorizontalAlignment="Left" WidthLabel="150"/>
-                                <DataGrid
-                                        x:Name="dgvContato"
-                                         ItemsSource="{Binding currentModel.lCliente_fornecedor_contato}"                          
-                                         IsEnabled="{Binding bIsEnabled}"
-                                         AutoGenerateColumns="False" 
-                                         SelectionUnit="CellOrRowHeader" 
-                                         CanUserReorderColumns="False"  
-                                         CanUserDeleteRows="True"  Width="400" Height="115" Margin="0,0,30,0" FocusableChanged="dgvContato_FocusableChanged" SelectedCellsChanged="dgvContato_SelectedCellsChanged">
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn x:Name="clContatos" Header="Contatos" Width="150" >
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Path=idContato, Converter={StaticResource cbxDisplayConv}, 
-                                                        ConverterParameter={StaticResource lcontatos}}"
-                                                   />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                            <DataGridTemplateColumn.CellEditingTemplate>
-                                                <DataTemplate>
-                                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                                        <ComboBox x:Name="cbxStCidade"
-                ItemsSource="{Binding Source={StaticResource lcontatos}}" 
-                                                      SelectedValuePath="id"
-                                            DisplayMemberPath="display"                                
-            SelectedValue="{Binding idContato,
-                                UpdateSourceTrigger=LostFocus}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellEditingTemplate>
-                                        </DataGridTemplateColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </WrapPanel>
-                        </Expander>
+												WidthLabel="0" TableView="vwFuncionario" FieldPesquisa="ID">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>xNome</System:String>
+                                                <System:String>xCodigoAlternativo</System:String>
+                                                <System:String>xTelefoneComercial</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:CustomCheckBox                                            
+                                                Grid.Column="2" Grid.Row="9" Height="20" Width="40" Margin="0,0,0,3"
+                                                x:Name="chkPessoa" 
+                                                IsEnabled="{Binding bIsEnabled}" HorizontalAlignment="Left"												
+												IsChecked="{Binding currentModel.stPessoa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                        </Components:CustomCheckBox>
 
-                    </DockPanel>
+                                    </Grid>
+                                </Expander>
+                                <Expander Grid.Row="1" IsExpanded="True" Header="Indentificação" Style="{StaticResource ExpanderPadrao}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="150" MinWidth="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Label-->
+
+                                        <Components:CustomTextBlock Text="C.P.F" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="RG" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="CNPJ" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Inscrição Estadual" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Inscrição Municipal" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>                                        
+                                        <!--Components-->
+                                        
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
+                                            Text="{Binding currentModel.xCpf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                            <Components:CustomTextBox.Style>
+                                                <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:CustomTextBox.Style>
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
+                                            Text="{Binding currentModel.xRg, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                                            <Components:CustomTextBox.Style>
+                                                <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="True">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:CustomTextBox.Style>
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                                            Text="{Binding currentModel.xCnpj, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cnpj}"
+								            ToolTip="Informar o Cadastro Nacional de Pessoa Jurídica da organização quando a pergunta Pessoa Jurídica estiver como SIM">
+                                            <Components:CustomTextBox.Style>
+                                                <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:CustomTextBox.Style>
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="4" Margin="0,0,0,3" Height="20"
+                                            Text="{Binding currentModel.xIE, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								            ToolTip="Informar a Inscrição Estadual da organização quando a pergunta Pessoa Jurídica estiver como SIM">
+                                            <Components:CustomTextBox.Style>
+                                                <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:CustomTextBox.Style>
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
+                                            Text="{Binding currentModel.xIm, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								            ToolTip="Informar a Inscrição Municipal da organização quando a pergunta Pessoa Jurídica estiver como SIM">
+                                            <Components:CustomTextBox.Style>
+                                                <Style TargetType="{x:Type Components:CustomTextBox}" BasedOn="{StaticResource TextBoxComponentStyle}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=chkPessoa, Path=IsChecked}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:CustomTextBox.Style>
+                                        </Components:CustomTextBox>
+                                        
+                                    </Grid>
+                                </Expander>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Expander IsExpanded="True" Header="Telefones" Style="{StaticResource ExpanderPadrao}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="120" MinWidth="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--Label-->
+
+                                        <Components:CustomTextBlock Text="1° Telefone" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="20" Margin="0,0,0,3"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="2° Telefone" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="20" Margin="0,0,0,3"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="20" Margin="0,0,0,3"></Components:CustomTextBlock>
+                                        <!--Components-->
+
+                                        <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
+                                    Text="{Binding currentModel.xTelefone1, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
+								    IsEnabled="{Binding bIsEnabled}"
+									ToolTip="É preenchido com o telefone principal da Transportadora.">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
+                                    Text="{Binding currentModel.xTelefone2, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="É preenchido com o segundo telefone da Transportadora, se houver.">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                                    Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="É preenchido com o fax principal da Transportadora">
+                                        </Components:CustomTextBox>
+                                    </Grid>
+                                </Expander>
+                                <Expander Grid.Row="1" IsExpanded="True" Header="Identificação Eletrôncica" Style="{StaticResource ExpanderPadrao}">                                    
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="145" MinWidth="145"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="200" MinWidth="100"></ColumnDefinition>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10"></RowDefinition>
+                                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <!--Label-->
+
+                                            <Components:CustomTextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Text="E-mail" Height="20"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Text="Endereço da Internet" Height="20"></Components:CustomTextBlock>
+
+                                            <!--Components-->
+
+                                            <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
+                                        Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										IsEnabled="{Binding bIsEnabled}"
+										ToolTip="Preencher o e-mail da transportadora.">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                        Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
+                                        Text="{Binding currentModel.xHttp, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										IsEnabled="{Binding bIsEnabled}"
+										ToolTip="Informar o endereço da Internet da transportadora.">
+                                            </Components:CustomTextBox>
+                                        </Grid>                                   
+                                </Expander>
+                                <Expander IsExpanded="True" Margin="0,10,0,0" Header="Status" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="325" MinWidth="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <!--Label-->
+
+                                        <Components:CustomTextBlock VerticalAlignment="Center" Text="Ativo" Grid.Column="1" Grid.Row="1" Height="20" ></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock VerticalAlignment="Center" Text="Memorando" Grid.Column="1" Grid.Row="2" Height="20"></Components:CustomTextBlock>
+
+                                        <!--Components-->
+
+                                        <Components:CustomCheckBox
+                                        Grid.Column="2" Grid.Row="1" Height="20" Width="40" HorizontalAlignment="Left" Margin="0,0,0,3"
+                                        IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										IsEnabled="{Binding bIsEnabled}"
+										ToolTip="Informar se a transportadora esta ou não ativa no sistema.">
+                                        </Components:CustomCheckBox>
+                                        <Components:CustomTextBox 
+                                        Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
+                                        Text="{Binding currentModel.xMemorando, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										IsEnabled="{Binding bIsEnabled}"
+										ToolTip="Insira qualquer observação adicional sobre o cliente ou fornecedor.">
+                                        </Components:CustomTextBox>
+
+                                    </Grid>
+                                </Expander>
+                            </Grid>
+                        </Grid>
+                        </ScrollViewer>
+                        <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="{StaticResource BlueStandard}"/>
+                        <Grid Grid.Row="2">
+                            <Expander IsExpanded="True" Header="Endereço" Style="{StaticResource ExpanderPadrao}">
+                                <Grid>
+                                    <Components:HlpEndereco x:Name="dgvEndereco"
+                                        ItemsSource="{Binding currentModel.lCliente_fornecedor_Endereco}" 
+                                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                        IsEnabled="{Binding bIsEnabled}"/>
+                                </Grid>
+                            </Expander>
+                        </Grid>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Comercial" HorizontalAlignment="Right">

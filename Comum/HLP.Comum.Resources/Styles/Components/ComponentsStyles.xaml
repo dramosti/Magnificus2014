@@ -11,6 +11,7 @@
     <SolidColorBrush x:Key="WhiteStandard" Color="White"/>
     <SolidColorBrush x:Key="BlueStandard" Color="#FF4774B5"/>
     <SolidColorBrush x:Key="BackgroundError" Color="#FFECA933"/>
+    <SolidColorBrush x:Key="GrayCheckBox" Color="#FFD3D2D3"/>
 
 
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
@@ -58,6 +59,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 
     <!--Style Custom CheckBox-->
 
@@ -149,7 +151,7 @@
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="Storyboard1">
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
-                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0" Value="#FFD3D2D3"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF4774B5"/>
                             </ColorAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse">
@@ -175,7 +177,7 @@
                         <Storyboard x:Key="Storyboard2">
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="border">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
-                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FFD3D2D3"/>
                             </ColorAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="22.25"/>
@@ -193,7 +195,7 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid Height="20" Width="40">
-                        <Border x:Name="border" CornerRadius="8" BorderThickness="1" BorderBrush="#FF818080" Background="White"/>
+                        <Border x:Name="border" CornerRadius="8" BorderThickness="1" BorderBrush="#FF818080" Background="#FFD1D3D8"/>
                         <Ellipse x:Name="ellipse" Height="20" StrokeThickness="1" Stroke="#FF818080" Width="20" Fill="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-1,0,0,0" RenderTransformOrigin="0.5,0.5">
                             <Ellipse.RenderTransform>
                                 <TransformGroup>
@@ -1125,37 +1127,16 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="border" Height="18" Background="#FF4774B5"  CornerRadius="0,20,0,0">
-                                <ContentPresenter TextElement.Foreground="White" TextElement.FontFamily="Calibri" TextElement.FontSize="14" TextElement.FontWeight="Black" Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,10,0" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="Center"/>
+                            <Border x:Name="border" Height="18"  CornerRadius="0,20,0,0">
+                                <ContentPresenter TextElement.Foreground="Black" TextElement.FontFamily="Calibri" TextElement.FontSize="14" TextElement.FontWeight="Black" Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,10,0" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="Center"/>
                             </Border>
-                            <Path x:Name="arrow" Margin="5,0,0,0" Data="M 1,1.5 L 4.5,5 L 8,1.5" HorizontalAlignment="Left" SnapsToDevicePixels="false" Stroke="White" StrokeThickness="2" VerticalAlignment="Center"/>
+                            <Path x:Name="arrow" Margin="5,0,0,0" Data="M 1,1.5 L 4.5,5 L 8,1.5" HorizontalAlignment="Left" SnapsToDevicePixels="false" Stroke="Black" StrokeThickness="2" VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Data" TargetName="arrow" Value="M 1,4.5  L 4.5,1  L 8,4.5"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <RadialGradientBrush Center="0.508,1.193" GradientOrigin="0.509,2.002" RadiusY="0.761" RadiusX="0.397">
-                                        <GradientStop Color="#FFE0DBDB" Offset="0.351"/>
-                                        <GradientStop Color="#FF4774B5" Offset="1"/>
-                                    </RadialGradientBrush>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#FF4774B5" Offset="0.48"/>
-                                        <GradientStop Color="#FF91AED6" Offset="1"/>
-                                        <GradientStop Color="#FF91AED6"/>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
+                        </Trigger>         
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
                         </Trigger>
