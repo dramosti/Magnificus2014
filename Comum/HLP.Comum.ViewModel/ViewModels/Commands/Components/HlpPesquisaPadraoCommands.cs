@@ -146,7 +146,7 @@ namespace HLP.Comum.ViewModel.Commands.Components
 
                 if (this._objViewModel.campoSelecionado != ""
                     && this._objViewModel.campoSelecionado != null
-                    && this._objViewModel.stOrdenacao != null)
+                    )
                 {
                     sExpression.Add(item:
                         string.Format(format: " ORDER BY {0} {1} ", arg0: this._objViewModel.campoSelecionado, arg1: this._objViewModel.stOrdenacao == (int)0 ?

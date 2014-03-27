@@ -16,6 +16,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Comercial
         Lista_Preco_PaiModel GetLista_Preco_Pai(int idListaPrecoPai);
         List<int> GetAllIdListaPreco();
         int GetIdListaPreferencial();
+        List<Lista_Preco_PaiModel> GetAllListaPrecoOrigem(int idListaPrecoOrigem);
 
         void BeginTransaction();
         void CommitTransaction();

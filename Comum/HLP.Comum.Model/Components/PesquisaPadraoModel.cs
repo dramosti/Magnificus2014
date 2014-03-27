@@ -539,7 +539,7 @@ namespace HLP.Comum.Model.Components
 
                 return objValor.ToString();
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw new System.Exception("Valor Inválido para Pesquisa!"
                     + Environment.NewLine

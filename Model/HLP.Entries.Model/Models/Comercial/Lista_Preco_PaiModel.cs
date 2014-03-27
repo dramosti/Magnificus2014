@@ -305,6 +305,13 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vCustoProduto = value;
+
+                if (this._vCustoProduto > 0)
+                    this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
+                else if (this._vCustoProduto == 0 && this._vVenda > 0)
+                    this._pLucro = 100;
+                this.CalculaMarkup(objItemLista: this);
+                base.NotifyPropertyChanged(propertyName: "pLucro");
                 base.NotifyPropertyChanged(propertyName: "vCustoProduto");
                 this.CalculaMarkup(objItemLista: this);
             }
@@ -331,8 +338,11 @@ namespace HLP.Entries.Model.Models.Comercial
             set
             {
                 _vVenda = value;
-                if (this._vVenda > 0)
-                    this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vVenda) * 100;
+                if (this._vCustoProduto > 0)
+                    this._pLucro = ((this._vVenda - this._vCustoProduto) / this._vCustoProduto) * 100;
+                else if (this._vCustoProduto == 0 && this._vVenda > 0)
+                    this._pLucro = 100;
+
                 this.CalculaMarkup(objItemLista: this);
                 base.NotifyPropertyChanged(propertyName: "vVenda");
                 base.NotifyPropertyChanged(propertyName: "pLucro");

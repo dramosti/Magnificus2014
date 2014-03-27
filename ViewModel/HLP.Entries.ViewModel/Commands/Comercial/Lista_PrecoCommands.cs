@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Modules;
+using HLP.Comum.Resources.Models;
 using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Services.Comercial;
@@ -22,7 +23,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         ProdutoService objServicoProduto;
         Lista_PrecoService objServico;
         int idOld = 0;
-
+        bool bOpCancelada = false;
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
@@ -75,6 +76,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 collection: this.objServico.GetAllIdsListaPreco());
 
             this.objServicoProduto = new ProdutoService();
+            this.objViewModel.bwHierarquia = new BackgroundWorker();
+            this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
 
             int currentId = objServico.getIdListaPreferencial();
             int currentPosition = 0;
@@ -391,6 +396,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.currentModel.Ativo = true;
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
             this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = true;
+            this.objViewModel.hierarquiaListaPreco = null;
             bWorkerAcoes = new BackgroundWorker();
             bWorkerAcoes.DoWork += bwNovo_DoWork;
             bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
@@ -559,6 +565,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void PesquisarRegistro()
         {
+            if (this.objViewModel.bwHierarquia != null)
+                if (this.objViewModel.bwHierarquia.IsBusy)
+                {
+                    this.bOpCancelada = true;
+                }
+            this.objViewModel.hierarquiaListaPreco = null;
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.getListaPreco);
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
@@ -578,6 +590,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.IniciaCollection();
                     if (this.objViewModel.currentID > 0)
                         this.objViewModel.lIdsHierarquia = this.objServico.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
+
+                    this.objViewModel.bTreeCarregada = false;
                 }
             }
             catch (Exception ex)
@@ -607,6 +621,104 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         #endregion
 
+        public void MontraTreeView()
+        {
+            TreeView t = new TreeView();
+            t.Items.Add(newItem:
+            new TreeViewItem
+            {
+                Header = "Hierarquia Lista Preço"
+            });
 
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "Carregando Hierarquia...";
+
+            this.objViewModel.hierarquiaListaPreco = txt;
+
+            if (this.bOpCancelada)
+            {
+                txt.Text = "Cancelando carregamento de Hierarquia anterior, por favor, aguarde...";
+                this.objViewModel.hierarquiaListaPreco = txt;
+            }
+            else
+            {
+                this.objViewModel.bwHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bTreeCarregada = true;
+            }
+        }
+
+        void bwHierarquia_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                if (this.bOpCancelada)
+                {
+                    this.bOpCancelada = false;
+                    this.MontraTreeView();
+                }
+                else
+                {
+                    this.objViewModel.hierarquiaListaPreco = (TreeView)e.Result;
+                }
+            }
+        }
+
+        void bwHierarquia_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (!this.bOpCancelada)
+                    this.GetHierarquiaListaPreco();
+
+                if (!this.bOpCancelada)
+                {
+                    MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                        tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
+                    e.Result = e.Argument;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void GetHierarquiaListaPreco()
+        {
+            this.objViewModel.lObjHierarquia = new modelToTreeView();
+            this.objViewModel.lObjHierarquia = this.objServico.GetHierarquiaListaFull(
+                idListaPreco: this.objViewModel.selectedId);
+        }
+
+        private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
+        {
+            if (m != null)
+            {
+                TreeViewItem i = null;
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    i = new TreeViewItem
+                    {
+                        Header = m.id.ToString() + ". " + m.xDisplay
+                    };
+
+                    tvi.Items.Add(newItem: i);
+                    if (m.lFilhos != null)
+                    {
+
+                        foreach (modelToTreeView item in m.lFilhos)
+                        {
+                            this.MontaHierarquia(m: item, tvi: i);
+                        }
+                    }
+                }));
+
+            }
+        }
     }
 }

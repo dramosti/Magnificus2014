@@ -486,6 +486,12 @@
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
+            <TabItem Header="Contatos">
+                <AdornerDecorator>
+                    <Components:HlpContatos>                        
+                    </Components:HlpContatos>
+                </AdornerDecorator>
+            </TabItem>
         </TabControl>
     </Grid>
 </runtime:WindowsBase>

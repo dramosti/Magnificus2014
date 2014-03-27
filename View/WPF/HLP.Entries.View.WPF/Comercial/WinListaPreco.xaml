@@ -240,7 +240,7 @@
                                         <ComboBoxItem>Preço de Venda</ComboBoxItem>
                                         <ComboBoxItem>Custo do Produto</ComboBoxItem>
                                     </Components:CustomComboBox>
-                                    <Components:CustomTextBlock Margin="10,0,10,0" >% de aumento</Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Margin="10,0,10,0" >% de reajuste</Components:CustomTextBlock>
                                     <Components:CustomTextBox Margin="10,0,10,0" Width="80" Text="{Binding dPorcAumento, Converter={StaticResource PorcentagemConverter}}"></Components:CustomTextBox>
                                     <Button Margin="10,0,10,0" Width="50" Command="{Binding ConfAumVlrVendaCommand}">
                                         <Button.Template>
@@ -529,9 +529,9 @@
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Hierarquia">
+            <TabItem Header="Hierarquia" GotFocus="TabItem_GotFocus">
                 <AdornerDecorator>
-                    
+                    <ContentControl Content="{ Binding Path=hierarquiaListaPreco, Mode=OneWay}"></ContentControl>
                 </AdornerDecorator>
             </TabItem>
         </TabControl>

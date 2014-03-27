@@ -1,4 +1,5 @@
 ﻿using HLP.Comum.Infrastructure.Static;
+using HLP.Comum.Resources.Models;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Entries.Model.Models.Comercial;
 using System;
@@ -11,8 +12,8 @@ namespace HLP.Entries.ViewModel.Services.Comercial
 {
     public class Lista_PrecoService
     {
-        HLP.Wcf.Entries.serviceLista_Preco servicoRede;
-        wcf_ListaPreco.IserviceLista_PrecoClient servicoInternet;
+        HLP.Wcf.Entries.wcf_Lista_Preco servicoRede;
+        wcf_Lista_Preco.Iwcf_Lista_PrecoClient servicoInternet;
 
         public Lista_PrecoService()
         {
@@ -20,12 +21,12 @@ namespace HLP.Entries.ViewModel.Services.Comercial
             {
                 case TipoConexao.OnlineRede:
                     {
-                        this.servicoRede = new Wcf.Entries.serviceLista_Preco();
+                        this.servicoRede = new Wcf.Entries.wcf_Lista_Preco();
                     }
                     break;
                 case TipoConexao.OnlineInternet:
                     {
-                        this.servicoInternet = new wcf_ListaPreco.IserviceLista_PrecoClient();
+                        this.servicoInternet = new wcf_Lista_Preco.Iwcf_Lista_PrecoClient();
                     }
                     break;
             }
@@ -154,6 +155,22 @@ namespace HLP.Entries.ViewModel.Services.Comercial
                 case TipoConexao.OnlineInternet:
                     {
                         return this.servicoInternet.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                    }
+            }
+            return null;
+        }
+
+        public modelToTreeView GetHierarquiaListaFull(int idListaPreco)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetSelectedLista_PrecoFullHierarquia(idListaPreco: idListaPreco);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.GetSelectedLista_PrecoFullHierarquia(idListaPreco: idListaPreco);
                     }
             }
             return null;
