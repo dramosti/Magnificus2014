@@ -250,8 +250,8 @@
 
             <!--Components-->
 
-            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="3" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.iDiasTrabalhados}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.tsHorasTrabalhadas}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="3" Margin="0,3,0,3"></Components:CustomTextBox>
             <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="5" Margin="0,3,0,3"></Components:CustomTextBox>
             <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="7" Margin="0,3,0,3"></Components:CustomTextBox>
             <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="9" Margin="0,3,0,3"></Components:CustomTextBox>

@@ -175,12 +175,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand
                (
-                    string.Format("selselect  DISTINCT dRelogioPonto from Funcionario_Controle_Horas_Ponto " +
+                    string.Format("select  DISTINCT dRelogioPonto from Funcionario_Controle_Horas_Ponto " +
                     "where idFuncionario = {0} and concat(DATEPART(MM,dRelogioPonto),DATEPART(YY,dRelogioPonto)) = {1}",
                     idFuncionario, dtMes.Month.ToString() + dtMes.Year.ToString())
                );
                 IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
-                return reader.RecordsAffected;
+                int icount = 0;
+                while (reader.Read())
+                {
+                    icount++;
+                }
+                return icount;
 
             }
             catch (Exception ex)

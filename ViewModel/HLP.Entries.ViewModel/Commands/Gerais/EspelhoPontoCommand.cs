@@ -84,6 +84,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         }
                     }));
                 objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                objViewModel.currentModel.tsHorasTrabalhadas = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
 
 
             }
