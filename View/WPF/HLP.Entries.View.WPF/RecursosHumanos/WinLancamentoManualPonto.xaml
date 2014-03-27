@@ -7,8 +7,8 @@
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
-             mc:Ignorable="d" x:Name="wd"
-             d:DesignHeight="600" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+             mc:Ignorable="d" x:Name="winLancamentoManual"            
+             d:DesignHeight="400" d:DesignWidth="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{x:Null}" Title="Lançamento Manual do Ponto">
     <Window.Resources>
         <CollectionViewSource x:Key="colecaoPonto" Source="{Binding Path=lPonto}">
             <CollectionViewSource.SortDescriptions>
@@ -16,110 +16,138 @@
             </CollectionViewSource.SortDescriptions>
         </CollectionViewSource>
         <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+        <Style x:Key="ButtonSalvar" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Image x:Name="ImageSalvar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_48.png"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" TargetName="ImageSalvar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" TargetName="ImageSalvar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <DockPanel LastChildFill="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" Background="#FFD4D1D1">
         <Border DockPanel.Dock="Bottom" Background="{StaticResource ButtonBackgroundBlueDefault}">
-            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                <Button Command="{Binding DataContext.commandSalvar, ElementName=ctrContent}" CommandParameter="{Binding Content, ElementName=ctrContent}" Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <Image x:Name="ImageAdd">
-                                    <Image.Style>
-                                        <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/save-32.png"/>
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
-                                                </Trigger>
-                                                <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Image.Style>
-                                </Image>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
         </Border>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Button Command="{Binding commandSalvar}" CommandParameter="{Binding ElementName=winLancamentoManual}" Width="40" Height="27" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Image x:Name="ImageAdd">
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/save_48.png"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
         <Grid>
-            <Expander Header="Lançamentos manuais do Ponto" IsExpanded="True">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="27"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Components:HlpPesquisa x:Name="pFuncionario" Grid.Row="0" Grid.Column="0" 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MaxHeight="23"/>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="397*" MaxWidth="300" MinWidth="300"/>
+                <ColumnDefinition Width="103*" MaxWidth="100" MinWidth="100"/>
+                <ColumnDefinition Width="96*" MaxWidth=" 90" MinWidth="90"/>
+                <ColumnDefinition Width="199*"/>
+            </Grid.ColumnDefinitions>
+            <Components:HlpPesquisa 
+                                    Grid.Column="0" Grid.Row="1"
+                                    x:Name="pFuncionario" Margin="5,0,5,3" Height="20"
 									nameWindow="WinFuncionario"									
-									Height="27" Width="370" WidthLabel="100" TableView="vwFuncionario" FieldPesquisa="ID" Caption="Funcionário" IsEnabled="False">
-                        <Components:HlpPesquisa.Items>
-                            <System:String>xCodigoAlternativo</System:String>
-                            <System:String>xNome</System:String>
-                        </Components:HlpPesquisa.Items>
-                    </Components:HlpPesquisa>
-                    <TextBlock Text="Data" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left"/>
-                    <TextBlock x:Name="dtPonto" Grid.Row="0" Grid.Column="1" Margin="60,0,0,0" HorizontalAlignment="Left" Width="100"/>
-                    <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="2"
+								    WidthLabel="0" TableView="vwFuncionario" FieldPesquisa="ID" Caption="Funcionário" IsEnabled="False">
+                <Components:HlpPesquisa.Items>
+                    <System:String>xCodigoAlternativo</System:String>
+                    <System:String>xNome</System:String>
+                </Components:HlpPesquisa.Items>
+            </Components:HlpPesquisa>
+            <TextBlock Text="Data" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" Width="25"/>
+            <TextBlock Text="Nome do Funcionário" Grid.Column="0" Margin="5,0,0,0"></TextBlock>
+            <TextBlock x:Name="dtPonto" Grid.Row="1" Grid.Column="1" Margin="10,0,0,3" />
+            <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="4"
                            ItemsSource="{Binding Source={StaticResource colecaoPonto}}"                           
                            AutoGenerateColumns="False"                       
                            SelectionUnit="CellOrRowHeader" 
                            CanUserReorderColumns="False" 
                            CanUserDeleteRows="True" 
-                           CanUserAddRows="True" Margin="0,20,0,0" >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="clSeq"  FocusManager.FocusedElement="{Binding ElementName= clSeq}"  Header="Sequencia" Width="70"
+                           CanUserAddRows="True" Margin="0,10,0,0" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="clSeq"  FocusManager.FocusedElement="{Binding ElementName= clSeq}"  Header="Sequencia" Width="70"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                            <DataGridTemplateColumn Header="Hora Ponto" Width="72">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Components:HlpDatePicker HorizontalAlignment="Center"
+                    <DataGridTemplateColumn Header="Hora Ponto" Width="72">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Components:HlpDatePicker HorizontalAlignment="Center"
                                             xTextTime="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                                             stFormatoDtPicker="time"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>                                
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Hora alterada" Width="82">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Components:HlpDatePicker 
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Hora alterada" Width="82">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Components:HlpDatePicker 
                                             HorizontalAlignment="Center"
                                             xTextTime="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                                             stFormatoDtPicker="time"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>                                
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Férias / Abono" Width="100">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Components:CustomCheckBox    
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Férias / Abono" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Components:CustomCheckBox    
                                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
                                                 IsChecked="{Binding stFeriasAbono,  UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}" HorizontalAlignment="Center"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                                <DataGridTemplateColumn.CellEditingTemplate>
-                                    <DataTemplate>
-                                        <Components:CustomCheckBox HorizontalAlignment="Center"                                                        
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Components:CustomCheckBox HorizontalAlignment="Center"                                                        
                                                        IsChecked="{Binding stFeriasAbono, Converter={StaticResource ByteToBoolConverter}}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn    Header="Justificativa" Width="*"
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn    Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-
-
-            </Expander>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </DockPanel>
 </Window>

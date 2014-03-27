@@ -13,7 +13,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_PontoClient servicoInternet;
         HLP.Wcf.Entries.wcf_Funcionario_Controle_Horas_Ponto servicoRede;
 
-        public FuncionarioPontoService() 
+        public FuncionarioPontoService()
         {
             switch (Sistema.bOnline)
             {
@@ -27,7 +27,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                         this.servicoInternet = new wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_PontoClient();
                     }
                     break;
-            }            
+            }
         }
 
         public List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_Ponto(int idFuncionario, DateTime data)
@@ -46,8 +46,6 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             return null;
 
         }
-
-
         public List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dtDia)
         {
 
@@ -64,9 +62,56 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             }
             return null;
         }
+        public List<Funcionario_Controle_Horas_PontoModel> Salvar(int idFuncionario, List<Funcionario_Controle_Horas_PontoModel> lPonto)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.Save(idFuncionario, lPonto);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.Save(idFuncionario, lPonto);
+                    }
+            }
+            return null;
+        }
 
+        public int GetTotalDiasTrabalhadosMes(int idFuncionario, DateTime dtMes) 
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return 0;
+                       // return this.servicoInternet.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
+                    }
+            }
+            return 0;
+        }
 
-
+        public TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes) 
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetHorasATrabalharMes(idFuncionario, dtMes);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return new TimeSpan();
+                        // return this.servicoInternet.GetHorasATrabalharMes(idFuncionario, dtMes);
+                    }
+            }
+            return new TimeSpan();
+        }
 
     }
+
 }

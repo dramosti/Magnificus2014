@@ -1,4 +1,5 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Comum.Model.Models;
+using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;
@@ -26,10 +27,15 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             this.data = data;
             this.idFuncionario = idFuncionario;
             command = new Funcionario_Controle_Horas_PontoCommand(this);
+            this.bAlterou = false;
         }
 
-        private ObservableCollection<Funcionario_Controle_Horas_PontoModel> _lPonto = new ObservableCollection<Funcionario_Controle_Horas_PontoModel>();
-        public ObservableCollection<Funcionario_Controle_Horas_PontoModel> lPonto
+        public bool bAlterou { get; set; }
+
+
+
+        private ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel> _lPonto = new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>();
+        public ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel> lPonto
         {
             get { return _lPonto ; }
             set { _lPonto  = value; base.NotifyPropertyChanged("lPonto"); }

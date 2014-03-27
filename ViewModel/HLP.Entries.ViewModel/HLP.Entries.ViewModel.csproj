@@ -73,6 +73,7 @@
     <Compile Include="Commands\Gerais\AtribuicaoColetivaListaPrecoCommands.cs" />
     <Compile Include="Commands\Gerais\EspelhoPontoCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
+    <Compile Include="Commands\Gerais\HlpCalendarioPontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
     <Compile Include="Service References\wcf_Cliente\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -432,6 +433,7 @@
     <Compile Include="ViewModels\Gerais\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Funcionario_AcessoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Funcionario_Controle_Horas_PontoViewModel.cs" />
+    <Compile Include="ViewModels\Gerais\HlpCalendarioPontoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\MoedaViewModel.cs" />
     <Compile Include="ViewModels\Gerais\PlanoPagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Ramo_atividadeViewModel.cs" />

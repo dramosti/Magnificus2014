@@ -110,6 +110,7 @@
     <Compile Include="Models\Gerais\FabricanteModel.cs" />
     <Compile Include="Models\Gerais\Familia_produtoModel.cs" />
     <Compile Include="Models\Gerais\FuncionarioModel.cs" />
+    <Compile Include="Models\Gerais\FuncionarioPonto.cs" />
     <Compile Include="Models\Gerais\Funcionario_Controle_Horas_PontoModel.cs" />
     <Compile Include="Models\Gerais\MoedaModel.cs" />
     <Compile Include="Models\Gerais\Plano_pagamentoModel.cs" />
