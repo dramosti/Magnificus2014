@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -60,7 +61,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 MethodInfo method = tp.GetMethod("SetDataContext");
                 method.Invoke(win, new object[] { objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto) });
                 win.ShowDialog();
-                this.CarregaDados();
+                if (((bool)win.GetPropertyValue("bAlterou")))
+                {
+                    this.objViewModel.actionAtualizaWindowPrincipal.Invoke();
+                }
             }
             catch (Exception ex)
             {                

@@ -35,13 +35,31 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.objViewModel.alterarBaseCommand.CanExecute(parameter: null));
+
+            foreach (Control ctr in objViewModel.lControlsPonto)
+            {
+                try
+                {
+                    Type tipo = ctr.GetType();
+                    MethodInfo met = tipo.GetMethod(name: "RefreshWindowPrincipal");
+                    met.Invoke(ctr, new object[] { (Action)this.CarragaFormulario });
+                }
+                catch (Exception ex)
+                {                    
+                    throw;
+                }
+               
+            }
         }
+
+
 
 
         public void CarragaFormulario()
         {
             try
             {
+                this.objViewModel.currentModel.tsHorasTrabalhadas = new TimeSpan();
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
                     {
                         DateTime data = (DateTime)objViewModel.currentModel.data;
@@ -58,7 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                             switch (i)
                             {
-                                case 1: objViewModel.PrimeiroDia= dtSet.ToString("dddddd").ToUpper();
+                                case 1: objViewModel.PrimeiroDia = dtSet.ToString("dddddd").ToUpper();
                                     break;
                                 case 2: objViewModel.SegundoDia = dtSet.ToString("dddddd").ToUpper();
                                     break;
@@ -81,12 +99,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             MethodInfo met = tipo.GetMethod(name: "CarregaDados");
                             met.Invoke(controle, null);
                             controle.Visibility = System.Windows.Visibility.Visible;
+                            this.objViewModel.currentModel.tsHorasTrabalhadas = this.objViewModel.currentModel.tsHorasTrabalhadas + ((TimeSpan)controle.GetPropertyValue("totalHoras"));
                         }
                     }));
                 objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
-                objViewModel.currentModel.tsHorasTrabalhadas = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
-
-
+                objViewModel.currentModel.tsHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
             }
             catch (Exception ex)
             {

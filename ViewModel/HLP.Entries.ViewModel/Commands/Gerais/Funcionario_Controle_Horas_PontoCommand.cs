@@ -45,7 +45,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 List<Funcionario_Controle_Horas_PontoModel> lreturn = servico.Salvar(objViewModel.idFuncionario, new List<Funcionario_Controle_Horas_PontoModel>(objViewModel.lPonto));
                 this.objViewModel.lPonto = null;
                 this.objViewModel.lPonto =new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>(lreturn);
-
+                this.objViewModel.bAlterou = true;
                 ((Window)win).Close();
             }
             catch (Exception ex)

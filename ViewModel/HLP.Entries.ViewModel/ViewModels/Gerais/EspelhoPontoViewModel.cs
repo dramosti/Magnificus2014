@@ -25,6 +25,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public List<Control> lControlsPonto { get; set; }
         public EspelhoPontoCommand command;
 
+
         public EspelhoPontoViewModel(List<Control> lControlsPonto)
         {
             this.currentModel = new FuncionarioPonto();

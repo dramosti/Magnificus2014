@@ -13,6 +13,7 @@
         Title="WinEspelhoPonto" Height="700" Width="1000" NameView="vwFuncionario">
     <Window.Resources>
         <convert:dataEspelhoPontoConverter x:Key="dataConvert"/>
+        <convert:TimeSpanDiasToHoras x:Key="diasToHorasConvert"/>
         <Style x:Key="ButtonDias" TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -251,8 +252,8 @@
             <!--Components-->
 
             <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.iDiasTrabalhados}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.tsHorasTrabalhadas}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="3" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="5" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.tsHorasAtrabalhar, Converter={StaticResource diasToHorasConvert}}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="3" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.tsHorasTrabalhadas, Converter={StaticResource diasToHorasConvert}}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="5" Margin="0,3,0,3"></Components:CustomTextBox>
             <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="7" Margin="0,3,0,3"></Components:CustomTextBox>
             <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="9" Margin="0,3,0,3"></Components:CustomTextBox>
             <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="11" Margin="0,3,0,3"></Components:CustomTextBox>

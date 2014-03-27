@@ -36,9 +36,9 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
             this.ViewModel = new Funcionario_Controle_Horas_PontoViewModel(Convert.ToInt32(idFuncionario), Convert.ToDateTime(data));
             this.pFuncionario.Text = idFuncionario.ToString();
             this.dtPonto.Text = Convert.ToDateTime(data).ToShortDateString();
-
         }
 
+        public bool bAlterou { get { return this.ViewModel.bAlterou; } }
 
     }
 }

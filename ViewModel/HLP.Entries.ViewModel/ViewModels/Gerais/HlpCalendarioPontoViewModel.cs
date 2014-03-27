@@ -15,6 +15,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
     {
         public HlpCalendarioPontoCommand command;
         public ICommand LancamentoManualCommand { get; set; }
+        public Action actionAtualizaWindowPrincipal;
 
         public HlpCalendarioPontoViewModel()
         {

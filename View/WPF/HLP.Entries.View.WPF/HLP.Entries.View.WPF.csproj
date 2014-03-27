@@ -118,6 +118,7 @@
     <Compile Include="Converters\dataEspelhoPontoConverter.cs" />
     <Compile Include="Converters\HoraMinConverter.cs" />
     <Compile Include="Converters\ListaItensIsReadOnly.cs" />
+    <Compile Include="Converters\TimeSpanDiasToHoras.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
     </Compile>

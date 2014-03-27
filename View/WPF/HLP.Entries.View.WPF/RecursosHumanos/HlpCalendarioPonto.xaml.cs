@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
@@ -18,8 +19,8 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         {
             InitializeComponent();
             this.ViewModel = new HlpCalendarioPontoViewModel();
+              
         }
-
 
         private int _idFuncionario;
         public int idFuncionario
@@ -35,7 +36,6 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
             set { _dtPonto = value; this.ViewModel.dataPonto = value; }
         }
 
-
         public HlpCalendarioPontoViewModel ViewModel
         {
             get { return this.DataContext as HlpCalendarioPontoViewModel; }
@@ -47,8 +47,12 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
                 this.ViewModel.command.CarregaDados();
         }
 
-
         public TimeSpan totalHoras { get { return this.ViewModel.hTotal; } }
+
+        public void RefreshWindowPrincipal(Action method) 
+        {
+            this.ViewModel.actionAtualizaWindowPrincipal = method;
+        }
 
     }
 }

@@ -27,9 +27,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             this.data = data;
             this.idFuncionario = idFuncionario;
             command = new Funcionario_Controle_Horas_PontoCommand(this);
+            this.bAlterou = false;
         }
 
-
+        public bool bAlterou { get; set; }
 
 
 
