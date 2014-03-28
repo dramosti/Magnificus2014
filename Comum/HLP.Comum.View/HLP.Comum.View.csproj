@@ -144,7 +144,6 @@
     <Compile Include="Converters\boolMultiConverter.cs" />
     <Compile Include="Converters\boolToByteConverter.cs" />
     <Compile Include="Converters\ByteToIntConverter.cs" />
-    <Compile Include="Converters\ColumnVisibilityUcContatosVisibility.cs" />
     <Compile Include="Converters\ComboBoxDisplayConverter.cs" />
     <Compile Include="Converters\DateShortConverter.cs" />
     <Compile Include="Converters\DateTimeTimeSpanConverter.cs" />

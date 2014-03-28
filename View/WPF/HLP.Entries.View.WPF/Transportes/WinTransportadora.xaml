@@ -644,7 +644,10 @@
             </TabItem>
             <TabItem Header="Contatos">
                 <AdornerDecorator>
-                    <Components:HlpContatos>                        
+                    <Components:HlpContatos>
+                        <Components:HlpContatos.lColumns>
+                            <System:String>xNome</System:String>
+                        </Components:HlpContatos.lColumns>
                     </Components:HlpContatos>
                 </AdornerDecorator>
             </TabItem>

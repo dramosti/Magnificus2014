@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    public partial class ContatoModel : modelBase
+    public partial class ContatoModel
     {
         public ContatoModel()
-            : base("Contato")
         {
         }
 
@@ -113,16 +112,16 @@ namespace HLP.Comum.Model.Models
 
     #region Validação
 
-    public partial class ContatoModel
-    {
-        public override string this[string columnName]
-        {
-            get
-            {
-                return base[columnName];
-            }
-        }
-    }
+    //public partial class ContatoModel
+    //{
+    //    public override string this[string columnName]
+    //    {
+    //        get
+    //        {
+    //            return base[columnName];
+    //        }
+    //    }
+    //}
 
     #endregion
 }

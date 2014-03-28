@@ -158,7 +158,12 @@ namespace HLP.Comum.Model.Models
                         }
                     }
                     else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
-                        && (valor.ToString() == "" || valor == null))
+                        && (valor == null))
+                    {
+                        return "Necessário que campo possua valor!";
+                    }
+                    else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
+                    && (valor.ToString() == ""))
                     {
                         return "Necessário que campo possua valor!";
                     }
