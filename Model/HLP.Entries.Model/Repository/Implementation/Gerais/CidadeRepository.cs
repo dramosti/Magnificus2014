@@ -22,7 +22,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public UnitOfWorkBase UndTrabalho { get; set; }
         private DataAccessor<CidadeModel> regCidadeByUfAccessor;
         private DataAccessor<CidadeModel> regCidadeAccessor;
-        private DataAccessor<modelToComboBox> regCidadeToComboboxAccessor;
 
 
         public ObservableCollection<CidadeModel> GetCidadeByUf(int idUf)

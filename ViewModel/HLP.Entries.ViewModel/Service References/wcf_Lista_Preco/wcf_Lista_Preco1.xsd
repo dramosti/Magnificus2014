@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfHlpButtonHierarquiaStruct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HlpButtonHierarquiaStruct" type="tns:HlpButtonHierarquiaStruct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHlpButtonHierarquiaStruct" nillable="true" type="tns:ArrayOfHlpButtonHierarquiaStruct" />
+  <xs:complexType name="HlpButtonHierarquiaStruct">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="xId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="xOpcional" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HlpButtonHierarquiaStruct" nillable="true" type="tns:HlpButtonHierarquiaStruct" />
+  <xs:simpleType name="statusModel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="nenhum" />
+      <xs:enumeration value="criado" />
+      <xs:enumeration value="alterado" />
+      <xs:enumeration value="excluido" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="statusModel" nillable="true" type="tns:statusModel" />
+</xs:schema>

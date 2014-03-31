@@ -1,9 +1,11 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Comum.Resources.Models;
+using HLP.Comum.Resources.RecursosBases;
 using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,10 +36,13 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand CancAumVlrVendaCommand { get; set; }
         #endregion
 
+        public BackgroundWorker bwHierarquia;
+        public bool bTreeCarregada = true;
+        Lista_PrecoCommands comm;
 
         public Lista_PrecoViewModel()
         {            
-            Lista_PrecoCommands comm = new Lista_PrecoCommands(
+            comm = new Lista_PrecoCommands(
                 objViewModel: this);
 
             this.visAumentoVlr = Visibility.Collapsed;
@@ -47,7 +52,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             btnAtribuicaoColetiva.CommandParameter = "WinAtribuicaoColetivaListaPreco";
 
             Button btnAumVlr = new Button();
-            btnAumVlr.Content = "Aumento Vlr Preco/Custo";
+            btnAumVlr.Content = "Reaj. Vlr. Vend/Cust";
             btnAumVlr.Command = this.AumVlrVendaCustoCommand;
 
             this.Botoes.Children.Add(element: btnAtribuicaoColetiva);
@@ -170,6 +175,25 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             }
         }
 
+        private object _hierarquiaListaPreco;
+
+        public object hierarquiaListaPreco
+        {
+            get { return _hierarquiaListaPreco; }
+            set
+            {
+                _hierarquiaListaPreco = value;
+                base.NotifyPropertyChanged(propertyName: "hierarquiaListaPreco");
+            }
+        }
+
+        private modelToTreeView _lObjHierarquia;
+
+        public modelToTreeView lObjHierarquia
+        {
+            get { return _lObjHierarquia; }
+            set { _lObjHierarquia = value; }
+        }
 
         #endregion
 
@@ -184,6 +208,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
                 return false;
 
             return this.currentModel.lLista_preco.Count(i => i.idProduto == idProduto) > 1;
+        }
+
+        public void MontaTreeView()
+        {
+            if (!bTreeCarregada)
+            {
+                this.comm.MontraTreeView();
+            }
         }
 
         #endregion

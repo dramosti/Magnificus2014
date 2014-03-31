@@ -43,7 +43,6 @@ namespace HLP.Comum.View.Converters
 
                         return sReturn.Insert(3, "-");
                     }
-                    break;
                 case "cep":
                     {
                         value = value.ToString().Replace(oldValue: " ", newValue: "");
@@ -101,7 +100,7 @@ namespace HLP.Comum.View.Converters
                             return String.Format(format: "{0:dd/MM/yyyy}", arg0: dValue);
 
                         return DateTime.MinValue;
-                    } break;
+                    }
                 case "cpf":
                     {
                         string ret = "";

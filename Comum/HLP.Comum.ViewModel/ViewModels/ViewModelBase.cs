@@ -322,7 +322,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             {
                 if (FirstControl == null)
                 {
-                    List<Control> lControlesWindow = GetLogicalChildCollection<Control>(content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
+                    List<Control> lControlesWindow = StaticUtil.GetLogicalChildCollection<Control>(content).Where(c => c.GetType().BaseType.Name == "BaseControl").ToList();
                     if (lControlesWindow.Count > 0)
                     {
                         FirstControl = lControlesWindow.FirstOrDefault();
@@ -372,7 +372,7 @@ namespace HLP.Comum.ViewModel.ViewModels
                 if (SecondControl == null || FirstControl == null)
                     FindFirstAndSecondComponente(_panel);
 
-                if (GetLogicalChildCollection<TabControl>(_panel).ToList().Count() > 0)
+                if (StaticUtil.GetLogicalChildCollection<TabControl>(_panel).ToList().Count() > 0)
                 {
                     TabItem tb;
                     TabPagesAtivasModel.GetTabItemByControl((FirstControl as FrameworkElement), out tb);
@@ -397,33 +397,7 @@ namespace HLP.Comum.ViewModel.ViewModels
             //{
             //    SetFocus(_panel, ctr);
             //}
-        }
-
-        public List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
-        {
-            List<T> logicalCollection = new List<T>();
-            GetLogicalChildCollection(parent as DependencyObject, logicalCollection);
-            return logicalCollection;
-        }
-        private void GetLogicalChildCollection<T>(DependencyObject parent, List<T> logicalCollection) where T : DependencyObject
-        {
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
-           {
-               IEnumerable children = LogicalTreeHelper.GetChildren(parent);
-               foreach (object child in children)
-               {
-                   if (child is DependencyObject)
-                   {
-                       DependencyObject depChild = child as DependencyObject;
-                       if (child is T)
-                       {
-                           logicalCollection.Add(child as T);
-                       }
-                       GetLogicalChildCollection(depChild, logicalCollection);
-                   }
-               }
-           }));
-        }
+        }       
 
         public object GetParentWindow(object comp)
         {

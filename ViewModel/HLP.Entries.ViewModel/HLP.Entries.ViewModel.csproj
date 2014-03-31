@@ -100,6 +100,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Lista_Preco\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Produto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1523,6 +1528,31 @@
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.wsdl" />
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco7.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Produto\wcf_Produto.wsdl" />
     <None Include="Service References\wcf_Produto\wcf_Produto.xsd">
       <SubType>Designer</SubType>
@@ -1639,6 +1669,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
+    <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
     <WCFMetadataStorage Include="Service References\wcf_Rota\" />
     <WCFMetadataStorage Include="Service References\wcf_Site\" />
@@ -2449,6 +2480,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Lista_Preco\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

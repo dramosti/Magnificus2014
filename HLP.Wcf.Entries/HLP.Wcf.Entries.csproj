@@ -154,6 +154,7 @@
     <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
+    <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
     <Content Include="wcf_Site.svc" />
@@ -229,6 +230,7 @@
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
+    <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="Iwcf_Site.cs" />
@@ -419,6 +421,9 @@
     </Compile>
     <Compile Include="wcf_Funcionario_Controle_Horas_Ponto.svc.cs">
       <DependentUpon>wcf_Funcionario_Controle_Horas_Ponto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Lista_Preco.svc.cs">
+      <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>

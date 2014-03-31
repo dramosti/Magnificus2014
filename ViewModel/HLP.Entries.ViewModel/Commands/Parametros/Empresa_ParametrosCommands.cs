@@ -105,7 +105,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             try
             {
@@ -198,7 +198,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {

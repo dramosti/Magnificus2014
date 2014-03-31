@@ -22,6 +22,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
 
         private DataAccessor<Lista_Preco_PaiModel> regLista_Preco_PaiAccessor;
 
+        private DataAccessor<Lista_Preco_PaiModel> regAllLista_Preco_ByOrigem;
+
         public void Save(Lista_Preco_PaiModel objLista_Preco_Pai)
         {
 
@@ -71,6 +73,17 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             return regLista_Preco_PaiAccessor.Execute(idListaPrecoPai).FirstOrDefault();
         }
 
+        public List<Lista_Preco_PaiModel> GetAllListaPrecoOrigem(int idListaPrecoOrigem)
+        {
+            regAllLista_Preco_ByOrigem = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                "select * from Lista_Preco_Pai where idListaPrecoOrigem = " + idListaPrecoOrigem.ToString(),
+                new Parameters(UndTrabalho.dbPrincipal),
+                MapBuilder<Lista_Preco_PaiModel>.MapAllProperties()
+                .DoNotMap(i => i.status).Build());
+
+            return regAllLista_Preco_ByOrigem.Execute().ToList();
+        }
+
         public List<int> GetAllIdListaPreco()
         {
             List<int> ids = new List<int>();
@@ -93,7 +106,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
         {
             DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand("select idListaPrecoPai from Lista_Preco_Pai where stPreferencial = 1");
             return UndTrabalho.dbPrincipal.ExecuteScalar(command).ToInt32();
-        }        
+        }
 
         public void BeginTransaction()
         {

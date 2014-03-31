@@ -35,7 +35,7 @@ namespace HLP.Wcf.Entries
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

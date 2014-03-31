@@ -5,7 +5,7 @@
              xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters"
+             xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters"             
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -16,7 +16,12 @@
             <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
             <convertLocal:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convertLocal:MaskConverter x:Key="maskConverter"/>
+            <convertLocal:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+            <CompositeCollection x:Key="collection">
+                <System:String>0-COMERCIAL</System:String>
+                <System:String>1-ENTREGA</System:String>
+            </CompositeCollection>
             <ObjectDataProvider x:Key="lresultCidades" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
                     <System:String>vwCidadeToComboBox</System:String>
@@ -57,7 +62,7 @@
                 <DataGridTemplateColumn Header="Tipo de Endereco" Width="140" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox 
+                            <ComboBox                                
                                 IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
                                 SelectedIndex="{Binding stTipoEndereco, Mode=TwoWay, ValidatesOnDataErrors=True,
                                       NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
@@ -74,6 +79,11 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridComboBoxColumn x:Name="cbxTemplate" Header="Tipo de Endereço" ItemsSource="{StaticResource collection}"
+                                        SelectedItemBinding="{Binding stTipoEndereco, Converter={StaticResource selectedItemToTextConverter},
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterParameter={StaticResource collection}}"                        
+                                        >
+                </DataGridComboBoxColumn>
                 <DataGridTextColumn Header="CEP" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus,

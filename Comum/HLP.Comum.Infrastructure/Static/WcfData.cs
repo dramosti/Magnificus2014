@@ -31,7 +31,7 @@ namespace HLP.Comum.Infrastructure.Static
         public static string xEnderWeb
         {
             get { return "http://hlpsistemas.no-ip.org:8081/wcf/"; }
-            set { _xEnderLocal = value; }
+            set { _xEnderWeb = value; }
         }       
 
     }

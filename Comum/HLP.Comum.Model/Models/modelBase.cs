@@ -10,7 +10,6 @@ using HLP.Comum.Model.StaticModels;
 using HLP.Comum.Model.Components;
 using HLP.Comum.Infrastructure.Static;
 using System.Data.SqlTypes;
-using HLP.Comum.Infrastructure.Static;
 
 namespace HLP.Comum.Model.Models
 {
@@ -119,7 +118,7 @@ namespace HLP.Comum.Model.Models
                 if (sMessage == null)
                     if (columnName.ToUpper().Contains("XEMAIL"))
                         if (valor != null)
-                            if (valor != "")
+                            if (valor.ToString() != "")
                                 if (!(valor.ToString()).IsValidEmailAddress())
                                     sMessage = "Email inválido.";
 
@@ -159,7 +158,12 @@ namespace HLP.Comum.Model.Models
                         }
                     }
                     else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
-                        && (valor == "" || valor == null))
+                        && (valor == null))
+                    {
+                        return "Necessário que campo possua valor!";
+                    }
+                    else if (campo.IS_NULLABLE == "NO" && (campo.DATA_TYPE == null || campo.DATA_TYPE == "UQ")
+                    && (valor.ToString() == ""))
                     {
                         return "Necessário que campo possua valor!";
                     }
