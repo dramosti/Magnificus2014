@@ -109,12 +109,10 @@
                             <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar.png"/>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar_Disabled.png"/>
+                            <Trigger Property="IsEnabled" Value="False">                                
                                 <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar_MouseOver.png"/>
+                            <Trigger Property="IsMouseOver" Value="True">                                
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -137,12 +135,10 @@
                             <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Fechar.png"/>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar_Disabled.png"/>
+                            <Trigger Property="IsEnabled" Value="False">                                
                                 <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar_MouseOver.png"/>
+                            <Trigger Property="IsMouseOver" Value="True">                                
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -165,12 +161,10 @@
                             <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Reabrir.png"/>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar_Disabled.png"/>
+                            <Trigger Property="IsEnabled" Value="False">                                
                                 <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Carregar_MouseOver.png"/>
+                            <Trigger Property="IsMouseOver" Value="True">                                
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -251,9 +245,9 @@
             Text="{Binding currentModel.data, Converter={StaticResource dataConvert}}"
             Grid.Column="3" Grid.Row="2" Margin="3,1,0,3" Grid.ColumnSpan="2"/>
         <DockPanel Width="33" Grid.Column="4" Grid.Row="1" Focusable="False" HorizontalAlignment="Left" Margin="4,0,0,0">
-            <Button x:Name="btnAnt" Height="20" Width="15" Focusable="False" Template="{StaticResource ButtonArrowNavigationLeft}">
+            <Button x:Name="btnAnt" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Back" Template="{StaticResource ButtonArrowNavigationLeft}">
             </Button>
-            <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Template="{StaticResource ButtonArrowNavigationRight}">
+            <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Next" Template="{StaticResource ButtonArrowNavigationRight}">
             </Button>
         </DockPanel>
         <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="5,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Carregar" Style="{StaticResource ButtonRefresh}"/>
@@ -328,7 +322,8 @@
                 <RowDefinition Height="10"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="160"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Column="1" Grid.Row="1" Margin="5,0,0,5">
@@ -408,6 +403,45 @@
                     </Button.Effect>
                 </Button>
                 <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Cálculo = ( Total do saldo de banco de horas + Horas acumuladas no periodo )" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsSaldoAteMomento, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="4"  Margin="5,0,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="110"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                <Button Height="20" Margin="0,0,0,3" Content="Legenda" Style="{StaticResource ButtonComponents}">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                    </Button.Effect>
+                </Button>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Ellipses-->
+                    
+                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="1" Margin="0,3,0,3" Style="{StaticResource EllipseVerde}"></Ellipse>
+                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="2" Margin="0,3,0,3" Style="{StaticResource EllipseAzul}"></Ellipse>
+                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="3" Margin="0,3,0,3" Style="{StaticResource EllipseVermelha}"></Ellipse>
+                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="4" Margin="0,3,0,3" Style="{StaticResource EllipsePreta}"></Ellipse>
+                    
+                    <!--Labels-->
+                    
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="1" Height="20" Margin="3,0,0,0" Text="Normal" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="2" Height="20" Margin="3,0,0,0" Text="Abono/Férias" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="3" Height="20" Margin="3,0,0,0" Text="Falta" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="4" Height="20" Margin="3,0,0,0" Text="Sem ponto" VerticalAlignment="Center"></Components:CustomTextBlock>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
