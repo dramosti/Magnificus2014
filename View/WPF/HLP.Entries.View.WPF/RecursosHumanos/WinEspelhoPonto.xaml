@@ -10,7 +10,7 @@
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinEspelhoPonto"
-        Title="WinEspelhoPonto" Height="700" Width="1000" NameView="vwFuncionario">
+        Title="WinEspelhoPonto" Height="700" Width="1300" NameView="vwFuncionario">
     <Window.Resources>
         <convert:dataEspelhoPontoConverter x:Key="dataConvert"/>
         <convert:TimeSpanDiasToHoras x:Key="diasToHorasConvert"/>
@@ -188,8 +188,9 @@
             <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Template="{StaticResource ButtonArrowNavigationRight}">
             </Button>
         </DockPanel>
-        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="0,0,0,3" HorizontalAlignment="Right" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Atualizar" Style="{StaticResource ButtonRefresh}"/>
-        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="0,0,0,3" HorizontalAlignment="Right" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="6" Content="Finalizar" Style="{StaticResource ButtonRefresh}"/>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="0,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Atualizar" Style="{StaticResource ButtonRefresh}"/>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandFecharMes}" Margin="0,0,0,3" HorizontalAlignment="Right" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="6" Content="Finalizar" Style="{StaticResource ButtonRefresh}"/>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandReabrirMes}" Margin="0,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="6" Content="Reabrir" Style="{StaticResource ButtonRefresh}"/>
         <Grid Margin="0,3,0,0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
@@ -267,16 +268,17 @@
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-
             </Grid.RowDefinitions>
+            <Border Grid.ColumnSpan="10" Grid.RowSpan="20"></Border>
             <!--Label-->
-
-            <Components:CustomTextBlock  Text="Dias trabalhados no período" VerticalAlignment="Center" Height="20" Margin="0,0,0,0"></Components:CustomTextBlock>
-            <Components:CustomTextBlock  Text="Total de horas à trabalhar" VerticalAlignment="Center" Height="20" Margin="0,0,0,0" Grid.Row="2"></Components:CustomTextBlock>
-            <Components:CustomTextBlock  Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,0" Grid.Row="4"></Components:CustomTextBlock>
-            <Components:CustomTextBlock  Text="Horas acumuladas no periodo" VerticalAlignment="Center" Height="20" Margin="0,0,0,0" Grid.Row="6"></Components:CustomTextBlock>
-            <Components:CustomTextBlock  Text="Saldo do Banco de Horas" VerticalAlignment="Center" Height="20" Margin="0,0,0,0" Grid.Row="8"></Components:CustomTextBlock>
-            <Components:CustomTextBlock  Text="Saldo do banco até o momento" VerticalAlignment="Center" Height="20" Margin="0,0,0,0" Grid.Row="10"></Components:CustomTextBlock>
+            
+            
+            <Components:CustomTextBlock  Text="Dias trabalhados no período" Height="20"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Total de horas à trabalhar" VerticalAlignment="Center" Height="20" Grid.Row="2"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Grid.Row="4"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Horas acumuladas no periodo" VerticalAlignment="Center" Height="20" Grid.Row="6"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Saldo do Banco de Horas" VerticalAlignment="Center" Height="20" Grid.Row="8"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Saldo do banco até o momento" VerticalAlignment="Center" Height="20" Grid.Row="10"></Components:CustomTextBlock>
 
             <!--Components-->
 

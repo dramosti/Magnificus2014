@@ -377,7 +377,7 @@
                                             </Components:CustomTextBox>
                                         </Grid>                                   
                                 </Expander>
-                                <Expander IsExpanded="True" Margin="0,10,0,0" Header="Status" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
+                                <Expander IsExpanded="True" Header="Status" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="10"></ColumnDefinition>
@@ -388,13 +388,13 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="10"></RowDefinition>
                                             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="200"></RowDefinition>
                                         </Grid.RowDefinitions>
 
                                         <!--Label-->
 
                                         <Components:CustomTextBlock VerticalAlignment="Center" Text="Ativo" Grid.Column="1" Grid.Row="1" Height="20" ></Components:CustomTextBlock>
-                                        <Components:CustomTextBlock VerticalAlignment="Center" Text="Memorando" Grid.Column="1" Grid.Row="2" Height="20"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock VerticalAlignment="Top" Text="Memorando" Grid.Column="1" Grid.Row="2" Height="20"></Components:CustomTextBlock>
 
                                         <!--Components-->
 
@@ -405,7 +405,7 @@
 										ToolTip="Informar se a transportadora esta ou não ativa no sistema.">
                                         </Components:CustomCheckBox>
                                         <Components:CustomTextBox 
-                                        Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
+                                        Grid.Column="2" Grid.Row="2" Height="140" Margin="0,0,0,3"
                                         Text="{Binding currentModel.xMemorando, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
 										ToolTip="Insira qualquer observação adicional sobre o cliente ou fornecedor.">
