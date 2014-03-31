@@ -72,7 +72,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Ellipse Grid.Column="2" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Center" Fill="Red"/>
+        <Ellipse Grid.Column="2" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource EllipseVermelha}"/>
         <ListBox ItemsSource="{Binding lPonto}" IsEnabled="True" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Style="{DynamicResource ListBoxStyle1}" BorderBrush="#FF4774B5">
             <ListBox.ItemTemplate>
                 <DataTemplate>

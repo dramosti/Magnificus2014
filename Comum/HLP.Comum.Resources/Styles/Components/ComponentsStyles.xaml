@@ -1331,4 +1331,45 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="EllipseAzul" TargetType="{x:Type Ellipse}">
+        <Setter Property="Fill">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF8EADDA" Offset="0.261"/>
+                    <GradientStop Color="#FF4774B5" Offset="1"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="EllipseVermelha" TargetType="{x:Type Ellipse}">
+        <Setter Property="Fill">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFCB2A2A" Offset="0.996"/>
+                    <GradientStop Color="#FFD89292" Offset="0.187"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="EllipseVerde" TargetType="{x:Type Ellipse}">
+        <Setter Property="Fill">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFDCF5D2" Offset="0.212"/>
+                    <GradientStop Color="#FF55DA23" Offset="1"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="EllipsePreta" TargetType="{x:Type Ellipse}">
+        <Setter Property="Fill">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="0.996"/>
+                    <GradientStop Color="#FF919191"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
