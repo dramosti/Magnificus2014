@@ -33,5 +33,9 @@ namespace HLP.Wcf.Entries
         void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras);
         [OperationContract]
         List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia);
+        [OperationContract]
+        TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes);
+        [OperationContract]
+        void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes);
     }
 }

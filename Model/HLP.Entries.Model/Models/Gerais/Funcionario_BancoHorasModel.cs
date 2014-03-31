@@ -34,6 +34,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idFuncionario");
             }
         }
+
         private string _xMesAno;
         [ParameterOrder(Order = 3)]
         public string xMesAno
@@ -45,9 +46,10 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "xMesAno");
             }
         }
-        private TimeSpan _tBancoHoras;
+
+        private DateTime _tBancoHoras;
         [ParameterOrder(Order = 4)]
-        public TimeSpan tBancoHoras
+        public DateTime tBancoHoras
         {
             get { return _tBancoHoras; }
             set

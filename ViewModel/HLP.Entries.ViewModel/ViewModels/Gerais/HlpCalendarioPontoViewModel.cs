@@ -19,8 +19,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         public HlpCalendarioPontoViewModel()
         {
-            command = new HlpCalendarioPontoCommand(this);            
-            
+            command = new HlpCalendarioPontoCommand(this);
+
         }
 
         private ObservableCollection<EspelhoPontoModel> _lPonto = new ObservableCollection<EspelhoPontoModel>();
@@ -62,8 +62,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public string dataPonto
         {
             get { return _dataPonto; }
-            set { 
-                _dataPonto = value; 
+            set
+            {
+                _dataPonto = value;
                 this.NotifyPropertyChanged("dataPonto");
                 if (value != "")
                     iDia = Convert.ToDateTime(value).Day.ToString().PadLeft(2, '0');
@@ -77,6 +78,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             set { _iDia = value; this.NotifyPropertyChanged("iDia"); }
         }
 
+        public bool _bMesFechado = false;
 
         #region NotifyPropertyChanged
 

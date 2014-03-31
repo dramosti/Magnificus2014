@@ -139,6 +139,24 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             return new TimeSpan();
 
         }
+
+        public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
+        {
+            switch (Sistema.bOnline)
+            {
+                case TipoConexao.OnlineRede:
+                    {
+                        return this.servicoRede.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
+                    }
+                case TipoConexao.OnlineInternet:
+                    {
+                        return this.servicoInternet.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
+                    }
+            }
+            return new TimeSpan();
+
+        }
+
         public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras)
         {
             if (Sistema.bOnline == TipoConexao.OnlineRede)
@@ -148,6 +166,17 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             else if (Sistema.bOnline == TipoConexao.Offline)
             {
                 this.servicoInternet.SaveBancoHoras(objFuncionario_BancoHoras);
+            }
+        }
+        public void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes)
+        {
+            if (Sistema.bOnline == TipoConexao.OnlineRede)
+            {
+                this.servicoRede.DeleteBancoHorasMes(idFuncionario,dtMes);
+            }
+            else if (Sistema.bOnline == TipoConexao.Offline)
+            {
+                this.servicoInternet.DeleteBancoHorasMes(idFuncionario, dtMes);
             }
         }
     }

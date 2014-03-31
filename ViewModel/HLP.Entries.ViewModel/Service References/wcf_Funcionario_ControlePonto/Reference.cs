@@ -281,6 +281,24 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDiaRes" +
             "ponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>> GetHorasAtrabalharDiaAsync(int idFuncionario, System.DateTime dtDia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
+            "al", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
+            "alResponse")]
+        System.TimeSpan GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
+            "al", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
+            "alResponse")]
+        System.Threading.Tasks.Task<System.TimeSpan> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMesRespo" +
+            "nse")]
+        void DeleteBancoHorasMes(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMesRespo" +
+            "nse")]
+        System.Threading.Tasks.Task DeleteBancoHorasMesAsync(int idFuncionario, System.DateTime dtMes);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -396,6 +414,22 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>> GetHorasAtrabalharDiaAsync(int idFuncionario, System.DateTime dtDia) {
             return base.Channel.GetHorasAtrabalharDiaAsync(idFuncionario, dtDia);
+        }
+        
+        public System.TimeSpan GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
+        }
+        
+        public System.Threading.Tasks.Task<System.TimeSpan> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetTotalBancoHorasMesAtualAsync(idFuncionario, dtMes);
+        }
+        
+        public void DeleteBancoHorasMes(int idFuncionario, System.DateTime dtMes) {
+            base.Channel.DeleteBancoHorasMes(idFuncionario, dtMes);
+        }
+        
+        public System.Threading.Tasks.Task DeleteBancoHorasMesAsync(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.DeleteBancoHorasMesAsync(idFuncionario, dtMes);
         }
     }
 }
