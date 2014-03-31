@@ -29,6 +29,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
+                List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> lReturn = servico.GetAllFuncionario_Controle_Horas_Ponto(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
+
+                if (lReturn.Count == 0)
+                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.EMBRANCO;
+                else if (lReturn.Where(c => c.stFalta == 1).Count() == lReturn.Count())
+                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.FALTOU;
+                else if (lReturn.Where(c => c.stFeriasAbono == 1).Count() == lReturn.Count())
+                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.ABONO;
+                else
+                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.NORMAL;
+
                 if (objViewModel.idFuncionario != 0 && objViewModel.dataPonto != "")
                     this.objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>(servico.GetHorasTrabalhadasDia
                        (

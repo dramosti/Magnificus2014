@@ -80,6 +80,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         public bool _bMesFechado = false;
 
+        public bool _bFalta = false;
+
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -91,5 +93,16 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
         #endregion
+
+        private StatusDia _stDia = StatusDia.EMBRANCO;
+
+        public StatusDia stDia
+        {
+            get { return _stDia; }
+            set { _stDia = value; this.NotifyPropertyChanged("stDia"); }
+        }
+
+
+        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO };
     }
 }
