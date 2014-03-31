@@ -48,5 +48,30 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 ParameterBase<Funcionario_BancoHorasModel>.SetParameterValue(objFuncionario_BancoHoras));
             }
         }
+
+        public TimeSpan GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
+        {
+            if (regAllFuncionario_BancoHorasAccessor == null)
+            {
+                regAllFuncionario_BancoHorasAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                    string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) = {1}", idFuncionario,
+                    Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
+                    .DoNotMap(c => c.status).Build());
+            }
+            TimeSpan tsTotalRet = new TimeSpan();
+            foreach (var item in regAllFuncionario_BancoHorasAccessor.Execute().ToList())
+            {
+                tsTotalRet = tsTotalRet + item.tBancoHoras;
+            }
+            return tsTotalRet;
+        }
+
+        public void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes)
+        {
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(
+                 UndTrabalho.dbTransaction,
+                 System.Data.CommandType.Text,
+               string.Format("Delete from Funcionario_BancoHoras Where idFuncionario = {0} and CAST(xMesAno as int) = {1} ", idFuncionario, Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())));
+        }
     }
 }

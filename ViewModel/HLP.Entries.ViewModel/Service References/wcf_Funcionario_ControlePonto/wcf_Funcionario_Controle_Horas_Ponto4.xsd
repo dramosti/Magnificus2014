@@ -160,4 +160,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTotalBancoHorasMesAtual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTotalBancoHorasMesAtualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="GetTotalBancoHorasMesAtualResult" type="q11:duration" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBancoHorasMes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+        <xs:element minOccurs="0" name="dtMes" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBancoHorasMesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

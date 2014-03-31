@@ -19,7 +19,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         {
             InitializeComponent();
             this.ViewModel = new HlpCalendarioPontoViewModel();
-              
+
         }
 
         private int _idFuncionario;
@@ -49,10 +49,17 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
 
         public TimeSpan totalHoras { get { return this.ViewModel.hTotal; } }
 
-        public void RefreshWindowPrincipal(Action method) 
+        public void RefreshWindowPrincipal(Action method)
         {
             this.ViewModel.actionAtualizaWindowPrincipal = method;
         }
+
+
+        public bool bMesFechado
+        {
+            set { this.ViewModel._bMesFechado = value; }
+        }
+
 
     }
 }
