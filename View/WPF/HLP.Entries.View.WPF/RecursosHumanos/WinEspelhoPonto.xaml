@@ -14,30 +14,7 @@
     <Window.Resources>
         <convert:dataEspelhoPontoConverter x:Key="dataConvert"/>
         <convert:TimeSpanDiasToHoras x:Key="diasToHorasConvert"/>
-        <Style x:Key="ButtonDias" TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="Black" BorderThickness="1,0,1,0" Background="#FF4774B5" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ButtonDiasSabadoDomingo" TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="Black" BorderThickness="1,0,1,0" Background="#FFCB3838" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
+        <convert:ChangeStyleButtonConverter x:Key="changeStyleButton"/>
         <!--Style Arrow Navigation Left HlpNavigation-->
 
         <ControlTemplate x:Key="ButtonArrowNavigationLeft" TargetType="{x:Type Button}">
@@ -209,7 +186,7 @@
                 <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition Height="100"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Content="{Binding PrimeiroDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
+            <Button x:Name="btn1" Content="{Binding PrimeiroDia}" Focusable="False" Style="{Binding ElementName=btn1, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
             <Button Grid.Column="1" Content="{Binding SegundoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
             <Button Grid.Column="2" Content="{Binding TerceiroDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>
             <Button Grid.Column="3" Content="{Binding QuartoDia}" Focusable="False" Style="{StaticResource ButtonDias}" Height="27" Margin="0,0,0,3"></Button>

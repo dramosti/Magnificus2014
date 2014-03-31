@@ -115,6 +115,7 @@
     <Compile Include="Comercial\WinTipoProduto.xaml.cs">
       <DependentUpon>WinTipoProduto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ChangeStyleButtonConverter.cs" />
     <Compile Include="Converters\dataEspelhoPontoConverter.cs" />
     <Compile Include="Converters\HoraMinConverter.cs" />
     <Compile Include="Converters\ListaItensIsReadOnly.cs" />
