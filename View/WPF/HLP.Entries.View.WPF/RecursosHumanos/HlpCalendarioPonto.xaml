@@ -80,12 +80,11 @@
                             <ColumnDefinition Width="15"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Foreground="Black" FontFamily="Calibri" HorizontalAlignment="Center" Text="{Binding Path=tEntrada, Converter={StaticResource horaMinConv}}" FontSize="12"/>
-                        <TextBlock Grid.Column="2" Foreground="Black" FontFamily="Calibri" HorizontalAlignment="Center" Text="{Binding Path=tSaida, Converter={StaticResource horaMinConv}}" FontSize="12"/>
-                    </Grid>
-                </DataTemplate>
+                        <TextBlock x:Name="textblock" Grid.Column="0" Foreground="Black" FontFamily="Calibri" HorizontalAlignment="Center" Text="{Binding Path=tEntrada, Converter={StaticResource horaMinConv}}" FontSize="12"/>
+                        <TextBlock Grid.Column="2" Foreground="Black" FontFamily="Calibri" HorizontalAlignment="Center" Text="{Binding Path=tSaida, Converter={StaticResource horaMinConv}}" FontSize="12"/>                        
+                    </Grid>                    
+                </DataTemplate>                
             </ListBox.ItemTemplate>
         </ListBox>
-
     </Grid>
 </UserControl>
