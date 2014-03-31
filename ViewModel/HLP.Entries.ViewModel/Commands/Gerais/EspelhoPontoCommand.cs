@@ -45,10 +45,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     met.Invoke(ctr, new object[] { (Action)this.CarragaFormulario });
                 }
                 catch (Exception ex)
-                {                    
+                {
                     throw;
                 }
-               
+
             }
         }
 
@@ -104,6 +104,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     }));
                 objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
                 objViewModel.currentModel.tsHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                objViewModel.currentModel.tsHorasAcumuladasNoPeriodo = objViewModel.currentModel.tsHorasTrabalhadas.Subtract(objViewModel.currentModel.tsHorasAtrabalhar);
+                objViewModel.currentModel.tsSaldoBancoHoras = servico.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                objViewModel.currentModel.tsSaldoAteMomento = objViewModel.currentModel.tsSaldoBancoHoras.Add(objViewModel.currentModel.tsHorasAcumuladasNoPeriodo);
+
+
             }
             catch (Exception ex)
             {

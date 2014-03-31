@@ -111,6 +111,7 @@
     <Compile Include="Models\Gerais\Familia_produtoModel.cs" />
     <Compile Include="Models\Gerais\FuncionarioModel.cs" />
     <Compile Include="Models\Gerais\FuncionarioPonto.cs" />
+    <Compile Include="Models\Gerais\Funcionario_BancoHorasModel.cs" />
     <Compile Include="Models\Gerais\Funcionario_Controle_Horas_PontoModel.cs" />
     <Compile Include="Models\Gerais\MoedaModel.cs" />
     <Compile Include="Models\Gerais\Plano_pagamentoModel.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Repository\Implementation\Gerais\FabricanteRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Familia_produtoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Familia_Produto_ClassesRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Funcionario_BancoHorasRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Funcionario_Controle_Horas_PontoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\MoedaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Plano_pagamentoRepository.cs" />
@@ -269,6 +271,7 @@
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documento_oper_validaRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_operacaoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\IFuncionario_BancoHorasRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Controle_Horas_PontoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICalendarioRepository.cs" />

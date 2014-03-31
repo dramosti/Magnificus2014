@@ -30,7 +30,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 if (objViewModel.idFuncionario != 0 && objViewModel.dataPonto != "")
-                    this.objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>(servico.GetHorasAtrabalhadasDia
+                    this.objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>(servico.GetHorasTrabalhadasDia
                        (
                        idFuncionario: objViewModel.idFuncionario,
                        dtDia: Convert.ToDateTime(objViewModel.dataPonto)

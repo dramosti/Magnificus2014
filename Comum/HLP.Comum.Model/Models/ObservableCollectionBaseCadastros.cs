@@ -88,5 +88,32 @@ namespace HLP.Comum.Model.Models
 
             this.RemoveItensExcluidos();
         }
+
+        protected override void ClearItems()
+        {
+            if (idExcluidos == null)
+                idExcluidos = new List<int>();
+            object pk;
+            foreach (var item in this)
+            {
+                foreach (var p in item.GetType().GetProperties())
+                {
+                    pk = p.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
+
+                    if (pk != null)
+                    {
+                        if (((PrimaryKey)pk).isPrimary)
+                        {
+                            int? value = (int?)(p.GetValue(obj: item));
+                            if (value != null)
+                                idExcluidos.Add(item: (int)value);
+                            break;
+                            //idExcluidos.Add(item: (int)item.GetType().GetProperty(name: xCampoId).GetValue(obj: item));
+                        }
+                    }
+                }
+            }
+            base.ClearItems();
+        }
     }
 }

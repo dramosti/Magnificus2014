@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
+namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
     using System.Runtime.Serialization;
     using System;
     
@@ -18,6 +18,8 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EspelhoPontoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -25,10 +27,10 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.statusModel statusField;
+        private HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -41,7 +43,7 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -54,7 +56,7 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.statusModel status {
+        public HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.statusModel status {
             get {
                 return this.statusField;
             }
@@ -187,7 +189,7 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto")]
     public interface Iwcf_Funcionario_Controle_Horas_Ponto {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/Save", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveResponse")]
@@ -222,13 +224,13 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
             "le_Horas_PontoResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel>> GetAllFuncionario_Controle_Horas_PontoAsync(int idFuncionario, System.DateTime data);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDiaR" +
-            "esponse")]
-        System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, System.DateTime dtDia);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDiaRe" +
+            "sponse")]
+        System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, System.DateTime dtDia);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDiaR" +
-            "esponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel>> GetHorasAtrabalhadasDiaAsync(int idFuncionario, System.DateTime dtDia);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDiaRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel>> GetHorasTrabalhadasDiaAsync(int idFuncionario, System.DateTime dtDia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Contro" +
             "le_Horas_PontoDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Contro" +
@@ -239,15 +241,55 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
             "le_Horas_PontoDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Contro" +
             "le_Horas_PontoDiaResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel>> GetAllFuncionario_Controle_Horas_PontoDiaAsync(int idFuncionario, System.DateTime dtDia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosM" +
+            "es", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosM" +
+            "esResponse")]
+        int GetTotalDiasTrabalhadosMes(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosM" +
+            "es", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosM" +
+            "esResponse")]
+        System.Threading.Tasks.Task<int> GetTotalDiasTrabalhadosMesAsync(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMesRes" +
+            "ponse")]
+        System.TimeSpan GetHorasATrabalharMes(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMesRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<System.TimeSpan> GetHorasATrabalharMesAsync(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHoras", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasRespon" +
+            "se")]
+        System.TimeSpan GetTotalBancoHoras(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHoras", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasRespon" +
+            "se")]
+        System.Threading.Tasks.Task<System.TimeSpan> GetTotalBancoHorasAsync(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHoras", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHorasResponse")]
+        void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHoras", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHorasResponse")]
+        System.Threading.Tasks.Task SaveBancoHorasAsync(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDiaRes" +
+            "ponse")]
+        System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, System.DateTime dtDia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDiaRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>> GetHorasAtrabalharDiaAsync(int idFuncionario, System.DateTime dtDia);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface Iwcf_Funcionario_Controle_Horas_PontoChannel : HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto, System.ServiceModel.IClientChannel {
+    public interface Iwcf_Funcionario_Controle_Horas_PontoChannel : HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Iwcf_Funcionario_Controle_Horas_PontoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto>, HLP.Entries.ViewModel.wcf_FuncionarioControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto {
+    public partial class Iwcf_Funcionario_Controle_Horas_PontoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto>, HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto {
         
         public Iwcf_Funcionario_Controle_Horas_PontoClient() {
         }
@@ -300,12 +342,12 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
             return base.Channel.GetAllFuncionario_Controle_Horas_PontoAsync(idFuncionario, data);
         }
         
-        public System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, System.DateTime dtDia) {
-            return base.Channel.GetHorasAtrabalhadasDia(idFuncionario, dtDia);
+        public System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, System.DateTime dtDia) {
+            return base.Channel.GetHorasTrabalhadasDia(idFuncionario, dtDia);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel>> GetHorasAtrabalhadasDiaAsync(int idFuncionario, System.DateTime dtDia) {
-            return base.Channel.GetHorasAtrabalhadasDiaAsync(idFuncionario, dtDia);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel>> GetHorasTrabalhadasDiaAsync(int idFuncionario, System.DateTime dtDia) {
+            return base.Channel.GetHorasTrabalhadasDiaAsync(idFuncionario, dtDia);
         }
         
         public System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, System.DateTime dtDia) {
@@ -314,6 +356,46 @@ namespace HLP.Entries.ViewModel.wcf_FuncionarioControlePonto {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel>> GetAllFuncionario_Controle_Horas_PontoDiaAsync(int idFuncionario, System.DateTime dtDia) {
             return base.Channel.GetAllFuncionario_Controle_Horas_PontoDiaAsync(idFuncionario, dtDia);
+        }
+        
+        public int GetTotalDiasTrabalhadosMes(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetTotalDiasTrabalhadosMesAsync(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetTotalDiasTrabalhadosMesAsync(idFuncionario, dtMes);
+        }
+        
+        public System.TimeSpan GetHorasATrabalharMes(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetHorasATrabalharMes(idFuncionario, dtMes);
+        }
+        
+        public System.Threading.Tasks.Task<System.TimeSpan> GetHorasATrabalharMesAsync(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetHorasATrabalharMesAsync(idFuncionario, dtMes);
+        }
+        
+        public System.TimeSpan GetTotalBancoHoras(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetTotalBancoHoras(idFuncionario, dtMes);
+        }
+        
+        public System.Threading.Tasks.Task<System.TimeSpan> GetTotalBancoHorasAsync(int idFuncionario, System.DateTime dtMes) {
+            return base.Channel.GetTotalBancoHorasAsync(idFuncionario, dtMes);
+        }
+        
+        public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras) {
+            base.Channel.SaveBancoHoras(objFuncionario_BancoHoras);
+        }
+        
+        public System.Threading.Tasks.Task SaveBancoHorasAsync(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras) {
+            return base.Channel.SaveBancoHorasAsync(objFuncionario_BancoHoras);
+        }
+        
+        public System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, System.DateTime dtDia) {
+            return base.Channel.GetHorasAtrabalharDia(idFuncionario, dtDia);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>> GetHorasAtrabalharDiaAsync(int idFuncionario, System.DateTime dtDia) {
+            return base.Channel.GetHorasAtrabalharDiaAsync(idFuncionario, dtDia);
         }
     }
 }

@@ -46,6 +46,7 @@ namespace HLP.Dependencies
             Bind<IFillComboBoxRepository>().To<FillComboBoxRepository>();
 
             Bind<IFuncionario_Controle_Horas_PontoRepository>().To<Funcionario_Controle_Horas_PontoRepository>();
+            Bind<IFuncionario_BancoHorasRepository>().To<Funcionario_BancoHorasRepository>();
             //Bind<IConfiguraBaseRepository>().To<ConfiguraBaseRepository>();
             //Bind<IConfigFormulariosRepository>().To<ConfigFormulariosRepository>();
             //Bind<IRelatoriosRepository>().To<RelatoriosRepository>();

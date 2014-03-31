@@ -12,10 +12,13 @@ using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
-    public class Funcionario_Controle_Horas_PontoViewModel : ViewModelBase<Funcionario_Controle_Horas_PontoCommand>
+    public class Funcionario_Controle_Horas_PontoViewModel : ViewModelBase<Funcionario_Controle_Horas_PontoModel>
     {
         
         #region Icommands
+        public ICommand commandFeriasAbono { get; set; }
+        public ICommand commandFaltou { get; set; }
+
         public ICommand commandCarregar { get; set; }
         public ICommand commandSalvar { get; set; }
         public ICommand commandCancelar { get; set; }
@@ -52,6 +55,34 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _data; }
             set { _data = value; base.NotifyPropertyChanged("data"); }
         }
+
+        
+        private bool _bFaltou;
+
+        public bool bFaltou
+        {
+            get { return _bFaltou; }
+            set
+            {
+                _bFaltou = value;
+                base.NotifyPropertyChanged(propertyName: "bFaltou");
+            }
+        }
+
+        
+        private bool _bAbono;
+
+        public bool bAbono
+        {
+            get { return _bAbono; }
+            set
+            {
+                _bAbono = value;
+                base.NotifyPropertyChanged(propertyName: "bAbono");
+            }
+        }
+        
+        
 
 
     }

@@ -17,6 +17,8 @@ namespace HLP.Wcf.Entries
     {
         [Inject]
         public HLP.Entries.Model.Repository.Interfaces.Gerais.IFuncionario_Controle_Horas_PontoRepository funcionario_Controle_Horas_PontoRepository { get; set; }
+        [Inject]
+        public HLP.Entries.Model.Repository.Interfaces.Gerais.IFuncionario_BancoHorasRepository funcionario_BancoHorasRepository { get; set; }
 
         public wcf_Funcionario_Controle_Horas_Ponto()
         {
@@ -78,10 +80,11 @@ namespace HLP.Wcf.Entries
             return this.funcionario_Controle_Horas_PontoRepository.GetAllFuncionario_Controle_Horas_Ponto(idFuncionario, data);
         }
 
-        public List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dtDia)
+        public List<HLP.Entries.Model.Models.Gerais.EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, DateTime dtDia)
         {
-            return this.funcionario_Controle_Horas_PontoRepository.GetHorasAtrabalhadasDia(idFuncionario, dtDia);
+            return this.funcionario_Controle_Horas_PontoRepository.GetHorasTrabalhadasDia(idFuncionario, dtDia);
         }
+      
 
         public List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
         {
@@ -96,6 +99,22 @@ namespace HLP.Wcf.Entries
         public TimeSpan GetHorasATrabalharMes(int idFuncionario, DateTime dtMes)
         {
             return funcionario_Controle_Horas_PontoRepository.GetHorasATrabalharMes(idFuncionario, dtMes);
+        }
+
+        public TimeSpan GetTotalBancoHoras(int idFuncionario, DateTime dtMes)
+        {
+          return  funcionario_BancoHorasRepository.GetTotalBancoHoras(idFuncionario, dtMes);
+        }
+
+        public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras)
+        {
+            funcionario_BancoHorasRepository.Save(objFuncionario_BancoHoras);
+        }
+
+
+        public List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
+        {
+            return funcionario_Controle_Horas_PontoRepository.GetHorasAtrabalharDia(idFuncionario, dtDia);
         }
     }
 }

@@ -34,17 +34,47 @@
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_Ponto_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoResponse" />
   </wsdl:message>
-  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHorasAtrabalhadasDia" />
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasTrabalhadasDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasTrabalhadasDia" />
   </wsdl:message>
-  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHorasAtrabalhadasDiaResponse" />
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasTrabalhadasDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasTrabalhadasDiaResponse" />
   </wsdl:message>
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoDia" />
   </wsdl:message>
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllFuncionario_Controle_Horas_PontoDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalDiasTrabalhadosMes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalDiasTrabalhadosMes" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalDiasTrabalhadosMes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalDiasTrabalhadosMesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasATrabalharMes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasATrabalharMes" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasATrabalharMes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasATrabalharMesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalBancoHoras_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalBancoHoras" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalBancoHoras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTotalBancoHorasResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_SaveBancoHoras_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveBancoHoras" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_SaveBancoHoras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveBancoHorasResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalharDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasAtrabalharDia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalharDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorasAtrabalharDiaResponse" />
   </wsdl:message>
   <wsdl:portType name="Iwcf_Funcionario_Controle_Horas_Ponto">
     <wsdl:operation name="Save">
@@ -63,13 +93,33 @@
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_Ponto" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_Ponto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_Ponto_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetHorasAtrabalhadasDia">
-      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalhadasDia_OutputMessage" />
+    <wsdl:operation name="GetHorasTrabalhadasDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasTrabalhadasDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasTrabalhadasDia_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllFuncionario_Controle_Horas_PontoDia">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetAllFuncionario_Controle_Horas_PontoDia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDiasTrabalhadosMes">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosMes" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalDiasTrabalhadosMes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosMesResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalDiasTrabalhadosMes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorasATrabalharMes">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMes" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasATrabalharMes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMesResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasATrabalharMes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalBancoHoras">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHoras" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalBancoHoras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetTotalBancoHoras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBancoHoras">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHoras" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_SaveBancoHoras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHorasResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_SaveBancoHoras_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorasAtrabalharDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalharDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_GetHorasAtrabalharDia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Funcionario_Controle_Horas_Ponto" type="tns:Iwcf_Funcionario_Controle_Horas_Ponto">
@@ -110,8 +160,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetHorasAtrabalhadasDia">
-      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalhadasDia" style="document" />
+    <wsdl:operation name="GetHorasTrabalhadasDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasTrabalhadasDia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -121,6 +171,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllFuncionario_Controle_Horas_PontoDia">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetAllFuncionario_Controle_Horas_PontoDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalDiasTrabalhadosMes">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalDiasTrabalhadosMes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorasATrabalharMes">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasATrabalharMes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalBancoHoras">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBancoHoras">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/SaveBancoHoras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorasAtrabalharDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetHorasAtrabalharDia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

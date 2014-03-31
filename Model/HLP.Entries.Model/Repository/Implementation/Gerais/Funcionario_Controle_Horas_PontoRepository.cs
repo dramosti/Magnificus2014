@@ -21,7 +21,12 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         private DataAccessor<Funcionario_Controle_Horas_PontoModel> regFuncionario_Controle_Horas_PontoAccessor;
         private DataAccessor<Funcionario_Controle_Horas_PontoModel> regAllFuncionario_Controle_Horas_PontoAccessor;
+        private DataAccessor<Funcionario_Controle_Horas_PontoModel> regAllFuncionario_Controle_Horas_PontoAccessorDia;
+        private DataAccessor<Calendario_DetalheModel> regCalendario_DetalheModelAccessorDia;
 
+        private DataAccessor<Funcionario_Controle_Horas_PontoModel> regHorasAtrabalhadasDiaAccessorDia;
+
+        
         public void Save(Funcionario_Controle_Horas_PontoModel objFuncionario_Controle_Horas_Ponto)
         {
             if (objFuncionario_Controle_Horas_Ponto.idFuncionarioControleHorasPonto == null)
@@ -77,28 +82,28 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
         {
-            if (regAllFuncionario_Controle_Horas_PontoAccessor == null)
+            if (regAllFuncionario_Controle_Horas_PontoAccessorDia == null)
             {
-                regAllFuncionario_Controle_Horas_PontoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto "
+                regAllFuncionario_Controle_Horas_PontoAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto "
                     + string.Format("where idFuncionario = {0} and dRelogioPonto = '{1}'", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
                                 MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             }
-            return regAllFuncionario_Controle_Horas_PontoAccessor.Execute().ToList();
+            return regAllFuncionario_Controle_Horas_PontoAccessorDia.Execute().ToList();
         }
 
-        public List<EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dRelogioPonto)
+        public List<EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto)
         {
             try
             {
-                if (regAllFuncionario_Controle_Horas_PontoAccessor == null)
+                if (regHorasAtrabalhadasDiaAccessorDia == null)
                 {
-                    regAllFuncionario_Controle_Horas_PontoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto where idFuncionario = @idFuncionario and dRelogioPonto = @dRelogioPonto",
+                    regHorasAtrabalhadasDiaAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto where idFuncionario = @idFuncionario and dRelogioPonto = @dRelogioPonto",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idFuncionario")
                                     .AddParameter<DateTime>("dRelogioPonto"),
                                     MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
                 }
-                var dados = regAllFuncionario_Controle_Horas_PontoAccessor.Execute(idFuncionario, dRelogioPonto).ToList();
+                var dados = regHorasAtrabalhadasDiaAccessorDia.Execute(idFuncionario, dRelogioPonto).ToList();
                 EspelhoPontoModel objEspelhoPontoModel;
                 List<EspelhoPontoModel> lret = new List<EspelhoPontoModel>();
                 if (dados.Count() > 1)
@@ -123,6 +128,24 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 throw ex;
             }
+        }
+
+        public List<Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
+        {
+            if (regCalendario_DetalheModelAccessorDia == null)
+            {
+                regCalendario_DetalheModelAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                    string.Format("select * from Funcionario inner join Calendario "
+                                    + "on Funcionario.idCalendario = Calendario.idCalendario inner join Calendario_Detalhe "
+                                    + "on Calendario.idCalendario = Calendario_Detalhe.idCalendario "
+                                    + "where Funcionario.idFuncionario = {0} and Calendario_Detalhe.dCalendario = '{1}' ", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
+                                MapBuilder<Calendario_DetalheModel>.MapAllProperties()
+                                .DoNotMap(i=>i.idCalendarioDetalhe)
+                                .DoNotMap(i => i.dCalendario)
+                                .DoNotMap(i => i.idCalendario)
+                                .DoNotMap(i => i.status).Build());
+            }
+            return regCalendario_DetalheModelAccessorDia.Execute().ToList();
         }
         private List<TimeSpan> GetListHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
         {
