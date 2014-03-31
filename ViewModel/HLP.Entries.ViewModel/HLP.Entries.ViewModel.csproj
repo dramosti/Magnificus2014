@@ -482,6 +482,10 @@
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HLP.Wcf.Entries\HLP.Wcf.Entries.csproj">
       <Project>{9c776abf-bcda-4a4e-b14e-cf35510c5ca2}</Project>
       <Name>HLP.Wcf.Entries</Name>

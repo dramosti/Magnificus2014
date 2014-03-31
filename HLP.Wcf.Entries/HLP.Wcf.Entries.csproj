@@ -150,6 +150,7 @@
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Silverlight.js" />
+    <Content Include="wcf_CamposBaseDados.svc" />
     <Content Include="wcf_Cliente.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_Funcionario.svc" />
@@ -226,6 +227,7 @@
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
@@ -410,6 +412,9 @@
     <Compile Include="serviceUnidadeMedida.svc.cs">
       <DependentUpon>serviceUnidadeMedida.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_CamposBaseDados.svc.cs">
+      <DependentUpon>wcf_CamposBaseDados.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Cliente.svc.cs">
       <DependentUpon>wcf_Cliente.svc</DependentUpon>
     </Compile>
@@ -468,6 +473,10 @@
     <ProjectReference Include="..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
       <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>

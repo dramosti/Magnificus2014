@@ -31,6 +31,8 @@ namespace HLP.Dependencies
     {
         public override void Load()
         {
+            Bind<HLP.Base.ClassesBases.UnitOfWorkBase>().ToConstant(new UnitOfWork2());
+
             Bind<UnitOfWorkBase>().ToConstant(new UnitOfWork());
             ResolveRepositories();
             ResolveServices();
@@ -38,6 +40,8 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+            Bind<HLP.Entries.Model.Repository.Interfaces.Components.IHlpPesquisaPadraoRepository>()
+                .To<HLP.Entries.Model.Repository.Implementation.Components.HlpPesquisaPadraoRepository>();
 
             Bind<IHlpEnderecoRepository>().To<HlpEnderecoRepository>();
             Bind<ILoginRepository>().To<LoginRepository>();
@@ -195,7 +199,7 @@ namespace HLP.Dependencies
         protected void ResolveServices()
         {
 
-           //Bind<IConfigPesquisaService>().To<ConfigPesquisaService>();
+            //Bind<IConfigPesquisaService>().To<ConfigPesquisaService>();
             //Bind<IPesquisaPadraoService>().To<PesquisaPadraoService>();
             //Bind<IConfiguraBaseService>().To<ConfiguraBaseService>();
             //Bind<IConfigFormulariosService>().To<ConfigFormulariosService>();
