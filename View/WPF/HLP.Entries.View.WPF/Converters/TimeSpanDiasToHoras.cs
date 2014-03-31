@@ -15,9 +15,14 @@ namespace HLP.Entries.View.WPF.Converters
             if (value != null)
             {
                 int iTotHoras = (((TimeSpan)value).Days * 24) + ((TimeSpan)value).Hours;
-                return iTotHoras.ToString().PadLeft(2,'0') + ":" 
-                    + ((TimeSpan)value).Minutes.ToString().PadLeft(2, '0')
-                    + ((TimeSpan)value).Seconds.ToString().PadLeft(2, '0');
+
+                int iMinutes;
+                if (((TimeSpan)value).Minutes<0)
+                    iMinutes = ((TimeSpan)value).Minutes * -1;
+                else
+                    iMinutes = ((TimeSpan)value).Minutes;
+                return  iTotHoras.ToString().PadLeft(2, '0') + ":"
+                    + iMinutes.ToString().PadLeft(2, '0');
             }
             return null;
         }

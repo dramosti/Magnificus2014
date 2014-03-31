@@ -10,7 +10,7 @@
         xmlns:src="clr-namespace:HLP.Entries.ViewModel.ViewModels;assembly=HLP.Entries.ViewModel"
         xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
 		x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinEspelhoPonto"
-        Title="WinEspelhoPonto" Height="700" Width="1000" NameView="vwFuncionario">
+        Title="WinEspelhoPonto" Height="700" Width="1300" NameView="vwFuncionario">
     <Window.Resources>
         <convert:dataEspelhoPontoConverter x:Key="dataConvert"/>
         <convert:TimeSpanDiasToHoras x:Key="diasToHorasConvert"/>
@@ -83,8 +83,36 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>       
+        </Style>
         <Style x:Key="ButtonRefresh" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="border" Grid.RowSpan="2" BorderBrush="{x:Null}" SnapsToDevicePixels="true"/>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Row="1" TextElement.FontSize="16" HorizontalAlignment="Center" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Image x:Name="ImageAtualizar" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar.png"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar_Disabled.png"/>
+                                <Setter Property="Opacity" TargetName="contentPresenter" Value="0.36"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" TargetName="ImageAtualizar" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Atualizar_MouseOver.png"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFC31F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonFecharMes" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -117,7 +145,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="5"></RowDefinition>
             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+            <RowDefinition Height="25" MaxHeight="25"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="17"></RowDefinition>
             <RowDefinition Height="Auto" MinHeight="83"></RowDefinition>
@@ -125,9 +153,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
             <ColumnDefinition Width="150*" MaxWidth="150" MinWidth="150"></ColumnDefinition>
-            <ColumnDefinition Width="365*" MaxWidth="400" MinWidth="300"></ColumnDefinition>
+            <ColumnDefinition Width="366*" MaxWidth="400" MinWidth="300"></ColumnDefinition>
             <ColumnDefinition Width="50*" MaxWidth="50" MinWidth="50"/>
-            <ColumnDefinition Width="41*" MaxWidth="40" MinWidth="40"/>
+            <ColumnDefinition Width="40*" MaxWidth="40" MinWidth="40"/>
             <ColumnDefinition Width="141" MaxWidth="150" MinWidth="70"/>
             <ColumnDefinition Width="225*" MaxWidth="225" MinWidth="225"/>
             <ColumnDefinition Width="10"/>
@@ -141,7 +169,7 @@
         <!--Components-->
 
         <Components:HlpPesquisa
-                    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,0,5,3" Height="20"
+                    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,1,5,3"
 					Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"					 
                     ToolTip="Informar o representante do orçamento de vendas, o sistema traz automaticamente o representante cadastrado no cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="0">
@@ -160,7 +188,9 @@
             <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Template="{StaticResource ButtonArrowNavigationRight}">
             </Button>
         </DockPanel>
-        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="-4,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Atualizar" Style="{StaticResource ButtonRefresh}"/>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding carregarCommand}" Margin="0,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Atualizar" Style="{StaticResource ButtonRefresh}"/>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandFecharMes}" Margin="0,0,0,3" HorizontalAlignment="Right" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="6" Content="Finalizar" Style="{StaticResource ButtonRefresh}"/>
+        <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandReabrirMes}" Margin="0,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="6" Content="Reabrir" Style="{StaticResource ButtonRefresh}"/>
         <Grid Margin="0,3,0,0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
@@ -224,40 +254,42 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-
             </Grid.RowDefinitions>
+            <Border Grid.ColumnSpan="10" Grid.RowSpan="20"></Border>
             <!--Label-->
-
-            <Components:CustomTextBlock Text="Dias trabalhados no período" VerticalAlignment="Center" Height="20" Margin="0,0,0,3"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas à trabalhar" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="2"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="4"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Horas acumuladas no periodo" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="6"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="8"></Components:CustomTextBlock>
-            <Components:CustomTextBlock Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Margin="0,0,0,3" Grid.Row="10"></Components:CustomTextBlock>
+            
+            
+            <Components:CustomTextBlock  Text="Dias trabalhados no período" Height="20"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Total de horas à trabalhar" VerticalAlignment="Center" Height="20" Grid.Row="2"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Total de horas trabalhadas" VerticalAlignment="Center" Height="20" Grid.Row="4"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Horas acumuladas no periodo" VerticalAlignment="Center" Height="20" Grid.Row="6"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Saldo do Banco de Horas" VerticalAlignment="Center" Height="20" Grid.Row="8"></Components:CustomTextBlock>
+            <Components:CustomTextBlock  Text="Saldo do banco até o momento" VerticalAlignment="Center" Height="20" Grid.Row="10"></Components:CustomTextBlock>
 
             <!--Components-->
 
-            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.iDiasTrabalhados}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="1" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.tsHorasAtrabalhar, Converter={StaticResource diasToHorasConvert}}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="3" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="{Binding currentModel.tsHorasTrabalhadas, Converter={StaticResource diasToHorasConvert}}" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="5" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="7" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="9" Margin="0,3,0,3"></Components:CustomTextBox>
-            <Components:CustomTextBox IsEnabled="False" Text="" VerticalAlignment="Center" Width="70" HorizontalAlignment="Left" Height="18" Grid.Row="11" Margin="0,3,0,3"></Components:CustomTextBox>
+            <Components:CustomTextBox ToolTip="Total de dias trabalhados no mês" IsEnabled="False" Text="{Binding currentModel.iDiasTrabalhados}"  Width="70" HorizontalAlignment="Left" Grid.Row="1" />
+            <Components:CustomTextBox ToolTip="Total de Horas a trabalhar, baseado no calendário configurado no Cadastro do Funcionário." IsEnabled="False" Text="{Binding currentModel.tsHorasAtrabalhar, Converter={StaticResource diasToHorasConvert}}"  Width="70" HorizontalAlignment="Left"  Grid.Row="3" ></Components:CustomTextBox>
+            <Components:CustomTextBox ToolTip="Total de horas trabalhadas no mês." IsEnabled="False" Text="{Binding currentModel.tsHorasTrabalhadas, Converter={StaticResource diasToHorasConvert}}"  Width="70" HorizontalAlignment="Left" Grid.Row="5" ></Components:CustomTextBox>
+            <Components:CustomTextBox ToolTip="Cálculo = ( Total de horas trabalhadas - Total de horas à trabalhar ) " IsEnabled="False" Text="{Binding currentModel.tsHorasAcumuladasNoPeriodo, Converter={StaticResource diasToHorasConvert}}"  Width="70" HorizontalAlignment="Left"  Grid.Row="7" ></Components:CustomTextBox>
+            <Components:CustomTextBox ToolTip="Total do saldo de banco de horas, salvo na base de dados." IsEnabled="False" Text="{Binding currentModel.tsSaldoBancoHoras, Converter={StaticResource diasToHorasConvert}}"  Width="70" HorizontalAlignment="Left"  Grid.Row="9" ></Components:CustomTextBox>
+            <Components:CustomTextBox ToolTip="Cálculo = ( Total do saldo de banco de horas + Horas acumuladas no periodo )" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding currentModel.tsSaldoAteMomento, Converter={StaticResource diasToHorasConvert}}"  Width="70" Grid.Row="11" ></Components:CustomTextBox>
 
         </Grid>
     </Grid>
 </runtime:WindowsBase >
+    

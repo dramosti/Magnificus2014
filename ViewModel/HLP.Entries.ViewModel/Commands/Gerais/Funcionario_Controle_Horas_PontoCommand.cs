@@ -24,6 +24,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.CarregarDados();
             objViewModel.commandSalvar = new RelayCommand(execute: paramExec => this.Salvar(win: paramExec),
                  canExecute: paramCanExec => true);
+
+            objViewModel.commandFaltou = new RelayCommand(execute: paramExec => this.CarregaFalta(paramExec),
+                 canExecute: paramCanExec => this.CanCarregaFalta());
+
+            objViewModel.commandFeriasAbono = new RelayCommand(execute: paramExec => this.CarregaAbono(paramExec),
+                 canExecute: paramCanExec => this.CanCarregaAbono());
         }
 
 
@@ -44,18 +50,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
                 List<Funcionario_Controle_Horas_PontoModel> lreturn = servico.Salvar(objViewModel.idFuncionario, new List<Funcionario_Controle_Horas_PontoModel>(objViewModel.lPonto));
                 this.objViewModel.lPonto = null;
-                this.objViewModel.lPonto =new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>(lreturn);
+                this.objViewModel.lPonto = new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>(lreturn);
                 this.objViewModel.bAlterou = true;
                 ((Window)win).Close();
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
 
         }
-
-
         public void CarregarDados()
         {
             try
@@ -64,6 +68,18 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 if (result != null)
                 {
                     objViewModel.lPonto = new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>(result);
+
+                    if (objViewModel.lPonto.Count > 0)
+                    {
+                        if (objViewModel.lPonto.Where(c => c.stFeriasAbono == (byte)1).Count() == objViewModel.lPonto.Count())
+                        {
+                            objViewModel.bAbono = true;
+                        }
+                        if (objViewModel.lPonto.Where(c => c.stFalta == (byte)1).Count() == objViewModel.lPonto.Count())
+                        {
+                            objViewModel.bFaltou = true;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -73,6 +89,91 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
+
+        void CarregaFalta(object bChecked)
+        {
+            if ((bool)bChecked)
+                this.CarregarLista(tipo.FALTOU);
+            else
+                this.objViewModel.lPonto.Clear();
+        }
+
+        bool CanCarregaFalta()
+        {
+            if (objViewModel.bAbono)
+                return false;
+            else
+                return true;
+        }
+
+        void CarregaAbono(object bChecked)
+        {
+            if ((bool)bChecked)
+                this.CarregarLista(tipo.ABONO);
+            else
+                this.objViewModel.lPonto.Clear();
+        }
+
+        bool CanCarregaAbono()
+        {
+            if (objViewModel.bFaltou)
+                return false;
+            else
+                return true;
+        }
+
+
+        void CarregarLista(tipo stTipo)
+        {
+            objViewModel.lPonto.Clear();
+            int iCount = 1;
+            List<Calendario_DetalheModel> lReturn = servico.GetHorasAtrabalhadarDia(objViewModel.idFuncionario, objViewModel.data);
+            if (lReturn.Count > 0)
+            {
+                foreach (var item in lReturn)
+                {
+                    if (item.dHoraInicio != null)
+                    {
+                        objViewModel.lPonto.Add(new Funcionario_Controle_Horas_PontoModel
+                        {
+                            dRelogioPonto = objViewModel.data,
+                            hRelogioPonto = item.dHoraInicio.TimeOfDay,
+                            idFuncionario = objViewModel.idFuncionario,
+                            idSequenciaInterna = iCount,
+                            stFeriasAbono = (stTipo == tipo.ABONO) ? (byte)1 : (byte)0,
+                            stFalta= (stTipo == tipo.FALTOU) ? (byte)1 : (byte)0,
+                            xJustificativa = (stTipo == tipo.ABONO) ? "ABONO / FÉRIAS" : "FALTA"
+                        });
+                        iCount++;
+                    }
+                    if (item.dHoraTermino != null)
+                    {
+                        objViewModel.lPonto.Add(new Funcionario_Controle_Horas_PontoModel
+                        {
+                            dRelogioPonto = objViewModel.data,
+                            hRelogioPonto = item.dHoraTermino.TimeOfDay,
+                            idFuncionario = objViewModel.idFuncionario,
+                            idSequenciaInterna = iCount,
+                            stFeriasAbono = (stTipo == tipo.ABONO) ? (byte)1 : (byte)0,
+                            stFalta = (stTipo == tipo.FALTOU) ? (byte)1 : (byte)0,
+                            xJustificativa = (stTipo == tipo.ABONO) ? "ABONO / FÉRIAS" : "FALTA"
+                        });
+                        iCount++;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Não há calendário para esse dia", "AVISO");
+                if (stTipo == tipo.ABONO)
+                    objViewModel.bAbono = false;
+                else
+                    objViewModel.bFaltou = false;
+            }
+        }
+
+
+        private enum tipo { ABONO, FALTOU };
 
 
     }

@@ -36,6 +36,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.objViewModel.alterarBaseCommand.CanExecute(parameter: null));
 
+            this.objViewModel.commandFecharMes = new RelayCommand(execute: paramExec => this.SaveBancoHoras(),
+                canExecute: paramCan => this.CanSaveBancoHoras());
+
+            this.objViewModel.commandReabrirMes = new RelayCommand(execute: paramExec => this.ReabrirMes(),
+              canExecute: paramCan => this.CanReabrirMes());
+
+
             foreach (Control ctr in objViewModel.lControlsPonto)
             {
                 try
@@ -45,10 +52,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     met.Invoke(ctr, new object[] { (Action)this.CarragaFormulario });
                 }
                 catch (Exception ex)
-                {                    
-                    throw;
+                {
+                    throw ex;
                 }
-               
+
             }
         }
 
@@ -59,6 +66,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
+                this.objViewModel.tsBancoHorasFechado = servico.GetTotalBancoHorasMesAtual(objViewModel.currentModel.idFuncionario,
+                 objViewModel.currentModel.data);
+
                 this.objViewModel.currentModel.tsHorasTrabalhadas = new TimeSpan();
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
                     {
@@ -95,6 +105,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             Control controle = objViewModel.lControlsPonto.FirstOrDefault(c => c.Name == ("d" + i.ToString()));
                             controle.SetPropertyValue("idFuncionario", objViewModel.currentModel.idFuncionario);
                             controle.SetPropertyValue("dtPonto", dtSet.ToShortDateString());
+                            controle.SetPropertyValue("bMesFechado", (objViewModel.tsBancoHorasFechado == null ? false : true));
                             Type tipo = controle.GetType();
                             MethodInfo met = tipo.GetMethod(name: "CarregaDados");
                             met.Invoke(controle, null);
@@ -104,6 +115,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     }));
                 objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
                 objViewModel.currentModel.tsHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                objViewModel.currentModel.tsHorasAcumuladasNoPeriodo = objViewModel.currentModel.tsHorasTrabalhadas.Subtract(objViewModel.currentModel.tsHorasAtrabalhar);
+                objViewModel.currentModel.tsSaldoBancoHoras = servico.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                objViewModel.currentModel.tsSaldoAteMomento = objViewModel.currentModel.tsSaldoBancoHoras.Add(objViewModel.currentModel.tsHorasAcumuladasNoPeriodo);
+
+
             }
             catch (Exception ex)
             {
@@ -112,7 +128,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
 
         }
-
         public bool CanCarregaFormulario()
         {
             bool bReturn = false;
@@ -133,7 +148,57 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
+            this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;            
+
         }
+
+        private void SaveBancoHoras()
+        {
+            try
+            {
+                Model.Models.Gerais.Funcionario_BancoHorasModel funcBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
+                funcBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
+                funcBancoHoras.tBancoHoras = objViewModel.currentModel.data.Add(objViewModel.currentModel.tsSaldoAteMomento);
+                funcBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
+                servico.SaveBancoHoras(funcBancoHoras);
+                this.CarragaFormulario();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        bool CanSaveBancoHoras()
+        {
+            if (objViewModel.tsBancoHorasFechado == null && objViewModel.currentModel != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void ReabrirMes()
+        {
+            try
+            {
+                servico.DeleteBancoHorasMes(objViewModel.currentModel.idFuncionario,
+                        objViewModel.currentModel.data);
+                this.CarragaFormulario();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        private bool CanReabrirMes()
+        {
+            if (objViewModel.tsBancoHorasFechado != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 }

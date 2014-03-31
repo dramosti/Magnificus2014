@@ -20,6 +20,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand navegarCommand { get; set; }
         public ICommand carregarCommand { get; set; }
         public ICommand commandAlterar { get; set; }
+
+        public ICommand commandFecharMes { get; set; }
+        public ICommand commandReabrirMes { get; set; }
         #endregion
 
         public List<Control> lControlsPonto { get; set; }
@@ -32,7 +35,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             this.lControlsPonto = lControlsPonto;
             command = new EspelhoPontoCommand(this);
         }
-        public EspelhoPontoViewModel() 
+        public EspelhoPontoViewModel()
         {
         }
 
@@ -77,16 +80,22 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _SextoDia; }
             set { _SextoDia = value; this.NotifyPropertyChanged("SextoDia"); }
         }
-        
+
         private string _SetimoDia;
         public string SetimoDia
         {
-            get { return _SetimoDia;  }
+            get { return _SetimoDia; }
             set { _SetimoDia = value; this.NotifyPropertyChanged("SetimoDia"); }
         }
-        
-        
-        
-        
+
+
+        private TimeSpan? _tsBancoHorasFechado = null;
+        public TimeSpan? tsBancoHorasFechado
+        {
+            get { return _tsBancoHorasFechado; }
+            set { _tsBancoHorasFechado = value; }
+        }
+
+
     }
 }

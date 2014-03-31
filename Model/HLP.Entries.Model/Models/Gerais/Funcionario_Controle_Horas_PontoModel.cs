@@ -113,6 +113,17 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "stFeriasAbono");
             }
         }
+        private byte _stFalta;
+        [ParameterOrder(Order = 10)]
+        public byte stFalta
+        {
+            get { return _stFalta; }
+            set
+            {
+                _stFalta = value;
+                base.NotifyPropertyChanged(propertyName: "stFalta");
+            }
+        }
 
     }
 

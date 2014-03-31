@@ -85,12 +85,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_FuncionarioControlePonto\Reference.cs">
+    <Compile Include="Service References\wcf_Funcionario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Funcionario\Reference.cs">
+    <Compile Include="Service References\wcf_Funcionario_ControlePonto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -528,6 +528,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Situacao_tributaria_pisModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Tipo_operacaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ContatoModel1.datasource" />
@@ -1468,25 +1469,6 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
       <SubType>Designer</SubType>
@@ -1507,6 +1489,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.wsdl" />
@@ -1669,8 +1670,8 @@
     <WCFMetadataStorage Include="Service References\ufService\" />
     <WCFMetadataStorage Include="Service References\wcf_Cliente\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
-    <WCFMetadataStorage Include="Service References\wcf_FuncionarioControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
@@ -2458,21 +2459,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioControlePonto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioControlePonto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_FuncionarioControlePonto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Site\wcf_Site.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2483,6 +2469,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Site\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -19,6 +19,7 @@
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioControleHorasPonto" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idSequenciaInterna" type="xs:int" />
+          <xs:element minOccurs="0" name="stFalta" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stFeriasAbono" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="xJustificativa" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -44,4 +45,37 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EspelhoPontoModel" nillable="true" type="tns:EspelhoPontoModel" />
+  <xs:complexType name="Funcionario_BancoHorasModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
+          <xs:element minOccurs="0" name="idFuncionarioBancoHoras" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="tBancoHoras" type="ser:duration" />
+          <xs:element minOccurs="0" name="xMesAno" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Funcionario_BancoHorasModel" nillable="true" type="tns:Funcionario_BancoHorasModel" />
+  <xs:complexType name="ArrayOfCalendario_DetalheModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalendario_DetalheModel" nillable="true" type="tns:ArrayOfCalendario_DetalheModel" />
+  <xs:complexType name="Calendario_DetalheModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dCalendario" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dHoraInicio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dHoraTermino" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idCalendario" type="xs:int" />
+          <xs:element minOccurs="0" name="idCalendarioDetalhe" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Calendario_DetalheModel" nillable="true" type="tns:Calendario_DetalheModel" />
 </xs:schema>

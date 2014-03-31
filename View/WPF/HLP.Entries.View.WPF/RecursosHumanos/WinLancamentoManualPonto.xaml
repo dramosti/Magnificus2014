@@ -8,7 +8,7 @@
              xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
              mc:Ignorable="d" x:Name="winLancamentoManual"            
-             d:DesignHeight="400" d:DesignWidth="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{x:Null}" Title="Lançamento Manual do Ponto">
+             d:DesignHeight="400" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{x:Null}" Title="Lançamento Manual do Ponto">
     <Window.Resources>
         <CollectionViewSource x:Key="colecaoPonto" Source="{Binding Path=lPonto}">
             <CollectionViewSource.SortDescriptions>
@@ -76,18 +76,19 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" MaxHeight="23"/>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="397*" MaxWidth="300" MinWidth="300"/>
-                <ColumnDefinition Width="103*" MaxWidth="100" MinWidth="100"/>
-                <ColumnDefinition Width="96*" MaxWidth=" 90" MinWidth="90"/>
-                <ColumnDefinition Width="199*"/>
+                <ColumnDefinition Width="300*" MaxWidth="300" MinWidth="300"/>
+                <ColumnDefinition Width="100*" MaxWidth="100" MinWidth="100"/>
+                <ColumnDefinition Width="119*" MaxWidth="160" MinWidth="90"/>
+                <ColumnDefinition Width="96*"/>
+                <ColumnDefinition Width="179*"/>
             </Grid.ColumnDefinitions>
             <Components:HlpPesquisa 
                                     Grid.Column="0" Grid.Row="1"
-                                    x:Name="pFuncionario" Margin="5,0,5,3" Height="20"
+                                    x:Name="pFuncionario" 
 									nameWindow="WinFuncionario"									
 								    WidthLabel="0" TableView="vwFuncionario" FieldPesquisa="ID" Caption="Funcionário" IsEnabled="False">
                 <Components:HlpPesquisa.Items>
@@ -97,8 +98,24 @@
             </Components:HlpPesquisa>
             <TextBlock Text="Data" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Left" Width="25"/>
             <TextBlock Text="Nome do Funcionário" Grid.Column="0" Margin="5,0,0,0"></TextBlock>
-            <TextBlock x:Name="dtPonto" Grid.Row="1" Grid.Column="1" Margin="10,0,0,3" />
-            <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="4"
+            <TextBox IsEnabled="False" x:Name="dtPonto" Grid.Row="1" Grid.Column="1" Margin="10,0,5,0" />
+            <TextBlock Text="Abono / Férias" Grid.Column="2" Margin="5,0,0,0"></TextBlock>
+            <Components:CustomCheckBox 
+                x:Name="cbxAbono"
+                IsChecked="{Binding bAbono}"
+                Command="{Binding commandFeriasAbono}"
+                CommandParameter="{Binding ElementName=cbxAbono, Path=IsChecked}"
+                Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" />
+            <TextBlock Text="Falta" Grid.Column="3" Margin="5,0,0,0"></TextBlock>
+            <Components:CustomCheckBox x:Name="cbxFaltou" 
+                                       IsChecked="{Binding bFaltou}"
+                                       Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left"
+                                       Command="{Binding commandFaltou}" 
+                                       CommandParameter="{Binding ElementName=cbxFaltou, Path=IsChecked}"                                       
+                                       />
+            
+
+            <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="5"
                            ItemsSource="{Binding Source={StaticResource colecaoPonto}}"                           
                            AutoGenerateColumns="False"                       
                            SelectionUnit="CellOrRowHeader" 
@@ -127,22 +144,7 @@
                                             stFormatoDtPicker="time"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Férias / Abono" Width="100">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Components:CustomCheckBox    
-                                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
-                                                IsChecked="{Binding stFeriasAbono,  UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}" HorizontalAlignment="Center"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <Components:CustomCheckBox HorizontalAlignment="Center"                                                        
-                                                       IsChecked="{Binding stFeriasAbono, Converter={StaticResource ByteToBoolConverter}}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>               
                     <DataGridTextColumn    Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>

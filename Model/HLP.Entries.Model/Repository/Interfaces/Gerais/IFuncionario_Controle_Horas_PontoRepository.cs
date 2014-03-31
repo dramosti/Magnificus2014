@@ -14,7 +14,8 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void DeleteByFuncionario(int idFuncionario);
         Funcionario_Controle_Horas_PontoModel GetFuncionario_Controle_Horas_Ponto(int idFuncionarioControleHorasPonto);
         List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_Ponto(int idFuncionario, DateTime data);
-        List<EspelhoPontoModel> GetHorasAtrabalhadasDia(int idFuncionario, DateTime dRelogioPonto);
+        List<EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto);
+        List<Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia);
         List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia);
         void BeginTransaction();
         void CommitTransaction();
