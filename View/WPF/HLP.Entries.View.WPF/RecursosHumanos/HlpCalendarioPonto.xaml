@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="110" d:DesignWidth="120">
     <UserControl.Resources>
-        <convert:HoraMinConverter x:Key="horaMinConv"/>
+        <convert:HoraMinConverter x:Key="horaMinConv"/>        
         <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
         <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
         <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
@@ -72,7 +72,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Ellipse Grid.Column="2" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource EllipseVermelha}"/>
+        <Ellipse Grid.Column="2" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{Binding styleDia}"/>
         <ListBox ItemsSource="{Binding lPonto}" IsEnabled="True" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Style="{DynamicResource ListBoxStyle1}" BorderBrush="#FF4774B5">
             <ListBox.ItemTemplate>
                 <DataTemplate>

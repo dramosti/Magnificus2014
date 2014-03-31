@@ -26,7 +26,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         private DataAccessor<Funcionario_Controle_Horas_PontoModel> regHorasAtrabalhadasDiaAccessorDia;
 
-        
+
         public void Save(Funcionario_Controle_Horas_PontoModel objFuncionario_Controle_Horas_Ponto)
         {
             if (objFuncionario_Controle_Horas_Ponto.idFuncionarioControleHorasPonto == null)
@@ -82,12 +82,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
         {
-            if (regAllFuncionario_Controle_Horas_PontoAccessorDia == null)
-            {
-                regAllFuncionario_Controle_Horas_PontoAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto "
-                    + string.Format("where idFuncionario = {0} and dRelogioPonto = '{1}'", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
-                                MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
-            }
+            regAllFuncionario_Controle_Horas_PontoAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto "
+                + string.Format("where idFuncionario = {0} and dRelogioPonto = '{1}'", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
+                            MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             return regAllFuncionario_Controle_Horas_PontoAccessorDia.Execute().ToList();
         }
 
@@ -140,7 +137,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                     + "on Calendario.idCalendario = Calendario_Detalhe.idCalendario "
                                     + "where Funcionario.idFuncionario = {0} and Calendario_Detalhe.dCalendario = '{1}' ", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
                                 MapBuilder<Calendario_DetalheModel>.MapAllProperties()
-                                .DoNotMap(i=>i.idCalendarioDetalhe)
+                                .DoNotMap(i => i.idCalendarioDetalhe)
                                 .DoNotMap(i => i.dCalendario)
                                 .DoNotMap(i => i.idCalendario)
                                 .DoNotMap(i => i.status).Build());
@@ -221,19 +218,19 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         {
             try
             {
-                int iDias = DateTime.DaysInMonth(dtMes.Year,dtMes.Month);
+                int iDias = DateTime.DaysInMonth(dtMes.Year, dtMes.Month);
                 TimeSpan tsReturn = new TimeSpan();
                 for (int i = 1; i < iDias; i++)
                 {
-                    foreach (TimeSpan ts in this.GetListHorasAtrabalharDia(idFuncionario,new DateTime(dtMes.Year, dtMes.Month, i)))
+                    foreach (TimeSpan ts in this.GetListHorasAtrabalharDia(idFuncionario, new DateTime(dtMes.Year, dtMes.Month, i)))
                     {
                         tsReturn = tsReturn.Add(ts);
-                    }                    
+                    }
                 }
                 return tsReturn;
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
         }

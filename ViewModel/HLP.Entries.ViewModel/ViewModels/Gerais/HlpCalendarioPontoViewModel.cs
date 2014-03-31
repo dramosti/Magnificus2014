@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
@@ -94,13 +95,45 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         #endregion
 
-        private StatusDia _stDia = StatusDia.EMBRANCO;
-
         public StatusDia stDia
         {
-            get { return _stDia; }
-            set { _stDia = value; this.NotifyPropertyChanged("stDia"); }
+            set
+            {
+                ResourceDictionary resource = new ResourceDictionary
+                {
+                    Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+                };
+                if (value.ToString().ToUpper().Equals("EMBRANCO"))
+                {
+                    this.styleDia = resource["EllipsePreta"] as Style;
+                }
+                else if (value.ToString().ToUpper().Equals("FALTOU"))
+                {
+                    this.styleDia = resource["EllipseVermelha"] as Style;
+                }
+                else if (value.ToString().ToUpper().Equals("ABONO"))
+                {
+                    this.styleDia = resource["EllipseAzul"] as Style;
+                }
+                else if (value.ToString().ToUpper().Equals("NORMAL"))
+                {
+                    this.styleDia = resource["EllipseVerde"] as Style;
+                }
+            }
         }
+
+
+        private Style _styleDia;
+        public Style styleDia
+        {
+            get { return _styleDia; }
+            set
+            {
+                _styleDia = value;
+                this.NotifyPropertyChanged(propertyName: "styleDia");
+            }
+        }
+
 
 
         public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO };
