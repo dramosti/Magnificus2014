@@ -66,7 +66,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.tsBancoHorasFechado = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario,
+                this.objViewModel.tsBancoHorasFechado = servico.GetTotalBancoHorasMesAtual(objViewModel.currentModel.idFuncionario,
                  objViewModel.currentModel.data);
 
                 this.objViewModel.currentModel.tsHorasTrabalhadas = new TimeSpan();
@@ -158,18 +158,19 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 Model.Models.Gerais.Funcionario_BancoHorasModel funcBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
                 funcBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
-                funcBancoHoras.tBancoHoras = objViewModel.currentModel.tsSaldoAteMomento;
+                funcBancoHoras.tBancoHoras = objViewModel.currentModel.data.Add(objViewModel.currentModel.tsSaldoAteMomento);
+                funcBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
                 servico.SaveBancoHoras(funcBancoHoras);
                 this.CarragaFormulario();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         bool CanSaveBancoHoras()
         {
-            if (objViewModel.tsBancoHorasFechado == null)
+            if (objViewModel.tsBancoHorasFechado == null && objViewModel.currentModel != null)
             {
                 return true;
             }

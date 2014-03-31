@@ -140,7 +140,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
 
         }
 
-        public TimeSpan GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
+        public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
         {
             switch (Sistema.bOnline)
             {
