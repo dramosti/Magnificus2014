@@ -153,6 +153,7 @@
     <Content Include="wcf_CamposBaseDados.svc" />
     <Content Include="wcf_Cliente.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
+    <Content Include="wcf_FillComboBox.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
@@ -232,6 +233,7 @@
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
+    <Compile Include="Iwcf_FillComboBox.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
@@ -424,6 +426,9 @@
     </Compile>
     <Compile Include="wcf_FamiliaProduto.svc.cs">
       <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_FillComboBox.svc.cs">
+      <DependentUpon>wcf_FillComboBox.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Funcionario.svc.cs">
       <DependentUpon>wcf_Funcionario.svc</DependentUpon>

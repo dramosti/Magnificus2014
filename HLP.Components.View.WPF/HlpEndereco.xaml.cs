@@ -1,8 +1,6 @@
-﻿using HLP.Comum.Model.Models;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HLP.Comum.View.Components
+namespace HLP.Components.View.WPF
 {
     /// <summary>
     /// Interaction logic for HlpEndereco.xaml
@@ -27,8 +25,6 @@ namespace HLP.Comum.View.Components
         {
             InitializeComponent();
         }
-
-
 
         public IEnumerable ItemsSource
         {
@@ -42,7 +38,7 @@ namespace HLP.Comum.View.Components
 
 
 
-        public bool IsReadOnly
+        public bool IsReadOnlyUserControl
         {
             get { return (bool)GetValue(IsReadOnlyProperty); }
             set { SetValue(IsReadOnlyProperty, value); }
@@ -50,11 +46,11 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsReadOnlyProperty =
-            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(false));
+            DependencyProperty.Register("IsReadOnlyUserControl", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(false));
 
 
 
-        public bool IsEnabled
+        public bool IsEnabledUserControl
         {
             get { return (bool)GetValue(IsEnabledProperty); }
             set { SetValue(IsEnabledProperty, value); }
@@ -62,9 +58,6 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));       
-
-        
-        
+            DependencyProperty.Register("IsEnabledUserControl", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));       
     }
 }

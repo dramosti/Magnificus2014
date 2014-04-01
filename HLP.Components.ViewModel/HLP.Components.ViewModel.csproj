@@ -41,9 +41,14 @@
   <ItemGroup>
     <Compile Include="Commands\HlpPesquisaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\FillComboBoxViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Components.Services\HLP.Components.Services.csproj">
       <Project>{07b054e3-2fcc-4927-9e61-993983d02edf}</Project>
       <Name>HLP.Components.Services</Name>

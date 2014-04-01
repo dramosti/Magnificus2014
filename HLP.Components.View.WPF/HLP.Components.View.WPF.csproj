@@ -48,7 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseControl.cs" />
+    <Compile Include="Converter\ByteToBoolConverter.cs" />
+    <Compile Include="Converter\ComboBoxDisplayConverter.cs" />
+    <Compile Include="Converter\DateShortConverter.cs" />
     <Compile Include="Converter\HlpPesquisaConverter.cs" />
+    <Compile Include="Converter\MaskConverter.cs" />
+    <Compile Include="Converter\SelectedItemToTextConverter.cs" />
+    <Compile Include="Converter\TimeSpanToString.cs" />
+    <Compile Include="Converter\VisibilityDatePickerConverter.cs" />
     <Compile Include="CustomCheckBox.cs" />
     <Compile Include="CustomComboBox.cs" />
     <Compile Include="CustomDockPanelSplitter.cs" />
@@ -56,6 +63,15 @@
     <Compile Include="CustomTextBox.cs" />
     <Compile Include="HlpButtonHierarquia.xaml.cs">
       <DependentUpon>HlpButtonHierarquia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpButtonStatus.xaml.cs">
+      <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpDatePicker.xaml.cs">
+      <DependentUpon>HlpDatePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpEndereco.xaml.cs">
+      <DependentUpon>HlpEndereco.xaml</DependentUpon>
     </Compile>
     <Compile Include="HlpPesquisa.xaml.cs">
       <DependentUpon>HlpPesquisa.xaml</DependentUpon>
@@ -85,6 +101,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="HlpButtonHierarquia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpButtonStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpDatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpEndereco.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

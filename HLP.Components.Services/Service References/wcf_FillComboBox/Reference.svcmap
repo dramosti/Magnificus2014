@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="411f0772-221b-40ea-8fe0-f4bab8d810c4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
+      <ReferencedAssembly AssemblyName="HLP.Wcf.Entries" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_FillComboBox.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_FillComboBox.xsd" MetadataType="Schema" ID="ab6503fd-3220-4d79-9ecd-25aedc078353" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_FillComboBox.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_FillComboBox1.xsd" MetadataType="Schema" ID="89476960-eb5e-4fdb-8c63-1edd5514e504" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_FillComboBox.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_FillComboBox.wsdl" MetadataType="Wsdl" ID="6e3fc9c1-c063-458a-8292-ea6dfa46822e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_FillComboBox.svc?wsdl" />
+    <MetadataFile FileName="wcf_FillComboBox.disco" MetadataType="Disco" ID="c61a69bd-a167-402a-aebd-afc03d76caf8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_FillComboBox.svc?disco" />
+    <MetadataFile FileName="wcf_FillComboBox2.xsd" MetadataType="Schema" ID="bc18758e-0786-4c57-8d4b-20563c5e598c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_FillComboBox.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

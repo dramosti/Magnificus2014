@@ -49,9 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\modelToComboBox.cs" />
     <Compile Include="Models\PesquisaRapidaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\FillComboBoxRepository.cs" />
     <Compile Include="Repository\Implementation\HlpPesquisaRapidaRepository.cs" />
+    <Compile Include="Repository\Interfaces\IFillComboBoxRepository.cs" />
     <Compile Include="Repository\Interfaces\IHlpPesquisaRapidaRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -273,6 +273,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Teste.xaml.cs">
+      <DependentUpon>Teste.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transportes\WinCondicaoEntrega.xaml.cs">
       <DependentUpon>WinCondicaoEntrega.xaml</DependentUpon>
     </Compile>
@@ -517,6 +520,10 @@
     <Page Include="RecursosHumanos\WinSetor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Teste.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transportes\WinCondicaoEntrega.xaml">
       <SubType>Designer</SubType>

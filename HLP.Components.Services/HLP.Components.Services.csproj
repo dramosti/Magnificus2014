@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FillComboBoxService.cs" />
     <Compile Include="Pesquisa_RapidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\wcf_FillComboBox\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_PesquisaRapida\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,6 +74,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToComboBox.datasource" />
+    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.wsdl" />
+    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.xsd">
       <SubType>Designer</SubType>
@@ -80,6 +97,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\wcf_FillComboBox\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +111,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_PesquisaRapida\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_FillComboBox\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
