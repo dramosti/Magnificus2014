@@ -20,8 +20,6 @@ namespace HLP.Comum.View.Components
             };
 
              this.Style = resource["ComboBoxStyle"] as Style;
-
-     
         }
     }
 }

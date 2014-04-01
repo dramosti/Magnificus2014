@@ -46,28 +46,7 @@ namespace HLP.Base.ClassesBases
         }
 
         public modelBase(string xTabela)
-        {
-            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == xTabela)
-                == 0)
-            {
-                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
-                lCampos.xTabela = xTabela;
-
-                lCampos.lCamposSqlModel = new List<PesquisaPadraoModelContract>();
-
-                foreach (var item in lcamposSqlNotNull)
-                {
-                    lCampos.lCamposSqlModel.Add(item: new PesquisaPadraoModelContract
-                    {
-                        COLUMN_NAME = item.COLUMN_NAME,
-                        DATA_TYPE = item.DATA_TYPE != null ? item.DATA_TYPE.Replace(" ", "") : null,
-                        CHARACTER_MAXIMUM_LENGTH = item.CHARACTER_MAXIMUM_LENGTH,
-                        IS_NULLABLE = item.IS_NULLABLE
-                    });
-                }
-
-                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
-            }
+        {            
             lcamposSqlNotNull = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela
                     == xTabela).lCamposSqlModel;
             PropertyInfo p = this.GetType().GetProperty("idEmpresa");

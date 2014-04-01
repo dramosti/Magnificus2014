@@ -76,6 +76,10 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\Spring\Spring.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -94,12 +98,20 @@
     <Compile Include="ClassesBases\modelBase.cs" />
     <Compile Include="ClassesBases\ModelDefinition.cs" />
     <Compile Include="ClassesBases\ModelProperty.cs" />
+    <Compile Include="ClassesBases\Modulo.cs" />
+    <Compile Include="ClassesBases\MyObservableCollection.cs" />
     <Compile Include="ClassesBases\ParameterBase.cs" />
     <Compile Include="ClassesBases\ParameterOrder.cs" />
     <Compile Include="ClassesBases\Parameters.cs" />
+    <Compile Include="ClassesBases\RelayCommand.cs" />
+    <Compile Include="ClassesBases\TabPagesAtivasModel.cs" />
     <Compile Include="ClassesBases\UnitOfWorkBase.cs" />
+    <Compile Include="ClassesBases\ViewModelBase.cs" />
     <Compile Include="EnumsBases\EnumsBases.cs" />
+    <Compile Include="InterfacesBases\IModulo.cs" />
     <Compile Include="IoC\DIContollersModuleBase.cs" />
+    <Compile Include="Modules\GerenciadorModulo.cs" />
+    <Compile Include="Modules\Infrastructure\Contexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Static\CompanyData.cs" />
     <Compile Include="Static\Criptografia.cs" />
@@ -121,6 +133,9 @@
     <Content Include="Dlls\EnterpriseLibrary\Microsoft.Practices.Unity.dll" />
     <Content Include="Dlls\EnterpriseLibrary\Microsoft.Practices.Unity.Interception.dll" />
     <Content Include="Dlls\NInject\Ninject.dll" />
+    <Content Include="Dlls\Spring\Common.Logging.dll" />
+    <Content Include="Dlls\Spring\Common.Logging.Log4Net.dll" />
+    <Content Include="Dlls\Spring\Spring.Core.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.ConnectionInfo.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.SmoExtended.dll" />

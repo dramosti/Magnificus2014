@@ -13,4 +13,12 @@ namespace HLP.Base.EnumsBases
         alterado,
         excluido
     }
+
+    public enum OperacaoCadastro
+    {
+        livre,
+        criando,
+        alterando,
+        pesquisando
+    }
 }

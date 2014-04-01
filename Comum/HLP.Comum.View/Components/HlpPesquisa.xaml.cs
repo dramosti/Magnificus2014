@@ -34,7 +34,7 @@ namespace HLP.Comum.View.Components
     public partial class HlpPesquisa : BaseControl
     {
 
-        private IservicePesquisaRapidaClient servicoPesquisaRapida;
+        //private IservicePesquisaRapidaClient servicoPesquisaRapida;
 
         private ICommand PesquisarCommand { get; set; }
         private ICommand InserirCommand { get; set; }
@@ -72,8 +72,8 @@ namespace HLP.Comum.View.Components
             int iValida;
             if (int.TryParse(sValor, out iValida))
             {
-                if (this.servicoPesquisaRapida == null)
-                    this.servicoPesquisaRapida = new IservicePesquisaRapidaClient();
+                //if (this.servicoPesquisaRapida == null)
+                //    this.servicoPesquisaRapida = new IservicePesquisaRapidaClient();
 
                 if (!sValor.Equals("0"))
                 {
@@ -82,14 +82,15 @@ namespace HLP.Comum.View.Components
 
                     int i = CompanyData.idEmpresa;
 
-                    var objRet = await this.servicoPesquisaRapida.GetValorDisplayAsync
-                         (
-                         _TableView: this.TableView,
-                         _Items: teste,
-                         _FieldPesquisa: this.FieldPesquisa,
-                         idEmpresa: CompanyData.idEmpresa,
-                         _iValorPesquisa: Convert.ToInt32(sValor)
-                         );
+                    var objRet = "retorno";
+                    //var objRet = await this.servicoPesquisaRapida.GetValorDisplayAsync
+                    //     (
+                    //     _TableView: this.TableView,
+                    //     _Items: teste,
+                    //     _FieldPesquisa: this.FieldPesquisa,
+                    //     idEmpresa: CompanyData.idEmpresa,
+                    //     _iValorPesquisa: Convert.ToInt32(sValor)
+                    //     );
 
                     if (objRet != null)
                     {

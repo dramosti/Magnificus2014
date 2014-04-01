@@ -21,7 +21,7 @@ namespace HLP.Base.Static
         }
         public static List<System.Configuration.KeyValueConfigurationElement> lSettings { get; set; }
 
-        public static TipoConexao bOnline { get; set; }
+        public static StConnection bOnline { get; set; }
 
         public static Window GetOpenWindow(string xName)
         {
@@ -43,10 +43,10 @@ namespace HLP.Base.Static
         }
     }
 
-    public enum TipoConexao
+    public enum StConnection
     {
-        OnlineRede,
-        OnlineInternet,
+        OnlineNetwork,
+        OnlineWeb,
         Offline
     }
 

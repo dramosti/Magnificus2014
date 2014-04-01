@@ -613,6 +613,10 @@
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Sales.ViewModel\HLP.Sales.ViewModel.csproj">
       <Project>{d366257c-5ed0-425e-9ef3-125a2cec5afd}</Project>
       <Name>HLP.Sales.ViewModel</Name>
