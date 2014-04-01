@@ -151,7 +151,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;            
+            this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
 
         }
 
@@ -203,16 +203,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
 
-        public void NavegaData(object param) 
+        public void NavegaData(object param)
         {
-            
+
             if (param.ToString().ToUpper().Equals("NEXT"))
             {
-                this.objViewModel.currentModel.data.AddMonths(1);
+                this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(1);
             }
             else
             {
-                this.objViewModel.currentModel.data.AddMonths(-1);
+                this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(-1);
             }
             this.CarragaFormulario();
         }
