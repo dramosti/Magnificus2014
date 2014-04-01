@@ -156,6 +156,7 @@
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
+    <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
     <Content Include="wcf_Site.svc" />
@@ -234,6 +235,7 @@
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
+    <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="Iwcf_Site.cs" />
@@ -432,6 +434,9 @@
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_PesquisaRapida.svc.cs">
+      <DependentUpon>wcf_PesquisaRapida.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>
     </Compile>
@@ -482,6 +487,10 @@
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
       <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>
