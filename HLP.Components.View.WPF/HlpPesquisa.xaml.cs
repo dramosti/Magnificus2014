@@ -54,37 +54,34 @@ namespace HLP.Components.View.WPF
             int iValida;
             if (int.TryParse(sValor, out iValida))
             {
-                //if (this.servicoPesquisaRapida == null)
-                //    this.servicoPesquisaRapida = new IservicePesquisaRapidaClient();
+                if (!sValor.Equals("0"))
+                {
 
-                //if (!sValor.Equals("0"))
-                //{
+                    string[] teste = ((List<string>)this.Items).ToArray();
 
-                //    string[] teste = ((List<string>)this.Items).ToArray();
+                    int i = CompanyData.idEmpresa;
 
-                //    int i = CompanyData.idEmpresa;
+                    var objRet = this.objViewModel.GetValorDisplay
+                         (
+                         _TableView: this.TableView,
+                         _Items: teste,
+                         _FieldPesquisa: this.FieldPesquisa,
+                         idEmpresa: CompanyData.idEmpresa,
+                         _iValorPesquisa: Convert.ToInt32(sValor)
+                         );
 
-                //    var objRet = this.servicoPesquisaRapida.GetValorDisplayAsync
-                //         (
-                //         _TableView: this.TableView,
-                //         _Items: teste,
-                //         _FieldPesquisa: this.FieldPesquisa,
-                //         idEmpresa: CompanyData.idEmpresa,
-                //         _iValorPesquisa: Convert.ToInt32(sValor)
-                //         );
-
-                //    if (objRet != null)
-                //    {
-                //        if (objRet == "")
-                //        {
-                //            this.Display = objRet.ToString();
-                //            this.txtID.Text = "0";
-                //            this.txtID.Focus();
-                //        }
-                //        else
-                //            this.Display = objRet.ToString();
-                //    }
-                //}
+                    if (objRet != null)
+                    {
+                        if (objRet == "")
+                        {
+                            this.Display = objRet.ToString();
+                            this.txtID.Text = "0";
+                            this.txtID.Focus();
+                        }
+                        else
+                            this.Display = objRet.ToString();
+                    }
+                }
             }
         }
 

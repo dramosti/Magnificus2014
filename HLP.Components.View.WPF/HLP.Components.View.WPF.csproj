@@ -54,6 +54,9 @@
     <Compile Include="CustomDockPanelSplitter.cs" />
     <Compile Include="CustomTextBlock.cs" />
     <Compile Include="CustomTextBox.cs" />
+    <Compile Include="HlpButtonHierarquia.xaml.cs">
+      <DependentUpon>HlpButtonHierarquia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HlpPesquisa.xaml.cs">
       <DependentUpon>HlpPesquisa.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="HlpButtonHierarquia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HlpPesquisa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

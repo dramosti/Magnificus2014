@@ -8,12 +8,12 @@
              xmlns:runtime="clr-namespace:HLP.Components.View.WPF"
              Width="Auto" Height="Auto"
              mc:Ignorable="d"
-             x:Name="componente"
-             d:DesignHeight="300" d:DesignWidth="300">
+             x:Name="componente">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml">                    
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type local:HlpPesquisa}">
                 <Style.Triggers>
@@ -41,6 +41,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <convertLocal:HlpPesquisaConverter x:Key="hlpPesquisaConverter"></convertLocal:HlpPesquisaConverter>
         </ResourceDictionary>
     </UserControl.Resources>
     <DockPanel LastChildFill="True">
@@ -116,7 +117,6 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-
             </TextBox.Style>
             <TextBox.ContextMenu>
                 <ContextMenu>
