@@ -54,13 +54,10 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
         {
-            if (regBancoHorasMesAccessor == null)
-            {
-                regBancoHorasMesAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
-                    string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) = {1}", idFuncionario,
-                    Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
-                    .DoNotMap(c => c.status).Build());
-            }
+            regBancoHorasMesAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+                string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) = {1}", idFuncionario,
+                Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
+                .DoNotMap(c => c.status).Build());
             TimeSpan? tsTotalRet = null;
 
             List<Funcionario_BancoHorasModel> lreturn = regBancoHorasMesAccessor.Execute().ToList();
@@ -82,13 +79,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 DbCommand cmd;
                 string sql = string.Format("Delete from Funcionario_BancoHoras Where idFuncionario = {0} and CAST(xMesAno as int) = {1} ", idFuncionario, Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString()));
                 cmd = UndTrabalho.dbPrincipal.GetSqlStringCommand(sql);
-                UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction, CommandType.Text, sql);
+                UndTrabalho.dbPrincipal.ExecuteScalar(CommandType.Text, sql);
             }
             catch (Exception)
             {
                 throw;
             }
-            
+
         }
     }
 }

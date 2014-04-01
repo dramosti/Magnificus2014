@@ -23,6 +23,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         public ICommand commandFecharMes { get; set; }
         public ICommand commandReabrirMes { get; set; }
+
+        public ICommand commandNavegaData { get; set; }
+
+
         #endregion
 
         public List<Control> lControlsPonto { get; set; }

@@ -60,6 +60,8 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
             set { this.ViewModel._bMesFechado = value; }
         }
 
+        
+
 
     }
 }

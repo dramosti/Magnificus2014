@@ -6,6 +6,7 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+             xmlns:conv ="clr-namespace:HLP.Entries.View.WPF.Converters"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
              mc:Ignorable="d" x:Name="winLancamentoManual"            
              d:DesignHeight="400" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{x:Null}" Title="Lançamento Manual do Ponto">
@@ -16,6 +17,8 @@
             </CollectionViewSource.SortDescriptions>
         </CollectionViewSource>
         <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+        <conv:HoraMinConverter x:Key="horaminConverter"/>
+        <convertLocal:TimeSpanToString x:Key="tstoString"/>
         <Style x:Key="ButtonSalvar" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
@@ -113,7 +116,7 @@
                                        Command="{Binding commandFaltou}" 
                                        CommandParameter="{Binding ElementName=cbxFaltou, Path=IsChecked}"                                       
                                        />
-            
+
 
             <DataGrid x:Name="dgvEndereco"  Grid.Row="2" Grid.ColumnSpan="5"
                            ItemsSource="{Binding Source={StaticResource colecaoPonto}}"                           
@@ -129,23 +132,34 @@
                     <DataGridTemplateColumn Header="Hora Ponto" Width="72">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Components:HlpDatePicker HorizontalAlignment="Center"
-                                            xTextTime="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
-                                            stFormatoDtPicker="time"/>
+                                <Components:CustomTextBlock HorizontalAlignment="Center"
+                                            Text="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource horaminConverter}}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox HorizontalAlignment="Center"
+                                            Text="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Hora alterada" Width="82">
                         <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Components:CustomTextBlock HorizontalAlignment="Center"
+                                            Text="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource horaminConverter}}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
                                 <Components:HlpDatePicker 
                                             HorizontalAlignment="Center"
                                             xTextTime="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                                             stFormatoDtPicker="time"/>
                             </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>               
-                    <DataGridTextColumn    Header="Justificativa" Width="*"
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn   Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 </DataGrid.Columns>

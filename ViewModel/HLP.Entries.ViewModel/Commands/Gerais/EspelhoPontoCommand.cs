@@ -42,6 +42,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandReabrirMes = new RelayCommand(execute: paramExec => this.ReabrirMes(),
               canExecute: paramCan => this.CanReabrirMes());
 
+            this.objViewModel.commandNavegaData = new RelayCommand(execute: paramExec => this.NavegaData(param: paramExec),
+                canExecute: paramCan => true);
+
 
             foreach (Control ctr in objViewModel.lControlsPonto)
             {
@@ -148,7 +151,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
-            this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;            
+            this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
 
         }
 
@@ -197,6 +200,21 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 return true;
             }
             return false;
+        }
+
+
+        public void NavegaData(object param)
+        {
+
+            if (param.ToString().ToUpper().Equals("NEXT"))
+            {
+                this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(1);
+            }
+            else
+            {
+                this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(-1);
+            }
+            this.CarragaFormulario();
         }
 
 

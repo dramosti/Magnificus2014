@@ -115,9 +115,12 @@
     <Compile Include="Comercial\WinTipoProduto.xaml.cs">
       <DependentUpon>WinTipoProduto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ChangeColorStatusCompConverter.cs" />
+    <Compile Include="Converters\ChangeStyleButtonConverter.cs" />
     <Compile Include="Converters\dataEspelhoPontoConverter.cs" />
     <Compile Include="Converters\HoraMinConverter.cs" />
     <Compile Include="Converters\ListaItensIsReadOnly.cs" />
+    <Compile Include="Converters\StringToHourConverter.cs" />
     <Compile Include="Converters\TimeSpanDiasToHoras.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
       <DependentUpon>WinContato.xaml</DependentUpon>
@@ -554,6 +557,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Resources\Let%27s go Digital Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -630,9 +634,7 @@
       <Name>HLP.Entries.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
