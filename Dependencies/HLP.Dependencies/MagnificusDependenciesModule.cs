@@ -42,6 +42,8 @@ namespace HLP.Dependencies
         {
             Bind<HLP.Entries.Model.Repository.Interfaces.Components.IHlpPesquisaPadraoRepository>()
                 .To<HLP.Entries.Model.Repository.Implementation.Components.HlpPesquisaPadraoRepository>();
+            Bind<HLP.Components.Model.Repository.Interfaces.IHlpPesquisaRapidaRepository>()
+                .To<HLP.Components.Model.Repository.Implementation.HlpPesquisaRapidaRepository>();
 
             Bind<IHlpEnderecoRepository>().To<HlpEnderecoRepository>();
             Bind<ILoginRepository>().To<LoginRepository>();

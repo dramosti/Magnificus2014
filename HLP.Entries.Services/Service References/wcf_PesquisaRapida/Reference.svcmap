@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a7e485ec-4661-4853-94b7-bfee204ed662" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_PesquisaRapida.wsdl" MetadataType="Wsdl" ID="14214501-0786-4aa5-b6a7-d982df255314" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?wsdl" />
+    <MetadataFile FileName="wcf_PesquisaRapida.xsd" MetadataType="Schema" ID="94a56f3a-bbe6-4365-a7bf-1c05f5240372" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_PesquisaRapida1.xsd" MetadataType="Schema" ID="fcdcd0ba-fda5-4a78-8a61-8440e493f8f1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_PesquisaRapida2.xsd" MetadataType="Schema" ID="d642d0e1-69d8-4606-acb5-c9af7c732e0b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_PesquisaRapida.disco" MetadataType="Disco" ID="08610466-b2ba-4560-87c7-53bdf5c7684e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PesquisaRapida.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

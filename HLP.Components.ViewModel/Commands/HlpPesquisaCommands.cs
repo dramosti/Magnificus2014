@@ -15,5 +15,6 @@ namespace HLP.Components.ViewModel.Commands
         {
             this.objViewModel = objViewModel;
         }
+        
     }
 }

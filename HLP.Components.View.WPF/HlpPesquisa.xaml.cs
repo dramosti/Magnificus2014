@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HLP.Components.ViewModel.ViewModels;
 
 namespace HLP.Components.View.WPF
 {
@@ -35,11 +36,12 @@ namespace HLP.Components.View.WPF
         public static readonly DependencyProperty DisplayProperty =
             DependencyProperty.Register("Display", typeof(string), typeof(HlpPesquisa), new PropertyMetadata(string.Empty));
 
-
+        HlpPesquisaViewModel objViewModel;
 
         public HlpPesquisa()
         {
             InitializeComponent();
+            objViewModel = new HlpPesquisaViewModel();
         }
 
         public void ExecutaPesquisa(string sValor)

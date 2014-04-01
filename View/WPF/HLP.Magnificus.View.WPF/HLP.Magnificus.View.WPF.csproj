@@ -283,6 +283,10 @@
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Components.View.WPF\HLP.Components.View.WPF.csproj">
+      <Project>{048f4c37-ad90-403f-a9a1-64d0789983c5}</Project>
+      <Name>HLP.Components.View.WPF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Sales.View.WPF\HLP.Sales.View.WPF.csproj">
       <Project>{629160d8-8a40-4515-a5d8-9c20024fc0e2}</Project>
       <Name>HLP.Sales.View.WPF</Name>

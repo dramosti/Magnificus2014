@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using HLP.Components.Model.Repository.Interfaces;
+using HLP.Dependencies;
 
 namespace HLP.Wcf.Entries
 {
@@ -16,6 +17,10 @@ namespace HLP.Wcf.Entries
     {
         public wcf_PesquisaRapida()
         {
+            IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
+            kernel.Settings.ActivationCacheDisabled = false;
+            kernel.Inject(this);
+            Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
         [Inject]

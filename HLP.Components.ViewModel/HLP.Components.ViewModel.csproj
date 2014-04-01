@@ -44,6 +44,10 @@
     <Compile Include="ViewModels\HlpPesquisaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HLP.Components.Services\HLP.Components.Services.csproj">
+      <Project>{07b054e3-2fcc-4927-9e61-993983d02edf}</Project>
+      <Name>HLP.Components.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>
