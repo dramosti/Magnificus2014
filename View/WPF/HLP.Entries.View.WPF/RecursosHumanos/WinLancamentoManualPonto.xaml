@@ -18,7 +18,7 @@
         </CollectionViewSource>
         <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <conv:HoraMinConverter x:Key="horaminConverter"/>
-        <conv:StringToHourConverter x:Key="strigtoHour"/>
+        <convertLocal:TimeSpanToString x:Key="tstoString"/>
         <Style x:Key="ButtonSalvar" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
@@ -138,9 +138,8 @@
                         </DataGridTemplateColumn.CellTemplate>
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
-                                <Components:HlpDatePicker HorizontalAlignment="Center"
-                                            xTextTime="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource strigtoHour}}" 
-                                            stFormatoDtPicker="time"/>
+                                <TextBox HorizontalAlignment="Center"
+                                            Text="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
@@ -160,7 +159,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn    Header="Justificativa" Width="*"
+                    <DataGridTextColumn   Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 </DataGrid.Columns>
