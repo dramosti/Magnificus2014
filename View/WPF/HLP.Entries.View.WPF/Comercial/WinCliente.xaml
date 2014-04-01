@@ -436,112 +436,31 @@
                         <TabItem Header="Geral">
                             <AdornerDecorator>
                                 <Expander Header="Informações Gerais" IsExpanded="True">
-                                    <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                        <Components:HlpPesquisa
-											
-											Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Canal de Vendas" WidthLabel="207" Width="500" TableView="vwCanalVenda" FieldPesquisa="ID">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>cCanalVenda</System:String>
-                                                <System:String>xCanalVenda</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpTextBox 
-											
-											Text="{Binding currentModel.nFuncionarios, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Número de Funcionários" WidthLabel="207" Width="356"/>
-                                        <Components:HlpComboBox 
-											
-											SelectedIndex="{Binding currentModel.stCategoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Categoria do Cliente" WidthLabel="207">
-                                            <Components:HlpComboBox.Items>
-                                                <System:String>0-NENHUMA</System:String>
-                                                <System:String>1-A</System:String>
-                                                <System:String>2-B</System:String>
-                                                <System:String>3-C</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpPesquisa 
-											
-											Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Lista de Preço" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwListaPrecoPai">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xCodigoListaPreco</System:String>
-                                                <System:String>xLista</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                            <Components:HlpPesquisa.IsEnabled>
-                                                <MultiBinding Converter="{StaticResource ListaPrecoEnabled}">
-                                                    <Binding Path="bIsEnabled"/>
-                                                    <Binding Path="currentModel.idRota"/>
-                                                </MultiBinding>
-                                            </Components:HlpPesquisa.IsEnabled>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpPesquisa 
-                                            x:Name="txtRota"
-											Text="{Binding currentModel.idRota, Mode=TwoWay, 
-                                            NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Rota para Transporte" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwRota">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xRota</System:String>
-                                                <System:String>Ativo</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpCheckBox 
-											
-											IsChecked="{Binding currentModel.stFrete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Frete" WidthLabel="207"/>
-                                        <Components:HlpPesquisa 
-											
-											Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Site" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwSite">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xSite</System:String>
-                                                <System:String>xDescricao</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpPesquisa 
-											
-											Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Depósito" WidthLabel="207" Width="500" FieldPesquisa="ID" TableView="vwDeposito">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xDeposito</System:String>
-                                                <System:String>xDescricao</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpCheckBox 
-											
-											IsChecked="{Binding currentModel.stSpc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Ocorrência no S.P.C.?" WidthLabel="207"/>
-                                        <Components:HlpComboBox 
-											
-											SelectedIndex="{Binding currentModel.stSituacaoSci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Situação no S.C.I.?" WidthLabel="207">
-                                            <Components:HlpComboBox.Items>
-                                                <System:String>0-POSITIVADO</System:String>
-                                                <System:String>1-NEGATIVADO</System:String>
-                                                <System:String>2-CANCELADO</System:String>
-                                            </Components:HlpComboBox.Items>
-                                        </Components:HlpComboBox>
-                                        <Components:HlpCheckBox 
-											
-											IsChecked="{Binding currentModel.stAssociacaoComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="34" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Ocorrência na Associação Comercial?" WidthLabel="207"/>
-                                        <Components:HlpCheckBox 
-											
-											IsChecked="{Binding currentModel.stObrigaListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
-											Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Obriga lista de preço ?" WidthLabel="207"/>
-                                    </WrapPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                    </Grid>
                                 </Expander>
                             </AdornerDecorator>
                         </TabItem>

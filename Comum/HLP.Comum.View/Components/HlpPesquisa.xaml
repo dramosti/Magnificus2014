@@ -57,10 +57,10 @@
                  CharacterCasing="Upper"
                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"
                  Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=Text, 
-            UpdateSourceTrigger=LostFocus, Converter={StaticResource hlpPesquisaConverter}}"
+                 UpdateSourceTrigger=LostFocus, Converter={StaticResource hlpPesquisaConverter}}"
                  Width="80" KeyDown="txtID_KeyDown" >
             <TextBox.Style>
-                <Style TargetType="{x:Type TextBoxBase}">                    
+                <Style x:Name="TextBoxHlpPesquisa" TargetType="{x:Type TextBoxBase}">                    
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">

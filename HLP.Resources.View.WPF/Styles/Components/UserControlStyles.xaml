@@ -463,7 +463,7 @@
         </Setter>
     </Style>
 
-    <!--Style Custom TextBlock-->
+    <!--Style Custom TextBlock (HLPPesquisa)-->
 
     <Style x:Key="TextBlocktyleComponents" TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="Black"/>
@@ -475,10 +475,7 @@
     <!--Button Imagem (Componente de Foto)-->
 
 
-    <Style x:Key="ButtonSelecionarImgSelecionar" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+    <Style x:Key="ButtonSelecionarImgSelecionar" TargetType="{x:Type Button}">        
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -496,7 +493,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/folder-3-32 (1).png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgSelect.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -513,19 +510,14 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Opacity" Value="0.36"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ButtonSelecionarImgLimpar" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+    <Style x:Key="ButtonSelecionarImgLimpar" TargetType="{x:Type Button}">                
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -543,7 +535,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/erase-32.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgErase.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -560,19 +552,14 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Opacity" Value="0.36"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ButtonSelecionarImgAplicar" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+    <Style x:Key="ButtonSelecionarImgAplicar" TargetType="{x:Type Button}">        
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -590,7 +577,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/ConfirmadoBranco.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgConfirm.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -607,19 +594,14 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Opacity" Value="0.36"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ButtonSelecionarImgCancelar" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+    <Style x:Key="ButtonSelecionarImgCancelar" TargetType="{x:Type Button}">        
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -637,7 +619,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Branco.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgCancel.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -654,9 +636,7 @@
                             </Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Opacity" Value="0.36"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1042,5 +1022,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>    
+    
 </ResourceDictionary>
