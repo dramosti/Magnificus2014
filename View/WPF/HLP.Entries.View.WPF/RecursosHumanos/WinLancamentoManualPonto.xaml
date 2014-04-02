@@ -129,36 +129,8 @@
                     <DataGridTextColumn x:Name="clSeq"  FocusManager.FocusedElement="{Binding ElementName= clSeq}"  Header="Sequencia" Width="70"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                    <DataGridTemplateColumn Header="Hora Ponto" Width="72">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Components:CustomTextBlock HorizontalAlignment="Center"
-                                            Text="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource horaminConverter}}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <TextBox HorizontalAlignment="Center"
-                                            Text="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Hora alterada" Width="82">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Components:CustomTextBlock HorizontalAlignment="Center"
-                                            Text="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource horaminConverter}}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <Components:HlpDatePicker 
-                                            HorizontalAlignment="Center"
-                                            xTextTime="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
-                                            stFormatoDtPicker="time"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Hora Ponto" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
+                    <DataGridTextColumn Header="Hora alterada" Width="82" Binding="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />                 
                     <DataGridTextColumn   Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>

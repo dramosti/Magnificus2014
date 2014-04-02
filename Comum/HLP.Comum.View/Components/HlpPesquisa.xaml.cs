@@ -95,12 +95,12 @@ namespace HLP.Comum.View.Components
                     {
                         if (objRet == "")
                         {
-                            this.Display = objRet.ToString();
+                            this.Display = objRet.ToString().ToUpper();
                             this.txtID.Text = "0";
                             this.txtID.Focus();
                         }
                         else
-                            this.Display = objRet.ToString();
+                            this.Display = objRet.ToString().ToUpper();
                     }
                 }
             }

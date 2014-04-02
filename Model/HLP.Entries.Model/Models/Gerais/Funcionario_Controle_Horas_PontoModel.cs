@@ -58,7 +58,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "dRelogioPonto");
             }
         }
-        private TimeSpan? _hAlteradaUsuario;
+        private TimeSpan? _hAlteradaUsuario = new TimeSpan();
         [ParameterOrder(Order = 5)]
         public TimeSpan? hAlteradaUsuario
         {

@@ -14,10 +14,8 @@ namespace HLP.Comum.View.Formularios
     {
         public WindowsBase()
         {
-
+           
         }
-
-
 
         public string NameView
         {

@@ -107,9 +107,19 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                     for (int i = 0; i + 1 < dados.Count(); )
                     {
                         objEspelhoPontoModel = new EspelhoPontoModel();
+                        //Entrada
                         objEspelhoPontoModel.tEntrada = dados[i].hRelogioPonto;
+                        if (dados[i].hAlteradaUsuario != null)
+                            if (dados[i].hAlteradaUsuario != new TimeSpan())
+                                objEspelhoPontoModel.tEntrada = (TimeSpan)dados[i].hAlteradaUsuario;
+                        //Saída
                         objEspelhoPontoModel.tSaida = dados[i + 1].hRelogioPonto;
+                        if (dados[i + 1].hAlteradaUsuario != null)
+                            if (dados[i + 1].hAlteradaUsuario != new TimeSpan())
+                                objEspelhoPontoModel.tSaida = (TimeSpan)dados[i + 1].hAlteradaUsuario;
+
                         lret.Add(objEspelhoPontoModel);
+
                         i = i + 2;
                     }
                 if ((dados.Count() % 2) != 0)

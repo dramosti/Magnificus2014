@@ -16,14 +16,19 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
     public class EspelhoPontoViewModel : ViewModelBase<FuncionarioPonto>
     {
         #region Icommands
+        public ICommand commandSalvar { get; set; }
+        public ICommand commandDeletar { get; set; }
+        public ICommand commandNovo { get; set; }
+        public ICommand commandAlterar { get; set; }
+        public ICommand commandCancelar { get; set; }
+        public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
-        public ICommand carregarCommand { get; set; }
-        public ICommand commandAlterar { get; set; }
 
+
+        public ICommand carregarCommand { get; set; }
         public ICommand commandFecharMes { get; set; }
         public ICommand commandReabrirMes { get; set; }
-
         public ICommand commandNavegaData { get; set; }
 
 

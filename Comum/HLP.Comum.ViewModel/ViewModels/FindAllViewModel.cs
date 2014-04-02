@@ -18,7 +18,7 @@ namespace HLP.Comum.ViewModel.ViewModels
     public class FindAllViewModel : modelBase
     {
         public ICommand AddWindowCommand { get; set; }
-        public ICommand  CloseWindowCommand { get; set; }
+        public ICommand CloseWindowCommand { get; set; }
 
         FindAllCommand objCommand;
 
@@ -65,12 +65,11 @@ namespace HLP.Comum.ViewModel.ViewModels
 
         void OpenWindow(object objSelected)
         {
+            Window win = HLP.Comum.Resources.Util.StaticUtil.GetParentWindow(objSelected as ListBox);
+            win.Visibility = Visibility.Collapsed;
             FindAllModel obj = ((objSelected as ListBox).SelectedItem as FindAllModel);
             this.AddWindowCommand.Execute(parameter: obj.xNome);
-
-            Window win = HLP.Comum.Resources.Util.StaticUtil.GetParentWindow(objSelected as ListBox);
             this.CloseWindowCommand.Execute(parameter: win);
-
         }
 
         #region Events
