@@ -14,9 +14,6 @@ namespace HLP.Comum.Model.StaticModels
 
         public static void AddCampoSql(CamposSqlNotNullModel objCamposSqlNotNull)
         {
-            //if (_lCamposSqlNotNull == null)
-            //    _lCamposSqlNotNull = new List<CamposSqlNotNullModel>();
-
             _lCamposSql.Add(item: objCamposSqlNotNull);
         }
     }

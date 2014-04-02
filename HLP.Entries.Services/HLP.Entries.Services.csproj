@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FA15D31-FFF9-4063-89C8-2886FA032582}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HLP.Entries.Services</RootNamespace>
+    <AssemblyName>HLP.Entries.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Campos_Base_DadosService.cs" />
+    <Compile Include="Gerais\Unidade_MedidaService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\wcf_CamposBaseDados\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_PesquisaRapida\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_UnidadeMedida\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Wcf.Entries\HLP.Wcf.Entries.csproj">
+      <Project>{9c776abf-bcda-4a4e-b14e-cf35510c5ca2}</Project>
+      <Name>HLP.Wcf.Entries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.wsdl" />
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.wsdl" />
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
+    <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
+    <WCFMetadataStorage Include="Service References\wcf_UnidadeMedida\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_UnidadeMedida\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_UnidadeMedida\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_UnidadeMedida\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PesquisaRapida\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PesquisaRapida\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PesquisaRapida\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

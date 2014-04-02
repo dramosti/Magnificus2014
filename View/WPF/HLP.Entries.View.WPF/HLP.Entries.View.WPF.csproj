@@ -273,6 +273,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Teste.xaml.cs">
+      <DependentUpon>Teste.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transportes\WinCondicaoEntrega.xaml.cs">
       <DependentUpon>WinCondicaoEntrega.xaml</DependentUpon>
     </Compile>
@@ -518,6 +521,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Teste.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Transportes\WinCondicaoEntrega.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -616,6 +623,14 @@
     <ProjectReference Include="..\..\..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Components.View.WPF\HLP.Components.View.WPF.csproj">
+      <Project>{048f4c37-ad90-403f-a9a1-64d0789983c5}</Project>
+      <Name>HLP.Components.View.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Sales.ViewModel\HLP.Sales.ViewModel.csproj">
       <Project>{d366257c-5ed0-425e-9ef3-125a2cec5afd}</Project>

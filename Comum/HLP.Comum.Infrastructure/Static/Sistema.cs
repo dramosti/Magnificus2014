@@ -53,6 +53,5 @@ namespace HLP.Comum.Infrastructure.Static
     {
         WCF,
         Sistema
-
     }
 }

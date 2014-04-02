@@ -75,6 +75,11 @@
     <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
     <Compile Include="Commands\Gerais\HlpCalendarioPontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
+    <Compile Include="Service References\wcf_CamposBaseDados\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Cliente\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -385,11 +390,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\unidadeMedidaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\ufService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -482,6 +482,14 @@
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Entries.Services\HLP.Entries.Services.csproj">
+      <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
+      <Name>HLP.Entries.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HLP.Wcf.Entries\HLP.Wcf.Entries.csproj">
       <Project>{9c776abf-bcda-4a4e-b14e-cf35510c5ca2}</Project>
       <Name>HLP.Wcf.Entries</Name>
@@ -495,6 +503,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Resources.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct.datasource" />
@@ -1398,19 +1407,6 @@
     <None Include="Service References\ufService\serviceUf4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida.wsdl" />
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ufService\serviceUf.wsdl" />
     <None Include="Service References\ufService\serviceUf.xsd">
       <SubType>Designer</SubType>
@@ -1424,7 +1420,14 @@
     <None Include="Service References\ufService\serviceUf3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida4.xsd">
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.wsdl" />
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Cliente\wcf_Cliente.wsdl" />
@@ -1662,8 +1665,8 @@
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
     <WCFMetadataStorage Include="Service References\transportadorService\" />
-    <WCFMetadataStorage Include="Service References\unidadeMedidaService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
+    <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_Cliente\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
@@ -1685,21 +1688,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ufService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\unidadeMedidaService\serviceUnidadeMedida.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\unidadeMedidaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\unidadeMedidaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\unidadeMedidaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2495,6 +2483,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Lista_Preco\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CamposBaseDados\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

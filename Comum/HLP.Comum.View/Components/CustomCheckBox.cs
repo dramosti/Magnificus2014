@@ -16,9 +16,7 @@ namespace HLP.Comum.View.Components
             {
                 Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
             };
-
             this.Style = resource["CheckBoxStyle"] as Style;
-
         }
 
     }

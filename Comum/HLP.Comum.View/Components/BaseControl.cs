@@ -13,8 +13,6 @@ namespace HLP.Comum.View.Components
     {
         public BaseControl()
         {
-
-
         }
 
 
@@ -97,9 +95,6 @@ namespace HLP.Comum.View.Components
         // Using a DependencyProperty as the backing store for SetNext.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SetNextProperty =
             DependencyProperty.Register("SetNext", typeof(bool), typeof(BaseControl), new PropertyMetadata(true));
-
-
-
 
         #region NotifyPropertyChanged
 

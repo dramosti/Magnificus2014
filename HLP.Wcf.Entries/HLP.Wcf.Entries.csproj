@@ -150,14 +150,18 @@
     <Content Include="serviceUf.svc" />
     <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Silverlight.js" />
+    <Content Include="wcf_CamposBaseDados.svc" />
     <Content Include="wcf_Cliente.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
+    <Content Include="wcf_FillComboBox.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
+    <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
     <Content Include="wcf_Site.svc" />
+    <Content Include="wcf_UnidadeMedida.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -226,14 +230,18 @@
     <Compile Include="IserviceTipo_Operacao.cs" />
     <Compile Include="IserviceTransportador.cs" />
     <Compile Include="IserviceUnidadeMedida.cs" />
+    <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
+    <Compile Include="Iwcf_FillComboBox.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
+    <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="Iwcf_Site.cs" />
+    <Compile Include="Iwcf_UnidadeMedida.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
     </Compile>
@@ -410,11 +418,17 @@
     <Compile Include="serviceUnidadeMedida.svc.cs">
       <DependentUpon>serviceUnidadeMedida.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_CamposBaseDados.svc.cs">
+      <DependentUpon>wcf_CamposBaseDados.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Cliente.svc.cs">
       <DependentUpon>wcf_Cliente.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_FamiliaProduto.svc.cs">
       <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_FillComboBox.svc.cs">
+      <DependentUpon>wcf_FillComboBox.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Funcionario.svc.cs">
       <DependentUpon>wcf_Funcionario.svc</DependentUpon>
@@ -425,6 +439,9 @@
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_PesquisaRapida.svc.cs">
+      <DependentUpon>wcf_PesquisaRapida.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>
     </Compile>
@@ -433,6 +450,9 @@
     </Compile>
     <Compile Include="wcf_Site.svc.cs">
       <DependentUpon>wcf_Site.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_UnidadeMedida.svc.cs">
+      <DependentUpon>wcf_UnidadeMedida.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -468,6 +488,14 @@
     <ProjectReference Include="..\Dependencies\HLP.Dependencies\HLP.Dependencies.csproj">
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
       <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>

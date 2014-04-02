@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -16,12 +17,12 @@ namespace HLP.Entries.ViewModel.Commands
     {
         BackgroundWorker bWorkerAcoes;
         private Unidade_MedidaViewModel objViewModel;
-
-        unidadeMedidaService.IserviceUnidadeMedidaClient servico = new unidadeMedidaService.IserviceUnidadeMedidaClient();
+        private Unidade_MedidaService service;
 
         public Unidade_MedidaCommands(Unidade_MedidaViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+            service = new Unidade_MedidaService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -71,7 +72,8 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                this.objViewModel.currentModel.idUnidadeMedida = servico.saveUnidade_medida(objViewModel.currentModel);
+                this.objViewModel.currentModel.idUnidadeMedida = service
+                    .SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -126,7 +128,7 @@ namespace HLP.Entries.ViewModel.Commands
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteUnidade_medida((int)this.objViewModel.currentModel.idUnidadeMedida))
+                    if (this.service.DeleteObject((int)this.objViewModel.currentModel.idUnidadeMedida))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -171,8 +173,8 @@ namespace HLP.Entries.ViewModel.Commands
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, Base.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -195,7 +197,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {
@@ -204,9 +206,9 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);        
+            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
         {
@@ -254,7 +256,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                e.Result = servico.copyUnidade_medida((int)objViewModel.currentModel.idUnidadeMedida);
+                e.Result = service.CopyObject((int)objViewModel.currentModel.idUnidadeMedida);
             }
             catch (Exception)
             {
@@ -295,9 +297,9 @@ namespace HLP.Entries.ViewModel.Commands
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.getUnidade_medidaAsync((int)objViewModel.currentID);
+            this.objViewModel.currentModel = service.GetObject((int)objViewModel.currentID);
         }
         #endregion
     }
