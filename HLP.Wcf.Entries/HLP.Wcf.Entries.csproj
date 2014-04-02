@@ -156,6 +156,7 @@
     <Content Include="wcf_FillComboBox.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
+    <Content Include="wcf_HlpPesqPadrao.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_Produto.svc" />
@@ -236,6 +237,7 @@
     <Compile Include="Iwcf_FillComboBox.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
+    <Compile Include="Iwcf_HlpPesqPadrao.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_Produto.cs" />
@@ -435,6 +437,9 @@
     </Compile>
     <Compile Include="wcf_Funcionario_Controle_Horas_Ponto.svc.cs">
       <DependentUpon>wcf_Funcionario_Controle_Horas_Ponto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_HlpPesqPadrao.svc.cs">
+      <DependentUpon>wcf_HlpPesqPadrao.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="207965fe-ffd0-46e2-9a39-bda6a6997eef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Base" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_HlpPesqPadrao.disco" MetadataType="Disco" ID="2c2504c6-3088-4ed4-ac70-d7e6a82e8687" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc?disco" />
+    <MetadataFile FileName="wcf_HlpPesqPadrao.wsdl" MetadataType="Wsdl" ID="2c2e50ce-83f5-4e4b-b9f2-0e674be20bc7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc?wsdl" />
+    <MetadataFile FileName="wcf_HlpPesqPadrao.xsd" MetadataType="Schema" ID="a974503a-8b42-4404-9503-8ec65136850d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_HlpPesqPadrao1.xsd" MetadataType="Schema" ID="82ca9bf3-b527-447b-b867-82e9cc6acf43" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_HlpPesqPadrao2.xsd" MetadataType="Schema" ID="a0243196-c05f-4220-979e-566b6c814852" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_HlpPesqPadrao3.xsd" MetadataType="Schema" ID="18e369a4-f402-4622-b4e4-b0bd9b12427b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_HlpPesqPadrao.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -30,21 +30,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FillComboBoxService.cs" />
+    <Compile Include="HlpPesqPadraoService.cs" />
     <Compile Include="Pesquisa_RapidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\wcf_FillComboBox\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_HlpPesqPadrao\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -75,6 +84,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToComboBox.datasource" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.wsdl" />
     <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox.xsd">
       <SubType>Designer</SubType>
@@ -83,6 +93,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_FillComboBox\wcf_FillComboBox2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\HLP.Components.Services.wcf_HlpPesqPadrao.GetDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\HLP.Components.Services.wcf_HlpPesqPadrao.GetTableInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\HLP.Components.Services.wcf_HlpPesqPadrao.PesquisaPadraoModelContract.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao.wsdl" />
+    <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
@@ -98,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\wcf_FillComboBox\" />
+    <WCFMetadataStorage Include="Service References\wcf_HlpPesqPadrao\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +159,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_FillComboBox\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_HlpPesqPadrao\wcf_HlpPesqPadrao.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_HlpPesqPadrao\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_HlpPesqPadrao\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_HlpPesqPadrao\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

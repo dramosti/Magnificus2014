@@ -493,7 +493,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgSelect.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgSelect.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -535,7 +535,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgErase.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgErase.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -577,7 +577,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgConfirm.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgConfirm.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -619,7 +619,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgCancel.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgCancel.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">

@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -51,7 +52,10 @@
     <Compile Include="Converter\ByteToBoolConverter.cs" />
     <Compile Include="Converter\ComboBoxDisplayConverter.cs" />
     <Compile Include="Converter\DateShortConverter.cs" />
+    <Compile Include="Converter\HlpNavigationMultiConverter.cs" />
+    <Compile Include="Converter\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converter\HlpPesquisaConverter.cs" />
+    <Compile Include="Converter\ImageToaByteConverter.cs" />
     <Compile Include="Converter\MaskConverter.cs" />
     <Compile Include="Converter\SelectedItemToTextConverter.cs" />
     <Compile Include="Converter\TimeSpanToString.cs" />
@@ -73,8 +77,23 @@
     <Compile Include="HlpEndereco.xaml.cs">
       <DependentUpon>HlpEndereco.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HlpImageControl.xaml.cs">
+      <DependentUpon>HlpImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpNavigation.xaml.cs">
+      <DependentUpon>HlpNavigation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HlpPesquisa.xaml.cs">
       <DependentUpon>HlpPesquisa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpPesquisaFiltrada.xaml.cs">
+      <DependentUpon>HlpPesquisaFiltrada.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpPesquisaPadrao.xaml.cs">
+      <DependentUpon>HlpPesquisaPadrao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpUserControlBtnImage.xaml.cs">
+      <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -116,7 +135,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HlpImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HlpPesquisa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpPesquisaFiltrada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpPesquisaPadrao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpUserControlBtnImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,6 +168,10 @@
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Components.ViewModel\HLP.Components.ViewModel.csproj">
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
