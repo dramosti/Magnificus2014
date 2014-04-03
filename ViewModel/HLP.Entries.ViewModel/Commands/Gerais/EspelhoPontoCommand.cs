@@ -1,5 +1,4 @@
 ﻿using HLP.Comum.Resources.Util;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -9,11 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using HLP.Comum.Infrastructure.Static;
 using System.Reflection;
 using System.Windows.Threading;
 using System.Threading;
 using System.Windows;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -27,14 +27,34 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel = objViewModel;
             servico = new FuncionarioPontoService();
+
+            this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
+                  canExecute: paramCanExec => false);
+
+            this.objViewModel.commandSalvar = new RelayCommand(execute: paramExec => this.Novo(),
+                       canExecute: paramCanExec => false);
+
+            this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Novo(),
+                       canExecute: paramCanExec => false);
+
+            this.objViewModel.commandDeletar = new RelayCommand(execute: paramExec => this.Novo(),
+                       canExecute: paramCanExec => false);
+
+            this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.objViewModel.cancelarBaseCommand.Execute(null),
+                       canExecute: paramCanExec => !this.objViewModel.commandAlterar.CanExecute(null));
+
+            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.objViewModel.alterarBaseCommand.Execute(parameter: paramExec),
+                   canExecute: paramCanExec => !this.objViewModel.cancelarBaseCommand.CanExecute(null));
+
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
-                       canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
+                       canExecute: paramCanExec => true);
+
+            this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
+                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
 
             this.objViewModel.carregarCommand = new RelayCommand(execute: paramExec => this.CarragaFormulario(),
                 canExecute: paramCan => this.CanCarregaFormulario());
-
-            this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
-                    canExecute: paramCanExec => this.objViewModel.alterarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.commandFecharMes = new RelayCommand(execute: paramExec => this.SaveBancoHoras(),
                 canExecute: paramCan => this.CanSaveBancoHoras());
@@ -61,9 +81,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             }
         }
-
-
-
 
         public void CarragaFormulario()
         {
@@ -144,14 +161,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return bReturn;
         }
 
-        private void Alterar(object _panel)
-        {
-            this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-        }
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
             this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
+            this.CarragaFormulario();
 
         }
 
@@ -202,7 +216,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return false;
         }
 
-
         public void NavegaData(object param)
         {
 
@@ -217,6 +230,21 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.CarragaFormulario();
         }
 
+        private void Novo() { }
+
+        public void Navegar(object ContentBotao)
+        {
+            try
+            {
+                objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                objViewModel.currentModel.idFuncionario = objViewModel.currentID;
+                this.CarragaFormulario();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.ViewModel.ViewModels.Parametros;
 using System;
 using System.Collections.Generic;
@@ -155,7 +155,8 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, 
+                HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -178,13 +179,13 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {
             //return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
-            return (this.objViewModel.viewModelBaseCommands.currentOp == Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando ||
-                this.objViewModel.viewModelBaseCommands.currentOp == Comum.Resources.RecursosBases.OperacaoCadastro.livre);
+            return (this.objViewModel.viewModelBaseCommands.currentOp == Base.EnumsBases.OperacaoCadastro.pesquisando ||
+                this.objViewModel.viewModelBaseCommands.currentOp == Base.EnumsBases.OperacaoCadastro.livre);
         }
 
         private void Cancelar()

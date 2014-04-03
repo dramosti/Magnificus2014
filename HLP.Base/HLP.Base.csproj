@@ -95,11 +95,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassesBases\BindingProxy.cs" />
+    <Compile Include="ClassesBases\DateTimeEnumerator.cs" />
+    <Compile Include="ClassesBases\InternetCS.cs" />
     <Compile Include="ClassesBases\modelBase.cs" />
     <Compile Include="ClassesBases\ModelDefinition.cs" />
     <Compile Include="ClassesBases\ModelProperty.cs" />
     <Compile Include="ClassesBases\Modulo.cs" />
     <Compile Include="ClassesBases\MyObservableCollection.cs" />
+    <Compile Include="ClassesBases\ObservableCollectionBaseCadastros.cs" />
     <Compile Include="ClassesBases\ParameterBase.cs" />
     <Compile Include="ClassesBases\ParameterOrder.cs" />
     <Compile Include="ClassesBases\Parameters.cs" />
@@ -126,6 +129,7 @@
     <Compile Include="Static\WcfData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dlls\Componentes\SearchTextBox.dll" />
     <Content Include="Dlls\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
     <Content Include="Dlls\EnterpriseLibrary\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
     <Content Include="Dlls\EnterpriseLibrary\Microsoft.Practices.Prism.dll" />
@@ -139,6 +143,7 @@
     <Content Include="Dlls\Sql\Microsoft.SqlServer.ConnectionInfo.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.SmoExtended.dll" />
+    <Content Include="Dlls\WebServices\HLP.WebServices.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

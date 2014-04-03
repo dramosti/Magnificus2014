@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Entries.Model.Models.Comercial;
+﻿using HLP.Entries.Model.Models.Comercial;
 using System;
 using System.Collections.Generic;
 using System.Linq;

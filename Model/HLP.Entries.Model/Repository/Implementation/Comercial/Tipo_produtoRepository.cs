@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
 using HLP.Entries.Model.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 
 namespace HLP.Entries.Model.Repository.Implementation.Comercial
 {

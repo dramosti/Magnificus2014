@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Model.Models;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -62,9 +61,7 @@ namespace HLP.Comum.View.Components
 
         // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnabledProperty =
-            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));
-
-        
+            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));       
 
         
         

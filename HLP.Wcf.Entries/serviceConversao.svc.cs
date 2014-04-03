@@ -1,4 +1,6 @@
-﻿using HLP.Comum.Resources.Util;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -38,7 +40,7 @@ namespace HLP.Wcf.Entries
                     produtoRepository.GetProduto(idProduto: idProduto);
 
                 if (objProduto != null)
-                    objProduto.lProdutos_Conversao = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel>
+                    objProduto.lProdutos_Conversao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel>
                         (list: conversaoRepository.GetAll(idProduto: idProduto));
 
                 return objProduto;
@@ -51,7 +53,7 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
+        public ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto)
         {
             try
             {
@@ -60,14 +62,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idProduto = (int)objProduto.idProduto;
                                 this.conversaoRepository.Save(conversao: item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 this.conversaoRepository.Delete(idConversao: (int)item.idConversao);
                             }

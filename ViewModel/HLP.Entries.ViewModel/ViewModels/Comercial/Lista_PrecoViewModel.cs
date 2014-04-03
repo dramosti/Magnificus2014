@@ -1,6 +1,6 @@
 ﻿using HLP.Comum.Resources.Models;
 using HLP.Comum.Resources.RecursosBases;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;

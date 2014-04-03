@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.Static;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -17,12 +17,12 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Entries.wcf_FamiliaProduto();
                     }
                     break;
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_FamiliaProduto.Iwcf_FamiliaProdutoClient();
                     }
@@ -34,11 +34,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Save(familia_produto: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Save(familia_produto: objModel);
                     }
@@ -50,11 +50,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Delete(idFamiliaProduto: objModel.idFamiliaProduto ?? 0);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Delete(idFamiliaProduto: objModel.idFamiliaProduto ?? 0);
                     }
@@ -66,11 +66,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Copy(familia_produto: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Copy(familia_produto: objModel);
                     }
@@ -82,11 +82,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetObject(idFamiliaProduto: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetObject(idFamiliaProduto: id);
                     }
@@ -98,11 +98,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetAll();
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetAll();
                     }

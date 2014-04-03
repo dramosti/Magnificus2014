@@ -27,8 +27,8 @@
     <MetadataSource Address="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Funcionario5.xsd" MetadataType="Schema" ID="08ed45e7-8e68-475f-bcea-c73a8754b93c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" />
     <MetadataFile FileName="wcf_Funcionario6.xsd" MetadataType="Schema" ID="ae223587-3b98-4739-9d73-c5ddaf17f2f3" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Funcionario5.xsd" MetadataType="Schema" ID="08ed45e7-8e68-475f-bcea-c73a8754b93c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" />
     <MetadataFile FileName="wcf_Funcionario.wsdl" MetadataType="Wsdl" ID="c1ec27f9-c199-4fa3-a46b-3ac30caf0975" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?wsdl" />
     <MetadataFile FileName="wcf_Funcionario.xsd" MetadataType="Schema" ID="c87db1fa-d65b-4141-9f60-79b999a96d7c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd4" />
     <MetadataFile FileName="wcf_Funcionario1.xsd" MetadataType="Schema" ID="6d362a49-49db-4d5b-b880-82b036cdae39" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd5" />

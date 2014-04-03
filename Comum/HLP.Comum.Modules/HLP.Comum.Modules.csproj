@@ -56,12 +56,6 @@
     <Compile Include="Modulo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
-      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
-      <Name>HLP.Comum.Infrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

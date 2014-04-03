@@ -9,7 +9,7 @@ using System.Windows.Input;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using HLP.Entries.ViewModel.Commands.Gerais;
 
 namespace HLP.Entries.ViewModel.ViewModels

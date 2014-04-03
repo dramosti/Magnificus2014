@@ -153,8 +153,10 @@
     <Content Include="wcf_CamposBaseDados.svc" />
     <Content Include="wcf_Cliente.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
+    <Content Include="wcf_FillComboBox.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
+    <Content Include="wcf_HlpPesqPadrao.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_Produto.svc" />
@@ -232,8 +234,10 @@
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
+    <Compile Include="Iwcf_FillComboBox.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
+    <Compile Include="Iwcf_HlpPesqPadrao.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_Produto.cs" />
@@ -425,11 +429,17 @@
     <Compile Include="wcf_FamiliaProduto.svc.cs">
       <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_FillComboBox.svc.cs">
+      <DependentUpon>wcf_FillComboBox.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Funcionario.svc.cs">
       <DependentUpon>wcf_Funcionario.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Funcionario_Controle_Horas_Ponto.svc.cs">
       <DependentUpon>wcf_Funcionario_Controle_Horas_Ponto.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_HlpPesqPadrao.svc.cs">
+      <DependentUpon>wcf_HlpPesqPadrao.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
@@ -468,14 +478,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
-      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
-      <Name>HLP.Comum.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
-      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
-      <Name>HLP.Comum.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
       <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
       <Name>HLP.Comum.Resources</Name>
@@ -491,6 +493,10 @@
     <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
       <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
       <Name>HLP.Components.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.ComumView.Model\HLP.ComumView.Model.csproj">
+      <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>
+      <Name>HLP.ComumView.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Sales.Model\HLP.Sales.Model.csproj">
       <Project>{b27b639d-7237-466d-a5a8-c9b126485a21}</Project>

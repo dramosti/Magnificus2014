@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
 using System;
@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -59,7 +60,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                         new Transportador_EnderecoModel
                         {
                             idEndereco = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -69,7 +70,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                         new Transportador_MotoristaModel
                         {
                             idTransportdorMotorista = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -79,7 +80,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                         new Transportador_VeiculosModel
                         {
                             idTransportadorVeiculo = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -89,7 +90,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                         new Transportador_ContatoModel
                         {
                             idTransportdorContato = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -205,7 +206,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -227,7 +228,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

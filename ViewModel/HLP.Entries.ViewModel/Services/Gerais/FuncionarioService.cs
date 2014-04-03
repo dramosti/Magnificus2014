@@ -1,6 +1,5 @@
-﻿using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
-using HLP.Comum.Resources.Models;
+﻿using HLP.Base.Static;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -19,15 +18,13 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
-                    {
-                        this.servicoRede = new Wcf.Entries.wcf_Funcionario();
-                    }
+                case StConnection.OnlineNetwork:
                     break;
-                case TipoConexao.OnlineInternet:
-                    {
-                        this.servicoInternet = new wcf_Funcionario.Iwcf_FuncionarioClient();
-                    }
+                case StConnection.OnlineWeb:
+                    break;
+                case StConnection.Offline:
+                    break;
+                default:
                     break;
             }
         }
@@ -36,11 +33,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.saveFuncionario(objFuncionario: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.saveFuncionario(objFuncionario: objModel);
                     }
@@ -52,11 +49,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.deleteFuncionario(idFuncionario: objModel.idFuncionario ?? 0);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.deleteFuncionario(idFuncionario: objModel.idFuncionario ?? 0);
                     }
@@ -68,11 +65,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.copyFuncionario(objFuncionario: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.copyFuncionario(objFuncionario: objModel);
                     }
@@ -84,11 +81,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.getFuncionario(idFuncionario: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.getFuncionario(idFuncionario: id);
                     }
@@ -100,13 +97,14 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetHierarquiaFuncionario(idFuncionario: idFuncionario);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
-                        return this.servicoInternet.GetHierarquiaFuncionario(idFuncionario: idFuncionario);
+                        //return this.servicoInternet.GetHierarquiaFuncionario(idFuncionario: idFuncionario);
+                        return new modelToTreeView();
                     }
             }
             return null;

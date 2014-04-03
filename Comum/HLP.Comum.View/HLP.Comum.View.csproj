@@ -157,6 +157,7 @@
     <Compile Include="Converters\ImageToaByteConverter.cs" />
     <Compile Include="Converters\IntStringConverter.cs" />
     <Compile Include="Converters\MaskConverter.cs" />
+    <Compile Include="Converters\modelToComboBox.cs" />
     <Compile Include="Converters\MoedaConverter.cs" />
     <Compile Include="Converters\NotConverter.cs" />
     <Compile Include="Converters\OperacoesAritmetConverter.cs" />
@@ -283,25 +284,25 @@
       <Project>{6c138179-2c79-4535-9c3c-e78c529d3598}</Project>
       <Name>HLP.Dependencies</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
-      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
-      <Name>HLP.Comum.Infrastructure</Name>
+    <ProjectReference Include="..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
-      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
-      <Name>HLP.Comum.Model</Name>
+    <ProjectReference Include="..\..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
-      <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
-      <Name>HLP.Comum.Modules</Name>
+    <ProjectReference Include="..\..\HLP.Components.ViewModel\HLP.Components.ViewModel.csproj">
+      <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
+      <Name>HLP.Components.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
+      <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
+      <Name>HLP.ComumView.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
       <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
       <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
-      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
-      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

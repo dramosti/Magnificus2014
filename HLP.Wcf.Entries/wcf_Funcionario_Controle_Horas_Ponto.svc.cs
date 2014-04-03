@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Base.EnumsBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using Ninject;

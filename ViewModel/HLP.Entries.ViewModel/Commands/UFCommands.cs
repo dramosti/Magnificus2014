@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
@@ -13,6 +12,7 @@ using HLP.Entries.ViewModel.ViewModels;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -181,7 +181,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -204,7 +204,7 @@ namespace HLP.Entries.ViewModel.Commands
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

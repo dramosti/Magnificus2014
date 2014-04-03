@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using HLP.Comum.Infrastructure;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {

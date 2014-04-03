@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Fiscal;
 using HLP.Entries.ViewModel.ViewModels.Fiscal;
 using System;
@@ -164,7 +164,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -187,7 +187,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

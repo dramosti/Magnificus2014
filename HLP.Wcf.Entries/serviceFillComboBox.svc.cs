@@ -4,10 +4,11 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using Ninject;
+using HLP.Components.Model.Repository.Interfaces;
+using HLP.Components.Model.Models;
 
 namespace HLP.Wcf.Entries
 {
@@ -26,7 +27,7 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public IEnumerable<Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter)
+        public IEnumerable<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter)
         {
             try
             {                

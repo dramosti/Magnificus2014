@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
+using HLP.Base.EnumsBases;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -38,12 +40,12 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             item.idCalendario = (int)objModel.idCalendario;
                             iCalendario_DetalheRepository.Save(item);
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             iCalendario_DetalheRepository.Delete(item);
                             break;
                     }
@@ -66,7 +68,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.CalendarioModel objRet = iCalendarioRepository.GetCalendario(idObjeto);
                 if (objRet != null)
                 {
-                    objRet.lCalendario_DetalheModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>(iCalendario_DetalheRepository.GetAllCalendario_Detalhe(idObjeto));
+                    objRet.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>(iCalendario_DetalheRepository.GetAllCalendario_Detalhe(idObjeto));
                 }
                 return objRet;
             }

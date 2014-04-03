@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Facade.FillComboBoxService;
+﻿using HLP.Base.Static;
+using HLP.Comum.Facade.FillComboBoxService;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -109,7 +110,7 @@ namespace HLP.Comum.Facade.Sales
                 OrcamentoFacade.empresaService = new empresaService.IserviceEmpresaClient();
 
             //this.objEmpresa = new empresaService.EmpresaModel();            
-            this.objEmpresa = OrcamentoFacade.empresaService.getEmpresa(idEmpresa: HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa);
+            this.objEmpresa = OrcamentoFacade.empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
         }
 
         public contato_Service.ContatoModel objContato;

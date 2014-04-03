@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 

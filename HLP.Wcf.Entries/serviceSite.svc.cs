@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;

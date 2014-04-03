@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
+using HLP.Base.EnumsBases;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -38,14 +40,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idContato = (int)objContato.idContato;
                                 iContato_EnderecoRepository.Save(item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 iContato_EnderecoRepository.Delete((int)item.idEndereco);
                             }
@@ -116,7 +118,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.ContatoModel objReturn = iContatoRepository.GetContato(idContato);
                 if (objReturn != null)
                 {
-                    objReturn.lContato_EnderecoModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Contato_EnderecoModel>(iContato_EnderecoRepository.GetAllContato_Endereco(idContato));
+                    objReturn.lContato_EnderecoModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Contato_EnderecoModel>(iContato_EnderecoRepository.GetAllContato_Endereco(idContato));
                 }
                 return objReturn;
 

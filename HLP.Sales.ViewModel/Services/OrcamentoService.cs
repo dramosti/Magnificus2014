@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.Static;
 using HLP.Sales.Model.Models.Comercial;
 using System;
 using System.Collections.Generic;
@@ -17,12 +17,12 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Sales.wcf_Orcamento();
                     }
                     break;
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_Orcamento.Iwcf_OrcamentoClient();
                     }
@@ -34,11 +34,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Save(objModel: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Save(objModel: objModel);
                     }
@@ -50,11 +50,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Delete(objModel: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Delete(objModel: objModel);
                     }
@@ -66,11 +66,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Copy(objModel: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Copy(objModel: objModel);
                     }
@@ -82,11 +82,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetObjeto(idObjeto: id, idEmpresa: CompanyData.idEmpresa);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetObjeto(idObjeto: id, idEmpresa: CompanyData.idEmpresa);
                     }
@@ -98,11 +98,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GerarVersao(objModel: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GerarVersao(objModel: objModel);
                     }
@@ -114,11 +114,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetListaVersoes(idOrcamento: idOrcamento);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetListaVersoes(idOrcamento: idOrcamento);
                     }
@@ -130,11 +130,11 @@ namespace HLP.Sales.ViewModel.Services
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.PossuiFilho(idOrcamento: idOrcamento);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.PossuiFilho(idOrcamento: idOrcamento);
                     }

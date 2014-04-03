@@ -9,8 +9,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Comum.Resources.RecursosBases;
-using HLP.Comum.Model.Models;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Wcf.Entries
 {

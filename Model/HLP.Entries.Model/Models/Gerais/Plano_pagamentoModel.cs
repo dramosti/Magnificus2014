@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
 using HLP.Comum.Resources.RecursosBases;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Entries.Model.Models.Gerais
 {

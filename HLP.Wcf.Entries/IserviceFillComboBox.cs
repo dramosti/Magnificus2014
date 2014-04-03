@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Components.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,6 +13,6 @@ namespace HLP.Wcf.Entries
     public interface IserviceFillComboBox
     {
         [OperationContract]
-        IEnumerable<Comum.Model.Models.modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter);
+        IEnumerable<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter);
     }
 }

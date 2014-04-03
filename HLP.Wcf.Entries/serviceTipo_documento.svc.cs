@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject;
+using HLP.Base.EnumsBases;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -39,12 +41,12 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             item.idTipoDocumento = (int)objModel.idTipoDocumento;
                             iTipo_documento_oper_validaRepository.Save(item);
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             iTipo_documento_oper_validaRepository.Delete((int)item.idTipoDocumento);
                             break;
                     }
@@ -67,7 +69,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Fiscal.Tipo_documentoModel objret = itipo_documentoRepository.GetDocumento(idObjeto);
                 if (objret != null)
                 {
-                    objret.lTipo_documento_oper_validaModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Fiscal.Tipo_documento_oper_validaModel>(iTipo_documento_oper_validaRepository.GetAll((int)objret.idTipoDocumento));
+                    objret.lTipo_documento_oper_validaModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Fiscal.Tipo_documento_oper_validaModel>(iTipo_documento_oper_validaRepository.GetAll((int)objret.idTipoDocumento));
                 }
                 return objret;
             }

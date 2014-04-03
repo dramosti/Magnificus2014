@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCFC8E30-5A35-4451-BBC5-6FAC96016BF6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HLP.ComumView.ViewModel</RootNamespace>
+    <AssemblyName>HLP.ComumView.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\LoginCommands.cs" />
+    <Compile Include="Commands\MainCommands.cs" />
+    <Compile Include="Commands\SenhaSupervisorCommands.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\empresaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Funcionario\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SenhaSupervisorViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Facade\HLP.Comum.Facade.csproj">
+      <Project>{3e7af44f-8443-4ddf-a196-f6ee90883898}</Project>
+      <Name>HLP.Comum.Facade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.ComumView.Model\HLP.ComumView.Model.csproj">
+      <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>
+      <Name>HLP.ComumView.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\empresaService\HLP.ComumView.ViewModel.empresaService.EmpresaModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
+    <None Include="Service References\empresaService\serviceEmpresa.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\empresaService\serviceEmpresa6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\HLP.ComumView.ViewModel.wcf_Funcionario.FuncionarioModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_Funcionario\HLP.ComumView.ViewModel.wcf_Funcionario.modelToTreeView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\empresaService\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\serviceEmpresa.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\empresaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

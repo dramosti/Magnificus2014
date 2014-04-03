@@ -454,25 +454,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
-      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
-      <Name>HLP.Comum.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
-      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
-      <Name>HLP.Comum.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Comum\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
-      <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
-      <Name>HLP.Comum.Modules</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
       <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
       <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
-      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
-      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
       <Project>{178fdd5c-d3e5-4809-87c6-3a69c0055bc6}</Project>
@@ -485,6 +469,10 @@
     <ProjectReference Include="..\..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Components.Model\HLP.Components.Model.csproj">
+      <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
+      <Name>HLP.Components.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
@@ -1467,6 +1455,9 @@
     </None>
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\HLP.Entries.ViewModel.wcf_Funcionario.modelToTreeView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">

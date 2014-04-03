@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Components.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -33,6 +34,6 @@ namespace HLP.Wcf.Entries
         int GetIdListaPreferencial();
 
         [OperationContract]
-        List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco);
+        List<HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco);
     }
 }

@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;

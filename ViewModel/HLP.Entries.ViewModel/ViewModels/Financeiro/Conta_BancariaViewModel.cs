@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.Commands.Financeiro;
 using System;

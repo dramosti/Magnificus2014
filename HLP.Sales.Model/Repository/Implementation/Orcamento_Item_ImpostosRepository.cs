@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.Model.Repository.Interfaces;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -65,7 +65,6 @@ namespace HLP.Sales.Model.Repository.Implementation
                                  MapBuilder<Orcamento_Item_ImpostosModel>
                                  .MapAllProperties()
                                  .DoNotMap(i => i.status)
-                                 .DoNotMap(i => i.enumstOrigem)
                                  .DoNotMap(i => i.xNcm)
                                  .DoNotMap(i => i.vTotalItem)
                                  .DoNotMap(i => i.vFreteItem)
@@ -86,7 +85,6 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_Item_ImpostosModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
-                                .DoNotMap(i => i.enumstOrigem)
                                 .DoNotMap(i => i.xNcm)
                                 .DoNotMap(i => i.vTotalItem)
                                  .DoNotMap(i => i.vFreteItem)
@@ -108,7 +106,6 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_Item_ImpostosModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
-                                .DoNotMap(i => i.enumstOrigem)
                                 .DoNotMap(i => i.xNcm)
                                 .DoNotMap(i => i.vTotalItem)
                                  .DoNotMap(i => i.vFreteItem)
@@ -129,7 +126,6 @@ namespace HLP.Sales.Model.Repository.Implementation
                                 MapBuilder<Orcamento_Item_ImpostosModel>
                                 .MapAllProperties()
                                 .DoNotMap(i => i.status)
-                                .DoNotMap(i => i.enumstOrigem)
                                 .DoNotMap(i => i.xNcm)
                                 .DoNotMap(i => i.vTotalItem)
                                  .DoNotMap(i => i.vFreteItem)

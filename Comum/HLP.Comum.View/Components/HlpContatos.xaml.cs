@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Model.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -22,14 +21,14 @@ namespace HLP.Comum.View.Components
     /// <summary>
     /// Interaction logic for HlpContatos.xaml
     /// </summary>
-    public partial class HlpContatos : UserControl, INotifyPropertyChanged
+    public partial class HlpContatos : UserControl
     {
         public HlpContatos()
         {
             InitializeComponent();
-            this.lContatos = new ObservableCollection<ContatoModel>();
-            this.lColumns = new ObservableCollection<string>();
-            this.lColumns.CollectionChanged += lColumns_CollectionChanged;
+            //this.lContatos = new ObservableCollection<ContatoModel>();
+            //this.lColumns = new ObservableCollection<string>();
+            //this.lColumns.CollectionChanged += lColumns_CollectionChanged;
         }
 
         #region Collection para manipulação de visibilidade de colunas
@@ -103,33 +102,33 @@ namespace HLP.Comum.View.Components
 
 
 
-        public ObservableCollection<ContatoModel> lContatos
-        {
-            get { return (ObservableCollection<ContatoModel>)GetValue(lContatosProperty); }
-            set
-            {
-                SetValue(lContatosProperty, value);
-                this.NotifyPropertyChanged(propertyName: "lContatos");
-            }
-        }
+        //public ObservableCollection<ContatoModel> lContatos
+        //{
+        //    get { return (ObservableCollection<ContatoModel>)GetValue(lContatosProperty); }
+        //    set
+        //    {
+        //        SetValue(lContatosProperty, value);
+        //        this.NotifyPropertyChanged(propertyName: "lContatos");
+        //    }
+        //}
 
-        // Using a DependencyProperty as the backing store for lContatos.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty lContatosProperty =
-            DependencyProperty.Register("lContatos", typeof(ObservableCollection<ContatoModel>), typeof(HlpContatos), new PropertyMetadata(new ObservableCollection<ContatoModel>()));
+        //// Using a DependencyProperty as the backing store for lContatos.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty lContatosProperty =
+        //    DependencyProperty.Register("lContatos", typeof(ObservableCollection<ContatoModel>), typeof(HlpContatos), new PropertyMetadata(new ObservableCollection<ContatoModel>()));
 
-        #region NotifyPropertyChanged
+        //#region NotifyPropertyChanged
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        //protected void NotifyPropertyChanged(string propertyName)
+        //{
+        //    if (this.PropertyChanged != null)
+        //    {
+        //        this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+        //}
 
-        #endregion
+        //#endregion
 
     }
 }

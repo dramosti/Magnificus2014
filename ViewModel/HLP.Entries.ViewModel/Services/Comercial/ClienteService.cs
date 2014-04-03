@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.Static;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Services.Transportes;
 using HLP.Wcf.Entries;
@@ -23,12 +23,12 @@ namespace HLP.Entries.ViewModel.Services.Comercial
 
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Entries.wcf_Cliente();
                     }
                     break;
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_Cliente.Iwcf_ClienteClient();
                     }
@@ -40,11 +40,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Save(obj: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Save(obj: objModel);
                     }
@@ -56,11 +56,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Delete(id: (int)objModel.idClienteFornecedor);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Delete(id: (int)objModel.idClienteFornecedor);
                     }
@@ -72,11 +72,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Copy(obj: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Copy(obj: objModel);
                     }
@@ -88,11 +88,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetObject(id: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetObject(id: id);
                     }

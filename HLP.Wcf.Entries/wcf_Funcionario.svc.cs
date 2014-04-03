@@ -1,5 +1,7 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -36,7 +38,7 @@ namespace HLP.Wcf.Entries
         //[Inject]
         //public IFuncionario_EnderecoRepository funcionario_EnderecoRepository { get; set; }
         [Inject]
-        public HLP.Comum.Model.Repository.Interfaces.Components.IHlpEnderecoRepository hlpEnderecoRepository { get; set; }
+        public IHlpEnderecoRepository hlpEnderecoRepository { get; set; }
 
         [Inject]
         public IFuncionario_Margem_Lucro_ComissaoRepository funcionario_Margem_Lucro_ComissaoRepository { get; set; }
@@ -80,7 +82,7 @@ namespace HLP.Wcf.Entries
                 var listaEndereco = this.hlpEnderecoRepository.GetAllObjetos(idPK:
                     idFuncionario, sPK: "idFuncionario");
                 if (listaEndereco.Count > 0)
-                    objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<HLP.Comum.Model.Models.EnderecoModel>(list:
+                    objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>(list:
                         listaEndereco);
 
                 var listaMargem = this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
@@ -172,7 +174,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (HLP.Comum.Model.Models.EnderecoModel item in objFuncionario.lFuncionario_Endereco)
+                foreach (EnderecoModel item in objFuncionario.lFuncionario_Endereco)
                 {
                     switch (item.status)
                     {
@@ -303,7 +305,7 @@ namespace HLP.Wcf.Entries
                         objFuncionario_Comissao_Produto: item);
                 }
 
-                foreach (HLP.Comum.Model.Models.EnderecoModel item in objFuncionario.lFuncionario_Endereco)
+                foreach (EnderecoModel item in objFuncionario.lFuncionario_Endereco)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.hlpEnderecoRepository.Copy(item);
@@ -329,16 +331,16 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaFuncionario(int idFuncionario)
+        public modelToTreeView GetHierarquiaFuncionario(int idFuncionario)
         {
             if (idFuncionario == 0)
                 return null;
 
-            HLP.Comum.Resources.Models.modelToTreeView nodeTemp;
+            modelToTreeView nodeTemp;
 
             HLP.Entries.Model.Models.Gerais.FuncionarioModel f = this.getFuncionario(idFuncionario: idFuncionario);
             int? idResponsavel = f.idResponsavel;
-            HLP.Comum.Resources.Models.modelToTreeView nodeActual = new HLP.Comum.Resources.Models.modelToTreeView
+            modelToTreeView nodeActual = new modelToTreeView
             {
                 id = (int)f.idFuncionario,
                 xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
@@ -348,13 +350,13 @@ namespace HLP.Wcf.Entries
             {
                 f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
 
-                nodeTemp = new HLP.Comum.Resources.Models.modelToTreeView
+                nodeTemp = new modelToTreeView
                 {
                     id = (int)f.idFuncionario,
                     xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
-                    lFilhos = new List<HLP.Comum.Resources.Models.modelToTreeView>()
+                    lFilhos = new List<modelToTreeView>()
                     {
-                        new HLP.Comum.Resources.Models.modelToTreeView
+                        new modelToTreeView
                         {
                             id = nodeActual.id,
                             xDisplay = nodeActual.xDisplay,
@@ -377,11 +379,11 @@ namespace HLP.Wcf.Entries
 
             if (lFilhos != null)
             {
-                nodeActual.lFilhos = new List<HLP.Comum.Resources.Models.modelToTreeView>();
+                nodeActual.lFilhos = new List<modelToTreeView>();
                 foreach (var i in lFilhos)
                 {
                     nodeActual.lFilhos.Add(
-                        item: new HLP.Comum.Resources.Models.modelToTreeView
+                        item: new modelToTreeView
                         {
                             id = (int)i.idFuncionario,
                             xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao

@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -41,14 +43,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idPlanoPagamento = (int)objPlano_pagamento.idPlanoPagamento;
                                 iPlano_pagamento_linhasRepository.Save(item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 iPlano_pagamento_linhasRepository.Delete((int)item.idLinhasPagamento);
                             }
@@ -117,7 +119,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel objRet = iPlano_pagamentoRepository.GetPlano_pagamento(idPlanoPagamento);
                 if (objRet != null)
                 {
-                    objRet.lPlano_pagamento_linhasModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Plano_pagamento_linhasModel>(iPlano_pagamento_linhasRepository.GetAllPlano_pagamento_linhas(idPlanoPagamento));
+                    objRet.lPlano_pagamento_linhasModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Plano_pagamento_linhasModel>(iPlano_pagamento_linhasRepository.GetAllPlano_pagamento_linhas(idPlanoPagamento));
                 }
                 return objRet;
             }

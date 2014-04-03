@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
@@ -78,15 +79,15 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_ContatoRepository.Save(objTransportador_Contato:
                                     item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 this.transportador_ContatoRepository.Delete(idTransportadorContato: (int)item.idTransportdorContato);
                             }
@@ -98,14 +99,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_EnderecoRepository.Save(objTransportador_Endereco: item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 this.transportador_EnderecoRepository.Delete(idTransportadorEndereco: (int)item.idEndereco);
                             }
@@ -117,14 +118,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_MotoristaRepository.Save(objTransportador_Motorista: item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 this.transportador_MotoristaRepository.Delete(idTransportadorMotorista: (int)item.idTransportdorMotorista);
                             }
@@ -136,14 +137,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idTransportador = (int)objTransportador.idTransportador;
                                 this.transportador_VeiculosRepository.Save(objTransportador_Veiculos: item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 this.transportador_VeiculosRepository.Delete(idTransportadorVeiculo: (int)item.idTransportadorVeiculo);
                             }

@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
@@ -80,7 +81,7 @@ namespace HLP.Wcf.Entries
 
                 if (objeto != null)
                 {
-                    objeto.lOperacaoReducaoBase = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel>(
+                    objeto.lOperacaoReducaoBase = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Fiscal.Operacao_reducao_baseModel>(
                         list: this.operacao_Reducao_BaseRepository.GetAll(idTipoOperacao: idObjeto));
                 }
                 return objeto;

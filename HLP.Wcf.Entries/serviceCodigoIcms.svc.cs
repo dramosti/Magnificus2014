@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
 using Ninject;
+using HLP.Base.EnumsBases;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -40,12 +42,12 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             item.idCodigoIcmsPai = (int) objModel.idCodigoIcmsPai;
                             iCodigo_IcmsRepository.Save(item);
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             iCodigo_IcmsRepository.Delete(item);
                             break;
                     }
@@ -70,7 +72,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Fiscal.Codigo_Icms_paiModel objret = iCodigo_Icms_paiRepository.GetCodigo_Icms_pai(idObjeto);
                 if (objret != null)
                 {
-                    objret.lCodigo_IcmsModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Fiscal.Codigo_IcmsModel>(iCodigo_IcmsRepository.GetAllCodigo_Icms(idObjeto));
+                    objret.lCodigo_IcmsModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Fiscal.Codigo_IcmsModel>(iCodigo_IcmsRepository.GetAllCodigo_Icms(idObjeto));
                 }
                 return objret;
             }

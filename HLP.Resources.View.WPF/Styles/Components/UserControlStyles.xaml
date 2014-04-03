@@ -425,7 +425,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgSelect.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgSelect.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -467,7 +467,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgErase.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgErase.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -509,7 +509,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgConfirm.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgConfirm.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -551,7 +551,7 @@
                         <Border x:Name="border2" Grid.Column="1" CornerRadius="5" BorderBrush="{x:Null}" Background="{x:Null}">
                             <ContentPresenter x:Name="contentPresenter" TextElement.Foreground="White" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
-                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,/HLP.Resources.View.WPF;Icons/Button/ImgCancel.png"/>
+                        <Image Grid.Column="0" Height="26" Width="40" Source="pack://application:,,,;component/Icons/Button/ImgCancel.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
@@ -956,4 +956,41 @@
         </Setter>
     </Style>    
     
+    <!--HlpButtonHierarquia-->
+    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+    <Style x:Key="btnHierarquia" TargetType="Button">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                    </ControlTemplate.Resources>
+                    <Border x:Name="border" CornerRadius="40" Background="{StaticResource BlueStandard}" BorderBrush="White">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontFamily="Calibri" TextElement.FontSize="10" TextElement.Foreground="White" TextElement.FontWeight="Black"></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="100">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FF88B8FB"/>
+                                        <GradientStop Color="#FF4875B5" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Fiscal;
 using HLP.Entries.ViewModel.Commands.Fiscal;
 

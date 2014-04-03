@@ -5,7 +5,7 @@
         xmlns:convView="clr-namespace:HLP.Entries.View.WPF.Validates"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
 		xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
 		xmlns:System="clr-namespace:System;assembly=mscorlib"  
         Title="Acesso" Height="660" Width="1024" NameView="vwFuncionario">

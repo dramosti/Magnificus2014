@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.Static;
 using HLP.Comum.Resources.Models;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Entries.Model.Models.Comercial;
@@ -19,12 +19,12 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Entries.wcf_Lista_Preco();
                     }
                     break;
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_Lista_Preco.Iwcf_Lista_PrecoClient();
                     }
@@ -36,11 +36,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.saveLista_Preco(objListaPreco: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.saveLista_Preco(objListaPreco: objModel);
                     }
@@ -52,11 +52,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.deleteLista_Preco(idListaPrecoPai: (int)objModel.idListaPrecoPai);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.deleteLista_Preco(idListaPrecoPai: (int)objModel.idListaPrecoPai);
                     }
@@ -68,11 +68,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.copyLista_Preco(objListaPreco: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.copyLista_Preco(objListaPreco: objModel);
                     }
@@ -84,11 +84,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.getLista_Preco(idListaPrecoPai: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.getLista_Preco(idListaPrecoPai: id);
                     }
@@ -100,11 +100,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetAllIdsListaPreco();
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetAllIdsListaPreco();
                     }
@@ -116,11 +116,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetItensListaPreco(idListaPrecoPai: idListaPrecoPai);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetItensListaPreco(idListaPrecoPai: idListaPrecoPai);
                     }
@@ -132,11 +132,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetIdListaPreferencial();
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetIdListaPreferencial();
                     }
@@ -148,11 +148,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
                     }
@@ -164,11 +164,11 @@ namespace HLP.Entries.ViewModel.Services.Comercial
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetSelectedLista_PrecoFullHierarquia(idListaPreco: idListaPreco);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetSelectedLista_PrecoFullHierarquia(idListaPreco: idListaPreco);
                     }

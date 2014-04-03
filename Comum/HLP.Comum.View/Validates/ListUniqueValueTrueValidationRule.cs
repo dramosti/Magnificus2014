@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
-using HLP.Comum.Infrastructure.Static;
+using HLP.Base.Static;
+
 
 namespace HLP.Comum.View.Validates
 {

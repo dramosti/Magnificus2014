@@ -1,5 +1,6 @@
-﻿using HLP.Comum.Model.Repository.Interfaces;
+﻿using HLP.Base.Static;
 using HLP.Comum.Resources.Util;
+using HLP.ComumView.Model.Repository.Interface;
 using HLP.Dependencies;
 using Ninject;
 using System;
@@ -57,7 +58,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 return loginRepository.ValidaAdministrador(xID: xID, xSenha:
-                    HLP.Comum.Infrastructure.Static.Criptografia.Encripta(xSenha), idEmpresa: idEmpresa);
+                    Criptografia.Encripta(xSenha), idEmpresa: idEmpresa);
             }
             catch (Exception ex)
             {
@@ -84,7 +85,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 return loginRepository.ValidaLogin(xID: xId, xSenha:
-                    HLP.Comum.Infrastructure.Static.Criptografia.Encripta(xSenha));
+                    Criptografia.Encripta(xSenha));
             }
             catch (Exception ex)
             {

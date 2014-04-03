@@ -14,17 +14,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Comum.Model.Components;
-using HLP.Comum.Model.Repository.Interfaces.Components;
-using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Dependencies;
 using HLP.Comum.View.PesquisaRapidaService;
-using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.ViewModel.Commands;
-using HLP.Comum.Modules;
 using System.Reflection;
 using HLP.Comum.View.Formularios;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Base.Modules;
 
 namespace HLP.Comum.View.Components
 {
@@ -95,12 +91,12 @@ namespace HLP.Comum.View.Components
                     {
                         if (objRet == "")
                         {
-                            this.Display = objRet.ToString();
+                            this.Display = objRet.ToString().ToUpper();
                             this.txtID.Text = "0";
                             this.txtID.Focus();
                         }
                         else
-                            this.Display = objRet.ToString();
+                            this.Display = objRet.ToString().ToUpper();
                     }
                 }
             }
@@ -261,7 +257,7 @@ namespace HLP.Comum.View.Components
 
         private void IniciaPesquisa()
         {
-            Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Modules.Interface.TipoExibeForm.Normal);
+            Window winPesquisa = GerenciadorModulo.Instancia.CarregaForm("WinPesquisaPadrao", Base.InterfacesBases.TipoExibeForm.Normal);
             this.txtID.Focus();
             winPesquisa.WindowState = WindowState.Maximized;
             winPesquisa.SetPropertyValue("NameView", this.TableView);
@@ -287,8 +283,8 @@ namespace HLP.Comum.View.Components
         {
             if (this.nameWindow != null)
             {
-                object form = GerenciadorModulo.Instancia.CarregaForm(nome: this.nameWindow,
-                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+                object form = GerenciadorModulo.Instancia.CarregaForm(nome: this.nameWindow, exibeForm:
+                     Base.InterfacesBases.TipoExibeForm.Normal);
 
                 Type t = form.GetType();
                 ConstructorInfo constr = t.GetConstructor(Type.EmptyTypes);
@@ -296,7 +292,7 @@ namespace HLP.Comum.View.Components
 
 
                 Window w = GerenciadorModulo.Instancia.CarregaForm(nome: "HlpPesquisaInsert",
-                exibeForm: Modules.Interface.TipoExibeForm.Modal);
+                exibeForm: Base.InterfacesBases.TipoExibeForm.Normal);
 
                 (w.FindName(name: "ctrContent") as ContentControl).DataContext = (inst as Window).DataContext;
                 (w.FindName(name: "ctrContent") as ContentControl).Content = (inst as Window).Content;

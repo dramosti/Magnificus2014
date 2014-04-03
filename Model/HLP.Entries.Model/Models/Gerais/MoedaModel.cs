@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
-using HLP.Comum.ViewModel.ViewModels.Components;
 using HLP.Comum.Resources.RecursosBases;
 
 namespace HLP.Entries.View.WPF.Crm

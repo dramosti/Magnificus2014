@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -62,7 +63,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         new Contato_EnderecoModel
                         {
                             idEndereco = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
@@ -80,7 +81,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
             try
-            {                
+            {
                 this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
             }
             catch (Exception ex)
@@ -163,7 +164,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
             }
         }
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new ContatoModel();
@@ -181,7 +182,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -204,7 +205,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {
@@ -213,7 +214,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

@@ -1,5 +1,5 @@
 ﻿using HLP.Comum.Resources.Models;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using System;

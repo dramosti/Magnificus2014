@@ -1,5 +1,4 @@
-﻿using HLP.Comum.ViewModel.Commands;
-using HLP.Entries.Model.Models.Gerais;
+﻿using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.Services.Gerais;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Entries.ViewModel.Commands
 {

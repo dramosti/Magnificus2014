@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.Static;
 using HLP.Entries.Model.Models.Transportes;
 using System;
 using System.Collections.Generic;
@@ -16,16 +16,14 @@ namespace HLP.Entries.ViewModel.Services.Transportes
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Entries.wcf_Rota();
-                    }
-                    break;
-                case TipoConexao.OnlineInternet:
+                    } break;
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_Rota.Iwcf_RotaClient();
-                    }
-                    break;
+                    } break;
             }
         }
 
@@ -33,80 +31,100 @@ namespace HLP.Entries.ViewModel.Services.Transportes
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Save(objRota: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Save(objRota: objModel);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
             }
-            return null;
         }
 
         public bool Delete(RotaModel objModel)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Delete(idRota: objModel.idRota ?? 0);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Delete(idRota: objModel.idRota ?? 0);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return false;
+                    }
             }
-            return false;
         }
 
         public RotaModel Copy(RotaModel objModel)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Copy(objRota: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Copy(objRota: objModel);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
             }
-            return null;
         }
 
         public RotaModel GetObjeto(int id)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetObject(idRota: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetObject(idRota: id);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
             }
-            return null;
         }
 
         public bool PossuiListaPreco(int id)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.PossuiListaPreco(idRota: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.PossuiListaPreco(idRota: id);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return false;
+                    }
             }
-            return false;
         }
     }
 }

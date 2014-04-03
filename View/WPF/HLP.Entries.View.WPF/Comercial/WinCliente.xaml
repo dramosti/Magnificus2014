@@ -7,8 +7,8 @@
         xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Comercial.Converter"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
-        xmlns:src="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
+        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"        
         x:Class="HLP.Entries.View.WPF.Comercial.WinCliente"
         Title="WinCliente" Height="660" Width="1158" NameView="vwCliente" >
     <Window.Resources>

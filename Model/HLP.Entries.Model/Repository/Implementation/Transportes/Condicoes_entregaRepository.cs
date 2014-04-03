@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;

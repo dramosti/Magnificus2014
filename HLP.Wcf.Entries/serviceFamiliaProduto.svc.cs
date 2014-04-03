@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Ninject;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -36,7 +38,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.Familia_produtoModel objFamiliaProd = iFamilia_ProdutoRepository.GetFamilia_produto(idFamiliaProduto);
                 if (objFamiliaProd != null)
                 {
-                    objFamiliaProd.lFamilia_Produto_ClassesModel = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel>(iFamilia_Produto_ClassesRepository.GetAllFamilia_Produto_Classes(idFamiliaProduto));
+                    objFamiliaProd.lFamilia_Produto_ClassesModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Familia_Produto_ClassesModel>(iFamilia_Produto_ClassesRepository.GetAllFamilia_Produto_Classes(idFamiliaProduto));
                 }
                 return objFamiliaProd;
             }
@@ -61,14 +63,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idFamiliaProduto = (int)familia_produto.idFamiliaProduto;
                                 iFamilia_Produto_ClassesRepository.Save(item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             {
                                 iFamilia_Produto_ClassesRepository.Delete((int)item.idFamilia_Produto_Classes);
                             }

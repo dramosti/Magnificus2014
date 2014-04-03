@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using HLP.Comum.Modules;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
-using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Base.Modules;
+using HLP.Base.Static;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -64,7 +64,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             foreach (var item in objBase.lCalendario_DetalheModel)
             {
                 item.idCalendarioDetalhe = null;
-                item.status = Comum.Resources.RecursosBases.statusModel.criado;
+                item.status = statusModel.criado;
             }
             objViewModel.currentModel.lCalendario_DetalheModel = objBase.lCalendario_DetalheModel;
         }
@@ -82,7 +82,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void GeraDetalhamento()
         {
-            Window win = GerenciadorModulo.Instancia.CarregaForm("WinCalendarioDetalhe", Comum.Modules.Interface.TipoExibeForm.Modal);
+            Window win = GerenciadorModulo.Instancia.CarregaForm("WinCalendarioDetalhe", Base.InterfacesBases.TipoExibeForm.Modal);
             win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             win.ShowDialog();
             var dados = win.GetPropertyValue("ViewModel").GetPropertyValue("lCalendarioDetalhes");
@@ -91,7 +91,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
 
-       
+
         public void Save(object _panel)
         {
             try
@@ -102,7 +102,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         new Calendario_DetalheModel
                         {
                             idCalendarioDetalhe = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
@@ -121,8 +121,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
             try
-            {                
-                this.objViewModel.currentModel =servico.Save(objViewModel.currentModel);                
+            {
+                this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -224,7 +224,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
             }
         }
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new CalendarioModel();
@@ -242,7 +242,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -265,7 +265,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
 
         private bool AlterarCanExecute()
@@ -275,7 +275,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }

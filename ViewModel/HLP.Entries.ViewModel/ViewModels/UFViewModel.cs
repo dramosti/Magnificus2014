@@ -5,11 +5,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels

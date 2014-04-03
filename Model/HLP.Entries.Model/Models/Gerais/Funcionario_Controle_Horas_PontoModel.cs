@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +57,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "dRelogioPonto");
             }
         }
-        private TimeSpan? _hAlteradaUsuario;
+        private TimeSpan? _hAlteradaUsuario = new TimeSpan();
         [ParameterOrder(Order = 5)]
         public TimeSpan? hAlteradaUsuario
         {
