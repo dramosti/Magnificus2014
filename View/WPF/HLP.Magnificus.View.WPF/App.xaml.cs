@@ -161,10 +161,10 @@ namespace HLP.Magnificus.View.WPF
                         XmlLanguage.GetLanguage(
                         CultureInfo.CurrentCulture.IetfLanguageTag)));
 
-                    BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
-                    bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
-                    bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
-                    bwParametrosEmpresa.RunWorkerAsync();
+                    //BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
+                    //bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
+                    //bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
+                    //bwParametrosEmpresa.RunWorkerAsync();
 
                     base.OnStartup(e);
                     wd.WindowState = WindowState.Maximized;

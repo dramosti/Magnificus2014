@@ -3,6 +3,8 @@ using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.ComumView.Model.Model;
 using HLP.ComumView.ViewModel.Commands;
+using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,7 +22,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
 {
     public class MainViewModel : ViewModelBase<WinManModel>
     {
-        empresaService.IserviceEmpresaClient empresaService = new empresaService.IserviceEmpresaClient();
+        EmpresaService objService;
         wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
 
 
@@ -64,6 +66,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         public MainViewModel()
         {
+            objService = new EmpresaService();
             winMan = new WinManModel();
             string sPath = "";
 
@@ -154,9 +157,9 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         public void CarregaDadosLogin()
         {
-            this.currentEmpresa = empresaService.getEmpresa(idEmpresa: CompanyData.idEmpresa);
-            this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
-            this.sizeColunaDados = this.currentFuncionario.xNome.Length * 10;
+            //this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
+            this.currentEmpresa = this.objService.GetObject(id: CompanyData.idEmpresa);
+            //this.sizeColunaDados = this.currentFuncionario.xNome.Length * 10;
         }
 
         private WinManModel _winMan;
@@ -179,9 +182,10 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         #region Informações Usuário e Empresa
 
-        private empresaService.EmpresaModel _currentEmpresa;
+        
+        private EmpresaModel _currentEmpresa;
 
-        public empresaService.EmpresaModel currentEmpresa
+        public EmpresaModel currentEmpresa
         {
             get { return _currentEmpresa; }
             set

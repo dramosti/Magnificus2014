@@ -46,9 +46,14 @@ namespace HLP.Base.ClassesBases
         }
 
         public modelBase(string xTabela)
-        {            
-            lcamposSqlNotNull = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela
-                    == xTabela).lCamposSqlModel;
+        {
+            CamposSqlNotNullModel x = lCamposSqlNotNull._lCamposSql.FirstOrDefault(i => i.xTabela
+                      == xTabela);
+
+            if (x == null)
+                return;
+
+            lcamposSqlNotNull = x.lCamposSqlModel;
             PropertyInfo p = this.GetType().GetProperty("idEmpresa");
 
             if (p != null && !xTabela.Contains("Empresa"))

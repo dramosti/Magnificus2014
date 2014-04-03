@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
   <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="FuncionarioModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="Ativo" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="dAdmissao" nillable="true" type="xs:dateTime" />
@@ -35,7 +36,7 @@
           <xs:element minOccurs="0" name="lFuncionario_Arquivo" nillable="true" type="tns:ArrayOfFuncionario_ArquivoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Certificacao" nillable="true" type="tns:ArrayOfFuncionario_CertificacaoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Comissao_Produto" nillable="true" type="tns:ArrayOfFuncionario_Comissao_ProdutoModel" />
-          <xs:element minOccurs="0" name="lFuncionario_Endereco" nillable="true" type="q1:ArrayOfEnderecoModel" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" minOccurs="0" name="lFuncionario_Endereco" nillable="true" type="q2:ArrayOfEnderecoModel" />
           <xs:element minOccurs="0" name="lFuncionario_Margem_Lucro_Comissao" nillable="true" type="tns:ArrayOfFuncionario_Margem_Lucro_ComissaoModel" />
           <xs:element minOccurs="0" name="pComissaoAprazo" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="pComissaoAvista" nillable="true" type="xs:decimal" />
@@ -96,7 +97,7 @@
   <xs:element name="ArrayOfFamilia_produtoModel" nillable="true" type="tns:ArrayOfFamilia_produtoModel" />
   <xs:complexType name="Familia_produtoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idCentroCusto" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContaContabil" nillable="true" type="xs:int" />
@@ -126,7 +127,7 @@
   <xs:element name="ArrayOfFamilia_Produto_ClassesModel" nillable="true" type="tns:ArrayOfFamilia_Produto_ClassesModel" />
   <xs:complexType name="Familia_Produto_ClassesModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q4:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idClasseFinanceira" type="xs:int" />
           <xs:element minOccurs="0" name="idFamiliaProduto" type="xs:int" />
@@ -145,7 +146,7 @@
   <xs:element name="ArrayOfFuncionario_AcessoModel" nillable="true" type="tns:ArrayOfFuncionario_AcessoModel" />
   <xs:complexType name="Funcionario_AcessoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q5:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idAcesso" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
@@ -165,7 +166,7 @@
   <xs:element name="ArrayOfFuncionario_ArquivoModel" nillable="true" type="tns:ArrayOfFuncionario_ArquivoModel" />
   <xs:complexType name="Funcionario_ArquivoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q5:modelBase">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q6:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioArquivo" nillable="true" type="xs:int" />
@@ -184,11 +185,11 @@
   <xs:element name="ArrayOfFuncionario_CertificacaoModel" nillable="true" type="tns:ArrayOfFuncionario_CertificacaoModel" />
   <xs:complexType name="Funcionario_CertificacaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q7:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="dConclusao" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dValidade" type="xs:dateTime" />
-          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoCertificacao" type="q7:TipoCertificacao" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoCertificacao" type="q8:TipoCertificacao" />
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioCertificacao" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="stCertificacao" type="xs:unsignedByte" />
@@ -207,7 +208,7 @@
   <xs:element name="ArrayOfFuncionario_Comissao_ProdutoModel" nillable="true" type="tns:ArrayOfFuncionario_Comissao_ProdutoModel" />
   <xs:complexType name="Funcionario_Comissao_ProdutoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q8:modelBase">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q9:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioComissaoProduto" nillable="true" type="xs:int" />
@@ -227,7 +228,7 @@
   <xs:element name="ArrayOfFuncionario_Margem_Lucro_ComissaoModel" nillable="true" type="tns:ArrayOfFuncionario_Margem_Lucro_ComissaoModel" />
   <xs:complexType name="Funcionario_Margem_Lucro_ComissaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q9:modelBase">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q10:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioMargemLucroComissao" nillable="true" type="xs:int" />

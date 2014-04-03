@@ -78,7 +78,12 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             ("SELECT * FROM Empresa_Endereco WHERE idEmpresa = @idEmpresa", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEmpresa"),
             MapBuilder<Empresa_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).DoNotMap(c => c.enumTipoEnder).Build());
 
-            return reg.Execute(idEmpresa).ToList();
+            var list = reg.Execute(idEmpresa);
+
+            if (list != null)
+                return list.ToList();
+
+            return null;
         }
     }
 }
