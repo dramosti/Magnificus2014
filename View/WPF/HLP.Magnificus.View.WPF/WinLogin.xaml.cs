@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +41,8 @@ namespace HLP.Magnificus.View.WPF
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            if (!ViewModel.bLogado)
-                ViewModel.fecharCommand.Execute(parameter: null);
+            //if (!ViewModel.bLogado)                
+            //    ViewModel.fecharCommand.Execute(parameter: null);
         }
     }
 }

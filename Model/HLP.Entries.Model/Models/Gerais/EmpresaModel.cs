@@ -1,6 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Entries.Model.Models.Parametros;
 using System;

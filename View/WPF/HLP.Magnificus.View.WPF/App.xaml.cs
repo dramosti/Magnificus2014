@@ -12,16 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Comum.Modules;
-using HLP.Comum.Modules.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
 using System.Windows.Markup;
 using System.Globalization;
 using System.ComponentModel;
 using System.Configuration;
 using System.ServiceModel.Configuration;
-using HLP.Comum.Infrastructure.Util;
 using HLP.Entries.View.WPF.RecursosHumanos;
+using HLP.Base.Static;
+using HLP.Base.EnumsBases;
+using HLP.Base.ClassesBases;
+
 namespace HLP.Magnificus.View.WPF
 {
     /// <summary>
@@ -122,24 +122,24 @@ namespace HLP.Magnificus.View.WPF
 
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();
-                if (this.EmRedeLocal() != TipoConexao.OnlineRede)
+                if (this.EmRedeLocal() != StConnection.OnlineNetwork)
                 {
                     InternetCS internetUtil = new InternetCS();
 
                     if (internetUtil.Conexao())
                     {
-                        Sistema.bOnline = TipoConexao.OnlineInternet;
-                        bModificado = this.SalvaEndPoint(xUri: HLP.Comum.Infrastructure.Static.WcfData.xEnderWeb);
+                        Sistema.bOnline = StConnection.OnlineWeb;
+                        bModificado = this.SalvaEndPoint(xUri: WcfData.xEnderWeb);
                     }
                     else
                     {
-                        Sistema.bOnline = TipoConexao.Offline;
+                        Sistema.bOnline = StConnection.Offline;
                         MessageBox.Show(messageBoxText: "Não foi possível iniciar sistema, sem conexão de rede e internet.");
                         Application.Current.Shutdown();
                     }
                 }
 
-                if (Sistema.bOnline != TipoConexao.Offline)
+                if (Sistema.bOnline != StConnection.Offline)
                 {
 
                     if (bModificado)
@@ -151,7 +151,7 @@ namespace HLP.Magnificus.View.WPF
                     HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
                     this.MainWindow = wd;
 
-                    WinLogin wdLogin = new WinLogin(stModoInicial: Comum.ViewModel.ViewModels.ModoInicial.padrao);
+                    WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
                     wdLogin.ShowDialog();
 
                     wd._viewModel.CarregaDadosLogin();
@@ -179,24 +179,24 @@ namespace HLP.Magnificus.View.WPF
             }
         }
 
-        private TipoConexao EmRedeLocal()
+        private StConnection EmRedeLocal()
         {
             System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
             System.Net.NetworkInformation.PingReply pr;
 
             try
             {
-                pr = p.Send(HLP.Comum.Infrastructure.Static.WcfData.xIpServidor);
+                pr = p.Send(WcfData.xIpServidor);
 
                 if (pr.Status == System.Net.NetworkInformation.IPStatus.Success)
-                    Sistema.bOnline = TipoConexao.OnlineRede;
+                    Sistema.bOnline = StConnection.OnlineNetwork;
                 else
-                    Sistema.bOnline = TipoConexao.OnlineInternet;
+                    Sistema.bOnline = StConnection.OnlineWeb;
                 return Sistema.bOnline;
             }
             catch (Exception)
             {
-                return TipoConexao.Offline;
+                return StConnection.Offline;
             }
         }
 

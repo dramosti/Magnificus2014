@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Components.Services;
 using HLP.Components.Model.Models;
+using System.Collections.ObjectModel;
 
 namespace HLP.Components.ViewModel.ViewModels
 {
@@ -17,11 +18,9 @@ namespace HLP.Components.ViewModel.ViewModels
             objService = new FillComboBoxService();
         }
 
-        public List<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter)
+        public ObservableCollection<modelToComboBox> GetAllValuesToComboBox(string sNameView, string sParameter = "")
         {
-            return objService.GetAllValuesToComboBox(
-                sNameView: sNameView, sParameter: sParameter
-                );
+            return new ObservableCollection<modelToComboBox>(objService.GetAllValuesToComboBox(sNameView, sParameter));
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Modules;
-using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Modules;
 using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using HLP.Comum.Infrastructure.Static;
+using HLP.Base.Static;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -67,7 +67,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                Window win = GerenciadorModulo.Instancia.CarregaForm("WinLancamentoManualPonto", Comum.Modules.Interface.TipoExibeForm.Modal);
+                Window win = GerenciadorModulo.Instancia.CarregaForm("WinLancamentoManualPonto", Base.InterfacesBases.TipoExibeForm.Modal);
                 Type tp = win.GetType();
                 MethodInfo method = tp.GetMethod("SetDataContext");
                 method.Invoke(win, new object[] { objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto) });

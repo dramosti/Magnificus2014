@@ -1,6 +1,7 @@
-﻿using HLP.Comum.Modules;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Base.Modules;
 using HLP.Comum.Resources.Models;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
@@ -72,7 +73,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             this.objViewModel.CancAumVlrVendaCommand = new RelayCommand(execute: paramExec => this.CancAumVlrExecute());
 
-            this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
+            this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
                 collection: this.objServico.GetAllIdsListaPreco());
 
             this.objServicoProduto = new ProdutoService();
@@ -102,7 +103,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             this.PesquisarRegistro();
 
-            this.objViewModel.SetValorCurrentOp(op: Comum.Resources.RecursosBases.OperacaoCadastro.pesquisando);
+            this.objViewModel.SetValorCurrentOp(op: OperacaoCadastro.pesquisando);
         }
 
         private void IniciaCollection()
@@ -182,12 +183,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void AtribuicaoColetiva(object xForm)
         {
             Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xForm.ToString(),
-                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+                exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
 
             object vm = null;
             vm = form.GetType().GetProperty(name: "DataContext").GetValue(obj: form);
 
-            ((AtribuicaoColetivaListaPrecoViewModel)vm).currentList = new Comum.Model.Models.ObservableCollectionBaseCadastros<Lista_precoModel>(
+            ((AtribuicaoColetivaListaPrecoViewModel)vm).currentList = new ObservableCollectionBaseCadastros<Lista_precoModel>(
                 list: this.objViewModel.currentModel.lLista_preco);
 
             ((AtribuicaoColetivaListaPrecoViewModel)vm).stAtualizacaoLista = this.objViewModel.currentModel.stAtualizacao;
@@ -260,7 +261,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                         item: new Lista_precoModel
                         {
                             idListaPreco = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
@@ -307,7 +308,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.IniciaCollection();
                     this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
 
-                    this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
+                    this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
                 collection: this.objServico.GetAllIdsListaPreco());
 
                     int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
@@ -410,7 +411,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -444,7 +445,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {
@@ -454,7 +455,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Cancelar()
         {
             if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.objViewModel.navigatePesquisa = new Comum.Model.Models.MyObservableCollection<int>(
+            this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
                 collection: this.objServico.GetAllIdsListaPreco());
             int currentId = this.idOld;
             int currentPosition = 0;

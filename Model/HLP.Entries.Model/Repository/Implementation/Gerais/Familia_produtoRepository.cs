@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Infrastructure;
 using HLP.Entries.Model.Models.Gerais;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
-using HLP.Comum.Infrastructure.Static;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Base;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
@@ -24,7 +25,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             DataAccessor<Familia_produtoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Familia_produto",
             MapBuilder<Familia_produtoModel>.MapAllProperties()
-            .DoNotMap(c=>c.status)
+            .DoNotMap(c => c.status)
             .Build());
 
             return reg.Execute().ToList();
@@ -38,7 +39,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regFamiliaProdAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_familia_produto",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idFamiliaProduto"),
-                                    MapBuilder<Familia_produtoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
+                                    MapBuilder<Familia_produtoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
             familia = regFamiliaProdAccessor.Execute(idFamiliaProduto).FirstOrDefault();
             return familia;

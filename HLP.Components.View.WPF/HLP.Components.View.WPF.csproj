@@ -56,6 +56,7 @@
     <Compile Include="Converter\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converter\HlpPesquisaConverter.cs" />
     <Compile Include="Converter\ImageToaByteConverter.cs" />
+    <Compile Include="Converter\IntStringConverter.cs" />
     <Compile Include="Converter\MaskConverter.cs" />
     <Compile Include="Converter\SelectedItemToTextConverter.cs" />
     <Compile Include="Converter\TimeSpanToString.cs" />

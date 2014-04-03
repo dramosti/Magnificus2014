@@ -1,5 +1,6 @@
-﻿using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Base.Static;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Sales.Model.Repository.Interfaces;
@@ -104,15 +105,15 @@ namespace HLP.Wcf.Entries
         {
             try
             {
-                HLP.Comum.Infrastructure.Static.CompanyData.idEmpresa = idEmpresa;
+                CompanyData.idEmpresa = idEmpresa;
 
                 HLP.Sales.Model.Models.Comercial.Orcamento_ideModel objOrcamento =
                     this.orcamento_ideRepository.GetOrcamento_ide(idOrcamento: idObjeto);
 
-                objOrcamento.lOrcamento_Itens = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel>(
+                objOrcamento.lOrcamento_Itens = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_ItemModel>(
                     list: this.orcamento_itemRepository.GetAllOrcamento_Item(idOrcamento: (int)objOrcamento.idOrcamento));
 
-                objOrcamento.lOrcamento_Item_Impostos = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel>(
+                objOrcamento.lOrcamento_Item_Impostos = new ObservableCollectionBaseCadastros<HLP.Sales.Model.Models.Comercial.Orcamento_Item_ImpostosModel>(
                     list: this.IOrcamento_Item_ImpostosRepository.GetAllOrcamento_Item_ImpostosByOrcamento(idOrcamento: (int)objOrcamento.idOrcamento));
 
                 objOrcamento.orcamento_retTransp = this.orcamento_retTranspRepository.GetOrcamento_retTranspByIdOrcamento(idOrcamento: (int)objOrcamento.idOrcamento);

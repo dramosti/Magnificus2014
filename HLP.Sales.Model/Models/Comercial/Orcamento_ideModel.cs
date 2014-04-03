@@ -1,6 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +6,6 @@ using System.Threading.Tasks;
 using HLP.Comum.Facade.Sales;
 using HLP.Entries.Model.Fiscal;
 using System.Collections.ObjectModel;
-using HLP.Comum.Resources.RecursosBases;
-using HLP.Comum.Infrastructure.Static;
 using HLP.Comum.Facade.Magnificus;
 using System.Reactive.Linq;
 using HLP.Entries.Model.Models.Parametros;
@@ -17,8 +13,10 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Threading;
 using System.Windows.Controls;
-using HLP.Comum.Resources.Util;
 using System.Windows.Media;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Sales.Model.Models.Comercial
 {
@@ -2202,16 +2200,16 @@ namespace HLP.Sales.Model.Models.Comercial
             }
         }
 
-        private stOrigem _enumstOrigem;
-        public stOrigem enumstOrigem
-        {
-            get { return _enumstOrigem; }
-            set
-            {
-                _enumstOrigem = value;
-                _ICMS_stOrigemMercadoria = (byte)value;
-            }
-        }
+        //private stOrigem _enumstOrigem;
+        //public stOrigem enumstOrigem
+        //{
+        //    get { return _enumstOrigem; }
+        //    set
+        //    {
+        //        _enumstOrigem = value;
+        //        _ICMS_stOrigemMercadoria = (byte)value;
+        //    }
+        //}
 
         private byte _ICMS_stOrigemMercadoria;
         [ParameterOrder(Order = 2)]
@@ -2221,7 +2219,6 @@ namespace HLP.Sales.Model.Models.Comercial
             set
             {
                 _ICMS_stOrigemMercadoria = value;
-                _enumstOrigem = (stOrigem)value;
             }
         }
 
@@ -4102,7 +4099,7 @@ namespace HLP.Sales.Model.Models.Comercial
                                 row = dg.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
                                 if (row != null)
                                 {
-                                    o = StaticUtil.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
+                                    o = Util.GetCell(grid: dg, row: row, column: column.DisplayIndex).Content;
 
                                     if (o.GetType().Name.ToString() == "TextBlock")
                                     {

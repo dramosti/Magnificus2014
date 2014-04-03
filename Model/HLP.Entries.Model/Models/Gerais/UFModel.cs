@@ -1,11 +1,10 @@
-﻿using System;
+﻿using HLP.Base.ClassesBases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
 
 
 namespace HLP.Entries.Model.Models.Gerais

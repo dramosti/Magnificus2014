@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Comercial.ProdutoModel getlConversao(int idProduto);
 
         [OperationContract]
-        Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
+        ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.ConversaoModel> savelConversao(HLP.Entries.Model.Models.Comercial.ProdutoModel objProduto);
 
         [OperationContract]
         bool dellConversao(int idProduto);

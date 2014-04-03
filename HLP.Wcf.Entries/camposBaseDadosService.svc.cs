@@ -1,13 +1,11 @@
 ﻿using Ninject;
 using System;
-using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
 using HLP.Dependencies;
 using HLP.Comum.Resources.Util;
-using HLP.Comum.Model.Models;
 using System.Collections.Generic;
-using HLP.Comum.Model.Repository.Interfaces.Components;
-using HLP.Comum.Model.Components;
 using System.Runtime.Serialization;
+using HLP.Entries.Model.Repository.Interfaces.Components;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Wcf.Entries
 {

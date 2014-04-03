@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Resources.Models;
-using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Resources.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Services.GestaoMateriais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -69,7 +70,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         new Site_enderecoModel
                         {
                             idEndereco = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -188,7 +189,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -211,7 +212,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

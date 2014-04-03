@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Components.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,10 +28,10 @@ namespace HLP.Comum.View.Converters
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-           
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -42,7 +42,7 @@ namespace HLP.Comum.View.Converters
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }

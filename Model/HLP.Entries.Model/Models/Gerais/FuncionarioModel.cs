@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Comum.Resources.RecursosBases;
 using System;
 using System.Collections.Generic;
@@ -715,7 +715,11 @@ namespace HLP.Entries.Model.Models.Gerais
 
                 if (value == 2)
                 {
-                    Window w = HLP.Comum.Infrastructure.Static.Sistema.GetOpenWindow(xName: "WinFuncionario");
+                    //Window w = HLP.Comum.Infrastructure.Static.Sistema.GetOpenWindow(xName: "WinFuncionario");
+
+                    //TODO: Reestruturação: Verificar qual a melhor forma de fazer este recurso
+
+                    Window w = new Window();
 
                     if (w != null)
                     {

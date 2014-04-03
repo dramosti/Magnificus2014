@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using Microsoft.Practices.EnterpriseLibrary.Data;

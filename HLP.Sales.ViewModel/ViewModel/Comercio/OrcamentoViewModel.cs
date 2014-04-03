@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Base.ClassesBases;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Commands.Comercio;
 using System;

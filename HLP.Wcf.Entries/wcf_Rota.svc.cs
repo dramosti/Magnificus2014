@@ -1,4 +1,6 @@
-﻿using HLP.Comum.Resources.Util;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Ninject;
@@ -40,12 +42,12 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             item.idRota = (int)objRota.idRota;
                             iRota_pracaRepository.Save(item);
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             iRota_pracaRepository.Delete(item);
                             break;
                     }
@@ -116,7 +118,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Transportes.RotaModel objRet = iRotaRepository.GetRota(idRota);
                 if (objRet != null)
                 {
-                    objRet.lRota_Praca = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Rota_pracaModel>(iRota_pracaRepository.GetAllRota_Praca(idRota));
+                    objRet.lRota_Praca = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Rota_pracaModel>(iRota_pracaRepository.GetAllRota_Praca(idRota));
                 }
                 return objRet;
             }

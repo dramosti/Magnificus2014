@@ -255,25 +255,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Infrastructure\HLP.Comum.Infrastructure.csproj">
-      <Project>{cd60f2d5-6e51-417a-b50e-c4eb01eb7565}</Project>
-      <Name>HLP.Comum.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Model\HLP.Comum.Model.csproj">
-      <Project>{3ac30ea1-2dd2-48e6-888d-b79a10935aa4}</Project>
-      <Name>HLP.Comum.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.Modules\HLP.Comum.Modules.csproj">
-      <Project>{6821d0a7-276d-462d-9ada-f2e0abbda3f2}</Project>
-      <Name>HLP.Comum.Modules</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Comum\HLP.Comum.Resources\HLP.Comum.Resources.csproj">
       <Project>{e92dd62d-5bf4-4968-a03c-869127ab5860}</Project>
       <Name>HLP.Comum.Resources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Comum\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
-      <Project>{aea2620f-8e97-4a2b-a5b9-bf9c3d79c5e4}</Project>
-      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
       <Project>{178FDD5C-D3E5-4809-87C6-3A69C0055BC6}</Project>
@@ -283,9 +267,17 @@
       <Project>{6C138179-2C79-4535-9C3C-E78C529D3598}</Project>
       <Name>HLP.Dependencies</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\HLP.Components.View.WPF\HLP.Components.View.WPF.csproj">
-      <Project>{048f4c37-ad90-403f-a9a1-64d0789983c5}</Project>
-      <Name>HLP.Components.View.WPF</Name>
+    <ProjectReference Include="..\..\..\HLP.Base\HLP.Base.csproj">
+      <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
+      <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Components.ViewModel\HLP.Components.ViewModel.csproj">
+      <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
+      <Name>HLP.Components.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
+      <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
+      <Name>HLP.ComumView.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.Sales.View.WPF\HLP.Sales.View.WPF.csproj">
       <Project>{629160d8-8a40-4515-a5d8-9c20024fc0e2}</Project>

@@ -1,8 +1,9 @@
-﻿using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Modules;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Base.Modules;
+using HLP.Base.Static;
 using HLP.Comum.Resources.Util;
 using HLP.Comum.View.Formularios;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Sales.Model.Models.Comercial;
 using HLP.Sales.ViewModel.Services;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
@@ -78,7 +79,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         new Orcamento_ItemModel
                         {
                             idOrcamentoItem = item,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -217,7 +218,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
             Sistema.stSender = TipoSender.Sistema;
         }
         private bool NovoCanExecute()
@@ -240,7 +241,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
             Sistema.stSender = TipoSender.Sistema;
         }
         private bool AlterarCanExecute()
@@ -424,7 +425,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
         private void AlterarStatusExecute(object o)
         {
             Window form = GerenciadorModulo.Instancia.CarregaForm(nome: "StatusItensOrcamento",
-                exibeForm: HLP.Comum.Modules.Interface.TipoExibeForm.Modal);
+                exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
             byte novoStatus = 0;
 
             //<ComboBoxItem>0-Criado</ComboBoxItem>
@@ -519,7 +520,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                         objItem.objImposto.nItem = objItem.nItem;
 
                         objItem.status = objItem.objImposto.status
-                            = Comum.Resources.RecursosBases.statusModel.criado;
+                            = statusModel.criado;
 
                         this.objViewModel.currentModel.lOrcamento_Itens.Add(item: objItem);
                     }

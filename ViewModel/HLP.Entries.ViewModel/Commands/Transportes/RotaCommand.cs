@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
 using HLP.Entries.ViewModel.Services.Transportes;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -62,7 +63,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                         new Rota_pracaModel
                         {
                             idRota = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
@@ -175,7 +176,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
 
         private bool NovoCanExecute()
@@ -198,7 +199,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool AlterarCanExecute()
         {

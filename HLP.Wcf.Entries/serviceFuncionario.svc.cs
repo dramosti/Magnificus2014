@@ -1,5 +1,7 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Comum.Resources.RecursosBases;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -30,7 +32,7 @@ namespace HLP.Wcf.Entries
         public IFuncionario_Comissao_ProdutoRepository funcionario_Comissao_ProdutoRepository { get; set; }
 
         [Inject]
-        public HLP.Comum.Model.Repository.Interfaces.Components.IHlpEnderecoRepository hlpEnderecoRepository { get; set; }
+        public IHlpEnderecoRepository hlpEnderecoRepository { get; set; }
         //[Inject]
         //public IFuncionario_EnderecoRepository funcionario_EnderecoRepository { get; set; }
 
@@ -74,7 +76,7 @@ namespace HLP.Wcf.Entries
                 var listaEndereco = this.hlpEnderecoRepository.GetAllObjetos(idPK:
                     idFuncionario, sPK: "idFuncionario");
                 if (listaEndereco.Count > 0)
-                    objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<HLP.Comum.Model.Models.EnderecoModel>(list:
+                    objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>(list:
                         listaEndereco);
 
                 var listaMargem = this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
@@ -168,7 +170,7 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (HLP.Comum.Model.Models.EnderecoModel item in objFuncionario.lFuncionario_Endereco)
+                foreach (EnderecoModel item in objFuncionario.lFuncionario_Endereco)
                 {
                     switch (item.status)
                     {
@@ -281,7 +283,7 @@ namespace HLP.Wcf.Entries
                         objFuncionario_Comissao_Produto: item);
                 }
 
-                foreach (HLP.Comum.Model.Models.EnderecoModel item in objFuncionario.lFuncionario_Endereco)
+                foreach (EnderecoModel item in objFuncionario.lFuncionario_Endereco)
                 {
                     item.idFuncionario = (int)objFuncionario.idFuncionario;
                     this.hlpEnderecoRepository.Copy(item);

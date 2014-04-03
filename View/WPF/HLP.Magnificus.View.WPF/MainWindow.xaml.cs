@@ -12,12 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Comum.Modules;
-using HLP.Comum.Modules.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.ViewModel.ViewModels;
 using HLP.Entries.View.WPF.Gerais;
-using HLP.Comum.Infrastructure.Util;
+using HLP.Base.Modules;
+using HLP.Base.Static;
+using HLP.ComumView.ViewModel.ViewModel;
 
 namespace HLP.Magnificus.View.WPF
 {

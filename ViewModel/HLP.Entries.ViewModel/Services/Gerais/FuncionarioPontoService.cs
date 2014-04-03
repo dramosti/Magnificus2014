@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.Static;
 using HLP.Entries.Model.Models.Gerais;
 using System;
 using System.Collections.Generic;
@@ -17,12 +17,12 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Entries.wcf_Funcionario_Controle_Horas_Ponto();
                     }
                     break;
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_PontoClient();
                     }
@@ -34,11 +34,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetAllFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetAllFuncionario_Controle_Horas_PontoDia(idFuncionario, data);
                     }
@@ -51,11 +51,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
 
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetHorasTrabalhadasDia(idFuncionario, dtDia);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetHorasTrabalhadasDia(idFuncionario, dtDia);
                     }
@@ -67,11 +67,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
 
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetHorasAtrabalharDia(idFuncionario, dtDia);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetHorasAtrabalharDia(idFuncionario, dtDia);
                     }
@@ -82,11 +82,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Save(idFuncionario, lPonto);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Save(idFuncionario, lPonto);
                     }
@@ -97,11 +97,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetTotalDiasTrabalhadosMes(idFuncionario, dtMes);
                     }
@@ -112,11 +112,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetHorasATrabalharMes(idFuncionario, dtMes);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetHorasATrabalharMes(idFuncionario, dtMes);
                     }
@@ -127,11 +127,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetTotalBancoHoras(idFuncionario, dtMes);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetTotalBancoHoras(idFuncionario, dtMes);
                     }
@@ -144,11 +144,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
                     }
@@ -159,22 +159,22 @@ namespace HLP.Entries.ViewModel.Services.Gerais
 
         public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras)
         {
-            if (Sistema.bOnline == TipoConexao.OnlineRede)
+            if (Sistema.bOnline == StConnection.OnlineNetwork)
             {
                 this.servicoRede.SaveBancoHoras(objFuncionario_BancoHoras);
             }
-            else if (Sistema.bOnline == TipoConexao.Offline)
+            else if (Sistema.bOnline == StConnection.OnlineWeb)
             {
                 this.servicoInternet.SaveBancoHoras(objFuncionario_BancoHoras);
             }
         }
         public void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes)
         {
-            if (Sistema.bOnline == TipoConexao.OnlineRede)
+            if (Sistema.bOnline == StConnection.OnlineNetwork)
             {
                 this.servicoRede.DeleteBancoHorasMes(idFuncionario,dtMes);
             }
-            else if (Sistema.bOnline == TipoConexao.Offline)
+            else if (Sistema.bOnline == StConnection.OnlineWeb)
             {
                 this.servicoInternet.DeleteBancoHorasMes(idFuncionario, dtMes);
             }

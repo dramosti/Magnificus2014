@@ -1,5 +1,4 @@
 ﻿using HLP.Comum.Resources.Util;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -9,11 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using HLP.Comum.Infrastructure.Static;
 using System.Reflection;
 using System.Windows.Threading;
 using System.Threading;
 using System.Windows;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -215,7 +215,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             return false;
         }
-        
+
         public void NavegaData(object param)
         {
 

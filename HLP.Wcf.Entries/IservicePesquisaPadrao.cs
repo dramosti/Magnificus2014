@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Base.ClassesBases;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace HLP.Wcf.Entries
     public interface IservicePesquisaPadrao
     {
         [OperationContract]
-        HLP.Comum.Model.Components.PesquisaPadraoModelContract[] GetTableInformation(string sViewName);
+        PesquisaPadraoModelContract[] GetTableInformation(string sViewName);
 
         [OperationContract]
         DataSet GetData(string sSelect, bool addDefault = false, string sWhere = "", bool bOrdena = true);

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using HLP.Comum.Model.Models;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {

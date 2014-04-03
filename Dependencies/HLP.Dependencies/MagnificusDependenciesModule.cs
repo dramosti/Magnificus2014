@@ -1,8 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Model.Repository.Implementation.Components;
-using HLP.Comum.Model.Repository.Interfaces.ClassesBases;
-using HLP.Comum.Model.Repository.Interfaces.Components;
-using HLP.Entries.Model.Repository.Implementation.Gerais;
+﻿using HLP.Entries.Model.Repository.Implementation.Gerais;
 using HLP.Entries.Model.Repository.Implementation.Fiscal;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
 using HLP.Entries.Model.Repository.Interfaces.Fiscal;
@@ -22,8 +18,13 @@ using HLP.Entries.Model.Repository.Interfaces.Crm;
 using HLP.Entries.Model.Repository.Implementation.Crm;
 using HLP.Sales.Model.Repository.Interfaces;
 using HLP.Sales.Model.Repository.Implementation;
-using HLP.Comum.Model.Repository.Interfaces;
-using HLP.Comum.Model.Repository.Implementation;
+using HLP.Base.ClassesBases;
+using HLP.Components.Model.Repository.Interfaces;
+using HLP.Entries.Model.Repository.Interfaces.Components;
+using HLP.Components.Model.Repository.Implementation;
+using HLP.Entries.Model.Repository.Implementation.Components;
+using HLP.ComumView.Model.Repository.Implementation;
+using HLP.ComumView.Model.Repository.Interface;
 
 namespace HLP.Dependencies
 {
@@ -33,20 +34,13 @@ namespace HLP.Dependencies
         {
             Bind<HLP.Base.ClassesBases.UnitOfWorkBase>().ToConstant(new UnitOfWork2());
 
-            Bind<UnitOfWorkBase>().ToConstant(new UnitOfWork());
+            //Bind<UnitOfWorkBase>().ToConstant(new UnitOfWork());
             ResolveRepositories();
             ResolveServices();
         }
 
         protected void ResolveRepositories()
         {
-            Bind<HLP.Entries.Model.Repository.Interfaces.Components.IHlpPesquisaPadraoRepository>()
-                .To<HLP.Entries.Model.Repository.Implementation.Components.HlpPesquisaPadraoRepository>();
-            Bind<HLP.Components.Model.Repository.Interfaces.IHlpPesquisaRapidaRepository>()
-                .To<HLP.Components.Model.Repository.Implementation.HlpPesquisaRapidaRepository>();
-            Bind<HLP.Components.Model.Repository.Interfaces.IFillComboBoxRepository>()
-                .To<HLP.Components.Model.Repository.Implementation.FillComboBoxRepository>();
-
             Bind<IHlpEnderecoRepository>().To<HlpEnderecoRepository>();
             Bind<ILoginRepository>().To<LoginRepository>();
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();

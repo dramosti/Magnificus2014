@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Model.Components;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
 using System.Collections.Generic;
 using System.ServiceModel;
 

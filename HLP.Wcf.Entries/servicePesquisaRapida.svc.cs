@@ -4,13 +4,11 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Comum.Model.Repository.Interfaces.Components;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using Ninject;
-using HLP.Comum.Model.Components;
 using System.Collections;
-using HLP.Comum.Infrastructure.Static;
+using HLP.Components.Model.Repository.Interfaces;
 
 namespace HLP.Wcf.Entries
 {

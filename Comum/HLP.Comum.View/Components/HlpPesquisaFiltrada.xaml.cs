@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Resources.Util;
-using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Components.ViewModel.ViewModels;
+using HLP.Comum.Resources.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -69,7 +69,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Transportador_Veiculos]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idTransportadorVeiculo"),
-                   MapBuilder<Transportador_VeiculosModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+                   MapBuilder<Transportador_VeiculosModel>.MapAllProperties()
+                   .DoNotMap(i => i.status).Build());
             }
             return regAcessor.Execute(idTransportadorVeiculo).FirstOrDefault();
         }
@@ -78,7 +79,8 @@ namespace HLP.Entries.Model.Repository.Implementation.Transportes
         {
             DataAccessor<Transportador_VeiculosModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Transportador_Veiculos WHERE idTransportador = @idTransportador", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idTransportador"),
-            MapBuilder<Transportador_VeiculosModel>.MapAllProperties().DoNotMap(i => i.status).Build());
+            MapBuilder<Transportador_VeiculosModel>.MapAllProperties()
+            .DoNotMap(i => i.status).Build());
 
             return reg.Execute(idTransportador).ToList();
         }

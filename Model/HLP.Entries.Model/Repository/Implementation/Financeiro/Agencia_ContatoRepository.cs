@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Repository.Interfaces.Financeiro;
 using Microsoft.Practices.EnterpriseLibrary.Data;

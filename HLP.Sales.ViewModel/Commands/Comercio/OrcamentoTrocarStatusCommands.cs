@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
 using HLP.Sales.ViewModel.ViewModel.Comercio;
 using System;
 using System.Collections.Generic;

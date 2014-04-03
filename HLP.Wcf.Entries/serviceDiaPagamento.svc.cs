@@ -8,6 +8,8 @@ using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Financeiro;
 using Ninject;
+using HLP.Base.EnumsBases;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Wcf.Entries
 {
@@ -45,14 +47,14 @@ namespace HLP.Wcf.Entries
                 {
                     switch (item.status)
                     {
-                        case HLP.Comum.Resources.RecursosBases.statusModel.criado:
-                        case HLP.Comum.Resources.RecursosBases.statusModel.alterado:
+                        case statusModel.criado:
+                        case statusModel.alterado:
                             {
                                 item.idDiaPagamento = (int)objDia_pagamento.idDiaPagamento;
                                 iDia_pagamento_linhasRepository.Save(item);
                             }
                             break;
-                        case HLP.Comum.Resources.RecursosBases.statusModel.excluido:
+                        case statusModel.excluido:
                             iDia_pagamento_linhasRepository.Delete(item);
                             break;
                     }
@@ -118,7 +120,7 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel objret = iDia_PagamentoRepository.GetDia_pagamento(idDiaPagamento);
                 if (objret != null)
                 {
-                    objret.lDia_pagamento_linhas = new Comum.Model.Models.ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Financeiro.Dia_pagamento_linhasModel>(iDia_pagamento_linhasRepository.GetAllDia_pagamento_linhas(idDiaPagamento));
+                    objret.lDia_pagamento_linhas = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Financeiro.Dia_pagamento_linhasModel>(iDia_pagamento_linhasRepository.GetAllDia_pagamento_linhas(idDiaPagamento));
                 }
                 return objret;
 

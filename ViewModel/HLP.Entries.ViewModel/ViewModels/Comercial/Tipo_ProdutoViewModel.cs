@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
 

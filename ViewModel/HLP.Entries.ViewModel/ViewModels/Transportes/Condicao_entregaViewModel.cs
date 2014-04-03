@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.Commands.Transportes;
 using System;

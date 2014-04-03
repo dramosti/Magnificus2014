@@ -1,12 +1,12 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ccx="clr-namespace:HLP.Comum.ViewModel.ViewModels.Components;assembly=HLP.Comum.ViewModel"
+        xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         xmlns:convLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         x:Name="wdAtribuicao"
-        xmlns:util="clr-namespace:HLP.Comum.Infrastructure.Util;assembly=HLP.Comum.Infrastructure"
+        xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco"
         Title="Atribuição Coletiva" Height="400" Width="750" WindowStartupLocation="CenterScreen">
     <Window.Resources>

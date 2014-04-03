@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Infrastructure;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using Microsoft.Practices.EnterpriseLibrary.Data;

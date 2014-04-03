@@ -28,7 +28,7 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_ListaPreco.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Comum.Resources.RecursosBases.statusModel statusField;
+        private HLP.Base.EnumsBases.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -54,7 +54,7 @@ namespace HLP.Entries.ViewModel.wcf_ListaPreco {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Comum.Resources.RecursosBases.statusModel status {
+        public HLP.Base.EnumsBases.statusModel status {
             get {
                 return this.statusField;
             }

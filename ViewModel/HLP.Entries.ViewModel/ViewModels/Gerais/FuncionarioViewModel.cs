@@ -1,7 +1,5 @@
-﻿using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
-using HLP.Comum.Resources.Models;
-using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using HLP.Entries.ViewModel.Services.Gerais;

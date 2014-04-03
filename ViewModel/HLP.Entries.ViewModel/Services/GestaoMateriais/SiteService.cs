@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.Static;
 using HLP.Comum.Resources.Models;
 using HLP.Entries.Model.Models.Gerais;
 using System;
@@ -19,12 +18,12 @@ namespace HLP.Entries.ViewModel.Services.GestaoMateriais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         this.servicoRede = new Wcf.Entries.wcf_Site();
                     }
                     break;
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         this.servicoInternet = new wcf_Site.Iwcf_SiteClient();
                     }
@@ -36,80 +35,100 @@ namespace HLP.Entries.ViewModel.Services.GestaoMateriais
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Save(obj: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Save(obj: objModel);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
             }
-            return null;
         }
 
         public bool Delete(SiteModel objModel)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Delete(id: objModel.idSite ?? 0);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Delete(id: objModel.idSite ?? 0);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return false;
+                    }
             }
-            return false;
         }
 
         public SiteModel Copy(SiteModel objModel)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.Copy(obj: objModel);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.Copy(obj: objModel);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
             }
-            return null;
         }
 
         public SiteModel GetObjeto(int id)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetObject(id: id);
                     }
-                case TipoConexao.OnlineInternet:
+                case StConnection.OnlineWeb:
                     {
                         return this.servicoInternet.GetObject(id: id);
                     }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
             }
-            return null;
         }
 
         public modelToTreeView GetHierarquia(int idSite)
         {
             switch (Sistema.bOnline)
             {
-                case TipoConexao.OnlineRede:
+                case StConnection.OnlineNetwork:
                     {
                         return this.servicoRede.GetHierarquiaSite(idSite: idSite);
                     }
-                case TipoConexao.OnlineInternet:
-                    {                        
-                        return this.servicoInternet.GetHierarquiaSite(idSite: idSite);                        
+                case StConnection.OnlineWeb:
+                    {
+                        return this.servicoInternet.GetHierarquiaSite(idSite: idSite);
+                    }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
                     }
             }
-            return null;
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using HLP.Comum.Model.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Sales.Model.Models.Comercial
 {

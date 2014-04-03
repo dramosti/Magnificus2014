@@ -1,4 +1,4 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Components.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,6 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.FuncionarioModel copyFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);
 
         [OperationContract]
-        HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaFuncionario(int idFuncionario);
+        modelToTreeView GetHierarquiaFuncionario(int idFuncionario);
     }
 }

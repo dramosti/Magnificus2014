@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HLP.Components.Model.Models;
+using HLP.Components.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +12,11 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
-
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HLP.Comum.ViewModel.ViewModels.Components;
 
 namespace HLP.Comum.View.Components
 {
@@ -304,7 +304,7 @@ namespace HLP.Comum.View.Components
             if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
             {
                 if (this.ViewModel.lFiltros == null)
-                    this.ViewModel.lFiltros = new List<Model.Components.PesquisaPadraoModel>();
+                    this.ViewModel.lFiltros = new List<PesquisaPadraoModel>();
 
                 var columnHeader = sender as DataGridColumnHeader;
                 var column = dgvResult.Columns[columnHeader.DisplayIndex];
@@ -323,7 +323,7 @@ namespace HLP.Comum.View.Components
                     if (this.ViewModel.lFiltros.Count > 0)
                     {
                         HlpPesquisaFiltrada frm = new HlpPesquisaFiltrada();
-                        frm.ViewModel.lFiltros = new System.Collections.ObjectModel.ObservableCollection<Model.Components.PesquisaPadraoModel>(
+                        frm.ViewModel.lFiltros = new System.Collections.ObjectModel.ObservableCollection<PesquisaPadraoModel>(
                             collection: this.ViewModel.lFiltros);
 
                         frm.Height = 110 + (frm.ViewModel.lFiltros.Count * 30);
@@ -336,7 +336,7 @@ namespace HLP.Comum.View.Components
 
                             this.ViewModel.commandPesquisaFiltrada.Execute(parameter: this.dgvResult);
                         }
-                        this.ViewModel.lFiltros = new List<Model.Components.PesquisaPadraoModel>();
+                        this.ViewModel.lFiltros = new List<PesquisaPadraoModel>();
                     }
             }
         }

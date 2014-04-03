@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -119,7 +120,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     new Cliente_fornecedor_arquivoModel
                     {
                         idClienteFornecedorArquivo = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                        status = statusModel.excluido
                     });
             }
             foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_contato.idExcluidos)
@@ -128,7 +129,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     new Cliente_fornecedor_contatoModel
                     {
                         idClienteFornecedorContato = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                        status = statusModel.excluido
                     });
             }
             foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_Endereco.idExcluidos)
@@ -137,7 +138,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     new Cliente_fornecedor_EnderecoModel
                     {
                         idClienteFornecedor = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                        status = statusModel.excluido
                     });
             }
             foreach (int id in this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.idExcluidos)
@@ -146,7 +147,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     new Cliente_Fornecedor_ObservacaoModel
                     {
                         idClienteFornecedorObservacao = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                        status = statusModel.excluido
                     });
             }
             foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_produto.idExcluidos)
@@ -155,7 +156,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     new Cliente_fornecedor_produtoModel
                     {
                         idClienteFornecedorProduto = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                        status = statusModel.excluido
                     });
             }
             foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_representante.idExcluidos)
@@ -164,7 +165,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     new Cliente_fornecedor_representanteModel
                     {
                         idClienteFornecedorRepresentante = id,
-                        status = Comum.Resources.RecursosBases.statusModel.excluido
+                        status = statusModel.excluido
                     });
             }
             this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
@@ -225,7 +226,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -250,7 +251,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
 
 

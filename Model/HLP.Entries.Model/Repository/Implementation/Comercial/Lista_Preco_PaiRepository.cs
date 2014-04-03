@@ -1,6 +1,5 @@
-﻿using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
-using HLP.Comum.Model.Models;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -12,6 +11,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Base.ClassesBases;
 
 namespace HLP.Entries.Model.Repository.Implementation.Comercial
 {

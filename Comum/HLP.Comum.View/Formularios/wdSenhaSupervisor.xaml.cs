@@ -1,4 +1,4 @@
-﻿using HLP.Comum.ViewModel.ViewModels;
+﻿using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

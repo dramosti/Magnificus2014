@@ -8,7 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"         
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         xmlns:System="clr-namespace:System;assembly=mscorlib" 
-        xmlns:util="clr-namespace:HLP.Comum.Infrastructure.Util;assembly=HLP.Comum.Infrastructure"
+        xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
         Title="Magnificus 2014"
         x:Name="manWin"
         mc:Ignorable="d" Closed="Window_Closed" Icon="Principal.ico" StateChanged="manWin_StateChanged" SizeChanged="manWin_SizeChanged" >

@@ -4,11 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands;
 using System.Windows.Input;
-using HLP.Comum.ViewModel.ViewModels;
+using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels
@@ -51,18 +50,5 @@ namespace HLP.Entries.ViewModel.ViewModels
         {
             objCidadeCommands.GetCidadeByUf(idUF: idUF);
         }
-
-
-        public ObservableCollection<modelToComboBox> GetAllCidadeToComboBox()
-        {
-            //return new ObservableCollection<modelToComboBox>(objCidadeCommands.GetAllCidadeToComboBox());
-            return null;
-        }
-
-
-
-
-
-
     }
 }

@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using HLP.Comum.ViewModel.Commands;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -51,7 +52,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         #region Implementação Commands
 
-       
+
         public void Save(object _panel)
         {
             try
@@ -63,7 +64,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         new Plano_pagamento_linhasModel
                         {
                             idLinhasPagamento = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
@@ -83,7 +84,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-               
+
                 this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
             }
             catch (Exception ex)
@@ -184,7 +185,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -207,7 +208,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, Comum.Infrastructure.Static.Util.focoComponente.Segundo);
+            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
 
         private bool AlterarCanExecute()

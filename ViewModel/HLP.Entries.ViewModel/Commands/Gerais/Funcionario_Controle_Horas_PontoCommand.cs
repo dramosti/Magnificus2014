@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Model.Models;
-using HLP.Comum.ViewModel.Commands;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -43,7 +43,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         new Funcionario_Controle_Horas_PontoModel
                         {
                             idFuncionarioControleHorasPonto = id,
-                            status = Comum.Resources.RecursosBases.statusModel.excluido
+                            status = statusModel.excluido
                         });
                 }
 
@@ -141,7 +141,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             idFuncionario = objViewModel.idFuncionario,
                             idSequenciaInterna = iCount,
                             stFeriasAbono = (stTipo == tipo.ABONO) ? (byte)1 : (byte)0,
-                            stFalta= (stTipo == tipo.FALTOU) ? (byte)1 : (byte)0,
+                            stFalta = (stTipo == tipo.FALTOU) ? (byte)1 : (byte)0,
                             xJustificativa = (stTipo == tipo.ABONO) ? "ABONO / FÉRIAS" : "FALTA"
                         });
                         iCount++;

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Comum.Infrastructure;
-using HLP.Comum.Infrastructure.Static;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using System.Data.Common;
+using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 
 namespace HLP.Entries.Model.Repository.Implementation.Transportes
 {
