@@ -82,16 +82,24 @@
     <Folder Include="Icons\ToolBar\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Button\ImgSelect.png" />
+    <Resource Include="Icons\Button\ImgSelect.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Button\ImgErase.png" />
+    <Resource Include="Icons\Button\ImgErase.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Button\ImgConfirm.png" />
+    <Resource Include="Icons\Button\ImgConfirm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Button\ImgCancel.png" />
+    <Resource Include="Icons\Button\ImgCancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -27,56 +27,84 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <Expander Header="Geral" DockPanel.Dock="Left" IsExpanded="True" Width="440">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
-					IsReadOnly="True"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>            
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+                
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Dia de pagamento" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    IsReadOnly="True"
 					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					Height="27" Caption="Código " Help="Chave principal do registro dia de pagamento" WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="220"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Chave principal do registro dia de pagamento">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    Text="{Binding currentModel.xDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Caption="Dia de pagamento " Help="Insira uma breve identificação para o dia de pagamento. " WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="220"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Insira uma breve identificação para o dia de pagamento. ">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Caption="Descrição " Help="Insira uma descrição da identificação do dia de pagamento." WidthLabel="142" Margin="10,0,0,2" HorizontalAlignment="Left" Width="349.9"/>
-            </WrapPanel>
+					ToolTip="Insira uma descrição da identificação do dia de pagamento.">
+                </Components:CustomTextBox>
+                
+            </Grid>
         </Expander>
-        <Expander Header="Dia do pagamento" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True" Width="300">
-            <DataGrid 
+        <Expander Header="Dia do Pagamento" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+            <Grid Width="400" HorizontalAlignment="Left">
+                <DataGrid 
                  x:Name="dgvEndereco"
                          ItemsSource="{Binding currentModel.lDia_pagamento_linhas}"                          
                          IsEnabled="{Binding bIsEnabled}"
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
                          CanUserReorderColumns="False"  
-                         CanUserDeleteRows="True" 
-                  Margin="0,15,0,0">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Dia útil" Width="120">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ComboBox 
+                         CanUserDeleteRows="True">                  
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Dia útil" Width="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox 
                                             ItemsSource="{Binding Source={StaticResource EnumDiaUtil}}"
                                             DisplayMemberPath="Key"
                                             SelectedValuePath="Value"
                                             SelectedValue ="{Binding enumDiaUtil, UpdateSourceTrigger=PropertyChanged}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    
-                    
-                    <DataGridTextColumn Header="Dia" Width="*"
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Dia" Width="*"
                                         Binding="{Binding Path=nDia, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ElementStyle="{StaticResource CellErrorStyle}"
                                         />
-                </DataGrid.Columns>
-            </DataGrid>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Expander>
-        <Grid/>
-    </DockPanel>
+    </Grid>
 </runtime:WindowsBase>
