@@ -76,6 +76,14 @@
       <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>
       <Name>HLP.ComumView.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
+      <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
+      <Name>HLP.Entries.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\HLP.Entries.Model\HLP.Entries.Model.csproj">
+      <Project>{ef298ced-27e9-4647-93d6-883f4dccc9ee}</Project>
+      <Name>HLP.Entries.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

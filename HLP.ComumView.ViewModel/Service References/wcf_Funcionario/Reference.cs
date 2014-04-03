@@ -15,8 +15,9 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.EnderecoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.Familia_produtoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.Familia_Produto_ClassesModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.Funcionario_AcessoModel))]
@@ -24,7 +25,6 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.Funcionario_CertificacaoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.Funcionario_Comissao_ProdutoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.Funcionario_Margem_Lucro_ComissaoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.EnderecoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.ComumView.ViewModel.wcf_Funcionario.FuncionarioModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -79,6 +79,317 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnderecoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models")]
+    [System.SerializableAttribute()]
+    public partial class EnderecoModel : HLP.ComumView.ViewModel.wcf_Funcionario.modelBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idAgenciaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idCidadeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idClienteFornecedorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idContatoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idEnderecoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idFuncionarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idSiteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idTransportadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nNumeroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte stLogradouroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<byte> stPrincipalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte stTipoEnderecoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xBairroField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xCEPField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xCaixaPostalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xComplementoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xEnderecoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xNomeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idAgencia {
+            get {
+                return this.idAgenciaField;
+            }
+            set {
+                if ((this.idAgenciaField.Equals(value) != true)) {
+                    this.idAgenciaField = value;
+                    this.RaisePropertyChanged("idAgencia");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idCidade {
+            get {
+                return this.idCidadeField;
+            }
+            set {
+                if ((this.idCidadeField.Equals(value) != true)) {
+                    this.idCidadeField = value;
+                    this.RaisePropertyChanged("idCidade");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idClienteFornecedor {
+            get {
+                return this.idClienteFornecedorField;
+            }
+            set {
+                if ((this.idClienteFornecedorField.Equals(value) != true)) {
+                    this.idClienteFornecedorField = value;
+                    this.RaisePropertyChanged("idClienteFornecedor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idContato {
+            get {
+                return this.idContatoField;
+            }
+            set {
+                if ((this.idContatoField.Equals(value) != true)) {
+                    this.idContatoField = value;
+                    this.RaisePropertyChanged("idContato");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idEmpresa {
+            get {
+                return this.idEmpresaField;
+            }
+            set {
+                if ((this.idEmpresaField.Equals(value) != true)) {
+                    this.idEmpresaField = value;
+                    this.RaisePropertyChanged("idEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idEndereco {
+            get {
+                return this.idEnderecoField;
+            }
+            set {
+                if ((this.idEnderecoField.Equals(value) != true)) {
+                    this.idEnderecoField = value;
+                    this.RaisePropertyChanged("idEndereco");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idFuncionario {
+            get {
+                return this.idFuncionarioField;
+            }
+            set {
+                if ((this.idFuncionarioField.Equals(value) != true)) {
+                    this.idFuncionarioField = value;
+                    this.RaisePropertyChanged("idFuncionario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idSite {
+            get {
+                return this.idSiteField;
+            }
+            set {
+                if ((this.idSiteField.Equals(value) != true)) {
+                    this.idSiteField = value;
+                    this.RaisePropertyChanged("idSite");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idTransportador {
+            get {
+                return this.idTransportadorField;
+            }
+            set {
+                if ((this.idTransportadorField.Equals(value) != true)) {
+                    this.idTransportadorField = value;
+                    this.RaisePropertyChanged("idTransportador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string nNumero {
+            get {
+                return this.nNumeroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nNumeroField, value) != true)) {
+                    this.nNumeroField = value;
+                    this.RaisePropertyChanged("nNumero");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte stLogradouro {
+            get {
+                return this.stLogradouroField;
+            }
+            set {
+                if ((this.stLogradouroField.Equals(value) != true)) {
+                    this.stLogradouroField = value;
+                    this.RaisePropertyChanged("stLogradouro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<byte> stPrincipal {
+            get {
+                return this.stPrincipalField;
+            }
+            set {
+                if ((this.stPrincipalField.Equals(value) != true)) {
+                    this.stPrincipalField = value;
+                    this.RaisePropertyChanged("stPrincipal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte stTipoEndereco {
+            get {
+                return this.stTipoEnderecoField;
+            }
+            set {
+                if ((this.stTipoEnderecoField.Equals(value) != true)) {
+                    this.stTipoEnderecoField = value;
+                    this.RaisePropertyChanged("stTipoEndereco");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xBairro {
+            get {
+                return this.xBairroField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xBairroField, value) != true)) {
+                    this.xBairroField = value;
+                    this.RaisePropertyChanged("xBairro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xCEP {
+            get {
+                return this.xCEPField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xCEPField, value) != true)) {
+                    this.xCEPField = value;
+                    this.RaisePropertyChanged("xCEP");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xCaixaPostal {
+            get {
+                return this.xCaixaPostalField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xCaixaPostalField, value) != true)) {
+                    this.xCaixaPostalField = value;
+                    this.RaisePropertyChanged("xCaixaPostal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xComplemento {
+            get {
+                return this.xComplementoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xComplementoField, value) != true)) {
+                    this.xComplementoField = value;
+                    this.RaisePropertyChanged("xComplemento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xEndereco {
+            get {
+                return this.xEnderecoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xEnderecoField, value) != true)) {
+                    this.xEnderecoField = value;
+                    this.RaisePropertyChanged("xEndereco");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xNome {
+            get {
+                return this.xNomeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xNomeField, value) != true)) {
+                    this.xNomeField = value;
+                    this.RaisePropertyChanged("xNome");
+                }
             }
         }
     }
@@ -879,317 +1190,6 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
                 if ((this.pDeMargemVendaField.Equals(value) != true)) {
                     this.pDeMargemVendaField = value;
                     this.RaisePropertyChanged("pDeMargemVenda");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnderecoModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
-    [System.SerializableAttribute()]
-    public partial class EnderecoModel : HLP.ComumView.ViewModel.wcf_Funcionario.modelBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idAgenciaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idCidadeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idClienteFornecedorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idContatoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idEmpresaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idEnderecoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idFuncionarioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idSiteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> idTransportadorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nNumeroField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte stLogradouroField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<byte> stPrincipalField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte stTipoEnderecoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string xBairroField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string xCEPField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string xCaixaPostalField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string xComplementoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string xEnderecoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string xNomeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idAgencia {
-            get {
-                return this.idAgenciaField;
-            }
-            set {
-                if ((this.idAgenciaField.Equals(value) != true)) {
-                    this.idAgenciaField = value;
-                    this.RaisePropertyChanged("idAgencia");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idCidade {
-            get {
-                return this.idCidadeField;
-            }
-            set {
-                if ((this.idCidadeField.Equals(value) != true)) {
-                    this.idCidadeField = value;
-                    this.RaisePropertyChanged("idCidade");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idClienteFornecedor {
-            get {
-                return this.idClienteFornecedorField;
-            }
-            set {
-                if ((this.idClienteFornecedorField.Equals(value) != true)) {
-                    this.idClienteFornecedorField = value;
-                    this.RaisePropertyChanged("idClienteFornecedor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idContato {
-            get {
-                return this.idContatoField;
-            }
-            set {
-                if ((this.idContatoField.Equals(value) != true)) {
-                    this.idContatoField = value;
-                    this.RaisePropertyChanged("idContato");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idEmpresa {
-            get {
-                return this.idEmpresaField;
-            }
-            set {
-                if ((this.idEmpresaField.Equals(value) != true)) {
-                    this.idEmpresaField = value;
-                    this.RaisePropertyChanged("idEmpresa");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idEndereco {
-            get {
-                return this.idEnderecoField;
-            }
-            set {
-                if ((this.idEnderecoField.Equals(value) != true)) {
-                    this.idEnderecoField = value;
-                    this.RaisePropertyChanged("idEndereco");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idFuncionario {
-            get {
-                return this.idFuncionarioField;
-            }
-            set {
-                if ((this.idFuncionarioField.Equals(value) != true)) {
-                    this.idFuncionarioField = value;
-                    this.RaisePropertyChanged("idFuncionario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idSite {
-            get {
-                return this.idSiteField;
-            }
-            set {
-                if ((this.idSiteField.Equals(value) != true)) {
-                    this.idSiteField = value;
-                    this.RaisePropertyChanged("idSite");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> idTransportador {
-            get {
-                return this.idTransportadorField;
-            }
-            set {
-                if ((this.idTransportadorField.Equals(value) != true)) {
-                    this.idTransportadorField = value;
-                    this.RaisePropertyChanged("idTransportador");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nNumero {
-            get {
-                return this.nNumeroField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nNumeroField, value) != true)) {
-                    this.nNumeroField = value;
-                    this.RaisePropertyChanged("nNumero");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte stLogradouro {
-            get {
-                return this.stLogradouroField;
-            }
-            set {
-                if ((this.stLogradouroField.Equals(value) != true)) {
-                    this.stLogradouroField = value;
-                    this.RaisePropertyChanged("stLogradouro");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<byte> stPrincipal {
-            get {
-                return this.stPrincipalField;
-            }
-            set {
-                if ((this.stPrincipalField.Equals(value) != true)) {
-                    this.stPrincipalField = value;
-                    this.RaisePropertyChanged("stPrincipal");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte stTipoEndereco {
-            get {
-                return this.stTipoEnderecoField;
-            }
-            set {
-                if ((this.stTipoEnderecoField.Equals(value) != true)) {
-                    this.stTipoEnderecoField = value;
-                    this.RaisePropertyChanged("stTipoEndereco");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string xBairro {
-            get {
-                return this.xBairroField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.xBairroField, value) != true)) {
-                    this.xBairroField = value;
-                    this.RaisePropertyChanged("xBairro");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string xCEP {
-            get {
-                return this.xCEPField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.xCEPField, value) != true)) {
-                    this.xCEPField = value;
-                    this.RaisePropertyChanged("xCEP");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string xCaixaPostal {
-            get {
-                return this.xCaixaPostalField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.xCaixaPostalField, value) != true)) {
-                    this.xCaixaPostalField = value;
-                    this.RaisePropertyChanged("xCaixaPostal");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string xComplemento {
-            get {
-                return this.xComplementoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.xComplementoField, value) != true)) {
-                    this.xComplementoField = value;
-                    this.RaisePropertyChanged("xComplemento");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string xEndereco {
-            get {
-                return this.xEnderecoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.xEnderecoField, value) != true)) {
-                    this.xEnderecoField = value;
-                    this.RaisePropertyChanged("xEndereco");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string xNome {
-            get {
-                return this.xNomeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.xNomeField, value) != true)) {
-                    this.xNomeField = value;
-                    this.RaisePropertyChanged("xNome");
                 }
             }
         }
@@ -2420,7 +2420,7 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
     public partial class PesquisaPadraoModelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -2512,7 +2512,7 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases")]
     public enum statusModel : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -2559,7 +2559,7 @@ namespace HLP.ComumView.ViewModel.wcf_Funcionario {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="modelToTreeView", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelToTreeView", Namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models")]
     [System.SerializableAttribute()]
     public partial class modelToTreeView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
