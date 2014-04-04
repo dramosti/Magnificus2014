@@ -152,6 +152,7 @@
     <Content Include="Silverlight.js" />
     <Content Include="wcf_CamposBaseDados.svc" />
     <Content Include="wcf_Cliente.svc" />
+    <Content Include="wcf_DiaPagamento.svc" />
     <Content Include="wcf_Empresa.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_FillComboBox.svc" />
@@ -235,6 +236,7 @@
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
+    <Compile Include="Iwcf_DiaPagamento.cs" />
     <Compile Include="Iwcf_Empresa.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_FillComboBox.cs" />
@@ -429,6 +431,9 @@
     </Compile>
     <Compile Include="wcf_Cliente.svc.cs">
       <DependentUpon>wcf_Cliente.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_DiaPagamento.svc.cs">
+      <DependentUpon>wcf_DiaPagamento.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Empresa.svc.cs">
       <DependentUpon>wcf_Empresa.svc</DependentUpon>

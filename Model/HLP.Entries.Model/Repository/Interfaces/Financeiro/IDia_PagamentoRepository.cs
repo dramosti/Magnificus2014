@@ -10,7 +10,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Financeiro
     public interface IDia_PagamentoRepository
     {
         void Save(Dia_pagamentoModel objDia_pagamento);
-        void Delete(Dia_pagamentoModel objDia_pagamento);
+        void Delete(int id);
         void Copy(Dia_pagamentoModel objDia_pagamento);
         Dia_pagamentoModel GetDia_pagamento(int idDiaPagamento);
 

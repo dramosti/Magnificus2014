@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceDiaPagamento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DiaPagamento.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DiaPagamento.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="Dia_pagamentoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="_idDiaPagamento" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idDiaPagamento" nillable="true" type="xs:int" />
@@ -23,13 +24,15 @@
   <xs:element name="ArrayOfDia_pagamento_linhasModel" nillable="true" type="tns:ArrayOfDia_pagamento_linhasModel" />
   <xs:complexType name="Dia_pagamento_linhasModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
         <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumDiaUtil" type="q3:DiaUtil" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumSemanaOuMes" type="q4:SemanaOuMes" />
           <xs:element minOccurs="0" name="idDiaPagamento" type="xs:int" />
           <xs:element minOccurs="0" name="idDiaPagamentoLinhas" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="nDia" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="stDiaUtil" nillable="true" type="xs:unsignedByte" />
-          <xs:element minOccurs="0" name="stSemanaMes" nillable="true" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stDiaUtil" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stSemanaMes" type="xs:unsignedByte" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

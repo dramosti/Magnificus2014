@@ -38,13 +38,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
             }
         }
 
-        public void Delete(Dia_pagamentoModel objDia_pagamento)
+        public void Delete(int id)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
             UndTrabalho.dbTransaction,
            "[dbo].[Proc_delete_Dia_pagamento]",
             UserData.idUser,
-            objDia_pagamento.idDiaPagamento);
+            id);
         }
 
         public void Copy(Dia_pagamentoModel objDia_pagamento)
@@ -63,7 +63,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Financeiro
                 regDia_pagamentoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Dia_pagamento",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idDiaPagamento"),
-                                         MapBuilder<Dia_pagamentoModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
+                                         MapBuilder<Dia_pagamentoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
 
             return regDia_pagamentoAccessor.Execute(idDiaPagamento).FirstOrDefault();
