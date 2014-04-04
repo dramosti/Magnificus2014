@@ -58,6 +58,7 @@
     <Compile Include="Converter\ImageToaByteConverter.cs" />
     <Compile Include="Converter\IntStringConverter.cs" />
     <Compile Include="Converter\MaskConverter.cs" />
+    <Compile Include="Converter\NotConverter.cs" />
     <Compile Include="Converter\SelectedItemToTextConverter.cs" />
     <Compile Include="Converter\TimeSpanToString.cs" />
     <Compile Include="Converter\VisibilityDatePickerConverter.cs" />

@@ -10,6 +10,7 @@ using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Financeiro;
 
 namespace HLP.Entries.ViewModel.Commands.Financeiro
 {
@@ -17,10 +18,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
     {
         BackgroundWorker bWorkerAcoes;
         DiaPagamentoViewModel objViewModel;
-        Dia_PagamentoService.IserviceDiaPagamentoClient servico = new Dia_PagamentoService.IserviceDiaPagamentoClient();
+        Dia_pagamentoService objService;
 
         public DiaPagamentoCommand(DiaPagamentoViewModel objViewModel)
         {
+            objService = new Dia_pagamentoService();
 
             this.objViewModel = objViewModel;
 
@@ -56,6 +58,16 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
+                foreach (int id in this.objViewModel.currentModel.lDia_pagamento_linhas.idExcluidos)
+                {
+
+                    this.objViewModel.currentModel.lDia_pagamento_linhas.Add(
+                        new Dia_pagamento_linhasModel
+                        {
+                            idDiaPagamentoLinhas = id,
+                            status = statusModel.excluido
+                        });
+                }
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
@@ -72,17 +84,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                foreach (int id in this.objViewModel.currentModel.lDia_pagamento_linhas.idExcluidos)
-                {
-
-                    this.objViewModel.currentModel.lDia_pagamento_linhas.Add(
-                        new Dia_pagamento_linhasModel
-                        {
-                            idDiaPagamentoLinhas = id,
-                            status = statusModel.excluido
-                        });
-                }
-                this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
+                this.objViewModel.currentModel = objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -128,7 +130,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             int idRemoved = 0;
             try
@@ -138,7 +140,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await servico.DeleteAsync(objViewModel.currentModel))
+                    if (objService.DeleteObject(id: this.objViewModel.currentModel.idDiaPagamento ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -261,7 +263,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                e.Result = servico.Copy(objViewModel.currentModel);
+                e.Result = objService.CopyObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception)
             {
@@ -302,10 +304,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.GetObectAsync(objViewModel.currentID);
+            this.objViewModel.currentModel = objService.GetObject(id: this.objViewModel.currentID);
         }
+
         private void Inicia_Collections()
         {
             this.objViewModel.currentModel.lDia_pagamento_linhas.CollectionCarregada();

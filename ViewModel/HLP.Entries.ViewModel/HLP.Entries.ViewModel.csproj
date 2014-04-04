@@ -290,11 +290,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Dia_PagamentoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\empresaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -920,25 +915,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DescontoService\serviceDescontosAvista5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento.wsdl" />
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
@@ -1608,7 +1584,6 @@
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\depositoService\" />
     <WCFMetadataStorage Include="Service References\DescontoService\" />
-    <WCFMetadataStorage Include="Service References\Dia_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\Empresa_ParametrosService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
@@ -2104,21 +2079,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Tipo_OperacaoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Dia_PagamentoService\serviceDiaPagamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Dia_PagamentoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Dia_PagamentoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Dia_PagamentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

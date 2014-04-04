@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="DiaUtil">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NAO_SE_APLICA" />
+      <xs:enumeration value="SEGUNDA" />
+      <xs:enumeration value="TERCA" />
+      <xs:enumeration value="QUARTA" />
+      <xs:enumeration value="QUINTA" />
+      <xs:enumeration value="SEXTA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DiaUtil" nillable="true" type="tns:DiaUtil" />
+  <xs:simpleType name="SemanaOuMes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SEMANA" />
+      <xs:enumeration value="MES" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SemanaOuMes" nillable="true" type="tns:SemanaOuMes" />
+</xs:schema>

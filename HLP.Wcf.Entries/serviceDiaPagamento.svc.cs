@@ -38,9 +38,6 @@ namespace HLP.Wcf.Entries
             {
                 iDia_PagamentoRepository.BeginTransaction();
 
-                //objDia_pagamento = this.GetObect(1022);
-                //objDia_pagamento.lDia_pagamento_linhas[0].status = Comum.Resources.RecursosBases.statusModel.excluido;
-
                 iDia_PagamentoRepository.Save(objDia_pagamento);
 
                 foreach (var item in objDia_pagamento.lDia_pagamento_linhas)
@@ -77,7 +74,7 @@ namespace HLP.Wcf.Entries
             {
                 iDia_PagamentoRepository.BeginTransaction();
                 iDia_pagamento_linhasRepository.DeleteLinhasByDia((int)objDia_pagamento.idDiaPagamento);
-                iDia_PagamentoRepository.Delete(objDia_pagamento);
+                iDia_PagamentoRepository.Delete(objDia_pagamento.idDiaPagamento ?? 0);
                 iDia_PagamentoRepository.CommitTransaction();
                 return true;
             }

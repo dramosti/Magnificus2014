@@ -44,10 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Campos_Base_DadosService.cs" />
+    <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\wcf_CamposBaseDados\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_DiaPagamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -98,6 +104,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
@@ -109,6 +116,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.wsdl" />
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Empresa\wcf_Empresa.wsdl" />
@@ -181,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
+    <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
     <WCFMetadataStorage Include="Service References\wcf_Transportadora\" />
@@ -257,6 +284,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Transportadora\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_DiaPagamento\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_DiaPagamento\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_DiaPagamento\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
