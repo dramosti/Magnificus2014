@@ -12,6 +12,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
 {
     public class TransportadorViewModel : ViewModelBase<TransportadorModel>
     {
+        TransportadorCommands comm;
 
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -27,7 +28,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
 
         public TransportadorViewModel()
         {
-            TransportadorCommands comm = new TransportadorCommands(objViewModel: this);
+            comm = new TransportadorCommands(objViewModel: this);
         }
 
     }

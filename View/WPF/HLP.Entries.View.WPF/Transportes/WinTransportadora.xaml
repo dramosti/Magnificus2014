@@ -6,7 +6,7 @@
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinTransportadora"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         Title="WinTransportadora" Height="660" Width="1024" NameView="vwTransportador">
@@ -642,7 +642,7 @@
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Contatos">
+            <!--<TabItem Header="Contatos">
                 <AdornerDecorator>
                     <Components:HlpContatos>
                         <Components:HlpContatos.lColumns>
@@ -650,7 +650,7 @@
                         </Components:HlpContatos.lColumns>
                     </Components:HlpContatos>
                 </AdornerDecorator>
-            </TabItem>
+            </TabItem>-->
         </TabControl>
     </Grid>
 </runtime:WindowsBase>

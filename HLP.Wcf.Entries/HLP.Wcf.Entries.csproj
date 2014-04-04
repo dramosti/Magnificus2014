@@ -163,6 +163,7 @@
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
     <Content Include="wcf_Site.svc" />
+    <Content Include="wcf_Transportadora.svc" />
     <Content Include="wcf_UnidadeMedida.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -245,6 +246,7 @@
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="Iwcf_Site.cs" />
+    <Compile Include="Iwcf_Transportadora.cs" />
     <Compile Include="Iwcf_UnidadeMedida.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
@@ -460,6 +462,9 @@
     </Compile>
     <Compile Include="wcf_Site.svc.cs">
       <DependentUpon>wcf_Site.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Transportadora.svc.cs">
+      <DependentUpon>wcf_Transportadora.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_UnidadeMedida.svc.cs">
       <DependentUpon>wcf_UnidadeMedida.svc</DependentUpon>
