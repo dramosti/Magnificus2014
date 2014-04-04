@@ -415,6 +415,8 @@
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="FontFamily" Value="Calibri"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
     </Style>
 
     <!--Button Imagem (Componente de Foto)-->
