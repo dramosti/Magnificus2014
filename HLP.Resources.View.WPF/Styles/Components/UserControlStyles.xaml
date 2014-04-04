@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    
-    
+
+
+
     <!--Style Components TextBox-->
 
     <SolidColorBrush x:Key="BorderBrushTextStandard" Color="#FFABADB3"/>
@@ -15,12 +15,15 @@
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
         <!--<Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>-->
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
         <Setter Property="CharacterCasing" Value="Upper"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
                     <Border x:Name="border" CornerRadius="5" BorderBrush="{StaticResource BorderBrushTextStandard}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Center" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" FontFamily="Calibri"/>
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" FontFamily="Calibri"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -74,7 +77,15 @@
     <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
 
-    <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+    <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">        
+        <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -148,7 +159,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.36"/>
+                            <Setter Property="Opacity" Value="0.30"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -366,6 +377,8 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Padding" Value="6,3,5,3"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -407,7 +420,7 @@
     <!--Button Imagem (Componente de Foto)-->
 
 
-    <Style x:Key="ButtonSelecionarImgSelecionar" TargetType="{x:Type Button}">        
+    <Style x:Key="ButtonSelecionarImgSelecionar" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -449,7 +462,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ButtonSelecionarImgLimpar" TargetType="{x:Type Button}">                
+    <Style x:Key="ButtonSelecionarImgLimpar" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -491,7 +504,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ButtonSelecionarImgAplicar" TargetType="{x:Type Button}">        
+    <Style x:Key="ButtonSelecionarImgAplicar" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -533,7 +546,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ButtonSelecionarImgCancelar" TargetType="{x:Type Button}">        
+    <Style x:Key="ButtonSelecionarImgCancelar" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -954,8 +967,8 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
-    
+    </Style>
+
     <!--HlpButtonHierarquia-->
     <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
@@ -991,6 +1004,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!--Cell ERROR Style-->
+
+    <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}">
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
