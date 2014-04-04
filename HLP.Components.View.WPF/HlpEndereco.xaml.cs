@@ -52,12 +52,12 @@ namespace HLP.Components.View.WPF
 
         public bool IsEnabledUserControl
         {
-            get { return (bool)GetValue(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
+            get { return (bool)GetValue(IsEnabledUserControlProperty); }
+            set { SetValue(IsEnabledUserControlProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsEnabledProperty =
+        public static readonly DependencyProperty IsEnabledUserControlProperty =
             DependencyProperty.Register("IsEnabledUserControl", typeof(bool), typeof(HlpEndereco), new PropertyMetadata(true));       
     }
 }
