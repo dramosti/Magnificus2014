@@ -62,11 +62,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Transportadora\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_UnidadeMedida\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Transportes\TransportadoraService.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -94,6 +100,7 @@
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.wsdl" />
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados3.xsd">
       <SubType>Designer</SubType>
@@ -136,6 +143,25 @@
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.wsdl" />
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.wsdl" />
     <None Include="Service References\wcf_UnidadeMedida\wcf_UnidadeMedida.xsd">
       <SubType>Designer</SubType>
@@ -157,6 +183,7 @@
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
+    <WCFMetadataStorage Include="Service References\wcf_Transportadora\" />
     <WCFMetadataStorage Include="Service References\wcf_UnidadeMedida\" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +242,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Empresa\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

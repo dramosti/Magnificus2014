@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Transportes;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -17,10 +18,13 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
     {
         BackgroundWorker bWorkerAcoes;
         TransportadorViewModel objViewModel;
-        transportadorService.IserviceTransportadorClient servico = new transportadorService.IserviceTransportadorClient();
+        TransportadoraService objService;
+
         public TransportadorCommands(TransportadorViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+
+            this.objService = new TransportadoraService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -109,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.servico.saveTransportador(objTransportador:
+            this.objViewModel.currentModel = this.objService.SaveObject(obj:
                     this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
@@ -161,7 +165,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.delTransportador((int)this.objViewModel.currentModel.idTransportador))
+                    if (this.objService.DeleteObject(id: (int)this.objViewModel.currentModel.idTransportador))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -251,8 +255,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
         {
             try
             {
-                this.objViewModel.currentModel.idTransportador = this.servico.copyTransportador(
-                    objTransportador: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.CopyObject(obj: this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -294,10 +297,10 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             if (this.objViewModel.currentID != 0)
-                this.objViewModel.currentModel = await this.servico.getTransportadorAsync(idTransportador:
+                this.objViewModel.currentModel = this.objService.GetObject(id:
                     this.objViewModel.currentID);
             else
             {

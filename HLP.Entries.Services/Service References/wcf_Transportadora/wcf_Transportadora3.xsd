@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Transportes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceTransportador.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceTransportador.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Transportadora.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Transportadora.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="TransportadorModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
           <xs:element minOccurs="0" name="_stPessoa" type="xs:unsignedByte" />
@@ -42,7 +42,7 @@
   <xs:element name="ArrayOfTransportador_ContatoModel" nillable="true" type="tns:ArrayOfTransportador_ContatoModel" />
   <xs:complexType name="Transportador_ContatoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idContato" type="xs:int" />
           <xs:element minOccurs="0" name="idTransportador" type="xs:int" />
@@ -60,7 +60,7 @@
   <xs:element name="ArrayOfTransportador_EnderecoModel" nillable="true" type="tns:ArrayOfTransportador_EnderecoModel" />
   <xs:complexType name="Transportador_EnderecoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
         <xs:sequence>
           <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoEndereco" type="q4:TipoEndereco" />
           <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" minOccurs="0" name="enumTipoLogradouro" type="q5:TipoLogradouro" />
@@ -93,7 +93,7 @@
   <xs:element name="ArrayOfTransportador_MotoristaModel" nillable="true" type="tns:ArrayOfTransportador_MotoristaModel" />
   <xs:complexType name="Transportador_MotoristaModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q6:modelBase">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q6:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
@@ -112,7 +112,7 @@
   <xs:element name="ArrayOfTransportador_VeiculosModel" nillable="true" type="tns:ArrayOfTransportador_VeiculosModel" />
   <xs:complexType name="Transportador_VeiculosModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q7:modelBase">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q7:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idTransportador" type="xs:int" />
           <xs:element minOccurs="0" name="idTransportadorVeiculo" nillable="true" type="xs:int" />
