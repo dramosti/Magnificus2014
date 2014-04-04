@@ -87,7 +87,19 @@
                                         <System:String>Banco</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                
+                                <Components:HlpPesquisa
+                                    Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3"
+						            Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informa o código da Banco. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="0" FieldPesquisa="ID" TableView="vwAgencia">
+                                <Components:HlpPesquisa.Items>
+                                    <System:String>cAgencia</System:String>
+                                    <System:String>Banco</System:String>
+                                </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="7">
+                                </Components:CustomTextBox>
 
                             </Grid>
                         </Expander>
