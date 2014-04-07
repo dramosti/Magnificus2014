@@ -6,7 +6,7 @@
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Financeiro.Converter"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
-        x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento"
+        x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinDiaPagamento"
         Title="Dia de Pagamento"
         NameView="vwDiaPagamento">
     <Window.Resources>
@@ -84,16 +84,17 @@
         <Expander Header="Dia do Pagamento" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
             <Grid Width="400" HorizontalAlignment="Left">
                 <DataGrid 
+                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                          ItemsSource="{Binding currentModel.lDia_pagamento_linhas}"                                                 
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
                          CanUserReorderColumns="False"
-                         CanUserDeleteRows="True" CanUserAddRows="True">
+                         CanUserDeleteRows="True" CanUserAddRows="True" SelectedCellsChanged="DataGrid_SelectedCellsChanged_1">
                     <DataGrid.Columns>
                         <DataGridComboBoxColumn x:Name="cbxStSemanaMes" Header="Semana/Mês" ItemsSource="{StaticResource collectionSemanaMes}"
                                         SelectedItemBinding="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter},
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
-                    , ConverterParameter={StaticResource collectionSemanaMes}}" Visibility="Visible"                       
+                    , ConverterParameter={StaticResource collectionSemanaMes}}" Visibility="Visible"
                                         >
                         </DataGridComboBoxColumn>
                         <DataGridComboBoxColumn Header="Dia Útil" ItemsSource="{StaticResource collectionDias}"
@@ -101,13 +102,11 @@
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     , ConverterParameter={StaticResource collectionDias}}">
                             <DataGridComboBoxColumn.CellStyle>
-                                <Style>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="0">
-                                            <Setter Property="Panel.Visibility" Value="Visible"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="1">
-                                            <Setter Property="Panel.Visibility" Value="Collapsed"></Setter>
+                                        <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="0">
+                                            <Setter Property="IsEnabled" Value="True"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -117,19 +116,16 @@
                                         Binding="{Binding Path=nDia, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                         ElementStyle="{StaticResource CellErrorStyle}">
                             <DataGridTextColumn.CellStyle>
-                                <Style>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="0">
-                                            <Setter Property="Panel.Visibility" Value="Visible"></Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="1">
-                                            <Setter Property="Panel.Visibility" Value="Collapsed"></Setter>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                    <Style.Triggers>                                        
+                                        <DataTrigger Binding="{Binding Path=stSemanaMes}" Value="1">
+                                            <Setter Property="IsEnabled" Value="True"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </DataGridTextColumn.CellStyle>
                         </DataGridTextColumn>
-                                        
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

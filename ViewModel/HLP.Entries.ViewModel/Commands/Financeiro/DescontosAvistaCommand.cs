@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using HLP.Base.ClassesBases;
+using HLP.Entries.Services.Financeiro;
 
 namespace HLP.Entries.ViewModel.Commands.Financeiro
 {
@@ -15,11 +16,12 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
     {
         DescontosAvistaViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
-        DescontoService.IserviceDescontosAvistaClient service = new DescontoService.IserviceDescontosAvistaClient();
+        Descontos_AvistaService objService;
+
         public DescontosAvistaCommand(DescontosAvistaViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
-
+            objService = new Descontos_AvistaService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -69,7 +71,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                objViewModel.currentModel.idDescontosAvista = service.Save(objViewModel.currentModel);
+                objViewModel.currentModel.idDescontosAvista = objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -124,7 +126,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.service.Delete((int)this.objViewModel.currentModel.idDescontosAvista))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idDescontosAvista ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -152,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Model.Models.Financeiro.Descontos_AvistaModel();
@@ -202,7 +204,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -252,7 +254,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                e.Result = service.Copy(objViewModel.currentID);
+                e.Result = objService.CopyObject(id: this.objViewModel.currentModel.idDescontosAvista ?? 0);
             }
             catch (Exception)
             {
@@ -293,9 +295,9 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await service.GetObjectAsync(objViewModel.currentID);
+            this.objViewModel.currentModel = objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 
