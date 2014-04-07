@@ -65,31 +65,35 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         if (day.DayOfWeek == DayOfWeek.Saturday && objViewModel.currentModel.bConsideraSabado)
                         {
-                            objViewModel.currentModel.SabadoInicial = new DateTime(day.Year, day.Month, day.Day,
-                                                objViewModel.currentModel.SabadoInicial.Hour,
-                                                objViewModel.currentModel.SabadoInicial.Minute,
-                                                objViewModel.currentModel.SabadoInicial.Second);
+                            //objViewModel.currentModel.SabadoInicial = new TimeSpan(
+                            //                    objViewModel.currentModel.SabadoInicial.Hours,
+                            //                    objViewModel.currentModel.SabadoInicial.Minutes,
+                            //                    objViewModel.currentModel.SabadoInicial.Seconds);
 
-                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SabadoInicial.TimeOfDay, objViewModel.currentModel.SabadoFinal.TimeOfDay);
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SabadoInicial, objViewModel.currentModel.SabadoFinal);
                         }
                         else if (day.DayOfWeek == DayOfWeek.Friday)
                         {
-
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SextaInicial, objViewModel.currentModel.SextaFinal);
                         }
                         else if (day.DayOfWeek == DayOfWeek.Sunday && objViewModel.currentModel.bConsideraDomingo)
                         {
-                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.DomingoInicial.TimeOfDay, objViewModel.currentModel.DomingoFinal.TimeOfDay);
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.DomingoInicial, objViewModel.currentModel.DomingoFinal);
                         }
                         else if (day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday)
                         {
-                            objViewModel.currentModel.SegSexInicial = new DateTime(day.Year, day.Month, day.Day,
-                                                    objViewModel.currentModel.SegSexInicial.Hour,
-                                                    objViewModel.currentModel.SegSexInicial.Minute,
-                                                    objViewModel.currentModel.SegSexInicial.Second);
+                            //objViewModel.currentModel.SegQuiInicial = new TimeSpan(
+                            //                        objViewModel.currentModel.SegQuiInicial.Hours,
+                            //                        objViewModel.currentModel.SegQuiInicial.Minutes,
+                            //                        objViewModel.currentModel.SegQuiInicial.Seconds);
 
 
-                            objViewModel.currentModel.SegSexFinal = new DateTime(day.Year, day.Month, day.Day, objViewModel.currentModel.SegSexFinal.Hour, objViewModel.currentModel.SegSexFinal.Minute, objViewModel.currentModel.SegSexFinal.Second);
-                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SegSexInicial.TimeOfDay, objViewModel.currentModel.SegSexFinal.TimeOfDay);
+                            //objViewModel.currentModel.SegQuiFinal = new TimeSpan(
+                            //                        objViewModel.currentModel.SegQuiFinal.Hours,
+                            //                        objViewModel.currentModel.SegQuiFinal.Minutes,
+                            //                        objViewModel.currentModel.SegQuiFinal.Seconds);
+
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SegQuiInicial, objViewModel.currentModel.SegQuiFinal);
                         }
 
 

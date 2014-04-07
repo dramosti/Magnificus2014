@@ -13,12 +13,14 @@ namespace HLP.Entries.Model.Models.Gerais
 
         public CalendarioGeraDetalhesModel()
         {
-            SegSexInicial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
-            SegSexFinal = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 0, 0);
-            SabadoInicial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
-            SabadoFinal = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 0, 0);
-            DomingoInicial = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
-            DomingoFinal = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, 0, 0);
+            SextaInicial = new TimeSpan(7, 30, 0);
+            SextaFinal = new TimeSpan(16, 30, 0);
+            SegQuiInicial = new TimeSpan(7, 30, 0);
+            SegQuiFinal = new TimeSpan(17, 30, 0);
+            SabadoInicial = new TimeSpan();
+            SabadoFinal = new TimeSpan();
+            DomingoInicial = new TimeSpan();
+            DomingoFinal = new TimeSpan();
             dtFinal = dtInicial = DateTime.Today;
             this.lDetalhes = new ObservableCollectionBaseCadastros<Detalhes>();
         }
@@ -40,44 +42,71 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
+        
+        private TimeSpan _SegQuiInicial;
 
-        private DateTime _SegSexInicial;
-        public DateTime SegSexInicial
+        public TimeSpan SegQuiInicial
         {
-            get { return _SegSexInicial; }
-            set { _SegSexInicial = value; }
+            get { return _SegQuiInicial; }
+            set
+            {
+                _SegQuiInicial = value;
+                base.NotifyPropertyChanged(propertyName: "SegQuiInicial");
+            }
         }
 
-        private DateTime _SegSexFinal;
-        public DateTime SegSexFinal
+        
+        private TimeSpan _SegQuiFinal;
+
+        public TimeSpan SegQuiFinal
         {
-            get { return _SegSexFinal; }
-            set { _SegSexFinal = value; }
+            get { return _SegQuiFinal; }
+            set
+            {
+                _SegQuiFinal = value;
+                base.NotifyPropertyChanged(propertyName: "SegQuiFinal");
+            }
+        }
+        
+        
+
+        private TimeSpan _SextaInicial;
+        public TimeSpan SextaInicial
+        {
+            get { return _SextaInicial; }
+            set { _SextaInicial = value; }
         }
 
-        private DateTime _SabadoInicial;
-        public DateTime SabadoInicial
+        private TimeSpan _SextaFinal;
+        public TimeSpan SextaFinal
+        {
+            get { return _SextaFinal; }
+            set { _SextaFinal = value; }
+        }
+
+        private TimeSpan _SabadoInicial;
+        public TimeSpan SabadoInicial
         {
             get { return _SabadoInicial; }
             set { _SabadoInicial = value; }
         }
 
-        private DateTime _SabadoFinal;
-        public DateTime SabadoFinal
+        private TimeSpan _SabadoFinal;
+        public TimeSpan SabadoFinal
         {
             get { return _SabadoFinal; }
             set { _SabadoFinal = value; }
         }
 
-        private DateTime _DomingoInicial;
-        public DateTime DomingoInicial
+        private TimeSpan _DomingoInicial;
+        public TimeSpan DomingoInicial
         {
             get { return _DomingoInicial; }
             set { _DomingoInicial = value; }
         }
 
-        private DateTime _DomingoFinal;
-        public DateTime DomingoFinal
+        private TimeSpan _DomingoFinal;
+        public TimeSpan DomingoFinal
         {
             get { return _DomingoFinal; }
             set { _DomingoFinal = value; }
