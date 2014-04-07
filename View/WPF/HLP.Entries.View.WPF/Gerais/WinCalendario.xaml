@@ -10,6 +10,8 @@
     <Window.Resources>
         <convert:DateTimeToStringLongConverter x:Key="dateLongConverter"/>
         <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
+        <convert:TimeSpanToString x:Key="tstoString"/>
+        <convert:DateTimeToStringLongConverter x:Key="dtToStringLong"/>
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <Expander DockPanel.Dock="Left" Header="Principal" IsExpanded="True" Width="485">
@@ -53,50 +55,24 @@
                     SelectionUnit="CellOrRowHeader" 
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True" >
-                    <DataGrid.Columns>
+                    <DataGrid.Columns>                        
                         <DataGridTemplateColumn x:Name="clData" Header="Data" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Path=dCalendario}" />
+                                    <TextBlock Text="{Binding Path=dCalendario, Converter={StaticResource dtToStringLong}}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
                                     <Grid FocusManager.FocusedElement="{Binding ElementName= dateScheduledPicker}" >
                                         <DatePicker x:Name="dateScheduledPicker" SelectedDate="{Binding Path=dCalendario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                                                ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
+                                               ValidatesOnExceptions=true, NotifyOnValidationError=true}" SelectedDateFormat="Long" />
                                     </Grid>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Hora Inicial" Width="150">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding dHoraInicio, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource dateConverter}}"></TextBlock>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <Components:CustomTimePicker Value="{Binding dHoraInicio, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTimePicker>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Hora Final" Width="150">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding dHoraTermino, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource dateConverter}}"></TextBlock>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <Components:CustomTimePicker Value="{Binding dHoraTermino, UpdateSourceTrigger=PropertyChanged,
-                                            NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTimePicker>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Hora Inicial" Width="90" Binding="{Binding tHoraInicio, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
+                        <DataGridTextColumn Header="Hora Final" Width="90" Binding="{Binding tHoraTermino, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </DockPanel>

@@ -127,12 +127,12 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public Detalhes()
         {
-            horaInicial = DateTime.Today;
-            horaFinal = DateTime.Today;
+            horaInicial = new TimeSpan();
+            horaFinal = new TimeSpan();
         }
-        private DateTime _horaInicial;
+        private TimeSpan _horaInicial;
 
-        public DateTime horaInicial
+        public TimeSpan horaInicial
         {
             get { return _horaInicial; }
             set
@@ -143,9 +143,9 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
-        private DateTime _horaFinal;
+        private TimeSpan _horaFinal;
 
-        public DateTime horaFinal
+        public TimeSpan horaFinal
         {
             get { return _horaFinal; }
             set

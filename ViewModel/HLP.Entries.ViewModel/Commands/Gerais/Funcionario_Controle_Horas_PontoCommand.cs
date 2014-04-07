@@ -132,12 +132,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 foreach (var item in lReturn)
                 {
-                    if (item.dHoraInicio != null)
+                    if (item.tHoraInicio != null)
                     {
                         objViewModel.lPonto.Add(new Funcionario_Controle_Horas_PontoModel
                         {
                             dRelogioPonto = objViewModel.data,
-                            hRelogioPonto = item.dHoraInicio.TimeOfDay,
+                            hRelogioPonto = item.tHoraInicio,
                             idFuncionario = objViewModel.idFuncionario,
                             idSequenciaInterna = iCount,
                             stFeriasAbono = (stTipo == tipo.ABONO) ? (byte)1 : (byte)0,
@@ -146,12 +146,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         });
                         iCount++;
                     }
-                    if (item.dHoraTermino != null)
+                    if (item.tHoraTermino != null)
                     {
                         objViewModel.lPonto.Add(new Funcionario_Controle_Horas_PontoModel
                         {
                             dRelogioPonto = objViewModel.data,
-                            hRelogioPonto = item.dHoraTermino.TimeOfDay,
+                            hRelogioPonto = item.tHoraTermino,
                             idFuncionario = objViewModel.idFuncionario,
                             idSequenciaInterna = iCount,
                             stFeriasAbono = (stTipo == tipo.ABONO) ? (byte)1 : (byte)0,

@@ -21,7 +21,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         CalendarioViewModel objViewModel;
         CalendarioService.IserviceCalendarioClient servico = new CalendarioService.IserviceCalendarioClient();
         public CalendarioCommand(CalendarioViewModel objViewModel)
-        {
+        {           
 
             this.objViewModel = objViewModel;
 

@@ -67,25 +67,25 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "dCalendario");
             }
         }
-        private DateTime _dHoraInicio;
+        private TimeSpan _tHoraInicio;
         [ParameterOrder(Order = 3)]
-        public DateTime dHoraInicio
+        public TimeSpan tHoraInicio
         {
-            get { return _dHoraInicio; }
+            get { return _tHoraInicio; }
             set
             {
-                _dHoraInicio = value;
+                _tHoraInicio = value;
                 base.NotifyPropertyChanged(propertyName: "dHoraInicio");
             }
         }
-        private DateTime _dHoraTermino;
+        private TimeSpan _tHoraTermino;
         [ParameterOrder(Order = 4)]
-        public DateTime dHoraTermino
+        public TimeSpan tHoraTermino
         {
-            get { return _dHoraTermino; }
+            get { return _tHoraTermino; }
             set
             {
-                _dHoraTermino = value;
+                _tHoraTermino = value;
                 base.NotifyPropertyChanged(propertyName: "dHoraTermino");
             }
         }

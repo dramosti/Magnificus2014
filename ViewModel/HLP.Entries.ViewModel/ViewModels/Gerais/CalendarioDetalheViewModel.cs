@@ -15,8 +15,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
     {
         public CalendarioDetalheViewModel()
         {
-            commands = new CalendarioDetalheCommand(objViewModel: this);
-            
+            this.currentModel = new CalendarioGeraDetalhesModel();
+            commands = new CalendarioDetalheCommand(objViewModel: this);            
         }
 
         #region Icommands
@@ -37,11 +37,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-        public Dictionary<DateTime, DateTime> GeraIntervalos()
+        public Dictionary<TimeSpan, TimeSpan> GeraIntervalos()
         {
             try
             {
-                Dictionary<DateTime, DateTime> Intervalos = new Dictionary<DateTime, DateTime>();
+                Dictionary<TimeSpan, TimeSpan> Intervalos = new Dictionary<TimeSpan, TimeSpan>();
                 foreach (var item in currentModel.lDetalhes)
                 {
                     Intervalos.Add(item.horaInicial, item.horaFinal);
@@ -79,49 +79,49 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 return false;
             }
         }
-        public void MontaHorario(Dictionary<DateTime, DateTime> Intervalos, DateTime day, DateTime HoraInicial, DateTime HoraFinal)
+        public void MontaHorario(Dictionary<TimeSpan, TimeSpan> Intervalos, DateTime day, TimeSpan HoraInicial, TimeSpan HoraFinal)
         {
             try
             {
                 Calendario_DetalheModel detalhe = new Calendario_DetalheModel();
 
                 detalhe.dCalendario = day.Date;
-                detalhe.dHoraInicio = HoraInicial;
+                detalhe.tHoraInicio = HoraInicial;
 
                 if (Intervalos.Count() > 0)
                 {
-                    foreach (KeyValuePair<DateTime, DateTime> inter in Intervalos.OrderBy(C => C.Key))
+                    foreach (KeyValuePair<TimeSpan, TimeSpan> inter in Intervalos.OrderBy(C => C.Key))
                     {
 
 
-                        if (inter.Key.TimeOfDay < HoraFinal.TimeOfDay)
+                        if (inter.Key < HoraFinal)
                         {
-                            detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, inter.Key.Hour, inter.Key.Minute, inter.Key.Second);
+                            detalhe.tHoraTermino = new TimeSpan(inter.Key.Hours, inter.Key.Minutes, inter.Key.Seconds);
                             lCalendarioDetalhes.Add(detalhe);
 
-                            if (inter.Value.TimeOfDay < HoraFinal.TimeOfDay)
+                            if (inter.Value < HoraFinal)
                             {
                                 detalhe = new Calendario_DetalheModel();
                                 detalhe.dCalendario = day.Date;
-                                detalhe.dHoraInicio = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, inter.Value.Hour, inter.Value.Minute, inter.Value.Second);
+                                detalhe.tHoraInicio = new TimeSpan(inter.Value.Hours, inter.Value.Minutes, inter.Value.Seconds);
                             }
                         }
                         else
                         {
-                            detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, HoraFinal.Hour, HoraFinal.Minute, HoraFinal.Second);
+                            detalhe.tHoraTermino = new TimeSpan(HoraFinal.Hours, HoraFinal.Minutes, HoraFinal.Seconds);
                             lCalendarioDetalhes.Add(detalhe);
                         }
                     }
-                    if (detalhe.dHoraTermino.TimeOfDay.Equals(new TimeSpan(0, 0, 0)))
+                    if (detalhe.tHoraTermino.Equals(new TimeSpan(0, 0, 0)))
                     {
-                        detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, HoraFinal.Hour, HoraFinal.Minute, HoraFinal.Second);
+                        detalhe.tHoraTermino = new TimeSpan(HoraFinal.Hours, HoraFinal.Minutes, HoraFinal.Seconds);
                         lCalendarioDetalhes.Add(detalhe);
                     }
 
                 }
                 else
                 {
-                    detalhe.dHoraTermino = new DateTime(detalhe.dCalendario.Year, detalhe.dCalendario.Month, detalhe.dCalendario.Day, HoraFinal.Hour, HoraFinal.Minute, HoraFinal.Second);
+                    detalhe.tHoraTermino = new TimeSpan(HoraFinal.Hours, HoraFinal.Minutes, HoraFinal.Seconds);
                     lCalendarioDetalhes.Add(detalhe);
                 }
             }

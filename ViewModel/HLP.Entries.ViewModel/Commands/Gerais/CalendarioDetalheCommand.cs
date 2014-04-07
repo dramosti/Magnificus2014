@@ -33,7 +33,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 objViewModel.lCalendarioDetalhes =  new ObservableCollectionBaseCadastros<Calendario_DetalheModel>();
                 List<string> DiasSemProgramacao = objViewModel.currentModel.diaSemProgramacao.Split(',').ToList();
-                Dictionary<DateTime, DateTime> Intervalos = objViewModel.GeraIntervalos();
+                Dictionary<TimeSpan, TimeSpan> Intervalos = objViewModel.GeraIntervalos();
 
 
                 DateTimeEnumerator dateTimeRange = new DateTimeEnumerator(objViewModel.currentModel.dtInicial, objViewModel.currentModel.dtFinal);
@@ -48,11 +48,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                                 objViewModel.currentModel.SabadoInicial.Minute,
                                                 objViewModel.currentModel.SabadoInicial.Second);
 
-                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SabadoInicial, objViewModel.currentModel.SabadoFinal);
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SabadoInicial.TimeOfDay, objViewModel.currentModel.SabadoFinal.TimeOfDay);
                         }
                         else if (day.DayOfWeek == DayOfWeek.Sunday && objViewModel.currentModel.bConsideraDomingo)
                         {
-                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.DomingoInicial, objViewModel.currentModel.DomingoFinal);
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.DomingoInicial.TimeOfDay, objViewModel.currentModel.DomingoFinal.TimeOfDay);
                         }
                         else if (day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday)
                         {
@@ -63,7 +63,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
 
                             objViewModel.currentModel.SegSexFinal = new DateTime(day.Year, day.Month, day.Day, objViewModel.currentModel.SegSexFinal.Hour, objViewModel.currentModel.SegSexFinal.Minute, objViewModel.currentModel.SegSexFinal.Second);
-                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SegSexInicial, objViewModel.currentModel.SegSexFinal);
+                            objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SegSexInicial.TimeOfDay, objViewModel.currentModel.SegSexFinal.TimeOfDay);
                         }
 
                     }
