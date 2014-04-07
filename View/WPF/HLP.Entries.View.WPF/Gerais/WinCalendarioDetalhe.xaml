@@ -150,18 +150,26 @@
 
                 </Grid>
                 <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    </Grid.RowDefinitions>
                     <DataGrid
                     ItemsSource="{Binding currentModel.lDetalhes}"     
                     AutoGenerateColumns="False" 
                     SelectionUnit="CellOrRowHeader" 
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True"
-                    CanUserAddRows="True">
+                    CanUserAddRows="True" Margin="0,0,0,3">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Hora Inicial" Width="150" Binding="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
                             <DataGridTextColumn Header="Hora Final" Width="*" Binding="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button  Content="Gerar Detalhamento" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="1"
+                         Command="{Binding commandGerarDetalhamento}"
+                         CommandParameter="{Binding ElementName=txtDiaSemProg}"
+                         />
                 </Grid>
             </Grid>
         </Expander>
