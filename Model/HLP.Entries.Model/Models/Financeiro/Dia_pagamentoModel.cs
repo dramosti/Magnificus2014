@@ -15,18 +15,40 @@ namespace HLP.Entries.Model.Models.Financeiro
         {
             this.lDia_pagamento_linhas = new ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel>();
         }
-        public int? _idDiaPagamento;
+
+        private int? _idDiaPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idDiaPagamento
         {
             get { return _idDiaPagamento; }
-            set { _idDiaPagamento = value; base.NotifyPropertyChanged("idDiaPagamento"); }
+            set
+            {
+                _idDiaPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "idDiaPagamento");
+            }
         }
+        private string _xDiaPagamento;
         [ParameterOrder(Order = 2)]
-        public string xDiaPagamento { get; set; }
+        public string xDiaPagamento
+        {
+            get { return _xDiaPagamento; }
+            set
+            {
+                _xDiaPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "xDiaPagamento");
+            }
+        }
+        private string _xDescricao;
         [ParameterOrder(Order = 3)]
-        public string xDescricao { get; set; }
-
+        public string xDescricao
+        {
+            get { return _xDescricao; }
+            set
+            {
+                _xDescricao = value;
+                base.NotifyPropertyChanged(propertyName: "xDescricao");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Dia_pagamento_linhasModel> _lDia_pagamento_linhas;
 
@@ -45,6 +67,7 @@ namespace HLP.Entries.Model.Models.Financeiro
     public partial class Dia_pagamento_linhasModel : modelBase
     {
         public Dia_pagamento_linhasModel() : base("Dia_pagamento_linhas") { }
+
         private int? _idDiaPagamentoLinhas;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idDiaPagamentoLinhas
@@ -56,58 +79,28 @@ namespace HLP.Entries.Model.Models.Financeiro
                 base.NotifyPropertyChanged(propertyName: "idDiaPagamentoLinhas");
             }
         }
-
-        private SemanaOuMes _enumSemanaOuMes;
-        public SemanaOuMes enumSemanaOuMes
-        {
-            get { return _enumSemanaOuMes; }
-            set
-            {
-                _enumSemanaOuMes = value;
-                _stSemanaMes = (byte)value;
-            }
-        }
-
-        private byte _stSemanaMes;
+        private byte? _stSemanaMes;
         [ParameterOrder(Order = 2)]
-        public byte stSemanaMes
+        public byte? stSemanaMes
         {
             get { return _stSemanaMes; }
             set
             {
                 _stSemanaMes = value;
-                _enumSemanaOuMes = (SemanaOuMes)value;
+                base.NotifyPropertyChanged(propertyName: "stSemanaMes");
             }
         }
-
-
-        private DiaUtil _enumDiaUtil;
-        public DiaUtil enumDiaUtil
-        {
-            get { return _enumDiaUtil; }
-            set
-            {
-                _enumDiaUtil = value;
-                _stDiaUtil = (byte)value;
-            }
-        }
-
-        private byte _stDiaUtil;
+        private byte? _stDiaUtil;
         [ParameterOrder(Order = 3)]
-        public byte stDiaUtil
+        public byte? stDiaUtil
         {
             get { return _stDiaUtil; }
             set
             {
                 _stDiaUtil = value;
-                _enumDiaUtil = (DiaUtil)value;
+                base.NotifyPropertyChanged(propertyName: "stDiaUtil");
             }
         }
-
-
-
-
-
         private int? _nDia;
         [ParameterOrder(Order = 4)]
         public int? nDia
@@ -151,26 +144,26 @@ namespace HLP.Entries.Model.Models.Financeiro
             {
                 string sValor = base[columnName];
 
-                if (sValor == null)
-                {
-                    if (columnName == "stSemanaMes" || columnName == "stDiaUtil")
-                    {
-                        if (this.enumSemanaOuMes == SemanaOuMes.MES)
-                        {
-                            if (this.enumDiaUtil != DiaUtil.NAO_SE_APLICA)
-                                this.enumDiaUtil = DiaUtil.NAO_SE_APLICA;
-                        }
-                        else
-                            if (this.nDia != 0)
-                                this.nDia = 0;
-                    }
-                    else if (columnName == "nDia")
-                    {
-                        if (this.enumSemanaOuMes == SemanaOuMes.SEMANA)
-                            if (this.nDia != 0)
-                                this.nDia = 0;
-                    }
-                }
+                //if (sValor == null)
+                //{
+                //    if (columnName == "stSemanaMes" || columnName == "stDiaUtil")
+                //    {
+                //        if (this.enumSemanaOuMes == SemanaOuMes.MES)
+                //        {
+                //            if (this.enumDiaUtil != DiaUtil.NAO_SE_APLICA)
+                //                this.enumDiaUtil = DiaUtil.NAO_SE_APLICA;
+                //        }
+                //        else
+                //            if (this.nDia != 0)
+                //                this.nDia = 0;
+                //    }
+                //    else if (columnName == "nDia")
+                //    {
+                //        if (this.enumSemanaOuMes == SemanaOuMes.SEMANA)
+                //            if (this.nDia != 0)
+                //                this.nDia = 0;
+                //    }
+                //}
                 return sValor;
             }
         }

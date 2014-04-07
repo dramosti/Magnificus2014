@@ -168,6 +168,7 @@
     <Compile Include="Gerais\Converters\StCustoProdutoConverter.cs" />
     <Compile Include="Gerais\Converters\StTipoAtualizacaoConverter.cs" />
     <Compile Include="Gerais\Converters\VisibilityColumnsAtribuicaoListaPrecoConverter.cs" />
+    <Compile Include="Gerais\Financeiro\Converter\DiaPagamento_Converter.cs" />
     <Compile Include="Gerais\Financeiro\WinAgencia.xaml.cs">
       <DependentUpon>WinAgencia.xaml</DependentUpon>
     </Compile>
