@@ -13,49 +13,98 @@
         <convert:TimeSpanToString x:Key="tstoString"/>
         <convert:DateTimeToStringLongConverter x:Key="dtToStringLong"/>
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <Expander DockPanel.Dock="Left" Header="Principal" IsExpanded="True" Width="485">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
-					Text="{Binding currentModel.idCalendario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Expander Header="Identificação" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Focusable="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Calendário Base" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+
+                <!--Components-->
+
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    Text="{Binding currentModel.idCalendario, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
-					Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Código" Help="Chave principal do registro calendário" WidthLabel="137" Width="224.333"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Chave principal do registro calendário">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Nome" Help="Insira resumidamente o nome do calendário" WidthLabel="137" Width="400"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Insira resumidamente o nome do calendário">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
+                    Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Descrição " Help="Descrição do calendário" WidthLabel="137" Width="400"/>
+					ToolTip="Descrição do calendário">
+                </Components:CustomTextBox>
                 <Components:HlpPesquisa 
-					
+					Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 					Text="{Binding currentModel.idCalendarioBase, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" HorizontalAlignment="Left" Caption="Calendário Base" Help="Informar o calendário base que esse novo calendário irá usar, essa opção desabilitará todos os recurso de geração de datas e horas e usará como base o calendário indicado, para fazer a alteração nesse calendário é preciso alterar o calendário base, tomar cuidado que ao alterar o calendário base será alterados todos os calendários que o utilizam." WidthLabel="137" Width="400" FieldPesquisa="ID" TableView="vwCalendario">
+					ToolTip="Informar o calendário base que esse novo calendário irá usar, essa opção desabilitará todos os recurso de geração de datas e horas e usará como base o calendário indicado, para fazer a alteração nesse calendário é preciso alterar o calendário base, tomar cuidado que ao alterar o calendário base será alterados todos os calendários que o utilizam." WidthLabel="0" FieldPesquisa="ID" TableView="vwCalendario">
                     <Components:HlpPesquisa.Items>
                         <System:String>xNome</System:String>
                         <System:String>xDescricao</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-                <Button Content="Gerar" Command="{Binding gerarByCalendarioBaseCommand}" IsEnabled="{Binding bIsEnabled}" Height="27" Width="75" HorizontalAlignment="Left" Margin="147,0,10,2"/>
-            </WrapPanel>
+                <Button 
+                        Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left"
+                        Content="Gerar" Command="{Binding gerarByCalendarioBaseCommand}" 
+                        IsEnabled="{Binding bIsEnabled}" Height="20" Margin="0,0,0,3" Width="75">
+                </Button>
+            </Grid>
         </Expander>
-        <Expander Header="Detalhamento" IsExpanded="True">
-            <DockPanel LastChildFill="True">
-                <StackPanel DockPanel.Dock="Top" Height="49" Orientation="Horizontal">
-                    <Button Content="Gerar Detalhamento" IsEnabled="{Binding bIsEnabled}" Command="{Binding gerarDetalhamentoCommand}" Width="175" Margin="10"/>
-                </StackPanel>
-                <DataGrid
+        <Expander Header="Detalhamento do Calendário" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Focusable="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--COmponents-->
+
+                <Button Content="Gerar Detalhamento" IsEnabled="{Binding bIsEnabled}" Command="{Binding gerarDetalhamentoCommand}" 
+                        Width="175" Margin="0,0,0,3" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"/>
+                <DataGrid Grid.Column="1" Grid.Row="2"
                     ItemsSource="{Binding currentModel.lCalendario_DetalheModel}"
 					IsEnabled="{Binding bIsEnabled}"
 					AutoGenerateColumns="False" 
                     SelectionUnit="CellOrRowHeader" 
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True" >
-                    <DataGrid.Columns>                        
+                    <DataGrid.Columns>
                         <DataGridTemplateColumn x:Name="clData" Header="Data" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -75,8 +124,8 @@
                         <DataGridTextColumn Header="Hora Final" Width="90" Binding="{Binding tHoraTermino, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
                     </DataGrid.Columns>
                 </DataGrid>
-            </DockPanel>
-        </Expander>
 
-    </DockPanel>
+            </Grid>
+        </Expander>
+    </Grid>
 </runtime:WindowsBase>

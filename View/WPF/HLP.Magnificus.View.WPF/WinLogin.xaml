@@ -3,83 +3,61 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Magnificus.View.WPF.WinLogin"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Magnificus.View.WPF.WinLogin"
     Closed="Window_Closed"
         Title="WinLogin" Height="500" Width="1500" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
-    <Window.Resources>       
-        <Style x:Key="shadowedLabelStyle">
-            <Setter Property="TextBlock.Foreground" Value="{x:Static SystemColors.ControlDarkBrush}" />
-            <Setter Property="FrameworkElement.Opacity" Value="0.8" />
-            <Setter Property="TextBlock.FontSize" Value="12" />
-            <Setter Property="TextBlock.FontStyle" Value="Italic" />
-            <Setter Property="TextBlock.Margin" Value="8,4,4,4" />
-        </Style>
-
-        <Style TargetType="{x:Type Components:WatermarkTextBox}">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Margin" Value="5,2,2,2" />
-            <Setter Property="LabelStyle" Value="{StaticResource shadowedLabelStyle}" />
-        </Style>
-
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
-        
-        <ObjectDataProvider x:Key="lresultEmpresa" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwEmpresaToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ControlTemplate x:Key="TextBoxLogin" TargetType="{x:Type TextBoxBase}">
-            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
-                </Trigger>
-                <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <SolidColorBrush x:Key="Button.MouseOver.Background2" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background2" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border2" Color="#FF2C628B"/>
-        <Style x:Key="ButtonStyleLoginCopy" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>                            
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+    <Window.Resources>        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lresultEmpresa" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwEmpresaToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <SolidColorBrush x:Key="Button.MouseOver.Background2" Color="#FFBEE6FD"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background2" Color="#FFC4E5F6"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border2" Color="#FF2C628B"/>
+            <Style x:Key="ButtonStyleLoginCopy" TargetType="{x:Type Button}">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsDefaulted" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>       
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -152,12 +130,13 @@
 					SelectedValue="{Binding currentModel.idEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
                     SelectedIndex="{Binding currentModel.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
 					Height="28" VerticalAlignment="Top" Width="200" DockPanel.Dock="Top" Margin="0,6,0,0"/>
-                <Components:WatermarkTextBox Label="Login"  x:Name="txtLogin"
-					 Validation.ErrorTemplate="{StaticResource exceptionComp}"
+                <TextBox
+                    x:Name="txtLogin"
+					Validation.ErrorTemplate="{StaticResource exceptionComp}"
 					Text="{Binding currentModel.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-					Width="200" Height="27" DockPanel.Dock="Top" Template="{DynamicResource TextBoxLogin}" Margin="0,6,0,0"/>
-                <PasswordBox                     
-					
+					Width="200" Height="27" DockPanel.Dock="Top" Style="{StaticResource MyWaterMarkStyle}" Tag="Entre com o Usuário" Margin="0,6,0,0">
+                </TextBox>
+                <PasswordBox 
 					Width="200" Height="28" VerticalAlignment="Top" Margin="0,6,0,0">
                     <PasswordBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=stkLogin}"/>

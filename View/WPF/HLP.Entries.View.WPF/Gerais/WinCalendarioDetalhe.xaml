@@ -8,47 +8,172 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinCalendarioDetalhe"
         Title="WinCalendarioDetalhe" Height="500" Width="620">
     <Window.Resources>
-        <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
-        <convert:TimeSpanToString x:Key="tsToString"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
+            <convert:TimeSpanToString x:Key="tsToString"/>
+        </ResourceDictionary>                   
     </Window.Resources>
-    <DockPanel>
-        <WrapPanel Orientation="Vertical" DockPanel.Dock="top" Height="192">
-            <Components:HlpDateTimePicker SelectedDate="{Binding currentModel.dtInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Data Inicial" WidthLabel="173" Width="281.571"/>
-            <Components:HlpDateTimePicker SelectedDate="{Binding currentModel.dtFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Data Final" WidthLabel="173" Width="281.571"/>
-            <Components:HlpCheckBox IsChecked="{Binding currentModel.bConsideraSabado, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"  Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Considerar Sabado?" WidthLabel="173" Width="199"/>
-            <Components:HlpCheckBox IsChecked="{Binding currentModel.bConsideraDomingo, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"  Height="27" Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Considerar Domingo?" WidthLabel="173" Width="199"/>
-            <Label Margin="0,0,20,20" Height="23"/>
-            <Components:HlpTimePicker Value="{Binding currentModel.SegSexInicial, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27" Margin="10,10,10,2" HorizontalAlignment="Left" Caption="Hora Inicial -seg a sex" WidthLabel="173" Width="281.571"/>
-            <Components:HlpTimePicker Value="{Binding currentModel.SegSexFinal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final -seg a sex" WidthLabel="173" Width="281.571"/>
-            <Components:HlpTimePicker Value="{Binding currentModel.SabadoInicial, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora - Sábado" WidthLabel="173" Width="281.571"/>
-            <Components:HlpTimePicker Value="{Binding currentModel.SabadoFinal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final - Sábado" WidthLabel="173" Width="281.571"/>
-            <Components:HlpTimePicker Value="{Binding currentModel.DomingoInicial, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Inicial - Domingo" WidthLabel="173" Width="281.571"/>
-            <Components:HlpTimePicker Value="{Binding currentModel.DomingoFinal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}" Height="27"  Margin="10,0,10,2" HorizontalAlignment="Left" Caption="Hora Final - Domingo" WidthLabel="173" Width="281.571"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Expander Header="Detalhamento" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Focusable="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>                    
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
 
-        </WrapPanel>
-        <DockPanel>
-            <WrapPanel Orientation="Vertical" DockPanel.Dock="Top" Height="75">
-                <Components:HlpTextBox x:Name="txtDiaSemProg" Height="27" Margin="10,10,10,2" HorizontalAlignment="Left"
-                                       Caption="Dia/mês sem programação(ex:01/01)" WidthLabel="278" Width="579"
-                                        
-                                       Text="{Binding currentModel.diaSemProgramacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                                        />
-                <Button  Content="Gerar Detalhamento" Width="143" Margin="447,0,10,2" HorizontalAlignment="Left" 
-                         Command="{Binding commandGerarDetalhamento}"
-                         CommandParameter="{Binding ElementName=txtDiaSemProg}"
-                         />
-            </WrapPanel>
-            <DataGrid
-                 ItemsSource="{Binding currentModel.lDetalhes}"					
-					AutoGenerateColumns="False" 
+                <Components:CustomTextBlock Text="Data Inicial " Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Data Final" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Considerar Sábado?" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Considerar Domingo?" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Inicial–Seg. a Qui." Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Final–Seg. a Qui." Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>                
+                <Components:CustomTextBlock Text="Hora Inicial–Sexta" Grid.Column="4" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Final–Sexta" Grid.Column="4" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Inicial–Sabado" Grid.Column="4" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Final–Sábado" Grid.Column="4" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Inicial–Domingo" Grid.Column="4" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Hora Final–Domingo" Grid.Column="4" Grid.Row="6"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:HlpDatePicker
+                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                    xTextDate="{Binding currentModel.dtInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                    xTextDate="{Binding currentModel.dtFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="3"
+                    IsChecked="{Binding currentModel.bConsideraSabado, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="4"
+                    IsChecked="{Binding currentModel.bConsideraDomingo, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">
+                </Components:CustomCheckBox>
+                <Components:HlpDatePicker
+                    Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.SegQuiInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.SegQuiFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="5" Grid.Row="1" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.SextaInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="5" Grid.Row="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.SextaFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="5" Grid.Row="3" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.SabadoInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="5" Grid.Row="4" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.SabadoFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="5" Grid.Row="5" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.DomingoInicial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+                <Components:HlpDatePicker
+                    Grid.Column="5" Grid.Row="6" Height="20" Margin="0,0,0,3" stFormatoDtPicker="time"
+                    xTextTime="{Binding currentModel.DomingoFinal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </Components:HlpDatePicker>
+
+
+
+            </Grid>
+        </Expander>
+        <Expander Header="Intervalos" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Focusable="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="15"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
+                        <ColumnDefinition MaxWidth="115" MinWidth="115"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Label-->
+                    
+                    <Components:CustomTextBlock Text="Dia sem Programação" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                    
+                    <!--Components-->
+                    
+                    <Components:HlpDatePicker
+                        Grid.Row="1" Grid.Column="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"  
+                        x:Name="txtDiaSemProg"                                                                            
+                        xTextDate="{Binding currentModel.diaSemProgramacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                    </Components:HlpDatePicker>
+                    <Button Grid.Column="3" Style="{StaticResource ButtonAddCalendarioDetalhe}" Grid.Row="1" Height="23" Width="23" VerticalAlignment="Center"></Button>
+                    <ListBox
+                        Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,5,0">
+                    </ListBox>
+
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid
+                    ItemsSource="{Binding currentModel.lDetalhes}"     
+                    AutoGenerateColumns="False" 
                     SelectionUnit="CellOrRowHeader" 
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True"
-                    CanUserAddRows="True">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Hora Inicial" Width="300" Binding="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
-                    <DataGridTextColumn Header="Hora Final" Width="*" Binding="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </DockPanel>
-    </DockPanel>
+                    CanUserAddRows="True" Margin="0,0,0,3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Hora Inicial" Width="150" Binding="{Binding horaInicial, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
+                            <DataGridTextColumn Header="Hora Final" Width="*" Binding="{Binding horaFinal, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button  Content="Gerar Detalhamento" Height="20" Margin="0,0,0,3" Grid.Column="1" Grid.Row="1"
+                         Command="{Binding commandGerarDetalhamento}"
+                         CommandParameter="{Binding ElementName=txtDiaSemProg}"
+                         />
+                </Grid>
+            </Grid>
+        </Expander>
+        
+        
+    </Grid>
 </runtime:WindowsBase>
