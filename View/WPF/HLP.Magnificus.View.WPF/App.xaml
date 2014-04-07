@@ -8,6 +8,6 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>         
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
