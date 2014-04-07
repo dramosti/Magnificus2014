@@ -60,6 +60,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Styles\Util\AutoSelectTextBoxAttachedProperty.cs" />
     <Compile Include="Styles\Util\PasswordBoxMonitor.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,6 +112,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Button\ImgAdd_Disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Button\Pesquisa.png" />
+    <Resource Include="Icons\Button\Pesquisa_Desabilitado.png" />
+    <Resource Include="Icons\Button\Pesquisa_MouseOVer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
