@@ -23,23 +23,45 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandGerarDetalhamento = new RelayCommand(
                exec => GeraGradeHoraria(o: exec),
                can => CanExecute(o: can));
+
+            this.objViewModel.addDateCommand = new RelayCommand(
+              exec => AddDateSemProgramacaoToList(),
+              can => CanAddDateSemProgramacaoToList());
+
+
         }
 
+        public void AddDateSemProgramacaoToList()
+        {
+            if (objViewModel.currentModel.lDiasSemProgramacao.Where(c => c.Date == ((DateTime)objViewModel.currentModel.diaSemProgramacao).Date).Count() == 0)
+            {
+                objViewModel.currentModel.lDiasSemProgramacao.Add((DateTime)objViewModel.currentModel.diaSemProgramacao);
+                objViewModel.currentModel.diaSemProgramacao = null;
+            }
+            else
+                System.Windows.MessageBox.Show("Data já inserida na listagem abaixo!", "A V I S O");
+        }
+
+        public bool CanAddDateSemProgramacaoToList()
+        {
+            if (objViewModel.currentModel.diaSemProgramacao != null)
+                return true;
+            else return false;
+        }
 
 
         private void GeraGradeHoraria(object o)
         {
             try
             {
-                objViewModel.lCalendarioDetalhes =  new ObservableCollectionBaseCadastros<Calendario_DetalheModel>();
-                List<string> DiasSemProgramacao = objViewModel.currentModel.diaSemProgramacao.Split(',').ToList();
+                objViewModel.lCalendarioDetalhes = new ObservableCollectionBaseCadastros<Calendario_DetalheModel>();
                 Dictionary<TimeSpan, TimeSpan> Intervalos = objViewModel.GeraIntervalos();
 
 
                 DateTimeEnumerator dateTimeRange = new DateTimeEnumerator(objViewModel.currentModel.dtInicial, objViewModel.currentModel.dtFinal);
                 foreach (DateTime day in dateTimeRange)
                 {
-                    if (objViewModel.VerificaDiaExcluidoProgramacao(day, DiasSemProgramacao))
+                    if (objViewModel.VerificaDiaExcluidoProgramacao(day))
                     {
                         if (day.DayOfWeek == DayOfWeek.Saturday && objViewModel.currentModel.bConsideraSabado)
                         {
@@ -49,6 +71,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                                 objViewModel.currentModel.SabadoInicial.Second);
 
                             objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SabadoInicial.TimeOfDay, objViewModel.currentModel.SabadoFinal.TimeOfDay);
+                        }
+                        else if (day.DayOfWeek == DayOfWeek.Friday)
+                        {
+
                         }
                         else if (day.DayOfWeek == DayOfWeek.Sunday && objViewModel.currentModel.bConsideraDomingo)
                         {
@@ -65,6 +91,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             objViewModel.currentModel.SegSexFinal = new DateTime(day.Year, day.Month, day.Day, objViewModel.currentModel.SegSexFinal.Hour, objViewModel.currentModel.SegSexFinal.Minute, objViewModel.currentModel.SegSexFinal.Second);
                             objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SegSexInicial.TimeOfDay, objViewModel.currentModel.SegSexFinal.TimeOfDay);
                         }
+
 
                     }
                 }

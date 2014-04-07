@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,16 +84,33 @@ namespace HLP.Entries.Model.Models.Gerais
         }
 
 
-        private string _diaSemProgramacao = "";
-        public string diaSemProgramacao
+        private DateTime? _diaSemProgramacao = null;
+        public DateTime? diaSemProgramacao
         {
             get { return _diaSemProgramacao; }
             set
             {
                 _diaSemProgramacao = value;
                 base.NotifyPropertyChanged(propertyName: "diaSemProgramacao");
+
+            }
+
+        }
+
+
+        private ObservableCollection<DateTime> _lDiasSemProgramacao = new ObservableCollection<DateTime>();
+
+        public ObservableCollection<DateTime> lDiasSemProgramacao
+        {
+            get { return _lDiasSemProgramacao; }
+            set
+            {
+                _lDiasSemProgramacao = value;
+                base.NotifyPropertyChanged(propertyName: "lDiasSemProgramacao");
             }
         }
+
+
 
 
 
@@ -186,32 +204,6 @@ namespace HLP.Entries.Model.Models.Gerais
             get
             {
                 string sRet = base[columnName];
-
-                if (sRet == null)
-                {
-                    if (columnName == "diaSemProgramacao")
-                    {
-                        if (this.diaSemProgramacao != "")
-                        {
-                            string[] intervalos = this.diaSemProgramacao.Split(',');
-                            foreach (string dias in intervalos)
-                            {
-                                string[] dia = dias.Split('/');
-                                if (dia.Count() == 2)
-                                {
-                                    if (!ValidaDia(dia))
-                                    {
-                                        sRet = "Dia sem programação inválido.";
-                                    }
-                                }
-                                else
-                                {
-                                    sRet = "Dia sem programação inválido.";
-                                }
-                            }
-                        }
-                    }
-                }
                 return sRet;
             }
         }

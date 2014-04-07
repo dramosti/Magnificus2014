@@ -22,6 +22,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
 
+        
+
         public ICommand gerarDetalhamentoCommand { get; set; }
         public ICommand gerarByCalendarioBaseCommand { get; set; }
 
