@@ -14,22 +14,26 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro.Converter
         {
             try
             {
-                int selectedIndex = 0;
-
                 if (value != null)
-                    int.TryParse(s: value.ToString(), result: out selectedIndex);
+                    return value.ToString();
 
-                if (parameter.ToString() == "stDiaUtil")
-                {
-                    if (selectedIndex == 0)
-                        return Visibility.Visible;
-                }
-                else if (parameter.ToString() == "nDia")
-                {
-                    if (selectedIndex == 1)
-                        return Visibility.Visible;
-                }
-                return Visibility.Collapsed;
+                return null;
+                //int selectedIndex = 0;
+
+                //if (value != null)
+                //    int.TryParse(s: value.ToString(), result: out selectedIndex);
+
+                //if (parameter.ToString() == "stDiaUtil")
+                //{
+                //    if (selectedIndex == 0)
+                //        return Visibility.Visible;
+                //}
+                //else if (parameter.ToString() == "nDia")
+                //{
+                //    if (selectedIndex == 1)
+                //        return Visibility.Visible;
+                //}
+                //return Visibility.Collapsed;
             }
             catch (Exception ex)
             {
