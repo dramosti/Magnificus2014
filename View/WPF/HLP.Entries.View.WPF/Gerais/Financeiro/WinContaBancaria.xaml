@@ -19,13 +19,13 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="5"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
@@ -61,13 +61,13 @@
 						            ToolTip="Informar o código da conta bancária.">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="3"
+                                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
                                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="É preenchido com a descrição da conta">
                                 </Components:CustomTextBox>
                                 <Components:CustomComboBox
-                                    Grid.Column="2" Grid.Row="4"
+                                    Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
                                     SelectedIndex="{Binding currentModel.stConta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="Informar se é Conta Corrente, Poupança, Caixa.">
@@ -78,7 +78,7 @@
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
                                 <Components:HlpPesquisa 
-						            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
+						            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 						            Text="{Binding currentModel.idAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="Informa o código da Agencia. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="0" FieldPesquisa="ID" TableView="vwAgencia">
@@ -88,7 +88,7 @@
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa
-                                    Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3"
+                                    Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 						            Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						            IsEnabled="{Binding bIsEnabled}"
 						            ToolTip="Informa o código da Banco. O banco e a Agencia deverá estar cadastro na Tela de Bancos e Agência." WidthLabel="0" FieldPesquisa="ID" TableView="vwAgencia">
@@ -98,9 +98,141 @@
                                 </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="7">
+                                    Grid.Column="2" Grid.Row="7"                                    
+                                    Text="{Binding currentModel.xTitular, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="É preenchido com o nome do titular da Conta Bancária.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"                                  
+                                    Text="{Binding currentModel.xCNPJouCPFTitular, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="É preenchido com o CNPJ ou CPF do Titular da Conta Bancária.">
                                 </Components:CustomTextBox>
 
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Home Banking" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="N.° Conta para Home Banking" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código da Empresa para o Home Banking" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Convernio HomeBanking" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Reemite Bloquete?" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="N.° de Digitos do Convênio" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Dias para Protesto" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Sequencia do Nosso Número" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Zera a Sequencia do Nosso Número?" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Carteira" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Variação da Carteira" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Aceite" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Espécie" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Numero da Remessa" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.xNumeroContaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informa o código da Conta corrente, digitar de preferência o código verdadeiro da Conta para o Home Banking a ser cadastrado.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.xCodigoEmpresaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informar o código da Empresa para o Banco">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.nConvenio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informa o numero do Convenio para o Home Banking para essa conta">
+                                </Components:CustomTextBox>
+                                <Components:CustomCheckBox                                            
+                                    Grid.Column="2" Grid.Row="4"                                    
+                                    IsEnabled="{Binding bIsEnabled}" HorizontalAlignment="Left"												
+								    IsChecked="{Binding currentModel.stBloquete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    ToolTip="Define se será reemitido os bloquetes, sendo utilizado na exportação de duplicatas.">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    Text="{Binding currentModel.nDigitosConvenio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informar o numero de dígitos para o numero do convenio.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="6"
+                                    Text="{Binding currentModel.nDiasProtesto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Define o número de dias para protesto, sendo utilizado para a exportação de duplicatas.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="7"
+                                    Text="{Binding currentModel.nSequenciaNossoNumero, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="É um número de sequência utilizado para a exportação de duplicatas e emissão de boletos">
+                                </Components:CustomTextBox>
+                                <Components:CustomCheckBox                                            
+                                    Grid.Column="2" Grid.Row="8"                                    
+                                    IsEnabled="{Binding bIsEnabled}" HorizontalAlignment="Left"												
+								    IsChecked="{Binding currentModel.stBloquete, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    ToolTip="Informar se sempre será zerado a sequencia do Nosso Número, com isso o sistema exportará para o Banco sempre 0000000 na sequencia do nosso número.">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="9"
+                                    Text="{Binding currentModel.nCarteira, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informar o tipo de carteira da Conta para o Banco">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="10"
+                                    Text="{Binding currentModel.nVariacaoCarteira, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informar a variação da carteira da conta para o Banco.">
+                                </Components:CustomTextBox>
+                                <Components:CustomCheckBox                                            
+                                    Grid.Column="2" Grid.Row="11"                                    
+                                    IsEnabled="{Binding bIsEnabled}" HorizontalAlignment="Left"												
+								    IsChecked="{Binding currentModel.stAceite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    ToolTip="Quando os boletos for ser impressos pelo banco colocar a opção de aceito com 'SIM', valor default sempre 'Não'">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="12" Grid.ColumnSpan="2"
+                                    Text="{Binding currentModel.xEspecie, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Qual o tipo de movimentação/documento que será lançado.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="13"
+                                    Text="{Binding currentModel.nRemessaHomeBanking, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						            IsEnabled="{Binding bIsEnabled}"
+						            ToolTip="Informar o numero inicial da sequencia para Remessa ao Home Banking">
+                                </Components:CustomTextBox>
                             </Grid>
                         </Expander>
                     </Grid>
