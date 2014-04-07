@@ -17,6 +17,9 @@ namespace HLP.Components.View.WPF.Converter
             int index = 0;
             int iValue = 0;
 
+            if (value == null)
+                return null;
+
             foreach (var item in parameter as System.Windows.Data.CompositeCollection)
             {
                 if (int.TryParse(s: value.ToString(), result: out iValue))
@@ -33,6 +36,9 @@ namespace HLP.Components.View.WPF.Converter
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             byte index = 0;
+
+            if (value == null)
+                return null;
 
             foreach (var item in parameter as System.Windows.Data.CompositeCollection)
             {

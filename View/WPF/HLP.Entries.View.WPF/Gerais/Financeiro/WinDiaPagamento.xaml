@@ -22,37 +22,13 @@
                 <System:String>1 - MÊS</System:String>
             </CompositeCollection>
             <CompositeCollection x:Key="collectionDias">
-                <System:String>1</System:String>
-                <System:String>2</System:String>
-                <System:String>3</System:String>
-                <System:String>4</System:String>
-                <System:String>5</System:String>
-                <System:String>6</System:String>
-                <System:String>7</System:String>
-                <System:String>8</System:String>
-                <System:String>9</System:String>
-                <System:String>10</System:String>
-                <System:String>11</System:String>
-                <System:String>12</System:String>
-                <System:String>13</System:String>
-                <System:String>14</System:String>
-                <System:String>15</System:String>
-                <System:String>16</System:String>
-                <System:String>17</System:String>
-                <System:String>18</System:String>
-                <System:String>19</System:String>
-                <System:String>20</System:String>
-                <System:String>21</System:String>
-                <System:String>22</System:String>
-                <System:String>23</System:String>
-                <System:String>24</System:String>
-                <System:String>25</System:String>
-                <System:String>26</System:String>
-                <System:String>27</System:String>
-                <System:String>28</System:String>
-                <System:String>29</System:String>
-                <System:String>30</System:String>
-                <System:String>31</System:String>
+                <System:String>Domingo</System:String>
+                <System:String>Segunda</System:String>
+                <System:String>Terça</System:String>
+                <System:String>Quarta</System:String>
+                <System:String>Quinta</System:String>
+                <System:String>Sexta</System:String>
+                <System:String>Sábado</System:String>
             </CompositeCollection>
         </ResourceDictionary>
     </Window.Resources>
@@ -111,26 +87,49 @@
                          ItemsSource="{Binding currentModel.lDia_pagamento_linhas}"                                                 
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
-                         CanUserReorderColumns="False"  
+                         CanUserReorderColumns="False"
                          CanUserDeleteRows="True" CanUserAddRows="True">
                     <DataGrid.Columns>
-                        <DataGridComboBoxColumn Header="Semana/Mês" ItemsSource="{StaticResource collectionSemanaMes}"
-                                        SelectedItemBinding="{Binding stSemanaMes, Converter={StaticResource selectedItemConverter},
+                        <DataGridComboBoxColumn x:Name="cbxStSemanaMes" Header="Semana/Mês" ItemsSource="{StaticResource collectionSemanaMes}"
+                                        SelectedItemBinding="{Binding Path=stSemanaMes, Converter={StaticResource selectedItemConverter},
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
-                    , ConverterParameter={StaticResource collectionSemanaMes}}" Visibility="Visible"                        
+                    , ConverterParameter={StaticResource collectionSemanaMes}}" Visibility="Visible"                       
                                         >
                         </DataGridComboBoxColumn>
                         <DataGridComboBoxColumn Header="Dia Útil" ItemsSource="{StaticResource collectionDias}"
-                                        SelectedItemBinding="{Binding stDiaUtil, Converter={StaticResource selectedItemConverter},
+                                        SelectedItemBinding="{Binding Path=stDiaUtil, Converter={StaticResource selectedItemConverter},
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
-                    , ConverterParameter={StaticResource collectionSemanaMes}}" 
-                                                Visibility="{Binding stSemanaMes, Converter={StaticResource DiaPagamentoConverter}, ConverterParameter=stDiaUtil}"                        
-                                        ></DataGridComboBoxColumn>
+                    , ConverterParameter={StaticResource collectionDias}}">
+                            <DataGridComboBoxColumn.CellStyle>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="0">
+                                            <Setter Property="Panel.Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="1">
+                                            <Setter Property="Panel.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridComboBoxColumn.CellStyle>
+                        </DataGridComboBoxColumn>
                         <DataGridTextColumn Header="Dia" Width="*"
                                         Binding="{Binding Path=nDia, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
-                                        ElementStyle="{StaticResource CellErrorStyle}"
-                                            Visibility="{Binding stSemanaMes, Converter={StaticResource DiaPagamentoConverter}, ConverterParameter=nDia}"                        
-                                        />
+                                        ElementStyle="{StaticResource CellErrorStyle}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="0">
+                                            <Setter Property="Panel.Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=stSemanaMes, Converter={StaticResource DiaPagamentoConverter}}" Value="1">
+                                            <Setter Property="Panel.Visibility" Value="Collapsed"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                                        
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
