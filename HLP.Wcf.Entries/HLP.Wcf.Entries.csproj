@@ -94,7 +94,7 @@
     <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
     <Content Include="serviceBanco.svc" />
-    <Content Include="serviceCalendario.svc" />
+    <Content Include="wcf_Calendario.svc" />
     <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCarga_trib_media_st_icms.svc" />
     <Content Include="serviceCargo.svc" />
@@ -178,7 +178,7 @@
     <Compile Include="IserviceAcesso.cs" />
     <Compile Include="IserviceAgencia.cs" />
     <Compile Include="IserviceBanco.cs" />
-    <Compile Include="IserviceCalendario.cs" />
+    <Compile Include="Iwcf_Calendario.cs" />
     <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCarga_trib_media_st_icms.cs" />
     <Compile Include="IserviceCargo.cs" />
@@ -259,8 +259,8 @@
     <Compile Include="serviceBanco.svc.cs">
       <DependentUpon>serviceBanco.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceCalendario.svc.cs">
-      <DependentUpon>serviceCalendario.svc</DependentUpon>
+    <Compile Include="wcf_Calendario.svc.cs">
+      <DependentUpon>wcf_Calendario.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceCanal_Venda.svc.cs">
       <DependentUpon>serviceCanal_Venda.svc</DependentUpon>

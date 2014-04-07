@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Components\Campos_Base_DadosService.cs" />
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
+    <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
