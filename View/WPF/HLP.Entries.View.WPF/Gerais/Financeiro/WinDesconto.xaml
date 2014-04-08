@@ -79,7 +79,7 @@
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
                 <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="5"
+                    Grid.Column="2" Grid.Row="5" x:Name="cbxStLiquidoAtual"
                     SelectedIndex="{Binding currentModel.stLiquidoAtual, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Escolha o método aplicável ao seu desconto à vista. O método especificado, juntamente com o valor fornecido no campo Dias e/ou Meses, será usado para calcular a última data em que o pagamento pode ser feito para receber qualquer desconto à vista disponível. ">
@@ -91,14 +91,37 @@
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="6"
                     Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
 				    ToolTip="Digite o número de meses em que o desconto à vista será aplicável. ">
+                    <Components:CustomTextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="0">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="7"
                     Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Digite o número de dias em que o desconto à vista será aplicável. ">
+                    <Components:CustomTextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="1">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="8"

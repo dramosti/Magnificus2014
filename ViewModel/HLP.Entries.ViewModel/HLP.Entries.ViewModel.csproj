@@ -143,11 +143,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\CalendarioService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\Carga_trib_media_st_icmsServico\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -590,25 +585,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\bancoService\serviceBanco5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CalendarioService\serviceCalendario.wsdl" />
-    <None Include="Service References\CalendarioService\serviceCalendario.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CalendarioService\serviceCalendario1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CalendarioService\serviceCalendario2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CalendarioService\serviceCalendario3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CalendarioService\serviceCalendario4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CalendarioService\serviceCalendario5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda.wsdl" />
@@ -1543,7 +1519,6 @@
     <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
     <WCFMetadataStorage Include="Service References\agenciaService\" />
     <WCFMetadataStorage Include="Service References\bancoService\" />
-    <WCFMetadataStorage Include="Service References\CalendarioService\" />
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\Carga_trib_media_st_icmsServico\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
@@ -2144,21 +2119,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Situacao_tributaria_pisService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CalendarioService\serviceCalendario.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CalendarioService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CalendarioService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CalendarioService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -8,6 +8,7 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
+using System.Windows.Controls;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
@@ -16,11 +17,13 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public CalendarioDetalheViewModel()
         {
             this.currentModel = new CalendarioGeraDetalhesModel();
-            commands = new CalendarioDetalheCommand(objViewModel: this);            
+            commands = new CalendarioDetalheCommand(objViewModel: this);
         }
 
         #region Icommands
         public ICommand commandGerarDetalhamento { get; set; }
+
+        public ICommand addDateCommand { get; set; }
         #endregion
 
         CalendarioDetalheCommand commands;
@@ -53,23 +56,17 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 throw ex;
             }
         }
-        public bool VerificaDiaExcluidoProgramacao(DateTime day, List<string> DiasSemProgramacao)
+        public bool VerificaDiaExcluidoProgramacao(DateTime day)
         {
             try
             {
                 bool ret = true;
-                foreach (string diasExcluidos in DiasSemProgramacao)
+                foreach (DateTime diaExcluido in this.currentModel.lDiasSemProgramacao)
                 {
-                    if (diasExcluidos != "")
+                    if (day.Date.Day == diaExcluido.Day && day.Date.Month == diaExcluido.Month)
                     {
-                        int dia = Convert.ToInt32(diasExcluidos.Split('/')[0]);
-                        int mes = Convert.ToInt32(diasExcluidos.Split('/')[1]);
-
-                        if (day.Date.Day == dia && day.Date.Month == mes)
-                        {
-                            ret = false;
-                            break;
-                        }
+                        ret = false;
+                        break;
                     }
                 }
                 return ret;
@@ -131,8 +128,15 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
+        public void ListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (this.currentModel.lDiasSemProgramacao.Count() > 0)
+                    this.currentModel.lDiasSemProgramacao.Remove((DateTime)(sender as ListBox).SelectedItem);
+            }
+        }
 
 
-        
     }
 }
