@@ -14,7 +14,7 @@ namespace HLP.Wcf.Entries
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceEmpresaParametros" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select serviceEmpresaParametros.svc or serviceEmpresaParametros.svc.cs at the Solution Explorer and start debugging.
-    public class serviceEmpresaParametros : IserviceEmpresaParametros
+    public class wcf_EmpresaParametros : Iwcf_EmpresaParametros
     {
         [Inject]
         public IEmpresaRepository empresaRepository { get; set; }
@@ -43,7 +43,7 @@ namespace HLP.Wcf.Entries
         [Inject]
         public IParametro_Cartao_PontoRepository parametro_Cartao_PontoRepository { get; set; }
 
-        public serviceEmpresaParametros()
+        public wcf_EmpresaParametros()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;

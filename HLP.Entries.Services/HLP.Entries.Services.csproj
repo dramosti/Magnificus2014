@@ -50,6 +50,7 @@
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
+    <Compile Include="Parametros\EmpresaParametrosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\wcf_Calendarios\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -67,6 +68,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_DiaPagamento\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_EmpresaParametros\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -191,6 +197,28 @@
     <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros.wsdl" />
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Empresa\wcf_Empresa.wsdl" />
     <None Include="Service References\wcf_Empresa\wcf_Empresa.xsd">
       <SubType>Designer</SubType>
@@ -286,6 +314,7 @@
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
+    <WCFMetadataStorage Include="Service References\wcf_EmpresaParametros\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
@@ -426,6 +455,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_EmpresaParametros\wcf_EmpresaParametros.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_EmpresaParametros\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_EmpresaParametros\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_EmpresaParametros\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

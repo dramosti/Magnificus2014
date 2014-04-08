@@ -12,6 +12,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
 {
     public class Empresa_ParametrosViewModel : ViewModelBase<EmpresaModel>
     {
+        
 
         #region Icommands
         public ICommand commandSalvar { get; set; }
@@ -29,6 +30,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Parametros
             Empresa_ParametrosCommands comm = new Empresa_ParametrosCommands(objViewModel: this);
             comm.ExecPesquisa();
             this.SetValorCurrentOp(op: Base.EnumsBases.OperacaoCadastro.pesquisando);
+            
         }
 
     }

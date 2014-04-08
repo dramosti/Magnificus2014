@@ -279,11 +279,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Empresa_ParametrosService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\fabricanteService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -885,28 +880,6 @@
     <None Include="Service References\empresaService\serviceEmpresa6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.wsdl" />
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros6.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\fabricanteService\serviceFabricante.wsdl" />
     <None Include="Service References\fabricanteService\serviceFabricante.xsd">
       <SubType>Designer</SubType>
@@ -1504,7 +1477,6 @@
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\depositoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
-    <WCFMetadataStorage Include="Service References\Empresa_ParametrosService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
@@ -1787,21 +1759,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Modo_EntregaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Empresa_ParametrosService\serviceEmpresaParametros.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Empresa_ParametrosService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Empresa_ParametrosService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Empresa_ParametrosService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
