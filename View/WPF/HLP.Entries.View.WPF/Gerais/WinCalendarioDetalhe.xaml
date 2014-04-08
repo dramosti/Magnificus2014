@@ -144,6 +144,9 @@
                         Grid.Row="1" Grid.Column="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"  
                         x:Name="txtDiaSemProg"                                                                            
                         xTextDate="{Binding currentModel.diaSemProgramacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                        <Components:HlpDatePicker.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding addDateCommand}"/>
+                        </Components:HlpDatePicker.InputBindings>
                     </Components:HlpDatePicker>
                     <Button Grid.Column="3" Style="{StaticResource ButtonAddCalendarioDetalhe}"
                             Command="{Binding addDateCommand}"
