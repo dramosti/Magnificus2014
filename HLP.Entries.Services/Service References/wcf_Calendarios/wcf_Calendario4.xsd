@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceCalendario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Calendario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="CalendarioModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="_idCalendario" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idCalendario" nillable="true" type="xs:int" />
@@ -25,13 +26,13 @@
   <xs:element name="ArrayOfCalendario_DetalheModel" nillable="true" type="tns:ArrayOfCalendario_DetalheModel" />
   <xs:complexType name="Calendario_DetalheModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q2:modelBase">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q2:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="dCalendario" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dHoraInicio" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="dHoraTermino" type="xs:dateTime" />
           <xs:element minOccurs="0" name="idCalendario" type="xs:int" />
           <xs:element minOccurs="0" name="idCalendarioDetalhe" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="tHoraInicio" type="ser:duration" />
+          <xs:element minOccurs="0" name="tHoraTermino" type="ser:duration" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

@@ -12,6 +12,7 @@ using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -19,9 +20,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         CalendarioViewModel objViewModel;
-        CalendarioService.IserviceCalendarioClient servico = new CalendarioService.IserviceCalendarioClient();
+        CalendarioService service = new CalendarioService();
         public CalendarioCommand(CalendarioViewModel objViewModel)
-        {           
+        {
 
             this.objViewModel = objViewModel;
 
@@ -56,11 +57,14 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 canExecute: can => this.CanGerarDetalhamentoByCalendarBase());
         }
 
+
+
+
         #region Implementação Commands
 
         public void GerarDetalhamentoByCalendarBase()
         {
-            CalendarioModel objBase = servico.GetObjeto((int)objViewModel.currentModel.idCalendarioBase);
+            CalendarioModel objBase = service.GetObject((int)objViewModel.currentModel.idCalendarioBase);
             foreach (var item in objBase.lCalendario_DetalheModel)
             {
                 item.idCalendarioDetalhe = null;
@@ -79,7 +83,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return breturn;
         }
 
-
         public void GeraDetalhamento()
         {
             Window win = GerenciadorModulo.Instancia.CarregaForm("WinCalendarioDetalhe", Base.InterfacesBases.TipoExibeForm.Modal);
@@ -89,8 +92,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             if (dados != null)
                 objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
         }
-
-
 
         public void Save(object _panel)
         {
@@ -122,7 +123,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
+                this.objViewModel.currentModel = service.SaveObject(objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -168,11 +169,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel = await this.servico.CopyAsync(this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.service.CopyObject(this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -197,7 +198,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (service.DeleteObject(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -333,7 +334,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.GetObjeto(this.objViewModel.currentID);
+            this.objViewModel.currentModel = service.GetObject(this.objViewModel.currentID);
         }
         #endregion
 

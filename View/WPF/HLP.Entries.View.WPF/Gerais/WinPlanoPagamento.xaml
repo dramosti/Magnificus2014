@@ -9,30 +9,35 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento"
         Title="Plano de Pagamento" Height="660" Width="1024" NameView="vwPlanoPagamento">
     <Window.Resources>
-        <ObjectDataProvider 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
             x:Key="EnumValorOuPorcentagem">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:ValorOuPorcentagem"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:ValorOuPorcentagem"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Expander Header="Identificação" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="50" MinWidth="50"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
@@ -55,13 +60,13 @@
 				    ToolTip="Chave principal do registro do Plano de Pagamento">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira um código ou uma breve descrição para identificar o plano de pagamento.">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3"
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira a descrição do plano de pagamento">
@@ -73,9 +78,9 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="220" MinWidth="220"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="35" MinWidth="35"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
@@ -101,7 +106,7 @@
                 <!--Components-->
                 
                 <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="1"
+                    Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
                     x:Name="cbxAlocacao"						
 					SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -114,7 +119,7 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomComboBox
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     SelectedIndex="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação.">
@@ -125,11 +130,11 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3"
-                    Text="{Binding currentModel.nAlterar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"												
-                        ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. ">
+                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                    Text="{Binding currentModel.nAlterarFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"												
+                    ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. ">
                     <Components:CustomTextBox.Style>
-                        <Style>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
@@ -144,8 +149,102 @@
                         </Style>
                     </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
-
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="4"
+                    Text="{Binding currentModel.nNumerosPagamentos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Se você selecionou a opção Quantidade fixa no campo Alocação, especifique o número de prestações para o plano de pagamento.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="5"
+                    Text="{Binding currentModel.vFixoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Se você selecionou a opção Valor fixo no campo Alocação , especifique o valor da moeda de cada prestação.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="6"
+                    Text="{Binding currentModel.vPagamentoMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados.">
+                </Components:CustomTextBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento. 0-Primeira prestação - o valor total do imposto sobre vendas está incluído na primeira prestação. 1-Proporcionalmente - o valor do imposto sobre vendas é distribuído por igual, com o mesmo valor de imposto em cada prestação. 2-Última prestação - o valor total do imposto sobre vendas está incluído na última prestação. ">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Primeira prestação</System:String>
+                        <System:String>1-Proporcionalmente</System:String>
+                        <System:String>2-Última prestação</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
             </Grid>
+        </Expander>
+        <Expander Header="Nota" IsExpanded="True" Grid.Row="2" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                   
+                </Grid.RowDefinitions>
+                <!--Label-->
+                
+                <Components:CustomTextBlock Text="Nota" Grid.Column="1" Grid.Row="1"/>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    Text="{Binding currentModel.xNota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno.">
+                </Components:CustomTextBox>
+                
+            </Grid>
+        </Expander>
+        <Expander Header="Plano de Pagamento" Grid.Row="3" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
+            <DataGrid 
+                    ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
+						IsEnabled="{Binding bIsEnabled}"
+                        AutoGenerateColumns="False" 
+						SelectionUnit="CellOrRowHeader" 
+						CanUserReorderColumns="False"
+						CanUserDeleteRows="True"
+						HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Stretch"  BorderBrush="Black">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
+                    <DataGridTemplateColumn x:Name="clTipo" Header="Tipo" Width="100" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=enumValorOuPorcentagem}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
+                                    <ComboBox x:Name="cbxEditing"
+                ItemsSource="{Binding Source={StaticResource EnumValorOuPorcentagem}}" 
+                                                      DisplayMemberPath="Key"
+                                SelectedValuePath="Value"
+            SelectedValue="{Binding enumValorOuPorcentagem,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                                      IsSynchronizedWithCurrentItem="False"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" Header="Valor ou Porcentagem" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Expander>
     </Grid>
 </runtime:WindowsBase>

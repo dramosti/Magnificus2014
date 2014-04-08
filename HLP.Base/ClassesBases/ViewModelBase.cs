@@ -224,25 +224,15 @@ namespace HLP.Base.ClassesBases
 
         public void FechaForm(object p)
         {
-            if (p.GetType().BaseType == typeof(Window))
+            try
             {
-                try
-                {
-                    ((Window)p).Close();
-                }
-                catch (Exception)
-                {
-
-                }
-
+                ((Window)p).Close();
             }
-            else
+            catch (Exception ex)
             {
-                try
-                { FechaForm(p: ((System.Windows.Controls.Panel)p).Parent); }
-                catch (Exception) { ((Window)p).Close(); }
-
+                throw ex;
             }
+
         }
 
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)

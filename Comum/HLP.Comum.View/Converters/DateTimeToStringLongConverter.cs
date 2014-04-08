@@ -14,10 +14,7 @@ namespace HLP.Comum.View.Converters
         {
             try
             {
-                    DatePicker dt = new DatePicker();
-                dt.SelectedDate = (DateTime)value;
-                dt.SelectedDateFormat = DatePickerFormat.Long;
-                return dt.Text;
+                return ((DateTime)value).ToLongDateString();
             }
             catch (Exception)
             {
