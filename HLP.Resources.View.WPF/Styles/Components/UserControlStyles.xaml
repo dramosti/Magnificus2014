@@ -1582,7 +1582,7 @@
 
     <!--Estilo HlpPesquisa-->
 
-    <Style x:Key="TextBoxPesquisaRapidaRightSide" TargetType="{x:Type TextBoxBase}">
+    <!--<Style x:Key="TextBoxPesquisaRapidaRightSide" TargetType="{x:Type TextBoxBase}">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -1601,11 +1601,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
     
     <!--Estilo FindAll (PESQUISA RAPIDA)-->
 
-    <Style x:Key="ExpanderMenuListitemStyle" TargetType="{x:Type ListBoxItem}">
+    <!--<Style x:Key="ExpanderMenuListitemStyle" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -1711,7 +1711,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
 
 </ResourceDictionary>
