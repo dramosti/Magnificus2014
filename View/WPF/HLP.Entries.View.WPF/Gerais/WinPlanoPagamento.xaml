@@ -9,10 +9,11 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento"
         Title="Plano de Pagamento" Height="660" Width="1024" NameView="vwPlanoPagamento">
     <Window.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary>           
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <convert:NotConverter x:Key="notConverter"/>
             <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
@@ -184,8 +185,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="75" MinWidth="75"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="700" MinWidth="700"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -210,8 +211,8 @@
         </Expander>
         <Expander Header="Plano de Pagamento" Grid.Row="3" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
             <DataGrid 
-                    ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
-						IsEnabled="{Binding bIsEnabled}"
+                        ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
+						IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         AutoGenerateColumns="False" 
 						SelectionUnit="CellOrRowHeader" 
 						CanUserReorderColumns="False"
