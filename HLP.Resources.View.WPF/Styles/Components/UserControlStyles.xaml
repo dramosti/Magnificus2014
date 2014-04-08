@@ -6,6 +6,12 @@
 
     <!--Style Components TextBox-->
 
+    <SolidColorBrush x:Key="BorderBrushTextStandard" Color="#FFABADB3"/>
+    <SolidColorBrush x:Key="WhiteStandard" Color="White"/>
+    <SolidColorBrush x:Key="BlueStandard" Color="#FF4774B5"/>
+    <SolidColorBrush x:Key="BackgroundError" Color="#FFECA933"/>
+    <SolidColorBrush x:Key="GrayCheckBox" Color="#FFD3D2D3"/>
+    <SolidColorBrush x:Key="ButtonBackgroundBlueDefault" Color="#FF4774B5"/>
     <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
     <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF2775B0"/>
@@ -23,8 +29,7 @@
     <SolidColorBrush x:Key="ButtonDisabled2Border" Color="#FFC9CCD3"/>
     <SolidColorBrush x:Key="ButtonDisabledForegroung" Color="#FF6E6E6E"/>
     <SolidColorBrush x:Key="StyleMainWindowDefault" Color="#FFBDBDBD"/>
-    <SolidColorBrush x:Key="StyleMainGridDefault" Color="#FFD4D1D1"/>
-    <SolidColorBrush x:Key="ButtonBackgroundBlueDefault" Color="#FF4774B5"/>
+    <SolidColorBrush x:Key="StyleMainGridDefault" Color="#FFD4D1D1"/>    
     <SolidColorBrush x:Key="ButtonBackgroundBlueMouseOver" Color="#FF6A96D4"/>
     <SolidColorBrush x:Key="ButtonBackgrounGrayIsEnabledFalse" Color="#FFCFCFCF"/>
     <SolidColorBrush x:Key="TabItemisPressed" Color="White"/>
@@ -235,10 +240,6 @@
     <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
     <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
-
-    <SolidColorBrush x:Key="WindowBackgroundBrush2" Color="#FFF" />
-    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
-    <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FFFFFFFF"/>
 
 
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
@@ -563,6 +564,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
 
 
     <!--Style Custom TextBlock (HLPPesquisa)-->
@@ -1193,7 +1195,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+  
+
     <!--DataGrid -->
 
     <!--Style and template for the resize control on the DataGridColumnHeader.-->
@@ -1638,7 +1642,7 @@
 
     <!--Estilo HlpPesquisa-->
 
-    <!--<Style x:Key="TextBoxPesquisaRapidaRightSide" TargetType="{x:Type TextBoxBase}">
+    <Style x:Key="TextBoxPesquisaRapidaRightSide" TargetType="{x:Type TextBoxBase}">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -1657,11 +1661,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>-->
+    </Style>
     
     <!--Estilo FindAll (PESQUISA RAPIDA)-->
 
-    <!--<Style x:Key="ExpanderMenuListitemStyle" TargetType="{x:Type ListBoxItem}">
+    <Style x:Key="ExpanderMenuListitemStyle" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -1767,7 +1771,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>-->
+    </Style>
 
 
 </ResourceDictionary>
