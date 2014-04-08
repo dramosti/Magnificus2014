@@ -26,20 +26,23 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.addDateCommand = new RelayCommand(
               exec => AddDateSemProgramacaoToList(),
-              can => CanAddDateSemProgramacaoToList());
+              can => true);
 
 
         }
 
         public void AddDateSemProgramacaoToList()
         {
-            if (objViewModel.currentModel.lDiasSemProgramacao.Where(c => c.Date == ((DateTime)objViewModel.currentModel.diaSemProgramacao).Date).Count() == 0)
+            if (objViewModel.currentModel.diaSemProgramacao != null)
             {
-                objViewModel.currentModel.lDiasSemProgramacao.Add((DateTime)objViewModel.currentModel.diaSemProgramacao);
-                objViewModel.currentModel.diaSemProgramacao = null;
+                if (objViewModel.currentModel.lDiasSemProgramacao.Where(c => c.Date == ((DateTime)objViewModel.currentModel.diaSemProgramacao).Date).Count() == 0)
+                {
+                    objViewModel.currentModel.lDiasSemProgramacao.Add((DateTime)objViewModel.currentModel.diaSemProgramacao);
+                    objViewModel.currentModel.diaSemProgramacao = null;
+                }
+                else
+                    System.Windows.MessageBox.Show("Data já inserida na listagem abaixo!", "A V I S O");
             }
-            else
-                System.Windows.MessageBox.Show("Data já inserida na listagem abaixo!", "A V I S O");
         }
 
         public bool CanAddDateSemProgramacaoToList()
@@ -65,11 +68,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         if (day.DayOfWeek == DayOfWeek.Saturday && objViewModel.currentModel.bConsideraSabado)
                         {
-                            //objViewModel.currentModel.SabadoInicial = new TimeSpan(
-                            //                    objViewModel.currentModel.SabadoInicial.Hours,
-                            //                    objViewModel.currentModel.SabadoInicial.Minutes,
-                            //                    objViewModel.currentModel.SabadoInicial.Seconds);
-
                             objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SabadoInicial, objViewModel.currentModel.SabadoFinal);
                         }
                         else if (day.DayOfWeek == DayOfWeek.Friday)
@@ -82,25 +80,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         }
                         else if (day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday)
                         {
-                            //objViewModel.currentModel.SegQuiInicial = new TimeSpan(
-                            //                        objViewModel.currentModel.SegQuiInicial.Hours,
-                            //                        objViewModel.currentModel.SegQuiInicial.Minutes,
-                            //                        objViewModel.currentModel.SegQuiInicial.Seconds);
-
-
-                            //objViewModel.currentModel.SegQuiFinal = new TimeSpan(
-                            //                        objViewModel.currentModel.SegQuiFinal.Hours,
-                            //                        objViewModel.currentModel.SegQuiFinal.Minutes,
-                            //                        objViewModel.currentModel.SegQuiFinal.Seconds);
-
                             objViewModel.MontaHorario(Intervalos, day, objViewModel.currentModel.SegQuiInicial, objViewModel.currentModel.SegQuiFinal);
                         }
-
-
                     }
                 }
 
-                objViewModel.FechaForm(((UserControl)o).Parent);
+                objViewModel.FechaForm(((System.Windows.Window)o));
             }
             catch (Exception ex)
             {
@@ -110,7 +95,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public bool CanExecute(object o)
         {
-            return !Validation.GetHasError((UserControl)o);
+            return !Validation.GetHasError((System.Windows.Window)o);
 
         }
 

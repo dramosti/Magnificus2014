@@ -8,6 +8,7 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
+using System.Windows.Controls;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
@@ -127,7 +128,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-
+        public void ListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                if (this.currentModel.lDiasSemProgramacao.Count() > 0)
+                    this.currentModel.lDiasSemProgramacao.Remove((DateTime)(sender as ListBox).SelectedItem);
+            }
+        }
 
 
     }
