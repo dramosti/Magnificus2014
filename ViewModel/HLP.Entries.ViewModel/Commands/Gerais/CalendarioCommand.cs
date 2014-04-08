@@ -329,6 +329,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Inicia_Collections()
         {
+            if (this.objViewModel.currentModel == null)
+                this.objViewModel.currentModel = new CalendarioModel();
             this.objViewModel.currentModel.lCalendario_DetalheModel.CollectionCarregada();
         }
 
