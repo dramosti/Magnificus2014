@@ -86,6 +86,16 @@ namespace HLP.Base.Static
                 .Replace(")", "").Trim();
         }
 
+        public static TimeSpan ToTimeSpan(this string Text)
+        {
+            return new TimeSpan
+                (
+                Convert.ToInt32(Text.Split(':')[0]),
+                Convert.ToInt32(Text.Split(':')[1]),
+                Convert.ToInt32(Text.Split(':')[2])
+                );
+        }
+
 
         /// <summary>
         /// Envia um email
@@ -468,6 +478,28 @@ namespace HLP.Base.Static
             return itemCheck.GetCurrentParent() as ContextMenuStrip;
         }
         #endregion
+
+
+        #region TimeSpan
+
+        public static string ToStringHoras(this object value)
+        {
+            if (value != null)
+            {
+                int iTotHoras = (((TimeSpan)value).Days * 24) + ((TimeSpan)value).Hours;
+
+                int iMinutes;
+                if (((TimeSpan)value).Minutes < 0)
+                    iMinutes = ((TimeSpan)value).Minutes * -1;
+                else
+                    iMinutes = ((TimeSpan)value).Minutes;
+                return iTotHoras.ToString().PadLeft(2, '0') + ":"
+                    + iMinutes.ToString().PadLeft(2, '0') + ":00";
+            }
+            return "00:00:00";
+        }
+        #endregion
+
     }
 
 }

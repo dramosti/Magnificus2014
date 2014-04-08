@@ -169,7 +169,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Intervalos" FontSize="14" FontWeight="Black" FontFamily="Calibri" VerticalAlignment="Center" Margin="0" />
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Intervalos de paradas" FontSize="14" FontWeight="Black" FontFamily="Calibri" VerticalAlignment="Center" Margin="0" />
                     <DataGrid Grid.Row="1"
                     ItemsSource="{Binding currentModel.lDetalhes}"     
                     AutoGenerateColumns="False" 

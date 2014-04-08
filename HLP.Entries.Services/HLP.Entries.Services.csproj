@@ -48,6 +48,7 @@
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
+    <Compile Include="Gerais\FuncionarioService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\wcf_Calendarios\Reference.cs">
@@ -71,6 +72,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_Empresa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Funcionario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -116,10 +122,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
     <None Include="Service References\wcf_Calendarios\wcf_Calendario.wsdl" />
@@ -205,6 +213,28 @@
     <None Include="Service References\wcf_Empresa\wcf_Empresa6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.xsd">
       <SubType>Designer</SubType>
@@ -257,6 +287,7 @@
     <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
     <WCFMetadataStorage Include="Service References\wcf_Transportadora\" />
     <WCFMetadataStorage Include="Service References\wcf_UnidadeMedida\" />
@@ -380,6 +411,21 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

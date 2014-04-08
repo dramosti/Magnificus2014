@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using HLP.Base.Static;
 
 namespace HLP.Entries.View.WPF.Converters
 {
@@ -12,19 +13,7 @@ namespace HLP.Entries.View.WPF.Converters
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value != null)
-            {
-                int iTotHoras = (((TimeSpan)value).Days * 24) + ((TimeSpan)value).Hours;
-
-                int iMinutes;
-                if (((TimeSpan)value).Minutes<0)
-                    iMinutes = ((TimeSpan)value).Minutes * -1;
-                else
-                    iMinutes = ((TimeSpan)value).Minutes;
-                return  iTotHoras.ToString().PadLeft(2, '0') + ":"
-                    + iMinutes.ToString().PadLeft(2, '0');
-            }
-            return null;
+            return value.ToStringHoras();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

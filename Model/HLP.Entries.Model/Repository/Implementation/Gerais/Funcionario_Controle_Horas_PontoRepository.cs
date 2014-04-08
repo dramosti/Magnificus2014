@@ -159,7 +159,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
             DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand
                 (
-                string.Format("select Calendario_Detalhe.dHoraInicio, Calendario_Detalhe.dHoraTermino from Funcionario inner join Calendario "
+                string.Format("select Calendario_Detalhe.tHoraInicio, Calendario_Detalhe.tHoraTermino from Funcionario inner join Calendario "
                 + "on Funcionario.idCalendario = Calendario.idCalendario inner join Calendario_Detalhe "
                 + "on Calendario.idCalendario = Calendario_Detalhe.idCalendario "
                 + "where Funcionario.idFuncionario = {0} and Calendario_Detalhe.dCalendario = '{1}' ", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd"))
@@ -168,17 +168,24 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
 
             List<TimeSpan> lReturn = new List<TimeSpan>();
-            DateTime dInicio;
-            DateTime dFinal;
+            TimeSpan tInicio;
+            TimeSpan tFinal;
             while (reader.Read())
             {
-                dInicio = new DateTime();
-                dFinal = new DateTime();
-                if (reader["dHoraInicio"] != null && reader["dHoraTermino"] != null)
+                tInicio = new TimeSpan();
+                tFinal = new TimeSpan();
+                if (reader["tHoraInicio"] != null && reader["tHoraTermino"] != null)
                 {
-                    dInicio = Convert.ToDateTime(reader["dHoraInicio"].ToString());
-                    dFinal = Convert.ToDateTime(reader["dHoraTermino"].ToString());
-                    lReturn.Add(dFinal.TimeOfDay.Subtract(dInicio.TimeOfDay));
+                    tInicio = new TimeSpan(
+                        Convert.ToInt32(reader["tHoraInicio"].ToString().Split(':')[0]),
+                        Convert.ToInt32(reader["tHoraInicio"].ToString().Split(':')[1]),
+                        Convert.ToInt32(reader["tHoraInicio"].ToString().Split(':')[2]));
+                    tFinal = new TimeSpan(
+                        Convert.ToInt32(reader["tHoraTermino"].ToString().Split(':')[0]),
+                        Convert.ToInt32(reader["tHoraTermino"].ToString().Split(':')[1]),
+                        Convert.ToInt32(reader["tHoraTermino"].ToString().Split(':')[2]));
+
+                    lReturn.Add(tFinal.Subtract(tInicio));
                 }
             }
             return lReturn;
