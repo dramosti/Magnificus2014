@@ -8,10 +8,15 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinCalendario"
         Title="WinCalendario" Height="660" Width="1024" NameView="vwCalendario">
     <Window.Resources>
-        <convert:DateTimeToStringLongConverter x:Key="dateLongConverter"/>
-        <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
-        <convert:TimeSpanToString x:Key="tstoString"/>
-        <convert:DateTimeToStringLongConverter x:Key="dtToStringLong"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:DateTimeToStringLongConverter x:Key="dateLongConverter"/>
+            <convert:DateTimeToStringHourConverter x:Key="dateConverter"/>
+            <convert:TimeSpanToString x:Key="tstoString"/>
+            <convert:DateTimeToStringLongConverter x:Key="dtToStringLong"/>
+        </ResourceDictionary>        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
