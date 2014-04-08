@@ -4,6 +4,13 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         x:Class="HLP.Magnificus.View.WPF.WinFindAll" x:Name="winPesquisa"
         Title="" Width="300" Height="400" WindowStyle="ToolWindow" FocusManager.FocusedElement="{Binding ElementName=m_txtTest}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="Escape" Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=winPesquisa}"/>
     </Window.InputBindings>

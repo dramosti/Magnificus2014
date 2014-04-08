@@ -280,11 +280,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\DescontoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\empresaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -872,25 +867,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\depositoService\serviceDeposito5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DescontoService\serviceDescontosAvista.wsdl" />
-    <None Include="Service References\DescontoService\serviceDescontosAvista.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DescontoService\serviceDescontosAvista1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DescontoService\serviceDescontosAvista2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DescontoService\serviceDescontosAvista3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DescontoService\serviceDescontosAvista4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DescontoService\serviceDescontosAvista5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
@@ -1558,7 +1534,6 @@
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\depositoService\" />
-    <WCFMetadataStorage Include="Service References\DescontoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\Empresa_ParametrosService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
@@ -2009,21 +1984,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\StIcmsService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\DescontoService\serviceDescontosAvista.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\DescontoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\DescontoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\DescontoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

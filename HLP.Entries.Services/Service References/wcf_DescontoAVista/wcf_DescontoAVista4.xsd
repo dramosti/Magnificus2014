@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceDescontosAvista.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_DescontoAVista.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
   <xs:complexType name="Descontos_AvistaModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="_idDescontosAvista" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idDescontosAvista" nillable="true" type="xs:int" />
@@ -19,10 +19,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Descontos_AvistaModel" nillable="true" type="tns:Descontos_AvistaModel" />
-  <xs:complexType name="ArrayOfDescontos_AvistaModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Descontos_AvistaModel" nillable="true" type="tns:Descontos_AvistaModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDescontos_AvistaModel" nillable="true" type="tns:ArrayOfDescontos_AvistaModel" />
 </xs:schema>

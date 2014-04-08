@@ -7,7 +7,7 @@
    type="HLP.Magnificus.View.WPF.WinFindAll, HLP.Magnificus.View.WPF">
   </object>
   <object id="WinDesconto" name="Desconto" singleton="false" scope="request"
-   type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDesconto, HLP.Entries.View.WPF">
+   type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinDesconto, HLP.Entries.View.WPF">
   </object>
   <object id="WinUF" name="UF" singleton="false" scope="request"
    type="HLP.Entries.View.WPF.Gerais.WinUF, HLP.Entries.View.WPF">
@@ -122,7 +122,7 @@
     type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
   </object>
   <object id="WinDiaPagamento" name="Dia_de_Pagamento" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">
   </object>
   <object id="WinCargaTribMediaStIcms" name="Carga_Tributária_Média_ST_ICMS" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Fiscal.WinCargaTribMediaStIcms, HLP.Entries.View.WPF">

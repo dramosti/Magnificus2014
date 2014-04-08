@@ -1580,5 +1580,138 @@
         </Setter>
     </Style>
 
+    <!--Estilo HlpPesquisa-->
+
+    <Style x:Key="TextBoxPesquisaRapidaRightSide" TargetType="{x:Type TextBoxBase}">
+        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
+                    <Border x:Name="border" CornerRadius="0,3,3,0" BorderBrush="#FFABADB3" BorderThickness="1.3" Background="White" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Estilo FindAll (PESQUISA RAPIDA)-->
+
+    <Style x:Key="ExpanderMenuListitemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="2,4,2,4"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border Margin="20,0,20,1" x:Name="Bd" SnapsToDevicePixels="true"                              
+                                 BorderThickness="0,0,0,1" Padding="{TemplateBinding Padding}">
+                        <Border.Background>
+                            <SolidColorBrush Color="#002A485C" x:Name="colorBrush"/>
+                        </Border.Background>
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#442A485C" x:Name="colorBorderBrush"/>
+                        </Border.BorderBrush>
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform X="0" Y="0" x:Name="contentTranslate"/>
+                                    </TransformGroup>
+                                </StackPanel.RenderTransform>
+                                <Image Source="{Binding Path=icon}" Width="18" Height="18" Margin="0,0,10,0"/>
+                                <TextBlock x:Name="con" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Text="{Binding Path=xHeader}" 
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="5,0,0,0">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="Black" x:Name="contentColor" />
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </StackPanel>
+                            <Path Fill="Transparent" Opacity="1" Stretch="Fill" HorizontalAlignment="Left" Margin="0,0,0,0" x:Name="path" VerticalAlignment="Center" Width="6.263" Height="8.354" RenderTransformOrigin="0.5,0.5" Data="M3.5546875,5.6352606 L7.7272134,9.8077869 L3.5546875,13.988776 L3.5546875,11.898281 L1.4641927,11.898281 L1.4641927,7.7257557 L3.5546875,7.7257557 z">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform X="-10" Y="0" x:Name="translateTransform"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                              Storyboard.TargetName="path" 
+                                                              To="1"
+                                                              Duration="00:00:00.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="X" 
+                                                                  Storyboard.TargetName="contentTranslate" 
+                                                                  To="10"
+                                                                  Duration="00:00:00.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="X" 
+                                                                  Storyboard.TargetName="translateTransform" 
+                                                                  To="0"
+                                                                  Duration="00:00:00.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                                              Storyboard.TargetName="path" 
+                                                              To="1"
+                                                              Duration="00:00:00.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="X" 
+                                                              Storyboard.TargetName="contentTranslate" 
+                                                              To="0"
+                                                              Duration="00:00:00.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="X" 
+                                                              Storyboard.TargetName="translateTransform" 
+                                                              To="-10"
+                                                              Duration="00:00:00.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="path" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Opacity" Value="1" TargetName="path"/>
+                            <Setter Property="Margin" Value="0" TargetName="path"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}" TargetName="Bd"/>
+                            <Setter Property="Fill" TargetName="path" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                            <Setter Property="TextElement.FontWeight" TargetName="con" Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

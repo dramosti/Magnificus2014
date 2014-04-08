@@ -1,32 +1,31 @@
-﻿using System;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Entries.Model.Models.Financeiro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Base.Static;
-using HLP.Base.ClassesBases;
 
-namespace HLP.Entries.Services.Gerais
+namespace HLP.Entries.Services.Financeiro
 {
-  
-        public class CalendarioService
+        public class Descontos_AvistaService
         {
-            const string xTabela = "Calendario";
+            const string xTabela = "Descontos_Avista";
             
-            Wcf.Entries.wcf_Calendario serviceNetwork;
-            wcf_Calendarios.Iwcf_CalendarioClient serviceWeb;
+            Wcf.Entries.wcf_DescontoAVista serviceNetwork;
+            wcf_DescontoAVista.Iwcf_DescontoAVistaClient serviceWeb;
 
             HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
             wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 
-            public CalendarioService()
-            {       
+            public Descontos_AvistaService()
+            {
                 switch (Sistema.bOnline)
                 {
                     case StConnection.OnlineNetwork:
                         {
-                            serviceNetwork = new Wcf.Entries.wcf_Calendario();
+                            serviceNetwork = new Wcf.Entries.wcf_DescontoAVista();
                             serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
 
                             #region Validação
@@ -46,7 +45,7 @@ namespace HLP.Entries.Services.Gerais
                         break;
                     case StConnection.OnlineWeb:
                         {
-                            serviceWeb = new wcf_Calendarios.Iwcf_CalendarioClient();
+                            serviceWeb = new wcf_DescontoAVista.Iwcf_DescontoAVistaClient();
                             serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
 
                             #region Validação
@@ -71,17 +70,17 @@ namespace HLP.Entries.Services.Gerais
                 }
             }
 
-            public CalendarioModel GetObject(int id)
+            public Descontos_AvistaModel GetObject(int id)
             {
                 switch (Sistema.bOnline)
                 {
                     case StConnection.OnlineNetwork:
                         {
-                            return this.serviceNetwork.GetObjeto(idObjeto: id);
+                            return this.serviceNetwork.GetObject(id: id);
                         }
                     case StConnection.OnlineWeb:
                         {
-                            return this.serviceWeb.GetObjeto(idObjeto: id);
+                            return this.serviceWeb.GetObject(id: id);
                         }
                     case StConnection.Offline:
                     default:
@@ -91,37 +90,37 @@ namespace HLP.Entries.Services.Gerais
                 }
             }
 
-            public CalendarioModel SaveObject(CalendarioModel obj)
+            public int SaveObject(Descontos_AvistaModel obj)
             {
                 switch (Sistema.bOnline)
                 {
                     case StConnection.OnlineNetwork:
                         {
-                           return this.serviceNetwork.Save(obj);
+                            return this.serviceNetwork.SaveObject(obj: obj);
                         }
                     case StConnection.OnlineWeb:
                         {
-                            return this.serviceWeb.Save(obj);
+                            return this.serviceWeb.SaveObject(obj: obj);
                         }
                     case StConnection.Offline:
                     default:
                         {
-                            return new CalendarioModel();
+                            return 0;
                         }
                 }
             }
 
-            public bool DeleteObject(CalendarioModel obj)
+            public bool DeleteObject(int id)
             {
                 switch (Sistema.bOnline)
                 {
                     case StConnection.OnlineNetwork:
                         {
-                          return  this.serviceNetwork.Delete(obj);
+                            return this.serviceNetwork.DeleteObject(id: id);
                         }
                     case StConnection.OnlineWeb:
                         {
-                          return  this.serviceWeb.Delete(obj);
+                            return this.serviceWeb.DeleteObject(id: id);
                         }
                     case StConnection.Offline:
                     default:
@@ -131,22 +130,22 @@ namespace HLP.Entries.Services.Gerais
                 }
             }
 
-            public CalendarioModel CopyObject(CalendarioModel obj)
+            public int CopyObject(int id)
             {
                 switch (Sistema.bOnline)
                 {
                     case StConnection.OnlineNetwork:
                         {
-                            return this.serviceNetwork.Copy(obj);
+                            return this.serviceNetwork.CopyObject(id: id);
                         }
                     case StConnection.OnlineWeb:
                         {
-                            return this.serviceWeb.Copy(obj);
+                            return this.serviceWeb.CopyObject(id: id);
                         }
                     case StConnection.Offline:
                     default:
                         {
-                            return new CalendarioModel();
+                            return 0;
                         }
                 }
             }

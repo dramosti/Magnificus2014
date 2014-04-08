@@ -44,17 +44,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Campos_Base_DadosService.cs" />
+    <Compile Include="Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\wcf_Calendario\Reference.cs">
+    <Compile Include="Service References\wcf_Calendarios\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_CamposBaseDados\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_DescontoAVista\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -110,25 +116,26 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
-    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
-    <None Include="Service References\wcf_Calendario\wcf_Calendario.wsdl" />
-    <None Include="Service References\wcf_Calendario\wcf_Calendario.xsd">
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario.wsdl" />
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario1.xsd">
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario2.xsd">
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario3.xsd">
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario4.xsd">
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados1.wsdl" />
@@ -139,6 +146,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.wsdl" />
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.wsdl" />
@@ -229,8 +252,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\wcf_Calendario\" />
+    <WCFMetadataStorage Include="Service References\wcf_Calendarios\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
+    <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
@@ -328,16 +352,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Calendario\wcf_Calendario.disco" />
+    <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Calendario\configuration91.svcinfo" />
+    <None Include="Service References\wcf_DescontoAVista\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Calendario\configuration.svcinfo" />
+    <None Include="Service References\wcf_DescontoAVista\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Calendario\Reference.svcmap">
+    <None Include="Service References\wcf_DescontoAVista\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendarios\wcf_Calendario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendarios\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendarios\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Calendarios\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.Services.wcf_Calendario {
+namespace HLP.Entries.Services.wcf_DescontoAVista {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,18 +17,17 @@ namespace HLP.Entries.Services.wcf_Calendario {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.CalendarioModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.Services.wcf_Calendario.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.Services.wcf_DescontoAVista.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.Services.wcf_Calendario.statusModel statusField;
+        private HLP.Entries.Services.wcf_DescontoAVista.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -41,7 +40,7 @@ namespace HLP.Entries.Services.wcf_Calendario {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.Services.wcf_Calendario.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.Services.wcf_DescontoAVista.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -54,7 +53,7 @@ namespace HLP.Entries.Services.wcf_Calendario {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.Services.wcf_Calendario.statusModel status {
+        public HLP.Entries.Services.wcf_DescontoAVista.statusModel status {
             get {
                 return this.statusField;
             }
@@ -187,91 +186,91 @@ namespace HLP.Entries.Services.wcf_Calendario {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Calendario.Iwcf_Calendario")]
-    public interface Iwcf_Calendario {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_DescontoAVista.Iwcf_DescontoAVista")]
+    public interface Iwcf_DescontoAVista {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/Save", ReplyAction="http://tempuri.org/Iwcf_Calendario/SaveResponse")]
-        HLP.Entries.Model.Models.Gerais.CalendarioModel Save(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/GetObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/GetObjectResponse")]
+        HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel GetObject(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/Save", ReplyAction="http://tempuri.org/Iwcf_Calendario/SaveResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CalendarioModel> SaveAsync(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/GetObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/GetObjectResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel> GetObjectAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/GetObjeto", ReplyAction="http://tempuri.org/Iwcf_Calendario/GetObjetoResponse")]
-        HLP.Entries.Model.Models.Gerais.CalendarioModel GetObjeto(int idObjeto);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/SaveObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/SaveObjectResponse")]
+        int SaveObject(HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel obj);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/GetObjeto", ReplyAction="http://tempuri.org/Iwcf_Calendario/GetObjetoResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CalendarioModel> GetObjetoAsync(int idObjeto);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/SaveObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/SaveObjectResponse")]
+        System.Threading.Tasks.Task<int> SaveObjectAsync(HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel obj);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/Delete", ReplyAction="http://tempuri.org/Iwcf_Calendario/DeleteResponse")]
-        bool Delete(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/DeleteObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/DeleteObjectResponse")]
+        bool DeleteObject(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/Delete", ReplyAction="http://tempuri.org/Iwcf_Calendario/DeleteResponse")]
-        System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/DeleteObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/DeleteObjectResponse")]
+        System.Threading.Tasks.Task<bool> DeleteObjectAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/Copy", ReplyAction="http://tempuri.org/Iwcf_Calendario/CopyResponse")]
-        HLP.Entries.Model.Models.Gerais.CalendarioModel Copy(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/CopyObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/CopyObjectResponse")]
+        int CopyObject(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Calendario/Copy", ReplyAction="http://tempuri.org/Iwcf_Calendario/CopyResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CalendarioModel> CopyAsync(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_DescontoAVista/CopyObject", ReplyAction="http://tempuri.org/Iwcf_DescontoAVista/CopyObjectResponse")]
+        System.Threading.Tasks.Task<int> CopyObjectAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface Iwcf_CalendarioChannel : HLP.Entries.Services.wcf_Calendario.Iwcf_Calendario, System.ServiceModel.IClientChannel {
+    public interface Iwcf_DescontoAVistaChannel : HLP.Entries.Services.wcf_DescontoAVista.Iwcf_DescontoAVista, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Iwcf_CalendarioClient : System.ServiceModel.ClientBase<HLP.Entries.Services.wcf_Calendario.Iwcf_Calendario>, HLP.Entries.Services.wcf_Calendario.Iwcf_Calendario {
+    public partial class Iwcf_DescontoAVistaClient : System.ServiceModel.ClientBase<HLP.Entries.Services.wcf_DescontoAVista.Iwcf_DescontoAVista>, HLP.Entries.Services.wcf_DescontoAVista.Iwcf_DescontoAVista {
         
-        public Iwcf_CalendarioClient() {
+        public Iwcf_DescontoAVistaClient() {
         }
         
-        public Iwcf_CalendarioClient(string endpointConfigurationName) : 
+        public Iwcf_DescontoAVistaClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public Iwcf_CalendarioClient(string endpointConfigurationName, string remoteAddress) : 
+        public Iwcf_DescontoAVistaClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Iwcf_CalendarioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_DescontoAVistaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Iwcf_CalendarioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_DescontoAVistaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.CalendarioModel Save(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel) {
-            return base.Channel.Save(objModel);
+        public HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel GetObject(int id) {
+            return base.Channel.GetObject(id);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CalendarioModel> SaveAsync(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel) {
-            return base.Channel.SaveAsync(objModel);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel> GetObjectAsync(int id) {
+            return base.Channel.GetObjectAsync(id);
         }
         
-        public HLP.Entries.Model.Models.Gerais.CalendarioModel GetObjeto(int idObjeto) {
-            return base.Channel.GetObjeto(idObjeto);
+        public int SaveObject(HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel obj) {
+            return base.Channel.SaveObject(obj);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CalendarioModel> GetObjetoAsync(int idObjeto) {
-            return base.Channel.GetObjetoAsync(idObjeto);
+        public System.Threading.Tasks.Task<int> SaveObjectAsync(HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel obj) {
+            return base.Channel.SaveObjectAsync(obj);
         }
         
-        public bool Delete(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel) {
-            return base.Channel.Delete(objModel);
+        public bool DeleteObject(int id) {
+            return base.Channel.DeleteObject(id);
         }
         
-        public System.Threading.Tasks.Task<bool> DeleteAsync(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel) {
-            return base.Channel.DeleteAsync(objModel);
+        public System.Threading.Tasks.Task<bool> DeleteObjectAsync(int id) {
+            return base.Channel.DeleteObjectAsync(id);
         }
         
-        public HLP.Entries.Model.Models.Gerais.CalendarioModel Copy(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel) {
-            return base.Channel.Copy(objModel);
+        public int CopyObject(int id) {
+            return base.Channel.CopyObject(id);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CalendarioModel> CopyAsync(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel) {
-            return base.Channel.CopyAsync(objModel);
+        public System.Threading.Tasks.Task<int> CopyObjectAsync(int id) {
+            return base.Channel.CopyObjectAsync(id);
         }
     }
 }
