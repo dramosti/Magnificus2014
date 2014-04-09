@@ -15,7 +15,7 @@ namespace HLP.Entries.Services.Gerais
         const string xTabela = "Funcionario";
 
         HLP.Wcf.Entries.wcf_Funcionario serviceNetwork;
-        HLP.Entries.Services.wcf_Funcionario.Iwcf_FuncionarioClient serviceWeb;
+        HLP.Entries.Services.wcf_Funcionarios.Iwcf_FuncionarioClient serviceWeb;
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
@@ -46,7 +46,7 @@ namespace HLP.Entries.Services.Gerais
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        serviceWeb = new wcf_Funcionario.Iwcf_FuncionarioClient();
+                        serviceWeb = new wcf_Funcionarios.Iwcf_FuncionarioClient();
                         serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
 
                         #region Validação
@@ -166,6 +166,5 @@ namespace HLP.Entries.Services.Gerais
             }
             return null;
         }
-
     }
 }
