@@ -13,34 +13,38 @@
         Title="Contato" Height="660" Width="1024"
         NameView="vwContato">
     <Window.Resources>
-        <convert:DateTimeTimeSpanConverter x:Key="DateTimeSpanConverter"/>
-        <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
-        <convert:MaskConverter x:Key="maskConverter"/>
-        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
-        <convert:NotConverter x:Key="notConverter"/>
-
-        <ObjectDataProvider 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:DateTimeTimeSpanConverter x:Key="DateTimeSpanConverter"/>
+            <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+            <convert:MaskConverter x:Key="maskConverter"/>
+            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <convert:NotConverter x:Key="notConverter"/>
+            <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
             x:Key="EnumDescriptionDict">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoEndereco"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider 
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:TipoEndereco"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
             x:Key="EnumTipoLogradouro">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoLogradouro"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odpCidade}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwCidadeToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:TipoLogradouro"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odpCidade}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwCidadeToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>        
     </Window.Resources>
     <Grid>
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -97,7 +101,7 @@
                                     <!--Components-->
 
                                     <Components:CustomTextBox
-                                        Grid.Column="2" Grid.Row="1" Width="80" HorizontalAlignment="Left"
+                                        Grid.Column="2" Grid.Row="1" Width="90" HorizontalAlignment="Left"
                                         Text="{Binding currentModel.idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           				IsReadOnly="True"
 									    ToolTip="Chave principal do registro do Contato, campo autoincremental">
