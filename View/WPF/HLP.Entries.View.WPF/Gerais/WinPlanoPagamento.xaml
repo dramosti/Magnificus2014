@@ -4,9 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
+        xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
         xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
-        x:Class="HLP.Entries.View.WPF.GestaoAdministrativa.Financeiro.WinPlanoPagamento"
+        x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinPlanoPagamento"
         Title="Plano de Pagamento" Height="660" Width="1024" NameView="vwPlanoPagamento">
     <Window.Resources>
         <ResourceDictionary>
@@ -15,6 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
             <convert:NotConverter x:Key="notConverter"/>
             <convert:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>
+            <convertLocal:EnabledValorPorcentagemMultiConverter x:Key="enabledClValorPorcMultiConverter"/>
             <util:BindingProxy x:Key="proxy" Data="{Binding}" />
             <CompositeCollection x:Key="collectionTipo">
                 <System:String>0 - PORCENTAGEM (VALOR DEFAULT)</System:String>
@@ -295,11 +297,46 @@
                 </DataGrid.Style>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
-                    <DataGridComboBoxColumn Width="120" Header="Tipo" ItemsSource="{StaticResource collectionTipo}"
+                    <DataGridComboBoxColumn                         
+                        Width="120" Header="Tipo" ItemsSource="{StaticResource collectionTipo}"
                                         SelectedItemBinding="{Binding stValorouPorcentagem, Converter={StaticResource selectedItemToTextConverter},
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     , ConverterParameter={StaticResource collectionTipo}}" Visibility="Visible"/>
-                    <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" Header="Valor ou Porcentagem" Width="*"/>
+                    <DataGridTextColumn                        
+                        Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" 
+                                        Header="Valor ou Porcentagem" Width="*">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                <Style.Triggers>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding stValorouPorcentagem}" Value="0"/>
+                                            <Condition Binding="{Binding Data.bIsEnabled, Source={StaticResource proxy}}" Value="True"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
+                                    <!--<MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding stValorouPorcentagem}" Value="1"/>
+                                            <Condition Binding="{Binding Data.currentModel.stAlocacao, Source={StaticResource proxy}}" Value="1"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding stValorouPorcentagem}" Value="1"/>
+                                            <Condition Binding="{Binding Data.currentModel.stAlocacao, Source={StaticResource proxy}}" Value="3"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </MultiDataTrigger>
+                                    <DataTrigger Binding="{Binding Data.bIsEnabled}" Value="False">
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </DataTrigger>-->
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Expander>

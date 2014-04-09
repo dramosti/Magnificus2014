@@ -14,7 +14,7 @@ namespace HLP.Entries.Model.Models.Gerais
             : base("Plano_pagamento")
         {
             this.lPlano_pagamento_linhasModel = new ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel>();
-            this._stAlocacaoImpostos = 1;
+            this.stAlocacao = 1;
         }
 
         private int? _idPlanoPagamento;
