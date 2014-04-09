@@ -7,38 +7,77 @@
      NameView="vwModoEntrega"
         x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinModoEntrega"
         Title="Modos de Entrega" Height="660" Width="1024">
+    <runtime:WindowsBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </runtime:WindowsBase.Resources>
     <Grid>
-        <Expander Header="Geral" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
-					Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    IsReadOnly="True"
-					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro dos modos de entrega, auto incremental." WidthLabel="237" HorizontalAlignment="Left" Width="350"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="190" MinWidth="190"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Modo de Entrega" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Tipo de Serviço" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Identificação do Transportador" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   	IsReadOnly="True"
+					ToolTip="Chave principal do registro dos modos de entrega, auto incremental.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    Text="{Binding currentModel.xModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"	
-					Height="27" Margin="10,0,0,2" Caption="Modo de Entrega " Help="Digite um código alfanumérico para o modo de entrega (até 10 caracteres)." WidthLabel="237" HorizontalAlignment="Left" Width="350"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Digite um código alfanumérico para o modo de entrega.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
+                    Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Digite uma breve descrição do modo de entrega. Você pode usar o nome como um nome de pesquisa para localizar um modo de entrega específico. O nome de pesquisa aparece em formulários impressos, como ordens de venda e notas fiscais de clientes. " WidthLabel="237" HorizontalAlignment="Left" Width="520"/>
-                <Components:HlpComboBox 
-					x:Name="cbxStServico"
+					ToolTip="Digite uma breve descrição do modo de entrega. Você pode usar o nome como um nome de pesquisa para localizar um modo de entrega específico. O nome de pesquisa aparece em formulários impressos, como ordens de venda e notas fiscais de clientes. ">
+                </Components:CustomTextBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+                    x:Name="cbxStServico"
 					SelectedIndex="{Binding currentModel.stServico, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Tipo de Serviço" Help="Selecione o tipo de serviço de remessa usado para o modo de entrega selecionado. Eles podem ser:" WidthLabel="237" HorizontalAlignment="Left">
-                    <Components:HlpComboBox.Items>
+					ToolTip="Selecione o tipo de serviço de remessa usado para o modo de entrega selecionado. Eles podem ser:">
+                    <Components:CustomComboBox.Items>
                         <System:String>0-Diversos</System:String>
                         <System:String>1-Retirada</System:String>
                         <System:String>2-Terrestre</System:String>
                         <System:String>3-Via aéria</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpPesquisa 					
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:HlpPesquisa
+                    Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 					Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"					
-					Height="27" Margin="10,0,0,2" Caption="Identificação do Transportador" Help="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="237" FieldPesquisa="ID" TableView="vwTransportador" HorizontalAlignment="Left" Width="520">
+					ToolTip="Indentificar o transportador para esse modo de entrega quando o Tipo de Serviço estiver preenchido com Diversos, Terrestre ou Via Aérea. " WidthLabel="0" FieldPesquisa="ID" TableView="vwTransportador">
                     <Components:HlpPesquisa.Items>
                         <System:String>xNome</System:String>
                         <System:String>xCodigoAlternativo</System:String>
@@ -56,8 +95,8 @@
                         </Style>
                     </Components:HlpPesquisa.Style>
                 </Components:HlpPesquisa>
-
-            </WrapPanel>
+                                
+            </Grid>
         </Expander>
 
     </Grid>

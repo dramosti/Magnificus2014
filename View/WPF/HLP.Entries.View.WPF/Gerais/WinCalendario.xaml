@@ -82,7 +82,7 @@
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
                 <Button 
-                        Grid.Column="6" Grid.Row="4" HorizontalAlignment="Left"
+                        Grid.Column="6" Grid.Row="4" HorizontalAlignment="Left" Style="{StaticResource ButtonsStyle_Padrao}"
                         Content="Gerar" Command="{Binding gerarByCalendarioBaseCommand}" 
                         IsEnabled="{Binding bIsEnabled}" Height="20" Margin="0,0,0,3" Width="75">
                 </Button>
@@ -104,7 +104,7 @@
 
                 <!--COmponents-->
 
-                <Button Content="Gerar Detalhamento" IsEnabled="{Binding bIsEnabled}" Command="{Binding gerarDetalhamentoCommand}" 
+                <Button Content="Gerar Detalhamento" IsEnabled="{Binding bIsEnabled}" Style="{StaticResource ButtonsStyle_Padrao}" Command="{Binding gerarDetalhamentoCommand}" 
                          Margin="0,0,0,3" Grid.Column="1" Grid.Row="1"/>
                 <DataGrid Grid.Column="1" Grid.Row="2"
                     ItemsSource="{Binding currentModel.lCalendario_DetalheModel}"

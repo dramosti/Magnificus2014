@@ -14,43 +14,45 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition Width="130*"></ColumnDefinition>
-                    <ColumnDefinition Width="100*" MaxWidth="100" MinWidth="70"></ColumnDefinition>
-                    <ColumnDefinition Width="39*"></ColumnDefinition>
-                    <ColumnDefinition Width="82*"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="39" MinWidth="39"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="82" MinWidth="82"></ColumnDefinition>
                     <ColumnDefinition Width="269*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
+                <!--Label-->
+
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Departamento" VerticalAlignment="Center"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição" VerticalAlignment="Center"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Setor"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="E-mail"/>
+                
+                <!--Components-->
+
                 <Components:CustomTextBox 
                                       IsReadOnly="True"
                                       Text="{Binding currentModel.idDepartamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro do Departamento"
-                                      Grid.Column="2" Grid.Row="1"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Departamento" VerticalAlignment="Center"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3" Grid.ColumnSpan="2"
+                                      Grid.Column="2" Grid.Row="1"/>               
+                <Components:CustomTextBox  
+                                       Grid.Column="2"  Grid.Row="2" Grid.ColumnSpan="2"
                                        Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
-                                       ToolTip="Informe um departamento de forma reduzida"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Descrição" VerticalAlignment="Center"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="5" Grid.ColumnSpan="3"
+                                       ToolTip="Informe um departamento de forma reduzida"/>                
+                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3" Grid.ColumnSpan="3"
                                        Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
-                                       ToolTip="Descrição do Departamento"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Setor"/>
-                <Components:HlpPesquisa Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3"
+                                       ToolTip="Descrição do Departamento"/>                
+                <Components:HlpPesquisa Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
                     x:Name="teste" TableView="vwSetor" FieldPesquisa="ID"
                                  IsEnabled="{Binding bIsEnabled}" WidthLabel="0">
@@ -59,6 +61,12 @@
                         <System:String>xDescricao</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
+                <Components:CustomTextBox
+                                       Grid.Column="2"  Grid.Row="5" Grid.ColumnSpan="3"
+                                       Text="{Binding currentModel.xEmail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                       IsEnabled="{Binding bIsEnabled}"
+                                       ToolTip="Informar o e-mail padrão para o Departamento, caso haja.">
+                </Components:CustomTextBox>
             </Grid>
         </Expander>
     </Grid>
