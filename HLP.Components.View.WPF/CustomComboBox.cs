@@ -55,7 +55,7 @@ namespace HLP.Components.View.WPF
         {
             ResourceDictionary resource = new ResourceDictionary
             {
-                Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+                Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
             this.Style = resource["ComboBoxStyle"] as Style;
