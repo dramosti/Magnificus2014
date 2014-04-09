@@ -139,6 +139,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public List<Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
         {
+            
             if (regCalendario_DetalheModelAccessorDia == null)
             {
                 regCalendario_DetalheModelAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(

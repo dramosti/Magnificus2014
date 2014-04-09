@@ -108,7 +108,7 @@
                 IsChecked="{Binding bAbono}"
                 Command="{Binding commandFeriasAbono}"
                 CommandParameter="{Binding ElementName=cbxAbono, Path=IsChecked}"
-                Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" />
+                Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" />
             <TextBlock Text="Falta" Grid.Column="3" Margin="5,0,0,0"></TextBlock>
             <Components:CustomCheckBox x:Name="cbxFaltou" 
                                        IsChecked="{Binding bFaltou}"
