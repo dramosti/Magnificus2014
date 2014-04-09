@@ -9,7 +9,11 @@
         x:Class="HLP.Entries.View.WPF.Comercial.WinProduto"
         Title="WinProduto" Height="660" Width="1024" NameView="vwProduto">
     <runtime:WindowsBase.Resources>
-        <conv:DateTimeTimeSpanConverter x:Key="timeSpanConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <conv:DateTimeTimeSpanConverter x:Key="timeSpanConverter"/>
         <conv:PorcentagemConverter x:Key="porcConverter"/>
         <conv:MoedaConverter x:Key="moedaConverter"/>
         <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
@@ -19,6 +23,7 @@
                 <System:String>vwFuncionarioUsuarioToComboBox</System:String>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        </ResourceDictionary>        
     </runtime:WindowsBase.Resources>
     <Grid Background="{StaticResource StyleMainWindowDefault}">
         <TabControl>

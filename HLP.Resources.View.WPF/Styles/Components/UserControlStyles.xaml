@@ -1913,7 +1913,7 @@
                     </ControlTemplate.Resources>
                     <Grid>
                         <Border BorderThickness="1" BorderBrush="Black"></Border>
-                        <Rectangle x:Name="rectangle" Width="40" HorizontalAlignment="Left" Fill="{StaticResource BlueStandard}"></Rectangle>
+                        <Rectangle x:Name="rectangle" Width="42" HorizontalAlignment="Left" Fill="{StaticResource BlueStandard}"></Rectangle>
                         <ContentPresenter x:Name="contentPresenter" Width="40" Margin="2,0,0,0" TextElement.Foreground="White" TextElement.FontFamily="Calibri" VerticalAlignment="Center" TextElement.FontWeight="Black" HorizontalAlignment="Left" Content="Rede"></ContentPresenter>
                     </Grid>
                     <ControlTemplate.Triggers>
