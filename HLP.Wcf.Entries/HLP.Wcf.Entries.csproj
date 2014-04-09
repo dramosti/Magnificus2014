@@ -162,6 +162,7 @@
     <Content Include="wcf_HlpPesqPadrao.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
+    <Content Include="wcf_PlanoPagamento.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
     <Content Include="wcf_Site.svc" />
@@ -247,6 +248,7 @@
     <Compile Include="Iwcf_HlpPesqPadrao.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
+    <Compile Include="Iwcf_PlanoPagamento.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="Iwcf_Site.cs" />
@@ -463,6 +465,9 @@
     </Compile>
     <Compile Include="wcf_PesquisaRapida.svc.cs">
       <DependentUpon>wcf_PesquisaRapida.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_PlanoPagamento.svc.cs">
+      <DependentUpon>wcf_PlanoPagamento.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>

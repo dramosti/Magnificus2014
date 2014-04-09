@@ -320,11 +320,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Plano_PagamentoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\Ramo_AtividadeService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1068,25 +1063,6 @@
     <None Include="Service References\PersonalidadeService\servicePersonalidade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.wsdl" />
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.xsd">
       <SubType>Designer</SubType>
@@ -1544,7 +1520,6 @@
     <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\multaService\" />
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
-    <WCFMetadataStorage Include="Service References\Plano_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\siteService\" />
@@ -1894,21 +1869,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Familia_ProdutoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Plano_PagamentoService\servicePlanoPagamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Plano_PagamentoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Plano_PagamentoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Plano_PagamentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

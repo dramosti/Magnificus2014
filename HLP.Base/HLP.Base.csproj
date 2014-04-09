@@ -119,6 +119,7 @@
     <Compile Include="Static\CompanyData.cs" />
     <Compile Include="Static\Criptografia.cs" />
     <Compile Include="Static\Extensions.cs" />
+    <Compile Include="Static\Log.cs" />
     <Compile Include="Static\Pastas.cs" />
     <Compile Include="Static\RegistroWindows.cs" />
     <Compile Include="Static\SerializeClassToXml.cs" />

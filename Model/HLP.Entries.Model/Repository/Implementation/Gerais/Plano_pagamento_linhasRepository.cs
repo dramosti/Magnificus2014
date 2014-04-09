@@ -67,7 +67,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Plano_pagamento_linhas]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idLinhasPagamento"),
                    MapBuilder<Plano_pagamento_linhasModel>.MapAllProperties()
-                   .DoNotMap(c=>c.enumValorOuPorcentagem)
                    .DoNotMap(c => c.status).Build());
             }
             return regAcessor.Execute(idLinhasPagamento).FirstOrDefault();
@@ -78,7 +77,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             DataAccessor<Plano_pagamento_linhasModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM Plano_pagamento_linhas WHERE idPlanoPagamento = @idPlanoPagamento", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idPlanoPagamento"),
             MapBuilder<Plano_pagamento_linhasModel>.MapAllProperties()
-            .DoNotMap(c => c.enumValorOuPorcentagem)
             .DoNotMap(c => c.status).Build());
 
             return reg.Execute(idPlanoPagamento).ToList();

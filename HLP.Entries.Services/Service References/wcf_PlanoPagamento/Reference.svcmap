@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f126faaf-55ae-4296-9c35-f2ffb44f832c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_PlanoPagamento.xsd" MetadataType="Schema" ID="92a335a6-c827-4d67-977f-b92971f56a6a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_PlanoPagamento1.xsd" MetadataType="Schema" ID="00249187-1399-4ca0-9a5c-380206472e05" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_PlanoPagamento2.xsd" MetadataType="Schema" ID="38e1dd85-b24d-43bb-a457-5fbe58972d97" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_PlanoPagamento3.xsd" MetadataType="Schema" ID="99c21057-28c5-4ff8-b5d7-d17c47632e27" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_PlanoPagamento.wsdl" MetadataType="Wsdl" ID="83b5f438-fe23-4ee9-a512-82a21b55a943" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?wsdl" />
+    <MetadataFile FileName="wcf_PlanoPagamento.disco" MetadataType="Disco" ID="babf8865-ceff-489f-8124-9d31a9b9e10f" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?disco" />
+    <MetadataFile FileName="wcf_PlanoPagamento4.xsd" MetadataType="Schema" ID="1457d60b-00c4-4fd8-beb9-1573cdcd9226" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_PlanoPagamento5.xsd" MetadataType="Schema" ID="b3967e58-6312-4f3c-8089-c76ef439c7f5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_PlanoPagamento.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
