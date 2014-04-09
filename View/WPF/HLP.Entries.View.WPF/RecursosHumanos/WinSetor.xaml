@@ -7,8 +7,15 @@
  x:Name="Window"
  Title="Setor"
  Width="640" Height="480" NameView="vwSetor">
+    <runtime:WindowsBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </runtime:WindowsBase.Resources>
     <Grid>
-        <Expander Header="Setor" IsExpanded="True">
+        <Expander Header="Setor" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>

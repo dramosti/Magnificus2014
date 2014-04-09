@@ -570,7 +570,7 @@
                                 <DataGrid      
                                 x:Name="dgItens"
                                 CurrentItem="{Binding currentItem, Mode=TwoWay}"
-                                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
