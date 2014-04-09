@@ -93,14 +93,16 @@
                     Text="{Binding currentModel.nMeses, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    ToolTip="Digite o número de meses em que o desconto à vista será aplicável. ">
                     <Components:CustomTextBox.Style>
-                        <Style>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
+                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="0">
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="1"></Condition>
+                                        <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Components:CustomTextBox.Style>
@@ -108,20 +110,22 @@
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="7"
                     Text="{Binding currentModel.nDias, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Digite o número de dias em que o desconto à vista será aplicável. ">
                     <Components:CustomTextBox.Style>
-                        <Style>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
+                            <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="1">
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
-                                </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=cbxStLiquidoAtual, Path=SelectedIndex}" Value="0"></Condition>
+                                        <Condition Binding="{Binding bIsEnabled}" Value="True"></Condition>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"></Setter>
+                                </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Components:CustomTextBox.Style>
+
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="8"

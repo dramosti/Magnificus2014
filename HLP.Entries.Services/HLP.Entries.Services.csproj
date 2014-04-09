@@ -48,7 +48,10 @@
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
+    <Compile Include="Gerais\FuncionarioService.cs" />
+    <Compile Include="Gerais\Plano_PagamentoService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
+    <Compile Include="Parametros\EmpresaParametrosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\wcf_Calendarios\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -75,7 +78,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Funcionarios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_ParametroEmpresa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_PesquisaRapida\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_PlanoPagamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -116,10 +134,13 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
     <None Include="Service References\wcf_Calendarios\wcf_Calendario.wsdl" />
@@ -205,6 +226,50 @@
     <None Include="Service References\wcf_Empresa\wcf_Empresa6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.wsdl" />
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.wsdl" />
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.xsd">
       <SubType>Designer</SubType>
@@ -213,6 +278,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento.wsdl" />
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Transportadora\wcf_Transportadora.wsdl" />
@@ -257,7 +341,10 @@
     <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionarios\" />
+    <WCFMetadataStorage Include="Service References\wcf_ParametroEmpresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
+    <WCFMetadataStorage Include="Service References\wcf_PlanoPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Transportadora\" />
     <WCFMetadataStorage Include="Service References\wcf_UnidadeMedida\" />
   </ItemGroup>
@@ -377,6 +464,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Calendarios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PlanoPagamento\wcf_PlanoPagamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PlanoPagamento\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PlanoPagamento\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_PlanoPagamento\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionarios\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionarios\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionarios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ParametroEmpresa\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ParametroEmpresa\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_ParametroEmpresa\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

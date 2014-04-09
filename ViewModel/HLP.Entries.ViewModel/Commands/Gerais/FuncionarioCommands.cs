@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -137,7 +138,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.SaveObject(this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -185,7 +186,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.objService.Delete(objModel: this.objViewModel.currentModel))
+                    if (this.objService.DeleteObject(this.objViewModel.currentID))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -279,7 +280,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = this.objService.Copy(objModel: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.CopyObject(this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -405,7 +406,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 if (this.objViewModel.currentID != 0)
                 {
-                    this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
+                    this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
                     this.objViewModel.lObjHierarquia = null;
                 }
                 else

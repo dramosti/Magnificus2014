@@ -1115,27 +1115,32 @@
                             
                             <!--Components-->
 
-                            <Components:CustomCheckBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stCartaoPonto, 
-                                Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-				                IsEnabled="{Binding bIsEnabled}"/>				                
+                            <Components:CustomCheckBox Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" 
+                                                       IsChecked="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.stCartaoPonto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				                                       IsEnabled="{Binding bIsEnabled}"/>				                
                             <Components:HlpDatePicker 
+                                IsEnabled="{Binding bIsEnabled}"
                                 Height="20" Margin="0,0,0,3"
-                                Grid.Column="2" Grid.Row="2" ToolTip="Informar a tolerância máxima permitida antes da Entrada do funcionário." stFormatoDtPicker="time"
-                                xTextTime="{Binding currentModel.tToleranciaEntradaAntes, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>                            
+                                Grid.Column="2" Grid.Row="2" ToolTip="Informar a tolerância máxima permitida antes da Entrada do funcionário." stFormatoDtPicker="time"                                
+                                xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaAntes, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>                            
                             <Components:HlpDatePicker 
+                                IsEnabled="{Binding bIsEnabled}"
                                 Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida depois da Entrada do funcionário." 
-                                stFormatoDtPicker="time"    xTextTime="{Binding currentModel.tToleranciaEntradaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time"    xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:HlpDatePicker 
+                                IsEnabled="{Binding bIsEnabled}"
                                 Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida antes da Saída do funcionário." 
-                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.tToleranciaSaidaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:HlpDatePicker 
+                                IsEnabled="{Binding bIsEnabled}"
                                 Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida depois da Saída do funcionário." 
-                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.tToleranciaSaidaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:HlpDatePicker 
+                                IsEnabled="{Binding bIsEnabled}"
                                 Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida para início das horas extras, caso seja de 5 minutos o sistema começara a contar somente como hora extra quando o funcionário passar o cartão 5 depois da sua saída ou contar como hora extra o tempo total passado antes de sua entrada." 
-                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.tToleranciaHoraExtra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
+                                stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaHoraExtra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:CustomCheckBox 
-                                Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.ObjParametro_ComercialModel.stLiberacaoHoraExtra, 
+                                Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.stLiberacaoHoraExtra, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				                IsEnabled="{Binding bIsEnabled}"/>				                                        
                         </Grid>

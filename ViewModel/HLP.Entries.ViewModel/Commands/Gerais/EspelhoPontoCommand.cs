@@ -175,7 +175,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 Model.Models.Gerais.Funcionario_BancoHorasModel funcBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
                 funcBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
-                funcBancoHoras.tBancoHoras = objViewModel.currentModel.data.Add(objViewModel.currentModel.tsSaldoAteMomento);
+                funcBancoHoras.tBancoHoras = objViewModel.currentModel.tsSaldoAteMomento.ToStringHoras();
                 funcBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
                 servico.SaveBancoHoras(funcBancoHoras);
                 this.CarragaFormulario();

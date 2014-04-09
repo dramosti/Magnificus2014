@@ -2,27 +2,25 @@
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
-        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
-        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
-        x:Class="HLP.Entries.View.WPF.Gerais.WinPlanoPagamento"
+        xmlns:util="clr-namespace:HLP.Base.ClassesBases;assembly=HLP.Base"
+        x:Class="HLP.Entries.View.WPF.GestaoAdministrativa.Financeiro.WinPlanoPagamento"
         Title="Plano de Pagamento" Height="660" Width="1024" NameView="vwPlanoPagamento">
     <Window.Resources>
-        <ResourceDictionary>           
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <convert:NotConverter x:Key="notConverter"/>
-            <ObjectDataProvider 
-            MethodName="GetDict"
-            ObjectType="{x:Type convert:EnumDescriptionConverter}"
-            x:Key="EnumValorOuPorcentagem">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="enums:ValorOuPorcentagem"></x:Type>
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-        </ResourceDictionary>        
+            <convert:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>
+            <util:BindingProxy x:Key="proxy" Data="{Binding}" />
+            <CompositeCollection x:Key="collectionTipo">
+                <System:String>0 - PORCENTAGEM (VALOR DEFAULT)</System:String>
+                <System:String>1 - VALOR ESPECÍFICO</System:String>
+            </CompositeCollection>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -51,9 +49,9 @@
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Plano Pagamento" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Descrição " Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
@@ -72,7 +70,7 @@
 				    IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira a descrição do plano de pagamento">
                 </Components:CustomTextBox>
-                
+
             </Grid>
         </Expander>
         <Expander Header="Plano Pagamento" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" Focusable="False">
@@ -93,7 +91,7 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Alocação" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -103,9 +101,9 @@
                 <Components:CustomTextBlock Text="Valor Fixo para cada pagamento." Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Valor Mínimo" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Alocação de imposto sobre vendas" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
                     x:Name="cbxAlocacao"						
@@ -124,6 +122,18 @@
                     SelectedIndex="{Binding currentModel.stFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Selecione o intervalo de datas em dias, meses ou anos a ser usado no cálculo da data de vencimento de cada prestação.">
+                    <Components:CustomComboBox.Style>
+                        <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="ComboBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:CustomComboBox.Style>
                     <Components:CustomComboBox.Items>
                         <System:String>0-Anos</System:String>
                         <System:String>1-Dias</System:String>
@@ -131,9 +141,9 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                    Grid.Column="2" Grid.Row="3" Height="20" Margin="5,0,31,3"
                     Text="{Binding currentModel.nAlterarFormaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"												
-                    ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. ">
+                    ToolTip="Insira o número de unidades entre as datas de vencimento de cada prestação no campo Forma de Pagamento. " Grid.ColumnSpan="2">
                     <Components:CustomTextBox.Style>
                         <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
                             <Style.Triggers>
@@ -146,6 +156,9 @@
                                 <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="2">
                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
                                 </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Components:CustomTextBox.Style>
@@ -155,6 +168,24 @@
                     Text="{Binding currentModel.nNumerosPagamentos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Se você selecionou a opção Quantidade fixa no campo Alocação, especifique o número de prestações para o plano de pagamento.">
+                    <Components:CustomTextBox.Style>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="0">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="2">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="5"
@@ -167,6 +198,21 @@
                     Text="{Binding currentModel.vPagamentoMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, StringFormat={}{0:C}}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Especifique o menor valor da prestação. Valores mínimos substituem valores de pagamento calculados.">
+                    <Components:CustomTextBox.Style>
+                        <Style BasedOn="{StaticResource TextBoxComponentStyle}" TargetType="TextBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="0">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:CustomTextBox.Style>
                 </Components:CustomTextBox>
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
@@ -178,6 +224,21 @@
                         <System:String>1-Proporcionalmente</System:String>
                         <System:String>2-Última prestação</System:String>
                     </Components:CustomComboBox.Items>
+                    <Components:CustomComboBox.Style>
+                        <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="ComboBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="2">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="3">
+                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Components:CustomComboBox.Style>
                 </Components:CustomComboBox>
             </Grid>
         </Expander>
@@ -192,21 +253,21 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                   
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--Label-->
-                
+
                 <Components:CustomTextBlock Text="Nota" Grid.Column="1" Grid.Row="1"/>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.xNota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira uma nota que explica como e quando usar o plano de pagamento. A nota é opcional e somente para uso interno.">
                 </Components:CustomTextBox>
-                
+
             </Grid>
         </Expander>
         <Expander Header="Plano de Pagamento" Grid.Row="3" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
@@ -214,35 +275,30 @@
                         ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
 						IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         AutoGenerateColumns="False" 
-						SelectionUnit="CellOrRowHeader" 
+						SelectionUnit="CellOrRowHeader"
+                        CanUserAddRows="True"
 						CanUserReorderColumns="False"
 						CanUserDeleteRows="True"
 						HorizontalAlignment="Stretch" 
                         VerticalAlignment="Stretch"  BorderBrush="Black">
+                <DataGrid.Style>
+                    <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="1">
+                                <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Style>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=nQuantidade, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Parcelas" Width="150"/>
-                    <DataGridTemplateColumn x:Name="clTipo" Header="Tipo" Width="100" >
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Path=enumValorOuPorcentagem}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
-                                    <ComboBox x:Name="cbxEditing"
-                ItemsSource="{Binding Source={StaticResource EnumValorOuPorcentagem}}" 
-                                                      DisplayMemberPath="Key"
-                                SelectedValuePath="Value"
-            SelectedValue="{Binding enumValorOuPorcentagem,
-                                UpdateSourceTrigger=PropertyChanged}"
-                                                      IsSynchronizedWithCurrentItem="False"/>
-                                </Grid>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
-
+                    <DataGridComboBoxColumn Width="120" Header="Tipo" ItemsSource="{StaticResource collectionTipo}"
+                                        SelectedItemBinding="{Binding stValorouPorcentagem, Converter={StaticResource selectedItemToTextConverter},
+                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
+                    , ConverterParameter={StaticResource collectionTipo}}" Visibility="Visible"/>
                     <DataGridTextColumn Binding="{Binding Path=nValorouPorcentagem, UpdateSourceTrigger=PropertyChanged}" Header="Valor ou Porcentagem" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>

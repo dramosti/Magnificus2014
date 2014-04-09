@@ -16,7 +16,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
     {
         BackgroundWorker bWorkerAcoes;
         Empresa_ParametrosViewModel objViewModel;
-        Empresa_ParametrosService.IserviceEmpresaParametrosClient servico = new Empresa_ParametrosService.IserviceEmpresaParametrosClient();
+        HLP.Entries.Services.Parametros.EmpresaParametrosService servico = new Entries.Services.Parametros.EmpresaParametrosService();
         public Empresa_ParametrosCommands(Empresa_ParametrosViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
@@ -47,6 +47,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 
 
         #region Implementação Commands
+
         public void Save(object _panel)
         {
             try
@@ -62,10 +63,9 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             }
 
         }
-
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            servico.saveEmpresaParamestros(objEmpresaParametros: this.objViewModel.currentModel.empresaParametros);
+            servico.SaveObject(this.objViewModel.currentModel.empresaParametros);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -109,24 +109,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         {
             try
             {
-                //Acredito que não será possível deletar os parametros da empresa
-                //if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                //    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                //    == MessageBoxResult.Yes)
-                //{
-                //    if (await 
-                //    )
-                //    {
-                //        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                //            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
-                //        this.objViewModel.currentModel = null;
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                //            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
-                //    }
-                //}
+               
             }
             catch (Exception ex)
             {
@@ -138,7 +121,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             }
         }
 
-
         private void Novo(object _panel)
         {
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
@@ -147,7 +129,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
             bWorkerAcoes.RunWorkerAsync(_panel);
         }
-
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
         {
             System.Threading.Thread.Sleep(millisecondsTimeout: 100);
@@ -163,6 +144,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             return false;
             //return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
+
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
@@ -171,7 +153,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
             bWorkerAcoes.RunWorkerAsync(_panel);
         }
-
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
         {
             System.Threading.Thread.Sleep(100);
@@ -211,7 +192,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
                 throw ex;
             }
         }
-
         public bool CopyCanExecute()
         {
             return false;
@@ -230,12 +210,11 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
                 throw ex;
             }
         }
-
         public void ExecPesquisa()
         {
-            this.PesquisarRegistro();
+            //this.PesquisarRegistro();
+            this.objViewModel.currentModel = this.servico.GetObject(CompanyData.idEmpresa);
         }
-
         private void PesquisarRegistro()
         {
             BackgroundWorker bw = new BackgroundWorker();
@@ -244,7 +223,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             bw.RunWorkerAsync();
 
         }
-
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -260,13 +238,12 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
                 throw;
             }
         }
-
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             //não será possível pesquisar os paramêtros da empresa, pois sempre será uma parametrização por empresa
-            this.objViewModel.currentModel = await this.servico.getEmpresaParametrosAsync(
-                idEmpresa: CompanyData.idEmpresa);
+            this.objViewModel.currentModel = this.servico.GetObject(CompanyData.idEmpresa);
         }
+
         #endregion
 
 

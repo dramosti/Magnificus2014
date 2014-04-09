@@ -10,6 +10,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HLP.Base.Static;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
@@ -17,23 +18,20 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
     {
         [Inject]
         public UnitOfWorkBase UndTrabalho { get; set; }
-
-        private DataAccessor<Funcionario_BancoHorasModel> regBancoHorasAccessor;
+              
         private DataAccessor<Funcionario_BancoHorasModel> regBancoHorasMesAccessor;
 
         public TimeSpan GetTotalBancoHoras(int idFuncionario, DateTime dtMes)
         {
-            if (regBancoHorasAccessor == null)
-            {
-                regBancoHorasAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+
+            DataAccessor<Funcionario_BancoHorasModel> regBancoHorasAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
                     string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) < {1}", idFuncionario,
                     Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
                     .DoNotMap(c => c.status).Build());
-            }
             TimeSpan tsTotalRet = new TimeSpan();
             foreach (var item in regBancoHorasAccessor.Execute().ToList())
             {
-                tsTotalRet = tsTotalRet + item.tBancoHoras.TimeOfDay;
+                tsTotalRet = tsTotalRet + item.tBancoHoras.ToTimeSpan();
             }
             return tsTotalRet;
         }
@@ -66,7 +64,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 tsTotalRet = new TimeSpan();
                 foreach (var item in lreturn)
                 {
-                    tsTotalRet = tsTotalRet + item.tBancoHoras.TimeOfDay;
+                    tsTotalRet = tsTotalRet + item.tBancoHoras.ToTimeSpan();
                 }
             }
             return tsTotalRet;

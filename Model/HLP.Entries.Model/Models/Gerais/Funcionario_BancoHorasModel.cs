@@ -46,9 +46,9 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-        private DateTime _tBancoHoras;
+        private String _tBancoHoras;
         [ParameterOrder(Order = 4)]
-        public DateTime tBancoHoras
+        public string tBancoHoras
         {
             get { return _tBancoHoras; }
             set

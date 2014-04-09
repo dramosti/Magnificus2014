@@ -14,35 +14,130 @@ namespace HLP.Entries.Model.Models.Gerais
             : base("Plano_pagamento")
         {
             this.lPlano_pagamento_linhasModel = new ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel>();
+            this._stAlocacaoImpostos = 1;
         }
 
-        public int? _idPlanoPagamento;
+        private int? _idPlanoPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idPlanoPagamento
         {
             get { return _idPlanoPagamento; }
-            set { _idPlanoPagamento = value; base.NotifyPropertyChanged("idPlanoPagamento"); }
+            set
+            {
+                _idPlanoPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "idPlanoPagamento");
+            }
         }
+        private string _xPlanoPagamento;
         [ParameterOrder(Order = 2)]
-        public string xPlanoPagamento { get; set; }
+        public string xPlanoPagamento
+        {
+            get { return _xPlanoPagamento; }
+            set
+            {
+                _xPlanoPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "xPlanoPagamento");
+            }
+        }
+        private string _xDescricao;
         [ParameterOrder(Order = 3)]
-        public string xDescricao { get; set; }
+        public string xDescricao
+        {
+            get { return _xDescricao; }
+            set
+            {
+                _xDescricao = value;
+                base.NotifyPropertyChanged(propertyName: "xDescricao");
+            }
+        }
+        private byte _stAlocacao;
         [ParameterOrder(Order = 4)]
-        public byte stAlocacao { get; set; }
+        public byte stAlocacao
+        {
+            get { return _stAlocacao; }
+            set
+            {
+                _stAlocacao = value;
+                base.NotifyPropertyChanged(propertyName: "stAlocacao");
+            }
+        }
+        private byte _stFormaPagamento;
         [ParameterOrder(Order = 5)]
-        public byte stFormaPagamento { get; set; }
+        public byte stFormaPagamento
+        {
+            get { return _stFormaPagamento; }
+            set
+            {
+                _stFormaPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "stFormaPagamento");
+            }
+        }
+        private int? _nAlterarFormaPagamento;
         [ParameterOrder(Order = 6)]
-        public int nAlterar { get; set; }
+        public int? nAlterarFormaPagamento
+        {
+            get { return _nAlterarFormaPagamento; }
+            set
+            {
+                _nAlterarFormaPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "nAlterarFormaPagamento");
+            }
+        }
+        private int? _nNumerosPagamentos;
         [ParameterOrder(Order = 7)]
-        public int nNumerosPagamentos { get; set; }
+        public int? nNumerosPagamentos
+        {
+            get { return _nNumerosPagamentos; }
+            set
+            {
+                _nNumerosPagamentos = value;
+                base.NotifyPropertyChanged(propertyName: "nNumerosPagamentos");
+            }
+        }
+        private decimal? _vFixoPagamento;
         [ParameterOrder(Order = 8)]
-        public decimal nValorMoeda { get; set; }
+        public decimal? vFixoPagamento
+        {
+            get { return _vFixoPagamento; }
+            set
+            {
+                _vFixoPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "vFixoPagamento");
+            }
+        }
+        private decimal? _vPagamentoMinimo;
         [ParameterOrder(Order = 9)]
-        public decimal nValorMinimo { get; set; }
+        public decimal? vPagamentoMinimo
+        {
+            get { return _vPagamentoMinimo; }
+            set
+            {
+                _vPagamentoMinimo = value;
+                base.NotifyPropertyChanged(propertyName: "vPagamentoMinimo");
+            }
+        }
+        private byte? _stAlocacaoImpostos;
         [ParameterOrder(Order = 10)]
-        public byte stAlocacaoImpostos { get; set; }
+        public byte? stAlocacaoImpostos
+        {
+            get { return _stAlocacaoImpostos; }
+            set
+            {
+                _stAlocacaoImpostos = value;
+                base.NotifyPropertyChanged(propertyName: "stAlocacaoImpostos");
+            }
+        }
+        private string _xNota;
         [ParameterOrder(Order = 11)]
-        public string xNota { get; set; }
+        public string xNota
+        {
+            get { return _xNota; }
+            set
+            {
+                _xNota = value;
+                base.NotifyPropertyChanged(propertyName: "xNota");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel> _lPlano_pagamento_linhasModel;
 
@@ -56,8 +151,6 @@ namespace HLP.Entries.Model.Models.Gerais
 
     public partial class Plano_pagamento_linhasModel : modelBase
     {
-        public Plano_pagamento_linhasModel() : base("Plano_pagamento_linhas") {  }
-
         private int? _idLinhasPagamento;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idLinhasPagamento
@@ -91,32 +184,17 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "nValorouPorcentagem");
             }
         }
-
-
-        private ValorOuPorcentagem _enumValorOuPorcentagem;
-        public ValorOuPorcentagem enumValorOuPorcentagem
-        {
-            get { return _enumValorOuPorcentagem; }
-            set
-            {
-                _enumValorOuPorcentagem = value;
-                _stValorouPorcentagem = (byte)value;
-            }
-        }
-
-        private byte _stValorouPorcentagem;
+        private byte? _stValorouPorcentagem;
         [ParameterOrder(Order = 4)]
-        public byte stValorouPorcentagem
+        public byte? stValorouPorcentagem
         {
             get { return _stValorouPorcentagem; }
             set
             {
                 _stValorouPorcentagem = value;
-                _enumValorOuPorcentagem = (ValorOuPorcentagem)value;
+                base.NotifyPropertyChanged(propertyName: "stValorouPorcentagem");
             }
         }
-
-
         private int _idPlanoPagamento;
         [ParameterOrder(Order = 5)]
         public int idPlanoPagamento

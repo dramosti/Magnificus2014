@@ -1,5 +1,4 @@
 ﻿using HLP.Base.Static;
-using HLP.Comum.Resources.Util;
 using HLP.ComumView.Model.Repository.Interface;
 using HLP.Dependencies;
 using Ninject;

@@ -1,5 +1,4 @@
-﻿using HLP.Comum.Resources.Util;
-using Ninject;
+﻿using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using HLP.Components.Model.Repository.Interfaces;
 using HLP.Dependencies;
+using HLP.Base.Static;
 
 namespace HLP.Wcf.Entries
 {

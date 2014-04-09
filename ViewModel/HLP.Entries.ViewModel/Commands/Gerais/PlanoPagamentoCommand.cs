@@ -10,17 +10,20 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class PlanoPagamentoCommand
     {
         BackgroundWorker bWorkerAcoes;
-        Plano_PagamentoService.IservicePlanoPagamentoClient servico = new Plano_PagamentoService.IservicePlanoPagamentoClient();
         PlanoPagamentoViewModel objViewModel;
+        Plano_PagamentoService objService;
+
         public PlanoPagamentoCommand(PlanoPagamentoViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+            objService = new Plano_PagamentoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -85,7 +88,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
 
-                this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
+                this.objViewModel.currentModel = objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -141,7 +144,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (this.objService.DeleteObject(obj: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -227,11 +230,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                objViewModel.currentModel = await servico.CopyAsync(objViewModel.currentModel);
+                objViewModel.currentModel = this.objService.CopyObject(obj: objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -287,7 +290,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
 
         private void Inicia_Collections()
