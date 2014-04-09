@@ -28,7 +28,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public MoedaViewModel()
         {
             MoedaCommands comm = new MoedaCommands(objViewModel: this);
-        }
+        }        
 
     }
 }
