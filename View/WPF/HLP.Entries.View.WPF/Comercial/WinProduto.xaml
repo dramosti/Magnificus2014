@@ -29,248 +29,449 @@
         <TabControl>
             <TabItem Header="Principal">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True" Background="{StaticResource StyleMainGridDefault}">
-                        <Expander Header="Identificação" IsExpanded="True" DockPanel.Dock="Top" Height="124" Background="{StaticResource StyleMainGridDefault}">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0" Background="{StaticResource StyleMainGridDefault}">
-                                <Components:HlpTextBox 
-								    IsReadOnly="True"
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Expander Header="Identificação" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código EAN" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    IsReadOnly="True"
 									Text="{Binding currentModel.idProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código" Help="Chave principal do registro Produto" WidthLabel="136" Width="267"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Chave principal do registro Produto">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código Alternativo" Help="É o código alternativo do Produto/Material. É sugerido pelo sistema, porém pode ser alterado com um código alfanumérico (letras e números) ou o código de barras." WidthLabel="136" Width="267"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.cEan, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="É o código alternativo do Produto/Material. É sugerido pelo sistema, porém pode ser alterado com um código alfanumérico (letras e números) ou o código de barras.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.cEan, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Código EAN" Help="Código EAN do produto" WidthLabel="136" Width="267"/>
-                            </WrapPanel>
+									ToolTip="Código EAN do produto">
+                                </Components:CustomTextBox>
+                                
+                            </Grid>
                         </Expander>
-                        <Expander Header="Item" IsExpanded="True" DockPanel.Dock="Top" Height="216">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.xPesquisa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        <Expander Header="Item" Grid.Row="1" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="250"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Nome de Pesquisa" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Nome Comercial" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Nome Fiscal" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Nome Inglês" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Tipo do Produto" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Caminho da Foto" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Memorando" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Tipo de Serviço" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Data do Cadastro" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Usuário" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.xPesquisa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Nome de Pesquisa" Help="Descrição de pesquisa do Produto " WidthLabel="136" Width="450"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.xComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Descrição de pesquisa do Produto ">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.xComercial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Nome Comercial" Help="Descrição Comercial do Produto." WidthLabel="136" Width="450"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.xFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Descrição Comercial do Produto.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.xFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,30,2" Caption="Nome Fiscal" Help="Descrição Fiscal do Produto" WidthLabel="136" Width="450"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.xIngles, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Descrição Fiscal do Produto">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="4"
+                                    Text="{Binding currentModel.xIngles, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Nome Inglês" Help="Descrição em Inglês do Produto" WidthLabel="136" Width="450"/>
-                                <Components:HlpTextBox 
-                                    isFindFiles="True"
-									
-									Text="{Binding currentModel.xFoto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Caminho da Foto" Help="Informe o caminho da foto do produto" WidthLabel="136" Width="450"/>
+									ToolTip="Descrição em Inglês do Produto">
+                                </Components:CustomTextBox>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idTipoProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Tipo do Produto" Help="Selecione qual é o tipo do produto para a movimentação do mesmo." WidthLabel="136" Width="450" TableView="vwTipoProduto" FieldPesquisa="ID">
+									ToolTip="Selecione qual é o tipo do produto para a movimentação do mesmo." WidthLabel="0" TableView="vwTipoProduto" FieldPesquisa="ID">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xTipo</System:String>
                                         <System:String>xDescricao</System:String>
                                     </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
+                                </Components:HlpPesquisa>                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="6"                                    									
+									Text="{Binding currentModel.xFoto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="Informe o caminho da foto do produto">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="7"
+                                    Text="{Binding currentModel.xObs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="Memorando do Produto">
+                                </Components:CustomTextBox>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idTipoServico, Mode=TwoWay, NotifyOnValidationError=True, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Tipo de Serviço" WidthLabel="136" Width="349"
-                                     FieldPesquisa="ID" TableView="vwTipoServico">
+									WidthLabel="0"
+                                    FieldPesquisa="ID" TableView="vwTipoServico">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cTipoServico</System:String>
                                         <System:String>xTipoServico</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpDateTimePicker
-									
-									SelectedDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                <Components:HlpDatePicker
+                                    Grid.Column="2" Grid.Row="9" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    xTextDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Data do Cadastro" Help="Sistema informará automaticamente quando cadastrado o item, campo desbloqueado para o usuário." WidthLabel="136"/>
-                                <Button Content="Observação" Width="125" Height="27" Margin="10,0,10,10" HorizontalAlignment="Left"/>
+									ToolTip="Sistema informará automaticamente quando cadastrado o item, campo desbloqueado para o usuário.">
+                                </Components:HlpDatePicker>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="10" Height="20"
 									Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, 
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Usuário" 
-                                    Help="Informa o usuário que cadastrou o item." WidthLabel="136" Width="350" FieldPesquisa="ID" TableView="vwFuncionario">
+									IsEnabled="{Binding bIsEnabled}"									 
+                                    ToolTip="Informa o usuário que cadastrou o item." WidthLabel="0" FieldPesquisa="ID" TableView="vwFuncionario">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xNome</System:String>
                                         <System:String>xCodigoAlternativo</System:String>
                                     </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>
-
-                            </WrapPanel>
+                                </Components:HlpPesquisa>                                
+                            </Grid>
                         </Expander>
-                        <Expander Header="Grupos" IsExpanded="True" Background="{StaticResource StyleMainGridDefault}">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0" Background="{StaticResource StyleMainGridDefault}">
+                        <Expander Header="Grupos" Grid.Row="2" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="325" MinWidth="325"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Família do Produto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>                                                                                                                                     
+                                
+                                <!--Components-->
+
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" Margin="10,0,10,2" Caption="Família do Produto" Help="Informar a que família ou grupo o item pertence." FieldPesquisa="ID" TableView="vwFamiliaProduto" WidthLabel="136" Width="435">
+									ToolTip="Informar a que família ou grupo o item pertence." FieldPesquisa="ID" TableView="vwFamiliaProduto" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xFamiliaProduto</System:String>
                                         <System:String>xDescricao</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                            </WrapPanel>
+
+                            </Grid>
                         </Expander>
-                    </DockPanel>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Dados de Estoque">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <DockPanel DockPanel.Dock="Left" Width="475.5">
-                            <Expander Header="Configuração" IsExpanded="True" DockPanel.Dock="Top" Height="274.5">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Expander Header="Configuração" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="170" MinWidth="170"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="80" MinWidth="80"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Peso Bruto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Peso Líquido" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Prazo de Validade" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Data de Bloqueio" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Estoque Mínimo" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Estoque Máximo" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Ativo" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.nPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Bruto" Help="É o peso bruto do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal." WidthLabel="150" Width="270"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="É o peso bruto do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.nPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Peso Líquido" Help="É o peso líquido do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal." WidthLabel="150" Width="270"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nPrazoValidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="É o peso líquido do produto. O mesmo será calculado de acordo com as quantidades vendidas e adicionado nos dados adicionais da nota fiscal.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.nPrazoValidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Prazo de Validade" Help="Informar o prazo de validade do produto em dias." WidthLabel="150" Width="270"/>
-                                    <Components:HlpDateTimePicker 
-									
-									SelectedDate="{Binding currentModel.dBloqueio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informar o prazo de validade do produto em dias.">
+                                </Components:CustomTextBox>
+                                <Components:HlpDatePicker
+                                    Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date" Grid.ColumnSpan="2"
+                                    xTextDate="{Binding currentModel.dBloqueio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Data de Bloqueio" Help="Informa automaticamente a data de quando o produto foi desativado." WidthLabel="150" Width="283"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informa automaticamente a data de quando o produto foi desativado.">
+                                </Components:HlpDatePicker>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    Text="{Binding currentModel.nEstoqueMinimo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Estoque Mínimo" Help="Informar a quantidade mínima que deve permanecer em estoque, para que o sistema faça um controle de estoque crítico através de um relatório padrão." WidthLabel="150" Width="270"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nEstoqueMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informar a quantidade mínima que deve permanecer em estoque, para que o sistema faça um controle de estoque crítico através de um relatório padrão.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="6"
+                                    Text="{Binding currentModel.nEstoqueMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Estoque Máximo" Help="Informar a quantidade máxima que deve permanecer em estoque, para que o sistema faça um controle de estoque máximo na hora de cotações e compras." WidthLabel="150" Width="270"/>
-                                    <Components:HlpPesquisa 
-									
+									ToolTip="Informar a quantidade máxima que deve permanecer em estoque, para que o sistema faça um controle de estoque máximo na hora de cotações e compras.">
+                                </Components:CustomTextBox>
+                                <Components:HlpPesquisa 
+									Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 									Text="{Binding currentModel.idUnidadeMedidaEstoque, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Medida " Help="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas." WidthLabel="150" Width="402" TableView="vwUnidadeMedida" FieldPesquisa="ID">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>xSiglaPadrao</System:String>
-                                            <System:String>xUnidadeMedida</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas." WidthLabel="0" TableView="vwUnidadeMedida" FieldPesquisa="ID">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>xSiglaPadrao</System:String>
+                                        <System:String>xUnidadeMedida</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="8"
+                                    IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Ativo" Help="Desmarque a opção se o produto não estiver ativo, desmarcando o produto não será mais mostrado em nenhuma tela seja ela de recebimento, estoque, produção ou vendas." WidthLabel="150"/>
-                                </WrapPanel>
-                            </Expander>
-                            <Expander Header="Localização" IsExpanded="True" DockPanel.Dock="Top">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpPesquisa 
-									
+									ToolTip="Desmarque a opção se o produto não estiver ativo, desmarcando o produto não será mais mostrado em nenhuma tela seja ela de recebimento, estoque, produção ou vendas.">
+                                </Components:CustomCheckBox>
+
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Localização" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="170" MinWidth="170"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition> 
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Localização" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Depósito" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Fabricante" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+
+                                <Components:HlpPesquisa 
+									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idProdutoLocalizacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Localização" Help="Informar qual a localização do produto dentro do depósito e em seu devido site." WidthLabel="150" Width="454" TableView="vwProdutoLocalizacao" FieldPesquisa="ID">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>xNome</System:String>
-                                            <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
-									
+									ToolTip="Informar qual a localização do produto dentro do depósito e em seu devido site." WidthLabel="0" TableView="vwProdutoLocalizacao" FieldPesquisa="ID">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>xNome</System:String>
+                                        <System:String>xDescricao</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:HlpPesquisa 
+									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Depósito" Help="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." WidthLabel="150" Width="454" TableView="vwDeposito" FieldPesquisa="ID">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>xDeposito</System:String>
-                                            <System:String>xDescricao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
-									
+									ToolTip="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." WidthLabel="0" TableView="vwDeposito" FieldPesquisa="ID">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>xDeposito</System:String>
+                                        <System:String>xDescricao</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:HlpPesquisa 
+									Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idFabricante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Fabricante" Help="Informe o fabricante do produto." WidthLabel="150" Width="454" TableView="vwFabricante" FieldPesquisa="ID">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>xFantasia</System:String>
-                                            <System:String>xRazao</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                </WrapPanel>
-                            </Expander>
-                        </DockPanel>
-                        <DockPanel>
-                            <Expander Header="Dimensão Física" IsExpanded="True" DockPanel.Dock="Top" Height="124">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nProfundidadeBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informe o fabricante do produto." WidthLabel="0" TableView="vwFabricante" FieldPesquisa="ID">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>xFantasia</System:String>
+                                        <System:String>xRazao</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Dimensão" Grid.Row="2" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="170"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Profundidade Bruta" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Largura Bruta" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Altura Bruta" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.nProfundidadeBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Profundidade Bruta" Help="Informar profundidade da unidade de estoque que inclui a embalagem." WidthLabel="158" Width="284"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nLarguraBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informar profundidade da unidade de estoque que inclui a embalagem.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.nLarguraBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Largura Bruta" Help="A largura de uma unidade que inclui a embalagem" WidthLabel="158" Width="284"/>
-                                    <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nAlturaBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="A largura de uma unidade que inclui a embalagem">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.nAlturaBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Altura Bruta" Help="A altura de uma unidade que inclui a embalagem" WidthLabel="158" Width="284"/>
-                                </WrapPanel>
-                            </Expander>
-                            <Expander Header="Formação de Custo" IsExpanded="True">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpComboBox 
-									
-									SelectedIndex="{Binding currentModel.stCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="A altura de uma unidade que inclui a embalagem">
+                                </Components:CustomTextBox>
+                                
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Formação de Custo" Grid.Row="3" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="170" MinWidth="170"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Formação do Custo" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Tipo de Custo Automático" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    SelectedIndex="{Binding currentModel.stCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Formação do Custo" Help="É preenchido com a Origem de Custo do Produto, podendo ser Custo Manual, por Custo Automático ou por Custo de Composição." WidthLabel="191">
-                                        <Components:HlpComboBox.Items>
-                                            <System:String>0-Custo de composição</System:String>
-                                            <System:String>1-Custo Manual</System:String>
-                                            <System:String>2-Custo Automático</System:String>
-                                        </Components:HlpComboBox.Items>
-                                    </Components:HlpComboBox>
-                                    <Components:HlpComboBox 
-									
-									SelectedIndex="{Binding currentModel.stCustoMedio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="É preenchido com a Origem de Custo do Produto, podendo ser Custo Manual, por Custo Automático ou por Custo de Composição.">
+                                    <Components:CustomComboBox.Items>
+                                        <System:String>0-Custo de composição</System:String>
+                                        <System:String>1-Custo Manual</System:String>
+                                        <System:String>2-Custo Automático</System:String>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    SelectedIndex="{Binding currentModel.stCustoMedio, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Tipo de Custo Automático" Help="Informativo sobre qual custo o produto está usando, podendo ser custo médio ou custo atual. O campo só é habilitado quando a formação do custo for Custo Automático." WidthLabel="191">
-                                        <Components:HlpComboBox.Items>
-                                            <System:String>0-CUSTO MÉDIO</System:String>
-                                            <System:String>1-CUSTO ATUAL</System:String>
-                                        </Components:HlpComboBox.Items>
-                                    </Components:HlpComboBox>
-                                </WrapPanel>
-                            </Expander>
-                        </DockPanel>
-                    </DockPanel>
+									ToolTip="Informativo sobre qual custo o produto está usando, podendo ser custo médio ou custo atual. O campo só é habilitado quando a formação do custo for Custo Automático.">
+                                    <Components:CustomComboBox.Items>
+                                        <System:String>0-CUSTO MÉDIO</System:String>
+                                        <System:String>1-CUSTO ATUAL</System:String>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                
+                            </Grid>
+                        </Expander>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Dados Fiscais">
