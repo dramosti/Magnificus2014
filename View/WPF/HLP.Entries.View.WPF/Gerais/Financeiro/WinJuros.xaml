@@ -7,55 +7,95 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros"
         Title="Juros" Height="660" Width="1024" NameView="vwJuros">
-    <Window.Resources>
-        <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+    <Window.Resources>        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+        </ResourceDictionary>        
     </Window.Resources>
     <Grid>
-        <Expander Header="Juros" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
-					Text="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+        <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="275" MinWidth="275"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Juros" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="% de Juros" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Quantidade de dias/Meses para aplicar Juros:" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Dias/Mês" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Carência" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    Text="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsReadOnly="True"
-					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do juros" WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+					ToolTip="Chave principal do juros">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xNome, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Juros" Help="Insira um código para o Juros." WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+					ToolTip="Insira um código para o Juros.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
+                    Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Descrição" Help="Insira a descrição do código de juros. " WidthLabel="166" HorizontalAlignment="Left" Width="400"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.pJuros, Mode=TwoWay, 
+					ToolTip="Insira a descrição do código de juros.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.pJuros, Mode=TwoWay, 
                     Converter={StaticResource PorcentagemConverter},
-                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+		     		NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="% de Juros" Help="Insira a porcentagem de juros que se aplica" WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.nQuantidadeDiasMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+					ToolTip="Insira a porcentagem de juros que se aplica">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.nQuantidadeDiasMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Quantidade Juros por:" Help="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês. " WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
-                <Components:HlpComboBox 
-					
-					SelectedIndex="{Binding currentModel.stDiaMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+					ToolTip="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês.">           
+                </Components:CustomTextBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stDiaMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Dias/Mês" Help="Selecione se é Dia ou Mês para aplicar a quantidade informada no campo quantidade. " WidthLabel="166" HorizontalAlignment="Left">
-                    <Components:HlpComboBox.Items>
+					ToolTip="Selecione se é Dia ou Mês para aplicar a quantidade informada no campo quantidade. ">
+                    <Components:CustomComboBox.Items>
                         <System:String>0-Dias</System:String>
                         <System:String>1-Mês</System:String>
-                    </Components:HlpComboBox.Items>
-                </Components:HlpComboBox>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.nCarencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomTextBox 
+                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.nCarencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Carência" Help="Insira o número de dias de carência permitidos antes da aplicação do juros. Os juros são calculados após o número especificado de dias de carência a partir da data de vencimento do pagamento. " WidthLabel="166" HorizontalAlignment="Left" Width="275"/>
-            </WrapPanel>
+					ToolTip="Insira o número de dias de carência permitidos antes da aplicação do juros. Os juros são calculados após o número especificado de dias de carência a partir da data de vencimento do pagamento. ">
+                </Components:CustomTextBox>
+            </Grid>
         </Expander>
-
     </Grid>
 </runtime:WindowsBase>

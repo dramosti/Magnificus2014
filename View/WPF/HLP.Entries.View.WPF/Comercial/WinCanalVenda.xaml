@@ -5,26 +5,56 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Comercial.WinCanalVenda"
         Title="Canal de Vendas" Height="660" Width="1024" NameView="vwCanalVenda">
+    <runtime:WindowsBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </runtime:WindowsBase.Resources>
     <DockPanel>
-        <Expander Header="Geral" IsExpanded="True">
+        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="170" MinWidth="170"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"/>
-                    <RowDefinition Height="27"/>
-                    <RowDefinition Height="2"/>
-                    <RowDefinition Height="27"/>
-                    <RowDefinition Height="2"/>
-                    <RowDefinition Height="27"/>
-                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Components:HlpTextBox 
-					Text="{Binding currentModel.idCanalVenda, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" Grid.Row="1"
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código do Canal de Vendas" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsReadOnly="True"
-					Caption="Código" Help="Chave principal do registro do Código de Vendas" WidthLabel="202" HorizontalAlignment="Left"/>                
+					ToolTip="Chave principal do registro do Código de Vendas">
+                </Components:CustomTextBox>       
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    Text="{Binding currentModel.cCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Digite um código para o Canal de Vendas">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}"
+					ToolTip="Descrição detalhada do Canal de Vendas">
+                </Components:CustomTextBox>
+                
             </Grid>
         </Expander>
     </DockPanel>

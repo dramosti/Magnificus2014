@@ -12,42 +12,41 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition Width="126*" MaxWidth="100" MinWidth="100"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="90" MinWidth="70" Width="90*"></ColumnDefinition>
-                    <ColumnDefinition Width="181*" MinWidth="120" MaxWidth="300"></ColumnDefinition>
-                    <ColumnDefinition Width="225*"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="70"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="120" MaxWidth="300"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="27"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="27"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="27"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="27"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Codigo" VerticalAlignment="Center"/>
+                <!--Label-->
+
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Codigo"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Codigo do Setor"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descricao"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="E-mail do Setor"/>
+
+                
                 <Components:CustomTextBox Grid.Column="2" Grid.Row="1"
                                           Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                          IsReadOnly="True" ToolTip="Chave principal do registro Setor"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Codigo do Setor" VerticalAlignment="Center" Height="14" Margin="0,7"/>
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="3"
+                                          IsReadOnly="True" ToolTip="Chave principal do registro Setor"/>                
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="2"
                                           Text="{Binding currentModel.xSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
                                           IsEnabled="{Binding bIsEnabled}"
-                                          ToolTip="Informar um codigo para o Setor"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Descricao" VerticalAlignment="Center"/>
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
+                                          ToolTip="Informar um codigo para o Setor"/>                
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
                                           Text="{Binding currentModel.xDescricao, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
                                           IsEnabled="{Binding bIsEnabled}" 
-                                          ToolTip="Informar uma descricao mais detalhada do Setor da Empresa"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="E-mail do Setor" VerticalAlignment="Center"/>
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+                                          ToolTip="Informar uma descricao mais detalhada do Setor da Empresa"/>                
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
                                           Text="{Binding currentModel.xEmail, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
                                           IsEnabled="{Binding bIsEnabled}"
-                                          ToolTip="Informar um e-mail geral caso tenha do setor."/>
-                <Label Grid.Column="3" Grid.Row="1" Style="{StaticResource TextBlockStatusOrcamento}"></Label>
+                                          ToolTip="Informar um e-mail geral caso tenha do setor."/>                
             </Grid>
         </Expander>
     </Grid>

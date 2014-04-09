@@ -9,42 +9,70 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinConversao"
         Title="Conversão" Height="660" Width="1024" NameView="vwProduto">
     <Window.Resources>
-        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"></convert:ComboBoxDisplayConverter>
-        <ObjectDataProvider
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"></convert:ComboBoxDisplayConverter>
+            <convert:NotConverter x:Key="notConverter"/>
+            <ObjectDataProvider
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
             x:Key="EnumDescriptionDictArrend">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoArredondamento"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lResultConversao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwUnidadeMedidaToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:TipoArredondamento"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lResultConversao" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwUnidadeMedidaToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>         
     </Window.Resources>
-    <DockPanel  HorizontalAlignment="Stretch">
-        <Expander Header="Parametro" HorizontalAlignment="Stretch" Height="70" VerticalAlignment="Top" IsExpanded="True" DockPanel.Dock="Top">
-            <WrapPanel Orientation="Vertical" Margin="10,10,0,0">
-                <Components:HlpPesquisa Caption="Produto"
-                    	IsReadOnly="True"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Expander Header="Parametro" Style="{StaticResource ExpanderPadrao}" Focusable="False" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Produto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                
+                <!--Components-->
+
+                <Components:HlpPesquisa
+                    	IsReadOnly="True" Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
                     	Text="{Binding currentModel.idProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    	Field="idRamoAtividade" Table="Empresa" Help="" TableView="vwProduto" FieldPesquisa="ID" WidthLabel="55" Height="27" HorizontalAlignment="Left" Width="587">
+                    	ToolTip="Informar o código do produto para criação das unidades de conversões" TableView="vwProduto" FieldPesquisa="ID" WidthLabel="0">
                     <Components:HlpPesquisa.Items>
                         <System:String>xComercial</System:String>
                         <System:String>cAlternativo</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-            </WrapPanel>
+
+            </Grid>
         </Expander>
-        <Expander Header="Grade" IsExpanded="True">
-            <DockPanel>
+        <Expander
+            Header="Grade" Style="{StaticResource ExpanderPadrao}" Focusable="False" IsExpanded="True" Grid.Row="1">
+            <Grid>
                 <DataGrid
                     Name="gridConversao"
 						  ItemsSource="{Binding currentModel.lProdutos_Conversao}"                          
-                          IsEnabled="{Binding bIsEnabled}"
+                          IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
@@ -139,7 +167,7 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </DockPanel>
+            </Grid>
         </Expander>
-    </DockPanel>
+    </Grid>
 </runtime:WindowsBase>
