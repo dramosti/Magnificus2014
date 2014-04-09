@@ -17,12 +17,46 @@
             <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
             <convertLocal:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convertLocal:MaskConverter x:Key="maskConverter"/>
-            <convertLocal:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>
-            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
-            <CompositeCollection x:Key="collection">
+            <convertLocal:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>            
+            <CompositeCollection x:Key="lTipoEndereco">
                 <System:String>0-COMERCIAL</System:String>
                 <System:String>1-ENTREGA</System:String>
+                <System:String>2-ENTREGA ALT</System:String>
+                <System:String>3-NOTA FISCAL</System:String>
+                <System:String>4-RESIDÊNCIA</System:String>
+                <System:String>5-SERVIÇO</System:String>
+                <System:String>6-SWIFT</System:String>
+                <System:String>7-PAGAMENTO</System:String>
+                <System:String>8-OUTRO</System:String>
             </CompositeCollection>
+            <CompositeCollection x:Key="lTipoLogradouro">
+                <System:String>00-AER-AEROPORTO</System:String>
+                <System:String>01-AL-ALAMEDA</System:String>
+                <System:String>02-AP-APARTAMENTO</System:String>
+                <System:String>03-AV-AVENIDA</System:String>
+                <System:String>04-BC-BECO</System:String>
+                <System:String>05-BL-BLOCO</System:String>
+                <System:String>06-CAM-CAMINHO</System:String>
+                <System:String>07-ESCD-ESCADINHA</System:String>
+                <System:String>08-EST -ESTAÇÃO</System:String>
+                <System:String>09-ETR-ESTRADA</System:String>
+                <System:String>10-FAZ-FAZENDA</System:String>
+                <System:String>11-FORT-FORTALEZA</System:String>
+                <System:String>12-GL-GALERIA</System:String>
+                <System:String>13-LD-LADEIRA</System:String>
+                <System:String>14-LGO -LARGO</System:String>
+                <System:String>15-PÇA-PRAÇA</System:String>
+                <System:String>16-PR -PRAIA</System:String>
+                <System:String>17-PRQ-PARQUE</System:String>
+                <System:String>18-QD -QUADRA</System:String>
+                <System:String>19-KM-QUILÔMETRO</System:String>
+                <System:String>20-QTA -QUINTA</System:String>
+                <System:String>21-ROD -RODOVIA</System:String>
+                <System:String>22-R-RUA</System:String>
+                <System:String>23-SQD-SUPER QUADRA</System:String>
+                <System:String>24-TRV-TRAVESSA</System:String>
+            </CompositeCollection>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lresultCidades" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
                     <System:String>vwCidadeToComboBox</System:String>
@@ -60,30 +94,9 @@
                 <DataGridTextColumn Header="Nome" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xNome, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                <DataGridTemplateColumn Header="Tipo de Endereco" Width="140" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox                                
-                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
-                                SelectedIndex="{Binding stTipoEndereco, Mode=TwoWay, ValidatesOnDataErrors=True,
-                                      NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
-                                <ComboBoxItem>0-COMERCIAL</ComboBoxItem>
-                                <ComboBoxItem>1-ENTREGA</ComboBoxItem>
-                                <ComboBoxItem>2-ENTREGA ALT</ComboBoxItem>
-                                <ComboBoxItem>3-NOTA FISCAL</ComboBoxItem>
-                                <ComboBoxItem>4-RESIDÊNCIA</ComboBoxItem>
-                                <ComboBoxItem>5-SERVIÇO</ComboBoxItem>
-                                <ComboBoxItem>6-SWIFT</ComboBoxItem>
-                                <ComboBoxItem>7-PAGAMENTO</ComboBoxItem>
-                                <ComboBoxItem>8-OUTRO</ComboBoxItem>
-                            </ComboBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridComboBoxColumn x:Name="cbxTemplate" Header="Tipo de Endereço" ItemsSource="{StaticResource collection}"
+                <DataGridComboBoxColumn x:Name="cbxTemplate" Width="160" Header="Tipo de Endereço" ItemsSource="{StaticResource lTipoEndereco}"
                                         SelectedItemBinding="{Binding stTipoEndereco, Converter={StaticResource selectedItemToTextConverter},
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterParameter={StaticResource collection}}"                        
-                                        >
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterParameter={StaticResource lTipoEndereco}}">
                 </DataGridComboBoxColumn>
                 <DataGridTextColumn Header="CEP" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
@@ -95,42 +108,10 @@
                         </Style>
                     </DataGridTextColumn.EditingElementStyle>
                 </DataGridTextColumn>
-                <DataGridTemplateColumn Header="Tipo de Logradouro" Width="160" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox 
-                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
-                                SelectedIndex="{Binding stLogradouro, Mode=TwoWay, ValidatesOnDataErrors=True,
-                                      NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}">
-                                <ComboBoxItem>00-AER-AEROPORTO</ComboBoxItem>
-                                <ComboBoxItem>01-AL-ALAMEDA</ComboBoxItem>
-                                <ComboBoxItem>02-AP-APARTAMENTO</ComboBoxItem>
-                                <ComboBoxItem>03-AV-AVENIDA</ComboBoxItem>
-                                <ComboBoxItem>04-BC-BECO</ComboBoxItem>
-                                <ComboBoxItem>05-BL-BLOCO</ComboBoxItem>
-                                <ComboBoxItem>06-CAM-CAMINHO</ComboBoxItem>
-                                <ComboBoxItem>07-ESCD-ESCADINHA</ComboBoxItem>
-                                <ComboBoxItem>08-EST -ESTAÇÃO</ComboBoxItem>
-                                <ComboBoxItem>09-ETR-ESTRADA</ComboBoxItem>
-                                <ComboBoxItem>10-FAZ-FAZENDA</ComboBoxItem>
-                                <ComboBoxItem>11-FORT-FORTALEZA</ComboBoxItem>
-                                <ComboBoxItem>12-GL-GALERIA</ComboBoxItem>
-                                <ComboBoxItem>13-LD-LADEIRA</ComboBoxItem>
-                                <ComboBoxItem>14-LGO -LARGO</ComboBoxItem>
-                                <ComboBoxItem>15-PÇA-PRAÇA</ComboBoxItem>
-                                <ComboBoxItem>16-PR -PRAIA</ComboBoxItem>
-                                <ComboBoxItem>17-PRQ-PARQUE</ComboBoxItem>
-                                <ComboBoxItem>18-QD -QUADRA</ComboBoxItem>
-                                <ComboBoxItem>19-KM-QUILÔMETRO</ComboBoxItem>
-                                <ComboBoxItem>20-QTA -QUINTA</ComboBoxItem>
-                                <ComboBoxItem>21-ROD -RODOVIA</ComboBoxItem>
-                                <ComboBoxItem>22-R-RUA</ComboBoxItem>
-                                <ComboBoxItem>23-SQD-SUPER QUADRA</ComboBoxItem>
-                                <ComboBoxItem>24-TRV-TRAVESSA</ComboBoxItem>
-                            </ComboBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn x:Name="cbxtpLogradouro" Width="160" Header="Tipo de Logradouro" ItemsSource="{StaticResource lTipoLogradouro}"
+                                        SelectedItemBinding="{Binding stLogradouro, Converter={StaticResource selectedItemToTextConverter},
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterParameter={StaticResource lTipoLogradouro}}">
+                </DataGridComboBoxColumn>          
                 <DataGridTextColumn    Header="Endereço" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xEndereco, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>

@@ -22,8 +22,16 @@ namespace HLP.Entries.Model.Repository.Implementation.Parametros
 
         public void Save(Parametro_Cartao_PontoModel objParametro_Cartao_Ponto)
         {
-            objParametro_Cartao_Ponto.idParametroCartaoPonto = (int)UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_save_Parametro_Cartao_Ponto",
-            ParameterBase<Parametro_Cartao_PontoModel>.SetParameterValue(objParametro_Cartao_Ponto));
+            if (objParametro_Cartao_Ponto.idParametroCartaoPonto == null)
+            {
+                objParametro_Cartao_Ponto.idParametroCartaoPonto = (int)UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_save_Parametro_Cartao_Ponto",
+                ParameterBase<Parametro_Cartao_PontoModel>.SetParameterValue(objParametro_Cartao_Ponto));
+            }
+            else
+            {
+                objParametro_Cartao_Ponto.idParametroCartaoPonto = (int)UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_update_Parametro_Cartao_Ponto",
+                ParameterBase<Parametro_Cartao_PontoModel>.SetParameterValue(objParametro_Cartao_Ponto));
+            }
         }
 
         public void Delete(int idParametroCartaoPonto)

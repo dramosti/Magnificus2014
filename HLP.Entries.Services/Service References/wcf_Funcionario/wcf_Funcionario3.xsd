@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
   <xs:complexType name="FuncionarioModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
