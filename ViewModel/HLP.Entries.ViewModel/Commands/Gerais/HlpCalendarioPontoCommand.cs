@@ -29,6 +29,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
+                //objViewModel.ba = objViewModel.resource["ListBox_Calendario_Ponto_Padrao"] as Style;
                 // verifica se tem calendario no dia.
                 objViewModel.isDSR = servico.GetHorasAtrabalhadarDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto)).Count() == 0;
 
