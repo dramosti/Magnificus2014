@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -220,11 +220,6 @@
     <Compile Include="Commands\Unidade_MedidaCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\agenciaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\bancoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -545,25 +540,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\agenciaService\serviceAgencia5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\bancoService\serviceBanco.wsdl" />
-    <None Include="Service References\bancoService\serviceBanco.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\bancoService\serviceBanco1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\bancoService\serviceBanco2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\bancoService\serviceBanco3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\bancoService\serviceBanco4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\bancoService\serviceBanco5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Canal_VendaService\serviceCanal_Venda.wsdl" />
@@ -1412,7 +1388,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
     <WCFMetadataStorage Include="Service References\agenciaService\" />
-    <WCFMetadataStorage Include="Service References\bancoService\" />
     <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\Carga_trib_media_st_icmsServico\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
@@ -1769,21 +1744,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\agenciaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\bancoService\serviceBanco.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\bancoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\bancoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\bancoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

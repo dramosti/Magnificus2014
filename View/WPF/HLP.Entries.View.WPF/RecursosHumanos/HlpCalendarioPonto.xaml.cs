@@ -54,14 +54,10 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
             this.ViewModel.actionAtualizaWindowPrincipal = method;
         }
 
-
         public bool bMesFechado
         {
             set { this.ViewModel._bMesFechado = value; }
         }
-
-        
-
 
     }
 }

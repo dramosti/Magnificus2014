@@ -51,7 +51,7 @@ namespace HLP.Wcf.Entries
                     }
                 }
                 iCalendarioRepository.CommitTransaction();
-                return objModel;
+                return this.GetObjeto((int)objModel.idCalendario);
             }
             catch (Exception ex)
             {
@@ -108,7 +108,7 @@ namespace HLP.Wcf.Entries
                 {
                     item.idCalendario = (int)objModel.idCalendario;
                     item.idCalendarioDetalhe = null;
-                    iCalendario_DetalheRepository.Copy(item);                    
+                    iCalendario_DetalheRepository.Copy(item);
                 }
                 iCalendarioRepository.CommitTransaction();
 

@@ -90,7 +90,14 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             win.ShowDialog();
             var dados = win.GetPropertyValue("ViewModel").GetPropertyValue("lCalendarioDetalhes");
             if (dados != null)
+            {
+                List<int> lExcluidos = new List<int>();
+                foreach (var item in objViewModel.currentModel.lCalendario_DetalheModel)
+                    if (item.idCalendarioDetalhe != null)
+                        lExcluidos.Add((int)item.idCalendarioDetalhe);               
                 objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
+                objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos.AddRange(lExcluidos);
+            }
         }
 
         public void Save(object _panel)

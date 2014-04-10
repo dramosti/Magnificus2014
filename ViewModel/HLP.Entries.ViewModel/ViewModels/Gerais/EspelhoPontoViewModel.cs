@@ -39,10 +39,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
 
         public EspelhoPontoViewModel(List<Control> lControlsPonto)
-        {
+        {            
             this.currentModel = new FuncionarioPonto();
             this.lControlsPonto = lControlsPonto;
             command = new EspelhoPontoCommand(this);
+            this.bIsEnabled = false;
         }
         public EspelhoPontoViewModel()
         {

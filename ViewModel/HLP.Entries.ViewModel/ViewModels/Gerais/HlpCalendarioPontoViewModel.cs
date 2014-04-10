@@ -17,11 +17,15 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public HlpCalendarioPontoCommand command;
         public ICommand LancamentoManualCommand { get; set; }
         public Action actionAtualizaWindowPrincipal;
+        ResourceDictionary resource;
 
         public HlpCalendarioPontoViewModel()
         {
             command = new HlpCalendarioPontoCommand(this);
-
+            resource = new ResourceDictionary
+                    {
+                        Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
+                    };
         }
 
         private ObservableCollection<EspelhoPontoModel> _lPonto = new ObservableCollection<EspelhoPontoModel>();
@@ -95,14 +99,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         #endregion
 
+
+        private StatusDia _stDia;
+
         public StatusDia stDia
         {
+            get { return _stDia; }
             set
             {
-                ResourceDictionary resource = new ResourceDictionary
-                {
-                    Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
-                };
                 if (value.ToString().ToUpper().Equals("EMBRANCO"))
                 {
                     this.styleDia = resource["EllipsePreta"] as Style;
@@ -119,9 +123,9 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 {
                     this.styleDia = resource["EllipseVerde"] as Style;
                 }
+                _stDia = value;
             }
         }
-
 
         private Style _styleDia;
         public Style styleDia
@@ -134,8 +138,23 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
+        private Style _styleDSF;
+
+        public Style styleDSF
+        {
+            get { return _styleDSF; }
+            set
+            {
+                _styleDSF = value; this.NotifyPropertyChanged(propertyName: "styleDSF");
+
+            }
+        }
 
 
-        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO };
+
+
+
+
+        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO, DSF };
     }
 }
