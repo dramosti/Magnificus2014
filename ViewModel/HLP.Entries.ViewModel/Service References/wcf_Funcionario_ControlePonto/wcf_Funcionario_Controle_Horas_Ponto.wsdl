@@ -5,9 +5,8 @@
       <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_Save_InputMessage">
@@ -88,6 +87,12 @@
   <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_DeleteBancoHorasMes_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBancoHorasMesResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteCalendarioDia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteCalendarioDiaResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Funcionario_Controle_Horas_Ponto">
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/Save" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_Save_InputMessage" />
@@ -140,6 +145,10 @@
     <wsdl:operation name="DeleteBancoHorasMes">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_DeleteBancoHorasMes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMesResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_DeleteBancoHorasMes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteCalendarioDia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDia" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDiaResponse" message="tns:Iwcf_Funcionario_Controle_Horas_Ponto_ExisteCalendarioDia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Funcionario_Controle_Horas_Ponto" type="tns:Iwcf_Funcionario_Controle_Horas_Ponto">
@@ -254,6 +263,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteBancoHorasMes">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteCalendarioDia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1247,9 +1247,6 @@
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.wsdl" />
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.xsd">
       <SubType>Designer</SubType>

@@ -185,8 +185,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             }
             else if (Sistema.bOnline == StConnection.OnlineWeb)
             {
-                //   this.servicoInternet.ExisteCalendarioDia(idFuncionario, dtDia);
-                return false;
+                return this.servicoInternet.ExisteCalendarioDia(idFuncionario, dtDia);
             }
             else
                 return false;

@@ -174,9 +174,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                     icount = Convert.ToInt32(reader["contador"].ToString());
                 }
                 if (icount == 0)
-                    return false;
-                else
                     return true;
+                else
+                    return false;
             }
             catch (Exception ex)
             {
