@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Services.Financeiro;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
     {
         BackgroundWorker bWorkerAcoes;
         BancoViewModel objViewModel;
-        bancoService.IserviceBancoClient servico = new bancoService.IserviceBancoClient();
+        BancoService servico = new BancoService();
 
         public BancoCommands(BancoViewModel objViewModel)
         {
@@ -69,7 +70,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                this.objViewModel.currentModel.idBanco = this.servico.Save(Objeto: objViewModel.currentModel);
+                this.objViewModel.currentModel.idBanco = this.servico.SaveObject(objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -124,7 +125,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (this.servico.DeleteObject(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -152,7 +153,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new BancoModel();
@@ -203,7 +204,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -254,7 +255,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 e.Result =
-                    this.servico.Copy(Objeto: objViewModel.currentModel);
+                    this.servico.CopyObject(objViewModel.currentModel);
             }
             catch (Exception)
             {
@@ -294,10 +295,9 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             bw.RunWorkerAsync();
         }
 
-        private async void getBanco(object sender, DoWorkEventArgs e)
+        private void getBanco(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.GetObjetoAsync(
-                idObjeto: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.servico.GetObject(this.objViewModel.currentID);
         }
         #endregion
 

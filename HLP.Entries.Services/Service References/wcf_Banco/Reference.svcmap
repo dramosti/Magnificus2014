@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4419910f-7ebc-4e6c-9677-b70463f794c7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Banco.xsd" MetadataType="Schema" ID="7a6c1731-9c73-4695-9943-a3d6bc499662" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Banco1.xsd" MetadataType="Schema" ID="5550ec10-242b-44bb-b78a-2b16c065edf9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Banco.wsdl" MetadataType="Wsdl" ID="bf1d5c02-02a8-42e0-937d-4ccf409c5072" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?wsdl" />
+    <MetadataFile FileName="wcf_Banco2.xsd" MetadataType="Schema" ID="a76d2876-f4b4-40ef-a8f4-cbb86ccae8b9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Banco.disco" MetadataType="Disco" ID="a1d37d1e-477e-42cf-b50f-8580204d0dad" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?disco" />
+    <MetadataFile FileName="wcf_Banco3.xsd" MetadataType="Schema" ID="0c074b90-77e8-4abc-af89-9c48406f74ab" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Banco4.xsd" MetadataType="Schema" ID="2f63806d-4f43-47d4-babe-604633a4bca7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

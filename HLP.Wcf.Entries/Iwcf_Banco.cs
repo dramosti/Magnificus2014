@@ -9,8 +9,8 @@ namespace HLP.Wcf.Entries
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IserviceBanco" in both code and config file together.
     [ServiceContract]
-    public interface IserviceBanco
-    {
+    public interface Iwcf_Banco
+    {      
 
         [OperationContract]
         int Save(HLP.Entries.Model.Models.Financeiro.BancoModel Objeto);
@@ -23,6 +23,5 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int Copy(HLP.Entries.Model.Models.Financeiro.BancoModel Objeto);
-
     }
 }

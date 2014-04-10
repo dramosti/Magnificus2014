@@ -46,6 +46,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             status = statusModel.excluido
                         });
                 }
+                foreach (var item in this.objViewModel.lPonto)
+                    item.dRelogioPonto = this.objViewModel.data;
 
 
                 List<Funcionario_Controle_Horas_PontoModel> lreturn = servico.Salvar(objViewModel.idFuncionario, new List<Funcionario_Controle_Horas_PontoModel>(objViewModel.lPonto));

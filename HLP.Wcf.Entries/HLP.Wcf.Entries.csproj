@@ -93,7 +93,7 @@
     <Content Include="camposBaseDadosService.svc" />
     <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
-    <Content Include="serviceBanco.svc" />
+    <Content Include="wcf_Banco.svc" />
     <Content Include="wcf_Calendario.svc" />
     <Content Include="serviceCanal_Venda.svc" />
     <Content Include="serviceCarga_trib_media_st_icms.svc" />
@@ -114,6 +114,7 @@
     <Content Include="serviceDescontosAvista.svc" />
     <Content Include="serviceDiaPagamento.svc" />
     <Content Include="serviceEmpresa.svc" />
+    <Content Include="wcf_Deposito.svc" />
     <Content Include="wcf_EmpresaParametros.svc" />
     <Content Include="serviceFabricante.svc" />
     <Content Include="serviceFamiliaProduto.svc" />
@@ -180,7 +181,7 @@
     <Compile Include="IcamposBaseDadosService.cs" />
     <Compile Include="IserviceAcesso.cs" />
     <Compile Include="IserviceAgencia.cs" />
-    <Compile Include="IserviceBanco.cs" />
+    <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
     <Compile Include="IserviceCanal_Venda.cs" />
     <Compile Include="IserviceCarga_trib_media_st_icms.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
+    <Compile Include="Iwcf_Deposito.cs" />
     <Compile Include="Iwcf_DescontoAVista.cs" />
     <Compile Include="Iwcf_DiaPagamento.cs" />
     <Compile Include="Iwcf_Empresa.cs" />
@@ -262,8 +264,8 @@
     <Compile Include="serviceAgencia.svc.cs">
       <DependentUpon>serviceAgencia.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceBanco.svc.cs">
-      <DependentUpon>serviceBanco.svc</DependentUpon>
+    <Compile Include="wcf_Banco.svc.cs">
+      <DependentUpon>wcf_Banco.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Calendario.svc.cs">
       <DependentUpon>wcf_Calendario.svc</DependentUpon>
@@ -324,6 +326,9 @@
     </Compile>
     <Compile Include="serviceEmpresa.svc.cs">
       <DependentUpon>serviceEmpresa.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Deposito.svc.cs">
+      <DependentUpon>wcf_Deposito.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_EmpresaParametros.svc.cs">
       <DependentUpon>wcf_EmpresaParametros.svc</DependentUpon>
