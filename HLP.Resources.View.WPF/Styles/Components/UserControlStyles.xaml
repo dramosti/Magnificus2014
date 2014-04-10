@@ -1111,6 +1111,16 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="EllipseRoxa" TargetType="{x:Type Ellipse}">
+        <Setter Property="Fill">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF9018B4" Offset="0.714"/>
+                    <GradientStop Color="#FFC3A9CB"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
     <!--Bottoes Fechar e Reabrir-->
