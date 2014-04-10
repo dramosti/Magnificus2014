@@ -44,7 +44,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                        canExecute: paramCanExec => !this.objViewModel.commandAlterar.CanExecute(null));
 
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.objViewModel.alterarBaseCommand.Execute(parameter: paramExec),
-                   canExecute: paramCanExec => !this.objViewModel.cancelarBaseCommand.CanExecute(null));
+                   canExecute: paramCanExec => false);
 
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
                        canExecute: paramCanExec => true);
@@ -63,7 +63,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
               canExecute: paramCan => this.CanReabrirMes());
 
             this.objViewModel.commandNavegaData = new RelayCommand(execute: paramExec => this.NavegaData(param: paramExec),
-                canExecute: paramCan => true);
+                canExecute: paramCan => this.CanCarregaFormulario());
 
 
             foreach (Control ctr in objViewModel.lControlsPonto)
