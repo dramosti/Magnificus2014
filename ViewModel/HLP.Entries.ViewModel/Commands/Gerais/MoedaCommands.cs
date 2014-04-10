@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         MoedaViewModel objViewModel;
-        moedaService.IserviceMoedaClient servico = new moedaService.IserviceMoedaClient();
+        MoedaService objService;
+
         public MoedaCommands(MoedaViewModel objViewModel)
         {
+
+            objService = new MoedaService();
 
             this.objViewModel = objViewModel;
 
@@ -73,8 +77,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel.idMoeda = this.servico.saveMoeda(objMoeda:
-                    this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idMoeda = this.objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -129,7 +133,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteMoeda((int)this.objViewModel.currentModel.idMoeda))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idMoeda ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -157,7 +161,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new MoedaModel();
@@ -207,7 +211,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -257,8 +261,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                e.Result = this.servico.copyMoeda(idMoeda:
-                    (int)this.objViewModel.currentModel.idMoeda);
+                e.Result = this.objService.CopyObject(id: this.objViewModel.currentID);
             }
             catch (Exception)
             {
@@ -299,10 +302,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getMoedaAsync(
-                idMoeda: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(
+                id: this.objViewModel.currentID);
         }
         #endregion
 

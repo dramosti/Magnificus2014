@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -33,15 +35,28 @@ namespace HLP.Resources.View.WPF.Classes
                 //}
 
                 _xCodigo = value.TrimStart(caracters).TrimEnd(caracters);
-
-                var img = new BitmapImage(new Uri(String.Format(format: "Classes/Icons/IconsMoeda/{0}", arg0: _xCodigo)));
-
-                if (img != null)
+                //pack://application:,,,/ApplicationName
+                string path = String.Format(format: "{0}/Icons/IconsMoeda/btn{1}.png",
+                    arg0: AppDomain.CurrentDomain.BaseDirectory,
+                    arg1: _xCodigo);
+                if (File.Exists(path: path))
                 {
-                    img.Freeze();
-                    this._xPathImagem = img;
-                }
+                    byte[] b;
+                    using (FileStream fs = File.OpenRead(path: path))
+                    {
+                        b = new byte[fs.Length];
 
+                        fs.Read(b, 0, b.Length);
+                    }
+
+                    this.xPathImagem = b;
+                    //BitmapImage src = new BitmapImage();
+                    //src.BeginInit();
+                    //src.UriSource = new Uri(path.Replace(oldChar: '\\', newChar: '/'), UriKind.Relative);
+                    //src.CacheOption = BitmapCacheOption.OnLoad;
+                    //src.EndInit();
+                    //this._xPathImagem = src;
+                }
                 this.NotifyPropertyChanged(propertyName: "xCodigo");
             }
         }
@@ -97,9 +112,9 @@ namespace HLP.Resources.View.WPF.Classes
             }
         }
 
-        private ImageSource _xPathImagem;
+        private byte[] _xPathImagem;
 
-        public ImageSource xPathImagem
+        public byte[] xPathImagem
         {
             get { return _xPathImagem; }
             set

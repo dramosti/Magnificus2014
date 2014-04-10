@@ -280,7 +280,6 @@ namespace HLP.Entries.View.WPF.Gerais
             };
         }
 
-
         private ObservableCollection<padraoMoeda> _lMoedaPadrao;
 
         public ObservableCollection<padraoMoeda> lMoedaPadrao
