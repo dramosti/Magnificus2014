@@ -21,10 +21,10 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
@@ -32,7 +32,7 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="27"></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--Label-->
 
@@ -70,31 +70,40 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Símbolo da moeda selecionada são usados frequentemente nos relatórios.">
                 </Components:CustomTextBox>
-                <Components:CustomComboBox
+                <Components:CustomComboBox 
                     IsEnabled="{Binding bIsEnabled}"                    
-                    x:Name="cbxMoedaPadrao" Grid.Column="2" Grid.Row="5"
-                    ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}">
+                    x:Name="cbxMoedaPadrao" Height="24" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="3"
+                    ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}" >
                     <Components:CustomComboBox.SelectedIndex>
                         <MultiBinding Converter="{StaticResource moedaPadraoConverter}">
                             <MultiBinding.Bindings>
-                                <Binding Path="currentModel.xMoeda"/>
+                                <Binding Path="currentModel.xMoeda" Mode="OneWay"/> 
                                 <Binding ElementName="wdMoeda" Path="lMoedaPadrao"/>
                             </MultiBinding.Bindings>
                         </MultiBinding>
                     </Components:CustomComboBox.SelectedIndex>
                     <Components:CustomComboBox.ItemTemplate>
                         <DataTemplate>
-                            <DockPanel LastChildFill="True" Height="30">
-                                <TextBlock Text="{Binding xCodigo}" VerticalAlignment="Center"/>
-                                <TextBlock Width="80" Text="{Binding xMoeda}" VerticalAlignment="Center" DockPanel.Dock="Left" Height="30" ></TextBlock>
-                                <TextBlock Width="160" TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding xPais}" DockPanel.Dock="Left" Height="15"></TextBlock>
+                            <Grid Height="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" MaxWidth="160"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto" MaxWidth="240"></ColumnDefinition>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="20"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding xCodigo}" FontFamily="Calibri" HorizontalAlignment="Left"/>
+                                <TextBlock Grid.Column="1" FontFamily="Calibri" Text="{Binding xMoeda}" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock Grid.Column="3" FontFamily="Calibri" TextWrapping="Wrap"   VerticalAlignment="Top" Text="{Binding xPais}"></TextBlock>
                                 <Image Source="{Binding xPathImagem, Converter={StaticResource imgConverter}}" 
-                                       Height="15" Width="15"
-                                       VerticalAlignment="Center"
+                                       Height="15" Grid.Column="5"
+                                       VerticalAlignment="Top"
                                        Stretch="Fill"
                                        DockPanel.Dock="Left"/>
                                 <Label/>
-                            </DockPanel>
+                            </Grid>
                         </DataTemplate>
                     </Components:CustomComboBox.ItemTemplate>
                 </Components:CustomComboBox>
