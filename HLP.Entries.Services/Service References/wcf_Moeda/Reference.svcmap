@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0edab3b0-3633-4afd-bb79-2ba7bee52bdb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Moeda.disco" MetadataType="Disco" ID="ef06d16b-2ffc-41ae-a372-dc53f0615e46" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?disco" />
+    <MetadataFile FileName="wcf_Moeda.xsd" MetadataType="Schema" ID="83632e4d-8fd9-43ef-a117-dabc0a84c355" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Moeda1.xsd" MetadataType="Schema" ID="6b1ea733-0ac7-460e-a8c1-59eb69e94114" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Moeda2.xsd" MetadataType="Schema" ID="2b61a0dc-01da-42cc-b7cc-29bb05ce93c7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Moeda3.xsd" MetadataType="Schema" ID="35a08aa6-8fcb-4ab9-83bd-3f0f6bada1bc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Moeda4.xsd" MetadataType="Schema" ID="24fef1fb-0674-41be-8708-8999dee7b1eb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Moeda.wsdl" MetadataType="Wsdl" ID="a2d17633-3ac4-4de4-8536-b873fae2180a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

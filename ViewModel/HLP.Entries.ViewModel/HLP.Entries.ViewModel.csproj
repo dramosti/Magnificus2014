@@ -299,11 +299,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\moedaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\multaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -973,25 +968,6 @@
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\moedaService\serviceMoeda.wsdl" />
-    <None Include="Service References\moedaService\serviceMoeda.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\moedaService\serviceMoeda1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\moedaService\serviceMoeda2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\moedaService\serviceMoeda3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\moedaService\serviceMoeda4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\moedaService\serviceMoeda5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\multaService\serviceMulta.wsdl" />
     <None Include="Service References\multaService\serviceMulta.xsd">
       <SubType>Designer</SubType>
@@ -1458,7 +1434,6 @@
     <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
     <WCFMetadataStorage Include="Service References\jurosService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
-    <WCFMetadataStorage Include="Service References\moedaService\" />
     <WCFMetadataStorage Include="Service References\multaService\" />
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
@@ -1689,21 +1664,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\fabricanteService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\moedaService\serviceMoeda.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\moedaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\moedaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\moedaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
