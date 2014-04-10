@@ -1247,7 +1247,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ListBox_Calendario_Ponto_Padrao" TargetType="{x:Type ListBox}">        
+    <Style x:Key="ListBox_Calendario_Ponto_Padrao" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -1259,7 +1260,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border x:Name="Bd" CornerRadius="5" BorderThickness="0.7" Padding="1" SnapsToDevicePixels="true" BorderBrush="Black">
+                    <Border x:Name="Bd" CornerRadius="5" BorderThickness="0.7" Background="White" Padding="1" SnapsToDevicePixels="true" BorderBrush="Black">
                         <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </ScrollViewer>

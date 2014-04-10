@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         depositoViewModel objViewModel;
-        depositoService.IserviceDepositoClient servico = new depositoService.IserviceDepositoClient();
+        DepositoService objService;
 
         public depositoCommands(depositoViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
+            this.objService = new DepositoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -73,8 +75,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel.idDeposito = this.servico.saveDeposito(objDeposito:
-                    this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idDeposito = this.objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
                 e.Result = e.Argument;
             }
             catch (Exception ex)
@@ -129,7 +131,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteDeposito((int)this.objViewModel.currentModel.idDeposito))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -157,7 +159,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new DepositoModel();
@@ -207,7 +209,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -255,8 +257,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentID = this.servico.copyDeposito(idDeposito:
-                    (int)this.objViewModel.currentModel.idDeposito);
+                this.objViewModel.currentID = this.objService.CopyObject(
+                    id: this.objViewModel.currentID);
             }
             catch (Exception ex)
             {
@@ -296,9 +298,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
-        private async void getDeposito(object sender, DoWorkEventArgs e)
+        private void getDeposito(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getDepositoAsync(idDeposito: this.objViewModel.currentID);
+            this.objViewModel.currentModel =
+                this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="55259c04-f2c7-4340-a19b-4c2c9645082d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Deposito.xsd" MetadataType="Schema" ID="79846ba4-8451-4f65-878b-2ee31fdaa3d8" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Deposito1.xsd" MetadataType="Schema" ID="56edfc18-7b75-440d-81f5-0089e99938bd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Deposito2.xsd" MetadataType="Schema" ID="51ddccfc-850e-4516-8454-a250146512bb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Deposito3.xsd" MetadataType="Schema" ID="6fbd4085-fbc3-4900-99d4-9ec61b0542f1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Deposito4.xsd" MetadataType="Schema" ID="63dd9a5c-6dd9-45ff-883f-cb8550f92549" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Deposito.disco" MetadataType="Disco" ID="71eacbc7-cc41-4404-8854-12453584dac5" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?disco" />
+    <MetadataFile FileName="wcf_Deposito.wsdl" MetadataType="Wsdl" ID="0538f090-6eb6-4fdf-9a26-99e789739bea" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Deposito.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
