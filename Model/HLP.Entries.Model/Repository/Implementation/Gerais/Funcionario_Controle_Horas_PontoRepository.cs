@@ -238,7 +238,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 int iDias = DateTime.DaysInMonth(dtMes.Year, dtMes.Month);
                 TimeSpan tsReturn = new TimeSpan();
-                for (int i = 1; i < iDias; i++)
+                for (int i = 1; i <= iDias; i++)
                 {
                     foreach (TimeSpan ts in this.GetListHorasAtrabalharDia(idFuncionario, new DateTime(dtMes.Year, dtMes.Month, i)))
                     {

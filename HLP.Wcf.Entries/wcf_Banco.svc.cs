@@ -13,24 +13,22 @@ namespace HLP.Wcf.Entries
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceBanco" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select serviceBanco.svc or serviceBanco.svc.cs at the Solution Explorer and start debugging.
-    public class serviceBanco : IserviceBanco
+    public class wcf_Banco : Iwcf_Banco
     {
         [Inject]
         public IBancoRepository bancoRepository { get; set; }
 
-        public serviceBanco()
+        public wcf_Banco()
         {
 
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
             kernel.Inject(this);
             Log.xPath = @"C:\inetpub\wwwroot\log";
-
         }
 
         public int Save(HLP.Entries.Model.Models.Financeiro.BancoModel Objeto)
         {
-
             try
             {
                 bancoRepository.Save(banco: Objeto);
@@ -41,7 +39,6 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
-
         }
 
         public HLP.Entries.Model.Models.Financeiro.BancoModel GetObjeto(int idObjeto)

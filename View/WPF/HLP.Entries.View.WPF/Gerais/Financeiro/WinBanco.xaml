@@ -52,7 +52,7 @@
             </TabItem>
             <TabItem Header="Hierarquia">
                 <Grid>
-                    <TreeView HorizontalAlignment="Left" Height="416.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="489"/>
+                    <TreeView />
                 </Grid>
             </TabItem>
         </TabControl>

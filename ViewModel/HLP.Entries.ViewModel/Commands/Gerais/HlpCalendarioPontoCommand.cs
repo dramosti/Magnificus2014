@@ -29,8 +29,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> lReturn = servico.GetAllFuncionario_Controle_Horas_Ponto(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
+                // verifica se tem calendario no dia.
+                bool  isDSF = servico.GetHorasAtrabalhadarDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto)).Count() > 0;
 
+                List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> lReturn = servico.GetAllFuncionario_Controle_Horas_Ponto(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
                 if (lReturn.Count == 0)
                     this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.EMBRANCO;
                 else if (lReturn.Where(c => c.stFalta == 1).Count() == lReturn.Count())
@@ -39,6 +41,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.ABONO;
                 else
                     this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.NORMAL;
+
+
+                if (this.objViewModel.stDia == HlpCalendarioPontoViewModel.StatusDia.EMBRANCO && isDSF)
+                {
+                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.DSF;
+                }
 
                 if (objViewModel.idFuncionario != 0 && objViewModel.dataPonto != "")
                     this.objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>(servico.GetHorasTrabalhadasDia
