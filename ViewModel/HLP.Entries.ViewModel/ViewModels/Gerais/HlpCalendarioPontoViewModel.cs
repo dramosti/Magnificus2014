@@ -26,6 +26,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                     {
                         Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
                     };
+
+            this.styleDSR = resource["ListBoxStyle1"] as Style;
         }
 
         private ObservableCollection<EspelhoPontoModel> _lPonto = new ObservableCollection<EspelhoPontoModel>();
@@ -115,11 +117,11 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 {
                     this.styleDia = resource["EllipseVermelha"] as Style;
                 }
-                else if (value== StatusDia.ABONO)
+                else if (value == StatusDia.ABONO)
                 {
                     this.styleDia = resource["EllipseAzul"] as Style;
                 }
-                else if (value== StatusDia.ABONO)
+                else if (value == StatusDia.ABONO)
                 {
                     this.styleDia = resource["EllipseVerde"] as Style;
                 }
@@ -129,7 +131,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 }
                 else if (value == StatusDia.DSR)
                 {
-                    this.styleDia = resource["EllipseVerde"] as Style;
+                    this.styleDia = resource["EllipseRoxa"] as Style;
                 }
                 _stDia = value;
             }
@@ -146,13 +148,13 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-        private Style _styleDSF;
-        public Style styleDSF
+        private Style _styleDSR;
+        public Style styleDSR
         {
-            get { return _styleDSF; }
+            get { return _styleDSR; }
             set
             {
-                _styleDSF = value; this.NotifyPropertyChanged(propertyName: "styleDSF");
+                _styleDSR = value; this.NotifyPropertyChanged(propertyName: "styleDSF");
             }
         }
 
@@ -165,7 +167,8 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             set
             {
                 _isDSR = value;
-                this.styleDSF = resource["EllipseVerde"] as Style;
+                if (value)
+                    this.styleDSR = resource["ListBoxStyle_Domingo_Sabado_Feriado"] as Style;
             }
 
         }

@@ -30,7 +30,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 // verifica se tem calendario no dia.
-                objViewModel.isDSR = servico.GetHorasAtrabalhadarDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto)).Count() > 0;
+                objViewModel.isDSR = servico.GetHorasAtrabalhadarDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto)).Count() == 0;
 
                 List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> lReturn = servico.GetAllFuncionario_Controle_Horas_Ponto(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
                 if (lReturn.Count == 0)
