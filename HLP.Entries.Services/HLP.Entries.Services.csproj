@@ -50,6 +50,7 @@
     <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
+    <Compile Include="Gerais\MoedaService.cs" />
     <Compile Include="Gerais\Plano_PagamentoService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
     <Compile Include="Parametros\EmpresaParametrosService.cs" />

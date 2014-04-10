@@ -107,19 +107,27 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _stDia; }
             set
             {
-                if (value.ToString().ToUpper().Equals("EMBRANCO"))
+                if (value == StatusDia.EMBRANCO)
                 {
                     this.styleDia = resource["EllipsePreta"] as Style;
                 }
-                else if (value.ToString().ToUpper().Equals("FALTOU"))
+                else if (value == StatusDia.FALTOU)
                 {
                     this.styleDia = resource["EllipseVermelha"] as Style;
                 }
-                else if (value.ToString().ToUpper().Equals("ABONO"))
+                else if (value== StatusDia.ABONO)
                 {
                     this.styleDia = resource["EllipseAzul"] as Style;
                 }
-                else if (value.ToString().ToUpper().Equals("NORMAL"))
+                else if (value== StatusDia.ABONO)
+                {
+                    this.styleDia = resource["EllipseVerde"] as Style;
+                }
+                else if (value == StatusDia.NORMAL)
+                {
+                    this.styleDia = resource["EllipseVerde"] as Style;
+                }
+                else if (value == StatusDia.DSR)
                 {
                     this.styleDia = resource["EllipseVerde"] as Style;
                 }
@@ -139,22 +147,32 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
         private Style _styleDSF;
-
         public Style styleDSF
         {
             get { return _styleDSF; }
             set
             {
                 _styleDSF = value; this.NotifyPropertyChanged(propertyName: "styleDSF");
-
             }
+        }
+
+
+        private bool _isDSR;
+
+        public bool isDSR
+        {
+            get { return _isDSR; }
+            set
+            {
+                _isDSR = value;
+                this.styleDSF = resource["EllipseVerde"] as Style;
+            }
+
         }
 
 
 
 
-
-
-        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO, DSF };
+        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO, DSR };
     }
 }
