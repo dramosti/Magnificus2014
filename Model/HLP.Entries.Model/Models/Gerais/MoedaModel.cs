@@ -28,9 +28,21 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
         [ParameterOrder(Order = 2)]
-        public string xSiglaMoeda { get; set; }
+        public string xSiglaMoeda { get; set; }        
+        
+        private string _xMoeda;
+
         [ParameterOrder(Order = 3)]
-        public string xMoeda { get; set; }
+        public string xMoeda
+        {
+            get { return _xMoeda; }
+            set
+            {
+                _xMoeda = value;
+                base.NotifyPropertyChanged(propertyName: "xMoeda");
+            }
+        }
+        
         [ParameterOrder(Order = 4)]
         public string xSimbolo { get; set; }
     }

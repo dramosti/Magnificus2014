@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
+        xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Converters"
         x:Class="HLP.Entries.View.WPF.Gerais.WinMoeda" x:Name="wdMoeda"
         Title="Moedas" Height="660" Width="1024" NameView="vwMoeda">
     <runtime:WindowsBase.Resources>
@@ -11,7 +12,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>            
-            <convert:ImageToaByteConverter x:Key="imgConverter"></convert:ImageToaByteConverter>
+            <convert:ImageToaByteConverter x:Key="imgConverter"></convert:ImageToaByteConverter>      
+            <convertLocal:MoedaPadraoConverter x:Key="moedaPadraoConverter"></convertLocal:MoedaPadraoConverter>
         </ResourceDictionary>
     </runtime:WindowsBase.Resources>
 	<Grid>
@@ -66,8 +68,17 @@
 					ToolTip="Símbolo da moeda selecionada são usados frequentemente nos relatórios.">
                 </Components:CustomTextBox>
                 <Components:CustomComboBox
-                    IsEnabled="{Binding bIsEnabled}"
-                    x:Name="cbxMoedaPadrao" Grid.Column="2" Grid.Row="5" ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}">
+                    IsEnabled="{Binding bIsEnabled}"                    
+                    x:Name="cbxMoedaPadrao" Grid.Column="2" Grid.Row="5"
+                    ItemsSource="{Binding ElementName=wdMoeda, Path=lMoedaPadrao}">
+                    <Components:CustomComboBox.SelectedIndex>
+                        <MultiBinding Converter="{StaticResource moedaPadraoConverter}">
+                            <MultiBinding.Bindings>
+                                <Binding Path="currentModel.xMoeda"/>
+                                <Binding ElementName="wdMoeda" Path="lMoedaPadrao"/>
+                            </MultiBinding.Bindings>
+                        </MultiBinding>
+                    </Components:CustomComboBox.SelectedIndex>
                     <Components:CustomComboBox.ItemTemplate>
                         <DataTemplate>
                             <DockPanel LastChildFill="True" Height="40">

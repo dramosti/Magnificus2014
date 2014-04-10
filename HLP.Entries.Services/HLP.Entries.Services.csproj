@@ -47,6 +47,7 @@
     <Compile Include="Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
+    <Compile Include="Gerais\DepositoService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
     <Compile Include="Gerais\MoedaService.cs" />
