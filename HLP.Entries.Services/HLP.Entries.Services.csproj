@@ -51,6 +51,7 @@
     <Compile Include="Gerais\DepositoService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
+    <Compile Include="Gerais\MoedaService.cs" />
     <Compile Include="Gerais\Plano_PagamentoService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
     <Compile Include="Parametros\EmpresaParametrosService.cs" />
@@ -86,6 +87,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_Funcionarios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Moeda\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -148,6 +154,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
@@ -272,6 +279,22 @@
     <None Include="Service References\wcf_Funcionarios\wcf_Funcionario6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda.wsdl" />
+    <None Include="Service References\wcf_Moeda\wcf_Moeda.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.wsdl" />
     <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros.xsd">
       <SubType>Designer</SubType>
@@ -367,6 +390,7 @@
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionarios\" />
+    <WCFMetadataStorage Include="Service References\wcf_Moeda\" />
     <WCFMetadataStorage Include="Service References\wcf_ParametroEmpresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
     <WCFMetadataStorage Include="Service References\wcf_PlanoPagamento\" />
@@ -549,6 +573,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Banco\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\wcf_Moeda.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Moeda\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

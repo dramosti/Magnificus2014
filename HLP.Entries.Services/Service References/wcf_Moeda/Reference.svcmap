@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0edab3b0-3633-4afd-bb79-2ba7bee52bdb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3511d78b-a259-411a-a476-f627074888f0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -26,13 +26,13 @@
     <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wcf_Moeda.disco" MetadataType="Disco" ID="ef06d16b-2ffc-41ae-a372-dc53f0615e46" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?disco" />
-    <MetadataFile FileName="wcf_Moeda.xsd" MetadataType="Schema" ID="83632e4d-8fd9-43ef-a117-dabc0a84c355" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd2" />
-    <MetadataFile FileName="wcf_Moeda1.xsd" MetadataType="Schema" ID="6b1ea733-0ac7-460e-a8c1-59eb69e94114" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Moeda2.xsd" MetadataType="Schema" ID="2b61a0dc-01da-42cc-b7cc-29bb05ce93c7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Moeda3.xsd" MetadataType="Schema" ID="35a08aa6-8fcb-4ab9-83bd-3f0f6bada1bc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd4" />
-    <MetadataFile FileName="wcf_Moeda4.xsd" MetadataType="Schema" ID="24fef1fb-0674-41be-8708-8999dee7b1eb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd1" />
-    <MetadataFile FileName="wcf_Moeda.wsdl" MetadataType="Wsdl" ID="a2d17633-3ac4-4de4-8536-b873fae2180a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?wsdl" />
+    <MetadataFile FileName="wcf_Moeda.disco" MetadataType="Disco" ID="58e40227-5d62-4b0c-b7c5-adb49e549ce1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?disco" />
+    <MetadataFile FileName="wcf_Moeda.xsd" MetadataType="Schema" ID="064c8d09-a42a-42dd-8b35-079c7a6bd032" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Moeda1.xsd" MetadataType="Schema" ID="54246ec3-b693-4964-bd8c-c32ac40f7aca" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Moeda2.xsd" MetadataType="Schema" ID="a26d512f-0579-40ad-9946-581d4c547125" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Moeda3.xsd" MetadataType="Schema" ID="6103afdd-55fa-40ab-9bbc-a70be44f31af" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Moeda4.xsd" MetadataType="Schema" ID="d531be20-eeda-428c-800a-bb881fddd275" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Moeda.wsdl" MetadataType="Wsdl" ID="181b9188-ea37-4387-a271-ba2a4337366e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Moeda.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
