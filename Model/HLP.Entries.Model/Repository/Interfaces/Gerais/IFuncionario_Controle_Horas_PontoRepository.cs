@@ -17,6 +17,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         List<EspelhoPontoModel> GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto);
         List<Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia);
         List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia);
+        bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia);
         void BeginTransaction();
         void CommitTransaction();
         void RollbackTransaction();

@@ -32,7 +32,6 @@
     <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto2.xsd" MetadataType="Schema" ID="caefa16d-f3dd-4ffb-9807-e9e58c9ebee7" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd2" />
     <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto3.xsd" MetadataType="Schema" ID="7e9024bb-1b9a-4ff4-a910-b5d12d7c8a30" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" />
     <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto4.xsd" MetadataType="Schema" ID="1a1967f2-763b-450e-a557-45ab6fc2ffb3" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd0" />
-    <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto5.xsd" MetadataType="Schema" ID="bb28711f-61cd-4870-b0eb-ecc83d9d620b" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd5" />
     <MetadataFile FileName="wcf_Funcionario_Controle_Horas_Ponto.disco" MetadataType="Disco" ID="13a97e64-60e7-4d87-8499-015e857dca3d" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?disco" />
   </Metadata>
   <Extensions>

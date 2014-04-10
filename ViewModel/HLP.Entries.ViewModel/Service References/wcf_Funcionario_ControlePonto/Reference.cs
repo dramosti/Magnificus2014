@@ -15,7 +15,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.EspelhoPontoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel))]
@@ -80,7 +80,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
     public partial class PesquisaPadraoModelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -172,7 +172,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases")]
     public enum statusModel : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -285,12 +285,12 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "al", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "alResponse")]
-        System.TimeSpan GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes);
+        System.Nullable<System.TimeSpan> GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "al", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "alResponse")]
-        System.Threading.Tasks.Task<System.TimeSpan> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes);
+        System.Threading.Tasks.Task<System.Nullable<System.TimeSpan>> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMesRespo" +
             "nse")]
@@ -299,6 +299,14 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMesRespo" +
             "nse")]
         System.Threading.Tasks.Task DeleteBancoHorasMesAsync(int idFuncionario, System.DateTime dtMes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDiaRespo" +
+            "nse")]
+        bool ExisteCalendarioDia(int idFuncionario, System.DateTime dtDia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDia", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/ExisteCalendarioDiaRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<bool> ExisteCalendarioDiaAsync(int idFuncionario, System.DateTime dtDia);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -416,11 +424,11 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
             return base.Channel.GetHorasAtrabalharDiaAsync(idFuncionario, dtDia);
         }
         
-        public System.TimeSpan GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes) {
+        public System.Nullable<System.TimeSpan> GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes) {
             return base.Channel.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
         }
         
-        public System.Threading.Tasks.Task<System.TimeSpan> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes) {
+        public System.Threading.Tasks.Task<System.Nullable<System.TimeSpan>> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes) {
             return base.Channel.GetTotalBancoHorasMesAtualAsync(idFuncionario, dtMes);
         }
         
@@ -430,6 +438,14 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         
         public System.Threading.Tasks.Task DeleteBancoHorasMesAsync(int idFuncionario, System.DateTime dtMes) {
             return base.Channel.DeleteBancoHorasMesAsync(idFuncionario, dtMes);
+        }
+        
+        public bool ExisteCalendarioDia(int idFuncionario, System.DateTime dtDia) {
+            return base.Channel.ExisteCalendarioDia(idFuncionario, dtDia);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExisteCalendarioDiaAsync(int idFuncionario, System.DateTime dtDia) {
+            return base.Channel.ExisteCalendarioDiaAsync(idFuncionario, dtDia);
         }
     }
 }

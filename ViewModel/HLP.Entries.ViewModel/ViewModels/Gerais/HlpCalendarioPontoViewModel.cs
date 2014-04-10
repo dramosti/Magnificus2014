@@ -17,15 +17,15 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public HlpCalendarioPontoCommand command;
         public ICommand LancamentoManualCommand { get; set; }
         public Action actionAtualizaWindowPrincipal;
-        ResourceDictionary resource;
+        public ResourceDictionary resource;
 
         public HlpCalendarioPontoViewModel()
         {
-            command = new HlpCalendarioPontoCommand(this);
             resource = new ResourceDictionary
                     {
                         Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
-                    };
+                    };           
+            command = new HlpCalendarioPontoCommand(this);
         }
 
         private ObservableCollection<EspelhoPontoModel> _lPonto = new ObservableCollection<EspelhoPontoModel>();
@@ -107,21 +107,29 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             get { return _stDia; }
             set
             {
-                if (value.ToString().ToUpper().Equals("EMBRANCO"))
+                if (value == StatusDia.EMBRANCO)
                 {
                     this.styleDia = resource["EllipsePreta"] as Style;
                 }
-                else if (value.ToString().ToUpper().Equals("FALTOU"))
+                else if (value == StatusDia.FALTOU)
                 {
                     this.styleDia = resource["EllipseVermelha"] as Style;
                 }
-                else if (value.ToString().ToUpper().Equals("ABONO"))
+                else if (value == StatusDia.ABONO)
                 {
                     this.styleDia = resource["EllipseAzul"] as Style;
                 }
-                else if (value.ToString().ToUpper().Equals("NORMAL"))
+                else if (value == StatusDia.ABONO)
                 {
                     this.styleDia = resource["EllipseVerde"] as Style;
+                }
+                else if (value == StatusDia.NORMAL)
+                {
+                    this.styleDia = resource["EllipseVerde"] as Style;
+                }
+                else if (value == StatusDia.DSR)
+                {
+                    this.styleDia = resource["EllipseRoxa"] as Style;
                 }
                 _stDia = value;
             }
@@ -138,23 +146,34 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-        private Style _styleDSF;
-
-        public Style styleDSF
+        private Style _styleDSR;
+        public Style styleDSR
         {
-            get { return _styleDSF; }
+            get { return _styleDSR; }
             set
             {
-                _styleDSF = value; this.NotifyPropertyChanged(propertyName: "styleDSF");
-
+                _styleDSR = value; this.NotifyPropertyChanged(propertyName: "styleDSR");
             }
+        }
+
+
+        private bool _isDSR;
+
+        public bool isDSR
+        {
+            get { return _isDSR; }
+            set
+            {
+                _isDSR = value;
+                if (value)
+                    this.styleDSR = resource["ListBoxStyle_Domingo_Sabado_Feriado"] as Style;
+            }
+
         }
 
 
 
 
-
-
-        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO, DSF };
+        public enum StatusDia { NORMAL, FALTOU, ABONO, EMBRANCO, DSR };
     }
 }
