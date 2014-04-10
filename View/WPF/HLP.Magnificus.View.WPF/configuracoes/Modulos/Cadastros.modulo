@@ -71,7 +71,7 @@
     type="HLP.Entries.View.WPF.Gerais.WinMoeda, HLP.Entries.View.WPF">
   </object>
   <object id="WinPlanoPagamento" name="Plano_de_Pagamento" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.GestaoAdministrativa.Financeiro.WinPlanoPagamento, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinPlanoPagamento, HLP.Entries.View.WPF">
   </object>
   <object id="WinRamoAtividade" name="Ramo_de_Atividade" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinRamoAtividade, HLP.Entries.View.WPF">

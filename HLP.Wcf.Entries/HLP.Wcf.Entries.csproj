@@ -161,6 +161,7 @@
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_HlpPesqPadrao.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
+    <Content Include="wcf_Moeda.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_PlanoPagamento.svc" />
     <Content Include="wcf_Produto.svc" />
@@ -247,6 +248,7 @@
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_HlpPesqPadrao.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
+    <Compile Include="Iwcf_Moeda.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_PlanoPagamento.cs" />
     <Compile Include="Iwcf_Produto.cs" />
@@ -462,6 +464,9 @@
     </Compile>
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Moeda.svc.cs">
+      <DependentUpon>wcf_Moeda.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_PesquisaRapida.svc.cs">
       <DependentUpon>wcf_PesquisaRapida.svc</DependentUpon>

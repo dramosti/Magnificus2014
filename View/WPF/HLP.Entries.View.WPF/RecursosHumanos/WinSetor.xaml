@@ -38,6 +38,7 @@
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descricao"/>
                 <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="E-mail do Setor"/>
 
+                <!--Components-->
                 
                 <Components:CustomTextBox Grid.Column="2" Grid.Row="1"
                                           Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
