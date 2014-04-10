@@ -412,7 +412,7 @@
                     </Button.Effect>
                 </Button>
                 <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandFecharMes}"  Grid.Row="2" Style="{StaticResource ButtonFechar}" Content="Fechar"/>
-                <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandReabrirMes}" Grid.Row="4" Style="{StaticResource ButtonFechar}" Content="Reabrir"/>
+                <Button IsEnabled="{Binding bIsEnabled}" Command="{Binding commandReabrirMes}" Grid.Row="4" Style="{StaticResource ButtonReabrir}" Content="Reabrir"/>
             </Grid>
         </Grid>
     </Grid>
