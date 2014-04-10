@@ -286,7 +286,7 @@
                         <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                     </Button.Effect>
                 </Button>
-                <TextBlock Grid.Row="1" ToolTip="Total de dias trabalhados no mês" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.iDiasTrabalhados}"></TextBlock>
+                <TextBlock Grid.Row="1" ToolTip="Quantidade de dias que o funcionário trabalho no período selecionado" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.iDiasTrabalhados}"></TextBlock>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2"  Margin="5,0,0,5">
                 <Grid.RowDefinitions>
@@ -299,7 +299,7 @@
                         <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                     </Button.Effect>
                 </Button>
-                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Total de Horas a trabalhar, baseado no calendário configurado no Cadastro do Funcionário." FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsHorasAtrabalhar, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
+                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Somatória de todas as horas à trabalhar no período selecionado." FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsHorasAtrabalhar, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="3"  Margin="5,0,0,5">
                 <Grid.RowDefinitions>
@@ -312,7 +312,7 @@
                         <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                     </Button.Effect>
                 </Button>
-                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Total de horas trabalhadas no mês." FontSize="40" VerticalAlignment="Center" Text="{Binding currentModel.tsHorasTrabalhadas, Converter={StaticResource diasToHorasConvert}}" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Somatória de todas as horas trabalhadas ou realizadas pelo funcionário no período selecionado." FontSize="40" VerticalAlignment="Center" Text="{Binding currentModel.tsHorasTrabalhadas, Converter={StaticResource diasToHorasConvert}}" HorizontalAlignment="Center"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="1"  Margin="5,0,0,5">
                 <Grid.RowDefinitions>
@@ -325,7 +325,7 @@
                         <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                     </Button.Effect>
                 </Button>
-                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Cálculo = ( Total de horas trabalhadas - Total de horas à trabalhar ) " FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsHorasAcumuladasNoPeriodo, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
+                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Mostra a quantidade de horas tanto excedente quanto faltantes no período filtrado." FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsHorasAcumuladasNoPeriodo, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="2"  Margin="5,0,0,5">
                 <Grid.RowDefinitions>
@@ -338,7 +338,7 @@
                         <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                     </Button.Effect>
                 </Button>
-                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Total do saldo de banco de horas, salvo na base de dados." FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsSaldoBancoHoras, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
+                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Mostra a quantidade do saldo do banco de horas até o período selecionado. Mostra somente o resultado dos período anteriores ao selecionando." FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsSaldoBancoHoras, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="3"  Margin="5,0,0,5">
                 <Grid.RowDefinitions>
@@ -351,7 +351,7 @@
                         <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
                     </Button.Effect>
                 </Button>
-                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Cálculo = ( Total do saldo de banco de horas + Horas acumuladas no periodo )" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsSaldoAteMomento, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
+                <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" ToolTip="Mostra o quanto o funcionário tem de banco de horas incluindo ou não o total de horas acumuladas no período, é o exato valor naquele momento de quantas horas o funcionário tem em seu banco de horas" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding currentModel.tsSaldoAteMomento, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="4"  Margin="5,0,0,5">
                 <Grid.RowDefinitions>
@@ -371,25 +371,28 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="5"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="24"></RowDefinition>
+                        <RowDefinition Height="2"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
                     </Grid.RowDefinitions>
                     <!--Ellipses-->
 
-                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="1" Margin="0,3,0,3" Style="{StaticResource EllipseVerde}"></Ellipse>
-                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="2" Margin="0,3,0,3" Style="{StaticResource EllipseAzul}"></Ellipse>
-                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="3" Margin="0,3,0,3" Style="{StaticResource EllipseVermelha}"></Ellipse>
-                    <Ellipse Height="18" Width="18" Grid.Column="1" Grid.Row="4" Margin="0,3,0,3" Style="{StaticResource EllipsePreta}"></Ellipse>
+                    <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="1" Margin="0,0,0,3" Style="{StaticResource EllipseVerde}"></Ellipse>
+                    <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="2" Margin="0,0,0,3" Style="{StaticResource EllipseAzul}"></Ellipse>
+                    <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="3" Margin="0,0,0,3" Style="{StaticResource EllipseVermelha}"></Ellipse>
+                    <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="4" Margin="0,0,0,3" Style="{StaticResource EllipsePreta}"></Ellipse>
+                    <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="5" Margin="0,0,0,3" Style="{StaticResource EllipseRoxa}"></Ellipse>
 
                     <!--Labels-->
 
-                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="1" Height="20" Margin="3,0,0,0" Text="Normal" VerticalAlignment="Center"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="2" Height="20" Margin="3,0,0,0" Text="Abono/Férias" VerticalAlignment="Center"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="3" Height="20" Margin="3,0,0,0" Text="Falta" VerticalAlignment="Center"></Components:CustomTextBlock>
-                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="4" Height="20" Margin="3,0,0,0" Text="Sem ponto" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="1" Height="20" Text="Normal" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="2" Height="20" Text="Abono/Férias" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="3" Height="20" Text="Falta" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="4" Height="20" Text="Sem ponto" VerticalAlignment="Center"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="2" Grid.Row="5" Height="20" Text="DSR/Feriado " VerticalAlignment="Center"></Components:CustomTextBlock>
                 </Grid>
             </Grid>
             <Grid Grid.Column="2" Grid.Row="4"  Margin="5,0,0,5">

@@ -165,6 +165,7 @@
       <DependentUpon>WinTipoOperacao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gerais\Converters\EnabledValorPorcentagemMultiConverter.cs" />
+    <Compile Include="Gerais\Converters\MoedaPadraoConverter.cs" />
     <Compile Include="Gerais\Converters\RowDateListaPrecoConverter.cs" />
     <Compile Include="Gerais\Converters\StCustoProdutoConverter.cs" />
     <Compile Include="Gerais\Converters\StTipoAtualizacaoConverter.cs" />
