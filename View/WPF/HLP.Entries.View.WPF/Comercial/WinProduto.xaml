@@ -476,298 +476,504 @@
             </TabItem>
             <TabItem Header="Dados Fiscais">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <Expander Header="Geral" IsExpanded="True" Height="178" DockPanel.Dock="Top">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.pInss, Mode=TwoWay, Converter={StaticResource porcConverter},
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Expander Header="Geral" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Origem da Mercadoria para Simples Nacional" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária sobre ICMS" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Entra para base de INSS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="% de INSS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Alíquota de Importação" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    SelectedIndex="{Binding currentModel.stOrigemMercadoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="% de INSS" Help="Informar a alíquota sobre o INSS (Instituto Nacional de Seguro Social)" WidthLabel="328" Width="478"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.pImportacao, Mode=TwoWay, Converter={StaticResource porcConverter},
-                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Alíquota de Importação" Help="É preenchido com a alíquota de importação do Produto. Esta é utilizada na montagem de Nota Fiscal, para calcular o Imposto de Importação, mas somente se na operação estiver definido para calcular o mesmo." WidthLabel="328" Width="478"/>
-                                <Components:HlpComboBox 
-									
-									SelectedIndex="{Binding currentModel.stOrigemMercadoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Origem da Mercadoria para Simples Nacional" Help="Informar qual é a origem da Mercadoria, são elas:" WidthLabel="328" Width="478.25">
-                                    <Components:HlpComboBox.Items>
+									ToolTip="Informar qual é a origem da Mercadoria, são elas:">
+                                    <Components:CustomComboBox.Items>
                                         <System:String>0-NACIONAL</System:String>
                                         <System:String>1-ESTRANGEIRA POR IMPORTACAO DIRETA</System:String>
                                         <System:String>2-ESTRANGEIRA ADQUIRIDA NO MERCADO INTERNO</System:String>
-                                    </Components:HlpComboBox.Items>
-                                </Components:HlpComboBox>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária sobre ICMS" Help="Informar a Situação Tributária para o ICMS (IMPOSTO SOBRE CIRCULAÇÃO DE MERCADORIAS E PRESTAÇÃO DE SERVIÇOS)" WidthLabel="328" Width="584" TableView="vwSituacaoTributariaIcms" FieldPesquisa="ID">
+									ToolTip="Informar a Situação Tributária para o ICMS (IMPOSTO SOBRE CIRCULAÇÃO DE MERCADORIAS E PRESTAÇÃO DE SERVIÇOS)" WidthLabel="0" TableView="vwSituacaoTributariaIcms" FieldPesquisa="ID">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xCSTIcms</System:String>
                                         <System:String>cCSTIcms</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.stInss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    IsChecked="{Binding currentModel.stInss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Entra para base de INSS" Help="Informar se o produto/serviço entrara para a base de INSS (Instituto Nacional de Seguro Social) se sim o campo percentual de INSS ficará habilitado." WidthLabel="328"/>
-                            </WrapPanel>
+									ToolTip="Informar se o produto/serviço entrara para a base de INSS (Instituto Nacional de Seguro Social) se sim o campo percentual de INSS ficará habilitado.">
+                                </Components:CustomCheckBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="4"
+                                    Text="{Binding currentModel.pInss, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="Informar a alíquota sobre o INSS (Instituto Nacional de Seguro Social)">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    Text="{Binding currentModel.pImportacao, Mode=TwoWay, Converter={StaticResource porcConverter},
+                                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="É preenchido com a alíquota de importação do Produto. Esta é utilizada na montagem de Nota Fiscal, para calcular o Imposto de Importação, mas somente se na operação estiver definido para calcular o mesmo.">
+                                </Components:CustomTextBox>
+                                
+                                
+                            </Grid>
                         </Expander>
-                        <Expander Header="Ordem de Venda" IsExpanded="True" DockPanel.Dock="Top" Height="200">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <Expander Header="Ordem de Venda" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="270" MinWidth="270"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Código de ICMS" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária de IPI" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária de PIS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária de COFINS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCodigoIcmsPaiVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Código de ICMS" Help="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="222" Width="522">
+									ToolTip="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cIcms</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTIpiVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária de IPI " Help="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="222" Width="522">
+									ToolTip="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTIpi</System:String>
                                         <System:String>xCSTIpi</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTPisVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária de PIS " Help="Informar a Situação Tributária sobre vendas para o PIS (Programa de Integração Social)" TableView="vwStPIS" FieldPesquisa="ID" WidthLabel="222" Width="522">
+									ToolTip="Informar a Situação Tributária sobre vendas para o PIS (Programa de Integração Social)" TableView="vwStPIS" FieldPesquisa="ID" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTPis</System:String>
                                         <System:String>xCSTPis</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTCofinsVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária de COFINS" Help="Informar a Situação Tributária sobre vendas para o COFINS (Contribuição para Financiamento da Seguridade Social)" FieldPesquisa="ID" TableView="vwStCOFINS" WidthLabel="222" Width="522">
+									ToolTip="Informar a Situação Tributária sobre vendas para o COFINS (Contribuição para Financiamento da Seguridade Social)" FieldPesquisa="ID" TableView="vwStCOFINS" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTCofins</System:String>
                                         <System:String>xCSTCofins</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idClassificacaoFiscalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Classificação Fiscal" Help="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="222" Width="522">
+									ToolTip="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>XClassificacaoFiscal</System:String>
                                         <System:String>cNCM</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                            </WrapPanel>
+
+                            </Grid>
                         </Expander>
-                        <Expander Header="Ordem de Compra" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <Expander Header="Ordem de Compra" Grid.Row="2" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="270" MinWidth="270"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Código de ICMS" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária de IPI" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária de PIS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Situação Tributária de COFINS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+
+                                <!--Components-->
+
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCodigoIcmsPaiCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Código de ICMS" Help="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="222" Width="522">
+									ToolTip="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cIcms</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTIpiCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária de IPI " Help="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="222" Width="522">
+									ToolTip="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTIpi</System:String>
                                         <System:String>xCSTIpi</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTPisCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária de PIS " Help="Informar a Situação Tributária sobre vendas para o PIS (Programa de Integração Social)" TableView="vwStPIS" FieldPesquisa="ID" WidthLabel="222" Width="522">
+									ToolTip="Informar a Situação Tributária sobre vendas para o PIS (Programa de Integração Social)" TableView="vwStPIS" FieldPesquisa="ID" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTPis</System:String>
                                         <System:String>xCSTPis</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTCofinsCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Situação Tributária de COFINS" Help="Informar a Situação Tributária sobre vendas para o COFINS (Contribuição para Financiamento da Seguridade Social)" FieldPesquisa="ID" TableView="vwStCOFINS" WidthLabel="222" Width="522">
+									ToolTip="Informar a Situação Tributária sobre vendas para o COFINS (Contribuição para Financiamento da Seguridade Social)" FieldPesquisa="ID" TableView="vwStCOFINS" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTCofins</System:String>
                                         <System:String>xCSTCofins</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idClassificacaoFiscalCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Classificação Fiscal" Help="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="222" Width="522">
+									ToolTip="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>XClassificacaoFiscal</System:String>
                                         <System:String>cNCM</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                            </WrapPanel>
+
+                            </Grid>
                         </Expander>
-                    </DockPanel>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Dados de ordem de Venda">
                 <AdornerDecorator>
-                    <Expander Header="Configuração" IsExpanded="True">
-                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                            <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.vVenda, Mode=TwoWay, Converter={StaticResource moedaConverter},
+                    <Expander Header="Configuração" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="225" MinWidth="225"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="190" MinWidth="190"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Label-->
+
+                            <Components:CustomTextBlock Text="Preço de Venda" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Entrega Excedente" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Entrega Insuficiente" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Ultima alteração no Preço de venda" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                            
+                            <!--Components-->
+                            
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="1"
+                                Text="{Binding currentModel.vVenda, Mode=TwoWay, Converter={StaticResource moedaConverter},
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Preço de Venda" Help="Preço final de venda do produto, quando preenchido o sistema joga o valor na lista de preço padrão, LISTA 000000001." WidthLabel="264" Width="365"/>
-                            <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.pEntregaExcedenteVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								ToolTip="Preço final de venda do produto, quando preenchido o sistema joga o valor na lista de preço padrão, LISTA 000000001.">
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="2"
+                                Text="{Binding currentModel.pEntregaExcedenteVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Entrega Excedente" Help="Insira o valor aceitável da entrega excedente como um valor. Se o número de itens entregues for maior que o numero encomendado, você poderá definir um limite para a porcentagem de material em excesso permitida bloqueando o faturamento do material." WidthLabel="264" Width="365"/>
-                            <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.pEntregaInsuficienteVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								ToolTip="Insira o valor aceitável da entrega excedente como um valor. Se o número de itens entregues for maior que o numero encomendado, você poderá definir um limite para a porcentagem de material em excesso permitida bloqueando o faturamento do material.">
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="3"
+                                Text="{Binding currentModel.pEntregaInsuficienteVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Entrega Insuficiente" Help="Insira o valor aceitável da entrega insuficiente como uma porcentagem. Se o número de itens entregues for menor que o número encomendado, você poderá bloqueá-la." WidthLabel="264" Width="365"/>
-                            <Components:HlpDateTimePicker 
-								
-								SelectedDate="{Binding currentModel.dValorVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								ToolTip="Insira o valor aceitável da entrega insuficiente como uma porcentagem. Se o número de itens entregues for menor que o número encomendado, você poderá bloqueá-la.">
+                            </Components:CustomTextBox>
+                            <Components:HlpDatePicker
+                                Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date" Grid.ColumnSpan="2"
+                                xTextDate="{Binding currentModel.dValorVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Ultima alteração no Preço de venda" Help="O Magníficus ajustará automaticamente a data sempre que houver uma alteração em seu preço de venda, mostrando a data e hora. " WidthLabel="264"/>
+								ToolTip="O Magníficus ajustará automaticamente a data sempre que houver uma alteração em seu preço de venda, mostrando a data e hora. ">
+                            </Components:HlpDatePicker>
                             <Components:HlpPesquisa 
-								
+								Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 								Text="{Binding currentModel.idUnidadeMedidaVendas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								HorizontalAlignment="Left" Height="27" Margin="10,0,10,2" Caption="Unidade de Medida" Help="Deve ser informado a unidade de medida para as, cotações, Ordens de vendas, faturamento. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para vendas dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="264" Width="500">
+								ToolTip="Deve ser informado a unidade de medida para as, cotações, Ordens de vendas, faturamento. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para vendas dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0">
                                 <Components:HlpPesquisa.Items>
                                     <System:String>xSiglaPadrao</System:String>
                                     <System:String>xUnidadeMedida</System:String>
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
-                        </WrapPanel>
+                            
+                        </Grid>
                     </Expander>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Dados de ordem de Compra">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <Expander Header="Configuração" IsExpanded="True" DockPanel.Dock="Top" Height="213.333">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.vCompra, Mode=TwoWay, Converter={StaticResource moedaConverter},
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Expander Header="Configuração" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Valor do custo de Aquisição" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Lote Mínimo para Compra" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Entrega Excedente" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Entrega Insuficiente" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Exige Fornecedor Homologado" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.vCompra, Mode=TwoWay, Converter={StaticResource moedaConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Valor do custo de Aquisição" Help="O Magníficus informará automaticamente o valor de aquisição do produto, baseado sempre no valor de custo do produto." WidthLabel="241" Width="330"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.nLoteMinimoCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="O Magníficus informará automaticamente o valor de aquisição do produto, baseado sempre no valor de custo do produto.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.nLoteMinimoCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Lote Mínimo para Compra" Help="Informação sobre lote mínimo para compra, baseando sempre na unidade de medida de compras." WidthLabel="241" Width="330"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.pEntregaExcedenteCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Informação sobre lote mínimo para compra, baseando sempre na unidade de medida de compras.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.pEntregaExcedenteCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Entrega Excedente" Help="Insira o valor aceitável da entrega excedente como um valor. Se o número de itens entregues for maior que o numero encomendado, você poderá definir um limite para a porcentagem de material em excesso permitida bloqueando o recebimento do material" WidthLabel="241" Width="330"/>
-                                <Components:HlpTextBox 
-									
-									Text="{Binding currentModel.pEntregaInsuficienteCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									ToolTip="Insira o valor aceitável da entrega excedente como um valor. Se o número de itens entregues for maior que o numero encomendado, você poderá definir um limite para a porcentagem de material em excesso permitida bloqueando o recebimento do material">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="4"
+                                    Text="{Binding currentModel.pEntregaInsuficienteCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Entrega Insuficiente" Help="Insira o valor aceitável da entrega insuficiente como uma porcentagem. Se o número de itens entregues for menor que o número encomendado, você poderá bloqueá-la." WidthLabel="241" Width="330"/>
+									ToolTip="Insira o valor aceitável da entrega insuficiente como uma porcentagem. Se o número de itens entregues for menor que o número encomendado, você poderá bloqueá-la.">
+                                </Components:CustomTextBox>
                                 <Components:HlpPesquisa 
-									
+									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idUnidadeMedidaCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Medida" Help="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="241" Width="459">
+									ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xSiglaPadrao</System:String>
                                         <System:String>xUnidadeMedida</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpCheckBox 
-									
-									IsChecked="{Binding currentModel.stFornecedorHomologado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="6"
+                                    IsChecked="{Binding currentModel.stFornecedorHomologado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Exige Fornecedor Homologado" Help="Informar se para esse produto é exigido fornecedores homologados, se sim o sistema ativará a aba para lançamentos dos fornecedores homologado." WidthLabel="241"/>
-                            </WrapPanel>
+									ToolTip="Informar se para esse produto é exigido fornecedores homologados, se sim o sistema ativará a aba para lançamentos dos fornecedores homologado.">
+                                </Components:CustomCheckBox>
+                                
+                            </Grid>
                         </Expander>
-                        <Expander Header="Lead Time" IsExpanded="True">
-                            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <Components:HlpTimePicker 
-									
-									Value="{Binding currentModel.dleadTimeCotacao, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+                        <Expander Header="Lead Time" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Cotação" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Pedido" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Recebimento" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:HlpDatePicker
+                                    Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    xTextDate="{Binding currentModel.dleadTimeCotacao, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Cotação" Help="Informar em horas o lead time para cotação de compra, essa condição vai servir junto com o lead time de pedido e recebimento saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico." WidthLabel="103"/>
-                                <Components:HlpTimePicker 
-									
-									Value="{Binding currentModel.dleadTimePedido, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+									ToolTip="Informar em horas o lead time para cotação de compra, essa condição vai servir junto com o lead time de pedido e recebimento saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico.">
+                                </Components:HlpDatePicker>
+                                <Components:HlpDatePicker
+                                    Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    xTextDate="{Binding currentModel.dleadTimePedido, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Pedido" Help="Informar em horas o lead time para o pedido de compra, essa condição vai servir junto com o lead time de cotação e recebimento saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico." WidthLabel="103"/>
-                                <Components:HlpTimePicker 
-									
-									Value="{Binding currentModel.dleadTimeRecebimento, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
+									ToolTip="Informar em horas o lead time para o pedido de compra, essa condição vai servir junto com o lead time de cotação e recebimento saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico.">
+                                </Components:HlpDatePicker>
+                                <Components:HlpDatePicker
+                                    Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
+                                    xTextDate="{Binding currentModel.dleadTimeRecebimento, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Recebimento" Help="Informar em horas o lead time para recebimento da compra, essa condição vai servir junto com o lead time de cotação e pedido saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico." WidthLabel="103"/>
-                            </WrapPanel>
+									ToolTip="Informar em horas o lead time para recebimento da compra, essa condição vai servir junto com o lead time de cotação e pedido saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico.">
+                                </Components:HlpDatePicker>
+                                
+                            </Grid>
                         </Expander>
-                    </DockPanel>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Dados de Produção">
                 <AdornerDecorator>
-                    <Expander Header="Configuração" IsExpanded="True">
-                        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                            <Components:HlpTextBox 
-							
-							Text="{Binding currentModel.vProducao, Mode=TwoWay, Converter={StaticResource moedaConverter},
+                    <Expander Header="Configuração" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="220" MinWidth="220"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                <ColumnDefinition MaxWidth="175" MinWidth="175"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--Label-->
+
+                            <Components:CustomTextBlock Text="Valor do custo de Transformação" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Perda/Sucata Constante" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Perda/Sucata Variável" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                            
+                            <!--Components-->
+                            
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="1"
+                                Text="{Binding currentModel.vProducao, Mode=TwoWay, Converter={StaticResource moedaConverter},
                                 NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-							IsEnabled="{Binding bIsEnabled}"
-							Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Valor do custo de Transformação" Help="O Magníficus informará automaticamente o valor de aquisição do produto, baseado sempre no valor de custo do produto, quando o produto é por composição o Magníficus irá calcular o custo em cima de todos os materiais e processos relacionado a esse produto." WidthLabel="237" Width="325"/>
-                            <Components:HlpTextBox 
-							
-							Text="{Binding currentModel.pPerdaConstante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-							IsEnabled="{Binding bIsEnabled}"
-							Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Perda/Sucata Constante" Help="Insira um valor de perda ou sucata produzida constantemente. A perda ou sucata é calculada na unidade especificada na unidade de medida da ordem de produção (BOM) por exemplo," WidthLabel="237" Width="325"/>
-                            <Components:HlpTextBox 
-							
-							Text="{Binding currentModel.pPerdaVariavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-							IsEnabled="{Binding bIsEnabled}"
-							Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Perda/Sucata Variável" Help="Este valor é usado como padrão quando o item é inserido em BOMs, um valor percentual de perda ou sucata produzida variavelmente. A perda ou sucata é calculada na unidade especificada na unidade de medida da ordem de produção (BOM) por exemplo," WidthLabel="237" Width="325"/>
+							    IsEnabled="{Binding bIsEnabled}"
+							    ToolTip="O Magníficus informará automaticamente o valor de aquisição do produto, baseado sempre no valor de custo do produto, quando o produto é por composição o Magníficus irá calcular o custo em cima de todos os materiais e processos relacionado a esse produto.">
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="2"
+                                Text="{Binding currentModel.pPerdaConstante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+							    IsEnabled="{Binding bIsEnabled}"
+							    ToolTip="Insira um valor de perda ou sucata produzida constantemente. A perda ou sucata é calculada na unidade especificada na unidade de medida da ordem de produção (BOM) por exemplo,">
+                            </Components:CustomTextBox>
+                            <Components:CustomTextBox
+                                Grid.Column="2" Grid.Row="3"
+                                Text="{Binding currentModel.pPerdaVariavel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+							    IsEnabled="{Binding bIsEnabled}"
+							    ToolTip="Este valor é usado como padrão quando o item é inserido em BOMs, um valor percentual de perda ou sucata produzida variavelmente. A perda ou sucata é calculada na unidade especificada na unidade de medida da ordem de produção (BOM) por exemplo,">
+                            </Components:CustomTextBox>
                             <Components:HlpPesquisa 
-							
+							Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 							Text="{Binding currentModel.idUnidadeMedidaProducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 							IsEnabled="{Binding bIsEnabled}"
-							Height="27" HorizontalAlignment="Left" Margin="10,0,10,2" Caption="Unidade de Medida" Help="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="237" Width="477">
+							ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0">
                                 <Components:HlpPesquisa.Items>
                                     <System:String>xSiglaPadrao</System:String>
                                     <System:String>xUnidadeMedida</System:String>
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
-                        </WrapPanel>
+                            
+                        </Grid>
                     </Expander>
-
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Fornecedores">
