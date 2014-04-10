@@ -59,7 +59,7 @@
     type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">
   </object>
   <object id="WinDeposito" name="Depósito" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.WinDeposito, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeMateriais.WinDeposito, HLP.Entries.View.WPF">
   </object>
   <object id="WinFabricante" name="Fabricante" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinFabricante, HLP.Entries.View.WPF">
