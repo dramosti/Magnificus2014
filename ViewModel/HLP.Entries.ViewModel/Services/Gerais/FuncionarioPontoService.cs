@@ -139,7 +139,6 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             return new TimeSpan();
 
         }
-
         public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
         {
             switch (Sistema.bOnline)
@@ -156,7 +155,6 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             return new TimeSpan();
 
         }
-
         public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras)
         {
             if (Sistema.bOnline == StConnection.OnlineNetwork)
@@ -172,12 +170,26 @@ namespace HLP.Entries.ViewModel.Services.Gerais
         {
             if (Sistema.bOnline == StConnection.OnlineNetwork)
             {
-                this.servicoRede.DeleteBancoHorasMes(idFuncionario,dtMes);
+                this.servicoRede.DeleteBancoHorasMes(idFuncionario, dtMes);
             }
             else if (Sistema.bOnline == StConnection.OnlineWeb)
             {
                 this.servicoInternet.DeleteBancoHorasMes(idFuncionario, dtMes);
             }
+        }
+        public bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia)
+        {
+            if (Sistema.bOnline == StConnection.OnlineNetwork)
+            {
+                return this.servicoRede.ExisteCalendarioDia(idFuncionario, dtDia);
+            }
+            else if (Sistema.bOnline == StConnection.OnlineWeb)
+            {
+                //   this.servicoInternet.ExisteCalendarioDia(idFuncionario, dtDia);
+                return false;
+            }
+            else
+                return false;
         }
     }
 

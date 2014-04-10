@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             resource = new ResourceDictionary
                     {
                         Source = new Uri("/HLP.Comum.Resources;component/Styles/Components/ComponentsStyles.xaml", UriKind.RelativeOrAbsolute)
-                    };
+                    };           
             command = new HlpCalendarioPontoCommand(this);
         }
 
@@ -136,17 +135,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
-        private Color _backgroundListBox = Color.White;
-
-        public Color backgroundListBox
-        {
-            get { return _backgroundListBox; }
-            set { _backgroundListBox = value; this.NotifyPropertyChanged("backgroundListBox"); }
-        }
-
-
-
-
         private Style _styleDia;
         public Style styleDia
         {
@@ -158,6 +146,15 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             }
         }
 
+        private Style _styleDSR;
+        public Style styleDSR
+        {
+            get { return _styleDSR; }
+            set
+            {
+                _styleDSR = value; this.NotifyPropertyChanged(propertyName: "styleDSR");
+            }
+        }
 
 
         private bool _isDSR;
@@ -169,7 +166,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
             {
                 _isDSR = value;
                 if (value)
-                    this.backgroundListBox = Color.Aquamarine;
+                    this.styleDSR = resource["ListBoxStyle_Domingo_Sabado_Feriado"] as Style;
             }
 
         }

@@ -149,6 +149,43 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                   .DoNotMap(i => i.status).Build());
             return regCalendario_DetalheModelAccessorDia.Execute().ToList();
         }
+
+        /// <summary>
+        /// Verifica se existe Calendario para o funcionario no dia 
+        /// </summary>
+        /// <param name="idFuncionario"></param>
+        /// <param name="dtDia"></param>
+        /// <returns></returns>
+        public bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia)
+        {
+            try
+            {
+                DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand
+               (
+                     string.Format("select count(*) contador from Funcionario inner join Calendario "
+                                      + "on Funcionario.idCalendario = Calendario.idCalendario inner join Calendario_Detalhe "
+                                      + "on Calendario.idCalendario = Calendario_Detalhe.idCalendario "
+                                      + "where Funcionario.idFuncionario = {0} and Calendario_Detalhe.dCalendario = '{1}' ", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd"))
+               );
+                IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
+                int icount = 0;
+                while (reader.Read())
+                {
+                    icount = Convert.ToInt32(reader["contador"].ToString());
+                }
+                if (icount == 0)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
         private List<TimeSpan> GetListHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
         {
 

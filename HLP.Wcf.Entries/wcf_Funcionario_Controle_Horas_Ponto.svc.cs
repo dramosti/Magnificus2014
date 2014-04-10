@@ -125,5 +125,11 @@ namespace HLP.Wcf.Entries
         {
             funcionario_BancoHorasRepository.DeleteBancoHorasMes(idFuncionario, dtMes);
         }
+
+
+        public bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia)
+        {
+            return funcionario_Controle_Horas_PontoRepository.ExisteCalendarioDia(idFuncionario, dtDia);
+        }
     }
 }

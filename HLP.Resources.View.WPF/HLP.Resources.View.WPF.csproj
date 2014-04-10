@@ -120,6 +120,8 @@
     <Resource Include="Icons\Button\Pesquisa_MouseOVer.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Icons\Button\ImgFechar.png" />
+    <Resource Include="Icons\Button\ImgReabrir.png" />
     <Content Include="Icons\IconsMoeda\btnSTD.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

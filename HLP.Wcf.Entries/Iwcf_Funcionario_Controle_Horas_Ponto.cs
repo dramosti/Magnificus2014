@@ -37,5 +37,7 @@ namespace HLP.Wcf.Entries
         TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes);
         [OperationContract]
         void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes);
+        [OperationContract]
+        bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia);
     }
 }

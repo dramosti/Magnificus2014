@@ -95,7 +95,7 @@
             </Button.Template>
         </Button>
         <Ellipse Grid.Column="2" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{Binding styleDia}"/>
-        <ListBox ItemsSource="{Binding lPonto}" Background="{Binding backgroundListBox}" IsEnabled="True" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Style="{StaticResource ListBox_Calendario_Ponto_Padrao}" BorderBrush="#FF4774B5">
+        <ListBox ItemsSource="{Binding lPonto}" IsEnabled="True" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Style="{Binding styleDSR}" BorderBrush="#FF4774B5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
