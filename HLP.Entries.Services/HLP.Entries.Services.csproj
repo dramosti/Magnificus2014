@@ -71,6 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Deposito\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_DescontoAVista\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,6 +157,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel1.datasource" />
@@ -198,6 +204,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito.wsdl" />
+    <None Include="Service References\wcf_Deposito\wcf_Deposito.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_DescontoAVista\wcf_DescontoAVista.wsdl" />
@@ -386,6 +408,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Banco\" />
     <WCFMetadataStorage Include="Service References\wcf_Calendarios\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
+    <WCFMetadataStorage Include="Service References\wcf_Deposito\" />
     <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
@@ -588,6 +611,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Moeda\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Deposito\wcf_Deposito.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Deposito\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Deposito\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Deposito\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

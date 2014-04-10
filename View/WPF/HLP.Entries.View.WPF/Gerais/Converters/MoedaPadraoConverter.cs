@@ -14,7 +14,7 @@ namespace HLP.Entries.View.WPF.Gerais.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (values[0] != DependencyProperty.UnsetValue)
+            if (values[0] != DependencyProperty.UnsetValue && values[0] != null)
             {
                 int contador = 0;
 

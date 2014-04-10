@@ -264,11 +264,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\depositoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\empresaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -803,25 +798,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\departamentoService\serviceDepartamento4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\depositoService\serviceDeposito.wsdl" />
-    <None Include="Service References\depositoService\serviceDeposito.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\depositoService\serviceDeposito1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\depositoService\serviceDeposito2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\depositoService\serviceDeposito3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\depositoService\serviceDeposito4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\depositoService\serviceDeposito5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
@@ -1402,7 +1378,6 @@
     <WCFMetadataStorage Include="Service References\ConversaoService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\departamentoService\" />
-    <WCFMetadataStorage Include="Service References\depositoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
@@ -1609,21 +1584,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ConversaoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\depositoService\serviceDeposito.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\depositoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\depositoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\depositoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
