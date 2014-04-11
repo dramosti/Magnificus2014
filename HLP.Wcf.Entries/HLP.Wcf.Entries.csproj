@@ -115,6 +115,7 @@
     <Content Include="serviceDiaPagamento.svc" />
     <Content Include="serviceEmpresa.svc" />
     <Content Include="wcf_CanalDeVenda.svc" />
+    <Content Include="wcf_Departamento.svc" />
     <Content Include="wcf_Deposito.svc" />
     <Content Include="wcf_EmpresaParametros.svc" />
     <Content Include="serviceFabricante.svc" />
@@ -164,6 +165,7 @@
     <Content Include="wcf_HlpPesqPadrao.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_Moeda.svc" />
+    <Content Include="wcf_OperacoesDataBase.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_PlanoPagamento.svc" />
     <Content Include="wcf_Produto.svc" />
@@ -242,6 +244,7 @@
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_CanalDeVenda.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
+    <Compile Include="Iwcf_Departamento.cs" />
     <Compile Include="Iwcf_Deposito.cs" />
     <Compile Include="Iwcf_DescontoAVista.cs" />
     <Compile Include="Iwcf_DiaPagamento.cs" />
@@ -253,6 +256,7 @@
     <Compile Include="Iwcf_HlpPesqPadrao.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_Moeda.cs" />
+    <Compile Include="Iwcf_OperacoesDataBase.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_PlanoPagamento.cs" />
     <Compile Include="Iwcf_Produto.cs" />
@@ -331,6 +335,9 @@
     </Compile>
     <Compile Include="wcf_CanalDeVenda.svc.cs">
       <DependentUpon>wcf_CanalDeVenda.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Departamento.svc.cs">
+      <DependentUpon>wcf_Departamento.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Deposito.svc.cs">
       <DependentUpon>wcf_Deposito.svc</DependentUpon>
@@ -478,6 +485,9 @@
     <Compile Include="wcf_Moeda.svc.cs">
       <DependentUpon>wcf_Moeda.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_OperacoesDataBase.svc.cs">
+      <DependentUpon>wcf_OperacoesDataBase.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_PesquisaRapida.svc.cs">
       <DependentUpon>wcf_PesquisaRapida.svc</DependentUpon>
     </Compile>
@@ -533,6 +543,10 @@
     <ProjectReference Include="..\HLP.Components.Model\HLP.Components.Model.csproj">
       <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
       <Name>HLP.Components.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.ComumView.Model\HLP.ComumView.Model.csproj">
       <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>

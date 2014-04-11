@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\messageDeleteNotAllowedFK.cs" />
     <Compile Include="ViewModel\SenhaSupervisorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +72,10 @@
     <ProjectReference Include="..\HLP.Comum.Facade\HLP.Comum.Facade.csproj">
       <Project>{3e7af44f-8443-4ddf-a196-f6ee90883898}</Project>
       <Name>HLP.Comum.Facade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.ComumView.Model\HLP.ComumView.Model.csproj">
       <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>

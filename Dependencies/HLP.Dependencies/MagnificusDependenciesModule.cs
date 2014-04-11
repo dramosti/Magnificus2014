@@ -25,6 +25,9 @@ using HLP.Components.Model.Repository.Implementation;
 using HLP.Entries.Model.Repository.Implementation.Components;
 using HLP.ComumView.Model.Repository.Implementation;
 using HLP.ComumView.Model.Repository.Interface;
+using HLP.Comum.Model;
+using HLP.Comum.Model.Repository.Interfaces;
+using HLP.Comum.Model.Repository.Implementation;
 
 namespace HLP.Dependencies
 {
@@ -41,6 +44,7 @@ namespace HLP.Dependencies
 
         protected void ResolveRepositories()
         {
+            Bind<IOperacoesDataBaseRepository>().To<OperacoesDataBaseRepository>();
             Bind<IHlpEnderecoRepository>().To<HlpEnderecoRepository>();
             Bind<ILoginRepository>().To<LoginRepository>();
             Bind<IHlpPesquisaRapidaRepository>().To<HlpPesquisaRapidaRepository>();

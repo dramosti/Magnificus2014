@@ -224,11 +224,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Canal_VendaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\cargoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,11 +250,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ConversaoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\departamentoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -423,6 +413,14 @@
       <Project>{ea56be52-7fdc-4578-b856-0a5418751661}</Project>
       <Name>HLP.Components.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Comum.Model\HLP.Comum.Model.csproj">
+      <Project>{dbd170a2-b14d-4450-aa5e-3d49964ad8e4}</Project>
+      <Name>HLP.Comum.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Comum.Services\HLP.Comum.Services.csproj">
+      <Project>{eb58bc1d-89d0-4f83-93ed-72500493eff3}</Project>
+      <Name>HLP.Comum.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>
@@ -535,25 +533,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\agenciaService\serviceAgencia5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda.wsdl" />
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.wsdl" />
@@ -782,22 +761,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\decisaoService\serviceDecisao5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\departamentoService\serviceDepartamento.wsdl" />
-    <None Include="Service References\departamentoService\serviceDepartamento.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\departamentoService\serviceDepartamento1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\departamentoService\serviceDepartamento2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\departamentoService\serviceDepartamento3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\departamentoService\serviceDepartamento4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
@@ -1361,7 +1324,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
     <WCFMetadataStorage Include="Service References\agenciaService\" />
-    <WCFMetadataStorage Include="Service References\Canal_VendaService\" />
     <WCFMetadataStorage Include="Service References\Carga_trib_media_st_icmsServico\" />
     <WCFMetadataStorage Include="Service References\cargoService\" />
     <WCFMetadataStorage Include="Service References\CfopServico\" />
@@ -1374,7 +1336,6 @@
     <WCFMetadataStorage Include="Service References\Conta_BancariaService\" />
     <WCFMetadataStorage Include="Service References\ConversaoService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
-    <WCFMetadataStorage Include="Service References\departamentoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
@@ -1461,21 +1422,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\cidadeService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\departamentoService\serviceDepartamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\departamentoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\departamentoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\departamentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1626,21 +1572,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Modo_EntregaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Canal_VendaService\serviceCanal_Venda.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Canal_VendaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Canal_VendaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Canal_VendaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

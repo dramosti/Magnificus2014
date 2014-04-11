@@ -1,5 +1,8 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
+using HLP.Comum.Services;
 using HLP.Entries.Model.Models.RecursosHumanos;
+using HLP.Entries.Services.RecursosHumanos;
 using HLP.Entries.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,11 +19,12 @@ namespace HLP.Entries.ViewModel.Commands
     {
         BackgroundWorker bWorkerAcoes;
         DepartamentoViewModel objViewModel;
-        departamentoService.IserviceDepartamentoClient servico = new departamentoService.IserviceDepartamentoClient();
+        DepartamentoService objService;
 
         public DepartamentoCommands(DepartamentoViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+            objService = new DepartamentoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -49,7 +53,7 @@ namespace HLP.Entries.ViewModel.Commands
 
 
         #region Implementação Commands
-               
+
         public void Save(object _panel)
         {
             try
@@ -69,10 +73,10 @@ namespace HLP.Entries.ViewModel.Commands
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-             try
+            try
             {
-                this.objViewModel.currentModel.idDepartamento = this.servico.saveDepartamento(
-                    objDepartamento: this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idDepartamento = objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -127,7 +131,7 @@ namespace HLP.Entries.ViewModel.Commands
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteDepartamento((int)this.objViewModel.currentModel.idDepartamento))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -143,7 +147,9 @@ namespace HLP.Entries.ViewModel.Commands
             }
             catch (Exception ex)
             {
-                throw ex;
+                OperacoesDataBaseService objService = new OperacoesDataBaseService();
+
+                List<RecordsSqlModel> l = objService.GetRecordsFKUsed(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
             }
             finally
             {
@@ -203,7 +209,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -212,11 +218,12 @@ namespace HLP.Entries.ViewModel.Commands
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idDepartamento = await this.servico.copyDepartamentoAsync(idDepartamento: (int)this.objViewModel.currentModel.idDepartamento);
+                this.objViewModel.currentModel.idDepartamento =
+                    this.objService.CopyObject(id: this.objViewModel.currentID);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -258,9 +265,10 @@ namespace HLP.Entries.ViewModel.Commands
 
         }
 
-        private async void getDepartamento(object sender, DoWorkEventArgs e)
+        private void getDepartamento(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getDepartamentoAsync(idDepartamento: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(
+                id: this.objViewModel.currentID);
         }
         #endregion
 
