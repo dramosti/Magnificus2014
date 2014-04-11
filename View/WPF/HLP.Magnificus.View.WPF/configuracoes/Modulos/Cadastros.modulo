@@ -98,7 +98,7 @@
     type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
   </object>
   <object id="WinJuros" name="Juros" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinJuros, HLP.Entries.View.WPF">
   </object>
   <object id="WinListaPreco" name="Lista_de_Preço" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Comercial.WinListaPreco, HLP.Entries.View.WPF">

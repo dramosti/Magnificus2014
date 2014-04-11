@@ -49,6 +49,7 @@
     <Compile Include="Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
+    <Compile Include="Gerais\ConversaoService.cs" />
     <Compile Include="Gerais\DepositoService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
@@ -74,6 +75,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_CanalDeVenda\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Conversao\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -166,10 +172,12 @@
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
     <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Canal_vendaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
@@ -234,6 +242,25 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao.wsdl" />
+    <None Include="Service References\wcf_Conversao\wcf_Conversao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Departamento\wcf_Departamento.wsdl" />
@@ -455,6 +482,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Calendarios\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_CanalDeVenda\" />
+    <WCFMetadataStorage Include="Service References\wcf_Conversao\" />
     <WCFMetadataStorage Include="Service References\wcf_Departamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Deposito\" />
     <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
@@ -704,6 +732,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Departamento\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Conversao\wcf_Conversao.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Conversao\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Conversao\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Conversao\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

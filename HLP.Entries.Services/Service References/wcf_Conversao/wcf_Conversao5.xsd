@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceConversao.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceConversao.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/serviceConversao.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
   <xs:complexType name="ProdutoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q1:modelBase">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="Ativo" type="xs:boolean" />
           <xs:element minOccurs="0" name="Cod_centro_custo" type="xs:int" />
@@ -94,7 +94,7 @@
   <xs:element name="ArrayOfProduto_Fornecedor_HomologadoModel" nillable="true" type="tns:ArrayOfProduto_Fornecedor_HomologadoModel" />
   <xs:complexType name="Produto_Fornecedor_HomologadoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q3:modelBase">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idClienteFornecedor" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" type="xs:int" />
@@ -115,7 +115,7 @@
   <xs:element name="ArrayOfProduto_RevisaoModel" nillable="true" type="tns:ArrayOfProduto_RevisaoModel" />
   <xs:complexType name="Produto_RevisaoModel">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" base="q4:modelBase">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q4:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="dFinal" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dInicial" type="xs:dateTime" />

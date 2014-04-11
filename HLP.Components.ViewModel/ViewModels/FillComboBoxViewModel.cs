@@ -22,5 +22,16 @@ namespace HLP.Components.ViewModel.ViewModels
         {
             return new ObservableCollection<modelToComboBox>(objService.GetAllValuesToComboBox(sNameView, sParameter));
         }
+
+        public string GetDisplay(object source, int value)
+        {
+            modelToComboBox it = (source as ObservableCollection<modelToComboBox>).FirstOrDefault(
+                i => i.id == value);
+
+            if (it != null)
+                return it.display;
+
+            return string.Empty;
+        }
     }
 }
