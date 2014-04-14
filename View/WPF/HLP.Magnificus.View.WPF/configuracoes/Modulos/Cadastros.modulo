@@ -53,7 +53,7 @@
     type="HLP.Entries.View.WPF.GestãoDeLogística.WinCondicaoEntrega, HLP.Entries.View.WPF">
   </object>
   <object id="WinCondicaoPagamento" name="Condição_de_Pagamento" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinCondicaoPagamento, HLP.Entries.View.WPF">
   </object>
   <object id="WinConversao" name="Conversões" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">

@@ -239,11 +239,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\Condicao_PagamentoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\Conta_BancariaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -658,25 +653,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\condicaoEntregaService\serviceCondicao_Entrega5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento.wsdl" />
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\contato_Service\serviceContato.wsdl" />
@@ -1304,7 +1280,6 @@
     <WCFMetadataStorage Include="Service References\ClassificacaoFiscalServico\" />
     <WCFMetadataStorage Include="Service References\CodigoIcmsService\" />
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
-    <WCFMetadataStorage Include="Service References\Condicao_PagamentoService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
     <WCFMetadataStorage Include="Service References\Conta_BancariaService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
@@ -1469,21 +1444,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\condicaoEntregaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Condicao_PagamentoService\serviceCondicao_Pagamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Condicao_PagamentoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Condicao_PagamentoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Condicao_PagamentoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BaseControl.cs" />
     <Compile Include="Converter\ByteToBoolConverter.cs" />
+    <Compile Include="Converter\ByteToIntConverter.cs" />
     <Compile Include="Converter\ComboBoxDisplayConverter.cs" />
     <Compile Include="Converter\DateShortConverter.cs" />
     <Compile Include="Converter\HlpNavigationMultiConverter.cs" />

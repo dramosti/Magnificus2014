@@ -49,6 +49,7 @@
     <Compile Include="Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
+    <Compile Include="Gerais\Condicao_PagamentoService.cs" />
     <Compile Include="Gerais\ConversaoService.cs" />
     <Compile Include="Gerais\DepositoService.cs" />
     <Compile Include="Gerais\EmpresaService.cs" />
@@ -75,6 +76,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_CanalDeVenda\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_CondicaoPagamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -177,6 +183,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
@@ -242,6 +249,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento.wsdl" />
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Conversao\wcf_Conversao.wsdl" />
@@ -482,6 +505,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Calendarios\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_CanalDeVenda\" />
+    <WCFMetadataStorage Include="Service References\wcf_CondicaoPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Conversao\" />
     <WCFMetadataStorage Include="Service References\wcf_Departamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Deposito\" />
@@ -747,6 +771,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Conversao\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CondicaoPagamento\wcf_CondicaoPagamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CondicaoPagamento\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CondicaoPagamento\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CondicaoPagamento\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -164,6 +164,7 @@
     <Compile Include="Fiscal\WinTipoOperacao.xaml.cs">
       <DependentUpon>WinTipoOperacao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gerais\Converters\DiasSemanasMesesIsEnabledConverter.cs" />
     <Compile Include="Gerais\Converters\EnabledValorPorcentagemMultiConverter.cs" />
     <Compile Include="Gerais\Converters\MoedaPadraoConverter.cs" />
     <Compile Include="Gerais\Converters\RowDateListaPrecoConverter.cs" />
