@@ -23,17 +23,17 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-        
-        
-
+        ClienteCommands comm;
         public ClienteViewModel()
         {
-            ClienteCommands comm = new ClienteCommands(
+            comm = new ClienteCommands(
                 objViewModel: this);
         }
 
-      
-
+        public bool RotaPossuiListaPrecoPai(int idRota)
+        {
+            return this.comm.RotaPossuiListaPrecoPai(idRota: idRota);
+        }
 
     }
 }

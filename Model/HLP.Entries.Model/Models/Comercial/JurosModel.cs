@@ -30,8 +30,19 @@ namespace HLP.Entries.Model.Models.Comercial
 
         [ParameterOrder(Order = 2)]
         public string xDescricao { get; set; }
+        
+        private decimal _pJuros;
         [ParameterOrder(Order = 3)]
-        public decimal pJuros { get; set; }
+        public decimal pJuros
+        {
+            get { return _pJuros; }
+            set
+            {
+                _pJuros = value;
+                base.NotifyPropertyChanged(propertyName: "pJuros");
+            }
+        }
+
         [ParameterOrder(Order = 4)]
         public int nQuantidadeDiasMes { get; set; }
         [ParameterOrder(Order = 5)]

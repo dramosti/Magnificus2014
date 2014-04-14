@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="21fe995a-fcc8-4d3b-8e75-3c69dfd8f6f6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Base" />
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_ContaBancaria.xsd" MetadataType="Schema" ID="302b6ad3-b7fa-411e-a7b4-da4c2959276d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_ContaBancaria1.xsd" MetadataType="Schema" ID="84651a83-6b1d-4e70-b6bb-c387b8d65fa3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_ContaBancaria2.xsd" MetadataType="Schema" ID="ff88ddf3-882e-4855-b384-6fae61c8eca3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_ContaBancaria.wsdl" MetadataType="Wsdl" ID="86366b8c-9e58-4f32-a47f-be03a006837a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?wsdl" />
+    <MetadataFile FileName="wcf_ContaBancaria3.xsd" MetadataType="Schema" ID="6cae926c-f729-48c2-b2f4-5e79b6dc8b6d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_ContaBancaria5.xsd" MetadataType="Schema" ID="8468863a-332b-4592-b631-1df00ef1eb95" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_ContaBancaria4.xsd" MetadataType="Schema" ID="47a4d2f9-b88d-401f-be0d-26922b69fb9a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_ContaBancaria.disco" MetadataType="Disco" ID="40188a06-e290-4d52-a6f3-ceedb769cd04" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ContaBancaria.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

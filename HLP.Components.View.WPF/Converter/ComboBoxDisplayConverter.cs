@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Components.ViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace HLP.Components.View.WPF.Converter
                 string retorno = "";
                 if (value != null)
                 {
+                    FillComboBoxViewModel fillCbxViewModel = new FillComboBoxViewModel();
+
+                    retorno = fillCbxViewModel.GetDisplay(source: (parameter as ObjectDataProvider).Data, value: (int?)value ?? 0);
                     //modelToComboBox obj =
                     //    ((parameter as ObjectDataProvider).Data as ObservableCollection<modelToComboBox>).FirstOrDefault(i => i.id == (int)value);
 
@@ -41,7 +45,7 @@ namespace HLP.Components.View.WPF.Converter
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
         }

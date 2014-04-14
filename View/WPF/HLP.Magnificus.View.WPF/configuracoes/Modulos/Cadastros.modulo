@@ -53,13 +53,13 @@
     type="HLP.Entries.View.WPF.GestãoDeLogística.WinCondicaoEntrega, HLP.Entries.View.WPF">
   </object>
   <object id="WinCondicaoPagamento" name="Condição_de_Pagamento" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.WinCondicaoPagamento, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinCondicaoPagamento, HLP.Entries.View.WPF">
   </object>
   <object id="WinConversao" name="Conversões" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinConversao, HLP.Entries.View.WPF">
   </object>
   <object id="WinDeposito" name="Depósito" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.WinDeposito, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoDeMateriais.WinDeposito, HLP.Entries.View.WPF">
   </object>
   <object id="WinFabricante" name="Fabricante" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinFabricante, HLP.Entries.View.WPF">
@@ -98,7 +98,7 @@
     type="HLP.Entries.View.WPF.Comercial.WinCanalVenda, HLP.Entries.View.WPF">
   </object>
   <object id="WinJuros" name="Juros" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinJuros, HLP.Entries.View.WPF">
   </object>
   <object id="WinListaPreco" name="Lista_de_Preço" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Comercial.WinListaPreco, HLP.Entries.View.WPF">
@@ -119,7 +119,7 @@
     type="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia, HLP.Entries.View.WPF">
   </object>
   <object id="WinContaBancaria" name="Contas_Bancárias" singleton="false" scope="request"
-    type="HLP.Entries.View.WPF.Gerais.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
+    type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinContaBancaria, HLP.Entries.View.WPF">
   </object>
   <object id="WinDiaPagamento" name="Dia_de_Pagamento" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinDiaPagamento, HLP.Entries.View.WPF">
@@ -164,7 +164,7 @@
     type="HLP.Entries.View.WPF.GestãoDeLogística.WinTransportadora, HLP.Entries.View.WPF">
   </object>
   <object id="WinCliente" name="Clientes" singleton="false" scope="request"
-  type="HLP.Entries.View.WPF.Comercial.WinCliente, HLP.Entries.View.WPF">
+  type="HLP.Entries.View.WPF.GestãoAdministrativa.WinCliente, HLP.Entries.View.WPF">
   </object>
   <object id="WinAtribuicaoColetivaListaPreco" name="Atribuição_Coletiva_Lista_de_Preço" singleton="false" scope="request"
     type="HLP.Entries.View.WPF.Gerais.WinAtribuicaoColetivaListaPreco, HLP.Entries.View.WPF">

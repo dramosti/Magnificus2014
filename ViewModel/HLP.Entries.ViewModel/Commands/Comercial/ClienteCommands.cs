@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Comercial;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -390,5 +391,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         }
         #endregion
+
+        public bool RotaPossuiListaPrecoPai(int idRota)
+        {
+            objServico = new ClienteService();
+            return objServico.RotaPossuiListaPrecoPai(idRota: idRota);
+        }
     }
 }

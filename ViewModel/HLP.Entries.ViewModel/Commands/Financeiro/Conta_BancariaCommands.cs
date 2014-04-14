@@ -1,5 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Services.Financeiro;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using System;
 using System.Collections.Generic;
@@ -16,11 +18,10 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
     {
         BackgroundWorker bWorkerAcoes;
         Conta_BancariaViewModel objViewModel;
-        Conta_BancariaService.IserviceConta_BancariaClient servico =
-            new Conta_BancariaService.IserviceConta_BancariaClient();
+        Conta_BancariaService objService;
         public Conta_BancariaCommands(Conta_BancariaViewModel objViewModel)
         {
-
+            objService = new Conta_BancariaService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -47,7 +48,10 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-
+            this.objViewModel.bwHierarquia = new BackgroundWorker();
+            this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
         }
 
 
@@ -76,7 +80,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 this.objViewModel.currentModel.idContaBancaria =
-                     this.servico.Save(Objeto: objViewModel.currentModel);
+                    this.objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -131,7 +135,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -159,7 +163,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Conta_bancariaModel();
@@ -210,7 +214,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -245,8 +249,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.currentID = (int)e.Result;
-                    this.getConta_Bancaria(this, null);
+                    this.objViewModel.currentModel = e.Result as Conta_bancariaModel;
                     this.objViewModel.copyBaseCommand.Execute(null);
                 }
             }
@@ -261,7 +264,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 e.Result =
-                    this.servico.Copy(Objeto: this.objViewModel.currentModel);
+                    this.objService.CopyObject(id: this.objViewModel.currentID);
             }
             catch (Exception)
             {
@@ -296,19 +299,141 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void PesquisarRegistro()
         {
+            if (this.objViewModel.bwHierarquia.IsBusy)
+            {
+                this.bOpCancelada = true;
+            }
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.getConta_Bancaria);
+            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
 
         }
 
-        private async void getConta_Bancaria(object sender, DoWorkEventArgs e)
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.GetObjetoAsync(
-                idObjeto: this.objViewModel.currentID);
+            this.objViewModel.bTreeCarregada = false;
+        }
+
+        private void getConta_Bancaria(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.objService.GetObject(
+                id: this.objViewModel.currentID);
+            this.objViewModel.hierarquiaConta = null;
         }
         #endregion
 
+        #region Hierarquia
 
+        bool bOpCancelada = false;
+
+        public void MontraTreeView()
+        {
+            TreeView t = new TreeView();
+            t.Items.Add(newItem:
+            new TreeViewItem
+            {
+                Header = "Hierarquia Contas Bancárias"
+            });
+
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "Carregando Hierarquia...";
+
+            this.objViewModel.hierarquiaConta = txt;
+
+            if (this.bOpCancelada)
+            {
+                txt.Text = "Cancelando carregamento de Hierarquia anterior, por favor, aguarde...";
+                this.objViewModel.hierarquiaConta = txt;
+            }
+            else
+            {
+                this.objViewModel.bwHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bTreeCarregada = true;
+            }
+        }
+
+        void bwHierarquia_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                if (this.bOpCancelada)
+                {
+                    this.bOpCancelada = false;
+                    this.MontraTreeView();
+                }
+                else
+                {
+                    this.objViewModel.hierarquiaConta = (TreeView)e.Result;
+                }
+            }
+        }
+
+        void bwHierarquia_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (!this.bOpCancelada)
+                    this.GetHierarquiaSite();
+                if (!this.bOpCancelada)
+                {
+                    MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                        tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
+                    e.Result = e.Argument;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void GetHierarquiaSite()
+        {
+            this.objViewModel.lObjHierarquia = new modelToTreeView();
+            this.objViewModel.lObjHierarquia = this.objService.GetHierarquia(
+                idAgencia: this.objViewModel.currentModel.idAgencia);
+        }
+
+        private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
+        {
+            if (m != null)
+            {
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    tvi.Header = m.id + ". " + m.xDisplay;
+                }));
+
+                TreeViewItem i = null;
+
+                foreach (modelToTreeView item in m.lFilhos)
+                {
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        i = new TreeViewItem
+                        {
+                            Header = item.id.ToString() + ". " + item.xDisplay
+                        };
+
+                        tvi.Items.Add(newItem: i);
+
+                        if (item.lFilhos != null)
+                            if (item.lFilhos.Count > 0)
+                                this.MontaHierarquia(m: item,
+                                    tvi: i);
+                    }));
+                }
+
+
+            }
+        }
+
+
+        #endregion
     }
 }

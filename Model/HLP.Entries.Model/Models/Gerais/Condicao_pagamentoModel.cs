@@ -35,13 +35,45 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 3)]
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 4)]
-        public byte stMetodo { get; set; }
+        public byte stMetodo { get; set; }       
+
+        private int? _nMeses;
         [ParameterOrder(Order = 5)]
-        public int? nMeses { get; set; }
+        public int? nMeses
+        {
+            get { return _nMeses; }
+            set
+            {
+                _nMeses = value;
+                base.NotifyPropertyChanged(propertyName: "nMeses");
+            }
+        }
+        
+        private int? _nSemanas;
         [ParameterOrder(Order = 6)]
-        public int? nSemanas { get; set; }
+        public int? nSemanas
+        {
+            get { return _nSemanas; }
+            set
+            {
+                _nSemanas = value;
+                base.NotifyPropertyChanged(propertyName: "nSemanas");
+            }
+        }
+
+        
+        private int? _nDias;
         [ParameterOrder(Order = 7)]
-        public int? nDias { get; set; }
+        public int? nDias
+        {
+            get { return _nDias; }
+            set
+            {
+                _nDias = value;
+                base.NotifyPropertyChanged(propertyName: "nDias");
+            }
+        }
+                
         [ParameterOrder(Order = 8)]
         public int? idPlanoPagamento { get; set; }
         [ParameterOrder(Order = 9)]

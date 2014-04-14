@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 
-namespace HLP.Entries.View.WPF.Gerais
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
 {
     /// <summary>
     /// Interaction logic for WinCondicaoPagamento.xaml
