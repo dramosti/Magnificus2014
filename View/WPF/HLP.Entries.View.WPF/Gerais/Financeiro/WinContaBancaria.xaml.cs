@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 
-namespace HLP.Entries.View.WPF.Gerais.Financeiro
+namespace HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro
 {
     /// <summary>
     /// Interaction logic for WinContaBancaria.xaml
@@ -37,6 +37,11 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro
             {
                 this.DataContext = value;
             }
+        }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.ViewModel.MontaTreeView();
         }
     }
 }

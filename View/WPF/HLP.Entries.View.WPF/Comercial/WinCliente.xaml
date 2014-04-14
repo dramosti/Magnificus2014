@@ -2,14 +2,13 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
-        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Comercial.Converter"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"        
-        x:Class="HLP.Entries.View.WPF.Comercial.WinCliente"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"        
+        x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.WinCliente"
         Title="WinCliente" Height="660" Width="1158" NameView="vwCliente" >
     <Window.Resources>
         <ResourceDictionary>
@@ -23,22 +22,6 @@
             <convert:PorcentagemConverter x:Key="PorcentagemConverter"/>
             <convert:MoedaConverter x:Key="moedaConverter"/>
             <convertLocal:ListaPrecoClienteEnabled x:Key="ListaPrecoEnabled"/>
-            <ObjectDataProvider 
-            MethodName="GetDict"
-            ObjectType="{x:Type convert:EnumDescriptionConverter}"
-            x:Key="EnumDescriptionDict">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="enums:TipoEndereco"></x:Type>
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
-            <ObjectDataProvider 
-            MethodName="GetDict"
-            ObjectType="{x:Type convert:EnumDescriptionConverter}"
-            x:Key="EnumTipoLogradouro">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="enums:TipoLogradouro"></x:Type>
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
@@ -427,7 +410,7 @@
                                 <Grid>
                                     <Components:HlpEndereco x:Name="dgvEndereco"
                                         ItemsSource="{Binding currentModel.lCliente_fornecedor_Endereco}" 
-                                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                                            IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                         IsEnabled="{Binding bIsEnabled}"/>
                                 </Grid>
                             </Expander>
@@ -520,6 +503,7 @@
                                                 <MultiBinding Converter="{StaticResource ListaPrecoEnabled}">
                                                     <Binding Path="bIsEnabled"/>
                                                     <Binding Path="currentModel.idRota"/>
+                                                    <Binding/>
                                                 </MultiBinding>
                                             </Components:HlpPesquisa.IsEnabled>
                                         </Components:HlpPesquisa>
@@ -1987,7 +1971,8 @@
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <Components:HlpTextBox  isFindFiles="True" VisibilityLabel="Collapsed"  Text="{Binding Path=xLinkArquivo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  />
+                                        <Components:CustomTextBoxFindFiles Text="{Binding Path=xLinkArquivo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            ></Components:CustomTextBoxFindFiles>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>

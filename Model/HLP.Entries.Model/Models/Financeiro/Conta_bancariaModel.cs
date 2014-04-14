@@ -12,6 +12,7 @@ namespace HLP.Entries.Model.Models.Financeiro
         public Conta_bancariaModel()
             : base(xTabela: "Conta_bancaria")
         {
+            this.stConta = 1;
         }
 
 
@@ -31,8 +32,19 @@ namespace HLP.Entries.Model.Models.Financeiro
         public int idEmpresa { get; set; }
         [ParameterOrder(Order = 3)]
         public string xNumeroConta { get; set; }
+
+        private byte _stConta;
         [ParameterOrder(Order = 4)]
-        public byte stConta { get; set; }
+        public byte stConta
+        {
+            get { return _stConta; }
+            set
+            {
+                _stConta = value;
+                base.NotifyPropertyChanged(propertyName: "stConta");
+            }
+        }
+
         [ParameterOrder(Order = 5)]
         public string xTitular { get; set; }
         [ParameterOrder(Order = 6)]

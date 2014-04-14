@@ -17,7 +17,7 @@ using System.Windows.Threading;
 using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 
-namespace HLP.Entries.View.WPF.Comercial
+namespace HLP.Entries.View.WPF.GestãoAdministrativa
 {
     /// <summary>
     /// Interaction logic for WinCliente.xaml

@@ -80,11 +80,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Cliente\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\wcf_FamiliaProduto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,23 +105,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Rota\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\wcf_Site\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\Comercial\ClienteService.cs" />
     <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioPontoService.cs" />
     <Compile Include="Services\GestaoMateriais\SiteService.cs" />
-    <Compile Include="Services\Transportes\RotaService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioDetalheCommand.cs" />
@@ -235,11 +223,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\condicaoEntregaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\Conta_BancariaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -674,25 +657,6 @@
     <None Include="Service References\contato_Service\serviceContato5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.wsdl" />
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\decisaoService\serviceDecisao.wsdl" />
     <None Include="Service References\decisaoService\serviceDecisao.xsd">
       <SubType>Designer</SubType>
@@ -1105,25 +1069,6 @@
     <None Include="Service References\wcf_CamposBaseDados\wcf_CamposBaseDados2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente.wsdl" />
-    <None Include="Service References\wcf_Cliente\wcf_Cliente.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.wsdl" />
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto.xsd">
       <SubType>Designer</SubType>
@@ -1228,25 +1173,6 @@
     <None Include="Service References\wcf_Produto\wcf_Produto6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota.wsdl" />
-    <None Include="Service References\wcf_Rota\wcf_Rota.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Rota\wcf_Rota5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_Site\wcf_Site.wsdl" />
     <None Include="Service References\wcf_Site\wcf_Site.xsd">
       <SubType>Designer</SubType>
@@ -1281,7 +1207,6 @@
     <WCFMetadataStorage Include="Service References\CodigoIcmsService\" />
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
-    <WCFMetadataStorage Include="Service References\Conta_BancariaService\" />
     <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
@@ -1304,13 +1229,11 @@
     <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
-    <WCFMetadataStorage Include="Service References\wcf_Cliente\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
-    <WCFMetadataStorage Include="Service References\wcf_Rota\" />
     <WCFMetadataStorage Include="Service References\wcf_Site\" />
   </ItemGroup>
   <ItemGroup>
@@ -1549,21 +1472,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\agenciaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Conta_BancariaService\serviceConta_Bancaria.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Conta_BancariaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Conta_BancariaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Conta_BancariaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1839,36 +1747,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Rota\wcf_Rota.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Rota\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Rota\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Rota\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cliente\wcf_Cliente.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cliente\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cliente\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Cliente\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Site\wcf_Site.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -1927,6 +1805,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Transportes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -116,6 +116,7 @@
     <Content Include="serviceEmpresa.svc" />
     <Content Include="wcf_CanalDeVenda.svc" />
     <Content Include="wcf_CondicaoPagamento.svc" />
+    <Content Include="wcf_ContaBancaria.svc" />
     <Content Include="wcf_Conversao.svc" />
     <Content Include="wcf_Departamento.svc" />
     <Content Include="wcf_Deposito.svc" />
@@ -247,6 +248,7 @@
     <Compile Include="Iwcf_CanalDeVenda.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_CondicaoPagamento.cs" />
+    <Compile Include="Iwcf_ContaBancaria.cs" />
     <Compile Include="Iwcf_Conversao.cs" />
     <Compile Include="Iwcf_Departamento.cs" />
     <Compile Include="Iwcf_Deposito.cs" />
@@ -342,6 +344,9 @@
     </Compile>
     <Compile Include="wcf_CondicaoPagamento.svc.cs">
       <DependentUpon>wcf_CondicaoPagamento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_ContaBancaria.svc.cs">
+      <DependentUpon>wcf_ContaBancaria.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Conversao.svc.cs">
       <DependentUpon>wcf_Conversao.svc</DependentUpon>
