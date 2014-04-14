@@ -41,7 +41,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                        canExecute: paramCanExec => false);
 
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.objViewModel.cancelarBaseCommand.Execute(null),
-                       canExecute: paramCanExec => !this.objViewModel.commandAlterar.CanExecute(null));
+                       canExecute: paramCanExec => false);
 
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.objViewModel.alterarBaseCommand.Execute(parameter: paramExec),
                    canExecute: paramCanExec => false);
@@ -86,58 +86,84 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.tsBancoHorasFechado = servico.GetTotalBancoHorasMesAtual(objViewModel.currentModel.idFuncionario,
+                this.objViewModel.currentModel.objFuncBancoHoras = servico.GetTotalBancoHorasMesAtual(objViewModel.currentModel.idFuncionario,
                  objViewModel.currentModel.data);
 
-                this.objViewModel.currentModel.tsHorasTrabalhadas = new TimeSpan();
-                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
-                    {
-                        DateTime data = (DateTime)objViewModel.currentModel.data;
-                        int iDaysMonth = System.DateTime.DaysInMonth(data.Year, data.Month);
-
-                        foreach (Control ctr in objViewModel.lControlsPonto)
+                // IGUAL A NULL É PORQUE MES AINDA NÃO FOI FECHADO.
+                if (this.objViewModel.currentModel.objFuncBancoHoras == null)
+                {
+                    TimeSpan tsTotalHorasTrabalhadas = new TimeSpan();
+                    Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
                         {
-                            ctr.Visibility = System.Windows.Visibility.Hidden;
-                        }
-                        DateTime dtSet;
-                        for (int i = 1; i <= iDaysMonth; i++)
-                        {
-                            dtSet = new DateTime(data.Year, data.Month, i);
+                            DateTime data = (DateTime)objViewModel.currentModel.data;
+                            int iDaysMonth = System.DateTime.DaysInMonth(data.Year, data.Month);
 
-                            switch (i)
+                            foreach (Control ctr in objViewModel.lControlsPonto)
                             {
-                                case 1: objViewModel.PrimeiroDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
-                                case 2: objViewModel.SegundoDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
-                                case 3: objViewModel.TerceiroDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
-                                case 4: objViewModel.QuartoDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
-                                case 5: objViewModel.QuintoDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
-                                case 6: objViewModel.SextoDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
-                                case 7: objViewModel.SetimoDia = dtSet.ToString("dddddd").ToUpper();
-                                    break;
+                                ctr.Visibility = System.Windows.Visibility.Hidden;
                             }
+                            DateTime dtSet;
+                            for (int i = 1; i <= iDaysMonth; i++)
+                            {
+                                dtSet = new DateTime(data.Year, data.Month, i);
 
-                            Control controle = objViewModel.lControlsPonto.FirstOrDefault(c => c.Name == ("d" + i.ToString()));
-                            controle.SetPropertyValue("idFuncionario", objViewModel.currentModel.idFuncionario);
-                            controle.SetPropertyValue("dtPonto", dtSet.ToShortDateString());
-                            controle.SetPropertyValue("bMesFechado", (objViewModel.tsBancoHorasFechado == null ? false : true));
-                            Type tipo = controle.GetType();
-                            MethodInfo met = tipo.GetMethod(name: "CarregaDados");
-                            met.Invoke(controle, null);
-                            controle.Visibility = System.Windows.Visibility.Visible;
-                            this.objViewModel.currentModel.tsHorasTrabalhadas = this.objViewModel.currentModel.tsHorasTrabalhadas + ((TimeSpan)controle.GetPropertyValue("totalHoras"));
-                        }
-                    }));
-                objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
-                objViewModel.currentModel.tsHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
-                objViewModel.currentModel.tsHorasAcumuladasNoPeriodo = objViewModel.currentModel.tsHorasTrabalhadas.Subtract(objViewModel.currentModel.tsHorasAtrabalhar);
-                objViewModel.currentModel.tsSaldoBancoHoras = servico.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
-                objViewModel.currentModel.tsSaldoAteMomento = objViewModel.currentModel.tsSaldoBancoHoras.Add(objViewModel.currentModel.tsHorasAcumuladasNoPeriodo);
+                                switch (i)
+                                {
+                                    case 1: objViewModel.PrimeiroDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                    case 2: objViewModel.SegundoDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                    case 3: objViewModel.TerceiroDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                    case 4: objViewModel.QuartoDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                    case 5: objViewModel.QuintoDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                    case 6: objViewModel.SextoDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                    case 7: objViewModel.SetimoDia = dtSet.ToString("dddddd").ToUpper();
+                                        break;
+                                }
+
+                                Control controle = objViewModel.lControlsPonto.FirstOrDefault(c => c.Name == ("d" + i.ToString()));
+                                controle.SetPropertyValue("idFuncionario", objViewModel.currentModel.idFuncionario);
+                                controle.SetPropertyValue("dtPonto", dtSet.ToShortDateString());
+                                //controle.SetPropertyValue("bMesFechado", (objViewModel.tsBancoHorasFechado == null ? false : true));
+                                controle.SetPropertyValue("bMesFechado", false);
+                                Type tipo = controle.GetType();
+                                MethodInfo met = tipo.GetMethod(name: "CarregaDados");
+                                met.Invoke(controle, null);
+                                controle.Visibility = System.Windows.Visibility.Visible;
+                                tsTotalHorasTrabalhadas = tsTotalHorasTrabalhadas + ((TimeSpan)controle.GetPropertyValue("totalHoras"));
+                            }
+                        }));
+                    this.objViewModel.currentModel.objFuncBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
+                    this.objViewModel.currentModel.objFuncBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
+                    this.objViewModel.currentModel.objFuncBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
+                    this.objViewModel.currentModel.objFuncBancoHoras.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                    this.objViewModel.currentModel.objFuncBancoHoras.tHorastrabalhadas = tsTotalHorasTrabalhadas.ToStringHoras();
+                    this.objViewModel.currentModel.objFuncBancoHoras.tHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data).ToStringHoras();
+                    this.objViewModel.currentModel.objFuncBancoHoras.tSaldoTotalAnterior = servico.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data).ToStringHoras();
+                }
+
+                this.objViewModel.currentModel.objFuncBancoHoras.tBancoHoras =
+                       (
+                           objViewModel.currentModel.objFuncBancoHoras.tHorastrabalhadas.ToTimeSpan()
+                           .Subtract(
+                               objViewModel.currentModel.objFuncBancoHoras.tHorasAtrabalhar.ToTimeSpan()
+                                    )
+                       ).ToStringHoras();
+
+                //this.objViewModel.currentModel.objFuncBancoHoras.tBancoHoras = this.objViewModel.currentModel.objFuncBancoHoras.tsHorasAcumuladas;
+                this.objViewModel.currentModel.objFuncBancoHoras.tsSaldoAteMomento = objViewModel.currentModel.objFuncBancoHoras.tSaldoTotalAnterior.ToTimeSpan().Add(objViewModel.currentModel.objFuncBancoHoras.tBancoHoras.ToTimeSpan());
+
+
+                //this.objViewModel.currentModel.tsHorasTrabalhadas = tsTotalHorasTrabalhadas;
+                //objViewModel.currentModel.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                //objViewModel.currentModel.tsHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                //objViewModel.currentModel.tsHorasAcumuladasNoPeriodo = objViewModel.currentModel.tsHorasTrabalhadas.Subtract(objViewModel.currentModel.tsHorasAtrabalhar);
+                //objViewModel.currentModel.tsSaldoBancoHoras = servico.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                //objViewModel.currentModel.tsSaldoAteMomento = objViewModel.currentModel.tsSaldoBancoHoras.Add(objViewModel.currentModel.tsHorasAcumuladasNoPeriodo);
 
 
             }
@@ -165,7 +191,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
             this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
-            this.CarragaFormulario();
+            if (this.objViewModel.currentModel.idFuncionario != 0)
+                this.CarragaFormulario();
 
         }
 
@@ -173,11 +200,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                Model.Models.Gerais.Funcionario_BancoHorasModel funcBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
-                funcBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
-                funcBancoHoras.tBancoHoras = objViewModel.currentModel.tsSaldoAteMomento.ToStringHoras();
-                funcBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
-                servico.SaveBancoHoras(funcBancoHoras);
+                //Model.Models.Gerais.Funcionario_BancoHorasModel funcBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
+                //funcBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
+
+                //funcBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
+                servico.SaveBancoHoras(objViewModel.currentModel.objFuncBancoHoras);
                 this.CarragaFormulario();
             }
             catch (Exception ex)
@@ -187,9 +214,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         bool CanSaveBancoHoras()
         {
-            if (objViewModel.tsBancoHorasFechado == null && objViewModel.currentModel != null)
+            if (objViewModel.currentModel.objFuncBancoHoras != null && objViewModel.currentModel != null)
             {
-                return true;
+                if (objViewModel.currentModel.objFuncBancoHoras.idFuncionarioBancoHoras == null)
+                    return true;
             }
             return false;
         }
@@ -198,9 +226,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                servico.DeleteBancoHorasMes(objViewModel.currentModel.idFuncionario,
-                        objViewModel.currentModel.data);
-                this.CarragaFormulario();
+                if (MessageBox.Show(messageBoxText: "Deseja reabrir o calendário?" + Environment.NewLine +
+                    "Isso poderá mudar os valores do painél e os dados já salvos referente as totalizações no banco de dados serão perdidos.",
+                    caption: "Reabrir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+                    == MessageBoxResult.Yes)
+                {
+                    servico.DeleteBancoHorasMes(objViewModel.currentModel.idFuncionario,
+                            objViewModel.currentModel.data);
+                    this.CarragaFormulario();
+                }
             }
             catch (Exception)
             {
@@ -209,9 +243,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         private bool CanReabrirMes()
         {
-            if (objViewModel.tsBancoHorasFechado != null)
+            if (objViewModel.currentModel.objFuncBancoHoras != null && objViewModel.currentModel != null)
             {
-                return true;
+                if (objViewModel.currentModel.objFuncBancoHoras.idFuncionarioBancoHoras != null)
+                    return true;
             }
             return false;
         }

@@ -139,7 +139,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
             return new TimeSpan();
 
         }
-        public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
+        public Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
         {
             switch (Sistema.bOnline)
             {
@@ -149,10 +149,11 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.servicoInternet.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
+                      //  return this.servicoInternet.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
+                        return null;
                     }
             }
-            return new TimeSpan();
+            return null;
 
         }
         public void SaveBancoHoras(HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel objFuncionario_BancoHoras)

@@ -24,6 +24,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.CarregarDados();
             objViewModel.commandSalvar = new RelayCommand(execute: paramExec => this.Salvar(win: paramExec),
                  canExecute: paramCanExec => true);
+            objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(win: paramExec),
+                canExecute: paramCanExec => true);
+
+            objViewModel.commandSalvar = new RelayCommand(execute: paramExec => this.Salvar(win: paramExec),
+                canExecute: paramCanExec => true);
 
             objViewModel.commandFaltou = new RelayCommand(execute: paramExec => this.CarregaFalta(paramExec),
                  canExecute: paramCanExec => this.CanCarregaFalta());
@@ -32,6 +37,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                  canExecute: paramCanExec => this.CanCarregaAbono());
         }
 
+        public void Cancelar(object win) 
+        {
+            ((Window)win).Close();
+        }
 
         public void Salvar(object win)
         {

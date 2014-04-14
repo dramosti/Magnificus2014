@@ -34,7 +34,7 @@ namespace HLP.Wcf.Entries
         [OperationContract]
         List<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel> GetHorasAtrabalharDia(int idFuncionario, DateTime dtDia);
         [OperationContract]
-        TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes);
+        HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes);
         [OperationContract]
         void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes);
         [OperationContract]

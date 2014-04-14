@@ -24,6 +24,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             servico = new FuncionarioPontoService();
             this.objViewModel.LancamentoManualCommand = new RelayCommand(execute: paramExec => this.LoadLancamentoManual(),
                  canExecute: paramCanExec => CanLancamentoManual());
+            objViewModel.styleDSR = objViewModel.resource["ListBox_Calendario_Ponto_Padrao"] as Style;
         }
         public void CarregaDados()
         {
@@ -78,6 +79,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 Window win = GerenciadorModulo.Instancia.CarregaForm("WinLancamentoManualPonto", Base.InterfacesBases.TipoExibeForm.Modal);
+                win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 Type tp = win.GetType();
                 MethodInfo method = tp.GetMethod("SetDataContext");
                 method.Invoke(win, new object[] { objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto) });

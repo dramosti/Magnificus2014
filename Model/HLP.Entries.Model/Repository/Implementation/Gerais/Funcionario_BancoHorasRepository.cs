@@ -27,11 +27,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             DataAccessor<Funcionario_BancoHorasModel> regBancoHorasAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
                     string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) < {1}", idFuncionario,
                     Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
-                    .DoNotMap(c => c.status).Build());
+                     .DoNotMap(c => c.status)
+                     .DoNotMap(c => c.tsSaldoAteMomento)                   
+                     .Build());
             TimeSpan tsTotalRet = new TimeSpan();
             foreach (var item in regBancoHorasAccessor.Execute().ToList())
             {
-                tsTotalRet = tsTotalRet + item.tBancoHoras.ToTimeSpan();
+                tsTotalRet = tsTotalRet.Add(item.tBancoHoras.ToTimeSpan());
             }
             return tsTotalRet;
         }
@@ -50,24 +52,27 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
         }
 
-        public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
+        public Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
         {
             regBancoHorasMesAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
                 string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) = {1}", idFuncionario,
                 Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
-                .DoNotMap(c => c.status).Build());
-            TimeSpan? tsTotalRet = null;
+                .DoNotMap(c => c.status)
+                .DoNotMap(c=>c.tsSaldoAteMomento)
+                .Build());
+            //TimeSpan? tsTotalRet = null;
+            //List<Funcionario_BancoHorasModel> lreturn = regBancoHorasMesAccessor.Execute().ToList();
+            //if (lreturn.Count > 0)
+            //{
+            //    tsTotalRet = new TimeSpan();
+            //    foreach (var item in lreturn)
+            //    {
+            //        tsTotalRet = tsTotalRet + item.tBancoHoras.ToTimeSpan();
+            //    }
+            //}
+            //return tsTotalRet;
 
-            List<Funcionario_BancoHorasModel> lreturn = regBancoHorasMesAccessor.Execute().ToList();
-            if (lreturn.Count > 0)
-            {
-                tsTotalRet = new TimeSpan();
-                foreach (var item in lreturn)
-                {
-                    tsTotalRet = tsTotalRet + item.tBancoHoras.ToTimeSpan();
-                }
-            }
-            return tsTotalRet;
+            return regBancoHorasMesAccessor.Execute().FirstOrDefault();
         }
 
         public void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes)

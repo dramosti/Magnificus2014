@@ -53,149 +53,153 @@
         </Border>
         <ToolBar DockPanel.Dock="Top" Style="{StaticResource toolBarCadastro}">
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button             IsEnabled="False"
+                <Button             IsEnabled="False"
 								Cursor="Hand"
 								Style="{DynamicResource ButtonsMainWindow}" Height="25" Width="40" ToolTip="Novo ( Alt + N )" Focusable="False">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add.png"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_File_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_Desabilitado.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button             IsEnabled="False"   
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add.png"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_File_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Add_Desabilitado.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button             IsEnabled="False"   
 								Style="{DynamicResource ButtonsMainWindow}" ToolTipService.ShowOnDisabled="True" Width="40" Height="25" ToolTip="Alterar ( Alt + A )" Focusable="False">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_48.png" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_Disabled.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button                 IsEnabled="False" 
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_48.png" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Edit_Disabled.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button                 IsEnabled="False" 
                                     Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Excluir ( Alt + E )" Focusable="False">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_48.png"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_Disabled.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Command="{Binding commandSalvar}" CommandParameter="{Binding ElementName=winLancamentoManual}" Width="40" Height="27" ToolTip="Salvar ( Alt + S )" Focusable="False">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/save_48.png"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button IsEnabled="False" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )" Focusable="False">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_2_48.png"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button IsEnabled="False" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )" Focusable="False">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_48.png"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_Disabled.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </StackPanel>
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_48.png"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Delete_Disabled.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button 
+                Command="{Binding commandSalvar}" CommandParameter="{Binding ElementName=winLancamentoManual}"
+                Width="40" Height="27" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/save_48.png"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Save_Disabled.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button                   
+                    Command="{Binding commandCancelar}" CommandParameter="{Binding ElementName=winLancamentoManual}"
+                    Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Cancelar ( Alt + C )" Focusable="False">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_2_48.png"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Cancel_Disabled.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button IsEnabled="False" Style="{DynamicResource ButtonsMainWindow}" Width="40" Height="25" ToolTip="Duplicar ( Alt + V )" Focusable="False">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Image x:Name="ImageAdd">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_48.png"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_MouseOver.png"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Copy_Disabled.png"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
         </ToolBar>
         <Grid>
             <Grid.RowDefinitions>
@@ -210,7 +214,7 @@
                 <ColumnDefinition Width="96*"/>
                 <ColumnDefinition Width="179*"/>
             </Grid.ColumnDefinitions>
-            
+
             <Components:HlpPesquisa 
                                     Grid.Column="0" Grid.Row="1"
                                     x:Name="pFuncionario" 
@@ -250,7 +254,7 @@
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                     <DataGridTextColumn Header="Hora Ponto" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
-                    <DataGridTextColumn Header="Hora alterada" Width="82" Binding="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />                 
+                    <DataGridTextColumn Header="Hora alterada" Width="82" Binding="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
                     <DataGridTextColumn   Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
