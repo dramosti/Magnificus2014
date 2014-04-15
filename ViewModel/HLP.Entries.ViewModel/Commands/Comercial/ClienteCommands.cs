@@ -12,6 +12,8 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Comercial;
+using HLP.Entries.Services.Gerais;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -20,11 +22,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         ClienteViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
         ClienteService objServico;
-
+        Condicao_PagamentoService objCondicao_PagamentoService;
 
         public ClienteCommands(ClienteViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+            this.objCondicao_PagamentoService = new Condicao_PagamentoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -392,10 +395,22 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         #endregion
 
+        public Condicao_pagamentoModel getCondicaoPagamentoByCliente(int idCondicaoPagamento)
+        {
+            objCondicao_PagamentoService = new Condicao_PagamentoService();
+
+            return objCondicao_PagamentoService.GetObject(id: idCondicaoPagamento);
+        }
+
         public bool RotaPossuiListaPrecoPai(int idRota)
         {
             objServico = new ClienteService();
             return objServico.RotaPossuiListaPrecoPai(idRota: idRota);
+        }
+
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            return objServico.GetIdSiteByDeposito(idDeposito: idDeposito);
         }
     }
 }

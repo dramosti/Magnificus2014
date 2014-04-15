@@ -59,6 +59,7 @@
     <Compile Include="Gerais\MoedaService.cs" />
     <Compile Include="Gerais\Plano_PagamentoService.cs" />
     <Compile Include="Gerais\Unidade_MedidaService.cs" />
+    <Compile Include="GestaoMateriais\SiteService.cs" />
     <Compile Include="Parametros\EmpresaParametrosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosHumanos\DepartamentoService.cs" />
@@ -157,6 +158,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Site\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Transportadora\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +216,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.SiteModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Unidade_medidaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.RotaModel.datasource" />
@@ -539,6 +546,28 @@
     <None Include="Service References\wcf_Rota\wcf_Rota4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Site\wcf_Site.wsdl" />
+    <None Include="Service References\wcf_Site\wcf_Site.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Site\wcf_Site1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Site\wcf_Site2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Site\wcf_Site3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Site\wcf_Site4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Site\wcf_Site5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Site\wcf_Site6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Transportadora\wcf_Transportadora.wsdl" />
     <None Include="Service References\wcf_Transportadora\wcf_Transportadora.xsd">
       <SubType>Designer</SubType>
@@ -595,6 +624,7 @@
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
     <WCFMetadataStorage Include="Service References\wcf_PlanoPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Rota\" />
+    <WCFMetadataStorage Include="Service References\wcf_Site\" />
     <WCFMetadataStorage Include="Service References\wcf_Transportadora\" />
     <WCFMetadataStorage Include="Service References\wcf_UnidadeMedida\" />
   </ItemGroup>
@@ -909,6 +939,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Cliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Site\wcf_Site.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Site\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Site\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Site\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
