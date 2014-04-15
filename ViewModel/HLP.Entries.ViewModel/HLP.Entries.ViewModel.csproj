@@ -85,11 +85,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Funcionario_ControlePonto\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\wcf_ListaPreco\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,7 +103,6 @@
     <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
-    <Compile Include="Services\Gerais\FuncionarioPontoService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioDetalheCommand.cs" />
@@ -1058,22 +1052,6 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.wsdl" />
     <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.xsd">
       <SubType>Designer</SubType>
@@ -1177,7 +1155,6 @@
     <WCFMetadataStorage Include="Service References\ufService\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
-    <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
@@ -1673,21 +1650,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Produto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

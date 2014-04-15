@@ -14,6 +14,7 @@ using System.Threading;
 using System.Windows;
 using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Entries.Services.RecursosHumanos;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {

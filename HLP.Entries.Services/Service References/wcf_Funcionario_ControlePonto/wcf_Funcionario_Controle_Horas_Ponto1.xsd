@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario_Controle_Horas_Ponto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
   <xs:complexType name="ArrayOfFuncionario_Controle_Horas_PontoModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Funcionario_Controle_Horas_PontoModel" nillable="true" type="tns:Funcionario_Controle_Horas_PontoModel" />
@@ -49,9 +49,14 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
         <xs:sequence>
+          <xs:element minOccurs="0" name="iDiasTrabalhados" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionario" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionarioBancoHoras" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="tBancoHoras" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tHorasAtrabalhar" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tHorastrabalhadas" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tSaldoTotalAnterior" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tsSaldoAteMomento" type="ser:duration" />
           <xs:element minOccurs="0" name="xMesAno" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>

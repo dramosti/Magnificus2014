@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
+namespace HLP.Entries.Services.wcf_Funcionario_ControlePonto {
     using System.Runtime.Serialization;
     using System;
     
@@ -27,10 +27,10 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.Services.wcf_Funcionario_ControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.statusModel statusField;
+        private HLP.Entries.Services.wcf_Funcionario_ControlePonto.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -43,7 +43,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.Services.wcf_Funcionario_ControlePonto.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -56,7 +56,7 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.statusModel status {
+        public HLP.Entries.Services.wcf_Funcionario_ControlePonto.statusModel status {
             get {
                 return this.statusField;
             }
@@ -285,12 +285,12 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "al", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "alResponse")]
-        System.Nullable<System.TimeSpan> GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes);
+        HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "al", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/GetTotalBancoHorasMesAtu" +
             "alResponse")]
-        System.Threading.Tasks.Task<System.Nullable<System.TimeSpan>> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes);
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMes", ReplyAction="http://tempuri.org/Iwcf_Funcionario_Controle_Horas_Ponto/DeleteBancoHorasMesRespo" +
             "nse")]
@@ -310,12 +310,12 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface Iwcf_Funcionario_Controle_Horas_PontoChannel : HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto, System.ServiceModel.IClientChannel {
+    public interface Iwcf_Funcionario_Controle_Horas_PontoChannel : HLP.Entries.Services.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Iwcf_Funcionario_Controle_Horas_PontoClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto>, HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto {
+    public partial class Iwcf_Funcionario_Controle_Horas_PontoClient : System.ServiceModel.ClientBase<HLP.Entries.Services.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto>, HLP.Entries.Services.wcf_Funcionario_ControlePonto.Iwcf_Funcionario_Controle_Horas_Ponto {
         
         public Iwcf_Funcionario_Controle_Horas_PontoClient() {
         }
@@ -424,11 +424,11 @@ namespace HLP.Entries.ViewModel.wcf_Funcionario_ControlePonto {
             return base.Channel.GetHorasAtrabalharDiaAsync(idFuncionario, dtDia);
         }
         
-        public System.Nullable<System.TimeSpan> GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes) {
+        public HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, System.DateTime dtMes) {
             return base.Channel.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
         }
         
-        public System.Threading.Tasks.Task<System.Nullable<System.TimeSpan>> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes) {
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel> GetTotalBancoHorasMesAtualAsync(int idFuncionario, System.DateTime dtMes) {
             return base.Channel.GetTotalBancoHorasMesAtualAsync(idFuncionario, dtMes);
         }
         

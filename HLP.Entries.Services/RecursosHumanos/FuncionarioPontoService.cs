@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.ViewModel.Services.Gerais
+namespace HLP.Entries.Services.RecursosHumanos
 {
     public class FuncionarioPontoService
     {
@@ -149,8 +149,7 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                     }
                 case StConnection.OnlineWeb:
                     {
-                      //  return this.servicoInternet.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
-                        return null;
+                        return this.servicoInternet.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
                     }
             }
             return null;
@@ -192,5 +191,4 @@ namespace HLP.Entries.ViewModel.Services.Gerais
                 return false;
         }
     }
-
 }

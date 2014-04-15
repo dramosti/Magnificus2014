@@ -63,6 +63,7 @@
     <Compile Include="Parametros\EmpresaParametrosService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosHumanos\DepartamentoService.cs" />
+    <Compile Include="RecursosHumanos\FuncionarioPontoService.cs" />
     <Compile Include="Service References\wcf_Banco\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +130,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_Funcionarios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Funcionario_ControlePonto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -209,11 +215,15 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EspelhoPontoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.FuncionarioModel1.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.MoedaModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Plano_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.SiteModel.datasource" />
@@ -463,6 +473,22 @@
     <None Include="Service References\wcf_Funcionarios\wcf_Funcionario6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Moeda\wcf_Moeda.wsdl" />
     <None Include="Service References\wcf_Moeda\wcf_Moeda.xsd">
       <SubType>Designer</SubType>
@@ -619,6 +645,7 @@
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionarios\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Moeda\" />
     <WCFMetadataStorage Include="Service References\wcf_ParametroEmpresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
@@ -954,6 +981,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Site\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario_ControlePonto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

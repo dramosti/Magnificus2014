@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using HLP.Base.Static;
+using HLP.Entries.Services.RecursosHumanos;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
