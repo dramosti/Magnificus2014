@@ -274,29 +274,30 @@ namespace HLP.Comum.View.Components
             if (!dataGrid.SelectionUnit.Equals(DataGridSelectionUnit.FullRow))
                 throw new ArgumentException("The SelectionUnit of the DataGrid must be set to FullRow.");
 
-            if (rowIndex < 0 || rowIndex > (dataGrid.Items.Count - 1))
-                throw new ArgumentException(string.Format("{0} is an invalid row index.", rowIndex));
+            //if (rowIndex < 0 || rowIndex > (dataGrid.Items.Count - 1))
+            //    throw new ArgumentException(string.Format("{0} is an invalid row index.", rowIndex));
 
-            if (dataGrid.Items.Count > 0)
+            if ((int)dataGrid.Items.Count > (int)0)
             {
                 if (dataGrid.SelectedItems.Count > 0)
                 {
                     dataGrid.SelectedItems.Clear();
                 }
-            }
-            /* set the SelectedItem property */
-            object item = dataGrid.Items[rowIndex]; // = Product X
-            dataGrid.SelectedItem = item;
 
-            DataGridRow row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
-            if (row == null)
-            {
-                /* bring the data item (Product object) into view
-                 * in case it has been virtualized away */
-                dataGrid.ScrollIntoView(item);
-                row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
+                /* set the SelectedItem property */
+                object item = dataGrid.Items[rowIndex]; // = Product X
+                dataGrid.SelectedItem = item;
+
+                DataGridRow row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
+                if (row == null)
+                {
+                    /* bring the data item (Product object) into view
+                     * in case it has been virtualized away */
+                    dataGrid.ScrollIntoView(item);
+                    row = dataGrid.ItemContainerGenerator.ContainerFromIndex(rowIndex) as DataGridRow;
+                }
+                //TODO: Retrieve and focus a DataGridCell object
             }
-            //TODO: Retrieve and focus a DataGridCell object
         }
 
         private void columnHeader_Click(object sender, RoutedEventArgs e)

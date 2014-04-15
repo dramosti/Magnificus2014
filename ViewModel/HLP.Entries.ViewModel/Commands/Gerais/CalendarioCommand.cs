@@ -13,6 +13,7 @@ using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
 using HLP.Entries.Services.Gerais;
+using System.Collections.ObjectModel;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -91,12 +92,31 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             var dados = win.GetPropertyValue("ViewModel").GetPropertyValue("lCalendarioDetalhes");
             if (dados != null)
             {
-                List<int> lExcluidos = new List<int>();
-                foreach (var item in objViewModel.currentModel.lCalendario_DetalheModel)
-                    if (item.idCalendarioDetalhe != null)
-                        lExcluidos.Add((int)item.idCalendarioDetalhe);               
-                objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
-                objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos.AddRange(lExcluidos);
+
+                List<Calendario_DetalheModel> lExcluir = new List<Calendario_DetalheModel>();
+                foreach (var item in ((ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados).Select(c => c.dCalendario).Distinct())
+                {
+                    lExcluir.AddRange(objViewModel.currentModel.lCalendario_DetalheModel.Where(c => c.dCalendario == item).ToList());
+                }
+
+                foreach (var removeItem in lExcluir)
+                {
+                    objViewModel.currentModel.lCalendario_DetalheModel.Remove(removeItem);
+                }
+
+                foreach (var itemAdd in (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados)
+                {
+                    objViewModel.currentModel.lCalendario_DetalheModel.Add(item: itemAdd);
+                }
+                List<int> lExcluidos = objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos;
+                objViewModel.currentModel.lCalendario_DetalheModel =
+                    new ObservableCollectionBaseCadastros<Calendario_DetalheModel>(objViewModel.currentModel.lCalendario_DetalheModel.OrderBy(c => c.dCalendario).ToList());
+                objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos.AddRange(lExcluir.Where(c => c.idCalendarioDetalhe != null).Select(c => (int)c.idCalendarioDetalhe).ToList());
+                foreach (int i in lExcluidos)
+                {
+                    if (!objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos.Contains(i))
+                        objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos.Add(i);
+                }
             }
         }
 
