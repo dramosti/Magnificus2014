@@ -39,7 +39,6 @@ namespace HLP.Base.Static
                 }));
             }
             return wd;
-
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;
 using System.Collections.Generic;
@@ -35,5 +36,14 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             return this.comm.RotaPossuiListaPrecoPai(idRota: idRota);
         }
 
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            return comm.GetIdSiteByDeposito(idDeposito: idDeposito);
+        }
+
+        public Condicao_pagamentoModel getCondicaoPagamentoByCliente(int idCondicaoPagamento)
+        {
+            return comm.getCondicaoPagamentoByCliente(idCondicaoPagamento: idCondicaoPagamento);
+        }
     }
 }

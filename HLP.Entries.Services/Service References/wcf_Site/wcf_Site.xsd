@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Site.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
-  <xs:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Site.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.Models" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Site.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Site.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
   <xs:element name="Copy">
     <xs:complexType>
       <xs:sequence>
@@ -68,7 +68,7 @@
   <xs:element name="GetHierarquiaSiteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.Models" minOccurs="0" name="GetHierarquiaSiteResult" nillable="true" type="q6:modelToTreeView" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" minOccurs="0" name="GetHierarquiaSiteResult" nillable="true" type="q6:modelToTreeView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

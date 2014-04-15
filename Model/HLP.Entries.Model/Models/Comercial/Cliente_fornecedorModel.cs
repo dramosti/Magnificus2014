@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using System.Windows;
+using System.Reflection;
+using System.Windows.Threading;
+using HLP.Entries.Model.Models.Gerais;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
@@ -21,7 +26,23 @@ namespace HLP.Entries.Model.Models.Comercial
             this.lCliente_fornecedor_representante = new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
             this.cliente_fornecedor_fiscal = new Cliente_fornecedor_fiscalModel();
             this.dCadastro = DateTime.Today;
+            this.enabledFieldsCondPagamento = true;
         }
+
+        #region Propriedades não mapiadas
+
+        private bool _enabledFieldsCondPagamento;
+        public bool enabledFieldsCondPagamento
+        {
+            get { return _enabledFieldsCondPagamento; }
+            set
+            {
+                _enabledFieldsCondPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "enabledFieldsCondPagamento");
+            }
+        }
+
+        #endregion
 
         private int? _idClienteFornecedor;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -373,6 +394,36 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _idCondicaoPagamento = value;
                 base.NotifyPropertyChanged(propertyName: "idCondicaoPagamento");
+
+                Window w = Sistema.GetOpenWindow(xName: "WinCliente");
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    object o = w.DataContext;
+
+                    MethodInfo mi = o.GetType().GetMethod(name: "getCondicaoPagamentoByCliente");
+
+                    object objCondicao = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
+
+                    if (objCondicao != null)
+                    {
+                        this.idPlanoPagamento = ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento;
+                        this.idDiaPagamento = ((Condicao_pagamentoModel)objCondicao).idDiaPagamento;
+
+                        if (((Condicao_pagamentoModel)objCondicao).idDiaPagamento != null && ((Condicao_pagamentoModel)objCondicao).idDiaPagamento != 0
+                            && ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento != null && ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento != 0)
+                            this.enabledFieldsCondPagamento = false;
+                        else
+                        {
+                            this.enabledFieldsCondPagamento = true;
+                        }
+                    }
+                    else
+                    {
+                        this.enabledFieldsCondPagamento = true;
+                        this.idPlanoPagamento = null;
+                        this.idDiaPagamento = null;
+                    }
+                }));
             }
         }
         private int? _idFuncionario;
@@ -956,6 +1007,16 @@ namespace HLP.Entries.Model.Models.Comercial
             {
                 _idDeposito = value;
                 base.NotifyPropertyChanged(propertyName: "idDeposito");
+                Window w = Sistema.GetOpenWindow(xName: "WinCliente");
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    object o = w.DataContext;
+                    object arg1 = value;
+
+                    MethodInfo mi = o.GetType().GetMethod(name: "GetIdSiteByDeposito");
+
+                    this.idSite = (int)mi.Invoke(obj: w.DataContext, parameters: new object[] { arg1 });
+                }));
             }
         }
         private int? _idDescontos;
@@ -1091,7 +1152,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
-        
+
         private ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel> _lCliente_Fornecedor_Observacao;
 
         public ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel> lCliente_Fornecedor_Observacao
@@ -1105,7 +1166,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
 
 
-        
+
         private ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel> _lCliente_fornecedor_representante;
 
         public ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel> lCliente_fornecedor_representante
@@ -1119,7 +1180,7 @@ namespace HLP.Entries.Model.Models.Comercial
         }
 
 
-        
+
         private ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> _lCliente_fornecedor_Endereco;
 
         public ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> lCliente_fornecedor_Endereco
@@ -1132,7 +1193,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
-        
+
         private ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> _lCliente_fornecedor_contato;
 
         public ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> lCliente_fornecedor_contato
@@ -1145,7 +1206,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
-        
+
         private ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel> _lCliente_fornecedor_arquivo;
 
         public ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel> lCliente_fornecedor_arquivo
@@ -1158,7 +1219,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
-        
+
         private ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel> _lCliente_fornecedor_produto;
 
         public ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel> lCliente_fornecedor_produto
@@ -1171,7 +1232,7 @@ namespace HLP.Entries.Model.Models.Comercial
             }
         }
 
-        
+
         private Cliente_fornecedor_fiscalModel _cliente_fornecedor_fiscal;
 
         public Cliente_fornecedor_fiscalModel cliente_fornecedor_fiscal
@@ -1183,7 +1244,7 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "cliente_fornecedor_fiscal");
             }
         }
-        
+
     }
 
     public partial class Cliente_fornecedor_representanteModel : modelBase

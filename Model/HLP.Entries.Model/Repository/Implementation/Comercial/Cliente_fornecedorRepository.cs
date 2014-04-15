@@ -64,7 +64,9 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
                                          .AddParameter<int>("idClienteFornecedor"),
                                          MapBuilder<Cliente_fornecedorModel>.MapAllProperties()
                                          .DoNotMap(c => c.cliente_fornecedor_fiscal)
-                                         .DoNotMap(i => i.status).Build());
+                                         .DoNotMap(i => i.status)
+                                         .DoNotMap(i => i.enabledFieldsCondPagamento)
+                                         .Build());
             }
 
             return regCliente_fornecedorAccessor.Execute(idClienteFornecedor).FirstOrDefault();

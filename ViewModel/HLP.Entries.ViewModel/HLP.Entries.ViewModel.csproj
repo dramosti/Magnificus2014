@@ -105,16 +105,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Site\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Services\Gerais\FuncionarioPontoService.cs" />
-    <Compile Include="Services\GestaoMateriais\SiteService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
     <Compile Include="Commands\Gerais\CalendarioDetalheCommand.cs" />
@@ -161,11 +155,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\PersonalidadeService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\siteService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -872,25 +861,6 @@
     <None Include="Service References\setrService\serviceSetor5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\siteService\serviceSite.wsdl" />
-    <None Include="Service References\siteService\serviceSite.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\siteService\serviceSite1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\siteService\serviceSite2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\siteService\serviceSite3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\siteService\serviceSite4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\siteService\serviceSite5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis.wsdl" />
     <None Include="Service References\Situacao_tributaria_pisService\serviceSituacao_tributaria_pis.xsd">
       <SubType>Designer</SubType>
@@ -1173,28 +1143,6 @@
     <None Include="Service References\wcf_Produto\wcf_Produto6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Site\wcf_Site.wsdl" />
-    <None Include="Service References\wcf_Site\wcf_Site.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Site\wcf_Site1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Site\wcf_Site2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Site\wcf_Site3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Site\wcf_Site4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Site\wcf_Site5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Site\wcf_Site6.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AcessoFuncionarioService\" />
@@ -1218,7 +1166,6 @@
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
-    <WCFMetadataStorage Include="Service References\siteService\" />
     <WCFMetadataStorage Include="Service References\Situacao_tributaria_pisService\" />
     <WCFMetadataStorage Include="Service References\StCofinsService\" />
     <WCFMetadataStorage Include="Service References\StIcmsService\" />
@@ -1234,7 +1181,6 @@
     <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
-    <WCFMetadataStorage Include="Service References\wcf_Site\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ufService\serviceUf.disco" />
@@ -1672,21 +1618,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\siteService\serviceSite.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\siteService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\AcessoFuncionarioService\serviceAcesso.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -1742,21 +1673,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Produto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Site\wcf_Site.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Site\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Site\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Site\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

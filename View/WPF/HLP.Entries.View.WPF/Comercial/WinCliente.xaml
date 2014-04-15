@@ -22,6 +22,7 @@
             <convert:PorcentagemConverter x:Key="PorcentagemConverter"/>
             <convert:MoedaConverter x:Key="moedaConverter"/>
             <convertLocal:ListaPrecoClienteEnabled x:Key="ListaPrecoEnabled"/>
+            <convertLocal:getSiteMultiConverter x:Key="getSiteMultiConv"/>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
@@ -534,8 +535,8 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:HlpPesquisa
+                                            Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-											Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											WidthLabel="0" FieldPesquisa="ID" TableView="vwSite">
                                             <Components:HlpPesquisa.Items>
@@ -613,8 +614,24 @@
                                         <Components:HlpPesquisa 
 											Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
 											WidthLabel="0" TableView="vwPlanoPagamento" FieldPesquisa="ID">
+                                            <Components:HlpPesquisa.Style>
+                                                <Style>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                        </DataTrigger>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding Path=bIsEnabled}" Value="True"/>
+                                                                <Condition Binding="{Binding Path=currentModel.enabledFieldsCondPagamento}" Value="False"/>
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:HlpPesquisa.Style>
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xPlanoPagamento</System:String>
                                                 <System:String>xDescricao</System:String>
@@ -623,8 +640,24 @@
                                         <Components:HlpPesquisa 
 											Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
 											WidthLabel="0" TableView="vwDiaPagamento" FieldPesquisa="ID">
+                                            <Components:HlpPesquisa.Style>
+                                                <Style>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                        </DataTrigger>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding Path=bIsEnabled}" Value="True"/>
+                                                                <Condition Binding="{Binding Path=currentModel.enabledFieldsCondPagamento}" Value="False"/>
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Components:HlpPesquisa.Style>
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xDiaPagamento</System:String>
                                                 <System:String>xDescricao</System:String>
@@ -709,7 +742,8 @@
 									IsEnabled="{Binding bIsEnabled}"
 									AutoGenerateColumns="False" 
 									SelectionUnit="CellOrRowHeader" 
-									CanUserReorderColumns="False"  
+									CanUserReorderColumns="False"
+                                        CanUserAddRows="True"
 									CanUserDeleteRows="True">
                                         <DataGrid.Columns>
                                             <DataGridTemplateColumn x:Name="clRepresentantes" Header="Representantes" Width="*" >
@@ -872,9 +906,18 @@
             <TabItem Header="Pessoal">
                 <AdornerDecorator>
                     <TabControl x:Name="tabPessoal">
-                        <TabItem Header="Informações Pessoais">
+                        <TabItem Header="Informações Pessoais">                            
                             <AdornerDecorator>
-                                <Expander Header="Dados Pessoais" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                                <Expander Header="Dados Pessoais" IsExpanded="True">
+                                    <Expander.Style>
+                                        <Style TargetType="Expander" BasedOn="{StaticResource ExpanderPadrao}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=currentModel.stPessoa}" Value="1">
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Expander.Style>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="10"></ColumnDefinition>

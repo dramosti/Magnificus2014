@@ -1,18 +1,21 @@
 ﻿using HLP.Base.Static;
-using HLP.Comum.Resources.Models;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HLP.Entries.ViewModel.Services.GestaoMateriais
+namespace HLP.Entries.Services.GestaoMateriais
 {
     public class SiteService
     {
         HLP.Wcf.Entries.wcf_Site servicoRede;
         wcf_Site.Iwcf_SiteClient servicoInternet;
+        DepositoService objServiceDeposito;
+
 
         public SiteService()
         {
@@ -29,6 +32,8 @@ namespace HLP.Entries.ViewModel.Services.GestaoMateriais
                     }
                     break;
             }
+
+            objServiceDeposito = new DepositoService();
         }
 
         public SiteModel Save(SiteModel objModel)

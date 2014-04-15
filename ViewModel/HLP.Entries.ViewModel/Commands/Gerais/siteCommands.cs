@@ -1,7 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
-using HLP.Comum.Resources.Models;
 using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.Services.GestaoMateriais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -12,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.GestaoMateriais;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
