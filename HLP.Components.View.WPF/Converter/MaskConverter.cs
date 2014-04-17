@@ -14,7 +14,8 @@ namespace HLP.Components.View.WPF.Converter
             if (value == null)
                 return null;
 
-
+            if (parameter == null)
+                return null;
 
             switch (parameter.ToString())
             {

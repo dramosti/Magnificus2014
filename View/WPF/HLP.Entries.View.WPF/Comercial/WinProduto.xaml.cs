@@ -11,8 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
+using HLP.Components.View.WPF;
 
 namespace HLP.Entries.View.WPF.Comercial
 {
@@ -25,6 +25,7 @@ namespace HLP.Entries.View.WPF.Comercial
         {
             InitializeComponent();
             this.ViewModel = new ProdutoViewModel();
+            base.SetEventsTabControl(tabControl: this.tbPrincipal);
         }
 
         public ProdutoViewModel ViewModel

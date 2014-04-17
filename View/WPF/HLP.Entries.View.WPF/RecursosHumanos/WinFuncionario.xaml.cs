@@ -1,4 +1,4 @@
-﻿using HLP.Comum.View.Formularios;
+﻿using HLP.Components.View.WPF;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -28,6 +28,8 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
             InitializeComponent();
             this.ViewModel = new FuncionarioViewModel();
             this.UpdateLayout();
+
+            base.SetEventsTabControl(tabControl: this.tbPrincipal);
         }
 
         public FuncionarioViewModel ViewModel

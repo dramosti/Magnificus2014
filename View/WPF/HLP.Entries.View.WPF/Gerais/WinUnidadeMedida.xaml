@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:c="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
-        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"   
+        xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"   
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
     x:Class="HLP.Entries.View.WPF.Gerais.WinUnidadeMedida"
         Title="Unidade Medida" Height="300" Width="448.872" NameView="vwUnidadeMedida">
