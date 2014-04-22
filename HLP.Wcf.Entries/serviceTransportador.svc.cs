@@ -42,10 +42,6 @@ namespace HLP.Wcf.Entries
             try
             {
                 objTransportador = this.transportadorRepository.GetTransportador(idTransportador: idTransportador);
-                objTransportador.lTransportador_Contato =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_ContatoModel>(
-                    list: this.transportador_ContatoRepository.GetAllTransportador_Contato(
-                    idTransportador: idTransportador));
                 objTransportador.lTransportador_Endereco =
                     new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel>(
                         list: this.transportador_EnderecoRepository.GetAllTransportador_Endereco(
@@ -74,26 +70,6 @@ namespace HLP.Wcf.Entries
             {
                 this.transportadorRepository.BeginTransaction();
                 this.transportadorRepository.Save(objTransportador: objTransportador);
-
-                foreach (HLP.Entries.Model.Models.Transportes.Transportador_ContatoModel item in objTransportador.lTransportador_Contato)
-                {
-                    switch (item.status)
-                    {
-                        case statusModel.criado:
-                        case statusModel.alterado:
-                            {
-                                item.idTransportador = (int)objTransportador.idTransportador;
-                                this.transportador_ContatoRepository.Save(objTransportador_Contato:
-                                    item);
-                            }
-                            break;
-                        case statusModel.excluido:
-                            {
-                                this.transportador_ContatoRepository.Delete(idTransportadorContato: (int)item.idTransportdorContato);
-                            }
-                            break;
-                    }
-                }
 
                 foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
                 {
@@ -193,11 +169,6 @@ namespace HLP.Wcf.Entries
             {
                 this.transportadorRepository.BeginTransaction();
                 this.transportadorRepository.Copy(objTransportador: objTransportador);
-                foreach (HLP.Entries.Model.Models.Transportes.Transportador_ContatoModel item in objTransportador.lTransportador_Contato)
-                {
-                    item.idTransportador = (int)objTransportador.idTransportador;
-                    this.transportador_ContatoRepository.Copy(objTransportador_Contato: item);
-                }
                 foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
                 {
                     item.idTransportador = (int)objTransportador.idTransportador;

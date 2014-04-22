@@ -1,5 +1,6 @@
 ﻿using HLP.Components.Model.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -27,23 +28,19 @@ namespace HLP.Components.View.WPF
         public HlpContatos()
         {
             InitializeComponent();
-            this.lContatos = new ObservableCollection<ContatoModel>();
             this.lColumns = new ObservableCollection<string>();
-            this.lColumns.CollectionChanged += lColumns_CollectionChanged;
-        }
-        public ObservableCollection<ContatoModel> lContatos
-        {
-            get { return (ObservableCollection<ContatoModel>)GetValue(lContatosProperty); }
-            set
-            {
-                SetValue(lContatosProperty, value);
-                this.NotifyPropertyChanged(propertyName: "lContatos");
-            }
+            this.lColumns.CollectionChanged += lColumns_CollectionChanged;            
         }
 
-        // Using a DependencyProperty as the backing store for lContatos.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty lContatosProperty =
-            DependencyProperty.Register("lContatos", typeof(ObservableCollection<ContatoModel>), typeof(HlpContatos), new PropertyMetadata(new ObservableCollection<ContatoModel>()));
+        public IEnumerable ItemsSource
+        {
+            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ItemsSource.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemsSourceProperty =
+            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(HlpContatos), new PropertyMetadata());
 
         #region Collection para manipulação de visibilidade de colunas
 
@@ -114,7 +111,6 @@ namespace HLP.Components.View.WPF
 
         #endregion
 
-
         #region NotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -129,6 +125,5 @@ namespace HLP.Components.View.WPF
 
         #endregion
 
-        
     }
 }

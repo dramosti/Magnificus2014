@@ -59,7 +59,7 @@
         </ObjectDataProvider>
     </UserControl.Resources>
     <Grid>
-        <DataGrid x:Name="dgv" ItemsSource="{Binding ElementName=ucContatos, Path=lContatos}">
+        <DataGrid x:Name="dgv" ItemsSource="{Binding ElementName=ucContatos, Path=ItemsSource}" CanUserAddRows="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Binding="{Binding xNome,                    
                                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.Model.Models.Transportes
 {
@@ -13,10 +14,10 @@ namespace HLP.Entries.Model.Models.Transportes
         public TransportadorModel()
             : base(xTabela: "Transportador")
         {
-            this.lTransportador_Contato = new ObservableCollectionBaseCadastros<Transportador_ContatoModel>();
             this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<Transportador_EnderecoModel>();
             this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<Transportador_MotoristaModel>();
             this.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
+            this.lTransportador_Contato = new ObservableCollectionBaseCadastros<ContatoModel>();
         }
 
         private int? _idTransportador;
@@ -74,6 +75,18 @@ namespace HLP.Entries.Model.Models.Transportes
 
 
 
+        private ObservableCollectionBaseCadastros<ContatoModel> _lTransportador_Contato;
+
+        public ObservableCollectionBaseCadastros<ContatoModel> lTransportador_Contato
+        {
+            get { return _lTransportador_Contato; }
+            set
+            {
+                _lTransportador_Contato = value;
+                base.NotifyPropertyChanged(propertyName: "lTransportador_Contato");
+            }
+        }
+
 
         private ObservableCollectionBaseCadastros<Transportador_EnderecoModel> _lTransportador_Endereco;
 
@@ -102,22 +115,6 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "lTransportador_Veiculos");
             }
         }
-
-
-
-        private ObservableCollectionBaseCadastros<Transportador_ContatoModel> _lTransportador_Contato;
-
-        public ObservableCollectionBaseCadastros<Transportador_ContatoModel> lTransportador_Contato
-        {
-            get { return _lTransportador_Contato; }
-            set
-            {
-                _lTransportador_Contato = value;
-                base.NotifyPropertyChanged(propertyName: "lTransportador_Contato");
-            }
-        }
-
-
 
         private ObservableCollectionBaseCadastros<Transportador_MotoristaModel> _lTransportador_Motorista;
 
