@@ -32,7 +32,8 @@
                 <TextBox x:Name="txtHora" Width="60" BorderBrush="Transparent" Background="Transparent"
                  Text="{Binding ElementName=ucDtPicker, Path=xTextTime, Converter={StaticResource tmShortConverter}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"                        
                  Visibility="{Binding ElementName=ucDtPicker, Path=stFormatoDtPicker,
-            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtHora}" Template="{DynamicResource TextBoxBaseControlTemplate1}">
+            Converter={StaticResource visDtPickerConverter}, ConverterParameter=txtHora}" 
+                         Template="{DynamicResource TextBoxBaseControlTemplate1}">
                 </TextBox>
             </StackPanel>
         </Border>

@@ -77,7 +77,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public List<Calendario_DetalheModel> GetAllCalendario_Detalhe(int idCalendario)
         {
             DataAccessor<Calendario_DetalheModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
-            ("SELECT * FROM Calendario_Detalhe WHERE idCalendario = @idCalendario", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idCalendario"),
+            ("SELECT * FROM Calendario_Detalhe WHERE idCalendario = @idCalendario order by dCalendario", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idCalendario"),
             MapBuilder<Calendario_DetalheModel>.MapAllProperties().DoNotMap(c => c.status).Build());
 
             return reg.Execute(idCalendario).ToList();

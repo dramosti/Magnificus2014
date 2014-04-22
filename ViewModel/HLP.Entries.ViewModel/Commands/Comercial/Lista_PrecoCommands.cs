@@ -3,6 +3,7 @@ using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Comum.Resources.Models;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Comercial;
 using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
@@ -19,6 +20,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 {
     public class Lista_PrecoCommands
     {
+        ClienteService objService;
         BackgroundWorker bWorkerAcoes;
         Lista_PrecoViewModel objViewModel;
         ProdutoService objServicoProduto;
@@ -621,6 +623,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.objViewModel.currentModel.lLista_preco.CollectionChanged += this.objViewModel.currentModel.lLista_preco_CollectionChanged;
         }
         #endregion
+
+        public bool RotaPossuiListaPrecoPai(int idRota)
+        {
+            objService = new ClienteService();
+            return objService.RotaPossuiListaPrecoPai(idRota: idRota);
+        }
 
         public void MontraTreeView()
         {

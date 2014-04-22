@@ -86,15 +86,7 @@ namespace HLP.Base.Static
                 .Replace(")", "").Trim();
         }
 
-        public static TimeSpan ToTimeSpan(this string Text)
-        {
-            return new TimeSpan
-                (
-                Convert.ToInt32(Text.Split(':')[0]),
-                Convert.ToInt32(Text.Split(':')[1]),
-                Convert.ToInt32(Text.Split(':')[2])
-                );
-        }
+
 
 
         /// <summary>
@@ -497,6 +489,17 @@ namespace HLP.Base.Static
                     + iMinutes.ToString().PadLeft(2, '0') + ":00";
             }
             return "00:00:00";
+        }
+
+        public static TimeSpan ToTimeSpan(this string Text)
+        {
+            string sSinal = (Text.Contains('-') ? "-" : "");
+            return new TimeSpan
+                (
+                Convert.ToInt32(Text.Split(':')[0]),
+                Convert.ToInt32(sSinal + Text.Split(':')[1]),
+                Convert.ToInt32(sSinal + Text.Split(':')[2])
+                );
         }
         #endregion
 

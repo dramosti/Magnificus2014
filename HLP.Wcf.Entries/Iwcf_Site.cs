@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Components.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -24,6 +25,6 @@ namespace HLP.Wcf.Entries
         HLP.Entries.Model.Models.Gerais.SiteModel GetObject(int id);
 
         [OperationContract]
-        HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaSite(int idSite);
+        modelToTreeView GetHierarquiaSite(int idSite);
     }
 }

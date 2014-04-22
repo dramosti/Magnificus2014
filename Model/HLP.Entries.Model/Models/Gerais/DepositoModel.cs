@@ -12,6 +12,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public DepositoModel()
             : base(xTabela: "Deposito")
         {
+            this.stGrupoIdentificacao = 1;
         }
 
         private int? _idDeposito;
@@ -36,8 +37,18 @@ namespace HLP.Entries.Model.Models.Gerais
         public string xDescricao { get; set; }
         [ParameterOrder(Order = 5)]
         public byte stTipo { get; set; }
+
+        private byte _stGrupoIdentificacao;
         [ParameterOrder(Order = 6)]
-        public byte stGrupoIdentificacao { get; set; }
+        public byte stGrupoIdentificacao
+        {
+            get { return _stGrupoIdentificacao; }
+            set
+            {
+                _stGrupoIdentificacao = value;
+                base.NotifyPropertyChanged(propertyName: "stGrupoIdentificacao");
+            }
+        }
     }
 
     public partial class DepositoModel

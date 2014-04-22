@@ -4,15 +4,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
-        x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinJuros"
+        xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Gerais.Financeiro.Converter"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+        x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.Financeiro.WinJuros"
         Title="Juros" Height="660" Width="1024" NameView="vwJuros">
     <Window.Resources>        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
+            <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>      
+            <convertLocal:qtdDiasMesesEnabledConverter x:Key="qtdDiasMesesEnabledConverter"/>
         </ResourceDictionary>        
     </Window.Resources>
     <Grid>
@@ -76,8 +78,15 @@
                 <Components:CustomTextBox
                     Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.nQuantidadeDiasMes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
-					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês.">           
+					ToolTip="Insira o número de dias ou meses para aplicar o código de juros aos pagamentos. O valor deste campo se baseia no intervalo do período selecionado no campo Dia/Mês.">
+                    <Components:CustomTextBox.IsEnabled>
+                        <MultiBinding Converter="{StaticResource qtdDiasMesesEnabledConverter}">
+                            <MultiBinding.Bindings>
+                                <Binding Path="bIsEnabled"/>
+                                <Binding Path=" currentModel.pJuros"/>
+                            </MultiBinding.Bindings>                            
+                        </MultiBinding>
+                    </Components:CustomTextBox.IsEnabled>
                 </Components:CustomTextBox>
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"

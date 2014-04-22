@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Components.Model.Models;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Gerais;
@@ -131,27 +132,26 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public HLP.Comum.Resources.Models.modelToTreeView GetHierarquiaSite(int idSite)
+        public modelToTreeView GetHierarquiaSite(int idSite)
         {
             try
             {
-                HLP.Comum.Resources.Models.modelToTreeView TreeView = new HLP.Comum.Resources.Models.modelToTreeView();
+                modelToTreeView TreeView = new modelToTreeView();
                 HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: idSite);
 
                 TreeView.id = objSite.idSite ?? 0;
                 TreeView.xDisplay = objSite.xSite + " - " + objSite.xDescricao;
-                TreeView.lFilhos = new List<Comum.Resources.Models.modelToTreeView>();
+                TreeView.lFilhos = new List<modelToTreeView>();
 
                 foreach (var item in this.depositoRepository.GetBySite(idSite: idSite))
                 {
                     TreeView.lFilhos.Add(
-                        item: new Comum.Resources.Models.modelToTreeView
+                        item: new modelToTreeView
                         {
                             id = item.idDeposito ?? 0,
                             xDisplay = item.xDeposito + " - " + item.xDescricao
                         });
                 }
-
                 return TreeView;
             }
             catch (Exception ex)

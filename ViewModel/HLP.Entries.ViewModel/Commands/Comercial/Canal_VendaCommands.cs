@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 {
     public class Canal_VendaCommands
     {
-        BackgroundWorker bWorkerAcoes ;
+        BackgroundWorker bWorkerAcoes;
         Canal_VendaViewModel objViewModel;
-        Canal_VendaService.IserviceCanal_VendaClient servico = new Canal_VendaService.IserviceCanal_VendaClient();
+        Canal_VendaService objService;
         public Canal_VendaCommands(Canal_VendaViewModel objViewModel)
         {
-
+            objService = new Canal_VendaService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -60,7 +61,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
                 bWorkerAcoes.RunWorkerAsync(_panel);
-              
+
             }
             catch (Exception ex)
             {
@@ -70,8 +71,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-             this.objViewModel.currentModel.idCanalVenda =  this.servico.saveCanal_venda(objCanal_venda:
-                    this.objViewModel.currentModel);
+            this.objViewModel.currentModel.idCanalVenda = this.objService.SaveObject(obj: this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -111,7 +111,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             int iExcluir = 0;
             try
@@ -120,8 +120,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.deleteCanal_vendaAsync(idCanal_venda: (int)this.objViewModel.currentModel.idCanalVenda)
-                    )
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -149,7 +148,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-      
+
 
         private void Novo(object _panel)
         {
@@ -159,7 +158,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             bWorkerAcoes.DoWork += bwNovo_DoWork;
             bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
             bWorkerAcoes.RunWorkerAsync(_panel);
-          
+
         }
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -199,7 +198,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -208,12 +207,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idCanalVenda = await
-                    this.servico.copyCanal_vendaAsync(idCanal_venda: (int)this.objViewModel.currentModel.idCanalVenda);
+                this.objViewModel.currentModel.idCanalVenda =
+                    this.objService.CopyObject(id: this.objViewModel.currentID);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -254,10 +253,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getCanal_vendaAsync(
-                idCanal_venda: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(
+                id: this.objViewModel.currentID);
         }
         #endregion
 

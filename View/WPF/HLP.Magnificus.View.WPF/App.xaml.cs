@@ -29,8 +29,8 @@ namespace HLP.Magnificus.View.WPF
     /// </summary>
     public partial class App : Application
     {
-        private bool unhandledException = false;      
- 
+        private bool unhandledException = false;
+
         empresaParametrosService.IserviceEmpresaParametrosClient empresaServico =
             new empresaParametrosService.IserviceEmpresaParametrosClient();
 
@@ -84,6 +84,16 @@ namespace HLP.Magnificus.View.WPF
                 xMessage = "Não é possível inserir o valor '" + xMessage.Split('(')[1].Split(')')[0]
                     + "' porque ele já existe na base de dados.";
             }
+            else if (xMessage.Contains(value: "statement conflicted with the FOREIGN KEY constraint"))
+            {
+                xMessage = String.Format(format: "Não é possível salvar o registro porque não existe um cadastro inserido na tabela {0} e "
+                    + "coluna {1} com o valor informado", arg0: xMessage.Split(
+                    separator: new string[] { "table" }
+                    , options: StringSplitOptions.None)[1].ToString()
+                    .Split(separator: '"')[1].ToString().Split('"')[0].ToString(),
+                    arg1: xMessage.Split(separator: new string[] { "column" }, options: StringSplitOptions.None)[1].ToString().Split(separator: '\'')[1]);
+
+            }
             else if (xMessage.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
             {
                 xMessage = "Não é possível excluir o cadastro porque ele está sendo utilizado nos cadastros";
@@ -118,7 +128,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                
+
 
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();

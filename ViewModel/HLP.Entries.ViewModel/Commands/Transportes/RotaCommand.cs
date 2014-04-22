@@ -8,9 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.ViewModel.ViewModels.Transportes;
-using HLP.Entries.ViewModel.Services.Transportes;
 using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Transportes;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {

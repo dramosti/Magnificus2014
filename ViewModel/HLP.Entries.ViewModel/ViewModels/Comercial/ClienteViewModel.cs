@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;
 using System.Collections.Generic;
@@ -23,17 +24,26 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-        
-        
-
+        ClienteCommands comm;
         public ClienteViewModel()
         {
-            ClienteCommands comm = new ClienteCommands(
+            comm = new ClienteCommands(
                 objViewModel: this);
         }
 
-      
+        public bool RotaPossuiListaPrecoPai(int idRota)
+        {
+            return this.comm.RotaPossuiListaPrecoPai(idRota: idRota);
+        }
 
+        public int GetIdSiteByDeposito(int idDeposito)
+        {
+            return comm.GetIdSiteByDeposito(idDeposito: idDeposito);
+        }
 
+        public Condicao_pagamentoModel getCondicaoPagamentoByCliente(int idCondicaoPagamento)
+        {
+            return comm.getCondicaoPagamentoByCliente(idCondicaoPagamento: idCondicaoPagamento);
+        }
     }
 }

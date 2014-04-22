@@ -29,7 +29,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idConversao"),
                                     MapBuilder<ConversaoModel>.MapAllProperties()
-                                    .DoNotMap(i => i.enumTipoArredondamento)
                                     .DoNotMap(i => i.status).Build());
             }
             return regConversaoAccessor.Execute(idConversao).FirstOrDefault();
@@ -43,7 +42,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                   new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idProduto"),
                                   MapBuilder<ConversaoModel>.MapAllProperties()
-                                  .DoNotMap(i => i.enumTipoArredondamento)
                                   .DoNotMap(i => i.status).Build());
             }
 

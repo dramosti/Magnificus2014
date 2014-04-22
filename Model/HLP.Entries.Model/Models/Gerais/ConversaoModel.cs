@@ -81,18 +81,6 @@ namespace HLP.Entries.Model.Models.Gerais
             }
         }
 
-
-        private TipoArredondamento _enumTipoArredondamento;
-        public TipoArredondamento enumTipoArredondamento
-        {
-            get { return _enumTipoArredondamento; }
-            set
-            {
-                _enumTipoArredondamento = value;
-                _stArredondar = (byte)value;
-            }
-        }
-
         private byte _stArredondar;
         [ParameterOrder(Order = 6)]
         public byte stArredondar
@@ -101,7 +89,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set
             {
                 _stArredondar = value;
-                _enumTipoArredondamento = (TipoArredondamento)value;
+                base.NotifyPropertyChanged(propertyName: "stArredondar");
             }
         }
 

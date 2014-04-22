@@ -1,5 +1,8 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Comum.Model.Models;
+using HLP.Comum.Services;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
@@ -16,7 +19,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         Condicao_PagamentoViewModel objViewModel;
-        Condicao_PagamentoService.IserviceCondicao_PagamentoClient servico = new Condicao_PagamentoService.IserviceCondicao_PagamentoClient();
+        Condicao_PagamentoService objService = new Condicao_PagamentoService();
 
         public Condicao_PagamentoCommands(Condicao_PagamentoViewModel objViewModel)
         {
@@ -72,8 +75,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel.idCondicaoPagamento = servico.saveCondicao_pagamento(objCondicao_pagamento:
-                    this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idCondicaoPagamento = objService
+                    .SaveObject(obj: this.objViewModel.currentModel);
                 e.Result = e.Argument;
             }
             catch (Exception ex)
@@ -129,7 +132,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteCondicao_pagamento((int)this.objViewModel.currentModel.idCondicaoPagamento))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -145,7 +148,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             catch (Exception ex)
             {
-                throw ex;
+                OperacoesDataBaseService objService = new OperacoesDataBaseService();
+
+                List<RecordsSqlModel> l = objService.GetRecordsFKUsed(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
             }
             finally
             {
@@ -157,7 +162,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Condicao_pagamentoModel();
@@ -207,7 +212,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -237,7 +242,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 this.objViewModel.copyBaseCommand.Execute(null);
-                this.metodoGetModel(this, null);
             }
             catch (Exception)
             {
@@ -250,8 +254,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentID = servico.copyCondicao_pagamento(
-                    idCondicao_Pagamento: (int)this.objViewModel.currentModel.idCondicaoPagamento);
+                this.objViewModel.currentModel = this.objService.CopyObject(
+                    id: this.objViewModel.currentID);
             }
             catch (Exception ex)
             {
@@ -291,10 +295,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getCondicao_pagamentoAsync(
-                idCondicao_pagamento: this.objViewModel.currentID);
+            this.objViewModel.currentModel =
+                this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 

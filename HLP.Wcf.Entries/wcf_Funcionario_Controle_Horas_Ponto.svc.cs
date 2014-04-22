@@ -115,8 +115,8 @@ namespace HLP.Wcf.Entries
         {
             return funcionario_Controle_Horas_PontoRepository.GetHorasAtrabalharDia(idFuncionario, dtDia);
         }
-       
-        public TimeSpan? GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
+
+        public HLP.Entries.Model.Models.Gerais.Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes)
         {
             return funcionario_BancoHorasRepository.GetTotalBancoHorasMesAtual(idFuncionario, dtMes);
         }

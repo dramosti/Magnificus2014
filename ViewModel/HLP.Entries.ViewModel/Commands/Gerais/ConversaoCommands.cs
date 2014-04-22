@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -20,10 +21,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         ConversaoViewModel objViewModel;
-        ConversaoService.IserviceConversaoClient servico = new ConversaoService.IserviceConversaoClient();
+        ConversaoService objService;
 
         public ConversaoCommands(ConversaoViewModel objViewModel)
         {
+            objService = new ConversaoService();
+
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -85,7 +88,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 objViewModel.currentModel.lProdutos_Conversao =
-                    new ObservableCollectionBaseCadastros<ConversaoModel>(servico.savelConversao(objProduto: objViewModel.currentModel));
+                    new ObservableCollectionBaseCadastros<ConversaoModel>(objService.SaveList(obj: this.objViewModel.currentModel));
             }
             catch (Exception ex)
             {
@@ -133,7 +136,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Delete()
+        public void Delete()
         {
             int idRegistroDeletado = 0;
             try
@@ -142,7 +145,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (await this.servico.dellConversaoAsync(idProduto: (int)this.objViewModel.currentModel.idProduto))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
                         idRegistroDeletado = (int)objViewModel.currentModel.idProduto;
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
@@ -272,7 +275,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel
-                = this.servico.getlConversao(idProduto: this.objViewModel.currentID);
+                = this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 

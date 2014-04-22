@@ -99,12 +99,12 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         }
 
 
-        private TimeSpan? _tsBancoHorasFechado = null;
-        public TimeSpan? tsBancoHorasFechado
-        {
-            get { return _tsBancoHorasFechado; }
-            set { _tsBancoHorasFechado = value; }
-        }
+        //private TimeSpan? _tsBancoHorasFechado = null;
+        //public TimeSpan? tsBancoHorasFechado
+        //{
+        //    get { return _tsBancoHorasFechado; }
+        //    set { _tsBancoHorasFechado = value; }
+        //}
 
 
     }

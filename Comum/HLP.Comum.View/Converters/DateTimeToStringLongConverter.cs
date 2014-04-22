@@ -14,7 +14,7 @@ namespace HLP.Comum.View.Converters
         {
             try
             {
-                return ((DateTime)value).ToLongDateString();
+                return ((DateTime)value).Date.ToShortDateString() + " - " + ((DateTime)value).ToString("dddddd").ToUpper();
             }
             catch (Exception)
             {

@@ -33,7 +33,6 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "idFuncionario");
             }
         }
-
         private string _xMesAno;
         [ParameterOrder(Order = 3)]
         public string xMesAno
@@ -45,8 +44,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "xMesAno");
             }
         }
-
-        private String _tBancoHoras;
+        private string _tBancoHoras;
         [ParameterOrder(Order = 4)]
         public string tBancoHoras
         {
@@ -57,7 +55,65 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "tBancoHoras");
             }
         }
-
+        private int _iDiasTrabalhados;
+        [ParameterOrder(Order = 5)]
+        public int iDiasTrabalhados
+        {
+            get { return _iDiasTrabalhados; }
+            set
+            {
+                _iDiasTrabalhados = value;
+                base.NotifyPropertyChanged(propertyName: "iDiasTrabalhados");
+            }
+        }
+        private string _tHorastrabalhadas;
+        [ParameterOrder(Order = 6)]
+        public string tHorastrabalhadas
+        {
+            get { return _tHorastrabalhadas; }
+            set
+            {
+                _tHorastrabalhadas = value;
+                base.NotifyPropertyChanged(propertyName: "tHorastrabalhadas");
+            }
+        }
+        private string _tHorasAtrabalhar;
+        [ParameterOrder(Order = 7)]
+        public string tHorasAtrabalhar
+        {
+            get { return _tHorasAtrabalhar; }
+            set
+            {
+                _tHorasAtrabalhar = value;
+                base.NotifyPropertyChanged(propertyName: "tHorasAtrabalhar");
+            }
+        }
+        private string _tSaldoTotalAnterior;
+        [ParameterOrder(Order = 8)]
+        public string tSaldoTotalAnterior
+        {
+            get { return _tSaldoTotalAnterior; }
+            set
+            {
+                _tSaldoTotalAnterior = value;
+                base.NotifyPropertyChanged(propertyName: "tSaldoTotalAnterior");
+            }
+        }
+        
+        // NOT MAP
+        private TimeSpan _tsSaldoAteMomento = new TimeSpan();
+        /// <summary>
+        /// Not Map
+        /// </summary>
+        public TimeSpan tsSaldoAteMomento
+        {
+            get { return _tsSaldoAteMomento; }
+            set
+            {
+                _tsSaldoAteMomento = value;
+                base.NotifyPropertyChanged(propertyName: "tsSaldoAteMomento");
+            }
+        }      
     }
 
 

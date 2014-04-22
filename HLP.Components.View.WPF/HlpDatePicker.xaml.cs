@@ -88,6 +88,8 @@ namespace HLP.Components.View.WPF
 
         private void btnCalendar_Click(object sender, RoutedEventArgs e)
         {
+            Calendar c = this.btnCalendar.ContextMenu.FindName(name: "compCalendar") as Calendar;
+
             this.btnCalendar.ContextMenu.PlacementTarget = this.btnCalendar;
             this.btnCalendar.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Right;
             this.btnCalendar.ContextMenu.IsOpen = true;

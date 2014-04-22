@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b2b88f16-b208-48d8-abdb-f67a718a6e44" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Conversao.xsd" MetadataType="Schema" ID="d4fd90e8-74f1-47ab-a0b9-eae0eb93ae22" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Conversao1.xsd" MetadataType="Schema" ID="d5b8fe15-d215-4444-b3e0-7d3ffae4d8a1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Conversao.disco" MetadataType="Disco" ID="dd5650b6-3841-40af-946d-379d6e88d1be" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?disco" />
+    <MetadataFile FileName="wcf_Conversao2.xsd" MetadataType="Schema" ID="be222b81-971a-4a8e-ae27-7e9acf5894fd" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Conversao3.xsd" MetadataType="Schema" ID="be6afc2c-e33d-499f-ae64-916e3fc01a55" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Conversao.wsdl" MetadataType="Wsdl" ID="e158549b-ed51-4595-95b7-b0561a533195" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?wsdl" />
+    <MetadataFile FileName="wcf_Conversao4.xsd" MetadataType="Schema" ID="8404e06c-3e9a-4415-9efa-f8ace9bbb02d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Conversao5.xsd" MetadataType="Schema" ID="c8963a2b-cad9-414c-8e59-fa192a778b2a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Conversao.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
