@@ -5,29 +5,65 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinStCofins"
         Title="Situação Tributária do Cofins" Height="660" Width="1024" NameView="vwStCOFINS">
+    <runtime:WindowsBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </runtime:WindowsBase.Resources>
     <Grid>
-        <Expander Header="Principal" IsExpanded="True">
-            <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
-					IsReadOnly="True"
+        <Expander Header="Principal" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código Origem da CST Cofins" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Simples Nacional?" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    IsReadOnly="True"
 					Text="{Binding currentModel.idCSTCofins, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-					Height="27" Margin="10,0,0,2" Caption="Código" Help="have principal do registro da Situação Tributária para COFINS, campo autoinclemental." WidthLabel="216" HorizontalAlignment="Left" Width="310"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.cCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="have principal do registro da Situação Tributária para COFINS, campo autoinclemental.">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    Text="{Binding currentModel.cCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Código Origem da CST Cofins." Help="Digite o Código da Situação Tributária de Cofins definida pela legislação. " WidthLabel="216" HorizontalAlignment="Left" Width="310"/>
-                <Components:HlpTextBox 
-					
-					Text="{Binding currentModel.xCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Digite o Código da Situação Tributária de Cofins definida pela legislação">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Descrição " Help="Descrição do código da Situação Tributária de Cofins" WidthLabel="216" HorizontalAlignment="Left" Width="500"/>
-                <Components:HlpCheckBox 
-					
-					IsChecked="{Binding currentModel.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					ToolTip="Descrição do código da Situação Tributária de Cofins">
+                </Components:CustomTextBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="4"
+                    IsChecked="{Binding currentModel.stSimplesNacional, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Height="27" Margin="10,0,0,2" Caption="Simples Nacional?" Help="Informar se a Situação Tributária de Cofins é de Simples Nacional." WidthLabel="216" HorizontalAlignment="Left"/>
-            </WrapPanel>
+					ToolTip="Informar se a Situação Tributária de Cofins é de Simples Nacional.">
+                </Components:CustomCheckBox>                
+            </Grid>
         </Expander>
 
     </Grid>

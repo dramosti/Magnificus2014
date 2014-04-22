@@ -9,34 +9,64 @@
         x:Class="HLP.Entries.View.WPF.Fiscal.WinCodigoICMS"
         Title="Código ICMS" Height="660" Width="1101.612" NameView="vwCodigoIcmsPai">
     <Window.Resources>
-        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
-        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lUF" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwUFToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
+            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lUF" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwUFToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>       
     </Window.Resources>
-    <DockPanel LastChildFill="True">
-        <DockPanel Height="68" DockPanel.Dock="Top">
-            <Expander Header="Principal" IsExpanded="True">
-                <WrapPanel Orientation="Horizontal">
-                    <Components:HlpTextBox 
-						IsReadOnly="True"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Expander Header="Principal" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código do ICMS" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    IsReadOnly="True"
 						Text="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-						Height="27" Margin="10,10,10,2" Width="146" Caption="Código" Help="Código principal do Registro, campo autoicremental" 
-                        HorizontalAlignment="Left" WidthLabel="70"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.cIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						ToolTip="Código principal do Registro, campo autoicremental">
+                        
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    Text="{Binding currentModel.cIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"		
-						Height="27" Margin="8,10,10,2" Width="190" Caption="Código do ICMS" Help="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto." WidthLabel="118" HorizontalAlignment="Left"/>
-                </WrapPanel>
-            </Expander>
-        </DockPanel>
-        <DockPanel>
-            <Expander Header="Tributação" IsExpanded="True">
+						ToolTip="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto.">
+                </Components:CustomTextBox>
+                
+            </Grid> 
+        </Expander>
+        <Expander Header="Tributação" Style="{StaticResource ExpanderPadrao}" Grid.Row="1" IsExpanded="True">
+            <Grid>
                 <DataGrid
 					     ItemsSource="{Binding currentModel.lCodigo_IcmsModel}"                          
                          IsEnabled="{Binding bIsEnabled}"
@@ -75,7 +105,7 @@
                         <DataGridTextColumn ElementStyle="{StaticResource CellErrorStyle}" Binding="{Binding Path=xFundamLegalCodTrib, UpdateSourceTrigger=LostFocus, Converter={StaticResource porcentagemConverter}}" Header="Fundamento Legal" Width="120"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Expander>
-        </DockPanel>
-    </DockPanel>
+            </Grid>
+        </Expander>
+    </Grid>
 </runtime:WindowsBase>
