@@ -73,8 +73,6 @@ namespace HLP.Entries.Model.Models.Transportes
         [ParameterOrder(Order = 18)]
         public string xRntrc { get; set; }
 
-
-
         private ObservableCollectionBaseCadastros<ContatoModel> _lTransportador_Contato;
 
         public ObservableCollectionBaseCadastros<ContatoModel> lTransportador_Contato
