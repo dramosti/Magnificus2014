@@ -590,8 +590,114 @@
         </Style.Triggers>
     </Style>
     
-    <!--Combobox Style Loguin-->    
-    <Style TargetType="{x:Type ComboBoxItem}">
+  <!--Login-->  
+    
+    <!--Password Login-->
+
+    <Style x:Key="{x:Type PasswordBox}"
+    	TargetType="{x:Type PasswordBox}">
+        <Setter Property="UtilLocal:PasswordBoxMonitor.IsMonitoring"
+              Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Name="Bd"                    
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="1.3"
+                    BorderBrush="{StaticResource CinzaClaro}"
+                    SnapsToDevicePixels="true">
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <TextBlock  Height="20" Text="Senha"
+                           VerticalAlignment="Center" 
+                                       Margin="4,0,0,0"
+                           Foreground="{StaticResource CinzaClaro}"                           
+                           FontFamily="Segoe UI Light"                                                                 
+                           Visibility="Collapsed"
+                           Name="txtPrompt"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource CinzaEscuro}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+    									 Value="false">
+                            <Setter Property="Foreground"
+    										Value="DimGray"/>
+                        </Trigger>
+                        <Trigger Property="UtilLocal:PasswordBoxMonitor.PasswordLength" Value="0">
+                            <Setter Property="Visibility" TargetName="txtPrompt" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Button Login-->
+
+    <Style x:Key="ButtonStyleLoginCopy" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{StaticResource CinzaClaro}" BorderThickness="1.3" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" TextElement.FontFamily="Segoe UI Light" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="#FF7699CB"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource CinzaEscuro}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--TextBox Login-->
+
+    <Style x:Key="TextBoxLogin" TargetType="{x:Type TextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border x:Name="border" Background="White" BorderBrush="{StaticResource CinzaClaro}" CornerRadius="0" BorderThickness="1.3"/>
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Height="20" Foreground="{DynamicResource CinzaClaro}" Margin="2,0,0,0"/>
+                        <Label x:Name="WaterMarkLabel" Content="Usuário"
+                               Visibility="Collapsed" Foreground="{DynamicResource CinzaClaro}" FontFamily="Segoe UI Light"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource CinzaEscuro}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource CinzaEscuro}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value=""/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="WaterMarkLabel" Value="Visible"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Combobox Style Login-->
+
+    <Style x:Key="ComboBoxLogin" TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,1"/>
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
@@ -603,7 +709,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
                     <Border x:Name="Bd" CornerRadius="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                        <ContentPresenter x:Name="Text" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="Text" TextElement.FontFamily="Segoe UI Light" TextElement.Foreground="{StaticResource CinzaClaro}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
@@ -622,7 +728,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="ComboBoxToggleButton_Login" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualComboBox}"/>
@@ -659,7 +765,7 @@
                 <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                <Border x:Name="dropDownBorder" CornerRadius="5" BorderBrush="{StaticResource ComboBox.Static.Border}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                <Border x:Name="dropDownBorder" BorderBrush="{StaticResource ComboBox.Static.Border}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                     <ScrollViewer x:Name="DropDownScrollViewer">
                         <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                             <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -670,9 +776,9 @@
                     </ScrollViewer>
                 </Border>
             </Popup>
-            <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}" Background="White"/>
-            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            <TextBlock x:Name="WaterMark" Margin="5,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Symbol" Text="Selecione um Item" Foreground="#FF8C8C8C" Visibility="Collapsed"></TextBlock>
+            <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton_Login}" Background="White"/>
+            <ContentPresenter x:Name="contentPresenter" Height="20" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+            <TextBlock x:Name="WaterMark" Height="20" Margin="5,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Light" Text="Selecione um Item" Foreground="#FF8C8C8C" Visibility="Collapsed"></TextBlock>
         </Grid>
         <ControlTemplate.Triggers>
             <MultiTrigger>
@@ -786,6 +892,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+
+  <!--Login-->
 
 
 
@@ -1801,51 +1910,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <!--Estilo PasswordBox WaterMark (LOGIN)-->
-
-    <Style x:Key="{x:Type PasswordBox}"
-    	TargetType="{x:Type PasswordBox}">
-        <Setter Property="UtilLocal:PasswordBoxMonitor.IsMonitoring"
-              Value="True"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border Name="Bd"
-                    CornerRadius="5"
-                    Background="{TemplateBinding Background}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    BorderBrush="{StaticResource BorderBrushTextStandard}"
-                    SnapsToDevicePixels="true">
-                        <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center"
-                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            <TextBlock Text="Entre com a Senha"
-                           VerticalAlignment="Center"
-                           Margin="4,2,0,0"                           
-                           Foreground="Gray"
-                           FontWeight="SemiBold"
-                           FontFamily="Calibri"
-                           Opacity="0.8"
-                           FontStyle="Italic"            
-                           Visibility="Collapsed"
-                           Name="txtPrompt"/>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled"
-    									 Value="false">
-                            <Setter Property="Foreground"
-    										Value="DimGray"/>
-                        </Trigger>
-                        <Trigger Property="UtilLocal:PasswordBoxMonitor.PasswordLength" Value="0">
-                            <Setter Property="Visibility" TargetName="txtPrompt" Value="Visible"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    
 
     <!--Exeption (ERROR)-->
 
