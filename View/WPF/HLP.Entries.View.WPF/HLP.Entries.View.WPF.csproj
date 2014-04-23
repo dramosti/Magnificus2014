@@ -121,6 +121,7 @@
     <Compile Include="Converters\dataEspelhoPontoConverter.cs" />
     <Compile Include="Converters\HoraMinConverter.cs" />
     <Compile Include="Converters\ListaItensIsReadOnly.cs" />
+    <Compile Include="Converters\ReturnValueSequenciaPontoConverter.cs" />
     <Compile Include="Converters\StringToHourConverter.cs" />
     <Compile Include="Converters\TimeSpanDiasToHoras.cs" />
     <Compile Include="Crm\WinContato.xaml.cs">
@@ -253,6 +254,7 @@
       <DependentUpon>WinParametrizacao.xaml</DependentUpon>
     </Compile>
     <Compile Include="RecursosHumanos\Converter\TabItemRepresentantesVisibilityConverter.cs" />
+    <Compile Include="Converters\VerifyCanChangeHourConverter.cs" />
     <Compile Include="RecursosHumanos\HlpCalendarioPonto.xaml.cs">
       <DependentUpon>HlpCalendarioPonto.xaml</DependentUpon>
     </Compile>
