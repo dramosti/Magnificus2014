@@ -510,6 +510,17 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idFidelidade");
             }
         }
+        private int? _idContatoTransportador;
+        [ParameterOrder(Order = 46)]
+        public int? idContatoTransportador
+        {
+            get { return _idContatoTransportador; }
+            set
+            {
+                _idContatoTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idContatoTransportador");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Contato_EnderecoModel> _lContato_EnderecoModel;
 

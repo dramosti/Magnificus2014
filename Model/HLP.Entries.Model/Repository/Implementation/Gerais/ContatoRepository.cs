@@ -18,6 +18,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public UnitOfWorkBase UndTrabalho { get; set; }
 
         private DataAccessor<ContatoModel> regContatoAccessor;
+        private DataAccessor<ContatoModel> regContatoAcessorFk;
 
         public void Save(ContatoModel objContato)
         {
@@ -63,7 +64,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idContato"),
                                          MapBuilder<ContatoModel>.MapAllProperties()
-                                         .DoNotMap(c=> c.status)
+                                         .DoNotMap(c => c.status)
                                          .Build());
             }
 
@@ -79,6 +80,19 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idContato"),
             MapBuilder<ContatoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             return reg.Execute(idContato).ToList();
+        }
+
+        public List<ContatoModel> GetContato_ByForeignKey(int id, string tabela)
+        {
+            DataAccessor<ContatoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
+                (string.Format(format: "select * from Contato where {0} = {1}",
+                arg0: tabela == "transportador" ? "idContatoTransportador" : "",
+                arg1: id),
+            new Parameters(UndTrabalho.dbPrincipal),
+            MapBuilder<ContatoModel>.MapAllProperties()
+            .DoNotMap(c => c.status).Build());
+
+            return reg.Execute().ToList();
         }
 
         public void BeginTransaction()
