@@ -293,7 +293,6 @@
 
     <!--Style Custom ComboBox-->
 
-
     <Style TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,1"/>

@@ -1,16 +1,16 @@
-﻿using System;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.Model.Repository.Interfaces.Gerais;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-using Ninject;
-using HLP.Base.ClassesBases;
-using HLP.Base.Static;
 
-namespace HLP.Entries.Model.Repository.Implementation.Gerais
+namespace HLP.Components.Model.Repository.Implementation
 {
     public class Contato_EnderecoRepository : IContato_EnderecoRepository
     {
@@ -38,14 +38,14 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
 
         public void Delete(int idContato)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction,"[dbo].[Proc_delete_Contato_Endereco]",
+            UndTrabalho.dbPrincipal.ExecuteScalar(UndTrabalho.dbTransaction, "[dbo].[Proc_delete_Contato_Endereco]",
                   UserData.idUser,
                   idContato);
         }
 
         public void DeleteEnderecosByContato(int idContato)
         {
-            UndTrabalho.dbPrincipal.ExecuteNonQuery(UndTrabalho.dbTransaction,System.Data.CommandType.Text,
+            UndTrabalho.dbPrincipal.ExecuteNonQuery(UndTrabalho.dbTransaction, System.Data.CommandType.Text,
               "DELETE Contato_Endereco WHERE idContato = " + idContato);
         }
 
@@ -66,8 +66,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
                    MapBuilder<Contato_EnderecoModel>.MapAllProperties()
                    .DoNotMap(c => c.status)
-                   .DoNotMap(c=>c.enumTipoEndereco)
-                   .DoNotMap(c=>c.enumTipoLogradouro)
                    .Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
@@ -79,11 +77,11 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             ("SELECT * FROM Contato_Endereco WHERE idContato = @idContato", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idContato"),
             MapBuilder<Contato_EnderecoModel>.MapAllProperties()
             .DoNotMap(c => c.status)
-            .DoNotMap(c => c.enumTipoEndereco)
-            .DoNotMap(c => c.enumTipoLogradouro)
             .Build());
 
             return reg.Execute(idContato).ToList();
         }
+
     }
+
 }

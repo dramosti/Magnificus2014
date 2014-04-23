@@ -1,29 +1,29 @@
-﻿using System;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
+using HLP.Base.Static;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
+using HLP.Dependencies;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using HLP.Comum.Resources.Util;
-using HLP.Dependencies;
-using Ninject;
-using HLP.Base.EnumsBases;
-using HLP.Base.ClassesBases;
-using HLP.Components.Model.Models;
-using HLP.Components.Model.Repository.Interfaces;
 
 namespace HLP.Wcf.Entries
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "serviceContato" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select serviceContato.svc or serviceContato.svc.cs at the Solution Explorer and start debugging.
-    public class serviceContato : IserviceContato
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "wcf_Contato" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select wcf_Contato.svc or wcf_Contato.svc.cs at the Solution Explorer and start debugging.
+    public class wcf_Contato : Iwcf_Contato
     {
         [Inject]
         public IContatoRepository iContatoRepository { get; set; }
         [Inject]
         public IContato_EnderecoRepository iContato_EnderecoRepository { get; set; }
 
-        public serviceContato()
+        public wcf_Contato()
         {
             IKernel kernel = new StandardKernel(new MagnificusDependenciesModule());
             kernel.Settings.ActivationCacheDisabled = false;
@@ -91,7 +91,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 iContatoRepository.BeginTransaction();
-                //iContatoRepository.Copy(objContato);
+                iContatoRepository.Copy(objContato.idContato ?? 0);
 
                 foreach (var item in objContato.lContato_EnderecoModel)
                 {
@@ -146,11 +146,5 @@ namespace HLP.Wcf.Entries
             }
 
         }
-
-
-
-
-
-
     }
 }
