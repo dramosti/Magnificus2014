@@ -5,8 +5,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Magnificus.View.WPF.WinLogin"
         Closed="Window_Closed"
-        Title="WinLogin" Height="500" Width="1510" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
-    <Window.Resources>        
+        Title="WinLogin" Height="600" Width="1510" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
+    <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
@@ -20,156 +20,114 @@
             <SolidColorBrush x:Key="Button.MouseOver.Background2" Color="#FFBEE6FD"/>
             <SolidColorBrush x:Key="Button.Pressed.Background2" Color="#FFC4E5F6"/>
             <SolidColorBrush x:Key="Button.Pressed.Border2" Color="#FF2C628B"/>
-            <Style x:Key="ButtonStyleLoginCopy" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="True">
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background2}"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border2}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="false">
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </ResourceDictionary>       
+        </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60*"/>
-            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="251*"/>
+            <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
-        <StackPanel
-			Grid.ColumnSpan="2" FlowDirection="RightToLeft"
-			Grid.Column="1"
-			HorizontalAlignment="Right"
-			VerticalAlignment="Center">
-            <Button Command="{Binding fecharCommand}" Height="28" Width="90">				
-                <Button.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Image x:Name="ImageAdd">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Power.png"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Power_MouseOver.png"/>
-                                            </Trigger>
-                                            <Trigger Property="IsEnabled" Value="False">
-                                                <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Power_Disabled.png"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>                           
-        </StackPanel>
-        <Image              
-			VerticalAlignment="Stretch"
-			Grid.Row="1"
-			Grid.Column="0" Margin="30,0">
-            <Image.Source>
-                <BitmapImage UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/publicidade.png"/>
-            </Image.Source>
-        </Image>
-        <DockPanel 
-			Grid.Column="1"
-			Grid.Row="1"
-			Height="200" Width="450" DockPanel.Dock="Right" Margin="0,100,60,0">
-            <DockPanel Width="123" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="0,0,30,0">
-                <Image 
-					Stretch="Fill" Height="128" Width="128" VerticalAlignment="Top" DockPanel.Dock="Top" 
-					HorizontalAlignment="Center">
-                    <Image.Source>
-                        <BitmapImage
-							UriSource="pack://application:,,,/HLP.Comum.Resources;component/Images/UserSilhouette.png"
-                            />
-                    </Image.Source>
-                </Image>
-            </DockPanel>
-            <StackPanel x:Name="stkLogin">
-                <ComboBox x:Name="cbxEmpresa"
-                    Style="{StaticResource ComboBoxStyle}"					
-					ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"                    
-					SelectedValuePath="id"
-					DisplayMemberPath="display"
-					SelectedValue="{Binding currentModel.idEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
-                    SelectedIndex="{Binding currentModel.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
-					Height="28" VerticalAlignment="Top" Width="200" DockPanel.Dock="Top" Margin="0,6,0,0"/>
-                <TextBox
-                    x:Name="txtLogin"
-					Validation.ErrorTemplate="{StaticResource exceptionComp}"
-					Text="{Binding currentModel.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-					Width="200" Height="27" DockPanel.Dock="Top" Style="{StaticResource MyWaterMarkStyle}" Tag="Entre com o Usuário" Margin="0,6,0,0">
-                </TextBox>
-                <PasswordBox 
-					Width="200" Height="28" VerticalAlignment="Top" Margin="0,6,0,0">
-                    <PasswordBox.InputBindings>
-                        <KeyBinding Key="Enter" Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=stkLogin}"/>
-                    </PasswordBox.InputBindings>
-                </PasswordBox>
-                <Button 
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="282"/>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image  Height="180" Width="180" Source="D:\GitHub\HLP\Magnificus2014\HLP.Resources.View.WPF\Icons\Login\Logo.png" Stretch="Fill"/>
+                <TextBlock Grid.Column="1" Text="Hlp" FontFamily="Segoe UI Light" FontSize="133.333" Margin="17,0,0,0" Foreground="#FF4774B5" />
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Height="130" Width="130" Grid.Row="1" Source="D:\GitHub\HLP\Magnificus2014\HLP.Resources.View.WPF\Icons\Login\Usuario.png" Stretch="Fill" Margin="0,0,4,69"/>
+                </Grid>
+                <Grid Grid.Column="1" x:Name="gdLogin" Margin="10,30,-10,10" Grid.RowSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="Auto" MaxHeight="33"/>
+                        <RowDefinition Height="Auto" MaxHeight="33"/>
+                        <RowDefinition Height="Auto" MaxHeight="33"/>
+                        <RowDefinition Height="Auto" MaxHeight="33"/>
+                        <RowDefinition Height="Auto" MaxHeight="33"/>
+                        <RowDefinition Height="Auto" MaxHeight="33"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox 
+                        ItemContainerStyle="{StaticResource ComboBoxStyleLogin}"
+                        Grid.Column="1"
+                        Grid.Row="1" Height="30"
+                        x:Name="cbxEmpresa"
+                        Style="{StaticResource ComboBoxStyleLogin}"					
+					    ItemsSource="{Binding Source={StaticResource lresultEmpresa}}"                    
+					    SelectedValuePath="id"
+					    DisplayMemberPath="display"
+					    SelectedValue="{Binding currentModel.idEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"                            
+                        SelectedIndex="{Binding currentModel.indexEmpresa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Margin="10,0,0,3"/>
+                    <TextBox
+                        Grid.Row="2" Grid.Column="1"
+                        x:Name="txtLogin" Height="30"
+					    Validation.ErrorTemplate="{StaticResource exceptionComp}"
+					    Text="{Binding currentModel.xId, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					    DockPanel.Dock="Top" Style="{StaticResource TextBoxLogin}" Margin="10,0,0,3"/>
+                    <PasswordBox 
+					    Grid.Row="3" Grid.Column="1" Height="30" Margin="10,0,0,3">
+                        <PasswordBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=gdLogin}"/>
+                        </PasswordBox.InputBindings>
+                    </PasswordBox>
+                    <Button
+                        Grid.Row="4" Grid.Column="1"
 					x:Name="btnConectar"
-					Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=stkLogin}"
-					Height="28" Width="200" Content="Conectar"
+					Command="{Binding loginCommand}" CommandParameter="{Binding ElementName=gdLogin}"
+					Height="30" Content="Conectar"
 					Background="{StaticResource ButtonBackgroundBlueDefault}" 
 					Foreground="White" BorderBrush="{StaticResource ButtonBackgroundBlueDefault}" 
-					Style="{DynamicResource ButtonStyleLoginCopy}" Margin="0,6,0,0"
+					Style="{DynamicResource ButtonStyleLoginCopy}" Margin="10,0,0,3"
                             />
-                <Label  
-                        HorizontalAlignment="Center"
+                    <Label 
+                        Grid.Column="1" Grid.Row="5"                        
 					    Content="{Binding currentModel.xError, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        Height="27" DockPanel.Dock="Top" Margin="0,16,0,0" Foreground="#FFC99B9B"/>
-            </StackPanel>
-        </DockPanel>
-        <StackPanel
-			Grid.Row="2"
-			Grid.ColumnSpan="2"
-			Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Margin="15,0,15,15">
-            <Image Source="icone hlp.ico" Width="32" Height="32" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Label DockPanel.Dock="Left" HorizontalAlignment="Left" 
-				VerticalAlignment="Center" Content="© HLP - Estratégia em Sistemas" Foreground="White"/>
-        </StackPanel>
+                        Height="30" Margin="0,0,0,3" Foreground="#FFD2535A"/>
 
-
-
-
-
-
-
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Background="{StaticResource BlueStandard}">
+            
+        </Grid>
     </Grid>
 </Window>
