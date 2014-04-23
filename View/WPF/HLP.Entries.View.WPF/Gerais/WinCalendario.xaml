@@ -110,7 +110,8 @@
                 <DataGrid Grid.Column="1" Grid.Row="2"
                     ItemsSource="{Binding currentModel.lCalendario_DetalheModel}"
 					IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
-					AutoGenerateColumns="False" 
+					AutoGenerateColumns="False"
+                    CanUserResizeRows="False"
                     SelectionUnit="CellOrRowHeader" 
                     CanUserReorderColumns="False"  
                     CanUserDeleteRows="True" Margin="0,5,0,0" >

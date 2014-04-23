@@ -128,7 +128,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-
+                
 
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();
@@ -179,6 +179,8 @@ namespace HLP.Magnificus.View.WPF
                     base.OnStartup(e);
                     wd.WindowState = WindowState.Maximized;
                     wd.Show();
+                    HLP.Comum.View.Formularios.wdSenhaSupervisor w = new Comum.View.Formularios.wdSenhaSupervisor();
+                    w.ShowDialog();
                     //WinEspelhoPonto win = new WinEspelhoPonto();
                     //win.ShowDialog();
                 }
