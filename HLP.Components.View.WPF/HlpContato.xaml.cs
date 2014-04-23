@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,27 +20,27 @@ using System.Windows.Shapes;
 namespace HLP.Components.View.WPF
 {
     /// <summary>
-    /// Interaction logic for HlpContatos.xaml
+    /// Interaction logic for HlpContato.xaml
     /// </summary>
-    public partial class HlpContatos : UserControl, INotifyPropertyChanged
+    public partial class HlpContato : UserControl
     {
-        public HlpContatos()
+        public HlpContato()
         {
             InitializeComponent();
             this.lColumns = new ObservableCollection<string>();
-            this.lColumns.CollectionChanged += lColumns_CollectionChanged;            
+            this.lColumns.CollectionChanged += lColumns_CollectionChanged;
         }
 
-        public IEnumerable ItemsSource
+        public IEnumerable ItemsSourceContatos
         {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
+            get { return (IEnumerable)GetValue(ItemsSourceContatosProperty); }
+            set { SetValue(ItemsSourceContatosProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemsSource.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(HlpContatos), new PropertyMetadata());
-
+        // Using a DependencyProperty as the backing store for ItemsSourceContatos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemsSourceContatosProperty =
+            DependencyProperty.Register("ItemsSourceContatos", typeof(IEnumerable), typeof(HlpContato), new PropertyMetadata(null));
+        
         #region Collection para manipulação de visibilidade de colunas
 
         void lColumns_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -106,20 +105,6 @@ namespace HLP.Components.View.WPF
             set
             {
                 _lColumns = value;
-            }
-        }
-
-        #endregion
-
-        #region NotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 

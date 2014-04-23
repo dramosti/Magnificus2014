@@ -4,8 +4,8 @@
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Magnificus.View.WPF.WinLogin"
-    Closed="Window_Closed"
-        Title="WinLogin" Height="500" Width="1500" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
+        Closed="Window_Closed"
+        Title="WinLogin" Height="500" Width="1510" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
     <Window.Resources>        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

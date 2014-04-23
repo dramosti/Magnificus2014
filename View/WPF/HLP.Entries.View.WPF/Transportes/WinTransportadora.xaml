@@ -393,12 +393,11 @@
             </TabItem>            
             <TabItem Header="Contatos">
                 <AdornerDecorator>
-                    <Components:HlpContatos x:Name="hlpContatos" ItemsSource="{Binding currentModel.lTransportador_Contato}">      
-                        <Components:HlpContatos.lColumns>
+                    <Components:HlpContato ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">   
+                        <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
-                            <System:String>xFuncao</System:String>
-                        </Components:HlpContatos.lColumns>
-                    </Components:HlpContatos>
+                        </Components:HlpContato.lColumns>
+                    </Components:HlpContato>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Frota">

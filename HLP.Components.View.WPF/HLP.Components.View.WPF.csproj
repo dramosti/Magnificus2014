@@ -77,8 +77,8 @@
     <Compile Include="HlpButtonStatus.xaml.cs">
       <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HlpContatos.xaml.cs">
-      <DependentUpon>HlpContatos.xaml</DependentUpon>
+    <Compile Include="HlpContato.xaml.cs">
+      <DependentUpon>HlpContato.xaml</DependentUpon>
     </Compile>
     <Compile Include="HlpDatePicker.xaml.cs">
       <DependentUpon>HlpDatePicker.xaml</DependentUpon>
@@ -140,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HlpContatos.xaml">
+    <Page Include="HlpContato.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
