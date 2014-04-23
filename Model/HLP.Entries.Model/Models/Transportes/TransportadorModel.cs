@@ -87,7 +87,6 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
 
-
         private ObservableCollectionBaseCadastros<Transportador_EnderecoModel> _lTransportador_Endereco;
 
         public ObservableCollectionBaseCadastros<Transportador_EnderecoModel> lTransportador_Endereco
@@ -99,10 +98,6 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "lTransportador_Endereco");
             }
         }
-
-
-
-
 
         private ObservableCollectionBaseCadastros<Transportador_VeiculosModel> _lTransportador_Veiculos;
 
@@ -127,8 +122,6 @@ namespace HLP.Entries.Model.Models.Transportes
                 base.NotifyPropertyChanged(propertyName: "lTransportador_Motorista");
             }
         }
-
-
     }
 
     public partial class Transportador_EnderecoModel : modelBase
