@@ -97,7 +97,7 @@
                                     <!--Label Components-->
 
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"></Components:CustomTextBlock>
-                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código Alternativo"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Ficha de Registro"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Ativo?"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Saudação"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Nome"></Components:CustomTextBlock>
@@ -195,7 +195,7 @@
 
 
                                     <Components:CustomTextBlock VerticalAlignment="Center" Text="Perfil do Funcionário" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
-                                    <Components:CustomTextBlock VerticalAlignment="Center" Text="Site Padrão" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                    <Components:CustomTextBlock VerticalAlignment="Center" Text="Calendário" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
 
                                     <!--Components-->
 
