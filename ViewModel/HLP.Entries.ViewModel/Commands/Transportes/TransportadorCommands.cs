@@ -88,16 +88,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                         });
                 }
 
-                foreach (int item in objViewModel.currentModel.lTransportador_Contato.idExcluidos)
-                {
-                    this.objViewModel.currentModel.lTransportador_Contato.Add(item:
-                        new Transportador_ContatoModel
-                        {
-                            idTransportdorContato = item,
-                            status = statusModel.excluido
-                        });
-                }
-
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
