@@ -24,7 +24,7 @@ namespace HLP.Entries.View.WPF.GestãoDeLogística
         public WinTransportadora()
         {            
             InitializeComponent();
-            this.ViewModel = new TransportadorViewModel();            
+            this.ViewModel = new TransportadorViewModel();              
         }
 
         public TransportadorViewModel ViewModel

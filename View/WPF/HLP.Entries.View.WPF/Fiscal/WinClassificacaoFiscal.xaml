@@ -8,129 +8,180 @@
         x:Class="HLP.Entries.View.WPF.Fiscal.WinClassificacaoFiscal"
         Title="Classificação Fiscal" Height="660" Width="1200" NameView="vwClassificacaoFiscal">
     <Window.Resources>
-        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+        </ResourceDictionary>        
     </Window.Resources>
     <DockPanel>
-        <Expander Header="Geral" IsExpanded="True">
-            <DockPanel LastChildFill="True">
-                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                    <Components:HlpTextBox 
-						IsReadOnly="True"
-						Text="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-						Height="27"  Caption="Código" WidthLabel="145" HorizontalAlignment="Left" Width="212" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Nome" WidthLabel="145" HorizontalAlignment="Left" Width="421" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.cNCM, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Código NCM" WidthLabel="145" HorizontalAlignment="Left" Width="258" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.cClassifcacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Código abreviado" WidthLabel="145" HorizontalAlignment="Left" Width="258" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xFundamentoLegal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Fundamento legal" WidthLabel="145" HorizontalAlignment="Left" Width="421"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Alíquota de IPI" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Alíquota de PIS" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Alíquota de ii" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Alíquota de COFINS" WidthLabel="145" HorizontalAlignment="Left" Width="257" Margin="10,0,0,2"/>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stCalculaPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Calcula pis/cofins" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-NÃO</System:String>
-                            <System:String>1-NORMAL</System:String>
-                            <System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stRegimeTributacaoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Regime de Tributação do pis e cofins" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-CUMULATIVO</System:String>
-                            <System:String>1-NÃO CUMULATIVO</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.vCoeficienteSubstituicaoPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Coeficiente substituição tributária do pis" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left" Width="454"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.vCoeficienteSubstituicaoCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Coeficiente substituição tributária do cofins" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left" Width="454"/>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stCompoeBaseNormalPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Compões a base de pis/cofins normal ?" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-NÃO</System:String>
-                            <System:String>1-NORMAL</System:String>
-                            <System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stCompoeBaseSubstPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Compões a base de pis por substituição tributária" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-PRODUTOS X COEFICIENTE</System:String>
-                            <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
-                            <System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
-                            <System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stCompoeBaseSubstCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Compões a base de cofins por substituição tributária" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-PRODUTOS X COEFICIENTE</System:String>
-                            <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
-                            <System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
-                            <System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27"  Caption="Cadastro ativo?" WidthLabel="363" Margin="10,0,0,2" HorizontalAlignment="Left"/>
-                </WrapPanel>
-            </DockPanel>
+        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="340" MinWidth="340"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código NCM" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código abreviado" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Fundamento legal" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alíquota de IPI" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alíquota de PIS" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alíquota de ii" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Alíquota de COFINS" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Calcula pis/cofins" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Regime de Tributação do pis e cofins" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Coeficiente substituição tributária do pis" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Coeficiente substituição tributária do cofins" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Compões a base de pis/cofins normal ?" Grid.Column="1" Grid.Row="14"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Compões a base de pis por substituição tributária" Grid.Column="1" Grid.Row="15"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Compões a base de cofins por substituição tributária" Grid.Column="1" Grid.Row="16"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Cadastro ativo?" Grid.Column="1" Grid.Row="17"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    IsReadOnly="True"
+					Text="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">					
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    Text="{Binding currentModel.xClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				    IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3"
+                    Text="{Binding currentModel.cNCM, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="4"
+                    Text="{Binding currentModel.cClassifcacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="5"
+                    Text="{Binding currentModel.xFundamentoLegal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="6"
+                    Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="7"
+                    Text="{Binding currentModel.pPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="8"
+                    Text="{Binding currentModel.pII, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="9"
+                    Text="{Binding currentModel.pCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stCalculaPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-NÃO</System:String>
+                        <System:String>1-NORMAL</System:String>
+                        <System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stRegimeTributacaoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">						
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-CUMULATIVO</System:String>
+                        <System:String>1-NÃO CUMULATIVO</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="12"
+                    Text="{Binding currentModel.vCoeficienteSubstituicaoPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="13"
+                    Text="{Binding currentModel.vCoeficienteSubstituicaoCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}, StringFormat=\{0\}%}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stCompoeBaseNormalPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">						
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-NÃO</System:String>
+                        <System:String>1-NORMAL</System:String>
+                        <System:String>2-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stCompoeBaseSubstPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">						
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-PRODUTOS X COEFICIENTE</System:String>
+                        <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
+                        <System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
+                        <System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="16" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stCompoeBaseSubstCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">						
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-PRODUTOS X COEFICIENTE</System:String>
+                        <System:String>1-PRODUTOS X COEFICIENTE + IPI</System:String>
+                        <System:String>2-PRODUTOS X COEFICIENTE + IPI + FRETE</System:String>
+                        <System:String>3-PRODUTOS X COEFICIENTE + IPI + FRETE + SEGURO + OUTRAS DISPESAS</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="17"
+                    IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">						
+                </Components:CustomCheckBox>
+                
+                
+            </Grid>
         </Expander>
     </DockPanel>
 </runtime:WindowsBase>

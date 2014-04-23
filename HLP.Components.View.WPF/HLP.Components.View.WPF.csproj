@@ -77,6 +77,9 @@
     <Compile Include="HlpButtonStatus.xaml.cs">
       <DependentUpon>HlpButtonStatus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HlpContato.xaml.cs">
+      <DependentUpon>HlpContato.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HlpDatePicker.xaml.cs">
       <DependentUpon>HlpDatePicker.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,9 @@
     </Compile>
     <Compile Include="HlpPesquisaPadrao.xaml.cs">
       <DependentUpon>HlpPesquisaPadrao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HlpPessoaFisicaJuridica.xaml.cs">
+      <DependentUpon>HlpPessoaFisicaJuridica.xaml</DependentUpon>
     </Compile>
     <Compile Include="HlpUserControlBtnImage.xaml.cs">
       <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
@@ -134,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="HlpContato.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HlpDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HlpPesquisaPadrao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HlpPessoaFisicaJuridica.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

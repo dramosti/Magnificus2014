@@ -253,7 +253,6 @@ namespace HLP.Wcf.Entries
 
         public bool Delete(int id)
         {
-
             try
             {
                 this.cliente_fornecedorRepository.BeginTransaction();

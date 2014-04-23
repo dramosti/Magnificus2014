@@ -58,8 +58,7 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
-            this.Style = resource["TextBoxComponentStyle"] as Style;
-
+            this.Style = resource["TextBoxComponentStyle"] as Style;            
         }
     }
 }

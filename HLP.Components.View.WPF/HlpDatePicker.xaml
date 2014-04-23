@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ConvertLocal="clr-namespace:HLP.Components.View.WPF.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="30">
+             d:DesignHeight="30" x:Name="ucDtPicker">
     <UserControl.Resources>
         <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
         <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
@@ -64,7 +64,8 @@
                     <MenuItem Height="150">
                         <MenuItem.Template>
                             <ControlTemplate>
-                                <Calendar SelectedDatesChanged="Calendar_SelectedDatesChanged"></Calendar>
+                                <Calendar x:Name="compCalendar"
+                                    SelectedDatesChanged="Calendar_SelectedDatesChanged"></Calendar>
                             </ControlTemplate>
                         </MenuItem.Template>
                     </MenuItem>

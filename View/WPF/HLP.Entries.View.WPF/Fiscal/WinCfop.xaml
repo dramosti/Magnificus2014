@@ -6,45 +6,55 @@
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         x:Class="HLP.Entries.View.WPF.Fiscal.WinCfop"
         Title="CFOP" Height="660" Width="1024" NameView="vwCfop">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <StackPanel>
-        <Expander Header="Principal" IsExpanded="True">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="3"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="3"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="3"/>
-                    <RowDefinition Height="20"/>
-                </Grid.RowDefinitions>
+        <Expander Header="Principal" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+            <Grid>              
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="125"/>
-                    <ColumnDefinition Width="90" MaxWidth="90" MinWidth="70"/>
-                    <ColumnDefinition Width="173*"/>
-                    <ColumnDefinition Width="120*"/>
-                    <ColumnDefinition Width="496*"/>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="60" MinWidth="60"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--Label-->             
+                
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"/>
+                <Components:CustomTextBlock Text="CFOP" Grid.Row="2" Grid.Column="1"/>
+                <Components:CustomTextBlock Text="Descrição Resumida" Grid.Row="3" Grid.Column="1"/>
+                <Components:CustomTextBlock Text="Descrição" Grid.Row="4" Grid.Column="1" />
+                
+                <!--Components-->
+                
                 <Components:CustomTextBox 
                                       IsReadOnly="True"
                                       Text="{Binding currentModel.idCfop, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro da CFOP"
-                                      Grid.Column="2" Grid.Row="1"/>
-                <Components:CustomTextBlock Text="CFOP" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3"
+                                      Grid.Column="2" Grid.Row="1"/>                
+                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="2"
                                        Text="{Binding currentModel.cCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
-                                       ToolTip="Informar o código padrão da CFOP fornecida pelo seu Órgão Emissor"/>
-                <Components:CustomTextBlock Text="Descrição Resumida" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"/>
-                <Components:CustomTextBox  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5"
+                                       ToolTip="Informar o código padrão da CFOP fornecida pelo seu Órgão Emissor"/>                
+                <Components:CustomTextBox  Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3"
                                        Text="{Binding currentModel.xCfopResumida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
-                                       ToolTip="Informar uma descrição abreviada do CFOP. Esse campo sairá na NF por isso que há necessidade da abreviação da Descrição da CFOP."/>
-                <Components:CustomTextBlock Text="Descrição" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center"/>
-                <Components:CustomTextBox  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="7"
+                                       ToolTip="Informar uma descrição abreviada do CFOP. Esse campo sairá na NF por isso que há necessidade da abreviação da Descrição da CFOP."/>                
+                <Components:CustomTextBox  Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="4"
                                        Text="{Binding currentModel.xCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
                                        ToolTip="Descrição Detalhada da CFOP"/>         

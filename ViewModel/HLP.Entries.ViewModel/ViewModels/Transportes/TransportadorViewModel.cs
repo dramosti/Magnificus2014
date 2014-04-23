@@ -27,7 +27,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Transportes
 
 
         public TransportadorViewModel()
-        {
+        {            
             comm = new TransportadorCommands(objViewModel: this);
         }
 

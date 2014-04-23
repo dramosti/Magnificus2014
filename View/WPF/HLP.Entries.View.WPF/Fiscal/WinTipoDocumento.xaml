@@ -9,50 +9,276 @@
     xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         Title="Tipo de Documento" Height="660" Width="1500" NameView="vwTipoDocumento">
     <Window.Resources>
-        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwTipoOperacaoToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwTipoOperacaoToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>        
     </Window.Resources>
-    <DockPanel>
-        <Expander Header="Principal" IsExpanded="True">
-            <ScrollViewer x:Name="ScrollBar" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                    <Components:HlpTextBox 
-						IsReadOnly="True"
-						Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
-						Height="27" Margin="10,0,0,2" Caption="Codigo" WidthLabel="150" HorizontalAlignment="Left" Width="238"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xTpdoc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Expander Header="Principal" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="125" MinWidth="125"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Codigo" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Tipo de Documento" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do pedido com orçamento" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do pedido com faturamento" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do pedido com produção" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Grupo de Faturamento" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Série da NF" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Espécie de voume da NF" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Marca do volume da NF" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Soma valor do IPI somente na 1 Duplicata?" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Soma valor da subst.Tributária somente na 1 Duplicata?" Grid.Column="1" Grid.Row="12"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF complementar?" Grid.Column="1" Grid.Row="13"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de importação?" Grid.Column="1" Grid.Row="14"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de exportação?" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de Industrialização?" Grid.Column="5" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de suframa?" Grid.Column="5" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de ativo?" Grid.Column="5" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="É NF de devolução" Grid.Column="5" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Compõem o valor total dos produtos?" Grid.Column="5" Grid.Row="6"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Soma devolução no total da nf?" Grid.Column="5" Grid.Row="7"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Imprime icms próprio com normal na nf?" Grid.Column="5" Grid.Row="8"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do recebimento com pedido de compra" Grid.Column="5" Grid.Row="9"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Relação do pedido de compra com cotação de compra" Grid.Column="5" Grid.Row="10"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Modelo de documento fiscal" Grid.Column="5" Grid.Row="11"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Observação" Grid.Column="5" Grid.Row="12"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Ativo?" Grid.Column="5" Grid.Row="13"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                   Grid.Column="2" Grid.Row="1"
+                   IsReadOnly="True"
+				   Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">						
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xTpdoc, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">					
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Orçamento de venda</System:String>
+                        <System:String>1-Pedido de venda</System:String>
+                        <System:String>2-NF de Saida</System:String>
+                        <System:String>3-NF de entrada</System:String>
+                        <System:String>4-NF produtor rural</System:String>
+                        <System:String>5-Solicitação de Compra</System:String>
+                        <System:String>6-Cotação de compra</System:String>
+                        <System:String>7-Pedido de Compra</System:String>
+                        <System:String>8-Recebimento de NF</System:String>
+                        <System:String>9-Requisição de Saida</System:String>
+                        <System:String>10-Produção</System:String>
+                        <System:String>11-Movimento de Estoque</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stRelacaoPedidoxorcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">						
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Nenhum</System:String>
+                        <System:String>1-Pedido depende do orçamento</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stRelacaoPedidoxnf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Nenhum</System:String>
+                        <System:String>1-NF depende de pedido com edição de itens</System:String>
+                        <System:String>2-NF depende de pedido sem edição de itens</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stRelacaoPedidoxproducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Nenhum</System:String>
+                        <System:String>1-Pedido gera ordem de produção</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomComboBox
+                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+                    SelectedIndex="{Binding currentModel.stGrupoFaturamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-1</System:String>
+                        <System:String>1-2</System:String>
+                        <System:String>2-3</System:String>
+                        <System:String>3-4</System:String>
+                        <System:String>4-5</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xSerieNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xEspecieVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xMarcaVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="11"
+                    IsChecked="{Binding currentModel.stSomaIpi1Dup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="12"
+                    IsChecked="{Binding currentModel.stSomaSt1Dup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="13"
+                    IsChecked="{Binding currentModel.stNfComplementar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="2" Grid.Row="14"
+                    IsChecked="{Binding currentModel.stNfImportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomComboBox
+                    Grid.Column="6" Grid.Row="1"
+                    SelectedIndex="{Binding currentModel.stNfExportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Não</System:String>
+                        <System:String>1-Exportação Direta</System:String>
+                        <System:String>1-Exportação Indireta</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="2"
+                    IsChecked="{Binding currentModel.stNfIndustrializacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="3"
+                    IsChecked="{Binding currentModel.stNfSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="4"
+                    IsChecked="{Binding currentModel.stNfAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="5"
+                    IsChecked="{Binding currentModel.stNFdevolucao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomComboBox
+                    Grid.Column="6" Grid.Row="6"
+                    SelectedIndex="{Binding currentModel.stCompoeVlTotalProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+						IsEnabled="{Binding bIsEnabled}">
+                    <Components:CustomComboBox.Items>
+                        <System:String>0-Só Produtos</System:String>
+                        <System:String>1-Só devolução</System:String>
+                        <System:String>2-Ambos</System:String>
+                    </Components:CustomComboBox.Items>
+                </Components:CustomComboBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="7"
+                    IsChecked="{Binding currentModel.stSomaDevolucaoVlTotalNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="8"
+                    IsChecked="{Binding currentModel.stImprimeIcmsProprioComNormal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="9"
+                    IsChecked="{Binding currentModel.stRelacaoRecebimentoPedidocpa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="10"
+                    IsChecked="{Binding currentModel.stRelacaoPedidocpaCotacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+                <Components:HlpPesquisa 
+						Grid.Column="6" Grid.Row="11" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
+						Text="{Binding currentModel.idModeloDocFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Nome" WidthLabel="150" HorizontalAlignment="Left" Width="431"/>
-                    <Components:HlpComboBox
-						
-						SelectedIndex="{Binding currentModel.stDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Tipo de Documento" WidthLabel="150" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-Orçamento de venda</System:String>
-                            <System:String>1-Pedido de venda</System:String>
-                            <System:String>2-NF de Saida</System:String>
-                            <System:String>3-NF de entrada</System:String>
-                            <System:String>4-NF produtor rural</System:String>
-                            <System:String>5-Solicitação de Compra</System:String>
-                            <System:String>6-Cotação de compra</System:String>
-                            <System:String>7-Pedido de Compra</System:String>
-                            <System:String>8-Recebimento de NF</System:String>
-                            <System:String>9-Requisição de Saida</System:String>
-                            <System:String>10-Produção</System:String>
-                            <System:String>11-Movimento de Estoque</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Expander Header="Operações Válidas" IsExpanded="True" Width="445" HorizontalAlignment="Left" Height="146" Margin="10,0,0,2">
-                        <Grid>
-                            <DataGrid HorizontalAlignment="Left" Margin="10,0,0,2"
+						WidthLabel="0" TableView="vwModeloDocFiscal" FieldPesquisa="ID">
+                    <Components:HlpPesquisa.Items>
+                        <System:String>xCodFiscal</System:String>
+                        <System:String>xDescrFiscal</System:String>
+                    </Components:HlpPesquisa.Items>
+                </Components:HlpPesquisa>
+                <Components:CustomTextBox
+                    Grid.Column="6" Grid.Row="12" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xObs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomTextBox>
+                <Components:CustomCheckBox
+                    Grid.Column="6" Grid.Row="13"
+                    IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					IsEnabled="{Binding bIsEnabled}">
+                </Components:CustomCheckBox>
+            </Grid>
+        </Expander>
+        <Expander Header="Operações Validas" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="1">
+            <Grid>
+                <DataGrid HorizontalAlignment="Left" 
                                   ItemsSource="{Binding currentModel.lTipo_documento_oper_validaModel}"
                                   IsEnabled="{Binding bIsEnabled}"
                                   AutoGenerateColumns="False" 
@@ -60,195 +286,31 @@
                                   CanUserReorderColumns="False"
                                   CanUserDeleteRows="True"
                                   CanUserAddRows="True">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn Header="Tipo de Operação" Width="*">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Path=idTipoOperacao, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lTpOper}}"/>                                               
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                        <DataGridTemplateColumn.CellEditingTemplate>
-                                            <DataTemplate>
-                                                <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
-                                                    <ComboBox x:Name="cbxEditing"
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Tipo de Operação" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=idTipoOperacao, Converter={StaticResource cbxDisplayConv}, 
+                                            ConverterParameter={StaticResource lTpOper}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <Grid FocusManager.FocusedElement="{Binding ElementName= cbxEditing}" >
+                                        <ComboBox x:Name="cbxEditing"
                                             ItemsSource="{Binding Source={StaticResource lTpOper}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"                      
                                             SelectedValue="{Binding idTipoOperacao,
                                             UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
                                             IsSynchronizedWithCurrentItem="False"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellEditingTemplate>
-                                    </DataGridTemplateColumn>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                    </Expander>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stRelacaoPedidoxorcamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Relação do pedido com orçamento" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-Nenhum</System:String>
-                            <System:String>1-Pedido depende do orçamento</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stRelacaoPedidoxnf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Relação do pedido com faturamento" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-Nenhum</System:String>
-                            <System:String>1-NF depende de pedido com edição de itens</System:String>
-                            <System:String>2-NF depende de pedido sem edição de itens</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stRelacaoPedidoxproducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Relação do pedido com produção" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-Nenhum</System:String>
-                            <System:String>1-Pedido gera ordem de produção</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stGrupoFaturamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Grupo de Faturamento" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-1</System:String>
-                            <System:String>1-2</System:String>
-                            <System:String>2-3</System:String>
-                            <System:String>3-4</System:String>
-                            <System:String>4-5</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xSerieNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Série da NF" WidthLabel="283" HorizontalAlignment="Left" Width="409"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xEspecieVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Espécie de voume da NF" WidthLabel="283" HorizontalAlignment="Left" Width="409"/>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xMarcaVolumeNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Marca do volume da NF" WidthLabel="283" HorizontalAlignment="Left" Width="409"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stSomaIpi1Dup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="38" Margin="10,0,0,2" Caption="Soma valor do IPI somente na 1 Duplicata?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stSomaSt1Dup, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="38" Margin="10,0,0,2" Caption="Soma valor da subst.Tributária somente na 1 Duplicata?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox	
-						
-						IsChecked="{Binding currentModel.stNfComplementar, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF complementar?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stNfImportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF de importação?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stNfExportacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF de exportação?" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-Não</System:String>
-                            <System:String>1-Exportação Direta</System:String>
-                            <System:String>1-Exportação Indireta</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stNfIndustrializacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF de Industrialização?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stNfSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF de suframa?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stNfAtivo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF de ativo?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stNFdevolucao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="É NF de devolução" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpComboBox 
-						
-						SelectedIndex="{Binding currentModel.stCompoeVlTotalProdutos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Compõem o valor total dos produtos?" WidthLabel="283" HorizontalAlignment="Left" Width="433">
-                        <Components:HlpComboBox.Items>
-                            <System:String>0-Só Produtos</System:String>
-                            <System:String>1-Só devolução</System:String>
-                            <System:String>2-Ambos</System:String>
-                        </Components:HlpComboBox.Items>
-                    </Components:HlpComboBox>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stSomaDevolucaoVlTotalNf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Soma devolução no total da nf?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stImprimeIcmsProprioComNormal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="40" Margin="10,0,0,2" Caption="Imprime icms próprio com normal na nf?" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stRelacaoRecebimentoPedidocpa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="40" Margin="10,0,0,2" Caption="Relação do recebimento com pedido de compra" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.stRelacaoPedidocpaCotacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="40" Margin="10,0,0,2" Caption="Relação do pedido de compra com cotação de compra" WidthLabel="283" HorizontalAlignment="Left"/>
-                    <Components:HlpPesquisa 
-						
-						Text="{Binding currentModel.idModeloDocFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Modelo de documento fiscal" WidthLabel="283" HorizontalAlignment="Left" Width="672" TableView="vwModeloDocFiscal" FieldPesquisa="ID">
-                        <Components:HlpPesquisa.Items>
-                            <System:String>xCodFiscal</System:String>
-                            <System:String>xDescrFiscal</System:String>
-                        </Components:HlpPesquisa.Items>
-                    </Components:HlpPesquisa>
-                    <Components:HlpTextBox 
-						
-						Text="{Binding currentModel.xObs, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Observação" WidthLabel="283" HorizontalAlignment="Left" Width="672"/>
-                    <Components:HlpCheckBox 
-						
-						IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-						IsEnabled="{Binding bIsEnabled}"
-						Height="27" Margin="10,0,0,2" Caption="Cadastro ativo?" WidthLabel="283" HorizontalAlignment="Left"/>
-                </WrapPanel>
-            </ScrollViewer>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </Expander>
-    </DockPanel>
+    </Grid>
 </runtime:WindowsBase>

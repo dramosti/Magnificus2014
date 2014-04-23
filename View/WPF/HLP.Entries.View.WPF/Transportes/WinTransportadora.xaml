@@ -6,7 +6,7 @@
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:v="clr-namespace:HLP.Comum.View.Validates;assembly=HLP.Comum.View"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.GestãoDeLogística.WinTransportadora"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         Title="WinTransportadora" Height="660" Width="1024" NameView="vwTransportador">
@@ -19,6 +19,7 @@
             <convert:MaskConverter x:Key="maskConverter"/>
             <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
             <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <convert:NotConverter x:Key="notConverter"/>
             <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
@@ -386,17 +387,17 @@
                     <Components:HlpEndereco 
                         x:Name="dgvEndereco"
                         ItemsSource="{Binding currentModel.lTransportador_Endereco}" 
-                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                        IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         IsEnabled="{Binding bIsEnabled}"/>
                 </AdornerDecorator>
             </TabItem>            
             <TabItem Header="Contatos">
                 <AdornerDecorator>
-                    <Components:HlpContatos>
-                        <Components:HlpContatos.lColumns>
+                    <Components:HlpContato ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">   
+                        <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
-                        </Components:HlpContatos.lColumns>
-                    </Components:HlpContatos>
+                        </Components:HlpContato.lColumns>
+                    </Components:HlpContato>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Frota">

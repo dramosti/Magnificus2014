@@ -285,22 +285,17 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border Name="Bd"
-                    CornerRadius="5"
+                    <Border Name="Bd"                    
                     Background="{TemplateBinding Background}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    BorderBrush="Black"
+                    BorderThickness="1.3"
+                    BorderBrush="#FF545454"
                     SnapsToDevicePixels="true">
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost"
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="Senha" 
-                           Margin="4, 2, 0, 0"
-                           Foreground="Black"
-                           FontWeight="SemiBold"
-                           FontFamily="Calibri"
-                           Opacity="0.8"
-                           FontStyle="Italic"            
+                            <TextBlock Text="Senha"                           
+                           Foreground="#FF8C8C8C"                          
+                           FontFamily="Segoe UI Light"                                
                            Visibility="Collapsed"
                            Name="txtPrompt"/>
                         </Grid>
@@ -322,6 +317,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
+    
     <!--<Style TargetType="{x:Type ComboBox}">
         <EventSetter Event="SelectionChanged" Handler="Util:ComumEvents.ComboBox_SelectionChanged"/>
     </Style>-->
@@ -2220,6 +2218,7 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="SelectionUnit" Value="CellOrRowHeader"/>
         <Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
@@ -2405,7 +2404,7 @@
     </Style>
     <BooleanToVisibilityConverter x:Key="bool2VisibilityConverter"/>
     <Style x:Key="RowHeaderGripperStyle" TargetType="{x:Type Thumb}">
-        <Setter Property="Height" Value="9"/>
+        <Setter Property="Height" Value="15"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Cursor" Value="SizeNS"/>
         <Setter Property="Template">
@@ -2418,7 +2417,7 @@
     </Style>
 
     <Style TargetType="{x:Type DataGridRowHeader}">
-        <Setter Property="Width" Value="15"/>
+        <Setter Property="Width" Value="20"/>
         <Setter Property="Background" Value="#FFC0C8D4"/>
         <Setter Property="BorderThickness" Value="0.3"/>
         <Setter Property="BorderBrush" Value="Black"/>

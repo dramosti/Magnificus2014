@@ -14,8 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
+using HLP.Components.View.WPF;
 
 namespace HLP.Entries.View.WPF.GestãoAdministrativa
 {
@@ -28,10 +28,9 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa
         {
             InitializeComponent();
             this.ViewModel = new ClienteViewModel();
-           
-        }
-             
 
+            base.SetEventsTabControl(tabControl: this.tbPrincipal);
+        }
 
         public ClienteViewModel ViewModel
         {
@@ -62,7 +61,7 @@ namespace HLP.Entries.View.WPF.GestãoAdministrativa
 
         private void HlpTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-           // tabPessoal.SelectedItem = tabFiliacao;
+            // tabPessoal.SelectedItem = tabFiliacao;
         }
 
     }
