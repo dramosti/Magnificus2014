@@ -59,8 +59,9 @@
         </ObjectDataProvider>
     </UserControl.Resources>
     <Grid>
-        <DataGrid x:Name="dgv" 
+        <DataGrid x:Name="dgv"
                   ItemsSource="{Binding ElementName=ucContatos, Path=ItemsSourceContatos}" 
+                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="True">
             <DataGrid.Columns>
@@ -351,6 +352,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="RNTRC" Binding="{Binding xRntrc, 
+                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -382,19 +382,20 @@
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Endereços">
+            <TabItem Header="Endereços" Margin="-3,-2,-1,0">
                 <AdornerDecorator>
                     <Components:HlpEndereco 
                         x:Name="dgvEndereco"
                         ItemsSource="{Binding currentModel.lTransportador_Endereco}" 
                         IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                        IsEnabled="{Binding bIsEnabled}"/>
+                        />
                 </AdornerDecorator>
             </TabItem>            
             <TabItem Header="Contatos">
                 <AdornerDecorator>
-                    <Components:HlpContato IsEnabled="{Binding bIsEnabled}"
-                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">   
+                    <Components:HlpContato
+                        IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay}">   
                         <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
                             <System:String>xEmailComercial</System:String>
@@ -408,8 +409,8 @@
                         <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}"> 
                             <Grid>
                                 <DataGrid
-								ItemsSource="{Binding currentModel.lTransportador_Veiculos}"                          
-								IsEnabled="{Binding bIsEnabled}"
+								ItemsSource="{Binding currentModel.lTransportador_Veiculos}"    
+                                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 								AutoGenerateColumns="False" 
 								SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
 								CanUserDeleteRows="True"
@@ -458,9 +459,11 @@
             </TabItem>
             <TabItem Header="Motorista">
                 <AdornerDecorator>
-                    <Components:HlpContato IsEnabled="{Binding bIsEnabled}"
-                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <Components:HlpContato 
+                        IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Motorista, Mode=TwoWay}">
                         <Components:HlpContato.lColumns>
+                            <System:String>xCargo</System:String>
                             <System:String>xNome</System:String>
                             <System:String>xEmailComercial</System:String>
                             <System:String>xRntrc</System:String>

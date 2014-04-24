@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Transportes;
 using HLP.Components.Model.Models;
+using System.ServiceModel;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -114,9 +115,23 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.objService.SaveObject(obj:
+            try
+            {
+                this.objViewModel.currentModel = this.objService.SaveObject(obj:
                     this.objViewModel.currentModel);
-            e.Result = e.Argument;
+                e.Result = e.Argument;
+            }
+            catch (FaultException fEx)
+            {
+                if (fEx.Code.Name == "sql221")
+                    throw new Exception(message: fEx.Message);                    
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

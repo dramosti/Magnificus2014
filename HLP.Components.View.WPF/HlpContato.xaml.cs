@@ -31,6 +31,16 @@ namespace HLP.Components.View.WPF
             this.lColumns.CollectionChanged += lColumns_CollectionChanged;
         }
 
+        public bool IsReadOnlyUserControl
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnlyUserControl", typeof(bool), typeof(HlpContato), new PropertyMetadata(false));
+
         public IEnumerable ItemsSourceContatos
         {
             get { return (IEnumerable)GetValue(ItemsSourceContatosProperty); }

@@ -125,7 +125,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_EnderecoModel : modelBase
     {
         public Transportador_EnderecoModel()
-            : base(xTabela: "Transportador_Endereco")
+            : base(xTabela: "Enderecos")
         {
         }
 
@@ -417,7 +417,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_ContatoModel : modelBase
     {
         public Transportador_ContatoModel()
-            : base(xTabela: "Transportador_Contato")
+            : base(xTabela: "Contato")
         {
         }
 
@@ -459,7 +459,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_MotoristaModel : modelBase
     {
         public Transportador_MotoristaModel()
-            : base(xTabela: "Transportador_Motorista")
+            : base(xTabela: "Contato")
         {
         }
         private int? _idTransportdorMotorista;

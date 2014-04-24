@@ -11,7 +11,7 @@
           <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" minOccurs="0" name="lTransportador_Contato" nillable="true" type="q2:ArrayOfContatoModel" />
           <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" minOccurs="0" name="lTransportador_Endereco" nillable="true" type="q3:ArrayOfEnderecoModel" />
-          <xs:element minOccurs="0" name="lTransportador_Motorista" nillable="true" type="tns:ArrayOfTransportador_MotoristaModel" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" minOccurs="0" name="lTransportador_Motorista" nillable="true" type="q4:ArrayOfContatoModel" />
           <xs:element minOccurs="0" name="lTransportador_Veiculos" nillable="true" type="tns:ArrayOfTransportador_VeiculosModel" />
           <xs:element minOccurs="0" name="stPessoa" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="xCnpj" nillable="true" type="xs:string" />
@@ -34,25 +34,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="TransportadorModel" nillable="true" type="tns:TransportadorModel" />
-  <xs:complexType name="ArrayOfTransportador_MotoristaModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Transportador_MotoristaModel" nillable="true" type="tns:Transportador_MotoristaModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfTransportador_MotoristaModel" nillable="true" type="tns:ArrayOfTransportador_MotoristaModel" />
-  <xs:complexType name="Transportador_MotoristaModel">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q4:modelBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="idTransportador" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="idTransportdorMotorista" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="xRntrc" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Transportador_MotoristaModel" nillable="true" type="tns:Transportador_MotoristaModel" />
   <xs:complexType name="ArrayOfTransportador_VeiculosModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Transportador_VeiculosModel" nillable="true" type="tns:Transportador_VeiculosModel" />

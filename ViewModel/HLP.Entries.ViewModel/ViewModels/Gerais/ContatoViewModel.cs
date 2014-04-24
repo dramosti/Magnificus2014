@@ -7,6 +7,7 @@ using System.Windows.Input;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {

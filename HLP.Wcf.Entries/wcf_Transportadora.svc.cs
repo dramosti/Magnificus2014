@@ -9,6 +9,7 @@ using HLP.Entries.Model.Repository.Interfaces.Transportes;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -162,6 +163,23 @@ namespace HLP.Wcf.Entries
                 this.transportadorRepository.CommitTransaction();
 
                 return obj;
+            }
+            catch (SqlException sEx)
+            {
+                this.transportadorRepository.RollackTransaction();
+                Log.AddLog(xLog: sEx.Message);
+                string message = "";
+
+                foreach (SqlError item in sEx.Errors)
+                {
+                    if (item.State == 221)
+                    {
+                        message = item.Message;
+                        break;
+                    }
+                }
+
+                throw new FaultException(reason: message, code: new FaultCode(name: "sql221"));
             }
             catch (Exception ex)
             {

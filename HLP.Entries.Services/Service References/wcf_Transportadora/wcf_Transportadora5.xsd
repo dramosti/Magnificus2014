@@ -19,6 +19,7 @@
           <xs:element minOccurs="0" name="dDisponivelaPartir" nillable="true" type="ser:duration" />
           <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContatoGerente" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idContatoMotorista" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContatoTransportador" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idDecisao" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idFidelidade" nillable="true" type="xs:int" />
@@ -54,6 +55,7 @@
           <xs:element minOccurs="0" name="xRadioFoneComercial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xRadioFoneResidencial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xRamalComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xRntrc" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xSkypeComercial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xSkypeResidencial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xTelefoneComercial" nillable="true" type="xs:string" />

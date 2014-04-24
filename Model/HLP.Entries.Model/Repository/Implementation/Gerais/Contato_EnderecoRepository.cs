@@ -9,6 +9,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
@@ -66,8 +67,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
                    MapBuilder<Contato_EnderecoModel>.MapAllProperties()
                    .DoNotMap(c => c.status)
-                   .DoNotMap(c=>c.enumTipoEndereco)
-                   .DoNotMap(c=>c.enumTipoLogradouro)
                    .Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
@@ -79,8 +78,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             ("SELECT * FROM Contato_Endereco WHERE idContato = @idContato", new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idContato"),
             MapBuilder<Contato_EnderecoModel>.MapAllProperties()
             .DoNotMap(c => c.status)
-            .DoNotMap(c => c.enumTipoEndereco)
-            .DoNotMap(c => c.enumTipoLogradouro)
             .Build());
 
             return reg.Execute(idContato).ToList();

@@ -17,8 +17,8 @@ namespace HLP.Entries.ViewModel.contato_Service {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.Contato_EnderecoModel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.ContatoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Components.Model.Models.Contato_EnderecoModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Components.Model.Models.ContatoModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -191,10 +191,10 @@ namespace HLP.Entries.ViewModel.contato_Service {
     public interface IserviceContato {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Save", ReplyAction="http://tempuri.org/IserviceContato/SaveResponse")]
-        HLP.Entries.Model.Models.Gerais.ContatoModel Save(HLP.Entries.Model.Models.Gerais.ContatoModel objContato);
+        HLP.Components.Model.Models.ContatoModel Save(HLP.Components.Model.Models.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Save", ReplyAction="http://tempuri.org/IserviceContato/SaveResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.ContatoModel> SaveAsync(HLP.Entries.Model.Models.Gerais.ContatoModel objContato);
+        System.Threading.Tasks.Task<HLP.Components.Model.Models.ContatoModel> SaveAsync(HLP.Components.Model.Models.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Delete", ReplyAction="http://tempuri.org/IserviceContato/DeleteResponse")]
         bool Delete(int idContato);
@@ -203,22 +203,22 @@ namespace HLP.Entries.ViewModel.contato_Service {
         System.Threading.Tasks.Task<bool> DeleteAsync(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Copy", ReplyAction="http://tempuri.org/IserviceContato/CopyResponse")]
-        HLP.Entries.Model.Models.Gerais.ContatoModel Copy(HLP.Entries.Model.Models.Gerais.ContatoModel objContato);
+        HLP.Components.Model.Models.ContatoModel Copy(HLP.Components.Model.Models.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/Copy", ReplyAction="http://tempuri.org/IserviceContato/CopyResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.ContatoModel> CopyAsync(HLP.Entries.Model.Models.Gerais.ContatoModel objContato);
+        System.Threading.Tasks.Task<HLP.Components.Model.Models.ContatoModel> CopyAsync(HLP.Components.Model.Models.ContatoModel objContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetObject", ReplyAction="http://tempuri.org/IserviceContato/GetObjectResponse")]
-        HLP.Entries.Model.Models.Gerais.ContatoModel GetObject(int idContato);
+        HLP.Components.Model.Models.ContatoModel GetObject(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetObject", ReplyAction="http://tempuri.org/IserviceContato/GetObjectResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.ContatoModel> GetObjectAsync(int idContato);
+        System.Threading.Tasks.Task<HLP.Components.Model.Models.ContatoModel> GetObjectAsync(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetContato_ByClienteFornec", ReplyAction="http://tempuri.org/IserviceContato/GetContato_ByClienteFornecResponse")]
-        System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ContatoModel> GetContato_ByClienteFornec(int idContato);
+        System.Collections.Generic.List<HLP.Components.Model.Models.ContatoModel> GetContato_ByClienteFornec(int idContato);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceContato/GetContato_ByClienteFornec", ReplyAction="http://tempuri.org/IserviceContato/GetContato_ByClienteFornecResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ContatoModel>> GetContato_ByClienteFornecAsync(int idContato);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Components.Model.Models.ContatoModel>> GetContato_ByClienteFornecAsync(int idContato);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -248,11 +248,11 @@ namespace HLP.Entries.ViewModel.contato_Service {
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.ContatoModel Save(HLP.Entries.Model.Models.Gerais.ContatoModel objContato) {
+        public HLP.Components.Model.Models.ContatoModel Save(HLP.Components.Model.Models.ContatoModel objContato) {
             return base.Channel.Save(objContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.ContatoModel> SaveAsync(HLP.Entries.Model.Models.Gerais.ContatoModel objContato) {
+        public System.Threading.Tasks.Task<HLP.Components.Model.Models.ContatoModel> SaveAsync(HLP.Components.Model.Models.ContatoModel objContato) {
             return base.Channel.SaveAsync(objContato);
         }
         
@@ -264,27 +264,27 @@ namespace HLP.Entries.ViewModel.contato_Service {
             return base.Channel.DeleteAsync(idContato);
         }
         
-        public HLP.Entries.Model.Models.Gerais.ContatoModel Copy(HLP.Entries.Model.Models.Gerais.ContatoModel objContato) {
+        public HLP.Components.Model.Models.ContatoModel Copy(HLP.Components.Model.Models.ContatoModel objContato) {
             return base.Channel.Copy(objContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.ContatoModel> CopyAsync(HLP.Entries.Model.Models.Gerais.ContatoModel objContato) {
+        public System.Threading.Tasks.Task<HLP.Components.Model.Models.ContatoModel> CopyAsync(HLP.Components.Model.Models.ContatoModel objContato) {
             return base.Channel.CopyAsync(objContato);
         }
         
-        public HLP.Entries.Model.Models.Gerais.ContatoModel GetObject(int idContato) {
+        public HLP.Components.Model.Models.ContatoModel GetObject(int idContato) {
             return base.Channel.GetObject(idContato);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.ContatoModel> GetObjectAsync(int idContato) {
+        public System.Threading.Tasks.Task<HLP.Components.Model.Models.ContatoModel> GetObjectAsync(int idContato) {
             return base.Channel.GetObjectAsync(idContato);
         }
         
-        public System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ContatoModel> GetContato_ByClienteFornec(int idContato) {
+        public System.Collections.Generic.List<HLP.Components.Model.Models.ContatoModel> GetContato_ByClienteFornec(int idContato) {
             return base.Channel.GetContato_ByClienteFornec(idContato);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Entries.Model.Models.Gerais.ContatoModel>> GetContato_ByClienteFornecAsync(int idContato) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<HLP.Components.Model.Models.ContatoModel>> GetContato_ByClienteFornecAsync(int idContato) {
             return base.Channel.GetContato_ByClienteFornecAsync(idContato);
         }
     }

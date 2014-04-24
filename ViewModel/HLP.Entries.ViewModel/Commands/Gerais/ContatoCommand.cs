@@ -10,6 +10,7 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {

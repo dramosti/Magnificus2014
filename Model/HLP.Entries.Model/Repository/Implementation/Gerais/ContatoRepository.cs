@@ -9,6 +9,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Ninject;
 using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.Model.Repository.Implementation.Gerais
 {
