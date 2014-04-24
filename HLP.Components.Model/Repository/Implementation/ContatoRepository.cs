@@ -40,9 +40,8 @@ namespace HLP.Components.Model.Repository.Implementation
 
         public void Delete(int idContato)
         {
-            UndTrabalho.dbPrincipal.ExecuteScalar("dbo.Proc_delete_Contato",
-                 UserData.idUser,
-                 idContato);
+            UndTrabalho.dbPrincipal.ExecuteScalar(storedProcedureName: "dbo.Proc_delete_Contato",
+                parameterValues: new object[]{UserData.idUser, idContato}, transaction: UndTrabalho.dbTransaction);
         }
 
         public int Copy(int idContato)
@@ -86,11 +85,11 @@ namespace HLP.Components.Model.Repository.Implementation
             return reg.Execute(idContato).ToList();
         }
 
-        public List<ContatoModel> GetContato_ByForeignKey(int id, string tabela)
+        public List<ContatoModel> GetContato_ByForeignKey(int id, string xForeignKey)
         {
             DataAccessor<ContatoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
                 (string.Format(format: "select * from Contato where {0} = {1}",
-                arg0: BuildPartialWhereContato(tabela: tabela),
+                arg0: xForeignKey,
                 arg1: id),
             new Parameters(UndTrabalho.dbPrincipal),
             MapBuilder<ContatoModel>.MapAllProperties()
@@ -99,19 +98,14 @@ namespace HLP.Components.Model.Repository.Implementation
             return reg.Execute().ToList();
         }
 
-        public void DeleteContato_ByForeignKey(int id, string tabela)
+        public void DeleteContato_ByForeignKey(int id, string xForeignKey)
         {
             UndTrabalho.dbPrincipal.ExecuteNonQuery(
                 UndTrabalho.dbTransaction,
                 System.Data.CommandType.Text,
               string.Format(format: "delete from Contato where {0} = {1}",
-              arg0: BuildPartialWhereContato(tabela: tabela),
+              arg0: xForeignKey,
                 arg1: id));
-        }
-
-        private string BuildPartialWhereContato(string tabela)
-        {
-            return tabela == "transportador" ? "idContatoTransportador" : "";
         }
 
         public void BeginTransaction()

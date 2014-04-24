@@ -14,8 +14,8 @@ namespace HLP.Entries.Model.Models.Transportes
         public TransportadorModel()
             : base(xTabela: "Transportador")
         {
-            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<Transportador_EnderecoModel>();
-            this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<Transportador_MotoristaModel>();
+            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>();
+            this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<ContatoModel>();
             this.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
             this.lTransportador_Contato = new ObservableCollectionBaseCadastros<ContatoModel>();
         }
@@ -85,9 +85,9 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
 
-        private ObservableCollectionBaseCadastros<Transportador_EnderecoModel> _lTransportador_Endereco;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lTransportador_Endereco;
 
-        public ObservableCollectionBaseCadastros<Transportador_EnderecoModel> lTransportador_Endereco
+        public ObservableCollectionBaseCadastros<EnderecoModel> lTransportador_Endereco
         {
             get { return _lTransportador_Endereco; }
             set
@@ -109,9 +109,9 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
 
-        private ObservableCollectionBaseCadastros<Transportador_MotoristaModel> _lTransportador_Motorista;
+        private ObservableCollectionBaseCadastros<ContatoModel> _lTransportador_Motorista;
 
-        public ObservableCollectionBaseCadastros<Transportador_MotoristaModel> lTransportador_Motorista
+        public ObservableCollectionBaseCadastros<ContatoModel> lTransportador_Motorista
         {
             get { return _lTransportador_Motorista; }
             set

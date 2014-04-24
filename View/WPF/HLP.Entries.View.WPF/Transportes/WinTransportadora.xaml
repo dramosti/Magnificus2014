@@ -393,7 +393,8 @@
             </TabItem>            
             <TabItem Header="Contatos">
                 <AdornerDecorator>
-                    <Components:HlpContato ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">   
+                    <Components:HlpContato IsEnabled="{Binding bIsEnabled}"
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">   
                         <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
                             <System:String>xEmailComercial</System:String>
@@ -457,7 +458,14 @@
             </TabItem>
             <TabItem Header="Motorista">
                 <AdornerDecorator>
-                    
+                    <Components:HlpContato IsEnabled="{Binding bIsEnabled}"
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <Components:HlpContato.lColumns>
+                            <System:String>xNome</System:String>
+                            <System:String>xEmailComercial</System:String>
+                            <System:String>xRntrc</System:String>
+                        </Components:HlpContato.lColumns>
+                    </Components:HlpContato>
                 </AdornerDecorator>
             </TabItem>
         </TabControl>
