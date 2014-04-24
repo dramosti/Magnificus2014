@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Transportes
 
     public class TransportadoraService
     {
-        const string xTabela = "Transportador;Contato;Enderecos;Contato;Transportador_Veiculos";
+        const string xTabela = "Transportador;Contato;Enderecos;Transportador_Veiculos";
 
         Wcf.Entries.wcf_Transportadora serviceNetwork;
         wcf_Transportadora.Iwcf_TransportadoraClient serviceWeb;

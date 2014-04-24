@@ -33,11 +33,8 @@ namespace HLP.Components.Model.Models
             get { return _xNome; }
             set
             {
-                if (value != null)
-                {
-                    _xNome = value;
-                    base.NotifyPropertyChanged(propertyName: "xNome");
-                }
+                _xNome = value;
+                base.NotifyPropertyChanged(propertyName: "xNome");
             }
         }
         private string _xCargo;

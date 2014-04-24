@@ -395,7 +395,7 @@
                 <AdornerDecorator>
                     <Components:HlpContato
                         IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay}">   
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Contato}">   
                         <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
                             <System:String>xEmailComercial</System:String>
@@ -461,7 +461,7 @@
                 <AdornerDecorator>
                     <Components:HlpContato 
                         IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                        ItemsSourceContatos="{Binding currentModel.lTransportador_Motorista, Mode=TwoWay}">
+                        ItemsSourceContatos="{Binding currentModel.lTransportador_Motorista}">
                         <Components:HlpContato.lColumns>
                             <System:String>xCargo</System:String>
                             <System:String>xNome</System:String>

@@ -49,7 +49,7 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for ItemsSourceContatos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsSourceContatosProperty =
-            DependencyProperty.Register("ItemsSourceContatos", typeof(IEnumerable), typeof(HlpContato), new PropertyMetadata(null));
+            DependencyProperty.Register("ItemsSourceContatos", typeof(IEnumerable), typeof(HlpContato), new PropertyMetadata());
         
         #region Collection para manipulação de visibilidade de colunas
 
