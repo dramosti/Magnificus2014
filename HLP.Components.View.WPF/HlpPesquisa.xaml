@@ -63,7 +63,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
-                                <Border x:Name="Border1" CornerRadius="3,0,0,3" BorderBrush="#FFABADB3" BorderThickness="1.3" Background="White" SnapsToDevicePixels="True">
+                                <Border x:Name="Border1" BorderBrush="#FF8C8C8C" BorderThickness="1.3,1.3,1.3,1.3" Background="White" SnapsToDevicePixels="True">
                                     <DockPanel>
                                         <Button 
                                             Click="Button_Click"
@@ -97,16 +97,16 @@
                                             </Button.Style>
                                         </Button>
                                         <Border>
-                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Center" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" TextElement.FontFamily="Segoe UI Symbol" Foreground="#FF545454" VerticalAlignment="Center" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                                         </Border>
                                     </DockPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsEnabled" Value="False">
-                                        <Setter Property="Opacity" TargetName="Border1" Value="0.56"/>
+                                        <Setter Property="Opacity" TargetName="Border1" Value="0.50"/>
                                     </Trigger>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="BorderBrush" TargetName="Border1" Value="#FF7EB4EA"/>
+                                        <Setter Property="BorderBrush" TargetName="Border1" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                                     </Trigger>
                                     <Trigger Property="IsKeyboardFocused" Value="True">
                                         <Setter Property="BorderBrush" TargetName="Border1" Value="{StaticResource ButtonBackgroundBlueDefault}"/>

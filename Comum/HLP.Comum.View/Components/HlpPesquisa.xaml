@@ -65,7 +65,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
-                                <Border x:Name="Border1" CornerRadius="3,0,0,3" BorderBrush="#FFABADB3" BorderThickness="1.3" Background="White" SnapsToDevicePixels="True">
+                                <Border x:Name="Border1" CornerRadius="0,0,0,0" BorderBrush="#FF8C8C8C" BorderThickness="1.3,1.3,0,1.3" Background="White" SnapsToDevicePixels="True">
                                     <DockPanel>
                                         <Button 
                                             Click="Button_Click"
@@ -108,10 +108,10 @@
                                         <Setter Property="Opacity" TargetName="Border1" Value="0.56"/>
                                     </Trigger>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="BorderBrush" TargetName="Border1" Value="#FF7EB4EA"/>
+                                        <Setter Property="BorderBrush" TargetName="Border1" Value="#FF4774B5"/>
                                     </Trigger>
                                     <Trigger Property="IsKeyboardFocused" Value="True">
-                                        <Setter Property="BorderBrush" TargetName="Border1" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                                        <Setter Property="BorderBrush" TargetName="Border1" Value="#FF4774B5"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
