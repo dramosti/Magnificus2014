@@ -14,7 +14,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         void Copy(ContatoModel objContato);
         ContatoModel GetContato(int idContato);
         List<ContatoModel> GetContato_ByClienteFornec(int idContato);
-
+        List<ContatoModel> GetContato_ByForeignKey(int id, string tabela);
         void BeginTransaction();
         void CommitTransaction();
         void RollackTransaction();

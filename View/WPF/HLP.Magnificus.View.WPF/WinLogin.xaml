@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Magnificus.View.WPF.WinLogin"
         Closed="Window_Closed"
-        Title="WinLogin" Height="600" Width="1510" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
+        Title="WinLogin" Height="600" Width="1410" Background="#FF16499A" ShowInTaskbar="False" WindowStyle="None" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,13 +24,32 @@
     </Window.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="31*"/>
-            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="713*"/>
+            <ColumnDefinition Width="789*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="251*"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"></ColumnDefinition>                
+                <ColumnDefinition Width="650"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"></RowDefinition>
+                <RowDefinition Height="350"></RowDefinition>                
+                <RowDefinition Height="90"></RowDefinition>
+            </Grid.RowDefinitions>        
+            <WrapPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
+                <Button Height="100" Width="200" Margin="6,6,6,6" Content="Downloads" Style="{StaticResource Button_Login}"></Button>
+                <Button Height="100" Width="200" Margin="6,6,6,6" Content="Calculadora" Style="{StaticResource Button_Login2}"></Button>
+                <Button Height="100" Width="200" Margin="6,6,6,6" Content="Ajuda" Style="{StaticResource Button_Login_3}"></Button>
+                <Button Height="100" Width="200" Margin="6,6,6,6" Content="Calendario" Style="{StaticResource Button_Login_4}"></Button>
+                
+            </WrapPanel>
+        </Grid>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
@@ -46,30 +65,34 @@
                 <RowDefinition/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
+            
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="180"/>
                     <ColumnDefinition />
-                </Grid.ColumnDefinitions>                
-                <TextBlock Grid.Column="1" Text="Hlp" FontFamily="Segoe UI Light" FontSize="133.333" Margin="17,0,0,0" Foreground="#FF4774B5" />
+                </Grid.ColumnDefinitions>
+                <Image Height="130" Width="130" Stretch="Fill" Source="D:\GitHub\HLP\Magnificus2014\HLP.Resources.View.WPF\Icons\Login\Logo.png"/>
+                <TextBlock Grid.Column="1" Text="Magnificus ES" FontFamily="Segoe UI Light" VerticalAlignment="Center" FontSize="70" HorizontalAlignment="Left" Foreground="#FF4774B5" />
             </Grid>
             <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"></ColumnDefinition>
                     <ColumnDefinition Width="130"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="70"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="200"/>
                         <RowDefinition/>
-                    </Grid.RowDefinitions>                    
+                    </Grid.RowDefinitions>
+                    <Image Height="120" Width="120" Stretch="Fill" Grid.Row="1" Source="D:\GitHub\HLP\Magnificus2014\HLP.Resources.View.WPF\Icons\Login\Usuario.png"/>
                 </Grid>
-                <Grid Grid.Column="1" x:Name="gdLogin" Margin="10,30,-10,10" Grid.RowSpan="2">
+                <Grid Grid.Column="2" x:Name="gdLogin" Margin="10,30,-10,10" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"></ColumnDefinition>
                         <ColumnDefinition Width="200"></ColumnDefinition>
@@ -86,6 +109,7 @@
                     </Grid.RowDefinitions>
                     <ComboBox 
                         ItemContainerStyle="{StaticResource ComboBoxStyleLogin}"
+                        FocusVisualStyle="{x:Null}"
                         Grid.Column="1"
                         Grid.Row="1" Height="30"
                         x:Name="cbxEmpresa"
@@ -119,7 +143,7 @@
                     <Label 
                         Grid.Column="1" Grid.Row="5"                        
 					    Content="{Binding currentModel.xError, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                        Height="30" Margin="0,0,0,3" Foreground="#FFD2535A"/>
+                        Height="30" Margin="10,0,0,3" Foreground="#FFD2535A"/>
 
                 </Grid>
             </Grid>
@@ -127,9 +151,9 @@
         <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Background="{StaticResource BlueStandard}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="400"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="10"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -138,6 +162,8 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="10"></RowDefinition>
             </Grid.RowDefinitions>
+            <Label Grid.Column="1" Grid.Row="2"
+				VerticalAlignment="Center" Content="© HLP - Estratégia em Sistemas" Foreground="White"/>
         </Grid>
     </Grid>
 </Window>

@@ -78,7 +78,7 @@
                                         <ColumnDefinition Width="45*" MaxWidth="90" MinWidth="90"></ColumnDefinition>
                                         <ColumnDefinition Width="30*" MaxWidth="60" MinWidth="60"></ColumnDefinition>
                                         <ColumnDefinition Width="50*" MaxWidth="100" MinWidth="100"/>
-                                        <ColumnDefinition Width="29*" MaxWidth="60" MinWidth="60"/>
+                                        <ColumnDefinition Width="29*" MaxWidth="70" MinWidth="70"/>
                                         <ColumnDefinition Width="80*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
@@ -97,7 +97,7 @@
                                     <!--Label Components-->
 
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"></Components:CustomTextBlock>
-                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código Alternativo"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Ficha de Registro"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Ativo?"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Saudação"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Nome"></Components:CustomTextBlock>
@@ -138,7 +138,7 @@
 								            ToolTip="Informe o nome do funcionário">
                                     </Components:CustomTextBox>
                                     <Components:HlpPesquisa
-                                            Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
+                                            Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Height="20" Margin="0,0,0,3"
                                             nameWindow="WinCargo"
 								            Text="{Binding currentModel.idCargo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsEnabled="{Binding bIsEnabled}"
@@ -149,7 +149,7 @@
                                         </Components:HlpPesquisa.Items>
                                     </Components:HlpPesquisa>
                                     <Components:HlpPesquisa
-                                            Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
+                                            Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="4" Height="20" Margin="0,0,0,3"
 								            nameWindow="WinDepartamento"
 								            Text="{Binding currentModel.idDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsEnabled="{Binding bIsEnabled}"
@@ -195,7 +195,7 @@
 
 
                                     <Components:CustomTextBlock VerticalAlignment="Center" Text="Perfil do Funcionário" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
-                                    <Components:CustomTextBlock VerticalAlignment="Center" Text="Site Padrão" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                    <Components:CustomTextBlock VerticalAlignment="Center" Text="Calendário" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
 
                                     <!--Components-->
 
@@ -637,7 +637,7 @@
 									    IsEnabled="{Binding bIsEnabled}"                                        
 									    ToolTip="Informar a quantidade de horas trabalhada"/>
                                     <Components:CustomTextBox
-                                        IsEnabled="False" Grid.Column="5" Grid.Row="4" Margin="0,0,0,3"									     
+                                        IsEnabled="False" Grid.Column="5" Grid.Row="4" Margin="0,0,0,3" Width="62" HorizontalAlignment="Left"		 							     
                                         ToolTip="O Sistema irá informar a quantidade de horas trabalhada na semana">
                                         <Components:CustomTextBox.Text>
                                             <MultiBinding Converter="{StaticResource operacoesAritmetConverter}" ConverterParameter="soma">
