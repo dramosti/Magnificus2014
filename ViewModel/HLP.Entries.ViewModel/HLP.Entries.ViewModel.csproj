@@ -377,6 +377,14 @@
       <Project>{eb58bc1d-89d0-4f83-93ed-72500493eff3}</Project>
       <Name>HLP.Comum.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
+      <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
+      <Name>HLP.ComumView.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>

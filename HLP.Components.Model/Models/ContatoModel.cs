@@ -522,6 +522,29 @@ namespace HLP.Components.Model.Models
             }
         }
 
+        private string _xRntrc;
+        [ParameterOrder(Order = 47)]
+        public string xRntrc
+        {
+            get { return _xRntrc; }
+            set
+            {
+                _xRntrc = value;
+                base.NotifyPropertyChanged(propertyName: "xRntrc");
+            }
+        }
+        private int? _idContatoMotorista;
+        [ParameterOrder(Order = 48)]
+        public int? idContatoMotorista
+        {
+            get { return _idContatoMotorista; }
+            set
+            {
+                _idContatoMotorista = value;
+                base.NotifyPropertyChanged(propertyName: "idContatoMotorista");
+            }
+        }
+
         private ObservableCollectionBaseCadastros<Contato_EnderecoModel> _lContato_EnderecoModel;
 
         public ObservableCollectionBaseCadastros<Contato_EnderecoModel> lContato_EnderecoModel

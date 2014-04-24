@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.Model.Repository.Interfaces.Gerais
 {

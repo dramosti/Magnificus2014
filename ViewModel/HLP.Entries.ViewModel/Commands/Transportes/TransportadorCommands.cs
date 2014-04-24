@@ -11,6 +11,8 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Transportes;
+using HLP.Components.Model.Models;
+using System.ServiceModel;
 
 namespace HLP.Entries.ViewModel.Commands.Transportes
 {
@@ -61,7 +63,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 foreach (int item in this.objViewModel.currentModel.lTransportador_Endereco.idExcluidos)
                 {
                     this.objViewModel.currentModel.lTransportador_Endereco.Add(item:
-                        new Transportador_EnderecoModel
+                        new EnderecoModel
                         {
                             idEndereco = item,
                             status = statusModel.excluido
@@ -71,9 +73,9 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 foreach (int item in this.objViewModel.currentModel.lTransportador_Motorista.idExcluidos)
                 {
                     this.objViewModel.currentModel.lTransportador_Motorista.Add(item:
-                        new Transportador_MotoristaModel
+                        new ContatoModel
                         {
-                            idTransportdorMotorista = item,
+                            idContato = item,
                             status = statusModel.excluido
                         });
                 }
@@ -113,9 +115,23 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.objService.SaveObject(obj:
+            try
+            {
+                this.objViewModel.currentModel = this.objService.SaveObject(obj:
                     this.objViewModel.currentModel);
-            e.Result = e.Argument;
+                e.Result = e.Argument;
+            }
+            catch (FaultException fEx)
+            {
+                if (fEx.Code.Name == "sql221")
+                    throw new Exception(message: fEx.Message);                    
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -129,6 +145,34 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
                     object w = objViewModel.GetParentWindow(e.Result);
+
+                    while (this.objViewModel.currentModel.lTransportador_Contato.Count(
+                        i => i.status == statusModel.excluido) > 0)
+                    {
+                        this.objViewModel.currentModel.lTransportador_Contato.Remove(
+                            item: this.objViewModel.currentModel.lTransportador_Contato.FirstOrDefault(i => i.status == statusModel.excluido));
+                    }
+
+                    while (this.objViewModel.currentModel.lTransportador_Endereco.Count(
+                        i => i.status == statusModel.excluido) > 0)
+                    {
+                        this.objViewModel.currentModel.lTransportador_Endereco.Remove(
+                            item: this.objViewModel.currentModel.lTransportador_Endereco.FirstOrDefault(i => i.status == statusModel.excluido));
+                    }
+
+                    while (this.objViewModel.currentModel.lTransportador_Motorista.Count(
+                        i => i.status == statusModel.excluido) > 0)
+                    {
+                        this.objViewModel.currentModel.lTransportador_Motorista.Remove(
+                            item: this.objViewModel.currentModel.lTransportador_Motorista.FirstOrDefault(i => i.status == statusModel.excluido));
+                    }
+
+                    while (this.objViewModel.currentModel.lTransportador_Veiculos.Count(
+                        i => i.status == statusModel.excluido) > 0)
+                    {
+                        this.objViewModel.currentModel.lTransportador_Veiculos.Remove(
+                            item: this.objViewModel.currentModel.lTransportador_Veiculos.FirstOrDefault(i => i.status == statusModel.excluido));
+                    }
 
                     if (w != null)
                         if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))

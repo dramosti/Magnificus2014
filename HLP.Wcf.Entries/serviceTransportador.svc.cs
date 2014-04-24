@@ -42,14 +42,14 @@ namespace HLP.Wcf.Entries
             try
             {
                 objTransportador = this.transportadorRepository.GetTransportador(idTransportador: idTransportador);
-                objTransportador.lTransportador_Endereco =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel>(
-                        list: this.transportador_EnderecoRepository.GetAllTransportador_Endereco(
-                        idTransportador: idTransportador));
-                objTransportador.lTransportador_Motorista =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel>(
-                        list: this.transportador_MotoristaRepository.GetAllTransportador_Motorista(
-                        idTransportador: idTransportador));
+                //objTransportador.lTransportador_Endereco =
+                //    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel>(
+                //        list: this.transportador_EnderecoRepository.GetAllTransportador_Endereco(
+                //        idTransportador: idTransportador));
+                //objTransportador.lTransportador_Motorista =
+                //    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel>(
+                //        list: this.transportador_MotoristaRepository.GetAllTransportador_Motorista(
+                //        idTransportador: idTransportador));
                 objTransportador.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel>(
                     list: this.transportador_VeiculosRepository.GetAllTransportador_Veiculos(
                     idTransportador: idTransportador));
@@ -71,43 +71,43 @@ namespace HLP.Wcf.Entries
                 this.transportadorRepository.BeginTransaction();
                 this.transportadorRepository.Save(objTransportador: objTransportador);
 
-                foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
-                {
-                    switch (item.status)
-                    {
-                        case statusModel.criado:
-                        case statusModel.alterado:
-                            {
-                                item.idTransportador = (int)objTransportador.idTransportador;
-                                this.transportador_EnderecoRepository.Save(objTransportador_Endereco: item);
-                            }
-                            break;
-                        case statusModel.excluido:
-                            {
-                                this.transportador_EnderecoRepository.Delete(idTransportadorEndereco: (int)item.idEndereco);
-                            }
-                            break;
-                    }
-                }
+                //foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
+                //{
+                //    switch (item.status)
+                //    {
+                //        case statusModel.criado:
+                //        case statusModel.alterado:
+                //            {
+                //                item.idTransportador = (int)objTransportador.idTransportador;
+                //                this.transportador_EnderecoRepository.Save(objTransportador_Endereco: item);
+                //            }
+                //            break;
+                //        case statusModel.excluido:
+                //            {
+                //                this.transportador_EnderecoRepository.Delete(idTransportadorEndereco: (int)item.idEndereco);
+                //            }
+                //            break;
+                //    }
+                //}
 
-                foreach (HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel item in objTransportador.lTransportador_Motorista)
-                {
-                    switch (item.status)
-                    {
-                        case statusModel.criado:
-                        case statusModel.alterado:
-                            {
-                                item.idTransportador = (int)objTransportador.idTransportador;
-                                this.transportador_MotoristaRepository.Save(objTransportador_Motorista: item);
-                            }
-                            break;
-                        case statusModel.excluido:
-                            {
-                                this.transportador_MotoristaRepository.Delete(idTransportadorMotorista: (int)item.idTransportdorMotorista);
-                            }
-                            break;
-                    }
-                }
+                //foreach (HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel item in objTransportador.lTransportador_Motorista)
+                //{
+                //    switch (item.status)
+                //    {
+                //        case statusModel.criado:
+                //        case statusModel.alterado:
+                //            {
+                //                item.idTransportador = (int)objTransportador.idTransportador;
+                //                this.transportador_MotoristaRepository.Save(objTransportador_Motorista: item);
+                //            }
+                //            break;
+                //        case statusModel.excluido:
+                //            {
+                //                this.transportador_MotoristaRepository.Delete(idTransportadorMotorista: (int)item.idTransportdorMotorista);
+                //            }
+                //            break;
+                //    }
+                //}
 
                 foreach (HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel item in objTransportador.lTransportador_Veiculos)
                 {
@@ -169,16 +169,16 @@ namespace HLP.Wcf.Entries
             {
                 this.transportadorRepository.BeginTransaction();
                 this.transportadorRepository.Copy(objTransportador: objTransportador);
-                foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
-                {
-                    item.idTransportador = (int)objTransportador.idTransportador;
-                    this.transportador_EnderecoRepository.Copy(objTransportador_Endereco: item);
-                }
-                foreach (HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel item in objTransportador.lTransportador_Motorista)
-                {
-                    item.idTransportador = (int)objTransportador.idTransportador;
-                    this.transportador_MotoristaRepository.Copy(objTransportador_Motorista: item);
-                }
+                //foreach (HLP.Entries.Model.Models.Transportes.Transportador_EnderecoModel item in objTransportador.lTransportador_Endereco)
+                //{
+                //    item.idTransportador = (int)objTransportador.idTransportador;
+                //    this.transportador_EnderecoRepository.Copy(objTransportador_Endereco: item);
+                //}
+                //foreach (HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel item in objTransportador.lTransportador_Motorista)
+                //{
+                //    item.idTransportador = (int)objTransportador.idTransportador;
+                //    this.transportador_MotoristaRepository.Copy(objTransportador_Motorista: item);
+                //}
                 foreach (HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel item in objTransportador.lTransportador_Veiculos)
                 {
                     item.idTransportador = (int)objTransportador.idTransportador;

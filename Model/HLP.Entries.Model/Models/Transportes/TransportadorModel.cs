@@ -14,10 +14,11 @@ namespace HLP.Entries.Model.Models.Transportes
         public TransportadorModel()
             : base(xTabela: "Transportador")
         {
-            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<Transportador_EnderecoModel>();
-            this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<Transportador_MotoristaModel>();
+            this.lTransportador_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>();
+            this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<ContatoModel>();
             this.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
             this.lTransportador_Contato = new ObservableCollectionBaseCadastros<ContatoModel>();
+            this.Ativo = true;
         }
 
         private int? _idTransportador;
@@ -64,8 +65,17 @@ namespace HLP.Entries.Model.Models.Transportes
         public string xEmail { get; set; }
         [ParameterOrder(Order = 14)]
         public string xHttp { get; set; }
+        private bool _Ativo;
         [ParameterOrder(Order = 15)]
-        public bool Ativo { get; set; }
+        public bool Ativo
+        {
+            get { return _Ativo; }
+            set
+            {
+                _Ativo = value;
+                base.NotifyPropertyChanged(propertyName: "Ativo");
+            }
+        }
         [ParameterOrder(Order = 16)]
         public string xObs { get; set; }
         [ParameterOrder(Order = 17)]
@@ -85,9 +95,9 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
 
-        private ObservableCollectionBaseCadastros<Transportador_EnderecoModel> _lTransportador_Endereco;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lTransportador_Endereco;
 
-        public ObservableCollectionBaseCadastros<Transportador_EnderecoModel> lTransportador_Endereco
+        public ObservableCollectionBaseCadastros<EnderecoModel> lTransportador_Endereco
         {
             get { return _lTransportador_Endereco; }
             set
@@ -109,9 +119,9 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
 
-        private ObservableCollectionBaseCadastros<Transportador_MotoristaModel> _lTransportador_Motorista;
+        private ObservableCollectionBaseCadastros<ContatoModel> _lTransportador_Motorista;
 
-        public ObservableCollectionBaseCadastros<Transportador_MotoristaModel> lTransportador_Motorista
+        public ObservableCollectionBaseCadastros<ContatoModel> lTransportador_Motorista
         {
             get { return _lTransportador_Motorista; }
             set
@@ -125,7 +135,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_EnderecoModel : modelBase
     {
         public Transportador_EnderecoModel()
-            : base(xTabela: "Transportador_Endereco")
+            : base(xTabela: "Enderecos")
         {
         }
 
@@ -417,7 +427,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_ContatoModel : modelBase
     {
         public Transportador_ContatoModel()
-            : base(xTabela: "Transportador_Contato")
+            : base(xTabela: "Contato")
         {
         }
 
@@ -459,7 +469,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_MotoristaModel : modelBase
     {
         public Transportador_MotoristaModel()
-            : base(xTabela: "Transportador_Motorista")
+            : base(xTabela: "Contato")
         {
         }
         private int? _idTransportdorMotorista;
