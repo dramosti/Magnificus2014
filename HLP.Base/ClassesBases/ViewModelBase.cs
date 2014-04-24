@@ -643,6 +643,7 @@ namespace HLP.Base.ClassesBases
         {
             this.currentOp = OperacaoCadastro.pesquisando;
             this.objviewModel.bIsEnabled = false;
+
             if (panel != null)
             {
                 objviewModel.FocusToComponente(panel as Panel, Util.focoComponente.Primeiro);

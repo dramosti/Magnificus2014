@@ -15,8 +15,8 @@ namespace HLP.Components.Model.Repository.Interfaces
         ContatoModel GetContato(int idContato);
         List<ContatoModel> GetAllContato();
         List<ContatoModel> GetContato_ByClienteFornec(int idContato);
-        List<ContatoModel> GetContato_ByForeignKey(int id, string tabela);
-        void DeleteContato_ByForeignKey(int id, string tabela);
+        List<ContatoModel> GetContato_ByForeignKey(int id, string xForeignKey);
+        void DeleteContato_ByForeignKey(int id, string xForeignKey);
         void BeginTransaction();
         void CommitTransaction();
         void RollackTransaction();
