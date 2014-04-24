@@ -396,6 +396,7 @@
                     <Components:HlpContato ItemsSourceContatos="{Binding currentModel.lTransportador_Contato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">   
                         <Components:HlpContato.lColumns>
                             <System:String>xNome</System:String>
+                            <System:String>xEmailComercial</System:String>
                         </Components:HlpContato.lColumns>
                     </Components:HlpContato>
                 </AdornerDecorator>

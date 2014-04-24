@@ -1,5 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models.Transportes;
@@ -22,13 +24,13 @@ namespace HLP.Wcf.Entries
         [Inject]
         public ITransportadorReposiroty transportadorRepository { get; set; }
         [Inject]
-        public ITransportador_ContatoRepository transportador_ContatoRepository { get; set; }
-        [Inject]
         public ITransportador_EnderecoRepository transportador_EnderecoRepository { get; set; }
         [Inject]
         public ITransportador_MotoristaRepository transportador_MotoristaRepository { get; set; }
         [Inject]
-        public ITransportador_VeiculosRepository transportador_VeiculosRepository { get; set; }        
+        public ITransportador_VeiculosRepository transportador_VeiculosRepository { get; set; }
+        [Inject]
+        public IContatoRepository contatoRepository { get; set; }
 
         public wcf_Transportadora()
         {
@@ -55,6 +57,13 @@ namespace HLP.Wcf.Entries
                 objTransportador.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel>(
                     list: this.transportador_VeiculosRepository.GetAllTransportador_Veiculos(
                     idTransportador: id));
+
+                var listContatos = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0, tabela: "transportador");
+
+                if (listContatos != null)
+                    objTransportador.lTransportador_Contato = new ObservableCollectionBaseCadastros<Components.Model.Models.ContatoModel>(
+                        list: listContatos);
+
                 return objTransportador;
             }
             catch (Exception ex)
@@ -127,6 +136,29 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
+
+
+                foreach (ContatoModel item in obj.lTransportador_Contato)
+                {
+                    item.idContatoTransportador = obj.idTransportador;
+
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            {
+                                contatoRepository.Save(objContato: item);
+                            }
+                            break;
+                        case statusModel.excluido:
+                            {
+                                contatoRepository.Delete(idContato: item.idContato ?? 0);
+                            }
+                            break;
+                    }
+                }
+
+
                 this.transportadorRepository.CommitTransaction();
                 return obj;
             }
@@ -143,10 +175,10 @@ namespace HLP.Wcf.Entries
             try
             {
                 this.transportadorRepository.BeginTransaction();
-                this.transportador_ContatoRepository.DeletePorTransportador(idTransportador: id);
                 this.transportador_EnderecoRepository.DeletePorTransportador(idTransportador: id);
                 this.transportador_MotoristaRepository.DeletePorTransportador(idTransportador: id);
                 this.transportador_VeiculosRepository.DeletePorTransportador(idTransportador: id);
+                this.contatoRepository.DeleteContato_ByForeignKey(id: id, tabela: "transportador");
                 this.transportadorRepository.Delete(idTransportador: id);
                 this.transportadorRepository.CommitTransaction();
                 return true;
@@ -180,6 +212,12 @@ namespace HLP.Wcf.Entries
                     item.idTransportador = (int)obj.idTransportador;
                     this.transportador_VeiculosRepository.Copy(objTransportador_Veiculos: item);
                 }
+                foreach (ContatoModel c in obj.lTransportador_Contato)
+                {
+                    c.idContatoTransportador = obj.idTransportador ?? 0;
+                    this.contatoRepository.Copy(idContato: c.idContato ?? 0);
+                }
+
                 this.transportadorRepository.CommitTransaction();
                 return obj;
             }
@@ -191,5 +229,5 @@ namespace HLP.Wcf.Entries
             }
         }
     }
-        
+
 }
