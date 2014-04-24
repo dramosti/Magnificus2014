@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    public class RecordsSqlModel: modelBase
-    {        
+    public class RecordsSqlModel : modelBase
+    {
         private int _id;
 
         public int id
@@ -25,7 +25,7 @@ namespace HLP.Comum.Model.Models
 
         public string display
         {
-            get { return _display; }
+            get { return _display.ToUpper(); }
             set
             {
                 _display = value;
