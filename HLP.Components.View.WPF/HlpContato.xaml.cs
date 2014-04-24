@@ -31,6 +31,16 @@ namespace HLP.Components.View.WPF
             this.lColumns.CollectionChanged += lColumns_CollectionChanged;
         }
 
+        public bool IsReadOnlyUserControl
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsReadOnly.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnlyUserControl", typeof(bool), typeof(HlpContato), new PropertyMetadata(false));
+
         public IEnumerable ItemsSourceContatos
         {
             get { return (IEnumerable)GetValue(ItemsSourceContatosProperty); }
@@ -39,7 +49,7 @@ namespace HLP.Components.View.WPF
 
         // Using a DependencyProperty as the backing store for ItemsSourceContatos.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsSourceContatosProperty =
-            DependencyProperty.Register("ItemsSourceContatos", typeof(IEnumerable), typeof(HlpContato), new PropertyMetadata(null));
+            DependencyProperty.Register("ItemsSourceContatos", typeof(IEnumerable), typeof(HlpContato), new PropertyMetadata());
         
         #region Collection para manipulação de visibilidade de colunas
 

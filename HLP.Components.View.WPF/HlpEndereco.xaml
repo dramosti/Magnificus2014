@@ -67,7 +67,7 @@
     <Grid>
         <DataGrid x:Name="dgvEndereco" 
                    ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}"
-                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnly}"    
+                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"    
                    AutoGenerateColumns="False"                       
                    SelectionUnit="CellOrRowHeader" 
                    CanUserReorderColumns="False" 

@@ -17,7 +17,6 @@ namespace HLP.Entries.Services.wcf_Transportadora {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Transportes.Transportador_MotoristaModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Transportadora.ContatoModel))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Services.wcf_Transportadora.Contato_EnderecoModel))]
@@ -106,6 +105,9 @@ namespace HLP.Entries.Services.wcf_Transportadora {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> idContatoGerenteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> idContatoMotoristaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> idContatoTransportadorField;
@@ -213,6 +215,9 @@ namespace HLP.Entries.Services.wcf_Transportadora {
         private string xRamalComercialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string xRntrcField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string xSkypeComercialField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -314,6 +319,19 @@ namespace HLP.Entries.Services.wcf_Transportadora {
                 if ((this.idContatoGerenteField.Equals(value) != true)) {
                     this.idContatoGerenteField = value;
                     this.RaisePropertyChanged("idContatoGerente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> idContatoMotorista {
+            get {
+                return this.idContatoMotoristaField;
+            }
+            set {
+                if ((this.idContatoMotoristaField.Equals(value) != true)) {
+                    this.idContatoMotoristaField = value;
+                    this.RaisePropertyChanged("idContatoMotorista");
                 }
             }
         }
@@ -769,6 +787,19 @@ namespace HLP.Entries.Services.wcf_Transportadora {
                 if ((object.ReferenceEquals(this.xRamalComercialField, value) != true)) {
                     this.xRamalComercialField = value;
                     this.RaisePropertyChanged("xRamalComercial");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string xRntrc {
+            get {
+                return this.xRntrcField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.xRntrcField, value) != true)) {
+                    this.xRntrcField = value;
+                    this.RaisePropertyChanged("xRntrc");
                 }
             }
         }

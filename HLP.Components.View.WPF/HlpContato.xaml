@@ -59,40 +59,41 @@
         </ObjectDataProvider>
     </UserControl.Resources>
     <Grid>
-        <DataGrid x:Name="dgv" 
+        <DataGrid x:Name="dgv"
                   ItemsSource="{Binding ElementName=ucContatos, Path=ItemsSourceContatos}" 
+                  IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nome" Binding="{Binding xNome,                    
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
+                                UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
                                     >
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Cargo" Binding="{Binding xCargo,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
                                     >
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Função" Binding="{Binding xFuncao,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
                                     >
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Profissão" Binding="{Binding xProfissao,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridTextColumn>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Header="Ativo" Binding="{Binding Ativo,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridCheckBoxColumn>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridCheckBoxColumn>
                 <DataGridTextColumn Header="Título" Binding="{Binding xTitulo,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridTextColumn>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridTextColumn Header="Apelido" Binding="{Binding xApelido,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridTextColumn>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridComboBoxColumn Header="Tipo de Endereço" ItemsSource="{StaticResource collectionSexo}"
                                         SelectedItemBinding="{Binding stTipoEndereco, Converter={StaticResource selectedItemToTextConverter},
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     , ConverterParameter={StaticResource collectionSexo}}" Visibility="Collapsed"                        
                                         >
                 </DataGridComboBoxColumn>
                 <DataGridComboBoxColumn Header="Sensibilidade" ItemsSource="{StaticResource collectionSensibilidade}"
                                         SelectedItemBinding="{Binding stSensibilidade,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource selectedItemToTextConverter},
                     ConverterParameter={StaticResource collectionSensibilidade}}" Visibility="Collapsed"                        
                                         >
@@ -102,7 +103,7 @@
                         <DataTemplate>
                             <Components:HlpDatePicker stFormatoDtPicker="time"
                                                       xTextTime="{Binding dDisponivelaPartir,
-                                Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -117,7 +118,7 @@
                         <DataTemplate>
                             <Components:HlpDatePicker stFormatoDtPicker="time"
                                                       xTextTime="{Binding dDisponivelAte,
-                                Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -132,7 +133,7 @@
                         <DataTemplate>
                             <Components:CustomCheckBox    
                                 IsChecked="{Binding stVip , 
-                                        Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Center"/>
+                                         UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -147,7 +148,7 @@
                         <DataTemplate>
                             <Components:CustomCheckBox    
                                 IsChecked="{Binding stMalaDireta, 
-                                        Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Center"/>
+                                         UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -158,70 +159,70 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Memorando" Binding="{Binding xMemorando,
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
                                     ></DataGridTextColumn>
                 <DataGridTextColumn Header="Telefone Comercial" Binding="{Binding Telefone, 
-                    Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource maskConverter}, ConverterParameter=tel}" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ramal Comercial" Binding="{Binding xRamalComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True
                     }" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridTextColumn Header="Celular Comercial" Binding="{Binding xCelularComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource maskConverter}, ConverterParameter=cel}" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridTextColumn Header="Radio Comercial" Binding="{Binding xRadioFoneComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Pager Comercial" Binding="{Binding xPagerComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Fax Comercial" Binding="{Binding xFaxComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="E-mail Comercial" Binding="{Binding xEmailComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Skype Comercial" Binding="{Binding xSkypeComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Endereço na Internet Comercial" Binding="{Binding xHttpComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="MSN Comercial" Binding="{Binding xMsnComercial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Telefone" Binding="{Binding xTelefoneResidencial, 
-                    Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource maskConverter}, ConverterParameter=tel}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Celular" Binding="{Binding xCelularResidencial, 
-                    Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource maskConverter}, ConverterParameter=cel}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="E-mail" Binding="{Binding xEmailResidencial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Skype" Binding="{Binding xSkypeResidencial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="MSN" Binding="{Binding xMsnResidencial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Home page pessoal" Binding="{Binding xHttpPessoal, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Radio" Binding="{Binding xRadioFoneResidencial, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Filhos" Binding="{Binding xFilhos, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Data de Aniversário" Width="150" Visibility="Collapsed" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Components:HlpDatePicker stFormatoDtPicker="date"
                                                       xTextDate="{Binding dAniversario,
-                                Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -236,7 +237,7 @@
                         <DataTemplate>
                             <Components:HlpDatePicker stFormatoDtPicker="date"
                                                       xTextDate="{Binding dAniversarioTempoServico,
-                                Mode=TwoWay, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -247,21 +248,21 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Cônjuge" Binding="{Binding xConjuge, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Hobbies" Binding="{Binding xHobbies, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridComboBoxColumn Header="Estado Civil" ItemsSource="{StaticResource collectionEstadoCivil}"
                                         SelectedItemBinding="{Binding stEstadoCivil,
-                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                 UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource selectedItemToTextConverter},
                     ConverterParameter={StaticResource collectionEstadoCivil}}" Visibility="Collapsed"                        
                                         >
                 </DataGridComboBoxColumn>
                 <DataGridTextColumn Header="CPF" Binding="{Binding xCPF, 
                     Converter={StaticResource maskConverter}, ConverterParameter=cpf,
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Decisão" Width="150" Visibility="Collapsed" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -298,7 +299,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Departamento" Binding="{Binding xDepartamento, 
-                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
                 </DataGridTextColumn>
                 <DataGridTemplateColumn Header="Gerente" Width="150" Visibility="Collapsed" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -329,7 +330,7 @@
                                 <ComboBox 
                                     x:Name="cbxFuncionario" ItemsSource="{Binding Source={StaticResource lResultFuncionarios}}" 
                                 SelectedValuePath="id" DisplayMemberPath="display" 
-                                SelectedValue="{Binding idFuncionario, UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="False"/>
+                                SelectedValue="{Binding idFuncionario, UpdateSourceTrigger=LostFocus}" IsSynchronizedWithCurrentItem="False"/>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
@@ -346,11 +347,14 @@
                                 <ComboBox 
                                     x:Name="cbxFidelidade" ItemsSource="{Binding Source={StaticResource lResultFidelidade}}" 
                                 SelectedValuePath="id" DisplayMemberPath="display" 
-                                SelectedValue="{Binding idFelidade, UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="False"/>
+                                SelectedValue="{Binding idFelidade, UpdateSourceTrigger=LostFocus}" IsSynchronizedWithCurrentItem="False"/>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="RNTRC" Binding="{Binding xRntrc, 
+                     UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed">
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

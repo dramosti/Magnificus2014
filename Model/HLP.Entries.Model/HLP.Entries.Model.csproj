@@ -104,7 +104,6 @@
     <Compile Include="Models\Gerais\CidadeModel.cs" />
     <Compile Include="Models\Crm\DecisaoModel.cs" />
     <Compile Include="Models\Gerais\Condicao_pagamentoModel.cs" />
-    <Compile Include="Models\Gerais\ContatoModel.cs" />
     <Compile Include="Models\Gerais\ConversaoModel.cs" />
     <Compile Include="Models\Gerais\DepositoModel.cs" />
     <Compile Include="Models\Gerais\EspelhoPontoModel.cs" />

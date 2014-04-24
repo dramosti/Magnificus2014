@@ -18,6 +18,7 @@ namespace HLP.Entries.Model.Models.Transportes
             this.lTransportador_Motorista = new ObservableCollectionBaseCadastros<ContatoModel>();
             this.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<Transportador_VeiculosModel>();
             this.lTransportador_Contato = new ObservableCollectionBaseCadastros<ContatoModel>();
+            this.Ativo = true;
         }
 
         private int? _idTransportador;
@@ -64,8 +65,17 @@ namespace HLP.Entries.Model.Models.Transportes
         public string xEmail { get; set; }
         [ParameterOrder(Order = 14)]
         public string xHttp { get; set; }
+        private bool _Ativo;
         [ParameterOrder(Order = 15)]
-        public bool Ativo { get; set; }
+        public bool Ativo
+        {
+            get { return _Ativo; }
+            set
+            {
+                _Ativo = value;
+                base.NotifyPropertyChanged(propertyName: "Ativo");
+            }
+        }
         [ParameterOrder(Order = 16)]
         public string xObs { get; set; }
         [ParameterOrder(Order = 17)]
@@ -125,7 +135,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_EnderecoModel : modelBase
     {
         public Transportador_EnderecoModel()
-            : base(xTabela: "Transportador_Endereco")
+            : base(xTabela: "Enderecos")
         {
         }
 
@@ -417,7 +427,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_ContatoModel : modelBase
     {
         public Transportador_ContatoModel()
-            : base(xTabela: "Transportador_Contato")
+            : base(xTabela: "Contato")
         {
         }
 
@@ -459,7 +469,7 @@ namespace HLP.Entries.Model.Models.Transportes
     public partial class Transportador_MotoristaModel : modelBase
     {
         public Transportador_MotoristaModel()
-            : base(xTabela: "Transportador_Motorista")
+            : base(xTabela: "Contato")
         {
         }
         private int? _idTransportdorMotorista;
