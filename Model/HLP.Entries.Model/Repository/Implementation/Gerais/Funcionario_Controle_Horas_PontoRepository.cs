@@ -184,8 +184,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
         }
 
-
-
         private List<TimeSpan> GetListHorasAtrabalharDia(int idFuncionario, DateTime dtDia)
         {
 
