@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Services.Financeiro;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
@@ -150,12 +151,16 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                         objViewModel.message.Excluido();
                         iExcluir = (int)this.objViewModel.currentModel.idBanco;
                         this.objViewModel.currentModel = null;
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
             }
             finally
             {
@@ -213,9 +218,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {

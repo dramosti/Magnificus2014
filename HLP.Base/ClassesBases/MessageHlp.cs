@@ -27,20 +27,28 @@ namespace HLP.Base.ClassesBases
         }
 
 
-        public bool Excluir() 
+        public bool Excluir()
         {
-             if (MessageBox.Show(messageBoxText: "Deseja excluir o registro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
-                 return  true;
-             else
-                 return false;                
+            if (MessageBox.Show(messageBoxText: "Deseja excluir o registro?",
+                   caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
+                   == MessageBoxResult.Yes)
+                return true;
+            else
+                return false;
         }
 
-        public void Excluido() 
+        public void Excluido()
         {
             MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+        }
+
+        public bool Cancelar()
+        {
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.Yes)
+                return true;
+            else
+                return false;
         }
     }
 }
