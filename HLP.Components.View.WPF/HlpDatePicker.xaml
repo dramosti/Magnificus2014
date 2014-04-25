@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="30" x:Name="ucDtPicker">
     <UserControl.Resources>
+        <SolidColorBrush Color="#FF8C8C8C" x:Key="CinzaClaro"/>
+        <SolidColorBrush x:Key="WhiteStandard" Color="White"/>
         <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
         <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
         <ConvertLocal:TimeSpanToString x:Key="tmShortConverter"></ConvertLocal:TimeSpanToString>

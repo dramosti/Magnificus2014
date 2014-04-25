@@ -12,18 +12,21 @@ using System.Windows;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using HLP.Base.ClassesBases;
+using HLP.Entries.Services.Gerais;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands
 {
     public class CidadeCommands
     {
         BackgroundWorker bWorkerAcoes;
-        cidadeService.IserviceCidadeClient servico = new cidadeService.IserviceCidadeClient();
         CidadeViewModel objViewModel;
+        CidadeService objService;
 
         public CidadeCommands(CidadeViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+            objService = new CidadeService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -59,7 +62,7 @@ namespace HLP.Entries.ViewModel.Commands
 
 
         #region Implementação Commands
-               
+
         public void Save(object _panel)
         {
             try
@@ -81,7 +84,8 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                this.objViewModel.currentModel.idCidade = servico.saveCidade(objCidade: this.objViewModel.currentModel);
+                this.objViewModel.currentModel.idCidade = objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -136,7 +140,7 @@ namespace HLP.Entries.ViewModel.Commands
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.delCidade((int)this.objViewModel.currentModel.idCidade))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idCidade ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -152,7 +156,11 @@ namespace HLP.Entries.ViewModel.Commands
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
             }
             finally
             {
@@ -214,20 +222,20 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
         private bool CancelarCanExecute()
         {
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
-        }        
+        }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel.idCidade = await servico.copyCidadeAsync(idCidade: (int)this.objViewModel.currentModel.idCidade);
+                this.objViewModel.currentModel.idCidade = this.objService.CopyObject(id: this.objViewModel.currentModel.idCidade ?? 0);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -270,9 +278,9 @@ namespace HLP.Entries.ViewModel.Commands
             bw.RunWorkerAsync();
         }
 
-        private async void GetCidadeBackground(object sender, DoWorkEventArgs e)
+        private void GetCidadeBackground(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await this.servico.getCidadeAsync(this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
 
         #endregion

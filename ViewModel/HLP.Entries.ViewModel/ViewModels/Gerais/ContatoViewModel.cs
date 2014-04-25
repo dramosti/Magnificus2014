@@ -30,7 +30,5 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             commands = new ContatoCommand(this);
         }
-        
-
     }
 }
