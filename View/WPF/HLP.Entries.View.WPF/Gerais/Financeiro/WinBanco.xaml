@@ -2,7 +2,7 @@
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinBanco"
         Title="Bancos" Height="660" Width="1024" NameView="vwBanco">
     <runtime:WindowsBase.Resources>
@@ -78,14 +78,12 @@
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Descrição do Nome do Banco Resumido">
                             </Components:CustomTextBox>
+                            <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.Row="5" Caption=""
+                                        IsEnabled="{Binding bIsEnabled}"                                                          
+                                        xPathCaminho="{Binding currentModel.xLinkLogo, Mode=TwoWay}" ToolTip="Informar o caminho do arquivo do logotipo do banco.">
+                            </Components:HlpUserControlBtnImage>
                             <Components:CustomTextBox
-                                Grid.Column="2" Grid.Row="5"
-                                Text="{Binding currentModel.xLinkLogo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informar o caminho do arquivo do logotipo do banco.">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
-                                Grid.Column="2" Grid.Row="6"
+                                Grid.Column="2" Grid.Row="6"                                
                                 Text="{Binding currentModel.vDxMais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Define a quantidade de dias a mais para ser faturado a duplicata recebida.">
@@ -102,10 +100,10 @@
                     </Expander>
                 </Grid>
             </TabItem>
-            <TabItem Header="Hierarquia">
-                <Grid>
-                    <TreeView />
-                </Grid>
+            <TabItem Header="Hierarquia" x:Name="tabHierarquia">
+                <AdornerDecorator>
+                    <ContentControl Content="{ Binding Path=hierarquiaConta, Mode=OneWay}"></ContentControl>
+                </AdornerDecorator>
             </TabItem>
         </TabControl>
     </Grid>

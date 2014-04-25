@@ -25,6 +25,8 @@ namespace HLP.Entries.View.WPF.Gerais.Financeiro
         {
             InitializeComponent();
             this.ViewModel = new BancoViewModel();
+            tabHierarquia.GotFocus += new RoutedEventHandler(this.ViewModel.TabItem_GotFocus);
+
         }
 
         public BancoViewModel ViewModel

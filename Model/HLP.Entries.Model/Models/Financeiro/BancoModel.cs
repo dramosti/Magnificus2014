@@ -47,6 +47,16 @@ namespace HLP.Entries.Model.Models.Financeiro
         {
             get
             {
+                if (columnName.Equals("cBanco"))
+                {
+                    if (this.cBanco != "")
+                    {
+                        int ivalida;
+                        int.TryParse(this.cBanco, out ivalida);
+                        if (ivalida == 0)
+                            return "Somente número é aceito nesse campo.";
+                    }
+                }
                 return base[columnName];
             }
         }

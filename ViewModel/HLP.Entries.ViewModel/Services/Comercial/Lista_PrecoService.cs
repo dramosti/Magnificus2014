@@ -144,7 +144,7 @@ namespace HLP.Entries.ViewModel.Services.Comercial
             return 0;
         }
 
-        public List<HlpButtonHierarquiaStruct> getHierarquiaLista(int idListaPreco)
+        public List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct> getHierarquiaLista(int idListaPreco)
         {
             switch (Sistema.bOnline)
             {
@@ -160,7 +160,7 @@ namespace HLP.Entries.ViewModel.Services.Comercial
             return null;
         }
 
-        public modelToTreeView GetHierarquiaListaFull(int idListaPreco)
+        public HLP.Components.Model.Models.modelToTreeView GetHierarquiaListaFull(int idListaPreco)
         {
             switch (Sistema.bOnline)
             {

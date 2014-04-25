@@ -18,6 +18,14 @@ namespace HLP.Base.ClassesBases
 {
     public class ViewModelBase<T> : INotifyPropertyChanged where T : class
     {
+        public MessageHlp message { get; set; }
+        public ViewModelBase()
+        {
+            this.bIsEnabled = false;
+            message = new MessageHlp();
+            viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
+            this.Botoes = new StackPanel();
+        }
         private T _currentModel;
         public T currentModel
         {
@@ -26,7 +34,6 @@ namespace HLP.Base.ClassesBases
         }
 
         private List<int> _lIds;
-
         public List<int> lIds
         {
             get { return _lIds; }
@@ -37,7 +44,6 @@ namespace HLP.Base.ClassesBases
         }
 
         private int _selectedId;
-
         public int selectedId
         {
             get { return _selectedId; }
@@ -48,9 +54,7 @@ namespace HLP.Base.ClassesBases
             }
         }
 
-
         private List<int> _lItensHierarquia;
-
         public List<int> lItensHierarquia
         {
             get { return _lItensHierarquia; }
@@ -60,42 +64,27 @@ namespace HLP.Base.ClassesBases
                 NotifyPropertyChanged(propertyName: "lItensHierarquia");
             }
         }
-
-
         private StackPanel _botoes;
-
         public StackPanel Botoes
         {
             get { return _botoes; }
             set { _botoes = value; }
         }
-
-        public ViewModelBase()
-        {
-            this.bIsEnabled = false;
-
-            viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
-            this.Botoes = new StackPanel();
-        }
         public ViewModelBaseCommands<T> viewModelBaseCommands;
-        BackgroundWorker bwFocus = new BackgroundWorker();
+        private BackgroundWorker bwFocus = new BackgroundWorker();
         public ICommand salvarBaseCommand { get; set; }
         public ICommand deletarBaseCommand { get; set; }
         public ICommand novoBaseCommand { get; set; }
         public ICommand alterarBaseCommand { get; set; }
         public ICommand cancelarBaseCommand { get; set; }
         public ICommand copyBaseCommand { get; set; }
-
         public ICommand pesquisarBaseCommand { get; set; }
         public ICommand navegarBaseCommand { get; set; }
-
         public ICommand fecharCommand { get; set; }
-
         public void SetValorCurrentOp(OperacaoCadastro op)
         {
             viewModelBaseCommands.currentOp = op;
         }
-
         private string _sText = "0 de 0";
         public string sText
         {
@@ -105,17 +94,92 @@ namespace HLP.Base.ClassesBases
         }
         public int iPositionCollection { get; set; }
 
-        private MyObservableCollection<int> _navigatePesquisa;
+        #region BackgroundWorker
+        private BackgroundWorker _bWorkerSave;
+        public BackgroundWorker bWorkerSave
+        {
+            get
+            {
+                if (_bWorkerHierarquia == null)
+                    _bWorkerHierarquia = new BackgroundWorker();
+                return _bWorkerHierarquia;
+            }
+            set { _bWorkerHierarquia = value; }
+        }
 
+        private BackgroundWorker _bWorkerNovo;
+        public BackgroundWorker bWorkerNovo
+        {
+            get
+            {
+                if (_bWorkerNovo == null)
+                    _bWorkerNovo = new BackgroundWorker();
+                return _bWorkerNovo;
+            }
+            set { _bWorkerNovo = value; }
+        }
+
+        private BackgroundWorker _bWorkerAlterar;
+        public BackgroundWorker bWorkerAlterar
+        {
+            get
+            {
+                if (_bWorkerAlterar == null)
+                    _bWorkerAlterar = new BackgroundWorker();
+                return _bWorkerAlterar;
+            }
+            set { _bWorkerAlterar = value; }
+        }
+        
+        private BackgroundWorker _bWorkerCopy;
+        public BackgroundWorker bWorkerCopy
+        {
+            get
+            {
+                if (_bWorkerCopy == null)
+                    _bWorkerCopy = new BackgroundWorker();
+                return _bWorkerCopy;
+            }
+            set { _bWorkerCopy = value; }
+        }
+
+        private BackgroundWorker _bWorkerPesquisa;
+        public BackgroundWorker bWorkerPesquisa
+        {
+            get
+            {
+                if (_bWorkerPesquisa == null)
+                    _bWorkerPesquisa = new BackgroundWorker();
+                return _bWorkerPesquisa;
+            }
+            set { _bWorkerPesquisa = value; }
+        }
+
+        private BackgroundWorker _bWorkerHierarquia;
+        public BackgroundWorker bWorkerHierarquia
+        {
+            get
+            {
+                if (_bWorkerHierarquia == null)
+                    _bWorkerHierarquia = new BackgroundWorker();
+                return _bWorkerHierarquia;
+            }
+            set { _bWorkerHierarquia = value; }
+        }
+
+        #endregion
+
+
+
+
+        private MyObservableCollection<int> _navigatePesquisa;
         public MyObservableCollection<int> navigatePesquisa
         {
             get { return _navigatePesquisa; }
             set { _navigatePesquisa = value; this.NotifyPropertyChanged("navigatePesquisa"); }
         }
 
-
         private Visibility _visibilityNavegacao = Visibility.Collapsed;
-
         public Visibility visibilityNavegacao
         {
             get { return _visibilityNavegacao; }
@@ -299,7 +363,6 @@ namespace HLP.Base.ClassesBases
 
         public Control FirstControl { get; set; }
         public Control SecondControl { get; set; }
-
 
         void FindFirstAndSecondComponente(Panel content)
         {
@@ -594,22 +657,17 @@ namespace HLP.Base.ClassesBases
             objviewModel.lItensHierarquia = new List<int>();
             objviewModel.SetFocusFirstTab(panel as Panel);
         }
-
-
-
         private bool novoBaseCanExecute()
         {
             return (this.currentOp == OperacaoCadastro.livre
                 || this.GenericCanExecute());
         }
-
         private void alterarBase(object panel)
         {
             this.objviewModel.bIsEnabled = true;
             this.currentOp = OperacaoCadastro.alterando;
             this.objviewModel.SetFocusFirstTab(panel as Panel);
         }
-
         private void delBase(object iRemoved)
         {
             if (this.objviewModel.navigatePesquisa != null)
@@ -638,7 +696,6 @@ namespace HLP.Base.ClassesBases
                 }
             }
         }
-
         private void salvarBase(object panel)
         {
             this.currentOp = OperacaoCadastro.pesquisando;
@@ -649,7 +706,6 @@ namespace HLP.Base.ClassesBases
                 objviewModel.FocusToComponente(panel as Panel, Util.focoComponente.Primeiro);
             }
         }
-
         private bool salvarBaseCanExecute()
         {
             if (this.currentOp != OperacaoCadastro.criando &&
@@ -658,7 +714,6 @@ namespace HLP.Base.ClassesBases
             else
                 return true;
         }
-
         private void cancelarBase()
         {
             System.Threading.Thread.Sleep(200);
@@ -678,8 +733,6 @@ namespace HLP.Base.ClassesBases
             return (this.currentOp == OperacaoCadastro.criando ||
                 this.currentOp == OperacaoCadastro.alterando);
         }
-
-
         private bool GenericCanExecute()
         {
             return this.currentOp == OperacaoCadastro.pesquisando;
