@@ -15,6 +15,7 @@ using HLP.Entries.Services.Comercial;
 using HLP.Entries.Model.Models.Transportes;
 using HLP.Entries.Services.Transportes;
 using HLP.Entries.Services.Gerais;
+using System.Collections.ObjectModel;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -54,8 +55,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
-
-
         }
 
 
@@ -274,7 +273,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.RunWorkerAsync();
-
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -319,7 +317,28 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                     EnderecoModel endereco = null;
                                     CidadeService objCidadeService = new CidadeService();
 
+                                    if (this.objViewModel.currentModel.idContatoMotorista != null
+                            && this.objViewModel.currentModel.idContatoMotorista != 0)
+                                    {
+                                        if (t.lTransportador_Motorista != null)
+                                        {
+                                            this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
+                                            (list: t.lTransportador_Motorista.ToList());
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (t.lTransportador_Contato != null)
+                                        {
+                                            this.objViewModel.lContatos = new ObservableCollection<ContatoModel>
+                                            (list: t.lTransportador_Contato.ToList());
+                                        }
+                                    }
 
+                                    if (this.objViewModel.lContatos != null)
+                                        this.objViewModel.lContatos.RemoveAt(
+                                                index: this.objViewModel.lContatos.IndexOf(item: this.objViewModel.lContatos.FirstOrDefault(
+                                                i => i.idContato == this.objViewModel.currentModel.idContato)));
 
                                     if (t.lTransportador_Endereco.Count(i => i.stPrincipal == 1) > 0)
                                     {

@@ -8,6 +8,7 @@ using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
 using HLP.Components.Model.Models;
+using System.Collections.ObjectModel;
 
 namespace HLP.Entries.ViewModel.ViewModels.Gerais
 {
@@ -30,5 +31,18 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         {
             commands = new ContatoCommand(this);
         }
+
+        private ObservableCollection<ContatoModel> _lContatos;
+
+        public ObservableCollection<ContatoModel> lContatos
+        {
+            get { return _lContatos; }
+            set
+            {
+                _lContatos = value;
+                base.NotifyPropertyChanged(propertyName: "lContatos");
+            }
+        }
+        
     }
 }
