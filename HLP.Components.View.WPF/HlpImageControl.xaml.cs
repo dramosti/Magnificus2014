@@ -81,5 +81,8 @@ namespace HLP.Components.View.WPF
             this.byteImg = null;
             this.xPathImg = null;
         }
+
+
+
     }
 }

@@ -60,5 +60,20 @@ namespace HLP.Components.View.WPF
                 this.byteImage = wd.byteImg;
             }
         }
+
+
+
+
+        public string Caption
+        {
+            get { return (string)GetValue(CaptionProperty); }
+            set { SetValue(CaptionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CaptionProperty =
+            DependencyProperty.Register("Caption", typeof(string), typeof(HlpUserControlBtnImage), new PropertyMetadata("Foto"));
+
+        
     }
 }

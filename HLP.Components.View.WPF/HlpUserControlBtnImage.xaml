@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <Style x:Key="ButtonComponentImageStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -19,15 +18,15 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
+                        <Grid Height="20">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>                               
                             </Grid.ColumnDefinitions>
-                            <Border x:Name="border" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" SnapsToDevicePixels="true">
+                            <Border x:Name="border" Grid.Column="1" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" SnapsToDevicePixels="true">
                                 <ContentPresenter VerticalAlignment="Center" TextElement.FontFamily="Calibri" TextElement.FontSize="16" HorizontalAlignment="Left" x:Name="contentPresenter" Focusable="False" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
-                            <Image Grid.Column="1" x:Name="ImageAdd" Height="20" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Folder.png">
+                            <Image Grid.Column="0" x:Name="ImageAdd" Height="20" Source="pack://application:,,,/HLP.Comum.Resources;component/Icones/Folder.png">
                             </Image>
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -51,15 +50,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27"></RowDefinition>
-            <RowDefinition Height="173"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource ButtonComponentImageStyle}" Content="Foto" Click="Button_Click_1"></Button>
-        <Expander Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Header="">
-            <Grid>
-                <Image Stretch="Fill"></Image>
-            </Grid>
-        </Expander>
+        <Button Style="{StaticResource ButtonComponentImageStyle}" 
+                Content="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}, Path=Caption}"
+                Click="Button_Click_1" Margin="-4,0,4,0"></Button>       
     </Grid>
 
 </UserControl>

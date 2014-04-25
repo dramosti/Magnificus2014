@@ -33,7 +33,7 @@ namespace HLP.Components.Model.Models
                     m.panel.Orientation = Orientation.Horizontal;
                     if (m.xNameImage != "")
                     {
-                        string sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + m.xNameImage + ".png";
+                        string sPath = this.GetPathImage(m.xNameImage);
                         if (File.Exists(path: sPath))
                         {
                             m.image = new BitmapImage(new Uri(sPath));
@@ -63,7 +63,7 @@ namespace HLP.Components.Model.Models
                         item.panel.Orientation = Orientation.Horizontal;
                         if (item.xNameImage != "")
                         {
-                            string sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + item.xNameImage + ".png";
+                            string sPath = this.GetPathImage(item.xNameImage);
                             if (File.Exists(path: sPath))
                             {
                                 item.image = new BitmapImage(new Uri(sPath));
@@ -92,6 +92,11 @@ namespace HLP.Components.Model.Models
 
 
             }
+        }
+
+        private string GetPathImage(string sName)
+        {
+            return System.AppDomain.CurrentDomain.BaseDirectory + @"/Icons/Hierarquia/" + sName + ".png";
         }
     }
 }

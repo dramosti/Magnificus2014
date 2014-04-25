@@ -47,6 +47,19 @@ namespace HLP.Comum.View.Components
         public static readonly DependencyProperty byteImageProperty =
             DependencyProperty.Register("byteImage", typeof(byte[]), typeof(HlpUserControlBtnImage), new PropertyMetadata());
 
+
+        public string Caption
+        {
+            get { return (string)GetValue(CaptionProperty); }
+            set { SetValue(CaptionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CaptionProperty =
+            DependencyProperty.Register("Caption", typeof(string), typeof(HlpUserControlBtnImage), new PropertyMetadata("Foto"));
+
+        
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             HlpImageControl wd = new HlpImageControl();

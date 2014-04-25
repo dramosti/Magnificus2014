@@ -93,32 +93,45 @@ namespace HLP.Wcf.Entries
 
         public HLP.Components.Model.Models.modelToTreeView GetHierarquia(int idBanco)
         {
-            HLP.Components.Model.Models.modelToTreeView b = new Components.Model.Models.modelToTreeView();
-            HLP.Entries.Model.Models.Financeiro.BancoModel objBanco = bancoRepository.GetBanco(idBanco);
-            if (objBanco != null)
+            try
             {
-                b.id = (int)objBanco.idBanco;
-                b.xDisplay = objBanco.cBanco + " - " + objBanco.xBanco;
 
-                HLP.Components.Model.Models.modelToTreeView agencia;
-                HLP.Components.Model.Models.modelToTreeView conta;
-                foreach (var ag in agenciaRepository.GetByBanco((int)objBanco.idBanco))
+
+                HLP.Components.Model.Models.modelToTreeView b = new Components.Model.Models.modelToTreeView();
+                HLP.Entries.Model.Models.Financeiro.BancoModel objBanco = bancoRepository.GetBanco(idBanco);
+                if (objBanco != null)
                 {
-                    agencia = new Components.Model.Models.modelToTreeView();
-                    agencia.id = (int)ag.idAgencia;
-                    agencia.xDisplay = ag.cAgencia + " - " + ag.xAgencia;
+                    b.id = (int)objBanco.idBanco;
+                    b.xDisplay = objBanco.cBanco + " - " + objBanco.xBanco;
+                    b.xNameImage = "Banco";
 
-                    foreach (var ct in conta_BancariaRepository.GetByAgencia(agencia.id))
+                    HLP.Components.Model.Models.modelToTreeView agencia;
+                    HLP.Components.Model.Models.modelToTreeView conta;
+                    foreach (var ag in agenciaRepository.GetByBanco((int)objBanco.idBanco))
                     {
-                        conta = new Components.Model.Models.modelToTreeView();
-                        conta.id = (int)ct.idContaBancaria;
-                        conta.xDisplay = ct.xNumeroConta + " - " + ct.xDescricao;
-                        agencia.lFilhos.Add(conta);
+                        agencia = new Components.Model.Models.modelToTreeView();
+                        agencia.id = (int)ag.idAgencia;
+                        agencia.xDisplay = ag.cAgencia + " - " + ag.xAgencia;
+                        agencia.xNameImage = "Agencia";
+
+                        foreach (var ct in conta_BancariaRepository.GetByAgencia(agencia.id))
+                        {
+                            conta = new Components.Model.Models.modelToTreeView();
+                            conta.id = (int)ct.idContaBancaria;
+                            conta.xDisplay = ct.xNumeroConta + " - " + ct.xDescricao;
+                            conta.xNameImage = "Conta_Bancaria";
+                            agencia.lFilhos.Add(conta);
+                        }
+                        b.lFilhos.Add(agencia);
                     }
-                    b.lFilhos.Add(agencia);
                 }
+                return b;
             }
-            return b;
+            catch (Exception ex)
+            {
+                Log.AddLog(xLog: ex.Message);
+                throw new FaultException(reason: ex.Message);
+            }
         }
     }
 }

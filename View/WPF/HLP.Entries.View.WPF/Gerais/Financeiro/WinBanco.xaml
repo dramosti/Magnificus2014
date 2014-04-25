@@ -78,14 +78,12 @@
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Descrição do Nome do Banco Resumido">
                             </Components:CustomTextBox>
+                            <Components:HlpUserControlBtnImage  Grid.Column="2" Grid.Row="5" Caption=""
+                                        IsEnabled="{Binding bIsEnabled}"                                                          
+                                        xPathCaminho="{Binding currentModel.xLinkLogo, Mode=TwoWay}" ToolTip="Informar o caminho do arquivo do logotipo do banco.">
+                            </Components:HlpUserControlBtnImage>
                             <Components:CustomTextBox
-                                Grid.Column="2" Grid.Row="5"
-                                Text="{Binding currentModel.xLinkLogo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informar o caminho do arquivo do logotipo do banco.">
-                            </Components:CustomTextBox>
-                            <Components:CustomTextBox
-                                Grid.Column="2" Grid.Row="6"
+                                Grid.Column="2" Grid.Row="6"                                
                                 Text="{Binding currentModel.vDxMais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
 								ToolTip="Define a quantidade de dias a mais para ser faturado a duplicata recebida.">
