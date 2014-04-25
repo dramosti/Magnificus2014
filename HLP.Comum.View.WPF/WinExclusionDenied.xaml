@@ -165,9 +165,7 @@
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="110"></RowDefinition>
                 <RowDefinition Height="31*"></RowDefinition>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
@@ -186,8 +184,7 @@
             <TextBlock Text="{Binding xTabela}" Height="20" Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBlockValorTelaMensagem}"/>
             <TextBlock Text="{Binding xCampo}" Height="20"  Grid.Row="4" Grid.Column="2" Style="{StaticResource TextBlockValorTelaMensagem}"/>
             <TextBlock Text="{Binding xValor}" Height="20"  Grid.Row="5" Grid.Column="2" Style="{StaticResource TextBlockValorTelaMensagem}"/>
-
-            <ListBox Grid.Column="4" Grid.Row="3" Grid.RowSpan="7" Grid.ColumnSpan="2" ItemsSource="{Binding lRecords}" ItemContainerStyle="{DynamicResource ListBoxItemTelaMensagem}">
+            <ListBox  ItemsSource="{Binding lRecords}" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="5" ItemContainerStyle="{DynamicResource ListBoxItemTelaMensagem}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Height="30" LastChildFill="True">
@@ -198,6 +195,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
 
         </Grid>
         <Grid Grid.Row="3" Grid.ColumnSpan="2" Background="#FF4774B5">
