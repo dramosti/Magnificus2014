@@ -4,12 +4,11 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.Models" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components" />
-      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
+      <xsd:import schemaLocation="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Iwcf_Lista_Preco_GetLista_PrecoHierarquia_InputMessage">

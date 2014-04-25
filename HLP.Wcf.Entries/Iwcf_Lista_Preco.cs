@@ -12,10 +12,10 @@ namespace HLP.Wcf.Entries
     public interface Iwcf_Lista_Preco
     {
         [OperationContract]
-        List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco);
+        List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco);
 
         [OperationContract]
-        HLP.Comum.Resources.Models.modelToTreeView GetSelectedLista_PrecoFullHierarquia(int idListaPreco);
+        HLP.Components.Model.Models.modelToTreeView GetSelectedLista_PrecoFullHierarquia(int idListaPreco);
 
         [OperationContract]
         HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel getLista_Preco(int idListaPrecoPai);

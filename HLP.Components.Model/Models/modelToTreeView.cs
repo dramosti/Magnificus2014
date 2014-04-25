@@ -16,7 +16,7 @@ namespace HLP.Components.Model.Models
         public int id { get; set; }
         public string xDisplay { get; set; }
         public List<modelToTreeView> lFilhos = new List<modelToTreeView>();
-        public string xNameImage = "WinDecisao";
+        public string xNameImage { get; set; }
         private BitmapImage image;
         private StackPanel panel;
         private Image img;
@@ -25,7 +25,7 @@ namespace HLP.Components.Model.Models
         public void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
         {
             if (m != null)
-            {              
+            {
 
                 Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
@@ -79,7 +79,7 @@ namespace HLP.Components.Model.Models
                         item.panel.Children.Add(item.img);
                         item.panel.Children.Add(item.txt);
                         i.Header = item.panel;
-                        i.IsExpanded = true;                       
+                        i.IsExpanded = true;
 
                         tvi.Items.Add(newItem: i);
 

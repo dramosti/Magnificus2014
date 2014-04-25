@@ -1,6 +1,4 @@
-﻿using HLP.Comum.Resources.Models;
-using HLP.Comum.Resources.RecursosBases;
-using HLP.Base.ClassesBases;
+﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.ViewModel.Commands.Comercial;
 using System;
@@ -12,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.ViewModels.Comercial
 {

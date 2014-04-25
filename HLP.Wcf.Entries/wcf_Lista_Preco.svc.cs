@@ -31,13 +31,13 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco)
+        public List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct> GetLista_PrecoHierarquia(int idListaPreco)
         {
             HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objLista_Preco_Pai
                 = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: idListaPreco);
-            List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct> lListHierarquia = new List<HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct>();
+            List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct> lListHierarquia = new List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct>();
             lListHierarquia.Add(item:
-                new HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct
+                new HLP.Components.Model.Models.HlpButtonHierarquiaStruct
                 {
                     xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
                     xOpcional = objLista_Preco_Pai.pPercentual.ToString()
@@ -51,7 +51,7 @@ namespace HLP.Wcf.Entries
                 = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: (int)objLista_Preco_Pai.idListaPrecoOrigem);
 
                 lListHierarquia.Insert(item:
-                    new HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct
+                    new HLP.Components.Model.Models.HlpButtonHierarquiaStruct
                     {
                         xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
                         xOpcional = objLista_Preco_Pai.pPercentual.ToString()
@@ -60,12 +60,12 @@ namespace HLP.Wcf.Entries
             return lListHierarquia;
         }
 
-        public HLP.Comum.Resources.Models.modelToTreeView GetSelectedLista_PrecoFullHierarquia(int idListaPreco)
+        public HLP.Components.Model.Models.modelToTreeView GetSelectedLista_PrecoFullHierarquia(int idListaPreco)
         {
 
-            HLP.Comum.Resources.Models.modelToTreeView node = new Comum.Resources.Models.modelToTreeView();
+            HLP.Components.Model.Models.modelToTreeView node = new HLP.Components.Model.Models.modelToTreeView();
 
-            HLP.Comum.Resources.Models.modelToTreeView nodeAux = null;
+            HLP.Components.Model.Models.modelToTreeView nodeAux = null;
 
             HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objLista =
                 this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: idListaPreco);
@@ -80,13 +80,13 @@ namespace HLP.Wcf.Entries
 
                 objLista = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: objLista.idListaPrecoOrigem ?? 0);
 
-                nodeAux = new Comum.Resources.Models.modelToTreeView
+                nodeAux = new HLP.Components.Model.Models.modelToTreeView
                 {
                     id = objLista.idListaPrecoPai ?? 0,
                     xDisplay = objLista.xLista
                 };
 
-                nodeAux.lFilhos = new List<Comum.Resources.Models.modelToTreeView>();
+                nodeAux.lFilhos = new List<HLP.Components.Model.Models.modelToTreeView>();
                 nodeAux.lFilhos.Add(
                     item: node);
 
@@ -109,7 +109,7 @@ namespace HLP.Wcf.Entries
             return node;
         }
 
-        void MontaHierarquiaFilhos(HLP.Comum.Resources.Models.modelToTreeView item)
+        void MontaHierarquiaFilhos(HLP.Components.Model.Models.modelToTreeView item)
         {
             List<HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel> lListas = this.lista_Preco_PaiRepository.GetAllListaPrecoOrigem(
                 idListaPrecoOrigem: item.id);
@@ -117,14 +117,14 @@ namespace HLP.Wcf.Entries
             if (lListas != null)
                 foreach (var it in lListas)
                 {
-                    Comum.Resources.Models.modelToTreeView m = new Comum.Resources.Models.modelToTreeView
+                    HLP.Components.Model.Models.modelToTreeView m = new HLP.Components.Model.Models.modelToTreeView
                         {
                             id = it.idListaPrecoPai ?? 0,
                             xDisplay = it.xLista
                         };
 
                     if (item.lFilhos == null)
-                        item.lFilhos = new List<Comum.Resources.Models.modelToTreeView>();
+                        item.lFilhos = new List<HLP.Components.Model.Models.modelToTreeView>();
                     item.lFilhos.Add(item: m);
                     this.MontaHierarquiaFilhos(item: m);
                 }

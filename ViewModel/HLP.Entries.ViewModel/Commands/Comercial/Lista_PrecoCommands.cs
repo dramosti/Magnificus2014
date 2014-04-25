@@ -392,7 +392,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             idOld = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
             this.objViewModel.currentModel = new Lista_Preco_PaiModel();
-            this.objViewModel.lIdsHierarquia = new List<Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct>();
+            this.objViewModel.lIdsHierarquia = new List<Components.Model.Models.HlpButtonHierarquiaStruct>();
             this.objViewModel.currentModel.nDiasSemAtualicao = 0;
             this.objViewModel.currentModel.dListaPreco = DateTime.Now;
             this.objViewModel.currentModel.stAtualizacao = (byte)1;
@@ -686,7 +686,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
                 if (!this.bOpCancelada)
                 {
-                    MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                    this.objViewModel.lObjHierarquia. MontaHierarquia(m: this.objViewModel.lObjHierarquia,
                         tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
                     e.Result = e.Argument;
                 }
@@ -699,35 +699,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public void GetHierarquiaListaPreco()
         {
-            this.objViewModel.lObjHierarquia = new modelToTreeView();
+            this.objViewModel.lObjHierarquia = new Components.Model.Models.modelToTreeView();
             this.objViewModel.lObjHierarquia = this.objServico.GetHierarquiaListaFull(
                 idListaPreco: this.objViewModel.selectedId);
-        }
-
-        private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
-        {
-            if (m != null)
-            {
-                TreeViewItem i = null;
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                {
-                    i = new TreeViewItem
-                    {
-                        Header = m.id.ToString() + ". " + m.xDisplay
-                    };
-
-                    tvi.Items.Add(newItem: i);
-                    if (m.lFilhos != null)
-                    {
-
-                        foreach (modelToTreeView item in m.lFilhos)
-                        {
-                            this.MontaHierarquia(m: item, tvi: i);
-                        }
-                    }
-                }));
-
-            }
         }
     }
 }

@@ -403,6 +403,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.HlpButtonHierarquiaStruct.datasource" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Resources.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct.datasource" />
@@ -1096,9 +1098,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
