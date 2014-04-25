@@ -13,6 +13,9 @@ namespace HLP.Comum.View.Converters
         {
             DateTime d = DateTime.Today;
 
+            if (value == null)
+                return null;
+
             TimeSpan t = (TimeSpan)value;
 
             if (value == null)
@@ -38,7 +41,7 @@ namespace HLP.Comum.View.Converters
             if (value == null)
                 return TimeSpan.Zero;
 
-            TimeSpan t = new TimeSpan(days: 0, hours: d.Hour, minutes: d.Minute, seconds: d.Second);            
+            TimeSpan t = new TimeSpan(days: 0, hours: d.Hour, minutes: d.Minute, seconds: d.Second);
 
             return t;
         }

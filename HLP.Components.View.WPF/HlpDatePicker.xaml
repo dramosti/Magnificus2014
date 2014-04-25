@@ -7,56 +7,61 @@
              mc:Ignorable="d" 
              d:DesignHeight="30" x:Name="ucDtPicker">
     <UserControl.Resources>
-        <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
-        <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
-        <ConvertLocal:TimeSpanToString x:Key="tmShortConverter"></ConvertLocal:TimeSpanToString>
-        <Style x:Key="TextBoxComponentStyleDataPicker" TargetType="{x:Type TextBox}">
-            <!--<Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>-->
-            <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>         
-            <Setter Property="CharacterCasing" Value="Upper"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
-                        <Border x:Name="border" BorderBrush="{StaticResource CinzaClaro}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="{StaticResource CinzaEscuro}" FontFamily="Segoe UI Symbol"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" TargetName="border" Value="0.50"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
-                            </Trigger>
-                            <Trigger Property="Validation.HasError" Value="True">
-                                <Setter Property="Validation.ErrorTemplate">
-                                    <Setter.Value>
-                                        <ControlTemplate>
-                                            <DockPanel LastChildFill="True">
-                                                <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>           
+            <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
+            <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
+            <ConvertLocal:TimeSpanToString x:Key="tmShortConverter"></ConvertLocal:TimeSpanToString>
+            <Style x:Key="TextBoxComponentStyleDataPicker" TargetType="{x:Type TextBox}">
+                <!--<Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>-->
+                <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="CharacterCasing" Value="Upper"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
+                            <Border x:Name="border" BorderBrush="{StaticResource CinzaClaro}" BorderThickness="1.3" Background="{StaticResource WhiteStandard}" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" VerticalAlignment="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Foreground="{StaticResource CinzaEscuro}" FontFamily="Segoe UI Symbol"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.50"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BlueStandard}"/>
+                                </Trigger>
+                                <Trigger Property="Validation.HasError" Value="True">
+                                    <Setter Property="Validation.ErrorTemplate">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <DockPanel LastChildFill="True">
+                                                    <Border Background="{StaticResource BackgroundError}" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
                                                 ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
-                                                    <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
-                                                </Border>
-                                                <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
-                                                    <Border BorderBrush="Transparent" BorderThickness="1"></Border>
-                                                </AdornedElementPlaceholder>
-                                            </DockPanel>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsVisible" Value="false">
-                                <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+                                                        <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white"/>
+                                                    </Border>
+                                                    <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center">
+                                                        <Border BorderBrush="Transparent" BorderThickness="1"></Border>
+                                                    </AdornedElementPlaceholder>
+                                                </DockPanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsVisible" Value="false">
+                                    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>       
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal">
         <Border>

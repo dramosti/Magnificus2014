@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HLP.Base.ClassesBases;
+using System.Reflection;
+using HLP.Base.Static;
+using System.Windows;
 
 namespace HLP.Components.Model.Models
 {
@@ -518,10 +521,10 @@ namespace HLP.Components.Model.Models
             set
             {
                 _idContatoTransportador = value;
+
                 base.NotifyPropertyChanged(propertyName: "idContatoTransportador");
             }
         }
-
         private string _xRntrc;
         [ParameterOrder(Order = 47)]
         public string xRntrc
@@ -544,6 +547,58 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idContatoMotorista");
             }
         }
+
+        #region Propriedades não mapeadas utilizadas na view
+
+        private int _idEmpresaContato;
+
+        public int idEmpresaContato
+        {
+            get { return _idEmpresaContato; }
+            set
+            {
+                _idEmpresaContato = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresaContato");
+            }
+        }
+
+        private string _xEmpresa;
+
+        public string xEmpresa
+        {
+            get { return _xEmpresa; }
+            set
+            {
+                _xEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "xEmpresa");
+            }
+        }
+
+        private string _xEnderecoEmpresa;
+
+        public string xEnderecoEmpresa
+        {
+            get { return _xEnderecoEmpresa; }
+            set
+            {
+                _xEnderecoEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "xEnderecoEmpresa");
+            }
+        }
+
+        private string _xTelefoneEmpresa;
+
+        public string xTelefoneEmpresa
+        {
+            get { return _xTelefoneEmpresa; }
+            set
+            {
+                _xTelefoneEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "xTelefoneEmpresa");
+            }
+        }
+
+        #endregion
 
         private ObservableCollectionBaseCadastros<Contato_EnderecoModel> _lContato_EnderecoModel;
 
@@ -748,7 +803,19 @@ namespace HLP.Components.Model.Models
         {
             get
             {
-                return base[columnName];
+                string xErro = base[columnName];
+
+                if (xErro == null ||
+                    xErro == "")
+                {
+                    if (columnName == "xCPF")
+                    {
+                        if (this.xCPF != null)
+                            if (!Util.ValidaCpf(strCpf: this.xCPF))
+                                xErro = "CPF inválido!";
+                    }
+                }
+                return xErro;
             }
         }
     }

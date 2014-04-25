@@ -11,6 +11,10 @@ using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Components.Model.Models;
+using HLP.Entries.Services.Comercial;
+using HLP.Entries.Model.Models.Transportes;
+using HLP.Entries.Services.Transportes;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -18,14 +22,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
     {
         BackgroundWorker bWorkerAcoes;
         ContatoViewModel objViewModel;
-        contato_Service.IserviceContatoClient servico = new contato_Service.IserviceContatoClient();
+
+        ContatoService objService;
+
         public ContatoCommand(ContatoViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
+            objService = new ContatoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
-                    paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
+                    paramCanExec => false);
 
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
@@ -83,7 +90,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = servico.Save(objViewModel.currentModel);
+                this.objViewModel.currentModel = objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -138,7 +145,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete((int)this.objViewModel.currentModel.idContato))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idContato ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -187,7 +194,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
         private bool NovoCanExecute()
         {
-            return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
+            return false;
         }
 
         private void Alterar(object _panel)
@@ -224,11 +231,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                objViewModel.currentModel = await servico.CopyAsync(this.objViewModel.currentModel);
+                objViewModel.currentModel = this.objService.CopyObject(obj: this.objViewModel.currentModel);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -274,6 +281,69 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    if (this.objViewModel.currentModel != null)
+                    {
+                        if ((this.objViewModel.currentModel.idContatoMotorista != null
+                            && this.objViewModel.currentModel.idContatoMotorista != 0) ||
+                            (this.objViewModel.currentModel.idContatoTransportador != null
+                            && this.objViewModel.currentModel.idContatoTransportador != 0)
+                            )
+                        {
+                            TransportadoraService tService = new TransportadoraService();
+                            TransportadorModel t = null;
+
+                            if (this.objViewModel.currentModel.idContatoMotorista != null
+                            && this.objViewModel.currentModel.idContatoMotorista != 0)
+                            {
+                                t = tService.GetObject(id: this.objViewModel.currentModel.idContatoMotorista ?? 0);
+                            }
+                            else
+                            {
+                                t = tService.GetObject(id: this.objViewModel.currentModel.idContatoTransportador ?? 0);
+                            }
+
+                            if (t != null)
+                            {
+                                this.objViewModel.currentModel.idEmpresaContato = t.idTransportador ?? 0;
+                                this.objViewModel.currentModel.xEmpresa = t.xNome;
+                                this.objViewModel.currentModel.xTelefoneEmpresa = t.xTelefone1;
+
+                                if (t.lTransportador_Endereco != null)
+                                {
+                                    EnderecoModel endereco = null;
+                                    CidadeService objCidadeService = new CidadeService();
+
+
+
+                                    if (t.lTransportador_Endereco.Count(i => i.stPrincipal == 1) > 0)
+                                    {
+                                        endereco = t.lTransportador_Endereco.FirstOrDefault(i => i.stPrincipal == 1);
+                                    }
+                                    else
+                                    {
+                                        endereco = t.lTransportador_Endereco.FirstOrDefault();
+                                    }
+                                    if (endereco != null)
+                                    {
+                                        CidadeModel cid = objCidadeService.GetObject(
+                                            id: endereco.idCidade);
+
+                                        this.objViewModel.currentModel.xEnderecoEmpresa = string.Format(format: "{0}, {1}, {2}",
+                                            arg0: endereco.xEndereco, arg1: endereco.xBairro, arg2: cid != null ?
+                                            cid.xCidade : "");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 this.Inicia_Collections();
             }
             catch (Exception ex)
@@ -285,7 +355,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.GetObject(objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
 
         private void Inicia_Collections()
@@ -295,8 +365,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
         #endregion
-
-
 
     }
 }

@@ -136,7 +136,7 @@ namespace HLP.Base.Static
 
             string Resultado = "";
             string sCar = "";
-
+                        
             for (int i = 0; i <= (strString.Length - 1); i++)
             {
                 sCar = strString[i].ToString();
