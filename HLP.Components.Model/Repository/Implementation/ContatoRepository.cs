@@ -32,7 +32,7 @@ namespace HLP.Components.Model.Repository.Implementation
             else
             {
                 UndTrabalho.dbPrincipal.ExecuteScalar(
-                    transaction: UndTrabalho.dbTransaction, 
+                    transaction: UndTrabalho.dbTransaction,
                     storedProcedureName: "dbo.Proc_update_Contato",
                     parameterValues: ParameterBase<ContatoModel>.SetParameterValue(classe: objContato));
             }
@@ -41,7 +41,7 @@ namespace HLP.Components.Model.Repository.Implementation
         public void Delete(int idContato)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(storedProcedureName: "dbo.Proc_delete_Contato",
-                parameterValues: new object[]{UserData.idUser, idContato}, transaction: UndTrabalho.dbTransaction);
+                parameterValues: new object[] { UserData.idUser, idContato }, transaction: UndTrabalho.dbTransaction);
         }
 
         public int Copy(int idContato)
@@ -58,7 +58,13 @@ namespace HLP.Components.Model.Repository.Implementation
                 regContatoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Contato",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idContato"),
-                                 MapBuilder<ContatoModel>.MapAllProperties().Build());
+                                 MapBuilder<ContatoModel>.MapAllProperties()
+                                 .DoNotMap(i => i.status)
+                                 .DoNotMap(i => i.idEmpresaContato)
+                                 .DoNotMap(i => i.xEmpresa)
+                                 .DoNotMap(i => i.xEnderecoEmpresa)
+                                 .DoNotMap(i => i.xTelefoneEmpresa)
+                                 .Build());
             }
 
             return regContatoAccessor.Execute(idContato).FirstOrDefault();
@@ -69,7 +75,13 @@ namespace HLP.Components.Model.Repository.Implementation
             if (regAllContatoAccessor == null)
             {
                 regAllContatoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Contato",
-                                MapBuilder<ContatoModel>.MapAllProperties().Build());
+                                MapBuilder<ContatoModel>.MapAllProperties()
+                                .DoNotMap(i => i.status)
+                                .DoNotMap(i => i.idEmpresaContato)
+                                 .DoNotMap(i => i.xEmpresa)
+                                 .DoNotMap(i => i.xEnderecoEmpresa)
+                                 .DoNotMap(i => i.xTelefoneEmpresa)
+                                .Build());
             }
             return regAllContatoAccessor.Execute().ToList();
         }
@@ -81,7 +93,13 @@ namespace HLP.Components.Model.Repository.Implementation
              "inner join Cliente_fornecedor_contato cc " +
              "on c.idContato = cc.idContato and cc.idClienteFornecedor = @idContato",
             new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idContato"),
-            MapBuilder<ContatoModel>.MapAllProperties().DoNotMap(c => c.status).Build());
+            MapBuilder<ContatoModel>.MapAllProperties()
+            .DoNotMap(c => c.status)
+            .DoNotMap(i => i.idEmpresaContato)
+                                 .DoNotMap(i => i.xEmpresa)
+                                 .DoNotMap(i => i.xEnderecoEmpresa)
+                                 .DoNotMap(i => i.xTelefoneEmpresa)
+            .Build());
             return reg.Execute(idContato).ToList();
         }
 
@@ -93,7 +111,12 @@ namespace HLP.Components.Model.Repository.Implementation
                 arg1: id),
             new Parameters(UndTrabalho.dbPrincipal),
             MapBuilder<ContatoModel>.MapAllProperties()
-            .DoNotMap(c => c.status).Build());
+            .DoNotMap(c => c.status)
+            .DoNotMap(i => i.idEmpresaContato)
+                                 .DoNotMap(i => i.xEmpresa)
+                                 .DoNotMap(i => i.xEnderecoEmpresa)
+                                 .DoNotMap(i => i.xTelefoneEmpresa)
+            .Build());
 
             return reg.Execute().ToList();
         }

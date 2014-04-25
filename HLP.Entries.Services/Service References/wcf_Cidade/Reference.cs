@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HLP.Entries.ViewModel.cidadeService {
+namespace HLP.Entries.Services.wcf_Cidade {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="modelBase", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HLP.Entries.Model.Models.Gerais.CidadeModel))]
     public partial class modelBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -24,10 +24,10 @@ namespace HLP.Entries.ViewModel.cidadeService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.ObjectModel.Collection<HLP.Entries.ViewModel.cidadeService.PesquisaPadraoModelContract> lcamposSqlNotNullField;
+        private System.Collections.Generic.List<HLP.Entries.Services.wcf_Cidade.PesquisaPadraoModelContract> lcamposSqlNotNullField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HLP.Entries.ViewModel.cidadeService.statusModel statusField;
+        private HLP.Entries.Services.wcf_Cidade.statusModel statusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -40,7 +40,7 @@ namespace HLP.Entries.ViewModel.cidadeService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.ObjectModel.Collection<HLP.Entries.ViewModel.cidadeService.PesquisaPadraoModelContract> lcamposSqlNotNull {
+        public System.Collections.Generic.List<HLP.Entries.Services.wcf_Cidade.PesquisaPadraoModelContract> lcamposSqlNotNull {
             get {
                 return this.lcamposSqlNotNullField;
             }
@@ -53,7 +53,7 @@ namespace HLP.Entries.ViewModel.cidadeService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public HLP.Entries.ViewModel.cidadeService.statusModel status {
+        public HLP.Entries.Services.wcf_Cidade.statusModel status {
             get {
                 return this.statusField;
             }
@@ -77,7 +77,7 @@ namespace HLP.Entries.ViewModel.cidadeService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Components")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PesquisaPadraoModelContract", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases")]
     [System.SerializableAttribute()]
     public partial class PesquisaPadraoModelContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -169,7 +169,7 @@ namespace HLP.Entries.ViewModel.cidadeService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="statusModel", Namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases")]
     public enum statusModel : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -186,73 +186,97 @@ namespace HLP.Entries.ViewModel.cidadeService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="cidadeService.IserviceCidade")]
-    public interface IserviceCidade {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wcf_Cidade.Iwcf_Cidade")]
+    public interface Iwcf_Cidade {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/getCidade", ReplyAction="http://tempuri.org/IserviceCidade/getCidadeResponse")]
-        HLP.Entries.Model.Models.Gerais.CidadeModel getCidade(int idCidade);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/GetObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/GetObjectResponse")]
+        HLP.Entries.Model.Models.Gerais.CidadeModel GetObject(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/getCidade", ReplyAction="http://tempuri.org/IserviceCidade/getCidadeResponse")]
-        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CidadeModel> getCidadeAsync(int idCidade);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/GetObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/GetObjectResponse")]
+        System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CidadeModel> GetObjectAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/GetCidadeByName", ReplyAction="http://tempuri.org/IserviceCidade/GetCidadeByNameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/SaveObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/SaveObjectResponse")]
+        int SaveObject(HLP.Entries.Model.Models.Gerais.CidadeModel obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/SaveObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/SaveObjectResponse")]
+        System.Threading.Tasks.Task<int> SaveObjectAsync(HLP.Entries.Model.Models.Gerais.CidadeModel obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/DeleteObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/DeleteObjectResponse")]
+        bool DeleteObject(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/DeleteObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/DeleteObjectResponse")]
+        System.Threading.Tasks.Task<bool> DeleteObjectAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/CopyObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/CopyObjectResponse")]
+        int CopyObject(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/CopyObject", ReplyAction="http://tempuri.org/Iwcf_Cidade/CopyObjectResponse")]
+        System.Threading.Tasks.Task<int> CopyObjectAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/GetCidadeByName", ReplyAction="http://tempuri.org/Iwcf_Cidade/GetCidadeByNameResponse")]
         System.Nullable<int> GetCidadeByName(string xName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/GetCidadeByName", ReplyAction="http://tempuri.org/IserviceCidade/GetCidadeByNameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Iwcf_Cidade/GetCidadeByName", ReplyAction="http://tempuri.org/Iwcf_Cidade/GetCidadeByNameResponse")]
         System.Threading.Tasks.Task<System.Nullable<int>> GetCidadeByNameAsync(string xName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/saveCidade", ReplyAction="http://tempuri.org/IserviceCidade/saveCidadeResponse")]
-        int saveCidade(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/saveCidade", ReplyAction="http://tempuri.org/IserviceCidade/saveCidadeResponse")]
-        System.Threading.Tasks.Task<int> saveCidadeAsync(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/delCidade", ReplyAction="http://tempuri.org/IserviceCidade/delCidadeResponse")]
-        bool delCidade(int idCidade);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/delCidade", ReplyAction="http://tempuri.org/IserviceCidade/delCidadeResponse")]
-        System.Threading.Tasks.Task<bool> delCidadeAsync(int idCidade);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/copyCidade", ReplyAction="http://tempuri.org/IserviceCidade/copyCidadeResponse")]
-        int copyCidade(int idCidade);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IserviceCidade/copyCidade", ReplyAction="http://tempuri.org/IserviceCidade/copyCidadeResponse")]
-        System.Threading.Tasks.Task<int> copyCidadeAsync(int idCidade);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IserviceCidadeChannel : HLP.Entries.ViewModel.cidadeService.IserviceCidade, System.ServiceModel.IClientChannel {
+    public interface Iwcf_CidadeChannel : HLP.Entries.Services.wcf_Cidade.Iwcf_Cidade, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IserviceCidadeClient : System.ServiceModel.ClientBase<HLP.Entries.ViewModel.cidadeService.IserviceCidade>, HLP.Entries.ViewModel.cidadeService.IserviceCidade {
+    public partial class Iwcf_CidadeClient : System.ServiceModel.ClientBase<HLP.Entries.Services.wcf_Cidade.Iwcf_Cidade>, HLP.Entries.Services.wcf_Cidade.Iwcf_Cidade {
         
-        public IserviceCidadeClient() {
+        public Iwcf_CidadeClient() {
         }
         
-        public IserviceCidadeClient(string endpointConfigurationName) : 
+        public Iwcf_CidadeClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public IserviceCidadeClient(string endpointConfigurationName, string remoteAddress) : 
+        public Iwcf_CidadeClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceCidadeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_CidadeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public IserviceCidadeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Iwcf_CidadeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public HLP.Entries.Model.Models.Gerais.CidadeModel getCidade(int idCidade) {
-            return base.Channel.getCidade(idCidade);
+        public HLP.Entries.Model.Models.Gerais.CidadeModel GetObject(int id) {
+            return base.Channel.GetObject(id);
         }
         
-        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CidadeModel> getCidadeAsync(int idCidade) {
-            return base.Channel.getCidadeAsync(idCidade);
+        public System.Threading.Tasks.Task<HLP.Entries.Model.Models.Gerais.CidadeModel> GetObjectAsync(int id) {
+            return base.Channel.GetObjectAsync(id);
+        }
+        
+        public int SaveObject(HLP.Entries.Model.Models.Gerais.CidadeModel obj) {
+            return base.Channel.SaveObject(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> SaveObjectAsync(HLP.Entries.Model.Models.Gerais.CidadeModel obj) {
+            return base.Channel.SaveObjectAsync(obj);
+        }
+        
+        public bool DeleteObject(int id) {
+            return base.Channel.DeleteObject(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteObjectAsync(int id) {
+            return base.Channel.DeleteObjectAsync(id);
+        }
+        
+        public int CopyObject(int id) {
+            return base.Channel.CopyObject(id);
+        }
+        
+        public System.Threading.Tasks.Task<int> CopyObjectAsync(int id) {
+            return base.Channel.CopyObjectAsync(id);
         }
         
         public System.Nullable<int> GetCidadeByName(string xName) {
@@ -261,30 +285,6 @@ namespace HLP.Entries.ViewModel.cidadeService {
         
         public System.Threading.Tasks.Task<System.Nullable<int>> GetCidadeByNameAsync(string xName) {
             return base.Channel.GetCidadeByNameAsync(xName);
-        }
-        
-        public int saveCidade(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade) {
-            return base.Channel.saveCidade(objCidade);
-        }
-        
-        public System.Threading.Tasks.Task<int> saveCidadeAsync(HLP.Entries.Model.Models.Gerais.CidadeModel objCidade) {
-            return base.Channel.saveCidadeAsync(objCidade);
-        }
-        
-        public bool delCidade(int idCidade) {
-            return base.Channel.delCidade(idCidade);
-        }
-        
-        public System.Threading.Tasks.Task<bool> delCidadeAsync(int idCidade) {
-            return base.Channel.delCidadeAsync(idCidade);
-        }
-        
-        public int copyCidade(int idCidade) {
-            return base.Channel.copyCidade(idCidade);
-        }
-        
-        public System.Threading.Tasks.Task<int> copyCidadeAsync(int idCidade) {
-            return base.Channel.copyCidadeAsync(idCidade);
         }
     }
 }
