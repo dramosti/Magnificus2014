@@ -76,10 +76,10 @@
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="120" Width="120*"></ColumnDefinition>
-                                                <ColumnDefinition MaxWidth="90" MinWidth="90" Width="120*"></ColumnDefinition>
-                                                <ColumnDefinition Width="39*" MaxWidth="20" MinWidth="20"></ColumnDefinition>
-                                                <ColumnDefinition Width="271*" MaxWidth="250" MinWidth="200"/>
+                                                <ColumnDefinition MaxWidth="120" Width="121"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="90" MinWidth="90" Width="91*"></ColumnDefinition>
+                                                <ColumnDefinition Width="33*" MaxWidth="20" MinWidth="20"></ColumnDefinition>
+                                                <ColumnDefinition Width="251*" MaxWidth="250" MinWidth="200"/>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
@@ -372,7 +372,7 @@
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomComboBox
-                                            Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                                            Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.stCategoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                             <Components:CustomComboBox.Items>
@@ -440,7 +440,7 @@
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomCheckBox>
                                         <Components:CustomComboBox
-                                            Grid.Column="2" Grid.Row="10" Height="20" Margin="0,0,0,3"
+                                            Grid.Column="2" Grid.Row="10" Height="20" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.stSituacaoSci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                             <Components:CustomComboBox.Items>
@@ -723,7 +723,7 @@
                                     Text="{Binding currentModel.vLimiteCredito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource moedaConverter}}"
 									IsEnabled="{Binding bIsEnabled}" ToolTip="Valor máximo que o cliente selecionado pode ter como um saldo de conta pendente. Esse valor sempre é declarado na moeda padrão do cliente. Se a caixa de seleção Limite de crédito obrigatório for marcada e o saldo da conta se tornar maior que o limite de crédito especificado no campo Limite de crédito, nenhuma outra ordem de venda ou nota fiscal poderá ser lançada para o cliente selecionado."></Components:CustomTextBox>
                                 <Components:CustomComboBox
-                                    Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
+                                    Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                     SelectedIndex="{Binding currentModel.stParado, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}" ToolTip="O tipo de bloqueio que se aplica à conta de cliente selecionada:Não (default) – nenhum bloqueio. Todos os formulários da transação são permitidos. Nota fiscal – a conta está bloqueada para pedido de vendas/faturamento.Tudo – todas as transações são bloqueadas.">
                                     <Components:CustomComboBox.Items>
@@ -853,7 +853,7 @@
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
                                         <Components:CustomComboBox
-                                            Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
+                                            Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.stSexo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                             <Components:CustomComboBox.Items>
@@ -862,7 +862,7 @@
                                             </Components:CustomComboBox.Items>
                                         </Components:CustomComboBox>
                                         <Components:CustomComboBox
-                                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
+                                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
                                             SelectedIndex="{Binding currentModel.stEstadoCivil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                             <Components:CustomComboBox.Items>

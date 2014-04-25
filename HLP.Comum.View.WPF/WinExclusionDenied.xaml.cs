@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.ComumView.ViewModel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace HLP.Comum.View.WPF
         public WinExclusionDenied()
         {
             InitializeComponent();
+            this.DataContext = new messageDeleteNotAllowedFK();
         }
     }
 }

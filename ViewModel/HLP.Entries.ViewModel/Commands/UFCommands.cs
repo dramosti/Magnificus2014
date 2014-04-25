@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.ClassesBases;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands
 {
@@ -152,7 +153,11 @@ namespace HLP.Entries.ViewModel.Commands
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
             }
             finally
             {

@@ -6,7 +6,7 @@
                     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit">
 
 
-    
+    <SolidColorBrush Color="#FF8C8C8C" x:Key="CinzaClaro"/>
     <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
     <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF2775B0"/>
@@ -1438,7 +1438,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
-                    <Border x:Name="border" CornerRadius="0,3,3,0" BorderBrush="#FFABADB3" BorderThickness="1.3" Background="White" SnapsToDevicePixels="True">
+                    <Border x:Name="border"  BorderBrush="#FF8C8C8C" BorderThickness="0,1.3,1.3,1.3" Background="White" SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Border>
                     <ControlTemplate.Triggers>
