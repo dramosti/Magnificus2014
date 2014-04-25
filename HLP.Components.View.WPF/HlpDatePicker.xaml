@@ -10,6 +10,7 @@
         <ConvertLocal:VisibilityDatePickerConverter x:Key="visDtPickerConverter"></ConvertLocal:VisibilityDatePickerConverter>
         <ConvertLocal:DateShortConverter x:Key="dtShortConverter"></ConvertLocal:DateShortConverter>
         <ConvertLocal:TimeSpanToString x:Key="tmShortConverter"></ConvertLocal:TimeSpanToString>
+        <SolidColorBrush Color="#FF8C8C8C" x:Key="CinzaClaro"/>
         <Style x:Key="TextBoxComponentStyleDataPicker" TargetType="{x:Type TextBox}">
             <!--<Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>-->
             <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
