@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200">
+             d:DesignWidth="200">
     <UserControl.Resources>
         <Style x:Key="ButtonComponentImageStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -52,13 +52,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="27"></RowDefinition>
-            <RowDefinition Height="173"></RowDefinition>
+           
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource ButtonComponentImageStyle}" Content="Foto" Click="Button_Click_1"></Button>        
-        <Expander Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Header="">
-            <Grid>
-                <Image Stretch="Fill"></Image>
-            </Grid>
-        </Expander>
+        <Button Style="{StaticResource ButtonComponentImageStyle}" Content="Foto" Click="Button_Click_1"></Button>             
     </Grid>
 </UserControl>

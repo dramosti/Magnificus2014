@@ -247,6 +247,9 @@
     <None Include="Service References\wcf_Banco\wcf_Banco4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Banco\wcf_Banco5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Calendarios\wcf_Calendario.wsdl" />
     <None Include="Service References\wcf_Calendarios\wcf_Calendario.xsd">
       <SubType>Designer</SubType>

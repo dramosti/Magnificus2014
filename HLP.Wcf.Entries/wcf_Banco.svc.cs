@@ -17,6 +17,10 @@ namespace HLP.Wcf.Entries
     {
         [Inject]
         public IBancoRepository bancoRepository { get; set; }
+        [Inject]
+        public IAgenciaRepository agenciaRepository { get; set; }
+        [Inject]
+        public IConta_bancariaRepository conta_BancariaRepository { get; set; }
 
         public wcf_Banco()
         {
@@ -85,6 +89,36 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
 
+        }
+
+        public HLP.Components.Model.Models.modelToTreeView GetHierarquia(int idBanco)
+        {
+            HLP.Components.Model.Models.modelToTreeView b = new Components.Model.Models.modelToTreeView();
+            HLP.Entries.Model.Models.Financeiro.BancoModel objBanco = bancoRepository.GetBanco(idBanco);
+            if (objBanco != null)
+            {
+                b.id = (int)objBanco.idBanco;
+                b.xDisplay = objBanco.cBanco + " - " + objBanco.xBanco;
+
+                HLP.Components.Model.Models.modelToTreeView agencia;
+                HLP.Components.Model.Models.modelToTreeView conta;
+                foreach (var ag in agenciaRepository.GetByBanco((int)objBanco.idBanco))
+                {
+                    agencia = new Components.Model.Models.modelToTreeView();
+                    agencia.id = (int)ag.idAgencia;
+                    agencia.xDisplay = ag.cAgencia + " - " + ag.xAgencia;
+
+                    foreach (var ct in conta_BancariaRepository.GetByAgencia(agencia.id))
+                    {
+                        conta = new Components.Model.Models.modelToTreeView();
+                        conta.id = (int)ct.idContaBancaria;
+                        conta.xDisplay = ct.xNumeroConta + " - " + ct.xDescricao;
+                        agencia.lFilhos.Add(conta);
+                    }
+                    b.lFilhos.Add(agencia);
+                }
+            }
+            return b;
         }
     }
 }
