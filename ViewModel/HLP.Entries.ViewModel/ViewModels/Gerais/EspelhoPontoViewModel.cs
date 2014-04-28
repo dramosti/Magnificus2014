@@ -24,6 +24,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand commandCopiar { get; set; }
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
+        public ICommand commandImprimir { get; set; }
 
 
         public ICommand carregarCommand { get; set; }
