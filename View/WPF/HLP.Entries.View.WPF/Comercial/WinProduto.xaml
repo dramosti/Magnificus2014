@@ -3,7 +3,7 @@
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:conv="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
+        xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Comercial.WinProduto"
@@ -14,16 +14,16 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <conv:DateTimeTimeSpanConverter x:Key="timeSpanConverter"/>
-        <conv:PorcentagemConverter x:Key="porcConverter"/>
-        <conv:MoedaConverter x:Key="moedaConverter"/>
-        <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lResultUsuarios" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwFuncionarioUsuarioToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        </ResourceDictionary>        
+            <conv:PorcentagemConverter x:Key="porcConverter"/>
+            <conv:MoedaConverter x:Key="moedaConverter"/>
+            <conv:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lResultUsuarios" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwFuncionarioUsuarioToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid Background="{StaticResource StyleMainWindowDefault}">
         <TabControl x:Name="tbPrincipal">
@@ -56,9 +56,9 @@
                                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Código EAN" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     IsReadOnly="True"
@@ -77,7 +77,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Código EAN do produto">
                                 </Components:CustomTextBox>
-                                
+
                             </Grid>
                         </Expander>
                         <Expander Header="Item" Grid.Row="1" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
@@ -114,9 +114,9 @@
                                 <Components:CustomTextBlock Text="Tipo de Serviço" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Data do Cadastro" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Usuário" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.xPesquisa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -150,7 +150,7 @@
                                         <System:String>xTipo</System:String>
                                         <System:String>xDescricao</System:String>
                                     </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>                                
+                                </Components:HlpPesquisa>
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="6"                                    									
 									Text="{Binding currentModel.xFoto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -191,7 +191,7 @@
                                         <System:String>xNome</System:String>
                                         <System:String>xCodigoAlternativo</System:String>
                                     </Components:HlpPesquisa.Items>
-                                </Components:HlpPesquisa>                                
+                                </Components:HlpPesquisa>
                             </Grid>
                         </Expander>
                         <Expander Header="Grupos" Grid.Row="2" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
@@ -208,8 +208,8 @@
                                 </Grid.RowDefinitions>
                                 <!--Label-->
 
-                                <Components:CustomTextBlock Text="Família do Produto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>                                                                                                                                     
-                                
+                                <Components:CustomTextBlock Text="Família do Produto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+
                                 <!--Components-->
 
                                 <Components:HlpPesquisa 
@@ -267,9 +267,9 @@
                                 <Components:CustomTextBlock Text="Estoque Máximo" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Ativo" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.nPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -332,7 +332,7 @@
                                     <ColumnDefinition MaxWidth="170" MinWidth="170"></ColumnDefinition>
                                     <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition> 
+                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="10"></RowDefinition>
@@ -345,7 +345,7 @@
                                 <Components:CustomTextBlock Text="Localização" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Depósito" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Fabricante" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
 
                                 <Components:HlpPesquisa 
@@ -402,9 +402,9 @@
                                 <Components:CustomTextBlock Text="Profundidade Bruta" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Largura Bruta" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Altura Bruta" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.nProfundidadeBruta, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -423,7 +423,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="A altura de uma unidade que inclui a embalagem">
                                 </Components:CustomTextBox>
-                                
+
                             </Grid>
                         </Expander>
                         <Expander Header="Formação de Custo" Grid.Row="3" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
@@ -444,9 +444,9 @@
 
                                 <Components:CustomTextBlock Text="Formação do Custo" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Tipo de Custo Automático" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomComboBox
                                     Grid.Column="2" Grid.Row="1"
                                     SelectedIndex="{Binding currentModel.stCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
@@ -468,7 +468,7 @@
                                         <System:String>1-CUSTO ATUAL</System:String>
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
-                                
+
                             </Grid>
                         </Expander>
                     </Grid>
@@ -506,7 +506,7 @@
                                 <Components:CustomTextBlock Text="Entra para base de INSS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="% de INSS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Alíquota de Importação" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
 
                                 <Components:CustomComboBox
@@ -550,8 +550,8 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="É preenchido com a alíquota de importação do Produto. Esta é utilizada na montagem de Nota Fiscal, para calcular o Imposto de Importação, mas somente se na operação estiver definido para calcular o mesmo.">
                                 </Components:CustomTextBox>
-                                
-                                
+
+
                             </Grid>
                         </Expander>
                         <Expander Header="Ordem de Venda" Grid.Row="1" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
@@ -578,7 +578,7 @@
                                 <Components:CustomTextBlock Text="Situação Tributária de PIS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Situação Tributária de COFINS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
 
                                 <Components:HlpPesquisa 
@@ -741,9 +741,9 @@
                             <Components:CustomTextBlock Text="Entrega Insuficiente" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="Ultima alteração no Preço de venda" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                            
+
                             <!--Components-->
-                            
+
                             <Components:CustomTextBox
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.vVenda, Mode=TwoWay, Converter={StaticResource moedaConverter},
@@ -779,7 +779,7 @@
                                     <System:String>xUnidadeMedida</System:String>
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
-                            
+
                         </Grid>
                     </Expander>
                 </AdornerDecorator>
@@ -817,9 +817,9 @@
                                 <Components:CustomTextBlock Text="Entrega Insuficiente" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Exige Fornecedor Homologado" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.vCompra, Mode=TwoWay, Converter={StaticResource moedaConverter},
@@ -861,7 +861,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar se para esse produto é exigido fornecedores homologados, se sim o sistema ativará a aba para lançamentos dos fornecedores homologado.">
                                 </Components:CustomCheckBox>
-                                
+
                             </Grid>
                         </Expander>
                         <Expander Header="Lead Time" Style="{StaticResource ExpanderPadrao}" IsExpanded="True" Grid.Row="1">
@@ -879,15 +879,15 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Cotação" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Pedido" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Recebimento" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:HlpDatePicker
                                     Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3" stFormatoDtPicker="date"
                                     xTextDate="{Binding currentModel.dleadTimeCotacao, Mode=TwoWay, Converter={StaticResource timeSpanConverter},
@@ -909,7 +909,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar em horas o lead time para recebimento da compra, essa condição vai servir junto com o lead time de cotação e pedido saber o quanto de tempo que leva para se comprar um produto e o mesmo chegar na empresa com isso é possível saber o estoque mínimo ou critico.">
                                 </Components:HlpDatePicker>
-                                
+
                             </Grid>
                         </Expander>
                     </Grid>
@@ -939,9 +939,9 @@
                             <Components:CustomTextBlock Text="Perda/Sucata Constante" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="Perda/Sucata Variável" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                             <Components:CustomTextBlock Text="Unidade de Medida" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                            
+
                             <!--Components-->
-                            
+
                             <Components:CustomTextBox
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding currentModel.vProducao, Mode=TwoWay, Converter={StaticResource moedaConverter},
@@ -971,7 +971,7 @@
                                     <System:String>xUnidadeMedida</System:String>
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
-                            
+
                         </Grid>
                     </Expander>
                 </AdornerDecorator>
@@ -1066,7 +1066,7 @@
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>                            
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>
