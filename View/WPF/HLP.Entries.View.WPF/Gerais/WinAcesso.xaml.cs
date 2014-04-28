@@ -54,7 +54,7 @@ namespace HLP.Entries.View.WPF.Gerais
 
         private void controlsBgLogin_LostFocus(object sender, RoutedEventArgs e)
         {
-            this.bgLogin.UpdateSources();
+          //  this.bgLogin.UpdateSources();
         }
     }
 }
