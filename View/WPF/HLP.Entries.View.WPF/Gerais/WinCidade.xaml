@@ -8,47 +8,53 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinCidade"    
         Title="Cidade" NameView="vwCidade">
     <Window.Resources>
-        <c:IntStringConverter x:Key="intStringConverter"></c:IntStringConverter>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <c:IntStringConverter x:Key="intStringConverter"></c:IntStringConverter>
+        </ResourceDictionary>        
     </Window.Resources>
     <Grid>
-        <Expander Header="Cidades" IsExpanded="True">
+        <Expander Header="Cidades" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition Width="175*" MinWidth="75" MaxWidth="75"></ColumnDefinition>
-                    <ColumnDefinition Width="100*" MaxWidth="100" MinWidth="70"></ColumnDefinition>
-                    <ColumnDefinition Width="67*" MinWidth="40"></ColumnDefinition>
-                    <ColumnDefinition Width="101*" MinWidth="40"></ColumnDefinition>
-                    <ColumnDefinition Width="305*"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"/>
+                    <RowDefinition Height="Auto" MaxHeight="23"/>
+                    <RowDefinition Height="Auto" MaxHeight="23"/>
+                    <RowDefinition Height="Auto" MaxHeight="23"/>
                 </Grid.RowDefinitions>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center"/>
+                
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Cidade" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="IBGE" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                
+                <!--Components-->
                 <Components:CustomTextBox 
-                                      IsReadOnly="True"
-                                      Text="{Binding currentModel.idCidade, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"                                      
-                                      Grid.Column="2" Grid.Row="1"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Cidade" VerticalAlignment="Center" Height="15" Margin="0,3"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3" Grid.ColumnSpan="2"
-                                       Text="{Binding currentModel.xCidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="IBGE" VerticalAlignment="Center" Height="15" Margin="0,3"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="5"
-                                       Text="{Binding currentModel.cIbge, Mode=TwoWay, NotifyOnValidationError=True, Converter={StaticResource intStringConverter} , UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="UF"/>
-                <Components:HlpPesquisa Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3"
+                    IsReadOnly="True"
+                    Text="{Binding currentModel.idCidade, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"                                      
+                    Grid.Column="2" Grid.Row="1"/>
+                <Components:CustomTextBox 
+                    Grid.Column="2"  Grid.Row="2" Grid.ColumnSpan="2"
+                    Text="{Binding currentModel.xCidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    IsEnabled="{Binding bIsEnabled}"/>
+                <Components:CustomTextBox  
+                    Grid.Column="2"  Grid.Row="3"
+                    Text="{Binding currentModel.cIbge, Mode=TwoWay, NotifyOnValidationError=True, Converter={StaticResource intStringConverter} , UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    IsEnabled="{Binding bIsEnabled}"/>
+                <Components:HlpPesquisa Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.idUF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
                     x:Name="teste" TableView="vwUF" FieldPesquisa="ID"
                                  IsEnabled="{Binding bIsEnabled}" WidthLabel="0">
@@ -56,7 +62,7 @@
                         <System:String>xSiglaUf</System:String>
                         <System:String>xUf</System:String>
                     </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>                
+                </Components:HlpPesquisa>
             </Grid>
         </Expander>
     </Grid>

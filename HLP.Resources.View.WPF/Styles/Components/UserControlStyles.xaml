@@ -2542,10 +2542,10 @@
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="Storyboard1">
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
@@ -2553,7 +2553,7 @@
                         </Storyboard>
                         <Storyboard x:Key="Storyboard2">
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
-                                <EasingColorKeyFrame KeyTime="0" Value="#FF545454"/>
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
