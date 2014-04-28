@@ -1,5 +1,5 @@
-﻿using HLP.Comum.Resources.Util;
-using HLP.Comum.View.Formularios;
+﻿using HLP.Base.Static;
+using HLP.Components.View.WPF;
 using HLP.Entries.View.WPF.Gerais;
 using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
@@ -67,8 +67,8 @@ namespace HLP.Entries.View.WPF.Comercial
 
             if (e.Column.Header.ToString() == "Produtos")
             {
-                DataGridCell c = StaticUtil.GetCell(grid: (DataGrid)sender, row: e.Row, column: 1);
-                DataGridCell cProduto = StaticUtil.GetCell(grid: (DataGrid)sender, row: e.Row, column: e.Column.DisplayIndex);
+                DataGridCell c = Util.GetCell(grid: (DataGrid)sender, row: e.Row, column: 1);
+                DataGridCell cProduto = Util.GetCell(grid: (DataGrid)sender, row: e.Row, column: e.Column.DisplayIndex);
                 object o = (cProduto.Content as ContentPresenter).Content.GetType().GetProperty(name: "idProduto")
                     .GetValue(obj: (cProduto.Content as ContentPresenter).Content);
 
@@ -102,12 +102,7 @@ namespace HLP.Entries.View.WPF.Comercial
         }
 
         private void cbxStAtualizacao_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //this.gridItens.Columns[2].IsReadOnly =
-            //    this.gridItens.Columns[3].IsReadOnly =
-            //    this.gridItens.Columns[6].IsReadOnly =
-            //    this.gridItens.Columns[7].IsReadOnly =
-            //    this.gridItens.Columns[8].IsReadOnly = (((HLP.Comum.View.Components.CustomComboBox)sender).SelectedIndex == 0);
+        {            
         }
 
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)

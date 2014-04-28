@@ -9,6 +9,7 @@ using HLP.Entries.ViewModel.ViewModels;
 using System.Windows.Controls;
 using System.ComponentModel;
 using HLP.Base.ClassesBases;
+using HLP.Entries.Services.Comercial;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -16,11 +17,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         Tipo_ProdutoViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
-        private TipoProdutoService.IserviceTipoProdutoClient servicoProduto = new TipoProdutoService.IserviceTipoProdutoClient();
+        Tipo_ProdutoService objService;
 
         public Tipo_ProdutoCommands(Tipo_ProdutoViewModel _objViewModel)
         {
             this.objViewModel = _objViewModel;
+            this.objService = new Tipo_ProdutoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -72,7 +74,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             // metodo de salvar -->
             try
             {
-                objViewModel.currentModel.idTipoProduto = servicoProduto.Save(objViewModel.currentModel);
+                objViewModel.currentModel.idTipoProduto = objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -127,7 +129,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servicoProduto.Delete((int)this.objViewModel.currentModel.idTipoProduto))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idTipoProduto ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -204,7 +206,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -213,11 +215,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                objViewModel.currentModel.idTipoProduto = await servicoProduto.CopyAsync(idTipoProduto: (int)objViewModel.currentModel.idTipoProduto);
+                objViewModel.currentModel =
+                    this.objService.CopyObject(id: this.objViewModel.currentModel.idTipoProduto ?? 0);
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
@@ -256,13 +259,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             BackgroundWorker bw = new BackgroundWorker();
             bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
             bw.RunWorkerAsync();
-
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            //this.objViewModel.currentModel = await //TODO: método de serviço para pesquisar
-            this.objViewModel.currentModel = await servicoProduto.GetTipoAsync(idTipoProduto: (int)this.objViewModel.currentID);
+            this.objViewModel.currentModel =
+                this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 
