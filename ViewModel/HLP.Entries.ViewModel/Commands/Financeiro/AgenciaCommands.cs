@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Financeiro;
+using HLP.Entries.Services.Financeiro;
 using HLP.Entries.ViewModel.ViewModels.Financeiro;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
     {
         BackgroundWorker bWorkerAcoes;
         AgenciaViewModel objViewModel;
-        agenciaService.IserviceAgenciaClient servico = new agenciaService.IserviceAgenciaClient();
+        AgenciaService objService;
+
         public AgenciaCommands(AgenciaViewModel objViewModel)
         {
+            objService = new AgenciaService();
 
             this.objViewModel = objViewModel;
 
@@ -80,7 +83,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                objViewModel.currentModel.idAgencia = (int)this.servico.Save(Objeto: this.objViewModel.currentModel);
+                objViewModel.currentModel = objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -138,8 +142,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(Objeto: this.objViewModel.currentModel)
-                    )
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idAgencia ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -159,7 +162,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new AgenciaModel();
@@ -209,7 +212,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -259,8 +262,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                e.Result = this.servico.Copy(Objeto:
-                    this.objViewModel.currentModel);
+                e.Result = this.objService.CopyObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -317,7 +319,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             if (this.objViewModel.currentID != 0)
                 this.objViewModel.currentModel =
-                    this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+                    this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 

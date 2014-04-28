@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3e5f8f41-3f7f-4ac0-9ca1-8f5b21fa9a31" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Agencia.xsd" MetadataType="Schema" ID="51c30fc0-9e8d-4123-bfaa-ecfb8ed475f1" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Agencia1.xsd" MetadataType="Schema" ID="49e5ce89-5382-4466-a030-ef1c54d15df3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Agencia2.xsd" MetadataType="Schema" ID="193449d1-3a2b-43ce-81f4-42131c59f9cf" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Agencia.wsdl" MetadataType="Wsdl" ID="a17074cc-2b95-4fd9-af38-80e310dc4e82" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?wsdl" />
+    <MetadataFile FileName="wcf_Agencia.disco" MetadataType="Disco" ID="4a46b6c0-88f5-4b78-ac6b-e7a37d9d265a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?disco" />
+    <MetadataFile FileName="wcf_Agencia3.xsd" MetadataType="Schema" ID="b5c22f87-f5d6-4ad5-a9f4-5c7a4a3032a7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Agencia4.xsd" MetadataType="Schema" ID="03b9399c-91d1-4f2f-b76b-e353dba47dd4" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Agencia5.xsd" MetadataType="Schema" ID="c55ad6a1-c688-4e28-b415-600968bdb718" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

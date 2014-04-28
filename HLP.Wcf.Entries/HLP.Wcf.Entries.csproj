@@ -116,6 +116,8 @@
     <Content Include="serviceDiaPagamento.svc" />
     <Content Include="serviceEmpresa.svc" />
     <Content Include="wcf_CanalDeVenda.svc" />
+    <Content Include="wcf_CargaTribMediaStIcms.svc" />
+    <Content Include="wcf_Cfop.svc" />
     <Content Include="wcf_Cidade.svc" />
     <Content Include="wcf_CondicaoPagamento.svc" />
     <Content Include="wcf_ContaBancaria.svc" />
@@ -256,6 +258,8 @@
     <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_CanalDeVenda.cs" />
+    <Compile Include="Iwcf_CargaTribMediaStIcms.cs" />
+    <Compile Include="Iwcf_Cfop.cs" />
     <Compile Include="Iwcf_Cidade.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_CondicaoPagamento.cs" />
@@ -362,6 +366,12 @@
     </Compile>
     <Compile Include="wcf_CanalDeVenda.svc.cs">
       <DependentUpon>wcf_CanalDeVenda.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_CargaTribMediaStIcms.svc.cs">
+      <DependentUpon>wcf_CargaTribMediaStIcms.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Cfop.svc.cs">
+      <DependentUpon>wcf_Cfop.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Cidade.svc.cs">
       <DependentUpon>wcf_Cidade.svc</DependentUpon>
