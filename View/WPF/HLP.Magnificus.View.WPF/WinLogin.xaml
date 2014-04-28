@@ -34,12 +34,12 @@
         <Grid Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"></ColumnDefinition>                
-                <ColumnDefinition Width="650"></ColumnDefinition>
+                <ColumnDefinition MaxWidth="650"></ColumnDefinition>
                 <ColumnDefinition Width="10"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="120"></RowDefinition>
-                <RowDefinition Height="350"></RowDefinition>                
+                <RowDefinition MaxHeight="350" MinHeight="350"></RowDefinition>                
                 <RowDefinition Height="90"></RowDefinition>
             </Grid.RowDefinitions>        
             <WrapPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
