@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
-using HLP.Comum.View.Formularios;
+using HLP.Components.View.WPF;
 
 namespace HLP.Entries.View.WPF.Comercial
 {

@@ -51,6 +51,9 @@
     <Compile Include="Comercial\MultaService.cs" />
     <Compile Include="Comercial\Tipo_ProdutoService.cs" />
     <Compile Include="Components\Campos_Base_DadosService.cs" />
+    <Compile Include="Crm\DecisaoService.cs" />
+    <Compile Include="Crm\FidelidadeService.cs" />
+    <Compile Include="Crm\PersonalidadeService.cs" />
     <Compile Include="Financeiro\BancoService.cs" />
     <Compile Include="Financeiro\Conta_BancariaService.cs" />
     <Compile Include="Financeiro\Descontos_AvistaModel.cs" />
@@ -120,6 +123,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Decisao\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Departamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +149,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_Empresa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Fidelidade\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -176,6 +189,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_ParametroEmpresa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Personalidade\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -253,6 +271,8 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.MultasModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Crm.FidelidadeModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Crm.PersonalidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
@@ -262,6 +282,7 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Condicao_pagamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.ConversaoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DecisaoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.DepositoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EmpresaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.EspelhoPontoModel.datasource" />
@@ -441,6 +462,22 @@
     <None Include="Service References\wcf_Conversao\wcf_Conversao5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao.wsdl" />
+    <None Include="Service References\wcf_Decisao\wcf_Decisao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Departamento\wcf_Departamento.wsdl" />
     <None Include="Service References\wcf_Departamento\wcf_Departamento.xsd">
       <SubType>Designer</SubType>
@@ -528,6 +565,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Empresa\wcf_Empresa6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.wsdl" />
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.wsdl" />
@@ -660,6 +713,22 @@
     <None Include="Service References\wcf_ParametroEmpresa\wcf_EmpresaParametros6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade.wsdl" />
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.wsdl" />
     <None Include="Service References\wcf_PesquisaRapida\wcf_PesquisaRapida.xsd">
       <SubType>Designer</SubType>
@@ -790,11 +859,13 @@
     <WCFMetadataStorage Include="Service References\wcf_ContaBancaria\" />
     <WCFMetadataStorage Include="Service References\wcf_Contato\" />
     <WCFMetadataStorage Include="Service References\wcf_Conversao\" />
+    <WCFMetadataStorage Include="Service References\wcf_Decisao\" />
     <WCFMetadataStorage Include="Service References\wcf_Departamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Deposito\" />
     <WCFMetadataStorage Include="Service References\wcf_DescontoAVista\" />
     <WCFMetadataStorage Include="Service References\wcf_DiaPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
+    <WCFMetadataStorage Include="Service References\wcf_Fidelidade\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionarios\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Juros\" />
@@ -802,6 +873,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Moeda\" />
     <WCFMetadataStorage Include="Service References\wcf_Multa\" />
     <WCFMetadataStorage Include="Service References\wcf_ParametroEmpresa\" />
+    <WCFMetadataStorage Include="Service References\wcf_Personalidade\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
     <WCFMetadataStorage Include="Service References\wcf_PlanoPagamento\" />
     <WCFMetadataStorage Include="Service References\wcf_Rota\" />
@@ -1241,6 +1313,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_TipoProduto\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Decisao\wcf_Decisao.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Decisao\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Decisao\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Decisao\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Fidelidade\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Fidelidade\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Fidelidade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Personalidade\wcf_Personalidade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Personalidade\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Personalidade\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Personalidade\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

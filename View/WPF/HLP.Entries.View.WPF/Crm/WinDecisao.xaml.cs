@@ -1,4 +1,4 @@
-﻿using HLP.Comum.View.Formularios;
+﻿using HLP.Components.View.WPF;
 using HLP.Entries.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;

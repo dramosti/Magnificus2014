@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.ViewModel.ViewModels.Crm;
 using HLP.Base.ClassesBases;
+using HLP.Entries.Services.Crm;
 
 namespace HLP.Entries.ViewModel.Commands.Crm
 {
@@ -15,10 +16,11 @@ namespace HLP.Entries.ViewModel.Commands.Crm
     {
         BackgroundWorker bWorkerAcoes;
         PersonalidadeViewModel objViewModel;
-        PersonalidadeService.IservicePersonalidadeClient servico = new PersonalidadeService.IservicePersonalidadeClient();
+        PersonalidadeService objService;
 
         public PersonalidadeCommand(PersonalidadeViewModel objViewModel)
         {
+            objService = new PersonalidadeService();
 
             this.objViewModel = objViewModel;
 
@@ -70,7 +72,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel.idPersonalidade = servico.Save(this.objViewModel.currentModel);
+            this.objViewModel.currentModel.idPersonalidade = objService.SaveObject(obj: this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -120,7 +122,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idPersonalidade ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -195,7 +197,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -245,7 +247,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                e.Result = servico.Copy(objViewModel.currentModel);
+                e.Result = this.objService.CopyObject(id: this.objViewModel.currentModel.idPersonalidade ?? 0);
             }
             catch (Exception)
             {
@@ -286,9 +288,9 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 
