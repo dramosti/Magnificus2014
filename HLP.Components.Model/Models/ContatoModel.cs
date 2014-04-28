@@ -16,6 +16,7 @@ namespace HLP.Components.Model.Models
             : base("Contato")
         {
             this.lContato_EnderecoModel = new ObservableCollectionBaseCadastros<Contato_EnderecoModel>();
+            this.Ativo = true;
         }
 
         private int? _idContato;
@@ -136,6 +137,7 @@ namespace HLP.Components.Model.Models
             set
             {
                 _dDisponivelaPartir = value;
+                dDisponivelAte = _dDisponivelAte;
                 base.NotifyPropertyChanged(propertyName: "dDisponivelaPartir");
             }
         }
@@ -813,6 +815,11 @@ namespace HLP.Components.Model.Models
                         if (this.xCPF != null)
                             if (!Util.ValidaCpf(strCpf: this.xCPF))
                                 xErro = "CPF inválido!";
+                    }
+                    else if (columnName == "dDisponivelAte")
+                    {
+                        if (this.dDisponivelAte < this.dDisponivelaPartir)
+                            xErro = "Horário do campo Disponível até não pode ser menor que campo Disponível a Partir!";
                     }
                 }
                 return xErro;

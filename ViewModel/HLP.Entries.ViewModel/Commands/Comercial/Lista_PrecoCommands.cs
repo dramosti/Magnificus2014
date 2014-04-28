@@ -20,18 +20,17 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 {
     public class Lista_PrecoCommands
     {
-        ClienteService objService;
+        ClienteService objServiceCliente;
         BackgroundWorker bWorkerAcoes;
         Lista_PrecoViewModel objViewModel;
         ProdutoService objServicoProduto;
-        Lista_PrecoService objServico;
         int idOld = 0;
         bool bOpCancelada = false;
+        Lista_PrecoService objService;
 
         public Lista_PrecoCommands(Lista_PrecoViewModel objViewModel)
         {
-            objServico = new Lista_PrecoService();
-
+            objService = new Lista_PrecoService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -64,9 +63,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuicaoColetiva(xForm: paramExec),
                 canExecute: paramCanExec => this.AtribuicaoColetivaCanExecute());
 
-            //this.objViewModel.AtribuicaoColetivaCommand = new RelayCommand(execute: paramExec => this.AtribuirPercentual(param: paramExec),
-            //    canExecute: paramCanExec => this.AtribuirPercentualCanExecute(param: paramCanExec));
-
             this.objViewModel.AumVlrVendaCustoCommand = new RelayCommand(execute: paramExec => this.AumentarVlrVendaCustoExecute(),
                 canExecute: paramCanExec => this.AumentarVlrVendaCustoCanExecute());
 
@@ -76,7 +72,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.CancAumVlrVendaCommand = new RelayCommand(execute: paramExec => this.CancAumVlrExecute());
 
             this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
-                collection: this.objServico.GetAllIdsListaPreco());
+                collection: this.objService.GetAllIdsListaPreco());
 
             this.objServicoProduto = new ProdutoService();
             this.objViewModel.bwHierarquia = new BackgroundWorker();
@@ -84,7 +80,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
             this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
 
-            int currentId = objServico.getIdListaPreferencial();
+            int currentId = objService.getIdListaPreferencial();
             int currentPosition = 0;
             int i = 0;
             if (currentId != 0)
@@ -208,7 +204,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             if (this.objViewModel.currentModel.stAtualizacao == (byte)0)
             {
                 foreach (Lista_precoModel item in
-                    this.objServico.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
+                    this.objService.GetItensListaPreco(idListaPrecoPai: (int)this.objViewModel.currentModel.idListaPrecoOrigem))
                 {
                     if (this.objViewModel.currentModel.lLista_preco.Count(i => i.idProduto == item.idProduto) == 0)
                     {
@@ -281,7 +277,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
             {
-                objViewModel.currentModel = this.objServico.Save(objModel: this.objViewModel.currentModel);
+                objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
             });
 
             e.Result = e.Argument;
@@ -311,7 +307,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
 
                     this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
-                collection: this.objServico.GetAllIdsListaPreco());
+                collection: this.objService.GetAllIdsListaPreco());
 
                     int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
                     int currentPosition = 0;
@@ -360,7 +356,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.objServico.Delete(this.objViewModel.currentModel))
+                    if (this.objService.Delete(this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -458,7 +454,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
-                collection: this.objServico.GetAllIdsListaPreco());
+                collection: this.objService.GetAllIdsListaPreco());
             int currentId = this.idOld;
             int currentPosition = 0;
             int i = 0;
@@ -523,7 +519,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                e.Result = this.objServico.Copy(objModel: this.objViewModel.currentModel);
+                e.Result = this.objService.Copy(objModel: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -592,7 +588,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 {
                     this.IniciaCollection();
                     if (this.objViewModel.currentID > 0)
-                        this.objViewModel.lIdsHierarquia = this.objServico.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
+                        this.objViewModel.lIdsHierarquia = this.objService.getHierarquiaLista(idListaPreco: this.objViewModel.currentID);
 
                     this.objViewModel.bTreeCarregada = false;
                 }
@@ -606,7 +602,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void getListaPrecoHierarquia(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.selectedId);
+            this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.selectedId);
 
             if (this.objViewModel.currentModel != null)
                 if (this.objViewModel.currentModel.lLista_preco != null)
@@ -615,7 +611,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void getListaPreco(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.objServico.GetObjeto(id: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObjeto(id: this.objViewModel.currentID);
             this.objViewModel.selectedId = this.objViewModel.currentID;
 
             if (this.objViewModel.currentModel != null)
@@ -626,8 +622,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         public bool RotaPossuiListaPrecoPai(int idRota)
         {
-            objService = new ClienteService();
-            return objService.RotaPossuiListaPrecoPai(idRota: idRota);
+            objServiceCliente = new ClienteService();
+            return objServiceCliente.RotaPossuiListaPrecoPai(idRota: idRota);
         }
 
         public void MontraTreeView()
@@ -686,7 +682,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
                 if (!this.bOpCancelada)
                 {
-                    this.objViewModel.lObjHierarquia. MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                    this.objViewModel.lObjHierarquia.MontaHierarquia(m: this.objViewModel.lObjHierarquia,
                         tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
                     e.Result = e.Argument;
                 }
@@ -700,7 +696,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         public void GetHierarquiaListaPreco()
         {
             this.objViewModel.lObjHierarquia = new Components.Model.Models.modelToTreeView();
-            this.objViewModel.lObjHierarquia = this.objServico.GetHierarquiaListaFull(
+            this.objViewModel.lObjHierarquia = this.objService.GetHierarquiaListaFull(
                 idListaPreco: this.objViewModel.selectedId);
         }
     }

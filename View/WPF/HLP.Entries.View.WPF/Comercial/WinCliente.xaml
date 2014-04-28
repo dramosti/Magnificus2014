@@ -171,7 +171,7 @@
                                                 </Components:HlpPesquisa.Items>
                                             </Components:HlpPesquisa>
                                             <Components:HlpPessoaFisicaJuridica x:Name="ucPessoaFisicaJuridica" IsEnabled="{Binding bIsEnabled}"
-                                                Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="10" Grid.RowSpan="5"></Components:HlpPessoaFisicaJuridica>
+                                                Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="10" Grid.RowSpan="2"></Components:HlpPessoaFisicaJuridica>
                                         </Grid>
                                     </Expander>
                                 </Grid>
@@ -318,7 +318,7 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="10"></ColumnDefinition>
-                                            <ColumnDefinition MaxWidth="220"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="240"></ColumnDefinition>
                                             <ColumnDefinition MaxWidth="120" MinWidth="100"></ColumnDefinition>
                                             <ColumnDefinition MaxWidth="150" MinWidth="125"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
@@ -811,7 +811,7 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="10"></ColumnDefinition>
-                                            <ColumnDefinition MaxWidth="230"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="240"></ColumnDefinition>
                                             <ColumnDefinition MaxWidth="125"></ColumnDefinition>
                                             <ColumnDefinition MaxWidth="100"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
@@ -1568,7 +1568,7 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="10"></ColumnDefinition>
-                                        <ColumnDefinition MaxWidth="370" MinWidth="370"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="400" MinWidth="410"></ColumnDefinition>
                                         <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
@@ -1685,7 +1685,7 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="10"></ColumnDefinition>
-                                        <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                        <ColumnDefinition MaxWidth="220" MinWidth="220"></ColumnDefinition>
                                         <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>

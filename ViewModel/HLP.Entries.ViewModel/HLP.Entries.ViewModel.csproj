@@ -85,22 +85,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_ListaPreco\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\wcf_Lista_Preco\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\wcf_Produto\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\Comercial\Lista_PrecoService.cs" />
     <Compile Include="Services\Comercial\ProdutoService.cs" />
     <Compile Include="Services\Gerais\FamiliaProdutoService.cs" />
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
@@ -220,17 +209,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\jurosService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\Modo_EntregaService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\multaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -256,11 +235,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\StIpiService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\TipoProdutoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -724,25 +698,6 @@
     <None Include="Service References\FidelidadeServico\serviceFidelidade5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\jurosService\serviceJuros.wsdl" />
-    <None Include="Service References\jurosService\serviceJuros.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -763,25 +718,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\multaService\serviceMulta.wsdl" />
-    <None Include="Service References\multaService\serviceMulta.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\multaService\serviceMulta1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\multaService\serviceMulta2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\multaService\serviceMulta3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\multaService\serviceMulta4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\multaService\serviceMulta5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PersonalidadeService\servicePersonalidade.wsdl" />
@@ -917,25 +853,6 @@
     <None Include="Service References\StIpiService\serviceStIpi5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto.wsdl" />
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\tipoServicoService\serviceTipoServico.wsdl" />
     <None Include="Service References\tipoServicoService\serviceTipoServico.xsd">
       <SubType>Designer</SubType>
@@ -1038,50 +955,6 @@
     <None Include="Service References\wcf_FamiliaProduto\wcf_FamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.wsdl" />
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.wsdl" />
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco7.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_Produto\wcf_Produto.wsdl" />
     <None Include="Service References\wcf_Produto\wcf_Produto.xsd">
       <SubType>Designer</SubType>
@@ -1120,9 +993,7 @@
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
-    <WCFMetadataStorage Include="Service References\jurosService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
-    <WCFMetadataStorage Include="Service References\multaService\" />
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
@@ -1130,15 +1001,12 @@
     <WCFMetadataStorage Include="Service References\StCofinsService\" />
     <WCFMetadataStorage Include="Service References\StIcmsService\" />
     <WCFMetadataStorage Include="Service References\StIpiService\" />
-    <WCFMetadataStorage Include="Service References\TipoProdutoService\" />
     <WCFMetadataStorage Include="Service References\tipoServicoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_documentoService\" />
     <WCFMetadataStorage Include="Service References\Tipo_OperacaoService\" />
     <WCFMetadataStorage Include="Service References\ufService\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
-    <WCFMetadataStorage Include="Service References\wcf_ListaPreco\" />
-    <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
     <WCFMetadataStorage Include="Service References\wcf_Produto\" />
   </ItemGroup>
   <ItemGroup>
@@ -1197,21 +1065,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Tipo_documentoService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TipoProdutoService\serviceTipoProduto.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TipoProdutoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TipoProdutoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TipoProdutoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1302,36 +1155,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Modo_EntregaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\serviceJuros.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\multaService\serviceMulta.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\multaService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\multaService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\multaService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1592,21 +1415,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_ListaPreco\serviceLista_Preco.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_ListaPreco\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_ListaPreco\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_ListaPreco\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_Produto\wcf_Produto.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -1617,21 +1425,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Produto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Lista_Preco\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1651,9 +1444,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Transportes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

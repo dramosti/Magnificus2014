@@ -91,7 +91,7 @@ namespace HLP.Wcf.Entries
             try
             {
                 iContatoRepository.BeginTransaction();
-                iContatoRepository.Copy(objContato.idContato ?? 0);
+                objContato.idContato = iContatoRepository.Copy(objContato.idContato ?? 0);
 
                 foreach (var item in objContato.lContato_EnderecoModel)
                 {

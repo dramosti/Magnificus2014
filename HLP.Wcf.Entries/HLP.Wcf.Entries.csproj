@@ -168,14 +168,17 @@
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_HlpPesqPadrao.svc" />
+    <Content Include="wcf_Juros.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_Moeda.svc" />
+    <Content Include="wcf_Multa.svc" />
     <Content Include="wcf_OperacoesDataBase.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_PlanoPagamento.svc" />
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_Rota.svc" />
     <Content Include="wcf_Site.svc" />
+    <Content Include="wcf_TipoProduto.svc" />
     <Content Include="wcf_Transportadora.svc" />
     <Content Include="wcf_UnidadeMedida.svc" />
     <Content Include="Web.config">
@@ -264,14 +267,17 @@
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_HlpPesqPadrao.cs" />
+    <Compile Include="Iwcf_Juros.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_Moeda.cs" />
+    <Compile Include="Iwcf_Multa.cs" />
     <Compile Include="Iwcf_OperacoesDataBase.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_PlanoPagamento.cs" />
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_Rota.cs" />
     <Compile Include="Iwcf_Site.cs" />
+    <Compile Include="Iwcf_TipoProduto.cs" />
     <Compile Include="Iwcf_Transportadora.cs" />
     <Compile Include="Iwcf_UnidadeMedida.cs" />
     <Compile Include="serviceAcesso.svc.cs">
@@ -504,11 +510,17 @@
     <Compile Include="wcf_HlpPesqPadrao.svc.cs">
       <DependentUpon>wcf_HlpPesqPadrao.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_Juros.svc.cs">
+      <DependentUpon>wcf_Juros.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Moeda.svc.cs">
       <DependentUpon>wcf_Moeda.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Multa.svc.cs">
+      <DependentUpon>wcf_Multa.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_OperacoesDataBase.svc.cs">
       <DependentUpon>wcf_OperacoesDataBase.svc</DependentUpon>
@@ -527,6 +539,9 @@
     </Compile>
     <Compile Include="wcf_Site.svc.cs">
       <DependentUpon>wcf_Site.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_TipoProduto.svc.cs">
+      <DependentUpon>wcf_TipoProduto.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Transportadora.svc.cs">
       <DependentUpon>wcf_Transportadora.svc</DependentUpon>

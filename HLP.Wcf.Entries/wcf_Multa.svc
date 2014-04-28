@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HLP.Wcf.Entries.wcf_Multa" CodeBehind="wcf_Multa.svc.cs" %>

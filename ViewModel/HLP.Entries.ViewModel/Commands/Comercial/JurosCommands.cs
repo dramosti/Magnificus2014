@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         BackgroundWorker bWorkerAcoes;
         JurosViewModel objViewModel;
-        jurosService.IserviceJurosClient servico = new jurosService.IserviceJurosClient();
-
+        JurosService objService;
         public JurosCommands(JurosViewModel objViewModel)
         {
 
+            objService = new JurosService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -52,12 +53,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         #region Implementação Commands
 
-       
+
         public void Save(object _panel)
         {
             try
             {
-                
                 objViewModel.SetFocusFirstTab(_panel as Panel);
                 bWorkerAcoes.DoWork += bwSalvar_DoWork;
                 bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -71,7 +71,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel.idJuros = this.servico.saveJuros(objJuros: this.objViewModel.currentModel);
+            this.objViewModel.currentModel.idJuros = this.objService.SaveObject(obj: this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -121,7 +121,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteJuros((int)this.objViewModel.currentModel.idJuros))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idJuros ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -150,7 +150,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
 
 
-           
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new JurosModel();
@@ -162,7 +162,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
 
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {            
+        {
             e.Result = e.Argument;
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -173,7 +173,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
-               
+
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
@@ -199,7 +199,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -250,7 +250,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 e.Result =
-                    this.servico.copyJuros(idJuros: (int)this.objViewModel.currentModel.idJuros);
+                    this.objService.CopyObject(id: this.objViewModel.currentID);
             }
             catch (Exception ex)
             {
@@ -290,10 +290,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         }
 
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
-        {           
-            this.objViewModel.currentModel = await
-                this.servico.getJurosAsync(idJuros: this.objViewModel.currentID);
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 

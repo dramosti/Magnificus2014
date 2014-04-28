@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
+using HLP.Entries.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     {
         MultaViewModel objViewModel;
         BackgroundWorker bWorkerAcoes;
-        multaService.IserviceMultaClient servico = new multaService.IserviceMultaClient();
+        MultaService objService;
         public MultaCommands(MultaViewModel objViewModel)
         {
 
             this.objViewModel = objViewModel;
+            objService = new MultaService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -71,8 +73,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
             // metodo de salvar -->
-            this.objViewModel.currentModel.idMultas = this.servico.saveMulta(
-                    objMulta: this.objViewModel.currentModel);
+            this.objViewModel.currentModel.idMultas = this.objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -122,7 +124,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.deleteMulta((int)this.objViewModel.currentModel.idMultas))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idMultas ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -150,9 +152,9 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-        
 
-       
+
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new MultasModel();
@@ -176,7 +178,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
-       
+
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
@@ -203,7 +205,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -254,8 +256,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentID = this.servico.copyMulta(idMulta:
-                    (int)this.objViewModel.currentModel.idMultas);
+                this.objViewModel.currentModel = this.objService.CopyObject(
+                    id: this.objViewModel.currentModel.idMultas ?? 0);
             }
             catch (Exception ex)
             {
@@ -296,12 +298,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         }
 
-        private async void getMulta(object sender, DoWorkEventArgs e)
+        private void getMulta(object sender, DoWorkEventArgs e)
         {
             try
             {
-                this.objViewModel.currentModel = await this.servico.getMultaAsync(
-                idMulta: this.objViewModel.currentID);
+                this.objViewModel.currentModel = this.objService.GetObject(
+                    id: this.objViewModel.currentID);
             }
             catch (Exception ex)
             {
