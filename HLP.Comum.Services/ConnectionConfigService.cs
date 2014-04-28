@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HLP.Comum.Services
+{
+    public class ConnectionConfigService
+    {
+
+        public DataTable GetServer()
+        {
+
+        }
+    }
+}

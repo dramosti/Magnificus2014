@@ -68,6 +68,9 @@
     <Compile Include="wdSenhaSupervisor.xaml.cs">
       <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WinConnectionConfig.xaml.cs">
+      <DependentUpon>WinConnectionConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsBase.cs" />
     <Compile Include="WinExclusionDenied.xaml.cs">
       <DependentUpon>WinExclusionDenied.xaml</DependentUpon>
@@ -105,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="wdSenhaSupervisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConnectionConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

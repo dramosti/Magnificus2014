@@ -48,9 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ConnectionConfigModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RecordsSqlModel.cs" />
+    <Compile Include="Repository\Implementation\ConnectionConfigRepository.cs" />
     <Compile Include="Repository\Implementation\OperacoesDataBaseRepository.cs" />
+    <Compile Include="Repository\Interfaces\IConnectionConfigRepository.cs" />
     <Compile Include="Repository\Interfaces\IOperacoesDataBaseRepository.cs" />
   </ItemGroup>
   <ItemGroup>
