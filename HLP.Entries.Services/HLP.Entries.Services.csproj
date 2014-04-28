@@ -54,10 +54,12 @@
     <Compile Include="Crm\DecisaoService.cs" />
     <Compile Include="Crm\FidelidadeService.cs" />
     <Compile Include="Crm\PersonalidadeService.cs" />
+    <Compile Include="Financeiro\AgenciaService.cs" />
     <Compile Include="Financeiro\BancoService.cs" />
     <Compile Include="Financeiro\Conta_BancariaService.cs" />
     <Compile Include="Financeiro\Descontos_AvistaModel.cs" />
     <Compile Include="Financeiro\Dia_pagamentoService.cs" />
+    <Compile Include="Fiscal\Carga_Trib_Media_StService.cs" />
     <Compile Include="Gerais\CalendarioService.cs" />
     <Compile Include="Gerais\CidadeService.cs" />
     <Compile Include="Gerais\Condicao_PagamentoService.cs" />
@@ -73,6 +75,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosHumanos\DepartamentoService.cs" />
     <Compile Include="RecursosHumanos\FuncionarioPontoService.cs" />
+    <Compile Include="Service References\wcf_Agencia\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Banco\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +96,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_CanalDeVenda\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_CargaTribMediaStIcms\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Cfop\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -273,10 +290,13 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Crm.FidelidadeModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Crm.PersonalidadeModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.AgenciaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Descontos_AvistaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Dia_pagamentoModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.Carga_trib_media_st_icmsModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Fiscal.CfopModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CalendarioModel1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Gerais.CidadeModel.datasource" />
@@ -296,6 +316,25 @@
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.RecursosHumanos.DepartamentoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.RotaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Transportes.TransportadorModel.datasource" />
+    <None Include="Service References\wcf_Agencia\wcf_Agencia.wsdl" />
+    <None Include="Service References\wcf_Agencia\wcf_Agencia.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Banco\wcf_Banco.wsdl" />
     <None Include="Service References\wcf_Banco\wcf_Banco.xsd">
       <SubType>Designer</SubType>
@@ -355,6 +394,38 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_CanalDeVenda\wcf_CanalDeVenda4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms.wsdl" />
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop.wsdl" />
+    <None Include="Service References\wcf_Cfop\wcf_Cfop.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Cidade\wcf_Cidade.wsdl" />
@@ -849,10 +920,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\wcf_Agencia\" />
     <WCFMetadataStorage Include="Service References\wcf_Banco\" />
     <WCFMetadataStorage Include="Service References\wcf_Calendarios\" />
     <WCFMetadataStorage Include="Service References\wcf_CamposBaseDados\" />
     <WCFMetadataStorage Include="Service References\wcf_CanalDeVenda\" />
+    <WCFMetadataStorage Include="Service References\wcf_CargaTribMediaStIcms\" />
+    <WCFMetadataStorage Include="Service References\wcf_Cfop\" />
     <WCFMetadataStorage Include="Service References\wcf_Cidade\" />
     <WCFMetadataStorage Include="Service References\wcf_Cliente\" />
     <WCFMetadataStorage Include="Service References\wcf_CondicaoPagamento\" />
@@ -1358,6 +1432,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Personalidade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Agencia\wcf_Agencia.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Agencia\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Agencia\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Agencia\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\wcf_CargaTribMediaStIcms.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_CargaTribMediaStIcms\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cfop\wcf_Cfop.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cfop\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cfop\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Cfop\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
