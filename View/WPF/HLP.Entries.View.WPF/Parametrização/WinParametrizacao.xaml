@@ -8,8 +8,13 @@
         x:Class="HLP.Entries.View.WPF.Parametrização.WinParametrizacao"
         Title="Parâmetros" Height="650" Width="1200">
     <runtime:WindowsBase.Resources>
-        <conv:PorcentagemConverter x:Key="porcentagemConverter"/>
-        <conv:MoedaConverter x:Key="MoedaConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <conv:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <conv:MoedaConverter x:Key="MoedaConverter"/>
+        </ResourceDictionary>        
     </runtime:WindowsBase.Resources>
     <DockPanel LastChildFill="True" >
         <TabControl  VerticalAlignment="Stretch" Margin="0,10,0,0">
@@ -451,11 +456,11 @@
                     </DockPanel>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Fiscal">
+            <TabItem Header="Fiscal" Margin="-6,0,2,-2">
                 <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <TabItem Header="Geral">
                         <AdornerDecorator>
-                            <Expander Header="Fiscal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True">
+                            <Expander Header="Fiscal" Style="{StaticResource ExpanderPadrao}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True">
                                 <DockPanel LastChildFill="True">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -1106,10 +1111,10 @@
                             <!--Label-->
                             
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Utilizar Função de Cartão Ponto?"/>
-                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Tolerância antes da entrada"/>
-                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Tolerância depois da Entrada"/>
-                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Tolerância antes da Saida"/>
-                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Tolerância depois da Saida"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Visibility="Collapsed" Text="Tolerância antes da entrada"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Visibility="Collapsed" Text="Tolerância depois da Entrada"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Visibility="Collapsed" Text="Tolerância antes da Saida"/>
+                            <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Visibility="Collapsed" Text="Tolerância depois da Saida"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Tolerância para contagem de Hora Extra"/>
                             <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Liberação das Horas Extras"/>
                             
@@ -1119,20 +1124,20 @@
                                                        IsChecked="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.stCartaoPonto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				                                       IsEnabled="{Binding bIsEnabled}"/>				                
                             <Components:HlpDatePicker 
-                                IsEnabled="{Binding bIsEnabled}"
+                                IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Height="20" Margin="0,0,0,3"
                                 Grid.Column="2" Grid.Row="2" ToolTip="Informar a tolerância máxima permitida antes da Entrada do funcionário." stFormatoDtPicker="time"                                
                                 xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaAntes, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>                            
                             <Components:HlpDatePicker 
-                                IsEnabled="{Binding bIsEnabled}"
+                                IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida depois da Entrada do funcionário." 
                                 stFormatoDtPicker="time"    xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaEntradaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:HlpDatePicker 
-                                IsEnabled="{Binding bIsEnabled}"
+                                IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida antes da Saída do funcionário." 
                                 stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaAntes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:HlpDatePicker 
-                                IsEnabled="{Binding bIsEnabled}"
+                                IsEnabled="{Binding bIsEnabled}" Visibility="Collapsed"
                                 Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida depois da Saída do funcionário." 
                                 stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaSaidaDepois, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
                             <Components:HlpDatePicker 

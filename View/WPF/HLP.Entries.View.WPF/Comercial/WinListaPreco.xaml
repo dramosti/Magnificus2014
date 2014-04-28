@@ -120,7 +120,7 @@
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Descrição da Lista de preço"/>
                                     <Components:HlpDatePicker
-                            Grid.Column="2" Grid.Row="4" 
+                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
                             xTextDate="{Binding currentModel.dListaPreco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                             IsEnabled="False"
                             stFormatoDtPicker="date"
