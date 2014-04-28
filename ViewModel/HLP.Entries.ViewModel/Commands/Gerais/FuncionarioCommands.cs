@@ -389,7 +389,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     this.GetHierarquiaFuncionario();
                 if (!this.bOpCancelada)
                 {
-                    MontaHierarquia(m: this.objViewModel.lObjHierarquia,
+                   this.objViewModel.lObjHierarquia.MontaHierarquia(m: this.objViewModel.lObjHierarquia,
                         tvi: ((TreeView)e.Argument).Items[0] as TreeViewItem);
                     e.Result = e.Argument;
                 }
@@ -439,31 +439,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.lObjHierarquia = this.objService.GetHierarquia(idFuncionario: this.objViewModel.currentID);
         }
 
-        private void MontaHierarquia(modelToTreeView m, TreeViewItem tvi)
-        {
-            if (m != null)
-            {
-                TreeViewItem i = null;
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
-                {
-                    i = new TreeViewItem
-                    {
-                        Header = m.id.ToString() + ". " + m.xDisplay
-                    };
-
-                    tvi.Items.Add(newItem: i);
-                    if (m.lFilhos != null)
-                    {
-
-                        foreach (modelToTreeView item in m.lFilhos)
-                        {
-                            this.MontaHierarquia(m: item, tvi: i);
-                        }
-                    }
-                }));
-
-            }
-        }
+         
 
     }
 }

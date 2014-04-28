@@ -17,7 +17,7 @@
     <UseSerializerForFaults>true</UseSerializerForFaults>
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies>
-      <ReferencedAssembly AssemblyName="HLP.Comum.Resources" />
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
       <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
     </ReferencedAssemblies>
     <ReferencedDataContractTypes />
@@ -28,15 +28,14 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="wcf_Lista_Preco.xsd" MetadataType="Schema" ID="66a58501-45a6-4178-8941-d35ba33ecd53" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd3" />
-    <MetadataFile FileName="wcf_Lista_Preco1.xsd" MetadataType="Schema" ID="a2c76781-676c-4a98-a830-23f723b2a657" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd2" />
     <MetadataFile FileName="wcf_Lista_Preco.wsdl" MetadataType="Wsdl" ID="743c8269-808c-4fd9-bc41-a8a9f609d436" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?wsdl" />
     <MetadataFile FileName="wcf_Lista_Preco2.xsd" MetadataType="Schema" ID="50032404-d533-446a-86d2-875afc6f3448" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd0" />
     <MetadataFile FileName="wcf_Lista_Preco3.xsd" MetadataType="Schema" ID="1378e015-5716-4b0e-a205-9bd3aca8048c" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd1" />
     <MetadataFile FileName="wcf_Lista_Preco4.xsd" MetadataType="Schema" ID="17313176-f08a-490f-9a2a-03d39cef7351" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd6" />
-    <MetadataFile FileName="wcf_Lista_Preco5.xsd" MetadataType="Schema" ID="23ca98ee-99fa-4bb7-9ca6-058fb463215a" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd7" />
     <MetadataFile FileName="wcf_Lista_Preco6.xsd" MetadataType="Schema" ID="d8f57b1e-3123-4187-a227-612135987aca" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd4" />
     <MetadataFile FileName="wcf_Lista_Preco7.xsd" MetadataType="Schema" ID="739642f9-727e-4dc8-99ad-d0e122652318" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd5" />
     <MetadataFile FileName="wcf_Lista_Preco.disco" MetadataType="Disco" ID="d8634ea0-93e0-40ef-a8cd-78650d0bdc92" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?disco" />
+    <MetadataFile FileName="wcf_Lista_Preco1.xsd" MetadataType="Schema" ID="a2c76781-676c-4a98-a830-23f723b2a657" SourceId="1" SourceUrl="http://192.168.9.33:8081/wcf/wcf_Lista_Preco.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

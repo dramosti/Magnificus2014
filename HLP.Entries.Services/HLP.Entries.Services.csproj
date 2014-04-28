@@ -46,6 +46,7 @@
     <Compile Include="Comercial\Canal_VendaService.cs" />
     <Compile Include="Comercial\ClienteService.cs" />
     <Compile Include="Comercial\ContatoService.cs" />
+    <Compile Include="Comercial\JurosService.cs" />
     <Compile Include="Components\Campos_Base_DadosService.cs" />
     <Compile Include="Financeiro\BancoService.cs" />
     <Compile Include="Financeiro\Conta_BancariaService.cs" />
@@ -151,6 +152,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_Juros\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\wcf_Moeda\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +228,7 @@
     <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView1.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Canal_vendaModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.Cliente_fornecedorModel.datasource" />
+    <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.JurosModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Comercial.ProdutoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.BancoModel.datasource" />
     <None Include="Properties\DataSources\HLP.Entries.Model.Models.Financeiro.Conta_bancariaModel.datasource" />
@@ -259,6 +266,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Banco\wcf_Banco4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Banco\wcf_Banco5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Calendarios\wcf_Calendario.wsdl" />
@@ -535,6 +545,22 @@
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Juros\wcf_Juros.wsdl" />
+    <None Include="Service References\wcf_Juros\wcf_Juros.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Juros\wcf_Juros1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Juros\wcf_Juros2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Juros\wcf_Juros3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Juros\wcf_Juros4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_Moeda\wcf_Moeda.wsdl" />
     <None Include="Service References\wcf_Moeda\wcf_Moeda.xsd">
       <SubType>Designer</SubType>
@@ -694,6 +720,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Empresa\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionarios\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
+    <WCFMetadataStorage Include="Service References\wcf_Juros\" />
     <WCFMetadataStorage Include="Service References\wcf_Moeda\" />
     <WCFMetadataStorage Include="Service References\wcf_ParametroEmpresa\" />
     <WCFMetadataStorage Include="Service References\wcf_PesquisaRapida\" />
@@ -1074,6 +1101,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Cidade\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Juros\wcf_Juros.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Juros\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Juros\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Juros\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

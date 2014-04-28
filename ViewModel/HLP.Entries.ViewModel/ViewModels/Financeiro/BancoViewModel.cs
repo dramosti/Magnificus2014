@@ -1,11 +1,14 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.ViewModel.Commands.Financeiro;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.ViewModels.Financeiro
@@ -23,12 +26,42 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         public ICommand commandPesquisar { get; set; }
         public ICommand navegarCommand { get; set; }
         #endregion
-        
+        BancoCommands command;
+        public BackgroundWorker bwHierarquia;
 
         public BancoViewModel()
         {
-            BancoCommands comm = new BancoCommands(objViewModel: this);
-        }       
+            command = new BancoCommands(objViewModel: this);
+        }
+
+        private object _hierarquiaConta;
+        public object hierarquiaConta
+        {
+            get { return _hierarquiaConta; }
+            set
+            {
+                _hierarquiaConta = value;
+                base.NotifyPropertyChanged(propertyName: "hierarquiaConta");
+            }
+        }
+
+        private modelToTreeView _lObjHierarquia;
+        public modelToTreeView lObjHierarquia
+        {
+            get { return _lObjHierarquia; }
+            set { _lObjHierarquia = value; }
+        }
+             
+        public bool bTreeCarregada = true;
+
+
+        public void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (!bTreeCarregada)
+            {
+                this.command.MontraTreeView();
+            }
+        }
               
     }
 }

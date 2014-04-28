@@ -220,11 +220,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\jurosService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\Modo_EntregaService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -398,6 +393,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\HLP.Base.ClassesBases.PesquisaPadraoModelContract.datasource" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.HlpButtonHierarquiaStruct.datasource" />
+    <None Include="Properties\DataSources\HLP.Components.Model.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Components.PesquisaPadraoModelContract.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Resources.Models.modelToTreeView.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Resources.RecursosBases.HlpButtonHierarquiaStruct.datasource" />
@@ -720,25 +717,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\FidelidadeServico\serviceFidelidade5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros.wsdl" />
-    <None Include="Service References\jurosService\serviceJuros.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\jurosService\serviceJuros5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
@@ -1074,9 +1052,6 @@
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1121,7 +1096,6 @@
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
     <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
-    <WCFMetadataStorage Include="Service References\jurosService\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
     <WCFMetadataStorage Include="Service References\multaService\" />
     <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
@@ -1303,21 +1277,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Modo_EntregaService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\serviceJuros.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\jurosService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -55,7 +55,7 @@
                         <GridSplitter Grid.Row="1" HorizontalAlignment="Center" Height="2.5" VerticalAlignment="Stretch" ResizeDirection="Rows" Width="200" Background="#FF4774B5"/>
                         <DockPanel LastChildFill="True">
                             <StackPanel DockPanel.Dock="Top" Height="40" Margin="5,0,0,3" Orientation="Horizontal">
-                                <Components:HlpNavigation x:Name="navHierarquia"
+                                <Components:HlpNavigation x:Name="navHierarquia" 
                                                           lIdsHierarquia="{Binding lIdsHierarquia}"
                                                           commButton="{Binding commandPesquisar}" 
                                                           selectedId="{Binding currentID}"></Components:HlpNavigation>
@@ -293,8 +293,7 @@
                                     IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     AutoGenerateColumns="False" 
                                     SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
-                                    CellEditEnding="gridItens_CellEditEnding"
-                        >
+                                    CellEditEnding="gridItens_CellEditEnding">
                                     <DataGrid.CanUserDeleteRows>
                                         <MultiBinding Converter="{StaticResource canUserAddListaItensConv}">
                                             <Binding Path="visAumentoVlr"></Binding>
@@ -330,8 +329,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
                                                     <TextBlock Text="{Binding Path=idProduto, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lresultProdutos}}"
-                                                   />
+                                            ConverterParameter={StaticResource lresultProdutos}}"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                             <DataGridTemplateColumn.CellEditingTemplate>

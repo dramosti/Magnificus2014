@@ -168,6 +168,7 @@
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
     <Content Include="wcf_HlpPesqPadrao.svc" />
+    <Content Include="wcf_Juros.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
     <Content Include="wcf_Moeda.svc" />
     <Content Include="wcf_OperacoesDataBase.svc" />
@@ -264,6 +265,7 @@
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
     <Compile Include="Iwcf_HlpPesqPadrao.cs" />
+    <Compile Include="Iwcf_Juros.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
     <Compile Include="Iwcf_Moeda.cs" />
     <Compile Include="Iwcf_OperacoesDataBase.cs" />
@@ -503,6 +505,9 @@
     </Compile>
     <Compile Include="wcf_HlpPesqPadrao.svc.cs">
       <DependentUpon>wcf_HlpPesqPadrao.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Juros.svc.cs">
+      <DependentUpon>wcf_Juros.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>

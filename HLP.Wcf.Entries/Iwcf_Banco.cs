@@ -23,5 +23,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int Copy(HLP.Entries.Model.Models.Financeiro.BancoModel Objeto);
+
+        [OperationContract]
+        HLP.Components.Model.Models.modelToTreeView GetHierarquia(int idBanco);
     }
 }

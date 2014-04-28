@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" />
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Banco.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
   <xs:element name="Save">
     <xs:complexType>
       <xs:sequence>
@@ -54,6 +55,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="CopyResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHierarquia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idBanco" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHierarquiaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" minOccurs="0" name="GetHierarquiaResult" nillable="true" type="q5:modelToTreeView" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

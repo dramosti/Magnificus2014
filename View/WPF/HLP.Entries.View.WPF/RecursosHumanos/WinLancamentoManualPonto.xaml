@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-             xmlns:convertLocal="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+             xmlns:convertComum="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
              xmlns:conv ="clr-namespace:HLP.Entries.View.WPF.Converters"
              xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
              mc:Ignorable="d" x:Name="winLancamentoManual"            
@@ -16,9 +16,10 @@
                 <scm:SortDescription PropertyName="idSequenciaInterna"/>
             </CollectionViewSource.SortDescriptions>
         </CollectionViewSource>
-        <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
-        <conv:HoraMinConverter x:Key="horaminConverter"/>
-        <convertLocal:TimeSpanToString x:Key="tstoString"/>
+        <conv:VerifyCanChangeHourConverter x:Key="VerifyCanChangeHourConverter"/>
+        <conv:ReturnValueSequenciaPontoConverter x:Key="ReturnValueSequenciaPontoConverter"/>
+        
+        <convertComum:TimeSpanToString x:Key="tstoString"/>
         <Style x:Key="ButtonSalvar" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
@@ -253,7 +254,18 @@
                     <DataGridTextColumn x:Name="clSeq"  FocusManager.FocusedElement="{Binding ElementName= clSeq}"  Header="Sequencia" Width="70"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                    <DataGridTextColumn Header="Hora Ponto" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
+                    <DataGridTextColumn IsReadOnly="True" Header="Ação" Width="70" Binding="{Binding idSequenciaInterna, Converter={StaticResource ReturnValueSequenciaPontoConverter}}" />
+                    <DataGridTextColumn Header="Hora Ponto" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" >
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding idFuncionarioControleHorasPonto, Converter={StaticResource VerifyCanChangeHourConverter}}" Value="False">
+                                        <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Hora alterada" Width="82" Binding="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
                     <DataGridTextColumn   Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"

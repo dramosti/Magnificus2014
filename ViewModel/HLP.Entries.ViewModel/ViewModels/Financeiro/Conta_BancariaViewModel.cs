@@ -36,7 +36,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         }
 
         private object _hierarquiaConta;
-
         public object hierarquiaConta
         {
             get { return _hierarquiaConta; }
@@ -48,7 +47,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         }
 
         private modelToTreeView _lObjHierarquia;
-
         public modelToTreeView lObjHierarquia
         {
             get { return _lObjHierarquia; }

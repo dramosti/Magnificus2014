@@ -84,7 +84,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -97,6 +99,7 @@
     <Compile Include="ClassesBases\BindingProxy.cs" />
     <Compile Include="ClassesBases\DateTimeEnumerator.cs" />
     <Compile Include="ClassesBases\InternetCS.cs" />
+    <Compile Include="ClassesBases\MessageHlp.cs" />
     <Compile Include="ClassesBases\modelBase.cs" />
     <Compile Include="ClassesBases\ModelDefinition.cs" />
     <Compile Include="ClassesBases\ModelProperty.cs" />
