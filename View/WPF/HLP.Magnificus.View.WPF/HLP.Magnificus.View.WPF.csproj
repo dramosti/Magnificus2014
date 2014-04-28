@@ -295,6 +295,10 @@
       <Project>{f6e2fd5e-5581-4362-a072-fce5099cccc1}</Project>
       <Name>HLP.Entries.View.WPF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Report.View.WPF\HLP.Report.View.WPF.csproj">
+      <Project>{a5c513ac-4b56-4d2a-a6d8-ad308a26690c}</Project>
+      <Name>HLP.Report.View.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

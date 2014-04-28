@@ -128,7 +128,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
-                
+
 
                 bool bModificado = false;
                 bModificado = this.SalvaTamanhoMensagensWcf();
@@ -163,23 +163,29 @@ namespace HLP.Magnificus.View.WPF
 
                     WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
                     wdLogin.ShowDialog();
+                    if (wdLogin.ViewModel.bLogado)
+                    {
+                        wd._viewModel.CarregaDadosLogin();
+                        FrameworkElement.LanguageProperty.OverrideMetadata(
+                        typeof(FrameworkElement),
+                        new FrameworkPropertyMetadata(
+                            XmlLanguage.GetLanguage(
+                            CultureInfo.CurrentCulture.IetfLanguageTag)));
 
-                    wd._viewModel.CarregaDadosLogin();
-                    FrameworkElement.LanguageProperty.OverrideMetadata(
-                    typeof(FrameworkElement),
-                    new FrameworkPropertyMetadata(
-                        XmlLanguage.GetLanguage(
-                        CultureInfo.CurrentCulture.IetfLanguageTag)));
+                        //BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
+                        //bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
+                        //bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
+                        //bwParametrosEmpresa.RunWorkerAsync();
 
-                    //BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
-                    //bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
-                    //bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
-                    //bwParametrosEmpresa.RunWorkerAsync();
+                        base.OnStartup(e);
+                        wd.WindowState = WindowState.Maximized;
+                        wd.Show();
+                    }
+                    else
+                    {
+                        Application.Current.Shutdown();
+                    }
 
-                    base.OnStartup(e);
-                    wd.WindowState = WindowState.Maximized;
-                    wd.Show();                   
-                   
                 }
             }
             catch (Exception ex)

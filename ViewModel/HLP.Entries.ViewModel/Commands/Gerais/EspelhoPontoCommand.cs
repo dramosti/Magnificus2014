@@ -15,6 +15,7 @@ using System.Windows;
 using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Entries.Services.RecursosHumanos;
+using HLP.Base.Modules;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -66,6 +67,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandNavegaData = new RelayCommand(execute: paramExec => this.NavegaData(param: paramExec),
                 canExecute: paramCan => this.CanCarregaFormulario());
 
+            this.objViewModel.commandImprimir = new RelayCommand(execute: paramExec => this.PrevirewReport(),
+               canExecute: paramCan => this.CanCarregaFormulario());
+
 
             foreach (Control ctr in objViewModel.lControlsPonto)
             {
@@ -81,6 +85,19 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
 
             }
+        }
+
+
+
+        public void PrevirewReport()
+        {
+            //1 - GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto) // trazer horarios do dia
+            //1-1 - GetHorasTrabalhadasDia
+            //1-2 - GetHorasAtrabalharDia
+
+
+            Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
+            winReport.ShowDialog();
         }
 
         public void CarragaFormulario()
