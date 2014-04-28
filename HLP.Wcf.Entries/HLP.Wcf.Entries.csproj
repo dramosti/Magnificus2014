@@ -93,6 +93,7 @@
     <Content Include="camposBaseDadosService.svc" />
     <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
+    <Content Include="wcf_Agencia.svc" />
     <Content Include="wcf_Banco.svc" />
     <Content Include="wcf_Calendario.svc" />
     <Content Include="serviceCanal_Venda.svc" />
@@ -120,6 +121,7 @@
     <Content Include="wcf_ContaBancaria.svc" />
     <Content Include="wcf_Contato.svc" />
     <Content Include="wcf_Conversao.svc" />
+    <Content Include="wcf_Decisao.svc" />
     <Content Include="wcf_Departamento.svc" />
     <Content Include="wcf_Deposito.svc" />
     <Content Include="wcf_EmpresaParametros.svc" />
@@ -164,6 +166,7 @@
     <Content Include="wcf_DiaPagamento.svc" />
     <Content Include="wcf_Empresa.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
+    <Content Include="wcf_Fidelidade.svc" />
     <Content Include="wcf_FillComboBox.svc" />
     <Content Include="wcf_Funcionario.svc" />
     <Content Include="wcf_Funcionario_Controle_Horas_Ponto.svc" />
@@ -173,6 +176,7 @@
     <Content Include="wcf_Moeda.svc" />
     <Content Include="wcf_Multa.svc" />
     <Content Include="wcf_OperacoesDataBase.svc" />
+    <Content Include="wcf_Personalidade.svc" />
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_PlanoPagamento.svc" />
     <Content Include="wcf_Produto.svc" />
@@ -192,6 +196,7 @@
     <Compile Include="IcamposBaseDadosService.cs" />
     <Compile Include="IserviceAcesso.cs" />
     <Compile Include="IserviceAgencia.cs" />
+    <Compile Include="Iwcf_Agencia.cs" />
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
     <Compile Include="IserviceCanal_Venda.cs" />
@@ -257,12 +262,14 @@
     <Compile Include="Iwcf_ContaBancaria.cs" />
     <Compile Include="Iwcf_Contato.cs" />
     <Compile Include="Iwcf_Conversao.cs" />
+    <Compile Include="Iwcf_Decisao.cs" />
     <Compile Include="Iwcf_Departamento.cs" />
     <Compile Include="Iwcf_Deposito.cs" />
     <Compile Include="Iwcf_DescontoAVista.cs" />
     <Compile Include="Iwcf_DiaPagamento.cs" />
     <Compile Include="Iwcf_Empresa.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
+    <Compile Include="Iwcf_Fidelidade.cs" />
     <Compile Include="Iwcf_FillComboBox.cs" />
     <Compile Include="Iwcf_Funcionario.cs" />
     <Compile Include="Iwcf_Funcionario_Controle_Horas_Ponto.cs" />
@@ -272,6 +279,7 @@
     <Compile Include="Iwcf_Moeda.cs" />
     <Compile Include="Iwcf_Multa.cs" />
     <Compile Include="Iwcf_OperacoesDataBase.cs" />
+    <Compile Include="Iwcf_Personalidade.cs" />
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_PlanoPagamento.cs" />
     <Compile Include="Iwcf_Produto.cs" />
@@ -285,6 +293,9 @@
     </Compile>
     <Compile Include="serviceAgencia.svc.cs">
       <DependentUpon>serviceAgencia.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Agencia.svc.cs">
+      <DependentUpon>wcf_Agencia.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Banco.svc.cs">
       <DependentUpon>wcf_Banco.svc</DependentUpon>
@@ -366,6 +377,9 @@
     </Compile>
     <Compile Include="wcf_Conversao.svc.cs">
       <DependentUpon>wcf_Conversao.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Decisao.svc.cs">
+      <DependentUpon>wcf_Decisao.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Departamento.svc.cs">
       <DependentUpon>wcf_Departamento.svc</DependentUpon>
@@ -498,6 +512,9 @@
     <Compile Include="wcf_FamiliaProduto.svc.cs">
       <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_Fidelidade.svc.cs">
+      <DependentUpon>wcf_Fidelidade.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_FillComboBox.svc.cs">
       <DependentUpon>wcf_FillComboBox.svc</DependentUpon>
     </Compile>
@@ -524,6 +541,9 @@
     </Compile>
     <Compile Include="wcf_OperacoesDataBase.svc.cs">
       <DependentUpon>wcf_OperacoesDataBase.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Personalidade.svc.cs">
+      <DependentUpon>wcf_Personalidade.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_PesquisaRapida.svc.cs">
       <DependentUpon>wcf_PesquisaRapida.svc</DependentUpon>

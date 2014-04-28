@@ -127,21 +127,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\decisaoService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\FidelidadeServico\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\PersonalidadeService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\Situacao_tributaria_pisService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -600,25 +585,6 @@
     <None Include="Service References\contato_Service\serviceContato5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\decisaoService\serviceDecisao.wsdl" />
-    <None Include="Service References\decisaoService\serviceDecisao.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\decisaoService\serviceDecisao1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\decisaoService\serviceDecisao2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\decisaoService\serviceDecisao3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\decisaoService\serviceDecisao4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\decisaoService\serviceDecisao5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\empresaService\serviceEmpresa.wsdl" />
     <None Include="Service References\empresaService\serviceEmpresa.xsd">
       <SubType>Designer</SubType>
@@ -679,25 +645,6 @@
     <None Include="Service References\Familia_ProdutoService\serviceFamiliaProduto5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade.wsdl" />
-    <None Include="Service References\FidelidadeServico\serviceFidelidade.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Modo_EntregaService\HLP.Entries.ViewModel.Modo_EntregaService.Modos_entregaModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -718,25 +665,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Modo_EntregaService\serviceModoEntrega5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade.wsdl" />
-    <None Include="Service References\PersonalidadeService\servicePersonalidade.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Ramo_AtividadeService\serviceRamoAtividade.wsdl" />
@@ -988,13 +916,10 @@
     <WCFMetadataStorage Include="Service References\CodigoIcmsService\" />
     <WCFMetadataStorage Include="Service References\condicaoEntregaService\" />
     <WCFMetadataStorage Include="Service References\contato_Service\" />
-    <WCFMetadataStorage Include="Service References\decisaoService\" />
     <WCFMetadataStorage Include="Service References\empresaService\" />
     <WCFMetadataStorage Include="Service References\fabricanteService\" />
     <WCFMetadataStorage Include="Service References\Familia_ProdutoService\" />
-    <WCFMetadataStorage Include="Service References\FidelidadeServico\" />
     <WCFMetadataStorage Include="Service References\Modo_EntregaService\" />
-    <WCFMetadataStorage Include="Service References\PersonalidadeService\" />
     <WCFMetadataStorage Include="Service References\Ramo_AtividadeService\" />
     <WCFMetadataStorage Include="Service References\setrService\" />
     <WCFMetadataStorage Include="Service References\Situacao_tributaria_pisService\" />
@@ -1250,36 +1175,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\PersonalidadeService\servicePersonalidade.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PersonalidadeService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PersonalidadeService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\PersonalidadeService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\FidelidadeServico\serviceFidelidade.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\FidelidadeServico\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\FidelidadeServico\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\FidelidadeServico\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\Carga_trib_media_st_icmsServico\serviceCarga_trib_media_st_icms.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -1365,21 +1260,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\contato_Service\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\serviceDecisao.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\decisaoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

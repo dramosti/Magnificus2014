@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d36e5a4e-87a1-4b39-b4d2-ebe9a41ca592" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Fidelidade.wsdl" MetadataType="Wsdl" ID="c4589c39-0bc0-4eef-972e-a46bc4eb100c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?wsdl" />
+    <MetadataFile FileName="wcf_Fidelidade.xsd" MetadataType="Schema" ID="97b9d1c1-67e1-4785-b799-ac99a6f1a814" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Fidelidade.disco" MetadataType="Disco" ID="75216a6b-c098-4714-8209-bf12e321e0db" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?disco" />
+    <MetadataFile FileName="wcf_Fidelidade1.xsd" MetadataType="Schema" ID="5b82d523-72f1-43a7-8af1-9799bc346401" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Fidelidade2.xsd" MetadataType="Schema" ID="86119456-4e62-4ed7-89e5-f438d529f803" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Fidelidade3.xsd" MetadataType="Schema" ID="2a973849-d4c4-4d4f-9504-7418e3530acc" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Fidelidade4.xsd" MetadataType="Schema" ID="3bd0a439-ac28-47c1-95b5-1274be8d8074" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Fidelidade.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
