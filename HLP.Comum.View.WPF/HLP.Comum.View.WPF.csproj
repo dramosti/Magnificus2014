@@ -145,6 +145,10 @@
       <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
       <Name>HLP.ComumView.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
+      <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>
+      <Name>HLP.Resources.View.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
