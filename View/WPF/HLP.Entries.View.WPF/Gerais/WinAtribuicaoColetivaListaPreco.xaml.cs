@@ -66,9 +66,8 @@ namespace HLP.Entries.View.WPF.Gerais
                 this.gridItens.Columns[6].Visibility =
                 this.gridItens.Columns[7].Visibility = System.Windows.Visibility.Hidden;
 
-            txtPor.Caption = "Por";
-            txtPor.Width = 100;
-            txtPor.WidthLabel = 50;
+            txtPor.ToolTip = "Por";
+            txtPor.Width = 100;            
 
             switch (this.cbxCampos.SelectedIndex)
             {
