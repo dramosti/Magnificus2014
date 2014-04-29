@@ -76,6 +76,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
+
         private string _xNameConexao;
         public string xNameConexao
         {
