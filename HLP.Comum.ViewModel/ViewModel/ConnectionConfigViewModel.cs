@@ -19,8 +19,6 @@ namespace HLP.Comum.ViewModel.ViewModel
         public ICommand TestarCommand { get; set; }
         public ICommand AddCommand { get; set; }
 
-
-
         public ConnectionConfigViewModel()
         {
             command = new ConnectionConfigCommand(this);

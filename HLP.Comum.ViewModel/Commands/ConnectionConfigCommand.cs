@@ -21,12 +21,16 @@ namespace HLP.Comum.ViewModel.Commands
             this.viewModel.currentModel = new Model.Models.ConnectionConfigModel();
             servico = new ConnectionConfigService();
 
-
             this.viewModel.TestarCommand = new RelayCommand(execute: i => this.TestConnection(),
-                canExecute: i => this.viewModel.currentModel.ConnectionStringCompleted != "");
+             canExecute: i => this.viewModel.currentModel.ConnectionStringCompleted != "");
+
+            this.viewModel.AddCommand = new RelayCommand(execute: i => this.AddConexao(),
+             canExecute: i => this.viewModel.currentModel.ConnectionStringCompleted != "");
 
             this.viewModel.bWorkerPesquisa.DoWork += bWorkerPesquisa_DoWork;
             this.viewModel.bWorkerPesquisa.RunWorkerAsync();
+
+            this.viewModel.lConexoes = new System.Collections.ObjectModel.ObservableCollection<Model.Models.ConnectionConfigModel>();
 
 
         }
@@ -77,8 +81,6 @@ namespace HLP.Comum.ViewModel.Commands
 
 
         }
-
-
         public void TestConnection()
         {
             try
@@ -104,5 +106,10 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
 
+        public void AddConexao() 
+        {
+            this.viewModel.lConexoes.Add(this.viewModel.currentModel);
+            this.viewModel.currentModel = new Model.Models.ConnectionConfigModel();
+        }     
     }
 }

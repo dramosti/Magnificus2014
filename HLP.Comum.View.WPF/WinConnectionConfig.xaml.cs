@@ -33,5 +33,8 @@ namespace HLP.Comum.View.WPF
             get { return this.DataContext as ConnectionConfigViewModel; }
             set { this.DataContext = value; }
         }
+
+
+
     }
 }

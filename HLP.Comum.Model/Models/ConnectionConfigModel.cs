@@ -10,7 +10,6 @@ namespace HLP.Comum.Model.Models
     [Serializable]
     public partial class ConnectionConfigModel : modelBase
     {
-
         private string _xServerName;
         public string xServerName
         {
@@ -88,7 +87,6 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        [NonSerialized]
         public string ConnectionString
         {
             get
@@ -107,7 +105,6 @@ namespace HLP.Comum.Model.Models
                 return "";
             }
         }
-        [NonSerialized]
         public string ConnectionStringCompleted
         {
             get
@@ -128,8 +125,6 @@ namespace HLP.Comum.Model.Models
                 return "";
             }
         }
-
-
     }
 
     public partial class ConnectionConfigModel
