@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Comum.ViewModel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,17 @@ namespace HLP.Comum.View.WPF
         public WinConnectionConfig()
         {
             InitializeComponent();
+            this.ViewModel = new ConnectionConfigViewModel();
+
+            txtPassword.LostFocus += this.ViewModel.txtPassword_LostFocus;
+        }
+
+       
+
+        public ConnectionConfigViewModel ViewModel
+        {
+            get { return this.DataContext as ConnectionConfigViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }

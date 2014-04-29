@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace HLP.Comum.Model.Models
 {
     public class ConnectionConfigModel : modelBase
-    {
+    {        
 
         private string _xServerName;
-
         public string xServerName
         {
             get { return _xServerName; }
@@ -24,7 +23,6 @@ namespace HLP.Comum.Model.Models
 
 
         private bool _Autentication = false;
-
         public bool Autentication
         {
             get { return _Autentication; }
@@ -37,7 +35,6 @@ namespace HLP.Comum.Model.Models
 
 
         private string _xLogin;
-
         public string xLogin
         {
             get { return _xLogin; }
@@ -50,7 +47,6 @@ namespace HLP.Comum.Model.Models
 
 
         private string _xPassword;
-
         public string xPassword
         {
             get { return _xPassword; }
@@ -63,7 +59,6 @@ namespace HLP.Comum.Model.Models
 
         
         private string _xFile;
-
         public string xFile
         {
             get { return _xFile; }
@@ -71,6 +66,32 @@ namespace HLP.Comum.Model.Models
             {
                 _xFile = value;
                 base.NotifyPropertyChanged(propertyName: "xFile");
+            }
+        }
+
+        
+        private string _xBaseDados;
+        public string xBaseDados
+        {
+            get { return _xBaseDados; }
+            set
+            {
+                _xBaseDados = value;
+                base.NotifyPropertyChanged(propertyName: "xBaseDados");
+            }
+        }
+
+
+        
+        private string _xNameConexao;
+
+        public string xNameConexao
+        {
+            get { return _xNameConexao; }
+            set
+            {
+                _xNameConexao = value;
+                base.NotifyPropertyChanged(propertyName: "xNameConexao");
             }
         }
         

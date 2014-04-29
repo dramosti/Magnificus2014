@@ -125,9 +125,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
+      <Project>{178FDD5C-D3E5-4809-87C6-3A69C0055BC6}</Project>
+      <Name>HLP.Comum.View</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
       <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
