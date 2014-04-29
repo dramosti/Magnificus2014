@@ -1,13 +1,13 @@
 ﻿using HLP.Base.ClassesBases;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    [Serializable]
     public partial class ConnectionConfigModel : modelBase
     {
         private string _xServerName;
@@ -154,4 +154,11 @@ namespace HLP.Comum.Model.Models
             }
         }
     }
+
+    [Serializable]
+    public class MagnificusBaseConfiguration
+    {
+        public ObservableCollection<ConnectionConfigModel> conexoes { get; set; }
+    }
+
 }

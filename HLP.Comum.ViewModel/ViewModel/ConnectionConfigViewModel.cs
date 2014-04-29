@@ -16,7 +16,7 @@ namespace HLP.Comum.ViewModel.ViewModel
     {
         ConnectionConfigCommand command;
         public ICommand saveCommand { get; set; }
-        public ICommand TestarCommand { get; set; }
+        public ICommand TestarCommand { get; set; }        
         public ICommand AddCommand { get; set; }
 
         public ConnectionConfigViewModel()
@@ -35,7 +35,6 @@ namespace HLP.Comum.ViewModel.ViewModel
             }
         }
 
-
         private ObservableCollection<string> _bases;
         public ObservableCollection<string> bases
         {
@@ -46,9 +45,8 @@ namespace HLP.Comum.ViewModel.ViewModel
                 base.NotifyPropertyChanged(propertyName: "bases");
             }
         }
-        
              
-        private ObservableCollection<ConnectionConfigModel> _lConexoes;
+        private ObservableCollection<ConnectionConfigModel> _lConexoes = new ObservableCollection<ConnectionConfigModel>();
         public ObservableCollection<ConnectionConfigModel> lConexoes
         {
             get { return _lConexoes; }
@@ -58,7 +56,6 @@ namespace HLP.Comum.ViewModel.ViewModel
                 base.NotifyPropertyChanged(propertyName: "lConexoes");
             }
         }
-        
 
         public void txtPassword_LostFocus(object sender, RoutedEventArgs e)
         {

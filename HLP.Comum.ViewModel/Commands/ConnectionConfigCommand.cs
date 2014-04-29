@@ -1,4 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
+using HLP.Comum.Model.Models;
 using HLP.Comum.Services;
 using HLP.Comum.ViewModel.ViewModel;
 using System;
@@ -15,6 +17,7 @@ namespace HLP.Comum.ViewModel.Commands
     {
         public ConnectionConfigViewModel viewModel { get; set; }
         ConnectionConfigService servico;
+
         public ConnectionConfigCommand(ConnectionConfigViewModel viewModel)
         {
             this.viewModel = viewModel;
@@ -22,17 +25,40 @@ namespace HLP.Comum.ViewModel.Commands
             servico = new ConnectionConfigService();
 
             this.viewModel.TestarCommand = new RelayCommand(execute: i => this.TestConnection(),
-             canExecute: i => this.viewModel.currentModel.ConnectionStringCompleted != "");
+             canExecute: i => CanTesteAndADD());
 
             this.viewModel.AddCommand = new RelayCommand(execute: i => this.AddConexao(),
-             canExecute: i => this.viewModel.currentModel.ConnectionStringCompleted != "");
+             canExecute: i => CanTesteAndADD());
+
+            this.viewModel.saveCommand = new RelayCommand(execute: i => this.SaveRegistros(),
+            canExecute: i => true);
 
             this.viewModel.bWorkerPesquisa.DoWork += bWorkerPesquisa_DoWork;
             this.viewModel.bWorkerPesquisa.RunWorkerAsync();
 
-            this.viewModel.lConexoes = new System.Collections.ObjectModel.ObservableCollection<Model.Models.ConnectionConfigModel>();
+            if (System.IO.File.Exists(Pastas.Path_BasesConfiguradas))
+            {
+                MagnificusBaseConfiguration objResult = SerializeClassToXml.DeserializeClasse<Model.Models.MagnificusBaseConfiguration>(Pastas.Path_BasesConfiguradas);
+                if (objResult != null)
+                {
+                    this.viewModel.lConexoes = new System.Collections.ObjectModel.ObservableCollection<ConnectionConfigModel>(objResult.conexoes);
+                }
+            }
+        }
 
 
+        public void SaveRegistros()
+        {
+            try
+            {
+                MagnificusBaseConfiguration objResultToSave = new MagnificusBaseConfiguration();
+                objResultToSave.conexoes = this.viewModel.lConexoes;
+                SerializeClassToXml.SerializeClasse<MagnificusBaseConfiguration>(objResultToSave, Pastas.Path_BasesConfiguradas);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void bWorkerPesquisa_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
@@ -106,10 +132,18 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
 
-        public void AddConexao() 
+        public void AddConexao()
         {
             this.viewModel.lConexoes.Add(this.viewModel.currentModel);
             this.viewModel.currentModel = new Model.Models.ConnectionConfigModel();
-        }     
+        }
+
+        bool CanTesteAndADD()
+        {
+            if (this.viewModel.currentModel.ConnectionStringCompleted != "" && !(string.IsNullOrEmpty(this.viewModel.currentModel.xBaseDados)) && !(string.IsNullOrEmpty(this.viewModel.currentModel.xNameConexao)))
+                return true;
+            else
+                return false;
+        }
     }
 }

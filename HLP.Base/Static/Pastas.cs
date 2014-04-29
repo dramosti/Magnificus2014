@@ -57,5 +57,10 @@ namespace HLP.Base.Static
             }
         }
 
+        public static string Path_BasesConfiguradas
+        {
+            get { return @"\\hlpsrv\G\CSharp\Desenvolvimento\Projetos\Magnificus\BaseConfig\bases.xml"; }
+        }
+
     }
 }

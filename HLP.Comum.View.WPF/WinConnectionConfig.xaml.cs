@@ -25,6 +25,8 @@ namespace HLP.Comum.View.WPF
             InitializeComponent();
             this.ViewModel = new ConnectionConfigViewModel();
 
+            
+
             txtPassword.LostFocus += this.ViewModel.txtPassword_LostFocus;
         }
 
