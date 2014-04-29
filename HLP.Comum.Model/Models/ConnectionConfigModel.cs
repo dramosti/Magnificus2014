@@ -10,7 +10,11 @@ namespace HLP.Comum.Model.Models
 {
     public partial class ConnectionConfigModel : modelBase
     {
-        private string _xServerName;
+        public ConnectionConfigModel() : base("") 
+        {
+            this._xServerName = "";
+        }
+        private string _xServerName= "";
         public string xServerName
         {
             get { return _xServerName; }
@@ -32,7 +36,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        private string _xLogin;
+        private string _xLogin = "";
         public string xLogin
         {
             get { return _xLogin; }
@@ -43,7 +47,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        private string _xPassword;
+        private string _xPassword = "";
         public string xPassword
         {
             get { return _xPassword; }
@@ -54,7 +58,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        private string _xFile;
+        private string _xFile = "";
         public string xFile
         {
             get { return _xFile; }
@@ -65,7 +69,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        private string _xBaseDados;
+        private string _xBaseDados = "";
         public string xBaseDados
         {
             get { return _xBaseDados; }
@@ -77,7 +81,7 @@ namespace HLP.Comum.Model.Models
         }
 
 
-        private string _xNameConexao;
+        private string _xNameConexao = "";
         public string xNameConexao
         {
             get { return _xNameConexao; }
