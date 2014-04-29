@@ -249,7 +249,7 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="Height" Value="20"/>
         <Setter Property="Margin" Value="0,0,0,3"/>
-        <Setter Property="CharacterCasing" Value="Upper"/>        
+        <Setter Property="CharacterCasing" Value="Normal"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
