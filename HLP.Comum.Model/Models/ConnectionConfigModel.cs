@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace HLP.Comum.Model.Models
 {
-    public class ConnectionConfigModel : modelBase
-    {        
+    [Serializable]
+    public partial class ConnectionConfigModel : modelBase
+    {
 
         private string _xServerName;
         public string xServerName
@@ -21,7 +22,6 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-
         private bool _Autentication = false;
         public bool Autentication
         {
@@ -32,7 +32,6 @@ namespace HLP.Comum.Model.Models
                 base.NotifyPropertyChanged(propertyName: "Autentication");
             }
         }
-
 
         private string _xLogin;
         public string xLogin
@@ -45,7 +44,6 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-
         private string _xPassword;
         public string xPassword
         {
@@ -57,7 +55,6 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        
         private string _xFile;
         public string xFile
         {
@@ -69,7 +66,6 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-        
         private string _xBaseDados;
         public string xBaseDados
         {
@@ -81,10 +77,7 @@ namespace HLP.Comum.Model.Models
             }
         }
 
-
-        
         private string _xNameConexao;
-
         public string xNameConexao
         {
             get { return _xNameConexao; }
@@ -94,8 +87,8 @@ namespace HLP.Comum.Model.Models
                 base.NotifyPropertyChanged(propertyName: "xNameConexao");
             }
         }
-        
 
+        [NonSerialized]
         public string ConnectionString
         {
             get
@@ -114,11 +107,55 @@ namespace HLP.Comum.Model.Models
                 return "";
             }
         }
+        [NonSerialized]
+        public string ConnectionStringCompleted
+        {
+            get
+            {
+
+                if (this.Autentication == true)
+                {
+                    if (this.xServerName != "" && this.xBaseDados != "")
+                        return "Data Source=" + this.xServerName + ";Initial Catalog=" + this.xBaseDados + ";Integrated Security=true;";
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(_xLogin) && !String.IsNullOrEmpty(_xPassword) && this.xServerName != "" && this.xBaseDados != "")
+                    {
+                        return "Data Source=" + this.xServerName + ";Initial Catalog=" + this.xBaseDados + ";User Id=" + this.xLogin + ";Password=" + this.xPassword + ";";
+                    }
+                }
+                return "";
+            }
+        }
 
 
+    }
 
-
-
-
+    public partial class ConnectionConfigModel
+    {
+        public override string this[string columnName]
+        {
+            get
+            {
+                string sAviso = "Campo é obrigatório";
+                if (columnName == "xLogin")
+                    if (this.xLogin == "")
+                        return sAviso;
+                if (columnName == "xNameConexao")
+                    if (this.xNameConexao == "")
+                        return sAviso;
+                if (columnName == "xPassword")
+                    if (this.xPassword == "")
+                        return sAviso;
+                if (columnName == "xServerName")
+                    if (this.xServerName == "")
+                        return sAviso;
+                if (columnName == "xBaseDados")
+                    if (this.xBaseDados == "")
+                        return sAviso;
+                return base[columnName];
+            }
+        }
     }
 }

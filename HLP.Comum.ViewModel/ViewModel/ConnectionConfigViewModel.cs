@@ -48,8 +48,19 @@ namespace HLP.Comum.ViewModel.ViewModel
                 base.NotifyPropertyChanged(propertyName: "bases");
             }
         }
-
-
+        
+             
+        private ObservableCollection<ConnectionConfigModel> _lConexoes;
+        public ObservableCollection<ConnectionConfigModel> lConexoes
+        {
+            get { return _lConexoes; }
+            set
+            {
+                _lConexoes = value;
+                base.NotifyPropertyChanged(propertyName: "lConexoes");
+            }
+        }
+        
 
         public void txtPassword_LostFocus(object sender, RoutedEventArgs e)
         {

@@ -28,8 +28,6 @@ namespace HLP.Comum.View.WPF
             txtPassword.LostFocus += this.ViewModel.txtPassword_LostFocus;
         }
 
-       
-
         public ConnectionConfigViewModel ViewModel
         {
             get { return this.DataContext as ConnectionConfigViewModel; }

@@ -62,7 +62,7 @@ namespace HLP.Comum.Model.Repository.Implementation
             }
             catch (Exception ex)
             {
-                throw ex;
+                return new DataSet();
             }
         }
 
