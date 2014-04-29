@@ -120,6 +120,7 @@
     <Content Include="wcf_Cfop.svc" />
     <Content Include="wcf_Cidade.svc" />
     <Content Include="wcf_CondicaoPagamento.svc" />
+    <Content Include="wcf_ConnectionConfig.svc" />
     <Content Include="wcf_ContaBancaria.svc" />
     <Content Include="wcf_Contato.svc" />
     <Content Include="wcf_Conversao.svc" />
@@ -263,6 +264,7 @@
     <Compile Include="Iwcf_Cidade.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
     <Compile Include="Iwcf_CondicaoPagamento.cs" />
+    <Compile Include="Iwcf_ConnectionConfig.cs" />
     <Compile Include="Iwcf_ContaBancaria.cs" />
     <Compile Include="Iwcf_Contato.cs" />
     <Compile Include="Iwcf_Conversao.cs" />
@@ -378,6 +380,9 @@
     </Compile>
     <Compile Include="wcf_CondicaoPagamento.svc.cs">
       <DependentUpon>wcf_CondicaoPagamento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_ConnectionConfig.svc.cs">
+      <DependentUpon>wcf_ConnectionConfig.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_ContaBancaria.svc.cs">
       <DependentUpon>wcf_ContaBancaria.svc</DependentUpon>

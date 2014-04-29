@@ -22,6 +22,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
 {
     public class MainViewModel : ViewModelBase<WinManModel>
     {
+
         EmpresaService objService;
         wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
 
@@ -178,11 +179,13 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public ICommand TrocarUsuarioCommand { get; set; }
         public ICommand TrocarEmpresaCommand { get; set; }
         public ICommand SairCommand { get; set; }
+        public ICommand ConnectionConfigCommand { get; set; }
+
         #endregion
 
         #region Informações Usuário e Empresa
 
-        
+
         private EmpresaModel _currentEmpresa;
 
         public EmpresaModel currentEmpresa
