@@ -68,6 +68,9 @@
     <Compile Include="wdSenhaSupervisor.xaml.cs">
       <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WinConnectionConfig.xaml.cs">
+      <DependentUpon>WinConnectionConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsBase.cs" />
     <Compile Include="WinExclusionDenied.xaml.cs">
       <DependentUpon>WinExclusionDenied.xaml</DependentUpon>
@@ -108,6 +111,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WinConnectionConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WinExclusionDenied.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,13 +125,29 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
+      <Project>{178FDD5C-D3E5-4809-87C6-3A69C0055BC6}</Project>
+      <Name>HLP.Comum.View</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Components.View.WPF\HLP.Components.View.WPF.csproj">
+      <Project>{048f4c37-ad90-403f-a9a1-64d0789983c5}</Project>
+      <Name>HLP.Components.View.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
       <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>
       <Name>HLP.ComumView.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.Resources.View.WPF\HLP.Resources.View.WPF.csproj">
+      <Project>{8d4b32be-e2bc-42ab-8715-a6b73f2956e6}</Project>
+      <Name>HLP.Resources.View.WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

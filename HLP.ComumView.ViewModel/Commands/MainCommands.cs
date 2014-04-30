@@ -29,6 +29,7 @@ namespace HLP.ComumView.ViewModel.Commands
                     canExecute: ex => DelWindowCanExecute());
                 this.objviewModel.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
                 this.objviewModel.fecharCommand = new RelayCommand(execute: i => this.Sair());
+                this.objviewModel.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection());
                 this.objviewModel.SobreCommand = new RelayCommand(execute: i => this.Sobre());
                 this.objviewModel.FindAllCommand = new RelayCommand
                     (
@@ -46,6 +47,21 @@ namespace HLP.ComumView.ViewModel.Commands
         }
 
         #region Executes & CanExecutes
+
+        private void ShowConfigConnection()
+        {
+            try
+            {
+                Window winConfig = GerenciadorModulo.Instancia.CarregaForm("WinConnectionConfig", Base.InterfacesBases.TipoExibeForm.Modal);
+                winConfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                winConfig.ShowDialog();
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
+          
+        }
 
 
         private void Sobre()

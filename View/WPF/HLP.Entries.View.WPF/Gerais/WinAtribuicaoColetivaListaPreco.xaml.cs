@@ -66,9 +66,8 @@ namespace HLP.Entries.View.WPF.Gerais
                 this.gridItens.Columns[6].Visibility =
                 this.gridItens.Columns[7].Visibility = System.Windows.Visibility.Hidden;
 
-            txtPor.Caption = "Por";
-            txtPor.Width = 100;
-            txtPor.WidthLabel = 50;
+            txtPor.ToolTip = "Por";
+            txtPor.Width = 100;            
 
             switch (this.cbxCampos.SelectedIndex)
             {
@@ -91,16 +90,14 @@ namespace HLP.Entries.View.WPF.Gerais
                 case 4:
                     {
                         this.gridItens.Columns[6].Visibility = System.Windows.Visibility.Visible;
-                        txtPor.Caption = "Porcentagem de Aumento";
-                        txtPor.Width = 250;
-                        txtPor.WidthLabel = 200;
+                        txtPor.ToolTip = "Porcentagem de Aumento";
+                        txtPor.Width = 250;                        
                     } break;
                 case 5:
                     {
                         this.gridItens.Columns[7].Visibility = System.Windows.Visibility.Visible;
-                        txtPor.Caption = "Porcentagem de Aumento";
-                        txtPor.Width = 250;
-                        txtPor.WidthLabel = 200;
+                        txtPor.ToolTip = "Porcentagem de Aumento";
+                        txtPor.Width = 250;                        
                     } break;
             }
         }
