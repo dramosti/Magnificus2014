@@ -7,226 +7,177 @@
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Gerais.Financeiro.WinAgencia"
         Title="Agência" Height="660" Width="1024" NameView="vwAgencia">
     <Window.Resources>
-        <Style x:Key="CellErrorStyle" TargetType="{x:Type TextBlock}">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                        Value="{Binding RelativeSource={RelativeSource Self},
-                                Path=(Validation.Errors)[0].ErrorContent}"/>
-                    <Setter Property="Background" Value="Yellow"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
-        <convert:MaskConverter x:Key="maskConverter"/>
-        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
-
-        <ObjectDataProvider 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+            <convert:MaskConverter x:Key="maskConverter"/>
+            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
             x:Key="EnumDescriptionDict">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoEndereco"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider 
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:TipoEndereco"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider 
             MethodName="GetDict"
             ObjectType="{x:Type convert:EnumDescriptionConverter}"
             x:Key="EnumTipoLogradouro">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:TipoLogradouro"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwCidadeToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider x:Key="lcontatos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwContatoToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:TipoLogradouro"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwCidadeToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider x:Key="lcontatos" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwContatoToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>      
     </Window.Resources>
     <Grid>
         <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabItem Header="Geral">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <DockPanel DockPanel.Dock="Top" Height="160">
-                            <Expander Header="Principal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True">
-                                <DockPanel LastChildFill="True">
-                                    <WrapPanel Orientation="Vertical" Margin="0,10,0,0" DockPanel.Dock="Left" Width="623">
-                                        <Components:HlpTextBox 
-										Text="{Binding currentModel.idAgencia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-										IsReadOnly="True"
-										Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Agencia." WidthLabel="147" HorizontalAlignment="Left" Width="230"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.cAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"	
-										Height="27" Margin="10,0,0,2" Caption="Código da Agencia" Help="Digite um código da Agencia bancária." WidthLabel="147" HorizontalAlignment="Left" Width="230"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.xAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27" Margin="10,0,0,2" Caption="Nome " Help="Informa o nome por completo da Agência Bancária." WidthLabel="147" HorizontalAlignment="Left" Width="375"/>
-                                        <Components:HlpPesquisa 
-                                        	
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Expander Header="Principal" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="20" MinWidth="20"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="70" MinWidth="70"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="250" MinWidth="250"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código da Agencia" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Nome" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Banco" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Telefone" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Fax" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Contatos" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.idAgencia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+									IsReadOnly="True"
+									ToolTip="Chave principal do registro da Agencia.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.cAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"	
+									ToolTip="Digite um código da Agencia bancária.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3"
+                                    Text="{Binding currentModel.xAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="Informa o nome por completo da Agência Bancária">
+                                </Components:CustomTextBox>
+                                <Components:HlpPesquisa 
+                                        	Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
                                         	Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         	IsEnabled="{Binding bIsEnabled}"
-                                        	Height="27" Margin="10,0,0,2" Caption="Banco " Help="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." WidthLabel="147" FieldPesquisa="ID" TableView="vwBanco" HorizontalAlignment="Left" Width="374">
-                                            <Components:HlpPesquisa.Items>
-                                                <System:String>xBanco</System:String>
-                                                <System:String>cBanco</System:String>
-                                            </Components:HlpPesquisa.Items>
-                                        </Components:HlpPesquisa>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.xTelefone, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27"  Caption="Telefone" Help="Informar o telefone principal da Agencia Bancária" WidthLabel="71" Margin="10,0,0,2" HorizontalAlignment="Left" Width="178"/>
-                                        <Components:HlpTextBox 
-										
-										Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
-										IsEnabled="{Binding bIsEnabled}"
-										Height="27"  Caption="Fax" Help="Informar o Fax principal da Agencia Bancária." WidthLabel="71" Margin="10,0,0,2" HorizontalAlignment="Left" Width="178"/>
-                                    </WrapPanel>
-                                    <DataGrid
-                                        x:Name="dgvContato"
+                                        	ToolTip="Informa o código do Banco. O banco deverá estar cadastro no Formulário de Bancos." WidthLabel="0" FieldPesquisa="ID" TableView="vwBanco">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>xBanco</System:String>
+                                        <System:String>cBanco</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    Text="{Binding currentModel.xTelefone, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource maskConverter}, ConverterParameter=tel}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="Informar o telefone principal da Agencia Bancária">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="6"
+                                    Text="{Binding currentModel.xFax, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=tel}"
+									IsEnabled="{Binding bIsEnabled}"
+									ToolTip="Informar o Fax principal da Agencia Bancária.">
+                                </Components:CustomTextBox>
+                                <DataGrid
+                                         Grid.Column="6" Grid.Row="1" Grid.RowSpan="6"
+                                         x:Name="dgvContato"
                                          ItemsSource="{Binding currentModel.lAgencia_ContatoModel}"                          
                                          IsEnabled="{Binding bIsEnabled}"
                                          AutoGenerateColumns="False" 
                                          SelectionUnit="CellOrRowHeader" 
                                          CanUserReorderColumns="False"  
                                          CanUserDeleteRows="True" >
-                                        <DataGrid.Columns>
-                                            <DataGridTemplateColumn Header="Contatos" Width="*">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <ComboBox  
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Header="Contatos" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <ComboBox  
                                             ItemsSource="{Binding Source={StaticResource lcontatos}}"
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"
                                             SelectedValue="{Binding idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
-
-
-                                        </DataGrid.Columns>
-                                    </DataGrid>
-                                </DockPanel>
-                            </Expander>
-                        </DockPanel>
-                        <DockPanel >
-                            <Expander Header="Endereço" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsExpanded="True">
-                                <DataGrid 
-                         x:Name="dgvEndereco"
-                         ItemsSource="{Binding currentModel.lAgencia_EnderecoModel}"                          
-                         IsEnabled="{Binding bIsEnabled}"
-                         AutoGenerateColumns="False" 
-                         SelectionUnit="CellOrRowHeader" 
-                         CanUserReorderColumns="False"  
-                         CanUserDeleteRows="True" 
-                         CurrentCellChanged="dgvEndereco_CurrentCellChanged" >
-                                    <DataGrid.BindingGroup>
-                                        <BindingGroup NotifyOnValidationError="True">
-                                            <BindingGroup.ValidationRules>
-                                                <v:ListUniqueValueTrueValidationRule                                
-                                ValidatesOnTargetUpdated="True"
-                                xCampo="stPrincipal"/>
-                                            </BindingGroup.ValidationRules>
-                                        </BindingGroup>
-                                    </DataGrid.BindingGroup>
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn     Header="Nome" Width="100" ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xNome, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTemplateColumn Header="Principal" Width="60">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <CheckBox IsChecked="{Binding stPrincipal, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                            <DataGridTemplateColumn.CellEditingTemplate>
-                                                <DataTemplate>
-                                                    <CheckBox  IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellEditingTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn   Header="Tipo Endereço" Width="250">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <ComboBox
-                                            ItemsSource="{Binding Source={StaticResource EnumDescriptionDict}}"
-                                            DisplayMemberPath="Key"
-                                            SelectedValuePath="Value"
-                                            SelectedValue ="{Binding enumTipoEndereco, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
 
 
-                                        <DataGridTextColumn Header="CEP" Width="100"
-                                ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xCEP, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource maskConverter}, ConverterParameter=cep}"/>
-                                        <DataGridTemplateColumn Header="Cidades" Width="200">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <ComboBox  
-                                                            ItemsSource="{Binding Source={StaticResource lresult}}"
-                                                            SelectedValuePath="id"
-                                                            DisplayMemberPath="display"
-                                                            SelectedValue="{Binding idCidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
-
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTemplateColumn   Header="Logradouro" Width="160">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <ComboBox
-                                                        ItemsSource="{Binding Source={StaticResource EnumTipoLogradouro}}"
-                                                        DisplayMemberPath="Key"
-                                                        SelectedValuePath="Value"
-                                                        SelectedValue ="{Binding enumTipoLogradouro, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-
-
-                                        <DataGridTextColumn Header="Endereço" Width="100" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xEndereco, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTextColumn Header="Numero" Width="80" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=nNumero, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTextColumn Header="Bairro" Width="100" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTextColumn Header="Latitude" Width="60" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xLatitude, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTextColumn Header="Latitude" Width="60" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xLongitude, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTextColumn Header="Fuso Horario" Width="80" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xFusoHorario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
-                                        <DataGridTextColumn Header="Caixa Postal" Width="80" 
-                                                ElementStyle="{StaticResource CellErrorStyle}"
-                                            Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                                     </DataGrid.Columns>
-
                                 </DataGrid>
-                            </Expander>
-                        </DockPanel>
-                    </DockPanel>
+
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Endereco" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Components:HlpEndereco
+                                    Grid.Column="1" Grid.Row="1"                                    
+                                    x:Name="dgvEndereco"
+                                    ItemsSource="{Binding currentModel.lAgencia_EnderecoModel}" 
+                                    IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"/>                                    
+                            </Grid>
+                        </Expander>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Hierarquia">
