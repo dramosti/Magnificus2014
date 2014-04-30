@@ -4,34 +4,77 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"         
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
-        Title="Uf" Height="300" Width="500" NameView="vwUF"  FocusManager.FocusedElement="{Binding txtCodigo}"
-        >
+        Title="Uf" Height="300" Width="500" NameView="vwUF"  FocusManager.FocusedElement="{Binding txtCodigo}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Name="gridPropriedades">
-	<Expander  Header="UF" IsExpanded="True">			
-        <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-            <Components:HlpTextBox x:Name="txtCodigo" Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Caption="ID" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="0"/>
-            <Components:HlpTextBox  IsEnabled="{Binding bIsEnabled}"
-    		Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-    		Caption="Sigla" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="185" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="2"/>
-            <Components:HlpTextBox  IsEnabled="{Binding bIsEnabled}" 
-    		Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
-                ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-    		Caption="UF" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="3"/>
-            <Components:HlpTextBox  IsEnabled="{Binding bIsEnabled}"
-    		Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True                , NotifyOnValidationError=True}"
-    		Caption="Código IBGE" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="247" Margin="10,0,10,2" WidthLabel="100" Height="27" TabIndex="4"/>
-                <Components:HlpPesquisa 
-                         Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                         
-                         IsEnabled="{Binding bIsEnabled}"
-                         Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" 
-                         TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="100" Margin="10,0,10,2" Height="27" Width="437" PreviewKeyDown="HlpPesquisa_PreviewKeyDown" KeyDown="HlpPesquisa_KeyDown" TabIndex="5" GotFocus="HlpPesquisa_GotFocus" LostFocus="HlpPesquisa_LostFocus">
-                <Components:HlpPesquisa.Items>
-                    <System:String>xRegiao</System:String>
-                    <System:String>xPais</System:String>
-                </Components:HlpPesquisa.Items>
-            </Components:HlpPesquisa>
-            </WrapPanel>
-	</Expander>
+        <Expander Header="UF" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="120" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--Label-->
+
+                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Sigla" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código IBGE" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Região" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                
+                <!--Components-->
+                
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="1"
+                    x:Name="txtCodigo" Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="2"
+                    IsEnabled="{Binding bIsEnabled}"
+    		        Text="{Binding currentModel.xSiglaUf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="3"
+                    IsEnabled="{Binding bIsEnabled}" 
+    		        Text="{Binding currentModel.xUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
+                    ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+                </Components:CustomTextBox>
+                <Components:CustomTextBox
+                    Grid.Column="2" Grid.Row="4"
+                    IsEnabled="{Binding bIsEnabled}"
+    		        Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
+                </Components:CustomTextBox>
+                <Components:HlpPesquisa
+                    Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"  
+                    Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"                         
+                    IsEnabled="{Binding bIsEnabled}"
+                    Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" 
+                    TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="0" PreviewKeyDown="HlpPesquisa_PreviewKeyDown" KeyDown="HlpPesquisa_KeyDown" GotFocus="HlpPesquisa_GotFocus" LostFocus="HlpPesquisa_LostFocus">
+                    <Components:HlpPesquisa.Items>
+                        <System:String>xRegiao</System:String>
+                        <System:String>xPais</System:String>
+                    </Components:HlpPesquisa.Items>
+                </Components:HlpPesquisa>
+
+            </Grid>
+        </Expander>
     </Grid>
 </runtime:WindowsBase>

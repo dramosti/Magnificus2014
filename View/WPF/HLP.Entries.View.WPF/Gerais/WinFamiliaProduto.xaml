@@ -2,126 +2,219 @@
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" 
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Entries.View.WPF.Gerais.WinFamiliaProduto"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"        
         xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
         Title="Família de Produtos" Height="660" Width="1200" NameView="vwFamiliaProduto">
-
+    
     <Window.Resources>
-        <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
-        <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
-        <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
-        <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwTipoOperacaoToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        <ObjectDataProvider x:Key="lClasses" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
-            <ObjectDataProvider.MethodParameters>
-                <System:String>vwClasseFinanceiraToComboBox</System:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
+            <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
+            <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
+            <ObjectDataProvider x:Key="lTpOper" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwTipoOperacaoToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            <ObjectDataProvider x:Key="lClasses" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+                <ObjectDataProvider.MethodParameters>
+                    <System:String>vwClasseFinanceiraToComboBox</System:String>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+        </ResourceDictionary>        
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Geral">
                 <AdornerDecorator>
-                    <DockPanel LastChildFill="True">
-                        <DockPanel LastChildFill="True" DockPanel.Dock="Left" Width="576">
-                            <Expander Header="Geral" DockPanel.Dock="Top" IsExpanded="True" Height="189">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox 
-								Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-								IsReadOnly="True"
-								Height="27" Margin="10,0,10,2" Caption="Código" Field="idFamiliaProduto" Help="Chave principal do registro da família de produto." Table="Familia_produto" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.xFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Código da Família de Produto" Field="xFamiliaProduto" Help="Digite um código para a recém-criada família de produto, além disso você poderá classificar as famílias de produtos de forma que o campo possa ser um parâmetro para pesquisas ou filtros de relatórios. " Table="Familia_produto" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Descrição" Field="xDescricao" Help="sse campo define a descrição para a linha do produto, é importante lembrar que existem status para linhas sintéticas e analíticas e que as linhas sintéticas não serão relacionadas ao produto, portanto e recomendável que o usuário observe a sugestão no exemplo abaixo para que o cadastro fique mais consistente " Table="Familia_produto" WidthLabel="222" HorizontalAlignment="Left" Width="507"/>
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.xSigla, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Sigla" Field="xSigla" Help="Informar resumidamente em 10 caracteres uma sigla ou apelido para a família de produto." Table="Familia_produto" WidthLabel="222" HorizontalAlignment="Left" Width="320"/>
-                                    <Components:HlpComboBox 
-								
-								SelectedIndex="{Binding currentModel.stGrau, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Grau" Field="stGrau" Help="Informar se a Linha de produto é Sintético ou Analitica, no caso de Sintético a linha se tornará um Pai do grupo e não poderá ser feito nenhum tipo de lançamento nele, só para afins de totalizador de relatórios." Table="Familia_produto" WidthLabel="222" HorizontalAlignment="Left">
-                                        <Components:HlpComboBox.Items>
-                                            <System:String>0-Analítico</System:String>
-                                            <System:String>1-Sintético</System:String>
-                                        </Components:HlpComboBox.Items>
-                                    </Components:HlpComboBox>
-                                </WrapPanel>
-                            </Expander>
-                            <Expander Header="Representante"  IsExpanded="True">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,10,60,2" Caption="Percentual Comissão avista" Field="pComissaoAvista" Help="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condução de vendas for por Dinheiro." Table="Familia_produto" WidthLabel="224" Width="350"/>
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,60,0" Caption="Percentual comissão aprazo" Field="pComissaoAprazo" Help="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a condução de vendas for Cartão de Débito e Crédito, Cheques e valores Líquidos ou Duplicatas geradas." Table="Familia_produto" WidthLabel="224" Width="350"/>
-                                </WrapPanel>
-                            </Expander>
-                        </DockPanel>
-                        <DockPanel LastChildFill="True">
-                            <Expander Header="Configuração" IsExpanded="True">
-                                <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Percentual de Desconto Máximo" Field="pDescontoMaximo" Help="Informar um percentual de desconto máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de desconto do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto." Table="Familia_produto" WidthLabel="238" Width="355" HorizontalAlignment="Left"/>
-                                    <Components:HlpTextBox 
-								
-								Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Percentual de Acrescimo Máximo" Field="pAcrescimoMaximo" Help="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto." Table="Familia_produto" 
-                                WidthLabel="238" Width="355" HorizontalAlignment="Left"/>
-                                    <Components:HlpPesquisa 
-								
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Expander Header="Geral" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="210" MinWidth="210"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="40" MinWidth="40"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Código da Família de Produto" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Sigla" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Grau" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								    IsReadOnly="True"
+								    ToolTip="Chave principal do registro da família de produto">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.xFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Digite um código para a recém-criada família de produto, além disso você poderá classificar as famílias de produtos de forma que o campo possa ser um parâmetro para pesquisas ou filtros de relatórios.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
+                                    Text="{Binding currentModel.xDescricao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="sse campo define a descrição para a linha do produto, é importante lembrar que existem status para linhas sintéticas e analíticas e que as linhas sintéticas não serão relacionadas ao produto, portanto e recomendável que o usuário observe a sugestão no exemplo abaixo para que o cadastro fique mais consistente">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="4"
+                                    Text="{Binding currentModel.xSigla, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar resumidamente em 10 caracteres uma sigla ou apelido para a família de produto.">
+                                </Components:CustomTextBox>
+                                <Components:CustomComboBox
+                                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
+                                    SelectedIndex="{Binding currentModel.stGrau, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar se a Linha de produto é Sintético ou Analitica, no caso de Sintético a linha se tornará um Pai do grupo e não poderá ser feito nenhum tipo de lançamento nele, só para afins de totalizador de relatórios">
+                                    <Components:CustomComboBox.Items>
+                                        <System:String>0-Analítico</System:String>
+                                        <System:String>1-Sintético</System:String>
+                                    </Components:CustomComboBox.Items>
+                                </Components:CustomComboBox>
+                                
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Representante" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="210" MinWidth="210"></ColumnDefinition>
+                                    <ColumnDefinition MinWidth="90" MaxWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Percentual Comissão avista" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Percentual comissão aprazo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condução de vendas for por Dinheiro.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a condução de vendas for Cartão de Débito e Crédito, Cheques e valores Líquidos ou Duplicatas geradas.">
+                                </Components:CustomTextBox>
+                                
+                            </Grid>
+                        </Expander>
+                        <Expander Header="Configuração" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                
+                                <!--Label-->
+
+                                <Components:CustomTextBlock Text="Percentual de Desconto Máximo" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Percentual de Acrescimo Máximo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Conta Contábil" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Centro de Custo" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Text="Altera descrição comercial do produto em Vendas" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                
+                                <!--Components-->
+                                
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="1"
+                                    Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar um percentual de desconto máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de desconto do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto.">
+                                </Components:CustomTextBox>
+                                <Components:CustomTextBox
+                                    Grid.Column="2" Grid.Row="2"
+                                    Text="{Binding currentModel.pAcressimoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar um percentual de acréscimo máximo para a linha inteira de produto, quando a linha de produto for sintético não é permitido a inclusão do valor. Lembrando que o sistema pegara em primeiro plano o percentual de acréscimo do item, caso não tenha o sistema buscará o % da Lista de preço e por fim da família do produto.">
+                                </Components:CustomTextBox>
+                                <Components:HlpPesquisa 
+								Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 								Text="{Binding currentModel.idContaContabil, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Conta Contábil" Field="idContaContabil" Help="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="idConta_contabil" WidthLabel="238" FieldPesquisa="ID" TableView="vwContaContabil" HorizontalAlignment="Left" Width="548">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>TESTE</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpPesquisa 
-								
+								ToolTip="Informar a conta contábil para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="idConta_contabil" WidthLabel="0" FieldPesquisa="ID" TableView="vwContaContabil">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>TESTE</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:HlpPesquisa 
+								Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 								Text="{Binding currentModel.idCentroCusto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" FontFamily="Segoe UI" Caption="Centro de Custo" Field="dCentroCusto" Help="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="Centro_Custo"
-                                WidthLabel="238" RenderTransformOrigin="0.5,0.5" FieldPesquisa="ID" TableView="vwCentroCusto" HorizontalAlignment="Left" Width="548">
-                                        <Components:HlpPesquisa.Items>
-                                            <System:String>TESTE</System:String>
-                                        </Components:HlpPesquisa.Items>
-                                    </Components:HlpPesquisa>
-                                    <Components:HlpCheckBox 
-								
-								IsChecked="{Binding currentModel.stAlteraDescricaoComercialProdutoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-								IsEnabled="{Binding bIsEnabled}"
-								Height="27" Margin="10,0,10,2" Caption="Altera descrição comercial do produto em Vendas" Field="stAlteraDescricaoComercialProdutoVenda" Help="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento)." 
-                                Table="Familia_produto" WidthLabel="354" HorizontalAlignment="Left"/>
-                                </WrapPanel>
-                            </Expander>
-                        </DockPanel>
-                    </DockPanel>
+								ToolTip="Informar o centro de custo para a família de produto, servirá com base padrão para todos os itens relacionado a essa família. " Table="Centro_Custo"
+                                WidthLabel="0" FieldPesquisa="ID" TableView="vwCentroCusto">
+                                    <Components:HlpPesquisa.Items>
+                                        <System:String>TESTE</System:String>
+                                    </Components:HlpPesquisa.Items>
+                                </Components:HlpPesquisa>
+                                <Components:CustomCheckBox
+                                    Grid.Column="2" Grid.Row="5"
+                                    IsChecked="{Binding currentModel.stAlteraDescricaoComercialProdutoVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+								    IsEnabled="{Binding bIsEnabled}"
+								    ToolTip="Informar ao sistema se poderá ou não alterar a descrição do produto no módulo comercial (Orçamento, Vendas, Faturamento).">
+                                </Components:CustomCheckBox>
+
+                            </Grid>
+                        </Expander>
+                    </Grid>
                 </AdornerDecorator>
             </TabItem>
             <TabItem Header="Classificação Financeira das Linhas de Produto">

@@ -8,45 +8,56 @@
     x:Class="HLP.Entries.View.WPF.Gerais.WinUnidadeMedida"
         Title="Unidade Medida" Height="300" Width="448.872" NameView="vwUnidadeMedida">
     <runtime:WindowsBase.Resources>
-        <c:IntStringConverter x:Key="intStringValueConverter"></c:IntStringConverter>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <c:IntStringConverter x:Key="intStringValueConverter"></c:IntStringConverter>
+        </ResourceDictionary>        
     </runtime:WindowsBase.Resources>
     <Grid Name="gridPropriedades">
-        <Expander Header="Unidade de Medida" IsExpanded="True">
+        <Expander Header="Unidade de Medida" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition Width="120*" MaxWidth="120" MinWidth="120"></ColumnDefinition>
-                    <ColumnDefinition Width="90*" MaxWidth="90" MinWidth="70"></ColumnDefinition>
-                    <ColumnDefinition Width="77*"></ColumnDefinition>                    
+                    <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="3"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código" VerticalAlignment="Center"/>
+                
+                <!--Label-->
+
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Sigla Padrão"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Unidade de Medida"/>
+                <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Casas Decimais"/>
+                
+                <!--Components-->
+
                 <Components:CustomTextBox 
                                       IsReadOnly="True"
                                       Text="{Binding currentModel.idUnidadeMedida, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro da Unidade de Medida"
                                       Grid.Column="2" Grid.Row="1"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Sigla Padrão" VerticalAlignment="Center"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="3"
-                                       Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Unidade de Medida" VerticalAlignment="Center" Height="15" Margin="0,3"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="5"
-                                       Text="{Binding currentModel.xUnidadeMedida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                                       IsEnabled="{Binding bIsEnabled}"/>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Casas Decimais" VerticalAlignment="Center" Height="15" Margin="0,3"/>
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="7"                                       
-                                       IsEnabled="{Binding bIsEnabled}">
+                <Components:CustomTextBox 
+                   Grid.Column="2"  Grid.Row="2"
+                   Text="{Binding currentModel.xSiglaPadrao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                   IsEnabled="{Binding bIsEnabled}"/>
+                <Components:CustomTextBox  
+                    Grid.Column="2"  Grid.Row="3"
+                    Text="{Binding currentModel.xUnidadeMedida, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    IsEnabled="{Binding bIsEnabled}"/>
+                <Components:CustomTextBox  
+                    Grid.Column="2"  Grid.Row="4"                                       
+                    IsEnabled="{Binding bIsEnabled}">
                     <Binding Path="currentModel.nCasasDecimais"
             			Mode="TwoWay"
             			UpdateSourceTrigger="PropertyChanged"
@@ -58,6 +69,7 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </Components:CustomTextBox>
+
             </Grid>
         </Expander>
     </Grid>
