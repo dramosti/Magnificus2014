@@ -53,6 +53,7 @@ namespace HLP.ComumView.ViewModel.Commands
             try
             {
                 Window winConfig = GerenciadorModulo.Instancia.CarregaForm("WinConnectionConfig", Base.InterfacesBases.TipoExibeForm.Modal);
+                winConfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 winConfig.ShowDialog();
             }
             catch (Exception ex)

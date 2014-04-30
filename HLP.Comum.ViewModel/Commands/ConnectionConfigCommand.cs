@@ -22,6 +22,9 @@ namespace HLP.Comum.ViewModel.Commands
         {
             this.viewModel = viewModel;
             this.viewModel.currentModel = new Model.Models.ConnectionConfigModel();
+
+            this.viewModel.servers.Add("Carregando . . .");
+            this.viewModel.currentModel.xServerName = "Carregando . . .";
             servico = new ConnectionConfigService();
 
             this.viewModel.TestarCommand = new RelayCommand(execute: i => this.TestConnection(),
@@ -30,7 +33,7 @@ namespace HLP.Comum.ViewModel.Commands
             this.viewModel.AddCommand = new RelayCommand(execute: i => this.AddConexao(),
              canExecute: i => CanTesteAndADD());
 
-            this.viewModel.saveCommand = new RelayCommand(execute: i => this.SaveRegistros(),
+            this.viewModel.SalvarCommand = new RelayCommand(execute: i => this.SaveRegistros(i),
             canExecute: i => true);
 
             this.viewModel.bWorkerPesquisa.DoWork += bWorkerPesquisa_DoWork;
@@ -47,13 +50,19 @@ namespace HLP.Comum.ViewModel.Commands
         }
 
 
-        public void SaveRegistros()
+        public void SaveRegistros(object win)
         {
             try
             {
-                MagnificusBaseConfiguration objResultToSave = new MagnificusBaseConfiguration();
-                objResultToSave.conexoes = this.viewModel.lConexoes;
-                SerializeClassToXml.SerializeClasse<MagnificusBaseConfiguration>(objResultToSave, Pastas.Path_BasesConfiguradas);
+                if (this.viewModel.message.Save())
+                {
+                    MagnificusBaseConfiguration objResultToSave = new MagnificusBaseConfiguration();
+                    objResultToSave.conexoes = this.viewModel.lConexoes;
+                    SerializeClassToXml.SerializeClasse<MagnificusBaseConfiguration>(objResultToSave, Pastas.Path_BasesConfiguradas);
+                    Window winForm = win as Window;
+                    winForm.Close();
+                }
+
             }
             catch (Exception ex)
             {
@@ -140,7 +149,10 @@ namespace HLP.Comum.ViewModel.Commands
 
         bool CanTesteAndADD()
         {
-            if (this.viewModel.currentModel.ConnectionStringCompleted != "" && !(string.IsNullOrEmpty(this.viewModel.currentModel.xBaseDados)) && !(string.IsNullOrEmpty(this.viewModel.currentModel.xNameConexao)))
+            if (this.viewModel.currentModel.ConnectionStringCompleted != "" 
+                && !(string.IsNullOrEmpty(this.viewModel.currentModel.xBaseDados)) 
+                && !(string.IsNullOrEmpty(this.viewModel.currentModel.xNameConexao))
+                && !(string.IsNullOrEmpty(this.viewModel.currentModel.urlWebService)))
                 return true;
             else
                 return false;

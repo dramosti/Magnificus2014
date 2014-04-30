@@ -15,16 +15,19 @@ namespace HLP.Comum.ViewModel.ViewModel
     public class ConnectionConfigViewModel : ViewModelBase<ConnectionConfigModel>
     {
         ConnectionConfigCommand command;
-        public ICommand saveCommand { get; set; }
+        public ICommand SalvarCommand { get; set; }
         public ICommand TestarCommand { get; set; }        
         public ICommand AddCommand { get; set; }
+
+        
 
         public ConnectionConfigViewModel()
         {
             command = new ConnectionConfigCommand(this);
+            
         }
 
-        private ObservableCollection<string> _servers;
+        private ObservableCollection<string> _servers = new ObservableCollection<string>();
         public ObservableCollection<string> servers
         {
             get { return _servers; }

@@ -92,6 +92,21 @@ namespace HLP.Comum.Model.Models
             }
         }
 
+        
+        private string _urlWebService = "";
+
+        public string urlWebService
+        {
+            get { return _urlWebService; }
+            set
+            {
+                _urlWebService = value;
+                base.NotifyPropertyChanged(propertyName: "urlWebService");
+            }
+        }
+        
+
+
         public string ConnectionString
         {
             get
@@ -154,6 +169,9 @@ namespace HLP.Comum.Model.Models
                 if (columnName == "xBaseDados")
                     if (this.xBaseDados == "")
                         return sAviso;
+                if (columnName == "urlWebService")
+                    if (this.urlWebService == "")
+                        return sAviso;                
                 return base[columnName];
             }
         }

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         x:Class="HLP.Comum.View.WPF.WinConnectionConfig"  Name="winConnectionConfig"
-        Title="Configuração de Conexão" Height="370" Width="370" WindowStyle="ToolWindow">
+        Title="Configuração de Conexão" Height="400" Width="390" WindowStyle="ToolWindow">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -37,25 +37,12 @@
         </Grid.ColumnDefinitions>
 
         <ToolBar Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,3" Background="White">
-            <Button Cursor="Hand" IsEnabled="False"
-								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )" Focusable="False">
-
-            </Button>
-            <Button Style="{DynamicResource Button_EDIT}" IsEnabled="False" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
-
-            </Button>
-            <Button  Style="{DynamicResource Button_DELETE}" IsEnabled="False" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Excluir ( Alt + E )" Focusable="False">
-
-            </Button>
-            <Button	 Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=winConnectionConfig}" Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
-
-            </Button>
-            <Button Style="{DynamicResource Button_CANCEL}" IsEnabled="False" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False">
-
-            </Button>
-            <Button Margin="3,0,0,0" Style="{DynamicResource Button_COPY}" IsEnabled="False" Width="34" Height="34" ToolTip="Duplicar ( Alt + V )" Focusable="False">
-
-            </Button>
+            <Button Cursor="Hand" IsEnabled="False" Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )" Focusable="False"/>
+            <Button Style="{DynamicResource Button_EDIT}" IsEnabled="False" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False"/>
+            <Button  Style="{DynamicResource Button_DELETE}" IsEnabled="False" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Excluir ( Alt + E )" Focusable="False"/>
+            <Button	 Command="{Binding SalvarCommand}" CommandParameter="{Binding ElementName=winConnectionConfig}" Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False"/>
+            <Button Style="{DynamicResource Button_CANCEL}" IsEnabled="False" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False"/>
+            <Button Margin="3,0,0,0" Style="{DynamicResource Button_COPY}" IsEnabled="False" Width="34" Height="34" ToolTip="Duplicar ( Alt + V )" Focusable="False"/>
         </ToolBar>
 
         <!--Label-->
@@ -70,7 +57,7 @@
         
         <!--Components-->        
 
-        <Components:CustomComboBox Grid.Column="2" Margin="0,0,0,3" Grid.Row="2" HorizontalAlignment="Stretch" ItemsSource="{Binding servers}" 
+        <Components:CustomComboBox Grid.Column="2" Margin="0,0,0,3" Grid.Row="2" HorizontalAlignment="Stretch" ItemsSource="{Binding servers}"
                                    SelectedValue="{Binding currentModel.xServerName, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                    />        
         <Components:CustomCheckBox  Grid.Column="2" Grid.Row="3"
@@ -88,6 +75,7 @@
         <Components:CustomTextBox Grid.Column="2" Grid.Row="7"
         	Text="{Binding currentModel.xNameConexao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <Components:CustomTextBox
+            Text="{Binding currentModel.urlWebService, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
             Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="4">
         </Components:CustomTextBox>
         <Button Command="{Binding AddCommand}" Content="Add Conexão" Grid.Column="2" Grid.Row="9" Margin="0,0,0,3"/>
