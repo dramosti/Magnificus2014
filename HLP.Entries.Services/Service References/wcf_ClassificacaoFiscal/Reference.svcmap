@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4c097ee0-16d2-40c2-806b-17b12cb27dad" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_ClassificacaoFiscal.disco" MetadataType="Disco" ID="ab932f0e-bec9-4976-8ab6-6c07de1448da" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?disco" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal.xsd" MetadataType="Schema" ID="1db39966-5f77-459c-a1f9-d9a9cc183614" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal.wsdl" MetadataType="Wsdl" ID="c3f09f88-01a5-401e-84cf-c6cfd45c6508" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?wsdl" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal1.xsd" MetadataType="Schema" ID="bd3b5238-c955-43da-be3c-b54f5311bf99" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal2.xsd" MetadataType="Schema" ID="6e87a69f-e0b9-46cb-8f29-2253a022604d" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal3.xsd" MetadataType="Schema" ID="416fd1eb-b5bc-409f-b673-0b448595f1ff" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_ClassificacaoFiscal4.xsd" MetadataType="Schema" ID="92c1440b-ce92-4b2b-892d-34a0f63e5d7e" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ClassificacaoFiscal.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -19,7 +19,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class CalendarioCommand
     {
-        BackgroundWorker bWorkerAcoes;
         CalendarioViewModel objViewModel;
         CalendarioService service = new CalendarioService();
         public CalendarioCommand(CalendarioViewModel objViewModel)
@@ -56,6 +55,21 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                  canExecute: can => true);
             this.objViewModel.gerarByCalendarioBaseCommand = new RelayCommand(execute: exec => this.GerarDetalhamentoByCalendarBase(),
                 canExecute: can => this.CanGerarDetalhamentoByCalendarBase());
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
+            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.GetCalendario);
+            objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
         }
 
 
@@ -149,10 +163,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
-
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -225,6 +236,41 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
         }
 
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel = e.Result as CalendarioModel;
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result =
+                    this.service.CopyObject(obj: this.objViewModel.currentModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
         public bool CopyCanExecute()
         {
             return this.objViewModel.copyBaseCommand.CanExecute(null);
@@ -272,10 +318,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.currentModel = new CalendarioModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
@@ -295,10 +338,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
@@ -337,10 +377,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -376,7 +413,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.currentModel.lCalendario_DetalheModel.CollectionCarregada();
         }
 
-        private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
+        private void GetCalendario(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = service.GetObject(this.objViewModel.currentID);
         }

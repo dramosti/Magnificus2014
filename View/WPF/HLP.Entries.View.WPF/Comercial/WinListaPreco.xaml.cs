@@ -1,7 +1,6 @@
 ﻿using HLP.Base.Static;
 using HLP.Components.View.WPF;
 using HLP.Entries.View.WPF.Gerais;
-using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,6 @@ namespace HLP.Entries.View.WPF.Comercial
     /// </summary>
     public partial class WinListaPreco : WindowsBase
     {
-        ProdutoService servico;
 
         public WinListaPreco()
         {
@@ -32,7 +30,6 @@ namespace HLP.Entries.View.WPF.Comercial
             try
             {
                 this.ViewModel = new Lista_PrecoViewModel();
-                this.servico = new ProdutoService();
                 //object o = navHierarquia.DataContext;
             }
             catch (Exception ex)
@@ -89,7 +86,7 @@ namespace HLP.Entries.View.WPF.Comercial
                             try
                             {
                                 e.Row.DataContext.GetType().GetProperty("vCustoProduto").SetValue(e.Row.DataContext,
-                                    servico.GetPrecoCustoProduto(idProduto: (int)o));
+                                    this.ViewModel.GetPrecoCustoProduto(idProduto: (int)o));
                             }
                             catch (Exception ex)
                             {
@@ -102,7 +99,7 @@ namespace HLP.Entries.View.WPF.Comercial
         }
 
         private void cbxStAtualizacao_UCSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
+        {
         }
 
         private void TabItem_GotFocus(object sender, RoutedEventArgs e)

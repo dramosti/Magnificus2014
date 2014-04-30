@@ -1,8 +1,8 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Components.Model.Models;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Entries.Services.Gerais;
 using HLP.Entries.ViewModel.Commands.Gerais;
-using HLP.Entries.ViewModel.Services.Gerais;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

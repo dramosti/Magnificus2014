@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a45777ed-7811-436b-9ff8-1b5585396ef4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_ModoEntrega.xsd" MetadataType="Schema" ID="527aac23-c04f-43de-8849-454fb823f46a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_ModoEntrega1.xsd" MetadataType="Schema" ID="a4c85771-5ff6-4710-bbc7-6d957eed45d7" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_ModoEntrega.wsdl" MetadataType="Wsdl" ID="5ce3b2d5-a415-42d4-895c-9bde22191beb" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?wsdl" />
+    <MetadataFile FileName="wcf_ModoEntrega.disco" MetadataType="Disco" ID="8b32d4aa-51fd-4d9c-b911-cac6fe1f5d06" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?disco" />
+    <MetadataFile FileName="wcf_ModoEntrega2.xsd" MetadataType="Schema" ID="25f857b2-12cd-4699-824d-b141b3e7c1b9" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_ModoEntrega3.xsd" MetadataType="Schema" ID="e7e3c337-3d0e-4918-b659-c50d71734816" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_ModoEntrega4.xsd" MetadataType="Schema" ID="0f510161-cbf2-49a1-a4ca-75e618f20705" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_ModoEntrega.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

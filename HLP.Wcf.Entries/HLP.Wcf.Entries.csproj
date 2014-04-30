@@ -93,6 +93,7 @@
     <Content Include="camposBaseDadosService.svc" />
     <Content Include="serviceAcesso.svc" />
     <Content Include="serviceAgencia.svc" />
+    <Content Include="wcf_Acesso.svc" />
     <Content Include="wcf_Agencia.svc" />
     <Content Include="wcf_Banco.svc" />
     <Content Include="wcf_Calendario.svc" />
@@ -117,8 +118,12 @@
     <Content Include="serviceEmpresa.svc" />
     <Content Include="wcf_CanalDeVenda.svc" />
     <Content Include="wcf_CargaTribMediaStIcms.svc" />
+    <Content Include="wcf_Cargo.svc" />
     <Content Include="wcf_Cfop.svc" />
     <Content Include="wcf_Cidade.svc" />
+    <Content Include="wcf_ClassificacaoFiscal.svc" />
+    <Content Include="wcf_CodigoIcms.svc" />
+    <Content Include="wcf_CondicaoEntrega.svc" />
     <Content Include="wcf_CondicaoPagamento.svc" />
     <Content Include="wcf_ConnectionConfig.svc" />
     <Content Include="wcf_ContaBancaria.svc" />
@@ -168,6 +173,7 @@
     <Content Include="wcf_DescontoAVista.svc" />
     <Content Include="wcf_DiaPagamento.svc" />
     <Content Include="wcf_Empresa.svc" />
+    <Content Include="wcf_Fabricante.svc" />
     <Content Include="wcf_FamiliaProduto.svc" />
     <Content Include="wcf_Fidelidade.svc" />
     <Content Include="wcf_FillComboBox.svc" />
@@ -176,6 +182,7 @@
     <Content Include="wcf_HlpPesqPadrao.svc" />
     <Content Include="wcf_Juros.svc" />
     <Content Include="wcf_Lista_Preco.svc" />
+    <Content Include="wcf_ModoEntrega.svc" />
     <Content Include="wcf_Moeda.svc" />
     <Content Include="wcf_Multa.svc" />
     <Content Include="wcf_OperacoesDataBase.svc" />
@@ -183,10 +190,20 @@
     <Content Include="wcf_PesquisaRapida.svc" />
     <Content Include="wcf_PlanoPagamento.svc" />
     <Content Include="wcf_Produto.svc" />
+    <Content Include="wcf_RamoAtividade.svc" />
     <Content Include="wcf_Rota.svc" />
+    <Content Include="wcf_Setor.svc" />
     <Content Include="wcf_Site.svc" />
+    <Content Include="wcf_SituacaoTributariaPis.svc" />
+    <Content Include="wcf_StCofins.svc" />
+    <Content Include="wcf_StIcms.svc" />
+    <Content Include="wcf_StIpi.svc" />
+    <Content Include="wcf_TipoDocumento.svc" />
+    <Content Include="wcf_TipoOperacao.svc" />
     <Content Include="wcf_TipoProduto.svc" />
+    <Content Include="wcf_TipoServico.svc" />
     <Content Include="wcf_Transportadora.svc" />
+    <Content Include="wcf_Uf.svc" />
     <Content Include="wcf_UnidadeMedida.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -198,6 +215,8 @@
     </Compile>
     <Compile Include="IcamposBaseDadosService.cs" />
     <Compile Include="IserviceAcesso.cs" />
+    <Compile Include="IserviceAgencia.cs" />
+    <Compile Include="Iwcf_Acesso.cs" />
     <Compile Include="Iwcf_Agencia.cs" />
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
@@ -259,9 +278,13 @@
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_CanalDeVenda.cs" />
     <Compile Include="Iwcf_CargaTribMediaStIcms.cs" />
+    <Compile Include="Iwcf_Cargo.cs" />
     <Compile Include="Iwcf_Cfop.cs" />
     <Compile Include="Iwcf_Cidade.cs" />
+    <Compile Include="Iwcf_ClassificacaoFiscal.cs" />
     <Compile Include="Iwcf_Cliente.cs" />
+    <Compile Include="Iwcf_CodigoIcms.cs" />
+    <Compile Include="Iwcf_CondicaoEntrega.cs" />
     <Compile Include="Iwcf_CondicaoPagamento.cs" />
     <Compile Include="Iwcf_ConnectionConfig.cs" />
     <Compile Include="Iwcf_ContaBancaria.cs" />
@@ -273,6 +296,7 @@
     <Compile Include="Iwcf_DescontoAVista.cs" />
     <Compile Include="Iwcf_DiaPagamento.cs" />
     <Compile Include="Iwcf_Empresa.cs" />
+    <Compile Include="Iwcf_Fabricante.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Fidelidade.cs" />
     <Compile Include="Iwcf_FillComboBox.cs" />
@@ -281,6 +305,7 @@
     <Compile Include="Iwcf_HlpPesqPadrao.cs" />
     <Compile Include="Iwcf_Juros.cs" />
     <Compile Include="Iwcf_Lista_Preco.cs" />
+    <Compile Include="Iwcf_ModoEntrega.cs" />
     <Compile Include="Iwcf_Moeda.cs" />
     <Compile Include="Iwcf_Multa.cs" />
     <Compile Include="Iwcf_OperacoesDataBase.cs" />
@@ -288,17 +313,29 @@
     <Compile Include="Iwcf_PesquisaRapida.cs" />
     <Compile Include="Iwcf_PlanoPagamento.cs" />
     <Compile Include="Iwcf_Produto.cs" />
+    <Compile Include="Iwcf_RamoAtividade.cs" />
     <Compile Include="Iwcf_Rota.cs" />
+    <Compile Include="Iwcf_Setor.cs" />
     <Compile Include="Iwcf_Site.cs" />
+    <Compile Include="Iwcf_SituacaoTributariaPis.cs" />
+    <Compile Include="Iwcf_StCofins.cs" />
+    <Compile Include="Iwcf_StIcms.cs" />
+    <Compile Include="Iwcf_StIpi.cs" />
+    <Compile Include="Iwcf_TipoDocumento.cs" />
+    <Compile Include="Iwcf_TipoOperacao.cs" />
     <Compile Include="Iwcf_TipoProduto.cs" />
+    <Compile Include="Iwcf_TipoServico.cs" />
     <Compile Include="Iwcf_Transportadora.cs" />
+    <Compile Include="Iwcf_Uf.cs" />
     <Compile Include="Iwcf_UnidadeMedida.cs" />
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
     </Compile>
-    <Compile Include="IserviceAgencia.cs" />
     <Compile Include="serviceAgencia.svc.cs">
       <DependentUpon>serviceAgencia.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Acesso.svc.cs">
+      <DependentUpon>wcf_Acesso.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Agencia.svc.cs">
       <DependentUpon>wcf_Agencia.svc</DependentUpon>
@@ -372,11 +409,23 @@
     <Compile Include="wcf_CargaTribMediaStIcms.svc.cs">
       <DependentUpon>wcf_CargaTribMediaStIcms.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_Cargo.svc.cs">
+      <DependentUpon>wcf_Cargo.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Cfop.svc.cs">
       <DependentUpon>wcf_Cfop.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Cidade.svc.cs">
       <DependentUpon>wcf_Cidade.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_ClassificacaoFiscal.svc.cs">
+      <DependentUpon>wcf_ClassificacaoFiscal.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_CodigoIcms.svc.cs">
+      <DependentUpon>wcf_CodigoIcms.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_CondicaoEntrega.svc.cs">
+      <DependentUpon>wcf_CondicaoEntrega.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_CondicaoPagamento.svc.cs">
       <DependentUpon>wcf_CondicaoPagamento.svc</DependentUpon>
@@ -524,6 +573,9 @@
     <Compile Include="wcf_Empresa.svc.cs">
       <DependentUpon>wcf_Empresa.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_Fabricante.svc.cs">
+      <DependentUpon>wcf_Fabricante.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_FamiliaProduto.svc.cs">
       <DependentUpon>wcf_FamiliaProduto.svc</DependentUpon>
     </Compile>
@@ -548,6 +600,9 @@
     <Compile Include="wcf_Lista_Preco.svc.cs">
       <DependentUpon>wcf_Lista_Preco.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_ModoEntrega.svc.cs">
+      <DependentUpon>wcf_ModoEntrega.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Moeda.svc.cs">
       <DependentUpon>wcf_Moeda.svc</DependentUpon>
     </Compile>
@@ -569,17 +624,47 @@
     <Compile Include="wcf_Produto.svc.cs">
       <DependentUpon>wcf_Produto.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_RamoAtividade.svc.cs">
+      <DependentUpon>wcf_RamoAtividade.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Rota.svc.cs">
       <DependentUpon>wcf_Rota.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Setor.svc.cs">
+      <DependentUpon>wcf_Setor.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Site.svc.cs">
       <DependentUpon>wcf_Site.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_SituacaoTributariaPis.svc.cs">
+      <DependentUpon>wcf_SituacaoTributariaPis.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_StCofins.svc.cs">
+      <DependentUpon>wcf_StCofins.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_StIcms.svc.cs">
+      <DependentUpon>wcf_StIcms.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_StIpi.svc.cs">
+      <DependentUpon>wcf_StIpi.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_TipoDocumento.svc.cs">
+      <DependentUpon>wcf_TipoDocumento.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_TipoOperacao.svc.cs">
+      <DependentUpon>wcf_TipoOperacao.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_TipoProduto.svc.cs">
       <DependentUpon>wcf_TipoProduto.svc</DependentUpon>
     </Compile>
+    <Compile Include="wcf_TipoServico.svc.cs">
+      <DependentUpon>wcf_TipoServico.svc</DependentUpon>
+    </Compile>
     <Compile Include="wcf_Transportadora.svc.cs">
       <DependentUpon>wcf_Transportadora.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_Uf.svc.cs">
+      <DependentUpon>wcf_Uf.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_UnidadeMedida.svc.cs">
       <DependentUpon>wcf_UnidadeMedida.svc</DependentUpon>
