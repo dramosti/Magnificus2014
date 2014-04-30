@@ -144,6 +144,11 @@ namespace HLP.Magnificus.View.WPF
                     System.Windows.Forms.Application.Restart();
                     return false;
                 }
+                else
+                {
+                    // só para não iniciar o sistema
+                    return false;
+                }
             }
             return true;
         }

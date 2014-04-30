@@ -18,7 +18,7 @@
                                     SelectedValue="{Binding currentModel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                     />
         <Button Command="{Binding ConcluirCommand}" CommandParameter="{Binding ElementName=winConexao}"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Width="100" Content="Prosseguir"/>
-        <Button Command="{Binding FecharCommand}" CommandParameter="{Binding ElementName=winConexao}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="100" Content="Fechar"/>
+        <Button Command="{Binding fecharCommand}" CommandParameter="{Binding ElementName=winConexao}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="100" Content="Fechar"/>
     </Grid>
     
 </Window>
