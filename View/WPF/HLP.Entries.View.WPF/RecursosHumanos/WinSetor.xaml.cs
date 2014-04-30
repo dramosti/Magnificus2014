@@ -9,8 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.RecursosHumanos;
+using HLP.Components.View.WPF;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
