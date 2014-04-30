@@ -21,6 +21,7 @@ using HLP.Entries.View.WPF.RecursosHumanos;
 using HLP.Base.Static;
 using HLP.Base.EnumsBases;
 using HLP.Base.ClassesBases;
+using HLP.Base.Modules;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -124,68 +125,93 @@ namespace HLP.Magnificus.View.WPF
             }
         }
 
+        /// <summary>
+        /// Valida se existe conexão
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidaConnection()
+        {
+            bool breturn = false;
+            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            if (c.ConnectionStrings.ConnectionStrings.Count <= 1)
+            {
+                WinSelectConnection winBases = new WinSelectConnection();
+                winBases.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                winBases.ShowDialog();
+
+                if (winBases.ViewModel.bProssegue == true)
+                    breturn = true;
+            }
+            else
+                breturn = true;
+
+            return breturn;
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             try
             {
-
-
-                bool bModificado = false;
-                bModificado = this.SalvaTamanhoMensagensWcf();
-                if (this.EmRedeLocal() != StConnection.OnlineNetwork)
+                if (this.ValidaConnection())
                 {
-                    InternetCS internetUtil = new InternetCS();
-
-                    if (internetUtil.Conexao())
+                    bool bModificado = false;
+                    bModificado = this.SalvaTamanhoMensagensWcf();
+                    if (this.EmRedeLocal() != StConnection.OnlineNetwork)
                     {
-                        Sistema.bOnline = StConnection.OnlineWeb;
-                        bModificado = this.SalvaEndPoint(xUri: WcfData.xEnderWeb);
-                    }
-                    else
-                    {
-                        Sistema.bOnline = StConnection.Offline;
-                        MessageBox.Show(messageBoxText: "Não foi possível iniciar sistema, sem conexão de rede e internet.");
-                        Application.Current.Shutdown();
-                    }
-                }
+                        InternetCS internetUtil = new InternetCS();
 
-                if (Sistema.bOnline != StConnection.Offline)
-                {
-
-                    if (bModificado)
-                    {
-                        System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                        Application.Current.Shutdown();
+                        if (internetUtil.Conexao())
+                        {
+                            Sistema.bOnline = StConnection.OnlineWeb;
+                            bModificado = this.SalvaEndPoint(xUri: WcfData.xEnderWeb);
+                        }
+                        else
+                        {
+                            Sistema.bOnline = StConnection.Offline;
+                            MessageBox.Show(messageBoxText: "Não foi possível iniciar sistema, sem conexão de rede e internet.");
+                            Application.Current.Shutdown();
+                        }
                     }
 
-                    HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
-                    this.MainWindow = wd;
-
-                    WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
-                    wdLogin.ShowDialog();
-                    if (wdLogin.ViewModel.bLogado)
+                    if (Sistema.bOnline != StConnection.Offline)
                     {
-                        wd._viewModel.CarregaDadosLogin();
-                        FrameworkElement.LanguageProperty.OverrideMetadata(
-                        typeof(FrameworkElement),
-                        new FrameworkPropertyMetadata(
-                            XmlLanguage.GetLanguage(
-                            CultureInfo.CurrentCulture.IetfLanguageTag)));
 
-                        //BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
-                        //bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
-                        //bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
-                        //bwParametrosEmpresa.RunWorkerAsync();
+                        if (bModificado)
+                        {
+                            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                            Application.Current.Shutdown();
+                        }
 
-                        base.OnStartup(e);
-                        wd.WindowState = WindowState.Maximized;
-                        wd.Show();
+                        HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
+                        this.MainWindow = wd;
+
+                        WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
+                        wdLogin.ShowDialog();
+                        if (wdLogin.ViewModel.bLogado)
+                        {
+                            wd._viewModel.CarregaDadosLogin();
+                            FrameworkElement.LanguageProperty.OverrideMetadata(
+                            typeof(FrameworkElement),
+                            new FrameworkPropertyMetadata(
+                                XmlLanguage.GetLanguage(
+                                CultureInfo.CurrentCulture.IetfLanguageTag)));
+
+                            //BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
+                            //bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
+                            //bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
+                            //bwParametrosEmpresa.RunWorkerAsync();
+
+                            base.OnStartup(e);
+                            wd.WindowState = WindowState.Maximized;
+                            wd.Show();
+                        }
+                        else
+                        {
+                            Application.Current.Shutdown();
+                        }
+
                     }
-                    else
-                    {
-                        Application.Current.Shutdown();
-                    }
-
                 }
             }
             catch (Exception ex)
@@ -212,6 +238,24 @@ namespace HLP.Magnificus.View.WPF
             catch (Exception)
             {
                 return StConnection.Offline;
+            }
+        }
+
+        public void VerifyConnectionString()
+        {
+            try
+            {
+                Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+                if (c.ConnectionStrings.ConnectionStrings.Count == 1)
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -274,6 +318,8 @@ namespace HLP.Magnificus.View.WPF
                 throw;
             }
         }
+
+
 
         private bool SalvaEndPoint(string xUri)
         {

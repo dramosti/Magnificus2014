@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using System.Data.Common;
+using HLP.Base.Static;
 
 namespace HLP.Dependencies
 {
@@ -25,7 +26,7 @@ namespace HLP.Dependencies
 
         public UnitOfWork2()
         {
-            this._dbPrincipal = EnterpriseLibraryContainer.Current.GetInstance<Database>("dbPrincipal");
+            this._dbPrincipal = EnterpriseLibraryContainer.Current.GetInstance<Database>(WcfData.xNameConnection);
         }
 
     }

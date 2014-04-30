@@ -198,7 +198,6 @@
     </Compile>
     <Compile Include="IcamposBaseDadosService.cs" />
     <Compile Include="IserviceAcesso.cs" />
-    <Compile Include="IserviceAgencia.cs" />
     <Compile Include="Iwcf_Agencia.cs" />
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
@@ -297,6 +296,7 @@
     <Compile Include="serviceAcesso.svc.cs">
       <DependentUpon>serviceAcesso.svc</DependentUpon>
     </Compile>
+    <Compile Include="IserviceAgencia.cs" />
     <Compile Include="serviceAgencia.svc.cs">
       <DependentUpon>serviceAgencia.svc</DependentUpon>
     </Compile>

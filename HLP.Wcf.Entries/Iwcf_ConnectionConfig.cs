@@ -20,5 +20,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         bool TestConnection(string connectionString);
+
+        [OperationContract]
+        HLP.Comum.Model.Models.MagnificusBaseConfiguration GetBaseConfiguration();
     }
 }
