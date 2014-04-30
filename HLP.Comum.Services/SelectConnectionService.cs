@@ -10,7 +10,8 @@ namespace HLP.Comum.Services
     public class SelectConnectionService
     {
         HLP.Wcf.Entries.wcf_SelectConnectionConfig serviceNetwork;
-
+        wcf_SelectConnectionConfig.Iwcf_SelectConnectionConfigClient serviceWeb;
+        
 
         public SelectConnectionService() 
         {
@@ -23,7 +24,7 @@ namespace HLP.Comum.Services
                     break;
                 case StConnection.OnlineWeb:
                     {
-                      //  serviceWeb = new wcf_ConnectionConfig.Iwcf_ConnectionConfigClient();
+                        serviceWeb = new wcf_SelectConnectionConfig.Iwcf_SelectConnectionConfigClient();
                     }
                     break;
                 case StConnection.Offline:
@@ -43,9 +44,8 @@ namespace HLP.Comum.Services
                     }
                 case StConnection.OnlineWeb:
                     {
-                        //return this.serviceWeb.GetBaseConfiguration();
-                        return null;
-                    }
+                        return this.serviceWeb.GetBaseConfiguration();
+                    }   
                 case StConnection.Offline:
                 default:
                     {

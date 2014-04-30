@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\wcf_SelectConnectionConfig\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -75,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\HLP.Comum.Model.Models.MagnificusBaseConfiguration.datasource" />
     <None Include="Properties\DataSources\HLP.Comum.Model.Models.RecordsSqlModel.datasource" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
@@ -107,10 +113,27 @@
     <None Include="Service References\wcf_OperacoesDataBase\wcf_OperacoesDataBase4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig.wsdl" />
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig4.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\wcf_ConnectionConfig\" />
     <WCFMetadataStorage Include="Service References\wcf_OperacoesDataBase\" />
+    <WCFMetadataStorage Include="Service References\wcf_SelectConnectionConfig\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_OperacoesDataBase\wcf_OperacoesDataBase.disco" />
@@ -138,6 +161,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_ConnectionConfig\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_SelectConnectionConfig\wcf_SelectConnectionConfig.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_SelectConnectionConfig\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_SelectConnectionConfig\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_SelectConnectionConfig\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

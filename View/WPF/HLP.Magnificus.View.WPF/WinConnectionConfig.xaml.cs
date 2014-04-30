@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace HLP.Comum.View.WPF
+namespace HLP.Magnificus.View.WPF
 {
     /// <summary>
     /// Interaction logic for WinConnectionConfig.xaml
@@ -25,7 +25,7 @@ namespace HLP.Comum.View.WPF
             InitializeComponent();
             this.ViewModel = new ConnectionConfigViewModel();
 
-            
+
 
             txtPassword.LostFocus += this.ViewModel.txtPassword_LostFocus;
         }

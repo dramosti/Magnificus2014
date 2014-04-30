@@ -5,8 +5,8 @@
   type="HLP.Magnificus.View.WPF.WinSelectConnection, HLP.Magnificus.View.WPF">
   </object>
 
-  <object id="WinConnectionConfig" name="Configuração" singleton="false" scope="request"
-  type="HLP.Comum.View.WPF.WinConnectionConfig, HLP.Comum.View.WPF">
+  <object id="WinConnectionConfig" name="Conexões" singleton="false" scope="request"
+  type="HLP.Magnificus.View.WPF.WinConnectionConfig, HLP.Magnificus.View.WPF">
   </object>
   <object id="WinPreviewReport" name="Report" singleton="false" scope="request"
    type="HLP.Comum.View.WPF.WinPreviewReport, HLP.Comum.View.WPF">

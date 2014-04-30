@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Model.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_SelectConnectionConfig.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+  <xs:complexType name="MagnificusBaseConfiguration">
+    <xs:sequence>
+      <xs:element name="_x003C_conexoes_x003E_k__BackingField" nillable="true" type="tns:ArrayOfConnectionConfigModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MagnificusBaseConfiguration" nillable="true" type="tns:MagnificusBaseConfiguration" />
+  <xs:complexType name="ArrayOfConnectionConfigModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConnectionConfigModel" nillable="true" type="tns:ConnectionConfigModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConnectionConfigModel" nillable="true" type="tns:ArrayOfConnectionConfigModel" />
+  <xs:complexType name="ConnectionConfigModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q1:modelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Autentication" type="xs:boolean" />
+          <xs:element minOccurs="0" name="urlWebService" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xBaseDados" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xFile" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xLogin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xNameConexao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xPassword" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xServerName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConnectionConfigModel" nillable="true" type="tns:ConnectionConfigModel" />
+</xs:schema>
