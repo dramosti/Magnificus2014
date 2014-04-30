@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="98a2e54b-99a6-481f-ab97-38cc7de43113" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_StCofins.xsd" MetadataType="Schema" ID="58f62dbe-d9bf-48e6-8a34-3a16f518f911" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_StCofins.disco" MetadataType="Disco" ID="cb67879e-0ee5-48e8-bf30-87d5f5f90b3c" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?disco" />
+    <MetadataFile FileName="wcf_StCofins1.xsd" MetadataType="Schema" ID="2fa055f7-7c43-41b4-b80b-47953ba0250a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_StCofins2.xsd" MetadataType="Schema" ID="fc577e93-c513-48d3-be8c-c172e976304b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_StCofins3.xsd" MetadataType="Schema" ID="7189a2cc-27e5-4d89-be7a-880f707f6b65" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_StCofins4.xsd" MetadataType="Schema" ID="72448584-5c93-4d2f-98d1-bb0a51fd4456" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_StCofins.wsdl" MetadataType="Wsdl" ID="e2e92a74-e8d4-4511-8e49-3a05655dd830" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_StCofins.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

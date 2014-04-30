@@ -1,6 +1,4 @@
 ﻿using HLP.Comum.Resources.Util;
-using HLP.Entries.ViewModel.Services.Gerais;
-using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +14,7 @@ using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Entries.Services.RecursosHumanos;
 using HLP.Base.Modules;
+using HLP.Entries.ViewModel.ViewModels.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {

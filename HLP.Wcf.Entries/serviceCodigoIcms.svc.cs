@@ -44,7 +44,7 @@ namespace HLP.Wcf.Entries
                     {
                         case statusModel.criado:
                         case statusModel.alterado:
-                            item.idCodigoIcmsPai = (int) objModel.idCodigoIcmsPai;
+                            item.idCodigoIcmsPai = (int)objModel.idCodigoIcmsPai;
                             iCodigo_IcmsRepository.Save(item);
                             break;
                         case statusModel.excluido:
@@ -90,7 +90,7 @@ namespace HLP.Wcf.Entries
             {
                 iCodigo_Icms_paiRepository.BeginTransaction();
                 iCodigo_IcmsRepository.DeleteCodigosByPai((int)objModel.idCodigoIcmsPai);
-                iCodigo_Icms_paiRepository.Delete(objModel);
+                iCodigo_Icms_paiRepository.Delete(objModel.idCodigoIcmsPai ?? 0);
                 iCodigo_Icms_paiRepository.CommitTransaction();
                 return true;
             }
@@ -109,7 +109,7 @@ namespace HLP.Wcf.Entries
                 //objModel = this.GetObjeto(1064);
                 iCodigo_Icms_paiRepository.BeginTransaction();
 
-               
+
 
                 iCodigo_Icms_paiRepository.Copy(objModel);
                 foreach (var item in objModel.lCodigo_IcmsModel)

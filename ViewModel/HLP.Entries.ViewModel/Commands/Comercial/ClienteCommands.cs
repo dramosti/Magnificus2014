@@ -1,6 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Entries.Model.Models.Comercial;
-using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
@@ -14,13 +13,13 @@ using HLP.Base.EnumsBases;
 using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
     class ClienteCommands
     {
         ClienteViewModel objViewModel;
-        BackgroundWorker bWorkerAcoes;
         ClienteService objServico;
         Condicao_PagamentoService objCondicao_PagamentoService;
 
@@ -54,6 +53,21 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
             this.objServico = new ClienteService();
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
+            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getCliente);
+            objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
         }
 
 
@@ -85,7 +99,13 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {
@@ -104,10 +124,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes = new BackgroundWorker();
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
+                this.objViewModel.bWorkerSave.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -218,10 +235,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -242,11 +256,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -257,10 +267,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
-
-
-
-
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -281,10 +287,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -355,11 +358,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.getCliente);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
-
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

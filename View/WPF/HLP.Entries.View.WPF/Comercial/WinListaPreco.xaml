@@ -35,7 +35,7 @@
             <conv:PorcentagemConverter x:Key="PorcentagemConverter"/>
             <conv:NotConverter x:Key="notConverter"/>
             <convL:RowDateListaPrecoConverter x:Key="RowDateConverter"/>
-            <convL:StCustoProdutoConverter x:Key="stCustoProdutoConverter"/>
+            <convL:StCustoProdutoConverter x:Key="StCustoProdutoConverter"/>
             <convL:IsEnabledCompMultiConverter x:Key="isEnabledMultiConverter"></convL:IsEnabledCompMultiConverter>
             <conv:MoedaConverter x:Key="moedaConverter"/>
             <util:BindingProxy x:Key="proxy" Data="{Binding}" />
@@ -355,8 +355,8 @@
                                     IsReadOnly="{Binding Data.currentModel.stAtualizacao, Source={StaticResource proxy}, Converter={StaticResource readOnlyConverter}}">
                                             <DataGridTextColumn.CellStyle>
                                                 <Style>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding idProduto, Converter={StaticResource stCustoProdutoConverter}}" Value="False">
+                                                    <Style.Triggers>                                                        
+                                                        <DataTrigger Binding="{Binding idProduto, Converter={StaticResource StCustoProdutoConverter}}" Value="False">
                                                             <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>

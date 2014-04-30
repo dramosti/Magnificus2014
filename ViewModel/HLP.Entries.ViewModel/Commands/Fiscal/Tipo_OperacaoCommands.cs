@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Fiscal;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
     public class Tipo_OperacaoCommands
     {
-        BackgroundWorker bWorkerAcoes;
         Tipo_OperacaoViewModel objViewModel;
-        Tipo_OperacaoService.IserviceTipo_OperacaoClient servico = new Tipo_OperacaoService.IserviceTipo_OperacaoClient();
+        Tipo_OperacaoService objService = new Tipo_OperacaoService();
 
         public Tipo_OperacaoCommands(Tipo_OperacaoViewModel objViewModel)
         {
@@ -47,6 +48,21 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
+            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+            objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
         }
 
 
@@ -66,10 +82,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
-
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -82,8 +95,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                objViewModel.currentModel = this.servico.Save(
-                     Objeto: this.objViewModel.currentModel);
+                objViewModel.currentModel = this.objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception)
             {
@@ -140,7 +152,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (this.objService.DeleteObject(obj: this.objViewModel.currentModel))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -156,7 +168,13 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {
@@ -173,10 +191,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             this.objViewModel.currentModel = new Tipo_operacaoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
@@ -196,10 +211,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
@@ -231,10 +243,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -269,7 +278,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             try
             {
                 e.Result =
-                    this.servico.Copy(Objeto: this.objViewModel.currentModel);
+                    this.objService.CopyObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -327,7 +336,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             if (this.objViewModel.currentID != 0)
                 this.objViewModel.currentModel =
-                    this.servico.GetObjeto(idObjeto: this.objViewModel.currentID);
+                    this.objService.GetObject(id: this.objViewModel.currentID);
             else
                 this.objViewModel.currentModel = null;
         }

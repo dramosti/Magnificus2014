@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="wcf_Produto" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Gerais" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Iwcf_Produto_GetObjeto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetObjeto" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_GetObjeto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetObjetoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_Save_InputMessage">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_Save_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_Copy_InputMessage">
+    <wsdl:part name="parameters" element="tns:Copy" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_Copy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_getAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAll" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_getAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_PrecoCustoManual_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrecoCustoManual" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_PrecoCustoManual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrecoCustoManualResponse" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_GetValorCompraProduto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValorCompraProduto" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Produto_GetValorCompraProduto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValorCompraProdutoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Iwcf_Produto">
+    <wsdl:operation name="GetObjeto">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/GetObjeto" message="tns:Iwcf_Produto_GetObjeto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/GetObjetoResponse" message="tns:Iwcf_Produto_GetObjeto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/Save" message="tns:Iwcf_Produto_Save_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/SaveResponse" message="tns:Iwcf_Produto_Save_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Copy">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/Copy" message="tns:Iwcf_Produto_Copy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/CopyResponse" message="tns:Iwcf_Produto_Copy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/Delete" message="tns:Iwcf_Produto_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/DeleteResponse" message="tns:Iwcf_Produto_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/getAll" message="tns:Iwcf_Produto_getAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/getAllResponse" message="tns:Iwcf_Produto_getAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrecoCustoManual">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/PrecoCustoManual" message="tns:Iwcf_Produto_PrecoCustoManual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/PrecoCustoManualResponse" message="tns:Iwcf_Produto_PrecoCustoManual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValorCompraProduto">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Produto/GetValorCompraProduto" message="tns:Iwcf_Produto_GetValorCompraProduto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Produto/GetValorCompraProdutoResponse" message="tns:Iwcf_Produto_GetValorCompraProduto_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_Iwcf_Produto" type="tns:Iwcf_Produto">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetObjeto">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/GetObjeto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/Save" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Copy">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/Copy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAll">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/getAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrecoCustoManual">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/PrecoCustoManual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorCompraProduto">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Produto/GetValorCompraProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wcf_Produto">
+    <wsdl:port name="BasicHttpBinding_Iwcf_Produto" binding="tns:BasicHttpBinding_Iwcf_Produto">
+      <soap:address location="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Produto.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,6 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
-using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;

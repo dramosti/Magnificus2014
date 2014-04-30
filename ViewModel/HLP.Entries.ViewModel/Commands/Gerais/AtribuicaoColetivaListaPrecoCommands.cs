@@ -1,6 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Comum.Resources.Util;
-using HLP.Entries.ViewModel.Services.Comercial;
+using HLP.Entries.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.Generic;
