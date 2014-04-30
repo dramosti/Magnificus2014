@@ -2,13 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
-        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
-        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
     <runtime:WindowsBase.Resources>
         <ResourceDictionary>
@@ -18,14 +17,6 @@
             <convert:MaskConverter x:Key="maskConverter"/>
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
-            <ObjectDataProvider 
-            MethodName="GetDict"
-            ObjectType="{x:Type convert:EnumDescriptionConverter}"
-            x:Key="EnumDescriptionDict">
-                <ObjectDataProvider.MethodParameters>
-                    <x:Type TypeName="enums:TipoEndereco"></x:Type>
-                </ObjectDataProvider.MethodParameters>
-            </ObjectDataProvider>
             <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odpCidade}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>

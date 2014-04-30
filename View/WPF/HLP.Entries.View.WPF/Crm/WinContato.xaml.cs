@@ -11,9 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HLP.Comum.View.Formularios;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
-using HLP.Comum.Resources.RecursosBases;
+using HLP.Components.View.WPF;
 
 namespace HLP.Entries.View.WPF.Crm
 {
