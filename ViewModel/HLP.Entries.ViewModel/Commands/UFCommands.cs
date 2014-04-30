@@ -167,6 +167,8 @@ namespace HLP.Entries.ViewModel.Commands
                     OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
                     vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
                 }
+                else
+                    throw ex;
             }
             finally
             {

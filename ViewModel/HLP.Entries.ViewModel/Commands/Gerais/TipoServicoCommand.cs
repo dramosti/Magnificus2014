@@ -10,6 +10,7 @@ using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Base.ClassesBases;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -151,7 +152,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {

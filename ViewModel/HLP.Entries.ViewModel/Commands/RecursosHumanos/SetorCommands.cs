@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.RecursosHumanos;
 using HLP.Entries.Services.RecursosHumanos;
 using HLP.Entries.ViewModel.ViewModels.RecursosHumanos;
@@ -152,7 +153,13 @@ namespace HLP.Entries.ViewModel.Commands.RecursosHumanos
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {

@@ -14,7 +14,6 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 {
     public class Empresa_ParametrosCommands
     {
-        BackgroundWorker bWorkerAcoes;
         Empresa_ParametrosViewModel objViewModel;
         HLP.Entries.Services.Parametros.EmpresaParametrosService servico = new Entries.Services.Parametros.EmpresaParametrosService();
         public Empresa_ParametrosCommands(Empresa_ParametrosViewModel objViewModel)
@@ -53,9 +52,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -109,7 +106,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
@@ -124,10 +121,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         private void Novo(object _panel)
         {
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -136,7 +130,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         }
         void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            objViewModel.FocusToComponente(e.Result as Panel, 
+            objViewModel.FocusToComponente(e.Result as Panel,
                 HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
@@ -148,10 +142,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -217,10 +208,7 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
         }
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
 
         }
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
