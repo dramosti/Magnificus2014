@@ -15,12 +15,12 @@ namespace HLP.Comum.ViewModel.Commands
     public class SelectConnectionCommand
     {
         SelectConnectionViewModel ViewModel;
-        ConnectionConfigService servico;
+        SelectConnectionService servico;
 
         public SelectConnectionCommand(SelectConnectionViewModel ViewModel)
         {
             this.ViewModel = ViewModel;
-            servico = new ConnectionConfigService();
+            servico = new SelectConnectionService();
 
             if (System.IO.File.Exists(Pastas.Path_BasesConfiguradas))
             {
@@ -32,6 +32,8 @@ namespace HLP.Comum.ViewModel.Commands
             }
             this.ViewModel.ConcluirCommand = new RelayCommand(execute: i => this.ConcluirSelect(i),
             canExecute: i => CanConcluirSelect());
+            this.ViewModel.fecharCommand = new RelayCommand(execute: i => this.Fechar(i),
+          canExecute: i => true);
         }
 
         public void ConcluirSelect(object win)
@@ -57,6 +59,14 @@ namespace HLP.Comum.ViewModel.Commands
                 return true;
             else
                 return false;
+        }
+
+
+        public void Fechar(object win)
+        {
+            this.ViewModel.bProssegue = false;
+            Window objWin = win as Window;
+            objWin.Close();
         }
 
 

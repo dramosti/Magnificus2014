@@ -95,27 +95,5 @@ namespace HLP.Comum.Services
             }
         }
 
-
-        public HLP.Comum.Model.Models.MagnificusBaseConfiguration GetBaseConfiguration() 
-        {
-            switch (Sistema.bOnline)
-            {
-                case StConnection.OnlineNetwork:
-                    {
-                        return this.serviceNetwork.GetBaseConfiguration();
-                    }
-                case StConnection.OnlineWeb:
-                    {
-                        //return this.serviceWeb.GetBaseConfiguration();
-                        return null;
-                    }
-                case StConnection.Offline:
-                default:
-                    {
-                        return null;
-                    }
-            }
-
-        }
     }
 }

@@ -131,7 +131,6 @@ namespace HLP.Magnificus.View.WPF
         /// <returns></returns>
         private bool ValidaConnection()
         {
-            bool breturn = false;
             Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             if (c.ConnectionStrings.ConnectionStrings.Count <= 1)
@@ -141,12 +140,12 @@ namespace HLP.Magnificus.View.WPF
                 winBases.ShowDialog();
 
                 if (winBases.ViewModel.bProssegue == true)
-                    breturn = true;
+                {
+                    System.Windows.Forms.Application.Restart();
+                    return false;
+                }
             }
-            else
-                breturn = true;
-
-            return breturn;
+            return true;
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -155,16 +154,17 @@ namespace HLP.Magnificus.View.WPF
             {
                 if (this.ValidaConnection())
                 {
+
                     bool bModificado = false;
-                    bModificado = this.SalvaTamanhoMensagensWcf();
-                    if (this.EmRedeLocal() != StConnection.OnlineNetwork)
+                    bModificado = Sistema.SalvaTamanhoMensagensWcf();
+                    if (Sistema.EmRedeLocal() != StConnection.OnlineNetwork)
                     {
                         InternetCS internetUtil = new InternetCS();
 
                         if (internetUtil.Conexao())
                         {
                             Sistema.bOnline = StConnection.OnlineWeb;
-                            bModificado = this.SalvaEndPoint(xUri: WcfData.xEnderWeb);
+                            bModificado = Sistema.SalvaEndPoint(xUri: WcfData.xEnderWeb);
                         }
                         else
                         {
@@ -210,7 +210,6 @@ namespace HLP.Magnificus.View.WPF
                         {
                             Application.Current.Shutdown();
                         }
-
                     }
                 }
             }
@@ -220,138 +219,5 @@ namespace HLP.Magnificus.View.WPF
             }
         }
 
-        private StConnection EmRedeLocal()
-        {
-            System.Net.NetworkInformation.Ping p = new System.Net.NetworkInformation.Ping();
-            System.Net.NetworkInformation.PingReply pr;
-
-            try
-            {
-                pr = p.Send(WcfData.xIpServidor);
-
-                if (pr.Status == System.Net.NetworkInformation.IPStatus.Success)
-                    Sistema.bOnline = StConnection.OnlineNetwork;
-                else
-                    Sistema.bOnline = StConnection.OnlineWeb;
-                return Sistema.bOnline;
-            }
-            catch (Exception)
-            {
-                return StConnection.Offline;
-            }
-        }
-
-        public void VerifyConnectionString()
-        {
-            try
-            {
-                Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-                if (c.ConnectionStrings.ConnectionStrings.Count == 1)
-                {
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public bool SalvaTamanhoMensagensWcf()
-        {
-            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-            bool bModificado = false;
-
-            int iTamanho = 2147483647;
-
-            ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
-            //BindingCollectionElement be = serviceModeGroup.Bindings.BindingCollections.FirstOrDefault(i => i.BindingName == "basicHttpBinding");
-
-            foreach (BasicHttpBindingElement item in serviceModeGroup.Bindings.BasicHttpBinding.Bindings
-                )
-            {
-                if (item.MaxReceivedMessageSize != iTamanho)
-                {
-                    item.MaxReceivedMessageSize = iTamanho;
-                    bModificado = true;
-                }
-                if (item.ReaderQuotas.MaxDepth != iTamanho)
-                {
-                    item.ReaderQuotas.MaxDepth = iTamanho;
-                    bModificado = true;
-                }
-                if (item.ReaderQuotas.MaxStringContentLength != iTamanho)
-                {
-                    item.ReaderQuotas.MaxStringContentLength = iTamanho;
-                    bModificado = true;
-                }
-                if (item.ReaderQuotas.MaxArrayLength != iTamanho)
-                {
-                    item.ReaderQuotas.MaxArrayLength = iTamanho;
-                    bModificado = true;
-                }
-                if (item.ReaderQuotas.MaxBytesPerRead != iTamanho)
-                {
-                    item.ReaderQuotas.MaxBytesPerRead = iTamanho;
-                    bModificado = true;
-                }
-                if (item.ReaderQuotas.MaxNameTableCharCount != iTamanho)
-                {
-                    item.ReaderQuotas.MaxNameTableCharCount = iTamanho;
-                    bModificado = true;
-                }
-            }
-
-            try
-            {
-                if (bModificado)
-                    c.Save();
-
-                return bModificado;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-
-
-        private bool SalvaEndPoint(string xUri)
-        {
-            Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            ServiceModelSectionGroup serviceModeGroup = ServiceModelSectionGroup.GetSectionGroup(c);
-            string xNomeServico;
-            Uri _uri;
-            bool bModificado = false;
-
-            foreach (ChannelEndpointElement item in serviceModeGroup.Client.Endpoints)
-            {
-                xNomeServico = item.Address.ToString().Split('/').ToList().Last();
-                _uri = new Uri(xUri + xNomeServico);
-                if (_uri != item.Address)
-                {
-                    bModificado = true;
-                    item.Address = _uri;
-                }
-            }
-
-            try
-            {
-                if (bModificado)
-                    c.Save();
-
-                return bModificado;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
     }
 }

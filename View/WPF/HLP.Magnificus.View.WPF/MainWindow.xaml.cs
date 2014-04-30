@@ -35,7 +35,6 @@ namespace HLP.Magnificus.View.WPF
             }
             catch (Exception)
             {
-
                 throw;
             }
             CompanyData.idEmpresa = 1;

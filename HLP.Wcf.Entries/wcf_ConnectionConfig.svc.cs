@@ -67,23 +67,6 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public Comum.Model.Models.MagnificusBaseConfiguration GetBaseConfiguration()
-        {
-
-            try
-            {
-                HLP.Comum.Model.Models.MagnificusBaseConfiguration objResult = new Comum.Model.Models.MagnificusBaseConfiguration();
-                if (System.IO.File.Exists(Pastas.Path_BasesConfiguradas))
-                {
-                    objResult = SerializeClassToXml.DeserializeClasse<HLP.Comum.Model.Models.MagnificusBaseConfiguration>(Pastas.Path_BasesConfiguradas);
-                }
-                return objResult;
-            }
-            catch (Exception ex)
-            {
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
-            }
-        }
+       
     }
 }

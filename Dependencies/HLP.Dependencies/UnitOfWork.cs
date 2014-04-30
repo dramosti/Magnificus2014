@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using System.Data.Common;
 using HLP.Base.Static;
+using System.Configuration;
 
 namespace HLP.Dependencies
 {
@@ -26,7 +27,19 @@ namespace HLP.Dependencies
 
         public UnitOfWork2()
         {
-            this._dbPrincipal = EnterpriseLibraryContainer.Current.GetInstance<Database>(WcfData.xNameConnection);
+            try
+            {
+
+                 this._dbPrincipal = EnterpriseLibraryContainer.Current.GetInstance<Database>(WcfData.xNameConnection);
+                //System.Configuration.Configuration config =
+                //        ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                //this._dbPrincipal = DatabaseFactory.CreateDatabase(config.ConnectionStrings.ConnectionStrings[WcfData.xNameConnection].ToString());
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }

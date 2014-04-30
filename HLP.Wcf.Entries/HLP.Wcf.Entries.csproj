@@ -192,6 +192,7 @@
     <Content Include="wcf_Produto.svc" />
     <Content Include="wcf_RamoAtividade.svc" />
     <Content Include="wcf_Rota.svc" />
+    <Content Include="wcf_SelectConnectionConfig.svc" />
     <Content Include="wcf_Setor.svc" />
     <Content Include="wcf_Site.svc" />
     <Content Include="wcf_SituacaoTributariaPis.svc" />
@@ -315,6 +316,7 @@
     <Compile Include="Iwcf_Produto.cs" />
     <Compile Include="Iwcf_RamoAtividade.cs" />
     <Compile Include="Iwcf_Rota.cs" />
+    <Compile Include="Iwcf_SelectConnectionConfig.cs" />
     <Compile Include="Iwcf_Setor.cs" />
     <Compile Include="Iwcf_Site.cs" />
     <Compile Include="Iwcf_SituacaoTributariaPis.cs" />
@@ -629,6 +631,9 @@
     </Compile>
     <Compile Include="wcf_Rota.svc.cs">
       <DependentUpon>wcf_Rota.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wcf_SelectConnectionConfig.svc.cs">
+      <DependentUpon>wcf_SelectConnectionConfig.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_Setor.svc.cs">
       <DependentUpon>wcf_Setor.svc</DependentUpon>
