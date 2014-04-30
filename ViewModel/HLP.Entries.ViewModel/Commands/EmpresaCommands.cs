@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.EnumsBases;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands
 {
     public class EmpresaCommands
     {
-        BackgroundWorker bWorkerAcoes;
         EmpresaViewModel objViewModel;
-        empresaService.IserviceEmpresaClient servico = new empresaService.IserviceEmpresaClient();
+        EmpresaService objService;
 
         public EmpresaCommands(EmpresaViewModel objViewModel)
         {
-
+            objService = new EmpresaService();
             this.objViewModel = objViewModel;
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
@@ -47,6 +47,21 @@ namespace HLP.Entries.ViewModel.Commands
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
+            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
+            objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
         }
 
 
@@ -67,9 +82,7 @@ namespace HLP.Entries.ViewModel.Commands
                         });
                 }
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
 
             }
             catch (Exception ex)
@@ -83,7 +96,8 @@ namespace HLP.Entries.ViewModel.Commands
         {
             try
             {
-                this.objViewModel.currentModel = servico.Save(objEmpresa: objViewModel.currentModel);
+                this.objViewModel.currentModel =
+                    this.objService.SaveObject(obj: this.objViewModel.currentModel);
             }
             catch (Exception ex)
             {
@@ -129,18 +143,51 @@ namespace HLP.Entries.ViewModel.Commands
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
 
-        public async void Copy()
+        public void Copy()
         {
             try
             {
-                this.objViewModel.currentModel = await this.servico.copyEmpresaAsync(objEmpresa:
-                    this.objViewModel.currentModel);
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
                 this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
 
                 throw ex;
+            }
+        }
+
+        void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Error != null)
+                {
+                    throw new Exception(message: e.Error.Message);
+                }
+                else
+                {
+                    this.objViewModel.currentModel = e.Result as EmpresaModel;
+                    this.objViewModel.copyBaseCommand.Execute(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        void bwCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                e.Result =
+                    this.objService.CopyObject(obj: this.objViewModel.currentModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -159,7 +206,7 @@ namespace HLP.Entries.ViewModel.Commands
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete((int)this.objViewModel.currentModel.idEmpresa))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idEmpresa ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -191,10 +238,7 @@ namespace HLP.Entries.ViewModel.Commands
         {
             this.objViewModel.currentModel = new EmpresaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
@@ -214,10 +258,7 @@ namespace HLP.Entries.ViewModel.Commands
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
@@ -256,10 +297,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetEmpresasBackground);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -296,7 +334,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = servico.getEmpresa(idEmpresa: this.objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentModel.idEmpresa ?? 0);
         }
         #endregion
 

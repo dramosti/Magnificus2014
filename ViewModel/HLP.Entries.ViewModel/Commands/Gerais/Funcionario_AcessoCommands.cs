@@ -8,18 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class Funcionario_AcessoCommands
     {
-        BackgroundWorker bWorkerAcoes;
         Funcionario_AcessoViewModel objViewModel;
-        AcessoFuncionarioService.IserviceAcessoClient servico = new AcessoFuncionarioService.IserviceAcessoClient();
+        Funcionario_AcessoService objService;
 
         public Funcionario_AcessoCommands(Funcionario_AcessoViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
+            objService = new Funcionario_AcessoService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => false);
@@ -44,11 +45,19 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getFuncionario);
         }
 
         public bool ValidaUsuario(string xLogin, string xSenha, int idFuncionario)
         {
-            return this.servico.ValidaUsuario(xLogin: xLogin, xSenha: xSenha, idFuncionario: idFuncionario);
+            return this.objService.ValidaUsuario(xLogin: xLogin, xSenha: xSenha, idFuncionario: idFuncionario);
         }
 
         private void IniciaCollections()
@@ -63,10 +72,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
-
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -79,7 +85,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = this.servico.Save(objModel: this.objViewModel.currentModel);
+                this.objViewModel.currentModel = this.objService.SaveObject(
+                    obj: this.objViewModel.currentModel);
                 e.Result = e.Argument;
             }
             catch (Exception ex)
@@ -119,7 +126,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
 
-       
+
         private bool SaveCanExecute(object objDependency)
         {
             if (objViewModel.currentModel == null || objDependency == null)
@@ -130,20 +137,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         }
 
         public void Delete()
-        {           
+        {
         }
 
         private void Novo()
-        {       
+        {
         }
-       
+
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
@@ -163,7 +167,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -174,10 +178,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public void Copy()
         {
-            
+
         }
 
-        
+
 
         public bool CopyCanExecute()
         {
@@ -205,19 +209,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.getFuncionario);
-            bw.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-            bw.RunWorkerAsync();
-
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         private void getFuncionario(object sender, DoWorkEventArgs e)
         {
             try
             {
-                this.objViewModel.currentModel = this.servico.GetObjeto(idObjeto:
-                this.objViewModel.currentID);
+                this.objViewModel.currentModel = this.objService.GetObject(
+                    id: this.objViewModel.currentID);
             }
             catch (Exception ex)
             {

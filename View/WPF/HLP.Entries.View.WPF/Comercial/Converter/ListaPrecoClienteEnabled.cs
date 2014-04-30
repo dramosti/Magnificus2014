@@ -1,5 +1,4 @@
-﻿using HLP.Entries.ViewModel.Services.Comercial;
-using HLP.Entries.ViewModel.ViewModels.Comercial;
+﻿using HLP.Entries.ViewModel.ViewModels.Comercial;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -28,7 +28,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         {
             ProdutoCommands comm = new ProdutoCommands(objViewModel: this);
         }
-
-       
+                
     }
 }

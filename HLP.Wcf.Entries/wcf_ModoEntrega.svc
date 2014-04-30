@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HLP.Wcf.Entries.wcf_ModoEntrega" CodeBehind="wcf_ModoEntrega.svc.cs" %>

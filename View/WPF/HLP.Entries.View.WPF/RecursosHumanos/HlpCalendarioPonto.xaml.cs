@@ -1,5 +1,4 @@
 ﻿using HLP.Entries.Model.Models.Gerais;
-using HLP.Entries.ViewModel.Services.Gerais;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
 using System.Collections.ObjectModel;

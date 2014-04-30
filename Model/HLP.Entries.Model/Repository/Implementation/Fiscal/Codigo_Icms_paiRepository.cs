@@ -37,13 +37,13 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
             }
         }
 
-        public void Delete(Codigo_Icms_paiModel objCodigo_Icms_pai)
+        public void Delete(int id)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
             UndTrabalho.dbTransaction,
            "[dbo].[Proc_delete_Codigo_Icms_pai]",
             UserData.idUser,
-            objCodigo_Icms_pai.idCodigoIcmsPai);
+            id);
         }
 
         public void Copy(Codigo_Icms_paiModel objCodigo_Icms_pai)

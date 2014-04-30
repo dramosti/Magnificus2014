@@ -2,9 +2,9 @@
 using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Comum.Resources.Models;
+using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Services.Comercial;
-using HLP.Entries.ViewModel.Services.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Comercial;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using System;
@@ -21,7 +21,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
     public class Lista_PrecoCommands
     {
         ClienteService objServiceCliente;
-        BackgroundWorker bWorkerAcoes;
         Lista_PrecoViewModel objViewModel;
         ProdutoService objServicoProduto;
         int idOld = 0;
@@ -79,6 +78,21 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
             this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
             this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
+
+            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
+            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getListaPreco);
+            objViewModel.bWorkerPesquisa.RunWorkerCompleted += bw_RunWorkerCompleted;
 
             int currentId = objService.getIdListaPreferencial();
             int currentPosition = 0;
@@ -262,9 +276,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             status = statusModel.excluido
                         });
                 }
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -372,7 +384,13 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {
@@ -396,10 +414,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
             this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = true;
             this.objViewModel.hierarquiaListaPreco = null;
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
@@ -430,10 +445,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 this.objViewModel.bCompListaAut = true;
             }
 
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
@@ -698,6 +710,16 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.lObjHierarquia = new Components.Model.Models.modelToTreeView();
             this.objViewModel.lObjHierarquia = this.objService.GetHierarquiaListaFull(
                 idListaPreco: this.objViewModel.selectedId);
+        }
+
+        public bool PrecoCustoManual(int idProduto)
+        {
+            return this.objServicoProduto.PrecoCustoManual(idProduto: idProduto);
+        }
+
+        public decimal GetPrecoCustoProduto(int idProduto)
+        {
+            return this.objServicoProduto.GetPrecoCustoProduto(idProduto: idProduto);
         }
     }
 }

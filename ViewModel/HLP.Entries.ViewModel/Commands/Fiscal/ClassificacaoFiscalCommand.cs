@@ -8,18 +8,20 @@ using System.Windows;
 using System.Windows.Controls;
 using HLP.Entries.ViewModel.ViewModels.Fiscal;
 using HLP.Base.ClassesBases;
+using HLP.Entries.Services.Fiscal;
+using HLP.Comum.ViewModel.ViewModel;
 
 namespace HLP.Entries.ViewModel.Commands.Fiscal
 {
     public class ClassificacaoFiscalCommand
     {
-        BackgroundWorker bWorkerAcoes;
         ClassificacaoFiscalViewModel objViewModel;
-        ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient servico = new ClassificacaoFiscalServico.IserviceClassificacaoFiscalClient();
+        Classificacao_FiscalService objService;
+
         public ClassificacaoFiscalCommand(ClassificacaoFiscalViewModel objViewModel)
         {
-
             this.objViewModel = objViewModel;
+            this.objService = new Classificacao_FiscalService();
 
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
@@ -45,7 +47,19 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
 
+            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
+            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
+
+            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
+            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
+
+            objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
+
+            objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.metodoGetModel);
         }
 
 
@@ -56,10 +70,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                bWorkerAcoes.DoWork += bwSalvar_DoWork;
-                bWorkerAcoes.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-                bWorkerAcoes.RunWorkerAsync(_panel);
-
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -70,7 +81,8 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel.idClassificacaoFiscal = servico.Save(this.objViewModel.currentModel);
+            this.objViewModel.currentModel.idClassificacaoFiscal = this.objService.SaveObject(
+                obj: this.objViewModel.currentModel);
             e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -120,7 +132,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
                     caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    if (this.servico.Delete(this.objViewModel.currentModel))
+                    if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idClassificacaoFiscal ?? 0))
                     {
                         MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
@@ -136,7 +148,13 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    OperacoesDataBaseViewModel vm = new OperacoesDataBaseViewModel();
+                    vm.ShowWinExclusionDenied(xMessage: ex.Message, xValor: this.objViewModel.currentID.ToString());
+                }
+                else
+                    throw ex;
             }
             finally
             {
@@ -148,15 +166,12 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             }
         }
 
-        
+
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new Model.Models.Fiscal.Classificacao_fiscalModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwNovo_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
         void bwNovo_DoWork(object sender, DoWorkEventArgs e)
@@ -176,10 +191,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            bWorkerAcoes = new BackgroundWorker();
-            bWorkerAcoes.DoWork += bwAlterar_DoWork;
-            bWorkerAcoes.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-            bWorkerAcoes.RunWorkerAsync(_panel);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
         void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
@@ -198,7 +210,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?",caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)== MessageBoxResult.No) return;
+            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
             this.PesquisarRegistro();
             this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
         }
@@ -211,10 +223,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -248,7 +257,7 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             try
             {
-                e.Result = servico.Copy(objViewModel.currentModel);
+                e.Result = this.objService.CopyObject(id: this.objViewModel.currentModel.idClassificacaoFiscal ?? 0);
             }
             catch (Exception)
             {
@@ -283,15 +292,11 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
-            bw.RunWorkerAsync();
-
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
-
-        private async void metodoGetModel(object sender, DoWorkEventArgs e)
+        private void metodoGetModel(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = await servico.GetObjetoAsync(objViewModel.currentID);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 

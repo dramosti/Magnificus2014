@@ -60,6 +60,16 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
             this.bCompGeral = this.bCompListaAut = this.bCompListaManual = false;
         }
 
+        public bool PrecoCustoManual(int idProduto)
+        {
+            return comm.PrecoCustoManual(idProduto: idProduto);
+        }
+
+        public decimal GetPrecoCustoProduto(int idProduto)
+        {
+            return comm.GetPrecoCustoProduto(idProduto: idProduto);
+        }
+
         #region Propriedades utilizadas na View
 
         private bool _bCompGeral;
@@ -216,7 +226,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
                 this.comm.MontraTreeView();
             }
         }
-                
+
         #endregion
     }
 }
