@@ -26,6 +26,19 @@ namespace HLP.ComumView.ViewModel.ViewModel
         EmpresaService objService;
         wcf_Funcionario.Iwcf_FuncionarioClient funcionarioService = new wcf_Funcionario.Iwcf_FuncionarioClient();
 
+        
+        private StConnection _stConnection;
+
+        public StConnection stConnection
+        {
+            get { return _stConnection; }
+            set
+            {
+                _stConnection = value;
+                base.NotifyPropertyChanged(propertyName: "stConnection");
+            }
+        }
+        
 
         private double _heightWindow;
 
@@ -180,6 +193,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         public ICommand TrocarEmpresaCommand { get; set; }
         public ICommand SairCommand { get; set; }
         public ICommand ConnectionConfigCommand { get; set; }
+        public ICommand changeStConnection { get; set; }
 
         #endregion
 

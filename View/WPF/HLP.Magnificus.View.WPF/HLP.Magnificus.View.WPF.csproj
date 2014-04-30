@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\StConnectionConverter.cs" />
     <Compile Include="Converter\WidthColumnConverter.cs" />
     <Compile Include="Service References\empresaParametrosService\Reference.cs">
       <AutoGen>True</AutoGen>
