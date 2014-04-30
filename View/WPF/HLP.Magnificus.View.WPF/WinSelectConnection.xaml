@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Magnificus.View.WPF.WinSelectConnection"
+        Title="Conexão" Height="100" Width="400" x:Name="winConexao">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Components:CustomTextBlock Text="Selecione uma conexão:" HorizontalAlignment="Left"/>
+        <Components:CustomComboBox  Grid.Column="1" ItemsSource="{Binding conexoes}"
+                                    DisplayMemberPath="xNameConexao"                                    
+                                    SelectedValue="{Binding currentModel, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                    />
+        <Button Command="{Binding ConcluirCommand}" CommandParameter="{Binding ElementName=winConexao}"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Width="100" Content="Prosseguir"/>
+        <Button Command="{Binding FecharCommand}" CommandParameter="{Binding ElementName=winConexao}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="100" Content="Fechar"/>
+    </Grid>
+    
+</Window>

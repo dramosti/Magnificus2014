@@ -51,7 +51,6 @@
     <Compile Include="ComumEvents.cs" />
     <Compile Include="Converter\MultiplyConverter.cs" />
     <Compile Include="GotFocusBeginEditDataGridCell.cs" />
-    <Compile Include="Models\modelToTreeView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursosBases\Enumeradores.cs" />
     <Compile Include="RecursosBases\Structs.cs" />

@@ -1,7 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
-using HLP.Comum.Resources.Models;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Comercial;
 using HLP.Entries.Services.Comercial;

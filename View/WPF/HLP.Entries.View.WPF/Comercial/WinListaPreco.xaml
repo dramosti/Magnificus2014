@@ -218,8 +218,7 @@
                                             </MultiBinding>
                                         </Components:CustomTextBox.IsEnabled>
                                     </Components:CustomTextBox>
-                                    <Components:CustomCheckBox Grid.Column="8" Grid.Row="3"                      
-                    
+                                    <Components:CustomCheckBox Grid.Column="8" Grid.Row="3"                                          
                     IsEnabled="{Binding bIsEnabled}"
                     IsChecked="{Binding currentModel.stPreferencial, Mode=TwoWay, 
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">

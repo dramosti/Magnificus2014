@@ -20,5 +20,5 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         bool TestConnection(string connectionString);
-    }
+            }
 }

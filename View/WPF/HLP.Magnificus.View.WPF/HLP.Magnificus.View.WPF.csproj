@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\StConnectionConverter.cs" />
     <Compile Include="Converter\WidthColumnConverter.cs" />
     <Compile Include="Service References\empresaParametrosService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -135,6 +136,9 @@
     </Compile>
     <Compile Include="WinMessages.xaml.cs">
       <DependentUpon>WinMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinSelectConnection.xaml.cs">
+      <DependentUpon>WinSelectConnection.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinSobre.xaml.cs">
       <DependentUpon>WinSobre.xaml</DependentUpon>
@@ -204,6 +208,10 @@
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
     <Page Include="WinMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinSelectConnection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +286,14 @@
     <ProjectReference Include="..\..\..\HLP.Components.ViewModel\HLP.Components.ViewModel.csproj">
       <Project>{937c9439-cc70-40d2-96f5-d9ad99c51181}</Project>
       <Name>HLP.Components.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.Comum.ViewModel\HLP.Comum.ViewModel.csproj">
+      <Project>{cf75da11-2886-454a-84f8-9e1e9b4fa072}</Project>
+      <Name>HLP.Comum.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\HLP.ComumView.Model\HLP.ComumView.Model.csproj">
+      <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>
+      <Name>HLP.ComumView.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\HLP.ComumView.ViewModel\HLP.ComumView.ViewModel.csproj">
       <Project>{ccfc8e30-5a35-4451-bbc5-6fac96016bf6}</Project>

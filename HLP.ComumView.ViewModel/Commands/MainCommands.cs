@@ -1,5 +1,6 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
+using HLP.Base.Static;
 using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,8 @@ namespace HLP.ComumView.ViewModel.Commands
                     execute: ex => objviewModel.FindAll(),
                     canExecute: can => true
                     );
+                this.objviewModel.changeStConnection = new RelayCommand(
+                    execute: i => this.ChangeStConnectionExec());
 
 
             }
@@ -48,6 +51,15 @@ namespace HLP.ComumView.ViewModel.Commands
 
         #region Executes & CanExecutes
 
+        private void ChangeStConnectionExec()
+        {
+            if (Sistema.bOnline == StConnection.OnlineNetwork)
+                this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineWeb;
+            else
+                if (Sistema.bOnline == StConnection.OnlineWeb)
+                    this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineNetwork;
+        }
+
         private void ShowConfigConnection()
         {
             try
@@ -57,10 +69,10 @@ namespace HLP.ComumView.ViewModel.Commands
                 winConfig.ShowDialog();
             }
             catch (Exception ex)
-            {                
+            {
                 throw ex;
             }
-          
+
         }
 
 

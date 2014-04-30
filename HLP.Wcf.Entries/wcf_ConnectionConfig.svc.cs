@@ -66,5 +66,7 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
         }
+
+       
     }
 }

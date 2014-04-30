@@ -16,14 +16,6 @@ namespace HLP.Base.Static
             set { _xIpServidor = value; }
         }
 
-        private static string _xEnderLocal;
-
-        public static string xEnderLocal
-        {
-            get { return "http://192.168.9.33:8081/wcf/"; }
-            set { _xEnderLocal = value; }
-        }
-
         private static string _xEnderWeb;
 
         public static string xEnderWeb
@@ -31,6 +23,15 @@ namespace HLP.Base.Static
             get { return "http://hlpsistemas.no-ip.org:8081/wcf/"; }
             set { _xEnderWeb = value; }
         }
+
+        private static string _xNameConnection = "dbPrincipal";
+
+        public static string xNameConnection
+        {
+            get { return _xNameConnection; }
+            set { _xNameConnection = value; }
+        }
+        
 
     }
 }
