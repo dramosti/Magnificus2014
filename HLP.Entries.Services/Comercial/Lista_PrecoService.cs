@@ -1,4 +1,5 @@
-﻿using HLP.Base.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Comercial;
 using System;
 using System.Collections.Generic;
@@ -10,23 +11,64 @@ namespace HLP.Entries.Services.Comercial
 {
     public class Lista_PrecoService
     {
+        const string xTabela = "Lista_preco;Lista_Preco_Pai;";
+        HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
+        wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
+
         HLP.Wcf.Entries.wcf_Lista_Preco servicoRede;
         wcf_Lista_Preco.Iwcf_Lista_PrecoClient servicoInternet;
-
+        
         public Lista_PrecoService()
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        this.servicoRede = new Wcf.Entries.wcf_Lista_Preco();
+                        servicoRede = new Wcf.Entries.wcf_Lista_Preco();
+                        serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
+
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                     }
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        this.servicoInternet = new wcf_Lista_Preco.Iwcf_Lista_PrecoClient();
+                        servicoInternet = new wcf_Lista_Preco.Iwcf_Lista_PrecoClient();
+                        serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                     }
                     break;
+                case StConnection.Offline:
+                default:
+                    {
+                    } break;
             }
         }
 

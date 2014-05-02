@@ -1,4 +1,5 @@
-﻿using HLP.Base.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Transportes;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace HLP.Entries.Services.Transportes
 {
     public class RotaService
     {
+        const string xTabela = "Rota;Rota_Praca";
+        HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
+        wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
         HLP.Wcf.Entries.wcf_Rota servicoRede;
         wcf_Rota.Iwcf_RotaClient servicoInternet;
         public RotaService()
@@ -18,11 +22,50 @@ namespace HLP.Entries.Services.Transportes
             {
                 case StConnection.OnlineNetwork:
                     {
-                        this.servicoRede = new Wcf.Entries.wcf_Rota();
-                    } break;
+                        servicoRede = new Wcf.Entries.wcf_Rota();
+                        serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
+
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
+                    }
+                    break;
                 case StConnection.OnlineWeb:
                     {
-                        this.servicoInternet = new wcf_Rota.Iwcf_RotaClient();
+                        servicoInternet = new wcf_Rota.Iwcf_RotaClient();
+                        serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
+                    }
+                    break;
+                case StConnection.Offline:
+                default:
+                    {
                     } break;
             }
         }

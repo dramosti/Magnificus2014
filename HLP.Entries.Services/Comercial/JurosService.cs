@@ -59,7 +59,7 @@ namespace HLP.Entries.Services.Comercial
                                 {
                                     CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
                                     lCampos.xTabela = str;
-                                    lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
                                         xTabela: str);
                                     lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
                                 }

@@ -36,7 +36,7 @@ namespace HLP.Entries.Services.Gerais
                         {
                             CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
                             lCampos.xTabela = xTabela;
-                            lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                            lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
                                 xTabela: xTabela);
                             lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
                         }
