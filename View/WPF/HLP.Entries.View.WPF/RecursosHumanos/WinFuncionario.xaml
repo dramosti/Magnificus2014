@@ -1238,8 +1238,8 @@
                             <DataGridTemplateColumn Header="Caminho" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Components:CustomTextBoxFindFiles                                            
-                                            Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTextBoxFindFiles>
+                                        <Components:CustomTextBlock                                            
+                                            Text="{Binding Path=xLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"></Components:CustomTextBlock>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
