@@ -106,18 +106,26 @@ namespace HLP.ComumView.ViewModel.Commands
             try
             {
                 Window form = GerenciadorModulo.Instancia.CarregaForm(nome: xNomeForm.ToString(), exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
-
-                TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
-                objTabPageAtivasModel._windows = form;
-
-                if (this.objviewModel.winMan._lTabPagesAtivas.Count(
-                    i => i._windows.Name == form.Name) == 0)
+                if (xNomeForm.ToString().Equals("WinConnectionConfig"))
                 {
-                    this.objviewModel.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                    form.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    form.ShowDialog();
                 }
-                this.objviewModel.winMan._currentTab = objTabPageAtivasModel;
-                this.objviewModel.winMan.vToolBar = Visibility.Visible;
-                this.objviewModel.winMan.iHeightToolBar = 30;
+                else
+                {
+
+                    TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
+                    objTabPageAtivasModel._windows = form;
+
+                    if (this.objviewModel.winMan._lTabPagesAtivas.Count(
+                        i => i._windows.Name == form.Name) == 0)
+                    {
+                        this.objviewModel.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
+                    }
+                    this.objviewModel.winMan._currentTab = objTabPageAtivasModel;
+                    this.objviewModel.winMan.vToolBar = Visibility.Visible;
+                    this.objviewModel.winMan.iHeightToolBar = 30;
+                }
             }
             catch (Exception ex)
             {
