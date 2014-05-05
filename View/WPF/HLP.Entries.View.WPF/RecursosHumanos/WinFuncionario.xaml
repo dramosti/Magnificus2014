@@ -1235,7 +1235,7 @@
                                     ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xArquivo, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
                                 ></DataGridTextColumn>
-                            <DataGridTemplateColumn Header="Caminho" Width="400">
+                            <DataGridTemplateColumn Header="Caminho" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Components:CustomTextBoxFindFiles                                            
