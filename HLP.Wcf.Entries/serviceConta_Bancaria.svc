@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="HLP.Wcf.Entries.serviceConta_Bancaria" CodeBehind="serviceConta_Bancaria.svc.cs" %>

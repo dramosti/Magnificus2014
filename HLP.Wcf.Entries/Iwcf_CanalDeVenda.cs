@@ -24,6 +24,6 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         int CopyObject(int id);
-        
+
     }
 }
