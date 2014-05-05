@@ -1092,6 +1092,11 @@ namespace HLP.Entries.Model.Models.Gerais
             get
             {
                 string s = base[columnName];
+                
+                if (s== null)
+                {
+                    
+                }
 
                 return s;
             }
