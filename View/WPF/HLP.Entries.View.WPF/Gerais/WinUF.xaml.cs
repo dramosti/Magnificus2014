@@ -40,22 +40,22 @@ namespace HLP.Entries.View.WPF.Gerais
             {
                 throw;
             }
-            List<TabItem> lTabs = GetLogicalChildCollection<TabItem>(this);
-            List<Control> lControls = new List<Control>();
-            if (lTabs.Count > 0)
-                foreach (TabItem item in lTabs)
-                {
-                    lControls.AddRange(GetLogicalChildCollection<Control>(item));
-                }
-            else
-            {
-                lControls.AddRange(GetLogicalChildCollection<Control>(this));
-            }
+            //List<TabItem> lTabs = GetLogicalChildCollection<TabItem>(this);
+            //List<Control> lControls = new List<Control>();
+            //if (lTabs.Count > 0)
+            //    foreach (TabItem item in lTabs)
+            //    {
+            //        lControls.AddRange(GetLogicalChildCollection<Control>(item));
+            //    }
+            //else
+            //{
+            //    lControls.AddRange(GetLogicalChildCollection<Control>(this));
+            //}
 
 
-            lControls = lControls.Where(c => c.GetType().BaseType == typeof(HLP.Comum.View.Components.BaseControl)).ToList();
+            //lControls = lControls.Where(c => c.GetType().BaseType == typeof(HLP.Comum.View.Components.BaseControl)).ToList();
 
-            lControls.LastOrDefault().LostFocus += controles_LostFocus;
+            //lControls.LastOrDefault().LostFocus += controles_LostFocus;
 
             
         }

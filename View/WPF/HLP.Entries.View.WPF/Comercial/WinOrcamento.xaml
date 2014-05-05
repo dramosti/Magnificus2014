@@ -1,10 +1,9 @@
 ﻿<runtime:WindowsBase 
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
-        xmlns:enums="clr-namespace:HLP.Comum.Resources.RecursosBases;assembly=HLP.Comum.Resources"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:convert="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+		xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         xmlns:convertLocal="clr-namespace:HLP.Entries.View.WPF.Comercial.Converter"
         xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View"
         xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
@@ -13,6 +12,17 @@
         Title="Orçamento" Height="660" Width="1024" NameView="vwOrcamento"
     >
     <runtime:WindowsBase.Resources>
+        <convert:SelectedItemToTextConverter x:Key="selectedItemToTextConverter"/>
+        <CompositeCollection x:Key="origemMercadoria">
+            <System:String>0-Nacional</System:String>
+            <System:String>1-Estrangeira – Importação Direta</System:String>
+            <System:String>2-Estrangeira – Adquirida no mercado Interno</System:String>
+            <System:String>3-Nacional, mercadoria ou bem com Conteúdo de Importação superior a 40% (quarenta por cento)</System:String>
+            <System:String>4-Nacional, cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam o Decreto-Lei nº 288/67, e as Leis nºs 8.248/91, 8.387/91, 10.176/01 e 11 . 4 8 4 / 0 7</System:String>
+            <System:String>5-Nacional, mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40% (quarenta por cento)</System:String>
+            <System:String>6-Estrangeira - Importação direta, sem similar nacional, constante em lista de Resolução CAMEX</System:String>
+            <System:String>7-Estrangeira - Adquirida no mercado interno, sem similar nacional, constante em lista de Resolução CAMEX</System:String>
+        </CompositeCollection>
         <convert:NotConverter x:Key="notConverter"></convert:NotConverter>
         <convertLocal:StatusOrcamentoConverter x:Key="statusOrcamentoConv"></convertLocal:StatusOrcamentoConverter>
         <convertLocal:CanUserAddOrcamentoItemConverter x:Key="canUserAddConv"></convertLocal:CanUserAddOrcamentoItemConverter>
@@ -28,14 +38,6 @@
     CollectionViewType="{x:Type dat:ListCollectionView}" />
         <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
         <convertLocal:IdMotivoVisibilityConverter x:Key="idMotivoVisibilityConv"></convertLocal:IdMotivoVisibilityConverter>
-        <ObjectDataProvider 
-            MethodName="GetDict"
-            ObjectType="{x:Type convert:EnumDescriptionConverter}"
-            x:Key="EnumOrigemMercadoria">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="enums:stOrigem"></x:Type>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
         <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
         <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
         <convert:MoedaConverter x:Key="moedaConverter"/>
@@ -976,10 +978,9 @@
                                     <DataGrid.Columns>
                                         <DataGridComboBoxColumn
                                             Header="Origem Mercadoria" Width="125" IsReadOnly="True"
-                            ItemsSource="{Binding Source={StaticResource EnumOrigemMercadoria}}"
-                            DisplayMemberPath="Key"
-                            SelectedValuePath="Value"
-                            SelectedValueBinding ="{Binding enumstOrigem, UpdateSourceTrigger=PropertyChanged}"/>
+                            ItemsSource="{Binding Source={StaticResource origemMercadoria}}"
+                                            SelectedItemBinding="{Binding ICMS_stOrigemMercadoria, Converter={StaticResource selectedItemToTextConverter},
+                                            ConverterParameter={StaticResource selectedItemToTextConverter}}"/>
                                         <DataGridTemplateColumn
                                         Header="Calcula IPI" Width="125">
                                             <DataGridTemplateColumn.CellTemplate>

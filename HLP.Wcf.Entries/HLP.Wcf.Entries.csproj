@@ -90,32 +90,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="camposBaseDadosService.svc" />
-    <Content Include="serviceAcesso.svc" />
-    <Content Include="serviceAgencia.svc" />
     <Content Include="wcf_Acesso.svc" />
     <Content Include="wcf_Agencia.svc" />
     <Content Include="wcf_Banco.svc" />
     <Content Include="wcf_Calendario.svc" />
-    <Content Include="serviceCanal_Venda.svc" />
-    <Content Include="serviceCarga_trib_media_st_icms.svc" />
-    <Content Include="serviceCargo.svc" />
-    <Content Include="serviceCfop.svc" />
-    <Content Include="serviceCidade.svc" />
-    <Content Include="serviceClassificacaoFiscal.svc" />
-    <Content Include="serviceCliente.svc" />
-    <Content Include="serviceCodigoIcms.svc" />
-    <Content Include="serviceCondicao_Entrega.svc" />
-    <Content Include="serviceCondicao_Pagamento.svc" />
-    <Content Include="serviceContato.svc" />
-    <Content Include="serviceConta_Bancaria.svc" />
-    <Content Include="serviceConversao.svc" />
-    <Content Include="serviceDecisao.svc" />
-    <Content Include="serviceDepartamento.svc" />
-    <Content Include="serviceDeposito.svc" />
-    <Content Include="serviceDescontosAvista.svc" />
-    <Content Include="serviceDiaPagamento.svc" />
-    <Content Include="serviceEmpresa.svc" />
     <Content Include="wcf_CanalDeVenda.svc" />
     <Content Include="wcf_CargaTribMediaStIcms.svc" />
     <Content Include="wcf_Cargo.svc" />
@@ -133,40 +111,11 @@
     <Content Include="wcf_Departamento.svc" />
     <Content Include="wcf_Deposito.svc" />
     <Content Include="wcf_EmpresaParametros.svc" />
-    <Content Include="serviceFabricante.svc" />
-    <Content Include="serviceFamiliaProduto.svc" />
-    <Content Include="serviceFidelidade.svc" />
-    <Content Include="serviceFillComboBox.svc" />
-    <Content Include="serviceFuncionario.svc" />
-    <Content Include="serviceJuros.svc" />
-    <Content Include="serviceLista_Preco.svc" />
     <Content Include="serviceLogin.svc" />
-    <Content Include="serviceModoEntrega.svc" />
-    <Content Include="serviceMoeda.svc" />
-    <Content Include="serviceMulta.svc" />
-    <Content Include="servicePersonalidade.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
-    <Content Include="servicePesquisaRapida.svc" />
-    <Content Include="servicePlanoPagamento.svc" />
-    <Content Include="serviceProduto.svc" />
-    <Content Include="serviceRamoAtividade.svc" />
     <Content Include="serviceRegiao.svc" />
-    <Content Include="serviceRota.svc" />
     <Content Include="serviceSales_Orcamento.svc" />
-    <Content Include="serviceSetor.svc" />
-    <Content Include="serviceSite.svc" />
-    <Content Include="serviceSituacao_tributaria_pis.svc" />
-    <Content Include="serviceStCofins.svc" />
-    <Content Include="serviceStIcms.svc" />
-    <Content Include="serviceStIpi.svc" />
-    <Content Include="serviceTipoServico.svc" />
-    <Content Include="serviceTipo_documento.svc" />
-    <Content Include="serviceTipoProduto.svc" />
     <Content Include="serviceTipo_documento_Operacao_Valida.svc" />
-    <Content Include="serviceTipo_Operacao.svc" />
-    <Content Include="serviceTransportador.svc" />
-    <Content Include="serviceUf.svc" />
-    <Content Include="serviceUnidadeMedida.svc" />
     <Content Include="Silverlight.js" />
     <Content Include="wcf_CamposBaseDados.svc" />
     <Content Include="wcf_Cliente.svc" />
@@ -211,71 +160,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="camposBaseDadosService.svc.cs">
-      <DependentUpon>camposBaseDadosService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IcamposBaseDadosService.cs" />
-    <Compile Include="IserviceAcesso.cs" />
-    <Compile Include="IserviceAgencia.cs" />
     <Compile Include="Iwcf_Acesso.cs" />
     <Compile Include="Iwcf_Agencia.cs" />
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
-    <Compile Include="IserviceCanal_Venda.cs" />
-    <Compile Include="IserviceCarga_trib_media_st_icms.cs" />
-    <Compile Include="IserviceCargo.cs" />
-    <Compile Include="IserviceCfop.cs" />
-    <Compile Include="IserviceCidade.cs" />
-    <Compile Include="IserviceClassificacaoFiscal.cs" />
-    <Compile Include="IserviceCliente.cs" />
-    <Compile Include="IserviceCodigoIcms.cs" />
-    <Compile Include="IserviceCondicao_Entrega.cs" />
-    <Compile Include="IserviceCondicao_Pagamento.cs" />
-    <Compile Include="IserviceContato.cs" />
-    <Compile Include="IserviceConta_Bancaria.cs" />
-    <Compile Include="IserviceConversao.cs" />
-    <Compile Include="IserviceDecisao.cs" />
-    <Compile Include="IserviceDepartamento.cs" />
-    <Compile Include="IserviceDeposito.cs" />
-    <Compile Include="IserviceDescontosAvista.cs" />
-    <Compile Include="IserviceDiaPagamento.cs" />
-    <Compile Include="IserviceEmpresa.cs" />
-    <Compile Include="IserviceEmpresaParametros.cs" />
-    <Compile Include="IserviceFabricante.cs" />
-    <Compile Include="IserviceFamiliaProduto.cs" />
-    <Compile Include="IserviceFidelidade.cs" />
-    <Compile Include="IserviceFillComboBox.cs" />
-    <Compile Include="IserviceFuncionario.cs" />
-    <Compile Include="IserviceFuncionario_Acesso.cs" />
-    <Compile Include="IserviceJuros.cs" />
-    <Compile Include="IserviceLista_Preco.cs" />
     <Compile Include="IserviceLogin.cs" />
-    <Compile Include="IserviceModoEntrega.cs" />
-    <Compile Include="IserviceMoeda.cs" />
-    <Compile Include="IserviceMulta.cs" />
     <Compile Include="IserviceOrcamento.cs" />
-    <Compile Include="IservicePersonalidade.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
-    <Compile Include="IservicePesquisaRapida.cs" />
-    <Compile Include="IservicePlanoPagamento.cs" />
-    <Compile Include="IserviceProduto.cs" />
-    <Compile Include="IserviceRamoAtividade.cs" />
     <Compile Include="IserviceRegiao.cs" />
-    <Compile Include="IserviceRota.cs" />
     <Compile Include="IserviceSales_Orcamento.cs" />
-    <Compile Include="IserviceSetor.cs" />
-    <Compile Include="IserviceSite.cs" />
-    <Compile Include="IserviceSituacao_tributaria_pis.cs" />
-    <Compile Include="IserviceStCofins.cs" />
-    <Compile Include="IserviceStIcms.cs" />
-    <Compile Include="IserviceStIpi.cs" />
-    <Compile Include="IserviceTipoServico.cs" />
-    <Compile Include="IserviceTipo_documento.cs" />
-    <Compile Include="IserviceTipoProduto.cs" />
     <Compile Include="IserviceTipo_documento_Operacao_Valida.cs" />
-    <Compile Include="IserviceTipo_Operacao.cs" />
-    <Compile Include="IserviceTransportador.cs" />
-    <Compile Include="IserviceUnidadeMedida.cs" />
     <Compile Include="Iwcf_CamposBaseDados.cs" />
     <Compile Include="Iwcf_CanalDeVenda.cs" />
     <Compile Include="Iwcf_CargaTribMediaStIcms.cs" />
@@ -297,6 +191,7 @@
     <Compile Include="Iwcf_DescontoAVista.cs" />
     <Compile Include="Iwcf_DiaPagamento.cs" />
     <Compile Include="Iwcf_Empresa.cs" />
+    <Compile Include="Iwcf_EmpresaParametros.cs" />
     <Compile Include="Iwcf_Fabricante.cs" />
     <Compile Include="Iwcf_FamiliaProduto.cs" />
     <Compile Include="Iwcf_Fidelidade.cs" />
@@ -330,12 +225,6 @@
     <Compile Include="Iwcf_Transportadora.cs" />
     <Compile Include="Iwcf_Uf.cs" />
     <Compile Include="Iwcf_UnidadeMedida.cs" />
-    <Compile Include="serviceAcesso.svc.cs">
-      <DependentUpon>serviceAcesso.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceAgencia.svc.cs">
-      <DependentUpon>serviceAgencia.svc</DependentUpon>
-    </Compile>
     <Compile Include="wcf_Acesso.svc.cs">
       <DependentUpon>wcf_Acesso.svc</DependentUpon>
     </Compile>
@@ -347,63 +236,6 @@
     </Compile>
     <Compile Include="wcf_Calendario.svc.cs">
       <DependentUpon>wcf_Calendario.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCanal_Venda.svc.cs">
-      <DependentUpon>serviceCanal_Venda.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCarga_trib_media_st_icms.svc.cs">
-      <DependentUpon>serviceCarga_trib_media_st_icms.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCargo.svc.cs">
-      <DependentUpon>serviceCargo.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCfop.svc.cs">
-      <DependentUpon>serviceCfop.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCidade.svc.cs">
-      <DependentUpon>serviceCidade.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceClassificacaoFiscal.svc.cs">
-      <DependentUpon>serviceClassificacaoFiscal.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCliente.svc.cs">
-      <DependentUpon>serviceCliente.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCodigoIcms.svc.cs">
-      <DependentUpon>serviceCodigoIcms.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCondicao_Entrega.svc.cs">
-      <DependentUpon>serviceCondicao_Entrega.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceCondicao_Pagamento.svc.cs">
-      <DependentUpon>serviceCondicao_Pagamento.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceContato.svc.cs">
-      <DependentUpon>serviceContato.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceConta_Bancaria.svc.cs">
-      <DependentUpon>serviceConta_Bancaria.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceConversao.svc.cs">
-      <DependentUpon>serviceConversao.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceDecisao.svc.cs">
-      <DependentUpon>serviceDecisao.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceDepartamento.svc.cs">
-      <DependentUpon>serviceDepartamento.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceDeposito.svc.cs">
-      <DependentUpon>serviceDeposito.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceDescontosAvista.svc.cs">
-      <DependentUpon>serviceDescontosAvista.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceDiaPagamento.svc.cs">
-      <DependentUpon>serviceDiaPagamento.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceEmpresa.svc.cs">
-      <DependentUpon>serviceEmpresa.svc</DependentUpon>
     </Compile>
     <Compile Include="wcf_CanalDeVenda.svc.cs">
       <DependentUpon>wcf_CanalDeVenda.svc</DependentUpon>
@@ -456,110 +288,22 @@
     <Compile Include="wcf_EmpresaParametros.svc.cs">
       <DependentUpon>wcf_EmpresaParametros.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceFabricante.svc.cs">
-      <DependentUpon>serviceFabricante.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceFamiliaProduto.svc.cs">
-      <DependentUpon>serviceFamiliaProduto.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceFidelidade.svc.cs">
-      <DependentUpon>serviceFidelidade.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceFillComboBox.svc.cs">
-      <DependentUpon>serviceFillComboBox.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceFuncionario.svc.cs">
-      <DependentUpon>serviceFuncionario.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceJuros.svc.cs">
-      <DependentUpon>serviceJuros.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceLista_Preco.svc.cs">
-      <DependentUpon>serviceLista_Preco.svc</DependentUpon>
-    </Compile>
     <Compile Include="serviceLogin.svc.cs">
       <DependentUpon>serviceLogin.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceModoEntrega.svc.cs">
-      <DependentUpon>serviceModoEntrega.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceMoeda.svc.cs">
-      <DependentUpon>serviceMoeda.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceMulta.svc.cs">
-      <DependentUpon>serviceMulta.svc</DependentUpon>
-    </Compile>
-    <Compile Include="servicePersonalidade.svc.cs">
-      <DependentUpon>servicePersonalidade.svc</DependentUpon>
     </Compile>
     <Compile Include="servicePesquisaPadrao.svc.cs">
       <DependentUpon>servicePesquisaPadrao.svc</DependentUpon>
     </Compile>
-    <Compile Include="servicePesquisaRapida.svc.cs">
-      <DependentUpon>servicePesquisaRapida.svc</DependentUpon>
-    </Compile>
-    <Compile Include="servicePlanoPagamento.svc.cs">
-      <DependentUpon>servicePlanoPagamento.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceProduto.svc.cs">
-      <DependentUpon>serviceProduto.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceRamoAtividade.svc.cs">
-      <DependentUpon>serviceRamoAtividade.svc</DependentUpon>
-    </Compile>
     <Compile Include="serviceRegiao.svc.cs">
       <DependentUpon>serviceRegiao.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceRota.svc.cs">
-      <DependentUpon>serviceRota.svc</DependentUpon>
     </Compile>
     <Compile Include="serviceSales_Orcamento.svc.cs">
       <DependentUpon>serviceSales_Orcamento.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceSetor.svc.cs">
-      <DependentUpon>serviceSetor.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceSite.svc.cs">
-      <DependentUpon>serviceSite.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceSituacao_tributaria_pis.svc.cs">
-      <DependentUpon>serviceSituacao_tributaria_pis.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceStCofins.svc.cs">
-      <DependentUpon>serviceStCofins.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceStIcms.svc.cs">
-      <DependentUpon>serviceStIcms.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceStIpi.svc.cs">
-      <DependentUpon>serviceStIpi.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceTipoServico.svc.cs">
-      <DependentUpon>serviceTipoServico.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceTipo_documento.svc.cs">
-      <DependentUpon>serviceTipo_documento.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceTipoProduto.svc.cs">
-      <DependentUpon>serviceTipoProduto.svc</DependentUpon>
-    </Compile>
     <Compile Include="serviceTipo_documento_Operacao_Valida.svc.cs">
       <DependentUpon>serviceTipo_documento_Operacao_Valida.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceTipo_Operacao.svc.cs">
-      <DependentUpon>serviceTipo_Operacao.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceTransportador.svc.cs">
-      <DependentUpon>serviceTransportador.svc</DependentUpon>
-    </Compile>
-    <Compile Include="serviceUf.svc.cs">
-      <DependentUpon>serviceUf.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IserviceUf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="serviceUnidadeMedida.svc.cs">
-      <DependentUpon>serviceUnidadeMedida.svc</DependentUpon>
-    </Compile>
     <Compile Include="wcf_CamposBaseDados.svc.cs">
       <DependentUpon>wcf_CamposBaseDados.svc</DependentUpon>
     </Compile>

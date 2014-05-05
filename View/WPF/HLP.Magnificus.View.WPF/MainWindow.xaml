@@ -246,7 +246,7 @@
                                 <ControlTemplate>
                                     <CheckBox 
                                         Command="{Binding changeStConnection}" 
-                                        IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}}"
+                                        IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}, UpdateSourceTrigger=Explicit}"
                                         Style="{StaticResource CheckBoxRedeOnline}"
                                               Width="65"></CheckBox>
                                 </ControlTemplate>

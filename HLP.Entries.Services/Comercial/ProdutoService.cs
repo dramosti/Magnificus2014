@@ -1,4 +1,5 @@
-﻿using HLP.Base.Static;
+﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Entries.Model.Models.Comercial;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,13 @@ namespace HLP.Entries.Services.Comercial
 {
     public class ProdutoService
     {
+        const string xTabela = "Produto;Produto_composicao;Produto_custo_medio;Produto_Fornecedor_Homologado;Produto_Localizacao;Produto_ref_custo;Produto_Revisao;";
+
         HLP.Wcf.Entries.wcf_Produto servicoRede;
         wcf_Produto.Iwcf_ProdutoClient servicoInternet;
+
+        HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
+        wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;
 
         public ProdutoService()
         {
@@ -19,14 +25,51 @@ namespace HLP.Entries.Services.Comercial
             {
                 case StConnection.OnlineNetwork:
                     {
-                        this.servicoRede = new Wcf.Entries.wcf_Produto();
+                        servicoRede = new Wcf.Entries.wcf_Produto();
+                        serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
+
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                     }
                     break;
                 case StConnection.OnlineWeb:
                     {
-                        this.servicoInternet = new wcf_Produto.Iwcf_ProdutoClient();
+                        servicoInternet = new wcf_Produto.Iwcf_ProdutoClient();
+                        serviceCamposBaseDadosWeb = new wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient();
+                        #region Validação
+
+                        foreach (string str in xTabela.Split(';').ToArray())
+                        {
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
+                        }
+
+                        #endregion
                     }
                     break;
+                case StConnection.Offline:
+                default:
+                    {
+                    } break;
             }
         }
 

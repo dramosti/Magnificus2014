@@ -4,6 +4,7 @@ using HLP.Base.Static;
 using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,11 +54,21 @@ namespace HLP.ComumView.ViewModel.Commands
 
         private void ChangeStConnectionExec()
         {
-            if (Sistema.bOnline == StConnection.OnlineNetwork)
-                this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineWeb;
+            if (MessageBox.Show(messageBoxText: "Essa mudança necessita que todas as Janelas abertas sejam fechadas." + Environment.NewLine +
+                    "Deseja continuar?", caption: "Atenção?", button: MessageBoxButton.YesNo,
+                    icon: MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                this.objviewModel.winMan._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
+                if (Sistema.bOnline == StConnection.OnlineNetwork)
+                    this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineWeb;
+                else
+                    if (Sistema.bOnline == StConnection.OnlineWeb)
+                        this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineNetwork;
+            }
             else
-                if (Sistema.bOnline == StConnection.OnlineWeb)
-                    this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineNetwork;
+            {
+                this.objviewModel.stConnection = this.objviewModel.stConnection;
+            }
         }
 
         private void ShowConfigConnection()
