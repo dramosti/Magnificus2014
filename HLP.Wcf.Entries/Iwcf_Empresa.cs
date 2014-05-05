@@ -1,5 +1,4 @@
-﻿using HLP.Entries.Model.Models.Gerais;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,16 +13,16 @@ namespace HLP.Wcf.Entries
     {
 
         [OperationContract]
-        EmpresaModel GetObject(int id);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel GetObject(int id);
 
         [OperationContract]
-        EmpresaModel SaveObject(EmpresaModel obj);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel SaveObject(HLP.Entries.Model.Models.Gerais.EmpresaModel obj);
 
         [OperationContract]
         bool DeleteObject(int id);
 
         [OperationContract]
-        EmpresaModel CopyObject(EmpresaModel obj);
+        HLP.Entries.Model.Models.Gerais.EmpresaModel CopyObject(HLP.Entries.Model.Models.Gerais.EmpresaModel obj);
 
     }
 }

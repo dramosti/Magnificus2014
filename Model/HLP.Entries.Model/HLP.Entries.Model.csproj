@@ -212,7 +212,6 @@
     <Compile Include="Repository\Implementation\Parametros\Parametro_Ordem_ProducaoRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Condicoes_entregaRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\EmpresaRepository.cs" />
-    <Compile Include="Repository\Implementation\Gerais\Empresa_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\FuncionarioRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Funcionario_ArquivoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Funcionario_CertificacaoRepository.cs" />
@@ -304,7 +303,6 @@
     <Compile Include="Repository\Interfaces\Parametros\IParametro_Ordem_ProducaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ICondicoes_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IEmpresaRepository.cs" />
-    <Compile Include="Repository\Interfaces\Gerais\IEmpresa_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionarioRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_ArquivoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_CertificacaoRepository.cs" />

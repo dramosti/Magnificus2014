@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Entries.Model.Models.Parametros;
 using System;
@@ -16,7 +17,7 @@ namespace HLP.Entries.Model.Models.Gerais
         public EmpresaModel()
             : base(xTabela: "Empresa")
         {
-            lEmpresa_endereco = new ObservableCollectionBaseCadastros<Empresa_EnderecoModel>();
+            lEmpresa_endereco = new ObservableCollectionBaseCadastros<EnderecoModel>();
         }
 
         private int? _idEmpresa;
@@ -64,9 +65,9 @@ namespace HLP.Entries.Model.Models.Gerais
         [ParameterOrder(Order = 16)]
         public byte stCodigoRegimeTributario { get; set; }
 
-        private ObservableCollectionBaseCadastros<Empresa_EnderecoModel> _lEmpresa_endereco;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lEmpresa_endereco;
 
-        public ObservableCollectionBaseCadastros<Empresa_EnderecoModel> lEmpresa_endereco
+        public ObservableCollectionBaseCadastros<EnderecoModel> lEmpresa_endereco
         {
             get { return _lEmpresa_endereco; }
             set
@@ -84,166 +85,7 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _empresaParametros = value; }
         }
     }
-
-    public partial class Empresa_EnderecoModel : modelBase
-    {
-        public Empresa_EnderecoModel()
-            : base(xTabela: "Empresa_endereco")
-        {
-        }
-
-        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idEmpresaEndereco { get; set; }
-
-        private int _idEmpresa { get; set; }
-        [ParameterOrder(Order = 2)]
-        public int idEmpresa
-        {
-            get { return _idEmpresa; }
-            set
-            {
-                _idEmpresa = value;
-            }
-        }
-
-        private TipoEndereco _enumTipoEnder;
-
-        public TipoEndereco enumTipoEnder
-        {
-            get { return _enumTipoEnder; }
-            set { _enumTipoEnder = value; base.NotifyPropertyChanged("enumTipoEnder"); _StTipoEnd = (int)value; }
-        }
-
-
-        private int _StTipoEnd;
-        [ParameterOrder(Order = 3)]
-        public int StTipoEnd
-        {
-            get { return _StTipoEnd; }
-            set { _StTipoEnd = value; base.NotifyPropertyChanged(propertyName: "StTipoEnd"); _enumTipoEnder = (TipoEndereco)value; }
-        }
-
-
-
-        private string _xLgr;
-        [ParameterOrder(Order = 4)]
-        public string xLgr
-        {
-            get
-            {
-                return this._xLgr;
-            }
-            set
-            {
-                this._xLgr = value;
-                base.NotifyPropertyChanged(propertyName: "xLgr");
-            }
-        }
-
-        private string _nro;
-        [ParameterOrder(Order = 5)]
-        public string nro
-        {
-            get
-            {
-                return this._nro;
-            }
-            set
-            {
-                this._nro = value;
-                base.NotifyPropertyChanged(propertyName: "nro");
-            }
-        }
-
-        private string _xCpl;
-        [ParameterOrder(Order = 6)]
-        public string xCpl
-        {
-            get
-            {
-                return this._xCpl;
-            }
-            set
-            {
-                this._xCpl = value;
-                base.NotifyPropertyChanged(propertyName: "xCpl");
-            }
-        }
-
-        private string _xBairro;
-        [ParameterOrder(Order = 7)]
-        public string xBairro
-        {
-            get
-            {
-                return this._xBairro;
-            }
-            set
-            {
-                this._xBairro = value;
-                base.NotifyPropertyChanged(propertyName: "xBairro");
-            }
-        }
-
-        private string _Cep;
-        [ParameterOrder(Order = 8)]
-        public string Cep
-        {
-            get
-            {
-                return this._Cep;
-            }
-            set
-            {
-                this._Cep = value;
-                base.NotifyPropertyChanged(propertyName: "Cep");
-            }
-        }
-        private string _xCxPostal;
-        [ParameterOrder(Order = 9)]
-        public string xCxPostal
-        {
-            get
-            {
-                return this._xCxPostal;
-            }
-            set
-            {
-                this._xCxPostal = value;
-                base.NotifyPropertyChanged(propertyName: "xCxPostal");
-            }
-        }
-        private int _idCidade;
-        [ParameterOrder(Order = 10)]
-        public int idCidade
-        {
-            get
-            {
-                return this._idCidade;
-            }
-            set
-            {
-                this._idCidade = value;
-                base.NotifyPropertyChanged(propertyName: "idCidade");
-            }
-        }
-
-        private byte? _stPrincipal;
-        [ParameterOrder(Order = 11)]
-        public byte? stPrincipal
-        {
-            get
-            {
-                return this._stPrincipal;
-            }
-            set
-            {
-                this._stPrincipal = value;
-                base.NotifyPropertyChanged(propertyName: "stPrincipal");
-            }
-        }
-    }
-
+       
     public partial class EmpresaParametrosModel : modelBase
     {
         public EmpresaParametrosModel()
@@ -362,17 +204,6 @@ namespace HLP.Entries.Model.Models.Gerais
 
     #region Validações
     public partial class EmpresaModel
-    {
-        public override string this[string columnName]
-        {
-            get
-            {
-                return base[columnName];
-            }
-        }
-    }
-
-    public partial class Empresa_EnderecoModel
     {
         public override string this[string columnName]
         {

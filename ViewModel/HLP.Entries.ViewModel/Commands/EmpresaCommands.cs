@@ -76,9 +76,9 @@ namespace HLP.Entries.ViewModel.Commands
                 foreach (int id in this.objViewModel.currentModel.lEmpresa_endereco.idExcluidos)
                 {
                     this.objViewModel.currentModel.lEmpresa_endereco.Add(
-                        new Empresa_EnderecoModel
+                        new HLP.Components.Model.Models.EnderecoModel
                         {
-                            idEmpresaEndereco = id,
+                            idEndereco = id,
                             status = statusModel.excluido
                         });
                 }
@@ -341,7 +341,7 @@ namespace HLP.Entries.ViewModel.Commands
 
         private void GetEmpresasBackground(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentModel.idEmpresa ?? 0);
+            this.objViewModel.currentModel = this.objService.GetObject(id: this.objViewModel.currentID);
         }
         #endregion
 
