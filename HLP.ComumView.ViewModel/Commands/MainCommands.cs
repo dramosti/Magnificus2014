@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HLP.Base.Static;
 
 namespace HLP.ComumView.ViewModel.Commands
 {
@@ -30,7 +31,7 @@ namespace HLP.ComumView.ViewModel.Commands
                     canExecute: ex => DelWindowCanExecute());
                 this.objviewModel.OpenCtxCommand = new RelayCommand(execute: i => this.OpenCtx(ctx: i));
                 this.objviewModel.fecharCommand = new RelayCommand(execute: i => this.Sair());
-                this.objviewModel.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection());
+                this.objviewModel.ConnectionConfigCommand = new RelayCommand(execute: i => this.ShowConfigConnection(win: i));
                 this.objviewModel.SobreCommand = new RelayCommand(execute: i => this.Sobre());
                 this.objviewModel.FindAllCommand = new RelayCommand
                     (
@@ -60,19 +61,29 @@ namespace HLP.ComumView.ViewModel.Commands
                     this.objviewModel.stConnection = Sistema.bOnline = StConnection.OnlineNetwork;
         }
 
-        private void ShowConfigConnection()
+        private void ShowConfigConnection(object win)
         {
             try
             {
-                Window winConfig = GerenciadorModulo.Instancia.CarregaForm("WinConnectionConfig", Base.InterfacesBases.TipoExibeForm.Modal);
-                winConfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                winConfig.ShowDialog();
+                if (MessageBox.Show("A mudança de conexão irá reiniciar o sistema, deseja continuar ?", "A V I S O", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    Window winConfig = GerenciadorModulo.Instancia.CarregaForm("WinSelectConnection", Base.InterfacesBases.TipoExibeForm.Modal);
+                    winConfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    winConfig.ShowDialog();
+
+                    object bProssegue = winConfig.GetPropertyValue("bProssegue");
+                    if ((bool)bProssegue)
+                    {
+                        Window winPrincipal = win as Window;
+                        System.Windows.Forms.Application.Restart();
+                        winPrincipal.Close();
+                    }
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
 

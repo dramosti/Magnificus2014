@@ -53,8 +53,12 @@ namespace HLP.Base.Static
                     ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
                 // Add an Application Setting.
-                config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings(WcfData.xNameConnection,
-                    @stringConnection, "System.Data.SqlClient"));
+
+                if (config.ConnectionStrings.ConnectionStrings[WcfData.xNameConnection] != null)
+                    config.ConnectionStrings.ConnectionStrings[WcfData.xNameConnection].ConnectionString = @stringConnection;
+                else
+                    config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings(WcfData.xNameConnection,
+                        @stringConnection, "System.Data.SqlClient"));
 
                 // Save the configuration file.
                 config.Save(ConfigurationSaveMode.Modified, false);

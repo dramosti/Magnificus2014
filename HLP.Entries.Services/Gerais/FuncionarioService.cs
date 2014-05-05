@@ -26,19 +26,21 @@ namespace HLP.Entries.Services.Gerais
             {
                 case StConnection.OnlineNetwork:
                     {
-                        serviceNetwork = new HLP.Wcf.Entries.wcf_Funcionario();
+                        serviceNetwork = new Wcf.Entries.wcf_Funcionario();
                         serviceCamposBaseDadosNetwork = new Wcf.Entries.wcf_CamposBaseDados();
 
                         #region Validação
 
-                        if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == xTabela)
-                == 0)
+                        foreach (string str in xTabela.Split(';').ToArray())
                         {
-                            CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
-                            lCampos.xTabela = xTabela;
-                            lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
-                                xTabela: xTabela);
-                            lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosNetwork.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
                         }
 
                         #endregion
@@ -51,14 +53,16 @@ namespace HLP.Entries.Services.Gerais
 
                         #region Validação
 
-                        if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == xTabela)
-                == 0)
+                        foreach (string str in xTabela.Split(';').ToArray())
                         {
-                            CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
-                            lCampos.xTabela = xTabela;
-                            lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
-                                xTabela: xTabela);
-                            lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            if (lCamposSqlNotNull._lCamposSql.Count(i => i.xTabela == str) == 0)
+                            {
+                                CamposSqlNotNullModel lCampos = new CamposSqlNotNullModel();
+                                lCampos.xTabela = str;
+                                lCampos.lCamposSqlModel = serviceCamposBaseDadosWeb.getCamposNotNull(
+                                    xTabela: str);
+                                lCamposSqlNotNull.AddCampoSql(objCamposSqlNotNull: lCampos);
+                            }
                         }
 
                         #endregion

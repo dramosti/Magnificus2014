@@ -67,7 +67,7 @@
                     Text="{Binding currentModel.idRegiao, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"                         
                     IsEnabled="{Binding bIsEnabled}"
                     Caption="Região" Field="idRegiao" Table="Regiao" Help="Selecione a Região da UF" 
-                    TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="0" PreviewKeyDown="HlpPesquisa_PreviewKeyDown" KeyDown="HlpPesquisa_KeyDown" GotFocus="HlpPesquisa_GotFocus" LostFocus="HlpPesquisa_LostFocus">
+                    TableView="vwRegiao" FieldPesquisa="ID" WidthLabel="0">
                     <Components:HlpPesquisa.Items>
                         <System:String>xRegiao</System:String>
                         <System:String>xPais</System:String>

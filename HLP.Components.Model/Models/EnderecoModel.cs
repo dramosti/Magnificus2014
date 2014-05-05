@@ -9,12 +9,10 @@ namespace HLP.Components.Model.Models
 {
     public partial class EnderecoModel : modelBase
     {
-
-        //CidadeComumService.IserviceCidadeClient cidadeService = new CidadeComumService.IserviceCidadeClient();
-
         public EnderecoModel()
             : base(xTabela: "Enderecos")
         {
+
         }
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -48,12 +46,19 @@ namespace HLP.Components.Model.Models
             set { _stTipoEndereco = value; base.NotifyPropertyChanged(propertyName: "stTipoEndereco"); }
         }
 
-        private string _xCEP;
+        private string _xCEP = "";
         [ParameterOrder(Order = 5)]
         public string xCEP
         {
             get { return _xCEP; }
-            set { _xCEP = value; base.NotifyPropertyChanged(propertyName: "xCEP"); }
+            set
+            {
+                if (value != "")
+                    if (this.ws == null)
+                        this.ws = new WebServices.Cep();
+                _xCEP = value;
+                base.NotifyPropertyChanged(propertyName: "xCEP");
+            }
         }
 
         private byte _stLogradouro;
@@ -143,6 +148,17 @@ namespace HLP.Components.Model.Models
         public int? idTransportador { get; set; }
         [ParameterOrder(Order = 19)]
         public int? idAgencia { get; set; }
+        private HLP.WebServices.Cep ws;
+
+        private HLP.WebServices.Endereco _end;
+        private HLP.WebServices.Endereco end
+        {
+            get { return _end; }
+            set { _end = value; }
+        }
+
+        private string _xCepOld = "";
+
     }
 
     public partial class EnderecoModel
@@ -155,21 +171,24 @@ namespace HLP.Components.Model.Models
 
                 if (columnName == "xCEP" && sReturn == null)
                 {
-                    object valor = this.GetType().GetProperty(columnName).GetValue(this);
-                    if (valor != null)
-                    {
-                        HLP.WebServices.Cep ws = new HLP.WebServices.Cep();
-                        HLP.WebServices.Endereco end = ws.BuscaEndereco(valor.ToString());
-                        if (end != null)
-                        {
-                            xEndereco = end.Logradouro;
-                            xBairro = end.Bairro;
 
-                            //int? icidade = cidadeService.GetCidadeByName(end.Cidade);
-                            //if (icidade != null)
-                            //{
-                            //    idCidade = (int)icidade;
-                            //}
+                    //object valor = this.GetType().GetProperty(columnName).GetValue(this);
+                    if (!string.IsNullOrEmpty(this.xCEP))
+                    {
+                        if (this.xCEP != this._xCepOld)
+                        {
+                            this._xCepOld = this.xCEP;
+                            this.end = ws.BuscaEndereco(this.xCEP);
+                            if (end != null)
+                            {
+                                xEndereco = end.Logradouro;
+                                xBairro = end.Bairro;
+                                //int? icidade = cidadeService.GetCidadeByName(end.Cidade);
+                                //if (icidade != null)
+                                //{
+                                //    idCidade = (int)icidade;
+                                //}
+                            }
                         }
                     }
                 }

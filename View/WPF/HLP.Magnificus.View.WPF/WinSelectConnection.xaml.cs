@@ -31,5 +31,11 @@ namespace HLP.Magnificus.View.WPF
             get { return this.DataContext as SelectConnectionViewModel; }
             set { this.DataContext = value; }
         }
+
+
+        public bool bProssegue
+        {
+            get { return this.ViewModel.bProssegue; }
+        }
     }
 }

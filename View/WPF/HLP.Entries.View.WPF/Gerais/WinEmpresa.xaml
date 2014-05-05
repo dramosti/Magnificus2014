@@ -17,6 +17,7 @@
             <convert:MaskConverter x:Key="maskConverter"/>
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convert:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
+            <convert:NotConverter x:Key="notConverter"/>
             <ObjectDataProvider x:Key="odpCidade" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lresult" ObjectInstance="{StaticResource odpCidade}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
