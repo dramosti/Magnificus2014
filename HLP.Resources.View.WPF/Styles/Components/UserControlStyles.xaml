@@ -250,7 +250,7 @@
 
 
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
-        <!--<Setter Property="Util:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>-->
+        <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
