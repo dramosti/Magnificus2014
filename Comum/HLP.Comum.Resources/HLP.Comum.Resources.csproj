@@ -137,12 +137,6 @@
     <Resource Include="Icones\Simple_Arrow_Right.png" />
     <Resource Include="Icones\Simple_Arrow_Right_Disabled.png" />
     <Resource Include="Icones\Add.png" />
-    <EmbeddedResource Include="Icones\rede_interna.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Icones\rede_online.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="Icones\WinCanalVenda_2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

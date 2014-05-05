@@ -82,24 +82,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         {
             objService = new EmpresaService();
             winMan = new WinManModel();
-            string sPath = "";
-
-            if (Sistema.bOnline == StConnection.OnlineWeb)
-            {
-                sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_online" + ".png";
-                this.winMan.sToolTipConexao = "Online pela internet";
-            }
-            else if (Sistema.bOnline == StConnection.OnlineNetwork)
-            {
-                sPath = System.AppDomain.CurrentDomain.BaseDirectory + @"Icones\" + "rede_interna" + ".png";
-                this.winMan.sToolTipConexao = "Online via rede interna.";
-            }
-
-            if (File.Exists(path: sPath))
-            {
-                this.winMan.iconConexao = new BitmapImage(new Uri(sPath));
-            }
-
+           
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
             this.winMan._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
             this.winMan._lWindows = new ObservableCollection<windowsModel>();

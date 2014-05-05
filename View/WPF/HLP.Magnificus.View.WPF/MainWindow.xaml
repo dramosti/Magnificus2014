@@ -241,28 +241,22 @@
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>
-                        <StatusBarItem Grid.Column="5" HorizontalAlignment="Right">
+                        <StatusBarItem Grid.Column="5" HorizontalAlignment="Left">
                             <StatusBarItem.Template>
                                 <ControlTemplate>
                                     <CheckBox 
+                                        Focusable="False"
                                         Command="{Binding changeStConnection}" 
                                         IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}, UpdateSourceTrigger=Explicit}"
                                         Style="{StaticResource CheckBoxRedeOnline}"
                                               Width="65"></CheckBox>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
-                        </StatusBarItem>
-                        <StatusBarItem Grid.Column="6" HorizontalAlignment="Right" Margin="0,0,10,0">
+                        </StatusBarItem>                       
+                        <StatusBarItem Grid.Column="6" HorizontalAlignment="Left" Margin="0,0,30,0">
                             <StatusBarItem.Template>
                                 <ControlTemplate>
-                                    <Image Width="15" Height="15" Source="{Binding winMan.iconConexao}" ToolTip="{Binding winMan.sToolTipConexao}"/>
-                                </ControlTemplate>
-                            </StatusBarItem.Template>
-                        </StatusBarItem>
-                        <StatusBarItem Grid.Column="6" HorizontalAlignment="Right" Margin="0,0,30,0">
-                            <StatusBarItem.Template>
-                                <ControlTemplate>
-                                    <Button Width="18" Height="20" Content=" " Style="{StaticResource Button_CONEXAO}" Command="{Binding ConnectionConfigCommand}"/>
+                                    <Button Width="18" Height="20" Focusable="False" Content=" " Style="{StaticResource Button_CONEXAO}" Command="{Binding ConnectionConfigCommand}" CommandParameter="{Binding ElementName=manWin}"/>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>

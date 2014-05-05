@@ -13,13 +13,7 @@ namespace HLP.ComumView.Model.Model
 {
     public class WinManModel : modelBase
     {
-        private BitmapImage _iconConexao;
-        public BitmapImage iconConexao
-        {
-            get { return _iconConexao; }
-            set { _iconConexao = value; base.NotifyPropertyChanged("iconConexao"); }
-        }
-
+       
         private string _sToolTipConexao;
         public string sToolTipConexao
         {
