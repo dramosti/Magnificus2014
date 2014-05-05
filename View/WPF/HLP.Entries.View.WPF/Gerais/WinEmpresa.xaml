@@ -159,13 +159,13 @@
                             </Components:HlpPesquisa.Items>
                         </Components:HlpPesquisa>
                         <Components:CustomTextBoxFindFiles
-                            Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="3"                       
+                            Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="3" Margin="0,0,0,3"                      
                             IsEnabled="{Binding bIsEnabled}"                                                                                      
     		                Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                         </Components:CustomTextBoxFindFiles>
                         <Components:CustomTextBoxFindFiles
-                            Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="3"                           
+                            Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="3"  Margin="0,0,0,3"                          
                             IsEnabled="{Binding bIsEnabled}"                                           
     		                Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
