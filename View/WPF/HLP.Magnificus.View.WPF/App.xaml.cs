@@ -22,6 +22,8 @@ using HLP.Base.Static;
 using HLP.Base.EnumsBases;
 using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
+using System.Xml;
+using System.IO;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -132,7 +134,6 @@ namespace HLP.Magnificus.View.WPF
         private bool ValidaConnection()
         {
             Configuration c = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
             if (c.ConnectionStrings.ConnectionStrings.Count <= 1)
             {
                 WinSelectConnection winBases = new WinSelectConnection();
@@ -153,10 +154,102 @@ namespace HLP.Magnificus.View.WPF
             return true;
         }
 
+        private void GetConfigService()
+        {
+            List<BasicHttpBindingElement> lBindings = new List<BasicHttpBindingElement>();
+            List<ChannelEndpointElement> lChannels = new List<ChannelEndpointElement>();
+            Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            ServiceModelSectionGroup serviceModeGroupLocal = ServiceModelSectionGroup.GetSectionGroup(config: localConfig);
+            string[] arrayPaths = Directory.GetFiles(path: @"D:\GitHub\HLP\Magnificus2014\bin\");
+
+            ConfigXmlDocument configXml = new ConfigXmlDocument();
+            XmlNodeList nodeList;
+            List<BasicHttpBindingElement> lBindingsToAdd = new List<BasicHttpBindingElement>();
+            List<ChannelEndpointElement> lChannelsToAdd = new List<ChannelEndpointElement>();
+
+            foreach (string paths in arrayPaths.ToList().Where(i => i.ToUpper().Contains(value: ".CONFIG")))
+            {
+                if(paths != localConfig.FilePath)
+                {
+                    configXml.Load(filename: paths);
+                    nodeList = configXml.SelectNodes(xpath: "/configuration/system.serviceModel/bindings/basicHttpBinding/binding");
+
+                    foreach (XmlNode node in nodeList)
+                    {
+                        lBindings.Add(item: new BasicHttpBindingElement
+                        {
+                            Name = node.Attributes[name: "name"].Value
+                        });
+                    }
+
+                    nodeList = configXml.SelectNodes(xpath: "/configuration/system.serviceModel/client/endpoint");
+
+                    foreach (XmlNode node in nodeList)
+                    {
+                        lChannels.Add(item: new ChannelEndpointElement
+                        {
+                            Address = new Uri(uriString: node.Attributes[name: "address"].Value),
+                            Binding = node.Attributes[name: "binding"].Value,
+                            BindingConfiguration = node.Attributes[name: "bindingConfiguration"].Value,
+                            Contract = node.Attributes[name: "contract"].Value,
+                            Name = node.Attributes[name: "name"].Value
+                        });
+                    }
+
+                    List<BasicHttpBindingElement> lBindingsLocalConfig = new List<BasicHttpBindingElement>();
+
+                    foreach (BasicHttpBindingElement item in serviceModeGroupLocal.Bindings.BasicHttpBinding.Bindings)
+                    {
+                        lBindingsLocalConfig.Add(item: item);
+                    }
+                    foreach (BasicHttpBindingElement item in lBindings)
+                    {
+                        if (lBindingsLocalConfig.Count(i => i.Name == item.Name) == 0)
+                            lBindingsToAdd.Add(item: item);
+                    }
+
+                    List<ChannelEndpointElement> lChannelsLocalConfig = new List<ChannelEndpointElement>();
+                    foreach (ChannelEndpointElement channels in serviceModeGroupLocal.Client.Endpoints)
+                    {
+                        lChannelsLocalConfig.Add(item: channels);
+                    }
+                    foreach (ChannelEndpointElement c in lChannels)
+                    {
+                        if (lChannelsLocalConfig.Count(i => i.Name == c.Name) == 0)
+                            lChannelsToAdd.Add(item: c);
+                    }
+                }
+            }            
+            
+            try
+            {
+                foreach (BasicHttpBindingElement i in lBindingsToAdd)
+                {
+                    serviceModeGroupLocal.Bindings.BasicHttpBinding.Bindings.Add(element:
+                        i);
+                }
+
+                foreach (ChannelEndpointElement c in lChannelsToAdd)
+                {
+                    serviceModeGroupLocal.Client.Endpoints.Add(element:
+                        c);
+                }
+
+                localConfig.Save();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             try
             {
+                this.GetConfigService();
+
                 if (this.ValidaConnection())
                 {
 
@@ -178,7 +271,6 @@ namespace HLP.Magnificus.View.WPF
                             Application.Current.Shutdown();
                         }
                     }
-
                     if (Sistema.bOnline != StConnection.Offline)
                     {
 
@@ -201,12 +293,6 @@ namespace HLP.Magnificus.View.WPF
                             new FrameworkPropertyMetadata(
                                 XmlLanguage.GetLanguage(
                                 CultureInfo.CurrentCulture.IetfLanguageTag)));
-
-                            //BackgroundWorker bwParametrosEmpresa = new BackgroundWorker();
-                            //bwParametrosEmpresa.DoWork += bwParametrosEmpresa_DoWork;
-                            //bwParametrosEmpresa.RunWorkerCompleted += bwParametrosEmpresa_RunWorkerCompleted;
-                            //bwParametrosEmpresa.RunWorkerAsync();
-
                             base.OnStartup(e);
                             wd.WindowState = WindowState.Maximized;
                             wd.Show();
