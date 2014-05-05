@@ -158,18 +158,18 @@
                                 <sys:String>xDescricao</sys:String>
                             </Components:HlpPesquisa.Items>
                         </Components:HlpPesquisa>
-                        <Components:CustomTextBox
+                        <Components:CustomTextBoxFindFiles
                             Grid.Column="2" Grid.Row="14" Grid.ColumnSpan="3"                       
                             IsEnabled="{Binding bIsEnabled}"                                                                                      
     		                Text="{Binding currentModel.xLinkLogoEmpresa, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                        </Components:CustomTextBox>
-                        <Components:CustomTextBox
+                        </Components:CustomTextBoxFindFiles>
+                        <Components:CustomTextBoxFindFiles
                             Grid.Column="2" Grid.Row="15" Grid.ColumnSpan="3"                           
                             IsEnabled="{Binding bIsEnabled}"                                           
     		                Text="{Binding currentModel.xLinkPastas, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
                             ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
-                        </Components:CustomTextBox>
+                        </Components:CustomTextBoxFindFiles>
                         <Components:CustomCheckBox
                             Grid.Column="2" Grid.Row="16"                            
                             IsEnabled="{Binding bIsEnabled}"                                            

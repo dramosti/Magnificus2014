@@ -53,9 +53,18 @@ namespace HLP.Components.View.WPF
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomTextBoxFindFiles), new FrameworkPropertyMetadata(typeof(CustomTextBoxFindFiles)));
         }
 
+
         public CustomTextBoxFindFiles()
         {
-            Button btn = this.FindName(name: "btnCC") as Button;
+            ResourceDictionary resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+            };
+
+            this.Template = resource["txtFindFiles"] as ControlTemplate;
+            this.ApplyTemplate();
+
+            Button btn = this.Template.FindName(name: "btnCC", templatedParent: this) as Button;
             btn.Click += btn_Click;
         }
 
