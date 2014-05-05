@@ -5,8 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
-using HLP.Comum.Resources.Util;
-using HLP.Comum.View.Formularios;
+using HLP.Components.View.WPF;
+using HLP.Base.Static;
 
 namespace HLP.Entries.View.WPF.RecursosHumanos
 {
@@ -18,7 +18,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         public WinEspelhoPonto()
         {
             InitializeComponent();
-            List<Control> lresult = StaticUtil.GetLogicalChildCollection<HlpCalendarioPonto>(this).ToList<Control>();
+            List<Control> lresult = Util.GetLogicalChildCollection<HlpCalendarioPonto>(this).ToList<Control>();
             this.ViewModel = new EspelhoPontoViewModel(lresult);
         }
 
@@ -34,6 +34,6 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
 
         }
 
-       
+
     }
 }

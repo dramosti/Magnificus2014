@@ -1,10 +1,10 @@
 ﻿<runtime:WindowsBase
-        xmlns:runtime="clr-namespace:HLP.Comum.View.Formularios;assembly=HLP.Comum.View"
+        xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
 		x:Class="HLP.Entries.View.WPF.GestãoDeMateriais.WinDeposito"
-        xmlns:conv="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
+        xmlns:conv="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
 		xmlns:System="clr-namespace:System;assembly=mscorlib" 
         Title="Depósito" Height="660" Width="1024" NameView="vwDeposito">
     <Window.Resources>

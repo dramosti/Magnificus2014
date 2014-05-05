@@ -63,7 +63,7 @@ namespace HLP.Comum.ViewModel.Commands
 
 
         public void Fechar(object win)
-        {
+        {         
             this.ViewModel.bProssegue = false;
             Window objWin = win as Window;
             objWin.Close();

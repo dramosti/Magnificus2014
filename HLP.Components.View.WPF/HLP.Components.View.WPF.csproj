@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SearchTextBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\HLP.Base\Dlls\Componentes\SearchTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows" />
@@ -50,11 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseControl.cs" />
+    <Compile Include="Converter\boolMultiConverter.cs" />
     <Compile Include="Converter\ByteToBoolConverter.cs" />
     <Compile Include="Converter\ByteToIntConverter.cs" />
     <Compile Include="Converter\ComboBoxDisplayConverter.cs" />
     <Compile Include="Converter\DateShortConverter.cs" />
     <Compile Include="Converter\DateTimeTimeSpanConverter.cs" />
+    <Compile Include="Converter\DecimalToStringConverter.cs" />
     <Compile Include="Converter\HlpNavigationMultiConverter.cs" />
     <Compile Include="Converter\HlpNavigationVisibilityConverter.cs" />
     <Compile Include="Converter\HlpPesquisaConverter.cs" />
@@ -63,10 +69,12 @@
     <Compile Include="Converter\MaskConverter.cs" />
     <Compile Include="Converter\MoedaConverter.cs" />
     <Compile Include="Converter\NotConverter.cs" />
+    <Compile Include="Converter\OperacoesAritmetConverter.cs" />
     <Compile Include="Converter\PorcentagemConverter.cs" />
     <Compile Include="Converter\SelectedItemToTextConverter.cs" />
     <Compile Include="Converter\TimeSpanToString.cs" />
     <Compile Include="Converter\VisibilityDatePickerConverter.cs" />
+    <Compile Include="Converter\VisibilityVisibleToCollapsedNot.cs" />
     <Compile Include="CustomCheckBox.cs" />
     <Compile Include="CustomComboBox.cs" />
     <Compile Include="CustomDockPanelSplitter.cs" />
@@ -106,6 +114,7 @@
     <Compile Include="HlpPessoaFisicaJuridica.xaml.cs">
       <DependentUpon>HlpPessoaFisicaJuridica.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HlpSearchTextBox.cs" />
     <Compile Include="HlpUserControlBtnImage.xaml.cs">
       <DependentUpon>HlpUserControlBtnImage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +131,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Validates\ListUniqueValuesValidationRule.cs" />
+    <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
+    <Compile Include="Validates\NumericDecimalValidationRule.cs" />
+    <Compile Include="Validates\NumericIntValidationRule.cs" />
     <Compile Include="WindowsBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
