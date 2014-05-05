@@ -160,7 +160,8 @@ namespace HLP.Magnificus.View.WPF
             List<ChannelEndpointElement> lChannels = new List<ChannelEndpointElement>();
             Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             ServiceModelSectionGroup serviceModeGroupLocal = ServiceModelSectionGroup.GetSectionGroup(config: localConfig);
-            string[] arrayPaths = Directory.GetFiles(path: @"D:\GitHub\HLP\Magnificus2014\bin\");
+            string[] arrayPaths = Directory.GetFiles(path: 
+                System.Windows.Forms.Application.StartupPath);
 
             ConfigXmlDocument configXml = new ConfigXmlDocument();
             XmlNodeList nodeList;

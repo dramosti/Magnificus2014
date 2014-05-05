@@ -246,10 +246,9 @@
                                 <ControlTemplate>
                                     <CheckBox 
                                         Command="{Binding changeStConnection}" 
-                                        Focusable="False"
-                                        IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}}"
+                                        IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}, UpdateSourceTrigger=Explicit}"
                                         Style="{StaticResource CheckBoxRedeOnline}"
-                                              Width="82"></CheckBox>
+                                              Width="65"></CheckBox>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>
@@ -263,7 +262,7 @@
                         <StatusBarItem Grid.Column="6" HorizontalAlignment="Right" Margin="0,0,30,0">
                             <StatusBarItem.Template>
                                 <ControlTemplate>
-                                    <Button Width="15" Height="15" Content="*" Focusable="False" Command="{Binding ConnectionConfigCommand}" CommandParameter="{Binding ElementName=manWin}"/>
+                                    <Button Width="18" Height="20" Content=" " Style="{StaticResource Button_CONEXAO}" Command="{Binding ConnectionConfigCommand}"/>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>
@@ -322,7 +321,7 @@
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Margin="3,0,0,0" Style="{DynamicResource Button_PESQUISAR}" Width="34" Height="34" ToolTip="Pesquisar ( Alt + P )" Focusable="False">                                    
                                 </Button>
-                                <DockPanel LastChildFill="True" Width="210" Margin="30,0,0,0">
+                                <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
                                     <Button 
                                     Focusable="False"
 									x:Name="btnPrimeiro"                                     
