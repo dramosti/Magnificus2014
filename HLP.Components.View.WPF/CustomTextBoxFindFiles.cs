@@ -62,7 +62,9 @@ namespace HLP.Components.View.WPF
             };
 
             this.Template = resource["txtFindFiles"] as ControlTemplate;
-            Button btn = this.FindName(name: "btnCC") as Button;
+            this.ApplyTemplate();
+
+            Button btn = this.Template.FindName(name: "btnCC", templatedParent: this) as Button;
             btn.Click += btn_Click;
         }
 
