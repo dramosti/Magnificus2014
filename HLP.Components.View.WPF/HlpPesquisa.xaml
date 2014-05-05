@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:UtilLocal="clr-namespace:HLP.Resources.View.WPF.Styles.Util;assembly=HLP.Resources.View.WPF"
              xmlns:local="clr-namespace:HLP.Components.View.WPF"
              xmlns:convertLocal="clr-namespace:HLP.Components.View.WPF.Converter"
              xmlns:runtime="clr-namespace:HLP.Components.View.WPF"
@@ -60,6 +61,7 @@
                  Width="80" KeyDown="txtID_KeyDown" >
             <TextBox.Style>
                 <Style TargetType="{x:Type TextBoxBase}">
+                    <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate x:Name="TextBoxComponentStyle" TargetType="{x:Type TextBoxBase}">
