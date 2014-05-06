@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -130,7 +131,7 @@ namespace HLP.Base.ClassesBases
             }
             set { _bWorkerAlterar = value; }
         }
-        
+
         private BackgroundWorker _bWorkerCopy;
         public BackgroundWorker bWorkerCopy
         {
@@ -650,6 +651,39 @@ namespace HLP.Base.ClassesBases
 
         private void novoBase(object panel)
         {
+            object o = Application.Current.MainWindow.DataContext.GetType().GetProperty(
+                name: "winMan").GetValue(obj: Application.Current.MainWindow.DataContext);
+
+            object currentTabPage = o.GetType().GetProperty(name: "_currentTab").GetValue(
+                obj: o);
+
+            if (currentTabPage != null)
+            {
+                object contentUI = currentTabPage.GetType().GetProperty(name: "_content").GetValue(obj: currentTabPage);
+
+                List<Expander> lExpanders = Util.GetLogicalChildCollection<Expander>(parent: contentUI);
+                List<UIElement> lControls = new List<UIElement>();
+
+                foreach (Expander exp in lExpanders)
+                {
+                    lControls.AddRange(collection:
+                        Util.GetLogicalChildCollection<UIElement>(parent: exp));
+                }
+
+                foreach (UIElement c in lControls)
+                {
+                    PropertyInfo pi = c.GetType().GetProperty("stCompPosicao");
+
+                    if (pi != null)
+                    {
+                        if ((HLP.Base.EnumsBases.statusComponentePosicao)pi.GetValue(obj: pi) == statusComponentePosicao.first)
+                        {
+                            c.Focus();
+                        }
+                    }
+                }
+            }
+
             this.currentOp = OperacaoCadastro.criando;
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());

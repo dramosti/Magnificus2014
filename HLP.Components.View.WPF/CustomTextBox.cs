@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.Base.EnumsBases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,5 +61,14 @@ namespace HLP.Components.View.WPF
 
             this.Style = resource["TextBoxComponentStyle"] as Style;            
         }
+
+        private statusComponentePosicao _stCompPosicao;
+
+        public statusComponentePosicao stCompPosicao
+        {
+            get { return _stCompPosicao; }
+            set { _stCompPosicao = value; }
+        }
+        
     }
 }

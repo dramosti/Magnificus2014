@@ -14,6 +14,8 @@ using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Base.Static;
+using HLP.Comum.View.Components;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
