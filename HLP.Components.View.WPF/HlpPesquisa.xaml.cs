@@ -41,7 +41,7 @@ namespace HLP.Components.View.WPF
         public HlpPesquisa()
         {
             InitializeComponent();
-           // objViewModel = new HlpPesquisaViewModel();
+            objViewModel = new HlpPesquisaViewModel();
         }
 
         public void ExecutaPesquisa(string sValor)
