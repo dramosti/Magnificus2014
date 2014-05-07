@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,7 @@ namespace HLP.Base.ClassesBases
             viewModelBaseCommands = new ViewModelBaseCommands<T>(this);
             this.Botoes = new StackPanel();
         }
+
         private T _currentModel;
         public T currentModel
         {
@@ -474,6 +476,7 @@ namespace HLP.Base.ClassesBases
 
     public class ViewModelBaseCommands<T> where T : class
     {
+        BackgroundWorker bwFocus;
         public ViewModelBase<T> objviewModel;
         private OperacaoCadastro _currentOp;
         public OperacaoCadastro currentOp
@@ -515,7 +518,13 @@ namespace HLP.Base.ClassesBases
                execute: exec => ExecAcao(ContentBotao: exec),
                canExecute: CanExec => CanExecAcao(ContentBotao: CanExec));
 
+            bwFocus = new BackgroundWorker();
+            bwFocus.DoWork += bwFocus_DoWork;
+            bwFocus.RunWorkerCompleted += bwFocus_RunWorkerCompleted;
+
         }
+
+        List<UIElement> lControls = null;
 
         #region Executes & CanExecutes
 
@@ -651,8 +660,45 @@ namespace HLP.Base.ClassesBases
 
         private void novoBase(object panel)
         {
+
+            this.currentOp = OperacaoCadastro.criando;
+            this.objviewModel.bIsEnabled = true;
+            this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
+            objviewModel.currentID = 0;
+            objviewModel.lItensHierarquia = new List<int>();
+
+
+            if (lControls == null)
+            {
+                this.LoadComponentsWindow();
+            }
+
+            foreach (UIElement c in lControls)
+            {
+                PropertyInfo pi = c.GetType().GetProperty("stCompPosicao");
+
+                if (pi != null)
+                {
+
+                    if ((HLP.Base.EnumsBases.statusComponentePosicao)pi.GetValue(obj: c) == statusComponentePosicao.first)
+                    {
+                        Stack<UIElement> lTabControlsTabItem = new Stack<UIElement>();
+
+                        lTabControlsTabItem.Push(item: c);
+
+                        this.SearchTabControlsTabItemToFocus(lTabControlsTabItem: lTabControlsTabItem,
+                            ctrl: c as FrameworkElement);
+
+                        bwFocus.RunWorkerAsync(argument: lTabControlsTabItem);
+                    }
+                }
+            }
+        }
+
+        private void LoadComponentsWindow()
+        {
             object o = Application.Current.MainWindow.DataContext.GetType().GetProperty(
-                name: "winMan").GetValue(obj: Application.Current.MainWindow.DataContext);
+                        name: "winMan").GetValue(obj: Application.Current.MainWindow.DataContext);
 
             object currentTabPage = o.GetType().GetProperty(name: "_currentTab").GetValue(
                 obj: o);
@@ -662,35 +708,72 @@ namespace HLP.Base.ClassesBases
                 object contentUI = currentTabPage.GetType().GetProperty(name: "_content").GetValue(obj: currentTabPage);
 
                 List<Expander> lExpanders = Util.GetLogicalChildCollection<Expander>(parent: contentUI);
-                List<UIElement> lControls = new List<UIElement>();
+                lControls = new List<UIElement>();
 
                 foreach (Expander exp in lExpanders)
                 {
                     lControls.AddRange(collection:
                         Util.GetLogicalChildCollection<UIElement>(parent: exp));
                 }
+            }
+        }
 
-                foreach (UIElement c in lControls)
+        void bwFocus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null && e.Error == null)
+            {
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    PropertyInfo pi = c.GetType().GetProperty("stCompPosicao");
+                    ((Stack<UIElement>)e.Result).Pop().Focus();
+                }));
+            }
+        }
 
-                    if (pi != null)
+        void bwFocus_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Stack<UIElement> lTabControlsTabItem = e.Argument as Stack<UIElement>;
+
+            bool bFocado = false;
+
+
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+            {
+                while (lTabControlsTabItem.Count > 1)
+                {
+                    UIElement comp = lTabControlsTabItem.Pop();
+
+                    if (comp.GetType() == typeof(TabItem))
                     {
-                        if ((HLP.Base.EnumsBases.statusComponentePosicao)pi.GetValue(obj: pi) == statusComponentePosicao.first)
-                        {
-                            c.Focus();
-                        }
+                        ((comp as TabItem).Parent as TabControl).SelectedItem = comp;
                     }
                 }
+                bFocado = true;
+            }));
+
+            while (!bFocado)
+            {
+                e.Result = lTabControlsTabItem;
+                Thread.Sleep(millisecondsTimeout: 300);
+            }
+        }
+
+
+
+        private void SearchTabControlsTabItemToFocus(Stack<UIElement> lTabControlsTabItem, FrameworkElement ctrl)
+        {
+            if (ctrl.Parent == null)
+            {
+                return;
             }
 
-            this.currentOp = OperacaoCadastro.criando;
-            this.objviewModel.bIsEnabled = true;
-            this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
-            objviewModel.currentID = 0;
-            objviewModel.lItensHierarquia = new List<int>();
-            objviewModel.SetFocusFirstTab(panel as Panel);
+            if (ctrl.Parent.GetType() == typeof(TabItem))
+            {
+                lTabControlsTabItem.Push(item: ctrl.Parent as UIElement);
+            }
+
+            SearchTabControlsTabItemToFocus(lTabControlsTabItem: lTabControlsTabItem, ctrl: ctrl.Parent as FrameworkElement);
         }
+
         private bool novoBaseCanExecute()
         {
             return (this.currentOp == OperacaoCadastro.livre
@@ -735,9 +818,30 @@ namespace HLP.Base.ClassesBases
             this.currentOp = OperacaoCadastro.pesquisando;
             this.objviewModel.bIsEnabled = false;
 
-            if (panel != null)
+            if (lControls == null)
             {
-                objviewModel.FocusToComponente(panel as Panel, Util.focoComponente.Primeiro);
+                this.LoadComponentsWindow();
+            }
+
+            foreach (UIElement c in lControls)
+            {
+                PropertyInfo pi = c.GetType().GetProperty("stCompPosicao");
+
+                if (pi != null)
+                {
+
+                    if ((HLP.Base.EnumsBases.statusComponentePosicao)pi.GetValue(obj: c) == statusComponentePosicao.fieldId)
+                    {
+                        Stack<UIElement> lTabControlsTabItem = new Stack<UIElement>();
+
+                        lTabControlsTabItem.Push(item: c);
+
+                        this.SearchTabControlsTabItemToFocus(lTabControlsTabItem: lTabControlsTabItem,
+                            ctrl: c as FrameworkElement);
+
+                        bwFocus.RunWorkerAsync(argument: lTabControlsTabItem);
+                    }
+                }
             }
         }
         private bool salvarBaseCanExecute()

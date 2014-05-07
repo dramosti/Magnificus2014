@@ -50,9 +50,6 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
 
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
             objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
             objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
 
@@ -168,18 +165,8 @@ namespace HLP.Entries.ViewModel.Commands.Fiscal
         {
             this.objViewModel.currentModel = new Model.Models.Fiscal.CfopModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(millisecondsTimeout: 100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);

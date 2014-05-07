@@ -60,12 +60,12 @@
                                 <!--Components-->
 
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="1"
+                                    Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                                     IsReadOnly="True"
 									Text="{Binding currentModel.idProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 									ToolTip="Chave principal do registro Produto">
                                 </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                <Components:CustomTextBox stCompPosicao="first"
                                     Grid.Column="2" Grid.Row="2"
                                     Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"

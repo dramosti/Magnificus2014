@@ -25,6 +25,7 @@ namespace HLP.Base.EnumsBases
     public enum statusComponentePosicao
     {
         _default,
+        fieldId,
         first,
         last
     }
