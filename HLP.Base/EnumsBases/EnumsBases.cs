@@ -21,4 +21,12 @@ namespace HLP.Base.EnumsBases
         alterando,
         pesquisando
     }
+
+    public enum statusComponentePosicao
+    {
+        _default,
+        fieldId,
+        first,
+        last
+    }
 }

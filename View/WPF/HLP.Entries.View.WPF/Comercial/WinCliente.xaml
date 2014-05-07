@@ -112,7 +112,7 @@
 
                                             <!--Components-->
 
-                                            <Components:CustomTextBox x:Name="txtIdClienteForn"
+                                            <Components:CustomTextBox x:Name="txtIdClienteForn" stCompPosicao="fieldId"
                                             Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
                                             IsReadOnly="True"
 										    Text="{Binding currentModel.idClienteFornecedor, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}">
@@ -123,7 +123,7 @@
 											xTextDate="{Binding currentModel.dCadastro, Mode=TwoWay, NotifyOnValidationError=True, 
                                                 UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                                             </Components:HlpDatePicker>
-                                            <Components:CustomTextBox
+                                            <Components:CustomTextBox stCompPosicao="first"
                                             Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                                             Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">

@@ -81,13 +81,6 @@ namespace HLP.Magnificus.View.WPF
         private void manWin_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this._viewModel.heightWindow = this.dockPrinc.ActualHeight - this.statusBarPrinc.ActualHeight;
-            //(((this.statusBarItemAtalhos.ContextMenu.Items[0] as MenuItem).Template.LoadContent()) as ContentControl).Content
-            //    = new object();
-
-            //(((this.statusBarItemAtalhos.ContextMenu.Items[0] as MenuItem).Template.LoadContent()) as ContentControl).Content
-            //= ((this.Resources["proxy"] as BindingProxy).Data as MainViewModel).winMan._currentTab.Botoes;            
         }
-
-
     }
 }

@@ -25,6 +25,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Comercial
         public ICommand navegarCommand { get; set; }
         #endregion
         ClienteCommands comm;
+
         public ClienteViewModel()
         {
             comm = new ClienteCommands(

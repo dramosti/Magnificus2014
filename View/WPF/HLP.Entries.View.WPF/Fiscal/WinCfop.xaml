@@ -42,11 +42,11 @@
                 <!--Components-->
                 
                 <Components:CustomTextBox 
-                                      IsReadOnly="True"
+                                      IsReadOnly="True" stCompPosicao="fieldId"
                                       Text="{Binding currentModel.idCfop, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro da CFOP"
                                       Grid.Column="2" Grid.Row="1"/>                
-                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="2"
+                <Components:CustomTextBox  Grid.Column="2"  Grid.Row="2" x:Name="txtCfop" stCompPosicao="first"
                                        Text="{Binding currentModel.cCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
                                        ToolTip="Informar o código padrão da CFOP fornecida pelo seu Órgão Emissor"/>                
@@ -61,6 +61,6 @@
                 
 
             </Grid>
-        </Expander>      
+        </Expander>
     </StackPanel>
 </runtime:WindowsBase>

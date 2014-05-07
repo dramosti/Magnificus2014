@@ -285,7 +285,7 @@
                         </Grid.RowDefinitions>
                         <DockPanel LastChildFill="True" Background="White">                            
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="45" Focusable="False"   Style="{StaticResource toolBarCadastro}">
-                                <Button 
+                                <Button
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
 								CommandParameter="{Binding winMan._currentTab._content}" Cursor="Hand"
 								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )" Focusable="False">
@@ -348,11 +348,11 @@
                             </ToolBar>
                         </DockPanel>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        <TabControl Grid.Row="2"  
+                        <TabControl Grid.Row="2"
                                     Focusable="False"
 							IsSynchronizedWithCurrentItem="True"
 							SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">
+							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">                            
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Focusable="False" Height="24" LastChildFill="True">
@@ -368,19 +368,13 @@
                                         <Button DockPanel.Dock="Right" Width="17" Focusable="False" Height="17" Style="{DynamicResource BtnFechar}" FontFamily="OCR A Extended" FontSize="14.667">
                                             <ContentPresenter Content="-"/>
                                         </Button>
-
                                         <TextBlock Focusable="False" Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
-                                        <!--<Label Grid.Column="0" Content="{Binding _header}"
-											DockPanel.Dock="Left"/>-->
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ItemTemplate>
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
-                                    <DockPanel Focusable="False" LastChildFill="True">
-                                        <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-
-                                        </DockPanel>
+                                    <DockPanel Focusable="False" LastChildFill="True" x:Name="dkContent">                                        
                                         <ContentControl 
                                                         Focusable="False" Content="{Binding _content}"/>
                                     </DockPanel>

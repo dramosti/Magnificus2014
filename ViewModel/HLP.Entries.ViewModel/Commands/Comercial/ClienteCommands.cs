@@ -14,6 +14,8 @@ using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Base.Static;
+using HLP.Comum.View.Components;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -56,9 +58,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
 
             objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
             objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
@@ -235,16 +234,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
-        }
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
