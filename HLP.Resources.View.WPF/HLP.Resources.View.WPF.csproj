@@ -136,6 +136,11 @@
     <Resource Include="Icons\Login\Logo.png" />
     <Resource Include="Icons\Button\ImgFechar.png" />
     <Resource Include="Icons\Button\ImgReabrir.png" />
+    <Resource Include="Icons\Button\save-32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\Button\Save_MouseOver.png" />
+    <Resource Include="Icons\Button\Save_Disabled.png" />
     <Content Include="Icons\Hierarquia\Agencia.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -12,7 +12,6 @@ namespace HLP.Wcf.Entries
     [ServiceContract]
     public interface Iwcf_Transportadora
     {
-
         [OperationContract]
         TransportadorModel GetObject(int id);
 
@@ -24,6 +23,5 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         TransportadorModel CopyObject(TransportadorModel obj);
-
     }
 }

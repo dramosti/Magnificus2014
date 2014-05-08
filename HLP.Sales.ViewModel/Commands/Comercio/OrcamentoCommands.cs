@@ -121,7 +121,7 @@ namespace HLP.Sales.ViewModel.Commands.Comercio
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                     this.IniciaCollection();
                     this.objViewModel.currentModel.bTodos = true;
                 }

@@ -56,7 +56,7 @@
                     IsEnabled="{Binding bIsEnabled}"/>
                 <Components:HlpPesquisa Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
                     Text="{Binding currentModel.idUF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
-                    x:Name="teste" TableView="vwUF" FieldPesquisa="ID"
+                    x:Name="teste" TableView="vwUF" FieldPesquisa="ID" nameWindow="WinUF"
                                  IsEnabled="{Binding bIsEnabled}" WidthLabel="0">
                     <Components:HlpPesquisa.Items>
                         <System:String>xSiglaUf</System:String>

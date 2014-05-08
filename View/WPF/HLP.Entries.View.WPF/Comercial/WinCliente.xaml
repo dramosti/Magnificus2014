@@ -358,7 +358,7 @@
                                         <Components:HlpPesquisa
                                             Height="20" Margin="0,0,0,3" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
 											Text="{Binding currentModel.idCanalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											IsEnabled="{Binding bIsEnabled}"
+											IsEnabled="{Binding bIsEnabled}" nameWindow="WinCanalVenda"
 											WidthLabel="0" TableView="vwCanalVenda" FieldPesquisa="ID">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>cCanalVenda</System:String>

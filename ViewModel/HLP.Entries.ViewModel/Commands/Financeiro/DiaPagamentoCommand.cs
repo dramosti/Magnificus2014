@@ -113,7 +113,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                     this.Inicia_Collections();
                     object w = objViewModel.GetParentWindow(e.Result);
 

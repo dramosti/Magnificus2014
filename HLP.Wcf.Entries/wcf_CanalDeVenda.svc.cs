@@ -70,11 +70,12 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public int CopyObject(int id)
+        public Canal_vendaModel CopyObject(int id)
         {
             try
             {
-                return this.canal_VendaRepository.Copy(idCanalVenda: id);
+                return this.canal_VendaRepository.GetCanal(idCanalVenda:
+                    this.canal_VendaRepository.Copy(idCanalVenda: id));
             }
             catch (Exception ex)
             {

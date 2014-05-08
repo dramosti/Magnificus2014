@@ -11,7 +11,7 @@ namespace HLP.Entries.Services.Comercial
 {
     public class Canal_VendaService
     {
-        const string xTabela = "Canal_Venda;";
+        const string xTabela = "Canal_venda;";
 
         HLP.Wcf.Entries.wcf_CanalDeVenda serviceNetwork;
         wcf_CanalDeVenda.Iwcf_CanalDeVendaClient serviceWeb;
@@ -134,7 +134,7 @@ namespace HLP.Entries.Services.Comercial
             }
         }
 
-        public int CopyObject(int id)
+        public Canal_vendaModel CopyObject(int id)
         {
             switch (Sistema.bOnline)
             {

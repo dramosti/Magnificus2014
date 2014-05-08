@@ -23,7 +23,7 @@ namespace HLP.Wcf.Entries
         bool DeleteObject(int id);
 
         [OperationContract]
-        int CopyObject(int id);
+        Canal_vendaModel CopyObject(int id);
 
     }
 }

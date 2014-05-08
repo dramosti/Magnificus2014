@@ -348,7 +348,8 @@ namespace HLP.Base.Static
 
         public static void SetPropertyValue(this object containingObject, string propertyName, object newValue)
         {
-            containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
+            if (containingObject != null)
+                containingObject.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, containingObject, new object[] { newValue });
         }
 
         public static object GetPropertyValue(this object value, string sNameProperty)

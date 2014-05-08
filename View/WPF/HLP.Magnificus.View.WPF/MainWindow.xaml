@@ -288,11 +288,11 @@
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="45" Focusable="False"   Style="{StaticResource toolBarCadastro}">
                                 <Button
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
-								CommandParameter="{Binding winMan._currentTab._content}" Cursor="Hand"
+								Cursor="Hand"
 								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )" Focusable="False">
                                     
                                 </Button>
-                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"  CommandParameter="{Binding winMan._currentTab._content}"  
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"
 								Style="{DynamicResource Button_EDIT}" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
                                     
                                 </Button>
@@ -301,7 +301,8 @@
                                     
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
-								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                                        CommandParameter="{Binding winMan._currentTab._content}"
+								Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
                                     
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource Button_CANCEL}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False">

@@ -69,7 +69,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 objViewModel.SetFocusFirstTab(_panel as Panel);
-                this.objViewModel.bWorkerSave.RunWorkerAsync();
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                     object w = objViewModel.GetParentWindow(e.Result);
 
                     if (w != null)

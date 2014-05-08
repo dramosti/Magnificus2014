@@ -493,13 +493,13 @@ namespace HLP.Base.ClassesBases
         public ViewModelBaseCommands(object vViewModel)
         {
             this.objviewModel = vViewModel as ViewModelBase<T>;
-            this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(panel: pExec),
+            this.objviewModel.novoBaseCommand = new RelayCommand(execute: pExec => this.novoBase(),
                 canExecute: pCanExec => this.novoBaseCanExecute());
-            this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(panel: pExec),
+            this.objviewModel.alterarBaseCommand = new RelayCommand(execute: pExec => this.alterarBase(),
                 canExecute: pCanExec => this.GenericCanExecute());
             this.objviewModel.deletarBaseCommand = new RelayCommand(execute: pExec => this.delBase(iRemoved: pExec),
                 canExecute: pCanExec => this.GenericCanExecute());
-            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(panel: pExec),
+            this.objviewModel.salvarBaseCommand = new RelayCommand(execute: pExec => this.salvarBase(),
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
@@ -658,7 +658,7 @@ namespace HLP.Base.ClassesBases
             return bCanExecute;
         }
 
-        private void novoBase(object panel)
+        private void novoBase()
         {
 
             this.currentOp = OperacaoCadastro.criando;
@@ -756,9 +756,7 @@ namespace HLP.Base.ClassesBases
                 Thread.Sleep(millisecondsTimeout: 300);
             }
         }
-
-
-
+        
         private void SearchTabControlsTabItemToFocus(Stack<UIElement> lTabControlsTabItem, FrameworkElement ctrl)
         {
             if (ctrl.Parent == null)
@@ -779,11 +777,10 @@ namespace HLP.Base.ClassesBases
             return (this.currentOp == OperacaoCadastro.livre
                 || this.GenericCanExecute());
         }
-        private void alterarBase(object panel)
+        private void alterarBase()
         {
             this.objviewModel.bIsEnabled = true;
             this.currentOp = OperacaoCadastro.alterando;
-            this.objviewModel.SetFocusFirstTab(panel as Panel);
         }
         private void delBase(object iRemoved)
         {
@@ -813,7 +810,7 @@ namespace HLP.Base.ClassesBases
                 }
             }
         }
-        private void salvarBase(object panel)
+        private void salvarBase()
         {
             this.currentOp = OperacaoCadastro.pesquisando;
             this.objviewModel.bIsEnabled = false;

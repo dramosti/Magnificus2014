@@ -195,7 +195,7 @@
       type="HLP.Sales.View.WPF.Comercial.StatusItensOrcamento, HLP.Sales.View.WPF">
   </object>
   <object id="HlpPesquisaInsert" name="Inserir_Cadastro" singleton="false" scope="request"
-      type="HLP.Comum.View.Formularios.HlpPesquisaInsert, HLP.Comum.View">
+      type="HLP.Comum.View.WPF.HlpPesquisaInsert, HLP.Comum.View.WPF">
   </object>
   <object id="WinExclusionDenied" name="Exclusão_Não_Permitida" singleton="false" scope="request"
         type="HLP.Comum.View.WPF.WinExclusionDenied, HLP.Comum.View.WPF">
