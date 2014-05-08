@@ -246,7 +246,7 @@
                                         Command="{Binding changeStConnection}" 
                                         IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}, UpdateSourceTrigger=Explicit}"
                                         Style="{StaticResource CheckBoxRedeOnline}"
-                                              Width="65"></CheckBox>
+                                              Width="65" Height="26"></CheckBox>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>                       
@@ -259,7 +259,7 @@
                         </StatusBarItem>
                         <StatusBarItem Grid.Column="7" x:Name="statusBarItemAtalhos"
                                        ContextMenuService.Placement="Top"
-                               >
+                               Content="Clique" Foreground="{StaticResource WhiteStandard}" >
                             <StatusBarItem.ContextMenu>
                                 <ContextMenu Style="{StaticResource ContextMenu}">
                                     <MenuItem                                                            
@@ -273,8 +273,7 @@
                                         </MenuItem.Template>
                                     </MenuItem>
                                 </ContextMenu>
-                            </StatusBarItem.ContextMenu>
-                            Clique
+                            </StatusBarItem.ContextMenu>                           
                         </StatusBarItem>
                     </StatusBar>
 

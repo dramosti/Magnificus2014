@@ -766,7 +766,9 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Calibri"/>
     </Style>
-
+    <Style TargetType="{x:Type TabControl}">
+        <Setter Property="Background" Value="#FFEEEEF2"></Setter>
+    </Style>
     <ControlTemplate x:Key="exceptionComp">
         <DockPanel LastChildFill="True">
             <Border Background="#FFECA933" DockPanel.Dock="Right" Margin="5,0,0,0" Width="12" Height="12" CornerRadius="7"
@@ -884,7 +886,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>   
+    </Style>    
     <Style TargetType="{x:Type Grid}" x:Key="GridStyle">
         <Setter Property="Background" Value="{StaticResource StyleMainWindowDefault}"/>
     </Style>
