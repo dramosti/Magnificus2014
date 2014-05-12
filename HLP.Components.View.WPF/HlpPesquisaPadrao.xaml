@@ -10,13 +10,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>-->
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}">
                 <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus"></EventSetter>
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel LastChildFill="True" Background="{StaticResource StyleMainWindowDefault}">
+    <DockPanel LastChildFill="True" Background="#FFEEEEF2">
         <DockPanel.Resources>
         </DockPanel.Resources>
         <Grid DockPanel.Dock="Top" Height="200">
@@ -99,53 +100,22 @@
         </Grid>
         <osc:CustomDockPanelSplitter Style="{StaticResource DockSplliterStyle}" DockPanel.Dock="Top" Height="1"/>
         <Grid
-            Height="22"               
+            Height="34"               
                 DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" >
                 <Button 
-                Margin="5,0,0,0"
-                Command="{Binding commandPesquisar}"
-                CommandParameter="{Binding ElementName=dgvResult}">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <Image x:Name="ImageAdd">
-                                    <Image.Style>
-                                        <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_48.png"/>
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_MouseOver.png"/>
-                                                </Trigger>
-                                                <Trigger Property="IsEnabled" Value="False">
-                                                    <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/Search_Disabled.png"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Image.Style>
-                                </Image>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                Height="34" Width="34" Margin="3,0,3,0"
+                Command="{Binding commandPesquisar}" CommandParameter="{Binding ElementName=dgvResult}" Style="{StaticResource Button_PESQUISAR_PESQUISA}">                                  
                 </Button>
                 <Button
-                    Margin="10,0,0,0"
-                	Command="{Binding commandLimpar}">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <Image x:Name="ImageAdd">
-                                    <Image.Style>
-                                        <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="pack://application:,,,/HLP.Comum.Resources;component/Icones/broom-48.png"/>
-                                        </Style>
-                                    </Image.Style>
-                                </Image>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
+                    Height="34" Width="34" Margin="3,0,3,0"
+                	Command="{Binding commandLimpar}" Style="{StaticResource Button_LIMPAR_PESQUISA}">
+                    
                 </Button>
-                <Button Content="+" Command="{Binding commandAdd}" CommandParameter="{Binding ElementName=winPesquisaPadrao, Path=NameWindowCadastro}"></Button>
+                <Button
+                    Height="34" Width="34" Style="{StaticResource Button_ADD_PESQUISA}" Margin="3,0,3,0"
+                    Command="{Binding commandAdd}" CommandParameter="{Binding ElementName=winPesquisaPadrao, Path=NameWindowCadastro}">                    
+                </Button>
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Bottom">

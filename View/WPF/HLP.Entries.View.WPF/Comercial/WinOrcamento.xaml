@@ -139,7 +139,7 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
             <convert:MaskConverter x:Key="maskConverter"/>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </runtime:WindowsBase.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -170,9 +170,9 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
-                
+
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Data e Hora Criada" Grid.Column="3" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Cliente" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>
@@ -180,7 +180,7 @@
                 <Components:CustomTextBlock Text="Empresa" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Representante" Grid.Column="5" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Condição de Pagamento" Grid.Column="7" Grid.Row="3"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
 
                 <Components:CustomTextBox
@@ -243,7 +243,7 @@
                         <System:String>xDescricao</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-            </Grid>  
+            </Grid>
         </Expander>
         <TabControl Grid.Row="1">
             <TabItem Header="Principal">
@@ -276,9 +276,9 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <!--Label-->
 
                                     <Components:CustomTextBlock Text="Contato" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -287,7 +287,7 @@
                                     <Components:CustomTextBlock Text="Cidade" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Ramo da Atividade" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
-                                    
+
                                 </Grid>
                             </Expander>
                             <Expander Header="Status" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}">
@@ -306,9 +306,9 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <!--Label-->
 
                                     <Components:CustomTextBlock Text="Tipo do Orçamento" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -322,7 +322,7 @@
                             <Expander Header="Pedido de Compras do Cliente" IsExpanded="True" Grid.Row="2" Style="{StaticResource ExpanderPadrao}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="10"></ColumnDefinition>                                        
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
@@ -331,9 +331,9 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>                                        
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                   
+
                                     <!--Label-->
 
                                     <Components:CustomTextBlock Text="Cotação de compras do cliente" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -367,7 +367,7 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <!--Label-->
 
                                     <Components:CustomTextBlock Text="Proprietário do Orçamento" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -377,8 +377,8 @@
                                     <Components:CustomTextBlock Text="Moeda" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Observação" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
                                     <Components:CustomTextBlock Text="Orçamento veio da Web" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
-                                    
-                                    
+
+
                                 </Grid>
                             </Expander>
                             <Expander Header="Financeiro" IsExpanded="True" Grid.Row="1" Style="{StaticResource ExpanderPadrao}">
@@ -388,7 +388,7 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>                                        
+                                        <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition Width="10"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
@@ -397,7 +397,7 @@
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                         <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <!--Label-->
 
                                     <Components:CustomTextBlock Text="Descontos" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -412,7 +412,7 @@
             </TabItem>
             <TabItem Header="Itens">
                 <AdornerDecorator>
-                    <Grid>                        
+                    <Grid>
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
@@ -454,48 +454,59 @@
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                             </Grid.RowDefinitions>
 
                             <!--Label-->
 
-                            <Components:CustomTextBlock Text="Código do Produto" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Nome do Produto" Grid.Column="3" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="UN" Grid.Column="5" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Quantidade" Grid.Column="7" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Valor Unitário" Grid.Column="9" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Valor Total" Grid.Column="11" Grid.Row="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Consumo Final?" Grid.Row="3" Grid.Column="1"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="CFOP" Grid.Row="3" Grid.Column="3"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Text="Origem da Mercadoria" Grid.Row="3" Grid.ColumnSpan="3" Grid.Column="5"></Components:CustomTextBlock>
+                            <TextBlock Text="Identificação do Produto" Grid.Column="1" Margin="0,0,0,3" Grid.Row="1" HorizontalAlignment="Left" FontSize="14" FontFamily="Segoe UI Bold" Grid.ColumnSpan="3"></TextBlock>
+                            <Components:CustomTextBlock Text="Código do Produto" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Nome do Produto" Grid.Column="3" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="UN" Grid.Column="5" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Quantidade" Grid.Column="7" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Valor Unitário" Grid.Column="9" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Valor Total" Grid.Column="11" Grid.Row="2"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Consumo Final?" Grid.Row="4" Grid.Column="1"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="CFOP" Grid.Row="4" Grid.Column="3"></Components:CustomTextBlock>
+                            <Components:CustomTextBlock Text="Origem da Mercadoria" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="5"></Components:CustomTextBlock>
+
+                            <!--Buttons-->
+
+                            <DockPanel Grid.Column="3" Grid.Row="1" Width="400" Margin="40,0,0,3">
+                                <Button Style="{StaticResource Button_ANTERIOR_DUPLO_ORÇAMENTO}" Margin="2,0,2,0" Width="20" Height="20" HorizontalAlignment="Left"></Button>
+                                <Button Style="{StaticResource Button_ANTERIOR_SIMPLES_ORÇAMENTO}" Margin="2,0,2,0" Width="20" Height="20" HorizontalAlignment="Left"></Button>
+                                <Button Style="{StaticResource Button_PROXIMO_SIMPLES_ORÇAMENTO}" Margin="2,0,2,0" Width="20" Height="20" HorizontalAlignment="Left"></Button>
+                                <Button Style="{StaticResource Button_PROXIMO_DUPLO_ORÇAMENTO}" Margin="2,0,2,0" Width="20" Height="20" HorizontalAlignment="Left"></Button>
+                            </DockPanel>
 
                             <!--Components-->
 
                             <Components:CustomTextBox
-                                   Grid.Column="1" Grid.Row="2" Width="90" HorizontalAlignment="Left">
+                                   Grid.Column="1" Grid.Row="3" Width="90" HorizontalAlignment="Left">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox
-                                    Grid.Column="3" Grid.Row="2">
+                                    Grid.Column="3" Grid.Row="3">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox
-                                    Grid.Column="5" Grid.Row="2">
+                                    Grid.Column="5" Grid.Row="3">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox
-                                    Grid.Column="7" Grid.Row="2">
+                                    Grid.Column="7" Grid.Row="3">
                             </Components:CustomTextBox>
                             <Components:CustomTextBox
-                                    Grid.Column="9" Grid.Row="2" >
+                                    Grid.Column="9" Grid.Row="3" >
                             </Components:CustomTextBox>
                             <Components:CustomTextBox
-                                    Grid.Column="11" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,5,3">
-                            </Components:CustomTextBox>                            
+                                    Grid.Column="11" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,5,3">
+                            </Components:CustomTextBox>
                             <Components:CustomCheckBox
-                                    Grid.Column="1" Grid.Row="4"
+                                    Grid.Column="1" Grid.Row="5"
                                     IsChecked="{Binding currentModel.stConsumidorFinal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Consumidor Final?">
                             </Components:CustomCheckBox>
                             <Components:HlpPesquisa
-                                            Grid.Column="3" Grid.Row="4" Height="20" Margin="0,0,0,3"           
+                                            Grid.Column="3" Grid.Row="5" Height="20" Margin="0,0,0,3"           
 											Text="{Binding currentModel.idCfop, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
 											WidthLabel="0" FieldPesquisa="ID" TableView="vwCfop">
@@ -505,7 +516,7 @@
                                 </Components:HlpPesquisa.Items>
                             </Components:HlpPesquisa>
                             <Components:CustomComboBox
-                                    Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="4"
+                                    Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="5"
                                     SelectedIndex="{Binding currentModel.stOrigemMercadoria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}">
                                 <Components:CustomComboBox.Items>
@@ -523,15 +534,746 @@
                         <TabControl Grid.Row="1">
                             <TabItem Header="IPI">
                                 <AdornerDecorator>
-                                    <Grid>                                        
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="200" MinWidth="200"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <!--Label-->
+
+                                        <Components:CustomTextBlock Text="Calcula IPI?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Classificação Fiscal" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="NCM" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="% IPI" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Compões a Base do IPI" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Valor da Base do IPI" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Text="Valor do IPI" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+
+                                        <!--Components-->
+
+                                        <Components:CustomCheckBox
+                                            Grid.Column="2" Grid.Row="1"
+                                            IsChecked="{Binding currentModel.stCalculaIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+										    IsEnabled="{Binding bIsEnabled}"
+										    ToolTip="Calcula IPI (Imposto sobre produto Industrializado)">
+                                        </Components:CustomCheckBox>
+                                        <Components:HlpPesquisa
+                                            Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"      
+											Text="{Binding currentModel.idClassificacaoFiscal, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwClassificacaoFiscal">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>xClassificacaoFiscal</System:String>
+                                                <System:String>cNCM</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="3"
+                                            Text="{Binding currentModel.cNCM, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="4"
+                                            Text="{Binding currentModel.pIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="5" Height="20" Grid.ColumnSpan="2"  Margin="0,0,0,3" ItemContainerStyle="{StaticResource ComboBoxItemStyle}"
+                                            SelectedIndex="{Binding currentModel.stCompoeBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                            <Components:CustomComboBox.Items>
+                                                <System:String>0-PRODUTOS</System:String>
+                                                <System:String>1-PRODUTOS+FRETE</System:String>
+                                                <System:String>2-PRODUTOS+FRETE+SEGURO+OUTRAS DESPESAS</System:String>
+                                                <System:String>3-NENHUM</System:String>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:HlpPesquisa
+                                            Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"        
+											Text="{Binding currentModel.idCSTIpi, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwStIPI">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>cCSTIpi</System:String>
+                                                <System:String>xCSTIpi</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="7"
+                                            Text="{Binding currentModel.vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="8"
+                                            Text="{Binding currentModel.vIPI, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
                                     </Grid>
                                 </AdornerDecorator>
                             </TabItem>
                             <TabItem Header="ICMS">
                                 <AdornerDecorator>
+                                    <ScrollViewer>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="270" MinWidth="270"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="290" MinWidth="290"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                                <ColumnDefinition MaxWidth="40" MinWidth="50"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="10"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="10"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Components:CustomTextBlock Text="Reduz Base de Cálculo do ICMS?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Não reduz a base de Calculo do ICMS?" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Calcula ICMS?" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Código de ICMS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Código da Situação Tributária" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% ICMS" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Redução da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Compõe a base do ICMS?" Grid.Column="1" Grid.Row="8"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor da Base de Calculo do ICMS" Grid.Column="1" Grid.Row="9"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor do ICMS" Grid.Column="1" Grid.Row="10"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor da Base de Calculo ICMS Próprio" Grid.Column="1" Grid.Row="11"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor do ICMS Próprio" Grid.Column="6" Grid.Row="1"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Calcula ICMS de Substituição Tributária?" Grid.Column="6" Grid.Row="2"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Red. da Base de Cálculo da Subst. Trib." Grid.Column="6" Grid.Row="3"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Vlr da Red da Base de Cálculo da Subst Trib." Grid.Column="6" Grid.Row="4"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Subst. Tribt." Grid.Column="6" Grid.Row="5"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% ICMS Interna destino" Grid.Column="6" Grid.Row="6"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% MVA ST" Grid.Column="6" Grid.Row="7"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="% Carga Tributária Média" Grid.Column="6" Grid.Row="8"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Compõe a base do ICMS de Subst. Tribut." Grid.Column="6" Grid.Row="9"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Vlr de Base de Calculo do ICMS Subst. Trib." Grid.Column="6" Grid.Row="10"></Components:CustomTextBlock>
+                                            <Components:CustomTextBlock Text="Valor do ICMS Subst. Trib." Grid.Column="6" Grid.Row="11"></Components:CustomTextBlock>
+
+                                            <!--Components-->
+
+                                            <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stReduzBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                                <Components:CustomComboBox.Items>
+                                                    <System:String>0-NENHUMA</System:String>
+                                                    <System:String>1-ICMS E SUBST TRIBUTÁRIA</System:String>
+                                                    <System:String>2-ICMS</System:String>
+                                                    <System:String>3-SUBSTITUIÇÃO TRIBUTÁRIA</System:String>
+                                                </Components:CustomComboBox.Items>
+                                            </Components:CustomComboBox>
+                                            <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stNaoReduzBase, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                                <Components:CustomComboBox.Items>
+                                                    <System:String>0-Todas</System:String>
+                                                    <System:String>1-CONSUMIDOR FINAL</System:String>
+                                                </Components:CustomComboBox.Items>
+                                            </Components:CustomComboBox>
+                                            <Components:CustomCheckBox
+                                            Grid.Column="2" Grid.Row="3"
+                                            IsChecked="{Binding currentModel.stCalculaIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									        IsEnabled="{Binding bIsEnabled}">
+                                            </Components:CustomCheckBox>
+                                            <Components:HlpPesquisa
+                                            Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+                                            Text="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					                        IsEnabled="{Binding bIsEnabled}"
+					                        ToolTip="Informar ao sistema qual código do ICMS " TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0">
+                                                <Components:HlpPesquisa.Items>
+                                                    <System:String>cIcms</System:String>
+                                                </Components:HlpPesquisa.Items>
+                                            </Components:HlpPesquisa>
+                                            <Components:HlpPesquisa
+                                            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+                                            Text="{Binding currentModel.idCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+					                        IsEnabled="{Binding bIsEnabled}"
+					                        ToolTip="Código de Situação Tributária ou CST" TableView="vwStICMS" FieldPesquisa="ID" WidthLabel="0">
+                                                <Components:HlpPesquisa.Items>
+                                                    <System:String>cIcms</System:String>
+                                                </Components:HlpPesquisa.Items>
+                                            </Components:HlpPesquisa>
+                                            <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="6" 
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pICMS, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="É informado a alíquota do ICMS">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="7"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pReduzBase, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informar a porcentagem da Redução de base de calculo do ICMS">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stCompoeBaseIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="Informar qual será o tipo de composição para a base do ICMS">
+                                                <Components:CustomComboBox.Items>
+                                                    <System:String>0-PRODUTOS</System:String>
+                                                    <System:String>1-PRODUTOS+IPI</System:String>
+                                                    <System:String>2-PRODUTOS+IPI+FRETE</System:String>
+                                                    <System:String>3-PRODUTOS+IPI+SEGURO+OUTRAS</System:String>
+                                                    <System:String>4-NENHUMA</System:String>
+                                                </Components:CustomComboBox.Items>
+                                            </Components:CustomComboBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="9"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vBaseCalculoIcms, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Valor da base de calculo do ICMS do item do orçamento de vendas">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="10"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vICMS, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Valor do ICMS calculado no item">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="11"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vBaseCalculoIcmsProprio, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Valor da base de Calculo do ICMS próprio">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="1"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vIcmsProprio, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Valor do ICMS próprio calculado no item">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomCheckBox
+                                            Grid.Column="7" Grid.Row="2"
+                                            IsChecked="{Binding currentModel.stCalculaIcmsSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									        IsEnabled="{Binding bIsEnabled}" ToolTip="Calcula ICMS de substituição tributária para o item">
+                                            </Components:CustomCheckBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="3"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pReduzBaseSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informar a porcentagem da redução da base de Cálculo da Substituição Tributária do ICMS">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="4"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informa o valor redução da base de Cálculo da Substituição Tributária do ICMS">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="5"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informar a porcentagem da Substituição tributária">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="6"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pIcmsInterno, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Aliquota do ICMS interno destino">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="7"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pMvaSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Aliquota do ICMS interno destino">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="8"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.pCalculaSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informa a porcentagem da Carga Tributária Média">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomComboBox
+                                            Grid.Column="7" Grid.Row="9" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stCompoeBaseIcmsSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                                <Components:CustomComboBox.Items>
+                                                    <System:String>0-PRODUTOS</System:String>
+                                                    <System:String>1-PRODUTOS+IPI</System:String>
+                                                    <System:String>2-PRODUTOS+IPI+FRETE</System:String>
+                                                    <System:String>3-PRODUTOS+IPI+FRETE+SEGURO+OUTRAS</System:String>
+                                                    <System:String>4-DIFERENCIADO</System:String>
+                                                    <System:String>5-NENHUMA</System:String>
+                                                </Components:CustomComboBox.Items>
+                                            </Components:CustomComboBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="10"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vBaseCalculoSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informa o valor da base de calculo do ICMS Substituição tributária">
+                                            </Components:CustomTextBox>
+                                            <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="11"
+                                            IsEnabled="{Binding bIsEnabled}"
+                                            Text="{Binding currentModel.vIcmsSubstituicaoTributaria, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
+					                        ToolTip="Informa o valor do ICMS Substituição Tributária">
+                                            </Components:CustomTextBox>
+                                        </Grid>
+                                    </ScrollViewer>
+                                </AdornerDecorator>
+                            </TabItem>
+                            <TabItem Header="PIS / COFINS">
+                                <AdornerDecorator>
                                     <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="320" MinWidth="320"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                            <ColumnDefinition Width="30"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="350" MinWidth="350"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
+                                            <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                            <ColumnDefinition Width="10"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <!--Label-->
+
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Calcula Pis/Cofins?"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Regime Tributação PIS/COFINS?"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Compõe a base de cálculo do PIS/COFINS?"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Coeficiente de Substituição Tributária do PIS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Código da Situação Tributária do PIS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Compõe a base de cálc. da Subst. Trib. do PIS?"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="% PIS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Valor do PIS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="1" Text="Base de cálculo PIS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="2" Text="Coeficiente de Subst. Trib. do COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="3" Text="Código Subst. Trib. do COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="4" Text="Compõe a base de cálculo da Subst. Trib. do COFINS?"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="5" Text="% COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="6" Text="Valor do COFINS"></Components:CustomTextBlock>
+                                        <Components:CustomTextBlock Grid.Column="6" Grid.Row="7" Text="Base de cálculo COFINS"></Components:CustomTextBlock>
+
+
+                                        <!--Components-->
+
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stCalculaPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="Informar se o sistema irá calcular o PIS (Programa de Integração Social) e o COFINS (Contribuição para Financiamento da Seguridade Social), ">
+                                            <Components:CustomComboBox.Items>
+                                                <System:String>0-NÃO</System:String>
+                                                <System:String>1-NORMAL</System:String>
+                                                <System:String>2-SUBSTITUIÇÃO TRIBUTARIA</System:String>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stRegimeTributacaoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="Informar o tipo do Regime de tributação do PIS/COFINS">
+                                            <Components:CustomComboBox.Items>
+                                                <System:String>0-CUMULATIVO</System:String>
+                                                <System:String>1-NÃO CUMULATIVO</System:String>
+                                                <System:String>2-REGIME DIFERENCIADO</System:String>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stCompoeBaseCalculoPisCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="Informar o tipo do Regime de tributação do PIS/COFINS">
+                                            <Components:CustomComboBox.Items>
+                                                <System:String>0-CUMULATIVO</System:String>
+                                                <System:String>1-NÃO CUMULATIVO</System:String>
+                                                <System:String>2-REGIME DIFERENCIADO</System:String>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="4"
+                                            Text="{Binding currentModel.nCoeficienteSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="Informa o coeficiente usado para o calculo de substituição tributária do PIS ">
+                                        </Components:CustomTextBox>
+                                        <Components:HlpPesquisa
+                                            Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"   
+											Text="{Binding currentModel.idCSTPis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwStPIS">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>cCSTPis</System:String>
+                                                <System:String>xCSTPis</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:CustomComboBox
+                                            Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="Informar o tipo do Regime de tributação do PIS/COFINS">
+                                            <Components:CustomComboBox.Items>
+                                                <System:String>0-NÃO</System:String>
+                                                <System:String>1-NORMAL</System:String>
+                                                <System:String>2-REGIME DIFERENCIADO</System:String>
+                                            </Components:CustomComboBox.Items>
+                                        </Components:CustomComboBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="7"
+                                            Text="{Binding currentModel.pPIS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}" ToolTip="É informado a alíquota do PIS (Programa de Integração Social).">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="2" Grid.Row="8"
+                                            Text="{Binding currentModel.vPIS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="1"
+                                            Text="{Binding currentModel.vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="2"
+                                            Text="{Binding currentModel.nCoeficienteSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:HlpPesquisa
+                                            Grid.Column="7" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"   
+											Text="{Binding currentModel.idCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}"
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwStCOFINS">
+                                            <Components:HlpPesquisa.Items>
+                                                <System:String>cCSTCofins</System:String>
+                                                <System:String>xCSTCofins</System:String>
+                                            </Components:HlpPesquisa.Items>
+                                        </Components:HlpPesquisa>
+                                        <Components:CustomComboBox
+                                            Grid.Column="7" Grid.Row="4" Grid.ColumnSpan="2"
+                                            SelectedIndex="{Binding currentModel.stCompoeBaseCalculoSubstituicaoTributaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomComboBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="5"
+                                            Text="{Binding currentModel.pCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="6"
+                                            Text="{Binding currentModel.vCOFINS, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
+                                        <Components:CustomTextBox
+                                            Grid.Column="7" Grid.Row="7"
+                                            Text="{Binding currentModel.vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											IsEnabled="{Binding bIsEnabled}">
+                                        </Components:CustomTextBox>
                                     </Grid>
                                 </AdornerDecorator>
+                            </TabItem>
+                            <TabItem Header="ISS / FRETE / OBSERVAÇÃO / SUFRAMA">
+                                <AdornerDecorator>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Expander Header="ISS" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition  Height="10"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+
+                                                    <!--Label-->
+
+                                                    <Components:CustomTextBlock Text="Calcula ISS?" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="% ISS" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Valor do ISS" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Base de cálculo ISS" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
+
+                                                    <!--Components-->
+
+                                                    <Components:CustomCheckBox
+                                                        Grid.Column="2" Grid.Row="1"
+                                                        IsChecked="{Binding currentModel.stCalculaIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+									                    IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomCheckBox>
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="2"
+                                                        Text="{Binding currentModel.pIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="3"
+                                                        Text="{Binding currentModel.vIss, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="4"
+                                                        Text="{Binding currentModel.vBaseCalculo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+
+                                                </Grid>
+                                            </Expander>
+                                            <Expander Header="Frete" Grid.Row="1" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="150" MinWidth="150"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+
+                                                    <!--Label-->
+
+                                                    <Components:CustomTextBlock Text="Valor do Frete" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Peso Líquido" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Peso Bruto" Grid.Row="3" Grid.Column="1"/>
+                                                    
+                                                    <!--Components-->
+
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="1"
+                                                        Text="{Binding currentModel.vFreteItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="2"
+                                                        Text="{Binding currentModel.nPesoLiquido, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="3"
+                                                        Text="{Binding currentModel.nPesoBruto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+
+                                                </Grid>
+                                            </Expander>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Expander Header="Suframa" IsExpanded="True" Style="{StaticResource ExpanderPadrao}">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="130" MinWidth="130"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+
+                                                    <!--Label-->
+
+                                                    <Components:CustomTextBlock Text="Desconto Suframa" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+
+                                                    <!--Components-->
+
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="1"
+                                                        Text="{Binding currentModel.vDescontoSuframa, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+
+                                                </Grid>
+                                            </Expander>
+                                            <Expander Header="Observação" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    
+                                                    <!--Label-->
+
+                                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Observação"></Components:CustomTextBlock>
+                                                    
+                                                    <!--Components-->
+
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="1"
+                                                        Text="{Binding currentModel.xObservacaoItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+
+                                                </Grid>
+                                            </Expander>
+                                            <Expander Header="Outras Despesas" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="2">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="140" MinWidth="140"></ColumnDefinition>
+                                                        <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                        <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="23" MaxHeight="23"></RowDefinition>
+                                                        <RowDefinition Height="10"></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    
+                                                    <!--Label-->
+                                                    
+                                                    <Components:CustomTextBlock Text="Seguros" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
+                                                    <Components:CustomTextBlock Text="Outras Despesas" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                                                    
+                                                    <!--Components-->
+
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="1"
+                                                        Text="{Binding currentModel.vSegurosItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+                                                    <Components:CustomTextBox
+                                                        Grid.Column="2" Grid.Row="2"
+                                                        Text="{Binding currentModel.vOutrasDespesasItem, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+											            IsEnabled="{Binding bIsEnabled}">
+                                                    </Components:CustomTextBox>
+
+                                                </Grid>
+                                            </Expander>
+                                        </Grid>
+                                    </Grid>
+                                </AdornerDecorator>
+                            </TabItem>                            
+                        </TabControl>
+                    </Grid>
+                </AdornerDecorator>
+            </TabItem>
+            <TabItem Header="Base de Cálculo">
+                <AdornerDecorator>
+                    <Grid>
+                        <TabControl>
+                            <TabItem Header="Cálculo dos Impostos">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="10"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!--Label-->
+
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Base de Cálculo do ICMS"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Valor do ICMS"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Base de cálculo do ICMS Substituição Tributária"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Valor do ICMS Substituição Tributária"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="Total dos Produtos"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="6" Text="Valor do frete"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="7" Text="Valor do Seguro"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="8" Text="Outras Despesas Acessórias"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="9" Text="% de Desconto"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="10" Text="Desconto"></Components:CustomTextBlock>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="11" Text="Base de Cálculo do IPI"></Components:CustomTextBlock>                                    
+                                </Grid>
                             </TabItem>
                         </TabControl>
                     </Grid>
