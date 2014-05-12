@@ -393,7 +393,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                     if (endereco != null)
                                     {
                                         CidadeModel cid = objCidadeService.GetObject(
-                                            id: endereco.idCidade);
+                                            id: endereco.idCidade ?? 0);
 
                                         this.objViewModel.currentModel.xEnderecoEmpresa = string.Format(format: "{0}, {1}, {2}",
                                             arg0: endereco.xEndereco, arg1: endereco.xBairro, arg2: cid != null ?

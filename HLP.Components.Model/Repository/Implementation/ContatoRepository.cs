@@ -44,11 +44,12 @@ namespace HLP.Components.Model.Repository.Implementation
                 parameterValues: new object[] { UserData.idUser, idContato }, transaction: UndTrabalho.dbTransaction);
         }
 
-        public int Copy(int idContato)
+        public int Copy(ContatoModel obj)
         {
             return (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                      "dbo.Proc_copy_Contato",
-                       idContato);
+                storedProcedureName: "dbo.Proc_copy_Contato", transaction: UndTrabalho.dbTransaction,
+                parameterValues: new object[]{obj.idContato, obj.idDecisao, obj.idPersonalidade, obj.idContatoGerente, obj.idFuncionario
+                , obj.idFidelidade, obj.idContatoTransportador, obj.idContatoMotorista});
         }
 
         public ContatoModel GetContato(int idContato)

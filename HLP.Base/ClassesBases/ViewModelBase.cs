@@ -3,6 +3,7 @@ using HLP.Base.InterfacesBases;
 using HLP.Base.Modules;
 using HLP.Base.Static;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -503,7 +504,7 @@ namespace HLP.Base.ClassesBases
                 canExecute: pCanExec => this.salvarBaseCanExecute());
             this.objviewModel.cancelarBaseCommand = new RelayCommand(execute: pExec => this.cancelarBase(),
                 canExecute: pCanExec => this.cancelarBaseCanExecute());
-            this.objviewModel.copyBaseCommand = new RelayCommand(execute: pExec => this.GenericCanExecute(),
+            this.objviewModel.copyBaseCommand = new RelayCommand(execute: pExec => this.CopyExecute(),
                 canExecute: pCanExec => this.GenericCanExecute());
             this.objviewModel.fecharCommand = new RelayCommand(execute: pExec => this.Fechar(wd: pExec),
                 canExecute: pCanExec => this.FecharCanExecute(wd: pCanExec));
@@ -666,8 +667,11 @@ namespace HLP.Base.ClassesBases
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;
             objviewModel.lItensHierarquia = new List<int>();
+            this.SetFocusFirstControl();
+        }
 
-
+        public void SetFocusFirstControl()
+        {
             if (lControls == null)
             {
                 this.LoadComponentsWindow();
@@ -756,7 +760,7 @@ namespace HLP.Base.ClassesBases
                 Thread.Sleep(millisecondsTimeout: 300);
             }
         }
-        
+
         private void SearchTabControlsTabItemToFocus(Stack<UIElement> lTabControlsTabItem, FrameworkElement ctrl)
         {
             if (ctrl.Parent == null)
@@ -872,7 +876,74 @@ namespace HLP.Base.ClassesBases
         {
             return this.currentOp == OperacaoCadastro.pesquisando;
         }
+        private void CopyExecute()
+        {
+            object pk;
+            foreach (var item in this.objviewModel.currentModel.GetType().GetProperties())
+            {
+                pk = item.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
 
+                if (pk != null)
+                {
+                    if (((PrimaryKey)pk).isPrimary)
+                    {
+                        item.SetValue(obj: this.objviewModel.currentModel, value: null);
+                    }
+                }
+                else if (item.PropertyType.GetProperties().Count(i => i.PropertyType.BaseType.Name == "modelBase") > 0)
+                {
+                    var m = this.objviewModel.currentModel.GetType().
+                        GetProperty(name: item.Name).GetValue(obj: this.objviewModel.currentModel);
+
+                    if ((m as ICollection).Count > 0)
+                    {
+
+                        foreach (var subItem in m as ICollection)
+                        {
+                            foreach (var propSubItem in subItem.GetType().GetProperties())
+                            {
+                                pk = propSubItem.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
+
+                                if (pk != null)
+                                {
+
+                                    if (((PrimaryKey)pk).isPrimary)
+                                    {
+                                        propSubItem.SetValue(obj: subItem, value: null);
+                                    }
+                                }
+                            }
+
+                            subItem.GetType().GetProperty(name: "status").SetValue(obj: subItem, value: statusModel.criado);
+                        }
+                    }
+                }
+                else if (item.PropertyType.BaseType.Name == "modelBase")
+                {
+                    foreach (var propItem in item.PropertyType.GetProperties())
+                    {
+                        pk = propItem.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
+
+                        if (pk != null)
+                        {
+                            if (((PrimaryKey)pk).isPrimary)
+                            {
+                                object v = this.objviewModel.currentModel.GetType().GetProperty(name: item.Name)
+                                    .GetValue(obj: this.objviewModel.currentModel);
+                                if (v != null)
+                                    propItem.SetValue(obj: v, value: null);
+                            }
+                        }
+                    }
+                }
+            }
+
+            this.currentOp = OperacaoCadastro.criando;
+            this.objviewModel.bIsEnabled = true;
+            this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
+            objviewModel.currentID = 0;
+            objviewModel.lItensHierarquia = new List<int>();
+        }
 
         #endregion
 

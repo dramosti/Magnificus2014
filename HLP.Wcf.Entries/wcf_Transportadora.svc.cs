@@ -226,7 +226,7 @@ namespace HLP.Wcf.Entries
                 {
                     item.idContato = null;
                     item.idContatoMotorista = obj.idTransportador;
-                    this.contatoRepository.Copy(idContato: item.idContato ?? 0);
+                    this.contatoRepository.Copy(obj: item);
                 }
                 foreach (HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel item in obj.lTransportador_Veiculos)
                 {
@@ -238,7 +238,7 @@ namespace HLP.Wcf.Entries
                 {
                     c.idContato = null;
                     c.idContatoTransportador = obj.idTransportador ?? 0;
-                    this.contatoRepository.Copy(idContato: c.idContato ?? 0);
+                    this.contatoRepository.Copy(obj: c);
                 }
 
                 this.transportadorRepository.CommitTransaction();

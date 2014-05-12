@@ -52,6 +52,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
 
             objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.metodoGetModel);
+
+            objViewModel.bWorkerCopy.DoWork += bWorkerCopy_DoWork;
+
+            objViewModel.bWorkerCopy.RunWorkerCompleted += bWorkerCopy_RunWorkerCompleted;
         }
 
 
@@ -85,19 +89,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 else
                 {
                     this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                    //var wdPesquisaInsert = GerenciadorModulo.Instancia.CarregaForm(nome: "HlpPesquisaInsert", exibeForm: Base.InterfacesBases.TipoExibeForm.Modal);
-
-                    //object w = objViewModel.GetParentWindow(e.Result);
-
-                    //if (w != null)
-                    //    if (w.GetType() == wdPesquisaInsert.GetType())
-                    //    {
-                    //        //wdPesquisaInsert.GetType().GetProperty(name: "idSalvo")
-                    //        //    .SetValue(obj: wdPesquisaInsert, value: this.objViewModel.currentID);
-                    //        //wdPesquisaInsert.GetType().GetProperty(name: "DialogResult")
-                    //        //    .SetValue(obj: wdPesquisaInsert, value: true);
-                    //        wdPesquisaInsert.Close();
-                    //    }
                 }
             }
             catch (Exception ex)
@@ -195,14 +186,29 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentModel.idCanalVenda =
-                    this.objService.CopyObject(id: this.objViewModel.currentID);
-                this.objViewModel.copyBaseCommand.Execute(null);
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        void bWorkerCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
+            }
+        }
+
+        void bWorkerCopy_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.objViewModel.copyBaseCommand.Execute(null);
         }
 
         public bool CopyCanExecute()

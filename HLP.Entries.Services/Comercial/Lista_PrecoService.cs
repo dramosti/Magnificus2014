@@ -17,7 +17,7 @@ namespace HLP.Entries.Services.Comercial
 
         HLP.Wcf.Entries.wcf_Lista_Preco servicoRede;
         wcf_Lista_Preco.Iwcf_Lista_PrecoClient servicoInternet;
-        
+
         public Lista_PrecoService()
         {
             switch (Sistema.bOnline)
@@ -190,11 +190,16 @@ namespace HLP.Entries.Services.Comercial
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.servicoRede.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                        if (this.servicoRede != null)
+                            return this.servicoRede.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                        else
+                            return null;
                     }
                 case StConnection.OnlineWeb:
                     {
-                        return this.servicoInternet.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                        if (this.servicoInternet != null)
+                            return this.servicoInternet.GetLista_PrecoHierarquia(idListaPreco: idListaPreco);
+                        else return null;
                     }
             }
             return null;

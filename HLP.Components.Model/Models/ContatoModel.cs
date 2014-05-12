@@ -549,7 +549,17 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idContatoMotorista");
             }
         }
-
+        private int? _idCliente;
+        [ParameterOrder(Order = 49)]
+        public int? idCliente
+        {
+            get { return _idCliente; }
+            set
+            {
+                _idCliente = value;
+                base.NotifyPropertyChanged(propertyName: "idCliente");
+            }
+        }
         #region Propriedades não mapeadas utilizadas na view
 
         private int _idEmpresaContato;

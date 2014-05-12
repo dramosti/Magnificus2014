@@ -300,8 +300,8 @@
                                 <Grid>
                                     <Components:HlpEndereco x:Name="dgvEndereco"
                                         ItemsSource="{Binding currentModel.lCliente_fornecedor_Endereco}" 
-                                                            IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                                        IsEnabled="{Binding bIsEnabled}"/>
+                                                            IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"                                                            
+                                        />
                                 </Grid>
                             </Expander>
                         </Grid>
@@ -628,7 +628,7 @@
                                     <DataGrid
                                     SelectedCellsChanged="dgvContato_SelectedCellsChanged"
                                     ItemsSource="{Binding currentModel.lCliente_fornecedor_representante }"
-									IsEnabled="{Binding bIsEnabled}"
+                                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
 									AutoGenerateColumns="False" 
 									SelectionUnit="CellOrRowHeader" 
 									CanUserReorderColumns="False"
@@ -767,7 +767,7 @@
                                         <System:String>xNumeroConta</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
+                                <Components:HlpPesquisa nameWindow="WinJuros"
 										Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 										Text="{Binding currentModel.idJuros, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
@@ -1817,7 +1817,7 @@
                 <AdornerDecorator>
                     <DataGrid
                           ItemsSource="{Binding currentModel.lCliente_fornecedor_produto}"
-						  IsEnabled="{Binding bIsEnabled}"
+                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                           CanUserDeleteRows="True"
@@ -1832,8 +1832,8 @@
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                            <ComboBox x:Name="cbxStCidade"                                                      
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName=cbxStProduto}" >
+                                            <ComboBox x:Name="cbxStProduto"                                                      
                 ItemsSource="{Binding Source={StaticResource lProdutos}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
@@ -1853,8 +1853,8 @@
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                            <ComboBox x:Name="cbxStCidade"                                                      
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStLista}" >
+                                            <ComboBox x:Name="cbxStLista"                                                      
                 ItemsSource="{Binding Source={StaticResource lListaPreco}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
@@ -1868,12 +1868,17 @@
                             <DataGridTemplateColumn Header="Obriga Lista de Preço ?" Width="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox IsChecked="{Binding stObrigaListaPreco, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ByteToBoolConverter}}"/>
+                                        <CheckBox IsChecked="{Binding stObrigaListaPreco, UpdateSourceTrigger=PropertyChanged, 
+                                            Converter={StaticResource ByteToBoolConverter}}"
+                                                  IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},
+                                            Path=IsReadOnly, Converter={StaticResource notConverter}}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <CheckBox  IsChecked="{Binding stObrigaListaPreco, Converter={StaticResource ByteToBoolConverter}}"/>
+                                        <CheckBox  IsChecked="{Binding stObrigaListaPreco, Converter={StaticResource ByteToBoolConverter}}"
+                                                   IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}},
+                                            Path=IsReadOnly, Converter={StaticResource notConverter}}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>

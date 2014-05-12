@@ -36,14 +36,20 @@ namespace HLP.Wcf.Entries
             HLP.Entries.Model.Models.Comercial.Lista_Preco_PaiModel objLista_Preco_Pai
                 = this.lista_Preco_PaiRepository.GetLista_Preco_Pai(idListaPrecoPai: idListaPreco);
             List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct> lListHierarquia = new List<HLP.Components.Model.Models.HlpButtonHierarquiaStruct>();
-            lListHierarquia.Add(item:
-                new HLP.Components.Model.Models.HlpButtonHierarquiaStruct
-                {
-                    xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
-                    xOpcional = objLista_Preco_Pai.pPercentual.ToString()
-                });
+
+            if (objLista_Preco_Pai != null)
+            {
+                lListHierarquia.Add(item:
+                    new HLP.Components.Model.Models.HlpButtonHierarquiaStruct
+                    {
+                        xId = objLista_Preco_Pai.idListaPrecoPai.ToString(),
+                        xOpcional = objLista_Preco_Pai.pPercentual.ToString()
+                    });
+            }
             while (true)
             {
+                if (objLista_Preco_Pai == null)
+                    break;
                 if (objLista_Preco_Pai.idListaPrecoOrigem == null || objLista_Preco_Pai.idListaPrecoOrigem == 0)
                     break;
 
@@ -101,10 +107,14 @@ namespace HLP.Wcf.Entries
             while (nodeAux.lFilhos != null)
             {
                 nodeAux = nodeAux.lFilhos.FirstOrDefault();
+
+                if (nodeAux == null)
+                    break;
             }
 
 
-            this.MontaHierarquiaFilhos(item: nodeAux);
+            if (nodeAux != null)
+                this.MontaHierarquiaFilhos(item: nodeAux);
 
             return node;
         }

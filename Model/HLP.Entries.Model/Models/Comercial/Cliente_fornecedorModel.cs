@@ -10,6 +10,7 @@ using System.Windows;
 using System.Reflection;
 using System.Windows.Threading;
 using HLP.Entries.Model.Models.Gerais;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.Model.Models.Comercial
 {
@@ -19,8 +20,8 @@ namespace HLP.Entries.Model.Models.Comercial
             : base(xTabela: "Cliente_fornecedor")
         {
             this.lCliente_fornecedor_arquivo = new ObservableCollectionBaseCadastros<Cliente_fornecedor_arquivoModel>();
-            this.lCliente_fornecedor_contato = new ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel>();
-            this.lCliente_fornecedor_Endereco = new ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel>();
+            this.lCliente_fornecedor_contato = new ObservableCollectionBaseCadastros<ContatoModel>();
+            this.lCliente_fornecedor_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>();
             this.lCliente_Fornecedor_Observacao = new ObservableCollectionBaseCadastros<Cliente_Fornecedor_ObservacaoModel>();
             this.lCliente_fornecedor_produto = new ObservableCollectionBaseCadastros<Cliente_fornecedor_produtoModel>();
             this.lCliente_fornecedor_representante = new ObservableCollectionBaseCadastros<Cliente_fornecedor_representanteModel>();
@@ -374,34 +375,37 @@ namespace HLP.Entries.Model.Models.Comercial
                 base.NotifyPropertyChanged(propertyName: "idCondicaoPagamento");
 
                 Window w = Sistema.GetOpenWindow(xName: "WinCliente");
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                if (w != null)
                 {
-                    object o = w.DataContext;
-
-                    MethodInfo mi = o.GetType().GetMethod(name: "getCondicaoPagamentoByCliente");
-
-                    object objCondicao = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
-
-                    if (objCondicao != null)
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
                     {
-                        this.idPlanoPagamento = ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento;
-                        this.idDiaPagamento = ((Condicao_pagamentoModel)objCondicao).idDiaPagamento;
+                        object o = w.DataContext;
 
-                        if (((Condicao_pagamentoModel)objCondicao).idDiaPagamento != null && ((Condicao_pagamentoModel)objCondicao).idDiaPagamento != 0
-                            && ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento != null && ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento != 0)
-                            this.enabledFieldsCondPagamento = false;
+                        MethodInfo mi = o.GetType().GetMethod(name: "getCondicaoPagamentoByCliente");
+
+                        object objCondicao = mi.Invoke(obj: w.DataContext, parameters: new object[] { value });
+
+                        if (objCondicao != null)
+                        {
+                            this.idPlanoPagamento = ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento;
+                            this.idDiaPagamento = ((Condicao_pagamentoModel)objCondicao).idDiaPagamento;
+
+                            if (((Condicao_pagamentoModel)objCondicao).idDiaPagamento != null && ((Condicao_pagamentoModel)objCondicao).idDiaPagamento != 0
+                                && ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento != null && ((Condicao_pagamentoModel)objCondicao).idPlanoPagamento != 0)
+                                this.enabledFieldsCondPagamento = false;
+                            else
+                            {
+                                this.enabledFieldsCondPagamento = true;
+                            }
+                        }
                         else
                         {
                             this.enabledFieldsCondPagamento = true;
+                            this.idPlanoPagamento = null;
+                            this.idDiaPagamento = null;
                         }
-                    }
-                    else
-                    {
-                        this.enabledFieldsCondPagamento = true;
-                        this.idPlanoPagamento = null;
-                        this.idDiaPagamento = null;
-                    }
-                }));
+                    }));
+                }
             }
         }
 
@@ -987,15 +991,19 @@ namespace HLP.Entries.Model.Models.Comercial
                 _idDeposito = value;
                 base.NotifyPropertyChanged(propertyName: "idDeposito");
                 Window w = Sistema.GetOpenWindow(xName: "WinCliente");
-                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                if (w != null)
                 {
-                    object o = w.DataContext;
-                    object arg1 = value;
+                    Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        object o = w.DataContext;
+                        object arg1 = value;
 
-                    MethodInfo mi = o.GetType().GetMethod(name: "GetIdSiteByDeposito");
+                        MethodInfo mi = o.GetType().GetMethod(name: "GetIdSiteByDeposito");
 
-                    this.idSite = (int)mi.Invoke(obj: w.DataContext, parameters: new object[] { arg1 });
-                }));
+                        if (this.status != Base.EnumsBases.statusModel.nenhum)
+                            this.idSite = (int)mi.Invoke(obj: w.DataContext, parameters: new object[] { arg1 });
+                    }));
+                }
             }
         }
         private int? _idDescontos;
@@ -1161,9 +1169,9 @@ namespace HLP.Entries.Model.Models.Comercial
 
 
 
-        private ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> _lCliente_fornecedor_Endereco;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lCliente_fornecedor_Endereco;
 
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_EnderecoModel> lCliente_fornecedor_Endereco
+        public ObservableCollectionBaseCadastros<EnderecoModel> lCliente_fornecedor_Endereco
         {
             get { return _lCliente_fornecedor_Endereco; }
             set
@@ -1174,9 +1182,9 @@ namespace HLP.Entries.Model.Models.Comercial
         }
 
 
-        private ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> _lCliente_fornecedor_contato;
+        private ObservableCollectionBaseCadastros<ContatoModel> _lCliente_fornecedor_contato;
 
-        public ObservableCollectionBaseCadastros<Cliente_fornecedor_contatoModel> lCliente_fornecedor_contato
+        public ObservableCollectionBaseCadastros<ContatoModel> lCliente_fornecedor_contato
         {
             get { return _lCliente_fornecedor_contato; }
             set

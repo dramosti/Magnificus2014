@@ -12,7 +12,7 @@
     <Grid>
         <Expander Header="Geral" IsExpanded="True">
             <WrapPanel Orientation="Vertical" Margin="0,10,0,0">
-                <Components:HlpTextBox 
+                <Components:HlpTextBox
 					Text="{Binding currentModel.idMultas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsReadOnly="True"
 					Height="27" Margin="10,0,0,2" Caption="Código" Help="Chave principal do registro da Multa, autoincremental." WidthLabel="151" Width="240" HorizontalAlignment="Left"/>

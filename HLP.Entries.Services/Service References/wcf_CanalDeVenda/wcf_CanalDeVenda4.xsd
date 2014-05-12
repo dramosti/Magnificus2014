@@ -53,7 +53,7 @@
   <xs:element name="CopyObjectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CopyObjectResult" type="xs:int" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Comercial" minOccurs="0" name="CopyObjectResult" nillable="true" type="q3:Canal_vendaModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

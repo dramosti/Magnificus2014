@@ -23,7 +23,7 @@ namespace HLP.Components.View.WPF
     {
         public HlpEndereco()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public IEnumerable ItemsSource

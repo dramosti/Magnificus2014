@@ -149,7 +149,7 @@ namespace HLP.Entries.Services.Comercial
                 case StConnection.Offline:
                 default:
                     {
-                        return 0;
+                        return null;
                     }
             }
         }

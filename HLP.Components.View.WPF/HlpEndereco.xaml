@@ -14,6 +14,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>-->
             </ResourceDictionary.MergedDictionaries>
+            <convertLocal:NotConverter x:Key="notConverter"/>
             <convertLocal:ByteToBoolConverter x:Key="ByteToBoolConverter"/>
             <convertLocal:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <convertLocal:MaskConverter x:Key="maskConverter"/>
@@ -78,24 +79,34 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Components:CustomCheckBox    
-                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl
+                                , Converter={StaticResource notConverter}}"
                                 IsChecked="{Binding stPrincipal, 
                                         UpdateSourceTrigger=PropertyChanged, 
+                                        NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                                         Converter={StaticResource ByteToBoolConverter}}" HorizontalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <Components:CustomCheckBox HorizontalAlignment="Center"                                                        
-                                                       IsChecked="{Binding stPrincipal, Converter={StaticResource ByteToBoolConverter}}"/>
+                            <Components:CustomCheckBox
+                                IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl
+                                , Converter={StaticResource notConverter}}"
+                                HorizontalAlignment="Center"                                                        
+                                IsChecked="{Binding stPrincipal, 
+                                NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                Converter={StaticResource ByteToBoolConverter}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Nome" Width="200"
                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xNome, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                Binding="{Binding Path=xNome, UpdateSourceTrigger=LostFocus, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 <DataGridComboBoxColumn x:Name="cbxTemplate" Width="160" Header="Tipo de Endereço" ItemsSource="{StaticResource lTipoEndereco}"
-                                        SelectedItemBinding="{Binding stTipoEndereco, Converter={StaticResource selectedItemToTextConverter},
+                                        SelectedItemBinding="{Binding stTipoEndereco, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                    Converter={StaticResource selectedItemToTextConverter},
                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterParameter={StaticResource lTipoEndereco}}">
                 </DataGridComboBoxColumn>
                 <DataGridTextColumn Header="CEP" Width="100"
@@ -109,28 +120,37 @@
                     </DataGridTextColumn.EditingElementStyle>
                 </DataGridTextColumn>
                 <DataGridComboBoxColumn x:Name="cbxtpLogradouro" Width="160" Header="Tipo de Logradouro" ItemsSource="{StaticResource lTipoLogradouro}"
-                                        SelectedItemBinding="{Binding stLogradouro, Converter={StaticResource selectedItemToTextConverter},
+                                        SelectedItemBinding="{Binding stLogradouro, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                    Converter={StaticResource selectedItemToTextConverter},
                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterParameter={StaticResource lTipoLogradouro}}">
                 </DataGridComboBoxColumn>          
                 <DataGridTextColumn    Header="Endereço" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xEndereco, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                Binding="{Binding Path=xEndereco, UpdateSourceTrigger=PropertyChanged, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 <DataGridTextColumn Header="Nº" Width="50"
                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=nNumero, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                Binding="{Binding Path=nNumero, UpdateSourceTrigger=LostFocus, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 <DataGridTextColumn Header="Complemento" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xComplemento, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                Binding="{Binding Path=xComplemento, UpdateSourceTrigger=LostFocus, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 <DataGridTextColumn Header="Bairro" Width="100"
                                     ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xBairro, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                Binding="{Binding Path=xBairro, UpdateSourceTrigger=PropertyChanged, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 <DataGridTextColumn Header="Caixa Postal" Width="100"
                                 ElementStyle="{StaticResource CellErrorStyle}"
-                                Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                Binding="{Binding Path=xCaixaPostal, UpdateSourceTrigger=LostFocus, 
+                    NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                 <DataGridTemplateColumn x:Name="clCidades" Header="Cidade" Width="150" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=idCidade, Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresultCidades}}"/>
+                            <TextBlock Text="{Binding Path=idCidade, 
+                                NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                Converter={StaticResource cbxDisplayConv}, ConverterParameter={StaticResource lresultCidades}}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -140,7 +160,10 @@
                                     IsEnabled="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsEnabled}"    
                                     x:Name="cbxStCidade" ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
                                 SelectedValuePath="id" DisplayMemberPath="display" 
-                                SelectedValue="{Binding idCidade, UpdateSourceTrigger=LostFocus}" IsSynchronizedWithCurrentItem="False"/>
+                                SelectedValue="{Binding idCidade, 
+                                    NotifyOnValidationError=True, ValidatesOnDataErrors=True,
+                                    UpdateSourceTrigger=LostFocus}" 
+                                    IsSynchronizedWithCurrentItem="False"/>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
