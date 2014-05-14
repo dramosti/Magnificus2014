@@ -37,12 +37,12 @@
                 
                 <!--Components-->
                 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idDecisao, Mode=TwoWay}" ToolTip="Chave principal do registro da Personalidade"                                   
                     IsReadOnly="True">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2"
                     x:Name="txtdecisao" ToolTip="Insira um código ou descrição de uma palavra para a influência da pessoa de contato sobre o processo de tomada de decisões da empresa."                                  
                     Text="{Binding currentModel.xDecisao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"

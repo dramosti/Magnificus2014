@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Comercial
     
         public class MultaService
         {
-            const string xTabela = "Multa;";
+            const string xTabela = "Multas;";
             
             HLP.Wcf.Entries.wcf_Multa serviceNetwork;
             wcf_Multa.Iwcf_MultaClient serviceWeb;

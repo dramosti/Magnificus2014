@@ -14,8 +14,8 @@ namespace HLP.Entries.Services.Financeiro
     {
         const string xTabela = "Banco;";
 
-        HLP.Wcf.Entries.wcf_Banco serviceNetwork;
-        HLP.Entries.Services.wcf_Banco.Iwcf_BancoClient serviceWeb;
+        HLP.Wcf.Entries.wcf_Banco serviceNetwork;        
+        wcf_Banco.Iwcf_BancoClient serviceWeb;
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;
         wcf_CamposBaseDados.Iwcf_CamposBaseDadosClient serviceCamposBaseDadosWeb;

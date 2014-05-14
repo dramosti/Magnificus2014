@@ -60,17 +60,27 @@ namespace HLP.Wcf.Entries
                 }
             }
 
-            string xWhere = string.Format(format: "where {0} = {1}", arg0: xCampo, arg1: valor);
 
-            if (this.operacoesDataBaseRepos.FieldExist(xTable: xTabela, xCampo: "idEmpresa"))
+            try
             {
-                xWhere += string.Format(format: " and idEmpresa = {0}", arg0: idEmpresa);
+                string xWhere = string.Format(format: "where {0} = {1}", arg0: xCampo, arg1: valor);
+
+                if (this.operacoesDataBaseRepos.FieldExist(xTable: xTabela, xCampo: "idEmpresa"))
+                {
+                    xWhere += string.Format(format: " and idEmpresa = {0}", arg0: idEmpresa);
+                }
+
+
+                string xSelect = string.Format(format:
+                    "select {0} from {1} {2}", arg0: string.Format(format: "{0} as id, CONCAT({1}) as display", arg0: xId, arg1: xDisplay), arg1: xTabela, arg2: xWhere);
+
+                return this.operacoesDataBaseRepos.GetRegistros(xQuery: xSelect);
+            }
+            catch (Exception)
+            {
+                return new List<RecordsSqlModel>();
             }
 
-            string xSelect = string.Format(format:
-                "select {0} from {1} {2}", arg0: string.Format(format: "{0} as id, CONCAT({1}) as display", arg0: xId, arg1: xDisplay), arg1: xTabela, arg2: xWhere);
-
-            return this.operacoesDataBaseRepos.GetRegistros(xQuery: xSelect);
         }
     }
 }

@@ -27,7 +27,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         public ICommand navegarCommand { get; set; }
         #endregion
         BancoCommands command;
-        public BackgroundWorker bwHierarquia;
 
         public BancoViewModel()
         {

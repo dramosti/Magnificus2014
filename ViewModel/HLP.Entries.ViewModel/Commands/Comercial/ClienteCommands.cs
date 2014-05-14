@@ -76,9 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objServico.Delete(this.objViewModel.currentModel))
                     {
@@ -86,11 +84,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         iExcluir = (int)this.objViewModel.currentModel.idClienteFornecedor;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -184,9 +177,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = e.Argument;
-            this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
-            this.IniciaCollection();
+            if (objViewModel.message.Save())
+            {
+                e.Result = e.Argument;
+                this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
+                this.IniciaCollection();
+            }            
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -198,51 +194,63 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    while (this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Count(i => i.status == statusModel.excluido)
-                            > 0)
+                    if (objViewModel.message.bSave)
                     {
-                        this.objViewModel.currentModel.lCliente_fornecedor_arquivo.RemoveAt(
-                            index: this.objViewModel.currentModel.lCliente_fornecedor_arquivo.IndexOf(
-                            item: this.objViewModel.currentModel.lCliente_fornecedor_arquivo.FirstOrDefault(i => i.status == statusModel.excluido)));
-                    }
-                    while (this.objViewModel.currentModel.lCliente_fornecedor_contato.Count(i => i.status == statusModel.excluido)
-                            > 0)
-                    {
-                        this.objViewModel.currentModel.lCliente_fornecedor_contato.RemoveAt(
-                            index: this.objViewModel.currentModel.lCliente_fornecedor_contato.IndexOf(
-                            item: this.objViewModel.currentModel.lCliente_fornecedor_contato.FirstOrDefault(i => i.status == statusModel.excluido)));
-                    }
-                    while (this.objViewModel.currentModel.lCliente_fornecedor_Endereco.Count(i => i.status == statusModel.excluido)
-                            > 0)
-                    {
-                        this.objViewModel.currentModel.lCliente_fornecedor_Endereco.RemoveAt(
-                            index: this.objViewModel.currentModel.lCliente_fornecedor_Endereco.IndexOf(
-                            item: this.objViewModel.currentModel.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.status == statusModel.excluido)));
-                    }
-                    while (this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.Count(i => i.status == statusModel.excluido)
-                            > 0)
-                    {
-                        this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.RemoveAt(
-                            index: this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.IndexOf(
-                            item: this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.FirstOrDefault(i => i.status == statusModel.excluido)));
-                    }
-                    while (this.objViewModel.currentModel.lCliente_fornecedor_produto.Count(i => i.status == statusModel.excluido)
-                            > 0)
-                    {
-                        this.objViewModel.currentModel.lCliente_fornecedor_produto.RemoveAt(
-                            index: this.objViewModel.currentModel.lCliente_fornecedor_produto.IndexOf(
-                            item: this.objViewModel.currentModel.lCliente_fornecedor_produto.FirstOrDefault(i => i.status == statusModel.excluido)));
-                    }
-                    while (this.objViewModel.currentModel.lCliente_fornecedor_representante.Count(i => i.status == statusModel.excluido)
-                            > 0)
-                    {
-                        this.objViewModel.currentModel.lCliente_fornecedor_representante.RemoveAt(
-                            index: this.objViewModel.currentModel.lCliente_fornecedor_representante.IndexOf(
-                            item: this.objViewModel.currentModel.lCliente_fornecedor_representante.FirstOrDefault(i => i.status == statusModel.excluido)));
-                    }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Count(i => i.status == statusModel.excluido)
+                           > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_arquivo.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_arquivo.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_arquivo.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_contato.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_contato.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_contato.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_contato.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_Endereco.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_Endereco.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_Endereco.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_produto.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_produto.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_produto.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_produto.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_representante.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_representante.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_representante.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_representante.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
 
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                    this.IniciaCollection();
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                        this.IniciaCollection();
+
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
+                        {
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                        }
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -285,9 +293,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {

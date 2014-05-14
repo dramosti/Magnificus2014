@@ -43,12 +43,12 @@
                 
                 <!--Components-->
                 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idCargaTribMediaStIcms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 </Components:CustomTextBox>
-                <Components:HlpPesquisa 
+                <Components:HlpPesquisa
 					Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -68,7 +68,7 @@
                         <System:String>xSiglaUf</System:String>
                     </Components:HlpPesquisa.Items>
                 </Components:HlpPesquisa>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="4"
                     Text="{Binding currentModel.pCargaTributariaMedia, Mode=TwoWay, NotifyOnValidationError=True,
                     Converter={StaticResource porcentagemConverter}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"

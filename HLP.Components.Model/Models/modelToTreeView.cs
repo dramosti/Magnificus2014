@@ -45,7 +45,8 @@ namespace HLP.Components.Model.Models
                     m.img.Height = 16;
                     m.img.Margin = new Thickness(0, 0, 10, 0);
                     m.txt = new TextBlock();
-                    m.txt.Text = m.id + ". " + m.xDisplay.ToUpper();
+                    if (m.xDisplay != null)
+                        m.txt.Text = m.id + ". " + m.xDisplay.ToUpper();
                     m.panel.Children.Add(m.img);
                     m.panel.Children.Add(m.txt);
                     tvi.Header = m.panel;
@@ -75,7 +76,8 @@ namespace HLP.Components.Model.Models
                         item.img.Height = 16;
                         item.img.Margin = new Thickness(0, 0, 10, 0);
                         item.txt = new TextBlock();
-                        item.txt.Text = item.id + ". " + item.xDisplay.ToUpper();
+                        if (item.xDisplay != null)
+                            item.txt.Text = item.id + ". " + item.xDisplay.ToUpper();
                         item.panel.Children.Add(item.img);
                         item.panel.Children.Add(item.txt);
                         i.Header = item.panel;

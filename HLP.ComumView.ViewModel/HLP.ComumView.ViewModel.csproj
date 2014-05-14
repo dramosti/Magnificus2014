@@ -91,6 +91,10 @@
       <Project>{2f94adac-04c1-45ff-a598-8f253ce14c5f}</Project>
       <Name>HLP.ComumView.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.ComumView.Services\HLP.ComumView.Services.csproj">
+      <Project>{34e89402-ef6f-4d78-a847-f4514aecf104}</Project>
+      <Name>HLP.ComumView.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>

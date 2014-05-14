@@ -183,8 +183,8 @@
             <TabItem Header="Endereço">
                 <AdornerDecorator>
                     <Grid>
-                        <Components:HlpEndereco                            
-                            ItemsSource="{Binding currentModel.lEmpresa_endereco}"
+                        <Components:HlpEndereco       
+                            ItemsSourceEnderecos="{Binding currentModel.lEmpresa_endereco}"
                             IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}">                            
                         </Components:HlpEndereco>
                     </Grid>

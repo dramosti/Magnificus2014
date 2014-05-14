@@ -1,6 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.Static;
 using HLP.Comum.Facade.Magnificus;
+using HLP.ComumView.Services;
 using HLP.ComumView.ViewModel.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,15 @@ namespace HLP.ComumView.ViewModel.Commands
     public class LoginCommands
     {
         LoginViewModel objViewModel;
+        LoginService objService;
+
         public LoginCommands(LoginViewModel objViewModel)
         {
             this.objViewModel = objViewModel;
             objViewModel.fecharCommand = new RelayCommand(execute: i => this.FecharExec());
             objViewModel.loginCommand = new RelayCommand(execute: i => this.LoginExec(objDependency: i),
                 canExecute: i => this.LoginCanExec(objDependency: i));
+            objService = new LoginService();
         }
 
         private void FecharExec()
@@ -35,20 +39,18 @@ namespace HLP.ComumView.ViewModel.Commands
             {
                 if (item.GetType() == typeof(PasswordBox))
                 {
-                    if (loginFacade.loginClient == null)
-                        loginFacade.loginClient = new Comum.Facade.loginService.IserviceLoginClient();
 
-                    if (loginFacade.loginClient.ValidaLogin(xId: this.objViewModel.currentModel.xId,
+                    if (objService.ValidaLogin(xId: this.objViewModel.currentModel.xId,
                         xSenha: (item as PasswordBox).Password) < 1)
                         this.objViewModel.currentModel.xError = "* Senha incorreta!";
-                    else if (loginFacade.loginClient.ValidaAcesso(idEmpresa: this.objViewModel.currentModel.idEmpresa,
+                    else if (objService.ValidaAcesso(idEmpresa: this.objViewModel.currentModel.idEmpresa,
                         xId: this.objViewModel.currentModel.xId) < 1)
                     {
                         this.objViewModel.currentModel.xError = "* Usuário não tem acesso a empresa selecionada!";
                     }
                     else
                     {
-                        UserData.idUser = loginFacade.loginClient.GetIdFuncionarioByXid(xId: this.objViewModel.currentModel.xId);
+                        UserData.idUser = objService.GetIdFuncionarioByXid(xId: this.objViewModel.currentModel.xId);
                         CompanyData.idEmpresa = this.objViewModel.currentModel.idEmpresa;
                         this.objViewModel.bLogado = true;
                         SearchWindow(objeto: objDependency);
