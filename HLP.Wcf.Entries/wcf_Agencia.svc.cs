@@ -1,6 +1,8 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
 using HLP.Base.Static;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
 using HLP.Dependencies;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Model.Repository.Interfaces.Financeiro;
@@ -22,10 +24,16 @@ namespace HLP.Wcf.Entries
         public IAgenciaRepository agenciaRepository { get; set; }
 
         [Inject]
-        public IAgencia_ContatoRepository agencia_ContatoRepository { get; set; }
+        public IContatoRepository agencia_ContatoRepository { get; set; }
 
         [Inject]
-        public IAgencia_EnderecoRepository agencia_EnderecoRepository { get; set; }
+        public IHlpEnderecoRepository agencia_EnderecoRepository { get; set; }
+
+        [Inject]
+        public IBancoRepository bancoRepository { get; set; }
+
+        [Inject]
+        public IConta_bancariaRepository conta_BancariaRepository { get; set; }
 
         public wcf_Agencia()
         {
@@ -42,13 +50,18 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Financeiro.AgenciaModel objAgencia =
                     this.agenciaRepository.GetAgencia(idAgencia: id);
 
-                objAgencia.lAgencia_ContatoModel =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Financeiro.Agencia_ContatoModel>(
-                        list: this.agencia_ContatoRepository.GetAllAgencia_Contato(idAgencia: id));
+                if (objAgencia != null)
+                {
+                    objAgencia.lAgencia_ContatoModel =
+                        new ObservableCollectionBaseCadastros<ContatoModel>(
+                            list: this.agencia_ContatoRepository.GetContato_ByForeignKey(
+                            id: id, xForeignKey: "idAgencia"));
 
-                objAgencia.lAgencia_EnderecoModel =
-                    new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Financeiro.Agencia_EnderecoModel>(
-                        list: this.agencia_EnderecoRepository.GetAllAgencia_Endereco(idAgencia: id));
+                    objAgencia.lAgencia_EnderecoModel =
+                        new ObservableCollectionBaseCadastros<EnderecoModel>(
+                            list: this.agencia_EnderecoRepository
+                            .GetAllObjetos(idPK: id, sPK: "idAgencia"));
+                }
 
                 return objAgencia;
             }
@@ -68,7 +81,7 @@ namespace HLP.Wcf.Entries
                 agenciaRepository.Save(objAgencia: obj);
 
 
-                foreach (HLP.Entries.Model.Models.Financeiro.Agencia_ContatoModel item
+                foreach (ContatoModel item
                     in obj.lAgencia_ContatoModel)
                 {
                     switch (item.status)
@@ -77,21 +90,19 @@ namespace HLP.Wcf.Entries
                         case statusModel.alterado:
                             {
                                 item.idAgencia = (int)obj.idAgencia;
-                                this.agencia_ContatoRepository.Save(
-                                    objAgencia_Contato: item);
+                                this.agencia_ContatoRepository.Save(objContato: item);
                             }
                             break;
                         case statusModel.excluido:
                             {
-                                this.agencia_ContatoRepository.Delete(
-                                    idAgenciaContato: (int)item.idAgenciaContato);
+                                this.agencia_ContatoRepository.Delete(idContato: item.idContato ?? 0);
                             }
                             break;
                     }
                 }
 
 
-                foreach (HLP.Entries.Model.Models.Financeiro.Agencia_EnderecoModel item
+                foreach (EnderecoModel item
                     in obj.lAgencia_EnderecoModel)
                 {
                     switch (item.status)
@@ -101,13 +112,12 @@ namespace HLP.Wcf.Entries
                             {
                                 item.idAgencia = (int)obj.idAgencia;
                                 this.agencia_EnderecoRepository.Save(
-                                    objAgencia_Endereco: item);
+                                    objEnderecoModel: item);
                             }
                             break;
                         case statusModel.excluido:
                             {
-                                this.agencia_EnderecoRepository.Delete(
-                                    idEnderecoAgencia: (int)item.idEndereco);
+                                this.agencia_EnderecoRepository.Delete(objEnderecoModel: item);
                             }
                             break;
                     }
@@ -127,8 +137,8 @@ namespace HLP.Wcf.Entries
             try
             {
                 this.agenciaRepository.BeginTransaction();
-                this.agencia_ContatoRepository.DeletePorAgencia(idAgencia: id);
-                this.agencia_EnderecoRepository.DeletePorAgencia(idAgencia: id);
+                this.agencia_ContatoRepository.DeleteContato_ByForeignKey(id: id, xForeignKey: "idAgencia");
+                this.agencia_EnderecoRepository.Delete(idFK: id, sNameFK: "idAgencia");
                 this.agenciaRepository.Delete(idAgencia: id);
                 this.agenciaRepository.CommitTransaction();
                 return true;
@@ -148,18 +158,18 @@ namespace HLP.Wcf.Entries
                 this.agenciaRepository.BeginTransaction();
                 this.agenciaRepository.Copy(objAgencia: Objeto);
 
-                foreach (HLP.Entries.Model.Models.Financeiro.Agencia_ContatoModel item in Objeto.lAgencia_ContatoModel)
+                foreach (ContatoModel item in Objeto.lAgencia_ContatoModel)
                 {
-                    item.idAgenciaContato = null;
+                    item.idContato = null;
                     item.idAgencia = (int)Objeto.idAgencia;
-                    this.agencia_ContatoRepository.Copy(objAgencia_Contato: item);
+                    this.agencia_ContatoRepository.Copy(obj: item);
                 }
 
-                foreach (HLP.Entries.Model.Models.Financeiro.Agencia_EnderecoModel item in Objeto.lAgencia_EnderecoModel)
+                foreach (EnderecoModel item in Objeto.lAgencia_EnderecoModel)
                 {
                     item.idEndereco = null;
                     item.idAgencia = (int)Objeto.idAgencia;
-                    this.agencia_EnderecoRepository.Copy(objAgencia_Endereco: item);
+                    this.agencia_EnderecoRepository.Copy(objEnderecoModel: item);
                 }
 
                 return Objeto;
@@ -169,6 +179,44 @@ namespace HLP.Wcf.Entries
                 Log.AddLog(xLog: ex.Message);
                 throw new FaultException(reason: ex.Message);
             }
+        }
+
+        public HLP.Components.Model.Models.modelToTreeView GetHierarquia(int idAgencia)
+        {
+            HLP.Components.Model.Models.modelToTreeView objHierAg = new Components.Model.Models.modelToTreeView();
+            HLP.Components.Model.Models.modelToTreeView objHierBanco = new Components.Model.Models.modelToTreeView();
+
+            AgenciaModel ag = agenciaRepository.GetAgencia(idAgencia: idAgencia);
+
+            if (ag != null)
+            {
+                objHierAg.id = ag.idAgencia ?? 0;
+                objHierAg.xDisplay = ag.cAgencia + " - " + ag.xAgencia;
+                objHierAg.xNameImage = "Agencia";
+
+                HLP.Entries.Model.Models.Financeiro.BancoModel objBanco = bancoRepository.GetBanco(ag.idAgencia ?? 0);
+
+                if (objBanco != null)
+                {
+                    objHierBanco.id = objBanco.idBanco ?? 0;
+                    objHierBanco.xDisplay = objBanco.cBanco + " - " + objBanco.xBanco;
+                    objHierBanco.xNameImage = "Banco";
+                    objHierBanco.lFilhos.Add(
+                        item: objHierAg);
+
+                    HLP.Components.Model.Models.modelToTreeView objHierConta;
+                    foreach (var ct in conta_BancariaRepository.GetByAgencia(ag.idAgencia ?? 0))
+                    {
+                        objHierConta = new Components.Model.Models.modelToTreeView();
+                        objHierConta.id = (int)ct.idContaBancaria;
+                        objHierConta.xDisplay = ct.xNumeroConta + " - " + ct.xDescricao;
+                        objHierConta.xNameImage = "Conta_Bancaria";
+                        objHierAg.lFilhos.Add(item: objHierConta);
+                    }
+                }
+            }
+
+            return objHierBanco;
         }
     }
 }

@@ -39,13 +39,13 @@
                 
                 <!--Components-->
                 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idCSTCofins, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 					ToolTip="have principal do registro da Situação Tributária para COFINS, campo autoinclemental.">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.cCSTCofins, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"

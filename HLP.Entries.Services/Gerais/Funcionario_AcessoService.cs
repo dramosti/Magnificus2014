@@ -13,7 +13,7 @@ namespace HLP.Entries.Services.Gerais
     {
         const string xTabela = "Acesso;";
 
-        HLP.Wcf.Entries.wcf_Acesso serviceNetwork;
+        HLP.Wcf.Entries.wcf_Acesso serviceNetwork;        
         wcf_Acesso.Iwcf_AcessoClient serviceWeb;
 
         HLP.Wcf.Entries.wcf_CamposBaseDados serviceCamposBaseDadosNetwork;

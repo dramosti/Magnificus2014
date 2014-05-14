@@ -50,12 +50,6 @@ namespace HLP.Entries.ViewModel.Commands.Crm
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
 
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-
             objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
 
@@ -69,9 +63,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
-
             }
             catch (Exception ex)
             {
@@ -82,9 +74,13 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            objViewModel.currentModel.idFidelidade = objService.SaveObject(obj: this.objViewModel.currentModel);
-            e.Result = e.Argument;
+            if (objViewModel.message.Save())
+            {
+                objViewModel.currentModel.idFidelidade = objService.SaveObject(obj: this.objViewModel.currentModel);
+                e.Result = e.Argument;
+            }                
         }
+
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -95,16 +91,19 @@ namespace HLP.Entries.ViewModel.Commands.Crm
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                    object w = objViewModel.GetParentWindow(e.Result);
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
                         {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
                         }
+                    }                 
                 }
             }
             catch (Exception ex)
@@ -128,21 +127,13 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idFidelidade ?? 0))
                     {
-                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        objViewModel.message.Excluido();
                         iExcluir = (int)this.objViewModel.currentModel.idFidelidade;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -171,18 +162,8 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             this.objViewModel.currentModel = new Model.Models.Crm.FidelidadeModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(millisecondsTimeout: 100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
@@ -190,18 +171,8 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -209,9 +180,11 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {
@@ -222,10 +195,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -244,9 +214,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
                 }
                 else
                 {
-                    this.objViewModel.currentID = (int)e.Result;
-                    this.metodoGetModel(this, null);
-                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -259,12 +227,11 @@ namespace HLP.Entries.ViewModel.Commands.Crm
         {
             try
             {
-                e.Result = this.objService.CopyObject(id: this.objViewModel.currentModel.idFidelidade ?? 0);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
@@ -294,10 +261,7 @@ namespace HLP.Entries.ViewModel.Commands.Crm
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.metodoGetModel);
-            bw.RunWorkerAsync();
-
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         private void metodoGetModel(object sender, DoWorkEventArgs e)

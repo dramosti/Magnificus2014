@@ -28,15 +28,15 @@ namespace HLP.Comum.View.WPF
     {
         BackgroundWorker bwFocus;
         List<UIElement> lControls = null;
-        ICommand commDataContext = null;
+        //ICommand commDataContext = null;
 
         public HlpPesquisaInsert()
         {
             InitializeComponent();
 
-            this.btnSave.Command = new RelayCommand(
-                execute: exec => this.btnSaveExecute(),
-                canExecute: canExec => this.btnCanExecute());
+            //this.btnSave.Command = new RelayCommand(
+            //    execute: exec => this.btnSaveExecute(),
+            //    canExecute: canExec => this.btnCanExecute());
         }
 
         void bwFocus_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -91,8 +91,8 @@ namespace HLP.Comum.View.WPF
                     HLP.Base.Static.Util.GetLogicalChildCollection<UIElement>(parent: exp));
             }
 
-            commDataContext = this.ctrContent.DataContext.GetType().GetProperty(
-                name: "commandSalvar").GetValue(obj: this.ctrContent.DataContext) as ICommand;
+            //commDataContext = this.ctrContent.DataContext.GetType().GetProperty(
+            //    name: "commandSalvar").GetValue(obj: this.ctrContent.DataContext) as ICommand;
         }
 
         private void SearchTabControlsTabItemToFocus(Stack<UIElement> lTabControlsTabItem, FrameworkElement ctrl)
@@ -151,24 +151,24 @@ namespace HLP.Comum.View.WPF
             }
         }
 
-        private void btnSaveExecute()
-        {
-            this.commDataContext.Execute(parameter: null);
+        //private void btnSaveExecute()
+        //{
+        //    this.commDataContext.Execute(parameter: null);
 
-            this.idSalvo = (int)this.ctrContent.DataContext.GetType()
-                .GetProperty(name: "currentID").GetValue(obj: this.ctrContent.DataContext);
+        //    this.idSalvo = (int)this.ctrContent.DataContext.GetType()
+        //        .GetProperty(name: "currentID").GetValue(obj: this.ctrContent.DataContext);
 
-            this.DialogResult = true;
+        //    this.DialogResult = true;
 
-            this.Close();
-        }
+        //    this.Close();
+        //}
 
-        private bool btnCanExecute()
-        {
-            if (this.commDataContext != null)
-                return this.commDataContext.CanExecute(parameter: this.ctrContent.Content);
+        //private bool btnCanExecute()
+        //{
+        //    if (this.commDataContext != null)
+        //        return this.commDataContext.CanExecute(parameter: this.ctrContent.Content);
 
-            return false;
-        }
+        //    return false;
+        //}
     }
 }

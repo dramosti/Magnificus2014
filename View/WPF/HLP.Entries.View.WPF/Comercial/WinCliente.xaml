@@ -299,7 +299,7 @@
                             <Expander IsExpanded="True" Header="Endereço" Style="{StaticResource ExpanderPadrao}">
                                 <Grid>
                                     <Components:HlpEndereco x:Name="dgvEndereco"
-                                        ItemsSource="{Binding currentModel.lCliente_fornecedor_Endereco}" 
+                                                            ItemsSourceEnderecos="{Binding currentModel.lCliente_fornecedor_Endereco}"
                                                             IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"                                                            
                                         />
                                 </Grid>
@@ -529,7 +529,7 @@
                                         <Components:HlpPesquisa 
 											Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-											WidthLabel="0" TableView="vwDiaPagamento" FieldPesquisa="ID">
+											WidthLabel="0" TableView="vwDiaPagamento" FieldPesquisa="ID" nameWindow="WinDiaPagamento">
                                             <Components:HlpPesquisa.Style>
                                                 <Style>
                                                     <Setter Property="FrameworkElement.IsEnabled" Value="True"/>
@@ -556,7 +556,7 @@
 											Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idDescontos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" TableView="vwDescontosAvista" FieldPesquisa="ID">
+											WidthLabel="0" TableView="vwDescontosAvista" FieldPesquisa="ID" nameWindow="WinDesconto">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xDescontos</System:String>
                                                 <System:String>xDescricao</System:String>
@@ -761,7 +761,7 @@
 										Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 										Text="{Binding currentModel.idContaBancaria, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"
-										WidthLabel="0" FieldPesquisa="ID" TableView="vwContaBancaria">
+										WidthLabel="0" FieldPesquisa="ID" TableView="vwContaBancaria" nameWindow="WinContaBancaria">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>stConta</System:String>
                                         <System:String>xNumeroConta</System:String>
@@ -777,7 +777,7 @@
                                         <System:String>pJuros</System:String>
                                     </Components:HlpPesquisa.Items>
                                 </Components:HlpPesquisa>
-                                <Components:HlpPesquisa 
+                                <Components:HlpPesquisa nameWindow="WinMulta"
 										Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" 
 										Text="{Binding currentModel.idMultas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 										IsEnabled="{Binding bIsEnabled}"

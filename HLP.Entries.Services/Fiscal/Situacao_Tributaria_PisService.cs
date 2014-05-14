@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Fiscal
 
     public class Situacao_Tributaria_PisService
     {
-        const string xTabela = "Situacao_Tributaria_Pis;";
+        const string xTabela = "Situacao_tributaria_pis;";
 
         HLP.Wcf.Entries.wcf_SituacaoTributariaPis serviceNetwork;
         wcf_SituacaoTributariaPis.Iwcf_SituacaoTributariaPisClient serviceWeb;

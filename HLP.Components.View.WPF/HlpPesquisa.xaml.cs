@@ -41,7 +41,7 @@ namespace HLP.Components.View.WPF
         public HlpPesquisa()
         {
             InitializeComponent();
-           // objViewModel = new HlpPesquisaViewModel();
+            objViewModel = new HlpPesquisaViewModel();
         }
 
         public void ExecutaPesquisa(string sValor)
@@ -62,13 +62,13 @@ namespace HLP.Components.View.WPF
                     int i = CompanyData.idEmpresa;
 
                     var objRet = this.objViewModel.GetValorDisplay
-                         (
-                         _TableView: this.TableView,
-                         _Items: teste,
-                         _FieldPesquisa: this.FieldPesquisa,
-                         idEmpresa: CompanyData.idEmpresa,
-                         _iValorPesquisa: Convert.ToInt32(sValor)
-                         );
+                             (
+                             _TableView: this.TableView,
+                             _Items: teste,
+                             _FieldPesquisa: this.FieldPesquisa,
+                             idEmpresa: CompanyData.idEmpresa,
+                             _iValorPesquisa: Convert.ToInt32(sValor)
+                             );
 
                     if (objRet != null)
                     {

@@ -11,7 +11,7 @@ namespace HLP.Entries.Services.Fiscal
 {
     public class Carga_Trib_Media_StService
     {
-        const string xTabela = "Carga_Trib_Media_St;";
+        const string xTabela = "Carga_trib_media_st_icms;";
 
         HLP.Wcf.Entries.wcf_CargaTribMediaStIcms serviceNetwork;
         wcf_CargaTribMediaStIcms.Iwcf_CargaTribMediaStIcmsClient serviceWeb;

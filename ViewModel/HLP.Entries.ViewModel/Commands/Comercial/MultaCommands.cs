@@ -63,7 +63,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
@@ -75,9 +74,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel.idMultas = this.objService.SaveObject(
+            if (objViewModel.message.Save())
+            {
+                this.objViewModel.currentModel.idMultas = this.objService.SaveObject(
                     obj: this.objViewModel.currentModel);
-            e.Result = e.Argument;
+                e.Result = e.Argument;
+            }            
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -89,16 +91,19 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                    object w = objViewModel.GetParentWindow(e.Result);
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
                         {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
                         }
+                    }                
                 }
             }
             catch (Exception ex)
@@ -122,9 +127,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idMultas ?? 0))
                     {
@@ -132,11 +135,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         iExcluir = (int)this.objViewModel.currentModel.idMultas;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -186,9 +184,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {

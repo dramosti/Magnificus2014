@@ -27,7 +27,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Financeiro
         #endregion
 
         Conta_BancariaCommands comm;
-        public BackgroundWorker bwHierarquia;
         public bool bTreeCarregada = true;
 
         public Conta_BancariaViewModel()

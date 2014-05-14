@@ -279,12 +279,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+            if (objViewModel.message.Save())
             {
-                objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
-            });
+                Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                {
+                    objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
+                });
 
-            e.Result = e.Argument;
+                e.Result = e.Argument;
+            }              
         }
 
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -297,33 +300,45 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-
-                    this.IniciaCollection();
-                    this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
-
-                    this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
-                collection: this.objService.GetAllIdsListaPreco());
-
-                    int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
-                    int currentPosition = 0;
-                    int i = 0;
-
-                    if (currentId != 0)
+                    if (objViewModel.message.bSave)
                     {
-                        currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                        while (i < currentPosition)
+                        this.IniciaCollection();
+                        this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
+
+                        this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
+                    collection: this.objService.GetAllIdsListaPreco());
+
+                        int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
+                        int currentPosition = 0;
+                        int i = 0;
+
+                        if (currentId != 0)
                         {
-                            this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
-                            i++;
+                            currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+
+                            while (i < currentPosition)
+                            {
+                                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                                i++;
+                            }
+                            this.PesquisarRegistro();
                         }
-                        this.PesquisarRegistro();
-                    }
-                    else
-                    {
-                        this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
-                    }
+                        else
+                        {
+                            this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                        }
+
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
+                        {
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                        }
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -348,9 +363,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.Delete(this.objViewModel.currentModel))
                     {
@@ -358,11 +371,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         iExcluir = (int)this.objViewModel.currentModel.idListaPrecoPai;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -428,30 +436,32 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
+            if (objViewModel.message.Cancelar())
+            {
+                this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
                 collection: this.objService.GetAllIdsListaPreco());
-            int currentId = this.idOld;
-            int currentPosition = 0;
-            int i = 0;
-            if (currentId != 0)
-            {
-                currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
-
-                while (i < currentPosition)
+                int currentId = this.idOld;
+                int currentPosition = 0;
+                int i = 0;
+                if (currentId != 0)
                 {
-                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
-                    i++;
-                }
+                    currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
 
+                    while (i < currentPosition)
+                    {
+                        this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                        i++;
+                    }
+
+                }
+                else
+                {
+                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                }
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+                this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
             }
-            else
-            {
-                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
-            }
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
-            this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
         }
         private bool CancelarCanExecute()
         {

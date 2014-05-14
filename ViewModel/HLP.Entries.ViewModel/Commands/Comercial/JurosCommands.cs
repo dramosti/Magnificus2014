@@ -75,8 +75,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.objViewModel.currentModel.idJuros = this.objService.SaveObject(obj: this.objViewModel.currentModel);
-            e.Result = e.Argument;
+            if (objViewModel.message.Save())
+            {
+                this.objViewModel.currentModel.idJuros = this.objService.SaveObject(obj: this.objViewModel.currentModel);
+                e.Result = e.Argument;
+            }
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -88,7 +91,19 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
+                        {
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                        }
+                    } 
                 }
             }
             catch (Exception ex)
@@ -112,9 +127,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idJuros ?? 0))
                     {
@@ -122,11 +135,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         iExcluir = (int)this.objViewModel.currentModel.idJuros;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -175,9 +183,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {

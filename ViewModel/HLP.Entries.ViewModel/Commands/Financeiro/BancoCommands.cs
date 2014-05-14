@@ -48,19 +48,12 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-            this.objViewModel.bwHierarquia = new BackgroundWorker();
-            this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
-            this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
-            this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
+            this.objViewModel.bWorkerHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bWorkerHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bWorkerHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
 
             objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
@@ -76,7 +69,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
                 objViewModel.bWorkerSave.RunWorkerAsync(_panel);
             }
             catch (Exception ex)
@@ -90,13 +82,15 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 if (objViewModel.message.Save())
+                {
                     this.objViewModel.currentModel.idBanco = this.servico.SaveObject(objViewModel.currentModel);
+                    e.Result = e.Argument;
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -111,15 +105,15 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                     if (objViewModel.message.bSave)
                     {
                         this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+
                         object w = objViewModel.GetParentWindow(e.Result);
 
                         if (w != null)
-                            if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
-                            {
-                                (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                                (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                                (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
-                            }
+                        {
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                        }
                     }
                 }
             }
@@ -179,18 +173,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             this.objViewModel.currentModel = new BancoModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            objViewModel.bWorkerNovo.RunWorkerAsync(_panel);
         }
 
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
@@ -199,18 +183,6 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            objViewModel.bWorkerAlterar = new BackgroundWorker();
-            objViewModel.bWorkerAlterar.RunWorkerAsync(_panel);
-        }
-
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
 
         private bool AlterarCanExecute()
@@ -235,7 +207,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                objViewModel.bWorkerCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -254,9 +226,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.currentID = (int)e.Result;
-                    this.getBanco(this, null);
-                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -269,13 +239,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                e.Result =
-                    this.servico.CopyObject(objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
@@ -344,7 +312,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             else
             {
-                this.objViewModel.bwHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bWorkerHierarquia.RunWorkerAsync(argument: t);
                 this.objViewModel.bTreeCarregada = true;
             }
         }

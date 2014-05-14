@@ -7,7 +7,7 @@
       <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HLP.Entries.Model.Models.Financeiro" />
       <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" />
       <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HLP.Base.EnumsBases" />
-      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Comum.Resources.RecursosBases" />
+      <xsd:import schemaLocation="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Agencia.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HLP.Components.Model.Models" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="Iwcf_Agencia_GetObject_InputMessage">
@@ -34,6 +34,12 @@
   <wsdl:message name="Iwcf_Agencia_CopyObject_OutputMessage">
     <wsdl:part name="parameters" element="tns:CopyObjectResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_Agencia_GetHierarquia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHierarquia" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_Agencia_GetHierarquia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHierarquiaResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_Agencia">
     <wsdl:operation name="GetObject">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Agencia/GetObject" message="tns:Iwcf_Agencia_GetObject_InputMessage" />
@@ -50,6 +56,10 @@
     <wsdl:operation name="CopyObject">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Agencia/CopyObject" message="tns:Iwcf_Agencia_CopyObject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Agencia/CopyObjectResponse" message="tns:Iwcf_Agencia_CopyObject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarquia">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_Agencia/GetHierarquia" message="tns:Iwcf_Agencia_GetHierarquia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_Agencia/GetHierarquiaResponse" message="tns:Iwcf_Agencia_GetHierarquia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_Agencia" type="tns:Iwcf_Agencia">
@@ -83,6 +93,15 @@
     </wsdl:operation>
     <wsdl:operation name="CopyObject">
       <soap:operation soapAction="http://tempuri.org/Iwcf_Agencia/CopyObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarquia">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_Agencia/GetHierarquia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

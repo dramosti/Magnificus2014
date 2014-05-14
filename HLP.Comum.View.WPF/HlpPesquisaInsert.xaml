@@ -10,7 +10,9 @@
     <DockPanel LastChildFill="True" Grid.Column="2" Grid.ColumnSpan="5" Grid.Row="1" Background="#FFD4D1D1">
         <Border DockPanel.Dock="Bottom">
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                <Button x:Name="btnSave"
+                <Button x:Name="btnSave" 
+                        Command="{Binding ElementName=ctrContent, Path=DataContext.commandSalvar}" 
+                        CommandParameter="{Binding ElementName=ctrContent, Path=Content}"
                     Width="40" Height="25" ToolTip="Salvar ( Alt + S )" Focusable="False">
                     <Button.Template>
                         <ControlTemplate>

@@ -104,11 +104,11 @@ namespace HLP.Base.ClassesBases
         {
             get
             {
-                if (_bWorkerHierarquia == null)
-                    _bWorkerHierarquia = new BackgroundWorker();
-                return _bWorkerHierarquia;
+                if (_bWorkerSave == null)
+                    _bWorkerSave = new BackgroundWorker();
+                return _bWorkerSave;
             }
-            set { _bWorkerHierarquia = value; }
+            set { _bWorkerSave = value; }
         }
 
         private BackgroundWorker _bWorkerNovo;
@@ -693,6 +693,10 @@ namespace HLP.Base.ClassesBases
                         this.SearchTabControlsTabItemToFocus(lTabControlsTabItem: lTabControlsTabItem,
                             ctrl: c as FrameworkElement);
 
+                        while (bwFocus.IsBusy)
+                        {
+                            Thread.Sleep(millisecondsTimeout: 300);
+                        }
                         bwFocus.RunWorkerAsync(argument: lTabControlsTabItem);
                     }
                 }
@@ -840,6 +844,10 @@ namespace HLP.Base.ClassesBases
                         this.SearchTabControlsTabItemToFocus(lTabControlsTabItem: lTabControlsTabItem,
                             ctrl: c as FrameworkElement);
 
+                        while (bwFocus.IsBusy)
+                        {
+                            Thread.Sleep(millisecondsTimeout: 300);
+                        }
                         bwFocus.RunWorkerAsync(argument: lTabControlsTabItem);
                     }
                 }

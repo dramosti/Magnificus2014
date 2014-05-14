@@ -8,7 +8,7 @@
              xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" x:Name="ucEndereco">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -68,8 +68,8 @@
     </UserControl.Resources>
     <Grid>
         <DataGrid x:Name="dgvEndereco" 
-                   ItemsSource="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=ItemsSource}"
-                   IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"    
+                   ItemsSource="{Binding ElementName=ucEndereco, Path=ItemsSourceEnderecos}"
+                    IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                    AutoGenerateColumns="False"                       
                    SelectionUnit="CellOrRowHeader" 
                    CanUserReorderColumns="False" 

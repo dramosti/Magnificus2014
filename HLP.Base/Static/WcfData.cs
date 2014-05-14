@@ -12,7 +12,7 @@ namespace HLP.Base.Static
 
         public static string xIpServidor
         {
-            get { return "192.168.9.33"; }
+            get { return "192.168.9.100"; }
             set { _xIpServidor = value; }
         }
 
