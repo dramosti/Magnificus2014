@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
+            <convert:NotConverter x:Key="notConverter"/>
             <convert:PorcentagemConverter x:Key="porcentagemConverter"/>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type src:FillComboBoxViewModel}"/>
             <ObjectDataProvider x:Key="lUF" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
@@ -50,14 +51,14 @@
                 <!--Components-->
                 
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="1"
+                    Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                     IsReadOnly="True"
 						Text="{Binding currentModel.idCodigoIcmsPai, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 						ToolTip="Código principal do Registro, campo autoicremental">
                         
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" stCompPosicao="first"
                     Text="{Binding currentModel.cIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"		
 						ToolTip="Informar o Código da Alíquota. Normalmente é preenchido com 1, 2, 3...Este código será associado ao Produto,e é através dele que se define a alíquota de ICMS do Produto.">
@@ -68,12 +69,13 @@
         <Expander Header="Tributação" Style="{StaticResource ExpanderPadrao}" Grid.Row="1" IsExpanded="True">
             <Grid>
                 <DataGrid
-					     ItemsSource="{Binding currentModel.lCodigo_IcmsModel}"                          
-                         IsEnabled="{Binding bIsEnabled}"
+					     ItemsSource="{Binding currentModel.lCodigo_IcmsModel}"   
+                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                          AutoGenerateColumns="False" 
                          SelectionUnit="CellOrRowHeader" 
                          CanUserReorderColumns="False"  
-                         CanUserDeleteRows="True" >
+                         CanUserDeleteRows="True"
+                            CanUserAddRows="True">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn x:Name="clCidades" Header="UF" Width="*">
                             <DataGridTemplateColumn.CellTemplate>

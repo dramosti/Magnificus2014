@@ -282,9 +282,9 @@
             <TabItem Header="Endereços">
                 <Grid>
                     <Components:HlpEndereco 
-                        ItemsSource="{Binding currentModel.lFuncionario_Endereco}" 
-                        IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
-                        IsEnabled="{Binding bIsEnabled}"/>
+                        ItemsSourceEnderecos="{Binding currentModel.lFuncionario_Endereco}"
+                        IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"                        
+                        />
                 </Grid>
             </TabItem>
             <TabItem Header="Informações">

@@ -11,7 +11,7 @@ namespace HLP.Entries.Services
 {
     public class St_CofinsService
     {
-        const string xTabela = "St_Cofins;";
+        const string xTabela = "Situacao_tributaria_cofins;";
 
         HLP.Wcf.Entries.wcf_StCofins serviceNetwork;
         wcf_StCofins.Iwcf_StCofinsClient serviceWeb;

@@ -14,6 +14,9 @@ using HLP.Entries.Services.Comercial;
 using HLP.Entries.Services.Gerais;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Comum.ViewModel.ViewModel;
+using HLP.Base.Static;
+using HLP.Comum.View.Components;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.ViewModel.Commands.Comercial
 {
@@ -57,12 +60,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
 
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-
             objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
 
@@ -79,9 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objServico.Delete(this.objViewModel.currentModel))
                     {
@@ -89,11 +84,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         iExcluir = (int)this.objViewModel.currentModel.idClienteFornecedor;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -123,8 +113,61 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
-                this.objViewModel.bWorkerSave.RunWorkerAsync();
+                foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_arquivo.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Add(
+                        new Cliente_fornecedor_arquivoModel
+                        {
+                            idClienteFornecedorArquivo = id,
+                            status = statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_contato.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lCliente_fornecedor_contato.Add(
+                        new ContatoModel
+                        {
+                            idContato = id,
+                            status = statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_Endereco.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lCliente_fornecedor_Endereco.Add(
+                        new EnderecoModel
+                        {
+                            idEndereco = id,
+                            status = statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.Add(
+                        new Cliente_Fornecedor_ObservacaoModel
+                        {
+                            idClienteFornecedorObservacao = id,
+                            status = statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_produto.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lCliente_fornecedor_produto.Add(
+                        new Cliente_fornecedor_produtoModel
+                        {
+                            idClienteFornecedorProduto = id,
+                            status = statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_representante.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lCliente_fornecedor_representante.Add(
+                        new Cliente_fornecedor_representanteModel
+                        {
+                            idClienteFornecedorRepresentante = id,
+                            status = statusModel.excluido
+                        });
+                }
+                this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
             {
@@ -134,63 +177,12 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         }
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            e.Result = e.Argument;
-            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_arquivo.idExcluidos)
+            if (objViewModel.message.Save())
             {
-                this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Add(
-                    new Cliente_fornecedor_arquivoModel
-                    {
-                        idClienteFornecedorArquivo = id,
-                        status = statusModel.excluido
-                    });
-            }
-            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_contato.idExcluidos)
-            {
-                this.objViewModel.currentModel.lCliente_fornecedor_contato.Add(
-                    new Cliente_fornecedor_contatoModel
-                    {
-                        idClienteFornecedorContato = id,
-                        status = statusModel.excluido
-                    });
-            }
-            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_Endereco.idExcluidos)
-            {
-                this.objViewModel.currentModel.lCliente_fornecedor_Endereco.Add(
-                    new Cliente_fornecedor_EnderecoModel
-                    {
-                        idClienteFornecedor = id,
-                        status = statusModel.excluido
-                    });
-            }
-            foreach (int id in this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.idExcluidos)
-            {
-                this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.Add(
-                    new Cliente_Fornecedor_ObservacaoModel
-                    {
-                        idClienteFornecedorObservacao = id,
-                        status = statusModel.excluido
-                    });
-            }
-            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_produto.idExcluidos)
-            {
-                this.objViewModel.currentModel.lCliente_fornecedor_produto.Add(
-                    new Cliente_fornecedor_produtoModel
-                    {
-                        idClienteFornecedorProduto = id,
-                        status = statusModel.excluido
-                    });
-            }
-            foreach (int id in this.objViewModel.currentModel.lCliente_fornecedor_representante.idExcluidos)
-            {
-                this.objViewModel.currentModel.lCliente_fornecedor_representante.Add(
-                    new Cliente_fornecedor_representanteModel
-                    {
-                        idClienteFornecedorRepresentante = id,
-                        status = statusModel.excluido
-                    });
-            }
-            this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
-            this.IniciaCollection();
+                e.Result = e.Argument;
+                this.objViewModel.currentModel = this.objServico.Save(this.objViewModel.currentModel);
+                this.IniciaCollection();
+            }            
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -202,17 +194,63 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
-                    object w = objViewModel.GetParentWindow(e.Result);
-
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                    if (objViewModel.message.bSave)
+                    {
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_arquivo.Count(i => i.status == statusModel.excluido)
+                           > 0)
                         {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                            this.objViewModel.currentModel.lCliente_fornecedor_arquivo.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_arquivo.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_arquivo.FirstOrDefault(i => i.status == statusModel.excluido)));
                         }
-                    this.IniciaCollection();
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_contato.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_contato.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_contato.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_contato.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_Endereco.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_Endereco.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_Endereco.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_Endereco.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_Fornecedor_Observacao.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_produto.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_produto.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_produto.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_produto.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+                        while (this.objViewModel.currentModel.lCliente_fornecedor_representante.Count(i => i.status == statusModel.excluido)
+                                > 0)
+                        {
+                            this.objViewModel.currentModel.lCliente_fornecedor_representante.RemoveAt(
+                                index: this.objViewModel.currentModel.lCliente_fornecedor_representante.IndexOf(
+                                item: this.objViewModel.currentModel.lCliente_fornecedor_representante.FirstOrDefault(i => i.status == statusModel.excluido)));
+                        }
+
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+                        this.IniciaCollection();
+
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
+                        {
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                        }
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -235,16 +273,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             this.objViewModel.currentModel = new Cliente_fornecedorModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
-        }
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
         }
         private bool NovoCanExecute()
         {
@@ -256,17 +284,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
+
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -274,9 +293,11 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {
@@ -306,9 +327,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.copyBaseCommand.Execute(null);
-                    this.getCliente(this, null);
-                    this.IniciaCollection();
+                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -322,8 +341,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                this.objViewModel.currentModel =
-                    this.objServico.Copy(this.objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {

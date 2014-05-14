@@ -31,6 +31,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_HLP065|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug_HLP065\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
@@ -127,6 +136,11 @@
     <Resource Include="Icons\Login\Logo.png" />
     <Resource Include="Icons\Button\ImgFechar.png" />
     <Resource Include="Icons\Button\ImgReabrir.png" />
+    <Resource Include="Icons\Button\save-32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\Button\Save_MouseOver.png" />
+    <Resource Include="Icons\Button\Save_Disabled.png" />
     <Content Include="Icons\Hierarquia\Agencia.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

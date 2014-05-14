@@ -367,7 +367,7 @@
                 <AdornerDecorator>
                     <Components:HlpEndereco 
                         x:Name="dgvEndereco"
-                        ItemsSource="{Binding currentModel.lTransportador_Endereco}" 
+                        ItemsSourceEnderecos="{Binding currentModel.lTransportador_Endereco}"
                         IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         />
                 </AdornerDecorator>

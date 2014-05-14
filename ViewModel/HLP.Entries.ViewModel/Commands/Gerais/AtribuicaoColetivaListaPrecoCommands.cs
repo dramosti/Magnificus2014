@@ -123,7 +123,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         MessageBox.Show(messageBoxText: msgCustoNaoAtualizado, caption: "Atenção!",
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                 }
-                this.objViewModel.FechaForm(p: ((DataGrid)o).Parent);
+                this.objViewModel.FechaForm(p: ((Grid)((DataGrid)o).Parent).Parent);
             }
         }
 

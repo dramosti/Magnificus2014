@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HLP.Comum.Resources.RecursosBases;
 using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 
 namespace HLP.Entries.Model.Models.Financeiro
 {
@@ -13,8 +14,8 @@ namespace HLP.Entries.Model.Models.Financeiro
         public AgenciaModel()
             : base(xTabela: "Agencia")
         {
-            this.lAgencia_EnderecoModel = new ObservableCollectionBaseCadastros<Agencia_EnderecoModel>();
-            this.lAgencia_ContatoModel = new ObservableCollectionBaseCadastros<Agencia_ContatoModel>();
+            this.lAgencia_EnderecoModel = new ObservableCollectionBaseCadastros<EnderecoModel>();
+            this.lAgencia_ContatoModel = new ObservableCollectionBaseCadastros<ContatoModel>();
         }
 
 
@@ -41,14 +42,9 @@ namespace HLP.Entries.Model.Models.Financeiro
         [ParameterOrder(Order = 6)]
         public string xFax { get; set; }
 
+        private ObservableCollectionBaseCadastros<ContatoModel> _lAgencia_ContatoModel;
 
-
-
-
-
-        private ObservableCollectionBaseCadastros<Agencia_ContatoModel> _lAgencia_ContatoModel;
-
-        public ObservableCollectionBaseCadastros<Agencia_ContatoModel> lAgencia_ContatoModel
+        public ObservableCollectionBaseCadastros<ContatoModel> lAgencia_ContatoModel
         {
             get { return _lAgencia_ContatoModel; }
             set
@@ -61,9 +57,9 @@ namespace HLP.Entries.Model.Models.Financeiro
 
 
 
-        private ObservableCollectionBaseCadastros<Agencia_EnderecoModel> _lAgencia_EnderecoModel;
+        private ObservableCollectionBaseCadastros<EnderecoModel> _lAgencia_EnderecoModel;
 
-        public ObservableCollectionBaseCadastros<Agencia_EnderecoModel> lAgencia_EnderecoModel
+        public ObservableCollectionBaseCadastros<EnderecoModel> lAgencia_EnderecoModel
         {
             get { return _lAgencia_EnderecoModel; }
             set

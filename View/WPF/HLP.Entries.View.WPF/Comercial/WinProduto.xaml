@@ -13,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
+            <conv:NotConverter x:Key="notConverter"/>
             <conv:DateTimeTimeSpanConverter x:Key="timeSpanConverter"/>
             <conv:PorcentagemConverter x:Key="porcConverter"/>
             <conv:MoedaConverter x:Key="moedaConverter"/>
@@ -60,12 +61,12 @@
                                 <!--Components-->
 
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="1"
+                                    Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                                     IsReadOnly="True"
 									Text="{Binding currentModel.idProduto, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
 									ToolTip="Chave principal do registro Produto">
                                 </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                <Components:CustomTextBox stCompPosicao="first"
                                     Grid.Column="2" Grid.Row="2"
                                     Text="{Binding currentModel.cAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
@@ -215,7 +216,7 @@
                                 <Components:HlpPesquisa 
 									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-									IsEnabled="{Binding bIsEnabled}"
+									IsEnabled="{Binding bIsEnabled}" nameWindow="WinFamiliaProduto"
 									ToolTip="Informar a que família ou grupo o item pertence." FieldPesquisa="ID" TableView="vwFamiliaProduto" WidthLabel="0">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xFamiliaProduto</System:String>
@@ -585,7 +586,8 @@
 									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCodigoIcmsPaiVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0">
+									ToolTip="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." 
+                                    TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinCodigoICMS">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cIcms</System:String>
                                     </Components:HlpPesquisa.Items>
@@ -594,7 +596,7 @@
 									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTIpiVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="0">
+									ToolTip="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="0" nameWindow="WinStIPI">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTIpi</System:String>
                                         <System:String>xCSTIpi</System:String>
@@ -624,7 +626,8 @@
 									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idClassificacaoFiscalVenda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="0">
+									ToolTip="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS."
+                                    FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="0" nameWindow="WinClassificacaoFiscal">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>XClassificacaoFiscal</System:String>
                                         <System:String>cNCM</System:String>
@@ -664,7 +667,8 @@
 									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCodigoIcmsPaiCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0">
+									ToolTip="É preenchido com o código de amarração com o estado e alíquota do ICMS para o produto." 
+                                    TableView="vwCodigoIcmsPai" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinCodigoICMS">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cIcms</System:String>
                                     </Components:HlpPesquisa.Items>
@@ -673,7 +677,7 @@
 									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTIpiCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="0">
+									ToolTip="Informar a Situação Tributária sobre vendas para o IPI (Imposto sobre produto Industrializado)" FieldPesquisa="ID" TableView="vwStIPI" WidthLabel="0" nameWindow="WinStIPI">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTIpi</System:String>
                                         <System:String>xCSTIpi</System:String>
@@ -683,7 +687,7 @@
 									Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCSTPisCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informar a Situação Tributária sobre vendas para o PIS (Programa de Integração Social)" TableView="vwStPIS" FieldPesquisa="ID" WidthLabel="0">
+									ToolTip="Informar a Situação Tributária sobre vendas para o PIS (Programa de Integração Social)" TableView="vwStPIS" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinStPIS">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cCSTPis</System:String>
                                         <System:String>xCSTPis</System:String>
@@ -703,7 +707,8 @@
 									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idClassificacaoFiscalCompra, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="0">
+									ToolTip="É preenchido com o código da classificação fiscal do produto sobre vendas. Esta define o código NMB/SH do produto, alíquota do IPI caso haja, se o produto sofre substituição tributária, e a base de redução para ICMS." 
+                                    FieldPesquisa="ID" TableView="vwClassificacaoFiscal" WidthLabel="0" nameWindow="WinClassificacaoFiscal">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>XClassificacaoFiscal</System:String>
                                         <System:String>cNCM</System:String>
@@ -979,8 +984,8 @@
             <TabItem Header="Fornecedores">
                 <AdornerDecorator>
                     <DataGrid
+                        IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         ItemsSource="{Binding currentModel.lProduto_Fornecedor_Homologado}"
-						IsEnabled="{Binding bIsEnabled}"
                         AutoGenerateColumns="False" 
                         SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
                         CanUserDeleteRows="True"
@@ -1002,7 +1007,7 @@
             <TabItem Header="Log de Revisão">
                 <AdornerDecorator>
                     <DataGrid
-						IsEnabled="{Binding bIsEnabled}"
+						IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         AutoGenerateColumns="False" 
                         ItemsSource="{Binding currentModel.lProduto_Revisao}"
                         SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"

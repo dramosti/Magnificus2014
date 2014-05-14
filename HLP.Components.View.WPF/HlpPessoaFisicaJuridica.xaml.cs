@@ -38,6 +38,8 @@ namespace HLP.Components.View.WPF
             bRgIe.Path = new PropertyPath(path: "DataContext.currentModel.xRgIe");
             bRgIe.Converter = converter;
             bRgIe.ConverterParameter = "rg";
+            bRgIe.NotifyOnValidationError = true;
+            bRgIe.ValidatesOnDataErrors = true;
 
             this.txtRgIe.SetBinding(dp: TextBox.TextProperty, binding: bRgIe);
 
@@ -46,6 +48,8 @@ namespace HLP.Components.View.WPF
             bCpfCnpj.Path = new PropertyPath(path: "DataContext.currentModel.xCpfCnpj");
             bCpfCnpj.Converter = converter;
             bCpfCnpj.ConverterParameter = "cpf";
+            bCpfCnpj.ValidatesOnDataErrors = true;
+            bCpfCnpj.NotifyOnValidationError = true;
 
             this.txtCpfCnpj.SetBinding(dp: TextBox.TextProperty, binding: bCpfCnpj);
         }
@@ -61,6 +65,8 @@ namespace HLP.Components.View.WPF
             Binding bRgIe = new Binding();
             bRgIe.ElementName = this.Name;
             bRgIe.Path = new PropertyPath(path: "DataContext.currentModel.xRgIe");
+            bRgIe.NotifyOnValidationError = true;
+            bRgIe.ValidatesOnDataErrors = true;
 
             this.txtRgIe.SetBinding(dp: TextBox.TextProperty, binding: bRgIe);
 
@@ -69,6 +75,8 @@ namespace HLP.Components.View.WPF
             bCpfCnpj.Path = new PropertyPath(path: "DataContext.currentModel.xCpfCnpj");
             bCpfCnpj.Converter = converter;
             bCpfCnpj.ConverterParameter = "cnpj";
+            bCpfCnpj.ValidatesOnDataErrors = true;
+            bCpfCnpj.NotifyOnValidationError = true;
 
             this.txtCpfCnpj.SetBinding(dp: TextBox.TextProperty, binding: bCpfCnpj);
         }

@@ -57,12 +57,15 @@ namespace HLP.Components.Model.Repository.Implementation
 
         public void Copy(EnderecoModel objEnderecoModel)
         {
-            objEnderecoModel.idEndereco = null;
             objEnderecoModel.idEndereco = (int)UndTrabalho.dbPrincipal.ExecuteScalar(
-                                           UndTrabalho.dbTransaction,
-                                           "[dbo].[Proc_copy_Enderecos]",
-        ParameterBase<EnderecoModel>.SetParameterValue(objEnderecoModel));
+                transaction: UndTrabalho.dbTransaction, storedProcedureName: "[dbo].[Proc_copy_Enderecos]",
+                parameterValues: new object[] { objEnderecoModel.idEndereco, objEnderecoModel.idClienteFornecedor, objEnderecoModel.idContato,
+                objEnderecoModel.idEmpresa, objEnderecoModel.idFuncionario, objEnderecoModel.idSite, objEnderecoModel.idTransportador, objEnderecoModel.idAgencia});
         }
+
+        //     @idEndereco int, @idClienteFornecedo int = null, @idContato int = null,
+        //@idEmpresa int = null, @idFuncionario int = null, @idSite int = null,
+        //@idTransportador int = null, @idAgencia int = null
 
         public EnderecoModel GetObjeto(int idEndereco)
         {

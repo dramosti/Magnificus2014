@@ -49,8 +49,8 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
             canExecute: paramCanExec => this.CopyCanExecute());
 
-            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(id: paramExec),
-                    canExecute: paramCanExec => false);
+            this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
+                    canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
@@ -80,12 +80,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
 
             objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
@@ -265,7 +259,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
                 foreach (int id in objViewModel.currentModel.lLista_preco.idExcluidos)
                 {
                     this.objViewModel.currentModel.lLista_preco.Add(
@@ -286,12 +279,15 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
-            Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+            if (objViewModel.message.Save())
             {
-                objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
-            });
+                Application.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                {
+                    objViewModel.currentModel = this.objService.Save(objModel: this.objViewModel.currentModel);
+                });
 
-            e.Result = e.Argument;
+                e.Result = e.Argument;
+            }              
         }
 
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -304,41 +300,45 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
-                    object w = objViewModel.GetParentWindow(e.Result);
-
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
-                        {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
-                        }
-                    this.IniciaCollection();
-                    this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
-
-                    this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
-                collection: this.objService.GetAllIdsListaPreco());
-
-                    int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
-                    int currentPosition = 0;
-                    int i = 0;
-
-                    if (currentId != 0)
+                    if (objViewModel.message.bSave)
                     {
-                        currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                        while (i < currentPosition)
+                        this.IniciaCollection();
+                        this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
+
+                        this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
+                    collection: this.objService.GetAllIdsListaPreco());
+
+                        int currentId = this.objViewModel.currentModel.idListaPrecoPai ?? 0;
+                        int currentPosition = 0;
+                        int i = 0;
+
+                        if (currentId != 0)
                         {
-                            this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
-                            i++;
+                            currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
+
+                            while (i < currentPosition)
+                            {
+                                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                                i++;
+                            }
+                            this.PesquisarRegistro();
                         }
-                        this.PesquisarRegistro();
-                    }
-                    else
-                    {
-                        this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
-                    }
+                        else
+                        {
+                            this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                        }
+
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
+                        {
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                        }
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -363,9 +363,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.Delete(this.objViewModel.currentModel))
                     {
@@ -373,11 +371,6 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                             button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         iExcluir = (int)this.objViewModel.currentModel.idListaPrecoPai;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -413,17 +406,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
             this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = true;
             this.objViewModel.hierarquiaListaPreco = null;
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
-        }
-
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
+            this.objViewModel.bWorkerNovo.RunWorkerAsync();
         }
         private bool NovoCanExecute()
         {
@@ -444,17 +427,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
                 this.objViewModel.bCompListaAut = true;
             }
 
-            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
-        }
-
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
+            this.objViewModel.bWorkerAlterar.RunWorkerAsync();
         }
         private bool AlterarCanExecute()
         {
@@ -463,31 +436,32 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
+            if (objViewModel.message.Cancelar())
+            {
+                this.objViewModel.navigatePesquisa = new MyObservableCollection<int>(
                 collection: this.objService.GetAllIdsListaPreco());
-            int currentId = this.idOld;
-            int currentPosition = 0;
-            int i = 0;
-            if (currentId != 0)
-            {
-                currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
-
-                while (i < currentPosition)
+                int currentId = this.idOld;
+                int currentPosition = 0;
+                int i = 0;
+                if (currentId != 0)
                 {
-                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
-                    i++;
-                }
+                    currentPosition = this.objViewModel.navigatePesquisa.IndexOf(item: currentId);
 
+                    while (i < currentPosition)
+                    {
+                        this.objViewModel.navegarBaseCommand.Execute(parameter: "btnProximo");
+                        i++;
+                    }
+
+                }
+                else
+                {
+                    this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
+                }
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+                this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
             }
-            else
-            {
-                this.objViewModel.navegarBaseCommand.Execute(parameter: "btnPrimeiro");
-                //this.objViewModel.currentID = this.objViewModel.navigatePesquisa.FirstOrDefault();
-            }
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
-            this.objViewModel.bCompGeral = this.objViewModel.bCompListaAut = this.objViewModel.bCompListaManual = false;
         }
         private bool CancelarCanExecute()
         {
@@ -498,10 +472,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -512,17 +483,13 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
 
         void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            try
+            if (e.Error != null)
             {
-                this.objViewModel.currentID = (int)e.Result;
-                this.getListaPreco(sender: this, e: null);
-                this.objViewModel.copyBaseCommand.Execute(null);
-                this.IniciaCollection();
+                throw new Exception(message: e.Error.Message);
             }
-            catch (Exception)
+            else
             {
-
-                throw;
+                this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
             }
         }
 
@@ -530,7 +497,7 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
         {
             try
             {
-                e.Result = this.objService.Copy(objModel: this.objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
@@ -556,21 +523,10 @@ namespace HLP.Entries.ViewModel.Commands.Comercial
             }
         }
 
-        public void ExecPesquisa(object id)
+        public void ExecPesquisa()
         {
-            //this.objViewModel.pesquisarBaseCommand.Execute(null);
-            //this.PesquisarRegistro();
-            int iId;
-
-            if (id != null)
-                if (int.TryParse(s: id.ToString(), result: out iId))
-                {
-                    this.objViewModel.selectedId = iId;
-                    BackgroundWorker bw = new BackgroundWorker();
-                    bw.DoWork += new DoWorkEventHandler(this.getListaPrecoHierarquia);
-                    bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-                    bw.RunWorkerAsync(iId);
-                }
+            this.objViewModel.pesquisarBaseCommand.Execute(null);
+            this.PesquisarRegistro();
         }
 
         private void PesquisarRegistro()

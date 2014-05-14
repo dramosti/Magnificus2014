@@ -224,7 +224,8 @@
 					Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 					Text="{Binding currentModel.idDiaPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					Field="idDiaPagamento" ToolTip="Selecione um dia de pagamento a ser usado para calcular a data de vencimento. A data de vencimento é sempre arredondada para a data mais próxima especificada. O dia de pagamento pode ser especificado: " Table="Condicao_pagamento" FieldPesquisa="ID" TableView="vwDiaPagamento" WidthLabel="0">
+					Field="idDiaPagamento" ToolTip="Selecione um dia de pagamento a ser usado para calcular a data de vencimento. A data de vencimento é sempre arredondada para a data mais próxima especificada. O dia de pagamento pode ser especificado: " 
+                    Table="Condicao_pagamento" FieldPesquisa="ID" TableView="vwDiaPagamento" WidthLabel="0" nameWindow="WinDiaPagamento">
                     <Components:HlpPesquisa.Items>
                         <System:String>xDiaPagamento</System:String>
                         <System:String>xDescricao</System:String>

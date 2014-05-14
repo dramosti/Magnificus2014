@@ -85,7 +85,7 @@
                             <Grid>
                                 <Components:HlpEndereco 
                                     x:Name="gridEnderecos" 
-                                    ItemsSource="{Binding currentModel.lSite_Endereco}" 
+                                    ItemsSourceEnderecos="{Binding currentModel.lSite_Endereco}"
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"/>
                             </Grid>
                         </Expander>

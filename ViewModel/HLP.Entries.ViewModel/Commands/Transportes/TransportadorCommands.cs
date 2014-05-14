@@ -154,7 +154,7 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
+                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
                     object w = objViewModel.GetParentWindow(e.Result);
 
                     while (this.objViewModel.currentModel.lTransportador_Contato.Count(

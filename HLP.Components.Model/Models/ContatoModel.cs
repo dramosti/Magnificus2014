@@ -549,6 +549,29 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idContatoMotorista");
             }
         }
+        private int? _idCliente;
+        [ParameterOrder(Order = 49)]
+        public int? idCliente
+        {
+            get { return _idCliente; }
+            set
+            {
+                _idCliente = value;
+                base.NotifyPropertyChanged(propertyName: "idCliente");
+            }
+        }
+
+        private int? _idAgencia;
+        [ParameterOrder(Order = 50)]
+        public int? idAgencia
+        {
+            get { return _idAgencia; }
+            set
+            {
+                _idAgencia = value;
+                base.NotifyPropertyChanged(propertyName: "idAgencia");
+            }
+        }
 
         #region Propriedades não mapeadas utilizadas na view
 

@@ -246,7 +246,7 @@
                                         Command="{Binding changeStConnection}" 
                                         IsChecked="{Binding stConnection, Converter={StaticResource stConnectionConv}, UpdateSourceTrigger=Explicit}"
                                         Style="{StaticResource CheckBoxRedeOnline}"
-                                              Width="65"></CheckBox>
+                                              Width="65" Height="26"></CheckBox>
                                 </ControlTemplate>
                             </StatusBarItem.Template>
                         </StatusBarItem>                       
@@ -259,7 +259,7 @@
                         </StatusBarItem>
                         <StatusBarItem Grid.Column="7" x:Name="statusBarItemAtalhos"
                                        ContextMenuService.Placement="Top"
-                               >
+                               Content="Clique" Foreground="{StaticResource WhiteStandard}" >
                             <StatusBarItem.ContextMenu>
                                 <ContextMenu Style="{StaticResource ContextMenu}">
                                     <MenuItem                                                            
@@ -273,8 +273,7 @@
                                         </MenuItem.Template>
                                     </MenuItem>
                                 </ContextMenu>
-                            </StatusBarItem.ContextMenu>
-                            Clique
+                            </StatusBarItem.ContextMenu>                           
                         </StatusBarItem>
                     </StatusBar>
 
@@ -286,13 +285,13 @@
                         </Grid.RowDefinitions>
                         <DockPanel LastChildFill="True" Background="White">                            
                             <ToolBar x:Name="toolbarPrincipal" Visibility="{Binding winMan.vToolBar}" Height="45" Focusable="False"   Style="{StaticResource toolBarCadastro}">
-                                <Button 
+                                <Button
 								Command="{Binding winMan._currentTab._currentDataContext.commandNovo}" 
-								CommandParameter="{Binding winMan._currentTab._content}" Cursor="Hand"
+								Cursor="Hand"
 								Style="{DynamicResource Button_ADD}" Height="34" Width="34" Margin="3,0,0,0" ToolTip="Novo ( Alt + N )" Focusable="False">
                                     
                                 </Button>
-                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"  CommandParameter="{Binding winMan._currentTab._content}"  
+                                <Button Command="{Binding winMan._currentTab._currentDataContext.commandAlterar}"
 								Style="{DynamicResource Button_EDIT}" ToolTipService.ShowOnDisabled="True" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Alterar ( Alt + A )" Focusable="False">
                                     
                                 </Button>
@@ -301,7 +300,8 @@
                                     
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandSalvar}" 
-								CommandParameter="{Binding winMan._currentTab._content}" Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
+                                        CommandParameter="{Binding winMan._currentTab._content}"
+								Style="{DynamicResource Button_SAVE}" Margin="3,0,0,0" Width="34" Height="34" ToolTip="Salvar ( Alt + S )" Focusable="False">
                                     
                                 </Button>
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandCancelar}" Style="{DynamicResource Button_CANCEL}" Width="34" Height="34" Margin="3,0,0,0" ToolTip="Cancelar ( Alt + C )" Focusable="False">
@@ -349,11 +349,11 @@
                             </ToolBar>
                         </DockPanel>
                         <Rectangle Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-                        <TabControl Grid.Row="2"  
+                        <TabControl Grid.Row="2"
                                     Focusable="False"
 							IsSynchronizedWithCurrentItem="True"
 							SelectedItem="{Binding winMan._currentTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">
+							x:Name="tabControlItens" ItemsSource="{Binding winMan._lTabPagesAtivas}" Background="#FFEEEEF2">                            
                             <TabControl.ItemTemplate>
                                 <DataTemplate>
                                     <DockPanel Focusable="False" Height="24" LastChildFill="True">
@@ -369,19 +369,13 @@
                                         <Button DockPanel.Dock="Right" Width="17" Focusable="False" Height="17" Style="{DynamicResource BtnFechar}" FontFamily="OCR A Extended" FontSize="14.667">
                                             <ContentPresenter Content="-"/>
                                         </Button>
-
                                         <TextBlock Focusable="False" Grid.Column="0" Text="{Binding _header}" DockPanel.Dock="Left"/>
-                                        <!--<Label Grid.Column="0" Content="{Binding _header}"
-											DockPanel.Dock="Left"/>-->
                                     </DockPanel>
                                 </DataTemplate>
                             </TabControl.ItemTemplate>
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
-                                    <DockPanel Focusable="False" LastChildFill="True">
-                                        <DockPanel DockPanel.Dock="Right" LastChildFill="False">
-
-                                        </DockPanel>
+                                    <DockPanel Focusable="False" LastChildFill="True" x:Name="dkContent">                                        
                                         <ContentControl 
                                                         Focusable="False" Content="{Binding _content}"/>
                                     </DockPanel>

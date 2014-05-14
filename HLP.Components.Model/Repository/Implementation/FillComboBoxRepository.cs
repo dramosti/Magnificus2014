@@ -23,11 +23,8 @@ namespace HLP.Components.Model.Repository.Implementation
             List<modelToComboBox> lReturn = new List<Models.modelToComboBox>();
             if (UndTrabalho.ViewExistis(sNameView))
             {
-                if (regComboboxAccessor == null)
-                {
-                    regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}", sNameView),
+                regComboboxAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor(string.Format("SELECT * FROM {0}", sNameView),
                                          MapBuilder<modelToComboBox>.MapAllProperties().Build());
-                }
                 lReturn = regComboboxAccessor.Execute().ToList();
             }
             else

@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Comercial
 
     public class Tipo_ProdutoService
     {
-        const string xTabela = "Tipo_Produto;";
+        const string xTabela = "Tipo_produto;";
 
         HLP.Wcf.Entries.wcf_TipoProduto serviceNetwork;
         wcf_TipoProduto.Iwcf_TipoProdutoClient serviceWeb;

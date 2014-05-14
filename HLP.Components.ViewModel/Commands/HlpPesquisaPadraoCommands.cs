@@ -110,37 +110,40 @@ namespace HLP.Components.ViewModel.Commands
                 sql.Append("SELECT * FROM " + _objViewModel.sView);
                 List<string> sExpression = new List<string>();
 
-                if (_objViewModel.lFiltroAtivo.Where(C => C.COLUMN_NAME == "idEmpresa").Count() > 0)
+                if (_objViewModel.lFiltroAtivo != null)
                 {
-                    sExpression.Add("(idEmpresa = " + CompanyData.idEmpresa + ")");
-                    //sExpression.Add("AND");
-                }
-                // NUNCA IRÁ FILTRAR OS NÃO ATIVOS, VERIFICAR DEPOIS A REGRA!!
-                //if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "Ativo").Count() > 0)
-                //{
-                //    sExpression.Add("(Ativo = 1)");
-                //    sExpression.Add("AND");
-                //}
-
-                foreach (PesquisaPadraoModel filtro in _objViewModel.lFiltroAtivo)
-                {
-                    if (filtro.Valor != null)
+                    if (_objViewModel.lFiltroAtivo.Where(C => C.COLUMN_NAME == "idEmpresa").Count() > 0)
                     {
-                        if (filtro.Valor != "")
-                        {
-                            string inner = filtro.EOU;
-                            if (sExpression.Count() > 0)
-                                sExpression.Add(inner == "E" ? "AND" : "OR");
+                        sExpression.Add("(idEmpresa = " + CompanyData.idEmpresa + ")");
+                        //sExpression.Add("AND");
+                    }
+                    // NUNCA IRÁ FILTRAR OS NÃO ATIVOS, VERIFICAR DEPOIS A REGRA!!
+                    //if (_objViewModel.lFilers.Where(C => C.COLUMN_NAME == "Ativo").Count() > 0)
+                    //{
+                    //    sExpression.Add("(Ativo = 1)");
+                    //    sExpression.Add("AND");
+                    //}
 
-                            string sTipo = filtro.DATA_TYPE;
-                            string sCampo = filtro.COLUMN_NAME;
-                            string sValor = filtro.Valor;
-                            string sOperador = filtro.Operador;
-                            sExpression.Add("(" + sCampo + " " + filtro.GetFilter() + ")");
+                    foreach (PesquisaPadraoModel filtro in _objViewModel.lFiltroAtivo)
+                    {
+                        if (filtro.Valor != null)
+                        {
+                            if (filtro.Valor != "")
+                            {
+                                string inner = filtro.EOU;
+                                if (sExpression.Count() > 0)
+                                    sExpression.Add(inner == "E" ? "AND" : "OR");
+
+                                string sTipo = filtro.DATA_TYPE;
+                                string sCampo = filtro.COLUMN_NAME;
+                                string sValor = filtro.Valor;
+                                string sOperador = filtro.Operador;
+                                sExpression.Add("(" + sCampo + " " + filtro.GetFilter() + ")");
+                            }
                         }
                     }
-                }
 
+                }
                 if (this._objViewModel.campoSelecionado != ""
                     && this._objViewModel.campoSelecionado != null
                     )

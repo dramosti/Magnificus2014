@@ -28,13 +28,13 @@
         <local:CustomTextBlock x:Name="lblIm" Text="Inscrição Municipal" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"/>
         
         
-        <local:CustomCheckBox x:Name="cbPessoa" IsChecked="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel.stPessoa}" 
+        <local:CustomCheckBox x:Name="cbPessoa" IsChecked="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel.stPessoa, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                               Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Checked="CustomCheckBox_Checked" Unchecked="CustomCheckBox_Unchecked"/>
-        <local:CustomTextBox x:Name="txtCpfCnpj" Text="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel, Converter={StaticResource maksConv}}" 
+        <local:CustomTextBox x:Name="txtCpfCnpj" Text="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel, Converter={StaticResource maksConv}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                              Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
-        <local:CustomTextBox x:Name="txtRgIe" Text="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel, Converter={StaticResource maksConv}}" 
+        <local:CustomTextBox x:Name="txtRgIe" Text="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel, Converter={StaticResource maksConv}, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                              Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="100"/>
-        <local:CustomTextBox x:Name="txtIm" Text="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel.xIm}" 
+        <local:CustomTextBox x:Name="txtIm" Text="{Binding ElementName=ucPessoaFisicaJuridica, Path=DataContext.currentModel.xIm, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
                              Grid.Column="1" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </UserControl>

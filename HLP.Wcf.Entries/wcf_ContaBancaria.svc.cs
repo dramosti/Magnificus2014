@@ -111,7 +111,8 @@ namespace HLP.Wcf.Entries
                             new modelToTreeView
                             {
                                 id = c.idContaBancaria ?? 0,
-                                xDisplay = c.xNumeroConta + " - " + c.xDescricao
+                                xDisplay = c.xNumeroConta + " - " + c.xDescricao,
+                                xNameImage = "Conta_Bancaria"
                             });
                     }
                 }
@@ -122,6 +123,7 @@ namespace HLP.Wcf.Entries
 
                 t.id = b.idBanco ?? 0;
                 t.xDisplay = b.cBanco + " - " + b.xBanco;
+                t.xNameImage = "Banco";
 
                 t.lFilhos = new List<modelToTreeView>
             {
@@ -129,6 +131,7 @@ namespace HLP.Wcf.Entries
                 {
                     id = a.idAgencia ?? 0,
                     xDisplay = a.cAgencia + " - "+a.xAgencia,
+                    xNameImage = "Agencia",
                     lFilhos = lContas
                 }
             };

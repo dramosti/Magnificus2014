@@ -1,5 +1,7 @@
 ﻿using HLP.Base.ClassesBases;
 using HLP.Base.EnumsBases;
+using HLP.Components.Model.Models;
+using HLP.Components.Model.Repository.Interfaces;
 using HLP.Comum.Resources.Util;
 using HLP.Dependencies;
 using HLP.Entries.Model.Repository.Interfaces.Comercial;
@@ -24,10 +26,10 @@ namespace HLP.Wcf.Entries
         public ICliente_fornecedor_arquivoRepository cliente_fornecedor_arquivoRepository { get; set; }
 
         [Inject]
-        public ICliente_fornecedor_contatoRepository cliente_fornecedor_contatoRepository { get; set; }
+        public IContatoRepository cliente_fornecedor_contatoRepository { get; set; }
 
         [Inject]
-        public ICliente_fornecedor_EnderecoRepository cliente_fornecedor_enderecoRepository { get; set; }
+        public IHlpEnderecoRepository cliente_fornecedor_enderecoRepository { get; set; }
 
         [Inject]
         public ICliente_Fornecedor_ObservacaoRepository cliente_fornecedor_observacaoRepository { get; set; }
@@ -66,13 +68,13 @@ namespace HLP.Wcf.Entries
                 (list: this.cliente_fornecedor_arquivoRepository.GetAllCliente_fornecedor_arquivo(
                 idClienteFornecedor: id));
 
-                objCliente.lCliente_fornecedor_contato = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_contatoModel>
-                (list: this.cliente_fornecedor_contatoRepository.GetAllCliente_fornecedor_contato(
-                idClienteFornecedor: id));
+                objCliente.lCliente_fornecedor_contato = new ObservableCollectionBaseCadastros<ContatoModel>
+                (list: this.cliente_fornecedor_contatoRepository.GetContato_ByForeignKey(
+                id: id, xForeignKey: "idCliente"));
 
-                objCliente.lCliente_fornecedor_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel>
-                (list: this.cliente_fornecedor_enderecoRepository.GetAllCliente_Fornecedor_Endereco(
-                idClienteFornecedor: id));
+                objCliente.lCliente_fornecedor_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>
+                (list: this.cliente_fornecedor_enderecoRepository.GetAllObjetos(
+                idPK: id, sPK: "idClienteFornecedor"));
 
                 objCliente.lCliente_Fornecedor_Observacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Comercial.Cliente_Fornecedor_ObservacaoModel>
                 (list: this.cliente_fornecedor_observacaoRepository.GetAllCliente_Fornecedor_Observacao(
@@ -90,7 +92,7 @@ namespace HLP.Wcf.Entries
             }
             catch (Exception ex)
             {
-                Log.AddLog(xLog: ex.Message);
+                Log.AddLog(xLog: ex.Message + Environment.NewLine + ex.StackTrace);
                 throw new FaultException(reason: ex.Message);
             }
 
@@ -131,29 +133,29 @@ namespace HLP.Wcf.Entries
                 }
 
 
-                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_contatoModel item in obj.lCliente_fornecedor_contato)
+                foreach (ContatoModel item in obj.lCliente_fornecedor_contato)
                 {
                     switch (item.status)
                     {
                         case statusModel.criado:
                         case statusModel.alterado:
                             {
-                                item.idClienteFornecedor = (int)obj.idClienteFornecedor;
+                                item.idCliente = (int)obj.idClienteFornecedor;
                                 this.cliente_fornecedor_contatoRepository.Save(
-                                    objCliente_fornecedor_contato: item);
+                                    objContato: item);
                             }
                             break;
                         case statusModel.excluido:
                             {
-                                this.cliente_fornecedor_contatoRepository.DeletePorClienteFornecedor(
-                                    idClienteFornecedor: (int)item.idClienteFornecedorContato);
+                                this.cliente_fornecedor_contatoRepository.Delete(idContato:
+                                    item.idContato ?? 0);
                             }
                             break;
                     }
                 }
 
 
-                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel item in obj.lCliente_fornecedor_Endereco)
+                foreach (EnderecoModel item in obj.lCliente_fornecedor_Endereco)
                 {
                     switch (item.status)
                     {
@@ -162,13 +164,12 @@ namespace HLP.Wcf.Entries
                             {
                                 item.idClienteFornecedor = (int)obj.idClienteFornecedor;
                                 this.cliente_fornecedor_enderecoRepository.Save(
-                                    objCliente_Fornecedor_Endereco: item);
+                                    item);
                             }
                             break;
                         case statusModel.excluido:
                             {
-                                this.cliente_fornecedor_enderecoRepository.DeletePorClienteFornecedor(
-                                    idClienteFornecedor: (int)item.idEndereco);
+                                this.cliente_fornecedor_enderecoRepository.Delete(objEnderecoModel: item);
                             }
                             break;
                     }
@@ -258,10 +259,9 @@ namespace HLP.Wcf.Entries
                 this.cliente_fornecedorRepository.BeginTransaction();
                 this.cliente_fornecedor_arquivoRepository.DeletePorClienteFornecedor(
                     idClienteFornecedor: id);
-                this.cliente_fornecedor_contatoRepository.DeletePorClienteFornecedor(
-                    idClienteFornecedor: id);
-                this.cliente_fornecedor_enderecoRepository.DeletePorClienteFornecedor(
-                    idClienteFornecedor: id);
+                this.cliente_fornecedor_contatoRepository.DeleteContato_ByForeignKey(id: id, xForeignKey: "idCliente");
+                this.cliente_fornecedor_enderecoRepository.Delete(idFK: id,
+                    sNameFK: "idClienteFornecedor");
                 this.cliente_fornecedor_observacaoRepository.DeletePorClienteFornecedor(
                     idClienteFornecedor: id);
                 this.cliente_fornecedor_produtoRepository.DeletePorClienteFornecedor(
@@ -302,18 +302,18 @@ namespace HLP.Wcf.Entries
                         objCliente_fornecedor_arquivo: item);
                 }
 
-                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_contatoModel item in obj.lCliente_fornecedor_contato)
+                foreach (ContatoModel item in obj.lCliente_fornecedor_contato)
                 {
-                    item.idClienteFornecedor = (int)obj.idClienteFornecedor;
+                    item.idCliente = (int)obj.idClienteFornecedor;
                     this.cliente_fornecedor_contatoRepository.Copy(
-                        objCliente_fornecedor_contato: item);
+                        obj: item);
                 }
 
-                foreach (HLP.Entries.Model.Models.Comercial.Cliente_fornecedor_EnderecoModel item in obj.lCliente_fornecedor_Endereco)
+                foreach (EnderecoModel item in obj.lCliente_fornecedor_Endereco)
                 {
                     item.idClienteFornecedor = (int)obj.idClienteFornecedor;
                     this.cliente_fornecedor_enderecoRepository.Copy(
-                        objCliente_Fornecedor_Endereco: item);
+                        objEnderecoModel: item);
                 }
 
                 foreach (HLP.Entries.Model.Models.Comercial.Cliente_Fornecedor_ObservacaoModel item in obj.lCliente_Fornecedor_Observacao)

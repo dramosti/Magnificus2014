@@ -40,14 +40,14 @@
                 <!--Components-->
                 
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="1"
+                    Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idCSTICms, Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged}"					
                     ToolTip="have principal do registro da Situação Tributária para COFINS, campo autoinclemental.">
                 </Components:CustomTextBox>
                 <Components:CustomTextBox
-                    Grid.Column="2" Grid.Row="2"
+                    Grid.Column="2" Grid.Row="2" stCompPosicao="first"
                     Text="{Binding currentModel.cCSTIcms, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Digite o Código da Situação Tributária de Cofins definida pela legislação.">

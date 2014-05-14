@@ -74,13 +74,13 @@
                                 
                                 <!--Components-->
                                 
-                                <Components:CustomTextBox
+                                <Components:CustomTextBox stCompPosicao="fieldId"
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.idAgencia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									IsReadOnly="True"
 									ToolTip="Chave principal do registro da Agencia.">
                                 </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                <Components:CustomTextBox stCompPosicao="first"
                                     Grid.Column="2" Grid.Row="2"
                                     Text="{Binding currentModel.cAgencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"	
@@ -92,7 +92,7 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informa o nome por completo da Agência Bancária">
                                 </Components:CustomTextBox>
-                                <Components:HlpPesquisa 
+                                <Components:HlpPesquisa nameWindow="WinBanco"
                                         	Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
                                         	Text="{Binding currentModel.idBanco, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                         	IsEnabled="{Binding bIsEnabled}"
@@ -114,32 +114,17 @@
 									IsEnabled="{Binding bIsEnabled}"
 									ToolTip="Informar o Fax principal da Agencia Bancária.">
                                 </Components:CustomTextBox>
-                                <DataGrid
-                                         Grid.Column="6" Grid.Row="1" Grid.RowSpan="6"
+                                <Components:HlpContato
+                                    IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
+                                    ItemsSourceContatos="{Binding currentModel.lAgencia_ContatoModel}"
+                                    Grid.Column="6" Grid.Row="1" Grid.RowSpan="6"
                                          x:Name="dgvContato"
-                                         ItemsSource="{Binding currentModel.lAgencia_ContatoModel}"                          
-                                         IsEnabled="{Binding bIsEnabled}"
-                                         AutoGenerateColumns="False" 
-                                         SelectionUnit="CellOrRowHeader" 
-                                         CanUserReorderColumns="False"  
-                                         CanUserDeleteRows="True" >
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="Contatos" Width="*">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <ComboBox  
-                                            ItemsSource="{Binding Source={StaticResource lcontatos}}"
-                                            SelectedValuePath="id"
-                                            DisplayMemberPath="display"
-                                            SelectedValue="{Binding idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,  ValidatesOnDataErrors=True}" />
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-
-
-                                    </DataGrid.Columns>
-                                </DataGrid>
-
+                                    >
+                                    <Components:HlpContato.lColumns>
+                                        <System:String>xNome</System:String>
+                                        <System:String>xCargo</System:String>
+                                    </Components:HlpContato.lColumns>
+                                </Components:HlpContato>
                             </Grid>
                         </Expander>
                         <Expander Header="Endereco" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
@@ -157,7 +142,7 @@
                                 <Components:HlpEndereco
                                     Grid.Column="1" Grid.Row="1"                                    
                                     x:Name="dgvEndereco"
-                                    ItemsSource="{Binding currentModel.lAgencia_EnderecoModel}" 
+                                    ItemsSourceEnderecos="{Binding currentModel.lAgencia_EnderecoModel}"
                                     IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                                     />                                    
                             </Grid>
@@ -165,10 +150,10 @@
                     </Grid>
                 </AdornerDecorator>
             </TabItem>
-            <TabItem Header="Hierarquia">
-                <StackPanel>
-                    <TreeView Height="426" Margin="10,10,571,0"/>
-                </StackPanel>
+            <TabItem Header="Hierarquia" x:Name="tabHierarquia">
+                <AdornerDecorator>
+                    <ContentControl Content="{ Binding Path=hierarquiaConta, Mode=OneWay}"></ContentControl>
+                </AdornerDecorator>
             </TabItem>
         </TabControl>
     </Grid>

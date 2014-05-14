@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Components.Model.Models;
 using HLP.Comum.ViewModel.ViewModel;
 using HLP.Entries.Model.Models.Financeiro;
 using HLP.Entries.Services.Financeiro;
@@ -22,41 +23,30 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         public AgenciaCommands(AgenciaViewModel objViewModel)
         {
             objService = new AgenciaService();
-
             this.objViewModel = objViewModel;
-
             this.objViewModel.commandDeletar = new RelayCommand(paramExec => Delete(),
                     paramCanExec => objViewModel.deletarBaseCommand.CanExecute(null));
-
             this.objViewModel.commandSalvar = new RelayCommand(paramExec => Save(_panel: paramExec),
                     paramCanExec => SaveCanExecute(paramCanExec));
-
             this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(_panel: paramExec),
                    canExecute: paramCanExec => this.NovoCanExecute());
-
             this.objViewModel.commandAlterar = new RelayCommand(execute: paramExec => this.Alterar(_panel: paramExec),
                     canExecute: paramCanExec => this.AlterarCanExecute());
-
             this.objViewModel.commandCancelar = new RelayCommand(execute: paramExec => this.Cancelar(),
                     canExecute: paramCanExec => this.CancelarCanExecute());
-
             this.objViewModel.commandCopiar = new RelayCommand(execute: paramExec => this.Copy(),
             canExecute: paramCanExec => this.CopyCanExecute());
-
             this.objViewModel.commandPesquisar = new RelayCommand(execute: paramExec => this.ExecPesquisa(),
                         canExecute: paramCanExec => this.objViewModel.pesquisarBaseCommand.CanExecute(parameter: null));
-
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+            this.objViewModel.bWorkerHierarquia = new BackgroundWorker();
+            this.objViewModel.bWorkerHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bWorkerHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bWorkerHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
 
             objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
@@ -80,9 +70,25 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
+                foreach (int id in this.objViewModel.currentModel.lAgencia_ContatoModel.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lAgencia_ContatoModel.Add(
+                        item: new ContatoModel
+                        {
+                            idContato = id,
+                            status = Base.EnumsBases.statusModel.excluido
+                        });
+                }
+                foreach (int id in this.objViewModel.currentModel.lAgencia_EnderecoModel.idExcluidos)
+                {
+                    this.objViewModel.currentModel.lAgencia_EnderecoModel.Add(
+                        item: new EnderecoModel
+                        {
+                            idEndereco = id,
+                            status = Base.EnumsBases.statusModel.excluido
+                        });
+                }
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
-
             }
             catch (Exception ex)
             {
@@ -95,15 +101,18 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                objViewModel.currentModel = objService.SaveObject(
+                if (objViewModel.message.Save())
+                {
+                    this.objViewModel.currentModel = objService.SaveObject(
                     obj: this.objViewModel.currentModel);
+                    e.Result = e.Argument;
+                }
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            e.Result = e.Argument;
         }
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -115,17 +124,36 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
-                    object w = objViewModel.GetParentWindow(e.Result);
 
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
+
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
                         {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
                         }
-                    this.IniciaCollections();
+
+                        while (this.objViewModel.currentModel.lAgencia_ContatoModel.Count(i => i.status == Base.EnumsBases.statusModel.excluido) > 1)
+                        {
+                            this.objViewModel.currentModel.lAgencia_ContatoModel.RemoveAt(
+                                this.objViewModel.currentModel.lAgencia_ContatoModel.IndexOf(
+                                item: this.objViewModel.currentModel.lAgencia_ContatoModel.FirstOrDefault(i => i.status == Base.EnumsBases.statusModel.excluido)));
+                        }
+
+                        while (this.objViewModel.currentModel.lAgencia_EnderecoModel.Count(i => i.status == Base.EnumsBases.statusModel.excluido) > 1)
+                        {
+                            this.objViewModel.currentModel.lAgencia_EnderecoModel.RemoveAt(
+                                this.objViewModel.currentModel.lAgencia_EnderecoModel.IndexOf(
+                                item: this.objViewModel.currentModel.lAgencia_EnderecoModel.FirstOrDefault(i => i.status == Base.EnumsBases.statusModel.excluido)));
+                        }
+
+                        this.IniciaCollections();
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -150,21 +178,13 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             int iRemoved = (int)this.objViewModel.currentModel.idAgencia;
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.DeleteObject(id: this.objViewModel.currentModel.idAgencia ?? 0))
                     {
-                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        objViewModel.message.Excluido();
                         if (this.objViewModel.currentModel == null) this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -178,6 +198,14 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 else
                     throw ex;
             }
+            finally
+            {
+                if (this.objViewModel.currentModel == null)
+                {
+                    this.objViewModel.deletarBaseCommand.Execute(parameter: iRemoved);
+                    this.PesquisarRegistro();
+                }
+            }
         }
 
 
@@ -185,18 +213,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             this.objViewModel.currentModel = new AgenciaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
 
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
@@ -205,18 +223,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -224,9 +232,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {
@@ -237,11 +247,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
-                this.objViewModel.copyBaseCommand.Execute(null);
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -260,8 +266,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.currentID = (int)e.Result;
-                    this.GetAgencia(this, null);
+                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -274,7 +279,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                e.Result = this.objService.CopyObject(obj: this.objViewModel.currentModel);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception ex)
             {
@@ -308,11 +313,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void PesquisarRegistro()
         {
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.GetAgencia);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
-
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -320,6 +321,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             try
             {
                 this.IniciaCollections();
+                this.objViewModel.bTreeCarregada = false;
             }
             catch (Exception ex)
             {
@@ -329,9 +331,84 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void GetAgencia(object sender, DoWorkEventArgs e)
         {
-            if (this.objViewModel.currentID != 0)
-                this.objViewModel.currentModel =
-                    this.objService.GetObject(id: this.objViewModel.currentID);
+            this.objViewModel.currentModel =
+                this.objService.GetObject(id: this.objViewModel.currentID);
+        }
+        #endregion
+
+        #region Hierarquia
+
+        bool bOpCancelada = false;
+
+        public void MontraTreeView()
+        {
+            TreeView t = new TreeView();
+            t.Items.Add(newItem:
+            new TreeViewItem
+            {
+                Header = "Hierarquia..."
+            });
+
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "Carregando Hierarquia...";
+
+            this.objViewModel.hierarquiaConta = txt;
+
+            if (this.bOpCancelada)
+            {
+                txt.Text = "Cancelando carregamento de Hierarquia anterior, por favor, aguarde...";
+                this.objViewModel.hierarquiaConta = txt;
+            }
+            else
+            {
+                this.objViewModel.bWorkerHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bTreeCarregada = true;
+            }
+        }
+
+        void bwHierarquia_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception(message: e.Error.Message);
+            }
+            else
+            {
+                if (this.bOpCancelada)
+                {
+                    this.bOpCancelada = false;
+                    this.MontraTreeView();
+                }
+                else
+                {
+                    this.objViewModel.hierarquiaConta = (TreeView)e.Result;
+                }
+            }
+        }
+
+        void bwHierarquia_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (!this.bOpCancelada)
+                    this.GetHierarquiaSite();
+                if (!this.bOpCancelada)
+                {
+                    this.objViewModel.lObjHierarquia.MontaHierarquia(this.objViewModel.lObjHierarquia, ((TreeView)e.Argument).Items[0] as TreeViewItem);
+                    e.Result = e.Argument;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void GetHierarquiaSite()
+        {
+            this.objViewModel.lObjHierarquia = new modelToTreeView();
+            this.objViewModel.lObjHierarquia = this.objService.GetHierarquia((int)this.objViewModel.currentModel.idAgencia);
         }
         #endregion
 

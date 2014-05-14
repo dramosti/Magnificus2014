@@ -1,4 +1,5 @@
-﻿using HLP.Entries.Model.Models.Financeiro;
+﻿using HLP.Components.Model.Models;
+using HLP.Entries.Model.Models.Financeiro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,8 @@ namespace HLP.Wcf.Entries
 
         [OperationContract]
         AgenciaModel CopyObject(AgenciaModel Objeto);
+
+        [OperationContract]
+        modelToTreeView GetHierarquia(int idAgencia);
     }
 }

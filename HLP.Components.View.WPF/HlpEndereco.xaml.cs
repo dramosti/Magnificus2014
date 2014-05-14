@@ -23,21 +23,20 @@ namespace HLP.Components.View.WPF
     {
         public HlpEndereco()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
-        public IEnumerable ItemsSource
+        public IEnumerable ItemsSourceEnderecos
         {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
+            get { return (IEnumerable)GetValue(ItemsSourceEnderecosProperty); }
+            set { SetValue(ItemsSourceEnderecosProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemsSource.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(HlpEndereco), new PropertyMetadata());
+        // Using a DependencyProperty as the backing store for ItemsSourceEnderecos.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemsSourceEnderecosProperty =
+            DependencyProperty.Register("ItemsSourceEnderecos", typeof(IEnumerable), typeof(HlpEndereco), new PropertyMetadata());
 
-
-
+        
         public bool IsReadOnlyUserControl
         {
             get { return (bool)GetValue(IsReadOnlyProperty); }

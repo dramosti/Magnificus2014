@@ -292,7 +292,7 @@ namespace HLP.Entries.Model.Models.Comercial
     public partial class Produto_RevisaoModel : modelBase
     {
         public Produto_RevisaoModel()
-            : base(xTabela: "")
+            : base(xTabela: "Produto_Revisao")
         {
         }
         private int? _idProdutoRevisao;

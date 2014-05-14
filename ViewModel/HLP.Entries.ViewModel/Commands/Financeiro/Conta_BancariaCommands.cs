@@ -48,19 +48,12 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
 
-            this.objViewModel.bwHierarquia = new BackgroundWorker();
-            this.objViewModel.bwHierarquia.WorkerSupportsCancellation = true;
-            this.objViewModel.bwHierarquia.DoWork += bwHierarquia_DoWork;
-            this.objViewModel.bwHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
+            this.objViewModel.bWorkerHierarquia.WorkerSupportsCancellation = true;
+            this.objViewModel.bWorkerHierarquia.DoWork += bwHierarquia_DoWork;
+            this.objViewModel.bWorkerHierarquia.RunWorkerCompleted += bwHierarquia_RunWorkerCompleted;
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
-
-            objViewModel.bWorkerNovo.DoWork += bwNovo_DoWork;
-            objViewModel.bWorkerNovo.RunWorkerCompleted += bwNovo_RunWorkerCompleted;
-
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
 
             objViewModel.bWorkerCopy.DoWork += bwCopy_DoWork;
             objViewModel.bWorkerCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
@@ -76,8 +69,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         public void Save(object _panel)
         {
             try
-            {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
+            {                
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
@@ -91,8 +83,12 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                this.objViewModel.currentModel.idContaBancaria =
+                if (objViewModel.message.Save())
+                {
+                    this.objViewModel.currentModel.idContaBancaria =
                     this.objService.SaveObject(obj: this.objViewModel.currentModel);
+                    e.Result = e.Argument;
+                }                
             }
             catch (Exception ex)
             {
@@ -100,6 +96,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             e.Result = e.Argument;
         }
+
         void bwSalvar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -110,16 +107,19 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: e.Result as Panel);
-                    object w = objViewModel.GetParentWindow(e.Result);
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
                         {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
                         }
+                    }
                 }
             }
             catch (Exception ex)
@@ -143,21 +143,13 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
             try
             {
-                if (MessageBox.Show(messageBoxText: "Deseja excluir o cadastro?",
-                    caption: "Excluir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
-                    == MessageBoxResult.Yes)
+                if (objViewModel.message.Excluir())
                 {
                     if (this.objService.DeleteObject(id: this.objViewModel.currentID))
                     {
-                        MessageBox.Show(messageBoxText: "Cadastro excluido com sucesso!", caption: "Ok",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
+                        objViewModel.message.Excluido();
                         iExcluir = (int)this.objViewModel.currentModel.idContaBancaria;
                         this.objViewModel.currentModel = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show(messageBoxText: "Não foi possível excluir o cadastro!", caption: "Falha",
-                            button: MessageBoxButton.OK, icon: MessageBoxImage.Exclamation);
                     }
                 }
             }
@@ -186,19 +178,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             this.objViewModel.currentModel = new Conta_bancariaModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerNovo.RunWorkerAsync(argument: _panel);
         }
-
-        void bwNovo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwNovo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
-
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
@@ -207,18 +187,8 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
 
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -226,9 +196,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {
@@ -239,10 +211,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                BackgroundWorker bwCopy = new BackgroundWorker();
-                bwCopy.DoWork += bwCopy_DoWork;
-                bwCopy.RunWorkerCompleted += bwCopy_RunWorkerCompleted;
-                bwCopy.RunWorkerAsync();
+                this.objViewModel.bWorkerCopy.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -261,8 +230,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
                 }
                 else
                 {
-                    this.objViewModel.currentModel = e.Result as Conta_bancariaModel;
-                    this.objViewModel.copyBaseCommand.Execute(null);
+                    this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
                 }
             }
             catch (Exception ex)
@@ -275,8 +243,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
         {
             try
             {
-                e.Result =
-                    this.objService.CopyObject(id: this.objViewModel.currentID);
+                this.objViewModel.copyBaseCommand.Execute(null);
             }
             catch (Exception)
             {
@@ -311,14 +278,11 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
 
         private void PesquisarRegistro()
         {
-            if (this.objViewModel.bwHierarquia.IsBusy)
+            if (this.objViewModel.bWorkerHierarquia.IsBusy)
             {
                 this.bOpCancelada = true;
             }
-            BackgroundWorker bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(this.getConta_Bancaria);
-            bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-            bw.RunWorkerAsync();
+            objViewModel.bWorkerPesquisa.RunWorkerAsync();
 
         }
 
@@ -361,7 +325,7 @@ namespace HLP.Entries.ViewModel.Commands.Financeiro
             }
             else
             {
-                this.objViewModel.bwHierarquia.RunWorkerAsync(argument: t);
+                this.objViewModel.bWorkerHierarquia.RunWorkerAsync(argument: t);
                 this.objViewModel.bTreeCarregada = true;
             }
         }

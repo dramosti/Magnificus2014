@@ -122,9 +122,9 @@ namespace HLP.Components.Model.Models
             }
         }
 
-        private int _idCidade;
+        private int? _idCidade;
         [ParameterOrder(Order = 12)]
-        public int idCidade
+        public int? idCidade
         {
             get { return _idCidade; }
             set
@@ -148,9 +148,11 @@ namespace HLP.Components.Model.Models
         public int? idTransportador { get; set; }
         [ParameterOrder(Order = 19)]
         public int? idAgencia { get; set; }
+
         private HLP.WebServices.Cep ws;
 
         private HLP.WebServices.Endereco _end;
+
         private HLP.WebServices.Endereco end
         {
             get { return _end; }
@@ -179,7 +181,7 @@ namespace HLP.Components.Model.Models
                         {
                             this._xCepOld = this.xCEP;
                             this.end = ws.BuscaEndereco(this.xCEP);
-                            if (end != null)
+                            if (end != null && this.status != Base.EnumsBases.statusModel.nenhum)
                             {
                                 xEndereco = end.Logradouro;
                                 xBairro = end.Bairro;

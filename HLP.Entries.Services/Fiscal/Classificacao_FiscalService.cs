@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Fiscal
 
     public class Classificacao_FiscalService
     {
-        const string xTabela = "Classificacao_Fiscal;";
+        const string xTabela = "Classificacao_fiscal;";
 
         HLP.Wcf.Entries.wcf_ClassificacaoFiscal serviceNetwork;
         wcf_ClassificacaoFiscal.Iwcf_ClassificacaoFiscalClient serviceWeb;

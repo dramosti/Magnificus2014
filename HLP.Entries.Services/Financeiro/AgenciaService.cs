@@ -11,7 +11,7 @@ namespace HLP.Entries.Services.Financeiro
 {
     public class AgenciaService
     {
-        const string xTabela = "Agencia;";
+        const string xTabela = "Agencia;Contato;Enderecos;";
 
         HLP.Wcf.Entries.wcf_Agencia serviceNetwork;
         wcf_Agencia.Iwcf_AgenciaClient serviceWeb;
@@ -145,6 +145,26 @@ namespace HLP.Entries.Services.Financeiro
                 case StConnection.OnlineWeb:
                     {
                         return this.serviceWeb.CopyObject(Objeto: obj);
+                    }
+                case StConnection.Offline:
+                default:
+                    {
+                        return null;
+                    }
+            }
+        }
+
+        public HLP.Components.Model.Models.modelToTreeView GetHierarquia(int idAgencia)
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.serviceNetwork.GetHierarquia(idAgencia: idAgencia);
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                        return this.serviceWeb.GetHierarquia(idAgencia: idAgencia);
                     }
                 case StConnection.Offline:
                 default:

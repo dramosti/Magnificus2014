@@ -11,7 +11,7 @@ namespace HLP.Components.Model.Repository.Interfaces
     {
         void Save(ContatoModel objContato);
         void Delete(int idContato);
-        int Copy(int idContato);
+        int Copy(ContatoModel obj);
         ContatoModel GetContato(int idContato);
         List<ContatoModel> GetAllContato();
         List<ContatoModel> GetContato_ByClienteFornec(int idContato);
