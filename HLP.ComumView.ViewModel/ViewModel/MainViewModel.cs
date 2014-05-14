@@ -266,7 +266,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
                         (item as System.Windows.Controls.MenuItem).Focusable = false;
                         ResourceDictionary rs = new ResourceDictionary
                         {
-                            Source = new Uri(uriString: "pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml")
+                            Source = new Uri(uriString: "pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml")
                         };
                         (item as System.Windows.Controls.MenuItem).Style = rs["MenuItemPrincipal"] as Style;
                     }

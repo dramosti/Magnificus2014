@@ -11,6 +11,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}">
                 <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus"></EventSetter>
@@ -150,7 +151,7 @@
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Bottom">
-            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}" />
+            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Foreground="Black" FontFamily="Segoe UI Symbol"/>
         </Grid>
         <Grid Margin="0,3,0,0">
             <DataGrid x:Name="dgvResult" 
