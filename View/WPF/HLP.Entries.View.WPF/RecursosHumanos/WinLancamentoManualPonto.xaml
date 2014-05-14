@@ -6,8 +6,9 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:convertComum="clr-namespace:HLP.Comum.View.Converters;assembly=HLP.Comum.View"
-             xmlns:conv ="clr-namespace:HLP.Entries.View.WPF.Converters"
-             xmlns:Components="clr-namespace:HLP.Comum.View.Components;assembly=HLP.Comum.View" x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
+             xmlns:conv ="clr-namespace:HLP.Entries.View.WPF.Converters"             
+             xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"     
+             x:Class="HLP.Entries.View.WPF.RecursosHumanos.WinLancamentoManualPonto" 
              mc:Ignorable="d" x:Name="winLancamentoManual"            
              d:DesignHeight="400" d:DesignWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{x:Null}" Title="Lançamento Manual do Ponto" WindowStyle="ToolWindow">
     <Window.Resources>

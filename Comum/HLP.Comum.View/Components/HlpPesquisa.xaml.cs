@@ -30,7 +30,8 @@ namespace HLP.Comum.View.Components
     public partial class HlpPesquisa : BaseControl
     {
 
-        private IservicePesquisaRapidaClient servicoPesquisaRapida;
+        private IservicePesquisaRapidaClient serviceWeb;
+
 
         private ICommand PesquisarCommand { get; set; }
         private ICommand InserirCommand { get; set; }
@@ -68,8 +69,8 @@ namespace HLP.Comum.View.Components
             int iValida;
             if (int.TryParse(sValor, out iValida))
             {
-                if (this.servicoPesquisaRapida == null)
-                    this.servicoPesquisaRapida = new IservicePesquisaRapidaClient();
+                if (this.serviceWeb == null)
+                    this.serviceWeb = new IservicePesquisaRapidaClient();
 
                 if (!sValor.Equals("0"))
                 {
@@ -78,7 +79,7 @@ namespace HLP.Comum.View.Components
 
                     int i = CompanyData.idEmpresa;
 
-                    var objRet = await this.servicoPesquisaRapida.GetValorDisplayAsync
+                    var objRet = await this.serviceWeb.GetValorDisplayAsync
                          (
                          _TableView: this.TableView,
                          _Items: teste,
