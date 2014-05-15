@@ -8,7 +8,7 @@
         xmlns:src="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
         Title="Família de Produtos" Height="660" Width="1200" NameView="vwFamiliaProduto">
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,7 +27,8 @@
                     <System:String>vwClasseFinanceiraToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-        </ResourceDictionary>        
+            <convert:NotConverter x:Key="notConverter"/>
+        </ResourceDictionary>
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -58,7 +59,7 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -66,17 +67,17 @@
                                 <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Sigla" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Grau" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="1"
+                                    Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                                     Text="{Binding currentModel.idFamiliaProduto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								    IsReadOnly="True"
 								    ToolTip="Chave principal do registro da família de produto">
                                 </Components:CustomTextBox>
                                 <Components:CustomTextBox
-                                    Grid.Column="2" Grid.Row="2"
+                                    Grid.Column="2" Grid.Row="2" stCompPosicao="first"
                                     Text="{Binding currentModel.xFamiliaProduto, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Digite um código para a recém-criada família de produto, além disso você poderá classificar as famílias de produtos de forma que o campo possa ser um parâmetro para pesquisas ou filtros de relatórios.">
@@ -103,7 +104,7 @@
                                         <System:String>1-Sintético</System:String>
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
-                                
+
                             </Grid>
                         </Expander>
                         <Expander Header="Representante" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="1">
@@ -121,14 +122,14 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Percentual Comissão avista" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Percentual comissão aprazo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
@@ -141,7 +142,7 @@
 								    IsEnabled="{Binding bIsEnabled}"
 								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a condução de vendas for Cartão de Débito e Crédito, Cheques e valores Líquidos ou Duplicatas geradas.">
                                 </Components:CustomTextBox>
-                                
+
                             </Grid>
                         </Expander>
                         <Expander Header="Configuração" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Grid.Row="2">
@@ -162,7 +163,7 @@
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                
+
                                 <!--Label-->
 
                                 <Components:CustomTextBlock Text="Percentual de Desconto Máximo" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -170,9 +171,9 @@
                                 <Components:CustomTextBlock Text="Conta Contábil" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Centro de Custo" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                                 <Components:CustomTextBlock Text="Altera descrição comercial do produto em Vendas" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                                
+
                                 <!--Components-->
-                                
+
                                 <Components:CustomTextBox
                                     Grid.Column="2" Grid.Row="1"
                                     Text="{Binding currentModel.pDescontoMaximo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource porcentagemConverter}}"
@@ -220,7 +221,7 @@
                 <AdornerDecorator>
                     <DataGrid 
                     ItemsSource="{Binding currentModel.lFamilia_Produto_ClassesModel}"
-                    IsEnabled="{Binding bIsEnabled}"
+                    IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" 
                           CanUserReorderColumns="False"
@@ -270,12 +271,11 @@
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
-                            </DataGridTemplateColumn>                            
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </AdornerDecorator>
             </TabItem>
         </TabControl>
-
     </DockPanel>
 </runtime:WindowsBase>

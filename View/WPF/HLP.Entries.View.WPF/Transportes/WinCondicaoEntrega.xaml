@@ -54,13 +54,13 @@
                 
                 <!--Components-->
 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro da Condição de Entrega.">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"

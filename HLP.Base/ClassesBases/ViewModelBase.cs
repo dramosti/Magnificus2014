@@ -887,63 +887,93 @@ namespace HLP.Base.ClassesBases
         private void CopyExecute()
         {
             object pk;
+            if (this.objviewModel.currentModel == null)
+                return;
+
             foreach (var item in this.objviewModel.currentModel.GetType().GetProperties())
             {
-                pk = item.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
-
-                if (pk != null)
+                try
                 {
-                    if (((PrimaryKey)pk).isPrimary)
-                    {
-                        item.SetValue(obj: this.objviewModel.currentModel, value: null);
-                    }
-                }
-                else if (item.PropertyType.GetProperties().Count(i => i.PropertyType.BaseType.Name == "modelBase") > 0)
-                {
-                    var m = this.objviewModel.currentModel.GetType().
-                        GetProperty(name: item.Name).GetValue(obj: this.objviewModel.currentModel);
+                    pk = item.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
 
-                    if ((m as ICollection).Count > 0)
+                    if (pk != null)
                     {
-
-                        foreach (var subItem in m as ICollection)
+                        if (((PrimaryKey)pk).isPrimary)
                         {
-                            foreach (var propSubItem in subItem.GetType().GetProperties())
+                            item.SetValue(obj: this.objviewModel.currentModel, value: null);
+                        }
+                    }
+                    else if (item.PropertyType.BaseType.Name == "modelBase")
+                    {
+                        foreach (var propItem in item.PropertyType.GetProperties())
+                        {
+                            pk = propItem.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
+
+                            if (pk != null)
                             {
-                                pk = propSubItem.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
-
-                                if (pk != null)
+                                if (((PrimaryKey)pk).isPrimary)
                                 {
-
-                                    if (((PrimaryKey)pk).isPrimary)
-                                    {
-                                        propSubItem.SetValue(obj: subItem, value: null);
-                                    }
+                                    object v = this.objviewModel.currentModel.GetType().GetProperty(name: item.Name)
+                                        .GetValue(obj: this.objviewModel.currentModel);
+                                    if (v != null)
+                                        propItem.SetValue(obj: v, value: null);
                                 }
                             }
-
-                            subItem.GetType().GetProperty(name: "status").SetValue(obj: subItem, value: statusModel.criado);
                         }
                     }
-                }
-                else if (item.PropertyType.BaseType.Name == "modelBase")
-                {
-                    foreach (var propItem in item.PropertyType.GetProperties())
+                    else
                     {
-                        pk = propItem.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
-
-                        if (pk != null)
+                        foreach (PropertyInfo pi in item.PropertyType.GetProperties())
                         {
-                            if (((PrimaryKey)pk).isPrimary)
+                            try
                             {
-                                object v = this.objviewModel.currentModel.GetType().GetProperty(name: item.Name)
-                                    .GetValue(obj: this.objviewModel.currentModel);
-                                if (v != null)
-                                    propItem.SetValue(obj: v, value: null);
+                                if (pi.PropertyType.BaseType != null)
+                                    if (pi.PropertyType.BaseType.Name == "modelBase")
+                                    {
+                                        var m = this.objviewModel.currentModel.GetType().
+                                GetProperty(name: item.Name).GetValue(obj: this.objviewModel.currentModel);
+                                        if (m != null)
+                                        {
+                                            if ((m as ICollection).Count > 0)
+                                            {
+
+                                                foreach (var subItem in m as ICollection)
+                                                {
+                                                    foreach (var propSubItem in subItem.GetType().GetProperties())
+                                                    {
+                                                        pk = propSubItem.GetCustomAttributes(true).FirstOrDefault(i => i.GetType() == typeof(PrimaryKey));
+
+                                                        if (pk != null)
+                                                        {
+
+                                                            if (((PrimaryKey)pk).isPrimary)
+                                                            {
+                                                                propSubItem.SetValue(obj: subItem, value: null);
+                                                            }
+                                                        }
+                                                    }
+
+                                                    subItem.GetType().GetProperty(name: "status").SetValue(obj: subItem, value: statusModel.criado);
+                                                }
+                                            }
+                                        }
+                                    }
                             }
+                            catch (Exception)
+                            {
+                                
+                                throw;
+                            }
+                            
                         }
                     }
                 }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
             }
 
             this.currentOp = OperacaoCadastro.criando;

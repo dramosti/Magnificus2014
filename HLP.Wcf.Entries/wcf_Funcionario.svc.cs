@@ -61,36 +61,38 @@ namespace HLP.Wcf.Entries
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
 
-                var listaArquivos = this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
-                    idFuncionario: idFuncionario);
-                if (listaArquivos.Count > 0)
-                    objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
-                        listaArquivos);
+                if (objFuncionario != null)
+                {
+                    var listaArquivos = this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
+                        idFuncionario: idFuncionario);
+                    if (listaArquivos.Count > 0)
+                        objFuncionario.lFuncionario_Arquivo = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_ArquivoModel>(list:
+                            listaArquivos);
 
-                var listaCertif = this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
-                    idFuncionario: idFuncionario);
-                if (listaCertif.Count > 0)
-                    objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>(list:
-                        listaCertif);
+                    var listaCertif = this.funcionario_CertificacaoRepository.GetAllFuncionario_Certificacao(
+                        idFuncionario: idFuncionario);
+                    if (listaCertif.Count > 0)
+                        objFuncionario.lFuncionario_Certificacao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_CertificacaoModel>(list:
+                            listaCertif);
 
-                var listaComissaoProduto = this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
-                    idFuncionario: idFuncionario);
-                if (listaComissaoProduto.Count > 0)
-                    objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel>(list:
-                        listaComissaoProduto);
+                    var listaComissaoProduto = this.funcionario_Comissao_ProdutoRepository.GetAllFuncionario_Comissao_Produto(
+                        idFuncionario: idFuncionario);
+                    if (listaComissaoProduto.Count > 0)
+                        objFuncionario.lFuncionario_Comissao_Produto = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Comissao_ProdutoModel>(list:
+                            listaComissaoProduto);
 
-                var listaEndereco = this.hlpEnderecoRepository.GetAllObjetos(idPK:
-                    idFuncionario, sPK: "idFuncionario");
-                if (listaEndereco.Count > 0)
-                    objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>(list:
-                        listaEndereco);
+                    var listaEndereco = this.hlpEnderecoRepository.GetAllObjetos(idPK:
+                        idFuncionario, sPK: "idFuncionario");
+                    if (listaEndereco.Count > 0)
+                        objFuncionario.lFuncionario_Endereco = new ObservableCollectionBaseCadastros<EnderecoModel>(list:
+                            listaEndereco);
 
-                var listaMargem = this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
-                    idFuncionario: idFuncionario);
-                if (listaMargem.Count > 0)
-                    objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel>(list:
-                        listaMargem);
-
+                    var listaMargem = this.funcionario_Margem_Lucro_ComissaoRepository.GetAllFuncionario_Margem_Lucro_Comissao(
+                        idFuncionario: idFuncionario);
+                    if (listaMargem.Count > 0)
+                        objFuncionario.lFuncionario_Margem_Lucro_Comissao = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Funcionario_Margem_Lucro_ComissaoModel>(list:
+                            listaMargem);
+                }
                 return objFuncionario;
             }
             catch (Exception ex)
@@ -336,25 +338,27 @@ namespace HLP.Wcf.Entries
             if (idFuncionario == 0)
                 return null;
 
-            modelToTreeView nodeTemp;
+            modelToTreeView nodeTemp = null;
 
             HLP.Entries.Model.Models.Gerais.FuncionarioModel f = this.getFuncionario(idFuncionario: idFuncionario);
-            int? idResponsavel = f.idResponsavel;
-            modelToTreeView nodeActual = new modelToTreeView
+            if (f != null)
             {
-                id = (int)f.idFuncionario,
-                xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
-            };
-
-            while (f.idResponsavel != null)
-            {
-                f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
-
-                nodeTemp = new modelToTreeView
+                int? idResponsavel = f.idResponsavel;
+                modelToTreeView nodeActual = new modelToTreeView
                 {
                     id = (int)f.idFuncionario,
-                    xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
-                    lFilhos = new List<modelToTreeView>()
+                    xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
+                };
+
+                while (f.idResponsavel != null)
+                {
+                    f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
+
+                    nodeTemp = new modelToTreeView
+                    {
+                        id = (int)f.idFuncionario,
+                        xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
+                        lFilhos = new List<modelToTreeView>()
                     {
                         new modelToTreeView
                         {
@@ -363,31 +367,32 @@ namespace HLP.Wcf.Entries
                             lFilhos = nodeActual.lFilhos
                         }
                     }
-                };
+                    };
 
-                nodeActual = nodeTemp;
+                    nodeActual = nodeTemp;
 
-            }
+                }
 
-            nodeTemp = nodeActual;
-            while (nodeActual.id != idFuncionario)
-            {
-                nodeActual = nodeActual.lFilhos.FirstOrDefault();
-            }
-
-            var lFilhos = this.funcionarioRepository.GetFuncionarioFilho(idResponsavel: nodeActual.id);
-
-            if (lFilhos != null)
-            {
-                nodeActual.lFilhos = new List<modelToTreeView>();
-                foreach (var i in lFilhos)
+                nodeTemp = nodeActual;
+                while (nodeActual.id != idFuncionario)
                 {
-                    nodeActual.lFilhos.Add(
-                        item: new modelToTreeView
-                        {
-                            id = (int)i.idFuncionario,
-                            xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
-                        });
+                    nodeActual = nodeActual.lFilhos.FirstOrDefault();
+                }
+
+                var lFilhos = this.funcionarioRepository.GetFuncionarioFilho(idResponsavel: nodeActual.id);
+
+                if (lFilhos != null)
+                {
+                    nodeActual.lFilhos = new List<modelToTreeView>();
+                    foreach (var i in lFilhos)
+                    {
+                        nodeActual.lFilhos.Add(
+                            item: new modelToTreeView
+                            {
+                                id = (int)i.idFuncionario,
+                                xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
+                            });
+                    }
                 }
             }
             return nodeTemp;

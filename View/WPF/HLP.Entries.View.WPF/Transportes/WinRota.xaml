@@ -57,13 +57,13 @@
 
                 <!--Components-->
 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idRota, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                     IsReadOnly="True"
 					ToolTip="Chave principal da Rota">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xRota, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
@@ -72,9 +72,9 @@
                 <Components:HlpPesquisa	
                         Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 						Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay,
-                        NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                        NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						ToolTip="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." WidthLabel="157" FieldPesquisa="ID" TableView="vwListaPrecoPai">
+						ToolTip="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." WidthLabel="157" FieldPesquisa="ID" TableView="vwListaPrecoPai" nameWindow="WinListaPreco">
                     <Components:HlpPesquisa.Items>
                         <System:String>xLista</System:String>
                         <System:String>xCodigoListaPreco</System:String>
@@ -82,7 +82,7 @@
                 </Components:HlpPesquisa>
                 <Components:CustomCheckBox
                     Grid.Column="2" Grid.Row="4"
-                    IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                    IsChecked="{Binding currentModel.Ativo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Informar se Rota esta ativa para a utilização, quando desativado o usuário não consegue visualiza-la.">
                 </Components:CustomCheckBox>

@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.Static;
 using HLP.Components.Model.Models;
 using HLP.Comum.Resources.RecursosBases;
 using System;
@@ -719,7 +720,7 @@ namespace HLP.Entries.Model.Models.Gerais
 
                     //TODO: Reestruturação: Verificar qual a melhor forma de fazer este recurso
 
-                    Window w = new Window();
+                    Window w = Sistema.GetOpenWindow(xName: "WinFuncionario");
 
                     if (w != null)
                     {

@@ -144,7 +144,8 @@ namespace HLP.Entries.Model.Models.Gerais
         public ObservableCollectionBaseCadastros<Plano_pagamento_linhasModel> lPlano_pagamento_linhasModel
         {
             get { return _lPlano_pagamento_linhasModel; }
-            set { _lPlano_pagamento_linhasModel = value; base.NotifyPropertyChanged("lPlano_pagamento_linhasModel"); }
+            set { _lPlano_pagamento_linhasModel = value; 
+                base.NotifyPropertyChanged("lPlano_pagamento_linhasModel"); }
         }
     }
 

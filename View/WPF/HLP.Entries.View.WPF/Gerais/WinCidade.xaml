@@ -42,11 +42,11 @@
                 <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                 
                 <!--Components-->
-                <Components:CustomTextBox 
+                <Components:CustomTextBox  stCompPosicao="fieldId"
                     IsReadOnly="True"
                     Text="{Binding currentModel.idCidade, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"                                      
                     Grid.Column="2" Grid.Row="1"/>
-                <Components:CustomTextBox 
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2"  Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xCidade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     IsEnabled="{Binding bIsEnabled}"/>

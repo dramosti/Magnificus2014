@@ -142,7 +142,7 @@
                                             Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"           
 											Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwRamoAtividade">
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwRamoAtividade" nameWindow="WinRamoAtividade">
                                                 <Components:HlpPesquisa.Items>
                                                     <System:String>xRamo</System:String>
                                                     <System:String>xDescricao</System:String>
@@ -152,7 +152,7 @@
 												Grid.Column="2" Grid.Row="7" Height="20" Grid.ColumnSpan="3"
 												Text="{Binding currentModel.idMoeda, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 												IsEnabled="{Binding bIsEnabled}"
-												WidthLabel="0" FieldPesquisa="ID" TableView="vwMoeda" Margin="0,1,0,2">
+												WidthLabel="0" FieldPesquisa="ID" TableView="vwMoeda" Margin="0,1,0,2" nameWindow="WinMoeda">
                                                 <Components:HlpPesquisa.Items>
                                                     <System:String>xSiglaMoeda</System:String>
                                                     <System:String>xMoeda</System:String>
@@ -402,7 +402,7 @@
 											Text="{Binding currentModel.idRota, Mode=TwoWay, 
                                             NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwRota">
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwRota" nameWindow="WinRota">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xRota</System:String>
                                                 <System:String>Ativo</System:String>
@@ -417,7 +417,7 @@
 											Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 											Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwDeposito">
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwDeposito" nameWindow="WinDeposito">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xDeposito</System:String>
                                                 <System:String>xDescricao</System:String>
@@ -427,7 +427,7 @@
                                             Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											Grid.Column="2" Grid.Row="8" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwSite">
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwSite" nameWindow="WinSite">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xSite</System:String>
                                                 <System:String>xDescricao</System:String>
@@ -494,7 +494,7 @@
                                             Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwPlanoPagamento">
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwPlanoPagamento" nameWindow="WinPlanoPagamento">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xCondicaoPagamento</System:String>
                                                 <System:String>xDescricao</System:String>
@@ -597,7 +597,7 @@
 											Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" FieldPesquisa="ID" TableView="vwTransportador">
+											WidthLabel="0" FieldPesquisa="ID" TableView="vwTransportador" nameWindow="WinTransportadora">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xNome</System:String>
                                                 <System:String>xFantasia</System:String>
@@ -607,7 +607,7 @@
 											Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 											Text="{Binding currentModel.idTransportador, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}"
-											WidthLabel="0" TableView="vwTransportador" FieldPesquisa="ID">
+											WidthLabel="0" TableView="vwTransportador" FieldPesquisa="ID" nameWindow="WinTransportadora">
                                             <Components:HlpPesquisa.Items>
                                                 <System:String>xNome</System:String>
                                                 <System:String>xFantasia</System:String>
@@ -1393,7 +1393,8 @@
 									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idCondicaoEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Selecione as condições de entrega padrão para o cliente selecionado. Você pode alterar as condições de entrega no cabeçalho da Pedido de venda antes de faturar, se apropriado. " WidthLabel="0" FieldPesquisa="ID" TableView="vwCondicaoEntrega">
+									ToolTip="Selecione as condições de entrega padrão para o cliente selecionado. Você pode alterar as condições de entrega no cabeçalho da Pedido de venda antes de faturar, se apropriado. "
+                                    WidthLabel="0" FieldPesquisa="ID" TableView="vwCondicaoEntrega" nameWindow="WinCondicaoEntrega">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xCondicaoEntrega</System:String>
                                         <System:String>xDescricao</System:String>
@@ -1403,7 +1404,8 @@
 									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idModosEntrega, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Modo de entrega que se aplica à venda para o cliente selecionado. " WidthLabel="0" FieldPesquisa="ID" TableView="vwModoEntrega">
+									ToolTip="Modo de entrega que se aplica à venda para o cliente selecionado. " 
+                                    WidthLabel="0" FieldPesquisa="ID" TableView="vwModoEntrega" nameWindow="WinModoEntrega">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xModosEntrega</System:String>
                                         <System:String>xDescricao</System:String>
@@ -1412,7 +1414,8 @@
                                 <Components:HlpPesquisa
                                     Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
                                     IsEnabled="{Binding bIsEnabled}"
-                                    ToolTip="Dias nos quais o cliente deseja receber seus pedidos de vendas." WidthLabel="0" TableView="vwCalendario" FieldPesquisa="ID">
+                                    ToolTip="Dias nos quais o cliente deseja receber seus pedidos de vendas." WidthLabel="0" TableView="vwCalendario" FieldPesquisa="ID"
+                                    nameWindow="WinCalendario">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xNome</System:String>
                                         <System:String>xDescricao</System:String>
@@ -1472,7 +1475,8 @@
 									Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informar o tipo de documento que tornará padrão para o cliente, caso esteja em branco o software utilizará como padrão o Tipo de Documento definido em configurações do comercial" WidthLabel="0" FieldPesquisa="ID" TableView="vwTipoDocumento">
+									ToolTip="Informar o tipo de documento que tornará padrão para o cliente, caso esteja em branco o software utilizará como padrão o Tipo de Documento definido em configurações do comercial" WidthLabel="0" FieldPesquisa="ID" TableView="vwTipoDocumento"
+                                    nameWindow="WinTipoDocumento">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xTpdoc</System:String>
                                         <System:String>stDocumento</System:String>

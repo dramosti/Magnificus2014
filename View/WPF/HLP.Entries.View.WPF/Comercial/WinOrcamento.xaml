@@ -211,7 +211,7 @@
                     Grid.Column="7" Grid.Row="2" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.idTipoDocumento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar o Tipo de Documento" TableView="vwTipoDocumento" FieldPesquisa="ID" WidthLabel="0">
+					ToolTip="Informar o Tipo de Documento" TableView="vwTipoDocumento" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinTipoDocumento">
                     <Components:HlpPesquisa.Items>
                         <System:String>xTpdoc</System:String>
                         <System:String>stDocumento</System:String>
@@ -237,7 +237,7 @@
                     Grid.Column="7" Grid.Row="4" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.idCondicaoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="Informar o representante do orçamento de vendas" TableView="vwCondicaoPagamento" FieldPesquisa="ID" WidthLabel="0">
+					ToolTip="Informar o representante do orçamento de vendas" TableView="vwCondicaoPagamento" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinCondicaoPagamento">
                     <Components:HlpPesquisa.Items>
                         <System:String>xCondicaoPagamento</System:String>
                         <System:String>xDescricao</System:String>

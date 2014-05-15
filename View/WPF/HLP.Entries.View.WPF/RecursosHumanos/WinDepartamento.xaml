@@ -45,12 +45,12 @@
                 
                 <!--Components-->
 
-                <Components:CustomTextBox 
+                <Components:CustomTextBox stCompPosicao="fieldId"
                                       IsReadOnly="True"
                                       Text="{Binding currentModel.idDepartamento, Mode=TwoWay,  UpdateSourceTrigger=PropertyChanged}"
                                       ToolTip="Chave principal do registro do Departamento"
                                       Grid.Column="2" Grid.Row="1"/>               
-                <Components:CustomTextBox  
+                <Components:CustomTextBox  stCompPosicao="first"
                                        Grid.Column="2"  Grid.Row="2" Grid.ColumnSpan="2"
                                        Text="{Binding currentModel.xDepartamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                        IsEnabled="{Binding bIsEnabled}"
@@ -62,7 +62,7 @@
                 <Components:HlpPesquisa Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"
                     Text="{Binding currentModel.idSetor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
                     x:Name="teste" TableView="vwSetor" FieldPesquisa="ID"
-                                 IsEnabled="{Binding bIsEnabled}" WidthLabel="0">
+                                 IsEnabled="{Binding bIsEnabled}" WidthLabel="0" nameWindow="WinSetor">
                     <Components:HlpPesquisa.Items>
                         <System:String>xSetor</System:String>
                         <System:String>xDescricao</System:String>

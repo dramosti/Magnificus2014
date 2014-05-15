@@ -43,13 +43,13 @@
                 <Components:CustomTextBlock Text="Código ISO 4217" Grid.Column="1" Grid.Row="5"/>
                 <!--Components-->
                 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 					IsReadOnly="True"
 					ToolTip="Chave principal do registro da Moeda, campo autoincremental">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xSiglaMoeda, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
                     NotifyOnValidationError=True, ValidatesOnDataErrors=True}"

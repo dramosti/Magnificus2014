@@ -33,7 +33,7 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
 
         public CalendarioViewModel() 
         {
-            this.currentModel = new CalendarioModel();
+            //this.currentModel = new CalendarioModel();
             commands = new CalendarioCommand(objViewModel: this);
         }
 

@@ -55,27 +55,37 @@ namespace HLP.Wcf.Entries
         {
             iPlano_pagamentoRepository.BeginTransaction();
 
-            iPlano_pagamentoRepository.Save(obj);
-
-            foreach (var item in obj.lPlano_pagamento_linhasModel)
+            try
             {
-                switch (item.status)
+                iPlano_pagamentoRepository.Save(obj);
+
+                foreach (var item in obj.lPlano_pagamento_linhasModel)
                 {
-                    case statusModel.criado:
-                    case statusModel.alterado:
-                        {
-                            item.idPlanoPagamento = (int)obj.idPlanoPagamento;
-                            iPlano_pagamento_linhasRepository.Save(item);
-                        }
-                        break;
-                    case statusModel.excluido:
-                        {
-                            iPlano_pagamento_linhasRepository.Delete((int)item.idLinhasPagamento);
-                        }
-                        break;
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            {
+                                item.idPlanoPagamento = (int)obj.idPlanoPagamento;
+                                iPlano_pagamento_linhasRepository.Save(item);
+                            }
+                            break;
+                        case statusModel.excluido:
+                            {
+                                iPlano_pagamento_linhasRepository.Delete((int)item.idLinhasPagamento);
+                            }
+                            break;
+                    }
                 }
+                iPlano_pagamentoRepository.CommitTransaction();
             }
-            iPlano_pagamentoRepository.CommitTransaction();
+            catch (Exception ex)
+            {
+                iPlano_pagamentoRepository.RollackTransaction();
+                throw new FaultException(
+                    reason: ex.Message);
+            }
+
             return obj;
         }
 
