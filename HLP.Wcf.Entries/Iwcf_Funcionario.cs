@@ -13,7 +13,7 @@ namespace HLP.Wcf.Entries
     public interface Iwcf_Funcionario
     {
         [OperationContract]
-        HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario);
+        HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario, bool bGetChild = true);
 
         [OperationContract]
         HLP.Entries.Model.Models.Gerais.FuncionarioModel saveFuncionario(HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario);

@@ -20,7 +20,7 @@ using System.Windows.Threading;
 namespace HLP.Base.ClassesBases
 {
     public class ViewModelBase<T> : INotifyPropertyChanged where T : class
-    {
+    {        
         public MessageHlp message { get; set; }
         public ViewModelBase()
         {

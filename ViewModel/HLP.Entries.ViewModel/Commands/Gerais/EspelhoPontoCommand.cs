@@ -15,19 +15,25 @@ using HLP.Base.Static;
 using HLP.Entries.Services.RecursosHumanos;
 using HLP.Base.Modules;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
+using HLP.Entries.Model.Models.RecursosHumanos;
+using HLP.Entries.Model.Models.Gerais;
+using HLP.Components.Model.Models;
+using HLP.Entries.Services.Gerais;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
     public class EspelhoPontoCommand
     {
-        FuncionarioPontoService servico;
+        FuncionarioPontoService servicoFuncPonto;
+        FuncionarioService servicoFuncionario;
         public EspelhoPontoViewModel objViewModel;
-
+        private bool bCanNavega { get; set; }
 
         public EspelhoPontoCommand(EspelhoPontoViewModel objViewModel)
         {
+            
             this.objViewModel = objViewModel;
-            servico = new FuncionarioPontoService();
+            servicoFuncPonto = new FuncionarioPontoService();
 
             this.objViewModel.commandNovo = new RelayCommand(execute: paramExec => this.Novo(),
                   canExecute: paramCanExec => false);
@@ -51,7 +57,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                        canExecute: paramCanExec => true);
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
-                canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+                canExecute: paramCanExec => this.CanNavegar(paramCanExec));
 
 
             this.objViewModel.carregarCommand = new RelayCommand(execute: paramExec => this.CarragaFormulario(),
@@ -82,28 +88,24 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 {
                     throw ex;
                 }
-
             }
+
+            this.objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.ExecutePesquisa);
+
         }
 
 
-
-        public void PrevirewReport()
+        public void CarragaFormulario() 
         {
-            //1 - GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto) // trazer horarios do dia
-            //1-1 - GetHorasTrabalhadasDia
-            //1-2 - GetHorasAtrabalharDia
-
-
-            Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
-            winReport.ShowDialog();
+            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
-        public void CarragaFormulario()
+
+        public void ExecutePesquisa(object sender, DoWorkEventArgs e)
         {
             try
             {
-                this.objViewModel.currentModel.objFuncBancoHoras = servico.GetTotalBancoHorasMesAtual(objViewModel.currentModel.idFuncionario,
+                this.objViewModel.currentModel.objFuncBancoHoras = servicoFuncPonto.GetTotalBancoHorasMesAtual(objViewModel.currentModel.idFuncionario,
                  objViewModel.currentModel.data);
 
                 // IGUAL A NULL É PORQUE MES AINDA NÃO FOI FECHADO.
@@ -159,10 +161,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     this.objViewModel.currentModel.objFuncBancoHoras = new Model.Models.Gerais.Funcionario_BancoHorasModel();
                     this.objViewModel.currentModel.objFuncBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
                     this.objViewModel.currentModel.objFuncBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
-                    this.objViewModel.currentModel.objFuncBancoHoras.iDiasTrabalhados = servico.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
+                    this.objViewModel.currentModel.objFuncBancoHoras.iDiasTrabalhados = servicoFuncPonto.GetTotalDiasTrabalhadosMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data);
                     this.objViewModel.currentModel.objFuncBancoHoras.tHorastrabalhadas = tsTotalHorasTrabalhadas.ToStringHoras();
-                    this.objViewModel.currentModel.objFuncBancoHoras.tHorasAtrabalhar = servico.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data).ToStringHoras();
-                    this.objViewModel.currentModel.objFuncBancoHoras.tSaldoTotalAnterior = servico.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data).ToStringHoras();
+                    this.objViewModel.currentModel.objFuncBancoHoras.tHorasAtrabalhar = servicoFuncPonto.GetHorasATrabalharMes(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data).ToStringHoras();
+                    this.objViewModel.currentModel.objFuncBancoHoras.tSaldoTotalAnterior = servicoFuncPonto.GetTotalBancoHoras(objViewModel.currentModel.idFuncionario, objViewModel.currentModel.data).ToStringHoras();
                 }
                 this.objViewModel.currentModel.objFuncBancoHoras.tBancoHoras =
                        (
@@ -193,6 +195,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return bReturn;
         }
 
+        public bool CanNavegar(object paramCanExec) 
+        {
+            if (this.objViewModel.bWorkerPesquisa.IsBusy)
+                return false;
+
+            return objViewModel.navegarBaseCommand.CanExecute(paramCanExec);
+
+        }
+
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
@@ -210,7 +221,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 //funcBancoHoras.idFuncionario = objViewModel.currentModel.idFuncionario;
 
                 //funcBancoHoras.xMesAno = objViewModel.currentModel.data.ToString("MMyyyy").PadLeft(6, '0');
-                servico.SaveBancoHoras(objViewModel.currentModel.objFuncBancoHoras);
+                servicoFuncPonto.SaveBancoHoras(objViewModel.currentModel.objFuncBancoHoras);
                 this.CarragaFormulario();
             }
             catch (Exception ex)
@@ -237,7 +248,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     caption: "Reabrir?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)
                     == MessageBoxResult.Yes)
                 {
-                    servico.DeleteBancoHorasMes(objViewModel.currentModel.idFuncionario,
+                    servicoFuncPonto.DeleteBancoHorasMes(objViewModel.currentModel.idFuncionario,
                             objViewModel.currentModel.data);
                     this.CarragaFormulario();
                 }
@@ -268,7 +279,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(-1);
             }
-            this.CarragaFormulario();
+            //this.CarragaFormulario();
         }
 
         private void Novo() { }
@@ -285,6 +296,61 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 throw ex;
             }
+        }
+
+        public void PrevirewReport()
+        {
+            EspelhoPontoPrintModel objPrintPonto = new EspelhoPontoPrintModel();
+            EmpresaModel objEmpresa = CompanyData.objEmpresaModel as EmpresaModel;
+            EnderecoModel objEnderEmpresa = null;
+            if (objEmpresa.lEmpresa_endereco.Count() > 0)
+                if (objEmpresa.lEmpresa_endereco.Where(c => ((byte)c.stPrincipal) == 0).Count() > 0)
+                    objEnderEmpresa = objEmpresa.lEmpresa_endereco.FirstOrDefault((c => ((byte)c.stPrincipal) == 0));
+                else
+                    objEnderEmpresa = objEmpresa.lEmpresa_endereco.FirstOrDefault();
+            objPrintPonto.xEmpresa = objEmpresa.xNome;
+            if (objEnderEmpresa != null)
+            {
+                objPrintPonto.xEndereco = string.Format("{0}, Nº{1}, BAIRRO: {2}",
+                    objEnderEmpresa.xEndereco.ToUpper(),
+                    objEnderEmpresa.nNumero.ToUpper(),
+                    objEnderEmpresa.xBairro.ToUpper());
+            }
+            objPrintPonto.xMesAno = string.Format("PONTO ASSOCIADO AO MÊS DE {0} DE {1}",
+                this.objViewModel.currentModel.data.ToString("MMMMMMMMM").ToUpper(),
+                this.objViewModel.currentModel.data.Year);
+
+            if (servicoFuncionario == null)
+                servicoFuncionario = new FuncionarioService();
+            HeaderEspelhoPontoPrintModel objHeader;
+            foreach (int item in this.objViewModel.navigatePesquisa)
+            {
+                FuncionarioModel objFunc = servicoFuncionario.GetObject(item, false);// corrigir service
+                objHeader = new HeaderEspelhoPontoPrintModel();
+                objHeader.xNomeFuncionario = objFunc.xNome;
+                objHeader.xCodigoAlternativo = objFunc.xCodigoAlternativo;
+                objHeader.xCpf = objFunc.xCpf;
+                objHeader.idCalendario = objFunc.idCalendario;
+                objPrintPonto.lHeaderFuncionario.Add(objHeader);
+            }
+
+
+
+            List<KeyValuePair<int, string>> lHorariosPrincipais = new List<KeyValuePair<int, string>>();
+            foreach (int item in objPrintPonto.lHeaderFuncionario.Select(c => c.idCalendario).Distinct())
+            {
+
+            }
+
+
+
+            //1 - GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto) // trazer horarios do dia
+            //1-1 - GetHorasTrabalhadasDia
+            //1-2 - GetHorasAtrabalharDia
+
+
+            Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
+            winReport.ShowDialog();
         }
 
     }
