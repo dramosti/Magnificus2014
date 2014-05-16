@@ -46,27 +46,29 @@ namespace HLP.Wcf.Entries
             try
             {
                 objTransportador = this.transportadorRepository.GetTransportador(idTransportador: id);
-                objTransportador.lTransportador_Endereco =
-                    new ObservableCollectionBaseCadastros<EnderecoModel>(
-                        list: this.hlpEnderecoRepository.GetAllObjetos(idPK: id, sPK: "idTransportador"));
+                if (objTransportador != null)
+                {
+                    objTransportador.lTransportador_Endereco =
+                        new ObservableCollectionBaseCadastros<EnderecoModel>(
+                            list: this.hlpEnderecoRepository.GetAllObjetos(idPK: id, sPK: "idTransportador"));
 
-                objTransportador.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel>(
-                    list: this.transportador_VeiculosRepository.GetAllTransportador_Veiculos(
-                    idTransportador: id));
+                    objTransportador.lTransportador_Veiculos = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Transportes.Transportador_VeiculosModel>(
+                        list: this.transportador_VeiculosRepository.GetAllTransportador_Veiculos(
+                        idTransportador: id));
 
-                var listContatos = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0, xForeignKey: "idContatoTransportador");
+                    var listContatos = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0, xForeignKey: "idContatoTransportador");
 
-                if (listContatos != null)
-                    objTransportador.lTransportador_Contato = new ObservableCollectionBaseCadastros<Components.Model.Models.ContatoModel>(
-                        list: listContatos);
+                    if (listContatos != null)
+                        objTransportador.lTransportador_Contato = new ObservableCollectionBaseCadastros<Components.Model.Models.ContatoModel>(
+                            list: listContatos);
 
-                var listMotoristas = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0,
-                    xForeignKey: "idContatoMotorista");
+                    var listMotoristas = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0,
+                        xForeignKey: "idContatoMotorista");
 
-                if (listMotoristas != null)
-                    objTransportador.lTransportador_Motorista = new ObservableCollectionBaseCadastros<ContatoModel>(
-                        list: listMotoristas);
-
+                    if (listMotoristas != null)
+                        objTransportador.lTransportador_Motorista = new ObservableCollectionBaseCadastros<ContatoModel>(
+                            list: listMotoristas);
+                }
                 return objTransportador;
             }
             catch (Exception ex)
@@ -75,7 +77,6 @@ namespace HLP.Wcf.Entries
                 throw new FaultException(reason: ex.Message);
             }
         }
-
         public TransportadorModel SaveObject(TransportadorModel obj)
         {
             try

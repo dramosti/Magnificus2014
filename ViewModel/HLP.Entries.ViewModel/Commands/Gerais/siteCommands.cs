@@ -136,7 +136,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
