@@ -5095,6 +5095,48 @@
         </Setter>
     </Style>
 
+    <Style x:Key="Button_REFRESH" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path" RepeatBehavior="Forever">
+                                <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1" RepeatBehavior="Forever">
+                                <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentpresenter" RepeatBehavior="Forever">
+                                <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="12"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Path x:Name="path" VerticalAlignment="Center" Data="M3.5,23.208696 L3.5,28.566666 28.400121,28.566666 28.400257,23.191761 25.858597,23.191752 25.81693,26.504166 6.15,26.545832 6.1916666,23.191671 z" Fill="#FF545454" HorizontalAlignment="Left" Height="8" Stretch="Fill" Stroke="White" StrokeThickness="0.2" Width="34.845" Margin="5.5,23.5,0,1.5"/>
+                        <Path x:Name="path1" Width="20" Height="25" VerticalAlignment="Center" Stretch="Fill" Fill="#FF545454" Data="F1 M 42,19.0002L 34,19.0002L 34,43.7502L 24,33.7502L 24,44.2502L 38,58.2502L 52,44.2502L 52,33.7502L 42,43.7502L 42,19.0002 Z " Margin="13,-0.049,12,8.049"/>
+                        <ContentPresenter x:Name="contentpresenter" Grid.Row="1" TextElement.FontFamily="Segoe UI Symbol" TextElement.FontSize="9" TextElement.Foreground="#FF545454" HorizontalAlignment="Center" VerticalAlignment="Center" Height="12.015"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="1">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="TesteDatabase" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>

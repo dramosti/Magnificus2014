@@ -119,6 +119,47 @@
             </Setter>
         </Style>
 
+        <Style x:Key="Button_REFRESH" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Storyboard1">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path" RepeatBehavior="Forever">
+                                    <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1" RepeatBehavior="Forever">
+                                    <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentpresenter" RepeatBehavior="Forever">
+                                    <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="14"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Path x:Name="path" VerticalAlignment="Center" Data="M3.5,23.208696 L3.5,28.566666 28.400121,28.566666 28.400257,23.191761 25.858597,23.191752 25.81693,26.504166 6.15,26.545832 6.1916666,23.191671 z" Fill="#FF545454" HorizontalAlignment="Left" Height="8" Stretch="Fill" Stroke="White" StrokeThickness="0.2" Width="34.845" Margin="5.833,20.164,0,2.836"/>
+                            <Path x:Name="path1" Width="18" Height="23" VerticalAlignment="Center" Stretch="Fill" Fill="#FF545454" Data="F1 M 42,19.0002L 34,19.0002L 34,43.7502L 24,33.7502L 24,44.2502L 38,58.2502L 52,44.2502L 52,33.7502L 42,43.7502L 42,19.0002 Z " Margin="12.5,-0.05,12.5,6.05"/>
+                            <ContentPresenter x:Name="contentpresenter" Grid.Row="0" TextElement.FontFamily="Segoe UI Symbol" TextElement.FontSize="12" TextElement.Foreground="#FF545454" HorizontalAlignment="Center" VerticalAlignment="Center" Height="18.094" Margin="-0.336,26.828,-0.254,0.078" Grid.RowSpan="2" Width="45.59"></ContentPresenter>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="1">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
         <Style x:Key="ButtonFecharMes" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand"/>
@@ -198,7 +239,7 @@
                     <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Next" Template="{StaticResource ButtonArrowNavigationRight}">
                     </Button>
                 </DockPanel>
-                <Button x:Name="btnCarregar" Command="{Binding carregarCommand}" Margin="6,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="70" Grid.RowSpan="2" Grid.Column="5" Content="Carregar" Style="{StaticResource ButtonRefresh}"/>
+        <Button x:Name="btnCarregar" Command="{Binding carregarCommand}" Margin="20,0,0,3" HorizontalAlignment="Left" Grid.Row="1" Width="45" Grid.RowSpan="2" Grid.Column="5" Content="Carregar" Style="{StaticResource Button_REFRESH}"/>
 
                 <Grid Margin="1,3,219,0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="6">
                     <Grid.ColumnDefinitions>
