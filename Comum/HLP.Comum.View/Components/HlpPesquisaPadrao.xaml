@@ -9,8 +9,7 @@
              FocusManager.FocusedElement="{Binding ElementName=dgvFilter}" Keyboard.KeyUp="winPesquisaPadrao_KeyUp_1">
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>                
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="RightAlignedCell" TargetType="{x:Type DataGridCell}">

@@ -247,7 +247,19 @@
         <GradientStop Color="Black" Offset="0"/>
         <GradientStop Color="#FF4774B5" Offset="1"/>
     </LinearGradientBrush>
-    
+
+    <!--FocuslVisual Estilo-->
+
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{StaticResource BlueStandard}" StrokeThickness="1.3"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--Menu e MenuItem-->
     
     
@@ -659,8 +671,7 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="BorderThickness" Value="1"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
@@ -900,6 +911,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 
     <!--Button Login-->
 
@@ -2537,19 +2549,7 @@
                 <Border BorderBrush="Transparent" BorderThickness="1"></Border>
             </AdornedElementPlaceholder>
         </DockPanel>
-    </ControlTemplate>
-
-    <!--FocuslVisual Estilo-->
-
-    <Style x:Key="FocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{StaticResource BlueStandard}" StrokeThickness="1.3"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    </ControlTemplate>    
 
     <!--Estilo HlpPesquisa-->
 
@@ -3107,6 +3107,11 @@
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -3211,15 +3216,110 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
                             </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-9.352"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-9.352"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-6.779"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-6.779"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-3.957"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-3.874"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.996"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-0.996"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="2.38"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-6.847"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.949"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-6.68"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-1.7"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-6.68"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1.909"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-6.64"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.743"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-6.674"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1.832"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path3">
+                                <EasingColorKeyFrame KeyTime="0:0:0.6" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path3">
+                                <EasingColorKeyFrame KeyTime="0:0:0.6" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path3">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.005"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path4">
+                                <EasingColorKeyFrame KeyTime="0:0:0.9" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path4">
+                                <EasingColorKeyFrame KeyTime="0:0:0.9" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path4">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path5">
+                                <EasingColorKeyFrame KeyTime="0:0:1.2" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path5">
+                                <EasingColorKeyFrame KeyTime="0:0:1.2" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path5">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path6">
+                                <EasingColorKeyFrame KeyTime="0:0:1.5" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path6">
+                                <EasingColorKeyFrame KeyTime="0:0:1.5" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path6">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Storyboard2">
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
-                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
-                            </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
                                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
@@ -3233,6 +3333,14 @@
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
                             </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.992"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.996"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="2.407"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.249"/>
+                            </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid>
@@ -3242,13 +3350,62 @@
                             <ColumnDefinition Width="4"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition Height="2"></RowDefinition>
                             <RowDefinition></RowDefinition>
-                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition Height="2"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454"></Ellipse>
                         <Path x:Name="path" Stretch="Fill" Height="20" Width="16" Grid.Column="1" Grid.Row="1" Fill="#FF545454" Data="F1 M 20,17L 44,17L 56,29L 56,59L 20,59L 20,17 Z M 24,21L 24,55L 52,55L 52,34L 39,34L 39,21L 24,21 Z M 43,21L 43,30L 52,30L 43,21 Z"></Path>
-                        <Path x:Name="path1" Stretch="Fill" Grid.Column="1" StrokeThickness="0.3" Stroke="White" Height="11" Width="11" Grid.Row="1" Fill="#FF47B54C" Data="F1 M 53.2929,21.2929L 54.7071,22.7071C 56.4645,24.4645 56.4645,27.3137 54.7071,29.0711L 52.2323,31.5459L 44.4541,23.7677L 46.9289,21.2929C 48.6863,19.5355 51.5355,19.5355 53.2929,21.2929 Z M 31.7262,52.052L 23.948,44.2738L 43.0399,25.182L 50.818,32.9601L 31.7262,52.052 Z M 23.2409,47.1023L 28.8977,52.7591L 21.0463,54.9537L 23.2409,47.1023 Z " Margin="14.103,6.697,0.897,8.302"></Path>
+                        <Path x:Name="path2" Grid.Column="1" Data="M11.9375,14.21875 L16.413238,14.21875" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.396,9.207,0,0" Grid.Row="1" Stretch="Fill"  VerticalAlignment="Top" Width="5.463">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path3" Grid.Column="1" Data="M11.9375,14.21875 L16.413238,14.21875" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.407,12.066,0,0" Grid.Row="1" Stretch="Fill"  VerticalAlignment="Top" Width="5.463">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path4" Grid.Column="1" Data="M11.666667,22.75 L21.342309,22.75" Opacity="1" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.417,14.788,0,0" Grid.Row="1" Stretch="Fill" VerticalAlignment="Top" Width="9">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                    <GradientStop Color="Transparent"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path5" Grid.Column="1" Data="M11.666667,22.75 L21.342309,22.75" HorizontalAlignment="Left" Height="1" Margin="7.407,17.738,0,0" Grid.Row="1" Stretch="Fill" VerticalAlignment="Top" Width="9" Fill="{x:Null}">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path6" Grid.Column="1" Data="M11.666667,22.75 L21.342309,22.75" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.407,21.111,0,0" Grid.Row="1" Stretch="Fill" VerticalAlignment="Top" Width="9">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path1" Stretch="Fill" Grid.Column="1" StrokeThickness="0.3" Stroke="White" Height="11" Width="11" Grid.Row="1" Fill="#FF47B54C" Data="F1 M 53.2929,21.2929L 54.7071,22.7071C 56.4645,24.4645 56.4645,27.3137 54.7071,29.0711L 52.2323,31.5459L 44.4541,23.7677L 46.9289,21.2929C 48.6863,19.5355 51.5355,19.5355 53.2929,21.2929 Z M 31.7262,52.052L 23.948,44.2738L 43.0399,25.182L 50.818,32.9601L 31.7262,52.052 Z M 23.2409,47.1023L 28.8977,52.7591L 21.0463,54.9537L 23.2409,47.1023 Z " Margin="14.103,6.697,0.897,8.302" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -3260,7 +3417,9 @@
                             </Trigger.EnterActions>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -3483,6 +3642,12 @@
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path2"></Setter>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -3597,7 +3762,7 @@
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
                                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF3434"/>
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
@@ -3613,7 +3778,7 @@
                             <RowDefinition Height="7"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Ellipse x:Name="ellipse" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="3" StrokeThickness="1.3" Stroke="#FF545454" Fill="White"/>
-                        <Path x:Name="path" Stretch="Fill" Grid.Column="1" Grid.Row="1" Fill="#FF545454" Data="F1 M 38,19C 48.4934,19 57,27.5066 57,38C 57,48.4934 48.4934,57 38,57C 27.5066,57 19,48.4934 19,38C 19,27.5066 27.5066,19 38,19 Z M 38,23.75C 35.2116,23.75 32.6102,24.5509 30.4134,25.9352L 50.0648,45.5866C 51.4491,43.3898 52.25,40.7884 52.25,38C 52.25,30.13 45.87,23.75 38,23.75 Z M 23.75,38C 23.75,45.8701 30.1299,52.25 38,52.25C 40.7884,52.25 43.3897,51.4491 45.5865,50.0649L 25.9351,30.4136C 24.5509,32.6103 23.75,35.2117 23.75,38 Z "/>
+                        <Path x:Name="path" Stretch="Fill" Grid.Column="1" Grid.Row="1" Fill="#FFFF3434" Data="F1 M 38,19C 48.4934,19 57,27.5066 57,38C 57,48.4934 48.4934,57 38,57C 27.5066,57 19,48.4934 19,38C 19,27.5066 27.5066,19 38,19 Z M 38,23.75C 35.2116,23.75 32.6102,24.5509 30.4134,25.9352L 50.0648,45.5866C 51.4491,43.3898 52.25,40.7884 52.25,38C 52.25,30.13 45.87,23.75 38,23.75 Z M 23.75,38C 23.75,45.8701 30.1299,52.25 38,52.25C 40.7884,52.25 43.3897,51.4491 45.5865,50.0649L 25.9351,30.4136C 24.5509,32.6103 23.75,35.2117 23.75,38 Z "/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -3625,7 +3790,8 @@
                             </Trigger.EnterActions>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -3801,13 +3967,16 @@
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="Button_PESQUISAR" TargetType="{x:Type Button}">
+    <Style x:Key="Button_PESQUISAR_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -3879,7 +4048,133 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_CONFIG" TargetType="{x:Type Button}">
+    <Style x:Key="Button_PESQUISAR" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2.254"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.246"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="5.823"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="4.329"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.428"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-4.054"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-5.133"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-6.71"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-6.959"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-5.584"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-0.209"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="2.916"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="3.041"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1.166"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.916"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-2.171"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.236"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.556"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="6.378"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="6.544"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="4.469"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="3.224"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0.319"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-3.167"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-6.292"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-4.292"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-1.792"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0.083"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFF8204"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF8204"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454" Margin="0.25,-0.291,-0.25,0.291"></Ellipse>
+                        <Path x:Name="path1" Height="18" Width="18" Grid.Column="1" Grid.Row="1" Data="F1 M4.9589647,0.098135195 C6.5842931,0.098135195 7.9018649,1.4157069 7.9018649,3.0410354 7.9018649,4.6663638 6.5842931,5.9839355 4.9589647,5.9839355 4.4023092,5.9839355 3.8817455,5.8293744 3.4286566,5.5701873 L1.3038591,7.6950083 C1.0280269,7.9708169 0.5808238,7.9708169 0.30499165,7.6950083 0.029183048,7.4191762 0.029183048,6.9719731 0.30499165,6.6961409 L2.4391593,4.5621616 C2.1706256,4.1182545 2.0160645,3.5976908 2.0160645,3.0410354 2.0160645,1.4157069 3.3336362,0.098135195 4.9589647,0.098135195 z M4.9589647,1.0398632 C3.8537526,1.0398632 2.9577925,1.9358233 2.9577925,3.0410354 2.9577925,4.1462474 3.8537526,5.0422075 4.9589647,5.0422075 6.0641767,5.0422075 6.9601368,4.1462474 6.9601368,3.0410354 6.9601368,1.9358233 6.0641767,1.0398632 4.9589647,1.0398632 z" StrokeDashArray="{x:Null}" Fill="#FFFF8204" Stretch="Fill" Stroke="White" StrokeThickness="0.3" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_CONFIG_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -3944,6 +4239,123 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_CONFIG" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="30"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="40"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="60"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="70"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="80"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="90"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="100"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="110"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="120"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="130"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="140"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="150"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="160"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="170"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="180"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="190"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="200"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="210"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="220"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="230"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="240"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="250"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="260"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="270"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="280"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.9" Value="290"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="300"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.1" Value="310"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="320"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.3" Value="330"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.4" Value="340"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="350"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.6" Value="360"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#00397DE0"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454" Margin="0.25,-0.291,-0.25,0.291"></Ellipse>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1" Height="20" Width="20" Stretch="Fill" Fill="#FF545454" Data="F1 M 38,23.5C 38.8643,23.5 39.7109,23.5756 40.5337,23.7206L 42.6275,18.5381L 48.1901,20.787L 46.0964,25.9692C 47.6473,27.0149 48.9851,28.3527 50.0308,29.9036L 55.213,27.8099L 57.4619,33.3725L 52.2794,35.4664C 52.4244,36.2891 52.5,37.1357 52.5,38C 52.5,38.8643 52.4244,39.7109 52.2794,40.5337L 57.4619,42.6275L 55.213,48.1901L 50.0308,46.0964C 49.0795,47.5073 47.8865,48.7418 46.5112,49.7405L 48.7844,54.8462L 43.3041,57.2891L 41.0307,52.1828C 40.0533,52.3906 39.0394,52.5 38,52.5C 37.1357,52.5 36.2891,52.4244 35.4664,52.2794L 33.3725,57.462L 27.8099,55.213L 29.9036,50.0309C 28.3527,48.9851 27.0149,47.6473 25.9691,46.0964L 20.787,48.1901L 18.538,42.6275L 23.7206,40.5336C 23.5756,39.7109 23.5,38.8643 23.5,38C 23.5,37.1357 23.5756,36.2891 23.7206,35.4664L 18.538,33.3725L 20.787,27.8099L 25.9691,29.9036C 26.9205,28.4927 28.1135,27.2582 29.4889,26.2594L 27.2157,21.1537L 32.6959,18.7109L 34.9694,23.8172C 35.9468,23.6094 36.9606,23.5 38,23.5 Z M 38,28C 32.4771,28 28,32.4772 28,38C 28,43.5229 32.4771,48 38,48C 43.5228,48 48,43.5229 48,38C 48,32.4772 43.5228,28 38,28 Z " Margin="3.125,3,2.875,3" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -4257,7 +4669,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_LIMPAR_PESQUISA" TargetType="{x:Type Button}">
+    <Style x:Key="Button_LIMPAR_PESQUISA_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -4322,6 +4734,216 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_LIMPAR_PESQUISA" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.39"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-2.072"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-25"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-39"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.33"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.14"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.954"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.602"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.722"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-39"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-1.736"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.31"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.123"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.252"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.8"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.774"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="3.68"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.499"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="2.347"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.191"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.596"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.335"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#034774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="path1">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="path2">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="2"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454"></Ellipse>
+                        <Rectangle x:Name="rectangle" Grid.Column="1" Grid.Row="1" Fill="#FF545454" HorizontalAlignment="Center" Height="4.668" Stroke="{x:Null}" StrokeThickness="0" VerticalAlignment="Top" Width="20" Margin="3.438,20.062,3.063,0"/>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1"  Height="18" Width="15" Stretch="Fill" Fill="#FF545454" Data="F1 M45.7433,48.2824 C43.1578,48.6418 39.9938,48.0327 36.7113,47.1532 31.1866,45.6728 26.8965,42.7258 25.5163,39.7952 L32.2902,33.0213 45.7433,38.0663 45.7433,48.2824 z M39.2905,28.1719 C39.6351,28.1719 39.9737,28.1941 40.3047,28.2368 L47.129701,15.716612 49.821168,16.987168 43.5443,29.4594 C45.1454,30.5622 46.1735,32.2733 46.1735,34.1946 46.1735,35.0197 45.9839,35.806 45.6407,36.5221 L33.4151,31.7762 C34.4796,29.6541 36.4722,28.1719 39.2905,28.1719 z" Stroke="White" StrokeThickness="0.5" Margin="4.584,3.5,6.415,8.5" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path x:Name="path1" Grid.Column="1" Height="4" Opacity="0" Width="6" Grid.Row="1" Stretch="Fill" Fill="#FF545454" Data="M 57,43.3622C 57,47.5131 53.6602,50.8778 49.5393,50.8778L 26.4607,50.8778C 22.3398,50.8778 19,47.5131 19,43.3622C 19,39.6133 21.7233,36.5075 25.2869,35.9396C 25.2404,35.6761 25.2151,35.4059 25.2151,35.1272C 25.2151,32.4972 27.3304,30.3649 29.944,30.3649C 31.1094,30.3649 32.1775,30.7893 32.9967,31.4952C 34.466,28.1635 36.3491,25.1222 41.6269,25.1222C 48.0278,25.1222 51.0594,30.0968 51.0594,35.3455C 51.0594,35.5651 51.0509,35.7825 51.0382,35.9978C 54.4413,36.6962 57,39.7277 57,43.3622 Z " Margin="18.59,13.801,1.409,12.198" StrokeThickness="0.2" Stroke="White" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path x:Name="path2" Grid.Column="1" Height="4" Opacity="0" Width="6" Grid.Row="1" Stretch="Fill" Fill="#FF545454" Data="M 57,43.3622C 57,47.5131 53.6602,50.8778 49.5393,50.8778L 26.4607,50.8778C 22.3398,50.8778 19,47.5131 19,43.3622C 19,39.6133 21.7233,36.5075 25.2869,35.9396C 25.2404,35.6761 25.2151,35.4059 25.2151,35.1272C 25.2151,32.4972 27.3304,30.3649 29.944,30.3649C 31.1094,30.3649 32.1775,30.7893 32.9967,31.4952C 34.466,28.1635 36.3491,25.1222 41.6269,25.1222C 48.0278,25.1222 51.0594,30.0968 51.0594,35.3455C 51.0594,35.5651 51.0509,35.7825 51.0382,35.9978C 54.4413,36.6962 57,39.7277 57,43.3622 Z " Margin="17.428,15.169,2.571,10.83" StrokeThickness="0.2" Stroke="White" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
