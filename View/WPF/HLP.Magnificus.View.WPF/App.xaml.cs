@@ -77,7 +77,7 @@ namespace HLP.Magnificus.View.WPF
         public bool DoHandle { get; set; }
         private void Application_DispatcherUnhandledException(object sender,
                                System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
+        {            
             string xMessage = e.Exception.Message + Environment.NewLine + e.Exception.InnerException;
             string xInner = "";
             e.Handled = true;

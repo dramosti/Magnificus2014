@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cac4c350-f5e6-4106-bbee-130e35903aad" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Components.Model" />
+      <ReferencedAssembly AssemblyName="HLP.Entries.Model" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wcf_Funcionario.xsd" MetadataType="Schema" ID="e44e02a8-9167-4c00-beca-9719c94f2e3a" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd6" />
+    <MetadataFile FileName="wcf_Funcionario.disco" MetadataType="Disco" ID="53420f6e-9bc7-4734-9bed-29f9a3df2bde" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?disco" />
+    <MetadataFile FileName="wcf_Funcionario1.xsd" MetadataType="Schema" ID="583ed16a-83f6-498b-977b-c32de15ce288" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd4" />
+    <MetadataFile FileName="wcf_Funcionario2.xsd" MetadataType="Schema" ID="00097598-4895-4730-826e-e0c7ad1ecad3" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd5" />
+    <MetadataFile FileName="wcf_Funcionario3.xsd" MetadataType="Schema" ID="e78a841e-c504-4720-a553-44b89337116b" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd2" />
+    <MetadataFile FileName="wcf_Funcionario4.xsd" MetadataType="Schema" ID="5b225985-6c7c-446c-aa16-fe9de365e7ef" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd3" />
+    <MetadataFile FileName="wcf_Funcionario5.xsd" MetadataType="Schema" ID="e2087227-e88e-419d-8dfb-23f1ad7322a6" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd0" />
+    <MetadataFile FileName="wcf_Funcionario6.xsd" MetadataType="Schema" ID="2bb931fa-5778-4ad0-abf8-e84cd30ebb42" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?xsd=xsd1" />
+    <MetadataFile FileName="wcf_Funcionario.wsdl" MetadataType="Wsdl" ID="f751c601-dbfb-4eea-8762-a6c30f029220" SourceId="1" SourceUrl="http://hlpsistemas.no-ip.org:8081/wcf/wcf_Funcionario.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

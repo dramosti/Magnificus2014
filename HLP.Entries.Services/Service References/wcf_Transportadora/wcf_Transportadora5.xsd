@@ -17,11 +17,14 @@
           <xs:element minOccurs="0" name="dAniversarioTempoServico" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="dDisponivelAte" nillable="true" type="ser:duration" />
           <xs:element minOccurs="0" name="dDisponivelaPartir" nillable="true" type="ser:duration" />
+          <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCliente" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContatoGerente" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContatoMotorista" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContatoTransportador" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idDecisao" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idEmpresaContato" type="xs:int" />
           <xs:element minOccurs="0" name="idFidelidade" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idFuncionario" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idPersonalidade" nillable="true" type="xs:int" />
@@ -40,6 +43,8 @@
           <xs:element minOccurs="0" name="xDepartamento" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xEmailComercial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xEmailResidencial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEmpresa" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xEnderecoEmpresa" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xFaxComercial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xFilhos" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xFuncao" nillable="true" type="xs:string" />
@@ -59,6 +64,7 @@
           <xs:element minOccurs="0" name="xSkypeComercial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xSkypeResidencial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xTelefoneComercial" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="xTelefoneEmpresa" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xTelefoneResidencial" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xTitulo" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -108,7 +114,7 @@
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
+          <xs:element minOccurs="0" name="idCidade" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" nillable="true" type="xs:int" />

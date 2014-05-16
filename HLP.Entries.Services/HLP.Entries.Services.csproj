@@ -236,7 +236,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\wcf_Funcionarios\Reference.cs">
+    <Compile Include="Service References\wcf_Funcionario\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -913,26 +913,26 @@
     <None Include="Service References\wcf_Fidelidade\wcf_Fidelidade4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.wsdl" />
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.wsdl" />
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario1.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario2.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario3.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario4.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario5.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario6.xsd">
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario6.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\wcf_Funcionario_ControlePonto\wcf_Funcionario_Controle_Horas_Ponto.wsdl" />
@@ -1401,7 +1401,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Fabricante\" />
     <WCFMetadataStorage Include="Service References\wcf_FamiliaProduto\" />
     <WCFMetadataStorage Include="Service References\wcf_Fidelidade\" />
-    <WCFMetadataStorage Include="Service References\wcf_Funcionarios\" />
+    <WCFMetadataStorage Include="Service References\wcf_Funcionario\" />
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Juros\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
@@ -1560,21 +1560,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_PlanoPagamento\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionarios\wcf_Funcionario.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionarios\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionarios\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Funcionarios\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2235,6 +2220,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_ModoEntrega\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\wcf_Funcionario.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Funcionario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

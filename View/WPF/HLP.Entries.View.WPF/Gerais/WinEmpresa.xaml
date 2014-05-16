@@ -8,7 +8,7 @@
         x:Class="HLP.Entries.View.WPF.Gerais.WinEmpresa"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"
-        Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa"        >
+        Title="Empresa" Height="600" Width="1076.119" NameView="vwEmpresa">
     <runtime:WindowsBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -82,11 +82,11 @@
                         
                         <!--Components-->
                         
-                        <Components:CustomTextBox
+                        <Components:CustomTextBox stCompPosicao="fieldId"
                             Grid.Column="2" Grid.Row="1"
                             Text="{Binding currentModel.idEmpresa, Mode=TwoWay}" IsReadOnly="True">
                         </Components:CustomTextBox>
-                        <Components:CustomTextBox
+                        <Components:CustomTextBox stCompPosicao="first"
                             Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"
                             IsEnabled="{Binding bIsEnabled}"                                           
     		                Text="{Binding currentModel.xNome, Mode=TwoWay, UpdateSourceTrigger=LostFocus,
@@ -152,7 +152,7 @@
                             Grid.Column="2" Grid.Row="13" Grid.ColumnSpan="3" Height="20" Margin="0,0,0,3"                            
                     	    IsEnabled="{Binding bIsEnabled}"                                                   
                     	    Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
-                    	    Field="idRamoAtividade" Table="Empresa" TableView="vwRamoAtividade" FieldPesquisa="ID" WidthLabel="0">
+                    	    Field="idRamoAtividade" Table="Empresa" TableView="vwRamoAtividade" FieldPesquisa="ID" WidthLabel="0" nameWindow="WinRamoAtividade">
                             <Components:HlpPesquisa.Items>
                                 <sys:String>xRamo</sys:String>
                                 <sys:String>xDescricao</sys:String>

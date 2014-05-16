@@ -312,28 +312,24 @@
                                 <Button Command="{Binding winMan._currentTab._currentDataContext.commandPesquisar}" Margin="3,0,0,0" Style="{DynamicResource Button_PESQUISAR}" Width="34" Height="34" ToolTip="Pesquisar ( Alt + P )" Focusable="False">                                    
                                 </Button>
                                 <DockPanel LastChildFill="True" Width="190" Margin="30,0,0,0">
-                                    <Button 
-                                    Focusable="False"
+                                    <Button                                     
 									x:Name="btnPrimeiro"                                     
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnPrimeiro" Style="{StaticResource Button_ANTERIOR_DUPLO}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0,0,2,0">
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnPrimeiro}" Style="{StaticResource Button_ANTERIOR_DUPLO}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0,0,2,0">
                                         
                                     </Button>
-                                    <Button 
-                                    Focusable="False"
+                                    <Button                                     
 									x:Name="btnAnterior"                                    
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnAnterior"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnAnterior}"
 									Style="{StaticResource Button_ANTERIOR_SIMPLES}" DockPanel.Dock="Left" Height="34"  Width="34" Margin="0">                                        
                                     </Button>
-                                    <Button 
-                                    Focusable="False"
+                                    <Button                                     
 									x:Name="btnUltimo"                                    
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnUltimo"
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnUltimo}"
 									Style="{StaticResource Button_PROXIMO_DUPLO}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="2,0,0,0" Foreground="#FFECE5E5">                                        
                                     </Button>
                                     <Button x:Name="btnProximo"
-                                        Focusable="False"
-									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="btnProximo"
-									Style="{StaticResource Button_PROXIMO_SIMPLES}" DockPanel.Dock="Right" Height="34"  Width="34">
+									Command="{Binding winMan._currentTab._currentDataContext.navegarCommand}" CommandParameter="{Binding ElementName=btnProximo}"
+									Style="{StaticResource Button_PROXIMO_SIMPLES}" DockPanel.Dock="Right" Height="34"  Width="34" Margin="0,5,0,1">
                                         
                                     </Button>
                                     <Label Content="{Binding winMan._currentTab._currentDataContext.sText}"  VerticalAlignment="Stretch" Margin="2,0" HorizontalAlignment="Center"/>

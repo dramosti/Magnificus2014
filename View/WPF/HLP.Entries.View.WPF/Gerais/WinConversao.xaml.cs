@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using HLP.Entries.ViewModel.ViewModels.Gerais;
 using HLP.Components.View.WPF;
 
-namespace HLP.Entries.View.WPF.Gerais
+namespace HLP.Entries.View.WPF.GestãoAdministrativa
 {
     /// <summary>
     /// Interaction logic for WinConversao.xaml

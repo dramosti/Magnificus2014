@@ -11,21 +11,61 @@ namespace HLP.Entries.Model.Models.Gerais
     {
         public CalendarioModel() : base("Calendario") { this.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<Calendario_DetalheModel>(); }
 
-        public int? _idCalendario;
+        private int? _idCalendario;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
         public int? idCalendario
         {
             get { return _idCalendario; }
-            set { _idCalendario = value; }
+            set
+            {
+                _idCalendario = value;
+                base.NotifyPropertyChanged(propertyName: "idCalendario");
+            }
         }
+        private string _xNome;
         [ParameterOrder(Order = 2)]
-        public string xNome { get; set; }
+        public string xNome
+        {
+            get { return _xNome; }
+            set
+            {
+                _xNome = value;
+                base.NotifyPropertyChanged(propertyName: "xNome");
+            }
+        }
+        private string _xDescricao;
         [ParameterOrder(Order = 3)]
-        public string xDescricao { get; set; }
+        public string xDescricao
+        {
+            get { return _xDescricao; }
+            set
+            {
+                _xDescricao = value;
+                base.NotifyPropertyChanged(propertyName: "xDescricao");
+            }
+        }
+        private int? _idCalendarioBase;
         [ParameterOrder(Order = 4)]
-        public int? idCalendarioBase { get; set; }
+        public int? idCalendarioBase
+        {
+            get { return _idCalendarioBase; }
+            set
+            {
+                _idCalendarioBase = value;
+                base.NotifyPropertyChanged(propertyName: "idCalendarioBase");
+            }
+        }
+        private int _idEmpresa;
         [ParameterOrder(Order = 5)]
-        public int idEmpresa { get; set; }
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
 
 
         

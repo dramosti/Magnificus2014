@@ -6,7 +6,7 @@
         xmlns:convert="clr-namespace:HLP.Components.View.WPF.Converter;assembly=HLP.Components.View.WPF"        
         xmlns:ccx="clr-namespace:HLP.Components.ViewModel.ViewModels;assembly=HLP.Components.ViewModel"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" 
-    xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.Gerais.WinConversao"
+    xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLP.Entries.View.WPF.GestãoAdministrativa.WinConversao"
         Title="Conversão" Height="660" Width="1024" NameView="vwProduto">
     <Window.Resources>
         <ResourceDictionary>

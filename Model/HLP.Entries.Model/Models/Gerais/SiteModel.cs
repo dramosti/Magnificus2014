@@ -16,12 +16,40 @@ namespace HLP.Entries.Model.Models.Gerais
         {
             this.lSite_Endereco = new ObservableCollectionBaseCadastros<Site_enderecoModel>();
         }
+
+        private int? _idSite;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idSite { get; set; }
+        public int? idSite
+        {
+            get { return _idSite; }
+            set
+            {
+                _idSite = value;
+                base.NotifyPropertyChanged(propertyName: "idSite");
+            }
+        }
+        private string _xSite;
         [ParameterOrder(Order = 2)]
-        public string xSite { get; set; }
+        public string xSite
+        {
+            get { return _xSite; }
+            set
+            {
+                _xSite = value;
+                base.NotifyPropertyChanged(propertyName: "xSite");
+            }
+        }
+        private string _xDescricao;
         [ParameterOrder(Order = 3)]
-        public string xDescricao { get; set; }
+        public string xDescricao
+        {
+            get { return _xDescricao; }
+            set
+            {
+                _xDescricao = value;
+                base.NotifyPropertyChanged(propertyName: "xDescricao");
+            }
+        }
 
 
         private ObservableCollectionBaseCadastros<Site_enderecoModel> _lSite_Endereco;

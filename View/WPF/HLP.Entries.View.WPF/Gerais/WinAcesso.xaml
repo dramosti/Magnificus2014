@@ -216,7 +216,7 @@
                                             SelectedValuePath="id"
                                             DisplayMemberPath="display"                      
             SelectedValue="{Binding idSetor,
-                                UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+                                UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                     </Grid>
                                 </DataTemplate>

@@ -83,13 +83,13 @@
 
                                     <!--Components-->
 
-                                    <Components:CustomTextBox
+                                    <Components:CustomTextBox stCompPosicao="fieldId"
                                         Grid.Column="2" Grid.Row="1" Width="90" HorizontalAlignment="Left"
                                         Text="{Binding currentModel.idContato, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           				IsReadOnly="True"
 									    ToolTip="Chave principal do registro do Contato, campo autoincremental">
                                     </Components:CustomTextBox>
-                                    <Components:CustomTextBox
+                                    <Components:CustomTextBox stCompPosicao="first"
                                         Grid.Column="2" Grid.Row="2"
                                         Text="{Binding currentModel.xTitulo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                     	IsEnabled="{Binding bIsEnabled}"

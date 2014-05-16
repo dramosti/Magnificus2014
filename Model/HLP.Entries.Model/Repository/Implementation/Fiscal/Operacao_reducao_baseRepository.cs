@@ -72,7 +72,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Fiscal
             if (lidOperacaoReducaoBase.Count() > 0)
             {
                 string notIn = String.Join(",", lidOperacaoReducaoBase);
-                sql = "DELETE FROM Operacao_reducao_base WHERE  idTipoOperacao =" + idTipoOperacao + " AND idOperacaoReducaoBase NOT IN (" + notIn + ")";
+                sql = "DELETE FROM Operacao_reducao_base WHERE  idTipoOperacao =" + idTipoOperacao + " AND idOperacaoReducaoBase IN (" + notIn + ")";
             }
             else
             {

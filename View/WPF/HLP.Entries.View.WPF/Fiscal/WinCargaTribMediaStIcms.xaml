@@ -52,7 +52,7 @@
 					Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 					Text="{Binding currentModel.idRamoAtividade, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="0">
+					FieldPesquisa="ID" TableView="vwRamoAtividade" WidthLabel="0" nameWindow="WinRamoAtividade">
                     <Components:HlpPesquisa.Items>
                         <System:String>xRamo</System:String>
                         <System:String>xDescricao</System:String>
@@ -60,7 +60,8 @@
                 </Components:HlpPesquisa>
                 <Components:HlpPesquisa 
 					Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
-				    FieldPesquisa="ID"	 TableView="vwUF" Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+				    FieldPesquisa="ID"	 TableView="vwUF" nameWindow="WinUF"
+                    Text="{Binding currentModel.idUf, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
 					WidthLabel="0">
                     <Components:HlpPesquisa.Items>

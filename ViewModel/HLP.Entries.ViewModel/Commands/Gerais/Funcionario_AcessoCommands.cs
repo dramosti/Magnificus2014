@@ -49,9 +49,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
 
-            objViewModel.bWorkerAlterar.DoWork += bwAlterar_DoWork;
-            objViewModel.bWorkerAlterar.RunWorkerCompleted += bwAlterar_RunWorkerCompleted;
-
             objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.getFuncionario);
         }
 
@@ -71,7 +68,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                objViewModel.SetFocusFirstTab(_panel as Panel);
                 this.objViewModel.bWorkerSave.RunWorkerAsync(argument: _panel);
             }
             catch (Exception ex)
@@ -85,9 +81,12 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             try
             {
-                this.objViewModel.currentModel = this.objService.SaveObject(
+                if (objViewModel.message.Save())
+                {
+                    this.objViewModel.currentModel = this.objService.SaveObject(
                     obj: this.objViewModel.currentModel);
-                e.Result = e.Argument;
+                    e.Result = e.Argument;
+                }
             }
             catch (Exception ex)
             {
@@ -105,17 +104,20 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
                 else
                 {
-                    this.objViewModel.salvarBaseCommand.Execute(parameter: null);
-                    object w = objViewModel.GetParentWindow(e.Result);
+                    if (objViewModel.message.bSave)
+                    {
+                        this.objViewModel.salvarBaseCommand.Execute(parameter: null);
 
-                    if (w != null)
-                        if (w.GetType() == typeof(HLP.Comum.View.Formularios.HlpPesquisaInsert))
+                        object w = objViewModel.GetParentWindow(e.Result);
+
+                        if (w != null)
                         {
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).idSalvo = this.objViewModel.currentID;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).DialogResult = true;
-                            (w as HLP.Comum.View.Formularios.HlpPesquisaInsert).Close();
+                            w.GetType().GetProperty(name: "idSalvo").SetValue(obj: w, value: this.objViewModel.currentID);
+                            (w as Window).DialogResult = true;
+                            (w as Window).Close();
+                            this.IniciaCollections();
                         }
-                    this.IniciaCollections();
+                    }
                 }
             }
             catch (Exception ex)
@@ -147,19 +149,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
-            this.objViewModel.bWorkerAlterar.RunWorkerAsync(argument: _panel);
         }
-
-        void bwAlterar_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
-            e.Result = e.Argument;
-        }
-        void bwAlterar_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            objViewModel.FocusToComponente(e.Result as Panel, HLP.Base.Static.Util.focoComponente.Segundo);
-        }
-
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
@@ -167,9 +157,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         private void Cancelar()
         {
-            if (MessageBox.Show(messageBoxText: "Deseja realmente cancelar a transação?", caption: "Cancelar?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question) == MessageBoxResult.No) return;
-            this.PesquisarRegistro();
-            this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            if (objViewModel.message.Cancelar())
+            {
+                this.PesquisarRegistro();
+                this.objViewModel.cancelarBaseCommand.Execute(parameter: null);
+            }
         }
         private bool CancelarCanExecute()
         {

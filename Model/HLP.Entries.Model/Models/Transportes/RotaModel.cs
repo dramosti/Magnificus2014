@@ -37,8 +37,17 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
 
+        private bool _Ativo;
         [ParameterOrder(Order = 4)]
-        public bool Ativo { get; set; }
+        public bool Ativo
+        {
+            get { return _Ativo; }
+            set
+            {
+                _Ativo = value;
+                base.NotifyPropertyChanged(propertyName: "Ativo");
+            }
+        }
 
         private ObservableCollectionBaseCadastros<Rota_pracaModel> _lRota_Praca;
 

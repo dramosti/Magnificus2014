@@ -54,13 +54,13 @@
 
                 <!--Components-->
 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     IsReadOnly="True"
 					Text="{Binding currentModel.idPlanoPagamento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 				    ToolTip="Chave principal do registro do Plano de Pagamento">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"
                     Text="{Binding currentModel.xPlanoPagamento, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				    IsEnabled="{Binding bIsEnabled}"
@@ -109,9 +109,9 @@
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" 
                     x:Name="cbxAlocacao"						
-					SelectedIndex="{Binding currentModel.stAlocacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
+					SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 					IsEnabled="{Binding bIsEnabled}"
-					ToolTip="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,">                    
+					ToolTip="0-Especificado – um valor específico é devido em cada uma das datas de pagamento especificadas. Defina as linhas e os valores do plano de pagamento na guia Linhas de pagamento.Quando utilizar o status Especificado:os campos . Alterar, Numero de Pagamentos, Valor Moeda, Valor Minimo são desativados.1-Quantidade fixa (VALOR DEFAULT) – pagamento do valor total é dividido em uma quantidade fixa de prestações. Quando utilizar o status Quantidade Fixa: o campo Valor Moeda e a Guia das linhas é  desativado.2-Total – valor total pendente quando a Nota fiscal está vencida. Quando utilizar o status Total:os campos Numero de Pagamentos e Alocação de Impostos são desativados.3-Valor fixo – um valor específico e fixo é devido por cada prestação nas datas de pagamento calculadas. Quando utilizar o status Valor Fixo: os campos Forma de Pagamento, Alterar, Numero de Pagamentos,">
                     <Components:CustomComboBox.Items>
                         <System:String>0-Especificado</System:String>
                         <System:String>1-Quantidade fixa</System:String>
@@ -275,7 +275,6 @@
         <Expander Header="Plano de Pagamento" Grid.Row="3" IsExpanded="True" Style="{StaticResource ExpanderPadrao}" Focusable="False">
             <DataGrid 
                         ItemsSource="{Binding currentModel.lPlano_pagamento_linhasModel}"
-						IsReadOnly="{Binding bIsEnabled, Converter={StaticResource notConverter}}"
                         AutoGenerateColumns="False" 
 						SelectionUnit="CellOrRowHeader"
                         CanUserAddRows="True"
@@ -285,13 +284,15 @@
                         VerticalAlignment="Stretch"  BorderBrush="Black">
                 <DataGrid.Style>
                     <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=bIsEnabled}" Value="False">
-                                <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=cbxAlocacao, Path=SelectedIndex}" Value="1">
-                                <Setter Property="FrameworkElement.IsEnabled" Value="False"/>
-                            </DataTrigger>
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Style.Triggers>                            
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding Path=bIsEnabled}" Value="True"/>
+                                    <Condition Binding="{Binding Path=currentModel.stAlocacaoImpostos}" Value="0"/>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="IsReadOnly" Value="False"/>
+                            </MultiDataTrigger>
                         </Style.Triggers>
                     </Style>
                 </DataGrid.Style>

@@ -40,10 +40,10 @@
 
                 <!--Components-->
                 
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="1"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="1" stCompPosicao="fieldId"
                                           Text="{Binding currentModel.idSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                                           IsReadOnly="True" ToolTip="Chave principal do registro Setor"/>                
-                <Components:CustomTextBox Grid.Column="2" Grid.Row="2"
+                <Components:CustomTextBox Grid.Column="2" Grid.Row="2" stCompPosicao="first"
                                           Text="{Binding currentModel.xSetor, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
                                           IsEnabled="{Binding bIsEnabled}"
                                           ToolTip="Informar um codigo para o Setor"/>                
