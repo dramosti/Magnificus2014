@@ -209,9 +209,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
             this.objViewModel.currentModel.idFuncionario = objViewModel.currentID;
-            if (this.objViewModel.currentModel.idFuncionario != 0)
-                this.CarragaFormulario();
-
+            //if (this.objViewModel.currentModel.idFuncionario != 0)
+            //    this.CarragaFormulario();
+            this.CleanRegistro();
         }
 
         private void SaveBancoHoras()
@@ -281,15 +281,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(-1);
             }
             //this.CarragaFormulario();
-            this.objViewModel.btnCarregar.Tag = "1"; // significa que o botão irá ficar vermelho, para alertar que precisa ser clicado.
-            this.objViewModel.currentModel.objFuncBancoHoras = new Funcionario_BancoHorasModel();
-
+            this.objViewModel.btnCarregar.Tag = "1"; // significa que o botão irá ficar vermelho, para alertar que precisa ser clicado.           
             CleanRegistro();
 
         }
 
         private void CleanRegistro()
         {
+            this.objViewModel.currentModel.objFuncBancoHoras = new Funcionario_BancoHorasModel();
+            this.objViewModel.btnCarregar.Tag = "1";
             int iDaysMonth = System.DateTime.DaysInMonth(this.objViewModel.currentModel.data.Year, this.objViewModel.currentModel.data.Month);
             for (int i = 1; i <= iDaysMonth; i++)
             {
@@ -313,8 +313,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 {
                     objViewModel.navegarBaseCommand.Execute(ContentBotao);
                     objViewModel.currentModel.idFuncionario = objViewModel.currentID;
-                    //   this.CarragaFormulario();                  
-                    this.objViewModel.btnCarregar.Tag = "1";
+                    //   this.CarragaFormulario();                                     
                     CleanRegistro();
                 }
             }
