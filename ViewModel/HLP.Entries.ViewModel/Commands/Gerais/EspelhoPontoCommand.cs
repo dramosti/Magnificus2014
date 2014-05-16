@@ -189,7 +189,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                        ).ToStringHoras();
                 this.objViewModel.currentModel.objFuncBancoHoras.tsSaldoAteMomento = objViewModel.currentModel.objFuncBancoHoras.tSaldoTotalAnterior.ToTimeSpan().Add(objViewModel.currentModel.objFuncBancoHoras.tBancoHoras.ToTimeSpan());
                 try
-                { this.objViewModel.btnCarregar.Tag = ""; }
+                {
+                    Dispatcher.CurrentDispatcher.Invoke((Action)(() => { this.objViewModel.btnCarregar.Tag = "2"; }));
+                }
                 catch (Exception) { }
 
             }
@@ -281,7 +283,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(-1);
             }
             //this.CarragaFormulario();
-            this.objViewModel.btnCarregar.Tag = "1"; // significa que o botão irá ficar vermelho, para alertar que precisa ser clicado.           
             CleanRegistro();
 
         }
@@ -289,7 +290,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void CleanRegistro()
         {
             this.objViewModel.currentModel.objFuncBancoHoras = new Funcionario_BancoHorasModel();
-            this.objViewModel.btnCarregar.Tag = "1";
+            Dispatcher.CurrentDispatcher.Invoke((Action)(() => { this.objViewModel.btnCarregar.Tag = "2"; })); // significa que o botão irá ficar vermelho, para alertar que precisa ser clicado.           
             int iDaysMonth = System.DateTime.DaysInMonth(this.objViewModel.currentModel.data.Year, this.objViewModel.currentModel.data.Month);
             for (int i = 1; i <= iDaysMonth; i++)
             {
@@ -382,7 +383,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             winReport.ShowDialog();
         }
 
-                
+
 
     }
 }
