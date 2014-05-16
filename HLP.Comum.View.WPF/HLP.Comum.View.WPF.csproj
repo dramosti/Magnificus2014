@@ -78,12 +78,24 @@
     <Compile Include="HlpPesquisaInsert.xaml.cs">
       <DependentUpon>HlpPesquisaInsert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messages\HlpMessageAlert.xaml.cs">
+      <DependentUpon>HlpMessageAlert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\HlpMessageError.xaml.cs">
+      <DependentUpon>HlpMessageError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\HlpMessageYesNo.xaml.cs">
+      <DependentUpon>HlpMessageYesNo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="wdSenhaSupervisor.xaml.cs">
       <DependentUpon>wdSenhaSupervisor.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowsBase.cs" />
     <Compile Include="WinExclusionDenied.xaml.cs">
       <DependentUpon>WinExclusionDenied.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinPesquisaPadrao.xaml.cs">
+      <DependentUpon>WinPesquisaPadrao.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinPreviewReport.xaml.cs">
       <DependentUpon>WinPreviewReport.xaml</DependentUpon>
@@ -121,6 +133,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Messages\HlpMessageAlert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\HlpMessageError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\HlpMessageYesNo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="wdSenhaSupervisor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +152,10 @@
     <Page Include="WinExclusionDenied.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinPesquisaPadrao.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WinPreviewReport.xaml">
       <SubType>Designer</SubType>
