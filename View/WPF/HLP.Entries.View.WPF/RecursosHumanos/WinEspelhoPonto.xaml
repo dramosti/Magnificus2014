@@ -155,6 +155,11 @@
                                     <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                                 </Trigger.EnterActions>
                             </Trigger>
+                            <Trigger Property="Tag" Value="2">
+                                <Setter Property="Fill" Value="#FF545454" TargetName="path"></Setter>
+                                <Setter Property="Fill" Value="#FF545454" TargetName="path1"></Setter>
+                                <Setter Property="TextElement.Foreground" Value="#FF545454" TargetName="contentpresenter"></Setter>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
