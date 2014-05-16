@@ -67,13 +67,23 @@ namespace HLP.Entries.Model.Repository.Implementation.Components
             //                   "from INFORMATION_SCHEMA.COLUMNS c " +
             //                   "where c.TABLE_NAME = '" + xTabela + "'"),
             //                   rowMapper: MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().Build());
+            //regPesquisaPadraoContractAccessor = this.UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
+            //       sqlString: ("select c.COLUMN_NAME, c.IS_NULLABLE, c.CHARACTER_MAXIMUM_LENGTH,(select keyC.type from sys.all_objects keyC " +
+            //                   "where keyC.name = (select const.CONSTRAINT_NAME from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE const " +
+            //                   "where const.TABLE_NAME = c.TABLE_NAME and const.COLUMN_NAME = c.COLUMN_NAME)) as DATA_TYPE " +
+            //                   "from INFORMATION_SCHEMA.COLUMNS c " +
+            //                   "where c.TABLE_NAME = '" + xTabela + "'"),
+            //                   rowMapper: MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().Build());
+
             regPesquisaPadraoContractAccessor = this.UndTrabalho.dbPrincipal.CreateSqlStringAccessor(
-                   sqlString: ("select c.COLUMN_NAME, c.IS_NULLABLE, c.CHARACTER_MAXIMUM_LENGTH,(select keyC.type from sys.all_objects keyC " +
-                               "where keyC.name = (select const.CONSTRAINT_NAME from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE const " +
-                               "where const.TABLE_NAME = c.TABLE_NAME and const.COLUMN_NAME = c.COLUMN_NAME)) as DATA_TYPE " +
-                               "from INFORMATION_SCHEMA.COLUMNS c " +
-                               "where c.TABLE_NAME = '" + xTabela + "'"),
-                               rowMapper: MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().Build());
+                  sqlString: ("select c.COLUMN_NAME, c.IS_NULLABLE, c.CHARACTER_MAXIMUM_LENGTH, keyC.type as DATA_TYPE from INFORMATION_SCHEMA.COLUMNS c "
+           + "left join INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE const "
+           + "on c.COLUMN_NAME = const.COLUMN_NAME and c.TABLE_NAME = const.TABLE_NAME "
+           + "left join sys.all_objects keyC "
+           + "on keyC.name = const.CONSTRAINT_NAME "
+           + "where c.TABLE_NAME = '" + xTabela + "'"),
+                              rowMapper: MapBuilder<PesquisaPadraoModelContract>.MapAllProperties().Build());
+
             return regPesquisaPadraoContractAccessor.Execute().ToList();
         }
         

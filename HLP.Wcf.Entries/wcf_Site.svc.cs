@@ -41,8 +41,11 @@ namespace HLP.Wcf.Entries
             try
             {
                 HLP.Entries.Model.Models.Gerais.SiteModel objSite = this.siteRepository.GetSite(idSite: id);
-                objSite.lSite_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Site_enderecoModel>
-                (list: this.site_enderecoRepository.GetAllSite_Endereco(idSite: id));
+                if (objSite != null)
+                {
+                    objSite.lSite_Endereco = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Site_enderecoModel>
+                    (list: this.site_enderecoRepository.GetAllSite_Endereco(idSite: id));
+                }
                 return objSite;
             }
             catch (Exception ex)

@@ -101,13 +101,13 @@
 
                                     <!--Components-->
 
-                                    <Components:CustomTextBox
+                                    <Components:CustomTextBox stCompPosicao="fieldId"
                                             Grid.Column="2" Grid.Row="1"
                                             Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsReadOnly="True"
 								            ToolTip="Chave principal do registro do Funcionário">
                                     </Components:CustomTextBox>
-                                    <Components:CustomTextBox
+                                    <Components:CustomTextBox stCompPosicao="first"
                                             Grid.Column="2" Grid.Row="2"
                                             Text="{Binding currentModel.xCodigoAlternativo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								            IsEnabled="{Binding bIsEnabled}"
@@ -211,7 +211,8 @@
 								nameWindow="WinCalendario"
 								Text="{Binding currentModel.idCalendario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Informe um tipo de Calendário para o funcionário." Table="Calendario" WidthLabel="0" FieldPesquisa="ID" TableView="vwCalendario">
+								ToolTip="Informe um tipo de Calendário para o funcionário." Table="Calendario" WidthLabel="0" FieldPesquisa="ID" TableView="vwCalendario"
+                                        >
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xNome</System:String>
                                             <System:String>xDescricao</System:String>
@@ -250,7 +251,8 @@
 								        nameWindow="WinSite"        
 								        Text="{Binding currentModel.idSite, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								        IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." Table="Site" WidthLabel="0" FieldPesquisa="ID" TableView="vwSite" Grid.ColumnSpan="2">
+								ToolTip="Selecione um site. Quando um funcionário criar uma requisição de compra, o site será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra." 
+                                        Table="Site" WidthLabel="0" FieldPesquisa="ID" TableView="vwSite" Grid.ColumnSpan="2">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xSite</System:String>
                                             <System:String>xDescricao</System:String>
@@ -261,7 +263,8 @@
 								nameWindow="WinDeposito"
 								Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Selecione um depósito. Quando um funcionário criar uma requisição de compra, o depósito será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra" Table="Deposito" WidthLabel="0" FieldPesquisa="ID" TableView="vwDeposito" Grid.ColumnSpan="2">
+								ToolTip="Selecione um depósito. Quando um funcionário criar uma requisição de compra, o depósito será automaticamente transferido para o cabeçalho e para as linhas da requisição de compra" Table="Deposito" 
+                                        WidthLabel="0" FieldPesquisa="ID" TableView="vwDeposito" Grid.ColumnSpan="2">
                                         <Components:HlpPesquisa.Items>
                                             <System:String>xDeposito</System:String>
                                             <System:String>xDescricao</System:String>
@@ -956,21 +959,21 @@
                                         <System:String>5-Por Faixa Margem de Venda</System:String>
                                     </Components:CustomComboBox.Items>
                                 </Components:CustomComboBox>
-                                <Components:CustomTextBox Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
+                                <Components:CustomTextBox Grid.Column="2" Grid.Row="2" Height="20" Visibility="Visible"
                                     Text="{Binding currentModel.pComissaoAvista, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"								
 								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Vista, quando a condição de vendas for igual Avista Quando o Campo Condicao_Pagamento.stCondicao for igual Avista">
                                     <Components:CustomTextBox.Style>
-                                        <Style>
+                                        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
-                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
                                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
-                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
                                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
@@ -985,21 +988,21 @@
                                         </Style>
                                     </Components:CustomTextBox.Style>
                                 </Components:CustomTextBox>
-                                <Components:CustomTextBox Grid.Column="2" Grid.Row="3" Margin="0,0,0,3" Height="20"
+                                <Components:CustomTextBox Grid.Column="2" Grid.Row="3" Margin="0,0,0,3" Height="20" Visibility="Visible"
                                     Text="{Binding currentModel.pComissaoAprazo, Mode=TwoWay, Converter={StaticResource porcentagemConverter},
                                     NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"								
 								    ToolTip="Informar a alíquota em percentual da comissão somente para valores a Prazo, quando a Condicao_Pagamento.stCondicao for Aprazo.">
                                     <Components:CustomTextBox.Style>
-                                        <Style>
+                                        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="0">
-                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="1">
                                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="2">
-                                                    <Setter Property="FrameworkElement.Visibility" Value="Collapsed"></Setter>
+                                                    <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding ElementName=cbxStComissao, Path=SelectedIndex}" Value="3">
                                                     <Setter Property="FrameworkElement.IsEnabled" Value="False"></Setter>

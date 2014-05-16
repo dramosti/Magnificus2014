@@ -19,6 +19,7 @@ using HLP.Entries.Model.Models.RecursosHumanos;
 using HLP.Entries.Model.Models.Gerais;
 using HLP.Components.Model.Models;
 using HLP.Entries.Services.Gerais;
+using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -31,7 +32,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
         public EspelhoPontoCommand(EspelhoPontoViewModel objViewModel)
         {
-            
+
             this.objViewModel = objViewModel;
             servicoFuncPonto = new FuncionarioPontoService();
 
@@ -89,18 +90,31 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     throw ex;
                 }
             }
-
+            this.objViewModel.bWorkerPesquisa.WorkerSupportsCancellation = true;
             this.objViewModel.bWorkerPesquisa.DoWork += new DoWorkEventHandler(this.ExecutePesquisa);
+            this.objViewModel.bWorkerPesquisa.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.ExecutePesquisaCompleted);
 
         }
 
 
-        public void CarragaFormulario() 
+        public void CarragaFormulario()
         {
-            this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
+            if (this.objViewModel.bWorkerPesquisa.IsBusy == false)
+                this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
 
-
+        public bool CanCarregaFormulario()
+        {
+            bool bReturn = false;
+            if (objViewModel.currentModel != null)
+            {
+                if (objViewModel.currentModel.idFuncionario != 0 && objViewModel.currentModel.data != null)
+                {
+                    bReturn = true;
+                }
+            }
+            return bReturn;
+        }
         public void ExecutePesquisa(object sender, DoWorkEventArgs e)
         {
             try
@@ -174,6 +188,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                                     )
                        ).ToStringHoras();
                 this.objViewModel.currentModel.objFuncBancoHoras.tsSaldoAteMomento = objViewModel.currentModel.objFuncBancoHoras.tSaldoTotalAnterior.ToTimeSpan().Add(objViewModel.currentModel.objFuncBancoHoras.tBancoHoras.ToTimeSpan());
+                try
+                { this.objViewModel.btnCarregar.Tag = ""; }
+                catch (Exception) { }
+
             }
             catch (Exception ex)
             {
@@ -182,28 +200,11 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
 
         }
-        public bool CanCarregaFormulario()
+
+        public void ExecutePesquisaCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            bool bReturn = false;
-            if (objViewModel.currentModel != null)
-            {
-                if (objViewModel.currentModel.idFuncionario != 0 && objViewModel.currentModel.data != null)
-                {
-                    bReturn = true;
-                }
-            }
-            return bReturn;
+            this.objViewModel.viewModelBaseCommands.SetFocusFirstControl();
         }
-
-        public bool CanNavegar(object paramCanExec) 
-        {
-            if (this.objViewModel.bWorkerPesquisa.IsBusy)
-                return false;
-
-            return objViewModel.navegarBaseCommand.CanExecute(paramCanExec);
-
-        }
-
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
@@ -280,22 +281,51 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 this.objViewModel.currentModel.data = this.objViewModel.currentModel.data.AddMonths(-1);
             }
             //this.CarragaFormulario();
+            this.objViewModel.btnCarregar.Tag = "1"; // significa que o botão irá ficar vermelho, para alertar que precisa ser clicado.
+            this.objViewModel.currentModel.objFuncBancoHoras = new Funcionario_BancoHorasModel();
+
+            CleanRegistro();
+
         }
 
+        private void CleanRegistro()
+        {
+            int iDaysMonth = System.DateTime.DaysInMonth(this.objViewModel.currentModel.data.Year, this.objViewModel.currentModel.data.Month);
+            for (int i = 1; i <= iDaysMonth; i++)
+            {
+                Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, (Action)(() =>
+                {
+                    Control controle = objViewModel.lControlsPonto.FirstOrDefault(c => c.Name == ("d" + i.ToString()));
+                    controle.SetPropertyValue("idFuncionario", 0);
+                    Type tipo = controle.GetType();
+                    MethodInfo met = tipo.GetMethod(name: "CarregaDados");
+                    met.Invoke(controle, null);
+                }));
+            }
+        }
         private void Novo() { }
 
         public void Navegar(object ContentBotao)
         {
             try
             {
-                objViewModel.navegarBaseCommand.Execute(ContentBotao);
-                objViewModel.currentModel.idFuncionario = objViewModel.currentID;
-                this.CarragaFormulario();
+                if (this.objViewModel.bWorkerPesquisa.IsBusy == false)
+                {
+                    objViewModel.navegarBaseCommand.Execute(ContentBotao);
+                    objViewModel.currentModel.idFuncionario = objViewModel.currentID;
+                    //   this.CarragaFormulario();                  
+                    this.objViewModel.btnCarregar.Tag = "1";
+                    CleanRegistro();
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+        public bool CanNavegar(object paramCanExec)
+        {
+            return objViewModel.navegarBaseCommand.CanExecute(paramCanExec);
         }
 
         public void PrevirewReport()
@@ -352,6 +382,8 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
             winReport.ShowDialog();
         }
+
+                
 
     }
 }

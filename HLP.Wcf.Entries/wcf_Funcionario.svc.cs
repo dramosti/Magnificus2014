@@ -60,7 +60,8 @@ namespace HLP.Wcf.Entries
             {
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
-                if (bGetChild)
+
+                if (objFuncionario != null && bGetChild)
                 {
                     var listaArquivos = this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
                         idFuncionario: idFuncionario);
@@ -337,25 +338,27 @@ namespace HLP.Wcf.Entries
             if (idFuncionario == 0)
                 return null;
 
-            modelToTreeView nodeTemp;
+            modelToTreeView nodeTemp = null;
 
             HLP.Entries.Model.Models.Gerais.FuncionarioModel f = this.getFuncionario(idFuncionario: idFuncionario);
-            int? idResponsavel = f.idResponsavel;
-            modelToTreeView nodeActual = new modelToTreeView
+            if (f != null)
             {
-                id = (int)f.idFuncionario,
-                xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
-            };
-
-            while (f.idResponsavel != null)
-            {
-                f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
-
-                nodeTemp = new modelToTreeView
+                int? idResponsavel = f.idResponsavel;
+                modelToTreeView nodeActual = new modelToTreeView
                 {
                     id = (int)f.idFuncionario,
-                    xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
-                    lFilhos = new List<modelToTreeView>()
+                    xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
+                };
+
+                while (f.idResponsavel != null)
+                {
+                    f = this.funcionarioRepository.GetFuncionarioPai(idFuncionario: (int)f.idResponsavel);
+
+                    nodeTemp = new modelToTreeView
+                    {
+                        id = (int)f.idFuncionario,
+                        xDisplay = f.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao,
+                        lFilhos = new List<modelToTreeView>()
                     {
                         new modelToTreeView
                         {
@@ -364,31 +367,32 @@ namespace HLP.Wcf.Entries
                             lFilhos = nodeActual.lFilhos
                         }
                     }
-                };
+                    };
 
-                nodeActual = nodeTemp;
+                    nodeActual = nodeTemp;
 
-            }
+                }
 
-            nodeTemp = nodeActual;
-            while (nodeActual.id != idFuncionario)
-            {
-                nodeActual = nodeActual.lFilhos.FirstOrDefault();
-            }
-
-            var lFilhos = this.funcionarioRepository.GetFuncionarioFilho(idResponsavel: nodeActual.id);
-
-            if (lFilhos != null)
-            {
-                nodeActual.lFilhos = new List<modelToTreeView>();
-                foreach (var i in lFilhos)
+                nodeTemp = nodeActual;
+                while (nodeActual.id != idFuncionario)
                 {
-                    nodeActual.lFilhos.Add(
-                        item: new modelToTreeView
-                        {
-                            id = (int)i.idFuncionario,
-                            xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
-                        });
+                    nodeActual = nodeActual.lFilhos.FirstOrDefault();
+                }
+
+                var lFilhos = this.funcionarioRepository.GetFuncionarioFilho(idResponsavel: nodeActual.id);
+
+                if (lFilhos != null)
+                {
+                    nodeActual.lFilhos = new List<modelToTreeView>();
+                    foreach (var i in lFilhos)
+                    {
+                        nodeActual.lFilhos.Add(
+                            item: new modelToTreeView
+                            {
+                                id = (int)i.idFuncionario,
+                                xDisplay = i.xNome + " - " + this.cargo_Repository.GetCargo(idCargo: f.idCargo).xDescricao
+                            });
+                    }
                 }
             }
             return nodeTemp;

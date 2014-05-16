@@ -32,33 +32,40 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 objViewModel.styleDSR = objViewModel.resource["ListBox_Calendario_Ponto_Padrao"] as Style;
                 // verifica se tem calendario no dia.
-                objViewModel.isDSR = servico.ExisteCalendarioDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
+                if (objViewModel.idFuncionario != 0)
+                {
+                    objViewModel.isDSR = servico.ExisteCalendarioDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
                     //servico.GetHorasAtrabalhadarDia(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto)).Count() == 0;
 
-                List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> lReturn = servico.GetAllFuncionario_Controle_Horas_Ponto(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
-                if (lReturn.Count == 0)
-                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.EMBRANCO;
-                else if (lReturn.Where(c => c.stFalta == 1).Count() == lReturn.Count())
-                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.FALTOU;
-                else if (lReturn.Where(c => c.stFeriasAbono == 1).Count() == lReturn.Count())
-                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.ABONO;
-                else
-                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.NORMAL;
+                    List<HLP.Entries.Model.Models.Gerais.Funcionario_Controle_Horas_PontoModel> lReturn = servico.GetAllFuncionario_Controle_Horas_Ponto(objViewModel.idFuncionario, Convert.ToDateTime(objViewModel.dataPonto));
+                    if (lReturn.Count == 0)
+                        this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.EMBRANCO;
+                    else if (lReturn.Where(c => c.stFalta == 1).Count() == lReturn.Count())
+                        this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.FALTOU;
+                    else if (lReturn.Where(c => c.stFeriasAbono == 1).Count() == lReturn.Count())
+                        this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.ABONO;
+                    else
+                        this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.NORMAL;
 
 
-                if (this.objViewModel.stDia == HlpCalendarioPontoViewModel.StatusDia.EMBRANCO && objViewModel.isDSR)
-                {
-                    this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.DSR;
+                    if (this.objViewModel.stDia == HlpCalendarioPontoViewModel.StatusDia.EMBRANCO && objViewModel.isDSR)
+                    {
+                        this.objViewModel.stDia = HlpCalendarioPontoViewModel.StatusDia.DSR;
+                    }
+
+                    if (objViewModel.idFuncionario != 0 && objViewModel.dataPonto != "")
+                        this.objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>(servico.GetHorasTrabalhadasDia
+                           (
+                           idFuncionario: objViewModel.idFuncionario,
+                           dtDia: Convert.ToDateTime(objViewModel.dataPonto)
+                           ));
+                    else
+                        objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>();
                 }
-
-                if (objViewModel.idFuncionario != 0 && objViewModel.dataPonto != "")
-                    this.objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>(servico.GetHorasTrabalhadasDia
-                       (
-                       idFuncionario: objViewModel.idFuncionario,
-                       dtDia: Convert.ToDateTime(objViewModel.dataPonto)
-                       ));
                 else
+                {
                     objViewModel.lPonto = new System.Collections.ObjectModel.ObservableCollection<Model.Models.Gerais.EspelhoPontoModel>();
+                }
             }
             catch (Exception)
             {

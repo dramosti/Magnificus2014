@@ -37,11 +37,11 @@
                 
                 <!--Components-->
                 
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     Text="{Binding currentModel.idCargo, Mode=TwoWay}" IsReadOnly="True">
                 </Components:CustomTextBox>
-                <Components:CustomTextBox
+                <Components:CustomTextBox stCompPosicao="first"
                     Grid.Column="2" Grid.Row="2"
                     Text="{Binding currentModel.xCargo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                 </Components:CustomTextBox>

@@ -170,7 +170,7 @@
                                     UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
 									WidthLabel="0"
-                                    FieldPesquisa="ID" TableView="vwTipoServico">
+                                    FieldPesquisa="ID" TableView="vwTipoServico" nameWindow="WinTipoServico">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>cTipoServico</System:String>
                                         <System:String>xTipoServico</System:String>
@@ -311,7 +311,8 @@
 									Grid.Column="2" Grid.Row="7" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
 									Text="{Binding currentModel.idUnidadeMedidaEstoque, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas." WidthLabel="0" TableView="vwUnidadeMedida" FieldPesquisa="ID">
+									ToolTip="Informe a unidade de medida padrão de estoque, essa unidade será a padrão para todos os tipos de conversões a serem feitas."
+                                    WidthLabel="0" TableView="vwUnidadeMedida" FieldPesquisa="ID" nameWindow="WinUnidadeMedida">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xSiglaPadrao</System:String>
                                         <System:String>xUnidadeMedida</System:String>
@@ -363,7 +364,8 @@
 									Grid.Column="2" Grid.Row="2" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idDeposito, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." WidthLabel="0" TableView="vwDeposito" FieldPesquisa="ID">
+									ToolTip="Informar o depósito em que o produto está localizado. Caso utilize a opção de localização o campo depósito é preenchido automaticamente." WidthLabel="0" 
+                                    TableView="vwDeposito" FieldPesquisa="ID" nameWindow="WinDeposito">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xDeposito</System:String>
                                         <System:String>xDescricao</System:String>
@@ -373,7 +375,7 @@
 									Grid.Column="2" Grid.Row="3" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idFabricante, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Informe o fabricante do produto." WidthLabel="0" TableView="vwFabricante" FieldPesquisa="ID">
+									ToolTip="Informe o fabricante do produto." WidthLabel="0" TableView="vwFabricante" FieldPesquisa="ID" nameWindow="WinFabricante">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xFantasia</System:String>
                                         <System:String>xRazao</System:String>
@@ -778,7 +780,8 @@
 								Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 								Text="{Binding currentModel.idUnidadeMedidaVendas, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 								IsEnabled="{Binding bIsEnabled}"
-								ToolTip="Deve ser informado a unidade de medida para as, cotações, Ordens de vendas, faturamento. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para vendas dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0">
+								ToolTip="Deve ser informado a unidade de medida para as, cotações, Ordens de vendas, faturamento. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para vendas dentro da unidades que estejam com as devidas conversões corretas para esse produto."
+                                FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0" nameWindow="WinUnidadeMedida">
                                 <Components:HlpPesquisa.Items>
                                     <System:String>xSiglaPadrao</System:String>
                                     <System:String>xUnidadeMedida</System:String>
@@ -854,7 +857,8 @@
 									Grid.Column="2" Grid.Row="5" Height="20" Margin="0,0,0,3"
 									Text="{Binding currentModel.idUnidadeMedidaCompras, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}"
-									ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0">
+									ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto."
+                                    FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0" nameWindow="WinUnidadeMedida">
                                     <Components:HlpPesquisa.Items>
                                         <System:String>xSiglaPadrao</System:String>
                                         <System:String>xUnidadeMedida</System:String>
@@ -970,7 +974,8 @@
 							Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="2"
 							Text="{Binding currentModel.idUnidadeMedidaProducao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 							IsEnabled="{Binding bIsEnabled}"
-							ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto." FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0">
+							ToolTip="Deve ser informado a unidade de medida para as, requisições, cotações de compras, Ordens de Compra. O sistema traz automaticamente a mesma unidade de medida do estoque, caso opte por uma diferente verificar qual é a unidade correta para Ordem de compras dentro da unidades que estejam com as devidas conversões corretas para esse produto."
+                                FieldPesquisa="ID" TableView="vwUnidadeMedida" WidthLabel="0" nameWindow="WinUnidadeMedida">
                                 <Components:HlpPesquisa.Items>
                                     <System:String>xSiglaPadrao</System:String>
                                     <System:String>xUnidadeMedida</System:String>

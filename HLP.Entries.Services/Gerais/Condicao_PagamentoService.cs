@@ -11,7 +11,7 @@ namespace HLP.Entries.Services.Gerais
 {
     public class Condicao_PagamentoService
     {
-        const string xTabela = "Condicao_Pagamento;";
+        const string xTabela = "Condicao_pagamento;";
 
         HLP.Wcf.Entries.wcf_CondicaoPagamento serviceNetwork;
         wcf_CondicaoPagamento.Iwcf_CondicaoPagamentoClient serviceWeb;

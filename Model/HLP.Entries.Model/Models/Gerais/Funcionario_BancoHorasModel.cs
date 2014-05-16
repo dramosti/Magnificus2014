@@ -44,7 +44,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "xMesAno");
             }
         }
-        private string _tBancoHoras;
+        private string _tBancoHoras = "00:00:00";
         [ParameterOrder(Order = 4)]
         public string tBancoHoras
         {
@@ -55,7 +55,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "tBancoHoras");
             }
         }
-        private int _iDiasTrabalhados;
+        private int _iDiasTrabalhados = 0;
         [ParameterOrder(Order = 5)]
         public int iDiasTrabalhados
         {
@@ -66,7 +66,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "iDiasTrabalhados");
             }
         }
-        private string _tHorastrabalhadas;
+        private string _tHorastrabalhadas = "00:00:00";
         [ParameterOrder(Order = 6)]
         public string tHorastrabalhadas
         {
@@ -77,7 +77,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "tHorastrabalhadas");
             }
         }
-        private string _tHorasAtrabalhar;
+        private string _tHorasAtrabalhar = "00:00:00";
         [ParameterOrder(Order = 7)]
         public string tHorasAtrabalhar
         {
@@ -88,7 +88,7 @@ namespace HLP.Entries.Model.Models.Gerais
                 base.NotifyPropertyChanged(propertyName: "tHorasAtrabalhar");
             }
         }
-        private string _tSaldoTotalAnterior;
+        private string _tSaldoTotalAnterior = "00:00:00";
         [ParameterOrder(Order = 8)]
         public string tSaldoTotalAnterior
         {

@@ -19,7 +19,7 @@ namespace HLP.Entries.View.WPF.RecursosHumanos
         {
             InitializeComponent();
             List<Control> lresult = Util.GetLogicalChildCollection<HlpCalendarioPonto>(this).ToList<Control>();
-            this.ViewModel = new EspelhoPontoViewModel(lresult);
+            this.ViewModel = new EspelhoPontoViewModel(lresult, this.btnCarregar);
         }
 
 

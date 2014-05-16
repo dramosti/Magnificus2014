@@ -12,7 +12,7 @@ namespace HLP.Entries.Services.Gerais
 {
     public class FuncionarioService
     {
-        const string xTabela = "Funcionario";
+        const string xTabela = "Funcionario;Enderecos;Funcionario_Arquivo;Funcionario_BancoHoras;Funcionario_Certificacao;Funcionario_Comissao_Produto;Funcionario_Controle_Horas_Ponto;Funcionario_Margem_Lucro_Comissao";
 
         HLP.Wcf.Entries.wcf_Funcionario serviceNetwork;
         HLP.Entries.Services.wcf_Funcionarios.Iwcf_FuncionarioClient serviceWeb;

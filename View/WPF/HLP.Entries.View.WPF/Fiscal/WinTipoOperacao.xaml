@@ -16,9 +16,9 @@
             </ResourceDictionary.MergedDictionaries>
             <convert:ComboBoxDisplayConverter x:Key="cbxDisplayConv"/>
             <ObjectDataProvider x:Key="odp" ObjectType="{x:Type ccx:FillComboBoxViewModel}"/>
-            <ObjectDataProvider x:Key="lresultCidades" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
+            <ObjectDataProvider x:Key="lResultUf" ObjectInstance="{StaticResource odp}" MethodName="GetAllValuesToComboBox">
                 <ObjectDataProvider.MethodParameters>
-                    <System:String>vwCidadeToComboBox</System:String>
+                    <System:String>vwUFToComboBox</System:String>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
             <convert:MaskConverter x:Key="maskConverter"/>
@@ -86,12 +86,12 @@
 
                                 <!--Components-->
 
-                                <Components:CustomTextBox
+                                <Components:CustomTextBox stCompPosicao="fieldId"
                                     Grid.Column="2" Grid.Row="1"
                                     IsReadOnly="True"
 									Text="{Binding currentModel.idTipoOperacao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 </Components:CustomTextBox>
-                                <Components:CustomTextBox
+                                <Components:CustomTextBox stCompPosicao="first"
                                     Grid.Column="2" Grid.Row="2"
                                     Text="{Binding currentModel.xOperacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 									IsEnabled="{Binding bIsEnabled}">
@@ -851,22 +851,22 @@
                           CanUserDeleteRows="True"
                           CanUserAddRows="True">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn x:Name="clCidades" Header="Cidades" Width="150" >
+                            <DataGridTemplateColumn x:Name="clUf" Header="UF" Width="150" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Path=idUf, Converter={StaticResource cbxDisplayConv}, 
-                                            ConverterParameter={StaticResource lresultCidades}}"
+                                            ConverterParameter={StaticResource lResultUf}}"
                                                    />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                                 <DataGridTemplateColumn.CellEditingTemplate>
                                     <DataTemplate>
-                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStCidade}" >
-                                            <ComboBox x:Name="cbxStCidade"
-                ItemsSource="{Binding Source={StaticResource lresultCidades}}" 
+                                        <Grid FocusManager.FocusedElement="{Binding ElementName= cbxStUf}" >
+                                            <ComboBox x:Name="cbxStUf"
+                ItemsSource="{Binding Source={StaticResource lResultUf}}" 
                                                       SelectedValuePath="id"
                                             DisplayMemberPath="display"                                
-            SelectedValue="{Binding idUf, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus}"
+            SelectedValue="{Binding idUf, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"
                                                       IsSynchronizedWithCurrentItem="False"/>
                                         </Grid>
                                     </DataTemplate>
