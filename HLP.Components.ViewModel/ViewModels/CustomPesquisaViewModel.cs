@@ -14,6 +14,7 @@ namespace HLP.Components.ViewModel.ViewModels
     {
         public ICommand searchCommand { get; set; }
         public ICommand insertCommand { get; set; }
+        public ICommand goToRecordCommand { get; set; }
 
         Pesquisa_RapidaService objService;
 

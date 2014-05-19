@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using HLP.Components.ViewModel.ViewModels;
 using HLP.Base.Static;
 using System.ComponentModel;
+using HLP.Base.EnumsBases;
 
 namespace HLP.Components.View.WPF
 {
@@ -100,6 +101,14 @@ namespace HLP.Components.View.WPF
             set { _NameWindowCadastro = value; }
         }
 
+        private statusComponentePosicao _stCompPosicao;
+        [Category("HLP.Owner")]
+        public statusComponentePosicao stCompPosicao
+        {
+            get { return _stCompPosicao; }
+            set { _stCompPosicao = value; }
+        }
+
         #endregion
 
         #region Dependency Properties
@@ -134,8 +143,6 @@ namespace HLP.Components.View.WPF
                     _iValorPesquisa: valorPesquisa);
             }
         }
-
-
 
         #endregion
     }

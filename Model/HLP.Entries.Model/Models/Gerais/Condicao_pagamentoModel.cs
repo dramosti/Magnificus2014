@@ -82,6 +82,28 @@ namespace HLP.Entries.Model.Models.Gerais
         public byte? stDataVencimento { get; set; }
         [ParameterOrder(Order = 11)]
         public byte stCondicao { get; set; }
+        private byte? _stAlocacaoImposto;
+        [ParameterOrder(Order = 12)]
+        public byte? stAlocacaoImposto
+        {
+            get { return _stAlocacaoImposto; }
+            set
+            {
+                _stAlocacaoImposto = value;
+                base.NotifyPropertyChanged(propertyName: "stAlocacaoImposto");
+            }
+        }
+        private byte? _stPrimeiroPagamento;
+        [ParameterOrder(Order = 13)]
+        public byte? stPrimeiroPagamento
+        {
+            get { return _stPrimeiroPagamento; }
+            set
+            {
+                _stPrimeiroPagamento = value;
+                base.NotifyPropertyChanged(propertyName: "stPrimeiroPagamento");
+            }
+        }
     }
 
     public partial class Condicao_pagamentoModel
