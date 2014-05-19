@@ -39,9 +39,9 @@ namespace HLP.Components.ViewModel.Commands
             {
                 winPesquisa.WindowState = WindowState.Maximized;
                 winPesquisa.GetType().GetProperty(name: "NameView").SetValue(obj: winPesquisa, value:
-                    o.GetType().GetProperty(name: "TableView").GetValue(obj: o));
+                    (o as TextBox).TemplatedParent.GetType().GetProperty(name: "TableView").GetValue(obj: (o as TextBox).TemplatedParent));
                 winPesquisa.GetType().GetProperty(name: "NameWindowCadastro").SetValue(obj: winPesquisa,
-                    value: o.GetType().GetProperty(name: "NameWindowCadastro").GetValue(obj: o));
+                    value: (o as TextBox).TemplatedParent.GetType().GetProperty(name: "NameWindowCadastro").GetValue(obj: (o as TextBox).TemplatedParent));
 
                 winPesquisa.ShowDialog();
 
@@ -50,8 +50,8 @@ namespace HLP.Components.ViewModel.Commands
                 {
                     int result = (winPesquisa.GetType().GetProperty(name: "lResult").GetValue(obj: winPesquisa)
                     as List<int>).FirstOrDefault();
-                    o.GetType().GetProperty(name: "xIdPesquisa").SetValue(
-                        obj: o, value: result);
+                    (o as TextBox).TemplatedParent.GetType().GetProperty(name: "xIdPesquisa").SetValue(
+                        obj: (o as TextBox).TemplatedParent, value: result.ToString());
                 }
             }
         }
