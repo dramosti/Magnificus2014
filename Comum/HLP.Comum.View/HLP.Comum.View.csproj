@@ -94,7 +94,6 @@
     <Compile Include="Components\CustomComboBox.cs" />
     <Compile Include="Components\CustomDatePicker.cs" />
     <Compile Include="Components\CustomTextBlock.cs" />
-    <Compile Include="Components\CustomTextBox.cs" />
     <Compile Include="Components\CustomDockPanelSplitter.cs" />
     <Compile Include="Components\HlpButtonHierarquia.xaml.cs">
       <DependentUpon>HlpButtonHierarquia.xaml</DependentUpon>

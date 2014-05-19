@@ -24,6 +24,8 @@ using HLP.Base.ClassesBases;
 using HLP.Base.Modules;
 using System.Xml;
 using System.IO;
+using HLP.Comum.View.WPF.Messages;
+using System.Reflection;
 
 namespace HLP.Magnificus.View.WPF
 {
@@ -77,7 +79,7 @@ namespace HLP.Magnificus.View.WPF
         public bool DoHandle { get; set; }
         private void Application_DispatcherUnhandledException(object sender,
                                System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {            
+        {
             string xMessage = e.Exception.Message + Environment.NewLine + e.Exception.InnerException;
             string xInner = "";
             e.Handled = true;
@@ -107,6 +109,8 @@ namespace HLP.Magnificus.View.WPF
                 if (e.Exception.InnerException != null)
                     xInner = e.Exception.InnerException.Message;
             }
+
+
             if (!xMessage.Contains("NewItemPlaceholderPosition"))
                 MessageBox.Show(messageBoxText: "Erro: " +
                     xMessage + Environment.NewLine +
@@ -160,7 +164,7 @@ namespace HLP.Magnificus.View.WPF
             List<ChannelEndpointElement> lChannels = new List<ChannelEndpointElement>();
             Configuration localConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             ServiceModelSectionGroup serviceModeGroupLocal = ServiceModelSectionGroup.GetSectionGroup(config: localConfig);
-            string[] arrayPaths = Directory.GetFiles(path: 
+            string[] arrayPaths = Directory.GetFiles(path:
                 System.Windows.Forms.Application.StartupPath);
 
             ConfigXmlDocument configXml = new ConfigXmlDocument();
@@ -170,7 +174,7 @@ namespace HLP.Magnificus.View.WPF
 
             foreach (string paths in arrayPaths.ToList().Where(i => i.ToUpper().Contains(value: ".CONFIG")))
             {
-                if(paths != localConfig.FilePath)
+                if (paths != localConfig.FilePath)
                 {
                     configXml.Load(filename: paths);
                     nodeList = configXml.SelectNodes(xpath: "/configuration/system.serviceModel/bindings/basicHttpBinding/binding");
@@ -220,8 +224,8 @@ namespace HLP.Magnificus.View.WPF
                             lChannelsToAdd.Add(item: c);
                     }
                 }
-            }            
-            
+            }
+
             try
             {
                 foreach (BasicHttpBindingElement i in lBindingsToAdd)
@@ -249,6 +253,7 @@ namespace HLP.Magnificus.View.WPF
         {
             try
             {
+
                 this.GetConfigService();
 
                 if (this.ValidaConnection())
@@ -282,7 +287,7 @@ namespace HLP.Magnificus.View.WPF
                         }
 
                         HLP.Magnificus.View.WPF.MainWindow wd = new MainWindow();
-                        this.MainWindow = wd;
+                        this.MainWindow = wd;                                               
 
                         WinLogin wdLogin = new WinLogin(stModoInicial: ComumView.ViewModel.ViewModel.ModoInicial.padrao);
                         wdLogin.ShowDialog();
