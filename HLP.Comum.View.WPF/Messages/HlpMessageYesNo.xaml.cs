@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.ComumView.ViewModel.Messages.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,22 @@ namespace HLP.Comum.View.WPF.Messages
         public HlpMessageYesNo()
         {
             InitializeComponent();
+        }
+
+        public static MessageBoxResult ShowMessage(string xMessageToUser)
+        {
+            HlpMessageYesNo _message = new HlpMessageYesNo();
+
+            _message.DataContext = new HlpMessageYesNoViewModel(xMessageToUser: xMessageToUser);
+
+            if (_message.ShowDialog() == true)
+            {
+                return MessageBoxResult.Yes;
+            }
+            else
+            {
+                return MessageBoxResult.No;
+            }
         }
     }
 }

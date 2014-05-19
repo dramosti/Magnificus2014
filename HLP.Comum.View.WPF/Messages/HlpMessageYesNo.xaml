@@ -1,8 +1,21 @@
 ﻿<Window x:Class="HLP.Comum.View.WPF.Messages.HlpMessageYesNo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="HlpMessageYesNo" Height="300" Width="300">
+        Title="HlpMessageYesNo" Height="300" Width="300" x:Name="hlpMessage">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox Text="{Binding xMessageToUser}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="Sim" Command="{Binding commYes}" CommandParameter="{Binding ElementName=hlpMessage}"></Button>
+        <Button Grid.Column="1" Grid.Row="3" Content="Não" Command="{Binding commNo}" CommandParameter="{Binding ElementName=hlpMessage}"></Button>
     </Grid>
 </Window>

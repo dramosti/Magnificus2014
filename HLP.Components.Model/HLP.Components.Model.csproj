@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ContatoModel.cs" />
+    <Compile Include="Models\CustomPesquisaModel.cs" />
     <Compile Include="Models\EnderecoModel.cs" />
     <Compile Include="Models\FindAllModel.cs" />
     <Compile Include="Models\HlpButtonHierarquiaStruct.cs" />
