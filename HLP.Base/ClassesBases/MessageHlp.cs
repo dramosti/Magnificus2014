@@ -58,7 +58,9 @@ namespace HLP.Base.ClassesBases
         {
             bool? bReturn = null;
 
-            Application.Current.Dispatcher.BeginInvoke((Action)(()
+            try
+            {
+                Application.Current.Dispatcher.BeginInvoke((Action)(()
                 =>
                 {
                     if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja salvar o registro?")
@@ -71,6 +73,13 @@ namespace HLP.Base.ClassesBases
 
                     bSave = (bool)bReturn;
                 }));
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
 
             while (true)
             {
@@ -90,28 +99,15 @@ namespace HLP.Base.ClassesBases
         {
             bool? bReturn = null;
 
-            Application.Current.Dispatcher.BeginInvoke((Action)(()
-                =>
-            {
-                if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja excluir o registro?")
+            if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja excluir o registro?")
                 == MessageBoxResult.Yes)
-                {
-                    bReturn = true;
-                }
-                else
-                    bReturn = false;
-
-                bSave = (bool)bReturn;
-            }));
-
-            while (true)
             {
-                if (bReturn != null)
-                {
-                    break;
-                }
-                Thread.Sleep(millisecondsTimeout: 300);
+                bReturn = true;
             }
+            else
+                bReturn = false;
+
+            bSave = (bool)bReturn;
 
             return bReturn ?? false;
         }
@@ -129,28 +125,15 @@ namespace HLP.Base.ClassesBases
         {
             bool? bReturn = null;
 
-            Application.Current.Dispatcher.BeginInvoke((Action)(()
-                =>
+            if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja realmente cancelar a transação?")
+                    == MessageBoxResult.Yes)
             {
-                if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja realmente cancelar a transação?")
-                == MessageBoxResult.Yes)
-                {
-                    bReturn = true;
-                }
-                else
-                    bReturn = false;
-
-                bSave = (bool)bReturn;
-            }));
-
-            while (true)
-            {
-                if (bReturn != null)
-                {
-                    break;
-                }
-                Thread.Sleep(millisecondsTimeout: 300);
+                bReturn = true;
             }
+            else
+                bReturn = false;
+
+            bSave = (bool)bReturn;
 
             return bReturn ?? false;
         }

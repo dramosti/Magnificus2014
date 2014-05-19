@@ -246,8 +246,8 @@
                 </Components:CustomComboBox>
                 <Components:CustomComboBox
                     Grid.Column="2" Grid.Row="9" Grid.ColumnSpan="2"
-                    SelectedIndex="{Binding currentModel.stAlocacaoImpostos, Mode=TwoWay, 
-                    NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
+                    SelectedIndex="{Binding currentModel.stAlocacaoImposto, Mode=TwoWay, 
+                    NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Converter={StaticResource byteToIntConverter}}"
 					IsEnabled="{Binding bIsEnabled}"				
 					ToolTip="Selecione um método de distribuição do valor do imposto sobre vendas para prestações do plano de pagamento">
                     <Components:CustomComboBox.Items>

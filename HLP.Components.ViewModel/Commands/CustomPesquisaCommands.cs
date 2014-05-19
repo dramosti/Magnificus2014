@@ -3,6 +3,7 @@ using HLP.Base.Modules;
 using HLP.Components.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,6 +26,9 @@ namespace HLP.Components.ViewModel.Commands
             this.objViewModel.insertCommand = new RelayCommand(
                 execute: e => this.InsertExecute(o: e),
                 canExecute: cE => this.InsertCanExecute(o: cE));
+            this.objViewModel.goToRecordCommand = new RelayCommand(
+                execute: e => this.GoToRecord(o: e),
+                canExecute: cE => this.GoToRecordCanExecute(o: cE));
         }
 
         private void SearchExecute(object o)
@@ -105,12 +109,37 @@ namespace HLP.Components.ViewModel.Commands
                     Window w = GerenciadorModulo.Instancia.CarregaForm(
                         nome: nameWindow.ToString(), exibeForm: Base.InterfacesBases.TipoExibeForm.Normal);
 
-                    if(w != null)
+                    if (w != null)
                     {
-                        //w.DataContext.GetType().GetProperty(name: "")
+                        int id = 0;
+                        object _id = o.GetType().GetProperty(name: "xIdPesquisa").GetValue(
+                            obj: o);
+
+                        if (_id != null)
+                        {
+                            if (int.TryParse(s: _id.ToString(), result: out id))
+                            {
+                                w.DataContext.GetType().GetProperty(name: "currentID").SetValue(obj: w, value: id);
+
+                                BackgroundWorker bw = w.DataContext.GetType().GetProperty(
+                                    name: "bWorkerPesquisa").GetValue(obj: w.DataContext) as BackgroundWorker;
+
+                                if (bw != null)
+                                {
+                                    bw.RunWorkerAsync();
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+
+        private bool GoToRecordCanExecute(object o)
+        {
+            object id = o.GetType().GetProperty(name: "xIdPesquisa").GetValue(obj: o);
+
+            return !(string.IsNullOrEmpty(value: id as string));
         }
     }
 }
