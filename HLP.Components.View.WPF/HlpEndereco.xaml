@@ -12,6 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
                 <!--<ResourceDictionary Source="pack://application:,,,/HLP.Comum.Resources;component/Styles/mainStyle.xaml"></ResourceDictionary>-->
             </ResourceDictionary.MergedDictionaries>
             <convertLocal:NotConverter x:Key="notConverter"/>
@@ -66,9 +67,9 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DataGrid x:Name="dgvEndereco" 
+        <Components:CustomDataGrid x:Name="dgvEndereco" 
                    ItemsSource="{Binding ElementName=ucEndereco, Path=ItemsSourceEnderecos}"
-                    IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
+                   IsReadOnly ="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}},Path=IsReadOnlyUserControl}"
                    AutoGenerateColumns="False"                       
                    SelectionUnit="CellOrRowHeader" 
                    CanUserReorderColumns="False" 
@@ -169,6 +170,6 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-        </DataGrid>
+        </Components:CustomDataGrid>
     </Grid>
 </UserControl>

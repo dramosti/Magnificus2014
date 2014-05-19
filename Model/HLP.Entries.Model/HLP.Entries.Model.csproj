@@ -134,6 +134,7 @@
     <Compile Include="Models\Parametros\Parametro_FinanceiroModel.cs" />
     <Compile Include="Models\Parametros\Parametro_FiscalModel.cs" />
     <Compile Include="Models\Parametros\Parametro_Ordem_ProducaoModel.cs" />
+    <Compile Include="Models\RecursosHumanos\EspelhoPontoPrintModel.cs" />
     <Compile Include="Models\Transportes\Condicoes_entregaModel.cs" />
     <Compile Include="Models\Gerais\DataContract.cs" />
     <Compile Include="Models\Gerais\EmpresaModel.cs" />
@@ -153,7 +154,6 @@
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedorRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_arquivoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_contatoRepository.cs" />
-    <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_fiscalRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_ObservacaoRepository.cs" />
     <Compile Include="Repository\Implementation\Comercial\Cliente_fornecedor_produtoRepository.cs" />
@@ -237,14 +237,12 @@
     <Compile Include="Repository\Implementation\Transportes\Rota_pracaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\TransportadorRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Transportador_ContatoRepository.cs" />
-    <Compile Include="Repository\Implementation\Transportes\Transportador_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Transportador_MotoristaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Transportador_VeiculosRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICanal_vendaRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedorRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_arquivoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_contatoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_fiscalRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_Fornecedor_ObservacaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedor_produtoRepository.cs" />
@@ -328,7 +326,6 @@
     <Compile Include="Repository\Interfaces\Transportes\IRota_pracaRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ITransportadorReposiroty.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ITransportador_ContatoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Transportes\ITransportador_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ITransportador_MotoristaRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ITransportador_VeiculosRepository.cs" />
   </ItemGroup>

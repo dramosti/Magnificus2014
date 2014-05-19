@@ -72,14 +72,6 @@ namespace HLP.Entries.Model.Repository.Implementation.Comercial
             return regCliente_fornecedorAccessor.Execute(idClienteFornecedor).FirstOrDefault();
         }
 
-        public Cliente_fornecedor_EnderecoModel GetCliente_fornecedor_EnderecoPrincipal(int idCliente_fornecedor)
-        {
-            DataAccessor<Cliente_fornecedor_EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
-            ("SELECT * FROM Cliente_Fornecedor_Endereco WHERE idClienteFornecedor = @idCliente_fornecedor",
-            new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idCliente_fornecedor"),
-            MapBuilder<Cliente_fornecedor_EnderecoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
-            return reg.Execute(idCliente_fornecedor).FirstOrDefault();
-        }
 
         public List<Cliente_fornecedor_representanteModel> GetCliente_fornecedor_Representante(int idCliente_fornecedor)
         {

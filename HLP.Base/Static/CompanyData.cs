@@ -13,6 +13,7 @@ namespace HLP.Base.Static
         public static string xFantasia { get; set; }
         public static string xLinqLogoEmpresa { get; set; }
         public static bool stMaiusculo { get; set; }
+        public static object objEmpresaModel { get; set; }
 
         private static object _parametrosEmpresa;
         public static object parametrosEmpresa

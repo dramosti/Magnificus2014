@@ -119,7 +119,7 @@
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Bottom">
-            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}" Style="{StaticResource  LabelStyleComponents}" />
+            <Label Content="{Binding sTotalRegistro, Mode=TwoWay}"/>
         </Grid>
         <Grid Margin="0,3,0,0">
             <DataGrid x:Name="dgvResult" 

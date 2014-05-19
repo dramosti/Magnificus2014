@@ -574,7 +574,13 @@ namespace HLP.Base.ClassesBases
         {
             try
             {
-                switch (ContentBotao.ToString())
+                string parameter = "";
+                if (ContentBotao.GetType() == typeof(string))
+                    parameter = ContentBotao.ToString();
+                else
+                    parameter = ((Button)ContentBotao).Name.ToString();
+
+                switch (parameter)
                 {
                     case "btnPrimeiro":
                         objviewModel.navigatePesquisa.MoveFirst();
@@ -619,6 +625,11 @@ namespace HLP.Base.ClassesBases
         }
         public bool CanExecAcao(object ContentBotao)
         {
+            string parameter = "";
+            if (ContentBotao.GetType() == typeof(string))
+                parameter = ContentBotao.ToString();
+            else
+                parameter = ((Button)ContentBotao).Name.ToString();
 
             bool bCanExecute = false;
             int currentPosition;
@@ -628,7 +639,7 @@ namespace HLP.Base.ClassesBases
             {
                 if (objviewModel.navigatePesquisa.Count() > 0)
                 {
-                    switch (ContentBotao.ToString())
+                    switch (parameter)
                     {
                         case "btnPrimeiro":
                             bCanExecute = true;
@@ -961,10 +972,10 @@ namespace HLP.Base.ClassesBases
                             }
                             catch (Exception)
                             {
-                                
+
                                 throw;
                             }
-                            
+
                         }
                     }
                 }

@@ -75,13 +75,13 @@ namespace HLP.Entries.Services.Gerais
             }
         }
 
-        public FuncionarioModel GetObject(int id)
+        public FuncionarioModel GetObject(int id, bool bGetChild= true)
         {
             switch (Sistema.bOnline)
             {
                 case StConnection.OnlineNetwork:
                     {
-                        return this.serviceNetwork.getFuncionario(id);
+                        return this.serviceNetwork.getFuncionario(id, bGetChild);
                     }
                 case StConnection.OnlineWeb:
                     {

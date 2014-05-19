@@ -54,14 +54,14 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario)
+        public HLP.Entries.Model.Models.Gerais.FuncionarioModel getFuncionario(int idFuncionario, bool bGetChild = true)
         {
             try
             {
                 HLP.Entries.Model.Models.Gerais.FuncionarioModel objFuncionario = this.funcionarioRepository.GetFuncionario(
                     idFuncionario: idFuncionario);
 
-                if (objFuncionario != null)
+                if (objFuncionario != null && bGetChild)
                 {
                     var listaArquivos = this.funcionario_ArquivoRepository.GetAllFuncionario_Arquivo(
                         idFuncionario: idFuncionario);

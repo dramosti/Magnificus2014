@@ -73,7 +73,9 @@ namespace HLP.Components.Model.Repository.Implementation
             {
                 regAcessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("[dbo].[Proc_sel_Funcionario_Endereco]",
                    new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>("idEndereco"),
-                   MapBuilder<EnderecoModel>.MapAllProperties().DoNotMap(i => i.status)
+                   MapBuilder<EnderecoModel>.MapAllProperties()
+                   .DoNotMap(i => i.status)
+                   .DoNotMap(i => i.bCanFindCep)
                    .Build());
             }
             return regAcessor.Execute(idEndereco).FirstOrDefault();
@@ -83,7 +85,9 @@ namespace HLP.Components.Model.Repository.Implementation
         {
             DataAccessor<EnderecoModel> reg = UndTrabalho.dbPrincipal.CreateSqlStringAccessor
             ("SELECT * FROM ENDERECOS WHERE " + sPK + " = @" + sPK, new Parameters(UndTrabalho.dbPrincipal).AddParameter<int>(sPK),
-            MapBuilder<EnderecoModel>.MapAllProperties().DoNotMap(i => i.status)
+            MapBuilder<EnderecoModel>.MapAllProperties()
+            .DoNotMap(i => i.status)
+            .DoNotMap(i => i.bCanFindCep)
             .Build());
 
             return reg.Execute(idPK).ToList();

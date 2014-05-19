@@ -248,6 +248,179 @@
         <GradientStop Color="#FF4774B5" Offset="1"/>
     </LinearGradientBrush>
 
+    <!--FocuslVisual Estilo-->
+
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{StaticResource BlueStandard}" StrokeThickness="1.3"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Menu e MenuItem-->
+    
+    
+    <Geometry x:Key="Checkmark">F1 M 10.0,1.2 L 4.7,9.1 L 4.5,9.1 L 0,5.2 L 1.3,3.5 L 4.3,6.1L 8.3,0 L 10.0,1.2 Z</Geometry>
+    <Style TargetType="{x:Type Menu}">
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+    </Style>
+    <Style x:Key="MenuItemExpander" TargetType="{x:Type MenuItem}">
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value= "Black" />
+        <Setter Property="Height" Value= "{DynamicResource {x:Static SystemParameters.CaptionHeightKey}}"/>
+    </Style>
+    <Style TargetType="{x:Type MenuItem}">
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Foreground" Value= "Black" />
+        <Setter Property="Height" Value= "{DynamicResource {x:Static SystemParameters.CaptionHeightKey}}"/>
+        <Style.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MenuItemPrincipal" TargetType="{x:Type MenuItem}">
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value= "{DynamicResource {x:Static SystemParameters.CaptionHeightKey}}"/>
+        <Style.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="templateRoot"  BorderBrush="White" BorderThickness="{TemplateBinding BorderThickness}" Background="White" Height="22" SnapsToDevicePixels="true">
+            <Grid Margin="-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
+                    <ColumnDefinition Width="13"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                <Border x:Name="GlyphPanel"  BorderBrush="White" BorderThickness="1" ClipToBounds="False" HorizontalAlignment="Center" Height="22" Margin="-1,0,0,0" Visibility="Hidden" VerticalAlignment="Center" Width="22" Background="White">
+                    <Path x:Name="Glyph" Data="{StaticResource Checkmark}" Fill="{StaticResource Menu.Static.Foreground}" FlowDirection="LeftToRight" Height="11" Width="10"/>
+                </Border>
+                <ContentPresenter x:Name="menuHeaderContainer" Grid.Column="2" ContentSource="Header" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                <TextBlock x:Name="menuGestureText" Grid.Column="4" Margin="{TemplateBinding Padding}" Opacity="0.7" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center" Foreground="Black"/>
+            </Grid>
+        </Border>
+        <!--Triggers do Menuitem que nao tem outra subcategoria-->
+        <ControlTemplate.Triggers>
+            <Trigger Property="Icon" Value="{x:Null}">
+                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="Foreground" TargetName="menuGestureText" Value="white"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{StaticResource Menu.Disabled.Foreground}"/>
+                <Setter Property="Fill" TargetName="Glyph" Value="{StaticResource Menu.Disabled.Foreground}"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsHighlighted" Value="True"/>
+                    <Condition Property="IsEnabled" Value="False"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource MenuItem.Highlight.Disabled.Background}"/>
+                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource MenuItem.Highlight.Disabled.Border}"/>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--Propriedades do Menuitem com subcategorias-->
+    <Geometry x:Key="RightArrow">M 0,0 L 4,3.5 L 0,7 Z</Geometry>
+    
+    <ControlTemplate x:Key="{ComponentResourceKey ResourceId=SubmenuHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="templateRoot" BorderThickness="{TemplateBinding BorderThickness}" Height="22" SnapsToDevicePixels="true" Background="White" BorderBrush="White">
+            <Grid Margin="-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
+                    <ColumnDefinition Width="13"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                <Border x:Name="GlyphPanel" BorderBrush="White" BorderThickness="1" Background="#3DFFFFFF" Height="22" Margin="-1,0,0,0" Visibility="Hidden" VerticalAlignment="Center" Width="22">
+                    <Path x:Name="Glyph" Data="{DynamicResource Checkmark}" Fill="{StaticResource Menu.Static.Foreground}" FlowDirection="LeftToRight" Height="11" Width="9"/>
+                </Border>
+                <ContentPresenter Grid.Column="2" ContentSource="Header" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
+                <TextBlock  Grid.Column="4" Margin="{TemplateBinding Padding}" Opacity="0.7" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center" Foreground="White"/>
+                <Path x:Name="RightArrow" Grid.Column="5" Data="{StaticResource RightArrow}" Fill="{StaticResource Menu.Static.Foreground}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="3" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" Placement="Right" VerticalOffset="-3">
+                    <Border x:Name="SubMenuBorder" BorderBrush="White" BorderThickness="1" Background="White" Padding="2">
+                        <ScrollViewer x:Name="SubMenuScrollViewer" Foreground="White" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=SubMenuBorder}" Height="{Binding ActualHeight, ElementName=SubMenuBorder}" Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
+                                </Canvas>
+                                <Rectangle Fill="White" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
+                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="true" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <!--Triggers do MenuItem que tem subcategorias-->
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
+            </Trigger>
+            <Trigger Property="Icon" Value="{x:Null}">
+                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                <Setter Property="BorderBrush" TargetName="SubMenuBorder" Value="Gray"/>
+                <Setter Property="Fill" TargetName="RightArrow" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{StaticResource Menu.Disabled.Foreground}"/>
+                <Setter Property="Fill" TargetName="Glyph" Value="{StaticResource Menu.Disabled.Foreground}"/>
+                <Setter Property="Fill" TargetName="RightArrow" Value="{StaticResource Menu.Disabled.Foreground}"/>
+            </Trigger>
+            <Trigger Property="ScrollViewer.CanContentScroll" SourceName="SubMenuScrollViewer" Value="false">
+                <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}"/>
+                <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--GridStyle-->
+
+    <Style TargetType="{x:Type Grid}" x:Key="GridStyle">
+        <Setter Property="Background" Value="{StaticResource StyleMainWindowDefault}"/>
+    </Style>
+
 
     <Style x:Key="TextBoxComponentStyle" TargetType="{x:Type TextBox}">
         <Setter Property="UtilLocal:AutoSelectTextBoxAttachedProperty.AutoSelect" Value="True"/>
@@ -388,9 +561,6 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-
-
-
     <!--Style Custom CheckBox, Animação-->   
 
     <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
@@ -501,8 +671,7 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="BorderThickness" Value="1"/>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
@@ -697,7 +866,7 @@
     </Style>    
     
 
-    <!--Login-->  
+    <!--Login--> 
     
     <!--Password Login-->
 
@@ -742,6 +911,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 
     <!--Button Login-->
 
@@ -1316,7 +1486,6 @@
     </Style>
 
     <!--Login-->
-
 
 
     <!--Style Custom TextBlock (HLPPesquisa)-->
@@ -1960,6 +2129,43 @@
     </Style> 
 
     <!--DataGrid -->
+    
+    <!--Button Row (Search)-->
+    
+    <Style x:Key="ButtonDataGrid" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="#FF4774B5"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="White"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <!--Style and template for the resize control on the DataGridColumnHeader.-->
     <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
@@ -2093,7 +2299,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="DataGridPadrao" TargetType="{x:Type DataGrid}">
+    <Style TargetType="{x:Type DataGrid}">
         <Setter Property="Background" Value="{StaticResource ControlContentBrush}"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
@@ -2343,19 +2549,7 @@
                 <Border BorderBrush="Transparent" BorderThickness="1"></Border>
             </AdornedElementPlaceholder>
         </DockPanel>
-    </ControlTemplate>
-
-    <!--FocuslVisual Estilo-->
-
-    <Style x:Key="FocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{StaticResource BlueStandard}" StrokeThickness="1.3"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    </ControlTemplate>    
 
     <!--Estilo HlpPesquisa-->
 
@@ -2767,7 +2961,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_ADD" TargetType="{x:Type Button}">
+    <Style x:Key="Button_ADD_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -2839,7 +3033,92 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_EDIT" TargetType="{x:Type Button}">
+    <Style x:Key="Button_ADD" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454"></Ellipse>
+                        <Path x:Name="path" Stretch="Fill" Height="20" Width="16" Grid.Column="1" Grid.Row="1" Fill="#FF545454" Data="F1 M 20,17L 44,17L 56,29L 56,59L 20,59L 20,17 Z M 24,21L 24,55L 52,55L 52,34L 39,34L 39,21L 24,21 Z M 43,21L 43,30L 52,30L 43,21 Z"></Path>
+                        <Path x:Name="path1" Stretch="Fill" Grid.Column="1" StrokeThickness="0.3" Stroke="White" Height="11" Width="11" Grid.Row="1" Fill="#FF4774B5" Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z" Margin="4.728,12.322,10.272,2.677"></Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_EDIT_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -2911,7 +3190,244 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_DELETE" TargetType="{x:Type Button}">
+    <Style x:Key="Button_EDIT" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-9.352"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-9.352"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-6.779"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-6.779"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-3.957"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-3.874"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.996"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-0.996"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="2.38"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-6.847"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.949"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-6.68"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-1.7"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-6.68"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1.909"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-6.64"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1.743"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-6.674"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1.832"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path3">
+                                <EasingColorKeyFrame KeyTime="0:0:0.6" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path3">
+                                <EasingColorKeyFrame KeyTime="0:0:0.6" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path3">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.005"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path4">
+                                <EasingColorKeyFrame KeyTime="0:0:0.9" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path4">
+                                <EasingColorKeyFrame KeyTime="0:0:0.9" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path4">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path5">
+                                <EasingColorKeyFrame KeyTime="0:0:1.2" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path5">
+                                <EasingColorKeyFrame KeyTime="0:0:1.2" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path5">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path6">
+                                <EasingColorKeyFrame KeyTime="0:0:1.5" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path6">
+                                <EasingColorKeyFrame KeyTime="0:0:1.5" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path6">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF47B54C"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.992"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.996"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="2.407"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.249"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="2"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454"></Ellipse>
+                        <Path x:Name="path" Stretch="Fill" Height="20" Width="16" Grid.Column="1" Grid.Row="1" Fill="#FF545454" Data="F1 M 20,17L 44,17L 56,29L 56,59L 20,59L 20,17 Z M 24,21L 24,55L 52,55L 52,34L 39,34L 39,21L 24,21 Z M 43,21L 43,30L 52,30L 43,21 Z"></Path>
+                        <Path x:Name="path2" Grid.Column="1" Data="M11.9375,14.21875 L16.413238,14.21875" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.396,9.207,0,0" Grid.Row="1" Stretch="Fill"  VerticalAlignment="Top" Width="5.463">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path3" Grid.Column="1" Data="M11.9375,14.21875 L16.413238,14.21875" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.407,12.066,0,0" Grid.Row="1" Stretch="Fill"  VerticalAlignment="Top" Width="5.463">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path4" Grid.Column="1" Data="M11.666667,22.75 L21.342309,22.75" Opacity="1" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.417,14.788,0,0" Grid.Row="1" Stretch="Fill" VerticalAlignment="Top" Width="9">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" MappingMode="RelativeToBoundingBox" StartPoint="0,0">
+                                    <GradientStop Color="Transparent"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path5" Grid.Column="1" Data="M11.666667,22.75 L21.342309,22.75" HorizontalAlignment="Left" Height="1" Margin="7.407,17.738,0,0" Grid.Row="1" Stretch="Fill" VerticalAlignment="Top" Width="9" Fill="{x:Null}">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path6" Grid.Column="1" Data="M11.666667,22.75 L21.342309,22.75" Fill="White" HorizontalAlignment="Left" Height="1" Margin="7.407,21.111,0,0" Grid.Row="1" Stretch="Fill" VerticalAlignment="Top" Width="9">
+                            <Path.Stroke>
+                                <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                                    <GradientStop Color="Transparent" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Stroke>
+                        </Path>
+                        <Path x:Name="path1" Stretch="Fill" Grid.Column="1" StrokeThickness="0.3" Stroke="White" Height="11" Width="11" Grid.Row="1" Fill="#FF47B54C" Data="F1 M 53.2929,21.2929L 54.7071,22.7071C 56.4645,24.4645 56.4645,27.3137 54.7071,29.0711L 52.2323,31.5459L 44.4541,23.7677L 46.9289,21.2929C 48.6863,19.5355 51.5355,19.5355 53.2929,21.2929 Z M 31.7262,52.052L 23.948,44.2738L 43.0399,25.182L 50.818,32.9601L 31.7262,52.052 Z M 23.2409,47.1023L 28.8977,52.7591L 21.0463,54.9537L 23.2409,47.1023 Z " Margin="14.103,6.697,0.897,8.302" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_DELETE_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -2976,6 +3492,161 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_DELETE" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-41"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-3.25"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-4.5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-41"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.25"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-3.75"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="15"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF3434"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF3434"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-41"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-3"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.75"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-4.75"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-41"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="15"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="17"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-3.5"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.5"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-1.5"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454"></Ellipse>
+                        <Path x:Name="path2" Grid.Column="1" Grid.Row="1" Height="16" Width="15" Stretch="Fill" Fill="#FF545454" Data="F1 M27.7083,28.5 L48.2916,28.5 C49.1661,28.5 49.875,29.2089 49.875,30.0834 L48.2916,53.8334 C48.2916,54.7078 47.5828,55.4167 46.7083,55.4167 L29.2917,55.4167 C28.4172,55.4167 27.7083,54.7078 27.7083,53.8334 L26.125,30.0834 C26.125,29.2089 26.8339,28.5 27.7083,28.5 z M30.0833,31.6667 L30.4792,52.25 33.25,52.25 32.8542,31.6667 30.0833,31.6667 z M36.4167,31.6667 L36.4167,52.25 39.5833,52.25 39.5833,31.6667 36.4167,31.6667 z M43.1458,31.6667 L42.75,52.25 45.5208,52.25 45.9167,31.6667 43.1458,31.6667 z" Margin="5.832,9.081,5.167,0.918"/>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1" Data="M256.82796,149.50001 C256.82796,149.50001 255.85912,150.17274 255.906,150.39066 255.93885,150.54342 256.51543,151.20512 256.84348,151.25076 256.85958,151.25301 260.20325,151.25079 260.20325,151.25079 260.20325,151.25079 261.07844,150.64153 261.07818,150.3443 261.07808,150.23485 260.2971,149.46855 260.0157,149.46873 259.99368,149.46874 256.82796,149.50001 256.82796,149.50001 z" Fill="#FFFF3434" HorizontalAlignment="Left" Height="1.6" Stretch="Fill" VerticalAlignment="Top" Width="5" Margin="11.04,4.624,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path x:Name="path1" Grid.Column="1" Grid.Row="1" Data="M250.09369,151.65625 C250.09369,151.65625 249.18594,153.12848 249.53125,153.6565 249.554,153.69129 267.47553,153.68776 267.47553,153.68776 267.47553,153.68776 267.30361,151.6565 266.77215,151.6565 266.24069,151.6565 250.09369,151.65625 250.09369,151.65625 z" Fill="#FFFF3434" HorizontalAlignment="Left" Height="1.6" Stretch="Fill" VerticalAlignment="Top" Width="17" Margin="4.747,6.707,0,0" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path2"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -3091,7 +3762,7 @@
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
                                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF3434"/>
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </ControlTemplate.Resources>
@@ -3107,7 +3778,7 @@
                             <RowDefinition Height="7"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Ellipse x:Name="ellipse" Stretch="Fill" Grid.ColumnSpan="3" Grid.RowSpan="3" StrokeThickness="1.3" Stroke="#FF545454" Fill="White"/>
-                        <Path x:Name="path" Stretch="Fill" Grid.Column="1" Grid.Row="1" Fill="#FF545454" Data="F1 M 38,19C 48.4934,19 57,27.5066 57,38C 57,48.4934 48.4934,57 38,57C 27.5066,57 19,48.4934 19,38C 19,27.5066 27.5066,19 38,19 Z M 38,23.75C 35.2116,23.75 32.6102,24.5509 30.4134,25.9352L 50.0648,45.5866C 51.4491,43.3898 52.25,40.7884 52.25,38C 52.25,30.13 45.87,23.75 38,23.75 Z M 23.75,38C 23.75,45.8701 30.1299,52.25 38,52.25C 40.7884,52.25 43.3897,51.4491 45.5865,50.0649L 25.9351,30.4136C 24.5509,32.6103 23.75,35.2117 23.75,38 Z "/>
+                        <Path x:Name="path" Stretch="Fill" Grid.Column="1" Grid.Row="1" Fill="#FFFF3434" Data="F1 M 38,19C 48.4934,19 57,27.5066 57,38C 57,48.4934 48.4934,57 38,57C 27.5066,57 19,48.4934 19,38C 19,27.5066 27.5066,19 38,19 Z M 38,23.75C 35.2116,23.75 32.6102,24.5509 30.4134,25.9352L 50.0648,45.5866C 51.4491,43.3898 52.25,40.7884 52.25,38C 52.25,30.13 45.87,23.75 38,23.75 Z M 23.75,38C 23.75,45.8701 30.1299,52.25 38,52.25C 40.7884,52.25 43.3897,51.4491 45.5865,50.0649L 25.9351,30.4136C 24.5509,32.6103 23.75,35.2117 23.75,38 Z "/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -3119,7 +3790,8 @@
                             </Trigger.EnterActions>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -3127,7 +3799,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_COPY" TargetType="{x:Type Button}">
+    <Style x:Key="Button_COPY_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -3199,7 +3871,112 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_PESQUISAR" TargetType="{x:Type Button}">
+    <Style x:Key="Button_COPY" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF8D0E7C"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454" Margin="0.25,-0.291,-0.25,0.291"></Ellipse>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1" Data="M26.957711,109.90801 L26.961395,119.783 29.195631,119.783 29.190536,118.81601 27.632447,118.82118 27.631981,110.79362 29.186431,110.79362 29.18288,109.90834 z" HorizontalAlignment="Left" Stretch="Fill" Stroke="white" StrokeThickness="0.1" VerticalAlignment="Top" Width="5.438" Height="20" Fill="#FF545454" Margin="4.017,2.747,0,0"/>
+                        <Path x:Name="path1" Stretch="Fill" StrokeThickness="0.1" Stroke="white" Height="20" Width="14" Grid.Column="1" Grid.Row="1" Fill="#FF545454" Data="F1 M 20,17L 44,17L 56,29L 56,59L 20,59L 20,17 Z M 24,21L 24,55L 52,55L 52,34L 39,34L 39,21L 24,21 Z M 43,21L 43,30L 52,30L 43,21 Z" Margin="9.767,2.771,2.232,3.228" Grid.ColumnSpan="1"/>
+                        <Path x:Name="path2" Stretch="Fill" Fill="#FF8D0E7C" StrokeThickness="0.3" Stroke="White" Height="Auto" Width="Auto" Grid.Column="1" Grid.Row="1" Data="F1 M13.554031,34 L13.551284,42 43.7502,42 34.015271,51.094572 44.2502,51.094505 58.2502,38 44.2502,24.452611 33.949003,24.45266 43.7502,34 13.554031,34 z" Margin="6.309,10.679,8.563,7.238"></Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_PESQUISAR_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -3271,7 +4048,133 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_CONFIG" TargetType="{x:Type Button}">
+    <Style x:Key="Button_PESQUISAR" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="2.254"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.246"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="5.823"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="4.329"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.428"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-4.054"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-5.133"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-6.71"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-6.959"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-5.584"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-0.209"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="2.916"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="3.041"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="1.166"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0.916"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-2.171"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.236"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.556"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="6.378"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="6.544"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="4.469"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="3.224"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0.319"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="-3.167"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-6.292"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-4.292"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-1.792"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0.083"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFF8204"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFFF8204"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454" Margin="0.25,-0.291,-0.25,0.291"></Ellipse>
+                        <Path x:Name="path1" Height="18" Width="18" Grid.Column="1" Grid.Row="1" Data="F1 M4.9589647,0.098135195 C6.5842931,0.098135195 7.9018649,1.4157069 7.9018649,3.0410354 7.9018649,4.6663638 6.5842931,5.9839355 4.9589647,5.9839355 4.4023092,5.9839355 3.8817455,5.8293744 3.4286566,5.5701873 L1.3038591,7.6950083 C1.0280269,7.9708169 0.5808238,7.9708169 0.30499165,7.6950083 0.029183048,7.4191762 0.029183048,6.9719731 0.30499165,6.6961409 L2.4391593,4.5621616 C2.1706256,4.1182545 2.0160645,3.5976908 2.0160645,3.0410354 2.0160645,1.4157069 3.3336362,0.098135195 4.9589647,0.098135195 z M4.9589647,1.0398632 C3.8537526,1.0398632 2.9577925,1.9358233 2.9577925,3.0410354 2.9577925,4.1462474 3.8537526,5.0422075 4.9589647,5.0422075 6.0641767,5.0422075 6.9601368,4.1462474 6.9601368,3.0410354 6.9601368,1.9358233 6.0641767,1.0398632 4.9589647,1.0398632 z" StrokeDashArray="{x:Null}" Fill="#FFFF8204" Stretch="Fill" Stroke="White" StrokeThickness="0.3" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Stroke" Value="#FFAAAAAA" TargetName="ellipse"></Setter>
+                            <Setter Property="Fill" Value="#FFAAAAAA" TargetName="path1"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_CONFIG_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -3336,6 +4239,123 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_CONFIG" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="30"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="40"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="50"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="60"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="70"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="80"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="90"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="100"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="110"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="120"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="130"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="140"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="150"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="160"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.7" Value="170"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="180"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="190"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="200"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.1" Value="210"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="220"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="230"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="240"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="250"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="260"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="270"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="280"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:2.9" Value="290"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="300"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.1" Value="310"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="320"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.3" Value="330"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.4" Value="340"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="350"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:3.6" Value="360"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#00397DE0"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454" Margin="0.25,-0.291,-0.25,0.291"></Ellipse>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1" Height="20" Width="20" Stretch="Fill" Fill="#FF545454" Data="F1 M 38,23.5C 38.8643,23.5 39.7109,23.5756 40.5337,23.7206L 42.6275,18.5381L 48.1901,20.787L 46.0964,25.9692C 47.6473,27.0149 48.9851,28.3527 50.0308,29.9036L 55.213,27.8099L 57.4619,33.3725L 52.2794,35.4664C 52.4244,36.2891 52.5,37.1357 52.5,38C 52.5,38.8643 52.4244,39.7109 52.2794,40.5337L 57.4619,42.6275L 55.213,48.1901L 50.0308,46.0964C 49.0795,47.5073 47.8865,48.7418 46.5112,49.7405L 48.7844,54.8462L 43.3041,57.2891L 41.0307,52.1828C 40.0533,52.3906 39.0394,52.5 38,52.5C 37.1357,52.5 36.2891,52.4244 35.4664,52.2794L 33.3725,57.462L 27.8099,55.213L 29.9036,50.0309C 28.3527,48.9851 27.0149,47.6473 25.9691,46.0964L 20.787,48.1901L 18.538,42.6275L 23.7206,40.5336C 23.5756,39.7109 23.5,38.8643 23.5,38C 23.5,37.1357 23.5756,36.2891 23.7206,35.4664L 18.538,33.3725L 20.787,27.8099L 25.9691,29.9036C 26.9205,28.4927 28.1135,27.2582 29.4889,26.2594L 27.2157,21.1537L 32.6959,18.7109L 34.9694,23.8172C 35.9468,23.6094 36.9606,23.5 38,23.5 Z M 38,28C 32.4771,28 28,32.4772 28,38C 28,43.5229 32.4771,48 38,48C 43.5228,48 48,43.5229 48,38C 48,32.4772 43.5228,28 38,28 Z " Margin="3.125,3,2.875,3" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -3649,7 +4669,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="Button_LIMPAR_PESQUISA" TargetType="{x:Type Button}">
+    <Style x:Key="Button_LIMPAR_PESQUISA_OLD" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -3714,6 +4734,216 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_LIMPAR_PESQUISA" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.39"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-2.072"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-25"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-39"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.33"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="3.14"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.954"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.602"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.722"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-39"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-1.736"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.31"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.123"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.252"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.8"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.774"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="3.68"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.499"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="2.347"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.191"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="-0.596"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.335"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#034774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path2">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path2">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="path1">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path1">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="path1">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="path2">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="4"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="2"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" Fill="Transparent" Stretch="Fill" StrokeThickness="1.3" Stroke="#FF545454"></Ellipse>
+                        <Rectangle x:Name="rectangle" Grid.Column="1" Grid.Row="1" Fill="#FF545454" HorizontalAlignment="Center" Height="4.668" Stroke="{x:Null}" StrokeThickness="0" VerticalAlignment="Top" Width="20" Margin="3.438,20.062,3.063,0"/>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1"  Height="18" Width="15" Stretch="Fill" Fill="#FF545454" Data="F1 M45.7433,48.2824 C43.1578,48.6418 39.9938,48.0327 36.7113,47.1532 31.1866,45.6728 26.8965,42.7258 25.5163,39.7952 L32.2902,33.0213 45.7433,38.0663 45.7433,48.2824 z M39.2905,28.1719 C39.6351,28.1719 39.9737,28.1941 40.3047,28.2368 L47.129701,15.716612 49.821168,16.987168 43.5443,29.4594 C45.1454,30.5622 46.1735,32.2733 46.1735,34.1946 46.1735,35.0197 45.9839,35.806 45.6407,36.5221 L33.4151,31.7762 C34.4796,29.6541 36.4722,28.1719 39.2905,28.1719 z" Stroke="White" StrokeThickness="0.5" Margin="4.584,3.5,6.415,8.5" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path x:Name="path1" Grid.Column="1" Height="4" Opacity="0" Width="6" Grid.Row="1" Stretch="Fill" Fill="#FF545454" Data="M 57,43.3622C 57,47.5131 53.6602,50.8778 49.5393,50.8778L 26.4607,50.8778C 22.3398,50.8778 19,47.5131 19,43.3622C 19,39.6133 21.7233,36.5075 25.2869,35.9396C 25.2404,35.6761 25.2151,35.4059 25.2151,35.1272C 25.2151,32.4972 27.3304,30.3649 29.944,30.3649C 31.1094,30.3649 32.1775,30.7893 32.9967,31.4952C 34.466,28.1635 36.3491,25.1222 41.6269,25.1222C 48.0278,25.1222 51.0594,30.0968 51.0594,35.3455C 51.0594,35.5651 51.0509,35.7825 51.0382,35.9978C 54.4413,36.6962 57,39.7277 57,43.3622 Z " Margin="18.59,13.801,1.409,12.198" StrokeThickness="0.2" Stroke="White" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                        <Path x:Name="path2" Grid.Column="1" Height="4" Opacity="0" Width="6" Grid.Row="1" Stretch="Fill" Fill="#FF545454" Data="M 57,43.3622C 57,47.5131 53.6602,50.8778 49.5393,50.8778L 26.4607,50.8778C 22.3398,50.8778 19,47.5131 19,43.3622C 19,39.6133 21.7233,36.5075 25.2869,35.9396C 25.2404,35.6761 25.2151,35.4059 25.2151,35.1272C 25.2151,32.4972 27.3304,30.3649 29.944,30.3649C 31.1094,30.3649 32.1775,30.7893 32.9967,31.4952C 34.466,28.1635 36.3491,25.1222 41.6269,25.1222C 48.0278,25.1222 51.0594,30.0968 51.0594,35.3455C 51.0594,35.5651 51.0509,35.7825 51.0382,35.9978C 54.4413,36.6962 57,39.7277 57,43.3622 Z " Margin="17.428,15.169,2.571,10.83" StrokeThickness="0.2" Stroke="White" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -3858,6 +5088,48 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Button_REFRESH" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path" RepeatBehavior="Forever">
+                                <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path1" RepeatBehavior="Forever">
+                                <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentpresenter" RepeatBehavior="Forever">
+                                <EasingColorKeyFrame KeyTime="0:0:3" Value="#FFF92F2F"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="12"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Path x:Name="path" VerticalAlignment="Center" Data="M3.5,23.208696 L3.5,28.566666 28.400121,28.566666 28.400257,23.191761 25.858597,23.191752 25.81693,26.504166 6.15,26.545832 6.1916666,23.191671 z" Fill="#FF545454" HorizontalAlignment="Left" Height="8" Stretch="Fill" Stroke="White" StrokeThickness="0.2" Width="34.845" Margin="5.5,23.5,0,1.5"/>
+                        <Path x:Name="path1" Width="20" Height="25" VerticalAlignment="Center" Stretch="Fill" Fill="#FF545454" Data="F1 M 42,19.0002L 34,19.0002L 34,43.7502L 24,33.7502L 24,44.2502L 38,58.2502L 52,44.2502L 52,33.7502L 42,43.7502L 42,19.0002 Z " Margin="13,-0.049,12,8.049"/>
+                        <ContentPresenter x:Name="contentpresenter" Grid.Row="1" TextElement.FontFamily="Segoe UI Symbol" TextElement.FontSize="9" TextElement.Foreground="#FF545454" HorizontalAlignment="Center" VerticalAlignment="Center" Height="12.015"></ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="1">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -4438,6 +5710,375 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Grid Principal-->
+
+    <Style x:Key="StylePrincipal" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="#FFEEEEF2"/>
+    </Style>
+    
+    <!--Toolbar Principal  MainWindow-->
+
+    <Style x:Key="toolBarCadastro" TargetType="{x:Type ToolBar}">
+        <Setter Property="Background" Value="White"/>
+    </Style> 
+    
+    <!--TabControl (TODAS)-->
+
+    <Style TargetType="{x:Type TabControl}">
+        <Setter Property="Background" Value="#FFEEEEF2"></Setter>
+    </Style>
+    
+    <!--TabItem-->
+
+    <Style TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Border" BorderBrush="Gainsboro" BorderThickness="1,1,1,0" CornerRadius="0,15,0,0" Margin="1,0">
+                        <ContentPresenter x:Name="ContentSite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           ContentSource="Header"
+                           Margin="10,2"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Button Fechar , TABITEM-->
+    
+        <Style x:Key="BtnFechar" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="{StaticResource Button.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Fim TabItem-->
+    
+    <!--DockSplitter Tela de Pesquisa-->
+
+    <Style x:Key="DockSplliterStyle" TargetType="{x:Type Control}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Control}">
+                    <Border Background="White"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
+
+    <!--Scrollbar Thumbs-->
+    <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid x:Name="Grid">
+                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                        <Border x:Name="Rectangle1" CornerRadius="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  Background="{TemplateBinding Background}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Tag" Value="Horizontal">
+                            <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                            <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--ScrollBars-->
+
+    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+        <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+        <Setter Property="Foreground" Value="{StaticResource ButtonBackgroundBlueDefault}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Width" Value="7" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Grid x:Name="GridRoot" Width="7" Background="{TemplateBinding Background}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.00001*" />
+                        </Grid.RowDefinitions>
+
+                        <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                            <Track.Thumb>
+                                <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                            </Track.Thumb>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                            </Track.DecreaseRepeatButton>
+                        </Track>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                            <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                        </Trigger>
+                        <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                            <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Width" Value="Auto" />
+                            <Setter Property="Height" Value="8" />
+                            <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                            <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                            <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Estilo Listbox Message Tela de Mensagem -->
+
+    <Style x:Key="ListBoxStyleMessage" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="1" SnapsToDevicePixels="true">
+                        <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true"/>
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Style ToolTip-->
+
+    <Style TargetType="ToolTip">
+        <Setter Property="Background" Value="#FFF7F8FA"/>
+        <Setter Property="Padding" Value="3,0,3,0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                    <GradientStop Color="#FF617584" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border x:Name="Root" CornerRadius="2">
+                        <Border BorderThickness="1.3" CornerRadius="5,0,5,0" BorderBrush="Black" Background="{StaticResource ButtonBackgroundBlueDefault}" Padding="{TemplateBinding Padding}">
+                            <Border.Resources>
+                                <Storyboard x:Key="Visible State"/>
+                                <Storyboard x:Key="Normal State"/>
+                            </Border.Resources>
+                            <ContentPresenter
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              TextElement.Foreground="White"
+                              TextElement.FontFamily="Calibri"
+                              Cursor="{TemplateBinding Cursor}"
+                              Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Button , Menu , Troca de Usuario , sair , Troca de Empresa-->
+
+    <Style x:Key="ButtonStyleExpander" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontStyle" Value="Normal"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
+                            <Setter Property="TextElement.FontStyle" TargetName="contentPresenter" Value="Italic"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Expander Context Menu-->
+
+    <Style x:Key="ExpanderStyle1" TargetType="{x:Type Expander}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" SnapsToDevicePixels="true">
+                        <DockPanel>
+                            <ToggleButton Focusable="False" x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" FontWeight="{TemplateBinding FontWeight}" FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" Style="{StaticResource ExpanderDownHeaderStyle}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter x:Name="ExpandSite" DockPanel.Dock="Bottom" Focusable="false" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="true">
+                            <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Right">
+                            <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Right"/>
+                            <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Left"/>
+                            <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderRightHeaderStyle}"/>
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Up">
+                            <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Top"/>
+                            <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Bottom"/>
+                            <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderUpHeaderStyle}"/>
+                        </Trigger>
+                        <Trigger Property="ExpandDirection" Value="Left">
+                            <Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Left"/>
+                            <Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Right"/>
+                            <Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderLeftHeaderStyle}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--ContextMenu-->
+
+    <Style x:Key="ContextMenu" TargetType="ContextMenu">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+        <Setter Property="HasDropShadow" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border 
+          Name="Border"
+          Background="{StaticResource ButtonBackgroundBlueDefault}"
+          BorderBrush="{StaticResource ButtonBackgroundBlueDefault}"
+          BorderThickness="0" >
+                        <StackPanel IsItemsHost="True"
+                      KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource ButtonBackgroundBlueDefault}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
