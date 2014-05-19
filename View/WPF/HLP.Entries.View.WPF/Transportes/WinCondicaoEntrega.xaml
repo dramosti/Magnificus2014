@@ -115,11 +115,8 @@
                                  Converter="{StaticResource moedaConverter}"
                                      Mode="TwoWay"
                                      NotifyOnValidationError="True"
-                                     UpdateSourceTrigger="PropertyChanged"
-                                     ValidatesOnDataErrors="True">
-                            <Binding.ValidationRules>
-                                <v:NumericDecimalValidationRule/>
-                            </Binding.ValidationRules>
+                                     UpdateSourceTrigger="LostFocus"
+                                     ValidatesOnDataErrors="True">                        
                         </Binding>
                     </Components:CustomTextBox.Text>
                     <Components:CustomTextBox.Style>

@@ -74,7 +74,8 @@
 						Text="{Binding currentModel.idListaPrecoPai, Mode=TwoWay,
                         NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 						IsEnabled="{Binding bIsEnabled}"
-						ToolTip="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." WidthLabel="157" FieldPesquisa="ID" TableView="vwListaPrecoPai" nameWindow="WinListaPreco">
+						ToolTip="Informe a Lista de Preço desejada para essa Rota, quando selecionado o cliente o sistema usará como padrão a lista definido em Rota e não o definido no Cadastro do Cliente ou a Lista Padrão." 
+                        WidthLabel="0" FieldPesquisa="ID" TableView="vwListaPrecoPai" nameWindow="WinListaPreco">
                     <Components:HlpPesquisa.Items>
                         <System:String>xLista</System:String>
                         <System:String>xCodigoListaPreco</System:String>

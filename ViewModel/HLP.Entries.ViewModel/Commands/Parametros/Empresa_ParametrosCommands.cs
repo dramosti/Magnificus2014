@@ -42,6 +42,9 @@ namespace HLP.Entries.ViewModel.Commands.Parametros
 
             this.objViewModel.navegarCommand = new RelayCommand(execute: paramExec => this.Navegar(ContentBotao: paramExec),
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
+
+            objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
+            objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
         }
 
 

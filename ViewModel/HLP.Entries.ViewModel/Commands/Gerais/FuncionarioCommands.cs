@@ -300,6 +300,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             try
             {
                 this.objViewModel.copyBaseCommand.Execute(null);
+                this.objViewModel.currentModel.xSenha = null;
+                this.objViewModel.currentModel.xID = null;
+                this.objViewModel.currentModel.lFuncionario_Acesso = new ObservableCollectionBaseCadastros<Funcionario_AcessoModel>();
             }
             catch (Exception ex)
             {
