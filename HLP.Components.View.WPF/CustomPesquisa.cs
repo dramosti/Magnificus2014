@@ -52,6 +52,12 @@ namespace HLP.Components.View.WPF
     {
         public CustomPesquisa()
         {
+            ResourceDictionary resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+            };
+
+            this.Style = resource["TextBox_PESQUISA"] as Style;
             this.ViewModel = new CustomPesquisaViewModel();
         }
 
