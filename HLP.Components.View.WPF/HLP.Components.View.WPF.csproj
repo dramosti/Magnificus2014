@@ -87,7 +87,9 @@
     <Compile Include="Converter\VisibilityVisibleToCollapsedNot.cs" />
     <Compile Include="CustomCheckBox.cs" />
     <Compile Include="CustomComboBox.cs" />
+    <Compile Include="CustomDataGrid.cs" />
     <Compile Include="CustomDockPanelSplitter.cs" />
+    <Compile Include="CustomPesquisa.cs" />
     <Compile Include="CustomTextBlock.cs" />
     <Compile Include="CustomTextBox.cs" />
     <Compile Include="CustomTextBoxFindFiles.cs" />

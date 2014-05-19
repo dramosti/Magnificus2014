@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.ComumView.ViewModel.Messages.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,15 @@ namespace HLP.Comum.View.WPF.Messages
         public HlpMessageError()
         {
             InitializeComponent();
+        }
+
+        public static void ShowMessage(string xErrorCode, string xErrorMessageToUser, string xErrorMessageFramework)
+        {
+            HlpMessageError _message = new HlpMessageError();
+            _message.DataContext = new HlpMessageErrorViewModel(xErrorCode: xErrorCode, xErrorMessageToUser: xErrorMessageToUser,
+                xErrorMessageFramework: xErrorMessageFramework);
+
+            _message.ShowDialog();
         }
     }
 }

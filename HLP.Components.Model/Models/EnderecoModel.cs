@@ -12,7 +12,6 @@ namespace HLP.Components.Model.Models
         public EnderecoModel()
             : base(xTabela: "Enderecos")
         {
-
         }
         private int? _idEndereco;
         [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
@@ -161,6 +160,16 @@ namespace HLP.Components.Model.Models
 
         private string _xCepOld = "";
 
+        private bool _bCanFindCep = false;
+
+        public bool bCanFindCep
+        {
+            get { return _bCanFindCep; }
+            set { _bCanFindCep = value; }
+        }
+        
+
+
     }
 
     public partial class EnderecoModel
@@ -171,10 +180,8 @@ namespace HLP.Components.Model.Models
             {
                 string sReturn = base[columnName];
 
-                if (columnName == "xCEP" && sReturn == null)
+                if (columnName == "xCEP" && sReturn == null && this.bCanFindCep)
                 {
-
-                    //object valor = this.GetType().GetProperty(columnName).GetValue(this);
                     if (!string.IsNullOrEmpty(this.xCEP))
                     {
                         if (this.xCEP != this._xCepOld)

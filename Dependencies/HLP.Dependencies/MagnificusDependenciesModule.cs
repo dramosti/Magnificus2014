@@ -95,7 +95,6 @@ namespace HLP.Dependencies
             Bind<ICliente_fornecedorRepository>().To<Cliente_fornecedorRepository>();
             Bind<ICliente_fornecedor_arquivoRepository>().To<Cliente_fornecedor_arquivoRepository>();
             Bind<ICliente_fornecedor_contatoRepository>().To<Cliente_fornecedor_contatoRepository>();
-            Bind<ICliente_fornecedor_EnderecoRepository>().To<Cliente_fornecedor_EnderecoRepository>();
             Bind<ICliente_fornecedor_fiscalRepository>().To<Cliente_fornecedor_fiscalRepository>();
             Bind<ICliente_Fornecedor_ObservacaoRepository>().To<Cliente_fornecedor_ObservacaoRepository>();
             Bind<ICliente_fornecedor_produtoRepository>().To<Cliente_fornecedor_produtoRepository>();
@@ -144,7 +143,6 @@ namespace HLP.Dependencies
             Bind<ITransportador_VeiculosRepository>().To<Transportador_VeiculosRepository>();
             Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
             Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
-            Bind<ITransportador_EnderecoRepository>().To<Transportador_EnderecoRepository>();
             Bind<IAcessoRepository>().To<AcessoRepository>();
             //Bind<ILog_ScriptsRepository>().To<Log_ScriptsRepository>();
             Bind<IOrcamento_ideRepository>().To<Orcamento_ideRepository>();

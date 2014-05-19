@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.ComumView.ViewModel.Messages.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,14 @@ namespace HLP.Comum.View.WPF.Messages
         public HlpMessageAlert()
         {
             InitializeComponent();
+        }
+
+        public static void ShowMessage(string xAlertMessageToUser)
+        {
+            HlpMessageAlert _message = new HlpMessageAlert();
+            _message.DataContext = new HlpMessageAlertViewModel(xAlertMessageToUser: xAlertMessageToUser);
+
+            _message.ShowDialog();
         }
     }
 }

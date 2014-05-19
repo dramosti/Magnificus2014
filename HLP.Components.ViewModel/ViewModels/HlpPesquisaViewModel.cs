@@ -1,4 +1,5 @@
-﻿using HLP.Components.Services;
+﻿using HLP.Components.Model.Models;
+using HLP.Components.Services;
 using HLP.Components.ViewModel.Commands;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace HLP.Components.ViewModel.ViewModels
             this.comm = new HlpPesquisaCommands(objViewModel: this);
             objService = new Pesquisa_RapidaService();
         }
+
+        
 
         public string GetValorDisplay(string _TableView, string[] _Items, string _FieldPesquisa, int idEmpresa, int? _iValorPesquisa)
         {

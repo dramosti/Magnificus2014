@@ -55,10 +55,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CustomPesquisaCommands.cs" />
     <Compile Include="Commands\FindAllCommand.cs" />
     <Compile Include="Commands\HlpPesquisaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaFiltradaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaPadraoCommands.cs" />
+    <Compile Include="ViewModels\CustomPesquisaViewModel.cs" />
     <Compile Include="ViewModels\FindAllViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaFiltradaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

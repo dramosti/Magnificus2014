@@ -13,7 +13,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Comercial
         void Delete(int idClienteFornecedor);
         void Copy(Cliente_fornecedorModel objCliente_fornecedor);
         Cliente_fornecedorModel GetCliente_fornecedor(int idClienteFornecedor);
-        Cliente_fornecedor_EnderecoModel GetCliente_fornecedor_EnderecoPrincipal(int idCliente_fornecedor);
         List<Cliente_fornecedor_representanteModel> GetCliente_fornecedor_Representante(int idCliente_fornecedor);
 
         void BeginTransaction();

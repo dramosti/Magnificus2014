@@ -17,7 +17,7 @@ namespace HLP.Components.View.WPF
     {
         public WindowsBase()
         {
-            IEnumerable<TabControl> lTab = Util.FindVisualChildren<TabControl>(depObj: this);
+            IEnumerable<TabControl> lTab = Util.FindVisualChildren<TabControl>(depObj: this);            
         }
 
         public void SetEventsTabControl(TabControl tabControl)
