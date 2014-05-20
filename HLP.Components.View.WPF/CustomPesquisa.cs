@@ -60,6 +60,14 @@ namespace HLP.Components.View.WPF
 
             this.Style = resource["TextBox_PESQUISA"] as Style;
             this.ViewModel = new CustomPesquisaViewModel();
+
+            this.GotFocus += CustomPesquisa_GotFocus;
+        }
+
+        void CustomPesquisa_GotFocus(object sender, RoutedEventArgs e)
+        {
+            object txt = this.Template.FindName(name: "xId", templatedParent: this);
+            (txt as TextBox).Focus();
         }
 
         public CustomPesquisaViewModel ViewModel
