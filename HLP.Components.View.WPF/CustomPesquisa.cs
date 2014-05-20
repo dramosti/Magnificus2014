@@ -52,6 +52,13 @@ namespace HLP.Components.View.WPF
     {
         public CustomPesquisa()
         {
+            this.Items = new List<string>();
+            ResourceDictionary resource = new ResourceDictionary
+            {
+                Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
+            };
+
+            this.Style = resource["TextBox_PESQUISA"] as Style;
             this.ViewModel = new CustomPesquisaViewModel();
         }
 
@@ -77,9 +84,9 @@ namespace HLP.Components.View.WPF
             set { _TableView = value; }
         }
 
-        private string[] _Items;
+        private List<string> _Items;
         [Category("HLP.Owner")]
-        public string[] Items
+        public List<string> Items
         {
             get { return _Items; }
             set { _Items = value; }

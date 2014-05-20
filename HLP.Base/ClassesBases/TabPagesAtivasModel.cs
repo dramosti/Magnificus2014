@@ -79,7 +79,6 @@ namespace HLP.Base.ClassesBases
             }
         }
 
-
         public UIElement _content
         {
             get
