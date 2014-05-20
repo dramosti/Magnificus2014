@@ -37,7 +37,24 @@ namespace HLP.Entries.Model.Models.Fiscal
         {
             get
             {
-                return base[columnName];
+                string sReturn = base[columnName];
+
+                if (sReturn == null)
+                {
+                    if (columnName.Equals("cCSTPis"))
+                    {
+                        if (this.cCSTPis != "")
+                        {
+                            int ivalue;
+                            int.TryParse(this.cCSTPis, out ivalue);
+                            if (ivalue == 0)
+                            {
+                                return "Código numérico inválido";
+                            }
+                        }
+                    }
+                }
+                return sReturn;
             }
         }
     }
