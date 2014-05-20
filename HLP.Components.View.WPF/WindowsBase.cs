@@ -10,15 +10,106 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using HLP.Base.Static;
+using System.Reflection;
+using HLP.Base.EnumsBases;
+using System.Threading;
 
 namespace HLP.Components.View.WPF
 {
     public class WindowsBase : System.Windows.Window
     {
+        BackgroundWorker bwSetFocusFirstCtrl;
         public WindowsBase()
         {
-            IEnumerable<TabControl> lTab = Util.FindVisualChildren<TabControl>(depObj: this);            
+            IEnumerable<TabControl> lTab = Util.FindVisualChildren<TabControl>(depObj: this);
+            bwSetFocusFirstCtrl = new BackgroundWorker();
+            bwSetFocusFirstCtrl.DoWork += bwSetFocusFirstCtrl_DoWork;
+            bwSetFocusFirstCtrl.RunWorkerCompleted += bwSetFocusFirstCtrl_RunWorkerCompleted;
         }
+
+        #region Focus
+
+        void bwSetFocusFirstCtrl_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null && e.Error == null)
+            {
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    if (e.Result.GetType().Name == "CustomPesquisa")
+                    {
+                    }
+                    else
+                    {
+                        ((FrameworkElement)e.Result).Focus();
+                    }
+                }));
+            }            
+        }
+
+        void bwSetFocusFirstCtrl_DoWork(object sender, DoWorkEventArgs e)
+        {
+            FrameworkElement currentControl = null;
+            TabControl currentTabControl = null;
+            bool bFocado = false;
+
+            currentControl = (FrameworkElement)e.Argument;
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+            {
+                while (true)
+                {
+                    currentControl = (FrameworkElement)currentControl.Parent;
+
+                    if (currentControl.GetType() == typeof(TabControl))
+                    {
+                        currentTabControl = (TabControl)currentControl;
+
+                        ((TabControl)currentControl).SelectedItem =
+                            ((TabControl)currentControl).Items[index: 0];
+                        ((TabItem)((TabControl)currentControl).SelectedItem).Focus();
+                    }
+
+                    if (currentControl.Parent == null)
+                    {
+                        break;
+                    }
+                    else if (currentControl.Parent.GetType().BaseType.GetType() == typeof(Window))
+                    {
+                        break;
+                    }
+                }
+
+                IEnumerable<Expander> lExpanders = null;
+                List<UIElement> lComponents = new List<UIElement>();
+                lExpanders = Util.FindVisualChildren<Expander>
+                (depObj: ((currentTabControl).SelectedItem as TabItem).Content as AdornerDecorator);
+
+                foreach (Expander exp in lExpanders)
+                {
+                    lComponents.AddRange(
+                        collection: Util.FindVisualChildren<UIElement>(depObj: exp.Content as Panel));
+                }
+
+                foreach (var item in lComponents.Where(i => i.GetType().BaseType != typeof(TextBlock)))
+                {
+                    PropertyInfo pi = item.GetType().GetProperty(name: "stCompPosicao");
+                    if (pi != null)
+                    {
+                        if (((statusComponentePosicao)pi.GetValue(obj: item)) == statusComponentePosicao.first)
+                        {
+                            e.Result = item;
+                        }
+                    }
+                }
+                bFocado = true;
+            }));
+
+            while (!bFocado)
+            {
+                Thread.Sleep(millisecondsTimeout: 300);
+            }            
+        }
+
+        #endregion
 
         public void SetEventsTabControl(TabControl tabControl)
         {
@@ -62,25 +153,6 @@ namespace HLP.Components.View.WPF
                             || i.GetType() == typeof(HlpPesquisa)));
 
                         ctrl = listControls.LastOrDefault();
-
-                        //listControls.AddRange(collection: FindVisualChildren<TextBox>(depObj: a));
-                        //listControls.AddRange(collection: FindVisualChildren<HlpPesquisa>(depObj: a));
-                        //listControls.AddRange(collection: FindVisualChildren<CheckBox>(depObj: a));
-                        //listControls.AddRange(collection: FindVisualChildren<ComboBox>(depObj: a));
-                        //listControls.AddRange(collection: FindVisualChildren<DataGrid>(depObj: a));
-
-                        //foreach (UIElement uiCtrl in listControls)
-                        //{
-                        //    object tg = uiCtrl.GetType().GetProperty(name: "Tag").GetValue(obj: uiCtrl);
-
-                        //    if (tg != null)
-                        //    {
-                        //        if (Convert.ToInt32(value: tg) == (int)1001)
-                        //        {
-                        //            ctrl = uiCtrl;
-                        //        }
-                        //    }
-                        //}
                     }
                 }
 
@@ -132,6 +204,11 @@ namespace HLP.Components.View.WPF
                                     break;
                                 }
                             }
+                        }
+                        else
+                        {
+                            this.bwSetFocusFirstCtrl.RunWorkerAsync(
+                                argument: ctrl);
                         }
                     }
                 }

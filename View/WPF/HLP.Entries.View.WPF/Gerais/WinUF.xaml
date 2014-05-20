@@ -62,7 +62,8 @@
                     IsEnabled="{Binding bIsEnabled}"
     		        Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                 </Components:CustomTextBox>
-                <Components:CustomPesquisa Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" stCompPosicao="last" x:Name="uc"
+                <Components:CustomPesquisa Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"  
+                                           x:Name="uc" stCompPosicao="last"
                                            xIdPesquisa="{Binding currentModel.idRegiao, 
                     Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"                         
                     IsEnabled="{Binding bIsEnabled}"
@@ -71,10 +72,7 @@
                         <System:String>xRegiao</System:String>
                         <System:String>xPais</System:String>
                     </Components:CustomPesquisa.Items>
-                </Components:CustomPesquisa>
-                <Button Grid.ColumnSpan="2" Content="Button" Grid.Column="4"
-                        Click="Button_Click"
-                        HorizontalAlignment="Left" Margin="0,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+                </Components:CustomPesquisa>                
             </Grid>
         </Expander>
     </Grid>

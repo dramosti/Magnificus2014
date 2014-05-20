@@ -70,6 +70,18 @@ namespace HLP.Components.View.WPF
             (txt as TextBox).Focus();
         }
 
+        public void SetEventFocusToTxtId(RoutedEventHandler _event)
+        {
+            this.ApplyTemplate();
+
+            object txt = this.Template.FindName(name: "xId", templatedParent: this);
+
+            if (txt != null)
+            {
+                (txt as TextBox).LostFocus += _event;
+            }
+        }
+
         public CustomPesquisaViewModel ViewModel
         {
             get
