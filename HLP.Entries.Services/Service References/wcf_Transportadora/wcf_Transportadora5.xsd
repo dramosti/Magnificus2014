@@ -113,8 +113,9 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HLP.Base.ClassesBases" base="q3:modelBase">
         <xs:sequence>
+          <xs:element minOccurs="0" name="bCanFindCep" type="xs:boolean" />
           <xs:element minOccurs="0" name="idAgencia" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="idCidade" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="idCidade" type="xs:int" />
           <xs:element minOccurs="0" name="idClienteFornecedor" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idContato" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="idEmpresa" nillable="true" type="xs:int" />

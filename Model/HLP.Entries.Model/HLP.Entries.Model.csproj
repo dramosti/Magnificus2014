@@ -197,8 +197,6 @@
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Crm\DecisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Condicao_pagamentoRepository.cs" />
-    <Compile Include="Repository\Implementation\Gerais\ContatoRepository.cs" />
-    <Compile Include="Repository\Implementation\Gerais\Contato_EnderecoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\ConversaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\DepositoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\FabricanteRepository.cs" />
@@ -237,8 +235,6 @@
     <Compile Include="Repository\Implementation\Transportes\RotaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Rota_pracaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\TransportadorRepository.cs" />
-    <Compile Include="Repository\Implementation\Transportes\Transportador_ContatoRepository.cs" />
-    <Compile Include="Repository\Implementation\Transportes\Transportador_MotoristaRepository.cs" />
     <Compile Include="Repository\Implementation\Transportes\Transportador_VeiculosRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICanal_vendaRepository.cs" />
     <Compile Include="Repository\Interfaces\Comercial\ICliente_fornecedorRepository.cs" />
@@ -289,8 +285,6 @@
     <Compile Include="Repository\Interfaces\Gerais\ICidadeRepository.cs" />
     <Compile Include="Repository\Interfaces\Crm\IDecisaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\ICondicao_pagamentoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Gerais\IContatoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Gerais\IContato_EnderecoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IConversaoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IDepositoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFabricanteRepository.cs" />
@@ -327,8 +321,6 @@
     <Compile Include="Repository\Interfaces\Transportes\IModos_entregaRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\IRota_pracaRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ITransportadorReposiroty.cs" />
-    <Compile Include="Repository\Interfaces\Transportes\ITransportador_ContatoRepository.cs" />
-    <Compile Include="Repository\Interfaces\Transportes\ITransportador_MotoristaRepository.cs" />
     <Compile Include="Repository\Interfaces\Transportes\ITransportador_VeiculosRepository.cs" />
   </ItemGroup>
   <ItemGroup>

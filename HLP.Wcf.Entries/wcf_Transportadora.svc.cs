@@ -59,7 +59,7 @@ namespace HLP.Wcf.Entries
                     var listContatos = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0, xForeignKey: "idContatoTransportador");
 
                     if (listContatos != null)
-                        objTransportador.lTransportador_Contato = new ObservableCollectionBaseCadastros<Components.Model.Models.ContatoModel>(
+                        objTransportador.lTransportador_Contato = new ObservableCollectionBaseCadastros<ContatoModel>(
                             list: listContatos);
 
                     var listMotoristas = contatoRepository.GetContato_ByForeignKey(id: objTransportador.idTransportador ?? 0,
@@ -73,7 +73,7 @@ namespace HLP.Wcf.Entries
             }
             catch (Exception ex)
             {
-                Log.AddLog(xLog: ex.Message);
+                Log.AddLog(xLog: ex.Message + Environment.NewLine + ex.StackTrace);
                 throw new FaultException(reason: ex.Message);
             }
         }
