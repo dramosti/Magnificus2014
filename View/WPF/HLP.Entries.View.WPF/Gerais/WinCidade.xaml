@@ -13,7 +13,7 @@
                 <ResourceDictionary Source="pack://application:,,,/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <c:IntStringConverter x:Key="intStringConverter"></c:IntStringConverter>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Expander Header="Cidades" Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
@@ -33,14 +33,14 @@
                     <RowDefinition Height="Auto" MaxHeight="23"/>
                     <RowDefinition Height="Auto" MaxHeight="23"/>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Cidade" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="IBGE" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
                 <Components:CustomTextBox  stCompPosicao="fieldId"
                     IsReadOnly="True"
@@ -54,15 +54,18 @@
                     Grid.Column="2"  Grid.Row="3"
                     Text="{Binding currentModel.cIbge, Mode=TwoWay, NotifyOnValidationError=True, Converter={StaticResource intStringConverter} , UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                     IsEnabled="{Binding bIsEnabled}"/>
-                <Components:HlpPesquisa Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
-                    Text="{Binding currentModel.idUF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}"            
-                    x:Name="teste" TableView="vwUF" FieldPesquisa="ID" nameWindow="WinUF"
-                                 IsEnabled="{Binding bIsEnabled}" WidthLabel="0">
-                    <Components:HlpPesquisa.Items>
+                <Components:CustomPesquisa stCompPosicao="last"              
+                    xIdPesquisa="{Binding currentModel.idUF, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
+                    NotifyOnValidationError=True}"
+                    Grid.Column="2" Grid.Row="4" Height="20" Margin="0,0,0,3" Grid.ColumnSpan="3"
+                    TableView="vwUF" FieldPesquisa="ID" NameWindowCadastro="WinUF"
+                                 IsEnabled="{Binding bIsEnabled}"
+                    >
+                    <Components:CustomPesquisa.Items>
                         <System:String>xSiglaUf</System:String>
                         <System:String>xUf</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
+                    </Components:CustomPesquisa.Items>
+                </Components:CustomPesquisa>
             </Grid>
         </Expander>
     </Grid>

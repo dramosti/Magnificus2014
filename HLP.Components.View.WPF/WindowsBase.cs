@@ -43,7 +43,7 @@ namespace HLP.Components.View.WPF
                         ((FrameworkElement)e.Result).Focus();
                     }
                 }));
-            }            
+            }
         }
 
         void bwSetFocusFirstCtrl_DoWork(object sender, DoWorkEventArgs e)
@@ -106,7 +106,7 @@ namespace HLP.Components.View.WPF
             while (!bFocado)
             {
                 Thread.Sleep(millisecondsTimeout: 300);
-            }            
+            }
         }
 
         #endregion
@@ -150,7 +150,8 @@ namespace HLP.Components.View.WPF
                             (i => i.GetType() == typeof(CustomTextBox)
                             || i.GetType() == typeof(CustomCheckBox)
                             || i.GetType() == typeof(CustomComboBox)
-                            || i.GetType() == typeof(HlpPesquisa)));
+                            || i.GetType() == typeof(CustomPesquisa)
+                            || i.GetType() == typeof(HlpDatePicker)));
 
                         ctrl = listControls.LastOrDefault();
                     }
@@ -169,8 +170,14 @@ namespace HLP.Components.View.WPF
                     {
                         focused = true;
                     }
+                    else if (ctrl.GetType() == typeof(HlpDatePicker))
+                    {
+                        focused = ((HlpDatePicker)ctrl).txtData.IsFocused || ((HlpDatePicker)ctrl).txtHora.IsFocused;
+                    }
                     else
                     {
+
+
                         focused = ctrl.IsFocused;
                     }
 
