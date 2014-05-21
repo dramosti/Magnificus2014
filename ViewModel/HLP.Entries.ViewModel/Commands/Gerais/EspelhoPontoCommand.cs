@@ -346,6 +346,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     objEnderEmpresa.nNumero.ToUpper(),
                     objEnderEmpresa.xBairro.ToUpper());
             }
+            objPrintPonto.xCnpj = objEmpresa.xCNPJ;
             objPrintPonto.idEmpresa = CompanyData.idEmpresa;
             objPrintPonto.xMesAno = string.Format("PONTO ASSOCIADO AO MÊS DE {0} DE {1}",
                 this.objViewModel.currentModel.data.ToString("MMMMMMMMM").ToUpper(),
@@ -380,12 +381,14 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 string xIntervalo = "";
                 foreach (var intervalo in serviceCalendario.GetIntervalos(idCalendario))
                 {
-                    xIntervalo += string.Format("{0}-{1} :{2}{3}", intervalo.tInicio.ToStringHoras(), intervalo.tFinal.ToStringHoras(), intervalo.getTipoIntervalo(), Environment.NewLine);
+                    xIntervalo = xIntervalo + string.Format("{4}{0}-{1} :{2}", intervalo.tInicio.ToStringHoras(), intervalo.tFinal.ToStringHoras(), intervalo.getTipoIntervalo(), (xIntervalo == "" ? "" : " | "));
                 }
+
                 foreach (var header in objPrintPonto.lHeaderFuncionario.Where(c => c.idCalendario == idCalendario))
                 {
                     header.xHoraSeqQuinta = objCalendarioModel.tHoraInicialSegQui.ToStringHoras() + " - " + objCalendarioModel.tHoraFinalSegQui.ToStringHoras();
                     header.xHoraSexta = objCalendarioModel.tHoraInicialSex.ToStringHoras() + " - " + objCalendarioModel.tHoraFinalSex.ToStringHoras();
+                    header.xIntervalos = xIntervalo;
                 }
             }
             // banco de horas

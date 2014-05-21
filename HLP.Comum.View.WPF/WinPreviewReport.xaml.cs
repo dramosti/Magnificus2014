@@ -32,7 +32,7 @@ namespace HLP.Comum.View.WPF
             set
             {
                 this.reportViewer.ViewerCore.ReportSource = value;
-                this.reportViewer.ViewerCore.RefreshReport();
+              //  this.reportViewer.ViewerCore.RefreshReport();
             }
         }
 

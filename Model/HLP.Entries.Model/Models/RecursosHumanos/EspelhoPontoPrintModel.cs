@@ -16,6 +16,7 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         public string xEmpresa { get; set; }
         public string xEndereco { get; set; }
         public string xMesAno { get; set; }
+        public string xCnpj { get; set; }
         public List<HeaderEspelhoPontoPrintModel> lHeaderFuncionario;
     }
 
