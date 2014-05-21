@@ -288,21 +288,7 @@ namespace HLP.Base.ClassesBases
                 : resultado;
         }
 
-
-
-        public void FechaForm(object p)
-        {
-            try
-            {
-                ((Window)p).Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
+      
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)
         {
             object o;

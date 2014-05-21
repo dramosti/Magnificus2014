@@ -26,10 +26,10 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
         public ICommand addDateCommand { get; set; }
         #endregion
 
+     
+
         CalendarioDetalheCommand commands;
-
         private ObservableCollectionBaseCadastros<Calendario_DetalheModel> _lCalendarioDetalhes;
-
         public ObservableCollectionBaseCadastros<Calendario_DetalheModel> lCalendarioDetalhes
         {
             get { return _lCalendarioDetalhes; }
@@ -39,7 +39,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 base.NotifyPropertyChanged(propertyName: "lCalendarioDetalhes");
             }
         }
-
         public Dictionary<TimeSpan, TimeSpan> GeraIntervalos()
         {
             try
@@ -127,7 +126,6 @@ namespace HLP.Entries.ViewModel.ViewModels.Gerais
                 throw ex;
             }
         }
-
         public void ListBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Delete)

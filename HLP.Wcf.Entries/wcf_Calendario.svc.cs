@@ -21,6 +21,8 @@ namespace HLP.Wcf.Entries
         public ICalendarioRepository iCalendarioRepository { get; set; }
         [Inject]
         public ICalendario_DetalheRepository iCalendario_DetalheRepository { get; set; }
+        [Inject]
+        public ICalendario_IntervaloRepository iCalendario_IntervaloRepository { get; set; }
 
         public wcf_Calendario()
         {
@@ -30,7 +32,7 @@ namespace HLP.Wcf.Entries
             Log.xPath = @"C:\inetpub\wwwroot\log";
         }
 
-        public HLP.Entries.Model.Models.Gerais.CalendarioModel Save(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel)
+        public HLP.Entries.Model.Models.Gerais.CalendarioModel Save(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel, int idUsuario)
         {
             try
             {
@@ -50,6 +52,20 @@ namespace HLP.Wcf.Entries
                             break;
                     }
                 }
+                foreach (var item in objModel.lCalendario_IntervaloModel)
+                {
+                    switch (item.status)
+                    {
+                        case statusModel.criado:
+                        case statusModel.alterado:
+                            item.idCalendario = (int)objModel.idCalendario;
+                            iCalendario_IntervaloRepository.Save(item);
+                            break;
+                        case statusModel.excluido:
+                            iCalendario_IntervaloRepository.Delete(item, idUsuario);
+                            break;
+                    }
+                }
                 iCalendarioRepository.CommitTransaction();
                 return this.GetObjeto((int)objModel.idCalendario);
             }
@@ -61,14 +77,22 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public HLP.Entries.Model.Models.Gerais.CalendarioModel GetObjeto(int idObjeto)
+        public List<HLP.Entries.Model.Models.Gerais.Calendario_IntervalosModel> GetIntervalos(int idCalendario) 
+        {
+            return iCalendario_IntervaloRepository.GetIntervalos(idCalendario);
+        }
+
+
+        public HLP.Entries.Model.Models.Gerais.CalendarioModel GetObjeto(int idObjeto, bool bGetChild= true)
         {
             try
             {
                 HLP.Entries.Model.Models.Gerais.CalendarioModel objRet = iCalendarioRepository.GetCalendario(idObjeto);
-                if (objRet != null)
+                if (objRet != null && bGetChild)
                 {
                     objRet.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Calendario_DetalheModel>(iCalendario_DetalheRepository.GetAllCalendario_Detalhe(idObjeto));
+
+                    objRet.lCalendario_IntervaloModel = new ObservableCollectionBaseCadastros<HLP.Entries.Model.Models.Gerais.Calendario_IntervalosModel>(iCalendario_IntervaloRepository.GetIntervalos(idObjeto));
                 }
                 return objRet;
             }
@@ -80,13 +104,14 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public bool Delete(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel)
+        public bool Delete(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel, int idUsuario)
         {
             try
             {
                 iCalendarioRepository.BeginTransaction();
                 iCalendario_DetalheRepository.DeleteDetalhesByCalendario((int)objModel.idCalendario);
-                iCalendarioRepository.Delete(objModel);
+                iCalendario_IntervaloRepository.DeleteIntervalosByCalendario((int)objModel.idCalendario);
+                iCalendarioRepository.Delete(objModel, idUsuario);
                 iCalendarioRepository.CommitTransaction();
                 return true;
             }
@@ -98,29 +123,6 @@ namespace HLP.Wcf.Entries
             }
         }
 
-        public HLP.Entries.Model.Models.Gerais.CalendarioModel Copy(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel)
-        {
-            try
-            {
-                iCalendarioRepository.BeginTransaction();
-                iCalendarioRepository.Copy(objModel);
-                foreach (var item in objModel.lCalendario_DetalheModel)
-                {
-                    item.idCalendario = (int)objModel.idCalendario;
-                    item.idCalendarioDetalhe = null;
-                    iCalendario_DetalheRepository.Copy(item);
-                }
-                iCalendarioRepository.CommitTransaction();
-
-                return this.GetObjeto((int)objModel.idCalendario);
-
-            }
-            catch (Exception ex)
-            {
-                iCalendarioRepository.RollackTransaction();
-                Log.AddLog(xLog: ex.Message);
-                throw new FaultException(reason: ex.Message);
-            }
-        }
+       
     }
 }

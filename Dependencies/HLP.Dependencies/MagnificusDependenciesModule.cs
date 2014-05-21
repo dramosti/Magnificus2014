@@ -125,6 +125,7 @@ namespace HLP.Dependencies
             Bind<HLP.Components.Model.Repository.Interfaces.IContatoRepository>().To<HLP.Components.Model.Repository.Implementation.ContatoRepository>();
             Bind<IDepartamentoRepository>().To<DepartamentoRepository>();
             Bind<ICalendarioRepository>().To<CalendarioRepository>();
+            Bind<ICalendario_IntervaloRepository>().To<Calendario_IntervaloRepository>();
             Bind<ICalendario_DetalheRepository>().To<Calendario_DetalheRepository>();
             Bind<ITransportadorReposiroty>().To<TransportadorRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();

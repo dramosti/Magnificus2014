@@ -11,19 +11,17 @@ namespace HLP.Wcf.Entries
     [ServiceContract]
     public interface Iwcf_Calendario
     {
-        
         [OperationContract]
-        HLP.Entries.Model.Models.Gerais.CalendarioModel Save(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+         HLP.Entries.Model.Models.Gerais.CalendarioModel Save(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel, int idUsuario);
 
         [OperationContract]
-        HLP.Entries.Model.Models.Gerais.CalendarioModel GetObjeto(int idObjeto);
+         HLP.Entries.Model.Models.Gerais.CalendarioModel GetObjeto(int idObjeto, bool bGetChild = true);
 
         [OperationContract]
-        bool Delete(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
+         bool Delete(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel, int idUsuario);
 
         [OperationContract]
-        HLP.Entries.Model.Models.Gerais.CalendarioModel Copy(HLP.Entries.Model.Models.Gerais.CalendarioModel objModel);
-        
+        List<HLP.Entries.Model.Models.Gerais.Calendario_IntervalosModel> GetIntervalos(int idCalendario);
         
     }
 }

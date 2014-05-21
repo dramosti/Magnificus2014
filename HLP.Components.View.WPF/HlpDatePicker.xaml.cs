@@ -74,6 +74,7 @@ namespace HLP.Components.View.WPF
         public static readonly DependencyProperty HelpProperty =
             DependencyProperty.Register("Help", typeof(string), typeof(HlpDatePicker), new PropertyMetadata(string.Empty));
 
+
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             this.txtData.Text = (sender as Calendar).SelectedDate.Value.Date.ToShortDateString();

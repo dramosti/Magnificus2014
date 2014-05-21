@@ -24,5 +24,7 @@ namespace HLP.Comum.View.WPF
             InitializeComponent();
             reportViewer.Owner = this;
         }
+
+
     }
 }

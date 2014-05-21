@@ -193,6 +193,7 @@
     <Compile Include="Repository\Implementation\Gerais\AcessoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CalendarioRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Calendario_DetalheRepository.cs" />
+    <Compile Include="Repository\Implementation\Gerais\Calendario_IntervaloRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\CidadeRepository.cs" />
     <Compile Include="Repository\Implementation\Crm\DecisaoRepository.cs" />
     <Compile Include="Repository\Implementation\Gerais\Condicao_pagamentoRepository.cs" />
@@ -275,6 +276,7 @@
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documentoRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_documento_oper_validaRepository.cs" />
     <Compile Include="Repository\Interfaces\Fiscal\ITipo_operacaoRepository.cs" />
+    <Compile Include="Repository\Interfaces\Gerais\ICalendario_IntervaloRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_BancoHorasRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IFuncionario_Controle_Horas_PontoRepository.cs" />
     <Compile Include="Repository\Interfaces\Gerais\IAcessoRepository.cs" />

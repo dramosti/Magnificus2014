@@ -1,8 +1,141 @@
 ﻿<Window x:Class="HLP.Comum.View.WPF.Messages.HlpMessageError"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="HlpMessageError" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="HlpMessageError" Height="Auto"  Width="470" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="Transparent"></Border>
+                            <ScrollViewer x:Name="PART_ContentHost"  Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Button_OK" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Storyboard1">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter">
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"></EasingColorKeyFrame>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="Storyboard2">
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                    <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="Transparent"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="contentPresenter">
+                                    <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                    <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                </Grid.ColumnDefinitions>
+                                <Ellipse x:Name="ellipse" Grid.Column="1" StrokeThickness="1.3" Stroke="White" Fill="Transparent"/>
+                                <ContentPresenter x:Name="contentPresenter" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Focusable="False" TextElement.FontFamily="Segoe Ui Light" TextElement.Foreground="White" TextElement.FontSize="18"/>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Border Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="1" Grid.Row="0" FontSize="50" Foreground="White" FontFamily="Segoe Ui Symbol" Text=":(" Margin="0,-16,0,0"></TextBlock>
+                <TextBlock Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Ocorreu um erro !" FontSize="30" FontFamily="Segoe UI Light" Foreground="White"></TextBlock>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="53"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="53"></ColumnDefinition>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="53"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>                    
+                </Grid.RowDefinitions>
+                <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_OK}" Content="OK"></Button>
+                <Expander Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5">
+                    <Grid Height="100">
+                        <TextBox  VerticalScrollBarVisibility="Auto" TextWrapping="Wrap">
+                            
+                        </TextBox>
+                    </Grid>
+                </Expander>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

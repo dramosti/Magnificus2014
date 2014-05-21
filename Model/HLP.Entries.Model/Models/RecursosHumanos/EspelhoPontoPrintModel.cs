@@ -12,6 +12,7 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         {
             lHeaderFuncionario = new List<HeaderEspelhoPontoPrintModel>();
         }
+        public int idEmpresa { get; set; }
         public string xEmpresa { get; set; }
         public string xEndereco { get; set; }
         public string xMesAno { get; set; }
@@ -24,6 +25,8 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
         {
             itemsPonto = new List<ItemsPontoModel>();
         }
+        public int idEmpresa { get; set; }
+        public int idFuncionario { get; set; }
         public string xNomeFuncionario { get; set; }
         public string xCpf { get; set; }
         public string xCodigoAlternativo { get; set; }
@@ -31,7 +34,9 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
 
         public string xHoraSeqQuinta { get; set; }
         public string xHoraSexta { get; set; }
+        public string xIntervalos { get; set; }
 
+        public string dtMes { get; set; }
         public int iTotalDiasTrabalhados { get; set; }
         public string xHorasTrabalhadas { get; set; }
         public string xHorasAtrabalhar { get; set; }
@@ -42,9 +47,10 @@ namespace HLP.Entries.Model.Models.RecursosHumanos
 
     public class ItemsPontoModel
     {
-        public DateTime data { get; set; }
+        public int idFuncionario { get; set; }
+        public string data { get; set; }
         public string hRegistrado { get; set; }
         public string hTrabalhada { get; set; }
-        public string xCcorrencia { get; set; }
+        public string xOcorrencia { get; set; }
     }
 }

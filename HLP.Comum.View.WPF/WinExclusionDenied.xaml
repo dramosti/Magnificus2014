@@ -168,8 +168,7 @@
                 <RowDefinition Height="Auto" MaxHeight="110"></RowDefinition>
                 <RowDefinition Height="31*"></RowDefinition>
                 <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-            <Button Grid.Column="6" Content="x" FontFamily="Segoe UI Symbol" Grid.Row="1" FontSize="14.667" Style="{DynamicResource Button_Sair}"></Button>
+            </Grid.RowDefinitions>            
             <TextBlock Text="ATENÇÃO" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1" FontSize="21.333"/>
             <TextBlock Height="20" Margin="0,1,0,22" Text="Esse cadastro não pode ser excluido pois existe ligação com outros cadastros" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="6" Style="{StaticResource TextBlockCampoValorTelaMensagem}"/>
 

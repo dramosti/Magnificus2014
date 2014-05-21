@@ -20,6 +20,8 @@ using HLP.Entries.Model.Models.Gerais;
 using HLP.Components.Model.Models;
 using HLP.Entries.Services.Gerais;
 using System.Windows.Input;
+using System.IO;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -28,6 +30,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         FuncionarioPontoService servicoFuncPonto;
         FuncionarioService servicoFuncionario;
         public EspelhoPontoViewModel objViewModel;
+        CalendarioService serviceCalendario;
         private bool bCanNavega { get; set; }
 
         public EspelhoPontoCommand(EspelhoPontoViewModel objViewModel)
@@ -73,7 +76,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             this.objViewModel.commandNavegaData = new RelayCommand(execute: paramExec => this.NavegaData(param: paramExec),
                 canExecute: paramCan => this.CanCarregaFormulario());
 
-            this.objViewModel.commandImprimir = new RelayCommand(execute: paramExec => this.PrevirewReport(),
+            this.objViewModel.commandImprimir = new RelayCommand(execute: paramExec => this.PreviewReport(),
                canExecute: paramCan => this.CanCarregaFormulario());
 
 
@@ -324,7 +327,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return objViewModel.navegarBaseCommand.CanExecute(paramCanExec);
         }
 
-        public void PrevirewReport()
+        public void PreviewReport()
         {
             EspelhoPontoPrintModel objPrintPonto = new EspelhoPontoPrintModel();
             EmpresaModel objEmpresa = CompanyData.objEmpresaModel as EmpresaModel;
@@ -342,6 +345,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     objEnderEmpresa.nNumero.ToUpper(),
                     objEnderEmpresa.xBairro.ToUpper());
             }
+            objPrintPonto.idEmpresa = CompanyData.idEmpresa;
             objPrintPonto.xMesAno = string.Format("PONTO ASSOCIADO AO MÊS DE {0} DE {1}",
                 this.objViewModel.currentModel.data.ToString("MMMMMMMMM").ToUpper(),
                 this.objViewModel.currentModel.data.Year);
@@ -353,30 +357,102 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 FuncionarioModel objFunc = servicoFuncionario.GetObject(item, false);// corrigir service
                 objHeader = new HeaderEspelhoPontoPrintModel();
+                objHeader.idFuncionario = item;
                 objHeader.xNomeFuncionario = objFunc.xNome;
                 objHeader.xCodigoAlternativo = objFunc.xCodigoAlternativo;
                 objHeader.xCpf = objFunc.xCpf;
                 objHeader.idCalendario = objFunc.idCalendario;
+                objHeader.dtMes = this.objViewModel.currentModel.data.ToShortDateString();
                 objPrintPonto.lHeaderFuncionario.Add(objHeader);
             }
 
-
-
             List<KeyValuePair<int, string>> lHorariosPrincipais = new List<KeyValuePair<int, string>>();
-            foreach (int item in objPrintPonto.lHeaderFuncionario.Select(c => c.idCalendario).Distinct())
+
+            if (serviceCalendario == null)
+                serviceCalendario = new CalendarioService();
+
+            // Calendarios
+            foreach (int idCalendario in objPrintPonto.lHeaderFuncionario.Where(c => c.idCalendario != null).Select(c => c.idCalendario).Distinct())
             {
+                CalendarioModel objCalendarioModel = serviceCalendario.GetObject(idCalendario, false);
+
+                string xIntervalo = "";
+                foreach (var intervalo in serviceCalendario.GetIntervalos(idCalendario))
+                {
+                    xIntervalo += string.Format("{0}-{1} :{2}{3}", intervalo.tInicio.ToStringHoras(), intervalo.tFinal.ToStringHoras(), intervalo.getTipoIntervalo(), Environment.NewLine);
+                }
+                foreach (var header in objPrintPonto.lHeaderFuncionario.Where(c => c.idCalendario == idCalendario))
+                {
+                    header.xHoraSeqQuinta = objCalendarioModel.tHoraInicialSegQui.ToStringHoras() + " - " + objCalendarioModel.tHoraFinalSegQui.ToStringHoras();
+                    header.xHoraSexta = objCalendarioModel.tHoraInicialSex.ToStringHoras() + " - " + objCalendarioModel.tHoraFinalSex.ToStringHoras();
+                }
+            }
+            // banco de horas
+            Funcionario_BancoHorasModel banco;
+            foreach (var header in objPrintPonto.lHeaderFuncionario)
+            {
+                banco = servicoFuncPonto.GetTotalBancoHorasMesAtual(CompanyData.idEmpresa, header.dtMes.ToDateTime());
+                if (banco != null)
+                {
+                    header.iTotalDiasTrabalhados = banco.iDiasTrabalhados;
+                    header.xHorasTrabalhadas = banco.tHorastrabalhadas;
+                    header.xHorasAtrabalhar = banco.tHorasAtrabalhar;
+                    header.xBancoHoras = banco.tBancoHoras;
+                }
+                header.idEmpresa = CompanyData.idEmpresa;
+                int iDaysMonth = System.DateTime.DaysInMonth(header.dtMes.ToDateTime().Year, header.dtMes.ToDateTime().Month);
+                ItemsPontoModel objPonto = null;
+                DateTime dtDia;
+                for (int i = 1; i <= iDaysMonth; i++)
+                {
+                    dtDia = new DateTime(header.dtMes.ToDateTime().Year, header.dtMes.ToDateTime().Month, i);
+                    List<EspelhoPontoModel> lPontos = servicoFuncPonto.GetHorasTrabalhadasDia(header.idFuncionario, dtDia);
+                    objPonto = new ItemsPontoModel();
+                    TimeSpan tTotalHorasTrabalhadas = new TimeSpan();
+                    foreach (var ponto in lPontos)
+                    {
+                        objPonto.hRegistrado += string.Format("{0}-{1}{2}",
+                            ponto.tEntrada.ToStringHoras(),
+                            ponto.tSaida.ToStringHoras(),
+                            Environment.NewLine);
+                        tTotalHorasTrabalhadas = tTotalHorasTrabalhadas.Add(ponto.tTotal);
+                    }
+                    objPonto.idFuncionario = header.idFuncionario;
+                    objPonto.data = dtDia.ToShortDateString();
+                    objPonto.hTrabalhada = (tTotalHorasTrabalhadas != new TimeSpan(0, 0, 0) ? tTotalHorasTrabalhadas.ToStringHoras() : "");
+                    objPonto.xOcorrencia = servicoFuncPonto.GetJustificativaPontoDia(header.idFuncionario, dtDia);
+                    header.itemsPonto.Add(objPonto);
+                }
 
             }
 
+            string sFilePath = Pastas.Path_TempReport + "EspelhoPontoToPDF_user_{0}.xml";
+            sFilePath = string.Format(sFilePath, UserData.idUser);
 
-
-            //1 - GetHorasTrabalhadasDia(int idFuncionario, DateTime dRelogioPonto) // trazer horarios do dia
-            //1-1 - GetHorasTrabalhadasDia
-            //1-2 - GetHorasAtrabalharDia
-
+            try
+            {
+                if (File.Exists(sFilePath))
+                    File.Delete(sFilePath);
+                SerializeClassToXml.SerializeClasse<EspelhoPontoPrintModel>(objPrintPonto, sFilePath);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
-            winReport.ShowDialog();
+
+            ReportDocument rpt = new ReportDocument();
+
+            string xPath = Pastas.Path_Report("rptEspelhoPonto.rpt");
+            if (xPath != "")
+            {
+                winReport.ShowDialog();
+            }
+            else
+            {
+                MessageHlp.Show(StMessage.stAlert, "Relatório nao encontrado.");
+            }
         }
 
 
