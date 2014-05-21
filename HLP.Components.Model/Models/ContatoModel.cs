@@ -560,7 +560,6 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idCliente");
             }
         }
-
         private int? _idAgencia;
         [ParameterOrder(Order = 50)]
         public int? idAgencia

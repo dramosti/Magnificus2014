@@ -121,9 +121,9 @@ namespace HLP.Components.Model.Models
             }
         }
 
-        private int? _idCidade;
+        private int _idCidade;
         [ParameterOrder(Order = 12)]
-        public int? idCidade
+        public int idCidade
         {
             get { return _idCidade; }
             set
@@ -132,21 +132,83 @@ namespace HLP.Components.Model.Models
                 base.NotifyPropertyChanged(propertyName: "idCidade");
             }
         }
-
+        private int? _idClienteFornecedor;
         [ParameterOrder(Order = 13)]
-        public int? idClienteFornecedor { get; set; }
+        public int? idClienteFornecedor
+        {
+            get { return _idClienteFornecedor; }
+            set
+            {
+                _idClienteFornecedor = value;
+                base.NotifyPropertyChanged(propertyName: "idClienteFornecedor");
+            }
+        }
+        private int? _idContato;
         [ParameterOrder(Order = 14)]
-        public int? idContato { get; set; }
+        public int? idContato
+        {
+            get { return _idContato; }
+            set
+            {
+                _idContato = value;
+                base.NotifyPropertyChanged(propertyName: "idContato");
+            }
+        }
+        private int? _idEmpresa;
         [ParameterOrder(Order = 15)]
-        public int? idEmpresa { get; set; }
+        public int? idEmpresa
+        {
+            get { return _idEmpresa; }
+            set
+            {
+                _idEmpresa = value;
+                base.NotifyPropertyChanged(propertyName: "idEmpresa");
+            }
+        }
+        private int? _idFuncionario;
         [ParameterOrder(Order = 16)]
-        public int? idFuncionario { get; set; }
+        public int? idFuncionario
+        {
+            get { return _idFuncionario; }
+            set
+            {
+                _idFuncionario = value;
+                base.NotifyPropertyChanged(propertyName: "idFuncionario");
+            }
+        }
+        private int? _idSite;
         [ParameterOrder(Order = 17)]
-        public int? idSite { get; set; }
+        public int? idSite
+        {
+            get { return _idSite; }
+            set
+            {
+                _idSite = value;
+                base.NotifyPropertyChanged(propertyName: "idSite");
+            }
+        }
+        private int? _idTransportador;
         [ParameterOrder(Order = 18)]
-        public int? idTransportador { get; set; }
+        public int? idTransportador
+        {
+            get { return _idTransportador; }
+            set
+            {
+                _idTransportador = value;
+                base.NotifyPropertyChanged(propertyName: "idTransportador");
+            }
+        }
+        private int? _idAgencia;
         [ParameterOrder(Order = 19)]
-        public int? idAgencia { get; set; }
+        public int? idAgencia
+        {
+            get { return _idAgencia; }
+            set
+            {
+                _idAgencia = value;
+                base.NotifyPropertyChanged(propertyName: "idAgencia");
+            }
+        }
 
         private HLP.WebServices.Cep ws;
 

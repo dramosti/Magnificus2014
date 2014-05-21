@@ -1490,21 +1490,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Transportadora\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Transportadora\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\wcf_Transportadora\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\wcf_DiaPagamento\wcf_DiaPagamento.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2235,6 +2220,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Funcionario\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\wcf_Transportadora.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Transportadora\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

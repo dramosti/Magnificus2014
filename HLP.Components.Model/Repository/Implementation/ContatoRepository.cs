@@ -54,9 +54,7 @@ namespace HLP.Components.Model.Repository.Implementation
 
         public ContatoModel GetContato(int idContato)
         {
-            if (regContatoAccessor == null)
-            {
-                regContatoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Contato",
+            regContatoAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Contato",
                                  new Parameters(UndTrabalho.dbPrincipal)
                                  .AddParameter<int>("idContato"),
                                  MapBuilder<ContatoModel>.MapAllProperties()
@@ -66,16 +64,13 @@ namespace HLP.Components.Model.Repository.Implementation
                                  .DoNotMap(i => i.xEnderecoEmpresa)
                                  .DoNotMap(i => i.xTelefoneEmpresa)
                                  .Build());
-            }
 
             return regContatoAccessor.Execute(idContato).FirstOrDefault();
         }
 
         public List<ContatoModel> GetAllContato()
         {
-            if (regAllContatoAccessor == null)
-            {
-                regAllContatoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Contato",
+            regAllContatoAccessor = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Contato",
                                 MapBuilder<ContatoModel>.MapAllProperties()
                                 .DoNotMap(i => i.status)
                                 .DoNotMap(i => i.idEmpresaContato)
@@ -83,7 +78,6 @@ namespace HLP.Components.Model.Repository.Implementation
                                  .DoNotMap(i => i.xEnderecoEmpresa)
                                  .DoNotMap(i => i.xTelefoneEmpresa)
                                 .Build());
-            }
             return regAllContatoAccessor.Execute().ToList();
         }
 

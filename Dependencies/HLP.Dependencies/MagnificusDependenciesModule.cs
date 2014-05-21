@@ -141,8 +141,6 @@ namespace HLP.Dependencies
             Bind<IFuncionario_ArquivoRepository>().To<Funcionario_ArquivoRepository>();
             Bind<IFuncionario_CertificacaoRepository>().To<Funcionario_CertificacaoRepository>();
             Bind<ITransportador_VeiculosRepository>().To<Transportador_VeiculosRepository>();
-            Bind<ITransportador_MotoristaRepository>().To<Transportador_MotoristaRepository>();
-            Bind<ITransportador_ContatoRepository>().To<Transportador_ContatoRepository>();
             Bind<IAcessoRepository>().To<AcessoRepository>();
             //Bind<ILog_ScriptsRepository>().To<Log_ScriptsRepository>();
             Bind<IOrcamento_ideRepository>().To<Orcamento_ideRepository>();

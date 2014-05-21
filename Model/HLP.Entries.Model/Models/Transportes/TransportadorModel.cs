@@ -132,7 +132,7 @@ namespace HLP.Entries.Model.Models.Transportes
         }
     }
 
-      public partial class Transportador_VeiculosModel : modelBase
+    public partial class Transportador_VeiculosModel : modelBase
     {
         public Transportador_VeiculosModel()
             : base(xTabela: "Transportador_Veiculos")
@@ -206,99 +206,6 @@ namespace HLP.Entries.Model.Models.Transportes
         }
     }
 
-    public partial class Transportador_ContatoModel : modelBase
-    {
-        public Transportador_ContatoModel()
-            : base(xTabela: "Contato")
-        {
-        }
-
-        private int? _idTransportdorContato;
-        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idTransportdorContato
-        {
-            get { return _idTransportdorContato; }
-            set
-            {
-                _idTransportdorContato = value;
-                base.NotifyPropertyChanged(propertyName: "idTransportdorContato");
-            }
-        }
-        private int _idTransportador;
-        [ParameterOrder(Order = 2)]
-        public int idTransportador
-        {
-            get { return _idTransportador; }
-            set
-            {
-                _idTransportador = value;
-                base.NotifyPropertyChanged(propertyName: "idTransportador");
-            }
-        }
-        private int _idContato;
-        [ParameterOrder(Order = 3)]
-        public int idContato
-        {
-            get { return _idContato; }
-            set
-            {
-                _idContato = value;
-                base.NotifyPropertyChanged(propertyName: "idContato");
-            }
-        }
-    }
-
-    public partial class Transportador_MotoristaModel : modelBase
-    {
-        public Transportador_MotoristaModel()
-            : base(xTabela: "Contato")
-        {
-        }
-        private int? _idTransportdorMotorista;
-        [ParameterOrder(Order = 1), PrimaryKey(isPrimary = true)]
-        public int? idTransportdorMotorista
-        {
-            get { return _idTransportdorMotorista; }
-            set
-            {
-                _idTransportdorMotorista = value;
-                base.NotifyPropertyChanged(propertyName: "idTransportdorMotorista");
-            }
-        }
-        private int? _idTransportador;
-        [ParameterOrder(Order = 2)]
-        public int? idTransportador
-        {
-            get { return _idTransportador; }
-            set
-            {
-                _idTransportador = value;
-                base.NotifyPropertyChanged(propertyName: "idTransportador");
-            }
-        }
-        private int? _idContato;
-        [ParameterOrder(Order = 3)]
-        public int? idContato
-        {
-            get { return _idContato; }
-            set
-            {
-                _idContato = value;
-                base.NotifyPropertyChanged(propertyName: "idContato");
-            }
-        }
-        private string _xRntrc;
-        [ParameterOrder(Order = 4)]
-        public string xRntrc
-        {
-            get { return _xRntrc; }
-            set
-            {
-                _xRntrc = value;
-                base.NotifyPropertyChanged(propertyName: "xRntrc");
-            }
-        }
-    }
 
     #region Validações
     public partial class TransportadorModel
@@ -313,7 +220,7 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
     }
-     
+
 
     public partial class Transportador_VeiculosModel
     {
@@ -325,27 +232,7 @@ namespace HLP.Entries.Model.Models.Transportes
             }
         }
     }
-
-    public partial class Transportador_ContatoModel
-    {
-        public override string this[string columnName]
-        {
-            get
-            {
-                return base[columnName];
-            }
-        }
-    }
-
-    public partial class Transportador_MotoristaModel
-    {
-        public override string this[string columnName]
-        {
-            get
-            {
-                return base[columnName];
-            }
-        }
-    }
     #endregion
+
 }
+    
