@@ -249,6 +249,31 @@ namespace HLP.Base.Static
 
             return null;
         }
+
+        private static DataSet.DataSetImgRport _dsImagemToReport;
+
+        public static DataSet.DataSetImgRport dsImagemToReport
+        {
+            get
+            {
+                if (Sistema._dsImagemToReport == null)
+                {
+                    object xPath = CompanyData.objEmpresaModel.GetPropertyValue("xLinkPastas");
+                    if (xPath != null)
+                    {
+                        if (File.Exists(xPath.ToString()))
+                        {
+                            Sistema._dsImagemToReport = new DataSet.DataSetImgRport();
+                            DataSet.DataSetImgRport.ImagensRow row = Sistema._dsImagemToReport.Imagens.NewImagensRow();
+                            row.LogoEmpresa = Util.ImagemParaByte(xPath.ToString());
+                        }
+
+                    }
+                }
+                return Sistema._dsImagemToReport;
+            }
+        }
+
     }
 
 

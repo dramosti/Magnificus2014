@@ -39,5 +39,14 @@ namespace HLP.Wcf.Entries
         void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes);
         [OperationContract]
         bool ExisteCalendarioDia(int idFuncionario, DateTime dtDia);
+        /// <summary>
+        /// Get a justificativa do ponto diário.
+        /// </summary>
+        /// <param name="idFuncionario"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [OperationContract]
+        string GetJustificativaPontoDia(int idFuncionario, DateTime data);
+
     }
 }

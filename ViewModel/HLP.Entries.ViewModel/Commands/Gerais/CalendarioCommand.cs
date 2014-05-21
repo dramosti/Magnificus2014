@@ -51,10 +51,19 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 canExecute: paramCanExec => objViewModel.navegarBaseCommand.CanExecute(paramCanExec));
             //gerarDetalhamentoCommand
 
-            this.objViewModel.gerarDetalhamentoCommand = new RelayCommand(execute: exec => this.GeraDetalhamento(),
-                 canExecute: can => true);
             this.objViewModel.gerarByCalendarioBaseCommand = new RelayCommand(execute: exec => this.GerarDetalhamentoByCalendarBase(),
                 canExecute: can => this.CanGerarDetalhamentoByCalendarBase());
+
+            this.objViewModel.commandGerarDetalhamento = new RelayCommand(
+             exec => GeraDetalhamento(),
+             can => true);
+
+            this.objViewModel.addDateCommand = new RelayCommand(
+              exec => AddDateSemProgramacaoToList(),
+              can => true);
+
+
+
 
             objViewModel.bWorkerSave.DoWork += bwSalvar_DoWork;
             objViewModel.bWorkerSave.RunWorkerCompleted += bwSalvar_RunWorkerCompleted;
@@ -81,7 +90,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
             objViewModel.currentModel.lCalendario_DetalheModel = objBase.lCalendario_DetalheModel;
         }
-
         public bool CanGerarDetalhamentoByCalendarBase()
         {
             bool breturn = false;
@@ -91,13 +99,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         breturn = true;
             return breturn;
         }
-
         public void GeraDetalhamento()
         {
-            Window win = GerenciadorModulo.Instancia.CarregaForm("WinCalendarioDetalhe", Base.InterfacesBases.TipoExibeForm.Modal);
-            win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            win.ShowDialog();
-            var dados = win.GetPropertyValue("ViewModel").GetPropertyValue("lCalendarioDetalhes");
+            ObservableCollection<Calendario_DetalheModel> dados = this.GeraGradeHoraria();
             if (dados != null)
             {
                 if (objViewModel.currentModel.lCalendario_DetalheModel.Count() > 0)
@@ -108,13 +112,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         , MessageBoxButton.YesNo
                         , MessageBoxImage.Question) == MessageBoxResult.No)
                     {
-                        foreach (var item in ((ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados).Select(c => c.dCalendario).Distinct())
+                        foreach (var item in dados.Select(c => c.dCalendario).Distinct())
                             lExcluir.AddRange(objViewModel.currentModel.lCalendario_DetalheModel.Where(c => c.dCalendario == item).ToList());
 
                         foreach (var removeItem in lExcluir)
                             objViewModel.currentModel.lCalendario_DetalheModel.Remove(removeItem);
 
-                        foreach (var itemAdd in (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados)
+                        foreach (var itemAdd in dados)
                         {
                             objViewModel.currentModel.lCalendario_DetalheModel.Add(item: itemAdd);
                         }
@@ -132,17 +136,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         foreach (var item in objViewModel.currentModel.lCalendario_DetalheModel.Where(c => c.idCalendarioDetalhe != null))
                             lExcluir.Add(item);
-                        objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
+                        objViewModel.currentModel.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<Calendario_DetalheModel>(dados);
                         if (lExcluir.Count() > 0)
                             objViewModel.currentModel.lCalendario_DetalheModel.idExcluidos = lExcluir.Select(c => (int)c.idCalendarioDetalhe).ToList();
 
                     }
                 }
                 else
-                    objViewModel.currentModel.lCalendario_DetalheModel = (ObservableCollectionBaseCadastros<Calendario_DetalheModel>)dados;
+                    objViewModel.currentModel.lCalendario_DetalheModel = new ObservableCollectionBaseCadastros<Calendario_DetalheModel>(dados);
             }
         }
-
         public void Save(object _panel)
         {
             try
@@ -164,7 +167,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
 
         }
-
         void bwSalvar_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -220,7 +222,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             return (this.objViewModel.salvarBaseCommand.CanExecute(parameter: null)
                 && this.objViewModel.IsValid(objDependency as Panel));
         }
-
         public void Copy()
         {
             try
@@ -233,7 +234,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 throw ex;
             }
         }
-
         void bwCopy_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -252,7 +252,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 throw ex;
             }
         }
-
         void bwCopy_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -265,13 +264,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 throw;
             }
         }
-
-
         public bool CopyCanExecute()
         {
             return this.objViewModel.copyBaseCommand.CanExecute(null);
         }
-
         public void Delete()
         {
             int iExcluir = 0;
@@ -301,28 +297,23 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 }
             }
         }
-
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new CalendarioModel();
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
-
         private bool NovoCanExecute()
         {
             return this.objViewModel.novoBaseCommand.CanExecute(parameter: null);
         }
-
         private void Alterar(object _panel)
         {
             this.objViewModel.alterarBaseCommand.Execute(parameter: _panel);
         }
-
         private bool AlterarCanExecute()
         {
             return this.objViewModel.alterarBaseCommand.CanExecute(parameter: null);
         }
-
         private void Cancelar()
         {
             if (objViewModel.message.Cancelar())
@@ -335,20 +326,15 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         {
             return this.objViewModel.cancelarBaseCommand.CanExecute(parameter: null);
         }
-
-
         public void ExecPesquisa()
         {
             this.objViewModel.pesquisarBaseCommand.Execute(null);
             this.PesquisarRegistro();
         }
-
-
         private void PesquisarRegistro()
         {
             this.objViewModel.bWorkerPesquisa.RunWorkerAsync();
         }
-
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -361,7 +347,6 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
 
         }
-
         public void Navegar(object ContentBotao)
         {
             try
@@ -374,17 +359,77 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 throw ex;
             }
         }
-
         private void Inicia_Collections()
         {
             if (this.objViewModel.currentModel != null)
                 this.objViewModel.currentModel.lCalendario_DetalheModel.CollectionCarregada();
         }
-
         private void GetCalendario(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = service.GetObject(this.objViewModel.currentID);
         }
+
+
+        // Calendario detalhe
+
+        public void AddDateSemProgramacaoToList()
+        {
+            if (objViewModel.diaSemProgramacao != null)
+            {
+                if (objViewModel.lDiasSemProgramacao.Where(c => c.Date == ((DateTime)objViewModel.diaSemProgramacao).Date).Count() == 0)
+                {
+                    objViewModel.lDiasSemProgramacao.Add((DateTime)objViewModel.diaSemProgramacao);
+                    objViewModel.diaSemProgramacao = null;
+                }
+                else
+                    System.Windows.MessageBox.Show("Data já inserida na listagem abaixo!", "A V I S O");
+            }
+        }
+        public bool CanAddDateSemProgramacaoToList()
+        {
+            if (objViewModel.diaSemProgramacao != null)
+                return true;
+            else return false;
+        }
+        private ObservableCollection<Calendario_DetalheModel> GeraGradeHoraria()
+        {
+            try
+            {
+                List<Calendario_DetalheModel> lDetalhes = new List<Calendario_DetalheModel>();
+                Dictionary<TimeSpan, TimeSpan> Intervalos = objViewModel.GeraIntervalos();
+
+
+                DateTimeEnumerator dateTimeRange = new DateTimeEnumerator(objViewModel.currentModel.dtInicial.Date, objViewModel.currentModel.dtFinal.Date);
+                foreach (DateTime day in dateTimeRange)
+                {
+                    if (objViewModel.VerificaDiaExcluidoProgramacao(day))
+                    {
+                        if (day.DayOfWeek == DayOfWeek.Saturday && ((byte)objViewModel.currentModel.stSabado).ToBoolean())
+                        {
+                          lDetalhes.AddRange(objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSab), ((TimeSpan)objViewModel.currentModel.tHoraFinalSab)));
+                        }
+                        else if (day.DayOfWeek == DayOfWeek.Friday)
+                        {
+                            lDetalhes.AddRange( objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSex), ((TimeSpan)objViewModel.currentModel.tHoraFinalSex)));
+                        }
+                        else if (day.DayOfWeek == DayOfWeek.Sunday && ((byte)objViewModel.currentModel.stDomingo).ToBoolean())
+                        {
+                            lDetalhes.AddRange( objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialDom), ((TimeSpan)objViewModel.currentModel.tHoraFinalDom)));
+                        }
+                        else if (day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday)
+                        {
+                            lDetalhes.AddRange( objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSegQui), ((TimeSpan)objViewModel.currentModel.tHoraFinalSegQui)));
+                        }
+                    }
+                }
+                return new ObservableCollection<Calendario_DetalheModel>(lDetalhes);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
 
 

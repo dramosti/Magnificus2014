@@ -13,5 +13,6 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
         Funcionario_BancoHorasModel GetTotalBancoHorasMesAtual(int idFuncionario, DateTime dtMes);
         void Save(Funcionario_BancoHorasModel objFuncionario_BancoHoras);
         void DeleteBancoHorasMes(int idFuncionario, DateTime dtMes);
+        string GetJustificativaPontoDia(int idFuncionario, DateTime data);
     }
 }

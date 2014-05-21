@@ -84,8 +84,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                         }
                     }
                 }
-
-                objViewModel.FechaForm(((System.Windows.Window)o));
+                //objViewModel.FechaForm(((System.Windows.Window)o));
             }
             catch (Exception ex)
             {

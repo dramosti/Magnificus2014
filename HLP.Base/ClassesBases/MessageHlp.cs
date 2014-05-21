@@ -11,7 +11,7 @@ namespace HLP.Base.ClassesBases
 {
     public class MessageHlp
     {
-        public MessageBoxResult OpenMessageWindow(StMessage stMessage, string xMessageToUser,
+        public static MessageBoxResult Show(StMessage stMessage, string xMessageToUser,
             string xErrorCode = "", string xMessageFramework = "")
         {
             string xType = "";
@@ -63,7 +63,7 @@ namespace HLP.Base.ClassesBases
                 Application.Current.Dispatcher.BeginInvoke((Action)(()
                 =>
                 {
-                    if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja salvar o registro?")
+                    if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja salvar o registro?")
                 == MessageBoxResult.Yes)
                     {
                         bReturn = true;
@@ -99,7 +99,7 @@ namespace HLP.Base.ClassesBases
         {
             bool? bReturn = null;
 
-            if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja excluir o registro?")
+            if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja excluir o registro?")
                 == MessageBoxResult.Yes)
             {
                 bReturn = true;
@@ -117,7 +117,7 @@ namespace HLP.Base.ClassesBases
             Application.Current.Dispatcher.BeginInvoke((Action)(()
                 =>
             {
-                this.OpenMessageWindow(stMessage: StMessage.stAlert, xMessageToUser: "Cadastro excluido com sucesso!");
+                MessageHlp.Show(stMessage: StMessage.stAlert, xMessageToUser: "Cadastro excluido com sucesso!");
             }));
         }
 
@@ -125,7 +125,7 @@ namespace HLP.Base.ClassesBases
         {
             bool? bReturn = null;
 
-            if (this.OpenMessageWindow(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja realmente cancelar a transação?")
+            if (MessageHlp.Show(stMessage: StMessage.stYesNo, xMessageToUser: "Deseja realmente cancelar a transação?")
                     == MessageBoxResult.Yes)
             {
                 bReturn = true;

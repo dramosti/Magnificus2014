@@ -40,12 +40,12 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
         }
 
-        public void Delete(CalendarioModel objCalendario)
+        public void Delete(CalendarioModel objCalendario, int idUser)
         {
             UndTrabalho.dbPrincipal.ExecuteScalar(
             UndTrabalho.dbTransaction,
            "[dbo].[Proc_delete_Calendario]",
-            UserData.idUser,
+            idUser,
             objCalendario.idCalendario);
         }
 
@@ -65,7 +65,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 regCalendarioAccessor = UndTrabalho.dbPrincipal.CreateSprocAccessor("dbo.Proc_sel_Calendario",
                                          new Parameters(UndTrabalho.dbPrincipal)
                                          .AddParameter<int>("idCalendario"),
-                                         MapBuilder<CalendarioModel>.MapAllProperties().DoNotMap(c=>c.status).Build());
+                                         MapBuilder<CalendarioModel>.MapAllProperties().DoNotMap(c => c.status).Build());
             }
 
             return regCalendarioAccessor.Execute(idCalendario).FirstOrDefault();

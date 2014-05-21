@@ -123,6 +123,11 @@
     <Compile Include="ClassesBases\TabPagesAtivasModel.cs" />
     <Compile Include="ClassesBases\UnitOfWorkBase.cs" />
     <Compile Include="ClassesBases\ViewModelBase.cs" />
+    <Compile Include="DataSet\DataSetImgRport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetImgRport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EnumsBases\EnumsBases.cs" />
     <Compile Include="InterfacesBases\IModulo.cs" />
     <Compile Include="IoC\DIContollersModuleBase.cs" />
@@ -158,6 +163,19 @@
     <Content Include="Dlls\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
     <Content Include="Dlls\Sql\Microsoft.SqlServer.SmoExtended.dll" />
     <Content Include="Dlls\WebServices\HLP.WebServices.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataSet\DataSetImgRport.xsc">
+      <DependentUpon>DataSetImgRport.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DataSetImgRport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetImgRport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DataSetImgRport.xss">
+      <DependentUpon>DataSetImgRport.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
