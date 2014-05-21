@@ -147,6 +147,9 @@
     <Compile Include="Validates\ListUniqueValueTrueValidationRule.cs" />
     <Compile Include="Validates\NumericDecimalValidationRule.cs" />
     <Compile Include="Validates\NumericIntValidationRule.cs" />
+    <Compile Include="WindowComponents\wdQuickSearch.xaml.cs">
+      <DependentUpon>wdQuickSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowsBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,6 +213,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowComponents\wdQuickSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
