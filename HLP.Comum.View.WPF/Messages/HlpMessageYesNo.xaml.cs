@@ -40,5 +40,10 @@ namespace HLP.Comum.View.WPF.Messages
                 return MessageBoxResult.No;
             }
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
