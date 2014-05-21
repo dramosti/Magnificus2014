@@ -79,8 +79,10 @@ namespace HLP.Wcf.Entries
         }
         public TransportadorModel SaveObject(TransportadorModel obj)
         {
+            int? idOld = obj.idTransportador;
             try
             {
+
                 this.transportadorRepository.BeginTransaction();
                 this.transportadorRepository.Save(objTransportador: obj);
 
@@ -170,7 +172,6 @@ namespace HLP.Wcf.Entries
                 this.transportadorRepository.RollackTransaction();
                 Log.AddLog(xLog: sEx.Message);
                 string message = "";
-
                 foreach (SqlError item in sEx.Errors)
                 {
                     if (item.State == 221)
@@ -179,7 +180,11 @@ namespace HLP.Wcf.Entries
                         break;
                     }
                 }
-
+                if (string.IsNullOrEmpty(value: message))
+                {
+                    message = sEx.Message;
+                }
+                obj.idTransportador = idOld;
                 throw new FaultException(reason: message, code: new FaultCode(name: "sql221"));
             }
             catch (Exception ex)

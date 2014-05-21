@@ -18,7 +18,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
     {
         [Inject]
         public UnitOfWorkBase UndTrabalho { get; set; }
-              
+
         private DataAccessor<Funcionario_BancoHorasModel> regBancoHorasMesAccessor;
 
         public TimeSpan GetTotalBancoHoras(int idFuncionario, DateTime dtMes)
@@ -28,7 +28,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                     string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) < {1}", idFuncionario,
                     Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
                      .DoNotMap(c => c.status)
-                     .DoNotMap(c => c.tsSaldoAteMomento)                   
+                     .DoNotMap(c => c.tsSaldoAteMomento)
                      .Build());
             TimeSpan tsTotalRet = new TimeSpan();
             foreach (var item in regBancoHorasAccessor.Execute().ToList())
@@ -37,6 +37,26 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             }
             return tsTotalRet;
         }
+
+
+        public string GetJustificativaPontoDia(int idFuncionario, DateTime data) 
+        {
+
+            DbCommand command = UndTrabalho.dbPrincipal.GetSqlStringCommand
+              (
+                    string.Format("SELECT DISTINCT coalesce(xJustificativa,'')xJustificativa FROM Funcionario_Controle_Horas_Ponto"
+                        + " where idFuncionario = {0} " + "and dRelogioPonto = '{1}'", idFuncionario,
+                    data.ToString("yyyy-MM-dd"))
+              );
+            IDataReader reader = UndTrabalho.dbPrincipal.ExecuteReader(command);
+            string xJustificativa = "";
+            while (reader.Read())
+            {
+                xJustificativa += reader["xJustificativa"].ToString();
+            }
+            return xJustificativa;
+        }
+
 
         public void Save(Funcionario_BancoHorasModel objFuncionario_BancoHoras)
         {
@@ -58,7 +78,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 string.Format("SELECT * FROM Funcionario_BancoHoras where idFuncionario = {0} " + "and CAST(xMesAno as int) = {1}", idFuncionario,
                 Convert.ToInt32(dtMes.Month.ToString() + dtMes.Year.ToString())), MapBuilder<Funcionario_BancoHorasModel>.MapAllProperties()
                 .DoNotMap(c => c.status)
-                .DoNotMap(c=>c.tsSaldoAteMomento)
+                .DoNotMap(c => c.tsSaldoAteMomento)
                 .Build());
             //TimeSpan? tsTotalRet = null;
             //List<Funcionario_BancoHorasModel> lreturn = regBancoHorasMesAccessor.Execute().ToList();

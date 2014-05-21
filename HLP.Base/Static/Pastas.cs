@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 
 namespace HLP.Base.Static
 {
@@ -18,19 +19,14 @@ namespace HLP.Base.Static
             }
         }
 
-        public static string Path_Report_Especifico
+        public static string Path_Report(string xNameReport)
         {
-            get
-            {
-                return Util.ValidaCaminho(Pastas.CaminhoPadraoRegWindows + "\\RELATORIOS\\");
-            }
-        }
-        public static string Path_Report
-        {
-            get
-            {
-                return Util.ValidaCaminho(Application.Current.StartupUri.AbsolutePath + "\\RELATORIOS\\");
-            }
+            string xPath = Util.ValidaCaminho(System.AppDomain.CurrentDomain.BaseDirectory + "\\Reports\\");
+            xPath += xNameReport;
+            if (File.Exists("xPath"))
+                return xPath;
+            else
+                return "";
         }
 
         public static string Path_Logs
@@ -62,5 +58,22 @@ namespace HLP.Base.Static
             get { return @"\\hlpsrv\G\CSharp\Desenvolvimento\Projetos\Magnificus\BaseConfig\bases.xml"; }
         }
 
+
+        public static string Path_TempReport
+        {
+            get
+            {
+                try
+                {
+                    return Util.ValidaCaminho(System.AppDomain.CurrentDomain.BaseDirectory + "\\TempReport\\" + Environment.MachineName + "\\");
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            //set { Pastas._CCe = value; }
+        }
     }
 }

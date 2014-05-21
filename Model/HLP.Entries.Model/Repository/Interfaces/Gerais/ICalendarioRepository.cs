@@ -10,7 +10,7 @@ namespace HLP.Entries.Model.Repository.Interfaces.Gerais
     public interface ICalendarioRepository
     {
         void Save(CalendarioModel objCalendario);
-        void Delete(CalendarioModel objCalendario);
+        void Delete(CalendarioModel objCalendario, int idUser);
         void Copy(CalendarioModel objCalendario);
         CalendarioModel GetCalendario(int idCalendario);
         List<CalendarioModel> GetCalendarios(int idEmpresa);

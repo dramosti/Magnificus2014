@@ -39,7 +39,11 @@ namespace HLP.Entries.Model.Models.Gerais
         public int idUF
         {
             get { return _idUF; }
-            set { _idUF = value; base.NotifyPropertyChanged("idUF"); }
+            set
+            {
+                _idUF = value;
+                base.NotifyPropertyChanged("idUF");
+            }
         }
     }
 

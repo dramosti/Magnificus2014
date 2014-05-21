@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HLP.Base.EnumsBases;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +60,14 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
             this.Style = resource["CheckBoxStyle"] as Style;
+        }
+
+        private statusComponentePosicao _stCompPosicao;
+        [Category("HLP.Owner")]
+        public statusComponentePosicao stCompPosicao
+        {
+            get { return _stCompPosicao; }
+            set { _stCompPosicao = value; }
         }
     }
 }

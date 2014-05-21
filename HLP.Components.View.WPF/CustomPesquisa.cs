@@ -57,11 +57,39 @@ namespace HLP.Components.View.WPF
             {
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
-
             this.Style = resource["TextBox_PESQUISA"] as Style;
             this.ViewModel = new CustomPesquisaViewModel();
-
             this.GotFocus += CustomPesquisa_GotFocus;
+
+            this.ApplyTemplate();
+            object txt = this.Template.FindName(name: "xId", templatedParent: this);
+
+            if (txt != null)
+            {
+                ((TextBox)txt).ApplyTemplate();
+                object button = ((TextBox)txt).Template.FindName(name: "btnPesquisa", templatedParent: (TextBox)txt);
+
+                if (button != null)
+                {
+                    ((Button)button).Command = this.ViewModel.searchCommand;
+                    ((Button)button).CommandParameter = this;
+                }
+
+                foreach (MenuItem item in ((TextBox)txt).ContextMenu.Items)
+                {
+                    if (item.Name == "insertItem")
+                    {
+                        item.Command = this.ViewModel.insertCommand;
+                        item.CommandParameter = this;
+                    }
+                    else if (item.Name == "goItem")
+                    {
+                        item.Command = this.ViewModel.goToRecordCommand;
+                        item.CommandParameter = this;
+                    }
+                }
+            }
+
         }
 
         void CustomPesquisa_GotFocus(object sender, RoutedEventArgs e)
@@ -70,15 +98,29 @@ namespace HLP.Components.View.WPF
             (txt as TextBox).Focus();
         }
 
+        public void SetEventFocusToTxtId(RoutedEventHandler _event)
+        {
+            this.ApplyTemplate();
+
+            object txt = this.Template.FindName(name: "xId", templatedParent: this);
+
+            if (txt != null)
+            {
+                (txt as TextBox).LostFocus += _event;
+            }
+        }
+
+        private CustomPesquisaViewModel _ViewModel;
+
         public CustomPesquisaViewModel ViewModel
         {
             get
             {
-                return this.DataContext as CustomPesquisaViewModel;
+                return this._ViewModel;
             }
             set
             {
-                this.DataContext = value;
+                this._ViewModel = value;
             }
         }
 

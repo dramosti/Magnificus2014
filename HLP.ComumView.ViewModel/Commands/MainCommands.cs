@@ -135,7 +135,6 @@ namespace HLP.ComumView.ViewModel.Commands
                 }
                 else
                 {
-
                     TabPagesAtivasModel objTabPageAtivasModel = new TabPagesAtivasModel();
                     objTabPageAtivasModel._windows = form;
 
@@ -144,9 +143,14 @@ namespace HLP.ComumView.ViewModel.Commands
                     {
                         this.objviewModel.winMan._lTabPagesAtivas.Add(item: objTabPageAtivasModel);
                     }
+
                     this.objviewModel.winMan._currentTab = objTabPageAtivasModel;
                     this.objviewModel.winMan.vToolBar = Visibility.Visible;
                     this.objviewModel.winMan.iHeightToolBar = 30;
+
+                    this.objviewModel.tabWindows.SelectedItem =
+                        this.objviewModel.winMan._lTabPagesAtivas.FirstOrDefault(
+                         i => i._windows.Name == xNomeForm.ToString());
                 }
             }
             catch (Exception ex)

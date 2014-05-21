@@ -59,13 +59,16 @@ namespace HLP.Entries.Model.Models.Gerais
             set { _cIbgeUf = value; }
         }
 
-        private int _idRegiao;
+        private int? _idRegiao;
 
         [ParameterOrder(Order = 5)]
-        public int idRegiao
+        public int? idRegiao
         {
             get { return _idRegiao; }
-            set { _idRegiao = value; }
+            set { 
+                _idRegiao = value;
+                base.NotifyPropertyChanged(propertyName: "idRegiao");
+            }
         }
 
         public bool IsValid

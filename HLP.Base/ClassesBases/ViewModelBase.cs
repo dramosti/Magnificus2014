@@ -288,21 +288,7 @@ namespace HLP.Base.ClassesBases
                 : resultado;
         }
 
-
-
-        public void FechaForm(object p)
-        {
-            try
-            {
-                ((Window)p).Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
+      
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)
         {
             object o;
@@ -553,7 +539,7 @@ namespace HLP.Base.ClassesBases
                     objviewModel.navigatePesquisa = new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     //MessageBox.Show(this.delBaseCanExecute().ToString());
                     objviewModel.navegarBaseCommand.Execute("Primeiro");
-                    objviewModel.visibilityNavegacao = Visibility.Visible;
+                    objviewModel.visibilityNavegacao = Visibility.Visible;                    
                     this.currentOp = OperacaoCadastro.pesquisando;
                 }
             }

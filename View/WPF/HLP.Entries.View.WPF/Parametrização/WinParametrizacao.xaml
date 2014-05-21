@@ -17,7 +17,7 @@
         </ResourceDictionary>        
     </runtime:WindowsBase.Resources>
     <DockPanel LastChildFill="True" >
-        <TabControl  VerticalAlignment="Stretch" Margin="0,10,0,0">
+        <TabControl  VerticalAlignment="Stretch" Margin="0,10,0,0" x:Name="tabPrincipal">
             <TabItem Header="Estoque">
                 <AdornerDecorator Margin="0,-4,0,4">
                     <DockPanel LastChildFill="True">
@@ -53,7 +53,7 @@
                                 
                                 <!--Components-->
 
-                                <Components:CustomComboBox
+                                <Components:CustomComboBox stCompPosicao="first"
                                     Grid.Column="2" Grid.Row="1" Height="20" Margin="0,0,0,3"
 				    SelectedIndex="{Binding currentModel.empresaParametros.ObjParametro_EstoqueModel.stEstoqueMinimo, 
                                     Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}"
@@ -1144,7 +1144,7 @@
                                 IsEnabled="{Binding bIsEnabled}"
                                 Grid.Column="2" Grid.Row="6" Height="20" Margin="0,0,0,3" ToolTip="Informar a tolerância máxima permitida para início das horas extras, caso seja de 5 minutos o sistema começara a contar somente como hora extra quando o funcionário passar o cartão 5 depois da sua saída ou contar como hora extra o tempo total passado antes de sua entrada." 
                                 stFormatoDtPicker="time" xTextTime="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.tToleranciaHoraExtra, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>                            
-                            <Components:CustomCheckBox 
+                            <Components:CustomCheckBox stCompPosicao="last"
                                 Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" IsChecked="{Binding currentModel.empresaParametros.objParametro_Cartao_PontoModel.stLiberacaoHoraExtra, 
                                 Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 				                IsEnabled="{Binding bIsEnabled}"/>				                                        

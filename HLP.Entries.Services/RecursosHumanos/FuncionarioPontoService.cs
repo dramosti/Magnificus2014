@@ -190,5 +190,19 @@ namespace HLP.Entries.Services.RecursosHumanos
             else
                 return false;
         }
+        public string GetJustificativaPontoDia(int idFuncionario, DateTime data)
+        {
+            if (Sistema.bOnline == StConnection.OnlineNetwork)
+            {
+                return this.servicoRede.GetJustificativaPontoDia(idFuncionario, data);
+            }
+            else if (Sistema.bOnline == StConnection.OnlineWeb)
+            {
+                return ""; // return this.servicoInternet.ExisteCalendarioDia(idFuncionario, dtDia);
+            }
+            else
+                return "";
+
+        }
     }
 }

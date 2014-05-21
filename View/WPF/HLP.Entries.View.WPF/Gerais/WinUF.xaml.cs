@@ -41,10 +41,5 @@ namespace HLP.Entries.View.WPF.Gerais
                 throw;
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
