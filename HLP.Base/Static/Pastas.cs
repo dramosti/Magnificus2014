@@ -23,7 +23,7 @@ namespace HLP.Base.Static
         {
             string xPath = Util.ValidaCaminho(System.AppDomain.CurrentDomain.BaseDirectory + "\\Reports\\");
             xPath += xNameReport;
-            if (File.Exists("xPath"))
+            if (File.Exists(xPath))
                 return xPath;
             else
                 return "";

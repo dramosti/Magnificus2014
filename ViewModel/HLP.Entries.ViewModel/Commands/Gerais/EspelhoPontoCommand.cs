@@ -22,6 +22,7 @@ using HLP.Entries.Services.Gerais;
 using System.Windows.Input;
 using System.IO;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Data;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -441,12 +442,17 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             }
 
             Window winReport = GerenciadorModulo.Instancia.CarregaForm("WinPreviewReport", Base.InterfacesBases.TipoExibeForm.Modal);
-
-            ReportDocument rpt = new ReportDocument();
-
+            DataSet dsTemp = null;
             string xPath = Pastas.Path_Report("rptEspelhoPonto.rpt");
             if (xPath != "")
             {
+                ReportDocument rpt = new ReportDocument();
+                rpt.Load(xPath);
+                dsTemp = new DataSet();
+                dsTemp.ReadXml(sFilePath);
+                rpt.SetDataSource(dsTemp);
+                rpt.Refresh();
+                winReport.SetPropertyValue("rpt", rpt);
                 winReport.ShowDialog();
             }
             else

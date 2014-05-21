@@ -138,10 +138,9 @@ namespace HLP.Components.ViewModel.Commands
                                     _DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: _DataContext);
 
                                 if (currentModel != null)
-                                {
-                                    MessageHlp objMessage = new MessageHlp();
+                                {                                   
 
-                                    if (objMessage.OpenMessageWindow(stMessage: StMessage.stYesNo,
+                                    if (MessageHlp.Show(stMessage: StMessage.stYesNo,
                                         xMessageToUser: "Window está sendo utilizada no momento, deseja cancelar a operação corrente " +
                                         " e pesquisar o registro?") != MessageBoxResult.Yes)
                                     {

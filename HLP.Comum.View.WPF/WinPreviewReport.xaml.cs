@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace HLP.Comum.View.WPF
 {
@@ -24,6 +25,17 @@ namespace HLP.Comum.View.WPF
             InitializeComponent();
             reportViewer.Owner = this;
         }
+
+
+        public ReportDocument rpt
+        {
+            set
+            {
+                this.reportViewer.ViewerCore.ReportSource = value;
+                this.reportViewer.ViewerCore.RefreshReport();
+            }
+        }
+
 
 
     }
