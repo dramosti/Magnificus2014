@@ -195,7 +195,6 @@ namespace HLP.Entries.ViewModel.Commands.Transportes
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

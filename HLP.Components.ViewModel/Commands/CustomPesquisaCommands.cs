@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Base.Modules;
 using HLP.Components.ViewModel.ViewModels;
 using System;
@@ -39,9 +40,9 @@ namespace HLP.Components.ViewModel.Commands
             {
                 winPesquisa.WindowState = WindowState.Maximized;
                 winPesquisa.GetType().GetProperty(name: "NameView").SetValue(obj: winPesquisa, value:
-                    (o as TextBox).TemplatedParent.GetType().GetProperty(name: "TableView").GetValue(obj: (o as TextBox).TemplatedParent));
+                    o.GetType().GetProperty(name: "TableView").GetValue(obj: o));
                 winPesquisa.GetType().GetProperty(name: "NameWindowCadastro").SetValue(obj: winPesquisa,
-                    value: (o as TextBox).TemplatedParent.GetType().GetProperty(name: "NameWindowCadastro").GetValue(obj: (o as TextBox).TemplatedParent));
+                    value: o.GetType().GetProperty(name: "NameWindowCadastro").GetValue(obj: o));
 
                 winPesquisa.ShowDialog();
 
@@ -50,8 +51,8 @@ namespace HLP.Components.ViewModel.Commands
                 {
                     int result = (winPesquisa.GetType().GetProperty(name: "lResult").GetValue(obj: winPesquisa)
                     as List<int>).FirstOrDefault();
-                    (o as TextBox).TemplatedParent.GetType().GetProperty(name: "xIdPesquisa").SetValue(
-                        obj: (o as TextBox).TemplatedParent, value: result.ToString());
+                    o.GetType().GetProperty(name: "xIdPesquisa").SetValue(
+                        obj: o, value: result.ToString());
                 }
             }
         }
@@ -83,7 +84,7 @@ namespace HLP.Components.ViewModel.Commands
                 if (w.ShowDialog() == true)
                 {
                     o.GetType().GetProperty(name: "xIdPesquisa").SetValue(
-                            obj: o, value: w.GetType().GetProperty(name: "idSalvo").GetValue(obj: w));
+                            obj: o, value: w.GetType().GetProperty(name: "idSalvo").GetValue(obj: w).ToString());
                 }
             }
         }
@@ -106,11 +107,13 @@ namespace HLP.Components.ViewModel.Commands
 
                 if (nameWindow != null)
                 {
-                    Window w = GerenciadorModulo.Instancia.CarregaForm(
-                        nome: nameWindow.ToString(), exibeForm: Base.InterfacesBases.TipoExibeForm.Normal);
+                    ICommand AddCommand = Application.Current.MainWindow.DataContext.GetType()
+                        .GetProperty(name: "AddWindowCommand").GetValue(obj: Application.Current.MainWindow.DataContext) as ICommand;
 
-                    if (w != null)
+
+                    if (AddCommand != null)
                     {
+                        AddCommand.Execute(parameter: nameWindow);
                         int id = 0;
                         object _id = o.GetType().GetProperty(name: "xIdPesquisa").GetValue(
                             obj: o);
@@ -119,10 +122,48 @@ namespace HLP.Components.ViewModel.Commands
                         {
                             if (int.TryParse(s: _id.ToString(), result: out id))
                             {
-                                w.DataContext.GetType().GetProperty(name: "currentID").SetValue(obj: w, value: id);
+                                object winManPropertyValue = Application.Current.MainWindow.DataContext.GetType()
+                                    .GetProperty(name: "winMan").GetValue(obj: Application.Current.MainWindow.DataContext);
 
-                                BackgroundWorker bw = w.DataContext.GetType().GetProperty(
-                                    name: "bWorkerPesquisa").GetValue(obj: w.DataContext) as BackgroundWorker;
+                                object _currentTab = winManPropertyValue.GetType().GetProperty(name: "_currentTab")
+                                    .GetValue(obj: winManPropertyValue);
+
+                                object _DataContext = _currentTab.GetType().GetProperty(name: "_currentDataContext")
+                                    .GetValue(obj: _currentTab);
+
+                                _DataContext.GetType().GetProperty(name: "currentID").SetValue(obj: _DataContext, value: id);
+
+
+                                object currentModel =
+                                    _DataContext.GetType().GetProperty(name: "currentModel").GetValue(obj: _DataContext);
+
+                                if (currentModel != null)
+                                {
+                                    MessageHlp objMessage = new MessageHlp();
+
+                                    if (objMessage.OpenMessageWindow(stMessage: StMessage.stYesNo,
+                                        xMessageToUser: "Window está sendo utilizada no momento, deseja cancelar a operação corrente " +
+                                        " e pesquisar o registro?") != MessageBoxResult.Yes)
+                                    {
+                                        return;
+                                    }
+
+                                    _DataContext.GetType().GetProperty(name: "currentModel").SetValue(obj:
+                                        _DataContext, value: null);
+                                }
+
+                                MethodInfo miSetOp = _DataContext.GetType().GetMethod(
+                                    name: "SetValorCurrentOp");
+
+                                object[] _params = new object[] { OperacaoCadastro.pesquisando };
+
+                                miSetOp.Invoke(obj: _DataContext, parameters: _params);
+
+                                _DataContext.GetType().GetProperty(name: "bIsEnabled")
+                                    .SetValue(obj: _DataContext, value: false);
+
+                                BackgroundWorker bw = _DataContext.GetType().GetProperty(
+                                    name: "bWorkerPesquisa").GetValue(obj: _DataContext) as BackgroundWorker;
 
                                 if (bw != null)
                                 {
@@ -137,6 +178,8 @@ namespace HLP.Components.ViewModel.Commands
 
         private bool GoToRecordCanExecute(object o)
         {
+            if (o == null)
+                return false;
             object id = o.GetType().GetProperty(name: "xIdPesquisa").GetValue(obj: o);
 
             return !(string.IsNullOrEmpty(value: id as string));

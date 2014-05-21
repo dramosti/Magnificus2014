@@ -4,7 +4,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"         
         xmlns:runtime="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF;assembly=HLP.Components.View.WPF" x:Class="HLP.Entries.View.WPF.Gerais.WinUF"
-        Title="Uf" Height="300" Width="500" NameView="vwUF"  FocusManager.FocusedElement="{Binding txtCodigo}">
+        Title="Uf" Height="300" Width="500" NameView="vwUF">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,7 +31,7 @@
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
@@ -39,9 +39,9 @@
                 <Components:CustomTextBlock Text="UF" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Código IBGE" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Região" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
-                
+
                 <!--Components-->
-                
+
                 <Components:CustomTextBox stCompPosicao="fieldId"
                     Grid.Column="2" Grid.Row="1"
                     x:Name="txtCodigo" Text="{Binding currentModel.idUF, Mode=TwoWay}" IsReadOnly="True">
@@ -62,10 +62,12 @@
                     IsEnabled="{Binding bIsEnabled}"
     		        Text="{Binding currentModel.cIbgeUf, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}">
                 </Components:CustomTextBox>
-                <Components:CustomPesquisa Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
-                                           xIdPesquisa="{Binding currentModel.idRegiao, 
-                    Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"                         
+                <Components:CustomPesquisa 
                     IsEnabled="{Binding bIsEnabled}"
+                    Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"  
+                                           x:Name="uc" stCompPosicao="last"
+                                           xIdPesquisa="{Binding currentModel.idRegiao, Mode=TwoWay,
+                    ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}"                         
                     TableView="vwRegiao" FieldPesquisa="ID">
                     <Components:CustomPesquisa.Items>
                         <System:String>xRegiao</System:String>

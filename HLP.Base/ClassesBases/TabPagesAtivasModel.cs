@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using HLP.Base.Static;
+using HLP.Base.EnumsBases;
+using System.Threading;
+using System.Windows.Documents;
 
 namespace HLP.Base.ClassesBases
 {
@@ -27,8 +30,64 @@ namespace HLP.Base.ClassesBases
             {
                 Windows = value;
                 try
-                { this.NameView = value.GetPropertyValue("NameView").ToString(); }
-                catch (Exception) { }
+                {
+                    this.NameView = value.GetPropertyValue("NameView").ToString();
+                    this.lComponents = new List<UIElement>();
+                    IEnumerable<Expander> lExpanders = null;
+
+                    //IEnumerable<TabControl> lTabControls = Util.FindVisualChildren<TabControl>(
+                    //    depObj: value.Content as Panel);
+
+                    //if (lTabControls.Count() > 0)
+                    //{
+                    //    this.GetListComponents(t: lTabControls.FirstOrDefault());
+                    //}
+                    //else
+                    //{
+                    //    lExpanders = Util.FindVisualChildren<Expander>
+                    //        (depObj: value.Content as Panel);
+
+                    //    foreach (Expander exp in lExpanders)
+                    //    {
+                    //        this.lComponents.AddRange(
+                    //            collection: Util.FindVisualChildren<UIElement>(depObj: exp.Content as Panel));
+                    //    }
+                    //}
+
+                    lExpanders = Util.FindVisualChildren<Expander>
+                            (depObj: value.Content as Panel);
+
+                    foreach (Expander exp in lExpanders)
+                    {
+                        this.lComponents.AddRange(
+                            collection: Util.FindVisualChildren<UIElement>(depObj: exp.Content as Panel));
+                    }
+
+                    foreach (var item in lComponents.Where(i => i.GetType().BaseType != typeof(TextBlock)))
+                    {
+                        PropertyInfo pi = item.GetType().GetProperty(name: "stCompPosicao");
+                        if (pi != null)
+                        {
+                            if (((statusComponentePosicao)pi.GetValue(obj: item)) == statusComponentePosicao.last)
+                            {
+                                if (item.GetType().Name == "CustomPesquisa")
+                                {
+                                    MethodInfo mi = item.GetType().GetMethod(name: "SetEventFocusToTxtId");
+
+                                    object[] args = new object[] { (RoutedEventHandler)this.item_LostFocus };
+
+                                    mi.Invoke(obj: item, parameters: args);
+                                }
+                                else
+                                {
+                                    item.LostFocus += item_LostFocus; break;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex) { throw ex; }
 
                 #region Controle de Navegação das TabItens
                 lTabItemWindow = GetLogicalChildCollection<TabItem>(value.Content).ToList();
@@ -55,6 +114,69 @@ namespace HLP.Base.ClassesBases
                 #endregion
             }
         }
+
+        void GetListComponents(TabControl t)
+        {
+            IEnumerable<Expander> lExpanders = null;
+            foreach (TabItem ti in t.Items)
+            {
+                lExpanders = Util.FindVisualChildren<Expander>
+                            (depObj: ti.Content as AdornerDecorator);
+
+                foreach (Expander exp in lExpanders)
+                {
+                    this.lComponents.AddRange(
+                        collection: Util.FindVisualChildren<UIElement>(depObj: exp.Content as Panel));
+                }
+
+                IEnumerable<TabControl> lTabControls = Util.FindVisualChildren<TabControl>(
+                        depObj: ti.Content as AdornerDecorator);
+
+                if (lTabControls.Count() > 0)
+                {
+                    this.GetListComponents(t: lTabControls.FirstOrDefault());
+                }
+            }
+        }
+
+        void item_LostFocus(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in lComponents.Where(i => i.GetType().BaseType != typeof(TextBlock)))
+            {
+                PropertyInfo pi = item.GetType().GetProperty(name: "stCompPosicao");
+
+                if (pi != null)
+                {
+                    if (((statusComponentePosicao)pi.GetValue(obj: item)) == statusComponentePosicao.first)
+                    {
+                        this.ComponentSetFocus(comp: item);
+                        break;
+                    }
+                }
+            }
+        }
+
+        void ComponentSetFocus(UIElement comp)
+        {
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    Thread.Sleep(millisecondsTimeout: 100);
+                    comp.Focus();
+                }));
+        }
+
+        private List<UIElement> _lComponents;
+
+        public List<UIElement> lComponents
+        {
+            get { return _lComponents; }
+            set
+            {
+                _lComponents = value;
+                base.NotifyPropertyChanged(propertyName: "lComponents");
+            }
+        }
+
         public List<TabItem> lTabItemWindow { get; set; }
         private string _NameView = string.Empty;
         public string NameView

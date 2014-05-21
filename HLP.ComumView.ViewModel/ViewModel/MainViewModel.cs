@@ -154,9 +154,19 @@ namespace HLP.ComumView.ViewModel.ViewModel
 
         public void CarregaDadosLogin()
         {
-            //this.currentFuncionario = funcionarioService.getFuncionario(idFuncionario: UserData.idUser);
             this.currentEmpresa = this.objService.GetObject(id: CompanyData.idEmpresa);
-            //this.sizeColunaDados = this.currentFuncionario.xNome.Length * 10;
+        }
+        
+        private TabControl _tabWindows;
+
+        public TabControl tabWindows
+        {
+            get { return _tabWindows; }
+            set
+            {
+                _tabWindows = value;
+                base.NotifyPropertyChanged(propertyName: "tabWindows");
+            }
         }
 
         private WinManModel _winMan;
