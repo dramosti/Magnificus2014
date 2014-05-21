@@ -24,9 +24,6 @@
         </Style>
 
         <Style x:Key="Button_OK" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -85,7 +82,7 @@
         </Style>
 
     </Window.Resources>
-    <Border Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"></RowDefinition>
