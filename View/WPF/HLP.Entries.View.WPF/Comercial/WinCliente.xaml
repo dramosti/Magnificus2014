@@ -322,9 +322,7 @@
                                 <System:String>
                                     xDepartamento
                                 </System:String>
-                                <System:String>
-                                    xTelefoneComercial
-                                </System:String>
+                                <System:String>xTelefoneComercial</System:String>
                                 <System:String>
                                     xRamalComercial
                                 </System:String>

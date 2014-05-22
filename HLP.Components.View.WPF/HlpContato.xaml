@@ -161,7 +161,7 @@
                 <DataGridTextColumn Header="Memorando" Binding="{Binding xMemorando,
                      UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Visibility="Collapsed"
                                     ></DataGridTextColumn>
-                <DataGridTextColumn Header="Telefone Comercial" Binding="{Binding Telefone, 
+                <DataGridTextColumn Header="Telefone Comercial" Binding="{Binding xTelefoneComercial, 
                      UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True,
                     Converter={StaticResource maskConverter}, ConverterParameter=tel}" Visibility="Collapsed"></DataGridTextColumn>
                 <DataGridTextColumn Header="Ramal Comercial" Binding="{Binding xRamalComercial, 
