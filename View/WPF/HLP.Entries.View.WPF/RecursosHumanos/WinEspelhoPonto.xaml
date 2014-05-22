@@ -202,285 +202,287 @@
     </Window.Resources>
     <Grid>
         <ScrollViewer>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition Width="85"></ColumnDefinition>
-                    <ColumnDefinition Width="58"></ColumnDefinition>
-                    <ColumnDefinition Width="38"></ColumnDefinition>
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="97"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="48"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="10"></RowDefinition>
-                </Grid.RowDefinitions>
+            <Expander Style="{StaticResource ExpanderPadrao}" IsExpanded="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                        <ColumnDefinition Width="85"></ColumnDefinition>
+                        <ColumnDefinition Width="58"></ColumnDefinition>
+                        <ColumnDefinition Width="38"></ColumnDefinition>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="97"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="10"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="48"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-                <!--Label-->
+                    <!--Label-->
 
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Período" Margin="0,12,0,16" Height="Auto"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Nome do Funcionário" Height="Auto"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Período" Margin="0,12,0,16" Height="Auto"></Components:CustomTextBlock>
+                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Nome do Funcionário" Height="Auto"></Components:CustomTextBlock>
 
-                <!--Components-->
+                    <!--Components-->
 
-                <Components:HlpPesquisa x:Name="pesquisaFunc"
+                    <Components:HlpPesquisa x:Name="pesquisaFunc"
                                 IsEnabled="False"
                     Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5" Height="20" Margin="0,0,0,3" Width="342" HorizontalAlignment="Left"
 					Text="{Binding currentModel.idFuncionario, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"										 
                     ToolTip="Informar o representante do orçamento de vendas, o sistema traz automaticamente o representante cadastrado no cliente, mas nada impede a sua alteração." FieldPesquisa="ID" TableView="vwFuncionario" WidthLabel="0">
-                    <Components:HlpPesquisa.Items>
-                        <System:String>xNome</System:String>
-                        <System:String>xCodigoAlternativo</System:String>
-                    </Components:HlpPesquisa.Items>
-                </Components:HlpPesquisa>
-                <Components:CustomTextBox stCompPosicao="first" x:Name="txtPeriodo"                                 
+                        <Components:HlpPesquisa.Items>
+                            <System:String>xNome</System:String>
+                            <System:String>xCodigoAlternativo</System:String>
+                        </Components:HlpPesquisa.Items>
+                    </Components:HlpPesquisa>
+                    <Components:CustomTextBox x:Name="txtPeriodo"                                 
             Text="{Binding currentModel.data, Converter={StaticResource dataConvert}}"
             Grid.Column="2" Grid.Row="1" Margin="0,12,0,16" Height="Auto"/>
-                <DockPanel Width="33" Grid.Column="3" Grid.Row="1" Focusable="False" Margin="4,0,0,3" HorizontalAlignment="Left">
-                    <Button x:Name="btnAnt" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Back" Template="{StaticResource ButtonArrowNavigationLeft}">
-                    </Button>
-                    <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Next" Template="{StaticResource ButtonArrowNavigationRight}">
-                    </Button>
-                </DockPanel>
-                <Button x:Name="btnCarregar" Command="{Binding carregarCommand}"  Grid.Row="1" Width="45" HorizontalAlignment="Left"  Margin="0,0,0,3" Grid.Column="4" Content="Carregar" Style="{StaticResource Button_REFRESH}"/>
-                <Grid Grid.Column="6" Grid.Row="1" Grid.RowSpan="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" MaxHeight="30"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="btn0" Content="{Binding PrimeiroDia}" Focusable="False" Style="{Binding ElementName=btn0, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <Button  x:Name="btn1" Grid.Column="1" Content="{Binding SegundoDia}"  Focusable="False" Style="{Binding ElementName=btn1, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <Button  x:Name="btn2" Grid.Column="2" Content="{Binding TerceiroDia}" Focusable="False" Style="{Binding ElementName=btn2, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <Button x:Name="btn3"  Grid.Column="3" Content="{Binding QuartoDia}" Focusable="False" Style="{Binding ElementName=btn3, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <Button x:Name="btn4"  Grid.Column="4" Content="{Binding QuintoDia}" Focusable="False" Style="{Binding ElementName=btn4, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <Button  x:Name="btn5" Grid.Column="5" Content="{Binding SextoDia}" Focusable="False" Style="{Binding ElementName=btn5, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <Button x:Name="btn6"  Grid.Column="6" Content="{Binding SetimoDia}" Focusable="False" Style="{Binding ElementName=btn6, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
-                    <compPonto:HlpCalendarioPonto  x:Name="d1" Grid.Row="1" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d2" Grid.Row="1" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d3" Grid.Row="1" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d4" Grid.Row="1" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d5" Grid.Row="1" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d6" Grid.Row="1" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d7" Grid.Row="1" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d8" Grid.Row="2" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d9" Grid.Row="2" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d10" Grid.Row="2" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto  x:Name="d11" Grid.Row="2" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto   x:Name="d12" Grid.Row="2" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto   x:Name="d13" Grid.Row="2" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto   x:Name="d14" Grid.Row="2" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto   x:Name="d15" Grid.Row="3" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto   x:Name="d16"  Grid.Row="3" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto   x:Name="d17"  Grid.Row="3" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d18"  Grid.Row="3" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d19"  Grid.Row="3" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto     x:Name="d20" Grid.Row="3" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d21"  Grid.Row="3" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d22"  Grid.Row="4" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto     x:Name="d23" Grid.Row="4" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d24"  Grid.Row="4" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d25"  Grid.Row="4" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d26"  Grid.Row="4" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d27"  Grid.Row="4" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d28"  Grid.Row="4" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d29"  Grid.Row="5" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto    x:Name="d30"  Grid.Row="5" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
-                    <compPonto:HlpCalendarioPonto     x:Name="d31" Grid.Row="5" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
-                </Grid>
-                <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="0"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
-                        <RowDefinition Height="Auto" MaxHeight="160"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Column="1" Grid.Row="1" Width="166" Margin="0,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Dias trabalhados no período" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
+                    <DockPanel Width="33" Grid.Column="3" Grid.Row="1" Focusable="False" Margin="4,0,0,3" HorizontalAlignment="Left">
+                        <Button x:Name="btnAnt" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Back" Template="{StaticResource ButtonArrowNavigationLeft}">
                         </Button>
-                        <TextBlock Grid.Row="1" ToolTip="Quantidade de dias que o funcionário trabalho no período selecionado" 
+                        <Button x:Name="btnProx" Height="20" Width="15" Focusable="False" Command="{Binding commandNavegaData}" CommandParameter="Next" Template="{StaticResource ButtonArrowNavigationRight}">
+                        </Button>
+                    </DockPanel>
+                    <Button x:Name="btnCarregar" Command="{Binding carregarCommand}"  Grid.Row="1" Width="45" HorizontalAlignment="Left"  Margin="0,0,0,3" Grid.Column="4" Content="Carregar" Style="{StaticResource Button_REFRESH}"/>
+                    <Grid Grid.Column="6" Grid.Row="1" Grid.RowSpan="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" MaxHeight="30"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btn0" Content="{Binding PrimeiroDia}" Focusable="False" Style="{Binding ElementName=btn0, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <Button  x:Name="btn1" Grid.Column="1" Content="{Binding SegundoDia}"  Focusable="False" Style="{Binding ElementName=btn1, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <Button  x:Name="btn2" Grid.Column="2" Content="{Binding TerceiroDia}" Focusable="False" Style="{Binding ElementName=btn2, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <Button x:Name="btn3"  Grid.Column="3" Content="{Binding QuartoDia}" Focusable="False" Style="{Binding ElementName=btn3, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <Button x:Name="btn4"  Grid.Column="4" Content="{Binding QuintoDia}" Focusable="False" Style="{Binding ElementName=btn4, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <Button  x:Name="btn5" Grid.Column="5" Content="{Binding SextoDia}" Focusable="False" Style="{Binding ElementName=btn5, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <Button x:Name="btn6"  Grid.Column="6" Content="{Binding SetimoDia}" Focusable="False" Style="{Binding ElementName=btn6, Path=Content, Converter={StaticResource changeStyleButton}}" Height="27" Margin="0,0,0,3"></Button>
+                        <compPonto:HlpCalendarioPonto  x:Name="d1" Grid.Row="1" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d2" Grid.Row="1" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d3" Grid.Row="1" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d4" Grid.Row="1" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d5" Grid.Row="1" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d6" Grid.Row="1" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d7" Grid.Row="1" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d8" Grid.Row="2" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d9" Grid.Row="2" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d10" Grid.Row="2" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto  x:Name="d11" Grid.Row="2" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto   x:Name="d12" Grid.Row="2" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto   x:Name="d13" Grid.Row="2" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto   x:Name="d14" Grid.Row="2" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto   x:Name="d15" Grid.Row="3" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto   x:Name="d16"  Grid.Row="3" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto   x:Name="d17"  Grid.Row="3" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d18"  Grid.Row="3" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d19"  Grid.Row="3" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto     x:Name="d20" Grid.Row="3" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d21"  Grid.Row="3" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d22"  Grid.Row="4" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto     x:Name="d23" Grid.Row="4" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d24"  Grid.Row="4" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d25"  Grid.Row="4" Grid.Column="3" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d26"  Grid.Row="4" Grid.Column="4" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d27"  Grid.Row="4" Grid.Column="5" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d28"  Grid.Row="4" Grid.Column="6" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d29"  Grid.Row="5" Grid.Column="0" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto    x:Name="d30"  Grid.Row="5" Grid.Column="1" ></compPonto:HlpCalendarioPonto>
+                        <compPonto:HlpCalendarioPonto     x:Name="d31" Grid.Row="5" Grid.Column="2" ></compPonto:HlpCalendarioPonto>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="0"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="80"></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="160"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1" Width="166" Margin="0,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Dias trabalhados no período" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <TextBlock Grid.Row="1" ToolTip="Quantidade de dias que o funcionário trabalho no período selecionado" 
                            FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" FontSize="40" 
                            VerticalAlignment="Center" HorizontalAlignment="Center" 
                            Text="{Binding currentModel.objFuncBancoHoras.iDiasTrabalhados}"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="2" Width="166" Margin="0,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Total de horas à trabalhar" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="2" Width="166" Margin="0,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Total de horas à trabalhar" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
                            ToolTip="Somatória de todas as horas à trabalhar no período selecionado." 
                            FontSize="40" VerticalAlignment="Center" 
                            HorizontalAlignment="Center" 
                            Text="{Binding currentModel.objFuncBancoHoras.tHorasAtrabalhar}"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="3" Width="166"  Margin="0,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Total de horas trabalhadas" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="3" Width="166"  Margin="0,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Total de horas trabalhadas" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
                            ToolTip="Somatória de todas as horas trabalhadas ou realizadas pelo funcionário no período selecionado."
                            FontSize="40" VerticalAlignment="Center" 
                            Text="{Binding currentModel.objFuncBancoHoras.tHorastrabalhadas}" HorizontalAlignment="Center"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="1" Width="166" Margin="5,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Horas acumuladas no periodo" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="1" Width="166" Margin="5,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Horas acumuladas no periodo" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
                            ToolTip="Mostra a quantidade de horas tanto excedente quanto faltantes no período filtrado." 
                            FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" 
                            Text="{Binding currentModel.objFuncBancoHoras.tBancoHoras}"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="2" Width="166" Margin="5,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Saldo do banco anterior" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="2" Width="166" Margin="5,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Saldo do banco anterior" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
                            ToolTip="Mostra a quantidade do saldo do banco de horas até o período selecionado. Mostra somente o resultado dos período anteriores ao selecionando." 
                            FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" 
                            Text="{Binding currentModel.objFuncBancoHoras.tSaldoTotalAnterior}"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="2" Grid.Row="3" Width="166"  Margin="5,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="50"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Saldo do banco até o momento" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="3" Width="166"  Margin="5,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Saldo do banco até o momento" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <TextBlock Grid.Row="1" FontFamily="/HLP.Entries.View.WPF;component/Resources/#Let's go Digital" 
                            ToolTip="Mostra o quanto o funcionário tem de banco de horas incluindo ou não o total de horas acumuladas no período, é o exato valor naquele momento de quantas horas o funcionário tem em seu banco de horas"
                            FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" 
                            Text="{Binding currentModel.objFuncBancoHoras.tsSaldoAteMomento, Converter={StaticResource diasToHorasConvert}}"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="4" Width="166"  Margin="0,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="110"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Legenda" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5"></ColumnDefinition>
-                                <ColumnDefinition Width="20"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="4" Width="166"  Margin="0,0,0,5">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
-                                <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="110"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <!--Ellipses-->
+                            <Border Grid.RowSpan="2" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Legenda" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="20"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                                    <RowDefinition Height="Auto" MaxHeight="20"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Ellipses-->
 
-                            <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="1" Margin="0,0,0,3" Style="{StaticResource EllipseVerde}"></Ellipse>
-                            <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="2" Margin="0,0,0,3" Style="{StaticResource EllipseAzul}"></Ellipse>
-                            <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="3" Margin="0,0,0,3" Style="{StaticResource EllipseVermelha}"></Ellipse>
-                            <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="4" Margin="0,0,0,3" Style="{StaticResource EllipsePreta}"></Ellipse>
-                            <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="5" Margin="0,0,0,3" Style="{StaticResource EllipseRoxa}"></Ellipse>
+                                <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="1" Margin="0,0,0,3" Style="{StaticResource EllipseVerde}"></Ellipse>
+                                <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="2" Margin="0,0,0,3" Style="{StaticResource EllipseAzul}"></Ellipse>
+                                <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="3" Margin="0,0,0,3" Style="{StaticResource EllipseVermelha}"></Ellipse>
+                                <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="4" Margin="0,0,0,3" Style="{StaticResource EllipsePreta}"></Ellipse>
+                                <Ellipse Height="13" Width="13" Grid.Column="1" Grid.Row="5" Margin="0,0,0,3" Style="{StaticResource EllipseRoxa}"></Ellipse>
 
-                            <!--Labels-->
+                                <!--Labels-->
 
-                            <Components:CustomTextBlock Grid.Column="2" Grid.Row="1" Height="20" Text="Normal" VerticalAlignment="Center"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Grid.Column="2" Grid.Row="2" Height="20" Text="Abono/Férias" VerticalAlignment="Center"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Grid.Column="2" Grid.Row="3" Height="20" Text="Falta" VerticalAlignment="Center"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Grid.Column="2" Grid.Row="4" Height="20" Text="Sem ponto" VerticalAlignment="Center"></Components:CustomTextBlock>
-                            <Components:CustomTextBlock Grid.Column="2" Grid.Row="5" Height="20" Text="DSR/Feriado " VerticalAlignment="Center"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Grid.Column="2" Grid.Row="1" Height="20" Text="Normal" VerticalAlignment="Center"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Grid.Column="2" Grid.Row="2" Height="20" Text="Abono/Férias" VerticalAlignment="Center"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Grid.Column="2" Grid.Row="3" Height="20" Text="Falta" VerticalAlignment="Center"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Grid.Column="2" Grid.Row="4" Height="20" Text="Sem ponto" VerticalAlignment="Center"></Components:CustomTextBlock>
+                                <Components:CustomTextBlock Grid.Column="2" Grid.Row="5" Height="20" Text="DSR/Feriado " VerticalAlignment="Center"></Components:CustomTextBlock>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="4" Width="166" Margin="5,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
+                                <RowDefinition Height="10"></RowDefinition>
+                                <RowDefinition Height="35"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="35"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="6" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
+                            <Button Height="20" Margin="0,0,0,3" Content="Fechamento" Style="{StaticResource ButtonComponents}">
+                                <Button.Effect>
+                                    <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
+                                </Button.Effect>
+                            </Button>
+                            <Button Command="{Binding commandFecharMes}" Margin="3,3,3,3"  Grid.Row="2" Style="{StaticResource ButtonFechar}" Content="Fechar"/>
+                            <Button  Command="{Binding commandReabrirMes}" Margin="3,3,3,3" Grid.Row="4" Style="{StaticResource ButtonReabrir}" Content="Reabrir"/>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="2" Grid.Row="4" Width="166" Margin="5,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
-                            <RowDefinition Height="10"></RowDefinition>
-                            <RowDefinition Height="35"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="35"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-
-                        </Grid.RowDefinitions>
-                        <Border Grid.RowSpan="6" CornerRadius="5" BorderThickness="1.3" BorderBrush="Black"></Border>
-                        <Button Height="20" Margin="0,0,0,3" Content="Fechamento" Style="{StaticResource ButtonComponents}">
-                            <Button.Effect>
-                                <DropShadowEffect Color="#FF4774B5" Direction="279" Opacity="0.29" ShadowDepth="3"/>
-                            </Button.Effect>
-                        </Button>
-                        <Button Command="{Binding commandFecharMes}" Margin="3,3,3,3"  Grid.Row="2" Style="{StaticResource ButtonFechar}" Content="Fechar"/>
-                        <Button  Command="{Binding commandReabrirMes}" Margin="3,3,3,3" Grid.Row="4" Style="{StaticResource ButtonReabrir}" Content="Reabrir"/>
-                    </Grid>
                 </Grid>
-            </Grid>
+            </Expander>
         </ScrollViewer>
     </Grid>
 </runtime:WindowsBase >
