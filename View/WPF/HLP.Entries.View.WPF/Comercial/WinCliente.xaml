@@ -52,7 +52,7 @@
     </Window.Resources>
     <Grid>
         <TabControl x:Name="tbPrincipal">
-            <TabItem Header="Principal">
+            <TabItem Header="Geral">
                 <AdornerDecorator>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -71,7 +71,7 @@
                                         <RowDefinition Height="Auto"></RowDefinition>
                                         <RowDefinition Height="Auto"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Expander IsExpanded="True" Header="Geral" Style="{StaticResource ExpanderPadrao}">
+                                    <Expander IsExpanded="True" Header="Identificação" Style="{StaticResource ExpanderPadrao}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="10"></ColumnDefinition>
@@ -308,6 +308,46 @@
                     </Grid>
                 </AdornerDecorator>
             </TabItem >
+            <TabItem Header="Contato">
+                <AdornerDecorator>
+                    <Grid>
+                        <Components:HlpContato>
+                            <Components:HlpContato.lColumns>
+                                <System:String>
+                                    xApelido
+                                </System:String>
+                                <System:String>
+                                    xCargo
+                                </System:String>
+                                <System:String>
+                                    xDepartamento
+                                </System:String>
+                                <System:String>
+                                    xTelefoneComercial
+                                </System:String>
+                                <System:String>
+                                    xRamalComercial
+                                </System:String>
+                                <System:String>
+                                    xCelularComercial
+                                </System:String>
+                                <System:String>
+                                    xPagerComercial
+                                </System:String>
+                                <System:String>
+                                    xFaxComercial
+                                </System:String>
+                                <System:String>
+                                    xEmailComercial
+                                </System:String>
+                                <System:String>
+                                    xHttpComercial
+                                </System:String>
+                            </Components:HlpContato.lColumns>
+                        </Components:HlpContato>
+                    </Grid>
+                </AdornerDecorator>
+            </TabItem>
             <TabItem Header="Comercial" HorizontalAlignment="Right">
                 <AdornerDecorator>
                     <TabControl>
@@ -614,7 +654,7 @@
                                             </Components:HlpPesquisa.Items>
                                         </Components:HlpPesquisa>
                                         <Components:CustomTextBox
-                                            Grid.Row="3" Grid.Column="2" Height="100" TextWrapping="Wrap" Width="300"
+                                            Grid.Row="3" Grid.Column="2" Height="90" TextWrapping="Wrap" Width="300"
                                             Text="{Binding currentModel.xObservacao, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
 											IsEnabled="{Binding bIsEnabled}">
                                         </Components:CustomTextBox>
@@ -1894,7 +1934,7 @@
             <TabItem Header="Arquivos">
                 <AdornerDecorator>
                     <DataGrid
-                                                ItemsSource="{Binding currentModel.lCliente_fornecedor_arquivo}"
+                          ItemsSource="{Binding currentModel.lCliente_fornecedor_arquivo}"
 						  IsEnabled="{Binding bIsEnabled}"
                           AutoGenerateColumns="False" 
                           SelectionUnit="CellOrRowHeader" CanUserReorderColumns="False"
