@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace HLP.Base.DataSet {
+namespace HLP.Report.View.WPF.DataSet {
     
     
     /// <summary>
@@ -281,6 +281,8 @@ namespace HLP.Base.DataSet {
             
             private global::System.Data.DataColumn columnLogoEmpresa;
             
+            private global::System.Data.DataColumn columnidEmpresa;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ImagensDataTable() {
@@ -324,6 +326,14 @@ namespace HLP.Base.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idEmpresaColumn {
+                get {
+                    return this.columnidEmpresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -359,10 +369,11 @@ namespace HLP.Base.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ImagensRow AddImagensRow(byte[] LogoEmpresa) {
+            public ImagensRow AddImagensRow(byte[] LogoEmpresa, string idEmpresa) {
                 ImagensRow rowImagensRow = ((ImagensRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        LogoEmpresa};
+                        LogoEmpresa,
+                        idEmpresa};
                 rowImagensRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowImagensRow);
                 return rowImagensRow;
@@ -386,6 +397,7 @@ namespace HLP.Base.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnLogoEmpresa = base.Columns["LogoEmpresa"];
+                this.columnidEmpresa = base.Columns["idEmpresa"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -393,6 +405,8 @@ namespace HLP.Base.DataSet {
             private void InitClass() {
                 this.columnLogoEmpresa = new global::System.Data.DataColumn("LogoEmpresa", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLogoEmpresa);
+                this.columnidEmpresa = new global::System.Data.DataColumn("idEmpresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidEmpresa);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -551,6 +565,22 @@ namespace HLP.Base.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string idEmpresa {
+                get {
+                    try {
+                        return ((string)(this[this.tableImagens.idEmpresaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idEmpresa\' in table \'Imagens\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableImagens.idEmpresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsLogoEmpresaNull() {
                 return this.IsNull(this.tableImagens.LogoEmpresaColumn);
             }
@@ -559,6 +589,18 @@ namespace HLP.Base.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLogoEmpresaNull() {
                 this[this.tableImagens.LogoEmpresaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsidEmpresaNull() {
+                return this.IsNull(this.tableImagens.idEmpresaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetidEmpresaNull() {
+                this[this.tableImagens.idEmpresaColumn] = global::System.Convert.DBNull;
             }
         }
         

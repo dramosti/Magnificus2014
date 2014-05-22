@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using HLP.Report.View.WPF.DataSet;
 
 namespace HLP.Base.Static
 {
@@ -250,22 +252,28 @@ namespace HLP.Base.Static
             return null;
         }
 
-        private static DataSet.DataSetImgRport _dsImagemToReport;
+        private static DataSetImgRport _dsImagemToReport;
 
-        public static DataSet.DataSetImgRport dsImagemToReport
+        public static DataSet dsImagemToReport
         {
             get
             {
                 if (Sistema._dsImagemToReport == null)
                 {
-                    object xPath = CompanyData.objEmpresaModel.GetPropertyValue("xLinkPastas");
-                    if (xPath != null)
+                    object xPath = CompanyData.objEmpresaModel.GetPropertyValue("xLinkLogoEmpresa");
+                    if (xPath != "")
                     {
                         if (File.Exists(xPath.ToString()))
                         {
-                            Sistema._dsImagemToReport = new DataSet.DataSetImgRport();
-                            DataSet.DataSetImgRport.ImagensRow row = Sistema._dsImagemToReport.Imagens.NewImagensRow();
-                            row.LogoEmpresa = Util.ImagemParaByte(xPath.ToString());
+                            Sistema._dsImagemToReport = new DataSetImgRport();
+                            DataSetImgRport.ImagensRow row = Sistema._dsImagemToReport.Imagens.NewImagensRow();
+                            FileStream fs = new FileStream(xPath.ToString(),System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                            byte[] Image = new byte[fs.Length];
+                            fs.Read(Image, 0, Convert.ToInt32(fs.Length));
+                            fs.Close();
+                            row.LogoEmpresa = Image;
+                            row.idEmpresa = CompanyData.idEmpresa.ToString();
+                            _dsImagemToReport.Imagens.AddImagensRow(row);
                         }
 
                     }

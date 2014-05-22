@@ -346,7 +346,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     objEnderEmpresa.nNumero.ToUpper(),
                     objEnderEmpresa.xBairro.ToUpper());
             }
-            objPrintPonto.xCnpj = objEmpresa.xCNPJ;
+            objPrintPonto.xCnpj = objEmpresa.xCNPJ.Replace(",", ".");
             objPrintPonto.idEmpresa = CompanyData.idEmpresa;
             objPrintPonto.xMesAno = string.Format("PONTO ASSOCIADO AO MÊS DE {0} DE {1}",
                 this.objViewModel.currentModel.data.ToString("MMMMMMMMM").ToUpper(),
@@ -381,7 +381,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                 string xIntervalo = "";
                 foreach (var intervalo in serviceCalendario.GetIntervalos(idCalendario))
                 {
-                    xIntervalo = xIntervalo + string.Format("{4}{0}-{1} :{2}", intervalo.tInicio.ToStringHoras(), intervalo.tFinal.ToStringHoras(), intervalo.getTipoIntervalo(), (xIntervalo == "" ? "" : " | "));
+                    xIntervalo = xIntervalo + string.Format("{0}{1}-{2} :{3}", (xIntervalo == "" ? "" : " | "), intervalo.tInicio.ToStringHoras(), intervalo.tFinal.ToStringHoras(), intervalo.getTipoIntervalo());
                 }
 
                 foreach (var header in objPrintPonto.lHeaderFuncionario.Where(c => c.idCalendario == idCalendario))
@@ -395,13 +395,13 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             Funcionario_BancoHorasModel banco;
             foreach (var header in objPrintPonto.lHeaderFuncionario)
             {
-                banco = servicoFuncPonto.GetTotalBancoHorasMesAtual(CompanyData.idEmpresa, header.dtMes.ToDateTime());
+                banco = servicoFuncPonto.GetTotalBancoHorasMesAtual(header.idFuncionario, header.dtMes.ToDateTime());
                 if (banco != null)
                 {
                     header.iTotalDiasTrabalhados = banco.iDiasTrabalhados;
-                    header.xHorasTrabalhadas = banco.tHorastrabalhadas;
-                    header.xHorasAtrabalhar = banco.tHorasAtrabalhar;
-                    header.xBancoHoras = banco.tBancoHoras;
+                    header.xHorasTrabalhadas = banco.tHorastrabalhadas.ToString();
+                    header.xHorasAtrabalhar = banco.tHorasAtrabalhar.ToString();
+                    header.xBancoHoras = banco.tBancoHoras.ToString();
                 }
                 header.idEmpresa = CompanyData.idEmpresa;
                 int iDaysMonth = System.DateTime.DaysInMonth(header.dtMes.ToDateTime().Year, header.dtMes.ToDateTime().Month);
@@ -421,10 +421,18 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                             Environment.NewLine);
                         tTotalHorasTrabalhadas = tTotalHorasTrabalhadas.Add(ponto.tTotal);
                     }
+                    if (objPonto.hRegistrado == null)
+                        objPonto.hRegistrado = " - - - ";
                     objPonto.idFuncionario = header.idFuncionario;
-                    objPonto.data = dtDia.ToShortDateString();
-                    objPonto.hTrabalhada = (tTotalHorasTrabalhadas != new TimeSpan(0, 0, 0) ? tTotalHorasTrabalhadas.ToStringHoras() : "");
+                    objPonto.data = dtDia.ToShortDateString() + " - " + dtDia.ToString("dddddddddd").ToUpper();
+                    objPonto.hTrabalhada = (tTotalHorasTrabalhadas != new TimeSpan(0, 0, 0) ? tTotalHorasTrabalhadas.ToStringHoras() : " - - - ");
                     objPonto.xOcorrencia = servicoFuncPonto.GetJustificativaPontoDia(header.idFuncionario, dtDia);
+                    if (objPonto.xOcorrencia == "")
+                        if (dtDia.ToString("dddddddddd").ToUpper().Contains("SABADO") || dtDia.ToString("dddddddddd").ToUpper().Contains("DOMINGO"))
+                            objPonto.xOcorrencia = " DSR ";
+                        else
+                            objPonto.xOcorrencia = " - - - ";
+                        
                     header.itemsPonto.Add(objPonto);
                 }
 
@@ -450,13 +458,16 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             if (xPath != "")
             {
                 ReportDocument rpt = new ReportDocument();
-                rpt.Load(xPath);
+                rpt.Load(xPath);               
                 dsTemp = new DataSet();
                 dsTemp.ReadXml(sFilePath);
                 rpt.SetDataSource(dsTemp);
-                rpt.Refresh();
+                //DataSet img = Sistema.dsImagemToReport;                                
+                //rpt.Database.Tables["Imagens"].SetDataSource(img.Tables[0]);
                 winReport.SetPropertyValue("rpt", rpt);
+                rpt.Refresh();
                 winReport.ShowDialog();
+                
             }
             else
             {
