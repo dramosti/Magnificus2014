@@ -311,8 +311,12 @@
             <TabItem Header="Contato">
                 <AdornerDecorator>
                     <Grid>
-                        <Components:HlpContato>
+                        <Components:HlpContato ItemsSourceContatos="{Binding currentModel.lCliente_fornecedor_contato}"
+                                               IsReadOnlyUserControl="{Binding bIsEnabled, Converter={StaticResource notConverter}}">
                             <Components:HlpContato.lColumns>
+                                <System:String>
+                                    xNome
+                                </System:String>
                                 <System:String>
                                     xApelido
                                 </System:String>
