@@ -24,29 +24,15 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
 
         QuickSearchCommands comm;
 
-        public QuickSearchViewModel(object model, object sender)
+        public QuickSearchViewModel(object sender)
         {
-            PropertyInfo pi = sender.GetType().GetProperty(name: "Binding");
-            if (pi != null)
-            {
-                object o = pi.GetValue(sender);
 
-                if (o != null)
-                {
-                    Binding b = o as Binding;
+            BindingExpression bExp = (sender as TextBox).GetBindingExpression(dp: TextBox.TextProperty);
 
-                    PropertyPath p = b.GetType().GetProperty(name: "Path").GetValue(obj: b) as PropertyPath;
-
-                    this.xNameBinding = p.Path;
-                }
-            }
-
-            PropertyInfo piIdEmpresa = model.GetType().GetProperty(name: "idEmpresa");
-
-            this.idEmpresa = piIdEmpresa == null ? 0 : CompanyData.idEmpresa;
+            if (bExp != null)
+                this.xNameBinding = bExp.ParentBinding.Path.Path.Replace(oldValue: "currentModel.", newValue: "");
 
             comm = new QuickSearchCommands(objViewModel: this);
-            this.model = model;
         }
 
         private int _returnedId;
@@ -55,15 +41,6 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
         {
             get { return _returnedId; }
             set { _returnedId = value; }
-        }
-
-
-        private object _model;
-
-        public object model
-        {
-            get { return _model; }
-            set { _model = value; }
         }
 
         private object _sender;
@@ -104,14 +81,6 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
                 _stFilterQs = value;
                 this.NotifyPropertyChanged(propertyName: "stFilterQs");
             }
-        }
-
-        private int _idEmpresa;
-
-        public int idEmpresa
-        {
-            get { return _idEmpresa; }
-            set { _idEmpresa = value; }
         }
 
 
