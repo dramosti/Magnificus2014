@@ -15,16 +15,35 @@
   <wsdl:message name="Iwcf_OperacoesDataBase_GetRecordsFKUsed_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRecordsFKUsedResponse" />
   </wsdl:message>
+  <wsdl:message name="Iwcf_OperacoesDataBase_GetRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecord" />
+  </wsdl:message>
+  <wsdl:message name="Iwcf_OperacoesDataBase_GetRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecordResponse" />
+  </wsdl:message>
   <wsdl:portType name="Iwcf_OperacoesDataBase">
     <wsdl:operation name="GetRecordsFKUsed">
       <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_OperacoesDataBase/GetRecordsFKUsed" message="tns:Iwcf_OperacoesDataBase_GetRecordsFKUsed_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_OperacoesDataBase/GetRecordsFKUsedResponse" message="tns:Iwcf_OperacoesDataBase_GetRecordsFKUsed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/Iwcf_OperacoesDataBase/GetRecord" message="tns:Iwcf_OperacoesDataBase_GetRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Iwcf_OperacoesDataBase/GetRecordResponse" message="tns:Iwcf_OperacoesDataBase_GetRecord_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_Iwcf_OperacoesDataBase" type="tns:Iwcf_OperacoesDataBase">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetRecordsFKUsed">
       <soap:operation soapAction="http://tempuri.org/Iwcf_OperacoesDataBase/GetRecordsFKUsed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecord">
+      <soap:operation soapAction="http://tempuri.org/Iwcf_OperacoesDataBase/GetRecord" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

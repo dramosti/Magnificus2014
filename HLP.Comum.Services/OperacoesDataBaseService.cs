@@ -1,4 +1,5 @@
-﻿using HLP.Base.Static;
+﻿using HLP.Base.EnumsBases;
+using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,28 @@ namespace HLP.Comum.Services
                 default:
                     {
                         return null;
+                    }
+            }
+        }
+
+        public int GetIdRecordToQuickSearch(string xNameTable, string xCampo, string xValue, stFilterQuickSearch stFilterQS, int idEmpresa = 0)
+        {
+            switch (Sistema.bOnline)
+            {
+                case StConnection.OnlineNetwork:
+                    {
+                        return this.serviceNetwork.GetRecord(
+                            xNameTable: xNameTable, xCampo: xCampo, xValue: xValue, idEmpresa: idEmpresa, stFilterQS: stFilterQS);
+                    }
+                case StConnection.OnlineWeb:
+                    {
+                        return this.serviceWeb.GetRecord(
+                            xNameTable: xNameTable, xCampo: xCampo, xValue: xValue, idEmpresa: idEmpresa, stFilterQS: stFilterQS);
+                    }
+                case StConnection.Offline:
+                default:
+                    {
+                        return 0;
                     }
             }
         }

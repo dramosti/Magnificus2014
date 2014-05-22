@@ -17,6 +17,7 @@
     <UseSerializerForFaults>true</UseSerializerForFaults>
     <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="HLP.Base" />
       <ReferencedAssembly AssemblyName="HLP.Comum.Model" />
     </ReferencedAssemblies>
     <ReferencedDataContractTypes />
