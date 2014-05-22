@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Comum.Model.Models;
 using HLP.Comum.Model.Repository.Interfaces;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -63,9 +64,9 @@ namespace HLP.Comum.Model.Repository.Implementation
             }
         }
 
-        public int GetRecord(string xNameTable, string xCampo, string xValue, int idEmpresa = 0)
+        public int GetRecord(string xNameTable, string xCampo, string xValue, stFilterQuickSearch stFilterQS, int idEmpresa = 0)
         {
-            
+
             string queryGetPkField = string.Format(format: "SELECT COLUMN_NAME FROM " +
             "INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
             "where TABLE_NAME = '{0}' and (CONSTRAINT_NAME like '%PK' or CONSTRAINT_NAME like 'PK%')", arg0: xNameTable);
@@ -77,9 +78,31 @@ namespace HLP.Comum.Model.Repository.Implementation
 
             object nameFieldPk = UndTrabalho.dbPrincipal.ExecuteScalar(command: commGetPkField);
 
-            string query = string.Format(format: "SELECT {0} FROM {1} WHERE {2}",
-                arg0: nameFieldPk, arg1: xNameTable, arg2: string.Format(
-                format: "{0} = '{1}'", arg0: xCampo, arg1: xValue));
+            string sWhere = string.Empty;
+
+            switch (stFilterQS)
+            {
+                case stFilterQuickSearch.equal:
+                    {
+                        sWhere = string.Format(format: "WHERE {0} = '{1}'", arg0: xCampo, arg1: xValue);
+                    }
+                    break;
+                case stFilterQuickSearch.startWith:
+                    {
+                        sWhere = string.Format(format: "WHERE {0} LIKE'{1}%'", arg0: xCampo, arg1: xValue);
+                    }
+                    break;
+                case stFilterQuickSearch.contains:
+                    {
+                        sWhere = string.Format(format: "WHERE {0} LIKE'%{1}%'", arg0: xCampo, arg1: xValue);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            string query = string.Format(format: "SELECT {0} FROM {1} {2}",
+                arg0: nameFieldPk, arg1: xNameTable, arg2: sWhere);
 
             if (idEmpresa > 0)
             {

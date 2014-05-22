@@ -29,4 +29,11 @@ namespace HLP.Base.EnumsBases
         first,
         last
     }
+
+    public enum stFilterQuickSearch
+    {
+        equal,
+        startWith,
+        contains
+    }
 }
