@@ -11,5 +11,7 @@ namespace HLP.Comum.Model.Repository.Interfaces
     {
         bool FieldExist(string xTable, string xCampo = "");
         List<RecordsSqlModel> GetRegistros(string xQuery);
+
+        object GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0);
     }
 }

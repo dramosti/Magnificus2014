@@ -14,5 +14,8 @@ namespace HLP.Wcf.Entries
     {
         [OperationContract]
         List<RecordsSqlModel> GetRecordsFKUsed(string xTabela, string xCampo, string valor, int idEmpresa);
+
+        [OperationContract]
+        object GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0);
     }
 }

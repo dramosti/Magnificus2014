@@ -82,5 +82,11 @@ namespace HLP.Wcf.Entries
             }
 
         }
+
+        public object GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0)
+        {
+            return operacoesDataBaseRepos.GetRecord(nameView: nameView, xCampo: xCampo,
+                xValue: xValue);
+        }
     }
 }
