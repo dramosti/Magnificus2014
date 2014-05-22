@@ -22,10 +22,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        <Style x:Key="Button_SIM" TargetType="{x:Type Button}">       
+
+        <Style x:Key="Button_SIM" TargetType="{x:Type Button}">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1"/>
@@ -69,7 +70,6 @@
                             <ContentPresenter x:Name="contentPresenter" Grid.Row="1" Focusable="False" TextElement.FontFamily="Segoe Ui Light" TextElement.Foreground="White" TextElement.FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
                         <ControlTemplate.Triggers>
-
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Trigger.ExitActions>
                                     <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
@@ -78,16 +78,24 @@
                                     <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                                 </Trigger.EnterActions>
                             </Trigger>
-
+                            <Trigger Property="IsFocused" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard2" Storyboard="{StaticResource Storyboard2}"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="Button_NAO" TargetType="{x:Type Button}">         
+        <Style x:Key="Button_NAO" TargetType="{x:Type Button}">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1"/>
@@ -139,6 +147,14 @@
                                     <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                                 </Trigger.EnterActions>
                             </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard2" Storyboard="{StaticResource Storyboard2}"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -165,14 +181,14 @@
                     <ColumnDefinition Width="10"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>                    
+                <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="25"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Path HorizontalAlignment="Left" Grid.Column="1" Stretch="Fill" Fill="White" Data="F1 M34.0417,25.7292 L36.0208,41.9584 39.9792,41.9583 41.9583,25.7292 34.0417,25.7292 z M38,44.3333 C36.2511,44.3333 34.8333,45.7511 34.8333,47.5 34.8333,49.2489 36.2511,50.6667 38,50.6667 39.7489,50.6667 41.1667,49.2489 41.1667,47.5 41.1667,45.7511 39.7489,44.3333 38,44.3333 z" Width="15" Height="50"/>
+                <TextBlock Grid.Column="1" FontFamily="Segoe UI Symbol" Foreground="White" Text="?" FontSize="62" Margin="10,-20,366,0" Grid.ColumnSpan="3"/>
                 <TextBlock Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Atenção" FontSize="30" FontFamily="Segoe UI Light" Foreground="White"></TextBlock>
-                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Focusable="False" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>

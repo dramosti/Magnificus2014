@@ -1,7 +1,7 @@
 ﻿<Window x:Class="HLP.Comum.View.WPF.Messages.HlpMessageError"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="HlpMessageError" Height="Auto"  Width="470" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="HlpMessageError" Height="300"  Width="470" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
             <Setter Property="BorderThickness" Value="1"/>
@@ -26,6 +26,7 @@
         <Style x:Key="Button_OK" TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1"/>
@@ -65,10 +66,17 @@
                             </Grid>
                         </Grid>
                         <ControlTemplate.Triggers>
-
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Trigger.ExitActions>
                                     <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="Storyboard2_BeginStoryboard2" Storyboard="{StaticResource Storyboard2}"/>
                                 </Trigger.ExitActions>
                                 <Trigger.EnterActions>
                                     <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
@@ -82,7 +90,7 @@
         </Style>
 
     </Window.Resources>
-    <Border Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5">
+    <Border Grid.ColumnSpan="3" Grid.RowSpan="4" BorderThickness="1" BorderBrush="White" Background="#FF4774B5" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"></RowDefinition>
@@ -109,7 +117,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="1" Grid.Row="0" FontSize="50" Foreground="White" FontFamily="Segoe Ui Symbol" Text=":(" Margin="0,-16,0,0"></TextBlock>
                 <TextBlock Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Ocorreu um erro !" FontSize="30" FontFamily="Segoe UI Light" Foreground="White"></TextBlock>
-                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
+                <TextBox Grid.Column="1" Grid.ColumnSpan="3" Focusable="False" Grid.Row="2" IsReadOnly="True" Text="{Binding xMessageToUser}" Foreground="White" FontFamily="Segoe Ui light" FontSize="14" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxStyle1}"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -127,8 +135,7 @@
                 <Button Grid.Column="3" Grid.Row="1" Style="{StaticResource Button_OK}" Content="OK"></Button>
                 <Expander Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5">
                     <Grid Height="100">
-                        <TextBox  VerticalScrollBarVisibility="Auto" TextWrapping="Wrap">
-                            
+                        <TextBox  VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Style="{StaticResource TextBoxStyle1}">                            
                         </TextBox>
                     </Grid>
                 </Expander>

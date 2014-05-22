@@ -45,5 +45,6 @@ namespace HLP.Comum.View.WPF.Messages
         {
             DragMove();
         }
+       
     }
 }
