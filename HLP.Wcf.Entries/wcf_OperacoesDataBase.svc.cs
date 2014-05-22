@@ -1,4 +1,5 @@
 ﻿using HLP.Base.ClassesBases;
+using HLP.Base.EnumsBases;
 using HLP.Base.Static;
 using HLP.Comum.Model.Models;
 using HLP.Comum.Model.Repository.Interfaces;
@@ -83,10 +84,10 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int GetRecord(string xNameTable, string xCampo, string xValue, int idEmpresa = 0)
+        public int GetRecord(string xNameTable, string xCampo, string xValue, stFilterQuickSearch stFilterQS, int idEmpresa = 0)
         {
             return operacoesDataBaseRepos.GetRecord(xNameTable: xNameTable, xCampo: xCampo,
-                xValue: xValue, idEmpresa: idEmpresa);
+                xValue: xValue, idEmpresa: idEmpresa, stFilterQS: stFilterQS);
         }
     }
 }

@@ -56,17 +56,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CustomPesquisaCommands.cs" />
+    <Compile Include="Commands\CustomTextBoxCommands.cs" />
     <Compile Include="Commands\FindAllCommand.cs" />
     <Compile Include="Commands\HlpPesquisaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaFiltradaCommands.cs" />
     <Compile Include="Commands\HlpPesquisaPadraoCommands.cs" />
+    <Compile Include="Commands\WindowComponents\QuickSearchCommands.cs" />
     <Compile Include="ViewModels\CustomPesquisaViewModel.cs" />
+    <Compile Include="ViewModels\CustomTextBoxViewModel.cs" />
     <Compile Include="ViewModels\FindAllViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaFiltradaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FillComboBoxViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaPadraoViewModel.cs" />
     <Compile Include="ViewModels\HlpPesquisaViewModel.cs" />
+    <Compile Include="ViewModels\WindowComponents\QuickSearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
@@ -81,15 +85,16 @@
       <Project>{07b054e3-2fcc-4927-9e61-993983d02edf}</Project>
       <Name>HLP.Components.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HLP.Comum.Services\HLP.Comum.Services.csproj">
+      <Project>{eb58bc1d-89d0-4f83-93ed-72500493eff3}</Project>
+      <Name>HLP.Comum.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Entries.Services\HLP.Entries.Services.csproj">
       <Project>{8fa15d31-fff9-4063-89c8-2886fa032582}</Project>
       <Name>HLP.Entries.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\WindowComponents\" />
-    <Folder Include="ViewModels\WindowComponents\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

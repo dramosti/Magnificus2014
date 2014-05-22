@@ -1,4 +1,5 @@
-﻿using HLP.Comum.Model.Models;
+﻿using HLP.Base.EnumsBases;
+using HLP.Comum.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,6 @@ namespace HLP.Wcf.Entries
         List<RecordsSqlModel> GetRecordsFKUsed(string xTabela, string xCampo, string valor, int idEmpresa);
 
         [OperationContract]
-        int GetRecord(string xNameTable, string xCampo, string xValue, int idEmpresa = 0);
+        int GetRecord(string xNameTable, string xCampo, string xValue, stFilterQuickSearch stFilterQS, int idEmpresa = 0);
     }
 }
