@@ -63,33 +63,12 @@ namespace HLP.Comum.Model.Repository.Implementation
             }
         }
 
-        public int GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0)
+        public int GetRecord(string xNameTable, string xCampo, string xValue, int idEmpresa = 0)
         {
-            string queryGetNameTable = string.Format("select VIEW_DEFINITION from INFORMATION_SCHEMA.VIEWS where TABLE_NAME = '{0}'",
-                arg0: nameView);
-
-            DbCommand comm = UndTrabalho.dbPrincipal.GetSqlStringCommand
-                              (
-                              query: queryGetNameTable
-                              );
-
-            object defView = UndTrabalho.dbPrincipal.ExecuteScalar(command: comm);
-
-            if (defView == null)
-                return 0;
-
-            object nameTable = defView.ToString().ToUpper().
-                Split(separator: new string[] { "FROM" }, options: StringSplitOptions.None)[1].TrimStart(' ').Split(' ')[0];
-
-            if (nameTable == null)
-                return 0;
-
-            nameTable = nameTable.ToString().ToUpper()
-                .Replace(oldValue: "DBO.", newValue: "");
-
+            
             string queryGetPkField = string.Format(format: "SELECT COLUMN_NAME FROM " +
             "INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
-            "where TABLE_NAME = '{0}' and (CONSTRAINT_NAME like '%PK' or CONSTRAINT_NAME like 'PK%')", arg0: nameTable);
+            "where TABLE_NAME = '{0}' and (CONSTRAINT_NAME like '%PK' or CONSTRAINT_NAME like 'PK%')", arg0: xNameTable);
 
             DbCommand commGetPkField = UndTrabalho.dbPrincipal.GetSqlStringCommand
                               (
@@ -99,7 +78,7 @@ namespace HLP.Comum.Model.Repository.Implementation
             object nameFieldPk = UndTrabalho.dbPrincipal.ExecuteScalar(command: commGetPkField);
 
             string query = string.Format(format: "SELECT {0} FROM {1} WHERE {2}",
-                arg0: nameFieldPk, arg1: nameTable, arg2: string.Format(
+                arg0: nameFieldPk, arg1: xNameTable, arg2: string.Format(
                 format: "{0} = '{1}'", arg0: xCampo, arg1: xValue));
 
             if (idEmpresa > 0)

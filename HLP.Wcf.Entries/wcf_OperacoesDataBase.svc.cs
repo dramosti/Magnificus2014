@@ -83,9 +83,9 @@ namespace HLP.Wcf.Entries
 
         }
 
-        public int GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0)
+        public int GetRecord(string xNameTable, string xCampo, string xValue, int idEmpresa = 0)
         {
-            return operacoesDataBaseRepos.GetRecord(nameView: nameView, xCampo: xCampo,
+            return operacoesDataBaseRepos.GetRecord(xNameTable: xNameTable, xCampo: xCampo,
                 xValue: xValue, idEmpresa: idEmpresa);
         }
     }

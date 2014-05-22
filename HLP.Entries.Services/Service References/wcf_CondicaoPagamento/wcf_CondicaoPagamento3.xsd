@@ -11,9 +11,11 @@
           <xs:element minOccurs="0" name="nDias" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="nMeses" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="nSemanas" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="stAlocacaoImposto" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stCondicao" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stDataVencimento" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="stMetodo" type="xs:unsignedByte" />
+          <xs:element minOccurs="0" name="stPrimeiroPagamento" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="xCondicaoPagamento" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="xDescricao" nillable="true" type="xs:string" />
         </xs:sequence>
