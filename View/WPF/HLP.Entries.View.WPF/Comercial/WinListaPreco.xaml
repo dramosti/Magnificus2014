@@ -89,7 +89,7 @@
                                     </Grid.RowDefinitions>
                                     <!--Label-->
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="1" Text="Código"/>
-                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código da Lista de Preço"/>
+                                    <Components:CustomTextBlock Grid.Column="1" Grid.Row="2" Text="Código Alternativo"/>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="3" Text="Descrição"/>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="4" Text="Data de Criação"/>
                                     <Components:CustomTextBlock Grid.Column="1" Grid.Row="5" Text="N.° dias sem Atualização no valor de custo"/>
