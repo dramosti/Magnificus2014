@@ -63,9 +63,9 @@ namespace HLP.Comum.Model.Repository.Implementation
             }
         }
 
-        public object GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0)
+        public int GetRecord(string nameView, string xCampo, string xValue, int idEmpresa = 0)
         {
-            string queryGetNameTable = string.Format("select TABLE_NAME from INFORMATION_SCHEMA.VIEW_TABLE_USAGE where VIEW_NAME = '{0}'",
+            string queryGetNameTable = string.Format("select VIEW_DEFINITION from INFORMATION_SCHEMA.VIEWS where TABLE_NAME = '{0}'",
                 arg0: nameView);
 
             DbCommand comm = UndTrabalho.dbPrincipal.GetSqlStringCommand
@@ -73,16 +73,51 @@ namespace HLP.Comum.Model.Repository.Implementation
                               query: queryGetNameTable
                               );
 
-            object nameTable = UndTrabalho.dbPrincipal.ExecuteScalar(command: comm);
+            object defView = UndTrabalho.dbPrincipal.ExecuteScalar(command: comm);
+
+            if (defView == null)
+                return 0;
+
+            object nameTable = defView.ToString().ToUpper().
+                Split(separator: new string[] { "FROM" }, options: StringSplitOptions.None)[1].TrimStart(' ').Split(' ')[0];
 
             if (nameTable == null)
-                return null;
+                return 0;
+
+            nameTable = nameTable.ToString().ToUpper()
+                .Replace(oldValue: "DBO.", newValue: "");
 
             string queryGetPkField = string.Format(format: "SELECT COLUMN_NAME FROM " +
             "INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
-            "where TABLE_NAME = '{0}' and (CONSTRAINT_NAME like '%PK' or CONSTRAINT_NAME like 'PK%')");
+            "where TABLE_NAME = '{0}' and (CONSTRAINT_NAME like '%PK' or CONSTRAINT_NAME like 'PK%')", arg0: nameTable);
 
-            return null;
+            DbCommand commGetPkField = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                              (
+                              query: queryGetPkField
+                              );
+
+            object nameFieldPk = UndTrabalho.dbPrincipal.ExecuteScalar(command: commGetPkField);
+
+            string query = string.Format(format: "SELECT {0} FROM {1} WHERE {2}",
+                arg0: nameFieldPk, arg1: nameTable, arg2: string.Format(
+                format: "{0} = '{1}'", arg0: xCampo, arg1: xValue));
+
+            if (idEmpresa > 0)
+            {
+                query = string.Format(format: "{0} and idEmpresa = {1}", arg0: query, arg1: idEmpresa);
+            }
+
+            DbCommand commGetValue = UndTrabalho.dbPrincipal.GetSqlStringCommand
+                              (
+                              query: query
+                              );
+
+            object record = UndTrabalho.dbPrincipal.ExecuteScalar(command: commGetValue);
+
+            if (record != null)
+                return (int)record;
+
+            return 0;
         }
     }
 }
