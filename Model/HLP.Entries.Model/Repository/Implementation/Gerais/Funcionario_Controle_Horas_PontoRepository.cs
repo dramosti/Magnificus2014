@@ -124,7 +124,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 {
                     lret.Add(new EspelhoPontoModel
                     {
-                        tEntrada = dados.LastOrDefault().hRelogioPonto
+                        tEntrada = (dados.LastOrDefault().hAlteradaUsuario == null ? dados.LastOrDefault().hRelogioPonto : (TimeSpan)dados.LastOrDefault().hAlteradaUsuario)
                     });
                 }
                 return lret;

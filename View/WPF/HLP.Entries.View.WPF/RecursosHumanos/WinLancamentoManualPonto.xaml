@@ -256,7 +256,7 @@
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                     <DataGridTextColumn IsReadOnly="True" Header="Ação" Width="70" Binding="{Binding idSequenciaInterna, Converter={StaticResource ReturnValueSequenciaPontoConverter}}" />
-                    <DataGridTextColumn Header="Hora Ponto" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" >
+                    <DataGridTextColumn Header="Hora Ponto" IsReadOnly="True" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" >
                         <DataGridTextColumn.CellStyle>
                             <Style>
                                 <Style.Triggers>
