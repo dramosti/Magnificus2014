@@ -22,7 +22,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition MaxWidth="275" MinWidth="275"></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="300" MinWidth="300"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="90" MinWidth="90"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="30" MinWidth="30"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="100" MinWidth="100"></ColumnDefinition>
@@ -40,10 +40,10 @@
                 <!--Label-->
 
                 <Components:CustomTextBlock Text="Código" Grid.Column="1" Grid.Row="1"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Juros" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Código Alternativo" Grid.Column="1" Grid.Row="2"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Descrição" Grid.Column="1" Grid.Row="3"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="% de Juros" Grid.Column="1" Grid.Row="4"></Components:CustomTextBlock>
-                <Components:CustomTextBlock Text="Quantidade de dias/Meses para aplicar Juros:" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
+                <Components:CustomTextBlock Text="Quantidade de dias/Meses para aplicar Juros" Grid.Column="1" Grid.Row="5"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Dias/Mês" Grid.Column="1" Grid.Row="6"></Components:CustomTextBlock>
                 <Components:CustomTextBlock Text="Carência" Grid.Column="1" Grid.Row="7"></Components:CustomTextBlock>
                 
@@ -99,7 +99,7 @@
                     </Components:CustomComboBox.Items>
                 </Components:CustomComboBox>
                 <Components:CustomTextBox 
-                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2"
+                    Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="2" stCompPosicao="last"
                     Text="{Binding currentModel.nCarencia, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"			
 					IsEnabled="{Binding bIsEnabled}"
 					ToolTip="Insira o número de dias de carência permitidos antes da aplicação do juros. Os juros são calculados após o número especificado de dias de carência a partir da data de vencimento do pagamento. ">
