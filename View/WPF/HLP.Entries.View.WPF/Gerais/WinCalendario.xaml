@@ -249,7 +249,7 @@
                             <RowDefinition Height="Auto" MaxHeight="23"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Column="0"  Grid.Row="0" Text="Intervalos de paradas" FontSize="14" FontWeight="Black" FontFamily="Calibri" VerticalAlignment="Center"  />
-                        <DataGrid Grid.Row="1" Grid.Column="0"
+                        <DataGrid Grid.Row="1" Grid.Column="0" Width="307"
                                     ItemsSource="{Binding currentModel.lCalendario_IntervaloModel}"   
                                     IsReadOnly="{Binding bIsEnabled , Converter={StaticResource notConverter}}"
                                     AutoGenerateColumns="False" 
@@ -260,7 +260,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Hora Inicial" Width="70" Binding="{Binding tInicio, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
                                 <DataGridTextColumn Header="Hora Final" Width="70" Binding="{Binding tFinal, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tsToString}}" />
-                                <DataGridComboBoxColumn x:Name="cbxtpLogradouro" Width="100" Header="Tipo de Logradouro" 
+                                <DataGridComboBoxColumn x:Name="cbxtpLogradouro" Width="*" Header="Tipo de Logradouro" 
                                         ItemsSource="{StaticResource ltpIntervalos}"
                                         SelectedItemBinding="{Binding stTipoIntervalo, 
                                         NotifyOnValidationError=True, ValidatesOnDataErrors=True,
