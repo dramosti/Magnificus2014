@@ -58,34 +58,42 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
             this.Style = resource["TextBox_PESQUISA"] as Style;
-            this.ViewModel = new CustomPesquisaViewModel();
-            this.GotFocus += CustomPesquisa_GotFocus;
 
-            this.ApplyTemplate();
-            object txt = this.Template.FindName(name: "xId", templatedParent: this);
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
 
-            if (txt != null)
+            if (!designTime)
             {
-                ((TextBox)txt).ApplyTemplate();
-                object button = ((TextBox)txt).Template.FindName(name: "btnPesquisa", templatedParent: (TextBox)txt);
 
-                if (button != null)
-                {
-                    ((Button)button).Command = this.ViewModel.searchCommand;
-                    ((Button)button).CommandParameter = this;
-                }
+                this.ViewModel = new CustomPesquisaViewModel();
+                this.GotFocus += CustomPesquisa_GotFocus;
 
-                foreach (MenuItem item in ((TextBox)txt).ContextMenu.Items)
+                this.ApplyTemplate();
+                object txt = this.Template.FindName(name: "xId", templatedParent: this);
+
+                if (txt != null)
                 {
-                    if (item.Name == "insertItem")
+                    ((TextBox)txt).ApplyTemplate();
+                    object button = ((TextBox)txt).Template.FindName(name: "btnPesquisa", templatedParent: (TextBox)txt);
+
+                    if (button != null)
                     {
-                        item.Command = this.ViewModel.insertCommand;
-                        item.CommandParameter = this;
+                        ((Button)button).Command = this.ViewModel.searchCommand;
+                        ((Button)button).CommandParameter = this;
                     }
-                    else if (item.Name == "goItem")
+
+                    foreach (MenuItem item in ((TextBox)txt).ContextMenu.Items)
                     {
-                        item.Command = this.ViewModel.goToRecordCommand;
-                        item.CommandParameter = this;
+                        if (item.Name == "insertItem")
+                        {
+                            item.Command = this.ViewModel.insertCommand;
+                            item.CommandParameter = this;
+                        }
+                        else if (item.Name == "goItem")
+                        {
+                            item.Command = this.ViewModel.goToRecordCommand;
+                            item.CommandParameter = this;
+                        }
                     }
                 }
             }

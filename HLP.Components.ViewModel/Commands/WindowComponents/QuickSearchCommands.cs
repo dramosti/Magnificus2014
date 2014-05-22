@@ -8,6 +8,7 @@ using HLP.Components.ViewModel.ViewModels.WindowComponents;
 using System.Reflection;
 using HLP.Base.EnumsBases;
 using HLP.Base.ClassesBases;
+using System.Windows;
 
 namespace HLP.Components.ViewModel.Commands.WindowComponents
 {
@@ -21,7 +22,7 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
             this.objViewModel = objViewModel;
             objService = new OperacoesDataBaseService();
             this.objViewModel.searchCommad = new RelayCommand(
-                execute: e => this.SearchExecute(), canExecute: cE => this.SearchCanExecute());
+                execute: e => this.SearchExecute(o: e), canExecute: cE => this.SearchCanExecute());
 
             this.objViewModel.ChangeToEqualCommand = new RelayCommand(
                 execute: e => this.ChangeToEqualExecute());
@@ -48,19 +49,19 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
             this.objViewModel.stFilterQs = stFilterQuickSearch.contains;
         }
 
-        private void SearchExecute()
+        private void SearchExecute(object o)
         {
 
-            string xNameTable = this.objViewModel.model.GetType().Name.ToUpper()
-                .Replace(
-                oldValue: "MODEL", newValue: "");
+            string xNameTable = "UF";
 
             this.objViewModel.returnedId = objService.GetIdRecordToQuickSearch(
                 xNameTable: xNameTable,
                 xCampo: this.objViewModel.xNameBinding,
                 xValue: this.objViewModel.xValue,
-                stFilterQS: this.objViewModel.stFilterQs,
-                idEmpresa: this.objViewModel.idEmpresa);
+                stFilterQS: this.objViewModel.stFilterQs);
+
+            (o as Window).DialogResult = true;
+            (o as Window).Close();
         }
 
         private bool SearchCanExecute()

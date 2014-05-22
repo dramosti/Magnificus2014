@@ -1,4 +1,5 @@
 ﻿using HLP.Base.EnumsBases;
+using HLP.Components.ViewModel.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,8 @@ namespace HLP.Components.View.WPF
         static CustomTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomTextBox), new FrameworkPropertyMetadata(typeof(CustomTextBox)));
+
+
         }
 
         public CustomTextBox()
@@ -59,7 +62,51 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
-            this.Style = resource["TextBoxComponentStyle"] as Style;            
+            this.Style = resource["TextBoxComponentStyle"] as Style;
+
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
+    new DependencyObject());
+
+            if (!designTime)
+            {
+                this.ViewModel = new CustomTextBoxViewModel();                
+
+                this.ApplyTemplate();
+
+                Button btn = this.Template.FindName(name: "btn", templatedParent: this) as Button;
+
+                this.GotFocus += CustomTextBox_GotFocus;
+            }
+        }
+
+        private CustomTextBoxViewModel _ViewModel;
+
+        public CustomTextBoxViewModel ViewModel
+        {
+            get { return _ViewModel; }
+            set { _ViewModel = value; }
+        }
+
+
+        void CustomTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.ApplyTemplate();
+
+            TextBox txt = this.Template.FindName(name: "txt", templatedParent: this) as TextBox;
+
+            txt.Focus();
+        }
+
+        public void SetEventFocusToTxtId(RoutedEventHandler _event)
+        {
+            this.ApplyTemplate();
+
+            object txt = this.Template.FindName(name: "txt", templatedParent: this);
+
+            if (txt != null)
+            {
+                (txt as TextBox).LostFocus += _event;
+            }
         }
 
         private statusComponentePosicao _stCompPosicao;
@@ -69,6 +116,28 @@ namespace HLP.Components.View.WPF
             get { return _stCompPosicao; }
             set { _stCompPosicao = value; }
         }
-        
+
+
+
+        public bool IsEnabled
+        {
+            get { return (bool)GetValue(IsEnabledProperty); }
+            set { SetValue(IsEnabledProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsEnabledProperty =
+            DependencyProperty.Register("IsEnabled", typeof(bool), typeof(CustomTextBox), new PropertyMetadata(defaultValue: false,
+                propertyChangedCallback: new PropertyChangedCallback(
+                OnIsEnabledChanged)));
+
+        public static void OnIsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d != null && e.NewValue != null)
+            {
+
+            }
+        }
+
     }
 }

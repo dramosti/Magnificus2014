@@ -220,6 +220,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Comum\HLP.Comum.View\HLP.Comum.View.csproj">
+      <Project>{178FDD5C-D3E5-4809-87C6-3A69C0055BC6}</Project>
+      <Name>HLP.Comum.View</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HLP.Base\HLP.Base.csproj">
       <Project>{becaf421-bc5c-434b-9a2a-049896927118}</Project>
       <Name>HLP.Base</Name>

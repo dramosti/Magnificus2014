@@ -4,6 +4,7 @@ using HLP.Components.ViewModel.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace HLP.Components.ViewModel.ViewModels
 
         Pesquisa_RapidaService objService;
         CustomPesquisaCommands comm;
-
+                
         public CustomPesquisaViewModel()
         {
             this.objService = new Pesquisa_RapidaService();

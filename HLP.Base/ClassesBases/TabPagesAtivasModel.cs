@@ -70,7 +70,8 @@ namespace HLP.Base.ClassesBases
                         {
                             if (((statusComponentePosicao)pi.GetValue(obj: item)) == statusComponentePosicao.last)
                             {
-                                if (item.GetType().Name == "CustomPesquisa")
+                                if (item.GetType().Name == "CustomPesquisa" || 
+                                    item.GetType().Name == "CustomTextBox")
                                 {
                                     MethodInfo mi = item.GetType().GetMethod(name: "SetEventFocusToTxtId");
 
