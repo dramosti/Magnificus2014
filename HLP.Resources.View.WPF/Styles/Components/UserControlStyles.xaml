@@ -1051,11 +1051,13 @@
         </Setter>
     </Style>
     <Style x:Key="TextBox_FILTER" TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
-                        <Border x:Name="border" Background="White" BorderBrush="{StaticResource CinzaClaro}" CornerRadius="0" BorderThickness="1.3"/>
+                        <Border x:Name="border" Background="White" BorderBrush="{StaticResource CinzaEscuro}" CornerRadius="0" BorderThickness="1.3"/>
                         <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Height="20" Foreground="{DynamicResource CinzaClaro}" Margin="2,0,0,0"/>
                         <Label x:Name="WaterMarkLabel" Content="Insira um valor" Visibility="Collapsed" Foreground="{DynamicResource CinzaClaro}" FontFamily="Segoe UI Light"/>
                     </Grid>
@@ -6577,32 +6579,39 @@
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <ControlTemplate.Resources>
                         <Storyboard x:Key="Storyboard1">
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
-                            </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
-                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="optionMark">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="optionMark">
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
                             </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                         <Storyboard x:Key="Storyboard2">
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
-                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF8C8C8C"/>
                             </ColorAnimationUsingKeyFrames>
-                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="checkBoxBorder">
                                 <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#004774B5"/>
                             </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="optionMark">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="optionMark">
                                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
                                 <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF545454"/>
@@ -6627,12 +6636,22 @@
                         </Grid.ColumnDefinitions>
                         <Border x:Name="checkBoxBorder" CornerRadius="3" BorderBrush="#FF8C8C8C" BorderThickness="1" Background="White" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <Grid x:Name="grid" Background="#00000000">
-                                <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Margin="1" Opacity="1" Stretch="None" Fill="#FF545454"/>
+                                <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Margin="1" Opacity="0" Stretch="None" Fill="#FF545454"/>
                             </Grid>
                         </Border>
-                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" TextElement.FontFamily="Segoe UI Symbol" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="3,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" TextElement.Foreground="{StaticResource CinzaEscuro}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="3,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsFocused" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard4_BeginStoryboard" Storyboard="{StaticResource Storyboard4}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Storyboard3_BeginStoryboard" Storyboard="{StaticResource Storyboard3}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        
                         <Trigger Property="IsChecked" Value="True">
                             <Trigger.ExitActions>
                                 <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
@@ -6641,14 +6660,63 @@
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
                         </Trigger>
+                        
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Button Pesquisa Filtro-->
+
+    <Style x:Key="ButtonPesquisa_Filtro" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="Transparent"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" StrokeThickness="1" Stroke="White" Fill="Transparent"></Ellipse>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1" Height="18" Width="18" Stretch="Fill" Fill="White" Data="F1 M 42.5,22C 49.4036,22 55,27.5964 55,34.5C 55,41.4036 49.4036,47 42.5,47C 40.1356,47 37.9245,46.3435 36,45.2426L 26.9749,54.2678C 25.8033,55.4393 23.9038,55.4393 22.7322,54.2678C 21.5607,53.0962 21.5607,51.1967 22.7322,50.0251L 31.7971,40.961C 30.6565,39.0755 30,36.8644 30,34.5C 30,27.5964 35.5964,22 42.5,22 Z M 42.5,26C 37.8056,26 34,29.8056 34,34.5C 34,39.1944 37.8056,43 42.5,43C 47.1944,43 51,39.1944 51,34.5C 51,29.8056 47.1944,26 42.5,26 Z "/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.ExitActions>
-                                <BeginStoryboard x:Name="Storyboard4_BeginStoryboard" Storyboard="{StaticResource Storyboard4}"/>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
                             </Trigger.ExitActions>
                             <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="Storyboard3_BeginStoryboard" Storyboard="{StaticResource Storyboard3}"/>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
                         </Trigger>
+
                         <Trigger Property="IsFocused" Value="True">
                             <Trigger.ExitActions>
                                 <BeginStoryboard x:Name="Storyboard2_BeginStoryboard2" Storyboard="{StaticResource Storyboard2}"/>
@@ -6657,6 +6725,79 @@
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
                             </Trigger.EnterActions>
                         </Trigger>
+                        
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Button Sair Filtro-->
+
+    <Style x:Key="ButtonPesquisa_Sair" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Storyboard1">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF4774B5"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Storyboard2">
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="Transparent"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF4774B5"/>
+                                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="White"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Ellipse x:Name="ellipse" Grid.ColumnSpan="3" Grid.RowSpan="3" StrokeThickness="1" Stroke="White" Fill="Transparent"></Ellipse>
+                        <Path x:Name="path" Grid.Column="1" Grid.Row="1" Height="18" Width="18" Stretch="Fill" Fill="White" Data="F1 M 36.4167,36.4167L 36.4167,17.4167L 41.1667,17.4167L 41.1667,36.4167L 36.4167,36.4167 Z M 57,39.5833C 57,50.0767 48.4934,58.5833 38,58.5833C 27.5066,58.5833 19,50.0767 19,39.5833C 19,30.7301 25.0552,23.2911 33.25,21.1819L 33.25,27.8374C 28.6079,29.7165 25.3333,34.2675 25.3333,39.5833C 25.3333,46.5789 31.0044,52.25 38,52.25C 44.9956,52.25 50.6667,46.5789 50.6667,39.5833C 50.6667,34.8949 48.1194,30.8014 44.3333,28.6113L 44.3333,21.6645C 51.7129,24.2728 57,31.3106 57,39.5833 Z"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <Trigger Property="IsFocused" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Storyboard2_BeginStoryboard2" Storyboard="{StaticResource Storyboard2}"/>
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"></Setter>
+                        </Trigger>
+                        
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
