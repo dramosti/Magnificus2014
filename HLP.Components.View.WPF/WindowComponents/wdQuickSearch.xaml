@@ -3,33 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Components="clr-namespace:HLP.Components.View.WPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
-    x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
-        Title="wdQuickSearch" Height="200" Width="300" x:Name="wdQs"
-    >
-    <Window.Resources>
-    </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="1"  TextWrapping="Wrap" 
+        x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
+        Title="wdQuickSearch" Height="200" Width="300" x:Name="wdQs" FocusManager.FocusedElement="{Binding ElementName=txtValor}" AllowsTransparency="True" WindowStyle="None">
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="1"  TextWrapping="Wrap" 
                                     Text="Valor" VerticalAlignment="Top"/>
-        <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="2"  TextWrapping="Wrap" 
+            <Components:CustomTextBlock HorizontalAlignment="Left" Grid.Row="2"  TextWrapping="Wrap" 
                                     Text="Tipo Filtro" VerticalAlignment="Top"/>
-        <Components:CustomTextBox Text="{Binding xValue}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="True"></Components:CustomTextBox>        
-        <CheckBox Content="Igual" Grid.Row="3" Grid.Column="0" Command="{Binding ChangeToEqualCommand}"></CheckBox>
-        <CheckBox Content="Começa com" Grid.Row="3" Grid.Column="1" Command="{Binding ChangeToStartWithCommand}"></CheckBox>
-        <CheckBox Content="Contém" Grid.Row="3" Grid.Column="2" Command="{Binding ChangeToContainsCommand}"></CheckBox>
-        <Button Command="{Binding searchCommad}" CommandParameter="{Binding ElementName=wdQs}" Content="Search" Grid.Row="6" Grid.Column="2"></Button>
-    </Grid>
+            <TextBox Style="{StaticResource TextBox_FILTER}" x:Name="txtValor" Text="{Binding xValue , UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="True"></TextBox>
+            <CheckBox Content="Igual" Grid.Row="3" Grid.Column="0" Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToEqualCommand}"></CheckBox>
+            <CheckBox Content="Começa com" Grid.Row="3" Grid.Column="1"  Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToStartWithCommand}"></CheckBox>
+            <CheckBox Content="Contém" Grid.Row="3" Grid.Column="2"  Style="{StaticResource CheckBox_FILTER}" Command="{Binding ChangeToContainsCommand}"></CheckBox>
+            <Button Command="{Binding searchCommad}" CommandParameter="{Binding ElementName=wdQs}" Content="Search" Grid.Row="6" Grid.Column="2"></Button>
+        </Grid>
+    </Border>  
 </Window>
