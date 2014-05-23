@@ -288,7 +288,7 @@ namespace HLP.Base.ClassesBases
                 : resultado;
         }
 
-      
+
         public bool GridObjectsIsValid(System.Windows.Controls.DataGrid obj)
         {
             object o;
@@ -461,7 +461,7 @@ namespace HLP.Base.ClassesBases
         }
     }
 
-    public class ViewModelBaseCommands<T> where T : class
+    public class ViewModelBaseCommands<T>: INotifyPropertyChanged where T : class
     {
         BackgroundWorker bwFocus;
         public ViewModelBase<T> objviewModel;
@@ -473,9 +473,23 @@ namespace HLP.Base.ClassesBases
             set
             {
                 this._currentOp = value;
+                this.NotifyPropertyChanged(propertyName: "currentOp");
             }
         }
 
+        #region NotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public statusModel status { get; set; }
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            if (this.status == statusModel.nenhum)
+                this.status = statusModel.alterado;
+        }
+
+        #endregion
 
         public ViewModelBaseCommands(object vViewModel)
         {
@@ -539,7 +553,7 @@ namespace HLP.Base.ClassesBases
                     objviewModel.navigatePesquisa = new MyObservableCollection<int>((winPesquisa.GetPropertyValue("lResult") as List<int>));
                     //MessageBox.Show(this.delBaseCanExecute().ToString());
                     objviewModel.navegarBaseCommand.Execute("Primeiro");
-                    objviewModel.visibilityNavegacao = Visibility.Visible;                    
+                    objviewModel.visibilityNavegacao = Visibility.Visible;
                     this.currentOp = OperacaoCadastro.pesquisando;
                 }
             }
