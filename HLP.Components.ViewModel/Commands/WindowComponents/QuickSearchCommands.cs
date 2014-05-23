@@ -25,13 +25,13 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
                 execute: e => this.SearchExecute(o: e), canExecute: cE => this.SearchCanExecute());
 
             this.objViewModel.ChangeToEqualCommand = new RelayCommand(
-                execute: e => this.ChangeToEqualExecute());
-
-            this.objViewModel.ChangeToContainsCommand = new RelayCommand(
-                execute: e => this.ChangeToStartWithExecute());
+                execute: e => this.ChangeToEqualExecute(), canExecute: eC => this.ChangeToEqualCanExecute());
 
             this.objViewModel.ChangeToStartWithCommand = new RelayCommand(
-                execute: e => this.ChangeToStartWithExecute());
+                execute: e => this.ChangeToStartWithExecute(), canExecute: eC => this.ChangeToStartWithCanExecute());
+
+            this.objViewModel.ChangeToContainsCommand = new RelayCommand(
+                execute: e => this.ChangeToContainsExecute(), canExecute: eC => this.ChangeToContainsCanExecute());
         }
 
         private void ChangeToEqualExecute()
@@ -39,9 +39,19 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
             this.objViewModel.stFilterQs = stFilterQuickSearch.equal;
         }
 
+        private bool ChangeToEqualCanExecute()
+        {
+            return true;
+        }
+
         private void ChangeToStartWithExecute()
         {
             this.objViewModel.stFilterQs = stFilterQuickSearch.startWith;
+        }
+
+        private bool ChangeToStartWithCanExecute()
+        {
+            return this.objViewModel.fieldType.Name.ToUpper().Contains(value: "STRING");
         }
 
         private void ChangeToContainsExecute()
@@ -49,10 +59,15 @@ namespace HLP.Components.ViewModel.Commands.WindowComponents
             this.objViewModel.stFilterQs = stFilterQuickSearch.contains;
         }
 
+        private bool ChangeToContainsCanExecute()
+        {
+            return this.objViewModel.fieldType.Name.ToUpper().Contains(value: "STRING");
+        }
+
         private void SearchExecute(object o)
         {
-
-            string xNameTable = "UF";
+            string xNameTable = this.objViewModel.modelType.Name.ToUpper()
+                .Replace(oldValue: "MODEL", newValue: "");
 
             this.objViewModel.returnedId = objService.GetIdRecordToQuickSearch(
                 xNameTable: xNameTable,

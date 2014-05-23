@@ -24,13 +24,30 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
 
         QuickSearchCommands comm;
 
-        public QuickSearchViewModel(object sender)
+        public QuickSearchViewModel(Type modelType, object sender)
         {
 
             BindingExpression bExp = (sender as TextBox).GetBindingExpression(dp: TextBox.TextProperty);
 
+            this.modelType = modelType;
+
+
             if (bExp != null)
+            {
                 this.xNameBinding = bExp.ParentBinding.Path.Path.Replace(oldValue: "currentModel.", newValue: "");
+                PropertyInfo piField = this.modelType.GetProperty(name: this.xNameBinding);
+
+                this.fieldType = piField.PropertyType;
+            }
+
+            if (modelType.GetProperties().Count(i => i.Name == "idEmpresa") > 1)
+            {
+                this.idEmpresa = CompanyData.idEmpresa;
+            }
+            else
+            {
+                this.idEmpresa = 0;
+            }
 
             comm = new QuickSearchCommands(objViewModel: this);
         }
@@ -83,6 +100,38 @@ namespace HLP.Components.ViewModel.ViewModels.WindowComponents
             }
         }
 
+        private Type _modelType;
+
+        public Type modelType
+        {
+            get { return _modelType; }
+            set { _modelType = value; }
+        }
+
+        private int _idEmpresa;
+
+        public int idEmpresa
+        {
+            get { return _idEmpresa; }
+            set { _idEmpresa = value; }
+        }
+
+        private Type _fieldType;
+
+        public Type fieldType
+        {
+            get { return _fieldType; }
+            set { _fieldType = value; }
+        }
+
+        private Visibility _visibility;
+
+        public Visibility visibility
+        {
+            get { return _visibility; }
+            set { _visibility = value; }
+        }
+        
 
         #region NotifyPropertyChanged
 
