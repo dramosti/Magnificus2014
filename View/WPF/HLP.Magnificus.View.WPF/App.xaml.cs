@@ -182,6 +182,7 @@ namespace HLP.Magnificus.View.WPF
                             {
                                 Sistema.bOnline = StConnection.OnlineWeb;
                                 bModificado = Sistema.SalvaEndPoint(xUri: Sistema.GetAppSettings("urlWebService"));
+
                             }
                             else
                             {
