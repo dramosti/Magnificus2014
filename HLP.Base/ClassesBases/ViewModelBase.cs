@@ -74,7 +74,15 @@ namespace HLP.Base.ClassesBases
             get { return _botoes; }
             set { _botoes = value; }
         }
-        public ViewModelBaseCommands<T> viewModelBaseCommands;
+
+        private ViewModelBaseCommands<T> _viewModelBaseCommands;
+
+        public ViewModelBaseCommands<T> viewModelBaseCommands
+        {
+            get { return _viewModelBaseCommands; }
+            set { _viewModelBaseCommands = value; }
+        }
+
         private BackgroundWorker bwFocus = new BackgroundWorker();
         public ICommand salvarBaseCommand { get; set; }
         public ICommand deletarBaseCommand { get; set; }
@@ -671,14 +679,14 @@ namespace HLP.Base.ClassesBases
         }
 
         private void novoBase()
-        {
-
-            this.currentOp = OperacaoCadastro.criando;
+        {           
             this.objviewModel.bIsEnabled = true;
             this.objviewModel.navigatePesquisa = new MyObservableCollection<int>(new List<int>());
             objviewModel.currentID = 0;
             objviewModel.lItensHierarquia = new List<int>();
             this.SetFocusFirstControl();
+
+            this.currentOp = OperacaoCadastro.criando;
         }
 
         public void SetFocusFirstControl()

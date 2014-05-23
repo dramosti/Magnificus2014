@@ -4,7 +4,10 @@
         xmlns:Components="clr-namespace:HLP.Components.View.WPF"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
     x:Class="HLP.Components.View.WPF.WindowComponents.wdQuickSearch"
-        Title="wdQuickSearch" Height="200" Width="300" x:Name="wdQs">
+        Title="wdQuickSearch" Height="200" Width="300" x:Name="wdQs"
+    >
+    <Window.Resources>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

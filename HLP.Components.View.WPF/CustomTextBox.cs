@@ -62,6 +62,7 @@ namespace HLP.Components.View.WPF
                 Source = new Uri("/HLP.Resources.View.WPF;component/Styles/Components/UserControlStyles.xaml", UriKind.RelativeOrAbsolute)
             };
 
+
             this.Style = resource["TextBoxComponentStyle"] as Style;
 
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(
@@ -69,7 +70,7 @@ namespace HLP.Components.View.WPF
 
             if (!designTime)
             {
-                this.ViewModel = new CustomTextBoxViewModel();
+                this.CustomViewModel = new CustomTextBoxViewModel();
 
                 this.ApplyTemplate();
 
@@ -79,12 +80,12 @@ namespace HLP.Components.View.WPF
             }
         }
 
-        private CustomTextBoxViewModel _ViewModel;
+        private CustomTextBoxViewModel _CustomViewModel;
 
-        public CustomTextBoxViewModel ViewModel
+        public CustomTextBoxViewModel CustomViewModel
         {
-            get { return _ViewModel; }
-            set { _ViewModel = value; }
+            get { return _CustomViewModel; }
+            set { _CustomViewModel = value; }
         }
 
 
@@ -137,11 +138,11 @@ namespace HLP.Components.View.WPF
             {
                 if (((bool?)e.NewValue) == true)
                 {
-                    (d as CustomTextBox).ViewModel.visibility = Visibility.Collapsed;
+                    (d as CustomTextBox).CustomViewModel.visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    (d as CustomTextBox).ViewModel.visibility = Visibility.Visible;
+                    (d as CustomTextBox).CustomViewModel.visibility = Visibility.Visible;
                 }
             }
         }
