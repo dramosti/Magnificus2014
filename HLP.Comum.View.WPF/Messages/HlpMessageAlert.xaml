@@ -1,7 +1,7 @@
 ﻿<Window x:Class="HLP.Comum.View.WPF.Messages.HlpMessageAlert"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" FocusManager.FocusedElement="{Binding ElementName=btn}"
-        Title="HlpMessageAlert" Height="300" Width="470" AllowsTransparency="True" WindowStyle="None">
+        Title="HlpMessageAlert" Height="300" WindowStartupLocation="CenterScreen" Width="470" AllowsTransparency="True" WindowStyle="None">
     <Window.Resources>
         <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
             <Setter Property="BorderThickness" Value="1"/>
