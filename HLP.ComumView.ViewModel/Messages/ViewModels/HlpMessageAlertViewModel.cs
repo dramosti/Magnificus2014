@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HLP.ComumView.ViewModel.Messages.Commands;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,12 +9,15 @@ using System.Windows.Input;
 
 namespace HLP.ComumView.ViewModel.Messages.ViewModels
 {
-    public class HlpMessageAlertViewModel: INotifyPropertyChanged
+    public class HlpMessageAlertViewModel : INotifyPropertyChanged
     {
         public ICommand commOk { get; set; }
 
+        HlpMessageAlertCommands comm;
+
         public HlpMessageAlertViewModel()
         {
+            this.comm = new HlpMessageAlertCommands(objViewModel: this);
         }
 
         public HlpMessageAlertViewModel(string xAlertMessageToUser, string xAlertMessageFramework = "", string xAlertCode = "")
@@ -21,6 +25,7 @@ namespace HLP.ComumView.ViewModel.Messages.ViewModels
             this.xAlertCode = xAlertCode;
             this.xAlertMessageToUser = xAlertMessageToUser;
             this.xAlertMessageFramework = xAlertMessageFramework;
+            this.comm = new HlpMessageAlertCommands(objViewModel: this);
         }
 
 
@@ -32,7 +37,7 @@ namespace HLP.ComumView.ViewModel.Messages.ViewModels
             set
             {
                 _xAlertCode = value;
-                this.NotifyPropertyChanged(propertyName: "xErrorCode");
+                this.NotifyPropertyChanged(propertyName: "xAlertCode");
             }
         }
 
@@ -45,7 +50,7 @@ namespace HLP.ComumView.ViewModel.Messages.ViewModels
             set
             {
                 _xAlertMessageToUser = value;
-                this.NotifyPropertyChanged(propertyName: "xErrorMessageToUser");
+                this.NotifyPropertyChanged(propertyName: "xAlertMessageToUser");
             }
         }
 
@@ -58,7 +63,7 @@ namespace HLP.ComumView.ViewModel.Messages.ViewModels
             set
             {
                 _xAlertMessageFramework = value;
-                this.NotifyPropertyChanged(propertyName: "xErrorMessageFramework");
+                this.NotifyPropertyChanged(propertyName: "xAlertMessageFramework");
             }
         }
 
