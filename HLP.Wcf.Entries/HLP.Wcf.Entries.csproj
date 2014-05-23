@@ -111,7 +111,7 @@
     <Content Include="wcf_Departamento.svc" />
     <Content Include="wcf_Deposito.svc" />
     <Content Include="wcf_EmpresaParametros.svc" />
-    <Content Include="serviceLogin.svc" />
+    <Content Include="wcf_Login.svc" />
     <Content Include="servicePesquisaPadrao.svc" />
     <Content Include="serviceRegiao.svc" />
     <Content Include="serviceSales_Orcamento.svc" />
@@ -164,7 +164,7 @@
     <Compile Include="Iwcf_Agencia.cs" />
     <Compile Include="Iwcf_Banco.cs" />
     <Compile Include="Iwcf_Calendario.cs" />
-    <Compile Include="IserviceLogin.cs" />
+    <Compile Include="Iwcf_Login.cs" />
     <Compile Include="IserviceOrcamento.cs" />
     <Compile Include="IservicePesquisaPadrao.cs" />
     <Compile Include="IserviceRegiao.cs" />
@@ -288,8 +288,8 @@
     <Compile Include="wcf_EmpresaParametros.svc.cs">
       <DependentUpon>wcf_EmpresaParametros.svc</DependentUpon>
     </Compile>
-    <Compile Include="serviceLogin.svc.cs">
-      <DependentUpon>serviceLogin.svc</DependentUpon>
+    <Compile Include="wcf_Login.svc.cs">
+      <DependentUpon>wcf_Login.svc</DependentUpon>
     </Compile>
     <Compile Include="servicePesquisaPadrao.svc.cs">
       <DependentUpon>servicePesquisaPadrao.svc</DependentUpon>

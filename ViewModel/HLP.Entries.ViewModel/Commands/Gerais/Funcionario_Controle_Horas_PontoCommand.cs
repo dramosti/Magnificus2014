@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using HLP.Base.EnumsBases;
 using HLP.Entries.Services.RecursosHumanos;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace HLP.Entries.ViewModel.Commands.Gerais
 {
@@ -37,7 +39,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                  canExecute: paramCanExec => this.CanCarregaAbono());
         }
 
-        public void Cancelar(object win) 
+        public void Cancelar(object win)
         {
             ((Window)win).Close();
         }
@@ -60,8 +62,9 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
 
 
                 List<Funcionario_Controle_Horas_PontoModel> lreturn = servico.Salvar(objViewModel.idFuncionario, new List<Funcionario_Controle_Horas_PontoModel>(objViewModel.lPonto));
-                this.objViewModel.lPonto = null;
-                this.objViewModel.lPonto = new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>(lreturn);
+               
+                //this.objViewModel.lPonto = null;
+                //this.objViewModel.lPonto = new ObservableCollectionBaseCadastros<Funcionario_Controle_Horas_PontoModel>(lreturn);
                 this.objViewModel.bAlterou = true;
                 ((Window)win).Close();
             }

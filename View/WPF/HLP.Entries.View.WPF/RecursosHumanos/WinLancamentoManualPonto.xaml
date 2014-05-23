@@ -244,7 +244,7 @@
                                        Command="{Binding commandFaltou}" 
                                        CommandParameter="{Binding ElementName=cbxFaltou, Path=IsChecked}"                                       
                                        />
-            <DataGrid      Grid.Row="2" Grid.ColumnSpan="5"
+            <DataGrid    x:Name="dgvLancamentos"  Grid.Row="2" Grid.ColumnSpan="5"
                            ItemsSource="{Binding Source={StaticResource colecaoPonto}}"                           
                            AutoGenerateColumns="False"                       
                            SelectionUnit="CellOrRowHeader" 
@@ -256,7 +256,7 @@
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=idSequenciaInterna, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
                     <DataGridTextColumn IsReadOnly="True" Header="Ação" Width="70" Binding="{Binding idSequenciaInterna, Converter={StaticResource ReturnValueSequenciaPontoConverter}}" />
-                    <DataGridTextColumn Header="Hora Ponto" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" >
+                    <DataGridTextColumn Header="Hora Ponto" IsReadOnly="True" Width="72" Binding="{Binding hRelogioPonto, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" >
                         <DataGridTextColumn.CellStyle>
                             <Style>
                                 <Style.Triggers>
@@ -267,7 +267,7 @@
                             </Style>
                         </DataGridTextColumn.CellStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Hora alterada" Width="82" Binding="{Binding hAlteradaUsuario, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
+                    <DataGridTextColumn Header="Hora alterada" Width="82" Binding="{Binding hAlteradaUsuario, UpdateSourceTrigger=LostFocus, NotifyOnValidationError=True, ValidatesOnDataErrors=True, Converter={StaticResource tstoString}}" />
                     <DataGridTextColumn   Header="Justificativa" Width="*"
                                 ElementStyle="{StaticResource CellErrorStyle}"
                                 Binding="{Binding Path=xJustificativa, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>

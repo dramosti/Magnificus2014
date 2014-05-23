@@ -173,6 +173,7 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
             {
                 if (objViewModel.message.Save())
                 {
+                    this.objViewModel.currentModel.xDiasSemProgramacao = string.Join<string>("-", this.objViewModel.lDiasSemProgramacao.Select(c => c.ToShortDateString()));
                     this.objViewModel.currentModel = service.SaveObject(objViewModel.currentModel);
                     e.Result = e.Argument;
                 }
@@ -300,6 +301,10 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void Novo(object _panel)
         {
             this.objViewModel.currentModel = new CalendarioModel();
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+            {
+                this.objViewModel.lDiasSemProgramacao = new ObservableCollection<DateTime>();
+            }));
             this.objViewModel.novoBaseCommand.Execute(parameter: _panel);
         }
         private bool NovoCanExecute()
@@ -367,6 +372,23 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
         private void GetCalendario(object sender, DoWorkEventArgs e)
         {
             this.objViewModel.currentModel = service.GetObject(this.objViewModel.currentID);
+            if (this.objViewModel.currentModel != null)
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    if (this.objViewModel.currentModel.xDiasSemProgramacao != null)
+                        if (this.objViewModel.currentModel.xDiasSemProgramacao != "")
+                            this.objViewModel.lDiasSemProgramacao = new ObservableCollection<DateTime>();
+                    foreach (var item in this.objViewModel.currentModel.xDiasSemProgramacao.Split('-').ToList<string>())
+                    {
+                        if (item.IsValidDateTime())
+                            this.objViewModel.lDiasSemProgramacao.Add(Convert.ToDateTime(item));
+                    }
+                }));
+            else
+                Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                {
+                    this.objViewModel.lDiasSemProgramacao = new ObservableCollection<DateTime>();
+                }));
         }
 
 
@@ -406,19 +428,19 @@ namespace HLP.Entries.ViewModel.Commands.Gerais
                     {
                         if (day.DayOfWeek == DayOfWeek.Saturday && ((byte)objViewModel.currentModel.stSabado).ToBoolean())
                         {
-                          lDetalhes.AddRange(objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSab), ((TimeSpan)objViewModel.currentModel.tHoraFinalSab)));
+                            lDetalhes.AddRange(objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSab), ((TimeSpan)objViewModel.currentModel.tHoraFinalSab)));
                         }
                         else if (day.DayOfWeek == DayOfWeek.Friday)
                         {
-                            lDetalhes.AddRange( objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSex), ((TimeSpan)objViewModel.currentModel.tHoraFinalSex)));
+                            lDetalhes.AddRange(objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSex), ((TimeSpan)objViewModel.currentModel.tHoraFinalSex)));
                         }
                         else if (day.DayOfWeek == DayOfWeek.Sunday && ((byte)objViewModel.currentModel.stDomingo).ToBoolean())
                         {
-                            lDetalhes.AddRange( objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialDom), ((TimeSpan)objViewModel.currentModel.tHoraFinalDom)));
+                            lDetalhes.AddRange(objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialDom), ((TimeSpan)objViewModel.currentModel.tHoraFinalDom)));
                         }
                         else if (day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday)
                         {
-                            lDetalhes.AddRange( objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSegQui), ((TimeSpan)objViewModel.currentModel.tHoraFinalSegQui)));
+                            lDetalhes.AddRange(objViewModel.MontaHorario(Intervalos, day, ((TimeSpan)objViewModel.currentModel.tHoraInicialSegQui), ((TimeSpan)objViewModel.currentModel.tHoraFinalSegQui)));
                         }
                     }
                 }

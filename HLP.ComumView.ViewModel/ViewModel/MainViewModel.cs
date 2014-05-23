@@ -82,7 +82,7 @@ namespace HLP.ComumView.ViewModel.ViewModel
         {
             objService = new EmpresaService();
             winMan = new WinManModel();
-           
+            this.stConnection = Sistema.EmRedeLocal();   
             MainCommands objCommands = new MainCommands(objTabPagesAtivasViewModel: this);
             this.winMan._lTabPagesAtivas = new ObservableCollection<TabPagesAtivasModel>();
             this.winMan._lWindows = new ObservableCollection<windowsModel>();

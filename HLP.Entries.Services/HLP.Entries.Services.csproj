@@ -89,6 +89,7 @@
     <Compile Include="Gerais\FamiliaProdutoService.cs" />
     <Compile Include="Gerais\FuncionarioService.cs" />
     <Compile Include="Gerais\Funcionario_AcessoService.cs" />
+    <Compile Include="Gerais\LoginService.cs" />
     <Compile Include="Gerais\MoedaService.cs" />
     <Compile Include="Gerais\Plano_PagamentoService.cs" />
     <Compile Include="Gerais\Ramo_AtividadeService.cs" />
@@ -252,6 +253,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\wcf_Lista_Preco\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\wcf_Login\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -989,6 +995,13 @@
     <None Include="Service References\wcf_Lista_Preco\wcf_Lista_Preco6.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\wcf_Login\wcf_Login.wsdl" />
+    <None Include="Service References\wcf_Login\wcf_Login.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\wcf_Login\wcf_Login1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega.wsdl" />
     <None Include="Service References\wcf_ModoEntrega\wcf_ModoEntrega.xsd">
       <SubType>Designer</SubType>
@@ -1405,6 +1418,7 @@
     <WCFMetadataStorage Include="Service References\wcf_Funcionario_ControlePonto\" />
     <WCFMetadataStorage Include="Service References\wcf_Juros\" />
     <WCFMetadataStorage Include="Service References\wcf_Lista_Preco\" />
+    <WCFMetadataStorage Include="Service References\wcf_Login\" />
     <WCFMetadataStorage Include="Service References\wcf_ModoEntrega\" />
     <WCFMetadataStorage Include="Service References\wcf_Moeda\" />
     <WCFMetadataStorage Include="Service References\wcf_Multa\" />
@@ -2235,6 +2249,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\wcf_Transportadora\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Login\wcf_Login.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Login\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Login\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\wcf_Login\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

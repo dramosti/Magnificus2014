@@ -47,6 +47,8 @@ namespace HLP.Base.Static
         public static object parametros_CustoEmpresa { get; set; }
 
         public static object parametros_FiscalEmpresa { get; set; }
+
+     
     }
 
 }

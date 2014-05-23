@@ -87,15 +87,8 @@
     <Compile Include="Commands\Gerais\Funcionario_Controle_Horas_PontoCommand.cs" />
     <Compile Include="Commands\Gerais\HlpCalendarioPontoCommand.cs" />
     <Compile Include="Commands\Gerais\RegiaoCommands.cs" />
-    <Compile Include="CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ViewModels\Gerais\AtribuicaoColetivaListaPrecoViewModel.cs" />
     <Compile Include="Commands\Gerais\CalendarioCommand.cs" />
-    <Compile Include="Commands\Gerais\CalendarioDetalheCommand.cs" />
     <Compile Include="Commands\Gerais\Funcionario_AcessoCommands.cs" />
     <Compile Include="Commands\Transportes\ModoEntregaCommands.cs" />
     <Compile Include="ViewModels\Crm\FidelidadeViewModel.cs" />
@@ -156,7 +149,6 @@
     <Compile Include="ViewModels\Fiscal\StIpiViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\Tipo_documentoViewModel.cs" />
     <Compile Include="ViewModels\Fiscal\Tipo_OperacaoViewModel.cs" />
-    <Compile Include="ViewModels\Gerais\CalendarioDetalheViewModel.cs" />
     <Compile Include="ViewModels\Gerais\CalendarioViewModel.cs" />
     <Compile Include="ViewModels\Gerais\Condicao_PagamentoViewModel.cs" />
     <Compile Include="ViewModels\Gerais\ContatoViewModel.cs" />
@@ -306,12 +298,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

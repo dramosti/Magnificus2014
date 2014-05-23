@@ -81,7 +81,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
         public List<Funcionario_Controle_Horas_PontoModel> GetAllFuncionario_Controle_Horas_PontoDia(int idFuncionario, DateTime dtDia)
         {
             regAllFuncionario_Controle_Horas_PontoAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto "
-                + string.Format("where idFuncionario = {0} and dRelogioPonto = '{1}'", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
+                + string.Format("where idFuncionario = {0} and dRelogioPonto = '{1}' order by idSequenciaInterna", idFuncionario, dtDia.Date.ToString("yyyy-MM-dd")),
                             MapBuilder<Funcionario_Controle_Horas_PontoModel>.MapAllProperties().DoNotMap(i => i.status).Build());
             return regAllFuncionario_Controle_Horas_PontoAccessorDia.Execute().ToList();
         }
@@ -92,7 +92,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
             {
                 if (regHorasAtrabalhadasDiaAccessorDia == null)
                 {
-                    regHorasAtrabalhadasDiaAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto where idFuncionario = @idFuncionario and dRelogioPonto = @dRelogioPonto",
+                    regHorasAtrabalhadasDiaAccessorDia = UndTrabalho.dbPrincipal.CreateSqlStringAccessor("SELECT * FROM Funcionario_Controle_Horas_Ponto where idFuncionario = @idFuncionario and dRelogioPonto = @dRelogioPonto order by idSequenciaInterna",
                                     new Parameters(UndTrabalho.dbPrincipal)
                                     .AddParameter<int>("idFuncionario")
                                     .AddParameter<DateTime>("dRelogioPonto"),
@@ -124,7 +124,7 @@ namespace HLP.Entries.Model.Repository.Implementation.Gerais
                 {
                     lret.Add(new EspelhoPontoModel
                     {
-                        tEntrada = dados.LastOrDefault().hRelogioPonto
+                        tEntrada = (dados.LastOrDefault().hAlteradaUsuario == null ? dados.LastOrDefault().hRelogioPonto : (TimeSpan)dados.LastOrDefault().hAlteradaUsuario)
                     });
                 }
                 return lret;

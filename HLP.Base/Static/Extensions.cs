@@ -36,6 +36,20 @@ namespace HLP.Base.Static
         {
             return Regex.IsMatch(s, @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b");
         }
+
+        public static bool IsValidDateTime(this string s)
+        {
+            try
+            {
+                Convert.ToDateTime(s);
+                return true;
+            }
+            catch (Exception )
+            {
+                return false;
+            }
+        }
+
         #endregion
 
         #region Extensions string

@@ -119,6 +119,19 @@ namespace HLP.Base.ClassesBases
             set { _bWorkerSave = value; }
         }
 
+
+        private BackgroundWorker _bWorkerPrint;
+
+        public BackgroundWorker bWorkerPrint
+        {
+            get {
+                if (_bWorkerPrint == null)
+                    _bWorkerPrint = new BackgroundWorker();
+                return _bWorkerPrint; }
+            set { _bWorkerPrint = value; }
+        }
+        
+
         private BackgroundWorker _bWorkerNovo;
         public BackgroundWorker bWorkerNovo
         {

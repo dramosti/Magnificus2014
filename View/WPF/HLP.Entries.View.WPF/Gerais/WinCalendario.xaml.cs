@@ -25,6 +25,7 @@ namespace HLP.Entries.View.WPF.Gerais
         {
             InitializeComponent();
             this.ViewModel = new CalendarioViewModel();
+            lbxDatas.KeyDown += new KeyEventHandler(this.ViewModel.ListBox_KeyDown);
         }
 
         public CalendarioViewModel ViewModel

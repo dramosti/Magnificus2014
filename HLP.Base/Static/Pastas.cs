@@ -65,6 +65,7 @@ namespace HLP.Base.Static
             {
                 try
                 {
+                    Util.ValidaCaminho(System.AppDomain.CurrentDomain.BaseDirectory + "\\TempReport\\");
                     return Util.ValidaCaminho(System.AppDomain.CurrentDomain.BaseDirectory + "\\TempReport\\" + Environment.MachineName + "\\");
                 }
                 catch (Exception ex)
